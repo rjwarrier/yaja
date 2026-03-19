@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Journal</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_lookback">Lookback</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_shortcodes">Shortcodes</string>
+    <string name="nav_help">Help &amp; About</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_back">Back</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Syncing Data</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Quick Capture</string>
+    <string name="quick_capture_hint">What happened?</string>
+    <string name="cd_saved">Saved</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Previous</string>
+    <string name="cd_next">Next</string>
+    <string name="cd_surprise_me">Surprise Me</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_font">Font</string>
+    <string name="settings_storage">Storage</string>
+    <string name="settings_security">Security</string>
+    <string name="settings_backup">Backup</string>
+    <string name="settings_change_storage_title">Change Storage Location</string>
+    <string name="settings_backup_never">Never</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_export_error">Failed to export shortcodes</string>
+    <string name="shortcodes_import_error">Failed to import shortcodes</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Data cache synced!</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Adaptive Icon Base Colors for Dark Mode -->
+    <color name="ic_launcher_background">#1A1C16</color> <!-- Match dark background -->
+    <color name="ic_launcher_foreground">#ACD370</color> <!-- Match dark primary -->
+</resources>

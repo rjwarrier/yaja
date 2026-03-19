@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    FileProvider paths: only expose the backups/ subdirectory.
+    Sharing a backup ZIP shares only that file, not the entire filesDir.
+-->
+<paths>
+    <files-path name="backups" path="backups/" />
+</paths>
+

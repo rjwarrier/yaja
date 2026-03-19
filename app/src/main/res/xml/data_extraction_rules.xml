@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!--
+            INCLUDE: app preferences (theme, font, first-day-of-week, PIN hash, etc.)
+            This lets settings migrate when the user gets a new phone.
+            Journal entries themselves are stored in user-selected external storage
+            (SAF URI) and are NOT included here — they live in the user's own folder.
+        -->
+        <include
+            domain="sharedpref"
+            path="journal_settings.xml" />
+    </cloud-backup>
+
+    <!--
+        Device-to-device transfers (e.g. cable or local Wi-Fi migration):
+        Include everything so the user's data moves with them.
+    -->
+    <device-transfer>
+        <include
+            domain="sharedpref"
+            path="journal_settings.xml" />
+        <include
+            domain="file"
+            path="journal_cache_v1.json" />
+    </device-transfer>
+</data-extraction-rules>
+

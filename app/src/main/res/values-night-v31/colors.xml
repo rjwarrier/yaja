@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dynamic wallpaper-derived colors for Android 12+ (API 31) in Dark Mode -->
+    <!-- We invert the shades: 800 for background (dark), 100 for foreground (light) -->
+    <color name="ic_launcher_background">@android:color/system_accent1_800</color>
+    <color name="ic_launcher_foreground">@android:color/system_accent1_100</color>
+</resources>

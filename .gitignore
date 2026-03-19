@@ -1,0 +1,37 @@
+# Android / Gradle build outputs
+/.gradle/
+/build/
+/app/build/
+**/build/
+
+# Android Studio / IntelliJ IDEA
+/.idea/
+*.iml
+.DS_Store
+
+# Kotlin compiler cache
+/.kotlin/
+
+# Local config — NEVER commit this (contains SDK path)
+local.properties
+
+# Release signing key — keep out of version control
+Sign/
+
+# Release build artifacts (APKs, AABs, PDFs)
+/app/release/
+
+# Python helper / maintenance scripts (dev-only)
+*.py
+
+# Build error logs (dev-only artefacts)
+build_errors*.log
+build_errors*.txt
+tmp_tail.txt
+
+# Temporary directory
+/tmp/
+
+# Sample journal entries (may contain real data)
+/sample_journal_entries/
+sample_journal_entries.zip

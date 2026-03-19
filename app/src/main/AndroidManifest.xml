@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Custom permission required to send ACTION_ADD_ENTRY broadcasts to TaskerReceiver.
+        protectionLevel="signature" means only apps signed with the same key (or apps the
+        user has explicitly approved on debuggable builds) can hold this permission.
+        Tasker (and your own widgets) can be authorised by granting this permission explicitly.
+    -->
+    <permission
+        android:name="com.mj.yaja.permission.ADD_ENTRY"
+        android:protectionLevel="signature" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Journal"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".TaskerReceiver"
+            android:exported="true"
+            android:permission="com.mj.yaja.permission.ADD_ENTRY">
+            <intent-filter>
+                <action android:name="com.mj.yaja.ACTION_ADD_ENTRY" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Quick Capture Activity (Transparent full screen to host the Jetpack Compose Dialog) -->
+        <!-- Not exported: only launched via PendingIntent from the widget (same app) -->
+        <activity
+            android:name=".ui.screens.QuickCaptureActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Quick Capture Widget Provider -->
+        <receiver
+            android:name=".ui.widget.QuickCaptureWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/quick_capture_widget_info" />
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

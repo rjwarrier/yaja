@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material 3 Expressive icon: smaller, centered journal motif with generous padding.
+     The safe zone is the inner 66dp of the 108dp canvas (21dp padding each side).
+     We keep the graphic well inside that safe zone for a clean, airy look. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:translateX="32"
+        android:translateY="28"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:pivotX="22"
+        android:pivotY="26">
+        <!-- Journal book body with transparent cutouts for spine and lines -->
+        <path
+            android:fillColor="@color/ic_launcher_foreground"
+            android:fillType="evenOdd"
+            android:pathData="M6,0 H38 C41.3,0 44,2.7 44,6 V46 C44,49.3 41.3,52 38,52 H6 C2.7,52 0,49.3 0,46 V6 C0,2.7 2.7,0 6,0 Z M7,6 H9 V46 H7 Z M14,15.25 H34 V16.75 H14 Z M14,22.25 H36 V23.75 H14 Z M14,29.25 H32 V30.75 H14 Z M14,36.25 H26 V37.75 H14 Z"/>
+
+        <!-- Bookmark ribbon -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:alpha="0.7"
+            android:pathData="M32,0 L38,0 L38,14 L35,11.5 L32,14 Z"/>
+    </group>
+</vector>

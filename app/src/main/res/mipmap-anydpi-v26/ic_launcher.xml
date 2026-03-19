@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background: picks up wallpaper-derived primaryContainer color via theme attribute -->
+    <background android:drawable="@drawable/ic_launcher_background"/>
+    <!-- Foreground: journal icon tinted with onPrimaryContainer for contrast -->
+    <foreground android:drawable="@drawable/ic_launcher_foreground"/>
+    <!-- Monochrome: Android 13+ Themed Icons — system tints this with wallpaper palette -->
+    <monochrome android:drawable="@drawable/ic_launcher_monochrome"/>
+</adaptive-icon>
