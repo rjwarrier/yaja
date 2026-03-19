@@ -44,6 +44,30 @@ class MarkdownFileManager(
                                             )
                                             .also { instance = it }
                         }
+
+        /** Parses a list of raw file lines into individual journal entry strings. */
+        internal fun parseEntries(lines: List<String>): List<String> {
+            val entries = mutableListOf<String>()
+            var currentEntry = StringBuilder()
+            for (line in lines) {
+                if (line.startsWith("# ")) continue // Skip date headings
+                if (line.isBlank() && currentEntry.isEmpty()) continue
+
+                if (line.startsWith("- ")) {
+                    if (currentEntry.isNotEmpty()) {
+                        entries.add(currentEntry.toString().trimEnd())
+                    }
+                    currentEntry = StringBuilder()
+                    currentEntry.append(line.removePrefix("- "))
+                } else if (currentEntry.isNotEmpty()) {
+                    currentEntry.append("\n").append(line)
+                }
+            }
+            if (currentEntry.isNotEmpty()) {
+                entries.add(currentEntry.toString().trimEnd())
+            }
+            return entries
+        }
     }
 
     // ── In-memory cache ──────────────────────────────────────────────────
@@ -249,28 +273,8 @@ class MarkdownFileManager(
         return cache.values.sumOf { it.size }
     }
 
-    private fun parseEntries(lines: List<String>): List<String> {
-        val entries = mutableListOf<String>()
-        var currentEntry = StringBuilder()
-        for (line in lines) {
-            if (line.startsWith("# ")) continue // Skip date headings
-            if (line.isBlank() && currentEntry.isEmpty()) continue
-
-            if (line.startsWith("- ")) {
-                if (currentEntry.isNotEmpty()) {
-                    entries.add(currentEntry.toString().trimEnd())
-                }
-                currentEntry = StringBuilder()
-                currentEntry.append(line.removePrefix("- "))
-            } else if (currentEntry.isNotEmpty()) {
-                currentEntry.append("\n").append(line)
-            }
-        }
-        if (currentEntry.isNotEmpty()) {
-            entries.add(currentEntry.toString().trimEnd())
-        }
-        return entries
-    }
+    private fun parseEntries(lines: List<String>): List<String> =
+            Companion.parseEntries(lines)
 
     fun getEntriesForDate(date: LocalDate): List<String> {
         ensureCachePopulated()

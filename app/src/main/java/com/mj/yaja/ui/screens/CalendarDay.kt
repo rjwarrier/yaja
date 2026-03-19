@@ -104,8 +104,10 @@ fun CalendarDay(
                         bottomStart = blRadius
                 )
 
-        val infiniteTransition = rememberInfiniteTransition(label = "TodayPulse")
-        val todayPulseScale by
+        // Only run the pulse animation for today's unselected cell; the other 28-30 cells
+        // don't need an InfiniteTransition ticking every frame.
+        val finalScale = if (isToday && !isSelected) {
+                val infiniteTransition = rememberInfiniteTransition(label = "TodayPulse")
                 infiniteTransition.animateFloat(
                         initialValue = 1f,
                         targetValue = 1.05f,
@@ -115,8 +117,10 @@ fun CalendarDay(
                                         repeatMode = RepeatMode.Reverse
                                 ),
                         label = "Pulse"
-                )
-        val finalScale = if (isToday && !isSelected) todayPulseScale else 1f
+                ).value
+        } else {
+                1f
+        }
 
         Box(
                 modifier =
