@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.screens
 
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -13,6 +14,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.HelpOutline
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Fingerprint
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.Refresh
@@ -81,6 +83,7 @@ fun SettingsScreen(
         val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsState()
         val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsState()
         val isPinEnabled by viewModel.isPinEnabled.collectAsState()
+        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
         val context = LocalContext.current
 
         LaunchedEffect(Unit) {
@@ -1634,6 +1637,65 @@ fun SettingsScreen(
                                                                 Modifier.fillMaxWidth()
                                                                         .padding(horizontal = 8.dp)
                                                 ) { Text("Change PIN") }
+                                        }
+                                }
+
+                                // Biometric unlock option (only shown if PIN is enabled)
+                                if (isPinEnabled) {
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(horizontal = 16.dp),
+                                                horizontalArrangement = Arrangement.SpaceBetween,
+                                                verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                                Row(
+                                                        verticalAlignment = Alignment.CenterVertically,
+                                                        modifier = Modifier.weight(1f)
+                                                ) {
+                                                        Icon(
+                                                                imageVector = Icons.Rounded.Fingerprint,
+                                                                contentDescription = null,
+                                                                tint = MaterialTheme.colorScheme.primary,
+                                                                modifier = Modifier.size(24.dp)
+                                                        )
+                                                        Spacer(modifier = Modifier.width(12.dp))
+                                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                                                Text(
+                                                                        text = "Biometric Unlock",
+                                                                        style =
+                                                                                MaterialTheme.typography
+                                                                                        .bodyLarge,
+                                                                        color =
+                                                                                MaterialTheme.colorScheme
+                                                                                        .onSurface
+                                                                )
+                                                                Text(
+                                                                        text =
+                                                                                if (isBiometricEnabled)
+                                                                                        "Fingerprint or Face ID enabled"
+                                                                                else "Use biometric instead of PIN",
+                                                                        style =
+                                                                                MaterialTheme.typography
+                                                                                        .bodySmall,
+                                                                        color =
+                                                                                MaterialTheme.colorScheme
+                                                                                        .onSurfaceVariant
+                                                                )
+                                                        }
+                                                }
+                                                Switch(
+                                                        checked = isBiometricEnabled,
+                                                        onCheckedChange = { enabled ->
+                                                                try {
+                                                                        if (enabled) viewModel.enableBiometric()
+                                                                        else viewModel.disableBiometric()
+                                                                } catch (e: Exception) {
+                                                                        Log.e("SettingsScreen", "Failed to toggle biometric", e)
+                                                                }
+                                                        }
+                                                )
                                         }
                                 }
 

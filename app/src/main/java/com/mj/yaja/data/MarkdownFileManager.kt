@@ -22,6 +22,7 @@ class MarkdownFileManager(
         private val settingsRepository: SettingsRepository,
         externalScope: CoroutineScope? = null
 ) {
+    fun getContext(): Context = context
 
     companion object {
         private const val TAG = "MarkdownFileManager"
@@ -146,11 +147,11 @@ class MarkdownFileManager(
 
                 // Pass 1: Collect all .md files to get total count
                 val allFiles = mutableListOf<DocumentFile>()
-                rootDir.listFiles().forEach { yearDir ->
+                rootDir.listFiles()?.forEach { yearDir ->
                     if (yearDir.isDirectory && yearDir.name?.toIntOrNull() != null) {
-                        yearDir.listFiles().forEach { monthDir ->
+                        yearDir.listFiles()?.forEach { monthDir ->
                             if (monthDir.isDirectory && monthDir.name?.toIntOrNull() != null) {
-                                monthDir.listFiles().forEach { dayFile ->
+                                monthDir.listFiles()?.forEach { dayFile ->
                                     if (dayFile.name?.endsWith(".md") == true) {
                                         allFiles.add(dayFile)
                                     }
@@ -163,7 +164,8 @@ class MarkdownFileManager(
                 val total = allFiles.size
                 // Pass 2: Process files with progress reporting
                 allFiles.forEachIndexed { index, dayFile ->
-                    val dateString = dayFile.name!!.removeSuffix(".md")
+                    val fileName = dayFile.name ?: return@forEachIndexed
+                    val dateString = fileName.removeSuffix(".md")
                     try {
                         val date = LocalDate.parse(dateString)
                         val entries =
@@ -314,9 +316,11 @@ class MarkdownFileManager(
             }
         }
         // Sync cache
-        ensureCachePopulated()
-        val newEntries = (cache[date] ?: emptyList()) + entry
-        cache[date] = newEntries
+        synchronized(this) {
+            ensureCachePopulated()
+            val newEntries = (cache[date] ?: emptyList()) + entry
+            cache[date] = newEntries
+        }
         saveCacheToDisk()
 
         // Update persistent count to avoid anomaly dialog on next cold start
@@ -448,6 +452,40 @@ class MarkdownFileManager(
         saveCacheToDisk()
     }
 
+    fun setEntriesForDate(date: LocalDate, newEntries: List<String>) {
+        ensureCachePopulated()
+        if (newEntries.isEmpty()) return
+
+        // Write to disk
+        val uriString = settingsRepository.storageUri.value
+        if (uriString != null) {
+            val docFile = getDocumentFileForDate(date) ?: return
+            if (!docFile.exists()) return
+            try {
+                context.contentResolver.openOutputStream(docFile.uri, "wt")?.use { outputStream ->
+                    outputStream.bufferedWriter(Charsets.UTF_8).use { writer ->
+                        writer.write("# $date\n\n")
+                        newEntries.forEach { entry -> writer.write("- $entry\n") }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception caught", e)
+            }
+        } else {
+            val file = getFileForDate(date) ?: return
+            if (!file.exists()) return
+            try {
+                file.writeText("# $date\n\n", Charsets.UTF_8)
+                newEntries.forEach { entry -> file.appendText("- $entry\n", Charsets.UTF_8) }
+            } catch (e: IOException) {
+                Log.e(TAG, "Exception caught", e)
+            }
+        }
+        // Sync cache
+        cache[date] = newEntries
+        saveCacheToDisk()
+    }
+
     fun getAllJournalDatesWithData(): Set<LocalDate> {
         ensureCachePopulated()
         return cache.keys.toSet()
@@ -488,11 +526,11 @@ class MarkdownFileManager(
             try {
                 val rootUri = Uri.parse(fromUriString)
                 val rootDir = DocumentFile.fromTreeUri(context, rootUri) ?: return@withContext
-                rootDir.listFiles().forEach { yearDir ->
+                rootDir.listFiles()?.forEach { yearDir ->
                     if (yearDir.isDirectory && yearDir.name?.toIntOrNull() != null) {
-                        yearDir.listFiles().forEach { monthDir ->
+                        yearDir.listFiles()?.forEach { monthDir ->
                             if (monthDir.isDirectory && monthDir.name?.toIntOrNull() != null) {
-                                monthDir.listFiles().forEach { dayFile ->
+                                monthDir.listFiles()?.forEach { dayFile ->
                                     if (dayFile.name?.endsWith(".md") == true) {
                                         val dateString = dayFile.name!!.removeSuffix(".md")
                                         try {

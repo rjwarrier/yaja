@@ -29,6 +29,8 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.FormatItalic
+import androidx.compose.material.icons.rounded.Fullscreen
+import androidx.compose.material.icons.rounded.FullscreenExit
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -82,6 +84,7 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
         val editingEntry = uiState.editingEntry
 
         var isEditingMode by remember { mutableStateOf(editingEntry == null) }
+        var isFocusMode by remember { mutableStateOf(false) }
 
         val initialText =
                 remember(editingEntry) {
@@ -449,6 +452,20 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                 },
                                 actions = {
                                         if (isEditingMode) {
+                                                // Focus mode toggle
+                                                IconButton(onClick = { isFocusMode = !isFocusMode }) {
+                                                        Icon(
+                                                                imageVector =
+                                                                        if (isFocusMode) Icons.Rounded.FullscreenExit
+                                                                        else Icons.Rounded.Fullscreen,
+                                                                contentDescription =
+                                                                        if (isFocusMode) "Exit focus mode"
+                                                                        else "Enter focus mode",
+                                                                tint =
+                                                                        MaterialTheme.colorScheme
+                                                                                .primary
+                                                        )
+                                                }
                                                 // Info / help button — always visible in editing
                                                 // mode
                                                 IconButton(onClick = { showHelpDialog = true }) {
@@ -543,15 +560,161 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                         )
                 ) {
                         Box(modifier = Modifier.fillMaxSize()) {
-                                Column(
-                                        modifier =
-                                                Modifier.fillMaxSize().padding(horizontal = 24.dp)
-                                ) {
-                                        Spacer(modifier = Modifier.height(24.dp))
+                                if (isFocusMode) {
+                                        // Focus / Typewriter Mode
+                                        Box(
+                                                modifier = Modifier.fillMaxSize(),
+                                                contentAlignment = Alignment.Center
+                                        ) {
+                                                Column(
+                                                        modifier = Modifier.fillMaxSize()
+                                                                .padding(horizontal = 24.dp)
+                                                                .padding(vertical = 48.dp)
+                                                ) {
+                                                        OutlinedTextField(
+                                                                value = textFieldValue,
+                                                                onValueChange = { newValue ->
+                                                                        val expanded =
+                                                                                ShortcodeManager.expand(
+                                                                                        newValue.text,
+                                                                                        customShortcodes
+                                                                                )
+                                                                        val cursorPos = newValue.selection.end
+                                                                        val newlineInserted =
+                                                                                expanded.length ==
+                                                                                        textFieldValue.text.length +
+                                                                                                1 &&
+                                                                                        cursorPos > 0 &&
+                                                                                        expanded.getOrNull(
+                                                                                                cursorPos - 1
+                                                                                        ) == '\n'
+                                                                        val todoPrefix =
+                                                                                if (newlineInserted) {
+                                                                                        val beforeCursor =
+                                                                                                expanded.substring(
+                                                                                                        0,
+                                                                                                        cursorPos -
+                                                                                                                1
+                                                                                                )
+                                                                                        val prevLineStart =
+                                                                                                beforeCursor
+                                                                                                        .lastIndexOf(
+                                                                                                                '\n'
+                                                                                        ) + 1
+                                                                                        val prevLine =
+                                                                                                beforeCursor
+                                                                                                        .substring(
+                                                                                                                prevLineStart.coerceIn(
+                                                                                                                        0,
+                                                                                                                        beforeCursor.length
+                                                                                                                )
+                                                                                        )
+                                                                                                        .trimStart()
+                                                                                        if (prevLine.startsWith(
+                                                                                                        "[ ] "
+                                                                                        ) ||
+                                                                                                        prevLine.startsWith(
+                                                                                                                "[x] "
+                                                                                        ) ||
+                                                                                                        prevLine ==
+                                                                                                                "[ ]" ||
+                                                                                                        prevLine ==
+                                                                                                                "[x]"
+                                                                                        )
+                                                                                                "[ ] "
+                                                                                        else null
+                                                                                } else null
 
-                                        OutlinedTextField(
-                                                value = textFieldValue,
-                                                onValueChange = { newValue ->
+                                                                        if (todoPrefix != null) {
+                                                                                val newText =
+                                                                                        expanded.substring(
+                                                                                                0,
+                                                                                                cursorPos
+                                                                                        ) +
+                                                                                                todoPrefix +
+                                                                                                expanded.substring(
+                                                                                                        cursorPos
+                                                                                                )
+                                                                                textFieldValue =
+                                                                                        newValue.copy(
+                                                                                                text = newText,
+                                                                                                selection =
+                                                                                                        TextRange(
+                                                                                                                cursorPos +
+                                                                                                                        todoPrefix
+                                                                                                                                .length
+                                                                                        )
+                                                                        )
+                                                                        } else if (expanded != newValue.text) {
+                                                                                val delta =
+                                                                                        expanded.length -
+                                                                                                newValue.text.length
+                                                                                val newCursor =
+                                                                                        (newValue.selection.end +
+                                                                                                        delta)
+                                                                                                .coerceIn(
+                                                                                                        0,
+                                                                                                        expanded.length
+                                                                                )
+                                                                                textFieldValue =
+                                                                                        newValue.copy(
+                                                                                                text = expanded,
+                                                                                                selection =
+                                                                                                        TextRange(
+                                                                                                                newCursor
+                                                                                        )
+                                                                        )
+                                                                        } else {
+                                                                                textFieldValue = newValue
+                                                                        }
+                                                                },
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .weight(1f)
+                                                                                .focusRequester(focusRequester),
+                                                                placeholder = { Text("What happened?") },
+                                                                keyboardOptions =
+                                                                        KeyboardOptions(
+                                                                                capitalization =
+                                                                                        KeyboardCapitalization
+                                                                                                .Sentences
+                                                                        ),
+                                                                singleLine = false,
+                                                                readOnly = !isEditingMode,
+                                                                visualTransformation =
+                                                                        MarkdownVisualTransformation(),
+                                                                colors =
+                                                                        OutlinedTextFieldDefaults.colors(
+                                                                                focusedBorderColor =
+                                                                                        Color.Transparent,
+                                                                                unfocusedBorderColor =
+                                                                                        Color.Transparent,
+                                                                                focusedContainerColor =
+                                                                                        Color.Transparent,
+                                                                                unfocusedContainerColor =
+                                                                                        Color.Transparent
+                                                                        ),
+                                                                textStyle =
+                                                                        MaterialTheme.typography.bodyLarge.copy(
+                                                                                lineHeight = 24.sp,
+                                                                                color =
+                                                                                        MaterialTheme.colorScheme
+                                                                                                .onSurface
+                                                                        )
+                                                        )
+                                                }
+                                        }
+                                } else {
+                                        // Normal Mode
+                                        Column(
+                                                modifier =
+                                                        Modifier.fillMaxSize().padding(horizontal = 24.dp)
+                                        ) {
+                                                Spacer(modifier = Modifier.height(24.dp))
+
+                                                OutlinedTextField(
+                                                        value = textFieldValue,
+                                                        onValueChange = { newValue ->
                                                         val expanded =
                                                                 ShortcodeManager.expand(
                                                                         newValue.text,
@@ -680,24 +843,25 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                                         )
                                         )
 
-                                        // Word and Character Count Indicator
-                                        val currentText = textFieldValue.text
-                                        val wordCount = currentText.split(Regex("\\s+")).count { it.isNotBlank() }
-                                        val charCount = currentText.length
-                                        
-                                        AnimatedVisibility(
-                                                visible = currentText.isNotEmpty(),
-                                                enter = fadeIn(tween(200)),
-                                                exit = fadeOut(tween(200)),
-                                            modifier = Modifier.padding(bottom = 16.dp).align(Alignment.CenterHorizontally)
-                                        ) {
-                                                Text(
-                                                        text = "$wordCount words • $charCount chars",
-                                                        style = MaterialTheme.typography.labelSmall,
-                                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                                                )
-                                        }
+                                                // Word and Character Count Indicator
+                                                val currentText = textFieldValue.text
+                                                val wordCount = currentText.split(Regex("\\s+")).count { it.isNotBlank() }
+                                                val charCount = currentText.length
 
+                                                AnimatedVisibility(
+                                                        visible = currentText.isNotEmpty(),
+                                                        enter = fadeIn(tween(200)),
+                                                        exit = fadeOut(tween(200)),
+                                                    modifier = Modifier.padding(bottom = 16.dp).align(Alignment.CenterHorizontally)
+                                                ) {
+                                                        Text(
+                                                                text = "$wordCount words • $charCount chars",
+                                                                style = MaterialTheme.typography.labelSmall,
+                                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                                                        )
+                                                }
+
+                                        }
                                 }
 
                                 // Formatting Toolbar

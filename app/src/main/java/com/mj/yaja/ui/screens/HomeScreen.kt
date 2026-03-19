@@ -87,6 +87,7 @@ fun HomeScreen(
                         isLoading = uiState.isLoading,
                         entries = uiState.entries,
                         onDeleteEntry = { index -> viewModel.deleteEntry(index) },
+                        onReorderEntries = { reorderedEntries -> viewModel.reorderEntries(reorderedEntries) },
                         onOpenDrawer = onOpenDrawer,
                         onNavigateToCalendar = onNavigateToCalendar,
                         onNavigateToAddEntry = onNavigateToAddEntry,
@@ -237,6 +238,7 @@ fun HomeScreenContent(
         isLoading: Boolean,
         entries: List<String>,
         onDeleteEntry: (Int) -> Unit,
+        onReorderEntries: (List<String>) -> Unit = {},
         onOpenDrawer: () -> Unit,
         onNavigateToCalendar: () -> Unit,
         onNavigateToAddEntry: () -> Unit,
@@ -273,6 +275,13 @@ fun HomeScreenContent(
         val monthYearFormatter = DateTimeFormatter.ofPattern("MMMM - yyyy")
         val weekdayFormatter = DateTimeFormatter.ofPattern("EEEE")
         var showFutureDateDialog by remember { mutableStateOf(false) }
+        var isReorderMode by remember { mutableStateOf(false) }
+        var reorderedEntries by remember { mutableStateOf(entries) }
+
+        // Update reorderedEntries when entries change
+        LaunchedEffect(entries) {
+                reorderedEntries = entries
+        }
 
         // Morphing Shape logic: Cycle through 4 expressive forms based on day % 4
         val shapeStep = selectedDate.dayOfMonth % 4
@@ -685,11 +694,19 @@ fun HomeScreenContent(
                                                                                                                 .primaryContainer
                                                                                                                 .copy(
                                                                                                                         alpha =
-                                                                                                                                0.4f
+                                                                                                                                0.4f +
+                                                                                                                                (if (isReorderMode) 0.2f else 0f)
                                                                                                                 ),
                                                                                                 shape =
                                                                                                         expressiveShape
-                                                                                        ),
+                                                                                        )
+                                                                                        .pointerInput(Unit) {
+                                                                                                detectTapGestures(
+                                                                                                        onLongPress = {
+                                                                                                                isReorderMode = !isReorderMode
+                                                                                                        }
+                                                                                                )
+                                                                                        },
                                                                         contentAlignment =
                                                                                 Alignment.Center
                                                                 ) {
@@ -1437,6 +1454,29 @@ fun HomeScreenContent(
                                                                                                 index
                                                                                         )
                                                                                         onNavigateToAddEntry()
+                                                                                },
+                                                                                isReorderMode = isReorderMode,
+                                                                                canMoveUp = index > 0,
+                                                                                canMoveDown = index < reorderedEntries.size - 1,
+                                                                                onMoveUp = {
+                                                                                        if (index > 0) {
+                                                                                                reorderedEntries = reorderedEntries.toMutableList().apply {
+                                                                                                        val temp = this[index]
+                                                                                                        this[index] = this[index - 1]
+                                                                                                        this[index - 1] = temp
+                                                                                                }
+                                                                                                onReorderEntries(reorderedEntries)
+                                                                                        }
+                                                                                },
+                                                                                onMoveDown = {
+                                                                                        if (index < reorderedEntries.size - 1) {
+                                                                                                reorderedEntries = reorderedEntries.toMutableList().apply {
+                                                                                                        val temp = this[index]
+                                                                                                        this[index] = this[index + 1]
+                                                                                                        this[index + 1] = temp
+                                                                                                }
+                                                                                                onReorderEntries(reorderedEntries)
+                                                                                        }
                                                                                 }
                                                                         )
                                                                 }

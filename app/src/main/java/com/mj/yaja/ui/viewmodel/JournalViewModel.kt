@@ -2,6 +2,7 @@ package com.mj.yaja.ui.viewmodel
 
 import android.content.Context
 import android.content.Intent
+import java.io.File
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -74,6 +75,7 @@ class JournalViewModel(
     val firstDayOfWeek = settingsRepository.firstDayOfWeek
     val favoritedDates = settingsRepository.favoritedDates
     val isPinEnabled = settingsRepository.isPinEnabled
+    val isBiometricEnabled = settingsRepository.isBiometricEnabled
     val allowFutureEntries = settingsRepository.allowFutureEntries
     val swipeToDeleteEnabled = settingsRepository.swipeToDeleteEnabled
     val swipeDeleteDirection = settingsRepository.swipeDeleteDirection
@@ -86,10 +88,22 @@ class JournalViewModel(
     val isPreviewLimitEnabled = settingsRepository.isPreviewLimitEnabled
     val previewLimitLength = settingsRepository.previewLimitLength
 
+    private val _monthlyStats = MutableStateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?>(null)
+    val monthlyStats: StateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?> = _monthlyStats.asStateFlow()
+
     private var lookbackJob: kotlinx.coroutines.Job? = null
     private var highlightsJob: kotlinx.coroutines.Job? = null
     private var entriesJob: kotlinx.coroutines.Job? = null
     private var searchJob: kotlinx.coroutines.Job? = null
+    
+    fun clearCrashLog() {
+        try {
+            val file = File(fileManager.getContext().cacheDir, "crash_log.txt")
+            if (file.exists()) file.delete()
+        } catch (e: Exception) {
+            // Ignore errors while clearing logs
+        }
+    }
 
     init {
         // Refresh active widget status first (fast, synchronous)
@@ -121,6 +135,7 @@ class JournalViewModel(
             refreshCalendarDates()
             updateLookback(today)
             updateFavoritedHighlights()
+            updateMonthlyStats()
             _uiState.update { it.copy(isLoading = false) }
         }
     }
@@ -128,6 +143,8 @@ class JournalViewModel(
     fun setPin(plain: String) = settingsRepository.setPin(plain)
     fun clearPin() = settingsRepository.clearPin()
     fun checkPin(plain: String) = settingsRepository.checkPin(plain)
+    fun enableBiometric() = settingsRepository.enableBiometric()
+    fun disableBiometric() = settingsRepository.disableBiometric()
     fun setAllowFutureEntries(allow: Boolean) = settingsRepository.setAllowFutureEntries(allow)
     fun setSwipeToDeleteEnabled(enabled: Boolean) =
             settingsRepository.setSwipeToDeleteEnabled(enabled)
@@ -162,12 +179,14 @@ class JournalViewModel(
         refreshCalendarDates()
         updateLookback(uiState.value.selectedDate)
         updateFavoritedHighlights()
+        updateMonthlyStats()
     }
 
     fun selectDate(date: LocalDate) {
         _uiState.update { it.copy(selectedDate = date) }
         loadEntries(date)
         updateLookback(date)
+        updateMonthlyStats()
     }
 
     private fun loadEntries(date: LocalDate) {
@@ -405,6 +424,16 @@ class JournalViewModel(
         settingsRepository.setCustomShortcodes(current)
     }
 
+    fun reorderEntries(reorderedEntries: List<String>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val currentDate = _uiState.value.selectedDate
+            fileManager.setEntriesForDate(currentDate, reorderedEntries)
+            withContext(Dispatchers.Main) {
+                _uiState.update { it.copy(entries = reorderedEntries) }
+            }
+        }
+    }
+
     fun importCustomShortcodes(newShortcodes: Map<String, String>) {
         val current = settingsRepository.customShortcodes.value
         // Retain existing shortcodes in case of conflicts
@@ -454,8 +483,12 @@ class JournalViewModel(
                         favorites
                                 .map { dateStr ->
                                     async(Dispatchers.IO) {
-                                        val date = LocalDate.parse(dateStr)
-                                        if (fileManager.getEntriesForDate(date).isNotEmpty()) date else null
+                                        try {
+                                            val date = LocalDate.parse(dateStr)
+                                            if (fileManager.getEntriesForDate(date).isNotEmpty()) date else null
+                                        } catch (e: Exception) {
+                                            null
+                                        }
                                     }
                                 }
                                 .awaitAll()
@@ -464,6 +497,64 @@ class JournalViewModel(
                     }
                     _uiState.update { it.copy(favoritedHighlights = highlights) }
                 }
+    }
+
+    private fun updateMonthlyStats() {
+        viewModelScope.launch {
+            val stats = withContext(Dispatchers.IO) {
+                val today = LocalDate.now()
+                val currentMonth = YearMonth.now()
+                val monthStart = currentMonth.atDay(1)
+                val monthEnd = currentMonth.atEndOfMonth()
+
+                var wordCount = 0
+                var entriesCount = 0
+                val dayEntryCounts = mutableMapOf<DayOfWeek, Int>()
+                val dateCounts = mutableMapOf<LocalDate, Int>()
+
+                // Count entries and words for each day of the current month
+                var date = monthStart
+                while (date <= monthEnd) {
+                    val entries = fileManager.getEntriesForDate(date)
+                    if (entries.isNotEmpty()) {
+                        entriesCount += entries.size
+                        entries.forEach { entry ->
+                            // Count words by splitting on whitespace
+                            wordCount += entry.split(Regex("\\s+")).count { it.isNotBlank() }
+                        }
+                        val dayOfWeek = date.dayOfWeek
+                        dayEntryCounts[dayOfWeek] = (dayEntryCounts[dayOfWeek] ?: 0) + entries.size
+                        dateCounts[date] = entries.size
+                    }
+                    date = date.plusDays(1)
+                }
+
+                // Find most active day
+                val mostActiveDay = dayEntryCounts.maxByOrNull { it.value }?.key
+
+                // Calculate longest streak (consecutive days with entries)
+                var longestStreak = 0
+                var currentStreak = 0
+                date = monthStart
+                while (date <= monthEnd) {
+                    if (dateCounts.containsKey(date)) {
+                        currentStreak++
+                        longestStreak = maxOf(longestStreak, currentStreak)
+                    } else {
+                        currentStreak = 0
+                    }
+                    date = date.plusDays(1)
+                }
+
+                com.mj.yaja.ui.screens.MonthlyStatsData(
+                    entriesCount = entriesCount,
+                    wordCount = wordCount,
+                    mostActiveDay = mostActiveDay?.name,
+                    longestStreak = longestStreak
+                )
+            }
+            _monthlyStats.value = stats
+        }
     }
 
     fun setStorageUri(uriString: String?) {
@@ -501,6 +592,7 @@ class JournalViewModel(
             refreshCalendarDates()
             updateLookback(today)
             updateFavoritedHighlights()
+            updateMonthlyStats()
             _uiState.update { it.copy(isLoading = false) }
             _syncProgress.value = null
             _toastEvents.emit("Data cache synced!")
