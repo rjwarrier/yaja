@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.data.SwipeDirection
+import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
