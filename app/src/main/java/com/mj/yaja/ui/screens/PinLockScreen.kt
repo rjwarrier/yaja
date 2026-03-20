@@ -97,7 +97,7 @@ private fun showBiometricPrompt(activity: FragmentActivity, onSuccess: () -> Uni
 
                     override fun onAuthenticationFailed() {
                         super.onAuthenticationFailed()
-                        onError("Biometric authentication failed. Try again.")
+                        // Single scan failed — the dialog handles retry UI automatically, no extra action needed
                     }
                 }
             )
