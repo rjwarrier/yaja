@@ -126,7 +126,8 @@ fun HomeScreen(
                         onAcceptAnomalyRefresh = { viewModel.acceptCacheAnomalyRefresh() },
                         showCacheAnomalyDialog = uiState.showCacheAnomalyDialog,
                         isPreviewLimitEnabled = isPreviewLimitEnabled,
-                        previewLimitLength = previewLimitLength
+                        previewLimitLength = previewLimitLength,
+                        enableDragAndDrop = enableDragAndDrop
                 )
 
                 // UNDO bar — full-width rectangle at the bottom with countdown + UNDO button
@@ -272,7 +273,8 @@ fun HomeScreenContent(
         onDismissAnomalyDialog: () -> Unit = {},
         onAcceptAnomalyRefresh: () -> Unit = {},
         isPreviewLimitEnabled: Boolean = true,
-        previewLimitLength: Int = 200
+        previewLimitLength: Int = 200,
+        enableDragAndDrop: Boolean = true
 ) {
         val dayFormatter = DateTimeFormatter.ofPattern("dd")
         val monthYearFormatter = DateTimeFormatter.ofPattern("MMMM - yyyy")
@@ -1395,7 +1397,7 @@ fun HomeScreenContent(
                                                                         state = reorderState,
                                                                         key = entry
                                                                 ) { isDragging ->
-                                                                        val scale = if (isDragging) 0.95f else 1f
+                                                                        val scale = if (isDragging && enableDragAndDrop) 0.95f else 1f
                                                                         var appeared by remember {
                                                                                 mutableStateOf(false)
                                                                         }
@@ -1408,6 +1410,32 @@ fun HomeScreenContent(
                                                                                 )
                                                                                 appeared = true
                                                                         }
+                                                                        val baseModifier =
+                                                                                Modifier.animateItem(
+                                                                                        fadeInSpec =
+                                                                                                spring(
+                                                                                                        stiffness =
+                                                                                                                Spring.StiffnessLow
+                                                                                                ),
+                                                                                        fadeOutSpec =
+                                                                                                spring(
+                                                                                                        stiffness =
+                                                                                                                Spring.StiffnessLow
+                                                                                                ),
+                                                                                        placementSpec =
+                                                                                                spring(
+                                                                                                        dampingRatio =
+                                                                                                                Spring.DampingRatioLowBouncy,
+                                                                                                        stiffness =
+                                                                                                                Spring.StiffnessMediumLow
+                                                                                                )
+                                                                                ).graphicsLayer {
+                                                                                        scaleX = scale
+                                                                                        scaleY = scale
+                                                                                }
+                                                                        val itemModifier =
+                                                                                if (enableDragAndDrop) baseModifier.draggableHandle()
+                                                                                else baseModifier
                                                                                 AnimatedVisibility(
                                                                                         visible = appeared,
                                                                                         enter =
@@ -1423,30 +1451,7 @@ fun HomeScreenContent(
                                                                                                                 280
                                                                                                         )
                                                                                                 ),
-                                                                                        modifier =
-                                                                                                Modifier.animateItem(
-                                                                                                        fadeInSpec =
-                                                                                                                spring(
-                                                                                                                        stiffness =
-                                                                                                                                Spring.StiffnessLow
-                                                                                                                ),
-                                                                                                        fadeOutSpec =
-                                                                                                                spring(
-                                                                                                                        stiffness =
-                                                                                                                                Spring.StiffnessLow
-                                                                                                                ),
-                                                                                                        placementSpec =
-                                                                                                                spring(
-                                                                                                                        dampingRatio =
-                                                                                                                                Spring.DampingRatioLowBouncy,
-                                                                                                                        stiffness =
-                                                                                                                                Spring.StiffnessMediumLow
-                                                                                                                )
-                                                                                                ).graphicsLayer {
-                                                                                                        scaleX = scale
-                                                                                                        scaleY = scale
-                                                                                                }
-                                                                                                .draggableHandle()
+                                                                                        modifier = itemModifier
                                                                                 ) {
                                                                         JournalEntryItem(
                                                                                 entry = entry,
