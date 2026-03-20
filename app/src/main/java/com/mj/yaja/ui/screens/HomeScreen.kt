@@ -29,6 +29,8 @@ import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlinx.coroutines.*
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -275,13 +277,24 @@ fun HomeScreenContent(
         val monthYearFormatter = DateTimeFormatter.ofPattern("MMMM - yyyy")
         val weekdayFormatter = DateTimeFormatter.ofPattern("EEEE")
         var showFutureDateDialog by remember { mutableStateOf(false) }
-        var isReorderMode by remember { mutableStateOf(false) }
         var reorderedEntries by remember { mutableStateOf(entries) }
 
-        // Update reorderedEntries when entries change
-        LaunchedEffect(entries) {
+        // Update reorderedEntries only when the date changes, not on every entries refresh
+        LaunchedEffect(selectedDate) {
                 reorderedEntries = entries
         }
+
+        // Reorderable list state
+        val listState = rememberLazyListState()
+        val reorderState = rememberReorderableLazyListState(
+                lazyListState = listState,
+                onMove = { from, to ->
+                        reorderedEntries = reorderedEntries.toMutableList().apply {
+                                add(to.index, removeAt(from.index))
+                        }
+                        onReorderEntries(reorderedEntries)
+                }
+        )
 
         // Morphing Shape logic: Cycle through 4 expressive forms based on day % 4
         val shapeStep = selectedDate.dayOfMonth % 4
@@ -694,19 +707,11 @@ fun HomeScreenContent(
                                                                                                                 .primaryContainer
                                                                                                                 .copy(
                                                                                                                         alpha =
-                                                                                                                                0.4f +
-                                                                                                                                (if (isReorderMode) 0.2f else 0f)
+                                                                                                                                0.4f
                                                                                                                 ),
                                                                                                 shape =
                                                                                                         expressiveShape
-                                                                                        )
-                                                                                        .pointerInput(Unit) {
-                                                                                                detectTapGestures(
-                                                                                                        onLongPress = {
-                                                                                                                isReorderMode = !isReorderMode
-                                                                                                        }
-                                                                                                )
-                                                                                        },
+                                                                                        ),
                                                                         contentAlignment =
                                                                                 Alignment.Center
                                                                 ) {
@@ -1373,6 +1378,7 @@ fun HomeScreenContent(
                                         } else {
                                                 LazyColumn(
                                                         modifier = Modifier.fillMaxSize(),
+                                                        state = listState,
                                                         verticalArrangement =
                                                                 Arrangement.spacedBy(12.dp),
                                                         contentPadding =
@@ -1380,57 +1386,66 @@ fun HomeScreenContent(
                                                                         .asPaddingValues()
                                                 ) {
                                                         itemsIndexed(
-                                                                items = entries,
+                                                                items = reorderedEntries,
                                                                 key = { _, entry -> entry }
                                                         ) { index, entry ->
-                                                                var appeared by remember {
-                                                                        mutableStateOf(false)
-                                                                }
-                                                                LaunchedEffect(Unit) {
-                                                                        delay(
-                                                                                (index * 40L)
-                                                                                        .coerceAtMost(
-                                                                                                200L
-                                                                                        )
-                                                                        )
-                                                                        appeared = true
-                                                                }
-                                                                AnimatedVisibility(
-                                                                        visible = appeared,
-                                                                        enter =
-                                                                                slideInVertically(
-                                                                                        tween(
-                                                                                                280,
-                                                                                                easing =
-                                                                                                        FastOutSlowInEasing
-                                                                                        )
-                                                                                ) { it / 3 } +
-                                                                                        fadeIn(
-                                                                                                tween(
-                                                                                                        280
-                                                                                                )
-                                                                                        ),
-                                                                        modifier =
-                                                                                Modifier.animateItem(
-                                                                                        fadeInSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        fadeOutSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        placementSpec =
-                                                                                                spring(
-                                                                                                        dampingRatio =
-                                                                                                                Spring.DampingRatioLowBouncy,
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessMediumLow
+                                                                ReorderableItem(
+                                                                        state = reorderState,
+                                                                        key = entry
+                                                                ) { isDragging ->
+                                                                        val scale = if (isDragging) 0.95f else 1f
+                                                                        var appeared by remember {
+                                                                                mutableStateOf(false)
+                                                                        }
+                                                                        LaunchedEffect(Unit) {
+                                                                                delay(
+                                                                                        (index * 40L)
+                                                                                                .coerceAtMost(
+                                                                                                        200L
                                                                                                 )
                                                                                 )
-                                                                ) {
+                                                                                appeared = true
+                                                                        }
+                                                                                AnimatedVisibility(
+                                                                                        visible = appeared,
+                                                                                        enter =
+                                                                                                slideInVertically(
+                                                                                                        tween(
+                                                                                                                280,
+                                                                                                                easing =
+                                                                                                                        FastOutSlowInEasing
+                                                                                                        )
+                                                                                                ) { it / 3 } +
+                                                                                                fadeIn(
+                                                                                                        tween(
+                                                                                                                280
+                                                                                                        )
+                                                                                                ),
+                                                                                        modifier =
+                                                                                                Modifier.animateItem(
+                                                                                                        fadeInSpec =
+                                                                                                                spring(
+                                                                                                                        stiffness =
+                                                                                                                                Spring.StiffnessLow
+                                                                                                                ),
+                                                                                                        fadeOutSpec =
+                                                                                                                spring(
+                                                                                                                        stiffness =
+                                                                                                                                Spring.StiffnessLow
+                                                                                                                ),
+                                                                                                        placementSpec =
+                                                                                                                spring(
+                                                                                                                        dampingRatio =
+                                                                                                                                Spring.DampingRatioLowBouncy,
+                                                                                                                        stiffness =
+                                                                                                                                Spring.StiffnessMediumLow
+                                                                                                                )
+                                                                                                ).graphicsLayer {
+                                                                                                        scaleX = scale
+                                                                                                        scaleY = scale
+                                                                                                }
+                                                                                                .draggableHandle()
+                                                                                ) {
                                                                         JournalEntryItem(
                                                                                 entry = entry,
                                                                                 showTimestamps =
@@ -1454,34 +1469,12 @@ fun HomeScreenContent(
                                                                                                 index
                                                                                         )
                                                                                         onNavigateToAddEntry()
-                                                                                },
-                                                                                isReorderMode = isReorderMode,
-                                                                                canMoveUp = index > 0,
-                                                                                canMoveDown = index < reorderedEntries.size - 1,
-                                                                                onMoveUp = {
-                                                                                        if (index > 0) {
-                                                                                                reorderedEntries = reorderedEntries.toMutableList().apply {
-                                                                                                        val temp = this[index]
-                                                                                                        this[index] = this[index - 1]
-                                                                                                        this[index - 1] = temp
-                                                                                                }
-                                                                                                onReorderEntries(reorderedEntries)
-                                                                                        }
-                                                                                },
-                                                                                onMoveDown = {
-                                                                                        if (index < reorderedEntries.size - 1) {
-                                                                                                reorderedEntries = reorderedEntries.toMutableList().apply {
-                                                                                                        val temp = this[index]
-                                                                                                        this[index] = this[index + 1]
-                                                                                                        this[index + 1] = temp
-                                                                                                }
-                                                                                                onReorderEntries(reorderedEntries)
-                                                                                        }
                                                                                 }
                                                                         )
                                                                 }
                                                         }
-                                                        item {
+                                                }
+                                                item {
                                                                 Spacer(
                                                                         modifier =
                                                                                 Modifier.height(
