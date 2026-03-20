@@ -546,6 +546,7 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                 } else {
                                         viewModel.addEntry(textFieldValue.text)
                                 }
+                                // Entry is now saved to disk and UI is updated, safe to navigate back
                                 onNavigateBack()
                         }
                 }

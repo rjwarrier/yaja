@@ -205,7 +205,7 @@ class JournalViewModel(
                 }
     }
 
-    fun addEntry(entry: String) {
+    suspend fun addEntry(entry: String) {
         val currentDate = _uiState.value.selectedDate
 
         // Add timestamp if not already present
@@ -225,14 +225,12 @@ class JournalViewModel(
             finalEntry = "$timestamp\n$finalEntry"
         }
 
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) { fileManager.addEntryForDate(currentDate, finalEntry) }
-            // Load fresh entries directly from disk for immediate UI update
-            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
-            _uiState.update { it.copy(entries = freshEntries) }
-            // Incrementally add the date to the calendar set instead of full re-scan
-            addDateToCalendar(currentDate)
-        }
+        withContext(Dispatchers.IO) { fileManager.addEntryForDate(currentDate, finalEntry) }
+        // Load fresh entries directly from disk for immediate UI update
+        val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
+        _uiState.update { it.copy(entries = freshEntries) }
+        // Incrementally add the date to the calendar set instead of full re-scan
+        addDateToCalendar(currentDate)
     }
 
     fun startEditing(entry: String, index: Int) {
@@ -243,7 +241,7 @@ class JournalViewModel(
         _uiState.update { it.copy(editingEntry = null, editingIndex = -1) }
     }
 
-    fun updateEntry(newEntry: String) {
+    suspend fun updateEntry(newEntry: String) {
         val currentDate = _uiState.value.selectedDate
         val oldEntry = _uiState.value.editingEntry ?: return
         val index = _uiState.value.editingIndex
@@ -261,15 +259,13 @@ class JournalViewModel(
             finalNewEntry = "${match.value}$finalNewEntry"
         }
 
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                fileManager.updateEntryForDate(currentDate, index, finalNewEntry)
-            }
-            clearEditing()
-            // Load fresh entries directly from disk for immediate UI update
-            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
-            _uiState.update { it.copy(entries = freshEntries) }
+        withContext(Dispatchers.IO) {
+            fileManager.updateEntryForDate(currentDate, index, finalNewEntry)
         }
+        clearEditing()
+        // Load fresh entries directly from disk for immediate UI update
+        val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
+        _uiState.update { it.copy(entries = freshEntries) }
     }
 
     fun deleteEntry(index: Int) {
