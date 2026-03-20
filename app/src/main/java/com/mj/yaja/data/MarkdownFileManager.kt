@@ -283,6 +283,77 @@ class MarkdownFileManager(
         return cache[date] ?: emptyList()
     }
 
+    /**
+     * Load entries directly from markdown file without using cache.
+     * Used for immediate UI updates after modifications.
+     */
+    fun getEntriesForDateFromDisk(date: LocalDate): List<String> {
+        return try {
+            val uriString = settingsRepository.storageUri.value
+            if (uriString != null) {
+                val docFile = getDocumentFileForDate(date) ?: return emptyList()
+                if (!docFile.exists()) return emptyList()
+                val content = context.contentResolver.openInputStream(docFile.uri)?.bufferedReader(Charsets.UTF_8)?.use { reader ->
+                    reader.readText()
+                } ?: return emptyList()
+                parseEntriesFromContent(content)
+            } else {
+                val file = getFileForDate(date) ?: return emptyList()
+                if (!file.exists()) return emptyList()
+                parseEntriesFromContent(file.readText(Charsets.UTF_8))
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error reading entries for date $date from disk", e)
+            emptyList()
+        }
+    }
+
+    private fun parseEntriesFromContent(content: String): List<String> {
+        val lines = content.split("\n")
+        val entries = mutableListOf<String>()
+        var currentEntry = StringBuilder()
+        var inEntry = false
+
+        for (line in lines) {
+            when {
+                line.startsWith("# ") -> {
+                    // Header line, skip
+                    continue
+                }
+                line.startsWith("- ") -> {
+                    // New entry starts
+                    if (inEntry && currentEntry.isNotEmpty()) {
+                        entries.add(currentEntry.toString())
+                    }
+                    currentEntry = StringBuilder(line.substring(2))
+                    inEntry = true
+                }
+                inEntry && line.isNotEmpty() -> {
+                    // Continuation of current entry
+                    currentEntry.append("\n").append(line)
+                }
+                else -> {
+                    // Empty line
+                    if (inEntry && line.isEmpty()) {
+                        // End of entry
+                        if (currentEntry.isNotEmpty()) {
+                            entries.add(currentEntry.toString())
+                            currentEntry = StringBuilder()
+                            inEntry = false
+                        }
+                    }
+                }
+            }
+        }
+
+        // Add the last entry if exists
+        if (inEntry && currentEntry.isNotEmpty()) {
+            entries.add(currentEntry.toString())
+        }
+
+        return entries
+    }
+
     fun addEntryForDate(date: LocalDate, entry: String) {
         if (entry.isBlank()) return
         val uriString = settingsRepository.storageUri.value

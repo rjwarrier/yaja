@@ -91,6 +91,12 @@ class JournalViewModel(
     private val _monthlyStats = MutableStateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?>(null)
     val monthlyStats: StateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?> = _monthlyStats.asStateFlow()
 
+    private val _allTimeStats = MutableStateFlow<com.mj.yaja.ui.screens.AllTimeStatsData?>(null)
+    val allTimeStats: StateFlow<com.mj.yaja.ui.screens.AllTimeStatsData?> = _allTimeStats.asStateFlow()
+
+    private val _heatmapData = MutableStateFlow<Map<LocalDate, Int>>(emptyMap())
+    val heatmapData: StateFlow<Map<LocalDate, Int>> = _heatmapData.asStateFlow()
+
     private var lookbackJob: kotlinx.coroutines.Job? = null
     private var highlightsJob: kotlinx.coroutines.Job? = null
     private var entriesJob: kotlinx.coroutines.Job? = null
@@ -221,7 +227,9 @@ class JournalViewModel(
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) { fileManager.addEntryForDate(currentDate, finalEntry) }
-            loadEntries(currentDate)
+            // Load fresh entries directly from disk for immediate UI update
+            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
+            _uiState.update { it.copy(entries = freshEntries) }
             // Incrementally add the date to the calendar set instead of full re-scan
             addDateToCalendar(currentDate)
         }
@@ -258,7 +266,9 @@ class JournalViewModel(
                 fileManager.updateEntryForDate(currentDate, index, finalNewEntry)
             }
             clearEditing()
-            loadEntries(currentDate)
+            // Load fresh entries directly from disk for immediate UI update
+            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
+            _uiState.update { it.copy(entries = freshEntries) }
         }
     }
 
@@ -271,7 +281,9 @@ class JournalViewModel(
         _lastDeleted.value = Triple(currentDate, entry, index)
         viewModelScope.launch {
             withContext(Dispatchers.IO) { fileManager.deleteEntryForDate(currentDate, index) }
-            loadEntries(currentDate)
+            // Load fresh entries directly from disk for immediate UI update
+            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(currentDate) }
+            _uiState.update { it.copy(entries = freshEntries) }
             // Only remove from calendar set if there are no entries left for that date
             if (entries.size == 1) removeDateFromCalendar(currentDate)
         }
@@ -283,7 +295,9 @@ class JournalViewModel(
         _lastDeleted.value = null
         viewModelScope.launch {
             withContext(Dispatchers.IO) { fileManager.insertEntryAtPosition(date, entry, index) }
-            loadEntries(_uiState.value.selectedDate)
+            // Load fresh entries directly from disk for immediate UI update
+            val freshEntries = withContext(Dispatchers.IO) { fileManager.getEntriesForDateFromDisk(_uiState.value.selectedDate) }
+            _uiState.update { it.copy(entries = freshEntries) }
             addDateToCalendar(date) // Re-add in case it was the last entry and was removed
         }
     }
@@ -554,6 +568,180 @@ class JournalViewModel(
                 )
             }
             _monthlyStats.value = stats
+        }
+    }
+
+    fun calculateStatsByPeriod(
+        period: com.mj.yaja.ui.screens.StatisticsPeriod,
+        startDate: LocalDate? = null,
+        endDate: LocalDate? = null
+    ) {
+        viewModelScope.launch {
+            val stats = withContext(Dispatchers.IO) {
+                val now = LocalDate.now()
+                val (rangeStart, rangeEnd) = when (period) {
+                    com.mj.yaja.ui.screens.StatisticsPeriod.ALL_TIME -> {
+                        Pair(null, null)
+                    }
+                    com.mj.yaja.ui.screens.StatisticsPeriod.CURRENT_YEAR -> {
+                        Pair(LocalDate.of(now.year, 1, 1), LocalDate.of(now.year, 12, 31))
+                    }
+                    com.mj.yaja.ui.screens.StatisticsPeriod.PREVIOUS_YEAR -> {
+                        Pair(LocalDate.of(now.year - 1, 1, 1), LocalDate.of(now.year - 1, 12, 31))
+                    }
+                    com.mj.yaja.ui.screens.StatisticsPeriod.CURRENT_MONTH -> {
+                        Pair(LocalDate.of(now.year, now.monthValue, 1), LocalDate.of(now.year, now.monthValue, now.dayOfMonth))
+                    }
+                    com.mj.yaja.ui.screens.StatisticsPeriod.PREVIOUS_MONTH -> {
+                        val prevMonth = now.minusMonths(1)
+                        val lastDay = prevMonth.withDayOfMonth(prevMonth.lengthOfMonth())
+                        Pair(LocalDate.of(prevMonth.year, prevMonth.monthValue, 1), lastDay)
+                    }
+                    com.mj.yaja.ui.screens.StatisticsPeriod.CUSTOM -> {
+                        Pair(startDate, endDate)
+                    }
+                }
+
+                val allDates = _uiState.value.datesWithEntries.sorted()
+                    .filter { date ->
+                        (rangeStart == null || date >= rangeStart) && (rangeEnd == null || date <= rangeEnd)
+                    }
+
+                if (allDates.isEmpty()) {
+                    return@withContext com.mj.yaja.ui.screens.AllTimeStatsData(
+                        totalEntries = 0,
+                        totalWords = 0,
+                        averageWordsPerEntry = 0f,
+                        currentStreak = 0,
+                        longestStreakAllTime = 0,
+                        mostActiveDay = null,
+                        totalDaysWithEntries = 0,
+                        writingConsistencyScore = 0f,
+                        monthlyEntryTrend = emptyList(),
+                        entriesByLength = Triple(0, 0, 0)
+                    )
+                }
+
+                var totalEntries = 0
+                var totalWords = 0
+                val dayEntryCounts = mutableMapOf<DayOfWeek, Int>()
+                val monthEntryCounts = mutableMapOf<String, Int>()
+                var shortCount = 0
+                var mediumCount = 0
+                var longCount = 0
+
+                // Iterate through all dates and collect statistics
+                for (date in allDates) {
+                    val entries = fileManager.getEntriesForDate(date)
+                    if (entries.isNotEmpty()) {
+                        totalEntries += entries.size
+                        val dayOfWeek = date.dayOfWeek
+                        dayEntryCounts[dayOfWeek] = (dayEntryCounts[dayOfWeek] ?: 0) + entries.size
+
+                        val monthKey = "${date.year}-${date.monthValue.toString().padStart(2, '0')}"
+                        monthEntryCounts[monthKey] = (monthEntryCounts[monthKey] ?: 0) + entries.size
+
+                        entries.forEach { entry ->
+                            val wordCount = entry.split(Regex("\\s+")).count { it.isNotBlank() }
+                            totalWords += wordCount
+
+                            // Categorize by length
+                            when {
+                                wordCount < 50 -> shortCount++
+                                wordCount <= 200 -> mediumCount++
+                                else -> longCount++
+                            }
+                        }
+                    }
+                }
+
+                // Find most active day
+                val mostActiveDay = dayEntryCounts.maxByOrNull { it.value }?.key?.name
+
+                // Calculate average words per entry
+                val averageWordsPerEntry = if (totalEntries > 0) {
+                    totalWords.toFloat() / totalEntries
+                } else {
+                    0f
+                }
+
+                // Calculate current streak (from today backwards)
+                var currentStreak = 0
+                var tempDate = LocalDate.now()
+                while (allDates.contains(tempDate)) {
+                    currentStreak++
+                    tempDate = tempDate.minusDays(1)
+                }
+
+                // Calculate longest streak all-time
+                var longestStreakAllTime = 0
+                var currentStreakTemp = 0
+                for (i in allDates.indices) {
+                    val date = allDates[i]
+                    val previousDate = if (i > 0) allDates[i - 1] else null
+                    val isConsecutive = previousDate?.plusDays(1) == date || previousDate == null
+
+                    if (isConsecutive) {
+                        currentStreakTemp++
+                    } else {
+                        longestStreakAllTime = maxOf(longestStreakAllTime, currentStreakTemp)
+                        currentStreakTemp = 1
+                    }
+                }
+                longestStreakAllTime = maxOf(longestStreakAllTime, currentStreakTemp)
+
+                // Calculate writing consistency score (based on regularity)
+                val daysDiff = java.time.temporal.ChronoUnit.DAYS.between(
+                    allDates.first(),
+                    allDates.last()
+                ).toInt() + 1
+                val consistencyScore = if (daysDiff > 0) {
+                    (allDates.size.toFloat() / daysDiff) * 100
+                } else {
+                    0f
+                }
+
+                // Build monthly entry trend (last 12 months)
+                val monthlyTrend = mutableListOf<Pair<String, Int>>()
+                val currentMonth = YearMonth.now()
+                repeat(12) { i ->
+                    val month = currentMonth.minusMonths(i.toLong())
+                    val monthKey = "${month.year}-${month.monthValue.toString().padStart(2, '0')}"
+                    monthlyTrend.add(monthKey to (monthEntryCounts[monthKey] ?: 0))
+                }
+                monthlyTrend.reverse()
+
+                com.mj.yaja.ui.screens.AllTimeStatsData(
+                    totalEntries = totalEntries,
+                    totalWords = totalWords,
+                    averageWordsPerEntry = averageWordsPerEntry,
+                    currentStreak = currentStreak,
+                    longestStreakAllTime = longestStreakAllTime,
+                    mostActiveDay = mostActiveDay,
+                    totalDaysWithEntries = allDates.size,
+                    writingConsistencyScore = consistencyScore,
+                    monthlyEntryTrend = monthlyTrend,
+                    entriesByLength = Triple(shortCount, mediumCount, longCount)
+                )
+            }
+            _allTimeStats.value = stats
+        }
+    }
+
+    fun updateHeatmapData() {
+        viewModelScope.launch {
+            val heatmap = withContext(Dispatchers.IO) {
+                val map = mutableMapOf<LocalDate, Int>()
+                _uiState.value.datesWithEntries.forEach { date ->
+                    val entries = fileManager.getEntriesForDate(date)
+                    val totalWords = entries.sumOf { entry ->
+                        entry.split(Regex("\\s+")).count { it.isNotBlank() }
+                    }
+                    map[date] = totalWords
+                }
+                map
+            }
+            _heatmapData.value = heatmap
         }
     }
 
