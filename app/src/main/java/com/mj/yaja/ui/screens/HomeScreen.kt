@@ -906,7 +906,13 @@ fun HomeScreenContent(
 
                         Column(
                                 horizontalAlignment = Alignment.End,
-                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                                verticalArrangement = Arrangement.spacedBy(16.dp),
+                                modifier = Modifier.animateContentSize(
+                                        animationSpec = spring(
+                                                dampingRatio = 0.7f,
+                                                stiffness = Spring.StiffnessMediumLow
+                                        )
+                                )
                         ) {
                                 AnimatedVisibility(
                                         visible =
