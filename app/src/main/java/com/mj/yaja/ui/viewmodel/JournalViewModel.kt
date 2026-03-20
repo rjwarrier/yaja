@@ -89,6 +89,7 @@ class JournalViewModel(
     val customShortcodes = settingsRepository.customShortcodes
     val isPreviewLimitEnabled = settingsRepository.isPreviewLimitEnabled
     val previewLimitLength = settingsRepository.previewLimitLength
+    val statisticsSectionOrder = settingsRepository.statisticsSectionOrder
 
     private val _monthlyStats = MutableStateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?>(null)
     val monthlyStats: StateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?> = _monthlyStats.asStateFlow()
@@ -433,6 +434,10 @@ class JournalViewModel(
 
     fun setEnableDragAndDrop(enable: Boolean) {
         settingsRepository.setEnableDragAndDrop(enable)
+    }
+
+    fun setStatisticsSectionOrder(order: List<String>) {
+        settingsRepository.setStatisticsSectionOrder(order)
     }
 
     fun setCustomShortcode(code: String, value: String) {

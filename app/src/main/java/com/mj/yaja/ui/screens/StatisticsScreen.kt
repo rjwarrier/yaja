@@ -7,6 +7,8 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -20,11 +22,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
 import java.time.Instant
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -75,6 +82,18 @@ data class TimeDistribution(
     val night: Int      // 21:00–04:59
 )
 
+/** The 5 sections below the overview cards that the user can reorder. */
+enum class StatisticsSection(val displayName: String) {
+    WRITING_INSIGHTS("Writing Insights"),
+    DISTRIBUTION("Daily Writing Distribution"),
+    WHEN_YOU_WRITE("When You Write"),
+    MONTHLY_ACTIVITY("Monthly Activity"),
+    HEATMAP("Writing Activity Heatmap")
+}
+
+/** Number of non-reorderable items pinned above the section list in the LazyColumn. */
+private const val STATS_FIXED_TOP = 5
+
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun StatisticsScreen(
@@ -94,6 +113,32 @@ fun StatisticsScreen(
     val datesWithEntries = uiState.datesWithEntries
     val highlightedDays = uiState.favoritedHighlights.size
     var selectedPeriod by remember { mutableStateOf(StatisticsPeriod.ALL_TIME) }
+
+    // Section order — restored from prefs, falls back to default, new sections appended at end
+    val savedSectionOrder by viewModel.statisticsSectionOrder.collectAsState()
+    val sectionOrder = remember(savedSectionOrder) {
+        val parsed = savedSectionOrder.mapNotNull { name ->
+            runCatching { StatisticsSection.valueOf(name) }.getOrNull()
+        }
+        val allSections = StatisticsSection.values().toList()
+        val withMissing = parsed + allSections.filter { it !in parsed }
+        mutableStateListOf(*withMissing.toTypedArray())
+    }
+
+    val haptics = LocalHapticFeedback.current
+    val listState = rememberLazyListState()
+    val reorderState = rememberReorderableLazyListState(
+        lazyListState = listState,
+        onMove = { from, to ->
+            val sectionFrom = from.index - STATS_FIXED_TOP
+            val sectionTo   = to.index   - STATS_FIXED_TOP
+            if (sectionFrom in 0 until sectionOrder.size &&
+                sectionTo   in 0 until sectionOrder.size) {
+                sectionOrder.add(sectionTo, sectionOrder.removeAt(sectionFrom))
+                viewModel.setStatisticsSectionOrder(sectionOrder.map { it.name })
+            }
+        }
+    )
     var customStartDate by remember { mutableStateOf(LocalDate.now().minusYears(1)) }
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
     var showStartDatePicker by remember { mutableStateOf(false) }
@@ -135,9 +180,10 @@ fun StatisticsScreen(
                     .fillMaxSize()
                     .padding(paddingValues)
                     .padding(horizontal = 16.dp, vertical = 12.dp),
+                state = listState,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                item {
+                item(key = "period_selector") {
                     PeriodSelector(
                         selectedPeriod = selectedPeriod,
                         onPeriodChange = { period ->
@@ -152,7 +198,7 @@ fun StatisticsScreen(
                     )
                 }
 
-                item {
+                item(key = "period_title") {
                     Column(modifier = Modifier.padding(top = 8.dp)) {
                         Text(
                             when (selectedPeriod) {
@@ -178,8 +224,8 @@ fun StatisticsScreen(
                     }
                 }
 
-                // Overview Cards (2x2 grid)
-                item {
+                // Overview Cards (fixed, non-reorderable)
+                item(key = "overview_1") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -201,7 +247,7 @@ fun StatisticsScreen(
                     }
                 }
 
-                item {
+                item(key = "overview_2") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -223,7 +269,7 @@ fun StatisticsScreen(
                     }
                 }
 
-                item {
+                item(key = "overview_3") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -245,343 +291,80 @@ fun StatisticsScreen(
                     }
                 }
 
-                // Detailed Stats Section
-                item {
-                    Text(
-                        "Writing Insights",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    ElevatedCard(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
+                // Reorderable sections — long-press the ≡ handle to drag
+                items(
+                    items = sectionOrder,
+                    key = { it }
+                ) { section ->
+                    ReorderableItem(
+                        state = reorderState,
+                        key = section
+                    ) { isDragging ->
+                        val dragElevation by animateDpAsState(
+                            targetValue = if (isDragging) 6.dp else 0.dp,
+                            label = "drag_elevation"
+                        )
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                                .animateItem(
+                                    placementSpec = spring(
+                                        dampingRatio = Spring.DampingRatioLowBouncy,
+                                        stiffness = Spring.StiffnessMediumLow
+                                    )
+                                )
+                                .graphicsLayer { shadowElevation = dragElevation.toPx() },
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            // Longest Streak
+                            // Section header row — drag handle on the right
                             Row(
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 8.dp),
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.EmojiEvents,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Longest Streak",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
+                                Text(
+                                    section.displayName,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Icon(
+                                    imageVector = Icons.Rounded.DragIndicator,
+                                    contentDescription = "Long press to reorder",
+                                    tint = if (isDragging) MaterialTheme.colorScheme.primary
+                                           else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                                    modifier = Modifier
+                                        .size(20.dp)
+                                        .longPressDraggableHandle(
+                                            onDragStarted = {
+                                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                            }
                                         )
-                                        Text(
-                                            "${allTimeStats!!.longestStreakAllTime} days",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
+                                )
                             }
 
-                            HorizontalDivider()
-
-                            // Most Active Day
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.DateRange,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.secondary,
-                                        modifier = Modifier.size(24.dp)
+                            // Section card — rendered by section type
+                            when (section) {
+                                StatisticsSection.WRITING_INSIGHTS ->
+                                    WritingInsightsCard(stats = allTimeStats!!)
+                                StatisticsSection.DISTRIBUTION ->
+                                    WritingDistributionCard(stats = allTimeStats!!)
+                                StatisticsSection.WHEN_YOU_WRITE ->
+                                    WritingTimeCard(dist = allTimeStats!!.writingTimeDistribution)
+                                StatisticsSection.MONTHLY_ACTIVITY ->
+                                    MonthlyActivityChart(trend = allTimeStats!!.monthlyEntryTrend)
+                                StatisticsSection.HEATMAP ->
+                                    EntryHeatmap(
+                                        datesWithEntries = datesWithEntries,
+                                        entryLengthMap = heatmapData
                                     )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Most Active Day",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            allTimeStats!!.mostActiveDay ?: "—",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            HorizontalDivider()
-
-                            // Writing Consistency
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.CheckCircle,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.tertiary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Writing Consistency",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            "${String.format("%.0f", allTimeStats!!.writingConsistencyScore)}%",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            HorizontalDivider()
-
-                            // Days with Entries
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.DateRange,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.error,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Days With Entries",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            allTimeStats!!.totalDaysWithEntries.toString(),
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            HorizontalDivider()
-
-                            // Best Month
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.CalendarMonth,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.tertiary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Best Month",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        val best = allTimeStats!!
-                                        Text(
-                                            if (best.bestMonthLabel != null)
-                                                "${best.bestMonthLabel}  ·  ${best.bestMonthCount} entries"
-                                            else "—",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            HorizontalDivider()
-
-                            // Average Days per Week
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.CalendarViewWeek,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Avg. Writing Days / Week",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            String.format("%.1f days", allTimeStats!!.averageDaysPerWeek),
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
                             }
                         }
                     }
                 }
 
-                // Daily Writing Distribution
-                item {
-                    Text(
-                        "Daily Writing Distribution",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    ElevatedCard(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            val dist = allTimeStats!!.entriesByLength
-                            val total = dist.light + dist.moderate + dist.heavy + dist.intense
-
-                            fun getPercentage(count: Int): Float =
-                                if (total == 0) 0f else (count.toFloat() / total) * 100
-
-                            Text(
-                                text = "Based on total words written per day",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.padding(bottom = 4.dp)
-                            )
-
-                            EntryLengthBar(
-                                label = "Light  (< 50 words)",
-                                count = dist.light,
-                                percentage = getPercentage(dist.light),
-                                color = MaterialTheme.colorScheme.primary
-                            )
-
-                            EntryLengthBar(
-                                label = "Moderate  (50–200 words)",
-                                count = dist.moderate,
-                                percentage = getPercentage(dist.moderate),
-                                color = MaterialTheme.colorScheme.secondary
-                            )
-
-                            EntryLengthBar(
-                                label = "Heavy  (200–500 words)",
-                                count = dist.heavy,
-                                percentage = getPercentage(dist.heavy),
-                                color = MaterialTheme.colorScheme.tertiary
-                            )
-
-                            EntryLengthBar(
-                                label = "Intense  (500+ words)",
-                                count = dist.intense,
-                                percentage = getPercentage(dist.intense),
-                                color = MaterialTheme.colorScheme.error // deep orange — complements the green theme
-                            )
-                        }
-                    }
-                }
-
-                // When You Write — time of day distribution
-                item {
-                    Text(
-                        "When You Write",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    WritingTimeCard(dist = allTimeStats!!.writingTimeDistribution)
-                }
-
-                // Monthly Activity — bar chart of the last 12 months
-                item {
-                    Text(
-                        "Monthly Activity",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    MonthlyActivityChart(trend = allTimeStats!!.monthlyEntryTrend)
-                }
-
-                item {
-                    Text(
-                        "Writing Activity Heatmap",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    EntryHeatmap(
-                        datesWithEntries = datesWithEntries,
-                        entryLengthMap = heatmapData
-                    )
-                }
-
-                item {
+                item(key = "spacer") {
                     Spacer(modifier = Modifier.height(32.dp))
                 }
             }
@@ -775,6 +558,85 @@ private fun EntryLengthBar(
                     .fillMaxWidth(percentage / 100f)
                     .background(color, RoundedCornerShape(4.dp))
             )
+        }
+    }
+}
+
+@Composable
+private fun WritingInsightsCard(stats: AllTimeStatsData) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            @Composable
+            fun InsightRow(
+                icon: androidx.compose.ui.graphics.vector.ImageVector,
+                tint: androidx.compose.ui.graphics.Color,
+                label: String,
+                value: String
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(icon, contentDescription = null, tint = tint, modifier = Modifier.size(24.dp))
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column {
+                        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
+                        Text(value, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+
+            InsightRow(Icons.Rounded.EmojiEvents, MaterialTheme.colorScheme.primary,
+                "Longest Streak", "${stats.longestStreakAllTime} days")
+            HorizontalDivider()
+            InsightRow(Icons.Rounded.DateRange, MaterialTheme.colorScheme.secondary,
+                "Most Active Day", stats.mostActiveDay ?: "—")
+            HorizontalDivider()
+            InsightRow(Icons.Rounded.CheckCircle, MaterialTheme.colorScheme.tertiary,
+                "Writing Consistency", "${String.format("%.0f", stats.writingConsistencyScore)}%")
+            HorizontalDivider()
+            InsightRow(Icons.Rounded.DateRange, MaterialTheme.colorScheme.error,
+                "Days With Entries", stats.totalDaysWithEntries.toString())
+            HorizontalDivider()
+            InsightRow(Icons.Rounded.CalendarMonth, MaterialTheme.colorScheme.tertiary,
+                "Best Month",
+                if (stats.bestMonthLabel != null) "${stats.bestMonthLabel}  ·  ${stats.bestMonthCount} entries" else "—")
+            HorizontalDivider()
+            InsightRow(Icons.Rounded.CalendarViewWeek, MaterialTheme.colorScheme.primary,
+                "Avg. Writing Days / Week",
+                String.format("%.1f days", stats.averageDaysPerWeek))
+        }
+    }
+}
+
+@Composable
+private fun WritingDistributionCard(stats: AllTimeStatsData) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            val dist = stats.entriesByLength
+            val total = dist.light + dist.moderate + dist.heavy + dist.intense
+            fun pct(n: Int) = if (total == 0) 0f else n.toFloat() / total * 100f
+
+            Text(
+                text = "Based on total words written per day",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+            EntryLengthBar("Light  (< 50 words)",     dist.light,    pct(dist.light),    MaterialTheme.colorScheme.primary)
+            EntryLengthBar("Moderate  (50–200 words)", dist.moderate, pct(dist.moderate), MaterialTheme.colorScheme.secondary)
+            EntryLengthBar("Heavy  (200–500 words)",   dist.heavy,    pct(dist.heavy),    MaterialTheme.colorScheme.tertiary)
+            EntryLengthBar("Intense  (500+ words)",    dist.intense,  pct(dist.intense),  MaterialTheme.colorScheme.error)
         }
     }
 }

@@ -117,6 +117,9 @@ class SettingsRepository(private val context: Context) {
     private val _enableDragAndDrop = MutableStateFlow(getSavedEnableDragAndDrop())
     val enableDragAndDrop: StateFlow<Boolean> = _enableDragAndDrop.asStateFlow()
 
+    private val _statisticsSectionOrder = MutableStateFlow(getSavedStatisticsSectionOrder())
+    val statisticsSectionOrder: StateFlow<List<String>> = _statisticsSectionOrder.asStateFlow()
+
     /** Sets a new PIN — generates a fresh salt and stores PBKDF2(pin, salt). */
     fun setPin(plain: String) {
         val salt = generateSalt()
@@ -371,6 +374,11 @@ class SettingsRepository(private val context: Context) {
         _enableDragAndDrop.value = enable
     }
 
+    fun setStatisticsSectionOrder(order: List<String>) {
+        prefs.edit().putString(KEY_STATISTICS_SECTION_ORDER, order.joinToString(",")).apply()
+        _statisticsSectionOrder.value = order
+    }
+
     private fun getSavedThemePreference(): ThemePreference =
             getEnum(prefs.getString(KEY_THEME, null), ThemePreference.SYSTEM)
 
@@ -469,6 +477,15 @@ class SettingsRepository(private val context: Context) {
 
     private fun getSavedEnableDragAndDrop(): Boolean = prefs.getBoolean(KEY_ENABLE_DRAG_AND_DROP, true)
 
+    private fun getSavedStatisticsSectionOrder(): List<String> {
+        val saved = prefs.getString(KEY_STATISTICS_SECTION_ORDER, null)
+        return if (saved.isNullOrBlank()) {
+            listOf("WRITING_INSIGHTS", "DISTRIBUTION", "WHEN_YOU_WRITE", "MONTHLY_ACTIVITY", "HEATMAP")
+        } else {
+            saved.split(",").filter { it.isNotBlank() }
+        }
+    }
+
     companion object {
         @Volatile private var instance: SettingsRepository? = null
 
@@ -513,6 +530,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_PREVIEW_LIMIT_LENGTH = "preview_limit_length"
         private const val KEY_SHOW_STATISTICS = "show_statistics"
         private const val KEY_ENABLE_DRAG_AND_DROP = "enable_drag_and_drop"
+        private const val KEY_STATISTICS_SECTION_ORDER = "statistics_section_order"
 
         /** Parses an enum by name from SharedPreferences, falling back to [default] on error. */
         private inline fun <reified T : Enum<T>> getEnum(value: String?, default: T): T {
