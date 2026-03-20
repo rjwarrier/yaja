@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.automirrored.rounded.Note
 import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
@@ -50,7 +51,12 @@ data class AllTimeStatsData(
     val totalDaysWithEntries: Int,
     val writingConsistencyScore: Float, // 0-100
     val monthlyEntryTrend: List<Pair<String, Int>>, // Month, count
-    val entriesByLength: DayDistribution
+    val entriesByLength: DayDistribution,
+    val totalHighlightedDays: Int,            // favorited days with entries in this period
+    val bestMonthLabel: String?,              // e.g. "Mar 2025"
+    val bestMonthCount: Int,                  // entries in that best month
+    val averageDaysPerWeek: Float,            // writing days per week on average
+    val writingTimeDistribution: TimeDistribution // when during the day the user writes
 )
 
 /** Daily writing volume categories. Each field counts days that fall in that bracket. */
@@ -59,6 +65,14 @@ data class DayDistribution(
     val moderate: Int, // 50–200 words
     val heavy: Int,    // 200–500 words
     val intense: Int   // 500+ words
+)
+
+/** How entries are distributed across times of day. */
+data class TimeDistribution(
+    val morning: Int,   // 05:00–11:59
+    val afternoon: Int, // 12:00–16:59
+    val evening: Int,   // 17:00–20:59
+    val night: Int      // 21:00–04:59
 )
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -78,6 +92,7 @@ fun StatisticsScreen(
     val heatmapData by viewModel.heatmapData.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
     val datesWithEntries = uiState.datesWithEntries
+    val highlightedDays = uiState.favoritedHighlights.size
     var selectedPeriod by remember { mutableStateOf(StatisticsPeriod.ALL_TIME) }
     var customStartDate by remember { mutableStateOf(LocalDate.now().minusYears(1)) }
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
@@ -203,6 +218,28 @@ fun StatisticsScreen(
                             title = "Current Streak",
                             value = "${allTimeStats!!.currentStreak} days",
                             color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        StatisticCard(
+                            icon = Icons.AutoMirrored.Rounded.MenuBook,
+                            title = "Pages Written",
+                            value = "~${(allTimeStats!!.totalWords / 250).coerceAtLeast(0)}",
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatisticCard(
+                            icon = Icons.Rounded.Star,
+                            title = "Days Highlighted",
+                            value = highlightedDays.toString(),
+                            color = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -361,6 +398,77 @@ fun StatisticsScreen(
                                     }
                                 }
                             }
+
+                            HorizontalDivider()
+
+                            // Best Month
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Icon(
+                                        Icons.Rounded.CalendarMonth,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.tertiary,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(12.dp))
+                                    Column {
+                                        Text(
+                                            "Best Month",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                        val best = allTimeStats!!
+                                        Text(
+                                            if (best.bestMonthLabel != null)
+                                                "${best.bestMonthLabel}  ·  ${best.bestMonthCount} entries"
+                                            else "—",
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
+                            }
+
+                            HorizontalDivider()
+
+                            // Average Days per Week
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.weight(1f)
+                                ) {
+                                    Icon(
+                                        Icons.Rounded.CalendarViewWeek,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(12.dp))
+                                    Column {
+                                        Text(
+                                            "Avg. Writing Days / Week",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                        Text(
+                                            String.format("%.1f days", allTimeStats!!.averageDaysPerWeek),
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -427,6 +535,34 @@ fun StatisticsScreen(
                             )
                         }
                     }
+                }
+
+                // When You Write — time of day distribution
+                item {
+                    Text(
+                        "When You Write",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
+
+                item {
+                    WritingTimeCard(dist = allTimeStats!!.writingTimeDistribution)
+                }
+
+                // Monthly Activity — bar chart of the last 12 months
+                item {
+                    Text(
+                        "Monthly Activity",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
+
+                item {
+                    MonthlyActivityChart(trend = allTimeStats!!.monthlyEntryTrend)
                 }
 
                 item {
@@ -639,6 +775,129 @@ private fun EntryLengthBar(
                     .fillMaxWidth(percentage / 100f)
                     .background(color, RoundedCornerShape(4.dp))
             )
+        }
+    }
+}
+
+@Composable
+private fun WritingTimeCard(dist: TimeDistribution) {
+    val total = (dist.morning + dist.afternoon + dist.evening + dist.night).coerceAtLeast(1)
+    fun pct(n: Int) = n.toFloat() / total * 100f
+
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Text(
+                text = "Based on entry timestamps",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+            EntryLengthBar(
+                label = "🌅  Morning  (5am–noon)",
+                count = dist.morning,
+                percentage = pct(dist.morning),
+                color = MaterialTheme.colorScheme.primary
+            )
+            EntryLengthBar(
+                label = "☀️  Afternoon  (noon–5pm)",
+                count = dist.afternoon,
+                percentage = pct(dist.afternoon),
+                color = MaterialTheme.colorScheme.secondary
+            )
+            EntryLengthBar(
+                label = "🌆  Evening  (5pm–9pm)",
+                count = dist.evening,
+                percentage = pct(dist.evening),
+                color = MaterialTheme.colorScheme.tertiary
+            )
+            EntryLengthBar(
+                label = "🌙  Night  (9pm–5am)",
+                count = dist.night,
+                percentage = pct(dist.night),
+                color = MaterialTheme.colorScheme.error
+            )
+        }
+    }
+}
+
+@Composable
+private fun MonthlyActivityChart(trend: List<Pair<String, Int>>) {
+    if (trend.isEmpty()) return
+    val maxCount = trend.maxOfOrNull { it.second }?.coerceAtLeast(1) ?: 1
+    val barAreaHeight = 80.dp
+
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(barAreaHeight + 32.dp), // bars + label row
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.Bottom
+            ) {
+                trend.forEach { (monthKey, count) ->
+                    val fraction = count.toFloat() / maxCount
+                    val monthAbbrev = try {
+                        val m = java.time.Month.of(monthKey.split("-")[1].toInt())
+                        m.name[0] + m.name.substring(1, 3).lowercase()
+                    } catch (e: Exception) { "?" }
+
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        // Fixed-height bar container — bar grows upward from the bottom
+                        Box(
+                            modifier = Modifier
+                                .height(barAreaHeight)
+                                .fillMaxWidth(),
+                            contentAlignment = Alignment.BottomCenter
+                        ) {
+                            val barHeight = barAreaHeight * fraction.coerceAtLeast(
+                                if (count > 0) 0.04f else 0f
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.72f)
+                                    .height(barHeight)
+                                    .background(
+                                        if (count > 0) MaterialTheme.colorScheme.secondary
+                                        else MaterialTheme.colorScheme.surfaceVariant,
+                                        RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)
+                                    )
+                            )
+                            // Show count above bar when it's tall enough to read
+                            if (count > 0 && fraction >= 0.18f) {
+                                Text(
+                                    count.toString(),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontSize = 8.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier
+                                        .align(Alignment.TopCenter)
+                                        .padding(bottom = 2.dp)
+                                )
+                            }
+                        }
+                        // Month abbreviation label
+                        Text(
+                            monthAbbrev,
+                            style = MaterialTheme.typography.labelSmall,
+                            fontSize = 8.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
         }
     }
 }

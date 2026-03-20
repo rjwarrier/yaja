@@ -627,7 +627,12 @@ class JournalViewModel(
                         totalDaysWithEntries = 0,
                         writingConsistencyScore = 0f,
                         monthlyEntryTrend = emptyList(),
-                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0)
+                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0),
+                        totalHighlightedDays = 0,
+                        bestMonthLabel = null,
+                        bestMonthCount = 0,
+                        averageDaysPerWeek = 0f,
+                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0)
                     )
                 }
 
@@ -639,6 +644,16 @@ class JournalViewModel(
                 var mediumCount = 0
                 var longCount = 0
                 var intenseCount = 0
+                // Time-of-day distribution
+                var morningCount = 0    // 05:00–11:59
+                var afternoonCount = 0  // 12:00–16:59
+                var eveningCount = 0    // 17:00–20:59
+                var nightCount = 0      // 21:00–04:59
+                val timeRegex = Regex("""<!--time:(\d{2}):\d{2}""")
+
+                // Highlighted days that fall within this period
+                val favoritedInPeriod = _uiState.value.favoritedHighlights
+                    .count { date -> allDates.contains(date) }
 
                 // Iterate through all dates and collect statistics
                 for (date in allDates) {
@@ -657,6 +672,18 @@ class JournalViewModel(
                             val wordCount = entry.split(Regex("\\s+")).count { it.isNotBlank() }
                             totalWords += wordCount
                             dayTotalWords += wordCount
+
+                            // Parse timestamp to build time-of-day distribution
+                            val hourStr = timeRegex.find(entry)?.groupValues?.getOrNull(1)
+                            if (hourStr != null) {
+                                val hour = hourStr.toIntOrNull() ?: -1
+                                when (hour) {
+                                    in 5..11  -> morningCount++
+                                    in 12..16 -> afternoonCount++
+                                    in 17..20 -> eveningCount++
+                                    in 0..4, in 21..23 -> nightCount++
+                                }
+                            }
                         }
 
                         // Categorize the whole day by its total word count
@@ -715,6 +742,21 @@ class JournalViewModel(
                     0f
                 }
 
+                // Average writing days per week
+                val totalWeeks = (daysDiff / 7.0).coerceAtLeast(1.0)
+                val averageDaysPerWeek = (allDates.size.toFloat() / totalWeeks).toFloat()
+
+                // Best month by entry count
+                val bestMonthEntry = monthEntryCounts.maxByOrNull { it.value }
+                val bestMonthLabel: String? = bestMonthEntry?.key?.let { key ->
+                    try {
+                        val parts = key.split("-")
+                        val ym = YearMonth.of(parts[0].toInt(), parts[1].toInt())
+                        ym.format(java.time.format.DateTimeFormatter.ofPattern("MMM yyyy"))
+                    } catch (e: Exception) { null }
+                }
+                val bestMonthCount = bestMonthEntry?.value ?: 0
+
                 // Build monthly entry trend (last 12 months)
                 val monthlyTrend = mutableListOf<Pair<String, Int>>()
                 val currentMonth = YearMonth.now()
@@ -735,7 +777,17 @@ class JournalViewModel(
                     totalDaysWithEntries = allDates.size,
                     writingConsistencyScore = consistencyScore,
                     monthlyEntryTrend = monthlyTrend,
-                    entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount)
+                    entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount),
+                    totalHighlightedDays = favoritedInPeriod,
+                    bestMonthLabel = bestMonthLabel,
+                    bestMonthCount = bestMonthCount,
+                    averageDaysPerWeek = averageDaysPerWeek,
+                    writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(
+                        morning = morningCount,
+                        afternoon = afternoonCount,
+                        evening = eveningCount,
+                        night = nightCount
+                    )
                 )
             }
             _allTimeStats.value = stats
