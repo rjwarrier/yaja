@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.compose.animation.*
@@ -58,7 +58,7 @@ import kotlin.math.sin
 import kotlinx.coroutines.launch
 import java.io.File
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     // Use singletons so QuickCaptureActivity and TaskerReceiver share the same cache
     private val settingsRepository by lazy { SettingsRepository.getInstance(applicationContext) }

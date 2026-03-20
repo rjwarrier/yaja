@@ -11,8 +11,8 @@ android {
         applicationId = "com.mj.yaja"
         minSdk = 26
         targetSdk = 35
-        versionCode = 28
-        versionName = "2.15b"
+        versionCode = 29
+        versionName = "2.16b"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -69,6 +69,9 @@ dependencies {
 
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // AppCompat — required for AppCompatActivity (provides FragmentActivity for BiometricPrompt)
+    implementation("androidx.appcompat:appcompat:1.7.0")
 
     // Biometric authentication
     implementation("androidx.biometric:biometric:1.1.0")
