@@ -650,16 +650,19 @@ class JournalViewModel(
                         val monthKey = "${date.year}-${date.monthValue.toString().padStart(2, '0')}"
                         monthEntryCounts[monthKey] = (monthEntryCounts[monthKey] ?: 0) + entries.size
 
+                        // Sum all entry word counts for this day first, then classify the day
+                        var dayTotalWords = 0
                         entries.forEach { entry ->
                             val wordCount = entry.split(Regex("\\s+")).count { it.isNotBlank() }
                             totalWords += wordCount
+                            dayTotalWords += wordCount
+                        }
 
-                            // Categorize by length
-                            when {
-                                wordCount < 50 -> shortCount++
-                                wordCount <= 200 -> mediumCount++
-                                else -> longCount++
-                            }
+                        // Categorize the whole day by its total word count
+                        when {
+                            dayTotalWords < 50 -> shortCount++
+                            dayTotalWords <= 200 -> mediumCount++
+                            else -> longCount++
                         }
                     }
                 }

@@ -356,10 +356,10 @@ fun StatisticsScreen(
                     }
                 }
 
-                // Entry Length Distribution
+                // Daily Writing Distribution
                 item {
                     Text(
-                        "Entry Distribution",
+                        "Daily Writing Distribution",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.padding(top = 8.dp)
@@ -383,22 +383,29 @@ fun StatisticsScreen(
                                 return if (total == 0) 0f else (count.toFloat() / total) * 100
                             }
 
+                            Text(
+                                text = "Based on total words written per day",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(bottom = 4.dp)
+                            )
+
                             EntryLengthBar(
-                                label = "Short (< 50 words)",
+                                label = "Light days  (< 50 words)",
                                 count = short,
                                 percentage = getPercentage(short),
                                 color = MaterialTheme.colorScheme.primary
                             )
 
                             EntryLengthBar(
-                                label = "Medium (50-200 words)",
+                                label = "Moderate days  (50–200 words)",
                                 count = medium,
                                 percentage = getPercentage(medium),
                                 color = MaterialTheme.colorScheme.secondary
                             )
 
                             EntryLengthBar(
-                                label = "Long (> 200 words)",
+                                label = "Heavy days  (> 200 words)",
                                 count = long,
                                 percentage = getPercentage(long),
                                 color = MaterialTheme.colorScheme.tertiary
