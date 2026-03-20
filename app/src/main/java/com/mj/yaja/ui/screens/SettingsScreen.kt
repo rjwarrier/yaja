@@ -1643,88 +1643,105 @@ fun SettingsScreen(
                                 // Biometric unlock option (only shown if PIN is enabled)
                                 if (isPinEnabled) {
                                         Spacer(modifier = Modifier.height(16.dp))
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(horizontal = 16.dp),
-                                                horizontalArrangement = Arrangement.SpaceBetween,
-                                                verticalAlignment = Alignment.CenterVertically
+                                        ElevatedCard(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                colors =
+                                                        CardDefaults.elevatedCardColors(
+                                                                containerColor =
+                                                                        MaterialTheme.colorScheme
+                                                                                .surfaceContainerLow
+                                                        ),
+                                                elevation =
+                                                        CardDefaults.elevatedCardElevation(
+                                                                defaultElevation = 0.dp
+                                                        ),
+                                                shape = MaterialTheme.shapes.medium
                                         ) {
-                                                Row(
-                                                        verticalAlignment = Alignment.CenterVertically,
-                                                        modifier = Modifier.weight(1f)
+                                                Column(
+                                                        modifier = Modifier.fillMaxWidth()
+                                                                .padding(horizontal = 16.dp, vertical = 16.dp)
                                                 ) {
-                                                        Icon(
-                                                                imageVector = Icons.Rounded.Fingerprint,
-                                                                contentDescription = null,
-                                                                tint = MaterialTheme.colorScheme.primary,
-                                                                modifier = Modifier.size(24.dp)
-                                                        )
-                                                        Spacer(modifier = Modifier.width(12.dp))
-                                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                                                Text(
-                                                                        text = "Biometric Unlock",
-                                                                        style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurface
+                                                        Row(
+                                                                modifier = Modifier.fillMaxWidth(),
+                                                                horizontalArrangement = Arrangement.SpaceBetween,
+                                                                verticalAlignment = Alignment.CenterVertically
+                                                        ) {
+                                                                Row(
+                                                                        verticalAlignment = Alignment.CenterVertically,
+                                                                        modifier = Modifier.weight(1f)
+                                                                ) {
+                                                                        Icon(
+                                                                                imageVector = Icons.Rounded.Fingerprint,
+                                                                                contentDescription = null,
+                                                                                tint = MaterialTheme.colorScheme.primary,
+                                                                                modifier = Modifier.size(24.dp)
+                                                                        )
+                                                                        Spacer(modifier = Modifier.width(12.dp))
+                                                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                                                                Text(
+                                                                                        text = "Biometric Unlock",
+                                                                                        style =
+                                                                                                MaterialTheme.typography
+                                                                                                        .bodyLarge,
+                                                                                        color =
+                                                                                                MaterialTheme.colorScheme
+                                                                                                        .onSurface
+                                                                                )
+                                                                                Text(
+                                                                                        text =
+                                                                                                if (isBiometricEnabled)
+                                                                                                        "Fingerprint or Face ID enabled"
+                                                                                                else "Use biometric instead of PIN",
+                                                                                        style =
+                                                                                                MaterialTheme.typography
+                                                                                                        .bodySmall,
+                                                                                        color =
+                                                                                                MaterialTheme.colorScheme
+                                                                                                        .onSurfaceVariant
+                                                                                )
+                                                                        }
+                                                                }
+                                                                Switch(
+                                                                        checked = isBiometricEnabled,
+                                                                        onCheckedChange = { enabled ->
+                                                                                try {
+                                                                                        if (enabled) viewModel.enableBiometric()
+                                                                                        else viewModel.disableBiometric()
+                                                                                } catch (e: Exception) {
+                                                                                        Log.e("SettingsScreen", "Failed to toggle biometric", e)
+                                                                                }
+                                                                        }
                                                                 )
+                                                        }
+
+                                                        Spacer(modifier = Modifier.height(12.dp))
+                                                        HorizontalDivider()
+
+                                                        Spacer(modifier = Modifier.height(12.dp))
+                                                        Row(
+                                                                modifier = Modifier.fillMaxWidth(),
+                                                                verticalAlignment = Alignment.Top
+                                                        ) {
+                                                                Icon(
+                                                                        imageVector = Icons.Rounded.Info,
+                                                                        contentDescription = null,
+                                                                        tint =
+                                                                                MaterialTheme.colorScheme
+                                                                                        .onSurfaceVariant,
+                                                                        modifier = Modifier.size(14.dp).padding(top = 1.dp)
+                                                                )
+                                                                Spacer(modifier = Modifier.width(8.dp))
                                                                 Text(
                                                                         text =
-                                                                                if (isBiometricEnabled)
-                                                                                        "Fingerprint or Face ID enabled"
-                                                                                else "Use biometric instead of PIN",
+                                                                                "PIN lock prevents unauthorized access to the app but does not encrypt your journal data on disk. Someone with direct file access could still read your entries.",
                                                                         style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodySmall,
+                                                                                MaterialTheme.typography.bodySmall,
                                                                         color =
                                                                                 MaterialTheme.colorScheme
                                                                                         .onSurfaceVariant
                                                                 )
                                                         }
                                                 }
-                                                Switch(
-                                                        checked = isBiometricEnabled,
-                                                        onCheckedChange = { enabled ->
-                                                                try {
-                                                                        if (enabled) viewModel.enableBiometric()
-                                                                        else viewModel.disableBiometric()
-                                                                } catch (e: Exception) {
-                                                                        Log.e("SettingsScreen", "Failed to toggle biometric", e)
-                                                                }
-                                                        }
-                                                )
-                                        }
-                                }
-
-                                if (isPinEnabled) {
-                                        Spacer(modifier = Modifier.height(8.dp))
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(horizontal = 4.dp),
-                                                verticalAlignment = Alignment.Top
-                                        ) {
-                                                Icon(
-                                                        imageVector = Icons.Rounded.Info,
-                                                        contentDescription = null,
-                                                        tint =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant,
-                                                        modifier = Modifier.size(14.dp).padding(top = 1.dp)
-                                                )
-                                                Spacer(modifier = Modifier.width(6.dp))
-                                                Text(
-                                                        text =
-                                                                "PIN lock prevents unauthorized access to the app but does not encrypt your journal data on disk. Someone with direct file access could still read your entries.",
-                                                        style =
-                                                                MaterialTheme.typography.bodySmall,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant
-                                                )
                                         }
                                 }
 
