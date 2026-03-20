@@ -1070,6 +1070,8 @@ fun SettingsScreen(
                                                                 )
                                                         }
                                                 }
+                                        }
+
                                         HorizontalDivider(
                                                 color = MaterialTheme.colorScheme.surfaceVariant
                                         )
@@ -1154,7 +1156,6 @@ fun SettingsScreen(
                                                                 viewModel.setEnableDragAndDrop(it)
                                                         }
                                                 )
-                                        }
                                         }
                                 }
 
