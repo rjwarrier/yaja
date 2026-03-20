@@ -627,7 +627,7 @@ class JournalViewModel(
                         totalDaysWithEntries = 0,
                         writingConsistencyScore = 0f,
                         monthlyEntryTrend = emptyList(),
-                        entriesByLength = Triple(0, 0, 0)
+                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0)
                     )
                 }
 
@@ -638,6 +638,7 @@ class JournalViewModel(
                 var shortCount = 0
                 var mediumCount = 0
                 var longCount = 0
+                var intenseCount = 0
 
                 // Iterate through all dates and collect statistics
                 for (date in allDates) {
@@ -660,9 +661,10 @@ class JournalViewModel(
 
                         // Categorize the whole day by its total word count
                         when {
-                            dayTotalWords < 50 -> shortCount++
-                            dayTotalWords <= 200 -> mediumCount++
-                            else -> longCount++
+                            dayTotalWords < 50   -> shortCount++
+                            dayTotalWords < 200  -> mediumCount++
+                            dayTotalWords < 500  -> longCount++
+                            else                 -> intenseCount++
                         }
                     }
                 }
@@ -733,7 +735,7 @@ class JournalViewModel(
                     totalDaysWithEntries = allDates.size,
                     writingConsistencyScore = consistencyScore,
                     monthlyEntryTrend = monthlyTrend,
-                    entriesByLength = Triple(shortCount, mediumCount, longCount)
+                    entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount)
                 )
             }
             _allTimeStats.value = stats

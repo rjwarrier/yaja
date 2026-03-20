@@ -18,6 +18,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -49,7 +50,15 @@ data class AllTimeStatsData(
     val totalDaysWithEntries: Int,
     val writingConsistencyScore: Float, // 0-100
     val monthlyEntryTrend: List<Pair<String, Int>>, // Month, count
-    val entriesByLength: Triple<Int, Int, Int> // short, medium, long
+    val entriesByLength: DayDistribution
+)
+
+/** Daily writing volume categories. Each field counts days that fall in that bracket. */
+data class DayDistribution(
+    val light: Int,    // < 50 words
+    val moderate: Int, // 50–200 words
+    val heavy: Int,    // 200–500 words
+    val intense: Int   // 500+ words
 )
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -376,12 +385,11 @@ fun StatisticsScreen(
                                 .padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            val (short, medium, long) = allTimeStats!!.entriesByLength
-                            val total = short + medium + long
+                            val dist = allTimeStats!!.entriesByLength
+                            val total = dist.light + dist.moderate + dist.heavy + dist.intense
 
-                            fun getPercentage(count: Int): Float {
-                                return if (total == 0) 0f else (count.toFloat() / total) * 100
-                            }
+                            fun getPercentage(count: Int): Float =
+                                if (total == 0) 0f else (count.toFloat() / total) * 100
 
                             Text(
                                 text = "Based on total words written per day",
@@ -391,24 +399,31 @@ fun StatisticsScreen(
                             )
 
                             EntryLengthBar(
-                                label = "Light days  (< 50 words)",
-                                count = short,
-                                percentage = getPercentage(short),
+                                label = "Light  (< 50 words)",
+                                count = dist.light,
+                                percentage = getPercentage(dist.light),
                                 color = MaterialTheme.colorScheme.primary
                             )
 
                             EntryLengthBar(
-                                label = "Moderate days  (50–200 words)",
-                                count = medium,
-                                percentage = getPercentage(medium),
+                                label = "Moderate  (50–200 words)",
+                                count = dist.moderate,
+                                percentage = getPercentage(dist.moderate),
                                 color = MaterialTheme.colorScheme.secondary
                             )
 
                             EntryLengthBar(
-                                label = "Heavy days  (> 200 words)",
-                                count = long,
-                                percentage = getPercentage(long),
+                                label = "Heavy  (200–500 words)",
+                                count = dist.heavy,
+                                percentage = getPercentage(dist.heavy),
                                 color = MaterialTheme.colorScheme.tertiary
+                            )
+
+                            EntryLengthBar(
+                                label = "Intense  (500+ words)",
+                                count = dist.intense,
+                                percentage = getPercentage(dist.intense),
+                                color = Color(0xFFFF6D00) // deep orange — complements the green theme
                             )
                         }
                     }
@@ -685,12 +700,13 @@ private fun EntryHeatmap(
                             val wordCount = entryLengthMap[date] ?: 0
                             val hasEntry = datesWithEntries.contains(date)
 
-                            // Color based on entry length
+                            // Color based on total words written that day
                             val cellColor = when {
                                 !hasEntry -> MaterialTheme.colorScheme.surfaceVariant
-                                wordCount < 50 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)    // Light
-                                wordCount < 200 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)   // Medium
-                                else -> MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)              // Dark
+                                wordCount < 50  -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)  // Light
+                                wordCount < 200 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)  // Moderate
+                                wordCount < 500 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)  // Heavy
+                                else            -> Color(0xFFFF6D00)                                     // Intense 500+
                             }
 
                             Surface(
@@ -740,6 +756,12 @@ private fun EntryHeatmap(
                     modifier = Modifier.size(12.dp),
                     shape = RoundedCornerShape(2.dp),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
+                ) {}
+
+                Surface(
+                    modifier = Modifier.size(12.dp),
+                    shape = RoundedCornerShape(2.dp),
+                    color = Color(0xFFFF6D00)
                 ) {}
 
                 Text(
