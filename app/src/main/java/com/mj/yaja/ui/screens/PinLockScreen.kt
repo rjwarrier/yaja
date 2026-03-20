@@ -20,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.offset
+import android.content.Context
+import android.content.ContextWrapper
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,6 +30,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
 import kotlinx.coroutines.delay
+
+/** Walk the ContextWrapper chain to find the underlying FragmentActivity.
+ *  LocalContext.current in Compose is often a wrapped context, so a direct cast fails. */
+private fun Context.findFragmentActivity(): FragmentActivity? {
+    var ctx = this
+    while (ctx is ContextWrapper) {
+        if (ctx is FragmentActivity) return ctx
+        ctx = ctx.baseContext
+    }
+    return null
+}
 
 /** Determines the behaviour of [PinLockScreen]. */
 enum class PinMode {
@@ -124,7 +137,7 @@ fun PinLockScreen(
     // Auto-trigger biometric prompt when screen first opens in ENTER mode
     LaunchedEffect(Unit) {
         if (mode == PinMode.ENTER && isBiometricAvailable) {
-            val activity = context as? FragmentActivity
+            val activity = context.findFragmentActivity()
             if (activity != null) {
                 showBiometricPrompt(
                     activity,
@@ -253,7 +266,7 @@ fun PinLockScreen(
                 if (mode == PinMode.ENTER && isBiometricAvailable) {
                     IconButton(
                         onClick = {
-                            val activity = context as? FragmentActivity
+                            val activity = context.findFragmentActivity()
                             if (activity != null) {
                                 showBiometricPrompt(
                                     activity,
