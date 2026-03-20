@@ -1111,17 +1111,6 @@ fun CalendarScreen(
                                         }
                                 } // end AnimatedVisibility (Calendar Card)
 
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                AnimatedVisibility(
-                                        visible = visible,
-                                        enter =
-                                                slideInVertically(
-                                                        initialOffsetY = { it / 2 },
-                                                        animationSpec = tween(350, 200)
-                                                ) + fadeIn(animationSpec = tween(350, 200))
-                                ) { MonthlyStatsGraph(stats = uiState.monthlyStats) }
-
                                 AnimatedVisibility(
                                         visible = visible && uiState.yearlyStats.size > 1,
                                         enter =

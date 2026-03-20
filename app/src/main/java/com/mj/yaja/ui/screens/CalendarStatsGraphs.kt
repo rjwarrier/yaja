@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -40,131 +39,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.time.YearMonth
-import java.time.format.TextStyle
-import java.util.Locale
 
-@Composable
-fun MonthlyStatsGraph(stats: List<Pair<YearMonth, Int>>) {
-        ElevatedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors =
-                        CardDefaults.elevatedCardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-                        ),
-                elevation = CardDefaults.elevatedCardElevation(0.dp),
-                shape = MaterialTheme.shapes.medium
-        ) {
-                Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-                        Text(
-                                text = "Activity (Last 12 Months)",
-                                style =
-                                        MaterialTheme.typography.titleMedium.copy(
-                                                fontWeight = FontWeight.Bold
-                                        ),
-                                color = MaterialTheme.colorScheme.primary
-                        )
-                        Spacer(modifier = Modifier.height(24.dp))
-
-                        Row(
-                                modifier = Modifier.fillMaxWidth().height(180.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.Bottom
-                        ) {
-                                stats.forEach { (month, count) ->
-                                        val daysInMonth = month.lengthOfMonth()
-                                        val percentage = (count.toFloat() / daysInMonth) * 100f
-                                        val isComplete = count == daysInMonth
-
-                                        Column(
-                                                horizontalAlignment = Alignment.CenterHorizontally,
-                                                modifier = Modifier.weight(1f).fillMaxHeight()
-                                        ) {
-                                                Text(
-                                                        text = "${percentage.toInt()}%",
-                                                        style =
-                                                                MaterialTheme.typography.labelSmall
-                                                                        .copy(fontSize = 10.sp),
-                                                        color =
-                                                                if (isComplete)
-                                                                        MaterialTheme.colorScheme
-                                                                                .tertiary
-                                                                else
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                                                .copy(alpha = 0.6f)
-                                                )
-                                                Spacer(modifier = Modifier.height(6.dp))
-                                                Box(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth(0.5f)
-                                                                        .weight(1f),
-                                                        contentAlignment = Alignment.BottomCenter
-                                                ) {
-                                                        // Background track
-                                                        Box(
-                                                                modifier =
-                                                                        Modifier.fillMaxSize()
-                                                                                .background(
-                                                                                        color =
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .surfaceVariant
-                                                                                                        .copy(
-                                                                                                                alpha =
-                                                                                                                        0.3f
-                                                                                                        ),
-                                                                                        shape =
-                                                                                                CircleShape
-                                                                                )
-                                                        )
-                                                        // Progress Bar
-                                                        Box(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .fillMaxHeight(
-                                                                                        percentage /
-                                                                                                100f
-                                                                                )
-                                                                                .background(
-                                                                                        color =
-                                                                                                when {
-                                                                                                        isComplete ->
-                                                                                                                MaterialTheme
-                                                                                                                        .colorScheme
-                                                                                                                        .tertiary
-                                                                                                        count >
-                                                                                                                0 ->
-                                                                                                                MaterialTheme
-                                                                                                                        .colorScheme
-                                                                                                                        .primary
-                                                                                                        else ->
-                                                                                                                Color.Transparent
-                                                                                                },
-                                                                                        shape =
-                                                                                                CircleShape
-                                                                                )
-                                                        )
-                                                }
-                                                Spacer(modifier = Modifier.height(12.dp))
-                                                Text(
-                                                        text =
-                                                                month.month.getDisplayName(
-                                                                        TextStyle.NARROW,
-                                                                        Locale.getDefault()
-                                                                ),
-                                                        style = MaterialTheme.typography.labelSmall,
-                                                        fontWeight = FontWeight.Bold,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant
-                                                )
-                                        }
-                                }
-                        }
-                }
-        }
-}
 
 @Composable
 fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
