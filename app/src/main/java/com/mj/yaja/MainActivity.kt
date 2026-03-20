@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -21,17 +22,14 @@ import androidx.compose.material.icons.rounded.Book
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.History
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.unit.dp
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.compose.ui.unit.*
+// import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -50,6 +48,7 @@ import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
 import com.mj.yaja.ui.screens.SettingsScreen
 import com.mj.yaja.ui.screens.ShortcodesScreen
+import com.mj.yaja.ui.screens.StatisticsScreen
 import com.mj.yaja.ui.theme.JournalTheme
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import com.mj.yaja.ui.navigation.Route
@@ -57,6 +56,7 @@ import com.mj.yaja.ui.widget.QuickCaptureWidgetProvider
 import kotlin.math.PI
 import kotlin.math.sin
 import kotlinx.coroutines.launch
+import java.io.File
 
 class MainActivity : ComponentActivity() {
 
@@ -79,27 +79,65 @@ class MainActivity : ComponentActivity() {
             }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
-        super.onCreate(savedInstanceState)
-        setContent { JournalApp(viewModel) }
+        try {
+            // SplashScreen.installSplashScreen(this)
+            super.onCreate(savedInstanceState)
+            setContent {
+                val crashLog = remember { checkCrashLog() }
+                JournalApp(viewModel, crashLog) 
+            }
+        } catch (e: Throwable) {
+            android.util.Log.e("MainActivity", "Critical crash in onCreate", e)
+            super.onCreate(savedInstanceState)
+            throw e 
+        }
     }
 
     override fun onStart() {
         super.onStart()
         viewModel.onAppResume()
         val filter = IntentFilter(QuickCaptureWidgetProvider.ACTION_WIDGET_STATUS_CHANGED)
-        // RECEIVER_NOT_EXPORTED: this broadcast is sent internally (same app only)
-        registerReceiver(widgetStatusReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        // Use ContextCompat.registerReceiver for API compatibility (RECEIVER_NOT_EXPORTED requires API 33+)
+        ContextCompat.registerReceiver(this, widgetStatusReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
     }
 
-    override fun onStop() {
-        super.onStop()
-        unregisterReceiver(widgetStatusReceiver)
+    private fun checkCrashLog(): String? {
+        return try {
+            val file = File(cacheDir, "crash_log.txt")
+            if (file.exists()) file.readText() else null
+        } catch (e: Exception) {
+            null
+        }
     }
+
+    // Helper for context access if needed
+    fun getAppActivityContext(): Context = applicationContext
 }
 
 @Composable
-fun JournalApp(viewModel: JournalViewModel) {
+fun JournalApp(viewModel: JournalViewModel, initialCrashLog: String? = null) {
+    var showCrashDialog by remember { mutableStateOf(initialCrashLog != null) }
+    
+    if (showCrashDialog && initialCrashLog != null) {
+        AlertDialog(
+            onDismissRequest = { showCrashDialog = false },
+            title = { Text("Previous Session Crash Log") },
+            text = { 
+                androidx.compose.foundation.lazy.LazyColumn(modifier = Modifier.heightIn(max = 400.dp)) {
+                    item { Text(initialCrashLog, style = androidx.compose.ui.text.TextStyle(fontSize = 12.sp, fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace)) }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { 
+                    showCrashDialog = false
+                    viewModel.clearCrashLog()
+                }) {
+                    Text("Clear & Close")
+                }
+            }
+        )
+    }
+
     val navController = rememberNavController()
 
     val themePreference by viewModel.themePreference.collectAsState()
@@ -161,6 +199,8 @@ fun JournalApp(viewModel: JournalViewModel) {
                     }
                 }
 
+        val showStatistics by viewModel.showStatistics.collectAsState()
+
         AppNavigationDrawer(
                 drawerState = drawerState,
                 scope = scope,
@@ -173,6 +213,7 @@ fun JournalApp(viewModel: JournalViewModel) {
                     navController.navigate(Route.Calendar.path) { popUpTo(Route.Home.path) }
                 },
                 onNavigateToLookback = { navController.navigate(Route.Lookback.path) { popUpTo(Route.Home.path) } },
+                onNavigateToStatistics = { navController.navigate(Route.Statistics.path) { popUpTo(Route.Home.path) } },
                 onNavigateToShortcodes = {
                     navController.navigate(Route.Shortcodes.path) { popUpTo(Route.Home.path) }
                 },
@@ -182,7 +223,8 @@ fun JournalApp(viewModel: JournalViewModel) {
                 onSurpriseMe = { randomDate ->
                     viewModel.selectDate(randomDate)
                     navController.navigate(Route.Home.path) { popUpTo(Route.Home.path) { inclusive = true } }
-                }
+                },
+                showStatistics = showStatistics
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
                 val syncProgress by viewModel.syncProgress.collectAsState()
@@ -281,6 +323,7 @@ fun JournalApp(viewModel: JournalViewModel) {
                         }
                 ) {
                     composable(Route.PinLock.path) {
+                        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
                         PinLockScreen(
                                 mode = PinMode.ENTER,
                                 checkPin = { viewModel.checkPin(it) },
@@ -289,7 +332,8 @@ fun JournalApp(viewModel: JournalViewModel) {
                                         popUpTo(Route.PinLock.path) { inclusive = true }
                                     }
                                 },
-                                onSetupComplete = {}
+                                onSetupComplete = {},
+                                isBiometricAvailable = isBiometricEnabled
                         )
                     }
                     composable(Route.PinSetup.path) {
@@ -304,6 +348,7 @@ fun JournalApp(viewModel: JournalViewModel) {
                         )
                     }
                     composable(Route.PinDisable.path) {
+                        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
                         PinLockScreen(
                                 mode = PinMode.DISABLE,
                                 checkPin = { viewModel.checkPin(it) },
@@ -312,7 +357,8 @@ fun JournalApp(viewModel: JournalViewModel) {
                                     navController.popBackStack()
                                 },
                                 onSetupComplete = {},
-                                onCancel = { navController.popBackStack() }
+                                onCancel = { navController.popBackStack() },
+                                isBiometricAvailable = isBiometricEnabled
                         )
                     }
                     composable(
@@ -413,6 +459,26 @@ fun JournalApp(viewModel: JournalViewModel) {
                                         popUpTo(Route.Home.path) { inclusive = false }
                                     }
                                 },
+                                onNavigateToShortcodes = { navController.navigate(Route.Shortcodes.path) },
+                                onNavigateToSettings = { navController.navigate(Route.Settings.path) },
+                                onNavigateToHelp = { navController.navigate(Route.Help.path) }
+                        )
+                    }
+                    composable(Route.Statistics.path) {
+                        StatisticsScreen(
+                                viewModel = viewModel,
+                                onOpenDrawer = { scope.launch { drawerState.open() } },
+                                onNavigateBack = { navController.popBackStack() },
+                                onNavigateToJournal = {
+                                    navController.navigate(Route.Home.path) {
+                                        popUpTo(Route.Home.path) { inclusive = true }
+                                    }
+                                },
+                                onNavigateToCalendar = {
+                                    viewModel.refreshCalendarDates()
+                                    navController.navigate(Route.Calendar.path)
+                                },
+                                onNavigateToLookback = { navController.navigate(Route.Lookback.path) },
                                 onNavigateToShortcodes = { navController.navigate(Route.Shortcodes.path) },
                                 onNavigateToSettings = { navController.navigate(Route.Settings.path) },
                                 onNavigateToHelp = { navController.navigate(Route.Help.path) }

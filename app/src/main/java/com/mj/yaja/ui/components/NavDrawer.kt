@@ -34,11 +34,13 @@ fun AppNavigationDrawer(
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit,
         onNavigateToLookback: () -> Unit,
+        onNavigateToStatistics: () -> Unit = {},
         onNavigateToShortcodes: () -> Unit,
         onNavigateToSettings: () -> Unit,
         onNavigateToHelp: () -> Unit,
         datesWithEntries: Set<LocalDate> = emptySet(),
         onSurpriseMe: (LocalDate) -> Unit = {},
+        showStatistics: Boolean = true,
         content: @Composable () -> Unit
 ) {
         ModalNavigationDrawer(
@@ -132,6 +134,24 @@ fun AppNavigationDrawer(
                                         modifier = Modifier.padding(horizontal = 12.dp)
                                 )
                                 Spacer(Modifier.height(8.dp))
+                                if (showStatistics) {
+                                        NavigationDrawerItem(
+                                                icon = {
+                                                        Icon(
+                                                                Icons.Rounded.TrendingUp,
+                                                                contentDescription = null
+                                                        )
+                                                },
+                                                label = { Text("Statistics") },
+                                                selected = currentRoute == "statistics",
+                                                onClick = {
+                                                        scope.launch { drawerState.close() }
+                                                        onNavigateToStatistics()
+                                                },
+                                                modifier = Modifier.padding(horizontal = 12.dp)
+                                        )
+                                        Spacer(Modifier.height(8.dp))
+                                }
                                 NavigationDrawerItem(
                                         icon = {
                                                 Icon(

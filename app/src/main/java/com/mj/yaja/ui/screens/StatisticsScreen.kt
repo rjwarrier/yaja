@@ -625,9 +625,11 @@ private fun EntryHeatmap(
 
     val scrollState = rememberScrollState()
 
-    // Scroll to the right to show recent dates
-    LaunchedEffect(Unit) {
-        scrollState.animateScrollTo(scrollState.maxValue)
+    // Scroll to the right to show recent dates once layout is complete
+    LaunchedEffect(scrollState.maxValue) {
+        if (scrollState.maxValue > 0) {
+            scrollState.scrollTo(scrollState.maxValue)
+        }
     }
 
     ElevatedCard(

@@ -81,6 +81,8 @@ class JournalViewModel(
     val swipeDeleteDirection = settingsRepository.swipeDeleteDirection
     val swipeToSyncEnabled = settingsRepository.swipeToSyncEnabled
     val widgetCornerRadius = settingsRepository.widgetCornerRadius
+    val showStatistics = settingsRepository.showStatistics
+    val enableDragAndDrop = settingsRepository.enableDragAndDrop
     val showWidgetLabel = settingsRepository.showWidgetLabel
     val hasActiveWidgets = settingsRepository.hasActiveWidgets
     val showBottomBar = settingsRepository.showBottomBar
@@ -423,6 +425,14 @@ class JournalViewModel(
 
     fun setShowTimestamps(show: Boolean) {
         settingsRepository.setShowTimestamps(show)
+    }
+
+    fun setShowStatistics(show: Boolean) {
+        settingsRepository.setShowStatistics(show)
+    }
+
+    fun setEnableDragAndDrop(enable: Boolean) {
+        settingsRepository.setEnableDragAndDrop(enable)
     }
 
     fun setCustomShortcode(code: String, value: String) {

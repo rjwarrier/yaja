@@ -1,5 +1,7 @@
 package com.mj.yaja.ui.screens
 
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -10,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Backspace
 import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Fingerprint
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,11 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.FragmentActivity
 import kotlinx.coroutines.delay
 
 /** Determines the behaviour of [PinLockScreen]. */
@@ -36,18 +41,85 @@ enum class PinMode {
 
 private const val PIN_LENGTH = 4
 
+private fun showBiometricPrompt(activity: FragmentActivity, onSuccess: () -> Unit, onError: (String) -> Unit = {}) {
+    val biometricManager = BiometricManager.from(activity)
+
+    // Try BIOMETRIC_WEAK first, then fall back to BIOMETRIC_STRONG
+    val canAuthenticateWeak = biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)
+    val canAuthenticateStrong = biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+    val canAuthenticate = when {
+        canAuthenticateWeak == BiometricManager.BIOMETRIC_SUCCESS -> BiometricManager.BIOMETRIC_SUCCESS
+        canAuthenticateStrong == BiometricManager.BIOMETRIC_SUCCESS -> BiometricManager.BIOMETRIC_SUCCESS
+        else -> BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED
+    }
+
+    when (canAuthenticate) {
+        BiometricManager.BIOMETRIC_SUCCESS -> {
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Unlock with Biometric")
+                .setSubtitle("Use your fingerprint or face to unlock")
+                .setAllowedAuthenticators(
+                    if (canAuthenticateWeak == BiometricManager.BIOMETRIC_SUCCESS)
+                        BiometricManager.Authenticators.BIOMETRIC_WEAK
+                    else
+                        BiometricManager.Authenticators.BIOMETRIC_STRONG
+                )
+                .setNegativeButtonText("Cancel")
+                .build()
+
+            val biometricPrompt = BiometricPrompt(
+                activity,
+                object : BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
+                        onSuccess()
+                    }
+
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        if (errorCode != BiometricPrompt.ERROR_USER_CANCELED) {
+                            onError(errString.toString())
+                        }
+                    }
+
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        onError("Biometric authentication failed. Try again.")
+                    }
+                }
+            )
+
+            biometricPrompt.authenticate(promptInfo)
+        }
+        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+            onError("No biometric enrolled. Please enroll a fingerprint or face in device settings.")
+        }
+        BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+            onError("Biometric hardware is unavailable.")
+        }
+        BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+            onError("This device does not have biometric hardware.")
+        }
+        else -> {
+            onError("Biometric authentication is not available.")
+        }
+    }
+}
+
 @Composable
 fun PinLockScreen(
     mode: PinMode,
     onEnterCorrect: () -> Unit,       // Called after correct PIN in ENTER/DISABLE mode
     onSetupComplete: (String) -> Unit, // Called with the confirmed PIN in SETUP mode
     onCancel: (() -> Unit)? = null,   // Optional cancel (only shown in Settings flows)
-    checkPin: ((String) -> Boolean)? = null // Required for ENTER/DISABLE mode
+    checkPin: ((String) -> Boolean)? = null, // Required for ENTER/DISABLE mode
+    isBiometricAvailable: Boolean = false // Whether biometric is available and enabled
 ) {
     var pin by remember { mutableStateOf("") }
     var confirmPin by remember { mutableStateOf("") }
     var isConfirming by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     // Shake animation state
     val shakeOffset = remember { Animatable(0f) }
@@ -162,6 +234,32 @@ fun PinLockScreen(
                     fontWeight = FontWeight.SemiBold,
                     textAlign = TextAlign.Center
                 )
+
+                // Biometric button (only in ENTER mode if available)
+                if (mode == PinMode.ENTER && isBiometricAvailable) {
+                    IconButton(
+                        onClick = {
+                            val activity = context as? FragmentActivity
+                            if (activity != null) {
+                                showBiometricPrompt(
+                                    activity,
+                                    onSuccess = onEnterCorrect,
+                                    onError = { error ->
+                                        errorMessage = error
+                                    }
+                                )
+                            }
+                        },
+                        modifier = Modifier.size(48.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Fingerprint,
+                            contentDescription = "Use Biometric",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
+                }
 
                 // Dot indicators with shake offset
                 Row(

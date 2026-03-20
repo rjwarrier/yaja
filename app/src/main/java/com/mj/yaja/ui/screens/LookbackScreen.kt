@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material.icons.rounded.TrendingUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -44,7 +43,6 @@ fun LookbackScreen(
         val flashbacks = uiState.lookbackEntries
         val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
         val previewLimitLength by viewModel.previewLimitLength.collectAsState()
-        val monthlyStats by viewModel.monthlyStats.collectAsState()
 
         Scaffold(
                 topBar = {

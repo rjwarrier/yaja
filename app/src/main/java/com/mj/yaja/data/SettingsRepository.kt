@@ -72,6 +72,9 @@ class SettingsRepository(private val context: Context) {
     private val _isPinEnabled = MutableStateFlow(prefs.getBoolean(KEY_PIN_ENABLED, false))
     val isPinEnabled: StateFlow<Boolean> = _isPinEnabled.asStateFlow()
 
+    private val _isBiometricEnabled = MutableStateFlow(prefs.getBoolean(KEY_BIOMETRIC_ENABLED, false))
+    val isBiometricEnabled: StateFlow<Boolean> = _isBiometricEnabled.asStateFlow()
+
     private val _allowFutureEntries = MutableStateFlow(getSavedAllowFutureEntries())
     val allowFutureEntries: StateFlow<Boolean> = _allowFutureEntries.asStateFlow()
 
@@ -108,6 +111,12 @@ class SettingsRepository(private val context: Context) {
     private val _previewLimitLength = MutableStateFlow(getSavedPreviewLimitLength())
     val previewLimitLength: StateFlow<Int> = _previewLimitLength.asStateFlow()
 
+    private val _showStatistics = MutableStateFlow(getSavedShowStatistics())
+    val showStatistics: StateFlow<Boolean> = _showStatistics.asStateFlow()
+
+    private val _enableDragAndDrop = MutableStateFlow(getSavedEnableDragAndDrop())
+    val enableDragAndDrop: StateFlow<Boolean> = _enableDragAndDrop.asStateFlow()
+
     /** Sets a new PIN — generates a fresh salt and stores PBKDF2(pin, salt). */
     fun setPin(plain: String) {
         val salt = generateSalt()
@@ -123,6 +132,18 @@ class SettingsRepository(private val context: Context) {
     fun clearPin() {
         prefs.edit().remove(KEY_PIN_HASH).putBoolean(KEY_PIN_ENABLED, false).apply()
         _isPinEnabled.value = false
+    }
+
+    /** Enables biometric authentication as an alternative to PIN. */
+    fun enableBiometric() {
+        prefs.edit().putBoolean(KEY_BIOMETRIC_ENABLED, true).apply()
+        _isBiometricEnabled.value = true
+    }
+
+    /** Disables biometric authentication. */
+    fun disableBiometric() {
+        prefs.edit().putBoolean(KEY_BIOMETRIC_ENABLED, false).apply()
+        _isBiometricEnabled.value = false
     }
 
     /**
@@ -290,14 +311,23 @@ class SettingsRepository(private val context: Context) {
     }
 
     fun refreshActiveWidgetsStatus() {
-        val manager = android.appwidget.AppWidgetManager.getInstance(context)
-        val componentName =
-                android.content.ComponentName(
-                        context,
-                        "com.mj.yaja.ui.widget.QuickCaptureWidgetProvider"
-                )
-        val ids = manager.getAppWidgetIds(componentName)
-        _hasActiveWidgets.value = ids.isNotEmpty()
+        try {
+            val manager = android.appwidget.AppWidgetManager.getInstance(context)
+            if (manager == null) {
+                _hasActiveWidgets.value = false
+                return
+            }
+            val componentName =
+                    android.content.ComponentName(
+                            context,
+                            "com.mj.yaja.ui.widget.QuickCaptureWidgetProvider"
+                    )
+            val ids = manager.getAppWidgetIds(componentName)
+            _hasActiveWidgets.value = ids != null && ids.isNotEmpty()
+        } catch (e: Throwable) {
+            android.util.Log.e("SettingsRepository", "Error refreshing widgets", e)
+            _hasActiveWidgets.value = false
+        }
     }
 
     fun toggleFavorite(date: LocalDate) {
@@ -329,6 +359,16 @@ class SettingsRepository(private val context: Context) {
     fun setPreviewLimitLength(length: Int) {
         prefs.edit().putInt(KEY_PREVIEW_LIMIT_LENGTH, length).apply()
         _previewLimitLength.value = length
+    }
+
+    fun setShowStatistics(show: Boolean) {
+        prefs.edit().putBoolean(KEY_SHOW_STATISTICS, show).apply()
+        _showStatistics.value = show
+    }
+
+    fun setEnableDragAndDrop(enable: Boolean) {
+        prefs.edit().putBoolean(KEY_ENABLE_DRAG_AND_DROP, enable).apply()
+        _enableDragAndDrop.value = enable
     }
 
     private fun getSavedThemePreference(): ThemePreference =
@@ -425,6 +465,10 @@ class SettingsRepository(private val context: Context) {
 
     private fun getSavedPreviewLimitLength(): Int = prefs.getInt(KEY_PREVIEW_LIMIT_LENGTH, 200)
 
+    private fun getSavedShowStatistics(): Boolean = prefs.getBoolean(KEY_SHOW_STATISTICS, true)
+
+    private fun getSavedEnableDragAndDrop(): Boolean = prefs.getBoolean(KEY_ENABLE_DRAG_AND_DROP, true)
+
     companion object {
         @Volatile private var instance: SettingsRepository? = null
 
@@ -451,6 +495,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_FAVORITED_DATES = "favorited_dates"
         private const val KEY_PIN_HASH = "pin_hash"
         private const val KEY_PIN_ENABLED = "pin_enabled"
+        private const val KEY_BIOMETRIC_ENABLED = "biometric_enabled"
         // PBKDF2 parameters for PIN hashing
         private const val PBKDF2_ITERATIONS = 10_000
         private const val PBKDF2_KEY_LENGTH_BITS = 256
@@ -466,6 +511,8 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_SHORTCODES_V2_MIGRATED = "shortcodes_v2_migrated"
         private const val KEY_PREVIEW_LIMIT_ENABLED = "preview_limit_enabled"
         private const val KEY_PREVIEW_LIMIT_LENGTH = "preview_limit_length"
+        private const val KEY_SHOW_STATISTICS = "show_statistics"
+        private const val KEY_ENABLE_DRAG_AND_DROP = "enable_drag_and_drop"
 
         /** Parses an enum by name from SharedPreferences, falling back to [default] on error. */
         private inline fun <reified T : Enum<T>> getEnum(value: String?, default: T): T {

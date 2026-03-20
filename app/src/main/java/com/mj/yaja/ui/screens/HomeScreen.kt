@@ -52,6 +52,7 @@ fun HomeScreen(
         val favoritedDates by viewModel.favoritedDates.collectAsState()
         val isFavorited = favoritedDates.contains(uiState.selectedDate.toString())
         val lastDeleted by viewModel.lastDeleted.collectAsState()
+        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
 
         // Countdown state for undo bar (5 seconds)
         val undoCountdown = remember { Animatable(1f) }
@@ -279,8 +280,9 @@ fun HomeScreenContent(
         var showFutureDateDialog by remember { mutableStateOf(false) }
         var reorderedEntries by remember { mutableStateOf(entries) }
 
-        // Update reorderedEntries only when the date changes, not on every entries refresh
-        LaunchedEffect(selectedDate) {
+        // Update reorderedEntries when date changes OR entry count changes (add/delete)
+        // but NOT on every content refresh (to preserve reorder state)
+        LaunchedEffect(selectedDate, entries.size) {
                 reorderedEntries = entries
         }
 

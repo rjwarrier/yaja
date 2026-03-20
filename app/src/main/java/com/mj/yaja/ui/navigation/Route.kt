@@ -4,6 +4,7 @@ sealed class Route(val path: String) {
     data object Home : Route("home")
     data object Calendar : Route("calendar")
     data object Lookback : Route("lookback")
+    data object Statistics : Route("statistics")
     data object AddEntry : Route("add_entry")
     data object Settings : Route("settings")
     data object Shortcodes : Route("shortcodes")
@@ -13,6 +14,6 @@ sealed class Route(val path: String) {
     data object PinDisable : Route("pin_disable")
 
     companion object {
-        val topLevel: Set<String> = setOf(Home.path, Calendar.path, Lookback.path)
+        val topLevel: Set<String> by lazy { setOf(Home.path, Calendar.path, Lookback.path) }
     }
 }
