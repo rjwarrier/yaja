@@ -20,9 +20,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import java.time.Instant
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 enum class StatisticsPeriod {
@@ -68,6 +70,14 @@ fun StatisticsScreen(
     var customStartDate by remember { mutableStateOf(LocalDate.now().minusYears(1)) }
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
     var showCustomDatePicker by remember { mutableStateOf(false) }
+    var showStartDatePicker by remember { mutableStateOf(false) }
+    var showEndDatePicker by remember { mutableStateOf(false) }
+    val startDatePickerState = rememberDatePickerState(
+        initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+    )
+    val endDatePickerState = rememberDatePickerState(
+        initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+    )
 
     Scaffold(
         topBar = {
@@ -431,7 +441,7 @@ fun StatisticsScreen(
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Button(
-                        onClick = { /* TODO: Implement date picker */ },
+                        onClick = { showStartDatePicker = true },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Choose Start Date")
@@ -442,7 +452,7 @@ fun StatisticsScreen(
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Button(
-                        onClick = { /* TODO: Implement date picker */ },
+                        onClick = { showEndDatePicker = true },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Choose End Date")
@@ -466,6 +476,44 @@ fun StatisticsScreen(
                 }
             }
         )
+    }
+
+    if (showStartDatePicker) {
+        DatePickerDialog(
+            onDismissRequest = { showStartDatePicker = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    startDatePickerState.selectedDateMillis?.let { millis ->
+                        customStartDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
+                    }
+                    showStartDatePicker = false
+                }) { Text("OK") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showStartDatePicker = false }) { Text("Cancel") }
+            }
+        ) {
+            DatePicker(state = startDatePickerState)
+        }
+    }
+
+    if (showEndDatePicker) {
+        DatePickerDialog(
+            onDismissRequest = { showEndDatePicker = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    endDatePickerState.selectedDateMillis?.let { millis ->
+                        customEndDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
+                    }
+                    showEndDatePicker = false
+                }) { Text("OK") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showEndDatePicker = false }) { Text("Cancel") }
+            }
+        ) {
+            DatePicker(state = endDatePickerState)
+        }
     }
 }
 
