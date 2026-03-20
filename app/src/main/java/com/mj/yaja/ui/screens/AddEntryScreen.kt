@@ -53,8 +53,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextRange
@@ -100,7 +98,6 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                 )
                         )
                 }
-        val focusRequester = remember { FocusRequester() }
         val context = LocalContext.current
 
         val hasUnsavedChanges = textFieldValue.text != initialText
@@ -649,8 +646,7 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                                 },
                                                 modifier =
                                                         Modifier.fillMaxWidth()
-                                                                .weight(1f)
-                                                                .focusRequester(focusRequester),
+                                                                .weight(1f),
                                                 placeholder = { Text("What happened?") },
                                                 keyboardOptions =
                                                         KeyboardOptions(
@@ -842,14 +838,8 @@ fun AddEntryScreen(viewModel: JournalViewModel, onNavigateBack: () -> Unit) {
                                 }
                         }
 
-                        // Auto focus
-                        LaunchedEffect(isEditingMode) {
-                                if (isEditingMode) {
-                                        delay(100)
-                                        focusRequester.requestFocus()
-                                }
-                        }
                 }
+
         }
 }
 

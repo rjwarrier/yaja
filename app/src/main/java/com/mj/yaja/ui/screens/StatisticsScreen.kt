@@ -69,7 +69,6 @@ fun StatisticsScreen(
     var selectedPeriod by remember { mutableStateOf(StatisticsPeriod.ALL_TIME) }
     var customStartDate by remember { mutableStateOf(LocalDate.now().minusYears(1)) }
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
-    var showCustomDatePicker by remember { mutableStateOf(false) }
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
     val startDatePickerState = rememberDatePickerState(
@@ -117,7 +116,7 @@ fun StatisticsScreen(
                         onPeriodChange = { period ->
                             selectedPeriod = period
                             if (period == StatisticsPeriod.CUSTOM) {
-                                showCustomDatePicker = true
+                                showStartDatePicker = true
                             } else {
                                 viewModel.calculateStatsByPeriod(period)
                                 viewModel.updateHeatmapData()
@@ -434,79 +433,38 @@ fun StatisticsScreen(
         viewModel.updateHeatmapData()
     }
 
-    // Custom Date Picker Dialog
-    if (showCustomDatePicker) {
-        AlertDialog(
-            onDismissRequest = { showCustomDatePicker = false },
-            title = { Text("Select Custom Date Range") },
-            text = {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    Text(
-                        "Start Date: ${customStartDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Button(
-                        onClick = { showStartDatePicker = true },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Choose Start Date")
-                    }
-
-                    Text(
-                        "End Date: ${customEndDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Button(
-                        onClick = { showEndDatePicker = true },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Choose End Date")
-                    }
-                }
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
-                        viewModel.updateHeatmapData()
-                        showCustomDatePicker = false
-                    }
-                ) {
-                    Text("Apply")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showCustomDatePicker = false }) {
-                    Text("Cancel")
-                }
-            }
-        )
-    }
-
+    // Step 1: Pick start date
     if (showStartDatePicker) {
         DatePickerDialog(
-            onDismissRequest = { showStartDatePicker = false },
+            onDismissRequest = {
+                showStartDatePicker = false
+                // If user cancels without picking, revert period selection
+                selectedPeriod = StatisticsPeriod.ALL_TIME
+            },
             confirmButton = {
                 TextButton(onClick = {
                     startDatePickerState.selectedDateMillis?.let { millis ->
                         customStartDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
                     }
                     showStartDatePicker = false
-                }) { Text("OK") }
+                    showEndDatePicker = true  // Chain to step 2
+                }) { Text("Next") }
             },
             dismissButton = {
-                TextButton(onClick = { showStartDatePicker = false }) { Text("Cancel") }
+                TextButton(onClick = {
+                    showStartDatePicker = false
+                    selectedPeriod = StatisticsPeriod.ALL_TIME
+                }) { Text("Cancel") }
             }
         ) {
-            DatePicker(state = startDatePickerState)
+            DatePicker(
+                state = startDatePickerState,
+                headline = { Text("Select Start Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
+            )
         }
     }
 
+    // Step 2: Pick end date, then apply
     if (showEndDatePicker) {
         DatePickerDialog(
             onDismissRequest = { showEndDatePicker = false },
@@ -516,13 +474,18 @@ fun StatisticsScreen(
                         customEndDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
                     }
                     showEndDatePicker = false
-                }) { Text("OK") }
+                    viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
+                    viewModel.updateHeatmapData()
+                }) { Text("Apply") }
             },
             dismissButton = {
                 TextButton(onClick = { showEndDatePicker = false }) { Text("Cancel") }
             }
         ) {
-            DatePicker(state = endDatePickerState)
+            DatePicker(
+                state = endDatePickerState,
+                headline = { Text("Select End Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
+            )
         }
     }
 }

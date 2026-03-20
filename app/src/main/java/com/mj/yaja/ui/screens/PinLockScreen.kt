@@ -121,6 +121,20 @@ fun PinLockScreen(
     var errorMessage by remember { mutableStateOf("") }
     val context = LocalContext.current
 
+    // Auto-trigger biometric prompt when screen first opens in ENTER mode
+    LaunchedEffect(Unit) {
+        if (mode == PinMode.ENTER && isBiometricAvailable) {
+            val activity = context as? FragmentActivity
+            if (activity != null) {
+                showBiometricPrompt(
+                    activity,
+                    onSuccess = onEnterCorrect,
+                    onError = { error -> errorMessage = error }
+                )
+            }
+        }
+    }
+
     // Shake animation state
     val shakeOffset = remember { Animatable(0f) }
 

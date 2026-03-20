@@ -988,16 +988,21 @@ fun HomeScreenContent(
                                 AnimatedVisibility(
                                         visible = selectedDate != LocalDate.now(),
                                         enter =
-                                                scaleIn(
-                                                        spring(
-                                                                dampingRatio = 0.6f,
-                                                                stiffness = Spring.StiffnessMedium
-                                                        )
-                                                ) + fadeIn(),
+                                                expandVertically(
+                                                        animationSpec = spring(
+                                                                dampingRatio = 0.7f,
+                                                                stiffness = Spring.StiffnessMediumLow
+                                                        ),
+                                                        expandFrom = Alignment.Top
+                                                ) + fadeIn(tween(200)),
                                         exit =
-                                                scaleOut(
-                                                        spring(stiffness = Spring.StiffnessMedium)
-                                                ) + fadeOut()
+                                                shrinkVertically(
+                                                        animationSpec = spring(
+                                                                dampingRatio = 0.7f,
+                                                                stiffness = Spring.StiffnessMediumLow
+                                                        ),
+                                                        shrinkTowards = Alignment.Top
+                                                ) + fadeOut(tween(150))
                                 ) {
                                         FloatingActionButton(
                                                 onClick = onJumpToToday,
