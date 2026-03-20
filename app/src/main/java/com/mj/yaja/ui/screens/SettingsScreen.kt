@@ -1070,6 +1070,91 @@ fun SettingsScreen(
                                                                 )
                                                         }
                                                 }
+                                        HorizontalDivider(
+                                                color = MaterialTheme.colorScheme.surfaceVariant
+                                        )
+
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 8.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text = "Show Statistics",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurface
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Display statistics button in menu",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurfaceVariant
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = showStatistics,
+                                                        onCheckedChange = {
+                                                                viewModel.setShowStatistics(it)
+                                                        }
+                                                )
+                                        }
+
+                                        HorizontalDivider(
+                                                color = MaterialTheme.colorScheme.surfaceVariant
+                                        )
+
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 8.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text = "Enable Drag-to-Reorder",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurface
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Long-press entries to rearrange them",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurfaceVariant
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = enableDragAndDrop,
+                                                        onCheckedChange = {
+                                                                viewModel.setEnableDragAndDrop(it)
+                                                        }
+                                                )
+                                        }
                                         }
                                 }
 
@@ -1743,111 +1828,6 @@ fun SettingsScreen(
                                                                                         .onSurfaceVariant
                                                                 )
                                                         }
-                                                }
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                SettingsSectionHeader(icon = Icons.Rounded.Settings, title = "Features")
-                                Spacer(modifier = Modifier.height(12.dp))
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        shape = MaterialTheme.shapes.medium,
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                )
-                                ) {
-                                        Column(
-                                                modifier = Modifier.fillMaxWidth()
-                                        ) {
-                                                Row(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(
-                                                                                horizontal = 12.dp,
-                                                                                vertical = 8.dp
-                                                                        ),
-                                                        verticalAlignment = Alignment.CenterVertically,
-                                                        horizontalArrangement = Arrangement.SpaceBetween
-                                                ) {
-                                                        Column(Modifier.weight(1f)) {
-                                                                Text(
-                                                                        text = "Show Statistics",
-                                                                        style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurface
-                                                                )
-                                                                Text(
-                                                                        text =
-                                                                                "Display statistics button in menu",
-                                                                        style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodySmall,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-                                                        }
-                                                        Switch(
-                                                                checked = showStatistics,
-                                                                onCheckedChange = {
-                                                                        viewModel.setShowStatistics(it)
-                                                                }
-                                                        )
-                                                }
-
-                                                HorizontalDivider(
-                                                        color = MaterialTheme.colorScheme.surfaceVariant
-                                                )
-
-                                                Row(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(
-                                                                                horizontal = 12.dp,
-                                                                                vertical = 8.dp
-                                                                        ),
-                                                        verticalAlignment = Alignment.CenterVertically,
-                                                        horizontalArrangement = Arrangement.SpaceBetween
-                                                ) {
-                                                        Column(Modifier.weight(1f)) {
-                                                                Text(
-                                                                        text = "Enable Drag-to-Reorder",
-                                                                        style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurface
-                                                                )
-                                                                Text(
-                                                                        text =
-                                                                                "Long-press entries to rearrange them",
-                                                                        style =
-                                                                                MaterialTheme.typography
-                                                                                        .bodySmall,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-                                                        }
-                                                        Switch(
-                                                                checked = enableDragAndDrop,
-                                                                onCheckedChange = {
-                                                                        viewModel.setEnableDragAndDrop(it)
-                                                                }
-                                                        )
                                                 }
                                         }
                                 }
