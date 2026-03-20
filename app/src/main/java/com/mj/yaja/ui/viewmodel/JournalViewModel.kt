@@ -3,6 +3,9 @@ package com.mj.yaja.ui.viewmodel
 import android.content.Context
 import android.content.Intent
 import java.io.File
+import com.google.android.gms.tasks.Tasks as GmsTasks
+import com.google.mlkit.nl.languageid.LanguageIdentification
+import com.google.mlkit.nl.languageid.LanguageIdentificationOptions
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -637,7 +640,8 @@ class JournalViewModel(
                         bestMonthLabel = null,
                         bestMonthCount = 0,
                         averageDaysPerWeek = 0f,
-                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0)
+                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0),
+                        languageDistribution = emptyMap()
                     )
                 }
 
@@ -655,6 +659,14 @@ class JournalViewModel(
                 var eveningCount = 0    // 17:00–20:59
                 var nightCount = 0      // 21:00–04:59
                 val timeRegex = Regex("""<!--time:(\d{2}):\d{2}""")
+
+                // Language distribution (ML Kit, on-device)
+                val langCounts = mutableMapOf<String, Int>()
+                val langIdentifier = LanguageIdentification.getClient(
+                    LanguageIdentificationOptions.Builder()
+                        .setConfidenceThreshold(0.5f)
+                        .build()
+                )
 
                 // Highlighted days that fall within this period
                 val favoritedInPeriod = _uiState.value.favoritedHighlights
@@ -688,6 +700,19 @@ class JournalViewModel(
                                     in 17..20 -> eveningCount++
                                     in 0..4, in 21..23 -> nightCount++
                                 }
+                            }
+
+                            // Language detection — strip timestamp comment, require ≥ 20 chars
+                            val cleanText = entry
+                                .replace(Regex("<!--time:[^>]+-->\\n?"), "")
+                                .trim()
+                            if (cleanText.length >= 20) {
+                                try {
+                                    val code = GmsTasks.await(
+                                        langIdentifier.identifyLanguage(cleanText)
+                                    )
+                                    langCounts[code] = (langCounts[code] ?: 0) + 1
+                                } catch (_: Exception) { /* skip on failure */ }
                             }
                         }
 
@@ -747,6 +772,13 @@ class JournalViewModel(
                     0f
                 }
 
+                // Finalise language detection
+                langIdentifier.close()
+                val languageDistribution = langCounts
+                    .entries
+                    .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
+                    .associate { it.key to it.value }
+
                 // Average writing days per week
                 val totalWeeks = (daysDiff / 7.0).coerceAtLeast(1.0)
                 val averageDaysPerWeek = (allDates.size.toFloat() / totalWeeks).toFloat()
@@ -792,7 +824,8 @@ class JournalViewModel(
                         afternoon = afternoonCount,
                         evening = eveningCount,
                         night = nightCount
-                    )
+                    ),
+                    languageDistribution = languageDistribution
                 )
             }
             _allTimeStats.value = stats

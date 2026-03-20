@@ -63,7 +63,8 @@ data class AllTimeStatsData(
     val bestMonthLabel: String?,              // e.g. "Mar 2025"
     val bestMonthCount: Int,                  // entries in that best month
     val averageDaysPerWeek: Float,            // writing days per week on average
-    val writingTimeDistribution: TimeDistribution // when during the day the user writes
+    val writingTimeDistribution: TimeDistribution, // when during the day the user writes
+    val languageDistribution: Map<String, Int> // ISO 639-1 code → entry count, sorted by count desc
 )
 
 /** Daily writing volume categories. Each field counts days that fall in that bracket. */
@@ -82,13 +83,14 @@ data class TimeDistribution(
     val night: Int      // 21:00–04:59
 )
 
-/** The 5 sections below the overview cards that the user can reorder. */
+/** The 6 sections below the overview cards that the user can reorder. */
 enum class StatisticsSection(val displayName: String) {
     WRITING_INSIGHTS("Writing Insights"),
     DISTRIBUTION("Daily Writing Distribution"),
     WHEN_YOU_WRITE("When You Write"),
     MONTHLY_ACTIVITY("Monthly Activity"),
-    HEATMAP("Writing Activity Heatmap")
+    HEATMAP("Writing Activity Heatmap"),
+    LANGUAGES("Languages")
 }
 
 /** Number of non-reorderable items pinned above the section list in the LazyColumn. */
@@ -359,6 +361,8 @@ fun StatisticsScreen(
                                         datesWithEntries = datesWithEntries,
                                         entryLengthMap = heatmapData
                                     )
+                                StatisticsSection.LANGUAGES ->
+                                    LanguagesCard(distribution = allTimeStats!!.languageDistribution)
                             }
                         }
                     }
@@ -642,6 +646,71 @@ private fun WritingDistributionCard(stats: AllTimeStatsData) {
 }
 
 @Composable
+private fun LanguagesCard(distribution: Map<String, Int>) {
+    // Resolve ISO 639-1 code to a human-readable display name
+    fun displayName(code: String): String = when (code) {
+        "und" -> "Undetermined"
+        else  -> runCatching {
+            java.util.Locale(code).getDisplayLanguage(java.util.Locale.ENGLISH)
+                .replaceFirstChar { it.uppercase() }
+        }.getOrDefault(code.uppercase())
+    }
+
+    // Sort: named languages first by count desc, "und" always last
+    val sorted = distribution.entries
+        .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
+        .take(10) // cap at 10 to keep the card manageable
+
+    val totalEntries = distribution.values.sum().coerceAtLeast(1)
+    val distinctLangs = distribution.keys.count { it != "und" }
+
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            // Summary line
+            Text(
+                text = if (distinctLangs == 0) "Not enough text to detect language"
+                       else "$distinctLangs ${if (distinctLangs == 1) "language" else "languages"} detected · powered by ML Kit",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+
+            if (sorted.isEmpty()) {
+                Text(
+                    "Write more entries to see language stats.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                val barColors = listOf(
+                    MaterialTheme.colorScheme.primary,
+                    MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.tertiary
+                )
+                sorted.forEachIndexed { index, (code, count) ->
+                    val pct = count.toFloat() / totalEntries * 100f
+                    val color = if (code == "und")
+                        MaterialTheme.colorScheme.outline
+                    else
+                        barColors[index.coerceAtMost(barColors.lastIndex)]
+                    EntryLengthBar(
+                        label = displayName(code),
+                        count = count,
+                        percentage = pct,
+                        color = color
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
 private fun WritingTimeCard(dist: TimeDistribution) {
     val total = (dist.morning + dist.afternoon + dist.evening + dist.night).coerceAtLeast(1)
     fun pct(n: Int) = n.toFloat() / total * 100f
@@ -654,7 +723,7 @@ private fun WritingTimeCard(dist: TimeDistribution) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Based on entry timestamps",
+                text = "Based on entry time",
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 4.dp)

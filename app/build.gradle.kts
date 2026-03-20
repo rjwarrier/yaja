@@ -11,8 +11,8 @@ android {
         applicationId = "com.mj.yaja"
         minSdk = 26
         targetSdk = 35
-        versionCode = 30
-        versionName = "2.17b"
+        versionCode = 31
+        versionName = "2.20"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -78,6 +78,9 @@ dependencies {
 
     // Reorderable LazyColumn for drag-to-reorder
     implementation("sh.calvin.reorderable:reorderable:2.4.3")
+
+    // On-device language identification (ML Kit — no network required)
+    implementation("com.google.mlkit:language-id:17.0.6")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
