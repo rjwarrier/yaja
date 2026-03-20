@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.Note
+import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -158,7 +161,7 @@ fun StatisticsScreen(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         StatisticCard(
-                            icon = Icons.Rounded.Note,
+                            icon = Icons.AutoMirrored.Rounded.Note,
                             title = "Total Entries",
                             value = allTimeStats!!.totalEntries.toString(),
                             color = MaterialTheme.colorScheme.primary,
@@ -180,7 +183,7 @@ fun StatisticsScreen(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         StatisticCard(
-                            icon = Icons.Rounded.TrendingUp,
+                            icon = Icons.AutoMirrored.Rounded.TrendingUp,
                             title = "Avg. Words/Entry",
                             value = String.format("%.1f", allTimeStats!!.averageWordsPerEntry),
                             color = MaterialTheme.colorScheme.tertiary,
@@ -248,7 +251,7 @@ fun StatisticsScreen(
                                 }
                             }
 
-                            Divider()
+                            HorizontalDivider()
 
                             // Most Active Day
                             Row(
@@ -282,7 +285,7 @@ fun StatisticsScreen(
                                 }
                             }
 
-                            Divider()
+                            HorizontalDivider()
 
                             // Writing Consistency
                             Row(
@@ -316,7 +319,7 @@ fun StatisticsScreen(
                                 }
                             }
 
-                            Divider()
+                            HorizontalDivider()
 
                             // Days with Entries
                             Row(
@@ -605,14 +608,14 @@ private fun EntryLengthBar(
                 .height(8.dp)
                 .background(
                     MaterialTheme.colorScheme.surfaceVariant,
-                    androidx.compose.foundation.shape.RoundedCornerShape(4.dp)
+                    RoundedCornerShape(4.dp)
                 )
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
                     .fillMaxWidth(percentage / 100f)
-                    .background(color, androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
+                    .background(color, RoundedCornerShape(4.dp))
             )
         }
     }
@@ -686,7 +689,7 @@ private fun EntryHeatmap(
                             Surface(
                                 modifier = Modifier
                                     .size(12.dp),
-                                shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
+                                shape = RoundedCornerShape(2.dp),
                                 color = cellColor
                             ) {}
                         }
@@ -710,25 +713,25 @@ private fun EntryHeatmap(
 
                 Surface(
                     modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
+                    shape = RoundedCornerShape(2.dp),
                     color = MaterialTheme.colorScheme.surfaceVariant
                 ) {}
 
                 Surface(
                     modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
+                    shape = RoundedCornerShape(2.dp),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
                 ) {}
 
                 Surface(
                     modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
+                    shape = RoundedCornerShape(2.dp),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
                 ) {}
 
                 Surface(
                     modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
+                    shape = RoundedCornerShape(2.dp),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
                 ) {}
 
