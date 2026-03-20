@@ -127,19 +127,29 @@ fun StatisticsScreen(
                 }
 
                 item {
-                    Text(
-                        when (selectedPeriod) {
-                            StatisticsPeriod.ALL_TIME -> "All-Time Statistics"
-                            StatisticsPeriod.CURRENT_YEAR -> "Current Year Statistics"
-                            StatisticsPeriod.PREVIOUS_YEAR -> "Previous Year Statistics"
-                            StatisticsPeriod.CURRENT_MONTH -> "Current Month Statistics"
-                            StatisticsPeriod.PREVIOUS_MONTH -> "Previous Month Statistics"
-                            StatisticsPeriod.CUSTOM -> "Custom Period Statistics"
-                        },
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
+                    Column(modifier = Modifier.padding(top = 8.dp)) {
+                        Text(
+                            when (selectedPeriod) {
+                                StatisticsPeriod.ALL_TIME -> "All-Time Statistics"
+                                StatisticsPeriod.CURRENT_YEAR -> "Current Year Statistics"
+                                StatisticsPeriod.PREVIOUS_YEAR -> "Previous Year Statistics"
+                                StatisticsPeriod.CURRENT_MONTH -> "Current Month Statistics"
+                                StatisticsPeriod.PREVIOUS_MONTH -> "Previous Month Statistics"
+                                StatisticsPeriod.CUSTOM -> "Custom Period Statistics"
+                            },
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        if (selectedPeriod == StatisticsPeriod.CUSTOM) {
+                            val fmt = DateTimeFormatter.ofPattern("dd MMM yyyy")
+                            Text(
+                                "${customStartDate.format(fmt)} — ${customEndDate.format(fmt)}",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(top = 2.dp)
+                            )
+                        }
+                    }
                 }
 
                 // Overview Cards (2x2 grid)
