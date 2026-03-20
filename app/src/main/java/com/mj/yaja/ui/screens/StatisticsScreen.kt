@@ -423,7 +423,7 @@ fun StatisticsScreen(
                                 label = "Intense  (500+ words)",
                                 count = dist.intense,
                                 percentage = getPercentage(dist.intense),
-                                color = Color(0xFFFF6D00) // deep orange — complements the green theme
+                                color = MaterialTheme.colorScheme.error // deep orange — complements the green theme
                             )
                         }
                     }
@@ -706,7 +706,7 @@ private fun EntryHeatmap(
                                 wordCount < 50  -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)  // Light
                                 wordCount < 200 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)  // Moderate
                                 wordCount < 500 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)  // Heavy
-                                else            -> Color(0xFFFF6D00)                                     // Intense 500+
+                                else            -> MaterialTheme.colorScheme.error                                     // Intense 500+
                             }
 
                             Surface(
@@ -761,7 +761,7 @@ private fun EntryHeatmap(
                 Surface(
                     modifier = Modifier.size(12.dp),
                     shape = RoundedCornerShape(2.dp),
-                    color = Color(0xFFFF6D00)
+                    color = MaterialTheme.colorScheme.error
                 ) {}
 
                 Text(
