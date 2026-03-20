@@ -3,9 +3,10 @@ package com.mj.yaja.ui.viewmodel
 import android.content.Context
 import android.content.Intent
 import java.io.File
-import com.google.android.gms.tasks.Tasks as GmsTasks
 import com.google.mlkit.nl.languageid.LanguageIdentification
 import com.google.mlkit.nl.languageid.LanguageIdentificationOptions
+import com.google.mlkit.nl.languageid.LanguageIdentifier
+import kotlinx.coroutines.suspendCancellableCoroutine
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -54,6 +55,10 @@ class JournalViewModel(
         private val fileManager: MarkdownFileManager,
         private val settingsRepository: SettingsRepository
 ) : ViewModel() {
+
+    // Dedicated single-thread executor for ML Kit callbacks — keeps all callbacks off the main
+    // thread so language detection never touches the main dispatcher
+    private val langDetectExecutor = java.util.concurrent.Executors.newSingleThreadExecutor()
 
     private val _uiState = MutableStateFlow(JournalUiState())
     val uiState: StateFlow<JournalUiState> = _uiState.asStateFlow()
@@ -594,7 +599,21 @@ class JournalViewModel(
         endDate: LocalDate? = null
     ) {
         viewModelScope.launch {
-            val stats = withContext(Dispatchers.IO) {
+            // Create language identifier here (on the coroutine's Main dispatcher context)
+            // so ML Kit can safely initialise — never inside withContext(Dispatchers.IO)
+            val langIdentifier = LanguageIdentification.getClient(
+                LanguageIdentificationOptions.Builder()
+                    .setConfidenceThreshold(0.5f)
+                    .build()
+            )
+
+            // Phase 1 — all file-IO work; collect entry texts for later language detection
+            data class IoResult(
+                val stats: com.mj.yaja.ui.screens.AllTimeStatsData,
+                val textsToDetect: List<String>
+            )
+
+            val ioResult = withContext(Dispatchers.IO) {
                 val now = LocalDate.now()
                 val (rangeStart, rangeEnd) = when (period) {
                     com.mj.yaja.ui.screens.StatisticsPeriod.ALL_TIME -> {
@@ -625,23 +644,26 @@ class JournalViewModel(
                     }
 
                 if (allDates.isEmpty()) {
-                    return@withContext com.mj.yaja.ui.screens.AllTimeStatsData(
-                        totalEntries = 0,
-                        totalWords = 0,
-                        averageWordsPerEntry = 0f,
-                        currentStreak = 0,
-                        longestStreakAllTime = 0,
-                        mostActiveDay = null,
-                        totalDaysWithEntries = 0,
-                        writingConsistencyScore = 0f,
-                        monthlyEntryTrend = emptyList(),
-                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0),
-                        totalHighlightedDays = 0,
-                        bestMonthLabel = null,
-                        bestMonthCount = 0,
-                        averageDaysPerWeek = 0f,
-                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0),
-                        languageDistribution = emptyMap()
+                    return@withContext IoResult(
+                        stats = com.mj.yaja.ui.screens.AllTimeStatsData(
+                            totalEntries = 0,
+                            totalWords = 0,
+                            averageWordsPerEntry = 0f,
+                            currentStreak = 0,
+                            longestStreakAllTime = 0,
+                            mostActiveDay = null,
+                            totalDaysWithEntries = 0,
+                            writingConsistencyScore = 0f,
+                            monthlyEntryTrend = emptyList(),
+                            entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0),
+                            totalHighlightedDays = 0,
+                            bestMonthLabel = null,
+                            bestMonthCount = 0,
+                            averageDaysPerWeek = 0f,
+                            writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0),
+                            languageDistribution = emptyMap()
+                        ),
+                        textsToDetect = emptyList()
                     )
                 }
 
@@ -659,14 +681,10 @@ class JournalViewModel(
                 var eveningCount = 0    // 17:00–20:59
                 var nightCount = 0      // 21:00–04:59
                 val timeRegex = Regex("""<!--time:(\d{2}):\d{2}""")
+                val timestampRegex = Regex("<!--time:[^>]+-->\\n?")
 
-                // Language distribution (ML Kit, on-device)
-                val langCounts = mutableMapOf<String, Int>()
-                val langIdentifier = LanguageIdentification.getClient(
-                    LanguageIdentificationOptions.Builder()
-                        .setConfidenceThreshold(0.5f)
-                        .build()
-                )
+                // Collect texts for language detection (done after IO, using proper suspension)
+                val textsToDetect = mutableListOf<String>()
 
                 // Highlighted days that fall within this period
                 val favoritedInPeriod = _uiState.value.favoritedHighlights
@@ -702,17 +720,10 @@ class JournalViewModel(
                                 }
                             }
 
-                            // Language detection — strip timestamp comment, require ≥ 20 chars
-                            val cleanText = entry
-                                .replace(Regex("<!--time:[^>]+-->\\n?"), "")
-                                .trim()
+                            // Collect clean text for language detection (done in Phase 2)
+                            val cleanText = entry.replace(timestampRegex, "").trim()
                             if (cleanText.length >= 20) {
-                                try {
-                                    val code = GmsTasks.await(
-                                        langIdentifier.identifyLanguage(cleanText)
-                                    )
-                                    langCounts[code] = (langCounts[code] ?: 0) + 1
-                                } catch (_: Exception) { /* skip on failure */ }
+                                textsToDetect.add(cleanText)
                             }
                         }
 
@@ -772,13 +783,6 @@ class JournalViewModel(
                     0f
                 }
 
-                // Finalise language detection
-                langIdentifier.close()
-                val languageDistribution = langCounts
-                    .entries
-                    .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
-                    .associate { it.key to it.value }
-
                 // Average writing days per week
                 val totalWeeks = (daysDiff / 7.0).coerceAtLeast(1.0)
                 val averageDaysPerWeek = (allDates.size.toFloat() / totalWeeks).toFloat()
@@ -804,33 +808,96 @@ class JournalViewModel(
                 }
                 monthlyTrend.reverse()
 
-                com.mj.yaja.ui.screens.AllTimeStatsData(
-                    totalEntries = totalEntries,
-                    totalWords = totalWords,
-                    averageWordsPerEntry = averageWordsPerEntry,
-                    currentStreak = currentStreak,
-                    longestStreakAllTime = longestStreakAllTime,
-                    mostActiveDay = mostActiveDay,
-                    totalDaysWithEntries = allDates.size,
-                    writingConsistencyScore = consistencyScore,
-                    monthlyEntryTrend = monthlyTrend,
-                    entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount),
-                    totalHighlightedDays = favoritedInPeriod,
-                    bestMonthLabel = bestMonthLabel,
-                    bestMonthCount = bestMonthCount,
-                    averageDaysPerWeek = averageDaysPerWeek,
-                    writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(
-                        morning = morningCount,
-                        afternoon = afternoonCount,
-                        evening = eveningCount,
-                        night = nightCount
+                IoResult(
+                    stats = com.mj.yaja.ui.screens.AllTimeStatsData(
+                        totalEntries = totalEntries,
+                        totalWords = totalWords,
+                        averageWordsPerEntry = averageWordsPerEntry,
+                        currentStreak = currentStreak,
+                        longestStreakAllTime = longestStreakAllTime,
+                        mostActiveDay = mostActiveDay,
+                        totalDaysWithEntries = allDates.size,
+                        writingConsistencyScore = consistencyScore,
+                        monthlyEntryTrend = monthlyTrend,
+                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount),
+                        totalHighlightedDays = favoritedInPeriod,
+                        bestMonthLabel = bestMonthLabel,
+                        bestMonthCount = bestMonthCount,
+                        averageDaysPerWeek = averageDaysPerWeek,
+                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(
+                            morning = morningCount,
+                            afternoon = afternoonCount,
+                            evening = eveningCount,
+                            night = nightCount
+                        ),
+                        languageDistribution = emptyMap() // filled in Phase 2
                     ),
-                    languageDistribution = languageDistribution
+                    textsToDetect = textsToDetect
                 )
             }
-            _allTimeStats.value = stats
+
+            // Show stats immediately so the screen is responsive while language detection runs
+            _allTimeStats.value = ioResult.stats
+
+            // Phase 2 — language detection on IO dispatcher, callbacks on dedicated executor
+            // (neither the main thread nor the IO thread pool are blocked)
+            if (ioResult.textsToDetect.isNotEmpty()) {
+                // Sample at most 200 entries evenly — accurate distribution, avoids overwhelming ML Kit
+                val sampled = ioResult.textsToDetect.let { texts ->
+                    if (texts.size <= 200) texts
+                    else (0 until 200).map { i ->
+                        texts[(i.toDouble() / 200.0 * texts.size).toInt()]
+                    }
+                }
+
+                val langCounts = withContext(Dispatchers.IO) {
+                    val counts = mutableMapOf<String, Int>()
+                    for (text in sampled) {
+                        val code = try {
+                            detectLanguage(langIdentifier, text)
+                        } catch (e: Exception) {
+                            "und"
+                        }
+                        counts[code] = (counts[code] ?: 0) + 1
+                    }
+                    counts
+                }
+                langIdentifier.close()
+
+                val languageDistribution = langCounts
+                    .entries
+                    .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
+                    .associate { it.key to it.value }
+
+                _allTimeStats.value = ioResult.stats.copy(languageDistribution = languageDistribution)
+            } else {
+                langIdentifier.close()
+            }
         }
     }
+
+    /**
+     * Bridges ML Kit's Task into a coroutine suspension.
+     * All callbacks run on [langDetectExecutor] — never on the main thread — so the main
+     * dispatcher is never touched during language detection.
+     */
+    private suspend fun detectLanguage(identifier: LanguageIdentifier, text: String): String =
+        suspendCancellableCoroutine { cont ->
+            try {
+                identifier.identifyLanguage(text)
+                    .addOnSuccessListener(langDetectExecutor) { code ->
+                        if (cont.isActive) cont.resume(code ?: "und")
+                    }
+                    .addOnFailureListener(langDetectExecutor) {
+                        if (cont.isActive) cont.resume("und")
+                    }
+                    .addOnCanceledListener(langDetectExecutor) {
+                        if (cont.isActive) cont.resume("und")
+                    }
+            } catch (e: Exception) {
+                if (cont.isActive) cont.resume("und")
+            }
+        }
 
     fun updateHeatmapData() {
         viewModelScope.launch {
