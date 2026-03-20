@@ -213,13 +213,16 @@ class JournalViewModel(
         if (!finalEntry.startsWith("<!--time:")) {
             val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
             val timeString = LocalTime.now().format(timeFormatter)
+            val today = LocalDate.now()
 
             val timestamp =
-                    if (currentDate.isAfter(LocalDate.now())) {
+                    if (currentDate != today) {
+                        // For past or future dates, add the date when the entry was added
                         val dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy")
-                        val dateString = LocalDate.now().format(dateFormatter)
+                        val dateString = today.format(dateFormatter)
                         "<!--time:$timeString, added on $dateString-->"
                     } else {
+                        // For today's entries, just add the time
                         "<!--time:$timeString-->"
                     }
             finalEntry = "$timestamp\n$finalEntry"
