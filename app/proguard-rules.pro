@@ -12,5 +12,9 @@
 # If you use Gson or other reflection-based libraries, add rules here:
 # -keep class com.mj.yaja.models.** { *; }
 
-# Jetpack Compose rules are mostly handled by the compiler now, 
+# Jetpack Compose rules are mostly handled by the compiler now,
 # but you can add specific ones if you see issues with missing classes.
+
+# ML Kit Language Identification — R8 strips internal factory/impl classes without these
+-keep class com.google.mlkit.nl.languageid.** { *; }
+-keep class com.google.android.gms.internal.mlkit_language_id** { *; }
