@@ -7,6 +7,7 @@ import com.google.mlkit.nl.languageid.LanguageIdentification
 import com.google.mlkit.nl.languageid.LanguageIdentificationOptions
 import com.google.mlkit.nl.languageid.LanguageIdentifier
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -593,25 +594,28 @@ class JournalViewModel(
         }
     }
 
+    // Holder for IO-phase results; defined at class level to avoid R8 issues with local classes
+    private data class IoResult(
+        val stats: com.mj.yaja.ui.screens.AllTimeStatsData,
+        val textsToDetect: List<String>
+    )
+
     fun calculateStatsByPeriod(
         period: com.mj.yaja.ui.screens.StatisticsPeriod,
         startDate: LocalDate? = null,
         endDate: LocalDate? = null
     ) {
         viewModelScope.launch {
-            // Create language identifier here (on the coroutine's Main dispatcher context)
-            // so ML Kit can safely initialise — never inside withContext(Dispatchers.IO)
-            val langIdentifier = LanguageIdentification.getClient(
-                LanguageIdentificationOptions.Builder()
-                    .setConfidenceThreshold(0.5f)
-                    .build()
-            )
-
-            // Phase 1 — all file-IO work; collect entry texts for later language detection
-            data class IoResult(
-                val stats: com.mj.yaja.ui.screens.AllTimeStatsData,
-                val textsToDetect: List<String>
-            )
+            // Try to create language identifier — if ML Kit / Play Services fails, skip detection
+            val langIdentifier: LanguageIdentifier? = try {
+                LanguageIdentification.getClient(
+                    LanguageIdentificationOptions.Builder()
+                        .setConfidenceThreshold(0.5f)
+                        .build()
+                )
+            } catch (e: Exception) {
+                null
+            }
 
             val ioResult = withContext(Dispatchers.IO) {
                 val now = LocalDate.now()
@@ -839,39 +843,43 @@ class JournalViewModel(
             // Show stats immediately so the screen is responsive while language detection runs
             _allTimeStats.value = ioResult.stats
 
-            // Phase 2 — language detection on IO dispatcher, callbacks on dedicated executor
-            // (neither the main thread nor the IO thread pool are blocked)
-            if (ioResult.textsToDetect.isNotEmpty()) {
-                // Sample at most 200 entries evenly — accurate distribution, avoids overwhelming ML Kit
-                val sampled = ioResult.textsToDetect.let { texts ->
-                    if (texts.size <= 200) texts
-                    else (0 until 200).map { i ->
-                        texts[(i.toDouble() / 200.0 * texts.size).toInt()]
-                    }
-                }
-
-                val langCounts = withContext(Dispatchers.IO) {
-                    val counts = mutableMapOf<String, Int>()
-                    for (text in sampled) {
-                        val code = try {
-                            detectLanguage(langIdentifier, text)
-                        } catch (e: Exception) {
-                            "und"
+            // Phase 2 — language detection (entirely guarded; if anything fails, stats show without it)
+            if (langIdentifier != null && ioResult.textsToDetect.isNotEmpty()) {
+                try {
+                    // Sample at most 200 entries evenly — accurate distribution, avoids overwhelming ML Kit
+                    val sampled = ioResult.textsToDetect.let { texts ->
+                        if (texts.size <= 200) texts
+                        else (0 until 200).map { i ->
+                            texts[(i.toDouble() / 200.0 * texts.size).toInt()]
                         }
-                        counts[code] = (counts[code] ?: 0) + 1
                     }
-                    counts
+
+                    val langCounts = withContext(Dispatchers.IO) {
+                        val counts = mutableMapOf<String, Int>()
+                        for (text in sampled) {
+                            val code = try {
+                                detectLanguage(langIdentifier, text)
+                            } catch (e: Exception) {
+                                "und"
+                            }
+                            counts[code] = (counts[code] ?: 0) + 1
+                        }
+                        counts
+                    }
+
+                    val languageDistribution = langCounts
+                        .entries
+                        .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
+                        .associate { it.key to it.value }
+
+                    _allTimeStats.value = ioResult.stats.copy(languageDistribution = languageDistribution)
+                } catch (e: Exception) {
+                    // Language detection failed — stats already visible without it
+                } finally {
+                    try { langIdentifier.close() } catch (_: Exception) {}
                 }
-                langIdentifier.close()
-
-                val languageDistribution = langCounts
-                    .entries
-                    .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
-                    .associate { it.key to it.value }
-
-                _allTimeStats.value = ioResult.stats.copy(languageDistribution = languageDistribution)
             } else {
-                langIdentifier.close()
+                try { langIdentifier?.close() } catch (_: Exception) {}
             }
         }
     }
@@ -881,21 +889,22 @@ class JournalViewModel(
      * All callbacks run on [langDetectExecutor] — never on the main thread — so the main
      * dispatcher is never touched during language detection.
      */
+    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
     private suspend fun detectLanguage(identifier: LanguageIdentifier, text: String): String =
         suspendCancellableCoroutine { cont ->
             try {
                 identifier.identifyLanguage(text)
                     .addOnSuccessListener(langDetectExecutor) { code ->
-                        if (cont.isActive) cont.resume(code ?: "und")
+                        if (cont.isActive) cont.resume(code ?: "und") { }
                     }
                     .addOnFailureListener(langDetectExecutor) {
-                        if (cont.isActive) cont.resume("und")
+                        if (cont.isActive) cont.resume("und") { }
                     }
                     .addOnCanceledListener(langDetectExecutor) {
-                        if (cont.isActive) cont.resume("und")
+                        if (cont.isActive) cont.resume("und") { }
                     }
             } catch (e: Exception) {
-                if (cont.isActive) cont.resume("und")
+                if (cont.isActive) cont.resume("und") { }
             }
         }
 
