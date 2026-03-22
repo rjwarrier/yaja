@@ -952,6 +952,18 @@ fun SettingsScreen(
                                                         MaterialTheme.colorScheme.surfaceVariant
                                         )
 
+                                        Text(
+                                                text = "Nav Bar Items",
+                                                style = MaterialTheme.typography.labelMedium,
+                                                color = MaterialTheme.colorScheme.primary,
+                                                modifier =
+                                                        Modifier.padding(
+                                                                start = 12.dp,
+                                                                top = 12.dp,
+                                                                bottom = 4.dp
+                                                        )
+                                        )
+
                                         Row(
                                                 modifier =
                                                         Modifier.fillMaxWidth()
