@@ -146,21 +146,26 @@ fun StatisticsScreen(
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
     val todayMillis = remember { LocalDate.now().atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+    val yesterdayMillis = remember { LocalDate.now().minusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
     val startDatePickerState = rememberDatePickerState(
         initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
         selectableDates = object : SelectableDates {
-            override fun isSelectableDate(utcTimeMillis: Long): Boolean = utcTimeMillis <= todayMillis
+            // Start date: only past dates up to yesterday are selectable
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean = utcTimeMillis <= yesterdayMillis
         }
     )
-    val endDatePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
-        selectableDates = object : SelectableDates {
-            override fun isSelectableDate(utcTimeMillis: Long): Boolean {
-                val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
-                return utcTimeMillis >= fromMillis && utcTimeMillis <= todayMillis
+    // Recreate end picker state whenever customStartDate changes so selectableDates reflects the new lower bound
+    val endDatePickerState = key(customStartDate) {
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        rememberDatePickerState(
+            initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+            selectableDates = object : SelectableDates {
+                // End date: from selected start date up to today (inclusive)
+                override fun isSelectableDate(utcTimeMillis: Long): Boolean =
+                    utcTimeMillis in fromMillis..todayMillis
             }
-        }
-    )
+        )
+    }
 
     Scaffold(
         topBar = {
