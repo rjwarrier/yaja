@@ -145,11 +145,21 @@ fun StatisticsScreen(
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
+    val todayMillis = remember { LocalDate.now().atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
     val startDatePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+        selectableDates = object : SelectableDates {
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean = utcTimeMillis <= todayMillis
+        }
     )
     val endDatePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+        selectableDates = object : SelectableDates {
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean {
+                val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+                return utcTimeMillis >= fromMillis && utcTimeMillis <= todayMillis
+            }
+        }
     )
 
     Scaffold(
@@ -279,7 +289,7 @@ fun StatisticsScreen(
                         StatisticCard(
                             icon = Icons.AutoMirrored.Rounded.MenuBook,
                             title = "Pages Written",
-                            value = "~${(allTimeStats!!.totalWords / 250).coerceAtLeast(0)}",
+                            value = "~ ${(allTimeStats!!.totalWords / 250).coerceAtLeast(0)}",
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.weight(1f)
                         )
@@ -361,15 +371,21 @@ fun StatisticsScreen(
                                         datesWithEntries = datesWithEntries,
                                         entryLengthMap = heatmapData
                                     )
-                                StatisticsSection.LANGUAGES ->
-                                    LanguagesCard(distribution = allTimeStats!!.languageDistribution)
+                                StatisticsSection.LANGUAGES -> {
+                                    val useMLKit by viewModel.useMLKitDetection.collectAsState()
+                                    LanguagesCard(
+                                        distribution = allTimeStats!!.languageDistribution,
+                                        useMLKitDetection = useMLKit,
+                                        onToggleMLKit = { viewModel.setUseMLKitDetection(it) }
+                                    )
+                                }
                             }
                         }
                     }
                 }
 
                 item(key = "spacer") {
-                    Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(120.dp))
                 }
             }
         }
@@ -646,23 +662,17 @@ private fun WritingDistributionCard(stats: AllTimeStatsData) {
 }
 
 @Composable
-private fun LanguagesCard(distribution: Map<String, Int>) {
-    // Resolve ISO 639-1 code to a human-readable display name
-    fun displayName(code: String): String = when (code) {
-        "und" -> "Undetermined"
-        else  -> runCatching {
-            java.util.Locale(code).getDisplayLanguage(java.util.Locale.ENGLISH)
-                .replaceFirstChar { it.uppercase() }
-        }.getOrDefault(code.uppercase())
-    }
-
-    // Sort: named languages first by count desc, "und" always last
+private fun LanguagesCard(
+    distribution: Map<String, Int>,
+    useMLKitDetection: Boolean,
+    onToggleMLKit: (Boolean) -> Unit
+) {
     val sorted = distribution.entries
-        .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
-        .take(10) // cap at 10 to keep the card manageable
+        .sortedByDescending { it.value }
+        .take(10)
 
     val totalEntries = distribution.values.sum().coerceAtLeast(1)
-    val distinctLangs = distribution.keys.count { it != "und" }
+    val distinctLangs = distribution.size
 
     ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         Column(
@@ -673,12 +683,35 @@ private fun LanguagesCard(distribution: Map<String, Int>) {
         ) {
             // Summary line
             Text(
-                text = if (distinctLangs == 0) "Not enough text to detect language"
-                       else "$distinctLangs ${if (distinctLangs == 1) "language" else "languages"} detected · powered by ML Kit",
+                text = if (distinctLangs == 0) "Not enough text to detect languages"
+                       else "$distinctLangs ${if (distinctLangs == 1) "language" else "languages"} detected",
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = 4.dp)
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            if (!useMLKitDetection) {
+                Text(
+                    text = "Latin scripts are shown as English",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                )
+            }
+
+            // ML Kit toggle
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Use more accurate detection",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Switch(
+                    checked = useMLKitDetection,
+                    onCheckedChange = onToggleMLKit
+                )
+            }
 
             if (sorted.isEmpty()) {
                 Text(
@@ -692,14 +725,11 @@ private fun LanguagesCard(distribution: Map<String, Int>) {
                     MaterialTheme.colorScheme.secondary,
                     MaterialTheme.colorScheme.tertiary
                 )
-                sorted.forEachIndexed { index, (code, count) ->
+                sorted.forEachIndexed { index, (name, count) ->
                     val pct = count.toFloat() / totalEntries * 100f
-                    val color = if (code == "und")
-                        MaterialTheme.colorScheme.outline
-                    else
-                        barColors[index.coerceAtMost(barColors.lastIndex)]
+                    val color = barColors[index.coerceAtMost(barColors.lastIndex)]
                     EntryLengthBar(
-                        label = displayName(code),
+                        label = name,
                         count = count,
                         percentage = pct,
                         color = color
@@ -777,13 +807,27 @@ private fun MonthlyActivityChart(trend: List<Pair<String, Int>>) {
             ) {
                 trend.forEach { (monthKey, count) ->
                     val fraction = count.toFloat() / maxCount
+
+                    // Parse year and month from monthKey (format: "YYYY-MM")
+                    val (year, month) = try {
+                        val parts = monthKey.split("-")
+                        Pair(parts[0].toInt(), parts[1].toInt())
+                    } catch (e: Exception) { Pair(2024, 1) }
+
+                    // Check if this month has entries for all days
+                    val maxDaysInMonth = try {
+                        java.time.YearMonth.of(year, month).lengthOfMonth()
+                    } catch (e: Exception) { 31 }
+                    val isCompleteMonth = count >= maxDaysInMonth
+
                     val monthAbbrev = try {
-                        val m = java.time.Month.of(monthKey.split("-")[1].toInt())
+                        val m = java.time.Month.of(month)
                         m.name[0] + m.name.substring(1, 3).lowercase()
                     } catch (e: Exception) { "?" }
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier.weight(1f)
                     ) {
                         // Fixed-height bar container — bar grows upward from the bottom
@@ -801,23 +845,14 @@ private fun MonthlyActivityChart(trend: List<Pair<String, Int>>) {
                                     .fillMaxWidth(0.72f)
                                     .height(barHeight)
                                     .background(
-                                        if (count > 0) MaterialTheme.colorScheme.secondary
-                                        else MaterialTheme.colorScheme.surfaceVariant,
-                                        RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)
+                                        when {
+                                            count == 0 -> MaterialTheme.colorScheme.surfaceVariant
+                                            isCompleteMonth -> MaterialTheme.colorScheme.tertiary  // Perfect month
+                                            else -> MaterialTheme.colorScheme.secondary           // Partial month
+                                        },
+                                        RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
                                     )
                             )
-                            // Show count above bar when it's tall enough to read
-                            if (count > 0 && fraction >= 0.18f) {
-                                Text(
-                                    count.toString(),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    fontSize = 8.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier
-                                        .align(Alignment.TopCenter)
-                                        .padding(bottom = 2.dp)
-                                )
-                            }
                         }
                         // Month abbreviation label
                         Text(
