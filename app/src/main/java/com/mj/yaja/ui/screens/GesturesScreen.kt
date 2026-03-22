@@ -233,7 +233,7 @@ private fun ElevatedCard(
     modifier: Modifier = Modifier,
     colors: androidx.compose.material3.CardColors = androidx.compose.material3.CardDefaults.elevatedCardColors(),
     elevation: androidx.compose.material3.CardElevation = androidx.compose.material3.CardDefaults.elevatedCardElevation(),
-    content: @Composable () -> Unit
+    content: @Composable ColumnScope.() -> Unit
 ) {
     androidx.compose.material3.ElevatedCard(
         modifier = modifier,
