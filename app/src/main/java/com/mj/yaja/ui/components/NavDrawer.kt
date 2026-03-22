@@ -155,8 +155,12 @@ fun AppNavigationDrawer(
                                                 },
                                                 modifier = Modifier.padding(horizontal = 12.dp)
                                         )
-                                        Spacer(Modifier.height(8.dp))
                                 }
+
+                                Spacer(Modifier.height(12.dp))
+                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                                Spacer(Modifier.height(12.dp))
+
                                 NavigationDrawerItem(
                                         icon = {
                                                 Icon(
