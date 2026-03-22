@@ -75,7 +75,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
                                 modifier =
                                         Modifier.fillMaxWidth()
                                                 .height(200.dp)
-                                                .padding(start = 32.dp, end = 16.dp, bottom = 24.dp)
+                                                .padding(start = 32.dp, end = 16.dp, bottom = 40.dp)
                         ) {
                                 Canvas(modifier = Modifier.fillMaxSize()) {
                                         val width = size.width
@@ -253,7 +253,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
                                         modifier =
                                                 Modifier.fillMaxWidth()
                                                         .align(Alignment.BottomCenter)
-                                                        .offset(y = 24.dp),
+                                                        .offset(y = 40.dp),
                                         horizontalArrangement =
                                                 if (stats.size > 1) Arrangement.SpaceBetween
                                                 else Arrangement.Center
