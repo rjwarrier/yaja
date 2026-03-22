@@ -421,20 +421,28 @@ fun StatisticsScreen(
 
     // Step 1: Pick start date
     if (showStartDatePicker) {
+        val startConfirmEnabled = startDatePickerState.selectedDateMillis
+            ?.let { it <= yesterdayMillis } == true
         DatePickerDialog(
             onDismissRequest = {
                 showStartDatePicker = false
-                // If user cancels without picking, revert period selection
                 selectedPeriod = StatisticsPeriod.ALL_TIME
             },
             confirmButton = {
-                TextButton(onClick = {
-                    startDatePickerState.selectedDateMillis?.let { millis ->
-                        customStartDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
+                TextButton(
+                    enabled = startConfirmEnabled,
+                    onClick = {
+                        startDatePickerState.selectedDateMillis?.let { millis ->
+                            // Double-validate: only accept dates up to yesterday
+                            if (millis <= yesterdayMillis) {
+                                customStartDate = Instant.ofEpochMilli(millis)
+                                    .atZone(ZoneOffset.UTC).toLocalDate()
+                            }
+                        }
+                        showStartDatePicker = false
+                        showEndDatePicker = true
                     }
-                    showStartDatePicker = false
-                    showEndDatePicker = true  // Chain to step 2
-                }) { Text("Next") }
+                ) { Text("Next") }
             },
             dismissButton = {
                 TextButton(onClick = {
@@ -445,6 +453,7 @@ fun StatisticsScreen(
         ) {
             DatePicker(
                 state = startDatePickerState,
+                showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
                 headline = { Text("Select Start Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
             )
         }
@@ -452,17 +461,27 @@ fun StatisticsScreen(
 
     // Step 2: Pick end date, then apply
     if (showEndDatePicker) {
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        val endConfirmEnabled = endDatePickerState.selectedDateMillis
+            ?.let { it in fromMillis..todayMillis } == true
         DatePickerDialog(
             onDismissRequest = { showEndDatePicker = false },
             confirmButton = {
-                TextButton(onClick = {
-                    endDatePickerState.selectedDateMillis?.let { millis ->
-                        customEndDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
+                TextButton(
+                    enabled = endConfirmEnabled,
+                    onClick = {
+                        endDatePickerState.selectedDateMillis?.let { millis ->
+                            // Double-validate: only accept dates in [startDate, today]
+                            if (millis in fromMillis..todayMillis) {
+                                customEndDate = Instant.ofEpochMilli(millis)
+                                    .atZone(ZoneOffset.UTC).toLocalDate()
+                            }
+                        }
+                        showEndDatePicker = false
+                        viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
+                        viewModel.updateHeatmapData()
                     }
-                    showEndDatePicker = false
-                    viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
-                    viewModel.updateHeatmapData()
-                }) { Text("Apply") }
+                ) { Text("Apply") }
             },
             dismissButton = {
                 TextButton(onClick = { showEndDatePicker = false }) { Text("Cancel") }
@@ -470,6 +489,7 @@ fun StatisticsScreen(
         ) {
             DatePicker(
                 state = endDatePickerState,
+                showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
                 headline = { Text("Select End Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
             )
         }
