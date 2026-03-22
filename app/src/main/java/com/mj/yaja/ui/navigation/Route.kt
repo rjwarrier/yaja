@@ -14,6 +14,6 @@ sealed class Route(val path: String) {
     data object PinDisable : Route("pin_disable")
 
     companion object {
-        val topLevel: Set<String> by lazy { setOf(Home.path, Calendar.path, Lookback.path) }
+        val topLevel: Set<String> by lazy { setOf(Home.path, Calendar.path, Lookback.path, Statistics.path) }
     }
 }
