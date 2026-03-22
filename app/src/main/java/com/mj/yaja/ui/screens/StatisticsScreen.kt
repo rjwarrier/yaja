@@ -146,24 +146,37 @@ fun StatisticsScreen(
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
     val today = remember { LocalDate.now() }
-    val yesterday = remember { LocalDate.now().minusDays(1) }
+    val yesterday = remember { today.minusDays(1) }
     val todayMillis = remember { today.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
     val yesterdayMillis = remember { yesterday.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+
+    // --- Start date picker: only dates up to yesterday ---
+    val startSelectableDates = remember(yesterdayMillis) {
+        object : SelectableDates {
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean =
+                utcTimeMillis <= yesterdayMillis
+            override fun isSelectableYear(year: Int): Boolean =
+                year <= yesterday.year
+        }
+    }
     val startDatePickerState = rememberDatePickerState(
         initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
-        // yearRange caps the year dropdown — no future years visible
         yearRange = IntRange(2000, yesterday.year),
-        selectableDates = object : SelectableDates {
-            override fun isSelectableDate(utcTimeMillis: Long): Boolean = utcTimeMillis <= yesterdayMillis
-            override fun isSelectableYear(year: Int): Boolean = year <= yesterday.year
-        }
+        selectableDates = startSelectableDates
     )
-    // Recreate end picker state whenever customStartDate changes so the lower bound updates
+    // Hard guard: if M3 ever allows a bad selection, immediately revert it
+    LaunchedEffect(startDatePickerState.selectedDateMillis) {
+        val sel = startDatePickerState.selectedDateMillis ?: return@LaunchedEffect
+        if (sel > yesterdayMillis) {
+            startDatePickerState.selectedDateMillis = yesterdayMillis
+        }
+    }
+
+    // --- End date picker: only dates from start date to today ---
     val endDatePickerState = key(customStartDate) {
         val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
         rememberDatePickerState(
             initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
-            // yearRange caps both ends of the year dropdown
             yearRange = IntRange(customStartDate.year, today.year),
             selectableDates = object : SelectableDates {
                 override fun isSelectableDate(utcTimeMillis: Long): Boolean =
@@ -172,6 +185,16 @@ fun StatisticsScreen(
                     year in customStartDate.year..today.year
             }
         )
+    }
+    // Hard guard for end date
+    LaunchedEffect(endDatePickerState.selectedDateMillis, customStartDate) {
+        val sel = endDatePickerState.selectedDateMillis ?: return@LaunchedEffect
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        if (sel < fromMillis) {
+            endDatePickerState.selectedDateMillis = fromMillis
+        } else if (sel > todayMillis) {
+            endDatePickerState.selectedDateMillis = todayMillis
+        }
     }
 
     Scaffold(
