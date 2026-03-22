@@ -194,14 +194,10 @@ fun SettingsScreen(
                                         )
                                 },
                                 navigationIcon = {
-                                        IconButton(onClick = onNavigateBack) {
-                                                Icon(
-                                                        imageVector =
-                                                                Icons.AutoMirrored.Rounded
-                                                                        .ArrowBack,
-                                                        contentDescription = "Back"
-                                                )
-                                        }
+                                        com.mj.yaja.ui.components.AnimatedMenuButton(
+                                                onClick = onOpenDrawer,
+                                                modifier = Modifier.padding(start = 8.dp)
+                                        )
                                 },
                                 colors =
                                         TopAppBarDefaults.topAppBarColors(
