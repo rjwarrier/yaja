@@ -41,7 +41,6 @@ import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.components.AppNavigationDrawer
 import com.mj.yaja.ui.screens.AddEntryScreen
 import com.mj.yaja.ui.screens.CalendarScreen
-import com.mj.yaja.ui.screens.GesturesScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.HomeScreen
 import com.mj.yaja.ui.screens.LookbackScreen
@@ -541,14 +540,7 @@ fun JournalApp(viewModel: JournalViewModel, initialCrashLog: String? = null) {
                                     viewModel.refreshCalendarDates()
                                     navController.navigate(Route.Calendar.path)
                                 },
-                                onNavigateToLookback = { navController.navigate(Route.Lookback.path) },
-                                onNavigateToGestures = { navController.navigate(Route.Gestures.path) }
-                        )
-                    }
-                    composable(Route.Gestures.path) {
-                        GesturesScreen(
-                                viewModel = viewModel,
-                                onNavigateBack = { navController.popBackStack() }
+                                onNavigateToLookback = { navController.navigate(Route.Lookback.path) }
                         )
                     }
                     composable(Route.Shortcodes.path) {

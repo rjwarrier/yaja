@@ -72,8 +72,7 @@ fun SettingsScreen(
         onNavigateToShortcodes: () -> Unit,
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit,
-        onNavigateToLookback: () -> Unit,
-        onNavigateToGestures: () -> Unit = {}
+        onNavigateToLookback: () -> Unit
 ) {
         val themePreference by viewModel.themePreference.collectAsState()
         val fontScalePreference by viewModel.fontScalePreference.collectAsState()
@@ -86,6 +85,9 @@ fun SettingsScreen(
         val isPinEnabled by viewModel.isPinEnabled.collectAsState()
         val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
         val showStatistics by viewModel.showStatistics.collectAsState()
+        val swipeToDeleteEnabled by viewModel.swipeToDeleteEnabled.collectAsState()
+        val swipeDeleteDirection by viewModel.swipeDeleteDirection.collectAsState()
+        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
         val context = LocalContext.current
 
         LaunchedEffect(Unit) {
@@ -195,14 +197,6 @@ fun SettingsScreen(
                                                                 Icons.AutoMirrored.Rounded
                                                                         .ArrowBack,
                                                         contentDescription = "Back"
-                                                )
-                                        }
-                                },
-                                actions = {
-                                        IconButton(onClick = onNavigateToGestures) {
-                                                Icon(
-                                                        imageVector = Icons.Rounded.Fingerprint,
-                                                        contentDescription = "Gestures"
                                                 )
                                         }
                                 },
@@ -935,6 +929,244 @@ fun SettingsScreen(
 
                                 }
 
+                                Spacer(modifier = Modifier.height(32.dp))
+
+                                // ── Gestures Section ──
+                                SettingsSectionHeader(
+                                        icon = Icons.Rounded.Fingerprint,
+                                        title = "Gestures"
+                                )
+
+                                Spacer(modifier = Modifier.height(12.dp))
+
+                                ElevatedCard(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        colors =
+                                                CardDefaults.elevatedCardColors(
+                                                        containerColor =
+                                                                MaterialTheme.colorScheme
+                                                                        .surfaceContainerLow
+                                                ),
+                                        elevation =
+                                                CardDefaults.elevatedCardElevation(
+                                                        defaultElevation = 0.dp
+                                                ),
+                                        shape = MaterialTheme.shapes.medium
+                                ) {
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 16.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text = "Swipe to Delete",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurface
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Enable delete gesture on entries",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurfaceVariant
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = swipeToDeleteEnabled,
+                                                        onCheckedChange = {
+                                                                viewModel.setSwipeToDeleteEnabled(
+                                                                        it
+                                                                )
+                                                        }
+                                                )
+                                        }
+
+                                        // Swipe direction sub-option
+                                        androidx.compose.animation.AnimatedVisibility(
+                                                visible = swipeToDeleteEnabled
+                                        ) {
+                                                Column {
+                                                        HorizontalDivider(
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .surfaceVariant
+                                                        )
+                                                        Row(
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .padding(
+                                                                                        horizontal =
+                                                                                                12.dp,
+                                                                                        vertical =
+                                                                                                8.dp
+                                                                                ),
+                                                                verticalAlignment =
+                                                                        Alignment.CenterVertically,
+                                                                horizontalArrangement =
+                                                                        Arrangement.SpaceBetween
+                                                        ) {
+                                                                Column(Modifier.weight(1f)) {
+                                                                        Text(
+                                                                                text =
+                                                                                        "Swipe Direction",
+                                                                                style =
+                                                                                        MaterialTheme
+                                                                                                .typography
+                                                                                                .bodyLarge,
+                                                                                color =
+                                                                                        MaterialTheme
+                                                                                                .colorScheme
+                                                                                                .onSurface
+                                                                        )
+                                                                        Text(
+                                                                                text =
+                                                                                        "Which side triggers delete",
+                                                                                style =
+                                                                                        MaterialTheme
+                                                                                                .typography
+                                                                                                .bodySmall,
+                                                                                color =
+                                                                                        MaterialTheme
+                                                                                                .colorScheme
+                                                                                                .onSurfaceVariant
+                                                                        )
+                                                                }
+                                                                Row(
+                                                                        modifier =
+                                                                                Modifier.background(
+                                                                                                MaterialTheme
+                                                                                                        .colorScheme
+                                                                                                        .surfaceVariant,
+                                                                                                MaterialTheme
+                                                                                                        .shapes
+                                                                                                        .small
+                                                                                        )
+                                                                                        .padding(
+                                                                                                2.dp
+                                                                                        ),
+                                                                        verticalAlignment =
+                                                                                Alignment
+                                                                                        .CenterVertically
+                                                                ) {
+                                                                        listOf(
+                                                                                        SwipeDirection
+                                                                                                .END_TO_START to
+                                                                                                "← Left",
+                                                                                        SwipeDirection
+                                                                                                .START_TO_END to
+                                                                                                "Right →"
+                                                                                )
+                                                                                .forEach {
+                                                                                        (dir, label)
+                                                                                        ->
+                                                                                        val isSelected =
+                                                                                                swipeDeleteDirection ==
+                                                                                                        dir
+                                                                                        Box(
+                                                                                                modifier =
+                                                                                                        Modifier.background(
+                                                                                                                        if (isSelected
+                                                                                                                        )
+                                                                                                                                MaterialTheme
+                                                                                                                                        .colorScheme
+                                                                                                                                        .primaryContainer
+                                                                                                                        else
+                                                                                                                                androidx.compose
+                                                                                                                                        .ui
+                                                                                                                                        .graphics
+                                                                                                                                        .Color
+                                                                                                                                        .Transparent,
+                                                                                                                        shape =
+                                                                                                                                MaterialTheme
+                                                                                                                                        .shapes
+                                                                                                                                        .small
+                                                                                                                )
+                                                                                                                .clickable {
+                                                                                                                        viewModel
+                                                                                                                                .setSwipeDeleteDirection(
+                                                                                                                                        dir
+                                                                                                                                )
+                                                                                                                }
+                                                                                                                .padding(
+                                                                                                                        horizontal =
+                                                                                                                                12.dp,
+                                                                                                                        vertical =
+                                                                                                                                6.dp
+                                                                                                                )
+                                                                                        ) {
+                                                                                                Text(
+                                                                                                        text =
+                                                                                                                label,
+                                                                                                        style =
+                                                                                                                MaterialTheme
+                                                                                                                        .typography
+                                                                                                                        .labelSmall
+                                                                                                )
+                                                                                        }
+                                                                                }
+                                                                }
+                                                        }
+                                                }
+                                        }
+
+                                        HorizontalDivider(
+                                                color = MaterialTheme.colorScheme.surfaceVariant
+                                        )
+
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 16.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text = "Enable Drag-to-Reorder",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurface
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Long-press entries to rearrange them",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurfaceVariant
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = enableDragAndDrop,
+                                                        onCheckedChange = {
+                                                                viewModel.setEnableDragAndDrop(it)
+                                                        }
+                                                )
+                                        }
+                                }
+
+                                Spacer(modifier = Modifier.height(32.dp))
 
                                 // ── Data & Storage Section ──
                                 SettingsSectionHeader(
