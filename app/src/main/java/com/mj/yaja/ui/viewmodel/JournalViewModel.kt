@@ -2,12 +2,10 @@ package com.mj.yaja.ui.viewmodel
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import java.io.File
 import com.google.mlkit.nl.languageid.LanguageIdentification
-import com.google.mlkit.nl.languageid.LanguageIdentificationOptions
 import com.google.mlkit.nl.languageid.LanguageIdentifier
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.resume
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -34,7 +32,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
 
 data class JournalUiState(
         val selectedDate: LocalDate = LocalDate.now(),
@@ -56,10 +56,6 @@ class JournalViewModel(
         private val fileManager: MarkdownFileManager,
         private val settingsRepository: SettingsRepository
 ) : ViewModel() {
-
-    // Dedicated single-thread executor for ML Kit callbacks — keeps all callbacks off the main
-    // thread so language detection never touches the main dispatcher
-    private val langDetectExecutor = java.util.concurrent.Executors.newSingleThreadExecutor()
 
     private val _uiState = MutableStateFlow(JournalUiState())
     val uiState: StateFlow<JournalUiState> = _uiState.asStateFlow()
@@ -89,16 +85,20 @@ class JournalViewModel(
     val swipeToDeleteEnabled = settingsRepository.swipeToDeleteEnabled
     val swipeDeleteDirection = settingsRepository.swipeDeleteDirection
     val swipeToSyncEnabled = settingsRepository.swipeToSyncEnabled
-    val widgetCornerRadius = settingsRepository.widgetCornerRadius
     val showStatistics = settingsRepository.showStatistics
+    val showLookbackInNavBar = settingsRepository.showLookbackInNavBar
+    val showStatisticsInNavBar = settingsRepository.showStatisticsInNavBar
     val enableDragAndDrop = settingsRepository.enableDragAndDrop
-    val showWidgetLabel = settingsRepository.showWidgetLabel
     val hasActiveWidgets = settingsRepository.hasActiveWidgets
     val showBottomBar = settingsRepository.showBottomBar
     val customShortcodes = settingsRepository.customShortcodes
     val isPreviewLimitEnabled = settingsRepository.isPreviewLimitEnabled
     val previewLimitLength = settingsRepository.previewLimitLength
     val statisticsSectionOrder = settingsRepository.statisticsSectionOrder
+    val useMLKitDetection = settingsRepository.useMLKitDetection
+
+    // Dedicated executor for ML Kit callbacks — keeps them off the main thread
+    private val langDetectExecutor = java.util.concurrent.Executors.newSingleThreadExecutor()
 
     private val _monthlyStats = MutableStateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?>(null)
     val monthlyStats: StateFlow<com.mj.yaja.ui.screens.MonthlyStatsData?> = _monthlyStats.asStateFlow()
@@ -169,8 +169,6 @@ class JournalViewModel(
     fun setSwipeDeleteDirection(direction: SwipeDirection) =
             settingsRepository.setSwipeDeleteDirection(direction)
     fun setSwipeToSyncEnabled(enabled: Boolean) = settingsRepository.setSwipeToSyncEnabled(enabled)
-    fun setWidgetCornerRadius(radius: Int) = settingsRepository.setWidgetCornerRadius(radius)
-    fun setShowWidgetLabel(show: Boolean) = settingsRepository.setShowWidgetLabel(show)
     fun setShowBottomBar(show: Boolean) = settingsRepository.setShowBottomBar(show)
     fun setPreviewLimitEnabled(enabled: Boolean) =
             settingsRepository.setPreviewLimitEnabled(enabled)
@@ -441,12 +439,26 @@ class JournalViewModel(
         settingsRepository.setShowStatistics(show)
     }
 
+    fun setShowLookbackInNavBar(show: Boolean) {
+        settingsRepository.setShowLookbackInNavBar(show)
+    }
+
+    fun setShowStatisticsInNavBar(show: Boolean) {
+        settingsRepository.setShowStatisticsInNavBar(show)
+    }
+
     fun setEnableDragAndDrop(enable: Boolean) {
         settingsRepository.setEnableDragAndDrop(enable)
     }
 
     fun setStatisticsSectionOrder(order: List<String>) {
         settingsRepository.setStatisticsSectionOrder(order)
+    }
+
+    fun setUseMLKitDetection(enabled: Boolean) {
+        settingsRepository.setUseMLKitDetection(enabled)
+        // Recalculate with the new detection method
+        calculateStatsByPeriod(com.mj.yaja.ui.screens.StatisticsPeriod.ALL_TIME)
     }
 
     fun setCustomShortcode(code: String, value: String) {
@@ -594,30 +606,16 @@ class JournalViewModel(
         }
     }
 
-    // Holder for IO-phase results; defined at class level to avoid R8 issues with local classes
-    private data class IoResult(
-        val stats: com.mj.yaja.ui.screens.AllTimeStatsData,
-        val textsToDetect: List<String>
-    )
-
     fun calculateStatsByPeriod(
         period: com.mj.yaja.ui.screens.StatisticsPeriod,
         startDate: LocalDate? = null,
         endDate: LocalDate? = null
     ) {
         viewModelScope.launch {
-            // Try to create language identifier — if ML Kit / Play Services fails, skip detection
-            val langIdentifier: LanguageIdentifier? = try {
-                LanguageIdentification.getClient(
-                    LanguageIdentificationOptions.Builder()
-                        .setConfidenceThreshold(0.5f)
-                        .build()
-                )
-            } catch (e: Exception) {
-                null
-            }
+            val useMLKit = settingsRepository.useMLKitDetection.value
+            val textsForMLKit = if (useMLKit) mutableListOf<String>() else null
 
-            val ioResult = withContext(Dispatchers.IO) {
+            val stats = withContext(Dispatchers.IO) {
                 val now = LocalDate.now()
                 val (rangeStart, rangeEnd) = when (period) {
                     com.mj.yaja.ui.screens.StatisticsPeriod.ALL_TIME -> {
@@ -648,26 +646,23 @@ class JournalViewModel(
                     }
 
                 if (allDates.isEmpty()) {
-                    return@withContext IoResult(
-                        stats = com.mj.yaja.ui.screens.AllTimeStatsData(
-                            totalEntries = 0,
-                            totalWords = 0,
-                            averageWordsPerEntry = 0f,
-                            currentStreak = 0,
-                            longestStreakAllTime = 0,
-                            mostActiveDay = null,
-                            totalDaysWithEntries = 0,
-                            writingConsistencyScore = 0f,
-                            monthlyEntryTrend = emptyList(),
-                            entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0),
-                            totalHighlightedDays = 0,
-                            bestMonthLabel = null,
-                            bestMonthCount = 0,
-                            averageDaysPerWeek = 0f,
-                            writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0),
-                            languageDistribution = emptyMap()
-                        ),
-                        textsToDetect = emptyList()
+                    return@withContext com.mj.yaja.ui.screens.AllTimeStatsData(
+                        totalEntries = 0,
+                        totalWords = 0,
+                        averageWordsPerEntry = 0f,
+                        currentStreak = 0,
+                        longestStreakAllTime = 0,
+                        mostActiveDay = null,
+                        totalDaysWithEntries = 0,
+                        writingConsistencyScore = 0f,
+                        monthlyEntryTrend = emptyList(),
+                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(0, 0, 0, 0),
+                        totalHighlightedDays = 0,
+                        bestMonthLabel = null,
+                        bestMonthCount = 0,
+                        averageDaysPerWeek = 0f,
+                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(0, 0, 0, 0),
+                        languageDistribution = emptyMap()
                     )
                 }
 
@@ -687,8 +682,7 @@ class JournalViewModel(
                 val timeRegex = Regex("""<!--time:(\d{2}):\d{2}""")
                 val timestampRegex = Regex("<!--time:[^>]+-->\\n?")
 
-                // Collect texts for language detection (done after IO, using proper suspension)
-                val textsToDetect = mutableListOf<String>()
+                val scriptCounts = mutableMapOf<String, Int>()
 
                 // Highlighted days that fall within this period
                 val favoritedInPeriod = _uiState.value.favoritedHighlights
@@ -724,10 +718,16 @@ class JournalViewModel(
                                 }
                             }
 
-                            // Collect clean text for language detection (done in Phase 2)
                             val cleanText = entry.replace(timestampRegex, "").trim()
-                            if (cleanText.length >= 20) {
-                                textsToDetect.add(cleanText)
+                            if (cleanText.length >= 10) {
+                                if (useMLKit) {
+                                    // Collect for ML Kit detection after IO block
+                                    textsForMLKit?.add(cleanText)
+                                } else {
+                                    // Fast Unicode script detection (inline, no dependencies)
+                                    val script = detectDominantScript(cleanText)
+                                    scriptCounts[script] = (scriptCounts[script] ?: 0) + 1
+                                }
                             }
                         }
 
@@ -787,6 +787,16 @@ class JournalViewModel(
                     0f
                 }
 
+                // Finalise language/script distribution (Unicode mode only; ML Kit fills later)
+                val languageDistribution = if (!useMLKit) {
+                    val detected = scriptCounts.filterKeys { it != "Not Detected" }
+                    val notDetectedCount = (totalEntries - detected.values.sum()).coerceAtLeast(0)
+                    val sorted = detected.entries.sortedByDescending { it.value }
+                        .associate { it.key to it.value }.toMutableMap()
+                    if (notDetectedCount > 0) sorted["Not Detected"] = notDetectedCount
+                    sorted
+                } else emptyMap()
+
                 // Average writing days per week
                 val totalWeeks = (daysDiff / 7.0).coerceAtLeast(1.0)
                 val averageDaysPerWeek = (allDates.size.toFloat() / totalWeeks).toFloat()
@@ -812,101 +822,163 @@ class JournalViewModel(
                 }
                 monthlyTrend.reverse()
 
-                IoResult(
-                    stats = com.mj.yaja.ui.screens.AllTimeStatsData(
-                        totalEntries = totalEntries,
-                        totalWords = totalWords,
-                        averageWordsPerEntry = averageWordsPerEntry,
-                        currentStreak = currentStreak,
-                        longestStreakAllTime = longestStreakAllTime,
-                        mostActiveDay = mostActiveDay,
-                        totalDaysWithEntries = allDates.size,
-                        writingConsistencyScore = consistencyScore,
-                        monthlyEntryTrend = monthlyTrend,
-                        entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount),
-                        totalHighlightedDays = favoritedInPeriod,
-                        bestMonthLabel = bestMonthLabel,
-                        bestMonthCount = bestMonthCount,
-                        averageDaysPerWeek = averageDaysPerWeek,
-                        writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(
-                            morning = morningCount,
-                            afternoon = afternoonCount,
-                            evening = eveningCount,
-                            night = nightCount
-                        ),
-                        languageDistribution = emptyMap() // filled in Phase 2
+                com.mj.yaja.ui.screens.AllTimeStatsData(
+                    totalEntries = totalEntries,
+                    totalWords = totalWords,
+                    averageWordsPerEntry = averageWordsPerEntry,
+                    currentStreak = currentStreak,
+                    longestStreakAllTime = longestStreakAllTime,
+                    mostActiveDay = mostActiveDay,
+                    totalDaysWithEntries = allDates.size,
+                    writingConsistencyScore = consistencyScore,
+                    monthlyEntryTrend = monthlyTrend,
+                    entriesByLength = com.mj.yaja.ui.screens.DayDistribution(shortCount, mediumCount, longCount, intenseCount),
+                    totalHighlightedDays = favoritedInPeriod,
+                    bestMonthLabel = bestMonthLabel,
+                    bestMonthCount = bestMonthCount,
+                    averageDaysPerWeek = averageDaysPerWeek,
+                    writingTimeDistribution = com.mj.yaja.ui.screens.TimeDistribution(
+                        morning = morningCount,
+                        afternoon = afternoonCount,
+                        evening = eveningCount,
+                        night = nightCount
                     ),
-                    textsToDetect = textsToDetect
+                    languageDistribution = languageDistribution
                 )
             }
 
-            // Show stats immediately so the screen is responsive while language detection runs
-            _allTimeStats.value = ioResult.stats
+            // Show stats immediately (language section fills after ML Kit if enabled)
+            _allTimeStats.value = stats
 
-            // Phase 2 — language detection (entirely guarded; if anything fails, stats show without it)
-            if (langIdentifier != null && ioResult.textsToDetect.isNotEmpty()) {
+            // ML Kit phase — runs after IO, uses proper suspension, never blocks main thread
+            if (useMLKit && textsForMLKit != null && textsForMLKit.isNotEmpty()) {
                 try {
-                    // Sample at most 200 entries evenly — accurate distribution, avoids overwhelming ML Kit
-                    val sampled = ioResult.textsToDetect.let { texts ->
-                        if (texts.size <= 200) texts
-                        else (0 until 200).map { i ->
-                            texts[(i.toDouble() / 200.0 * texts.size).toInt()]
-                        }
-                    }
+                    val langIdentifier = LanguageIdentification.getClient(
+                        com.google.mlkit.nl.languageid.LanguageIdentificationOptions.Builder()
+                            .setConfidenceThreshold(0.95f)
+                            .build()
+                    )
 
-                    val langCounts = withContext(Dispatchers.IO) {
-                        val counts = mutableMapOf<String, Int>()
-                        for (text in sampled) {
-                            val code = try {
-                                detectLanguage(langIdentifier, text)
-                            } catch (e: Exception) {
-                                "und"
+                    val langCounts = try {
+                        withContext(Dispatchers.IO) {
+                            val counts = mutableMapOf<String, Int>()
+                            for (text in textsForMLKit) {
+                                val name = try {
+                                    detectLanguageWithMLKit(langIdentifier, text.take(100))
+                                } catch (e: Exception) {
+                                    null
+                                }
+                                // Fall back to Unicode script if ML Kit returns null/und
+                                val label = name ?: detectDominantScript(text)
+                                counts[label] = (counts[label] ?: 0) + 1
                             }
-                            counts[code] = (counts[code] ?: 0) + 1
+                            counts
                         }
-                        counts
+                    } finally {
+                        // Guaranteed close regardless of success or exception
+                        try { langIdentifier.close() } catch (_: Exception) {}
                     }
 
-                    val languageDistribution = langCounts
-                        .entries
-                        .sortedWith(compareBy({ it.key == "und" }, { -it.value }))
-                        .associate { it.key to it.value }
+                    val mlDetected = langCounts.filterKeys { it != "Not Detected" }
+                    val mlNotDetected = (stats.totalEntries - mlDetected.values.sum()).coerceAtLeast(0)
+                    val mlDistribution = mlDetected.entries.sortedByDescending { it.value }
+                        .associate { it.key to it.value }.toMutableMap()
+                    if (mlNotDetected > 0) mlDistribution["Not Detected"] = mlNotDetected
 
-                    _allTimeStats.value = ioResult.stats.copy(languageDistribution = languageDistribution)
+                    _allTimeStats.value = stats.copy(languageDistribution = mlDistribution)
                 } catch (e: Exception) {
-                    // Language detection failed — stats already visible without it
-                } finally {
-                    try { langIdentifier.close() } catch (_: Exception) {}
+                    Log.w("JournalViewModel", "ML Kit failed, falling back to Unicode", e)
+                    // Fall back: recalculate with Unicode
+                    val fallbackCounts = mutableMapOf<String, Int>()
+                    textsForMLKit.filter { it.length >= 10 }.forEach { text ->
+                        val script = detectDominantScript(text)
+                        fallbackCounts[script] = (fallbackCounts[script] ?: 0) + 1
+                    }
+                    val fallbackDetected = fallbackCounts.filterKeys { it != "Not Detected" }
+                    val fallbackNotDetected = (stats.totalEntries - fallbackDetected.values.sum()).coerceAtLeast(0)
+                    val fallback = fallbackDetected.entries.sortedByDescending { it.value }
+                        .associate { (k, v) -> k to v }.toMutableMap()
+                    if (fallbackNotDetected > 0) fallback["Not Detected"] = fallbackNotDetected
+                    _allTimeStats.value = stats.copy(languageDistribution = fallback)
                 }
-            } else {
-                try { langIdentifier?.close() } catch (_: Exception) {}
             }
         }
     }
 
     /**
-     * Bridges ML Kit's Task into a coroutine suspension.
-     * All callbacks run on [langDetectExecutor] — never on the main thread — so the main
-     * dispatcher is never touched during language detection.
+     * Detects the dominant writing script of [text] using Java's built-in Unicode support.
+     * Zero dependencies — works instantly, R8-safe, handles Malayalam, Latin, Devanagari, etc.
      */
-    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
-    private suspend fun detectLanguage(identifier: LanguageIdentifier, text: String): String =
-        suspendCancellableCoroutine { cont ->
-            try {
-                identifier.identifyLanguage(text)
-                    .addOnSuccessListener(langDetectExecutor) { code ->
-                        if (cont.isActive) cont.resume(code ?: "und") { }
-                    }
-                    .addOnFailureListener(langDetectExecutor) {
-                        if (cont.isActive) cont.resume("und") { }
-                    }
-                    .addOnCanceledListener(langDetectExecutor) {
-                        if (cont.isActive) cont.resume("und") { }
-                    }
-            } catch (e: Exception) {
-                if (cont.isActive) cont.resume("und") { }
+    private fun detectDominantScript(text: String): String {
+        val counts = mutableMapOf<Character.UnicodeScript, Int>()
+        for (char in text) {
+            if (char.isLetter()) {
+                val script = Character.UnicodeScript.of(char.code)
+                if (script != Character.UnicodeScript.COMMON && script != Character.UnicodeScript.INHERITED) {
+                    counts[script] = (counts[script] ?: 0) + 1
+                }
             }
         }
+        val dominant = counts.maxByOrNull { it.value }?.key ?: return "Not Detected"
+        return when (dominant) {
+            Character.UnicodeScript.LATIN -> "English"
+            Character.UnicodeScript.MALAYALAM -> "Malayalam"
+            Character.UnicodeScript.DEVANAGARI -> "Hindi"
+            Character.UnicodeScript.ARABIC -> "Arabic"
+            Character.UnicodeScript.CYRILLIC -> "Cyrillic"
+            Character.UnicodeScript.TAMIL -> "Tamil"
+            Character.UnicodeScript.TELUGU -> "Telugu"
+            Character.UnicodeScript.KANNADA -> "Kannada"
+            Character.UnicodeScript.BENGALI -> "Bengali"
+            Character.UnicodeScript.GURMUKHI -> "Punjabi"
+            Character.UnicodeScript.GUJARATI -> "Gujarati"
+            Character.UnicodeScript.THAI -> "Thai"
+            Character.UnicodeScript.HAN -> "Chinese"
+            Character.UnicodeScript.HANGUL -> "Korean"
+            Character.UnicodeScript.HIRAGANA -> "Japanese"
+            Character.UnicodeScript.KATAKANA -> "Japanese"
+            Character.UnicodeScript.GEORGIAN -> "Georgian"
+            Character.UnicodeScript.ARMENIAN -> "Armenian"
+            Character.UnicodeScript.ETHIOPIC -> "Ethiopic"
+            Character.UnicodeScript.GREEK -> "Greek"
+            Character.UnicodeScript.HEBREW -> "Hebrew"
+            Character.UnicodeScript.MYANMAR -> "Myanmar"
+            Character.UnicodeScript.SINHALA -> "Sinhala"
+            Character.UnicodeScript.KHMER -> "Khmer"
+            Character.UnicodeScript.LAO -> "Lao"
+            Character.UnicodeScript.TIBETAN -> "Tibetan"
+            Character.UnicodeScript.ORIYA -> "Odia"
+            else -> dominant.name.lowercase().replaceFirstChar { it.uppercase() }
+        }
+    }
+
+    /**
+     * Uses ML Kit to identify the language of [text] via proper coroutine suspension.
+     * Callbacks run on [langDetectExecutor] — never touches the main thread.
+     * Returns a display name (e.g. "English", "Malayalam") or null if detection fails.
+     */
+    private suspend fun detectLanguageWithMLKit(
+        identifier: LanguageIdentifier,
+        text: String
+    ): String? = suspendCancellableCoroutine { cont ->
+        try {
+            identifier.identifyLanguage(text)
+                .addOnSuccessListener(langDetectExecutor) { code ->
+                    val name = if (code == null || code == "und") null
+                    else java.util.Locale(code).getDisplayLanguage(java.util.Locale.ENGLISH)
+                        .replaceFirstChar { it.uppercase() }
+                    if (cont.isActive) cont.resume(name)
+                }
+                .addOnFailureListener(langDetectExecutor) {
+                    if (cont.isActive) cont.resume(null)
+                }
+                .addOnCanceledListener(langDetectExecutor) {
+                    if (cont.isActive) cont.resume(null)
+                }
+        } catch (e: Exception) {
+            if (cont.isActive) cont.resume(null)
+        }
+    }
 
     fun updateHeatmapData() {
         viewModelScope.launch {
@@ -965,6 +1037,12 @@ class JournalViewModel(
             _syncProgress.value = null
             _toastEvents.emit("Data cache synced!")
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        // Shut down the ML Kit callback executor to prevent thread leaks
+        langDetectExecutor.shutdown()
     }
 
     class Factory(

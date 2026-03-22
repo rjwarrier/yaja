@@ -42,6 +42,8 @@ fun AppNavigationDrawer(
         datesWithEntries: Set<LocalDate> = emptySet(),
         onSurpriseMe: (LocalDate) -> Unit = {},
         showStatistics: Boolean = true,
+        showLookbackInNavBar: Boolean = true,
+        showStatisticsInNavBar: Boolean = false,
         content: @Composable () -> Unit
 ) {
         ModalNavigationDrawer(
@@ -118,24 +120,26 @@ fun AppNavigationDrawer(
                                         },
                                         modifier = Modifier.padding(horizontal = 12.dp)
                                 )
-                                Spacer(Modifier.height(8.dp))
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(
-                                                        Icons.Rounded.History,
-                                                        contentDescription = null
-                                                )
-                                        },
-                                        label = { Text("Lookback") },
-                                        selected = currentRoute == "lookback",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToLookback()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                if (showStatistics) {
+                                if (!showLookbackInNavBar) {
+                                        Spacer(Modifier.height(8.dp))
+                                        NavigationDrawerItem(
+                                                icon = {
+                                                        Icon(
+                                                                Icons.Rounded.History,
+                                                                contentDescription = null
+                                                        )
+                                                },
+                                                label = { Text("Lookback") },
+                                                selected = currentRoute == "lookback",
+                                                onClick = {
+                                                        scope.launch { drawerState.close() }
+                                                        onNavigateToLookback()
+                                                },
+                                                modifier = Modifier.padding(horizontal = 12.dp)
+                                        )
+                                }
+                                if (showStatistics && !showStatisticsInNavBar) {
+                                        Spacer(Modifier.height(8.dp))
                                         NavigationDrawerItem(
                                                 icon = {
                                                         Icon(

@@ -116,6 +116,12 @@ class SettingsRepository(private val context: Context) {
     private val _showStatistics = MutableStateFlow(getSavedShowStatistics())
     val showStatistics: StateFlow<Boolean> = _showStatistics.asStateFlow()
 
+    private val _showLookbackInNavBar = MutableStateFlow(getSavedShowLookbackInNavBar())
+    val showLookbackInNavBar: StateFlow<Boolean> = _showLookbackInNavBar.asStateFlow()
+
+    private val _showStatisticsInNavBar = MutableStateFlow(getSavedShowStatisticsInNavBar())
+    val showStatisticsInNavBar: StateFlow<Boolean> = _showStatisticsInNavBar.asStateFlow()
+
     private val _enableDragAndDrop = MutableStateFlow(getSavedEnableDragAndDrop())
     val enableDragAndDrop: StateFlow<Boolean> = _enableDragAndDrop.asStateFlow()
 
@@ -374,6 +380,16 @@ class SettingsRepository(private val context: Context) {
         _showStatistics.value = show
     }
 
+    fun setShowLookbackInNavBar(show: Boolean) {
+        prefs.edit().putBoolean(KEY_SHOW_LOOKBACK_IN_NAV_BAR, show).apply()
+        _showLookbackInNavBar.value = show
+    }
+
+    fun setShowStatisticsInNavBar(show: Boolean) {
+        prefs.edit().putBoolean(KEY_SHOW_STATISTICS_IN_NAV_BAR, show).apply()
+        _showStatisticsInNavBar.value = show
+    }
+
     fun setEnableDragAndDrop(enable: Boolean) {
         prefs.edit().putBoolean(KEY_ENABLE_DRAG_AND_DROP, enable).apply()
         _enableDragAndDrop.value = enable
@@ -485,6 +501,10 @@ class SettingsRepository(private val context: Context) {
 
     private fun getSavedShowStatistics(): Boolean = prefs.getBoolean(KEY_SHOW_STATISTICS, true)
 
+    private fun getSavedShowLookbackInNavBar(): Boolean = prefs.getBoolean(KEY_SHOW_LOOKBACK_IN_NAV_BAR, true)
+
+    private fun getSavedShowStatisticsInNavBar(): Boolean = prefs.getBoolean(KEY_SHOW_STATISTICS_IN_NAV_BAR, false)
+
     private fun getSavedEnableDragAndDrop(): Boolean = prefs.getBoolean(KEY_ENABLE_DRAG_AND_DROP, true)
 
     private fun getSavedStatisticsSectionOrder(): List<String> {
@@ -539,6 +559,8 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_PREVIEW_LIMIT_ENABLED = "preview_limit_enabled"
         private const val KEY_PREVIEW_LIMIT_LENGTH = "preview_limit_length"
         private const val KEY_SHOW_STATISTICS = "show_statistics"
+        private const val KEY_SHOW_LOOKBACK_IN_NAV_BAR = "show_lookback_in_nav_bar"
+        private const val KEY_SHOW_STATISTICS_IN_NAV_BAR = "show_statistics_in_nav_bar"
         private const val KEY_ENABLE_DRAG_AND_DROP = "enable_drag_and_drop"
         private const val KEY_STATISTICS_SECTION_ORDER = "statistics_section_order"
         private const val KEY_USE_MLKIT_DETECTION = "use_mlkit_detection"

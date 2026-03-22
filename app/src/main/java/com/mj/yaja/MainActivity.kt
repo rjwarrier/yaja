@@ -18,6 +18,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.Book
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.History
@@ -161,6 +162,8 @@ fun JournalApp(viewModel: JournalViewModel, initialCrashLog: String? = null) {
     ) {
         val isPinEnabled by viewModel.isPinEnabled.collectAsState()
         val showBottomBar by viewModel.showBottomBar.collectAsState()
+        val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsState()
+        val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsState()
         val startDestination = if (isPinEnabled) Route.PinLock.path else Route.Home.path
 
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -194,7 +197,14 @@ fun JournalApp(viewModel: JournalViewModel, initialCrashLog: String? = null) {
                                     if (currentRoute != Route.Lookback.path) {
                                         navController.navigate(Route.Lookback.path) { popUpTo(Route.Home.path) }
                                     }
-                                }
+                                },
+                                onNavigateStatistics = {
+                                    if (currentRoute != Route.Statistics.path) {
+                                        navController.navigate(Route.Statistics.path) { popUpTo(Route.Home.path) }
+                                    }
+                                },
+                                showLookbackInNavBar = showLookbackInNavBar,
+                                showStatisticsInNavBar = showStatisticsInNavBar
                         )
                     }
                 }
@@ -224,7 +234,9 @@ fun JournalApp(viewModel: JournalViewModel, initialCrashLog: String? = null) {
                     viewModel.selectDate(randomDate)
                     navController.navigate(Route.Home.path) { popUpTo(Route.Home.path) { inclusive = true } }
                 },
-                showStatistics = showStatistics
+                showStatistics = showStatistics,
+                showLookbackInNavBar = showLookbackInNavBar,
+                showStatisticsInNavBar = showStatisticsInNavBar
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
                 val syncProgress by viewModel.syncProgress.collectAsState()
@@ -741,14 +753,17 @@ fun AnimatedFloatingBottomBar(
         currentRoute: String?,
         onNavigateHome: () -> Unit,
         onNavigateCalendar: () -> Unit,
-        onNavigateLookback: () -> Unit
+        onNavigateLookback: () -> Unit,
+        onNavigateStatistics: () -> Unit = {},
+        showLookbackInNavBar: Boolean = true,
+        showStatisticsInNavBar: Boolean = false
 ) {
-    val items =
-            listOf(
-                    Triple(Route.Home.path, "Journal", Icons.Rounded.Book),
-                    Triple(Route.Calendar.path, "Calendar", Icons.Rounded.CalendarMonth),
-                    Triple(Route.Lookback.path, "Lookback", Icons.Rounded.History)
-            )
+    val items = buildList {
+        add(Triple(Route.Home.path, "Journal", Icons.Rounded.Book))
+        add(Triple(Route.Calendar.path, "Calendar", Icons.Rounded.CalendarMonth))
+        if (showLookbackInNavBar) add(Triple(Route.Lookback.path, "Lookback", Icons.Rounded.History))
+        if (showStatisticsInNavBar) add(Triple(Route.Statistics.path, "Statistics", Icons.AutoMirrored.Rounded.TrendingUp))
+    }
 
     val selectedIndex = items.indexOfFirst { it.first == currentRoute }.coerceAtLeast(0)
 
@@ -823,6 +838,7 @@ fun AnimatedFloatingBottomBar(
                                                                 Route.Home.path -> onNavigateHome()
                                                                 Route.Calendar.path -> onNavigateCalendar()
                                                                 Route.Lookback.path -> onNavigateLookback()
+                                                                Route.Statistics.path -> onNavigateStatistics()
                                                             }
                                                         }
                                                 ),

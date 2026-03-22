@@ -86,6 +86,8 @@ fun SettingsScreen(
         val isPinEnabled by viewModel.isPinEnabled.collectAsState()
         val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
         val showStatistics by viewModel.showStatistics.collectAsState()
+        val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsState()
+        val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsState()
         val swipeToDeleteEnabled by viewModel.swipeToDeleteEnabled.collectAsState()
         val swipeDeleteDirection by viewModel.swipeDeleteDirection.collectAsState()
         val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
@@ -941,6 +943,120 @@ fun SettingsScreen(
                                                         checked = showStatistics,
                                                         onCheckedChange = {
                                                                 viewModel.setShowStatistics(it)
+                                                        }
+                                                )
+                                        }
+
+                                        HorizontalDivider(
+                                                color =
+                                                        MaterialTheme.colorScheme.surfaceVariant
+                                        )
+
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 8.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text = "Show Lookback in Nav Bar",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurface
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Pin Lookback to the bottom navigation bar",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        MaterialTheme.colorScheme
+                                                                                .onSurfaceVariant
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = showLookbackInNavBar,
+                                                        onCheckedChange = {
+                                                                viewModel.setShowLookbackInNavBar(
+                                                                        it
+                                                                )
+                                                        }
+                                                )
+                                        }
+
+                                        HorizontalDivider(
+                                                color =
+                                                        MaterialTheme.colorScheme.surfaceVariant
+                                        )
+
+                                        Row(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .padding(
+                                                                        horizontal = 12.dp,
+                                                                        vertical = 8.dp
+                                                                ),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                                Column(Modifier.weight(1f)) {
+                                                        Text(
+                                                                text =
+                                                                        "Show Statistics in Nav Bar",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodyLarge,
+                                                                color =
+                                                                        if (showStatistics)
+                                                                                MaterialTheme
+                                                                                        .colorScheme
+                                                                                        .onSurface
+                                                                        else
+                                                                                MaterialTheme
+                                                                                        .colorScheme
+                                                                                        .onSurface
+                                                                                        .copy(
+                                                                                                alpha =
+                                                                                                        0.38f
+                                                                                        )
+                                                        )
+                                                        Text(
+                                                                text =
+                                                                        "Pin Statistics to the bottom navigation bar",
+                                                                style =
+                                                                        MaterialTheme.typography
+                                                                                .bodySmall,
+                                                                color =
+                                                                        if (showStatistics)
+                                                                                MaterialTheme
+                                                                                        .colorScheme
+                                                                                        .onSurfaceVariant
+                                                                        else
+                                                                                MaterialTheme
+                                                                                        .colorScheme
+                                                                                        .onSurfaceVariant
+                                                                                        .copy(
+                                                                                                alpha =
+                                                                                                        0.38f
+                                                                                        )
+                                                        )
+                                                }
+                                                Switch(
+                                                        checked = showStatisticsInNavBar,
+                                                        enabled = showStatistics,
+                                                        onCheckedChange = {
+                                                                viewModel.setShowStatisticsInNavBar(
+                                                                        it
+                                                                )
                                                         }
                                                 )
                                         }
