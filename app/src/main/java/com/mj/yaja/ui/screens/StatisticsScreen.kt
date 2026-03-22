@@ -145,24 +145,31 @@ fun StatisticsScreen(
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
-    val todayMillis = remember { LocalDate.now().atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
-    val yesterdayMillis = remember { LocalDate.now().minusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+    val today = remember { LocalDate.now() }
+    val yesterday = remember { LocalDate.now().minusDays(1) }
+    val todayMillis = remember { today.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+    val yesterdayMillis = remember { yesterday.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
     val startDatePickerState = rememberDatePickerState(
         initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+        // yearRange caps the year dropdown — no future years visible
+        yearRange = IntRange(2000, yesterday.year),
         selectableDates = object : SelectableDates {
-            // Start date: only past dates up to yesterday are selectable
             override fun isSelectableDate(utcTimeMillis: Long): Boolean = utcTimeMillis <= yesterdayMillis
+            override fun isSelectableYear(year: Int): Boolean = year <= yesterday.year
         }
     )
-    // Recreate end picker state whenever customStartDate changes so selectableDates reflects the new lower bound
+    // Recreate end picker state whenever customStartDate changes so the lower bound updates
     val endDatePickerState = key(customStartDate) {
         val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
         rememberDatePickerState(
             initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+            // yearRange caps both ends of the year dropdown
+            yearRange = IntRange(customStartDate.year, today.year),
             selectableDates = object : SelectableDates {
-                // End date: from selected start date up to today (inclusive)
                 override fun isSelectableDate(utcTimeMillis: Long): Boolean =
                     utcTimeMillis in fromMillis..todayMillis
+                override fun isSelectableYear(year: Int): Boolean =
+                    year in customStartDate.year..today.year
             }
         )
     }
