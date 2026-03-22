@@ -59,6 +59,7 @@ import com.mj.yaja.data.SwipeDirection
 import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.DayOfWeek
+import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -340,21 +341,29 @@ fun SettingsScreen(
                                                 val sliderValue =
                                                         when (fontScalePreference) {
                                                                 FontScalePreference.SMALLER -> 0f
-                                                                FontScalePreference.NORMAL -> 1f
-                                                                FontScalePreference.LARGER -> 2f
+                                                                FontScalePreference.SMALL -> 1f
+                                                                FontScalePreference.NORMAL -> 2f
+                                                                FontScalePreference.LARGE -> 3f
+                                                                FontScalePreference.LARGER -> 4f
                                                         }
 
                                                 Slider(
                                                         value = sliderValue,
                                                         onValueChange = { value ->
                                                                 val preference =
-                                                                        when (value.toInt()) {
+                                                                        when (value.roundToInt()) {
                                                                                 0 ->
                                                                                         FontScalePreference
                                                                                                 .SMALLER
                                                                                 1 ->
                                                                                         FontScalePreference
+                                                                                                .SMALL
+                                                                                2 ->
+                                                                                        FontScalePreference
                                                                                                 .NORMAL
+                                                                                3 ->
+                                                                                        FontScalePreference
+                                                                                                .LARGE
                                                                                 else ->
                                                                                         FontScalePreference
                                                                                                 .LARGER
@@ -363,8 +372,8 @@ fun SettingsScreen(
                                                                         preference
                                                                 )
                                                         },
-                                                        valueRange = 0f..2f,
-                                                        steps = 1,
+                                                        valueRange = 0f..4f,
+                                                        steps = 3,
                                                         colors =
                                                                 SliderDefaults.colors(
                                                                         thumbColor =
@@ -405,33 +414,42 @@ fun SettingsScreen(
                                                         horizontalArrangement =
                                                                 Arrangement.SpaceBetween
                                                 ) {
-                                                        Text(
-                                                                "A",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                        Text(
-                                                                "Normal",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .labelMedium,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                        Text(
-                                                                "A",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .titleLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
+                                                        listOf(
+                                                                        FontScalePreference.SMALLER,
+                                                                        FontScalePreference.SMALL,
+                                                                        FontScalePreference.NORMAL,
+                                                                        FontScalePreference.LARGE,
+                                                                        FontScalePreference.LARGER
+                                                                )
+                                                                .forEach { pref ->
+                                                                        val isSelected =
+                                                                                fontScalePreference ==
+                                                                                        pref
+                                                                        Text(
+                                                                                text = "A",
+                                                                                style =
+                                                                                        MaterialTheme
+                                                                                                .typography
+                                                                                                .bodyMedium
+                                                                                                .copy(
+                                                                                                        fontSize =
+                                                                                                                (12 +
+                                                                                                                        (pref
+                                                                                                                                .scale *
+                                                                                                                                8))
+                                                                                                                        .sp
+                                                                                                ),
+                                                                                color =
+                                                                                        if (isSelected)
+                                                                                                MaterialTheme
+                                                                                                        .colorScheme
+                                                                                                        .primary
+                                                                                        else
+                                                                                                MaterialTheme
+                                                                                                        .colorScheme
+                                                                                                        .onSurfaceVariant
+                                                                        )
+                                                                }
                                                 }
                                         }
                                 }

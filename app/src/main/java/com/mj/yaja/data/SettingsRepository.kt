@@ -23,7 +23,9 @@ enum class ThemePreference {
 
 enum class FontScalePreference(val scale: Float) {
     SMALLER(0.75f),
+    SMALL(0.875f),
     NORMAL(1.0f),
+    LARGE(1.125f),
     LARGER(1.25f)
 }
 
@@ -119,6 +121,9 @@ class SettingsRepository(private val context: Context) {
 
     private val _statisticsSectionOrder = MutableStateFlow(getSavedStatisticsSectionOrder())
     val statisticsSectionOrder: StateFlow<List<String>> = _statisticsSectionOrder.asStateFlow()
+
+    private val _useMLKitDetection = MutableStateFlow(prefs.getBoolean(KEY_USE_MLKIT_DETECTION, false))
+    val useMLKitDetection: StateFlow<Boolean> = _useMLKitDetection.asStateFlow()
 
     /** Sets a new PIN — generates a fresh salt and stores PBKDF2(pin, salt). */
     fun setPin(plain: String) {
@@ -379,6 +384,11 @@ class SettingsRepository(private val context: Context) {
         _statisticsSectionOrder.value = order
     }
 
+    fun setUseMLKitDetection(enabled: Boolean) {
+        prefs.edit().putBoolean(KEY_USE_MLKIT_DETECTION, enabled).apply()
+        _useMLKitDetection.value = enabled
+    }
+
     private fun getSavedThemePreference(): ThemePreference =
             getEnum(prefs.getString(KEY_THEME, null), ThemePreference.SYSTEM)
 
@@ -531,6 +541,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_SHOW_STATISTICS = "show_statistics"
         private const val KEY_ENABLE_DRAG_AND_DROP = "enable_drag_and_drop"
         private const val KEY_STATISTICS_SECTION_ORDER = "statistics_section_order"
+        private const val KEY_USE_MLKIT_DETECTION = "use_mlkit_detection"
 
         /** Parses an enum by name from SharedPreferences, falling back to [default] on error. */
         private inline fun <reified T : Enum<T>> getEnum(value: String?, default: T): T {
