@@ -20,7 +20,7 @@
     <string name="action_no">No</string>
 
     <!-- Sync pill -->
-    <string name="syncing_data">Syncing Data</string>
+    <string name="syncing_data">Rebuilding Cache</string>
 
     <!-- Quick Capture -->
     <string name="quick_capture_title">Quick Capture</string>
@@ -47,6 +47,21 @@
     <string name="shortcodes_export_error">Failed to export shortcodes</string>
     <string name="shortcodes_import_error">Failed to import shortcodes</string>
 
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Writing Heatmap</string>
+    <string name="heatmap_widget_description">Recent writing activity heatmap for your journal.</string>
+    <string name="quick_capture_widget_name">Quick Capture</string>
+    <string name="quick_capture_widget_description">One-tap button to add a journal entry fast.</string>
+    <string name="quick_todo_widget_name">Quick Todo</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal Events</string>
+    <string name="quick_todo_widget_description">One-tap button to capture a todo as a new entry for today.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Scrollable list of journal todos. Tap a todo to mark it done or undone.</string>
+    <string name="heatmap_widget_status_loading">Loading heatmap…</string>
+    <string name="heatmap_widget_status_empty">No entries yet</string>
+    <string name="heatmap_widget_status_refresh">Open Yaja to refresh heatmap</string>
+
     <!-- Entry states -->
-    <string name="toast_cache_synced">Data cache synced!</string>
+    <string name="toast_cache_synced">Cache rebuilt.</string>
 </resources>

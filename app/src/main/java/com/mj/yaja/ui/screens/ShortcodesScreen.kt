@@ -3,11 +3,10 @@ package com.mj.yaja.ui.screens
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.animation.*
-import androidx.compose.animation.core.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.*
 import androidx.compose.material.icons.rounded.*
@@ -18,13 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.ui.design.AppEntranceStrength
+import com.mj.yaja.ui.design.AppStaggeredEntrance
+import com.mj.yaja.ui.design.rememberAppEntrance
+import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,13 +33,7 @@ import kotlinx.coroutines.launch
 fun ShortcodesScreen(
         viewModel: JournalViewModel,
         onOpenDrawer: () -> Unit,
-        onNavigateBack: () -> Unit,
-        onNavigateToJournal: () -> Unit,
-        onNavigateToCalendar: () -> Unit,
-        onNavigateToLookback: () -> Unit,
-        onNavigateToShortcodes: () -> Unit,
-        onNavigateToSettings: () -> Unit,
-        onNavigateToHelp: () -> Unit
+        onNavigateBack: () -> Unit
 ) {
     val customShortcodes by viewModel.customShortcodes.collectAsState()
     var showAddShortcodeDialog by remember { mutableStateOf(false) }
@@ -46,6 +41,7 @@ fun ShortcodesScreen(
     var showHelpDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val entranceTriggered = rememberAppEntrance()
 
     val exportLauncher =
             rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) {
@@ -56,7 +52,8 @@ fun ShortcodesScreen(
                             context.contentResolver.openOutputStream(it)?.use { outputStream ->
                                 OutputStreamWriter(outputStream).use { writer ->
                                     customShortcodes.forEach { (code, value) ->
-                                        writer.write("$code,$value\n")
+                                        writer.write(encodeCsvRow(code, value))
+                                        writer.write("\n")
                                     }
                                 }
                             }
@@ -75,15 +72,10 @@ fun ShortcodesScreen(
                             context.contentResolver.openInputStream(it)?.use { inputStream ->
                                 val imported = mutableMapOf<String, String>()
                                 BufferedReader(InputStreamReader(inputStream)).use { reader ->
-                                    var line: String? = reader.readLine()
-                                    while (line != null) {
-                                        if (line.contains(",")) {
-                                            val parts = line.split(",", limit = 2)
-                                            if (parts.size == 2) {
-                                                imported[parts[0].trim()] = parts[1].trim()
-                                            }
+                                    parseCsvRows(reader.readText()).forEach { row ->
+                                        if (row.size >= 2) {
+                                            imported[row[0].trim()] = row[1]
                                         }
-                                        line = reader.readLine()
                                     }
                                 }
                                 if (imported.isNotEmpty()) {
@@ -102,144 +94,57 @@ fun ShortcodesScreen(
     Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
-                LargeTopAppBar(
-                        title = {
-                            Text(
-                                    "Shortcodes",
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.primary
-                            )
-                        },
-                        navigationIcon = {
-                            com.mj.yaja.ui.components.AnimatedMenuButton(
-                                    onClick = onOpenDrawer,
-                                    modifier = Modifier.padding(start = 8.dp)
-                            )
-                        },
-                        actions = {
-                            IconButton(
-                                    onClick = {
-                                        importLauncher.launch(
-                                                arrayOf(
-                                                        "text/comma-separated-values",
-                                                        "text/csv",
-                                                        "application/csv"
-                                                )
+                ShortcodesTopBar(
+                        onOpenDrawer = onOpenDrawer,
+                        onImport = {
+                                importLauncher.launch(
+                                        arrayOf(
+                                                "text/comma-separated-values",
+                                                "text/csv",
+                                                "application/csv"
                                         )
-                                    }
-                            ) { Icon(Icons.Rounded.FileOpen, contentDescription = "Import") }
-                            IconButton(onClick = { exportLauncher.launch("shortcodes.csv") }) {
-                                Icon(Icons.Rounded.SaveAlt, contentDescription = "Export")
-                            }
-                            IconButton(onClick = { showHelpDialog = true }) {
-                                Icon(Icons.AutoMirrored.Rounded.Help, contentDescription = "Help")
-                            }
-                        },
-                        scrollBehavior = scrollBehavior,
-                        colors =
-                                TopAppBarDefaults.largeTopAppBarColors(
-                                        containerColor = MaterialTheme.colorScheme.background,
-                                        scrolledContainerColor =
-                                                MaterialTheme.colorScheme.surfaceContainerLow,
-                                        titleContentColor = MaterialTheme.colorScheme.primary,
-                                        navigationIconContentColor =
-                                                MaterialTheme.colorScheme.onSurface,
-                                        actionIconContentColor =
-                                                MaterialTheme.colorScheme.onSurfaceVariant
                                 )
+                        },
+                        onExport = { exportLauncher.launch("shortcodes.csv") },
+                        onHelp = { showHelpDialog = true },
+                        scrollBehavior = scrollBehavior
                 )
             },
             floatingActionButton = {
-                ExtendedFloatingActionButton(
-                        onClick = { showAddShortcodeDialog = true },
-                        icon = { Icon(Icons.Rounded.Add, contentDescription = null) },
-                        text = { Text("New Shortcode") },
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                ShortcodesFab(
+                        visible = entranceTriggered,
+                        onClick = { showAddShortcodeDialog = true }
                 )
             }
     ) { paddingValues ->
-        AnimatedContent(
-                targetState = customShortcodes.isEmpty(),
-                transitionSpec = {
-                    (fadeIn(animationSpec = tween(300)) + slideInVertically { it / 8 }) togetherWith
-                            fadeOut(animationSpec = tween(300))
-                },
-                modifier = Modifier.padding(paddingValues),
-                label = "ScreenContent"
-        ) { isEmpty ->
-            if (isEmpty) {
-                Column(
-                        modifier = Modifier.fillMaxSize().padding(32.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                            Icons.AutoMirrored.Rounded.ShortText,
-                            contentDescription = null,
-                            modifier = Modifier.size(64.dp),
-                            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                            text = "No custom shortcodes",
-                            style = MaterialTheme.typography.headlineSmall,
-                            color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                            text = "Add one to expand snippets like @yday into dynamic text.",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            textAlign = TextAlign.Center
-                    )
-                }
-            } else {
-                LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(bottom = 80.dp)
-                ) {
-                    val shortcodeList = customShortcodes.toList().sortedBy { it.first }
-                    items(
-                            items = shortcodeList.indices.toList(),
-                            key = { index -> shortcodeList[index].first }
-                    ) { index ->
-                        val item = shortcodeList[index]
-                        val code = item.first
-                        val value = item.second
-                        ShortcodeItem(
-                                code = code,
-                                value = value,
-                                index = index,
-                                onClick = { editingShortcode = Pair(code, value) },
-                                onDelete = { viewModel.removeCustomShortcode(code) },
-                                modifier = Modifier
-                        )
-                    }
-                }
-            }
-        }
-
-        if (showAddShortcodeDialog || editingShortcode != null) {
-            ShortcodeEditDialog(
-                    initialCode = editingShortcode?.first ?: "",
-                    initialValue = editingShortcode?.second ?: "",
-                    onDismiss = {
-                        showAddShortcodeDialog = false
-                        editingShortcode = null
-                    },
-                    onConfirm = { code, value ->
-                        viewModel.setCustomShortcode(code, value)
-                        showAddShortcodeDialog = false
-                        editingShortcode = null
-                    }
+        AppScreenReveal(
+            visible = true,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            ShortcodesScreenContent(
+                customShortcodes = customShortcodes,
+                entranceTriggered = entranceTriggered,
+                paddingValues = paddingValues,
+                onEdit = { code, value -> editingShortcode = Pair(code, value) },
+                onDelete = { code -> viewModel.removeCustomShortcode(code) }
             )
         }
 
-        if (showHelpDialog) {
-            ShortcodeHelpDialog(onDismiss = { showHelpDialog = false })
-        }
+        ShortcodesDialogs(
+                showAddShortcodeDialog = showAddShortcodeDialog,
+                editingShortcode = editingShortcode,
+                showHelpDialog = showHelpDialog,
+                onDismissEdit = {
+                        showAddShortcodeDialog = false
+                        editingShortcode = null
+                },
+                onConfirmEdit = { code, value ->
+                        viewModel.setCustomShortcode(code, value)
+                        showAddShortcodeDialog = false
+                        editingShortcode = null
+                },
+                onDismissHelp = { showHelpDialog = false }
+        )
     }
 }
 
@@ -248,49 +153,72 @@ fun ShortcodeItem(
         code: String,
         value: String,
         index: Int,
+        animateIn: Boolean,
         onClick: () -> Unit,
         onDelete: () -> Unit,
         modifier: Modifier = Modifier
 ) {
-    var isVisible by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        delay(index * 50L) // Staggered entrance
-        isVisible = true
-    }
-
-    AnimatedVisibility(
-            visible = isVisible,
-            enter = fadeIn(tween(400)) + slideInHorizontally(tween(400)) { it / 10 },
+    AppStaggeredEntrance(
+            visible = animateIn,
+            index = index,
+            strength = if (index == 0) AppEntranceStrength.HERO else AppEntranceStrength.SECTION,
             modifier = modifier
     ) {
-        ListItem(
-                headlineContent = {
-                    Text(
-                            text = code,
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary
-                    )
-                },
-                supportingContent = {
-                    Text(
-                            text = value,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1
-                    )
-                },
-                trailingContent = {
-                    IconButton(onClick = onDelete) {
-                        Icon(
-                                Icons.Rounded.Delete,
-                                contentDescription = "Delete",
-                                tint = MaterialTheme.colorScheme.error
-                        )
-                    }
-                },
-                modifier = Modifier.clickable(onClick = onClick)
-        )
+        ElevatedCard(
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 2.dp)
+                        .clickable(onClick = onClick),
+                colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                ),
+                shape = MaterialTheme.shapes.large
+        ) {
+                Row(
+                        modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                ) {
+                        Surface(
+                                color = MaterialTheme.colorScheme.secondaryContainer,
+                                shape = RoundedCornerShape(16.dp),
+                                modifier = Modifier.size(40.dp)
+                        ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                        Icon(
+                                                Icons.AutoMirrored.Rounded.ShortText,
+                                                contentDescription = null,
+                                                tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                                                modifier = Modifier.size(20.dp)
+                                        )
+                                }
+                        }
+                        Spacer(modifier = Modifier.width(14.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                        text = code,
+                                        style = MaterialTheme.typography.titleSmall,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.primary
+                                )
+                                Spacer(modifier = Modifier.height(2.dp))
+                                Text(
+                                        text = value,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1
+                                )
+                        }
+                        IconButton(onClick = onDelete) {
+                                Icon(
+                                        Icons.Rounded.Delete,
+                                        contentDescription = "Delete",
+                                        tint = MaterialTheme.colorScheme.error
+                                )
+                        }
+                }
+        }
     }
 }
 
@@ -391,4 +319,69 @@ fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
             },
             confirmButton = { TextButton(onClick = onDismiss) { Text("Close") } }
     )
+}
+
+private fun encodeCsvField(value: String): String {
+    val escaped = value.replace("\"", "\"\"")
+    return "\"$escaped\""
+}
+
+private fun encodeCsvRow(code: String, value: String): String =
+    "${encodeCsvField(code)},${encodeCsvField(value)}"
+
+private fun parseCsvRows(text: String): List<List<String>> {
+    if (text.isBlank()) return emptyList()
+
+    val rows = mutableListOf<List<String>>()
+    val row = mutableListOf<String>()
+    val field = StringBuilder()
+    var inQuotes = false
+    var index = 0
+
+    fun flushField() {
+        row.add(field.toString())
+        field.setLength(0)
+    }
+
+    fun flushRow() {
+        if (row.isNotEmpty()) {
+            rows.add(row.toList())
+            row.clear()
+        }
+    }
+
+    while (index < text.length) {
+        val ch = text[index]
+        when {
+            ch == '"' -> {
+                if (inQuotes && index + 1 < text.length && text[index + 1] == '"') {
+                    field.append('"')
+                    index++
+                } else {
+                    inQuotes = !inQuotes
+                }
+            }
+            ch == ',' && !inQuotes -> flushField()
+            ch == '\r' && !inQuotes -> {
+                flushField()
+                flushRow()
+                if (index + 1 < text.length && text[index + 1] == '\n') {
+                    index++
+                }
+            }
+            ch == '\n' && !inQuotes -> {
+                flushField()
+                flushRow()
+            }
+            else -> field.append(ch)
+        }
+        index++
+    }
+
+    if (field.isNotEmpty() || row.isNotEmpty()) {
+        flushField()
+        flushRow()
+    }
+
+    return rows.filter { it.size >= 2 }
 }

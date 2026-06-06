@@ -1,13 +1,20 @@
 package com.mj.yaja.ui.utils
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.sp
+import com.mj.yaja.data.KeywordDefinition
+import com.mj.yaja.data.KeywordType
+import java.time.LocalDate
 
 object MarkdownUtils {
 
@@ -26,7 +33,42 @@ object MarkdownUtils {
         return STYLES.find { it.startTag == prefix }?.spanStyle
     }
 
+    private val headingRegex = Regex("""^\s*(#{2,3})\s+""")
+    private val todoMarkerRegex = Regex("""^(\s*(?:[+*\-]\s+)?)\[( |x|X)\](\s+.*)?$""")
+
     fun parseMarkdown(text: String): AnnotatedString {
+        val lines = text.split("\n")
+        return buildAnnotatedString {
+            lines.forEachIndexed { index, line ->
+                val headingMatch = headingRegex.find(line)
+                val contentLine =
+                    if (headingMatch != null) {
+                        line.substring(headingMatch.range.last + 1).trimStart()
+                    } else {
+                        normalizeTodoMarkerForDisplay(line)
+                    }
+                val parsedLine = parseInlineMarkdown(contentLine)
+                val start = length
+                append(parsedLine)
+                if (headingMatch != null && length > start) {
+                    addStyle(
+                        style = headingStyle(headingMatch.groupValues[1].length),
+                        start = start,
+                        end = length
+                    )
+                }
+                if (index < lines.lastIndex) append('\n')
+            }
+        }
+    }
+
+    fun normalizeTodoMarkerForDisplay(line: String): String {
+        val match = todoMarkerRegex.find(line) ?: return line
+        val marker = if (match.groupValues[2].equals("x", ignoreCase = true)) "x" else " "
+        return match.groupValues[1] + "[$marker]" + match.groupValues[3]
+    }
+
+    private fun parseInlineMarkdown(text: String): AnnotatedString {
         val pairs = findPairs(text)
         return buildAnnotatedString {
             var i = 0
@@ -64,6 +106,13 @@ object MarkdownUtils {
             }
         }
     }
+
+    private fun headingStyle(level: Int): SpanStyle =
+        when (level) {
+            2 -> SpanStyle(fontWeight = FontWeight.Bold, fontSize = 19.sp)
+            3 -> SpanStyle(fontWeight = FontWeight.SemiBold, fontSize = 17.sp)
+            else -> SpanStyle(fontWeight = FontWeight.SemiBold)
+        }
 
     fun findPairs(text: String): List<TagPair> {
         val pairs = mutableListOf<TagPair>()
@@ -114,6 +163,124 @@ object MarkdownUtils {
     fun stripMetadata(text: String): String {
         return text.replace(Regex("<!--.*?-->"), "").trim()
     }
+
+    /**
+     * Parse markdown styling AND annotate date references as tappable [LinkAnnotation.Clickable]
+     * links that call [onDateClick] when tapped.
+     *
+     * Date detection runs on the already-rendered (tag-stripped) text so indices are correct
+     * regardless of how many markdown tags were removed.
+     *
+     * @param text       Raw entry text (may contain ** / * / _ markdown)
+     * @param entryDate  The date this entry belongs to (used to resolve relative references)
+     * @param linkColor  Color applied to date link spans
+     * @param onDateClick Invoked with the resolved [LocalDate] when a link is tapped
+     */
+    fun parseMarkdownWithDateLinks(
+        text: String,
+        entryDate: LocalDate,
+        linkColor: Color,
+        personHighlightColor: Color? = null,
+        placeHighlightColor: Color? = null,
+        keywords: List<KeywordDefinition> = emptyList(),
+        monthFirst: Boolean = DateLinkUtils.isMonthFirst(),
+        customKeywords: List<com.mj.yaja.data.DateKeywordEntry> = emptyList(),
+        onDateClick: (LocalDate) -> Unit
+    ): AnnotatedString {
+        // Apply markdown styling first; its output has tag chars stripped
+        val markdownAnnotated = parseMarkdown(text)
+        val cleanText = markdownAnnotated.text
+
+        val dateLinks = DateLinkUtils.detectDateLinks(cleanText, entryDate, monthFirst, customKeywords)
+        val keywordHighlights =
+            if (keywords.isEmpty() || personHighlightColor == null || placeHighlightColor == null) {
+                emptyList()
+            } else {
+                detectKeywordHighlights(
+                    cleanText = cleanText,
+                    keywords = keywords,
+                    personColor = personHighlightColor,
+                    placeColor = placeHighlightColor,
+                    blockedRanges = dateLinks.map { it.range }
+                )
+            }
+
+        if (dateLinks.isEmpty() && keywordHighlights.isEmpty()) return markdownAnnotated
+
+        return buildAnnotatedString {
+            // Copy all existing markdown SpanStyles
+            append(markdownAnnotated)
+            for (highlight in keywordHighlights) {
+                addStyle(
+                    style = SpanStyle(
+                        color = highlight.color,
+                        fontWeight = FontWeight.SemiBold
+                    ),
+                    start = highlight.range.first,
+                    end = highlight.range.last + 1
+                )
+            }
+            // Overlay link annotations
+            for (link in dateLinks) {
+                addLink(
+                    clickable = LinkAnnotation.Clickable(
+                        tag = link.date.toString(),
+                        styles = TextLinkStyles(
+                            style = SpanStyle(color = linkColor)
+                        ),
+                        linkInteractionListener = { onDateClick(link.date) }
+                    ),
+                    start = link.range.first,
+                    end   = link.range.last + 1
+                )
+            }
+        }
+    }
+
+    private data class KeywordHighlight(
+        val range: IntRange,
+        val color: Color
+    )
+
+    private fun detectKeywordHighlights(
+        cleanText: String,
+        keywords: List<KeywordDefinition>,
+        personColor: Color,
+        placeColor: Color,
+        blockedRanges: List<IntRange>
+    ): List<KeywordHighlight> {
+        val highlights = mutableListOf<KeywordHighlight>()
+        val occupied = blockedRanges.toMutableList()
+
+        val sortedKeywords = keywords
+            .filter { it.isEnabled }
+            .sortedByDescending { it.name.length }
+
+        for (keyword in sortedKeywords) {
+            val color = if (keyword.type == KeywordType.PERSON) personColor else placeColor
+            val terms = (listOf(keyword.name) + keyword.aliases)
+                .map { it.trim() }
+                .filter { it.isNotBlank() }
+                .distinctBy { it.lowercase() }
+                .sortedByDescending { it.length }
+
+            for (term in terms) {
+                val regex = Regex("""(?<!\p{L})${Regex.escape(term)}(?!\p{L})""", RegexOption.IGNORE_CASE)
+                regex.findAll(cleanText).forEach { match ->
+                    val range = match.range
+                    val overlaps = occupied.any { existing ->
+                        existing.first <= range.last && range.first <= existing.last
+                    }
+                    if (!overlaps) {
+                        highlights += KeywordHighlight(range = range, color = color)
+                        occupied += range
+                    }
+                }
+            }
+        }
+
+        return highlights.sortedBy { it.range.first }
+    }
 }
 
 class MarkdownVisualTransformation : VisualTransformation {
@@ -126,6 +293,18 @@ class MarkdownVisualTransformation : VisualTransformation {
 
         for (i in originalText.indices) {
             val tagPair = pairs.find { i in it.startRange || i in it.endRange }
+            val displayChar =
+                    if (
+                            originalText[i] == 'X' &&
+                                    i > 0 &&
+                                    i + 1 < originalText.length &&
+                                    originalText[i - 1] == '[' &&
+                                    originalText[i + 1] == ']'
+                    ) {
+                            'x'
+                    } else {
+                            originalText[i]
+                    }
 
             if (tagPair != null) {
                 mapping.addMapping(i, builder.length)
@@ -139,10 +318,10 @@ class MarkdownVisualTransformation : VisualTransformation {
 
                 if (activeStyles.isNotEmpty()) {
                     builder.pushStyle(activeStyles.reduce { acc, style -> acc.merge(style) })
-                    builder.append(originalText[i])
+                    builder.append(displayChar)
                     builder.pop()
                 } else {
-                    builder.append(originalText[i])
+                    builder.append(displayChar)
                 }
             }
         }

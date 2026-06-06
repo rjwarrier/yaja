@@ -262,32 +262,6 @@ fun PinLockScreen(
                     textAlign = TextAlign.Center
                 )
 
-                // Biometric button (only in ENTER mode if available)
-                if (mode == PinMode.ENTER && isBiometricAvailable) {
-                    IconButton(
-                        onClick = {
-                            val activity = context.findFragmentActivity()
-                            if (activity != null) {
-                                showBiometricPrompt(
-                                    activity,
-                                    onSuccess = onEnterCorrect,
-                                    onError = { error ->
-                                        errorMessage = error
-                                    }
-                                )
-                            }
-                        },
-                        modifier = Modifier.size(48.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Fingerprint,
-                            contentDescription = "Use Biometric",
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(32.dp)
-                        )
-                    }
-                }
-
                 // Dot indicators with shake offset
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -331,6 +305,33 @@ fun PinLockScreen(
                     onBackspace = ::onBackspace
                 )
 
+                // Biometric button (only in ENTER mode if available)
+                if (mode == PinMode.ENTER && isBiometricAvailable) {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    IconButton(
+                        onClick = {
+                            val activity = context.findFragmentActivity()
+                            if (activity != null) {
+                                showBiometricPrompt(
+                                    activity,
+                                    onSuccess = onEnterCorrect,
+                                    onError = { error ->
+                                        errorMessage = error
+                                    }
+                                )
+                            }
+                        },
+                        modifier = Modifier.size(52.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Fingerprint,
+                            contentDescription = "Use Biometric",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
+                }
+
                 // Cancel button (optional, shown in Settings flows)
                 if (onCancel != null) {
                     TextButton(onClick = onCancel) {
@@ -354,10 +355,13 @@ private fun PinNumpad(
         listOf("", "0", "⌫")
     )
 
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         keys.forEach { row ->
             Row(
-                horizontalArrangement = Arrangement.spacedBy(24.dp),
+                horizontalArrangement = Arrangement.spacedBy(28.dp),
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -367,11 +371,11 @@ private fun PinNumpad(
                         contentAlignment = Alignment.Center
                     ) {
                         when {
-                            key.isEmpty() -> Spacer(modifier = Modifier.size(64.dp))
+                            key.isEmpty() -> Spacer(modifier = Modifier.size(72.dp))
                             key == "⌫" -> {
                                 Box(
                                     modifier = Modifier
-                                        .size(64.dp)
+                                        .size(72.dp)
                                         .clip(CircleShape)
                                         .clickable { onBackspace() },
                                     contentAlignment = Alignment.Center
@@ -387,7 +391,7 @@ private fun PinNumpad(
                             else -> {
                                 Box(
                                     modifier = Modifier
-                                        .size(64.dp)
+                                        .size(72.dp)
                                         .clip(CircleShape)
                                         .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f))
                                         .clickable { onDigit(key) },

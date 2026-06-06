@@ -3,10 +3,18 @@ package com.mj.yaja.ui.screens
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.floatTween
+import com.mj.yaja.ui.design.enterOrNone
+import com.mj.yaja.ui.design.exitOrNone
+import com.mj.yaja.data.AnimationPreference
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
@@ -32,88 +40,25 @@ fun CalendarDay(
         isSelected: Boolean,
         isToday: Boolean,
         hasEntries: Boolean,
+        hasFollowUp: Boolean = false,
         isFuture: Boolean = false,
         isDimmed: Boolean = false,
         isFavorited: Boolean = false,
         onClick: () -> Unit
 ) {
-        // Morphing Shape logic for the selection indicator
-        val shapeStep = day % 4
-        val tlRadius by
-                animateDpAsState(
-                        targetValue =
-                                if (isSelected)
-                                        when (shapeStep) {
-                                                1 -> 16.dp
-                                                2 -> 6.dp
-                                                3 -> 14.dp
-                                                else -> 12.dp
-                                        }
-                                else 16.dp,
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "TL"
-                )
-        val trRadius by
-                animateDpAsState(
-                        targetValue =
-                                if (isSelected)
-                                        when (shapeStep) {
-                                                1 -> 6.dp
-                                                2 -> 16.dp
-                                                3 -> 14.dp
-                                                else -> 12.dp
-                                        }
-                                else 16.dp,
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "TR"
-                )
-        val brRadius by
-                animateDpAsState(
-                        targetValue =
-                                if (isSelected)
-                                        when (shapeStep) {
-                                                1 -> 16.dp
-                                                2 -> 6.dp
-                                                3 -> 4.dp
-                                                else -> 12.dp
-                                        }
-                                else 16.dp,
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "BR"
-                )
-        val blRadius by
-                animateDpAsState(
-                        targetValue =
-                                if (isSelected)
-                                        when (shapeStep) {
-                                                1 -> 6.dp
-                                                2 -> 16.dp
-                                                3 -> 14.dp
-                                                else -> 12.dp
-                                        }
-                                else 16.dp,
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "BL"
-                )
+        val expressiveShape = RoundedCornerShape(18.dp)
 
-        val expressiveShape =
-                RoundedCornerShape(
-                        topStart = tlRadius,
-                        topEnd = trRadius,
-                        bottomEnd = brRadius,
-                        bottomStart = blRadius
-                )
-
-        // Only run the pulse animation for today's unselected cell; the other 28-30 cells
-        // don't need an InfiniteTransition ticking every frame.
-        val finalScale = if (isToday && !isSelected) {
+        val animationPreference = LocalAnimationPreference.current
+        val finalScale = if (isToday && !isSelected && animationPreference != AnimationPreference.OFF) {
                 val infiniteTransition = rememberInfiniteTransition(label = "TodayPulse")
+                val targetPulse = if (animationPreference == AnimationPreference.REDUCED) 1.01f else 1.03f
+                val duration = if (animationPreference == AnimationPreference.REDUCED) 2400 else 1200
                 infiniteTransition.animateFloat(
                         initialValue = 1f,
-                        targetValue = 1.05f,
+                        targetValue = targetPulse,
                         animationSpec =
                                 infiniteRepeatable(
-                                        animation = tween(1200, easing = FastOutSlowInEasing),
+                                        animation = tween(duration, easing = FastOutSlowInEasing),
                                         repeatMode = RepeatMode.Reverse
                                 ),
                         label = "Pulse"
@@ -122,24 +67,51 @@ fun CalendarDay(
                 1f
         }
 
+        val containerColor =
+                when {
+                        isSelected && isToday -> MaterialTheme.colorScheme.primary
+                        isSelected -> MaterialTheme.colorScheme.primaryContainer
+                        isFavorited ->
+                                MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.36f)
+                        hasFollowUp ->
+                                MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f)
+                        isToday ->
+                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.42f)
+                        hasEntries ->
+                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.18f)
+                        else -> MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.68f)
+                }
+        val borderColor =
+                when {
+                        isSelected -> Color.Transparent
+                        isToday -> MaterialTheme.colorScheme.primary.copy(alpha = 0.16f)
+                        else -> MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.08f)
+                }
+        val dayColor =
+                when {
+                        isDimmed ->
+                                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.34f)
+                        isSelected && isToday -> MaterialTheme.colorScheme.onPrimary
+                        isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
+                        isToday -> MaterialTheme.colorScheme.primary
+                        else -> MaterialTheme.colorScheme.onSurface
+                }
+        val indicatorColor =
+                when {
+                        isSelected && isToday -> MaterialTheme.colorScheme.onPrimary
+                        isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
+                        hasFollowUp -> MaterialTheme.colorScheme.secondary
+                        else -> MaterialTheme.colorScheme.primary
+                }
+
         Box(
                 modifier =
-                        Modifier.aspectRatio(1f)
-                                .padding(4.dp)
+                        Modifier.aspectRatio(1.15f)
+                                .padding(3.dp)
                                 .scale(finalScale)
                                 .clip(expressiveShape)
-                                .background(
-                                        if (isSelected) MaterialTheme.colorScheme.primaryContainer
-                                        else if (isFavorited)
-                                                MaterialTheme.colorScheme.tertiary.copy(
-                                                        alpha = 0.12f
-                                                )
-                                        else if (isToday)
-                                                MaterialTheme.colorScheme.surfaceVariant.copy(
-                                                        alpha = 0.5f
-                                                )
-                                        else Color.Transparent
-                                )
+                                .background(containerColor)
+                                .border(width = 1.dp, color = borderColor, shape = expressiveShape)
                                 .clickable { onClick() },
                 contentAlignment = Alignment.Center
         ) {
@@ -150,69 +122,66 @@ fun CalendarDay(
                         Text(
                                 text = day.toString(),
                                 style =
-                                        MaterialTheme.typography.bodyLarge.copy(
+                                        MaterialTheme.typography.bodyMedium.copy(
                                                 fontWeight =
                                                         if (isToday) FontWeight.ExtraBold
                                                         else if (isSelected) FontWeight.Bold
-                                                        else FontWeight.Normal
+                                                        else FontWeight.Medium
                                         ),
-                                color =
-                                        when {
-                                                isDimmed ->
-                                                        MaterialTheme.colorScheme.onBackground.copy(
-                                                                alpha = 0.38f
-                                                        )
-                                                isSelected ->
-                                                        MaterialTheme.colorScheme.onPrimaryContainer
-                                                isToday -> MaterialTheme.colorScheme.primary
-                                                isFuture ->
-                                                        MaterialTheme.colorScheme.onBackground.copy(
-                                                                alpha = 0.45f
-                                                        )
-                                                else -> MaterialTheme.colorScheme.onBackground
-                                        }
+                                color = dayColor
                         )
 
                         AnimatedVisibility(
-                                visible = hasEntries,
-                                enter =
+                                visible = hasEntries || hasFollowUp,
+                                enter = animationPreference.enterOrNone(
                                         scaleIn(
                                                 animationSpec =
-                                                        spring(
+                                                        animationPreference.floatSpring(
                                                                 dampingRatio =
                                                                         Spring.DampingRatioMediumBouncy,
                                                                 stiffness = Spring.StiffnessLow
                                                         ),
                                                 initialScale = 0f
-                                        ) + fadeIn(),
-                                exit =
+                                        ) + fadeIn(animationSpec = animationPreference.floatTween(220))
+                                ),
+                                exit = animationPreference.exitOrNone(
                                         scaleOut(
                                                 animationSpec =
-                                                        spring(stiffness = Spring.StiffnessLow),
+                                                        animationPreference.floatSpring(
+                                                                dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                stiffness = Spring.StiffnessLow
+                                                        ),
                                                 targetScale = 0f
-                                        ) + fadeOut()
+                                        ) + fadeOut(animationSpec = animationPreference.floatTween(180))
+                                )
                         ) {
                                 Box(
                                         modifier = Modifier.height(6.dp),
                                         contentAlignment = Alignment.Center
                                 ) {
-                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                                Spacer(modifier = Modifier.height(2.dp))
-                                                Box(
-                                                        modifier =
-                                                                Modifier.size(4.dp)
-                                                                        .background(
-                                                                                if (isSelected)
+                                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                                if (hasEntries) {
+                                                        Box(
+                                                                modifier =
+                                                                        Modifier.size(4.dp)
+                                                                                .background(
+                                                                                        indicatorColor,
+                                                                                        shape = CircleShape
+                                                                                )
+                                                        )
+                                                }
+                                                if (hasFollowUp) {
+                                                        Box(
+                                                                modifier =
+                                                                        Modifier.size(5.dp)
+                                                                                .background(
                                                                                         MaterialTheme
                                                                                                 .colorScheme
-                                                                                                .primary
-                                                                                else
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .tertiary,
-                                                                                shape = CircleShape
-                                                                        )
-                                                )
+                                                                                                .secondary,
+                                                                                        shape = CircleShape
+                                                                                )
+                                                        )
+                                                }
                                         }
                                 }
                         }

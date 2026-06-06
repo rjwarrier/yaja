@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
+    android:targetCellWidth="3"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="1800000"
+    android:initialLayout="@layout/widget_heatmap"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:label="@string/heatmap_widget_name"
+    android:description="@string/heatmap_widget_description"
+    android:previewImage="@drawable/ic_launcher_foreground"
+    android:configure="com.mj.yaja.ui.widget.HeatmapWidgetConfigActivity"
+    android:widgetFeatures="reconfigurable|configuration_optional" />

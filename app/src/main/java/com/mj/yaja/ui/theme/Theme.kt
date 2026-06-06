@@ -11,6 +11,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -19,6 +21,12 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.runtime.CompositionLocalProvider
 import android.content.ContextWrapper
 import androidx.core.view.WindowCompat
+import com.mj.yaja.data.BackgroundTintLevel
+import com.mj.yaja.data.ColorSource
+import com.mj.yaja.data.CustomPalette
+import com.mj.yaja.data.PersonalThemeSlot
+import com.mj.yaja.data.ThemeColorIntensity
+import android.graphics.Color as AndroidColor
 
 private val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
@@ -95,15 +103,18 @@ fun JournalTheme(
     amoledTheme: Boolean = false,
     fontScale: Float = 1.0f,
     appFontFamily: com.mj.yaja.data.AppFontFamily = com.mj.yaja.data.AppFontFamily.MONO,
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    colorSource: ColorSource = ColorSource.MATERIAL_YOU,
+    customPalette: CustomPalette = CustomPalette.YAJA,
+    colorIntensity: ThemeColorIntensity = ThemeColorIntensity.NORMAL,
+    backgroundTintLevel: BackgroundTintLevel = BackgroundTintLevel.SOFT,
+    personalThemeSlot: PersonalThemeSlot? = null,
     content: @Composable () -> Unit
 ) {
+    val context = LocalContext.current
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
+        colorSource == ColorSource.MATERIAL_YOU && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val dynamicScheme = if (darkTheme || amoledTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-            if (amoledTheme) {
+            val materialScheme = if (amoledTheme) {
                 dynamicScheme.copy(
                     background = Color.Black,
                     surface = Color.Black,
@@ -115,10 +126,40 @@ fun JournalTheme(
                     surfaceContainerHighest = Color(0xFF242424)
                 )
             } else dynamicScheme
+            materialScheme.applyMaterialThemeTuning(
+                darkTheme = darkTheme,
+                amoledTheme = amoledTheme,
+                colorIntensity = colorIntensity,
+                backgroundTintLevel = backgroundTintLevel
+            )
         }
-        amoledTheme -> AmoledColorScheme
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        colorSource == ColorSource.CUSTOM ->
+            buildCustomPaletteScheme(
+                palette = customPalette,
+                darkTheme = darkTheme,
+                amoledTheme = amoledTheme,
+                intensity = colorIntensity,
+                backgroundTintLevel = backgroundTintLevel,
+                personalThemeSlot = personalThemeSlot
+            )
+        amoledTheme -> AmoledColorScheme.applyMaterialThemeTuning(
+            darkTheme = true,
+            amoledTheme = true,
+            colorIntensity = colorIntensity,
+            backgroundTintLevel = backgroundTintLevel
+        )
+        darkTheme -> DarkColorScheme.applyMaterialThemeTuning(
+            darkTheme = true,
+            amoledTheme = false,
+            colorIntensity = colorIntensity,
+            backgroundTintLevel = backgroundTintLevel
+        )
+        else -> LightColorScheme.applyMaterialThemeTuning(
+            darkTheme = false,
+            amoledTheme = false,
+            colorIntensity = colorIntensity,
+            backgroundTintLevel = backgroundTintLevel
+        )
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -131,6 +172,7 @@ fun JournalTheme(
             }
             val activity = currentContext as? Activity
             
+            @Suppress("DEPRECATION")
             activity?.window?.let { window ->
                 window.statusBarColor = colorScheme.background.toArgb()
                 WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
@@ -152,4 +194,54 @@ fun JournalTheme(
             content = content
         )
     }
+}
+
+private fun androidx.compose.material3.ColorScheme.applyMaterialThemeTuning(
+    darkTheme: Boolean,
+    amoledTheme: Boolean,
+    colorIntensity: ThemeColorIntensity,
+    backgroundTintLevel: BackgroundTintLevel
+) = copy(
+    primary = primary.scaleColorIntensity(colorIntensity),
+    primaryContainer = primaryContainer.scaleColorIntensity(colorIntensity),
+    secondary = secondary.scaleColorIntensity(colorIntensity),
+    secondaryContainer = secondaryContainer.scaleColorIntensity(colorIntensity),
+    tertiary = tertiary.scaleColorIntensity(colorIntensity),
+    tertiaryContainer = tertiaryContainer.scaleColorIntensity(colorIntensity),
+    inversePrimary = inversePrimary.scaleColorIntensity(colorIntensity),
+    background = tintSurface(background, primary, backgroundTintLevel, darkTheme, amoledTheme, 0.72f),
+    surface = tintSurface(surface, primary, backgroundTintLevel, darkTheme, amoledTheme, 0.84f),
+    surfaceVariant = tintSurface(surfaceVariant, primary, backgroundTintLevel, darkTheme, amoledTheme, 1.05f),
+    surfaceContainerLowest = tintSurface(surfaceContainerLowest, primary, backgroundTintLevel, darkTheme, amoledTheme, 0.66f),
+    surfaceContainerLow = tintSurface(surfaceContainerLow, primary, backgroundTintLevel, darkTheme, amoledTheme, 0.86f),
+    surfaceContainer = tintSurface(surfaceContainer, primary, backgroundTintLevel, darkTheme, amoledTheme, 0.96f),
+    surfaceContainerHigh = tintSurface(surfaceContainerHigh, primary, backgroundTintLevel, darkTheme, amoledTheme, 1.08f),
+    surfaceContainerHighest = tintSurface(surfaceContainerHighest, primary, backgroundTintLevel, darkTheme, amoledTheme, 1.18f),
+    outline = lerp(outline, primary.scaleColorIntensity(colorIntensity), if (darkTheme || amoledTheme) 0.18f else 0.12f)
+)
+
+private fun tintSurface(
+    base: Color,
+    primary: Color,
+    backgroundTintLevel: BackgroundTintLevel,
+    darkTheme: Boolean,
+    amoledTheme: Boolean,
+    strength: Float
+): Color {
+    if (amoledTheme && base == Color.Black) return Color.Black
+    val alpha = (backgroundTintLevel.amount * strength).coerceIn(0f, if (darkTheme || amoledTheme) 0.22f else 0.14f)
+    return primary.copy(alpha = alpha).compositeOver(base)
+}
+
+private fun Color.scaleColorIntensity(intensity: ThemeColorIntensity): Color {
+    val hsv = FloatArray(3)
+    AndroidColor.colorToHSV(this.toArgb(), hsv)
+    hsv[1] = (hsv[1] * intensity.level).coerceIn(0f, 1f)
+    hsv[2] = when (intensity) {
+        ThemeColorIntensity.MUTED -> (hsv[2] * 0.94f).coerceIn(0f, 1f)
+        ThemeColorIntensity.NORMAL -> hsv[2]
+        ThemeColorIntensity.VIVID -> (hsv[2] * 1.03f).coerceIn(0f, 1f)
+        ThemeColorIntensity.POP -> (hsv[2] * 1.07f).coerceIn(0f, 1f)
+    }
+    return Color(AndroidColor.HSVToColor(hsv))
 }

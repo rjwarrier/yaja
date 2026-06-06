@@ -24,9 +24,9 @@ import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.EventRepeat
 import androidx.compose.material.icons.rounded.ExpandLess
 import androidx.compose.material.icons.rounded.ExpandMore
+import androidx.compose.material.icons.rounded.Forum
 import androidx.compose.material.icons.rounded.Insights
 import androidx.compose.material.icons.rounded.Language
-import androidx.compose.material.icons.rounded.People
 import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material.icons.rounded.Shop
@@ -59,6 +59,7 @@ import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import com.mj.yaja.ui.design.rememberAppEntrance
+import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.theme.BodoniModaFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,6 +73,13 @@ fun HelpScreen(
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
     val helpSections = remember { defaultHelpSections() }
+    val onboardingCards = remember { defaultHelpOnboardingCards() }
+    val groupedHelpSections = remember(helpSections) {
+        helpSectionGroupOrder.mapNotNull { group ->
+            val sections = helpSections.filter { it.group == group }
+            sections.takeIf { it.isNotEmpty() }?.let { group to it }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -100,14 +108,18 @@ fun HelpScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-            contentPadding = PaddingValues(top = 16.dp, bottom = 48.dp)
+        AppScreenReveal(
+            visible = true,
+            modifier = Modifier.fillMaxSize()
         ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
+                contentPadding = PaddingValues(top = 16.dp, bottom = 48.dp)
+            ) {
             item {
                 AppStaggeredEntrance(
                     visible = entranceTriggered,
@@ -123,33 +135,61 @@ fun HelpScreen(
                             modifier = Modifier.padding(bottom = 8.dp)
                         )
                         Text(
-                            text = "Yaja stays local, markdown-first, and out of your way. This page is grouped into compact sections now. Tap any card to expand it.",
+                            text = "Yaja is a local-first markdown journal for capturing days, people, places, follow-ups, reviews, and patterns without getting in your way. This page gives a quick guide to the main parts of the app.",
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        HelpFeatureSummaryBar(sectionCount = helpSections.size)
                     }
                 }
             }
 
             item { Spacer(modifier = Modifier.height(6.dp)) }
 
-            itemsIndexed(helpSections, key = { _, section -> section.title }) { index, section ->
+            item {
                 AppStaggeredEntrance(
                     visible = entranceTriggered,
-                    index = index + 1
+                    index = 1
                 ) {
-                    CollapsibleHelpCard(
-                        icon = section.icon,
-                        title = section.title,
-                        preview = section.preview,
-                        content = section.content,
-                        expanded = expandedSection == section.title,
-                        onToggle = {
-                            expandedSection = if (expandedSection == section.title) null else section.title
-                        }
-                    )
+                    HelpOnboardingCards(cards = onboardingCards)
+                }
+            }
+
+            item { Spacer(modifier = Modifier.height(4.dp)) }
+
+            groupedHelpSections.forEachIndexed { groupIndex, groupEntry ->
+                val groupTitle = groupEntry.first
+                val sections = groupEntry.second
+
+                item(key = "group_$groupTitle") {
+                    AppStaggeredEntrance(
+                        visible = entranceTriggered,
+                        index = groupIndex + 2
+                    ) {
+                        HelpGroupHeader(title = groupTitle)
+                    }
+                }
+
+                itemsIndexed(
+                    sections,
+                    key = { _, section -> "${groupTitle}_${section.title}" }
+                ) { sectionIndex, section ->
+                    val staggerIndex =
+                        2 + groupedHelpSections.take(groupIndex).sumOf { it.second.size + 1 } + sectionIndex
+                    AppStaggeredEntrance(
+                        visible = entranceTriggered,
+                        index = staggerIndex
+                    ) {
+                        CollapsibleHelpCard(
+                            icon = section.icon,
+                            title = section.title,
+                            preview = section.preview,
+                            content = section.content,
+                            expanded = expandedSection == section.title,
+                            onToggle = {
+                                expandedSection = if (expandedSection == section.title) null else section.title
+                            }
+                        )
+                    }
                 }
             }
 
@@ -158,7 +198,7 @@ fun HelpScreen(
             item {
                 AppStaggeredEntrance(
                     visible = entranceTriggered,
-                    index = helpSections.size + 1,
+                    index = helpSections.size + groupedHelpSections.size + 1,
                     strength = AppEntranceStrength.SUBTLE
                 ) {
                     Column(
@@ -265,9 +305,17 @@ https://play.google.com/store/apps/details?id=com.mj.yaja
                                 }
                             )
                         }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Discord: medvl_jedi",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontWeight = FontWeight.Medium
+                        )
                     }
                 }
             }
         }
+    }
     }
 }

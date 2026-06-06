@@ -1,0 +1,128 @@
+package com.mj.yaja.ui.screens
+
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mj.yaja.data.EntryKind
+import com.mj.yaja.data.EventItem
+import com.mj.yaja.data.NavigationChromeMode
+import com.mj.yaja.ui.viewmodel.JournalViewModel
+import com.mj.yaja.ui.design.AppScreenReveal
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.remember
+import java.time.LocalDate
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TodosScreen(
+    viewModel: JournalViewModel,
+    onOpenDrawer: () -> Unit,
+    onNavigateToDate: (LocalDate) -> Unit
+) {
+    val todos by viewModel.todos.collectAsStateWithLifecycle()
+    val events by viewModel.events.collectAsStateWithLifecycle()
+    val syncProgress by viewModel.syncProgress.collectAsStateWithLifecycle()
+    val isTodoRefreshing by viewModel.todoRefreshInProgress.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
+    val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
+    val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
+    val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+    var showAddTodoDialog by rememberSaveable { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        viewModel.ensureTodosLoaded()
+    }
+    val grouped = todos.groupBy { it.date }.toList().sortedByDescending { it.first }
+    val groupedEvents = events.groupBy { it.date }.toList().sortedByDescending { it.first }
+
+    val fabBottomPadding = remember(showBottomBar, navigationChromeMode, showBottomPanelLabels) {
+        if (showBottomBar) {
+            when (navigationChromeMode) {
+                NavigationChromeMode.EXPRESSIVE_PANEL -> {
+                    if (showBottomPanelLabels) 92.dp else 76.dp
+                }
+                NavigationChromeMode.FLOATING_BAR -> {
+                    0.dp
+                }
+            }
+        } else {
+            0.dp
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            TodosTopBar(
+                onOpenDrawer = onOpenDrawer
+            )
+        },
+        floatingActionButton = {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = fabBottomPadding)
+            ) {
+                TodoAddFab(
+                    onClick = { showAddTodoDialog = true },
+                    modifier = Modifier.align(Alignment.BottomEnd)
+                )
+            }
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { paddingValues ->
+        AppScreenReveal(
+            visible = true,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            TodosScreenContent(
+                isRefreshing = isTodoRefreshing,
+                onRefresh = { viewModel.refreshTodos(forceRebuild = true) },
+                paddingValues = paddingValues,
+                todos = todos,
+                events = events,
+                syncProgress = syncProgress,
+                groupedTodos = grouped,
+                groupedEvents = groupedEvents,
+                renderCheckboxesAsText = renderCheckboxesAsText,
+                dayLabelForDate = viewModel::getDayLabel,
+                onNavigateToDate = onNavigateToDate,
+                onToggleTodo = viewModel::toggleTodo
+            )
+        }
+
+        if (showAddTodoDialog) {
+            QuickTodoDialog(
+                onDismissRequest = { showAddTodoDialog = false },
+                onSave = { text, date, kind ->
+                    viewModel.addQuickEntryForDate(
+                        date = date,
+                        text = text,
+                        kind = if (kind == QuickAddKind.EVENT) EntryKind.EVENT else EntryKind.NORMAL
+                    )
+                    showAddTodoDialog = false
+                },
+                initialDate = uiState.selectedDate,
+                allowDateSelection = true,
+                title = "Quick Add"
+            )
+        }
+    }
+}

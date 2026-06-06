@@ -32,6 +32,21 @@ val LibreBaskervilleFamily =
 
 val BodoniModaFamily = FontFamily(Font(R.font.bodoni_moda_extrabold, FontWeight.ExtraBold))
 
+fun Typography.contentTextStyle(): TextStyle =
+        bodyLarge.copy(fontWeight = FontWeight.Normal)
+
+fun Typography.metaTextStyle(): TextStyle =
+        labelMedium.copy(
+                fontWeight = FontWeight.Normal,
+                letterSpacing = 0.25.sp
+        )
+
+fun Typography.metaSmallTextStyle(): TextStyle =
+        labelSmall.copy(
+                fontWeight = FontWeight.Normal,
+                letterSpacing = 0.2.sp
+        )
+
 fun getTypography(appFontFamily: AppFontFamily): Typography {
     val fontFamily =
             when (appFontFamily) {

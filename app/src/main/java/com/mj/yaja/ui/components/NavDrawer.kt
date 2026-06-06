@@ -1,29 +1,65 @@
 ﻿package com.mj.yaja.ui.components
 
+import android.content.Intent
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Help
 import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toSize
 import com.mj.yaja.BuildConfig
+import com.mj.yaja.R
+import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.scaledDelay
+import com.mj.yaja.ui.design.scaledDuration
 import com.mj.yaja.ui.theme.BodoniModaFamily
-import java.time.LocalDate
+import com.mj.yaja.ui.theme.LibreBaskervilleFamily
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -36,255 +72,314 @@ fun AppNavigationDrawer(
         onNavigateToCalendar: () -> Unit,
         onNavigateToLookback: () -> Unit,
         onNavigateToStatistics: () -> Unit = {},
+        onNavigateToKeywords: () -> Unit,
         onNavigateToShortcodes: () -> Unit,
+        onNavigateToTodos: () -> Unit,
+        onNavigateToRebuildCache: () -> Unit,
+        onBackupData: () -> Unit,
+        showBackupReminder: Boolean = false,
         onNavigateToSettings: () -> Unit,
         onNavigateToHelp: () -> Unit,
-        datesWithEntries: Set<LocalDate> = emptySet(),
-        onSurpriseMe: (LocalDate) -> Unit = {},
         showStatistics: Boolean = true,
         showLookbackInNavBar: Boolean = true,
+        showKeywordsInNavBar: Boolean = false,
+        showTodosInNavBar: Boolean = false,
         showStatisticsInNavBar: Boolean = false,
+        syncProgress: Float? = null,
+        backgroundWorkLabel: String? = null,
         content: @Composable () -> Unit
 ) {
+        var showLogoEasterEgg by remember { mutableStateOf(false) }
+        val context = LocalContext.current
+        val uriHandler = LocalUriHandler.current
+        var syncStartedAtMillis by remember { mutableStateOf<Long?>(null) }
+        LaunchedEffect(syncProgress == null) {
+                if (syncProgress == null) {
+                        syncStartedAtMillis = null
+                } else if (syncStartedAtMillis == null) {
+                        syncStartedAtMillis = System.currentTimeMillis()
+                }
+        }
+        Box(modifier = Modifier.fillMaxSize()) {
         ModalNavigationDrawer(
                 drawerState = drawerState,
                 drawerContent = {
-                        ModalDrawerSheet(modifier = Modifier.width(320.dp)) {
-                                Spacer(Modifier.height(24.dp))
-                                Column(modifier = Modifier.padding(horizontal = 28.dp)) {
-                                        Text(
-                                                "yaja",
-                                                style =
-                                                        MaterialTheme.typography.headlineMedium
-                                                                .copy(
-                                                                        fontFamily =
-                                                                                BodoniModaFamily,
-                                                                        fontWeight =
-                                                                                FontWeight.ExtraBold
-                                                                ),
-                                                color = MaterialTheme.colorScheme.primary
-                                        )
-                                        Text(
-                                                "yet another journaling app",
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                                        )
-                                        Text(
-                                                "v${BuildConfig.VERSION_NAME}",
-                                                style = MaterialTheme.typography.labelSmall,
-                                                color = MaterialTheme.colorScheme.primary,
-                                                modifier =
-                                                        Modifier.padding(top = 6.dp)
-                                                                .background(
-                                                                        MaterialTheme.colorScheme
-                                                                                .primary.copy(
-                                                                                alpha = 0.1f
-                                                                        ),
-                                                                        CircleShape
-                                                                )
-                                                                .padding(
-                                                                        horizontal = 10.dp,
-                                                                        vertical = 3.dp
-                                                                )
-                                        )
-                                }
-                                Spacer(Modifier.height(24.dp))
-                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                                Spacer(Modifier.height(16.dp))
-
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(Icons.Rounded.Book, contentDescription = null)
-                                        },
-                                        label = { Text("Journal") },
-                                        selected = currentRoute == "home",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToJournal()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(
-                                                        Icons.Rounded.CalendarMonth,
-                                                        contentDescription = null
-                                                )
-                                        },
-                                        label = { Text("Calendar") },
-                                        selected = currentRoute == "calendar",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToCalendar()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-                                if (!showLookbackInNavBar) {
-                                        Spacer(Modifier.height(8.dp))
-                                        NavigationDrawerItem(
-                                                icon = {
-                                                        Icon(
-                                                                Icons.Rounded.History,
-                                                                contentDescription = null
-                                                        )
-                                                },
-                                                label = { Text("Lookback") },
-                                                selected = currentRoute == "lookback",
-                                                onClick = {
-                                                        scope.launch { drawerState.close() }
-                                                        onNavigateToLookback()
-                                                },
-                                                modifier = Modifier.padding(horizontal = 12.dp)
-                                        )
-                                }
-                                if (showStatistics && !showStatisticsInNavBar) {
-                                        Spacer(Modifier.height(8.dp))
-                                        NavigationDrawerItem(
-                                                icon = {
-                                                        Icon(
-                                                                Icons.AutoMirrored.Rounded.TrendingUp,
-                                                                contentDescription = null
-                                                        )
-                                                },
-                                                label = { Text("Statistics") },
-                                                selected = currentRoute == "statistics",
-                                                onClick = {
-                                                        scope.launch { drawerState.close() }
-                                                        onNavigateToStatistics()
-                                                },
-                                                modifier = Modifier.padding(horizontal = 12.dp)
-                                        )
-                                }
-
-                                Spacer(Modifier.height(12.dp))
-                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                                Spacer(Modifier.height(12.dp))
-
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(
-                                                        Icons.Rounded.IntegrationInstructions,
-                                                        contentDescription = null
-                                                )
-                                        },
-                                        label = { Text("Shortcodes") },
-                                        selected = currentRoute == "shortcodes",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToShortcodes()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-
-
-                                 // Surprise Me -- only visible after 50 past entries
-                                 val pastEntryCount = datesWithEntries.count {
-                                         it.isBefore(LocalDate.now())
-                                 }
-                                 if (pastEntryCount >= 50) {
-                                         Spacer(Modifier.height(8.dp))
-                                         NavigationDrawerItem(
-                                                 icon = {
-                                                         Icon(
-                                                                 Icons.Rounded.AutoAwesome,
-                                                                 contentDescription = null
-                                                         )
-                                                 },
-                                                 label = { Text("Surprise Me") },
-                                                 selected = false,
-                                                 onClick = {
-                                                         val candidates =
-                                                                 datesWithEntries.filter {
-                                                                         it.isBefore(LocalDate.now())
-                                                                 }
-                                                         if (candidates.isNotEmpty()) {
-                                                                 scope.launch {
-                                                                         drawerState.close()
-                                                                 }
-                                                                 onSurpriseMe(candidates.random())
-                                                         }
-                                                 },
-                                                 modifier = Modifier.padding(horizontal = 12.dp)
-                                         )
-                                 }
-
-                                Spacer(Modifier.weight(1f))
-
-                                HorizontalDivider(
+                        val drawerScrollState = rememberScrollState()
+                        ModalDrawerSheet(
+                                modifier =
+                                        Modifier.widthIn(max = 320.dp)
+                                                .fillMaxHeight()
+                                                .navigationBarsPadding()
+                        ) {
+                                BoxWithConstraints(
                                         modifier =
-                                                Modifier.padding(
-                                                        horizontal = 16.dp,
-                                                        vertical = 8.dp
-                                                )
-                                )
+                                                Modifier.fillMaxWidth()
+                                                        .fillMaxHeight()
+                                                        .padding(bottom = 16.dp)
+                                ) {
+                                        var topSectionHeightPx by remember { mutableStateOf(0) }
+                                        var bottomSectionHeightPx by remember { mutableStateOf(0) }
+                                        val viewportHeightPx = constraints.maxHeight
+                                        val shouldScrollWholeMenu =
+                                                topSectionHeightPx + bottomSectionHeightPx > viewportHeightPx
 
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(
-                                                        Icons.Rounded.Settings,
-                                                        contentDescription = null
+                                        if (shouldScrollWholeMenu) {
+                                                Column(
+                                                        modifier =
+                                                                Modifier.fillMaxWidth()
+                                                                        .verticalScroll(drawerScrollState)
+                                                ) {
+                                                        Column(
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .onSizeChanged {
+                                                                                        topSectionHeightPx = it.height
+                                                                                }
+                                                        ) {
+                                                                Spacer(Modifier.height(24.dp))
+                                                                DrawerBrandHeader(
+                                                                        versionName = BuildConfig.VERSION_NAME,
+                                                                        onLogoClick = { showLogoEasterEgg = true },
+                                                                        onOpenPlayStore = {
+                                                                                uriHandler.openUri(
+                                                                                        "https://play.google.com/store/apps/details?id=com.mj.yaja"
+                                                                                )
+                                                                        },
+                                                                        onOpenWebsite = {
+                                                                                uriHandler.openUri("https://ranjithj.in/yaja/")
+                                                                        },
+                                                                        onShareApp = {
+                                                                                val shareText = """
+                                                                                        yaja — yet another journaling app
+
+                                                                                        A distraction-free daily journal that stores entries as plain markdown files.
+
+                                                                                        https://play.google.com/store/apps/details?id=com.mj.yaja
+                                                                                """.trimIndent()
+                                                                                val intent = Intent(Intent.ACTION_SEND).apply {
+                                                                                        type = "text/plain"
+                                                                                        putExtra(Intent.EXTRA_TEXT, shareText)
+                                                                                }
+                                                                                context.startActivity(
+                                                                                        Intent.createChooser(intent, "Share yaja")
+                                                                                )
+                                                                        }
+                                                                )
+                                                                Spacer(Modifier.height(24.dp))
+                                                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                                                                Spacer(Modifier.height(16.dp))
+                                                                DrawerPrimarySection(
+                                                                        currentRoute = currentRoute,
+                                                                        syncProgress = syncProgress,
+                                                                        backgroundWorkLabel = backgroundWorkLabel,
+                                                                        syncStartedAtMillis = syncStartedAtMillis,
+                                                                        onNavigateToJournal = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToJournal()
+                                                                        },
+                                                                        onNavigateToCalendar = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToCalendar()
+                                                                        }
+                                                                )
+                                                                DrawerPowerFeaturesSection(
+                                                                        currentRoute = currentRoute,
+                                                                        showLookbackInNavBar = showLookbackInNavBar,
+                                                                        showKeywordsInNavBar = showKeywordsInNavBar,
+                                                                        showTodosInNavBar = showTodosInNavBar,
+                                                                        showStatistics = showStatistics,
+                                                                        showStatisticsInNavBar = showStatisticsInNavBar,
+                                                                        onNavigateToLookback = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToLookback()
+                                                                        },
+                                                                        onNavigateToKeywords = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToKeywords()
+                                                                        },
+                                                                        onNavigateToStatistics = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToStatistics()
+                                                                        },
+                                                                        onNavigateToTodos = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToTodos()
+                                                                        }
+                                                                )
+                                                                DrawerWritingToolsSection(
+                                                                        currentRoute = currentRoute,
+                                                                        onNavigateToShortcodes = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToShortcodes()
+                                                                        }
+                                                                )
+                                                                Spacer(Modifier.height(12.dp))
+                                                        }
+                                                        Column(
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .onSizeChanged {
+                                                                                        bottomSectionHeightPx = it.height
+                                                                                }
+                                                        ) {
+                                                                DrawerAdvancedAndAppSection(
+                                                                        currentRoute = currentRoute,
+                                                                        showBackupReminder = showBackupReminder,
+                                                                        syncProgress = syncProgress,
+                                                                        backgroundWorkLabel = backgroundWorkLabel,
+                                                                        syncStartedAtMillis = syncStartedAtMillis,
+                                                                        onNavigateToRebuildCache = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToRebuildCache()
+                                                                        },
+                                                                        onBackupData = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onBackupData()
+                                                                        },
+                                                                        onNavigateToSettings = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToSettings()
+                                                                        },
+                                                                        onNavigateToHelp = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToHelp()
+                                                                        }
+                                                                )
+                                                        }
+                                                }
+                                        } else {
+                                                Column(
+                                                        modifier =
+                                                                Modifier.fillMaxWidth()
+                                                                        .fillMaxHeight()
+                                                ) {
+                                                        Column(
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .onSizeChanged {
+                                                                                        topSectionHeightPx = it.height
+                                                                                }
+                                                        ) {
+                                                Spacer(Modifier.height(24.dp))
+                                                DrawerBrandHeader(
+                                                        versionName = BuildConfig.VERSION_NAME,
+                                                        onLogoClick = { showLogoEasterEgg = true },
+                                                        onOpenPlayStore = {
+                                                                uriHandler.openUri(
+                                                                        "https://play.google.com/store/apps/details?id=com.mj.yaja"
+                                                                )
+                                                        },
+                                                        onOpenWebsite = {
+                                                                uriHandler.openUri("https://ranjithj.in/yaja/")
+                                                        },
+                                                        onShareApp = {
+                                                                val shareText = """
+                                                                        yaja — yet another journaling app
+
+                                                                        A distraction-free daily journal that stores entries as plain markdown files.
+
+                                                                        https://play.google.com/store/apps/details?id=com.mj.yaja
+                                                                """.trimIndent()
+                                                                val intent = Intent(Intent.ACTION_SEND).apply {
+                                                                        type = "text/plain"
+                                                                        putExtra(Intent.EXTRA_TEXT, shareText)
+                                                                }
+                                                                context.startActivity(
+                                                                        Intent.createChooser(intent, "Share yaja")
+                                                                )
+                                                        }
                                                 )
-                                        },
-                                        label = { Text("Settings") },
-                                        selected = currentRoute == "settings",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToSettings()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-                                Spacer(Modifier.height(8.dp))
-                                NavigationDrawerItem(
-                                        icon = {
-                                                Icon(
-                                                        Icons.AutoMirrored.Rounded.Help,
-                                                        contentDescription = null
+                                                Spacer(Modifier.height(24.dp))
+                                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                                                Spacer(Modifier.height(16.dp))
+                                                DrawerPrimarySection(
+                                                        currentRoute = currentRoute,
+                                                        syncProgress = syncProgress,
+                                                        backgroundWorkLabel = backgroundWorkLabel,
+                                                        syncStartedAtMillis = syncStartedAtMillis,
+                                                        onNavigateToJournal = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToJournal()
+                                                        },
+                                                        onNavigateToCalendar = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToCalendar()
+                                                        }
                                                 )
-                                        },
-                                        label = { Text("Help & About") },
-                                        selected = currentRoute == "help",
-                                        onClick = {
-                                                scope.launch { drawerState.close() }
-                                                onNavigateToHelp()
-                                        },
-                                        modifier = Modifier.padding(horizontal = 12.dp)
-                                )
-                                Spacer(Modifier.height(16.dp))
+                                                DrawerPowerFeaturesSection(
+                                                        currentRoute = currentRoute,
+                                                        showLookbackInNavBar = showLookbackInNavBar,
+                                                        showKeywordsInNavBar = showKeywordsInNavBar,
+                                                        showTodosInNavBar = showTodosInNavBar,
+                                                        showStatistics = showStatistics,
+                                                        showStatisticsInNavBar = showStatisticsInNavBar,
+                                                        onNavigateToLookback = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToLookback()
+                                                        },
+                                                        onNavigateToKeywords = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToKeywords()
+                                                        },
+                                                        onNavigateToStatistics = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToStatistics()
+                                                        },
+                                                        onNavigateToTodos = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToTodos()
+                                                        }
+                                                )
+                                                DrawerWritingToolsSection(
+                                                        currentRoute = currentRoute,
+                                                        onNavigateToShortcodes = {
+                                                                scope.launch { drawerState.close() }
+                                                                onNavigateToShortcodes()
+                                                        }
+                                                )
+                                                Spacer(Modifier.height(12.dp))
+                                                        }
+                                                        Spacer(modifier = Modifier.weight(1f))
+                                                        Column(
+                                                                modifier =
+                                                                        Modifier.fillMaxWidth()
+                                                                                .onSizeChanged {
+                                                                                        bottomSectionHeightPx = it.height
+                                                                                }
+                                                        ) {
+                                                                DrawerAdvancedAndAppSection(
+                                                                        currentRoute = currentRoute,
+                                                                        showBackupReminder = showBackupReminder,
+                                                                        syncProgress = syncProgress,
+                                                                        backgroundWorkLabel = backgroundWorkLabel,
+                                                                        syncStartedAtMillis = syncStartedAtMillis,
+                                                                        onNavigateToRebuildCache = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToRebuildCache()
+                                                                        },
+                                                                        onBackupData = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onBackupData()
+                                                                        },
+                                                                        onNavigateToSettings = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToSettings()
+                                                                        },
+                                                                        onNavigateToHelp = {
+                                                                                scope.launch { drawerState.close() }
+                                                                                onNavigateToHelp()
+                                                                        }
+                                                                )
+                                                        }
+                                                }
+                                        }
+                                }
                         }
-                }
-        ) { content() }
-}
-
-@Composable
-fun AnimatedMenuButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
-        val menuInteractionSource = remember { MutableInteractionSource() }
-        val isMenuPressed by menuInteractionSource.collectIsPressedAsState()
-        val menuScale by
-                animateFloatAsState(
-                        targetValue = if (isMenuPressed) 0.85f else 1f,
-                        animationSpec =
-                                spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMedium),
-                        label = "MenuScale"
-                )
-
-        Surface(
-                color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                shape = CircleShape,
-                modifier =
-                        modifier.size(48.dp).graphicsLayer {
-                                scaleX = menuScale
-                                scaleY = menuScale
-                        },
-                interactionSource = menuInteractionSource,
-                onClick = onClick
-        ) {
-                Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                                imageVector = Icons.Rounded.Menu,
-                                contentDescription = "Menu",
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                },
+                content = content
+        )
+                if (showLogoEasterEgg) {
+                        YajaLogoEasterEgg(onClose = { showLogoEasterEgg = false })
                 }
         }
 }

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-   Sample backup rules. See https://developer.android.com/guide/topics/data/autobackup
+    Legacy Auto Backup rules for Android 11 and below.
+    Keep journal files, generated backups, caches, and version-history snapshots out of
+    silent cloud backup. Users can still create explicit Yaja backup ZIPs from Settings.
 -->
 <full-backup-content>
-    <!--
-    <include domain="sharedpref" path="."/>
-    <exclude domain="sharedpref" path="device.xml"/>
--->
+    <include
+        domain="sharedpref"
+        path="journal_settings.xml" />
+    <include
+        domain="sharedpref"
+        path="keyword_prefs.xml" />
 </full-backup-content>

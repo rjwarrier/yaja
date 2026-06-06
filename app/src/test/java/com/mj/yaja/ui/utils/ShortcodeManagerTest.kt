@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.utils
 
+import com.mj.yaja.data.SettingsRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -113,43 +114,35 @@ class ShortcodeManagerTest {
     // the JSON serialization introduced to replace the old colon/semicolon format.
 
     @Test
-    fun `shortcode map with colon in key survives JSON round-trip`() {
+    fun `shortcode map with colon in key survives shortcode codec round-trip`() {
         val original = mapOf("key:colon" to "value")
-        val json = org.json.JSONObject()
-        original.forEach { (k, v) -> json.put(k, v) }
-        val restored = mutableMapOf<String, String>()
-        json.keys().forEach { key -> restored[key] = json.getString(key) }
+        val serialized = SettingsRepository.serializeShortcodes(original)
+        val restored = SettingsRepository.deserializeShortcodes(serialized)
         assertEquals(original, restored)
     }
 
     @Test
-    fun `shortcode map with semicolon in value survives JSON round-trip`() {
+    fun `shortcode map with semicolon in value survives shortcode codec round-trip`() {
         val original = mapOf("!s" to "one;two;three")
-        val json = org.json.JSONObject()
-        original.forEach { (k, v) -> json.put(k, v) }
-        val restored = mutableMapOf<String, String>()
-        json.keys().forEach { key -> restored[key] = json.getString(key) }
+        val serialized = SettingsRepository.serializeShortcodes(original)
+        val restored = SettingsRepository.deserializeShortcodes(serialized)
         assertEquals(original, restored)
     }
 
     @Test
-    fun `shortcode map with unicode value survives JSON round-trip`() {
+    fun `shortcode map with unicode value survives shortcode codec round-trip`() {
         val original = mapOf("!emoji" to "\uD83D\uDE00 Happy")
-        val json = org.json.JSONObject()
-        original.forEach { (k, v) -> json.put(k, v) }
-        val restored = mutableMapOf<String, String>()
-        json.keys().forEach { key -> restored[key] = json.getString(key) }
+        val serialized = SettingsRepository.serializeShortcodes(original)
+        val restored = SettingsRepository.deserializeShortcodes(serialized)
         assertEquals(original, restored)
     }
 
     @Test
-    fun `empty shortcode map serializes to empty JSON object`() {
+    fun `empty shortcode map serializes to empty shortcode payload`() {
         val original = emptyMap<String, String>()
-        val json = org.json.JSONObject()
-        original.forEach { (k, v) -> json.put(k, v) }
-        assertTrue(json.length() == 0)
-        val restored = mutableMapOf<String, String>()
-        json.keys().forEach { key -> restored[key] = json.getString(key) }
+        val serialized = SettingsRepository.serializeShortcodes(original)
+        val restored = SettingsRepository.deserializeShortcodes(serialized)
+        assertTrue(serialized.isNotBlank())
         assertTrue(restored.isEmpty())
     }
 }
