@@ -10,6 +10,11 @@
 
 Yaja is a privacy-first, markdown-based personal journaling application for Android. Built with Kotlin and Jetpack Compose, Yaja treats your journal entries as actionable records—merging text capture, inline tasks, location/people tracking, and rich automated insights into a single unified flow.
 
+> [!IMPORTANT]
+> **What Yaja is NOT:** Yaja is **not** a productivity app, a standard todo app, or a general-purpose calendar app. 
+> 
+> **What Yaja IS:** It is a private, personal space where you can manage your personal life, capture thoughts, and track tasks without any fear of your data being uploaded, processed, or shared in the cloud. Everything is kept strictly offline on your own device.
+
 ---
 
 ## 🌟 Specialties of Yaja
