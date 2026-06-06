@@ -8,6 +8,8 @@
   <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="45" />
 </a>
 
+🌐 **[Official Website](https://www.ranjithj.in/yaja/)** | 💖 **[Support & Donate](https://pages.razorpay.com/ranjithj)**
+
 Yaja is a privacy-first, markdown-based personal journaling application for Android. Built with Kotlin and Jetpack Compose, Yaja treats your journal entries as actionable records—merging text capture, inline tasks, location/people tracking, and rich automated insights into a single unified flow.
 
 > [!IMPORTANT]
@@ -86,6 +88,12 @@ Yaja includes an import utility supporting standard exports from **Day One** and
 4. Locate and select the file from `/sdcard/Download/` using the system file picker.
 5. A progress bar will track the import process. 
 6. Ensure that the active storage location in **Settings > Data & Storage > Storage Location** has write permissions (via the Storage Access Framework picker) so Yaja can write the imported markdown files.
+
+---
+
+## 💖 Support & Donations
+If Yaja helps you keep your personal logs secure and offline, please consider supporting its development:
+* **[Donate / Support via Razorpay](https://pages.razorpay.com/ranjithj)**
 
 ---
 
