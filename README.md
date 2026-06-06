@@ -1,6 +1,12 @@
+<p align="center">
+  <img src="docs/yaja_banner.png" alt="Yaja Banner" width="100%" />
+</p>
+
 # Yaja (Yet Another Journaling App)
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.mj.yaja)
+<a href="https://play.google.com/store/apps/details?id=com.mj.yaja">
+  <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="45" />
+</a>
 
 Yaja is a privacy-first, markdown-based personal journaling application for Android. Built with Kotlin and Jetpack Compose, Yaja treats your journal entries as actionable records—merging text capture, inline tasks, location/people tracking, and rich automated insights into a single unified flow.
 
