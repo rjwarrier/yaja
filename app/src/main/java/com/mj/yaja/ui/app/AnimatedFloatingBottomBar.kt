@@ -76,11 +76,12 @@ fun AnimatedFloatingBottomBar(
     val selectedIndex = items.indexOfFirst { it.first == currentRoute }.coerceAtLeast(0)
     val navigationFabSize = 64.dp
     val itemWidth = navigationFabSize
-    // Previous visual ratio was 0.125f, which produced a 48.dp indicator for a 64.dp bar.
-    val indicatorInset = navigationFabSize * (2f / 64f)
-    val indicatorSize = navigationFabSize - (indicatorInset * 2)
-    val iconSize = navigationFabSize * 0.375f
-    val horizontalPadding = indicatorInset
+    // Set a balanced indicator size (48.dp) and horizontal padding (12.dp) so that 
+    // the circular background indicator is never clipped by the rounded corners of the Surface container.
+    val indicatorSize = 48.dp
+    val indicatorInset = (navigationFabSize - indicatorSize) / 2 // 8.dp
+    val iconSize = 24.dp
+    val horizontalPadding = 12.dp
 
     val indicatorOffset by animateDpAsState(
         targetValue = horizontalPadding + (itemWidth * selectedIndex) + (itemWidth - indicatorSize) / 2,
