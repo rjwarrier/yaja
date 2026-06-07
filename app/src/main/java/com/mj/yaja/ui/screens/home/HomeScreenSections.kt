@@ -693,7 +693,7 @@ private fun HomeDateNavigator(
                 text = dateText,
                 baseStyle = baseDateStyle,
                 maxWidthPx = with(density) { (dateBlockWidth - 6.dp).roundToPx() },
-                minFontSizeSp = if (compact) 38f else 46f,
+                minFontSizeSp = if (compact) 24f else 28f,
                 maxFontSizeSp = if (compact) 58f else 68f
             )
         }
@@ -775,7 +775,9 @@ private fun HomeDateNavigator(
                                     style = baseDateStyle.copy(fontSize = dateFontSize),
                                     color = heroPrimaryText,
                                     textAlign = TextAlign.Start,
-                                    maxLines = 1
+                                    maxLines = 1,
+                                    softWrap = false,
+                                    overflow = TextOverflow.Ellipsis
                                 )
                                 if (showDayHeaderStats) {
                                     Column(
