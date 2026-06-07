@@ -1,6 +1,11 @@
 package com.mj.yaja.ui.screens
 
 import android.content.Intent
+import android.widget.Toast
+import androidx.compose.material.icons.rounded.Code
+import androidx.compose.material.icons.automirrored.rounded.Chat
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -306,12 +311,37 @@ https://play.google.com/store/apps/details?id=com.mj.yaja
                             )
                         }
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "Discord: medvl_jedi",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
-                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            HelpFooterActionButton(
+                                modifier = Modifier.weight(1f),
+                                icon = Icons.Rounded.Code,
+                                label = "GitHub",
+                                onClick = {
+                                    uriHandler.openUri("https://github.com/rjwarrier/yaja/tree/feature/ui-improvements-and-fixes")
+                                }
+                            )
+                            val clipboardManager = LocalClipboardManager.current
+                            HelpFooterActionButton(
+                                modifier = Modifier.weight(1f),
+                                icon = Icons.AutoMirrored.Rounded.Chat,
+                                label = "Discord",
+                                onClick = {
+                                    clipboardManager.setText(AnnotatedString("medvl_jedi"))
+                                    Toast.makeText(context, "Discord username copied!", Toast.LENGTH_SHORT).show()
+                                }
+                            )
+                            HelpFooterActionButton(
+                                modifier = Modifier.weight(1f),
+                                icon = Icons.Rounded.Forum,
+                                label = "Reddit",
+                                onClick = {
+                                    uriHandler.openUri("https://www.reddit.com/r/yaja_journal/")
+                                }
+                            )
+                        }
                     }
                 }
             }
