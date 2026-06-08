@@ -830,6 +830,27 @@ private fun HomeDateNavigator(
                                     contentAlignment = Alignment.CenterStart,
                                     label = "DateHeaderCrossfade"
                                 ) { date ->
+                                    // Local variables derived from local 'date' to prevent animation flickering/snapping
+                                    val localDayLabel = starredLabels[date] ?: ""
+                                    val localIsTodaySelected = date == today
+                                    val localUseLightTodayForeground = localIsTodaySelected
+                                    val localHeroPrimaryText =
+                                        if (localUseLightTodayForeground) {
+                                            Color.White.copy(alpha = 0.96f)
+                                        } else if (localIsTodaySelected) {
+                                            MaterialTheme.colorScheme.onPrimaryContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.onSurface
+                                        }
+                                    val localHeroSecondaryText =
+                                        if (localUseLightTodayForeground) {
+                                            Color.White.copy(alpha = 0.72f)
+                                        } else if (localIsTodaySelected) {
+                                            MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.88f)
+                                        } else {
+                                            MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.82f)
+                                        }
+
                                     val labelTextStyle =
                                         MaterialTheme.typography.titleSmall.copy(
                                             fontSize = 18.sp,
@@ -839,7 +860,7 @@ private fun HomeDateNavigator(
                                         with(density) {
                                             textMeasurer
                                                 .measure(
-                                                    text = dayLabel.ifBlank { "Add label" },
+                                                    text = localDayLabel.ifBlank { "Add label" },
                                                     style = labelTextStyle,
                                                     maxLines = 1
                                                 )
@@ -848,7 +869,7 @@ private fun HomeDateNavigator(
                                                 .toDp()
                                         }
                                     val labelWidth =
-                                        (labelTextWidth + if (dayLabel.isNotEmpty()) 64.dp else 54.dp)
+                                        (labelTextWidth + if (localDayLabel.isNotEmpty()) 64.dp else 54.dp)
                                             .coerceIn(
                                                 if (compact) 92.dp else 100.dp,
                                                 if (compact) 260.dp else 360.dp
@@ -861,62 +882,62 @@ private fun HomeDateNavigator(
                                             },
                                             verticalArrangement = Arrangement.spacedBy(10.dp)
                                         ) {
-                                            if (dayLabel.isNotEmpty()) {
-                                                Surface(
-                                                    modifier = Modifier
-                                                        .height(heroChipHeight)
-                                                        .width(labelWidth),
-                                                    shape = RoundedCornerShape(16.dp),
-                                                    color = if (isTodaySelected) {
-                                                        if (useLightTodayForeground) Color.White.copy(alpha = 0.08f)
-                                                        else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
-                                                    } else {
-                                                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
-                                                    },
-                                                    border = BorderStroke(
-                                                        1.dp,
-                                                        if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.18f)
-                                                            else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
-                                                        } else {
-                                                            MaterialTheme.colorScheme.tertiary.copy(alpha = 0.28f)
-                                                        }
-                                                    ),
-                                                    tonalElevation = 0.dp,
-                                                    shadowElevation = 0.dp
-                                                ) {
-                                                    Row(
-                                                        modifier = Modifier
-                                                            .fillMaxSize()
-                                                            .padding(horizontal = 16.dp),
-                                                        verticalAlignment = Alignment.CenterVertically,
-                                                        horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                                    ) {
-                                                        Icon(
-                                                            imageVector = Icons.Rounded.EditCalendar,
-                                                            contentDescription = null,
-                                                            modifier = Modifier.size(18.dp),
-                                                            tint = if (isTodaySelected) {
-                                                                heroPrimaryText
-                                                            } else {
-                                                                MaterialTheme.colorScheme.primary
-                                                            }
-                                                        )
-                                                        Text(
-                                                            text = dayLabel,
-                                                            style = labelTextStyle,
-                                                            color = if (isTodaySelected) {
-                                                                heroPrimaryText
-                                                            } else {
-                                                                MaterialTheme.colorScheme.onTertiaryContainer
-                                                            },
-                                                            fontWeight = FontWeight.SemiBold,
-                                                            maxLines = 1,
-                                                            softWrap = false,
-                                                            overflow = TextOverflow.Ellipsis
-                                                        )
-                                                    }
-                                                }
+                                            if (localDayLabel.isNotEmpty()) {
+                                                 Surface(
+                                                     modifier = Modifier
+                                                         .height(heroChipHeight)
+                                                         .width(labelWidth),
+                                                     shape = RoundedCornerShape(16.dp),
+                                                     color = if (localIsTodaySelected) {
+                                                         if (localUseLightTodayForeground) Color.White.copy(alpha = 0.08f)
+                                                         else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
+                                                     } else {
+                                                         MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
+                                                     },
+                                                     border = BorderStroke(
+                                                         1.dp,
+                                                         if (localIsTodaySelected) {
+                                                             if (localUseLightTodayForeground) Color.White.copy(alpha = 0.18f)
+                                                             else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
+                                                         } else {
+                                                             MaterialTheme.colorScheme.tertiary.copy(alpha = 0.28f)
+                                                         }
+                                                     ),
+                                                     tonalElevation = 0.dp,
+                                                     shadowElevation = 0.dp
+                                                 ) {
+                                                     Row(
+                                                         modifier = Modifier
+                                                             .fillMaxSize()
+                                                             .padding(horizontal = 16.dp),
+                                                         verticalAlignment = Alignment.CenterVertically,
+                                                         horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                                     ) {
+                                                         Icon(
+                                                             imageVector = Icons.Rounded.EditCalendar,
+                                                             contentDescription = null,
+                                                             modifier = Modifier.size(18.dp),
+                                                             tint = if (localIsTodaySelected) {
+                                                                 localHeroPrimaryText
+                                                             } else {
+                                                                 MaterialTheme.colorScheme.primary
+                                                             }
+                                                         )
+                                                         Text(
+                                                             text = localDayLabel,
+                                                             style = labelTextStyle,
+                                                             color = if (localIsTodaySelected) {
+                                                                 localHeroPrimaryText
+                                                             } else {
+                                                                 MaterialTheme.colorScheme.onTertiaryContainer
+                                                             },
+                                                             fontWeight = FontWeight.SemiBold,
+                                                             maxLines = 1,
+                                                             softWrap = false,
+                                                             overflow = TextOverflow.Ellipsis
+                                                         )
+                                                     }
+                                                 }
                                             } else {
                                                 AssistChip(
                                                     onClick = onEditDayLabel,
@@ -937,27 +958,27 @@ private fun HomeDateNavigator(
                                                         )
                                                     },
                                                     colors = AssistChipDefaults.assistChipColors(
-                                                        containerColor = if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.08f)
+                                                        containerColor = if (localIsTodaySelected) {
+                                                            if (localUseLightTodayForeground) Color.White.copy(alpha = 0.08f)
                                                             else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
                                                         } else {
                                                             MaterialTheme.colorScheme.surfaceContainerHigh
                                                         },
-                                                        labelColor = if (isTodaySelected) {
-                                                            heroPrimaryText
+                                                        labelColor = if (localIsTodaySelected) {
+                                                            localHeroPrimaryText
                                                         } else {
                                                             MaterialTheme.colorScheme.onSurfaceVariant
                                                         },
-                                                        leadingIconContentColor = if (isTodaySelected) {
-                                                            heroPrimaryText
+                                                        leadingIconContentColor = if (localIsTodaySelected) {
+                                                            localHeroPrimaryText
                                                         } else {
                                                             MaterialTheme.colorScheme.primary
                                                         }
                                                     ),
                                                     border = AssistChipDefaults.assistChipBorder(
                                                         enabled = true,
-                                                        borderColor = if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.18f)
+                                                        borderColor = if (localIsTodaySelected) {
+                                                            if (localUseLightTodayForeground) Color.White.copy(alpha = 0.18f)
                                                             else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
                                                         } else {
                                                             MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f)
@@ -973,7 +994,7 @@ private fun HomeDateNavigator(
                                                 versionCount = versionSnapshotsCount,
                                                 onOpenVersionSnapshots = onOpenVersionSnapshots,
                                                 showVersionSnapshotsButton = showVersionSnapshotsButton,
-                                                isTodayHighlighted = useLightTodayForeground
+                                                isTodayHighlighted = localUseLightTodayForeground
                                             )
                                         }
                                     } else {
@@ -989,7 +1010,7 @@ private fun HomeDateNavigator(
                                                 text = date.format(weekdayFormatter),
                                                 style = MaterialTheme.typography.headlineMedium,
                                                 fontWeight = FontWeight.Bold,
-                                                color = heroPrimaryText,
+                                                color = localHeroPrimaryText,
                                                 textAlign = TextAlign.Start,
                                                 maxLines = 1,
                                                 softWrap = false,
@@ -999,34 +1020,34 @@ private fun HomeDateNavigator(
                                             Text(
                                                 text = date.format(monthYearFormatter).uppercase(),
                                                 style = MaterialTheme.typography.metaSmallTextStyle().copy(fontSize = 11.sp),
-                                                color = heroSecondaryText,
+                                                color = localHeroSecondaryText,
                                                 textAlign = TextAlign.Start,
                                                 maxLines = 1,
                                                 softWrap = false,
                                                 overflow = TextOverflow.Ellipsis
                                             )
                                             Spacer(modifier = Modifier.height(12.dp))
-                                            if (dayLabel.isNotEmpty()) {
+                                            if (localDayLabel.isNotEmpty()) {
                                                 Surface(
                                                     modifier = Modifier
                                                         .height(heroChipHeight)
                                                         .width(labelWidth),
                                                     shape = RoundedCornerShape(16.dp),
-                                                    color = if (isTodaySelected) {
-                                                        if (useLightTodayForeground) Color.White.copy(alpha = 0.08f)
-                                                        else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
-                                                    } else {
-                                                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
-                                                    },
-                                                    border = BorderStroke(
-                                                        1.dp,
-                                                        if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.18f)
-                                                            else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
-                                                        } else {
-                                                            MaterialTheme.colorScheme.tertiary.copy(alpha = 0.28f)
-                                                        }
-                                                    ),
+                                                     color = if (localIsTodaySelected) {
+                                                         if (localUseLightTodayForeground) Color.White.copy(alpha = 0.08f)
+                                                         else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
+                                                     } else {
+                                                         MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.9f)
+                                                     },
+                                                     border = BorderStroke(
+                                                         1.dp,
+                                                         if (localIsTodaySelected) {
+                                                             if (localUseLightTodayForeground) Color.White.copy(alpha = 0.18f)
+                                                             else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
+                                                         } else {
+                                                             MaterialTheme.colorScheme.tertiary.copy(alpha = 0.28f)
+                                                         }
+                                                     ),
                                                     tonalElevation = 0.dp,
                                                     shadowElevation = 0.dp
                                                 ) {
@@ -1041,19 +1062,19 @@ private fun HomeDateNavigator(
                                                             imageVector = Icons.Rounded.EditCalendar,
                                                             contentDescription = null,
                                                             modifier = Modifier.size(18.dp),
-                                                            tint = if (isTodaySelected) heroPrimaryText else MaterialTheme.colorScheme.primary
+                                                            tint = if (localIsTodaySelected) localHeroPrimaryText else MaterialTheme.colorScheme.primary
                                                         )
                                                         Text(
-                                                            text = dayLabel,
+                                                            text = localDayLabel,
                                                             style = labelTextStyle,
-                                                            color = if (isTodaySelected) heroPrimaryText else MaterialTheme.colorScheme.onTertiaryContainer,
+                                                            color = if (localIsTodaySelected) localHeroPrimaryText else MaterialTheme.colorScheme.onTertiaryContainer,
                                                             fontWeight = FontWeight.SemiBold,
                                                             maxLines = 1,
                                                             softWrap = false,
                                                             overflow = TextOverflow.Ellipsis
                                                         )
-                                                    }
-                                                }
+                                                     }
+                                                 }
                                             } else {
                                                 AssistChip(
                                                     onClick = onEditDayLabel,
@@ -1074,19 +1095,19 @@ private fun HomeDateNavigator(
                                                         )
                                                     },
                                                     colors = AssistChipDefaults.assistChipColors(
-                                                        containerColor = if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.08f)
+                                                        containerColor = if (localIsTodaySelected) {
+                                                            if (localUseLightTodayForeground) Color.White.copy(alpha = 0.08f)
                                                             else MaterialTheme.colorScheme.primary.copy(alpha = 0.18f)
                                                         } else {
                                                             MaterialTheme.colorScheme.surfaceContainerHigh
                                                         },
-                                                        labelColor = if (isTodaySelected) heroPrimaryText else MaterialTheme.colorScheme.onSurfaceVariant,
-                                                        leadingIconContentColor = if (isTodaySelected) heroPrimaryText else MaterialTheme.colorScheme.primary
+                                                        labelColor = if (localIsTodaySelected) localHeroPrimaryText else MaterialTheme.colorScheme.onSurfaceVariant,
+                                                        leadingIconContentColor = if (localIsTodaySelected) localHeroPrimaryText else MaterialTheme.colorScheme.primary
                                                     ),
                                                     border = AssistChipDefaults.assistChipBorder(
                                                         enabled = true,
-                                                        borderColor = if (isTodaySelected) {
-                                                            if (useLightTodayForeground) Color.White.copy(alpha = 0.18f)
+                                                        borderColor = if (localIsTodaySelected) {
+                                                            if (localUseLightTodayForeground) Color.White.copy(alpha = 0.18f)
                                                             else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.18f)
                                                         } else {
                                                             MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f)
