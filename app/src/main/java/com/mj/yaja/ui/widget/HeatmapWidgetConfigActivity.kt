@@ -23,7 +23,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.theme.JournalTheme
 import kotlin.math.cos
 import kotlin.math.min
@@ -111,7 +113,7 @@ private fun ConfigDialog(
 
     AlertDialog(
         onDismissRequest = onCancel,
-        title = { Text("Yaja Writing Heatmap") },
+        title = { Text(stringResource(R.string.widget_heatmap_title)) },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -119,7 +121,7 @@ private fun ConfigDialog(
             ) {
                 // ── Cell shape ──────────────────────────────────────────────
                 Text(
-                    text = "Cell Shape",
+                    text = stringResource(R.string.widget_cell_shape),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 LazyVerticalGrid(
@@ -172,7 +174,7 @@ private fun ConfigDialog(
 
                 // ── Corner radius ─────────────────────────────────────────────
                 Text(
-                    text = "Corner Radius: ${radius.roundToInt()}dp",
+                    text = stringResource(R.string.widget_corner_radius, radius.roundToInt()),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Slider(
@@ -186,9 +188,9 @@ private fun ConfigDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Square", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_square), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text("Round", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_round), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
 
@@ -196,11 +198,11 @@ private fun ConfigDialog(
 
                 // ── Inner margin ──────────────────────────────────────────────
                 Text(
-                    text = "Inner Margin: ${margin.roundToInt()}dp",
+                    text = stringResource(R.string.widget_inner_margin, margin.roundToInt()),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
-                    text = "Space between the heatmap and the widget edges",
+                    text = stringResource(R.string.widget_inner_margin_desc),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -215,9 +217,9 @@ private fun ConfigDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("None", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_none), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text("Max", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_max), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
 
@@ -225,11 +227,11 @@ private fun ConfigDialog(
 
                 // ── Tap action ──────────────────────────────────────────────
                 Text(
-                    text = "On Tap",
+                    text = stringResource(R.string.widget_on_tap),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Text(
-                    text = "Action when widget is tapped",
+                    text = stringResource(R.string.widget_on_tap_desc),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -248,7 +250,7 @@ private fun ConfigDialog(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                tapAction.label,
+                                tapActionLabel(tapAction),
                                 style = MaterialTheme.typography.bodyMedium
                             )
                             Icon(
@@ -264,7 +266,7 @@ private fun ConfigDialog(
                     ) {
                         HeatmapTapAction.entries.forEach { action ->
                             DropdownMenuItem(
-                                text = { Text(action.label) },
+                                text = { Text(tapActionLabel(action)) },
                                 onClick = {
                                     tapAction = action
                                     tapDropdownExpanded = false
@@ -287,6 +289,13 @@ private fun ConfigDialog(
             WidgetConfigCancelButton(onClick = onCancel)
         }
     )
+}
+
+@Composable
+private fun tapActionLabel(action: HeatmapTapAction): String = when (action) {
+    HeatmapTapAction.LAUNCH_APP -> stringResource(R.string.tap_action_launch_app)
+    HeatmapTapAction.QUICK_CAPTURE -> stringResource(R.string.tap_action_quick_capture)
+    HeatmapTapAction.DO_NOTHING -> stringResource(R.string.tap_action_do_nothing)
 }
 
 // ── Shape preview drawing (Compose Canvas) ───────────────────────────────────

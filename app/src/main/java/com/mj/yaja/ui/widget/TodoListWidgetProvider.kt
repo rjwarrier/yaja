@@ -369,7 +369,8 @@ class TodoListWidgetProvider : AppWidgetProvider() {
                 } else {
                     R.layout.widget_todo_list_serif_no_header
                 }
-                AppFontFamily.SANS_SERIF -> if (showHeader) {
+                // RemoteViews can't load file-based fonts; custom falls back to sans.
+                AppFontFamily.SANS_SERIF, AppFontFamily.CUSTOM -> if (showHeader) {
                     R.layout.widget_todo_list_sans
                 } else {
                     R.layout.widget_todo_list_sans_no_header
@@ -870,7 +871,7 @@ class TodoListWidgetProvider : AppWidgetProvider() {
     private fun getItemLayoutRes(appFontFamily: AppFontFamily): Int =
         when (appFontFamily) {
             AppFontFamily.SERIF -> R.layout.widget_todo_list_item_serif
-            AppFontFamily.SANS_SERIF -> R.layout.widget_todo_list_item_sans
+            AppFontFamily.SANS_SERIF, AppFontFamily.CUSTOM -> R.layout.widget_todo_list_item_sans
             AppFontFamily.MONO -> R.layout.widget_todo_list_item
         }
 

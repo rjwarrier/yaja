@@ -57,7 +57,14 @@ class MarkdownFileManager(
         private const val TAG = "MarkdownFileManager"
         private const val TODO_PIPELINE_TAG = "YajaTodoPipeline"
         private const val SLOW_MUTATION_STAGE_MS = 500L
+        private const val MAX_SEARCH_RESULTS = 200
         private val MONTH_FORMATTER = DateTimeFormatter.ofPattern("MM")
+        private val REVISIT_MARKER_ORDER =
+            compareByDescending<RevisitMarker> { it.sourceDate }
+                .thenByDescending { it.entryIndex ?: -1 }
+        private val DUE_REVISIT_ORDER =
+            compareByDescending<DueRevisitItem> { it.sourceDate }
+                .thenByDescending { it.entryIndex ?: -1 }
 
         @Volatile private var instance: MarkdownFileManager? = null
 
@@ -141,8 +148,11 @@ class MarkdownFileManager(
             var i = 1
             while (i < lines.size && lines[i].trim() != "---") {
                 val line = lines[i].trim()
-                if (line.contains("starred") && line.contains("true")) {
-                    isStarred = true
+                if (line.startsWith("starred:")) {
+                    isStarred = line.substringAfter("starred:")
+                        .trim()
+                        .removeSurrounding("\"")
+                        .equals("true", ignoreCase = true)
                 }
                 if (line.startsWith("label:")) {
                     label = line.substringAfter("label:").trim().removeSurrounding("\"")
@@ -445,25 +455,20 @@ class MarkdownFileManager(
         orderedDates.forEachIndexed { index, date ->
             cacheScope.coroutineContext.ensureActive()
             if (expectedEpoch != cacheEpoch) return
-            val entries = journalStorage.readEntriesForDate(date)
+            // Single read per file: entries and frontmatter come from the same content,
+            // instead of opening the file once for entries and again for frontmatter.
+            val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
+            val entries = parsed?.entries.orEmpty()
             synchronized(this) {
                 if (expectedEpoch != cacheEpoch) return
-                if (entries.isNotEmpty()) {
+                if (parsed != null && entries.isNotEmpty()) {
                     cache[date] = entries
                     entryCountCache[date] = entries.size
                     wordCountCache[date] = countWords(entries)
                     val metadata = journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
                     metadata?.let { dateMetadataCache[date] = DateFileMetadata(it.first, it.second) }
 
-                    // We also need the frontmatter for starred/labels
-                    val dayFile = getDocumentFileForDate(date)
-                    val lines = if (dayFile != null) {
-                        context.contentResolver.openInputStream(dayFile.uri)
-                            ?.bufferedReader(Charsets.UTF_8)?.readLines() ?: emptyList()
-                    } else {
-                        getFileForDate(date)?.readLines(Charsets.UTF_8) ?: emptyList()
-                    }
-                    val snapshot = Companion.parseFrontmatter(lines)
+                    val snapshot = parsed.frontmatter
                     if (snapshot.isStarred) starredDates[date] = snapshot.label
                     if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label
                     snapshot.revisitOn?.let { revisitDates[date] = it }
@@ -533,22 +538,16 @@ class MarkdownFileManager(
             val previousMetadata = dateMetadataCache[date]
             val needsRead = previousMetadata != metadata || !cache.containsKey(date)
             if (needsRead) {
-                val entries = journalStorage.readEntriesForDate(date)
+                val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
+                val entries = parsed?.entries.orEmpty()
                 if (expectedEpoch != cacheEpoch) return
-                if (entries.isNotEmpty()) {
+                if (parsed != null && entries.isNotEmpty()) {
                     cache[date] = entries
                     entryCountCache[date] = entries.size
                     wordCountCache[date] = countWords(entries)
                     dateMetadataCache[date] = metadata
 
-                    val dayFile = getDocumentFileForDate(date)
-                    val lines = if (dayFile != null) {
-                        context.contentResolver.openInputStream(dayFile.uri)
-                            ?.bufferedReader(Charsets.UTF_8)?.readLines() ?: emptyList()
-                    } else {
-                        getFileForDate(date)?.readLines(Charsets.UTF_8) ?: emptyList()
-                    }
-                    val snapshot = Companion.parseFrontmatter(lines)
+                    val snapshot = parsed.frontmatter
                     if (snapshot.isStarred) starredDates[date] = snapshot.label else starredDates.remove(date)
                     if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label else dayLabels.remove(date)
                     snapshot.revisitOn?.let { revisitDates[date] = it } ?: revisitDates.remove(date)
@@ -620,6 +619,7 @@ class MarkdownFileManager(
             frontmatterPopulated = false
             lightweightDatesCache = null
             dateMetadataCache.clear()
+            journalStorage.invalidateDirectoryCache()
             
             // Delete all entries from Room database
             cacheScope.launch {
@@ -682,9 +682,10 @@ class MarkdownFileManager(
                         ensureActive()
                         if (expectedEpoch != cacheEpoch) return@launch
                         if (!cache.containsKey(date)) {
-                            val entries = journalStorage.readEntriesForDate(date)
+                            val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
+                            val entries = parsed?.entries.orEmpty()
                             if (expectedEpoch != cacheEpoch) return@launch
-                            if (entries.isNotEmpty()) {
+                            if (parsed != null && entries.isNotEmpty()) {
                                 cache[date] = entries
                                 entryCountCache[date] = entries.size
                                 wordCountCache[date] = countWords(entries)
@@ -693,14 +694,7 @@ class MarkdownFileManager(
                                 val metadata = rawMetadata?.let { DateFileMetadata(it.first, it.second) }
                                 metadata?.let { dateMetadataCache[date] = it }
 
-                                val dayFile = getDocumentFileForDate(date)
-                                val lines = if (dayFile != null) {
-                                    context.contentResolver.openInputStream(dayFile.uri)
-                                        ?.bufferedReader(Charsets.UTF_8)?.readLines() ?: emptyList()
-                                } else {
-                                    getFileForDate(date)?.readLines(Charsets.UTF_8) ?: emptyList()
-                                }
-                                val snapshot = Companion.parseFrontmatter(lines)
+                                val snapshot = parsed.frontmatter
                                 if (snapshot.isStarred) starredDates[date] = snapshot.label
                                 if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label
                                 snapshot.revisitOn?.let { revisitDates[date] = it }
@@ -785,41 +779,6 @@ class MarkdownFileManager(
         )
     }
 
-    private fun getFileForDate(date: LocalDate): File? {
-        val uriString = settingsRepository.storageUri.value
-        if (uriString == null) {
-            return File(defaultJournalsDir, "$date.md")
-        }
-        return null // Indicates using DocumentFile
-    }
-
-    private fun getDocumentFileForDate(
-            date: LocalDate,
-            createIfNotExists: Boolean = false
-    ): DocumentFile? {
-        val uriString = settingsRepository.storageUri.value ?: return null
-        val rootUri = Uri.parse(uriString)
-        val rootDir = DocumentFile.fromTreeUri(context, rootUri) ?: return null
-
-        val year = date.year.toString()
-        val month = date.format(MONTH_FORMATTER)
-        val dayFileName = "$date.md"
-
-        var yearDir = rootDir.findFile(year)
-        if (yearDir == null && createIfNotExists) yearDir = rootDir.createDirectory(year)
-        if (yearDir == null) return null
-
-        var monthDir = yearDir.findFile(month)
-        if (monthDir == null && createIfNotExists) monthDir = yearDir.createDirectory(month)
-        if (monthDir == null) return null
-
-        var dayFile = monthDir.findFile(dayFileName)
-        if (dayFile == null && createIfNotExists) {
-            dayFile = monthDir.createFile("text/markdown", dayFileName)
-        }
-        return dayFile
-    }
-
     fun hasEntriesForDate(date: LocalDate): Boolean {
         return getEntriesForDate(date).isNotEmpty()
     }
@@ -858,9 +817,10 @@ class MarkdownFileManager(
         if (knownDates != null && !knownDates.contains(date)) {
             return emptyList()
         }
-        if (cachePopulated) {
-            return emptyList()
-        }
+        // If the full cache is populated but this date has no in-memory entry, it means
+        // the Room DB record for this date is missing or stale while the file still exists
+        // on disk (lightweight cache confirmed it). Fall through to a disk read rather than
+        // returning empty so callers like the keyword rebuild get real content.
         val entries = journalStorage.readEntriesForDate(date)
         if (entries.isNotEmpty()) {
             cache[date] = entries
@@ -874,8 +834,35 @@ class MarkdownFileManager(
     }
 
     /**
-     * Load entries directly from markdown file without using cache.
-     * Used for immediate UI updates after modifications.
+     * Load all journal entries from Room DB in a single batch query.
+     * Returns a map of date → entries for every day that has a Room DB record.
+     * Used as the fast path for full-corpus operations like the keyword index rebuild:
+     * one SQLite table scan instead of opening one markdown file per day via SAF.
+     */
+    fun getEntriesSnapshotForRebuild(): Map<LocalDate, List<String>> {
+        return try {
+            dao.getAllDaysSync("default")
+                .mapNotNull { entity ->
+                    runCatching { LocalDate.parse(entity.date) }.getOrNull()
+                        ?.let { date -> date to entity.entries }
+                }
+                .toMap()
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to load entries snapshot from Room for rebuild", e)
+            emptyMap()
+        }
+    }
+
+    /**
+     * Read entries directly from disk, bypassing the in-memory cache entirely.
+     * Used as the fallback for dates not present in Room DB.
+     */
+    fun readEntriesForDateDirect(date: LocalDate): List<String> =
+        journalStorage.readEntriesForDate(date)
+
+    /**
+     * Despite the name, this reads through the in-memory cache. For a guaranteed disk read
+     * (e.g. before a mutation), use [readEntriesForDateDirect].
      */
     @Deprecated("Obsolete: Use getEntriesForDate instead to utilize memory cache.", ReplaceWith("getEntriesForDate(date)"))
     fun getEntriesForDateFromDisk(date: LocalDate): List<String> {
@@ -1019,7 +1006,7 @@ class MarkdownFileManager(
         return loadEntriesForMutation(
             date = date,
             cachedEntries = cache[date],
-            diskEntries = getEntriesForDateFromDisk(date),
+            diskEntries = readEntriesForDateDirect(date),
             logCacheMismatch = { message -> Log.w(TODO_PIPELINE_TAG, message) }
         )
     }
@@ -1319,7 +1306,7 @@ class MarkdownFileManager(
         expectedLineHash: String? = null,
         expectedDisplayText: String? = null
     ): Boolean = withDateMutationLock(date) {
-        val entries = getEntriesForDateFromDisk(date).toMutableList()
+        val entries = readEntriesForDateDirect(date).toMutableList()
         val target = findTodoTarget(entries, entryIndex, lineIndex, expectedLineHash, expectedDisplayText)
         if (target == null) {
             updateTodoIndexRows(date, entries)
@@ -1568,11 +1555,14 @@ class MarkdownFileManager(
         // Split into words for AND-logic: all words must appear in the entry or label
         val words = query.trim().lowercase().split(Regex("\\s+")).filter { it.isNotBlank() }
 
-        getAllJournalDatesLightweight().sortedDescending().forEach { date ->
+        for (date in getAllJournalDatesLightweight().sortedDescending()) {
             // Check day label — surfaces dates whose label matches even if no entry does
             val label = dayLabels[date] ?: ""
-            if (label.isNotEmpty() && words.all { word -> label.lowercase().contains(word) }) {
-                results.add(SearchResult(date, "Label: $label"))
+            if (label.isNotEmpty()) {
+                val labelLower = label.lowercase()
+                if (words.all { word -> labelLower.contains(word) }) {
+                    results.add(SearchResult(date, "Label: $label"))
+                }
             }
 
             // Check each entry's content
@@ -1587,6 +1577,9 @@ class MarkdownFileManager(
                     results.add(SearchResult(date, snippet))
                 }
             }
+
+            // Newest dates are scanned first, so capping keeps the most relevant matches.
+            if (results.size >= MAX_SEARCH_RESULTS) break
         }
         return results
     }
@@ -1871,6 +1864,62 @@ class MarkdownFileManager(
         return dayLabels.toMap()
     }
 
+    data class RevisitOverview(
+        val markers: List<RevisitMarker>,
+        val targetDates: Set<LocalDate>,
+        val dueItems: List<DueRevisitItem>
+    )
+
+    /**
+     * Produces all revisit state in one corpus scan. Prefer this over calling
+     * [getAllRevisitMarkers] and [getDueRevisitItems] separately, which scans twice.
+     */
+    fun getRevisitOverview(targetDate: LocalDate): RevisitOverview {
+        ensureFrontmatterPopulated()
+        val markers = mutableListOf<RevisitMarker>()
+        val dueItems = mutableListOf<DueRevisitItem>()
+
+        revisitDates.forEach { (sourceDate, revisitOn) ->
+            val note = revisitNotes[sourceDate].orEmpty()
+            markers += RevisitMarker(sourceDate = sourceDate, revisitOn = revisitOn, note = note)
+            if (revisitOn == targetDate) {
+                dueItems +=
+                    DueRevisitItem(
+                        sourceDate = sourceDate,
+                        revisitOn = revisitOn,
+                        label = dayLabels[sourceDate].orEmpty(),
+                        note = note
+                    )
+            }
+        }
+
+        forEachEntryRevisit { date, index, revisitOn, note ->
+            markers +=
+                RevisitMarker(
+                    sourceDate = date,
+                    revisitOn = revisitOn,
+                    entryIndex = index,
+                    note = note
+                )
+            if (revisitOn == targetDate) {
+                dueItems +=
+                    DueRevisitItem(
+                        sourceDate = date,
+                        revisitOn = targetDate,
+                        entryIndex = index,
+                        label = dayLabels[date].orEmpty(),
+                        note = note
+                    )
+            }
+        }
+
+        return RevisitOverview(
+            markers = markers.sortedWith(REVISIT_MARKER_ORDER),
+            targetDates = markers.mapTo(linkedSetOf()) { it.revisitOn },
+            dueItems = dueItems.sortedWith(DUE_REVISIT_ORDER)
+        )
+    }
+
     fun getAllRevisitMarkers(): List<RevisitMarker> {
         ensureFrontmatterPopulated()
         val markers = mutableListOf<RevisitMarker>()
@@ -1882,34 +1931,22 @@ class MarkdownFileManager(
                     note = revisitNotes[sourceDate].orEmpty()
                 )
         }
-        getAllJournalDatesLightweight().sorted().forEach { date ->
-            val entries = getEntriesForDate(date)
-            entries.forEachIndexed { index, entry ->
-                val entryRevisit = parseEntryRevisitMetadata(entry)
-                val revisitOn = entryRevisit.revisitOn ?: return@forEachIndexed
-                markers +=
-                    RevisitMarker(
-                        sourceDate = date,
-                        revisitOn = revisitOn,
-                        entryIndex = index,
-                        note = entryRevisit.note
-                    )
-            }
+        forEachEntryRevisit { date, index, revisitOn, note ->
+            markers +=
+                RevisitMarker(
+                    sourceDate = date,
+                    revisitOn = revisitOn,
+                    entryIndex = index,
+                    note = note
+                )
         }
-        return markers.sortedWith(
-            compareByDescending<RevisitMarker> { it.sourceDate }
-                .thenByDescending { it.entryIndex ?: -1 }
-        )
+        return markers.sortedWith(REVISIT_MARKER_ORDER)
     }
 
     fun getRevisitTargetDates(): Set<LocalDate> {
         ensureFrontmatterPopulated()
         val targetDates = revisitDates.values.toMutableSet()
-        getAllJournalDatesLightweight().forEach { date ->
-            getEntriesForDate(date).forEach { entry ->
-                parseEntryRevisitMetadata(entry).revisitOn?.let { targetDates += it }
-            }
-        }
+        forEachEntryRevisit { _, _, revisitOn, _ -> targetDates += revisitOn }
         return targetDates
     }
 
@@ -1929,27 +1966,43 @@ class MarkdownFileManager(
             }
         }
 
-        getAllJournalDatesLightweight().sortedDescending().forEach { sourceDate ->
-            val label = dayLabels[sourceDate].orEmpty()
-            getEntriesForDate(sourceDate).forEachIndexed { index, entry ->
-                val revisit = parseEntryRevisitMetadata(entry)
-                if (revisit.revisitOn == targetDate) {
-                    items +=
-                        DueRevisitItem(
-                            sourceDate = sourceDate,
-                            revisitOn = targetDate,
-                            entryIndex = index,
-                            label = label,
-                            note = revisit.note
-                        )
-                }
+        forEachEntryRevisit { date, index, revisitOn, note ->
+            if (revisitOn == targetDate) {
+                items +=
+                    DueRevisitItem(
+                        sourceDate = date,
+                        revisitOn = targetDate,
+                        entryIndex = index,
+                        label = dayLabels[date].orEmpty(),
+                        note = note
+                    )
             }
         }
 
-        return items.sortedWith(
-            compareByDescending<DueRevisitItem> { it.sourceDate }
-                .thenByDescending { it.entryIndex ?: -1 }
-        )
+        return items.sortedWith(DUE_REVISIT_ORDER)
+    }
+
+    /**
+     * Walks every entry carrying entry-level revisit metadata. Sources entries from the
+     * in-memory cache (or the Room snapshot before warmup completes) so the scan never
+     * falls back to one SAF file read per day.
+     */
+    private fun forEachEntryRevisit(action: (LocalDate, Int, LocalDate, String) -> Unit) {
+        val snapshot: Map<LocalDate, List<String>> =
+            if (cachePopulated) {
+                cache
+            } else {
+                getEntriesSnapshotForRebuild().ifEmpty {
+                    getEntriesSnapshotForDates(getAllJournalDatesLightweight())
+                }
+            }
+        snapshot.forEach { (date, entries) ->
+            entries.forEachIndexed { index, entry ->
+                val revisit = parseEntryRevisitMetadata(entry)
+                val revisitOn = revisit.revisitOn ?: return@forEachIndexed
+                action(date, index, revisitOn, revisit.note)
+            }
+        }
     }
 
     fun getBackupJournalSnapshot(
@@ -2052,19 +2105,24 @@ class MarkdownFileManager(
     }
 
     private fun updateCachedDatePresence(date: LocalDate, hasEntries: Boolean) {
-        lightweightDatesCache = synchronized(this) {
-            val base = lightweightDatesCache?.toMutableSet() ?: mutableSetOf()
-            if (hasEntries) base.add(date) else base.remove(date)
-            base.toSet()
+        synchronized(this) {
+            val base = lightweightDatesCache
+            // Membership unchanged — skip the O(n) set copy this would otherwise do per mutation.
+            if (base != null && base.contains(date) == hasEntries) return
+            val next = base?.toMutableSet() ?: mutableSetOf()
+            if (hasEntries) next.add(date) else next.remove(date)
+            lightweightDatesCache = next
         }
     }
 
     private fun updatePersistedEntryCount(delta: Int) {
-        val nextCount = if (cachePopulated) {
-            cache.values.sumOf { it.size }
-        } else {
-            val current = settingsRepository.lastKnownEntryCount.value
-            if (current >= 0) (current + delta).coerceAtLeast(0) else return
+        val current = settingsRepository.lastKnownEntryCount.value
+        val nextCount = when {
+            // O(1) delta path for every mutation; the full O(all days) sum only runs to
+            // recover when no count has been persisted yet.
+            current >= 0 -> (current + delta).coerceAtLeast(0)
+            cachePopulated -> cache.values.sumOf { it.size }
+            else -> return
         }
         settingsRepository.setLastKnownEntryCount(nextCount)
     }

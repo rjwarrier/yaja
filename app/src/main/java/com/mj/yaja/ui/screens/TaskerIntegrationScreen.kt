@@ -29,11 +29,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +53,7 @@ fun TaskerIntegrationScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        "Tasker Integration",
+                        stringResource(R.string.settings_tasker_integration_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -61,7 +63,7 @@ fun TaskerIntegrationScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.action_back)
                         )
                     }
                 },
@@ -96,8 +98,8 @@ fun TaskerIntegrationScreen(
             ) {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     TaskerToggleRow(
-                        title = "Allow Tasker Add Entry",
-                        subtitle = "Lets Tasker use Yaja Quick Capture actions like Add Entry and Add Todo.",
+                        title = stringResource(R.string.tasker_screen_allow_add_entry_title),
+                        subtitle = stringResource(R.string.tasker_screen_allow_add_entry_subtitle),
                         checked = allowTaskerAccess,
                         onCheckedChange = { viewModel.setAllowTaskerAccess(it) }
                     )
@@ -105,8 +107,8 @@ fun TaskerIntegrationScreen(
                     HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
                     TaskerToggleRow(
-                        title = "Allow Tasker Events",
-                        subtitle = "Lets Yaja send Entry Saved, Entry Modified, and Entry Deleted events to Tasker.",
+                        title = stringResource(R.string.tasker_screen_allow_events_title),
+                        subtitle = stringResource(R.string.tasker_screen_allow_events_subtitle),
                         checked = allowTaskerEvents,
                         onCheckedChange = { viewModel.setAllowTaskerEvents(it) }
                     )
@@ -114,8 +116,8 @@ fun TaskerIntegrationScreen(
                     HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
                     TaskerToggleRow(
-                        title = "Include Entry Text in Events",
-                        subtitle = "Off by default for privacy. When off, Tasker receives event type, date, label, and time, but not journal text.",
+                        title = stringResource(R.string.tasker_screen_include_text_title),
+                        subtitle = stringResource(R.string.tasker_screen_include_text_subtitle),
                         checked = includeEntryTextInTaskerEvents,
                         enabled = allowTaskerEvents,
                         onCheckedChange = { viewModel.setIncludeEntryTextInTaskerEvents(it) }
@@ -137,35 +139,35 @@ fun TaskerIntegrationScreen(
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
-                    RowTitle("What this does")
+                    RowTitle(stringResource(R.string.tasker_screen_section_what))
                     BodyText(
-                        "Tasker can quickly add journal entries or todos into Yaja, append lines into a grouped entry such as Missed Calls, and Yaja can tell Tasker when an entry is saved, edited, or deleted."
+                        stringResource(R.string.tasker_screen_body_what)
                     )
 
-                    RowTitle("How to use")
+                    RowTitle(stringResource(R.string.tasker_screen_section_how))
                     BodyText(
-                        "Turn on the toggle you need here first. Then open Tasker and add either a Yaja Quick Capture action or a Yaja Journal Events event."
+                        stringResource(R.string.tasker_screen_body_how)
                     )
 
-                    RowTitle("Notes")
+                    RowTitle(stringResource(R.string.tasker_screen_section_notes))
                     BodyText(
-                        "Entry text is not shared with Tasker unless you enable Include Entry Text in Events. If Tasker does not show the latest options or variables, reopen the Tasker configuration screen after updating Yaja."
+                        stringResource(R.string.tasker_screen_body_notes)
                     )
 
-                    RowTitle("Example")
+                    RowTitle(stringResource(R.string.tasker_screen_section_example))
                     BodyText(
-                        "Action example: Tasker action > Yaja Quick Capture > Append, with Match / header set to Missed Calls and Line to append set to a Tasker variable. Event example: Tasker event > Yaja Journal Events > Entry Modified, then use variables like %yaja_event_type, %yaja_date, and optionally %yaja_entry_text."
+                        stringResource(R.string.tasker_screen_body_example)
                     )
 
-                    RowTitle("Use cases")
+                    RowTitle(stringResource(R.string.tasker_screen_section_use_cases))
                     BodyText(
-                        "1. Use a Yaja journal event in Tasker to trigger a FolderSync sync action, so your Yaja folder gets pushed to any cloud provider after entries change."
+                        stringResource(R.string.tasker_screen_use_case_1)
                     )
                     BodyText(
-                        "2. Use Pushbullet with Tasker to send text into Yaja Quick Capture, so the pushed text gets saved as a new entry for the current day."
+                        stringResource(R.string.tasker_screen_use_case_2)
                     )
                     BodyText(
-                        "3. Use a missed-call Tasker profile to send an Append action into Yaja, so all missed-call details land under one Missed Calls entry instead of creating separate entries."
+                        stringResource(R.string.tasker_screen_use_case_3)
                     )
                 }
             }

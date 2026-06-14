@@ -49,9 +49,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.theme.JournalTheme
 import com.mj.yaja.ui.design.ProvideAnimationPreference
 import com.mj.yaja.ui.design.LocalAnimationPreference
@@ -121,7 +123,7 @@ class QuickCaptureActivity : ComponentActivity() {
                                 Log.e(TAG, "Quick capture save failed or timed out", t)
                                 Toast.makeText(
                                         this@QuickCaptureActivity,
-                                        "Save delayed. Please reopen Yaja to verify.",
+                                        getString(R.string.quick_capture_save_delayed),
                                         Toast.LENGTH_SHORT
                                 ).show()
                         } finally {
@@ -162,7 +164,7 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                         confirmButton = {},
                         title = {
                                 Text(
-                                        "Quick Capture",
+                                        stringResource(R.string.quick_capture_title),
                                         style = MaterialTheme.typography.headlineSmall
                                 )
                         },
@@ -187,7 +189,7 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                                                 )
                                         Icon(
                                                 imageVector = Icons.Rounded.CheckCircle,
-                                                contentDescription = "Saved",
+                                                contentDescription = stringResource(R.string.cd_saved),
                                                 modifier = Modifier.size(64.dp).scale(scale),
                                                 tint = MaterialTheme.colorScheme.primary
                                         )
@@ -210,12 +212,12 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                                 Button(
                                         onClick = { showSuccess = true },
                                         enabled = textFieldValue.text.isNotBlank()
-                                ) { Text("Save") }
+                                ) { Text(stringResource(R.string.action_save)) }
                         },
                         dismissButton = {
-                                TextButton(onClick = onDismissRequest) { Text("Cancel") }
+                                TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.action_cancel)) }
                         },
-                        title = { Text("Quick Capture") },
+                        title = { Text(stringResource(R.string.quick_capture_title)) },
                         text = {
                                 Column {
                                         OutlinedTextField(
@@ -231,7 +233,7 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                                                 modifier =
                                                         Modifier.fillMaxWidth()
                                                                 .focusRequester(focusRequester),
-                                                placeholder = { Text("What happened?") },
+                                                placeholder = { Text(stringResource(R.string.quick_capture_hint)) },
                                                 visualTransformation = MarkdownVisualTransformation(),
                                                 minLines = 5,
                                                 maxLines = 25,
@@ -251,7 +253,7 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                                                 modifier = Modifier.fillMaxWidth()
                                         ) {
                                                 Text(
-                                                        text = "Shortcodes expand here automatically, and todo lines continue on Enter.",
+                                                        text = stringResource(R.string.quick_capture_helper_shortcodes),
                                                         style = MaterialTheme.typography.bodySmall,
                                                         color = MaterialTheme.colorScheme.onSecondaryContainer,
                                                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp)
@@ -274,16 +276,23 @@ fun QuickTodoDialog(
         onSave: (String, LocalDate, QuickAddKind) -> Unit,
         initialDate: LocalDate = LocalDate.now(),
         allowDateSelection: Boolean = false,
-        title: String = "Quick Todo"
+        title: String,
+        initialKind: QuickAddKind = QuickAddKind.TODO
 ) {
         val context = androidx.compose.ui.platform.LocalContext.current
         val settingsRepository = remember { com.mj.yaja.data.SettingsRepository.getInstance(context) }
         val customShortcodes by
                 settingsRepository.customShortcodes.collectAsState(initial = emptyMap())
 
-        var quickAddKind by remember { mutableStateOf(QuickAddKind.TODO) }
+        var quickAddKind by remember { mutableStateOf(initialKind) }
         var textFieldValue by remember {
-                mutableStateOf(TextFieldValue("[ ] ", selection = TextRange(4)))
+                mutableStateOf(
+                        if (initialKind == QuickAddKind.TODO) {
+                                TextFieldValue("[ ] ", selection = TextRange(4))
+                        } else {
+                                TextFieldValue("")
+                        }
+                )
         }
         var selectedDate by remember { mutableStateOf(initialDate) }
         var showDatePicker by remember { mutableStateOf(false) }
@@ -336,7 +345,7 @@ fun QuickTodoDialog(
                                                 )
                                         Icon(
                                                 imageVector = Icons.Rounded.CheckCircle,
-                                                contentDescription = "Saved",
+                                                contentDescription = stringResource(R.string.cd_saved),
                                                 modifier = Modifier.size(64.dp).scale(scale),
                                                 tint = MaterialTheme.colorScheme.primary
                                         )
@@ -359,17 +368,17 @@ fun QuickTodoDialog(
                                 Button(
                                         onClick = { showSuccess = true },
                                         enabled = quickAddPayloadText(textFieldValue.text, quickAddKind) != null
-                                ) { Text("Save") }
+                                ) { Text(stringResource(R.string.action_save)) }
                         },
                         dismissButton = {
-                                TextButton(onClick = onDismissRequest) { Text("Cancel") }
+                                TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.action_cancel)) }
                         },
                         title = { Text(title) },
                         text = {
                                 Column {
                                         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                                                 QuickAddModeChip(
-                                                        label = "Todo",
+                                                        label = stringResource(R.string.addentry_todo_chip),
                                                         icon = Icons.Rounded.TaskAlt,
                                                         selected = quickAddKind == QuickAddKind.TODO,
                                                         onClick = {
@@ -378,7 +387,7 @@ fun QuickTodoDialog(
                                                         }
                                                 )
                                                 QuickAddModeChip(
-                                                        label = "Event",
+                                                        label = stringResource(R.string.addentry_event_chip),
                                                         icon = Icons.Rounded.Event,
                                                         selected = quickAddKind == QuickAddKind.EVENT,
                                                         onClick = {
@@ -409,9 +418,9 @@ fun QuickTodoDialog(
                                                 placeholder = {
                                                         Text(
                                                                 if (quickAddKind == QuickAddKind.TODO) {
-                                                                        "Add a todo"
+                                                                        stringResource(R.string.quick_todo_placeholder)
                                                                 } else {
-                                                                        "Add an event"
+                                                                        stringResource(R.string.quick_event_placeholder)
                                                                 }
                                                         )
                                                 },
@@ -431,9 +440,9 @@ fun QuickTodoDialog(
                                         if (allowDateSelection) {
                                                 val dateLabel =
                                                         if (quickAddKind == QuickAddKind.TODO) {
-                                                                "Task Date"
+                                                                stringResource(R.string.quick_todo_task_date)
                                                         } else {
-                                                                "Event Date"
+                                                                stringResource(R.string.quick_todo_event_date)
                                                         }
                                                 Surface(
                                                         onClick = { showDatePicker = true },
@@ -448,14 +457,21 @@ fun QuickTodoDialog(
                                                                 verticalAlignment = Alignment.CenterVertically
                                                         ) {
                                                                 Text(
-                                                                        text = "$dateLabel   ${selectedDate.format(dateFormatter)}",
+                                                                        text = stringResource(
+                                                                                R.string.quick_todo_date_button_format,
+                                                                                dateLabel,
+                                                                                selectedDate.format(dateFormatter)
+                                                                        ),
                                                                         style = MaterialTheme.typography.titleMedium,
                                                                         color = MaterialTheme.colorScheme.onTertiaryContainer,
                                                                         modifier = Modifier.weight(1f)
                                                                 )
                                                                 Icon(
                                                                         imageVector = Icons.Rounded.EditCalendar,
-                                                                        contentDescription = "Pick ${dateLabel.lowercase()}",
+                                                                        contentDescription = stringResource(
+                                                                                R.string.quick_todo_pick_date_cd_format,
+                                                                                dateLabel.lowercase()
+                                                                        ),
                                                                         tint = MaterialTheme.colorScheme.onTertiaryContainer
                                                                 )
                                                         }
@@ -468,9 +484,9 @@ fun QuickTodoDialog(
                                                 ) {
                                                         Text(
                                                                 text = if (quickAddKind == QuickAddKind.TODO) {
-                                                                        "Saves as a todo entry for the selected day."
+                                                                        stringResource(R.string.quick_todo_selected_day_hint)
                                                                 } else {
-                                                                        "Saves as an event entry for the selected day."
+                                                                        stringResource(R.string.quick_event_selected_day_hint)
                                                                 },
                                                                 style = MaterialTheme.typography.bodySmall,
                                                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -502,12 +518,12 @@ fun QuickTodoDialog(
                                                 showDatePicker = false
                                         }
                                 ) {
-                                        Text("Select")
+                                        Text(stringResource(R.string.action_select))
                                 }
                         },
                         dismissButton = {
                                 TextButton(onClick = { showDatePicker = false }) {
-                                        Text("Cancel")
+                                        Text(stringResource(R.string.action_cancel))
                                 }
                         }
                 ) {

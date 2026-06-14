@@ -8,10 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 
 @Composable
 fun CrashLogDialog(
@@ -21,7 +23,7 @@ fun CrashLogDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Previous Session Crash Log") },
+        title = { Text(stringResource(R.string.crash_log_title)) },
         text = {
             LazyColumn(modifier = Modifier.heightIn(max = 400.dp)) {
                 item {
@@ -42,7 +44,7 @@ fun CrashLogDialog(
                     onDismiss()
                 }
             ) {
-                Text("Clear & Close")
+                Text(stringResource(R.string.crash_log_clear_close))
             }
         }
     )

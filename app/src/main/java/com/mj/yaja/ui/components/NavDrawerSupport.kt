@@ -19,8 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 
 @Composable
 internal fun DrawerQuickPreferenceSection(
@@ -100,6 +102,7 @@ internal fun DrawerHeaderIconButton(
         }
 }
 
+@Composable
 internal fun estimateNavRemainingTimeText(progress: Float, startedAtMillis: Long?): String? {
         val startedAt = startedAtMillis ?: return null
         val safeProgress = progress.coerceIn(0f, 1f)
@@ -108,12 +111,12 @@ internal fun estimateNavRemainingTimeText(progress: Float, startedAtMillis: Long
         if (elapsedMillis < 500L) return null
         val estimatedTotalMillis = (elapsedMillis / safeProgress).toLong()
         val remainingMillis = (estimatedTotalMillis - elapsedMillis).coerceAtLeast(0L)
-        if (remainingMillis < 1_000L) return "almost done"
+        if (remainingMillis < 1_000L) return stringResource(R.string.nav_eta_almost_done)
         val remainingSeconds = (remainingMillis + 999L) / 1_000L
         return when {
-                remainingSeconds < 60L -> "~${remainingSeconds}s left"
-                remainingSeconds < 3_600L -> "~${(remainingSeconds + 30L) / 60L}m left"
-                else -> "~${(remainingSeconds + 1_800L) / 3_600L}h left"
+                remainingSeconds < 60L -> stringResource(R.string.nav_eta_seconds_left_format, remainingSeconds)
+                remainingSeconds < 3_600L -> stringResource(R.string.nav_eta_minutes_left_format, (remainingSeconds + 30L) / 60L)
+                else -> stringResource(R.string.nav_eta_hours_left_format, (remainingSeconds + 1_800L) / 3_600L)
         }
 }
 
@@ -148,9 +151,9 @@ internal fun DrawerCacheStatus(
                         Spacer(Modifier.height(4.dp))
                         androidx.compose.material3.Text(
                                 text = when {
-                                        percent != null && eta != null -> "$percent% - $eta"
-                                        percent != null -> "$percent%"
-                                        else -> "Working..."
+                                        percent != null && eta != null -> stringResource(R.string.nav_sync_percent_eta_format, percent, eta)
+                                        percent != null -> stringResource(R.string.nav_sync_percent_format, percent)
+                                        else -> stringResource(R.string.nav_working)
                                 },
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant

@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -191,7 +192,7 @@ internal fun YajaLogoEasterEgg(
                                                 Box(contentAlignment = Alignment.Center) {
                                                         Icon(
                                                                 painter = painterResource(id = R.drawable.rj_logo),
-                                                                contentDescription = "Yaja Logo",
+                                                                contentDescription = stringResource(R.string.nav_cd_yaja_logo),
                                                                 modifier =
                                                                         Modifier.size(186.dp)
                                                                                 .padding(30.dp),
@@ -219,7 +220,7 @@ internal fun YajaLogoEasterEgg(
                                                         color = MaterialTheme.colorScheme.primary
                                                 )
                                                 Text(
-                                                        text = "yet another journaling app",
+                                                        text = stringResource(R.string.nav_tagline),
                                                         style = MaterialTheme.typography.headlineSmall,
                                                         color =
                                                                 MaterialTheme.colorScheme
@@ -229,16 +230,16 @@ internal fun YajaLogoEasterEgg(
                                                 Text(
                                                         text =
                                                                 buildAnnotatedString {
-                                                                        append("\"Write down a passing thought or what you had for lunch; it doesn't have to be profound.\n")
+                                                                        append(stringResource(R.string.nav_easter_quote_part1))
                                                                         withStyle(
                                                                                 SpanStyle(
                                                                                         fontStyle =
                                                                                                 FontStyle.Italic
                                                                                 )
                                                                         ) {
-                                                                                append("Your words can just exist.")
+                                                                                append(stringResource(R.string.nav_easter_quote_part2))
                                                                         }
-                                                                        append("\"")
+                                                                        append(stringResource(R.string.nav_easter_quote_part3))
                                                                 },
                                                         style =
                                                                 MaterialTheme.typography.headlineSmall
@@ -263,7 +264,7 @@ internal fun YajaLogoEasterEgg(
                                         verticalArrangement = Arrangement.spacedBy(14.dp)
                                 ) {
                                         Text(
-                                                text = "from the labs of RJ",
+                                                text = stringResource(R.string.nav_from_labs),
                                                 style = MaterialTheme.typography.titleSmall,
                                                 color =
                                                         MaterialTheme.colorScheme.onSurfaceVariant
@@ -286,7 +287,7 @@ internal fun YajaLogoEasterEgg(
                                                 )
                                                 Spacer(Modifier.width(10.dp))
                                                 Text(
-                                                        text = "Close",
+                                                        text = stringResource(R.string.action_close),
                                                         style = MaterialTheme.typography.titleMedium,
                                                         fontWeight = FontWeight.SemiBold
                                                 )

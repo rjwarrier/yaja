@@ -40,6 +40,7 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.res.stringResource
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import com.mj.yaja.ui.design.LocalAnimationPreference
@@ -52,6 +53,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.enterOrNone
 import com.mj.yaja.ui.design.exitOrNone
 import com.mj.yaja.ui.design.expressiveFabMotion
@@ -72,7 +74,7 @@ fun LookbackReviewSection(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
                 SectionHeader(
-                        title = "Reviews",
+                        title = stringResource(R.string.lookback_reviews_title),
                         icon = Icons.Rounded.CalendarMonth
                 )
 
@@ -90,8 +92,7 @@ fun LookbackReviewSection(
                                 verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                                 Text(
-                                        text =
-                                                "Build a quick reflection around your selected journal day.",
+                                        text = stringResource(R.string.lookback_reviews_intro),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurface
                                 )
@@ -109,7 +110,7 @@ fun LookbackReviewSection(
                                                                                 .onSurfaceVariant
                                                         ),
                                                 border = null,
-                                                label = { Text("Weekly") }
+                                                label = { Text(stringResource(R.string.lookback_chip_weekly)) }
                                         )
                                         AssistChip(
                                                 onClick = {},
@@ -124,7 +125,7 @@ fun LookbackReviewSection(
                                                                                 .onSurfaceVariant
                                                         ),
                                                 border = null,
-                                                label = { Text("Monthly") }
+                                                label = { Text(stringResource(R.string.lookback_chip_monthly)) }
                                         )
                                 }
                         }
@@ -138,15 +139,15 @@ fun LookbackReviewSection(
                                         verticalArrangement = Arrangement.spacedBy(12.dp)
                                 ) {
                                         ReviewLaunchCard(
-                                                title = "Weekly Review",
-                                                subtitle = "This week in one glance",
+                                                title = stringResource(R.string.lookback_weekly_review),
+                                                subtitle = stringResource(R.string.lookback_weekly_review_subtitle),
                                                 icon = Icons.Rounded.CalendarViewWeek,
                                                 modifier = Modifier.fillMaxWidth(),
                                                 onClick = { onNavigateToReview(ReviewPeriodType.WEEKLY) }
                                         )
                                         ReviewLaunchCard(
-                                                title = "Monthly Review",
-                                                subtitle = "This month summarized",
+                                                title = stringResource(R.string.lookback_monthly_review),
+                                                subtitle = stringResource(R.string.lookback_monthly_review_subtitle),
                                                 icon = Icons.Rounded.CalendarMonth,
                                                 modifier = Modifier.fillMaxWidth(),
                                                 onClick = { onNavigateToReview(ReviewPeriodType.MONTHLY) }
@@ -158,15 +159,15 @@ fun LookbackReviewSection(
                                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                                 ) {
                                         ReviewLaunchCard(
-                                                title = "Weekly Review",
-                                                subtitle = "This week in one glance",
+                                                title = stringResource(R.string.lookback_weekly_review),
+                                                subtitle = stringResource(R.string.lookback_weekly_review_subtitle),
                                                 icon = Icons.Rounded.CalendarViewWeek,
                                                 modifier = Modifier.weight(1f),
                                                 onClick = { onNavigateToReview(ReviewPeriodType.WEEKLY) }
                                         )
                                         ReviewLaunchCard(
-                                                title = "Monthly Review",
-                                                subtitle = "This month summarized",
+                                                title = stringResource(R.string.lookback_monthly_review),
+                                                subtitle = stringResource(R.string.lookback_monthly_review_subtitle),
                                                 icon = Icons.Rounded.CalendarMonth,
                                                 modifier = Modifier.weight(1f),
                                                 onClick = { onNavigateToReview(ReviewPeriodType.MONTHLY) }
@@ -195,7 +196,7 @@ fun LookbackFlashbacksSection(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
                 SectionHeader(
-                        title = "On this day in past years",
+                        title = stringResource(R.string.lookback_flashbacks_title),
                         icon = Icons.Rounded.History
                 )
 
@@ -241,7 +242,7 @@ fun LookbackHighlightsSection(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
                 SectionHeader(
-                        title = "Your Highlights",
+                        title = stringResource(R.string.lookback_highlights_title),
                         icon = Icons.Rounded.Star
                 )
 
@@ -312,7 +313,7 @@ fun LookbackEmptyState() {
                         )
                         Spacer(Modifier.size(16.dp))
                         Text(
-                                "No lookbacks or highlights yet.",
+                                stringResource(R.string.lookback_empty_title),
                                 style =
                                         MaterialTheme.typography.titleMedium.copy(
                                                 fontWeight = FontWeight.Bold
@@ -323,7 +324,7 @@ fun LookbackEmptyState() {
                                         )
                         )
                         Text(
-                                "Favorite important days to see them here!",
+                                stringResource(R.string.lookback_empty_subtitle),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color =
                                         MaterialTheme.colorScheme.onSurfaceVariant.copy(
@@ -400,7 +401,7 @@ fun LookbackSurpriseFab(
                 ) {
                         Icon(
                                 imageVector = Icons.Rounded.Shuffle,
-                                contentDescription = "Go to random entry",
+                                contentDescription = stringResource(R.string.lookback_cd_random_entry),
                                 modifier = Modifier.size(28.dp)
                         )
                 }
@@ -468,9 +469,9 @@ private fun ReviewLaunchCard(
                                                 Text(
                                                         text =
                                                                 if (title.contains("Weekly")) {
-                                                                        "7 days"
+                                                                        stringResource(R.string.lookback_seven_days)
                                                                 } else {
-                                                                        "1 month"
+                                                                        stringResource(R.string.lookback_one_month)
                                                                 },
                                                         style = MaterialTheme.typography.labelMedium
                                                 )
@@ -492,7 +493,7 @@ private fun ReviewLaunchCard(
                                 horizontalArrangement = Arrangement.spacedBy(6.dp)
                         ) {
                                 Text(
-                                        text = "Open",
+                                        text = stringResource(R.string.action_open),
                                         style = MaterialTheme.typography.labelMedium,
                                         color = MaterialTheme.colorScheme.primary,
                                         fontWeight = FontWeight.SemiBold

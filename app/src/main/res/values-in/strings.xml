@@ -1,0 +1,1246 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Jurnal</string>
+    <string name="nav_calendar">Kalender</string>
+    <string name="nav_lookback">Kilas Balik</string>
+    <string name="nav_settings">Pengaturan</string>
+    <string name="nav_shortcodes">Pintasan</string>
+    <string name="nav_help">Bantuan &amp; Info</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Simpan</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_delete">Hapus</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_back">Kembali</string>
+    <string name="action_undo">Urungkan</string>
+    <string name="action_yes">Ya</string>
+    <string name="action_no">Tidak</string>
+    <string name="action_remove">Hapus</string>
+    <string name="action_done">Selesai</string>
+    <string name="action_set">Atur</string>
+    <string name="action_select">Pilih</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Membangun Ulang Cache</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Tangkapan Cepat</string>
+    <string name="quick_capture_hint">Apa yang terjadi?</string>
+    <string name="quick_capture_helper_shortcodes">Pintasan akan otomatis diperluas di sini, dan baris daftar tugas (todo) akan berlanjut saat menekan Enter.</string>
+    <string name="quick_capture_save_delayed">Penyimpanan tertunda. Harap buka kembali Yaja untuk memverifikasi.</string>
+    <string name="cd_saved">Tersimpan</string>
+    <string name="quick_todo_dialog_title">Tambah Cepat</string>
+    <string name="quick_todo_save_delayed">Penyimpanan daftar tugas tertunda. Harap buka kembali Yaja untuk memverifikasi.</string>
+    <string name="quick_todo_placeholder">Tambah tugas</string>
+    <string name="quick_event_placeholder">Tambah acara</string>
+    <string name="quick_todo_task_date">Tanggal Tugas</string>
+    <string name="quick_todo_event_date">Tanggal Acara</string>
+    <string name="quick_todo_pick_date_cd_format">Pilih %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">Disimpan sebagai entri daftar tugas untuk hari yang dipilih.</string>
+    <string name="quick_event_selected_day_hint">Disimpan sebagai entri acara untuk hari yang dipilih.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Sebelumnya</string>
+    <string name="cd_next">Berikutnya</string>
+    <string name="cd_surprise_me">Kejutan untuk Saya</string>
+    <string name="calendar_cd_go_to_current_month">Buka bulan saat ini</string>
+    <string name="calendar_quick_action_timeline_title">Linimasa</string>
+    <string name="calendar_quick_action_timeline_subtitle">Telusuri secara kronologis</string>
+    <string name="calendar_quick_action_jump_title">Lompat ke Tanggal</string>
+    <string name="calendar_quick_action_jump_subtitle">Buka hari spesifik</string>
+    <string name="calendar_jump_placeholder">HH-BB-TT</string>
+    <string name="calendar_jump_invalid_date">Tanggal tidak valid. Gunakan format HH-BB-TT.</string>
+    <string name="calendar_action_go">Buka</string>
+    <string name="calendar_enable_future_dates_title">Aktifkan Tanggal Mendatang</string>
+    <string name="calendar_enable_future_dates_message">Entri tanggal mendatang dinonaktifkan. Apakah Anda ingin mengaktifkannya?</string>
+    <string name="calendar_action_enable">Aktifkan</string>
+    <string name="calendar_future_entry_enabled">Entri tanggal mendatang telah diaktifkan</string>
+    <string name="calendar_weekday_sun_short">Min</string>
+    <string name="calendar_weekday_mon_short">Sen</string>
+    <string name="calendar_weekday_tue_short">Sel</string>
+    <string name="calendar_weekday_wed_short">Rab</string>
+    <string name="calendar_weekday_thu_short">Kam</string>
+    <string name="calendar_weekday_fri_short">Jum</string>
+    <string name="calendar_weekday_sat_short">Sab</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ENTRI BULAN INI</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d hari</item>
+        <item quantity="other">%1$d / %2$d hari</item>
+    </plurals>
+    <string name="calendar_days_of_memories">hari penuh kenangan</string>
+    <string name="calendar_consistency_last_12_months">12 BULAN TERAKHIR</string>
+    <string name="calendar_consistency_title_format">KONSISTENSI - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">periode pertama</string>
+    <string name="calendar_graph_frequency_month">Bulan</string>
+    <string name="calendar_graph_frequency_year">Tahun</string>
+    <string name="calendar_yearly_consistency_title">Konsistensi (Tahunan)</string>
+    <string name="calendar_keywords_title">Siapa yang paling sering muncul</string>
+    <string name="calendar_keywords_syncing">Statistik Orang &amp; Tempat masih disinkronkan dengan pengindeksan kata kunci.</string>
+    <string name="calendar_keywords_empty">Tambahkan minimal 3 orang atau 3 tempat untuk melihat sebutan teratas.</string>
+    <string name="calendar_keywords_people">Orang</string>
+    <string name="calendar_keywords_places">Tempat</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_appearance">Tampilan</string>
+    <string name="settings_appearance_subtitle">Tema, warna, font, dan gaya pribadi</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_font">Font</string>
+    <string name="settings_storage">Penyimpanan</string>
+    <string name="settings_security">Keamanan</string>
+    <string name="settings_backup">Cadangan</string>
+    <string name="settings_change_storage_title">Ubah Lokasi Penyimpanan</string>
+    <string name="settings_backup_never">Tidak Pernah</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Cari pengaturan</string>
+    <string name="settings_search_clear">Bersihkan pencarian</string>
+    <string name="settings_search_recent">Pencarian terakhir</string>
+    <string name="settings_search_no_results">Tidak ada pengaturan yang cocok</string>
+    <string name="settings_search_close">Tutup</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Pengalaman Jurnal</string>
+    <string name="settings_section_navigation_gestures">Navigasi &amp; Gerakan</string>
+    <string name="settings_section_review_insights">Ulasan &amp; Wawasan</string>
+
+    <!-- Language -->
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_language_title">Bahasa Aplikasi</string>
+    <string name="settings_language_subtitle">Pilih bahasa yang digunakan di seluruh aplikasi.</string>
+    <string name="settings_language_system_default">Default sistem</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Gaya Entri</string>
+    <string name="settings_journal_entry_style_subtitle">Pilih antara kartu mengambang dan tampilan jurnal yang lebih datar.</string>
+    <string name="settings_journal_entry_style_cards">Kartu</string>
+    <string name="settings_journal_entry_style_flat">Datar</string>
+    <string name="settings_journal_render_checkboxes_title">Tampilkan Kotak Centang sebagai Teks</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Tampilkan tugas sebagai [ ] dan [x] di seluruh aplikasi alih-alih kotak centang biasa.</string>
+    <string name="settings_journal_day_header_counts_title">Tampilkan Jumlah di Header Hari</string>
+    <string name="settings_journal_day_header_counts_subtitle">Tampilkan jumlah entri, kata, dan karakter pada header hari jurnal.</string>
+    <string name="settings_journal_show_timestamps_title">Tampilkan Stempel Waktu</string>
+    <string name="settings_journal_show_timestamps_subtitle">Tampilkan waktu entri pada linimasa.</string>
+    <string name="settings_journal_allow_future_title">Izinkan Entri Mendatang</string>
+    <string name="settings_journal_allow_future_subtitle">Aktifkan penambahan entri untuk tanggal mendatang.</string>
+    <string name="settings_journal_truncate_title">Potong Entri Panjang</string>
+    <string name="settings_journal_truncate_subtitle">Persingkat entri panjang di layar beranda.</string>
+    <string name="settings_journal_char_limit_title">Batas Karakter</string>
+    <string name="settings_journal_char_limit_subtitle">Atur berapa banyak karakter yang ditampilkan sebelum dipotong.</string>
+    <string name="settings_journal_char_limit_min">50 karakter</string>
+    <string name="settings_journal_char_limit_max">200 karakter</string>
+    <string name="settings_journal_char_count">%1$d karakter</string>
+    <string name="settings_journal_first_day_title">Hari Pertama dalam Seminggu</string>
+    <string name="settings_journal_first_day_subtitle">Mulai kalender pada hari</string>
+    <string name="settings_journal_day_sun">Ming</string>
+    <string name="settings_journal_day_mon">Sen</string>
+    <string name="settings_journal_date_recognition">Pengenalan Tanggal</string>
+    <string name="settings_journal_date_order_title">Urutan Tanggal</string>
+    <string name="settings_journal_date_order_subtitle">Cara membaca tanggal numerik</string>
+    <string name="settings_journal_date_order_auto">Otomatis</string>
+    <string name="settings_journal_date_order_dmy">HH/BB</string>
+    <string name="settings_journal_date_order_mdy">BB/HH</string>
+    <string name="settings_journal_date_keywords_title">Kata Kunci Tanggal</string>
+    <string name="settings_journal_date_keywords_subtitle">Kata-kata dalam bahasa lain yang berarti tanggal (misalnya kata lokal untuk kemarin).</string>
+    <string name="settings_journal_view_keywords">Lihat (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Tambah kata kunci</string>
+    <string name="settings_journal_motion">Gerakan</string>
+    <string name="settings_journal_animations_title">Animasi</string>
+    <string name="settings_journal_animations_subtitle">Kontrol animasi di seluruh aplikasi. Mode dikurangi menjaga hal tetap lancar dengan gerakan yang lebih sedikit.</string>
+    <string name="settings_journal_animations_full">Penuh</string>
+    <string name="settings_journal_animations_reduced">Dikurangi</string>
+    <string name="settings_journal_animations_off">Mati</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Ulasan Setelah Menyimpan</string>
+    <string name="settings_review_post_write_title">Ulasan Setelah Menulis</string>
+    <string name="settings_review_post_write_subtitle">Tampilkan lembar ulasan setelah mengetuk simpan untuk mengekstrak tugas, memeriksa sebutan, menandai hari, atau mengatur label.</string>
+    <string name="settings_review_people_places">Orang &amp; Tempat</string>
+    <string name="settings_review_highlighting_title">Sorotan</string>
+    <string name="settings_review_highlighting_subtitle">Sorot orang dan tempat yang dilacak di kartu Beranda dan mode Lihat Entri.</string>
+    <string name="settings_review_match_sensitivity_title">Sensitivitas Pencocokan</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Seberapa mirip suatu kata agar dapat dideteksi oleh Orang &amp; Tempat (lebih tinggi = lebih ketat).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Tambah Pintasan</string>
+    <string name="shortcodes_edit_title">Edit Pintasan</string>
+    <string name="shortcodes_code_label">Pintasan (misal: @yday)</string>
+    <string name="shortcodes_expansion_label">Teks Ekspansi</string>
+    <string name="shortcodes_export_error">Gagal mengekspor pintasan</string>
+    <string name="shortcodes_import_error">Gagal mengimpor pintasan</string>
+    <string name="todos_expand_section">Perluas %1$s</string>
+    <string name="todos_collapse_section">Ciutkan %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Peta Panas Menulis</string>
+    <string name="heatmap_widget_description">Peta panas aktivitas menulis terbaru untuk jurnal Anda.</string>
+    <string name="quick_capture_widget_name">Tangkapan Cepat</string>
+    <string name="quick_capture_widget_description">Tombol sekali ketuk untuk menambahkan entri jurnal dengan cepat.</string>
+    <string name="quick_todo_widget_name">Tugas Cepat</string>
+    <string name="tasker_plugin_action_label">Tangkapan Cepat Yaja</string>
+    <string name="tasker_plugin_event_label">Acara Jurnal Yaja</string>
+    <string name="tasker_screen_allow_add_entry_title">Izinkan Tasker Menambah Entri</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Mengizinkan Tasker menggunakan tindakan Tangkapan Cepat Yaja seperti Tambah Entri dan Tambah Tugas.</string>
+    <string name="tasker_screen_allow_events_title">Izinkan Acara Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Mengizinkan Yaja mengirimkan acara Entri Disimpan, Entri Diubah, dan Entri Dihapus ke Tasker.</string>
+    <string name="tasker_screen_include_text_title">Sertakan Teks Entri dalam Acara</string>
+    <string name="tasker_screen_include_text_subtitle">Nonaktif secara default demi privasi. Saat dinonaktifkan, Tasker menerima jenis acara, tanggal, label, dan waktu, tetapi bukan teks jurnal.</string>
+    <string name="tasker_screen_section_what">Fungsi fitur ini</string>
+    <string name="tasker_screen_body_what">Tasker dapat menambahkan entri jurnal atau tugas dengan cepat ke dalam Yaja, menambahkan baris ke entri yang dikelompokkan seperti Panggilan Tak Terjawab, dan Yaja dapat memberi tahu Tasker saat entri disimpan, diedit, atau dihapus.</string>
+    <string name="tasker_screen_section_how">Cara menggunakan</string>
+    <string name="tasker_screen_body_how">Aktifkan sakelar yang Anda butuhkan di sini terlebih dahulu. Kemudian buka Tasker and tambahkan tindakan Tangkapan Cepat Yaja atau acara Acara Jurnal Yaja.</string>
+    <string name="tasker_screen_section_notes">Catatan</string>
+    <string name="tasker_screen_body_notes">Teks entri tidak dibagikan dengan Tasker kecuali Anda mengaktifkan Sertakan Teks Entri dalam Acara. Jika Tasker tidak menampilkan opsi atau variabel terbaru, buka kembali layar konfigurasi Tasker setelah memperbarui Yaja.</string>
+    <string name="tasker_screen_section_example">Contoh</string>
+    <string name="tasker_screen_body_example">Contoh tindakan: Tindakan Tasker &gt; Tangkapan Cepat Yaja &gt; Lampirkan (Append), dengan Cocokkan / header diatur ke Panggilan Tak Terjawab dan Baris untuk dilampirkan diatur ke variabel Tasker. Contoh acara: Acara Tasker &gt; Acara Jurnal Yaja &gt; Entri Diubah, lalu gunakan variabel seperti %%yaja_event_type, %%yaja_date, dan secara opsional %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Kasus penggunaan</string>
+    <string name="tasker_screen_use_case_1">1. Gunakan acara jurnal Yaja di Tasker untuk memicu tindakan sinkronisasi FolderSync, sehingga folder Yaja Anda didorong ke penyedia cloud mana pun setelah entri berubah.</string>
+    <string name="tasker_screen_use_case_2">2. Gunakan Pushbullet dengan Tasker untuk mengirim teks ke Tangkapan Cepat Yaja, sehingga teks yang didorong disimpan sebagai entri baru untuk hari ini.</string>
+    <string name="tasker_screen_use_case_3">3. Gunakan profil panggilan tak terjawab Tasker untuk mengirim tindakan Lampirkan ke Yaja, sehingga semua detail panggilan tak terjawab mendarat di bawah satu entri Panggilan Tak Terjawab alih-alih membuat entri terpisah.</string>
+    <string name="quick_todo_widget_description">Tombol sekali ketuk untuk menangkap tugas sebagai entri baru untuk hari ini.</string>
+    <string name="todo_list_widget_name">Daftar Tugas</string>
+    <string name="todo_list_widget_description">Daftar tugas jurnal yang dapat digulir. Ketuk tugas untuk menandainya selesai atau belum selesai.</string>
+    <string name="todo_cd_add_todo">Tambah tugas</string>
+    <string name="heatmap_widget_status_loading">Memuat peta panas…</string>
+    <string name="heatmap_widget_status_empty">Belum ada entri</string>
+    <string name="heatmap_widget_status_refresh">Buka Yaja untuk menyegarkan peta panas</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cache telah dibangun ulang.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Entri Baru</string>
+    <string name="shortcut_new_entry_long">Tambah entri jurnal</string>
+    <string name="shortcut_add_todo_short">Tambah Tugas</string>
+    <string name="shortcut_add_todo_long">Tambah tugas untuk hari ini</string>
+    <string name="shortcut_add_event_short">Tambah Acara</string>
+    <string name="shortcut_add_event_long">Tambah acara</string>
+    <string name="shortcut_today_short">Hari Ini</string>
+    <string name="shortcut_today_long">Buka jurnal hari ini</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigasi</string>
+    <string name="settings_bottom_nav_style_label">Gaya Navigasi Bawah</string>
+    <string name="settings_navigation_mode_title">Mode Navigasi</string>
+    <string name="settings_navigation_mode_subtitle">Pilih antara bilah navigasi mengambang dan panel bawah penuh.</string>
+    <string name="settings_nav_mode_floating">Mengambang</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Layar Navigasi</string>
+    <string name="settings_nav_summary_floating">Jurnal dan Kalender selalu berada di bilah mengambang. Pilih hingga 2 layar tambahan. Saat ini terpilih: %1$d dari %2$d.</string>
+    <string name="settings_nav_summary_panel">Jurnal dan Kalender selalu berada di panel bawah. Pilih hingga 3 layar tambahan. Saat ini terpilih: %1$d dari %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Tampilkan Kilas Balik di bilah navigasi atau panel yang aktif.</string>
+    <string name="settings_nav_people_places_subtitle">Tampilkan Orang &amp; Tempat di bilah navigasi atau panel yang aktif.</string>
+    <string name="settings_nav_todos_title">Tugas</string>
+    <string name="settings_nav_todos_subtitle">Tampilkan Tugas di bilah navigasi atau panel yang aktif.</string>
+    <string name="todos_quick_add_title">Tambah Cepat</string>
+    <string name="todos_hero_subtitle">Lacak pekerjaan dan momen jurnal</string>
+    <string name="todos_hero_all_activity">Semua aktivitas</string>
+    <string name="todos_hero_open_focus">Fokus aktif</string>
+    <string name="todos_hero_completed">Selesai</string>
+    <string name="todos_stat_today_open">Aktif hari ini</string>
+    <string name="todos_stat_done_today">Selesai hari ini</string>
+    <string name="todos_stat_events">Acara</string>
+    <string name="todos_stat_still_open">Masih aktif</string>
+    <string name="todos_stat_past_7d">7 hari terakhir</string>
+    <string name="todos_stat_days">Hari</string>
+    <string name="todos_empty_done">Belum ada tugas selesai</string>
+    <string name="todos_empty_events">Belum ada entri acara</string>
+    <string name="todos_section_open">AKTIF</string>
+    <string name="todos_section_later">NANTI</string>
+    <string name="todos_section_upcoming">MENDATANG</string>
+    <string name="todos_section_future_events">ACARA MENDATANG</string>
+    <string name="todos_section_past_events">ACARA LAMPAU</string>
+    <string name="todos_cd_open_day">Buka hari</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d tugas aktif</item>
+        <item quantity="other">%1$d tugas aktif</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d tugas selesai</item>
+        <item quantity="other">%1$d tugas selesai</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d acara mendatang</item>
+        <item quantity="other">%1$d acara mendatang</item>
+    </plurals>
+    <string name="todos_filter_all_format">Semua %1$d</string>
+    <string name="todos_filter_open_format">Aktif %1$d</string>
+    <string name="todos_filter_done_format">Selesai %1$d</string>
+    <string name="todos_filter_events_format">Acara %1$d</string>
+    <string name="todos_cheer_all_clear">Semua beres. Bagus.</string>
+    <string name="todos_cheer_done_and_dusted">Selesai dan tuntas.</string>
+    <string name="todos_cheer_nothing_pending">Tidak ada yang tertunda.</string>
+    <string name="todos_cheer_caught_up">Anda sudah mengejar semua.</string>
+    <string name="todos_cheer_clean_slate">Lembaran baru.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Dalam %1$d hari</item>
+        <item quantity="other">Dalam %1$d hari</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d hari yang lalu</item>
+        <item quantity="other">%1$d hari yang lalu</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Dalam %1$d minggu</item>
+        <item quantity="other">Dalam %1$d minggu</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d minggu yang lalu</item>
+        <item quantity="other">%1$d minggu yang lalu</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Dalam 1 bulan</string>
+    <string name="todos_relative_one_month_ago">1 bulan yang lalu</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Dalam %1$d bulan</item>
+        <item quantity="other">Dalam %1$d bulan</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d bulan yang lalu</item>
+        <item quantity="other">%1$d bulan yang lalu</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistik</string>
+    <string name="settings_nav_statistics_subtitle_on">Tampilkan Statistik di bilah navigasi atau panel yang aktif.</string>
+    <string name="settings_nav_statistics_subtitle_off">Aktifkan Statistik terlebih dahulu untuk menempatkannya di navigasi.</string>
+    <string name="settings_show_labels_bottom_panel_title">Tampilkan Label Di Panel Bawah</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Tampilkan label teks di bawah ikon di panel bawah.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gerakan</string>
+    <string name="settings_entry_delete_title">Hapus Entri</string>
+    <string name="settings_entry_delete_subtitle">Tekan lama entri untuk memilihnya. Ketuk entri lain untuk memilih beberapa, lalu gunakan tombol Hapus di tengah. Ketuk ruang kosong untuk menghapus pilihan.</string>
+    <string name="settings_swipe_navigate_title">Geser untuk Navigasi Tanggal</string>
+    <string name="settings_swipe_navigate_subtitle">Geser dari kanan ke kiri untuk maju satu tanggal, dan kiri ke kanan untuk mundur.</string>
+    <string name="settings_drag_reorder_title">Aktifkan Seret-untuk-Urutkan-Ulang</string>
+    <string name="settings_drag_reorder_subtitle">Tekan lama entri untuk menyusun ulang</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data &amp; Pemulihan</string>
+    <string name="settings_swipe_rebuild_index">Geser ke bawah pada layar beranda untuk membangun ulang indeks</string>
+    <string name="settings_large_journal_safe_mode_title">Mode Aman Jurnal Besar</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Ketika jurnal yang sangat besar dideteksi, tunda pekerjaan statistik startup yang tidak penting agar aplikasi terbuka lebih cepat dan aman.</string>
+    <string name="settings_version_history_title">Riwayat Versi</string>
+    <string name="settings_version_history_subtitle">Simpan salinan aman sebelum mengedit entri, menghapus, melabeli, dan mengubah kunjungan kembali.</string>
+    <string name="settings_storage_location_label">Lokasi Penyimpanan</string>
+    <string name="settings_reset_to_default">Atur Ulang ke Default</string>
+    <string name="settings_choose_folder">Pilih Folder</string>
+    <string name="settings_backup_description">Buat satu zip cadangan Yaja yang berisi entri jurnal, pintasan, kata kunci tanggal, dan data Orang &amp; Tempat. Pemulihan dapat menggabungkannya kembali dengan aman nanti.</string>
+    <string name="settings_last_backup">Cadangan Terakhir: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Usia pengingat cadangan</string>
+    <string name="settings_backup_reminder_disabled">Dinonaktifkan</string>
+    <string name="settings_backup_reminder_desc">Sorot cadangan di bilah samping ketika lebih lama dari %1$d hari.</string>
+    <string name="settings_backup_reminder_days_disabled">0 hari (dinonaktifkan)</string>
+    <string name="settings_backup_reminder_days">%1$d hari</string>
+    <string name="settings_restore_button">Pulihkan</string>
+    <string name="settings_backup_now_button">Cadangkan Sekarang</string>
+    <string name="settings_db_index_management_label">Manajemen Indeks Database</string>
+    <string name="settings_db_index_management_desc">Buka alat pembangunan ulang terfokus untuk daftar tugas, Orang &amp; Tempat, atau pembangunan ulang indeks database lengkap.</string>
+    <string name="settings_rebuild_tools_button">Alat Bangun Ulang</string>
+    <string name="settings_import_label">Impor</string>
+    <string name="settings_import_info_cd">Informasi impor</string>
+    <string name="settings_import_info_title">Informasi Impor</string>
+    <string name="settings_import_day_one_title">Impor Day One</string>
+    <string name="settings_import_day_one_bullet1">- Ekspor dari Day One tanpa gambar</string>
+    <string name="settings_import_day_one_bullet2">- Hanya data teks yang akan diimpor</string>
+    <string name="settings_import_day_one_bullet3">- Stempel waktu dan data lokasi (jika tersedia) akan dipertahankan</string>
+    <string name="settings_import_perf_warning_title">Peringatan Kinerja</string>
+    <string name="settings_import_perf_warning_desc">Mengimpor banyak entri (500+) dapat memakan waktu beberapa menit. Anda dapat meninggalkan layar ini dan impor akan berlanjut di latar belakang.</string>
+    <string name="settings_got_it">Paham</string>
+    <string name="settings_import_success">%1$d hari baru, %2$d digabungkan, %3$d dilewati</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">ekspor .zip atau .json</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">ekspor .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Pelajari cara menggunakan yaja</string>
+    <string name="help_footer_website">Situs Web</string>
+    <string name="help_footer_share">Bagikan</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Bagikan yaja</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nJurnal lokal bebas gangguan yang menyimpan entri sebagai file markdown. Termasuk linimasa, kilas balik, orang dan tempat, templat, ulasan, statistik, dan widget.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Nama pengguna Discord disalin!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Logo RJ</string>
+    <string name="help_screen_title">Bantuan &amp; Info</string>
+    <string name="help_welcome_title">Selamat datang di yaja</string>
+    <string name="help_welcome_body">Yaja adalah jurnal markdown berbasis lokal untuk menangkap hari, orang, tempat, tindak lanjut, ulasan, dan pola tanpa mengganggu Anda. Halaman ini memberikan panduan cepat tentang bagian-bagian utama aplikasi.</string>
+    <string name="help_start_here">Mulai di Sini</string>
+    <string name="help_cd_collapse">Ciutkan</string>
+    <string name="help_cd_expand">Perluas</string>
+    <string name="help_group_everyday_title">Harian</string>
+    <string name="help_group_everyday_desc">Penulisan jurnal, alur menulis, dan navigasi harian.</string>
+    <string name="help_group_reviews_title">Ulasan &amp; Wawasan</string>
+    <string name="help_group_reviews_desc">Kilas balik, tren, orang, tempat, dan analisis.</string>
+    <string name="help_group_advanced_title">Alat Canggih</string>
+    <string name="help_group_advanced_desc">Widget, penyimpanan, privasi, cadangan, dan alat teknis.</string>
+    <string name="help_onboard_todos_events_title">Tugas &amp; Acara</string>
+    <string name="help_onboard_todos_events_body">Simpan pengingat pribadi, rencana keluarga, dan hal-hal kecil yang tidak ingin Anda lupakan di dalam alur jurnal yang sama.</string>
+    <string name="help_onboard_widgets_title">Widget</string>
+    <string name="help_onboard_widgets_body">Tambahkan widget Peta Panas, Tangkapan Cepat, Tugas Cepat, atau Daftar Tugas dari peluncur.</string>
+    <string name="help_onboard_version_history_title">Riwayat Versi</string>
+    <string name="help_onboard_version_history_body">Aktifkan File Riwayat di Pengaturan &gt; Data untuk menyimpan snapshot aman sebelum perubahan berisiko.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Gunakan Tasker untuk menambahkan entri, tugas, atau acara dengan cepat ketika sesuatu yang pribadi perlu segera ditangkap.</string>
+    <string name="help_section_writing_editor_title">Penulisan &amp; Editor</string>
+    <string name="help_section_writing_editor_preview">Templat, header markdown, tugas, acara, dan penyisipan draf yang fleksibel.</string>
+    <string name="help_section_writing_editor_content">+ Ketuk tombol \'+\' mengambang untuk menulis pada hari yang dipilih.\n+ Gunakan templat seperti Catatan Rapat, Hari Perjalanan, Log Kesehatan, Refleksi, Log Kerja, dan banyak lagi.\n+ Templat dapat dimasukkan ke dalam draf kosong, dilampirkan di bawah, digunakan untuk mengganti draf, atau dimasukkan di posisi kursor.\n+ Chip editor dapat dengan cepat memasukkan tugas, acara, daftar bernomor, dan daftar bulet.\n+ Tampilan Entri dan Edit Entri mendukung header bergaya markdown seperti ### Bagian.</string>
+    <string name="help_section_post_write_review_title">Ulasan Setelah Menulis</string>
+    <string name="help_section_post_write_review_preview">Ekstraksi tugas, deteksi kata kunci, penandaan bintang, label, dan pengaturan kunjungan kembali.</string>
+    <string name="help_section_post_write_review_content">+ Setelah menulis, Yaja dapat membuka lembar ulasan sebelum menyimpan.\n+ Ini dapat mengekstrak item tugas, mendeteksi Orang &amp; Tempat, menandai hari dengan bintang, mengatur label hari, dan menjadwalkan tanggal kunjungan kembali.\n+ Anda dapat menonaktifkan Ulasan Setelah Menulis dari Pengaturan jika Anda lebih suka penyimpanan langsung.</string>
+    <string name="help_section_revisit_followup_title">Tanggal Kunjungan Kembali &amp; Tindak Lanjut</string>
+    <string name="help_section_revisit_followup_preview">Tanggal tindak lanjut yang tertaut ke jurnal dengan pilihan cepat dan opsi khusus.</string>
+    <string name="help_section_revisit_followup_content">+ Tambahkan tanggal kunjungan kembali dengan Besok, Minggu depan, Bulan depan, atau tanggal khusus.\n+ Item kunjungan kembali yang jatuh tempo akan muncul di Beranda dan ditandai di Kalender serta Linimasa.\n+ Ini berfungsi baik untuk janji, keputusan, pemeriksaan kesehatan, dan pengingat yang terikat dengan konteks jurnal.</string>
+    <string name="help_section_navigation_gestures_title">Navigasi &amp; Gerakan</string>
+    <string name="help_section_navigation_gestures_preview">Perpindahan tanggal, penghapusan pilihan, preferensi geser, dan perilaku membangun ulang cache.</string>
+    <string name="help_section_navigation_gestures_content">+ Beranda mendukung navigasi tanggal dengan panah dan navigasi geser opsional jika diaktifkan.\n+ Tekan lama entri untuk memilihnya. Ketuk entri lain untuk memilihnya juga, lalu gunakan tombol Hapus di dekat tombol Tambah.\n+ Mengetuk di luar entri yang dipilih akan menghapus pilihan. Entri yang dihapus dapat dipulihkan bersama-sama dari hitungan mundur pemulihan.\n+ Anda dapat membangun ulang cache ketika file jurnal berubah di luar Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Pintasan &amp; Tangkapan Cepat</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Penangkapan pribadi yang cepat ditambah cuplikan teks dinamis yang dapat digunakan kembali.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Buat pintasan untuk memasukkan teks berulang dengan cepat.\n+ Placeholder dinamis seperti {{today:dd-MMM}} dan {{now:HH:mm}} berfungsi di dalam pintasan.\n+ Tangkapan Cepat membantu mencatat sesuatu dengan cepat tanpa membuka editor lengkap.\n+ Tambah cepat dapat menyimpan tugas atau acara untuk tanggal yang dipilih dari widget, layar Daftar Tugas, atau Tasker.</string>
+    <string name="help_section_todos_events_title">Tugas &amp; Acara</string>
+    <string name="help_section_todos_events_preview">Pengingat pribadi, rencana, dan acara penting yang dikelompokkan berdasarkan tanggal.</string>
+    <string name="help_section_todos_events_content">+ Tugas ditulis langsung di entri jurnal sebagai baris [ ] dan [x].\n+ Acara adalah entri jurnal biasa yang ditandai sebagai Acara, berguna untuk rencana keluarga, janji temu, perjalanan, atau apa pun yang ingin Anda perhatikan nanti.\n+ Layar Daftar Tugas membantu Anda melihat tugas aktif, tugas selesai, dan acara tanpa mengubah Yaja menjadi dasbor produktivitas.\n+ Ketuk header tanggal untuk membuka hari itu di Jurnal.\n+ Tarik ke bawah pada layar Daftar Tugas untuk membangun ulang indeks tugas jika file berubah di luar Yaja.\n+ Pilihan Tampilkan Tugas Selesai akan diingat, sehingga tampilan pilihan Anda tetap ada saat Anda pergi dan kembali.\n+ Widget tugas dapat menampilkan tugas yang tertunda, meminta konfirmasi sebelum beralih, menyembunyikan tugas yang selesai, dan secara opsional menyembunyikan widget secara otomatis saat tidak ada tugas yang tertunda.</string>
+    <string name="help_section_people_places_title">Orang &amp; Tempat</string>
+    <string name="help_section_people_places_preview">Kata kunci, alias, tren, dan tampilan koneksi berperingkat.</string>
+    <string name="help_section_people_places_content">+ Lacak orang dan tempat dengan alias dan label hubungan.\n+ Cari, filter, dan urutkan daftar kata kunci.\n+ Halaman detail kata kunci menunjukkan keterkinian, sebutan dari waktu ke waktu, sebutan bersama, dan Koneksi berperingkat.\n+ Sensitivitas Pencocokan dapat disesuaikan dari Pengaturan.</string>
+    <string name="help_section_timeline_lookback_title">Linimasa &amp; Kilas Balik</string>
+    <string name="help_section_timeline_lookback_preview">Penjelajahan hari-hari lampau, sorotan, Kejutan untuk Saya, dan titik masuk ulasan.</string>
+    <string name="help_section_timeline_lookback_content">+ Linimasa memungkinkan Anda menelusuri hari-hari lampau dengan filter, chip tahun, dan mode semua-tanggal opsional.\n+ Kilas Balik menampilkan entri dari hari yang sama di tahun-tahun lalu dan sorotan berbintang Anda.\n+ Kejutan untuk Saya membuka entri lampau secara acak dari Kilas Balik.\n+ Ulasan Mingguan dan Ulasan Bulanan berada di dalam Kilas Balik.</string>
+    <string name="help_section_statistics_reviews_title">Statistik &amp; Ulasan</string>
+    <string name="help_section_statistics_reviews_preview">Mode perbandingan, wawasan templat, bagian terlihat yang disesuaikan, dan ringkasan.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistik mencakup mode perbandingan, delta kata kunci, dan Wawasan Templat.\n+ Anda dapat memilih bagian statistik mana yang tetap terlihat dari dalam layar Statistik.\n+ Mode Perbandingan tersedia untuk Semua Waktu dan meringkas delta bulan dan tahun.\n+ Halaman ulasan meringkas hari-hari paling aktif, orang &amp; tempat teratas, momen favorit, label, pembagian bahasa, serta pola beruntun atau kesenjangan.</string>
+    <string name="help_section_widgets_home_title">Widget &amp; Tampilan Beranda</string>
+    <string name="help_section_widgets_home_preview">Widget peluncur, kata kunci yang disorot, dan statistik beranda tingkat hari.</string>
+    <string name="help_section_widgets_home_content">+ Widget Peta Panas Menulis, Tangkapan Cepat, Tambah Cepat, dan Daftar Tugas tersedia di peluncur.\n+ Layar konfigurasi widget memungkinkan Anda menyesuaikan sudut, padding, bentuk, header, visibilitas tugas yang selesai, dan opsi widget lainnya jika didukung.\n+ Widget peta panas menggunakan lebih banyak tingkat intensitas untuk tampilan riwayat menulis yang lebih halus.\n+ Beranda dapat menyorot Orang &amp; Tempat di dalam entri saat pengaturan diaktifkan.\n+ Header tanggal Beranda dapat menampilkan atau menyembunyikan jumlah entri, kata, dan jumlah karakter.</string>
+    <string name="help_section_language_text_analysis_title">Analisis Bahasa &amp; Teks</string>
+    <string name="help_section_language_text_analysis_preview">Deteksi bahasa lokal untuk statistik dan wawasan ulasan.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja mendeteksi skrip atau bahasa yang dominan di seluruh entri untuk mendapatkan wawasan.\n+ Pembagian bahasa muncul di Statistik dan Ulasan.\n+ Deteksi berjalan secara lokal dan tidak mengirimkan teks jurnal ke luar perangkat.</string>
+    <string name="help_section_data_privacy_cache_title">Data, Privasi &amp; Cache</string>
+    <string name="help_section_data_privacy_cache_preview">Penyimpanan markdown, riwayat versi, log aplikasi, kunci aplikasi, dan bangun ulang cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Privasi Data: Semua data jurnal pribadi berada secara ketat di perangkat fisik Anda dan tidak pernah meninggalkannya kapan pun. Yaja tidak menjalankan database cloud, server cadangan jarak jauh, atau telemetri untuk melacak teks Anda.\n+ Entri jurnal disimpan sebagai file Markdown standar yang diatur berdasarkan tahun dan bulan.\n+ Riwayat Versi dapat menyimpan snapshot aman sebelum pengeditan, penghapusan, label, dan perubahan kunjungan kembali.\n+ Anda dapat memilih berapa banyak versi yang disimpan dan berapa hari riwayat dipertahankan.\n+ Log Aplikasi mencatat acara teknis, detail kerusakan, dan aktivitas cache tanpa menyimpan teks jurnal.\n+ Bangun Ulang Cache Aplikasi memungkinkan Anda menyegarkan data aplikasi secara modular, termasuk tugas dan bangun ulang cache lengkap.\n+ Kunci aplikasi mendukung PIN dan sidik jari.\n+ Yaja menunda pekerjaan pengindeksan berat dan statistik jika memungkinkan agar peluncuran dan penyimpanan aplikasi tetap responsif.</string>
+    <string name="settings_app_log_title">Log Aplikasi</string>
+    <string name="settings_app_log_subtitle">Lihat diagnosis aman privasi dan detail kerusakan sebelumnya</string>
+    <string name="app_log_cd_share">Bagikan log aplikasi</string>
+    <string name="app_log_cd_clear">Bersihkan log aplikasi</string>
+    <string name="app_log_privacy_title">Diagnosis aman privasi</string>
+    <string name="app_log_privacy_description">Log ini mencatat acara utama aplikasi, operasi cache/penyimpanan, penyegaran widget, dan detail kerusakan. Ini tidak termasuk entri jurnal, teks daftar tugas, atau konten catatan pribadi.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Simpan %d hari terakhir</item>
+        <item quantity="other">Simpan %d hari terakhir</item>
+    </plurals>
+    <string name="app_log_retention_description">Acara log yang lebih lama dipangkas secara otomatis selama pencatatan dan segera saat pengaturan ini berubah.</string>
+    <string name="app_log_empty">Belum ada log aplikasi.</string>
+    <string name="app_log_refresh">Segarkan Log</string>
+    <string name="app_log_share_empty">Belum ada entri log aplikasi Yaja.</string>
+    <string name="app_log_share_subject">Log Aplikasi Yaja</string>
+    <string name="app_log_share_chooser">Bagikan log aplikasi Yaja</string>
+    <string name="app_log_local_time_format">%1$s | waktu lokal\n%2$s</string>
+    <string name="settings_website_title">Situs Web Yaja</string>
+    <string name="settings_website_subtitle">Buka situs web resmi untuk pembaruan dan detail</string>
+    <string name="settings_advanced_integrations_title">Integrasi Lanjutan</string>
+    <string name="settings_tasker_integration_title">Integrasi Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Tindakan tangkapan cepat dan pemicu acara jurnal</string>
+    <string name="settings_shortcodes_subtitle">Kelola cuplikan yang dapat digunakan kembali yang diperluas saat menulis atau tangkapan cepat.</string>
+    <string name="settings_privacy_security_title">Privasi &amp; Keamanan</string>
+    <string name="settings_pin_lock_title">Kunci PIN</string>
+    <string name="settings_app_locked">Aplikasi terkunci</string>
+    <string name="settings_app_unlocked">Aplikasi tidak terkunci</string>
+    <string name="settings_change_pin">Ubah PIN</string>
+    <string name="settings_biometric_unlock_title">Buka Kunci Biometrik</string>
+    <string name="settings_biometric_enabled_desc">Sidik jari atau Face ID diaktifkan</string>
+    <string name="settings_biometric_disabled_desc">Gunakan biometrik alih-alih PIN</string>
+    <string name="settings_autolock_timeout_title">Batas Waktu Kunci Otomatis</string>
+    <string name="settings_pin_lock_disclaimer">Kunci PIN mencegah akses tidak sah ke aplikasi tetapi tidak mengenkripsi data jurnal Anda di disk. Seseorang dengan akses file langsung masih bisa membaca entri Anda.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d menit</item>
+        <item quantity="other">%1$d menit</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Sistem</string>
+    <string name="settings_theme_light">Terang</string>
+    <string name="settings_theme_dark">Gelap</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Warna</string>
+    <string name="settings_color_intensity_title">Intensitas warna</string>
+    <string name="settings_background_tint_title">Tint latar belakang</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Khusus</string>
+    <string name="settings_font_size_label">Ukuran Font</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">Pratinjau tema</string>
+    <string name="settings_journal_entry_preview">Entri jurnal</string>
+    <string name="settings_journal_entry_preview_desc">Kartu, chip, dan tombol akan menggunakan warna-warna ini.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Aksen</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensitas: %1$s</string>
+    <string name="settings_personal_themes_title">Tema pribadi</string>
+    <string name="settings_theme_name_label">Nama tema</string>
+    <string name="settings_main_color_label">Warna utama</string>
+    <string name="settings_hue_label">Rona (Hue)</string>
+    <string name="settings_sat_label">Sat</string>
+    <string name="settings_bright_label">Kecerahan</string>
+    <string name="settings_generated_accents_title">Aksen yang dihasilkan</string>
+    <string name="settings_personal_theme_desc">Pilih satu warna. Yaja membuat warna aksen dan pendukung yang cocok.</string>
+    <string name="settings_preview_chip_main">Utama</string>
+    <string name="settings_preview_chip_support">Dukungan</string>
+    <string name="settings_no_font_selected">Tidak ada font terpilih</string>
+    <string name="settings_custom_font_desc">Pilih file .ttf atau .otf unicode apa pun. Karakter yang tidak dimiliki font akan menggunakan font sistem.</string>
+    <string name="settings_font_replace">Ganti</string>
+    <string name="settings_choose_font_file">Pilih file font</string>
+    <string name="settings_intensity_muted">Redup</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Vivid</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Bersih</string>
+    <string name="settings_tint_soft">Lembut</string>
+    <string name="settings_tint_rich">Pekat</string>
+    <string name="settings_tint_deep">Mendalam</string>
+    <string name="settings_accent_complementary">Komplementer</string>
+    <string name="settings_accent_analogous">Analog</string>
+    <string name="settings_accent_triadic">Triadik</string>
+    <string name="settings_accent_soft">Lembut</string>
+    <string name="settings_mono_weight_thin">Thin</string>
+    <string name="settings_mono_weight_extra_light">Extra Light</string>
+    <string name="settings_mono_weight_light">Light</string>
+    <string name="settings_mono_weight_regular">Regular</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">Bold</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold</string>
+    <string name="settings_mono_weight_title">Ketebalan</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Tambah Kata Kunci Tanggal</string>
+    <string name="settings_keyword_label">Kata Kunci</string>
+    <string name="settings_keyword_placeholder_example">misal: kemarin</string>
+    <string name="settings_means_label">Artinya</string>
+    <string name="settings_add_button">Tambah</string>
+    <string name="settings_no_keywords_yet">Belum ada kata kunci yang ditambahkan.</string>
+    <string name="settings_added_keywords_title">Kata Kunci yang Ditambahkan (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Tambah Kata Kunci</string>
+    <string name="keywords_dialog_add_title">Tambah Kata Kunci</string>
+    <string name="keywords_dialog_edit_title">Edit Kata Kunci</string>
+    <string name="keywords_cd_import_csv">Impor CSV</string>
+    <string name="keywords_cd_export_csv">Ekspor CSV</string>
+    <string name="keywords_cd_download_template">Unduh templat</string>
+    <string name="rebuild_cache_storage_transparency_title">Transparansi Penyimpanan Di Perangkat</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja menggunakan model penyimpanan lokal yang aman. Data jurnal pribadi Anda tetap lokal dan tidak pernah meninggalkan perangkat Anda kapan pun:</string>
+    <string name="rebuild_cache_source_of_truth_title">Sumber Utama (File Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Semua entri, item daftar tugas, acara linimasa, bintang, dan tag disimpan secara permanen dalam file Markdown (.md) teks biasa di folder jurnal lokal yang Anda pilih. Data Anda 100% milik Anda dan berada sepenuhnya di perangkat Anda.</string>
+    <string name="rebuild_cache_read_cache_title">Baca Cache &amp; Indeks (Database SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">Untuk mengaktifkan pemuatan layar instan, sorotan kalender, kata kunci, dan statistik tanpa memindai sistem file pada setiap gulir, Yaja mengurai file Markdown Anda dan mengindeksnya dalam database SQLite Room lokal di perangkat Anda.</string>
+    <string name="rebuild_cache_local_private_title">100% Lokal &amp; Privat</string>
+    <string name="rebuild_cache_local_private_desc">Yaja tidak memiliki database cloud, server cadangan jarak jauh, atau telemetri yang melacak teks Anda. Semua entri jurnal dan data yang diurai tetap berada secara ketat di perangkat fisik Anda dan tidak pernah meninggalkannya kapan pun.</string>
+    <string name="keywords_export_success">Kata kunci diekspor</string>
+    <string name="keywords_export_failed">Tidak dapat mengekspor kata kunci</string>
+    <string name="keywords_template_saved">Templat disimpan</string>
+    <string name="keywords_template_save_failed">Tidak dapat menyimpan templat</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Mengimpor %d kata kunci</item>
+        <item quantity="other">Mengimpor %d kata kunci</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Tidak ada kata kunci valid yang ditemukan</string>
+    <string name="keywords_import_failed">Tidak dapat mengimpor kata kunci</string>
+    <string name="keywords_status_indexing">Mengindeks</string>
+    <string name="keywords_status_indexed">Diindeks</string>
+    <string name="keywords_metric_mentions">Sebutan</string>
+    <string name="keywords_metric_days">Hari</string>
+    <string name="keywords_timeline_range_all">Semua</string>
+    <string name="keywords_connections_filter_all">Semua</string>
+    <string name="keywords_connections_filter_people">Orang</string>
+    <string name="keywords_connections_filter_places">Tempat</string>
+    <string name="keywords_connections_filter_recent">Terbaru</string>
+    <string name="keywords_connections_filter_strongest">Terkuat</string>
+    <string name="keywords_filter_needs_reindex">Perlu Indeks Ulang</string>
+    <string name="keywords_search_placeholder">Cari orang, tempat, alias, hubungan</string>
+    <string name="keywords_refreshing_counters">Menyegarkan penghitung kata kunci…</string>
+    <string name="keywords_empty_title">Belum ada kata kunci</string>
+    <string name="keywords_empty_subtitle">Tambahkan orang dan tempat yang ingin dilacak aplikasi secara lokal.</string>
+    <string name="keywords_no_results_title">Tidak ada hasil yang cocok</string>
+    <string name="keywords_no_results_subtitle">Coba pencarian, pengurutan, atau filter yang berbeda.</string>
+    <string name="keywords_people_title">Orang</string>
+    <string name="keywords_places_title">Tempat</string>
+    <string name="keywords_people_empty">Belum ada orang yang ditambahkan.</string>
+    <string name="keywords_people_filtered_empty">Tidak ada orang yang cocok dengan filter saat ini.</string>
+    <string name="keywords_places_empty">Belum ada tempat yang ditambahkan.</string>
+    <string name="keywords_places_filtered_empty">Tidak ada tempat yang cocok dengan filter saat ini.</string>
+    <string name="keywords_delete_person_title">Hapus Orang?</string>
+    <string name="keywords_delete_place_title">Hapus Tempat?</string>
+    <string name="keywords_delete_message">Hapus "%1$s" dari Orang &amp; Tempat? Ini akan menghapus kata kunci dan pencocokan yang diindeks.</string>
+    <string name="keywords_timeline_title">Sebutan dari Waktu ke Waktu</string>
+    <string name="keywords_timeline_empty_pattern">Belum ada pola bulanan</string>
+    <string name="keywords_timeline_total_format">total %1$d</string>
+    <string name="keywords_timeline_empty_chart">Sebutan akan bagan di sini setelah pengindeksan menemukan entri.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Puncak %1$s • %2$d sebutan</item>
+        <item quantity="other">Puncak %1$s • %2$d sebutan</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Hari dengan sebutan</string>
+    <string name="keywords_recency_title">Keterkinian</string>
+    <string name="keywords_recency_none">Belum ada pencocokan</string>
+    <string name="keywords_recency_today">Disebut hari ini</string>
+    <string name="keywords_recency_yesterday">Disebut kemarin</string>
+    <string name="keywords_recency_days_ago_format">Sebutan terakhir %1$d hari yang lalu</string>
+    <string name="keywords_first_seen">Pertama Terlihat</string>
+    <string name="keywords_last_seen">Terakhir Terlihat</string>
+    <string name="keywords_unknown">Tidak Diketahui</string>
+    <string name="keywords_co_mentioned_with">Disebut Bersama Dengan</string>
+    <string name="keywords_connections_title">Koneksi</string>
+    <string name="keywords_connections_subtitle">Peringkat berdasarkan tumpang tindih berulang dan keterkinian</string>
+    <string name="keywords_connections_linked_format">%1$d ditautkan</string>
+    <string name="keywords_connections_show">Tampilkan koneksi</string>
+    <string name="keywords_connections_hide">Sembunyikan koneksi</string>
+    <string name="keywords_connections_items_in_view">%1$d item dalam tampilan ini</string>
+    <string name="keywords_connections_tap_to_expand">Ketuk untuk memperluas %1$d tautan berperingkat</string>
+    <string name="keywords_connections_empty">Belum ada koneksi untuk filter ini.</string>
+    <string name="keywords_open_day">Buka Hari</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Paling Sering Disebut</string>
+    <string name="keywords_sort_recently_added">Baru-baru ini Ditambahkan</string>
+    <string name="keywords_peak_mentions_format">Puncak %1$s • %2$d sebutan%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d hari</string>
+    <string name="keywords_connections_meta_days_suffix_plural"></string>
+    <string name="keywords_connections_meta_together"> bersama</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d entri bersama</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix"></string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix"></string>
+    <string name="keywords_connections_meta_last_prefix"> | terakhir %1$s</string>
+    <string name="keywords_connections_score_format">Skor %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d hari</string>
+    <string name="keywords_connections_shared_chip">%1$d bersama</string>
+    <string name="keywords_match_type_exact">persis</string>
+    <string name="keywords_match_type_fuzzy">samar</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">hubungan</string>
+    <string name="keywords_action_delete">Hapus</string>
+    <string name="keywords_action_edit">Edit</string>
+    <string name="keywords_action_view">Lihat</string>
+    <string name="keywords_name_label">Nama</string>
+    <string name="keywords_relation_context_label">Hubungan / Konteks</string>
+    <string name="keywords_aliases_label">Alias (dipisahkan koma)</string>
+    <string name="keywords_aliases_label_short">Alias</string>
+    <string name="keywords_type_person">Orang</string>
+    <string name="keywords_type_place">Tempat</string>
+    <string name="keywords_save_disabled_hint">Kata kunci disimpan dalam keadaan mati. Aktifkan dari daftar ketika Anda ingin pengindeksan berjalan.</string>
+    <string name="settings_meaning_yesterday">Kemarin</string>
+    <string name="settings_meaning_today">Hari Ini</string>
+    <string name="lookback_chip_weekly">Mingguan</string>
+    <string name="lookback_chip_monthly">Bulanan</string>
+    <string name="timeline_screen_title">Linimasa</string>
+    <string name="timeline_empty_title">Belum ada apa-apa di sini</string>
+    <string name="timeline_empty_subtitle">Coba filter yang berbeda atau sesuaikan pencarian label.</string>
+    <string name="timeline_quick_today">Hari Ini</string>
+    <string name="timeline_quick_month">Bulan</string>
+    <string name="timeline_quick_filters">Filter</string>
+    <string name="timeline_all_dates">Semua tanggal</string>
+    <string name="timeline_label_prefix">Label: %1$s</string>
+    <string name="timeline_label_search_placeholder">Cari label hari</string>
+    <string name="timeline_filters_title">Filter &amp; Tata Letak Linimasa</string>
+    <string name="settings_meaning_tomorrow">Besok</string>
+    <string name="settings_meaning_day_before_yesterday">Kemarin lusa</string>
+    <string name="settings_meaning_day_after_tomorrow">Lusa</string>
+    <string name="settings_meaning_last_week">Minggu lalu</string>
+    <string name="settings_meaning_next_week">Minggu depan</string>
+    <string name="settings_meaning_monday">Senin</string>
+    <string name="settings_meaning_tuesday">Selasa</string>
+    <string name="settings_meaning_wednesday">Rabu</string>
+    <string name="settings_meaning_thursday">Kamis</string>
+    <string name="settings_meaning_friday">Jumat</string>
+    <string name="settings_meaning_saturday">Sabtu</string>
+    <string name="settings_meaning_sunday">Minggu</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Penyimpanan Internal Aplikasi</string>
+    <string name="settings_storage_internal_default">Penyimpanan Internal Aplikasi (Default)</string>
+    <string name="settings_storage_new_folder_fallback">folder baru</string>
+    <string name="settings_storage_current_folder_fallback">folder saat ini</string>
+    <string name="settings_storage_move_confirm">Semua entri yang ada akan dipindahkan dari %1$s ke %2$s. Apakah Anda ingin melanjutkan?</string>
+    <string name="settings_restore_added_skipped">Ditambahkan: %1$d\nDuplikat dilewati: %2$d</string>
+    <string name="settings_storage_custom_folder">Folder Khusus:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Bantuan pintasan</string>
+    <string name="addentry_cd_insert_template">Sisipkan templat</string>
+    <string name="addentry_cd_jump_to_today">Lompat ke hari ini</string>
+    <string name="addentry_cd_share">Bagikan</string>
+    <string name="addentry_cd_bold">Tebal</string>
+    <string name="addentry_cd_italic">Miring</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Atur waktu</string>
+    <string name="addentry_event_chip">Acara</string>
+    <string name="addentry_pick_time_title">Pilih waktu</string>
+    <string name="addentry_hour_label">Jam</string>
+    <string name="addentry_minute_label">Menit</string>
+    <string name="addentry_new_event_title">Acara Baru</string>
+    <string name="addentry_title_label">Judul</string>
+    <string name="addentry_event_description_label">Deskripsi Acara</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Tugas Ditemukan</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Ubah %1$d baris menjadi daftar tugas</item>
+        <item quantity="other">Ubah %1$d baris menjadi daftar tugas</item>
+    </plurals>
+    <string name="addentry_people_places_title">Orang &amp; Tempat</string>
+    <string name="addentry_no_tracked_mentions">Tidak ada orang atau tempat terlacak yang ditemukan dalam entri ini.</string>
+    <string name="addentry_day_memory_title">Kenangan Hari Ini</string>
+    <string name="addentry_star_day_title">Tandai bintang hari ini</string>
+    <string name="addentry_star_day_subtitle">Simpan sebagai sorotan agar muncul kembali di kilas balik.</string>
+    <string name="addentry_day_label_label">Label hari</string>
+    <string name="addentry_day_label_placeholder">misal: Hari Istirahat</string>
+    <string name="addentry_follow_up_title">Tindak lanjuti pada</string>
+    <string name="addentry_next_month">Bulan depan</string>
+    <string name="addentry_custom">Khusus</string>
+    <string name="addentry_due_date_format">Jatuh tempo %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Hapus tindak lanjut</string>
+    <string name="addentry_follow_up_note_label">Catatan tindak lanjut</string>
+    <string name="addentry_follow_up_note_placeholder">Apa yang harus Anda kunjungi kembali?</string>
+    <string name="addentry_review_entry_title">Tinjau Entri</string>
+    <string name="addentry_review_entry_subtitle">Tinjau cepat sebelum menyimpan. Tarik tugas keluar, periksa sebutan terlacak, dan tandai hari jika penting.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d tugas</item>
+        <item quantity="other">%1$d tugas</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d sebutan</item>
+        <item quantity="other">%1$d sebutan</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Simpan Entri</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Buang Perubahan</string>
+    <string name="addentry_discard_changes_message">Anda memiliki perubahan yang belum disimpan. Kembali dan buang perubahan tersebut, atau tetap di sini untuk melanjutkan mengedit.</string>
+    <string name="addentry_go_back">Kembali</string>
+    <string name="addentry_stay">Tetap di Sini</string>
+    <string name="addentry_shortcuts_title">Pintasan</string>
+    <string name="addentry_help_bold_suffix"> untuk membuat teks tebal (atau pilih teks dan ketuk Tombol Tebal)</string>
+    <string name="addentry_help_italic_suffix"> untuk membuat teks miring (atau pilih teks dan ketuk Tombol Miring)</string>
+    <string name="addentry_help_today_suffix">: Diperluas ke tanggal saat ini (misal: 25-Des-25)</string>
+    <string name="addentry_help_now_suffix">: Diperluas ke waktu saat ini (misal: 14:30)</string>
+    <string name="addentry_help_week_suffix">: Diperluas ke minggu saat ini (misal: Minggu 52)</string>
+    <string name="addentry_help_day_suffix">: Diperluas ke hari saat ini (misal: Senin)</string>
+    <string name="addentry_help_todo_suffix">: Diperluas ke kotak centang tugas (misal: [ ])</string>
+    <string name="addentry_help_toggle_suffix">: Ketika dimasukkan di bagian mana pun pada baris yang berisi kotak centang tugas, ini akan mengubah statusnya.</string>
+    <string name="addentry_okey">Oke!</string>
+    <string name="addentry_template_merge_message">Draf ini sudah berisi teks. Pilih bagaimana templat harus ditempatkan.</string>
+    <string name="addentry_template_merge_subtitle">Sisipkan di Bawah mempertahankan draf saat ini. Di Kursor menempatkan templat di tempat kursor Anda berada sekarang.</string>
+    <string name="addentry_insert_below">Sisipkan di Bawah</string>
+    <string name="addentry_at_cursor">Di Kursor</string>
+    <string name="addentry_replace_draft">Ganti Draf</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populer</string>
+    <string name="addentry_new_chip">Baru</string>
+    <string name="addentry_best_for_format">Terbaik untuk: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Hapus templat favorit</string>
+    <string name="addentry_cd_favorite_template">Templat favorit</string>
+    <string name="addentry_checklist_chip">Daftar Tugas</string>
+    <string name="addentry_followup_chip">Tindak lanjut</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d bagian</item>
+        <item quantity="other">%1$d bagian</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Alihkan templat favorit</string>
+    <string name="addentry_template_preview_label">Pratinjau templat</string>
+    <string name="addentry_use_template_button">Gunakan Templat</string>
+    <string name="addentry_start_blank_title">Mulai Kosong</string>
+    <string name="addentry_start_blank_subtitle">Lewati templat dan mulai menulis dari draf kosong.</string>
+    <string name="addentry_blank_entry_name">Entri Kosong</string>
+    <string name="addentry_blank_entry_description">Entri jurnal biasa</string>
+    <string name="addentry_blank_category">Umum</string>
+    <string name="addentry_quick_picks_title">Pilihan Cepat</string>
+    <string name="addentry_sort_recommended">Direkomendasikan</string>
+    <string name="addentry_sort_recent">Terbaru</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Tidak ada templat yang ditemukan</string>
+    <string name="addentry_no_templates_subtitle">Coba pencarian atau kategori yang berbeda.</string>
+    <string name="addentry_search_templates_label">Cari templat</string>
+    <string name="addentry_search_templates_placeholder">Rapat, kesehatan, refleksi…</string>
+    <string name="addentry_cd_clear_search">Bersihkan pencarian</string>
+    <string name="addentry_choose_template_title">Pilih Templat</string>
+    <string name="addentry_templates_ready_format">%1$d dari %2$d templat siap</string>
+    <string name="addentry_category_all">Semua</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Apa yang terjadi?</string>
+    <string name="addentry_todo_chip">Tugas</string>
+    <string name="addentry_numbered_list_chip">Daftar Angka</string>
+    <string name="addentry_bulleted_list_chip">Daftar Simbol</string>
+    <string name="addentry_words_count_format">%1$d KATA</string>
+    <string name="addentry_chars_count_format">%1$d KARAKTER</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Tindak lanjut jatuh tempo hari ini</item>
+        <item quantity="other">Tindak lanjut jatuh tempo hari ini</item>
+    </plurals>
+    <string name="home_followup_subtitle">Lompat kembali ke hari yang ditautkan dan lanjutkan dari sana.</string>
+    <string name="home_from_date_format">Dari %1$s</string>
+    <string name="home_more_due_today_format">+%1$d lagi jatuh tempo hari ini</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Tambah Label</string>
+    <string name="home_edit_label_title">Edit Label</string>
+    <string name="home_day_label_hint">Tambahkan label pendek untuk hari ini (maksimal 30 karakter).</string>
+    <string name="home_day_label_placeholder">misal: Hari pertama sekolah</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Tambah Label untuk Hari Ini</string>
+    <string name="home_star_label_hint">Beri hari ini label yang berkesan (maksimal 30 karakter)</string>
+    <string name="home_star_label_placeholder">misal: Ulang Tahun Saya, Di sekolah</string>
+    <string name="home_star_button">Bintang</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Entri dihapus</item>
+        <item quantity="other">%1$d entri dihapus</item>
+    </plurals>
+    <string name="home_restore_button">PULIHKAN</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Cari entri…</string>
+    <string name="home_cd_search">Cari</string>
+    <string name="home_cd_clear_search">Bersihkan Pencarian</string>
+    <string name="home_cd_favorite">Favorit</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Entri</string>
+    <string name="home_stat_words">Kata</string>
+    <string name="home_stat_chars">Karakter</string>
+    <string name="home_stat_versions">Versi</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Tambah label</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Kecocokan Ditemukan</item>
+        <item quantity="other">%1$d Kecocokan Ditemukan</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Belum ada kecocokan yang ditemukan untuk kata kunci ini.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Ikon Status Kosong</string>
+    <string name="home_empty_future">Ini adalah masa depan. Catat pengingat!</string>
+    <string name="home_empty_past">Anda berada di Masa Lalu. Catat kenangan sebelum memudar…</string>
+    <string name="home_empty_today">Belum ada entri. Mulai hari Anda.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Menyimpan</string>
+    <string name="home_cd_add_entry">Tambah Entri</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Hapus %1$d</string>
+    <string name="home_future_date_title">Entri Tanggal Mendatang</string>
+    <string name="home_future_date_message_format">Anda menambahkan entri untuk tanggal mendatang (%1$s). Apakah Anda ingin melanjutkan?</string>
+    <string name="home_cache_issue_title">Masalah Cache Data Terdeteksi</string>
+    <string name="home_cache_issue_message">Tampaknya sejumlah besar entri jurnal hilang dari cache. Apakah Anda ingin menyegarkan cache data lengkap untuk mencoba memulihkannya?</string>
+    <string name="home_refresh_button">Segarkan</string>
+    <string name="home_ignore_button">Abaikan</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Orang &amp; Tempat</string>
+    <string name="nav_statistics">Statistik</string>
+    <string name="nav_todos">Tugas</string>
+    <string name="nav_rebuild_index">Bangun Ulang Indeks Database</string>
+    <string name="nav_backup_data">Cadangkan Data</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Menyelesaikan pembangunan ulang indeks…</string>
+    <string name="nav_rebuilding_index">Meningkatkan database indeks</string>
+    <string name="nav_refreshing_index">Menyegarkan indeks</string>
+    <string name="nav_backup_too_old">cadangan terlalu lama…</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Bekerja…</string>
+    <string name="nav_eta_almost_done">hampir selesai</string>
+    <string name="nav_eta_seconds_left_format">~sisa %1$dd</string>
+    <string name="nav_eta_minutes_left_format">~sisa %1$dm</string>
+    <string name="nav_eta_hours_left_format">~sisa %1$dj</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">Logo RJ</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Situs Web</string>
+    <string name="nav_cd_share_app">Bagikan Aplikasi</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Logo Yaja</string>
+    <string name="nav_easter_quote_part1">"Tuliskan pikiran yang lewat atau apa yang Anda makan siang; tidak harus mendalam.\n</string>
+    <string name="nav_easter_quote_part2">Kata-kata Anda bisa ada begitu saja.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">dari laboratorium RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Bagikan yaja</string>
+    <string name="nav_share_text_body">yaja — yet another journaling app\n\nJurnal harian bebas gangguan yang menyimpan entri sebagai file markdown biasa.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Ubah Lokasi Penyimpanan</string>
+    <string name="settings_change_storage_location_message">Semua entri yang ada akan dipindahkan dari %1$s ke %2$s. Apakah Anda ingin melanjutkan?</string>
+    <string name="settings_yes">Ya</string>
+    <string name="settings_no">No</string>
+    <string name="settings_restore_summary_title">Ringkasan Pemulihan</string>
+    <string name="settings_restore_section_journal">Jurnal</string>
+    <string name="settings_restore_section_shortcodes">Pintasan</string>
+    <string name="settings_restore_section_date_keywords">Kata Kunci Tanggal</string>
+    <string name="settings_restore_section_people_places">Orang &amp; Tempat</string>
+    <string name="settings_restore_journal_summary">Ditambahkan ke hari baru: %1$d\nDigabungkan ke hari yang ada: %2$d\nEntri jurnal duplikat dilewati: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Ditambahkan: %1$d\nDuplikat dilewati: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Ditambahkan: %1$d\nDuplikat dilewati: %2$d</string>
+    <string name="settings_restore_people_places_summary">Ditambahkan: %1$d\nDuplikat dilewati: %2$d</string>
+    <string name="rebuild_tools_title">Alat Bangun Ulang</string>
+    <string name="rebuild_tools_back">Kembali</string>
+    <string name="rebuild_tools_intro">Gunakan pembangunan ulang terfokus terlebih dahulu. Membangun ulang database hanya untuk perubahan penyimpanan, kerusakan database, atau ketidakcocokan indeks.</string>
+    <string name="rebuild_todo_index_title">Bangun Ulang Indeks Tugas</string>
+    <string name="rebuild_todo_index_subtitle">Segarkan tugas dari file jurnal dan perbarui layar/widget Tugas. Paling baik saat tugas tampak usang.</string>
+    <string name="rebuild_todo_index_button">Bangun Ulang Tugas</string>
+    <string name="rebuild_people_places_title">Bangun Ulang Orang &amp; Tempat</string>
+    <string name="rebuild_people_places_subtitle">Segarkan alias kata kunci, sebutan bersama, tren, dan data hubungan.</string>
+    <string name="rebuild_people_places_button">Bangun Ulang Orang &amp; Tempat</string>
+    <string name="rebuild_database_title">Bangun Ulang Database Penuh</string>
+    <string name="rebuild_database_subtitle">Kompilasi ulang cache database dari file markdown. Mengindeks ulang entri, jumlah, tugas, Orang &amp; Tempat, dan widget dari awal.</string>
+    <string name="rebuild_database_button">Bangun Ulang Database</string>
+    <string name="rebuild_database_confirm_title">Bangun ulang indeks database</string>
+    <string name="rebuild_database_confirm_message">Ini akan menghapus dan mengindeks ulang seluruh database Room SQLite dari file Markdown Anda. Untuk jurnal besar, ini mungkin memerlukan waktu beberapa menit.</string>
+    <string name="rebuild_database_confirm_start">Mulai Bangun Ulang</string>
+    <string name="rebuild_database_status_title">Status Indeks Database</string>
+    <string name="rebuild_database_storage_engine">Mesin Penyimpanan</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite Database</string>
+    <string name="rebuild_database_indexed_days">Hari Terindeks</string>
+    <string name="rebuild_database_indexed_days_value">%1$d hari terindeks</string>
+    <string name="rebuild_database_file_size">Ukuran File Database</string>
+    <string name="rebuild_database_last_sync">Sinkronisasi Indeks Terakhir</string>
+    <string name="rebuild_database_age_never">Tidak Pernah</string>
+    <string name="rebuild_database_age_just_now">Baru saja</string>
+    <string name="rebuild_database_age_one_minute">1 menit yang lalu</string>
+    <string name="rebuild_database_age_minutes">%1$d menit yang lalu</string>
+    <string name="rebuild_database_age_one_hour">1 jam yang lalu</string>
+    <string name="rebuild_database_age_hours">%1$d jam yang lalu</string>
+    <string name="shortcodes_title">Pintasan</string>
+    <string name="shortcodes_import_cd">Impor</string>
+    <string name="shortcodes_export_cd">Ekspor</string>
+    <string name="shortcodes_help_cd">Bantuan</string>
+    <string name="shortcodes_new">Pintasan Baru</string>
+    <string name="shortcodes_empty_title">Tidak ada pintasan khusus</string>
+    <string name="shortcodes_empty_subtitle">Tambahkan satu untuk memperluas cuplikan seperti @yday menjadi teks dinamis.</string>
+    <string name="shortcodes_dynamic_dates_hint">Gunakan {{today:format}} untuk tanggal dinamis.</string>
+    <string name="shortcodes_help_title">Bantuan Pintasan</string>
+    <string name="shortcodes_help_built_in">Pintasan Bawaan:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (kotak centang), @x (ubah status kotak centang)</string>
+    <string name="shortcodes_help_dynamic_patterns">Pola Dinamis:</string>
+    <string name="shortcodes_help_dynamic_desc">Gunakan {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, atau {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Contoh: @yday -> Kemarin: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Format umum: dd-MM-yy, HH:mm, EEEE (nama hari).</string>
+    <string name="action_close">Tutup</string>
+    <string name="keyword_detail_title_fallback">Kata Kunci</string>
+    <string name="keyword_detail_not_found">Kata kunci tidak ditemukan</string>
+    <string name="keyword_detail_last_indexed">Indeks terakhir %1$s</string>
+    <string name="keyword_detail_mentions_section">Sebutan</string>
+    <string name="pin_biometric_prompt_title">Buka Kunci dengan Biometrik</string>
+    <string name="pin_biometric_prompt_subtitle">Gunakan sidik jari atau wajah untuk membuka kunci</string>
+    <string name="pin_error_no_biometric_enrolled">Tidak ada biometrik terdaftar. Harap daftarkan sidik jari atau wajah dalam pengaturan perangkat.</string>
+    <string name="pin_error_hardware_unavailable">Perangkat keras biometrik tidak tersedia.</string>
+    <string name="pin_error_no_hardware">Perangkat ini tidak memiliki perangkat keras biometrik.</string>
+    <string name="pin_error_not_available">Autentikasi biometrik tidak tersedia.</string>
+    <string name="pin_title_confirm">Konfirmasi PIN</string>
+    <string name="pin_title_set_new">Atur PIN Baru</string>
+    <string name="pin_title_disable">Masukkan PIN Saat Ini untuk Menonaktifkan</string>
+    <string name="pin_title_enter">Masukkan PIN</string>
+    <string name="pin_error_incorrect">PIN salah. Coba lagi.</string>
+    <string name="pin_error_mismatch">PIN tidak cocok. Mulai dari awal.</string>
+    <string name="pin_cd_use_biometric">Gunakan biometrik</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Hari ini diberi label, tetapi belum ada entri jurnal.</string>
+    <string name="timeline_preview_loading">Memuat pratinjau…</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d entri lagi pada hari ini</item>
+        <item quantity="other">+ %1$d entri lagi pada hari ini</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Buka Hari Ini</string>
+    <string name="timeline_chip_today">HARI INI</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d entri</item>
+        <item quantity="other">%1$d entri</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Tindak lanjut</string>
+    <string name="timeline_chip_label_only">Hanya label</string>
+    <string name="timeline_cd_favorite">Favorit</string>
+    <string name="version_history_title">Riwayat Versi</string>
+    <string name="version_history_day_versions_title">Versi Hari</string>
+    <string name="version_history_keep_copies_title">Simpan salinan keamanan</string>
+    <string name="version_history_keep_copies_subtitle">Sebelum Yaja mengubah file hari, ia menyimpan file saat ini ke dalam data aplikasi di bawah File Riwayat.</string>
+    <string name="version_history_versions_kept_title">Versi yang disimpan per hari</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja menyimpan versi %1$d terbaru untuk setiap tanggal.</item>
+        <item quantity="other">Yaja menyimpan %1$d versi terbaru untuk setiap tanggal.</item>
+    </plurals>
+    <string name="version_history_retention_title">Retensi</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Snapshot yang lebih lama dari %1$d hari akan dibersihkan secara otomatis.</item>
+        <item quantity="other">Snapshot yang lebih lama dari %1$d hari akan dibersihkan secara otomatis.</item>
+    </plurals>
+    <string name="version_history_notes">Catatan: riwayat versi melindungi file markdown hari sebelum penambahan, pengeditan, penghapusan, penyusunan ulang, label, bintang, dan perubahan kunjungan kembali. Ini bukan cadangan cloud; tetap gunakan Cadangkan untuk salinan portabel.</string>
+    <string name="version_history_snapshots_for">Snapshot untuk %1$s</string>
+    <string name="version_history_snapshots_subtitle">Buka versi yang disimpan, periksa, dan pulihkan untuk hari ini.</string>
+    <string name="version_history_empty">Belum ada versi yang disimpan untuk tanggal ini.</string>
+    <string name="action_view">Lihat</string>
+    <string name="version_history_date_intro">Buka versi tersimpan sebelumnya untuk hari ini, periksa, dan pulihkan saat dibutuhkan.</string>
+    <string name="action_next">Berikutnya</string>
+    <string name="action_apply">Terapkan</string>
+    <string name="action_restore">Pulihkan</string>
+    <string name="statistics_choose_title">Pilih Statistik</string>
+    <string name="statistics_choose_subtitle">Sembunyikan bagian yang tidak Anda inginkan. Minimal satu bagian harus tetap terlihat.</string>
+    <string name="statistics_visible_count">%1$d dari %2$d terlihat</string>
+    <string name="statistics_show_all">Tampilkan Semua</string>
+    <string name="statistics_one_section_visible">Satu bagian harus tetap terlihat</string>
+    <string name="statistics_shown">Ditampilkan di statistik</string>
+    <string name="statistics_hidden">Hidden dari statistik</string>
+    <string name="statistics_select_start_date">Pilih Tanggal Mulai</string>
+    <string name="statistics_select_end_date">Pilih Tanggal Selesai</string>
+    <string name="statistics_filter_by_period">Filter berdasarkan Periode</string>
+    <string name="statistics_cd_reorder">Tekan lama untuk menyusun ulang</string>
+    <string name="statistics_total_entries">Total Entri</string>
+    <string name="statistics_total_words">Total Kata</string>
+    <string name="statistics_avg_words_per_entry">Rata-rata Kata/Entri</string>
+    <string name="statistics_current_streak">Streak Saat Ini</string>
+    <string name="statistics_pages_written">Halaman Tertulis</string>
+    <string name="statistics_days_highlighted">Hari Disorot</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d hari</item>
+        <item quantity="other">%1$d hari</item>
+    </plurals>
+    <string name="statistics_period_all_time">Statistik Sepanjang Waktu</string>
+    <string name="statistics_period_current_year">Statistik Tahun Ini</string>
+    <string name="statistics_period_previous_year">Statistik Tahun Sebelumnya</string>
+    <string name="statistics_period_current_month">Statistik Bulan Ini</string>
+    <string name="statistics_period_previous_month">Statistik Bulan Sebelumnya</string>
+    <string name="statistics_period_custom">Statistik Periode Kustom</string>
+    <string name="statistics_period_chip_all_time">Sepanjang Waktu</string>
+    <string name="statistics_period_chip_current_year">Tahun Ini</string>
+    <string name="statistics_period_chip_previous_year">Tahun Lalu</string>
+    <string name="statistics_period_chip_current_month">Bulan Ini</string>
+    <string name="statistics_period_chip_previous_month">Bulan Lalu</string>
+    <string name="statistics_period_chip_custom">Kustom</string>
+    <string name="statistics_sections_visible">%1$d dari %2$d bagian terlihat</string>
+    <string name="statistics_loading_stages">Memuat statistik secara bertahap…</string>
+    <string name="review_period_weekly">Ulasan Mingguan</string>
+    <string name="review_period_monthly">Ulasan Bulanan</string>
+    <string name="review_anchor_week">Minggu yang berisi %1$s</string>
+    <string name="review_anchor_month">Bulan yang berisi %1$s</string>
+    <string name="review_chip_entries">Entri %1$d</string>
+    <string name="review_chip_words">Kata %1$d</string>
+    <string name="review_chip_days">Hari %1$d</string>
+    <string name="review_hint_jump">Ketuk chip tanggal di bawah untuk melompat kembali ke jurnal.</string>
+    <string name="review_chip_streak">Streak %1$d</string>
+    <string name="review_chip_gap">Kesenjangan %1$d</string>
+    <string name="review_chip_labels">Label %1$d</string>
+    <string name="review_chip_favorites">Favorit %1$d</string>
+    <string name="review_empty_period">Belum ada entri jurnal dalam periode ini. Label dan sorotan tetap muncul di bawah jika ada.</string>
+    <string name="review_writing_rhythm">Ritme Menulis</string>
+    <string name="review_best_streak">Streak terbaik</string>
+    <string name="review_longest_gap">Kesenjangan terlama</string>
+    <string name="review_most_active_days">Hari Paling Aktif</string>
+    <string name="review_day_entries_words">%1$d entri | %2$d kata</string>
+    <string name="review_top_people">Orang Teratas</string>
+    <string name="review_top_places">Tempat Teratas</string>
+    <string name="review_no_people_mentions">Tidak ada sebutan orang</string>
+    <string name="review_no_place_mentions">Tidak ada sebutan tempat</string>
+    <string name="review_favorite_moments">Momen Favorit</string>
+    <string name="review_starred_day">Hari berbintang</string>
+    <string name="review_highlighted_in_period">Disorot dalam periode ini</string>
+    <string name="review_labels_created">Label Dibuat</string>
+    <string name="review_labeled_day">Hari berlabel</string>
+    <string name="review_language_split">Pembagian Bahasa</string>
+    <string name="review_not_enough_text">Teks tidak cukup dalam periode ini</string>
+    <string name="lookback_reviews_title">Ulasan</string>
+    <string name="lookback_reviews_intro">Buat refleksi cepat di sekitar hari jurnal pilihan Anda.</string>
+    <string name="lookback_seven_days">7 hari</string>
+    <string name="lookback_one_month">1 bulan</string>
+    <string name="lookback_weekly_review">Ulasan Mingguan</string>
+    <string name="lookback_weekly_review_subtitle">Minggu ini dalam sekilas</string>
+    <string name="lookback_monthly_review">Ulasan Bulanan</string>
+    <string name="lookback_monthly_review_subtitle">Bulan ini dirangkum</string>
+    <string name="lookback_flashbacks_title">Pada hari ini di tahun-tahun lalu</string>
+    <string name="lookback_highlights_title">Sorotan Anda</string>
+    <string name="lookback_empty_title">Belum ada kilas balik atau sorotan.</string>
+    <string name="lookback_empty_subtitle">Favoritkan hari-hari penting untuk melihatnya di sini!</string>
+    <string name="lookback_cd_random_entry">Buka entri acak</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Periode</string>
+    <string name="statistics_compare_mode_title">Mode Perbandingan</string>
+    <string name="statistics_compare_mode_subtitle">Delta bulan, tahun, dan kata kunci</string>
+    <string name="statistics_this_year">Tahun Ini</string>
+    <string name="statistics_writing_days_delta">Delta Hari Menulis</string>
+    <string name="statistics_top_person_delta">Delta Orang Teratas</string>
+    <string name="statistics_no_people_mentions">Belum ada sebutan orang</string>
+    <string name="statistics_top_place_delta">Delta Tempat Teratas</string>
+    <string name="statistics_no_place_mentions">Belum ada sebutan tempat</string>
+    <string name="statistics_structured_writing">Penulisan Terstruktur</string>
+    <string name="statistics_template_led_format">Berbasis templat %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Kosong %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Templat Paling Sering Digunakan</string>
+    <string name="statistics_template_mix">Campuran Templat</string>
+    <string name="statistics_follow_up_leaders">Pemimpin Tindak Lanjut</string>
+    <string name="statistics_compare_details">Bandingkan Detail</string>
+    <string name="statistics_label_month">Bulan</string>
+    <string name="statistics_label_year">Tahun</string>
+    <string name="statistics_this_month_count_format">Bulan ini %1$d</string>
+    <string name="statistics_last_month_count_format">Bulan lalu %1$d</string>
+    <string name="statistics_longest_streak">Streak Terlama</string>
+    <string name="statistics_most_active_day">Hari Paling Aktif</string>
+    <string name="statistics_writing_consistency">Konsistensi Menulis</string>
+    <string name="statistics_days_with_entries">Hari dengan Entri</string>
+    <string name="statistics_best_month">Bulan Terbaik</string>
+    <string name="statistics_best_month_format">%1$s · %2$d entri</string>
+    <string name="statistics_avg_writing_days_week">Rata-rata Hari Menulis / Minggu</string>
+    <string name="statistics_days_decimal_format">%1$.1f hari</string>
+    <string name="statistics_based_on_total_words">Berdasarkan total kata yang ditulis per hari</string>
+    <string name="statistics_light_words">Ringan (&lt; 50 kata)</string>
+    <string name="statistics_moderate_words">Sedang (50-200 kata)</string>
+    <string name="statistics_heavy_words">Berat (200-500 kata)</string>
+    <string name="statistics_intense_words">Intens (500+ kata)</string>
+    <string name="statistics_not_enough_text_languages">Teks tidak cukup untuk mendeteksi bahasa</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d bahasa terdeteksi</item>
+        <item quantity="other">%1$d bahasa terdeteksi</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Deteksi bahasa masih menyesuaikan.</string>
+    <string name="statistics_latin_scripts_as_english">Skrip Latin ditampilkan sebagai bahasa Inggris</string>
+    <string name="statistics_use_more_accurate_detection">Gunakan deteksi yang lebih akurat</string>
+    <string name="statistics_write_more_entries_languages">Tulis lebih banyak entri untuk melihat statistik bahasa.</string>
+    <string name="statistics_based_on_entry_time">Berdasarkan waktu entri</string>
+    <string name="statistics_morning_time">Pagi (5 pagi-siang)</string>
+    <string name="statistics_afternoon_time">Siang (siang-5 sore)</string>
+    <string name="statistics_evening_time">Sore (5 sore-9 malam)</string>
+    <string name="statistics_night_time">Malam (9 malam-5 pagi)</string>
+    <string name="statistics_heatmap_filling">Peta panas masih diisi.</string>
+    <string name="statistics_heatmap_less">Sedikit</string>
+    <string name="statistics_heatmap_more">Banyak</string>
+    <string name="action_open">Buka</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Acara Jurnal Yaja</string>
+    <string name="tasker_event_desc">Pilih acara jurnal Yaja mana yang harus memicu profil Tasker ini.</string>
+    <string name="tasker_event_saved">Entri Disimpan</string>
+    <string name="tasker_event_edited">Entri Diedit</string>
+    <string name="tasker_event_deleted">Entri Dihapus</string>
+    <string name="tasker_event_default_hint">Jika tidak ada yang dipilih, Yaja akan default ke Entri Disimpan.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Tangkapan Cepat Yaja</string>
+    <string name="tasker_action_desc">Konfigurasikan apa yang harus ditangkap dengan cepat oleh Tasker di Yaja.</string>
+    <string name="tasker_action_add_entry">Tambah Entri</string>
+    <string name="tasker_action_add_event">Tambah Acara</string>
+    <string name="tasker_action_add_todo">Tambah Tugas</string>
+    <string name="tasker_action_append">Lampirkan</string>
+    <string name="tasker_action_match_header_label">Cocokkan / header</string>
+    <string name="tasker_action_match_header_placeholder">Panggilan Tak Terjawab</string>
+    <string name="tasker_action_line_to_append_label">Baris untuk dilampirkan</string>
+    <string name="tasker_action_text_label">Teks</string>
+    <string name="tasker_action_placeholder_event">Catatan acara dari Tasker</string>
+    <string name="tasker_action_placeholder_todo">Beli susu</string>
+    <string name="tasker_action_placeholder_append">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Catatan cepat dari Tasker</string>
+    <string name="tasker_action_tip_append">Panggilan pertama membuat entri yang dimulai dengan teks pencocokan. Panggilan selanjutnya melampirkan baris di bawahnya.</string>
+    <string name="tasker_action_tip_default">Tip: Variabel Tasker dapat ditempatkan di bidang teks.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Log Kerusakan Sesi Sebelumnya</string>
+    <string name="crash_log_clear_close">Bersihkan &amp; Tutup</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Jalankan Aplikasi</string>
+    <string name="tap_action_quick_capture">Tangkapan Cepat</string>
+    <string name="tap_action_do_nothing">Tidak Melakukan Apa-apa</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Peta Panas Menulis Yaja</string>
+    <string name="widget_cell_shape">Bentuk Sel</string>
+    <string name="widget_corner_radius">Radius Sudut: %1$ddp</string>
+    <string name="widget_square">Kotak</string>
+    <string name="widget_round">Bulat</string>
+    <string name="widget_inner_margin">Margin Dalam: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Jarak antara peta panas dan tepi widget</string>
+    <string name="widget_none">Tidak ada</string>
+    <string name="widget_max">Maks</string>
+    <string name="widget_on_tap">Saat Diketuk</string>
+    <string name="widget_on_tap_desc">Tindakan saat widget diketuk</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Tangkapan</string>
+    <string name="widget_qc_shape">Bentuk Widget</string>
+    <string name="widget_show_label">Tampilkan Label</string>
+    <string name="widget_show_label_desc">Tampilkan teks \'Tangkapan\' pada widget</string>
+    <string name="widget_show_icon">Tampilkan Ikon</string>
+    <string name="widget_show_icon_required">Ikon diperlukan saat label disembunyikan</string>
+    <string name="widget_show_icon_desc">Tampilkan ikon pena pada widget</string>
+    <string name="widget_label_text">Teks Label</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Widget Tugas</string>
+    <string name="widget_todo_desc">Widget daftar tugas bulat seperti peta panas.</string>
+    <string name="widget_todo_corner_radius">Radius sudut: %1$ddp</string>
+    <string name="widget_todo_padding">Padding: %1$ddp</string>
+    <string name="widget_todo_show_completed">Tampilkan tugas selesai</string>
+    <string name="widget_todo_show_completed_desc">Sertakan item yang dicentang dalam daftar widget</string>
+    <string name="widget_todo_include_events">Sertakan acara</string>
+    <string name="widget_todo_include_events_desc">Tampilkan entri acara bersama tugas di widget</string>
+    <string name="widget_todo_show_header">Tampilkan header Tugas</string>
+    <string name="widget_todo_show_header_desc">Tampilkan atau sembunyikan baris judul widget</string>
+    <string name="widget_todo_auto_hide">Sembunyikan otomatis widget saat semua tugas selesai</string>
+    <string name="widget_todo_auto_hide_unavailable">Tidak tersedia saat tugas selesai ditampilkan</string>
+    <string name="widget_todo_auto_hide_desc">Buat widget transparan saat tidak ada tugas yang tertunda</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">selesai</string>
+    <string name="todo_confirm_mark_not_done">belum selesai</string>
+    <string name="todo_confirm_title">Tandai tugas sebagai %1$s?</string>
+    <string name="todo_confirm_reopen">Tugas ini saat ini selesai. Konfirmasi sebelum membukanya kembali.</string>
+    <string name="todo_confirm_complete">Tugas ini masih aktif. Konfirmasi sebelum menandainya selesai.</string>
+    <string name="todo_confirm_accidental_tap">Ketukan yang tidak disengaja tidak akan mengubah tugas.</string>
+    <string name="todo_confirm_yes_mark">Ya, tandai %1$s</string>
+    <string name="todo_confirm_open_yaja">Buka di Yaja</string>
+    <string name="todo_confirm_keep_as_is">Biarkan apa adanya</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">dari laboratorium RJ</string>
+    <string name="help_made_in">Dibuat di 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Batal impor</string>
+    <string name="timeline_show_all_dates">Tampilkan semua tanggal</string>
+    <string name="timeline_show_all_dates_subtitle">Sertakan semua hari lampau, bahkan tanpa entri</string>
+    <string name="settings_background_tint_clean">Bersih</string>
+    <string name="settings_background_tint_soft">Lembut</string>
+    <string name="settings_background_tint_rich">Pekat</string>
+    <string name="settings_background_tint_deep">Mendalam</string>
+    <string name="settings_accent_style_complementary">Komplementer</string>
+    <string name="settings_accent_style_analogous">Analog</string>
+    <string name="settings_accent_style_triadic">Triadik</string>
+    <string name="settings_accent_style_soft">Lembut</string>
+</resources>
+
+

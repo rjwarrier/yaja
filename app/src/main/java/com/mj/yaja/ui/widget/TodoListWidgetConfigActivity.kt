@@ -25,7 +25,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.theme.JournalTheme
 import kotlin.math.roundToInt
 
@@ -116,21 +118,21 @@ private fun TodoListWidgetConfigDialog(
     AlertDialog(
         modifier = Modifier.systemBarsPadding(),
         onDismissRequest = onCancel,
-        title = { Text("Todo Widget") },
+        title = { Text(stringResource(R.string.widget_todo_title)) },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 Text(
-                    "Rounded, heatmap-like todo list widget.",
+                    stringResource(R.string.widget_todo_desc),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        "Corner radius: ${radius.roundToInt()}dp",
+                        stringResource(R.string.widget_todo_corner_radius, radius.roundToInt()),
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Slider(
@@ -143,7 +145,7 @@ private fun TodoListWidgetConfigDialog(
 
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        "Padding: ${padding.roundToInt()}dp",
+                        stringResource(R.string.widget_todo_padding, padding.roundToInt()),
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Slider(
@@ -155,8 +157,8 @@ private fun TodoListWidgetConfigDialog(
                 }
 
                 ToggleRow(
-                    title = "Show completed tasks",
-                    subtitle = "Include checked items in widget list",
+                    title = stringResource(R.string.widget_todo_show_completed),
+                    subtitle = stringResource(R.string.widget_todo_show_completed_desc),
                     checked = showCompleted,
                     onCheckedChange = {
                         showCompleted = it
@@ -165,26 +167,26 @@ private fun TodoListWidgetConfigDialog(
                 )
 
                 ToggleRow(
-                    title = "Include events",
-                    subtitle = "Show event entries alongside todos in the widget",
+                    title = stringResource(R.string.widget_todo_include_events),
+                    subtitle = stringResource(R.string.widget_todo_include_events_desc),
                     checked = includeEvents,
                     onCheckedChange = { includeEvents = it }
                 )
 
                 ToggleRow(
-                    title = "Show Todo header",
-                    subtitle = "Show or hide widget title row",
+                    title = stringResource(R.string.widget_todo_show_header),
+                    subtitle = stringResource(R.string.widget_todo_show_header_desc),
                     checked = showHeader,
                     onCheckedChange = { showHeader = it }
                 )
 
                 ToggleRow(
-                    title = "Auto hide widget when all todos completed",
+                    title = stringResource(R.string.widget_todo_auto_hide),
                     subtitle =
                         if (showCompleted) {
-                            "Unavailable while completed tasks are shown"
+                            stringResource(R.string.widget_todo_auto_hide_unavailable)
                         } else {
-                            "Make the widget transparent when there are no pending tasks"
+                            stringResource(R.string.widget_todo_auto_hide_desc)
                         },
                     checked = autoHideWhenEmpty,
                     enabled = !showCompleted,

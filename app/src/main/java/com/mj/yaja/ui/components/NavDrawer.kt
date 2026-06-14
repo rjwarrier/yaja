@@ -43,6 +43,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -92,6 +93,8 @@ fun AppNavigationDrawer(
         var showLogoEasterEgg by remember { mutableStateOf(false) }
         val context = LocalContext.current
         val uriHandler = LocalUriHandler.current
+        val shareTextBody = stringResource(R.string.nav_share_text_body)
+        val shareYajaTitle = stringResource(R.string.nav_share_yaja)
         var syncStartedAtMillis by remember { mutableStateOf<Long?>(null) }
         LaunchedEffect(syncProgress == null) {
                 if (syncProgress == null) {
@@ -149,19 +152,12 @@ fun AppNavigationDrawer(
                                                                                 uriHandler.openUri("https://ranjithj.in/yaja/")
                                                                         },
                                                                         onShareApp = {
-                                                                                val shareText = """
-                                                                                        yaja — yet another journaling app
-
-                                                                                        A distraction-free daily journal that stores entries as plain markdown files.
-
-                                                                                        https://play.google.com/store/apps/details?id=com.mj.yaja
-                                                                                """.trimIndent()
                                                                                 val intent = Intent(Intent.ACTION_SEND).apply {
                                                                                         type = "text/plain"
-                                                                                        putExtra(Intent.EXTRA_TEXT, shareText)
+                                                                                        putExtra(Intent.EXTRA_TEXT, shareTextBody)
                                                                                 }
                                                                                 context.startActivity(
-                                                                                        Intent.createChooser(intent, "Share yaja")
+                                                                                        Intent.createChooser(intent, shareYajaTitle)
                                                                                 )
                                                                         }
                                                                 )
@@ -273,19 +269,12 @@ fun AppNavigationDrawer(
                                                                 uriHandler.openUri("https://ranjithj.in/yaja/")
                                                         },
                                                         onShareApp = {
-                                                                val shareText = """
-                                                                        yaja — yet another journaling app
-
-                                                                        A distraction-free daily journal that stores entries as plain markdown files.
-
-                                                                        https://play.google.com/store/apps/details?id=com.mj.yaja
-                                                                """.trimIndent()
                                                                 val intent = Intent(Intent.ACTION_SEND).apply {
                                                                         type = "text/plain"
-                                                                        putExtra(Intent.EXTRA_TEXT, shareText)
+                                                                        putExtra(Intent.EXTRA_TEXT, shareTextBody)
                                                                 }
                                                                 context.startActivity(
-                                                                        Intent.createChooser(intent, "Share yaja")
+                                                                        Intent.createChooser(intent, shareYajaTitle)
                                                                 )
                                                         }
                                                 )

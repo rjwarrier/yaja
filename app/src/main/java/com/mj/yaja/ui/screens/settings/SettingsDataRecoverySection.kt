@@ -38,9 +38,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.enterOrNone
@@ -79,7 +81,7 @@ fun DataAndStorageSection(
 ) {
     SettingsSectionHeader(
         icon = Icons.Rounded.Storage,
-        title = "Data & Recovery"
+        title = stringResource(R.string.settings_data_recovery_title)
     )
 
     Spacer(modifier = Modifier.height(12.dp))
@@ -101,7 +103,7 @@ fun DataAndStorageSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Swipe down on home screen to rebuild index",
+                    text = stringResource(R.string.settings_swipe_rebuild_index),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -115,8 +117,8 @@ fun DataAndStorageSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Large Journal Safe Mode",
-            subtitle = "When a very large journal is detected, defer nonessential startup stats work so the app opens faster and more safely.",
+            title = stringResource(R.string.settings_large_journal_safe_mode_title),
+            subtitle = stringResource(R.string.settings_large_journal_safe_mode_subtitle),
             checked = largeJournalSafeMode,
             onCheckedChange = onLargeJournalSafeModeChange
         )
@@ -133,12 +135,12 @@ fun DataAndStorageSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Version History",
+                    text = stringResource(R.string.settings_version_history_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Keep safe copies before entry edits, deletes, labels, and revisit changes.",
+                    text = stringResource(R.string.settings_version_history_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -159,7 +161,7 @@ fun DataAndStorageSection(
     Spacer(modifier = Modifier.height(24.dp))
 
     Text(
-        text = "Storage Location",
+        text = stringResource(R.string.settings_storage_location_label),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
@@ -192,12 +194,12 @@ fun DataAndStorageSection(
                     TextButton(
                         onClick = onResetStorage,
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
-                    ) { Text("Reset to Default") }
+                    ) { Text(stringResource(R.string.settings_reset_to_default)) }
                 }
                 TextButton(
                     onClick = onChooseFolder,
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
-                ) { Text("Choose Folder") }
+                ) { Text(stringResource(R.string.settings_choose_folder)) }
             }
         }
     }
@@ -205,7 +207,7 @@ fun DataAndStorageSection(
     Spacer(modifier = Modifier.height(24.dp))
 
     Text(
-        text = "Backup",
+        text = stringResource(R.string.settings_backup),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
@@ -223,7 +225,7 @@ fun DataAndStorageSection(
     ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
             Text(
-                text = "Create one Yaja backup zip containing journal entries, shortcodes, date keywords, and People & Places data. Restore can merge it back safely later.",
+                text = stringResource(R.string.settings_backup_description),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 lineHeight = 20.sp
@@ -236,7 +238,7 @@ fun DataAndStorageSection(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
-                    text = "Last Backup: $formattedBackupDate",
+                    text = stringResource(R.string.settings_last_backup, formattedBackupDate),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.SemiBold
@@ -246,15 +248,15 @@ fun DataAndStorageSection(
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     Text(
-                        text = "Backup reminder age",
+                        text = stringResource(R.string.settings_backup_reminder_age_label),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
                         text = if (backupReminderDays == 0) {
-                            "Disabled"
+                            stringResource(R.string.settings_backup_reminder_disabled)
                         } else {
-                            "Highlight backup in sidebar when older than $backupReminderDays days."
+                            stringResource(R.string.settings_backup_reminder_desc, backupReminderDays)
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -271,9 +273,9 @@ fun DataAndStorageSection(
                     )
                     Text(
                         text = if (backupReminderDays == 0) {
-                            "0 days (disabled)"
+                            stringResource(R.string.settings_backup_reminder_days_disabled)
                         } else {
-                            "$backupReminderDays days"
+                            stringResource(R.string.settings_backup_reminder_days, backupReminderDays)
                         },
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.primary
@@ -286,11 +288,11 @@ fun DataAndStorageSection(
                     TextButton(
                         onClick = onRestoreBackup,
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
-                    ) { Text("Restore") }
+                    ) { Text(stringResource(R.string.settings_restore_button)) }
                     TextButton(
                         onClick = onBackupNow,
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
-                    ) { Text("Backup Now") }
+                    ) { Text(stringResource(R.string.settings_backup_now_button)) }
                 }
             }
         }
@@ -299,7 +301,7 @@ fun DataAndStorageSection(
     Spacer(modifier = Modifier.height(24.dp))
 
     Text(
-        text = "Database Index Management",
+        text = stringResource(R.string.settings_db_index_management_label),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
@@ -317,7 +319,7 @@ fun DataAndStorageSection(
     ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
             Text(
-                text = "Open focused rebuild tools for todos, People & Places, or a full database index rebuild.",
+                text = stringResource(R.string.settings_db_index_management_desc),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 lineHeight = 20.sp
@@ -340,7 +342,7 @@ fun DataAndStorageSection(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Rebuild Tools")
+                    Text(stringResource(R.string.settings_rebuild_tools_button))
                 }
             }
         }
@@ -355,7 +357,7 @@ fun DataAndStorageSection(
         modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
     ) {
         Text(
-            text = "Import",
+            text = stringResource(R.string.settings_import_label),
             style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.primary
         )
@@ -365,7 +367,7 @@ fun DataAndStorageSection(
         ) {
             Icon(
                 imageVector = Icons.Rounded.Info,
-                contentDescription = "Import information",
+                contentDescription = stringResource(R.string.settings_import_info_cd),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(18.dp)
             )
@@ -375,30 +377,30 @@ fun DataAndStorageSection(
     if (showImportInfo) {
         AlertDialog(
             onDismissRequest = { showImportInfo = false },
-            title = { Text("Import Information") },
+            title = { Text(stringResource(R.string.settings_import_info_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text("Day One Import", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+                    Text(stringResource(R.string.settings_import_day_one_title), style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
                     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                        Text("- Export from Day One without images", style = MaterialTheme.typography.bodySmall)
-                        Text("- Only text data will be imported", style = MaterialTheme.typography.bodySmall)
-                        Text("- Timestamp and location data (if available) will be preserved", style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(R.string.settings_import_day_one_bullet1), style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(R.string.settings_import_day_one_bullet2), style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(R.string.settings_import_day_one_bullet3), style = MaterialTheme.typography.bodySmall)
                     }
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "Performance Warning",
+                        stringResource(R.string.settings_import_perf_warning_title),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.error
                     )
                     Text(
-                        "Importing a large number of entries (500+) may take several minutes. You can navigate away and the import will continue in the background.",
+                        stringResource(R.string.settings_import_perf_warning_desc),
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
             },
             confirmButton = {
-                TextButton(onClick = { showImportInfo = false }) { Text("Got it") }
+                TextButton(onClick = { showImportInfo = false }) { Text(stringResource(R.string.settings_got_it)) }
             }
         )
     }
@@ -457,7 +459,7 @@ fun DataAndStorageSection(
                                 TextButton(
                                     onClick = onCancelImport,
                                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp, vertical = 8.dp)
-                                ) { Text("Cancel", style = MaterialTheme.typography.labelSmall) }
+                                ) { Text(stringResource(R.string.action_cancel), style = MaterialTheme.typography.labelSmall) }
                             }
                             is JournalViewModel.ImportState.Success -> {
                                 Icon(
@@ -467,7 +469,7 @@ fun DataAndStorageSection(
                                     tint = MaterialTheme.colorScheme.primary
                                 )
                                 Text(
-                                    "${s.newDays} new days, ${s.mergedDays} merged, ${s.skippedEntries} skipped",
+                                    stringResource(R.string.settings_import_success, s.newDays, s.mergedDays, s.skippedEntries),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.primary,
                                     modifier = Modifier.weight(1f)
@@ -475,7 +477,7 @@ fun DataAndStorageSection(
                                 TextButton(
                                     onClick = onResetImportState,
                                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp, vertical = 8.dp)
-                                ) { Text("Close", style = MaterialTheme.typography.labelSmall) }
+                                ) { Text(stringResource(R.string.action_close), style = MaterialTheme.typography.labelSmall) }
                             }
                             is JournalViewModel.ImportState.Error -> {
                                 Icon(
@@ -493,7 +495,7 @@ fun DataAndStorageSection(
                                 TextButton(
                                     onClick = onResetImportState,
                                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp, vertical = 8.dp)
-                                ) { Text("Close", style = MaterialTheme.typography.labelSmall) }
+                                ) { Text(stringResource(R.string.action_close), style = MaterialTheme.typography.labelSmall) }
                             }
                             else -> Unit
                         }
@@ -503,15 +505,15 @@ fun DataAndStorageSection(
             }
 
             ImportSourceRow(
-                title = "Day One",
-                subtitle = ".zip or .json export",
+                title = stringResource(R.string.settings_import_source_day_one),
+                subtitle = stringResource(R.string.settings_import_source_day_one_subtitle),
                 enabled = importState !is JournalViewModel.ImportState.Running,
                 onClick = onLaunchDayOneImport
             )
             HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
             ImportSourceRow(
-                title = "Journalistic",
-                subtitle = ".json export",
+                title = stringResource(R.string.settings_import_source_journalistic),
+                subtitle = stringResource(R.string.settings_import_source_journalistic_subtitle),
                 enabled = importState !is JournalViewModel.ImportState.Running,
                 onClick = onLaunchJournalisticImport
             )

@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.AppLogScreen
+import com.mj.yaja.ui.screens.AppearanceSettingsScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
@@ -76,6 +77,7 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         onNavigateToVersionHistory = {
                                 navController.navigate(Route.VersionHistory.path)
                         },
+                        onNavigateToAppearance = { navController.navigate(Route.Appearance.path) },
                         onNavigateToHelp = { navController.navigate(Route.Help.path) },
                         onNavigateToAppLog = { navController.navigate(Route.AppLog.path) },
                         onNavigateToShortcodes = { navController.navigate(Route.Shortcodes.path) },
@@ -89,6 +91,12 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                                 navController.navigate(Route.Calendar.path)
                         },
                         onNavigateToLookback = { navController.navigate(Route.Lookback.path) }
+                )
+        }
+        composable(Route.Appearance.path) {
+                AppearanceSettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() }
                 )
         }
         composable(Route.RebuildCache.path) {

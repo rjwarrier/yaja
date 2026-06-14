@@ -216,7 +216,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleExternalOpenIntent(intent: Intent?) {
-        val rawDate = intent?.getStringExtra(TodoListWidgetProvider.EXTRA_DATE) ?: return
+        if (intent == null) return
+        if (intent.action == ACTION_OPEN_TODAY) {
+            // Consume the action so configuration changes don't re-trigger navigation.
+            intent.action = Intent.ACTION_MAIN
+            viewModel.openExternalDateOrEntry(LocalDate.now())
+            return
+        }
+        val rawDate = intent.getStringExtra(TodoListWidgetProvider.EXTRA_DATE) ?: return
         val date = runCatching { LocalDate.parse(rawDate) }.getOrNull() ?: return
         val entryIndex = intent.getIntExtra(TodoListWidgetProvider.EXTRA_ENTRY_INDEX, -1)
         viewModel.openExternalDateOrEntry(date, entryIndex.takeIf { it >= 0 })
@@ -225,4 +232,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getAppActivityContext(): Context = applicationContext
+
+    companion object {
+        /** Launched by the "Today" app shortcut (res/xml/shortcuts.xml). */
+        const val ACTION_OPEN_TODAY = "com.mj.yaja.action.OPEN_TODAY"
+    }
 }

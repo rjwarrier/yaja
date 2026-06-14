@@ -47,8 +47,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.SwipeDirection
@@ -183,7 +185,7 @@ fun JournalEntryItem(
                                 if (fraction > 0.05f) {
                                         Icon(
                                                 imageVector = Icons.Rounded.Delete,
-                                                contentDescription = "Delete",
+                                                contentDescription = stringResource(R.string.action_delete),
                                                 tint = MaterialTheme.colorScheme.onErrorContainer,
                                                 modifier =
                                                         Modifier.graphicsLayer {
@@ -450,7 +452,7 @@ fun JournalEntryItem(
                                                                                         Alignment.CenterVertically
                                                                         ) {
                                                                                 Text(
-                                                                                        text = "Event",
+                                                                                        text = stringResource(R.string.addentry_event_chip),
                                                                                         style =
                                                                                                 MaterialTheme.typography.metaSmallTextStyle(),
                                                                                         color =

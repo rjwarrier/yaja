@@ -77,13 +77,14 @@ internal fun loadRevisitStateSnapshot(
     fileManager: MarkdownFileManager,
     selectedDate: LocalDate
 ): RevisitStateSnapshot {
-    val markers = fileManager.getAllRevisitMarkers()
+    // Single corpus scan for markers, target dates and due items together.
+    val overview = fileManager.getRevisitOverview(selectedDate)
     return RevisitStateSnapshot(
-        markers = markers,
-        targetDates = markers.mapTo(linkedSetOf()) { it.revisitOn },
+        markers = overview.markers,
+        targetDates = overview.targetDates,
         currentRevisitDate = fileManager.getRevisitDate(selectedDate),
         currentRevisitNote = fileManager.getRevisitNote(selectedDate),
-        dueRevisits = fileManager.getDueRevisitItems(selectedDate)
+        dueRevisits = overview.dueItems
     )
 }
 

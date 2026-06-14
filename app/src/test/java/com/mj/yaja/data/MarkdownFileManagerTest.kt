@@ -1,6 +1,8 @@
 package com.mj.yaja.data
 
+import java.time.LocalDate
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -98,5 +100,52 @@ class MarkdownFileManagerTest {
         // Blank line between entries doesn't split continuation — it's just ignored if
         // currentEntry is empty. Second and third entries start new bullets so they're separate.
         assertEquals(3, result.size)
+    }
+
+    // ── parseFrontmatter ─────────────────────────────────────────────────
+
+    @Test
+    fun `parseFrontmatter returns defaults when no frontmatter present`() {
+        val result = MarkdownFileManager.parseFrontmatter(listOf("# 2024-01-15", "- Entry"))
+        assertFalse(result.isStarred)
+        assertEquals("", result.label)
+    }
+
+    @Test
+    fun `parseFrontmatter reads starred true`() {
+        val lines = listOf("---", "starred: true", "---", "# 2024-01-15")
+        assertTrue(MarkdownFileManager.parseFrontmatter(lines).isStarred)
+    }
+
+    @Test
+    fun `parseFrontmatter does not star when label merely contains starred and true`() {
+        val lines = listOf("---", "label: \"starred true story\"", "---", "# 2024-01-15")
+        val result = MarkdownFileManager.parseFrontmatter(lines)
+        assertFalse(result.isStarred)
+        assertEquals("starred true story", result.label)
+    }
+
+    @Test
+    fun `parseFrontmatter reads starred false as not starred`() {
+        val lines = listOf("---", "starred: false", "---", "# 2024-01-15")
+        assertFalse(MarkdownFileManager.parseFrontmatter(lines).isStarred)
+    }
+
+    @Test
+    fun `parseFrontmatter reads label starred and revisit fields together`() {
+        val lines = listOf(
+            "---",
+            "starred: true",
+            "label: \"Big day\"",
+            "revisit_on: \"2024-02-01\"",
+            "revisit_note: \"check progress\"",
+            "---",
+            "# 2024-01-15"
+        )
+        val result = MarkdownFileManager.parseFrontmatter(lines)
+        assertTrue(result.isStarred)
+        assertEquals("Big day", result.label)
+        assertEquals(LocalDate.of(2024, 2, 1), result.revisitOn)
+        assertEquals("check progress", result.revisitNote)
     }
 }

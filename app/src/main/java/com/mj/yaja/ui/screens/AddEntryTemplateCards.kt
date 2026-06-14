@@ -37,8 +37,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryTemplate
 
 fun templateIcon(template: EntryTemplate): ImageVector =
@@ -122,13 +125,13 @@ fun TemplateCard(
                                                 if (template.isPopular) {
                                                         AssistChip(
                                                                 onClick = { onTemplateSelected(template) },
-                                                                label = { Text("Popular") }
+                                                                label = { Text(stringResource(R.string.addentry_popular_chip)) }
                                                         )
                                                 }
                                                 if (template.isNew) {
                                                         AssistChip(
                                                                 onClick = { onTemplateSelected(template) },
-                                                                label = { Text("New") }
+                                                                label = { Text(stringResource(R.string.addentry_new_chip)) }
                                                         )
                                                 }
                                         }
@@ -139,7 +142,7 @@ fun TemplateCard(
                                         )
                                         if (template.bestFor.isNotBlank()) {
                                                 Text(
-                                                        text = "Best for: ${template.bestFor}",
+                                                        text = stringResource(R.string.addentry_best_for_format, template.bestFor),
                                                         style = MaterialTheme.typography.labelMedium,
                                                         color =
                                                                 MaterialTheme.colorScheme
@@ -155,8 +158,8 @@ fun TemplateCard(
                                                         else Icons.Rounded.StarOutline,
                                                 contentDescription =
                                                         if (isFavorited)
-                                                                "Remove template favorite"
-                                                        else "Favorite template",
+                                                                stringResource(R.string.addentry_cd_remove_favorite)
+                                                        else stringResource(R.string.addentry_cd_favorite_template),
                                                 tint =
                                                         if (isFavorited)
                                                                 MaterialTheme.colorScheme.primary
@@ -185,18 +188,26 @@ fun TemplateCard(
                         ) {
                                 AssistChip(
                                         onClick = { onTemplateSelected(template) },
-                                        label = { Text("${templateSections(template).size} sections") }
+                                        label = {
+                                                Text(
+                                                        pluralStringResource(
+                                                                R.plurals.addentry_sections_count,
+                                                                templateSections(template).size,
+                                                                templateSections(template).size
+                                                        )
+                                                )
+                                        }
                                 )
                                 if (templateHasChecklist(template)) {
                                         AssistChip(
                                                 onClick = { onTemplateSelected(template) },
-                                                label = { Text("Checklist") }
+                                                label = { Text(stringResource(R.string.addentry_checklist_chip)) }
                                         )
                                 }
                                 if (templateHasFollowUp(template)) {
                                         AssistChip(
                                                 onClick = { onTemplateSelected(template) },
-                                                label = { Text("Follow-up") }
+                                                label = { Text(stringResource(R.string.addentry_followup_chip)) }
                                         )
                                 }
                         }
@@ -248,7 +259,7 @@ fun TemplatePreviewSheet(
                                         imageVector =
                                                 if (isFavorited) Icons.Rounded.Star
                                                 else Icons.Rounded.StarOutline,
-                                        contentDescription = "Toggle favorite template"
+                                        contentDescription = stringResource(R.string.addentry_cd_toggle_favorite)
                                 )
                         }
                 }
@@ -259,18 +270,26 @@ fun TemplatePreviewSheet(
                         AssistChip(onClick = {}, label = { Text(template.category) })
                         AssistChip(
                                 onClick = {},
-                                label = { Text("${templateSections(template).size} sections") }
+                                label = {
+                                        Text(
+                                                pluralStringResource(
+                                                        R.plurals.addentry_sections_count,
+                                                        templateSections(template).size,
+                                                        templateSections(template).size
+                                                )
+                                        )
+                                }
                         )
                         if (templateHasChecklist(template)) {
-                                AssistChip(onClick = {}, label = { Text("Checklist") })
+                                AssistChip(onClick = {}, label = { Text(stringResource(R.string.addentry_checklist_chip)) })
                         }
                         if (templateHasFollowUp(template)) {
-                                AssistChip(onClick = {}, label = { Text("Follow-up") })
+                                AssistChip(onClick = {}, label = { Text(stringResource(R.string.addentry_followup_chip)) })
                         }
                 }
                 if (template.bestFor.isNotBlank()) {
                         Text(
-                                text = "Best for: ${template.bestFor}",
+                                text = stringResource(R.string.addentry_best_for_format, template.bestFor),
                                 style = MaterialTheme.typography.labelLarge,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -284,7 +303,7 @@ fun TemplatePreviewSheet(
                                 verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                                 Text(
-                                        text = "Template preview",
+                                        text = stringResource(R.string.addentry_template_preview_label),
                                         style = MaterialTheme.typography.labelLarge,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -296,7 +315,7 @@ fun TemplatePreviewSheet(
                         }
                 }
                 Button(onClick = onUseTemplate, modifier = Modifier.fillMaxWidth()) {
-                        Text("Use Template")
+                        Text(stringResource(R.string.addentry_use_template_button))
                 }
         }
 }

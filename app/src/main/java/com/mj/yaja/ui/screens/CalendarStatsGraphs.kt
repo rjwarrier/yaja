@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ShowChart
@@ -51,6 +53,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -60,8 +63,10 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordDefinition
 import androidx.compose.ui.unit.sp
 import java.time.YearMonth
@@ -125,7 +130,23 @@ fun CalendarConsistencySection(
                 if (graphFrequency == CalendarGraphFrequency.YEAR) {
                         currentPoint.label
                 } else {
-                        "LAST 12 MONTHS"
+                        stringResource(R.string.calendar_consistency_last_12_months)
+                }
+        val consistencyTitle = stringResource(R.string.calendar_consistency_title_format, titleSuffix)
+        val comparisonText =
+                if (deltaPercent != null && previousPoint != null) {
+                        stringResource(
+                                R.string.calendar_consistency_delta_format,
+                                deltaPercent,
+                                previousPoint.label.takeLast(2)
+                        )
+                } else if (previousPoint != null) {
+                        stringResource(
+                                R.string.calendar_consistency_previous_period_format,
+                                previousPoint.label.takeLast(2)
+                        )
+                } else {
+                        stringResource(R.string.calendar_consistency_first_period)
                 }
 
         ElevatedCard(
@@ -150,7 +171,7 @@ fun CalendarConsistencySection(
                                         ) {
                                                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                                                         Text(
-                                                                text = "CONSISTENCY - $titleSuffix",
+                                                                text = consistencyTitle,
                                                                 style = MaterialTheme.typography.labelLarge,
                                                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                                                 fontWeight = FontWeight.SemiBold
@@ -166,14 +187,7 @@ fun CalendarConsistencySection(
                                                                         color = MaterialTheme.colorScheme.onSurface
                                                                 )
                                                                 Text(
-                                                                        text =
-                                                                                if (deltaPercent != null && previousPoint != null) {
-                                                                                        "${if (deltaPercent >= 0) "+" else ""}$deltaPercent% vs '${previousPoint.label.takeLast(2)}"
-                                                                                } else if (previousPoint != null) {
-                                                                                        "vs '${previousPoint.label.takeLast(2)}"
-                                                                                } else {
-                                                                                        "first period"
-                                                                                },
+                                                                        text = comparisonText,
                                                                         style = MaterialTheme.typography.titleSmall,
                                                                         color = MaterialTheme.colorScheme.primary,
                                                                         fontWeight = FontWeight.SemiBold,
@@ -197,7 +211,7 @@ fun CalendarConsistencySection(
                                         ) {
                                                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                                                         Text(
-                                                                text = "CONSISTENCY - $titleSuffix",
+                                                                text = consistencyTitle,
                                                                 style = MaterialTheme.typography.labelLarge,
                                                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                                                 fontWeight = FontWeight.SemiBold
@@ -213,14 +227,7 @@ fun CalendarConsistencySection(
                                                                         color = MaterialTheme.colorScheme.onSurface
                                                                 )
                                                                 Text(
-                                                                        text =
-                                                                                if (deltaPercent != null && previousPoint != null) {
-                                                                                        "${if (deltaPercent >= 0) "+" else ""}$deltaPercent% vs '${previousPoint.label.takeLast(2)}"
-                                                                                } else if (previousPoint != null) {
-                                                                                        "vs '${previousPoint.label.takeLast(2)}"
-                                                                                } else {
-                                                                                        "first period"
-                                                                                },
+                                                                        text = comparisonText,
                                                                         style = MaterialTheme.typography.titleSmall,
                                                                         color = MaterialTheme.colorScheme.primary,
                                                                         fontWeight = FontWeight.SemiBold,
@@ -254,43 +261,65 @@ private fun CalendarGraphSwitches(
         onGraphModeChange: (CalendarGraphMode) -> Unit,
         onGraphFrequencyChange: (CalendarGraphFrequency) -> Unit
 ) {
-        CalendarTogglePill(
-                selected = true,
-                icon =
-                        if (graphMode == CalendarGraphMode.BAR) {
-                                Icons.AutoMirrored.Rounded.ShowChart
-                        } else {
-                                Icons.Rounded.BarChart
-                        },
-                text = null,
-                onClick = {
-                        onGraphModeChange(
-                                if (graphMode == CalendarGraphMode.BAR) {
-                                        CalendarGraphMode.LINE
-                                } else {
-                                        CalendarGraphMode.BAR
+        Row(
+                modifier = Modifier
+                        .width(IntrinsicSize.Max)
+                        .height(IntrinsicSize.Max),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically
+        ) {
+                Box(
+                        modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight()
+                ) {
+                        CalendarTogglePill(
+                                selected = true,
+                                icon =
+                                        if (graphMode == CalendarGraphMode.BAR) {
+                                                Icons.AutoMirrored.Rounded.ShowChart
+                                        } else {
+                                                Icons.Rounded.BarChart
+                                        },
+                                text = null,
+                                modifier = Modifier.fillMaxSize(),
+                                onClick = {
+                                        onGraphModeChange(
+                                                if (graphMode == CalendarGraphMode.BAR) {
+                                                        CalendarGraphMode.LINE
+                                                } else {
+                                                        CalendarGraphMode.BAR
+                                                }
+                                        )
                                 }
                         )
                 }
-        )
-        CalendarTogglePill(
-                selected = true,
-                text =
-                        if (graphFrequency == CalendarGraphFrequency.YEAR) {
-                                "Month"
-                        } else {
-                                "Year"
-                        },
-                onClick = {
-                        onGraphFrequencyChange(
-                                if (graphFrequency == CalendarGraphFrequency.YEAR) {
-                                        CalendarGraphFrequency.MONTH
-                                } else {
-                                        CalendarGraphFrequency.YEAR
+                Box(
+                        modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight()
+                ) {
+                        CalendarTogglePill(
+                                selected = true,
+                                text =
+                                        if (graphFrequency == CalendarGraphFrequency.YEAR) {
+                                                stringResource(R.string.calendar_graph_frequency_month)
+                                        } else {
+                                                stringResource(R.string.calendar_graph_frequency_year)
+                                        },
+                                modifier = Modifier.fillMaxSize(),
+                                onClick = {
+                                        onGraphFrequencyChange(
+                                                if (graphFrequency == CalendarGraphFrequency.YEAR) {
+                                                        CalendarGraphFrequency.MONTH
+                                                } else {
+                                                        CalendarGraphFrequency.YEAR
+                                                }
+                                        )
                                 }
                         )
                 }
-        )
+        }
 }
 
 @Composable
@@ -298,6 +327,7 @@ private fun CalendarTogglePill(
         selected: Boolean,
         icon: ImageVector? = null,
         text: String? = null,
+        modifier: Modifier = Modifier,
         onClick: () -> Unit
 ) {
         val containerColor by animateColorAsState(
@@ -318,13 +348,11 @@ private fun CalendarTogglePill(
                 color = containerColor,
                 tonalElevation = 0.dp,
                 shadowElevation = 0.dp,
-                modifier = Modifier.width(54.dp).height(24.dp)
+                modifier = modifier.widthIn(min = 54.dp).heightIn(min = 24.dp)
         ) {
                 Row(
                         modifier = Modifier
-                                .fillMaxWidth()
-                                .fillMaxHeight()
-                                .padding(horizontal = 8.dp),
+                                .padding(horizontal = 8.dp, vertical = 2.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                 ) {
@@ -341,7 +369,9 @@ private fun CalendarTogglePill(
                                         text = text,
                                         color = contentColor,
                                         style = MaterialTheme.typography.labelMedium,
-                                        fontWeight = FontWeight.SemiBold
+                                        fontWeight = FontWeight.SemiBold,
+                                        maxLines = 1,
+                                        softWrap = false
                                 )
                         }
                 }
@@ -562,7 +592,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
         ) {
                 Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 18.dp)) {
                         Text(
-                                text = "Consistency (Yearly)",
+                                text = stringResource(R.string.calendar_yearly_consistency_title),
                                 style =
                                         MaterialTheme.typography.titleLarge.copy(
                                                 fontWeight = FontWeight.Bold
@@ -937,7 +967,7 @@ fun KeywordStatsSection(
                                         }
                                 }
                                 Text(
-                                        text = "Who shows up most",
+                                        text = stringResource(R.string.calendar_keywords_title),
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.Bold,
                                         color = MaterialTheme.colorScheme.onSurface
@@ -946,7 +976,7 @@ fun KeywordStatsSection(
 
                         if (isSettling) {
                                 Text(
-                                        text = "People & Places stats are still syncing with keyword indexing.",
+                                        text = stringResource(R.string.calendar_keywords_syncing),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.primary
                                 )
@@ -954,7 +984,7 @@ fun KeywordStatsSection(
 
                         if (!showPeople && !showPlaces) {
                                 Text(
-                                        text = "Add at least 3 people or 3 places to see top mentions.",
+                                        text = stringResource(R.string.calendar_keywords_empty),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -962,7 +992,7 @@ fun KeywordStatsSection(
 
                         if (showPeople) {
                                 KeywordRankGroup(
-                                        label = "People",
+                                        label = stringResource(R.string.calendar_keywords_people),
                                         icon = Icons.Rounded.Person,
                                         items = topPeople.take(3),
                                         accentColor = MaterialTheme.colorScheme.primary,
@@ -980,7 +1010,7 @@ fun KeywordStatsSection(
 
                         if (showPlaces) {
                                 KeywordRankGroup(
-                                        label = "Places",
+                                        label = stringResource(R.string.calendar_keywords_places),
                                         icon = Icons.Rounded.Place,
                                         items = topPlaces.take(3),
                                         accentColor = MaterialTheme.colorScheme.tertiary,

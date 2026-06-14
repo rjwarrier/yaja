@@ -29,8 +29,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordType
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -52,7 +55,7 @@ fun ReviewTodoSummaryCard(
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                         Text(
-                                text = "Todos Found",
+                                text = stringResource(R.string.addentry_todos_found_title),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )
@@ -77,7 +80,11 @@ fun ReviewTodoSummaryCard(
                         }
                         Button(onClick = onExtractTodos) {
                                 Text(
-                                        "Convert ${reviewTodos.size} line${if (reviewTodos.size == 1) "" else "s"} to checklist"
+                                        pluralStringResource(
+                                                R.plurals.addentry_convert_to_checklist,
+                                                reviewTodos.size,
+                                                reviewTodos.size
+                                        )
                                 )
                         }
                 }
@@ -96,13 +103,13 @@ fun ReviewMentionsCard(reviewMentions: List<ReviewMentionSuggestion>) {
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                         Text(
-                                text = "People & Places",
+                                text = stringResource(R.string.addentry_people_places_title),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )
                         if (reviewMentions.isEmpty()) {
                                 Text(
-                                        text = "No tracked people or places found in this entry.",
+                                        text = stringResource(R.string.addentry_no_tracked_mentions),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -169,7 +176,7 @@ fun ReviewDayMemoryCard(
                         verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
                         Text(
-                                text = "Day Memory",
+                                text = stringResource(R.string.addentry_day_memory_title),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )
@@ -180,12 +187,12 @@ fun ReviewDayMemoryCard(
                         ) {
                                 Column(modifier = Modifier.weight(1f)) {
                                         Text(
-                                                text = "Star this day",
+                                                text = stringResource(R.string.addentry_star_day_title),
                                                 style = MaterialTheme.typography.bodyLarge
                                         )
                                         Text(
                                                 text =
-                                                        "Save it as a highlight so it returns in lookback.",
+                                                        stringResource(R.string.addentry_star_day_subtitle),
                                                 style = MaterialTheme.typography.bodySmall,
                                                 color =
                                                         MaterialTheme.colorScheme.onSurfaceVariant
@@ -200,13 +207,13 @@ fun ReviewDayMemoryCard(
                         OutlinedTextField(
                                 value = dayLabel,
                                 onValueChange = onDayLabelChange,
-                                label = { Text("Day label") },
-                                placeholder = { Text("e.g. Reset Day") },
+                                label = { Text(stringResource(R.string.addentry_day_label_label)) },
+                                placeholder = { Text(stringResource(R.string.addentry_day_label_placeholder)) },
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                         )
                         Text(
-                                text = "Follow up on",
+                                text = stringResource(R.string.addentry_follow_up_title),
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.SemiBold
                         )
@@ -220,26 +227,26 @@ fun ReviewDayMemoryCard(
                                         onClick = {
                                                 onRevisitDateChange(selectedDate.plusDays(1))
                                         },
-                                        label = { Text("Tomorrow") }
+                                        label = { Text(stringResource(R.string.settings_meaning_tomorrow)) }
                                 )
                                 FilterChip(
                                         selected = revisitDate == selectedDate.plusWeeks(1),
                                         onClick = {
                                                 onRevisitDateChange(selectedDate.plusWeeks(1))
                                         },
-                                        label = { Text("Next week") }
+                                        label = { Text(stringResource(R.string.settings_meaning_next_week)) }
                                 )
                                 FilterChip(
                                         selected = revisitDate == selectedDate.plusMonths(1),
                                         onClick = {
                                                 onRevisitDateChange(selectedDate.plusMonths(1))
                                         },
-                                        label = { Text("Next month") }
+                                        label = { Text(stringResource(R.string.addentry_next_month)) }
                                 )
                                 FilterChip(
                                         selected = false,
                                         onClick = onShowCustomDatePicker,
-                                        label = { Text("Custom") }
+                                        label = { Text(stringResource(R.string.addentry_custom)) }
                                 )
                         }
                         revisitDate?.let { dueDate ->
@@ -247,13 +254,16 @@ fun ReviewDayMemoryCard(
                                         onClick = { onRevisitDateChange(null) },
                                         label = {
                                                 Text(
-                                                        "Due ${dueDate.format(reviewDateFormatter)}"
+                                                        stringResource(
+                                                                R.string.addentry_due_date_format,
+                                                                dueDate.format(reviewDateFormatter)
+                                                        )
                                                 )
                                         },
                                         trailingIcon = {
                                                 Icon(
                                                         Icons.Rounded.Close,
-                                                        contentDescription = "Clear follow-up"
+                                                        contentDescription = stringResource(R.string.addentry_cd_clear_follow_up)
                                                 )
                                         }
                                 )
@@ -261,8 +271,8 @@ fun ReviewDayMemoryCard(
                         OutlinedTextField(
                                 value = revisitNote,
                                 onValueChange = onRevisitNoteChange,
-                                label = { Text("Follow-up note") },
-                                placeholder = { Text("What should you revisit?") },
+                                label = { Text(stringResource(R.string.addentry_follow_up_note_label)) },
+                                placeholder = { Text(stringResource(R.string.addentry_follow_up_note_placeholder)) },
                                 modifier = Modifier.fillMaxWidth(),
                                 minLines = 2
                         )

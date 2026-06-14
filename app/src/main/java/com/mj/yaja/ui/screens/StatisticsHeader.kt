@@ -19,9 +19,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import java.time.LocalDate
@@ -52,7 +55,7 @@ internal fun StatisticsPeriodSummaryCard(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Text(
-                text = selectedPeriod.title(),
+                text = selectedPeriod.titleText(),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -80,7 +83,7 @@ internal fun StatisticsPeriodSummaryCard(
                         shape = MaterialTheme.shapes.large
                     ) {
                         Text(
-                            text = "$displayedSectionsCount of $totalSectionsCount sections visible",
+                            text = stringResource(R.string.statistics_sections_visible, displayedSectionsCount, totalSectionsCount),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
@@ -90,7 +93,7 @@ internal fun StatisticsPeriodSummaryCard(
             }
             if (statisticsSettling) {
                 Text(
-                    text = "Loading statistics in stages...",
+                    text = stringResource(R.string.statistics_loading_stages),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -124,14 +127,14 @@ internal fun StatisticsOverviewRows(
             ) {
                 StatisticOverviewCard(
                     icon = Icons.AutoMirrored.Rounded.Note,
-                    title = "Total Entries",
+                    title = stringResource(R.string.statistics_total_entries),
                     value = stats.totalEntries.toString(),
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.weight(1f)
                 )
                 StatisticOverviewCard(
                     icon = Icons.Rounded.Edit,
-                    title = "Total Words",
+                    title = stringResource(R.string.statistics_total_words),
                     value = stats.totalWords.toString(),
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.weight(1f)
@@ -150,15 +153,15 @@ internal fun StatisticsOverviewRows(
             ) {
                 StatisticOverviewCard(
                     icon = Icons.AutoMirrored.Rounded.TrendingUp,
-                    title = "Avg. Words/Entry",
+                    title = stringResource(R.string.statistics_avg_words_per_entry),
                     value = String.format("%.1f", stats.averageWordsPerEntry),
                     color = MaterialTheme.colorScheme.tertiary,
                     modifier = Modifier.weight(1f)
                 )
                 StatisticOverviewCard(
                     icon = Icons.Rounded.LocalFireDepartment,
-                    title = "Current Streak",
-                    value = "${stats.currentStreak} days",
+                    title = stringResource(R.string.statistics_current_streak),
+                    value = pluralStringResource(R.plurals.statistics_days_count, stats.currentStreak, stats.currentStreak),
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.weight(1f)
                 )
@@ -176,14 +179,14 @@ internal fun StatisticsOverviewRows(
             ) {
                 StatisticOverviewCard(
                     icon = Icons.AutoMirrored.Rounded.MenuBook,
-                    title = "Pages Written",
+                    title = stringResource(R.string.statistics_pages_written),
                     value = "~ ${(stats.totalWords / 250).coerceAtLeast(0)}",
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.weight(1f)
                 )
                 StatisticOverviewCard(
                     icon = Icons.Rounded.Star,
-                    title = "Days Highlighted",
+                    title = stringResource(R.string.statistics_days_highlighted),
                     value = highlightedDays.toString(),
                     color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.weight(1f)
@@ -193,12 +196,13 @@ internal fun StatisticsOverviewRows(
     }
 }
 
-private fun StatisticsPeriod.title(): String =
+@Composable
+private fun StatisticsPeriod.titleText(): String =
     when (this) {
-        StatisticsPeriod.ALL_TIME -> "All-Time Statistics"
-        StatisticsPeriod.CURRENT_YEAR -> "Current Year Statistics"
-        StatisticsPeriod.PREVIOUS_YEAR -> "Previous Year Statistics"
-        StatisticsPeriod.CURRENT_MONTH -> "Current Month Statistics"
-        StatisticsPeriod.PREVIOUS_MONTH -> "Previous Month Statistics"
-        StatisticsPeriod.CUSTOM -> "Custom Period Statistics"
+        StatisticsPeriod.ALL_TIME -> stringResource(R.string.statistics_period_all_time)
+        StatisticsPeriod.CURRENT_YEAR -> stringResource(R.string.statistics_period_current_year)
+        StatisticsPeriod.PREVIOUS_YEAR -> stringResource(R.string.statistics_period_previous_year)
+        StatisticsPeriod.CURRENT_MONTH -> stringResource(R.string.statistics_period_current_month)
+        StatisticsPeriod.PREVIOUS_MONTH -> stringResource(R.string.statistics_period_previous_month)
+        StatisticsPeriod.CUSTOM -> stringResource(R.string.statistics_period_custom)
     }

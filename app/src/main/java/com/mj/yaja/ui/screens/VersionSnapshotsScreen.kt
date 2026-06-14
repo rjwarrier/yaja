@@ -25,8 +25,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.format.DateTimeFormatter
 
@@ -49,12 +51,17 @@ fun VersionSnapshotsScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Day Versions", color = MaterialTheme.colorScheme.primary) },
+                title = {
+                    Text(
+                        stringResource(R.string.version_history_day_versions_title),
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.action_back)
                         )
                     }
                 },
@@ -80,7 +87,7 @@ fun VersionSnapshotsScreen(
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = "Open an earlier saved version for this day, inspect it, and restore it when needed.",
+                text = stringResource(R.string.version_history_date_intro),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

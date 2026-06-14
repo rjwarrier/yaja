@@ -41,6 +41,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -53,6 +55,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.data.AnimationPreference
 import java.time.LocalDate
@@ -68,9 +71,25 @@ import kotlin.math.sin
 fun CalendarWeekdayHeader(firstDayOfWeekPref: java.time.DayOfWeek) {
         val daysOfWeek =
                 if (firstDayOfWeekPref == java.time.DayOfWeek.SUNDAY) {
-                        listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+                        listOf(
+                                stringResource(R.string.calendar_weekday_sun_short),
+                                stringResource(R.string.calendar_weekday_mon_short),
+                                stringResource(R.string.calendar_weekday_tue_short),
+                                stringResource(R.string.calendar_weekday_wed_short),
+                                stringResource(R.string.calendar_weekday_thu_short),
+                                stringResource(R.string.calendar_weekday_fri_short),
+                                stringResource(R.string.calendar_weekday_sat_short)
+                        )
                 } else {
-                        listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+                        listOf(
+                                stringResource(R.string.calendar_weekday_mon_short),
+                                stringResource(R.string.calendar_weekday_tue_short),
+                                stringResource(R.string.calendar_weekday_wed_short),
+                                stringResource(R.string.calendar_weekday_thu_short),
+                                stringResource(R.string.calendar_weekday_fri_short),
+                                stringResource(R.string.calendar_weekday_sat_short),
+                                stringResource(R.string.calendar_weekday_sun_short)
+                        )
                 }
 
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -528,7 +547,7 @@ fun CalendarMonthCoverageSummary(
                                         }
                                 }
                                 Text(
-                                        text = "$pct%",
+                                        text = stringResource(R.string.calendar_percent_format, pct),
                                         style = MaterialTheme.typography.titleSmall,
                                         color = MaterialTheme.colorScheme.primary,
                                         fontWeight = FontWeight.Bold
@@ -540,13 +559,20 @@ fun CalendarMonthCoverageSummary(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                                 Text(
-                                        text = "ENTRIES THIS MONTH",
+                                        text = stringResource(R.string.calendar_entries_this_month),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
                                         fontWeight = FontWeight.SemiBold
                                 )
+                                val coverageText =
+                                        pluralStringResource(
+                                                R.plurals.calendar_entries_this_month_days,
+                                                denominator,
+                                                entriesInMonth,
+                                                denominator
+                                        )
                                 AnimatedContent(
-                                        targetState = "$entriesInMonth / $denominator days",
+                                        targetState = coverageText,
                                         transitionSpec = {
                                                 if (preference == AnimationPreference.OFF) {
                                                         EnterTransition.None.togetherWith(ExitTransition.None)
@@ -633,7 +659,7 @@ fun CalendarMemorySummary(memoryCount: Int) {
                                                 )
                                 ) {
                                         Text(
-                                                text = "days of memories",
+                                                text = stringResource(R.string.calendar_days_of_memories),
                                                 style = MaterialTheme.typography.labelSmall,
                                                 color =
                                                         MaterialTheme.colorScheme

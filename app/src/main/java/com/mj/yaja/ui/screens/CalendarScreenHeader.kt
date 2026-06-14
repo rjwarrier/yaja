@@ -39,8 +39,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import java.time.YearMonth
 import java.time.format.TextStyle
 import java.util.Locale
@@ -94,7 +96,7 @@ fun CalendarHeaderNavigator(
                         onClick = onPreviousClick,
                         shape = RoundedCornerShape(18.dp)
                 ) {
-                        Icon(Icons.Rounded.ChevronLeft, contentDescription = "Previous")
+                        Icon(Icons.Rounded.ChevronLeft, contentDescription = stringResource(R.string.cd_previous))
                 }
 
                 AnimatedContent(
@@ -168,7 +170,7 @@ fun CalendarHeaderNavigator(
                         onClick = onNextClick,
                         shape = RoundedCornerShape(18.dp)
                 ) {
-                        Icon(Icons.Rounded.ChevronRight, contentDescription = "Next")
+                        Icon(Icons.Rounded.ChevronRight, contentDescription = stringResource(R.string.cd_next))
                 }
         }
 }

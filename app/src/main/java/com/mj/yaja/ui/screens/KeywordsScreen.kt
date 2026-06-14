@@ -32,6 +32,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.Alignment
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mj.yaja.R
+import androidx.compose.ui.res.stringResource
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.KeywordType
 import com.mj.yaja.data.NavigationChromeMode
@@ -45,10 +47,10 @@ import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import kotlinx.coroutines.launch
 
-internal enum class KeywordListSortOption(val label: String) {
-    ALPHABETICAL("A-Z"),
-    MOST_MENTIONS("Most Mentioned"),
-    RECENTLY_ADDED("Recently Added")
+internal enum class KeywordListSortOption(val labelRes: Int) {
+    ALPHABETICAL(R.string.keywords_sort_alphabetical),
+    MOST_MENTIONS(R.string.keywords_sort_most_mentioned),
+    RECENTLY_ADDED(R.string.keywords_sort_recently_added)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -169,10 +171,10 @@ fun KeywordsScreen(
                                 writer.write(KeywordCsvCodec.encode(keywords))
                             }
                         }
-                        Toast.makeText(context, "Keywords exported", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.keywords_export_success), Toast.LENGTH_SHORT).show()
                     } catch (e: Exception) {
                         Log.e("KeywordsScreen", "Failed to export keywords", e)
-                        Toast.makeText(context, "Couldn't export keywords", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.keywords_export_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -188,10 +190,10 @@ fun KeywordsScreen(
                                 writer.write(KeywordCsvCodec.template())
                             }
                         }
-                        Toast.makeText(context, "Template saved", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.keywords_template_saved), Toast.LENGTH_SHORT).show()
                     } catch (e: Exception) {
                         Log.e("KeywordsScreen", "Failed to save keyword template", e)
-                        Toast.makeText(context, "Couldn't save template", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.keywords_template_save_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -218,15 +220,19 @@ fun KeywordsScreen(
                             viewModel.importKeywords(imported)
                             Toast.makeText(
                                 context,
-                                "Imported ${imported.size} keyword(s)",
+                                context.resources.getQuantityString(
+                                    R.plurals.keywords_imported_count,
+                                    imported.size,
+                                    imported.size
+                                ),
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            Toast.makeText(context, "No valid keywords found", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.keywords_import_none_valid), Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: Exception) {
                         Log.e("KeywordsScreen", "Failed to import keywords", e)
-                        Toast.makeText(context, "Couldn't import keywords", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.keywords_import_failed), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

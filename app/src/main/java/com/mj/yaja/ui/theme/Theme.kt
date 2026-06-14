@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.lerp
@@ -103,6 +104,8 @@ fun JournalTheme(
     amoledTheme: Boolean = false,
     fontScale: Float = 1.0f,
     appFontFamily: com.mj.yaja.data.AppFontFamily = com.mj.yaja.data.AppFontFamily.MONO,
+    monoFontWeight: Int = MONO_WEIGHT_DEFAULT,
+    customFontPath: String? = null,
     colorSource: ColorSource = ColorSource.MATERIAL_YOU,
     customPalette: CustomPalette = CustomPalette.YAJA,
     colorIntensity: ThemeColorIntensity = ThemeColorIntensity.NORMAL,
@@ -190,7 +193,11 @@ fun JournalTheme(
         MaterialTheme(
             colorScheme = colorScheme,
             shapes = Shapes,
-            typography = getTypography(appFontFamily),
+            typography = remember(appFontFamily, monoFontWeight, customFontPath) {
+                getTypography(
+                    resolveAppFontFamily(context, appFontFamily, monoFontWeight, customFontPath)
+                )
+            },
             content = content
         )
     }

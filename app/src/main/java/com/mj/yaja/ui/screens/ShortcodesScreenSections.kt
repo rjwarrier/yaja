@@ -37,9 +37,11 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.components.AnimatedMenuButton
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -57,7 +59,7 @@ internal fun ShortcodesTopBar(
     LargeTopAppBar(
         title = {
             Text(
-                "Shortcodes",
+                stringResource(R.string.shortcodes_title),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary
@@ -71,13 +73,13 @@ internal fun ShortcodesTopBar(
         },
         actions = {
             IconButton(onClick = onImport) {
-                Icon(Icons.Rounded.FileOpen, contentDescription = "Import")
+                Icon(Icons.Rounded.FileOpen, contentDescription = stringResource(R.string.shortcodes_import_cd))
             }
             IconButton(onClick = onExport) {
-                Icon(Icons.Rounded.SaveAlt, contentDescription = "Export")
+                Icon(Icons.Rounded.SaveAlt, contentDescription = stringResource(R.string.shortcodes_export_cd))
             }
             IconButton(onClick = onHelp) {
-                Icon(Icons.AutoMirrored.Rounded.Help, contentDescription = "Help")
+                Icon(Icons.AutoMirrored.Rounded.Help, contentDescription = stringResource(R.string.shortcodes_help_cd))
             }
         },
         scrollBehavior = scrollBehavior,
@@ -106,7 +108,7 @@ internal fun ShortcodesFab(
             onClick = onClick,
             interactionSource = fabInteraction,
             icon = { Icon(Icons.Rounded.Add, contentDescription = null) },
-            text = { Text("New Shortcode") },
+            text = { Text(stringResource(R.string.shortcodes_new)) },
             modifier = Modifier
                 .height(64.dp)
                 .expressiveFabMotion(fabInteraction),
@@ -147,13 +149,13 @@ internal fun ShortcodesScreenContent(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "No custom shortcodes",
+                    text = stringResource(R.string.shortcodes_empty_title),
                     style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Add one to expand snippets like @yday into dynamic text.",
+                    text = stringResource(R.string.shortcodes_empty_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center

@@ -1,0 +1,1246 @@
+<resources>
+    <string name="app_name">യജ</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">ദിനക്കുറിപ്പ്</string>
+    <string name="nav_calendar">കലണ്ടർ</string>
+    <string name="nav_lookback">തിരിഞ്ഞുനോട്ടം</string>
+    <string name="nav_settings">ക്രമീകരണങ്ങൾ</string>
+    <string name="nav_shortcodes">ലഘുസൂചകങ്ങൾ</string>
+    <string name="nav_help">സഹായം &amp; വിവരങ്ങൾ</string>
+
+    <!-- Common actions -->
+    <string name="action_save">സൂക്ഷിക്കുക</string>
+    <string name="action_cancel">റദ്ദാക്കുക</string>
+    <string name="action_delete">ഇല്ലാതാക്കുക</string>
+    <string name="action_edit">തിരുത്തുക</string>
+    <string name="action_back">തിരികെ</string>
+    <string name="action_undo">പഴയപടിയാക്കുക</string>
+    <string name="action_yes">അതെ</string>
+    <string name="action_no">ഇല്ല</string>
+    <string name="action_remove">മാറ്റുക</string>
+    <string name="action_done">പൂർത്തിയായി</string>
+    <string name="action_set">നിശ്ചയിക്കുക</string>
+    <string name="action_select">തിരഞ്ഞെടുക്കുക</string>
+    <string name="action_ok">ശരി</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">കാഷെ പുനർനിർമ്മിക്കുന്നു</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">ക്വിക്ക് ക്യാപ്ചർ</string>
+    <string name="quick_capture_hint">എന്ത് പറ്റി?</string>
+    <string name="quick_capture_helper_shortcodes">ലഘുസൂചകങ്ങൾ ഇവിടെ സ്വയമേവ വികസിക്കുന്നു, കൂടാതെ എന്റർ അമർത്തിയാൽ ചെയ്യേണ്ട കാര്യങ്ങളുടെ വരികൾ തുടരുന്നു.</string>
+    <string name="quick_capture_save_delayed">സൂക്ഷിക്കുന്നത് വൈകിപ്പിച്ചു. സ്ഥിരീകരിക്കുന്നതിന് യജ വീണ്ടും തുറക്കുക.</string>
+    <string name="cd_saved">സൂക്ഷിച്ചു</string>
+    <string name="quick_todo_dialog_title">പെട്ടെന്ന് ചേർക്കുക</string>
+    <string name="quick_todo_save_delayed">ചെയ്യേണ്ടവ സൂക്ഷിക്കുന്നത് വൈകിപ്പിച്ചു. സ്ഥിരീകരിക്കുന്നതിന് യജ വീണ്ടും തുറക്കുക.</string>
+    <string name="quick_todo_placeholder">ചെയ്യേണ്ടവ ചേർക്കുക</string>
+    <string name="quick_event_placeholder">പരിപാടി ചേർക്കുക</string>
+    <string name="quick_todo_task_date">ചെയ്യേണ്ട തീയതി</string>
+    <string name="quick_todo_event_date">പരിപാടി തീയതി</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s തിരഞ്ഞെടുക്കുക</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">തിരഞ്ഞെടുത്ത ദിവസത്തേക്ക് ഒരു ചെയ്യേണ്ടവയുടെ കുറിപ്പായി സൂക്ഷിക്കുന്നു.</string>
+    <string name="quick_event_selected_day_hint">തിരഞ്ഞെടുത്ത ദിവസത്തേക്ക് ഒരു പരിപാടി കുറിപ്പായി സൂക്ഷിക്കുന്നു.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">മുൻപത്തെ</string>
+    <string name="cd_next">അടുത്തത്</string>
+    <string name="cd_surprise_me">എന്നെ അത്ഭുതപ്പെടുത്തൂ</string>
+    <string name="calendar_cd_go_to_current_month">ഈ മാസത്തിലേക്ക് പോവുക</string>
+    <string name="calendar_quick_action_timeline_title">സമയരേഖ</string>
+    <string name="calendar_quick_action_timeline_subtitle">ക്രമത്തിൽ നോക്കുക</string>
+    <string name="calendar_quick_action_jump_title">തീയതിയിലേക്ക് പോവുക</string>
+    <string name="calendar_quick_action_jump_subtitle">ഒരു പ്രത്യേക ദിവസം തുറക്കുക</string>
+    <string name="calendar_jump_placeholder">തീയതി-മാസം-വർഷം</string>
+    <string name="calendar_jump_invalid_date">അസാധുവായ തീയതി. തീയതി-മാസം-വർഷം (DD-MM-YY) ഫോർമാറ്റ് ഉപയോഗിക്കുക.</string>
+    <string name="calendar_action_go">പോവുക</string>
+    <string name="calendar_enable_future_dates_title">ഭാവി തീയതികൾ അനുവദിക്കുക</string>
+    <string name="calendar_enable_future_dates_message">ഭാവി തീയതി ചേർക്കുന്നത് ഇപ്പോൾ അനുവദനീയമല്ല. ഇത് അനുവദിക്കണോ?</string>
+    <string name="calendar_action_enable">അനുവദിക്കുക</string>
+    <string name="calendar_future_entry_enabled">ഭാവി തീയതി കുറിപ്പ് അനുവദിച്ചു</string>
+    <string name="calendar_weekday_sun_short">ഞായർ</string>
+    <string name="calendar_weekday_mon_short">തിങ്കൾ</string>
+    <string name="calendar_weekday_tue_short">ചൊവ്വ</string>
+    <string name="calendar_weekday_wed_short">ബുധൻ</string>
+    <string name="calendar_weekday_thu_short">വ്യാഴം</string>
+    <string name="calendar_weekday_fri_short">വെള്ളി</string>
+    <string name="calendar_weekday_sat_short">ശനി</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ഈ മാസത്തെ കുറിപ്പുകൾ</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d ദിവസം</item>
+        <item quantity="other">%1$d / %2$d ദിവസങ്ങൾ</item>
+    </plurals>
+    <string name="calendar_days_of_memories">ഓർമ്മകളുടെ ദിവസങ്ങൾ</string>
+    <string name="calendar_consistency_last_12_months">കഴിഞ്ഞ 12 മാസങ്ങൾ</string>
+    <string name="calendar_consistency_title_format">തുടർച്ച - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% മുൻപത്തെ \'%2$s\' താരതമ്യം ചെയ്യുമ്പോൾ</string>
+    <string name="calendar_consistency_previous_period_format">മുൻപത്തെ \'%1$s\' താരതമ്യം ചെയ്യുമ്പോൾ</string>
+    <string name="calendar_consistency_first_period">ആദ്യ കാലയളവ്</string>
+    <string name="calendar_graph_frequency_month">മാസം</string>
+    <string name="calendar_graph_frequency_year">വർഷം</string>
+    <string name="calendar_yearly_consistency_title">തുടർച്ച (വാർഷികം)</string>
+    <string name="calendar_keywords_title">ആരാണ് കൂടുതൽ പ്രത്യക്ഷപ്പെടുന്നത്</string>
+    <string name="calendar_keywords_syncing">ആളുകളുടെയും സ്ഥലങ്ങളുടെയും വിവരങ്ങൾ ഇപ്പോഴും കീവേഡ് ഇൻഡെക്‌സിംഗുമായി സമന്വയിപ്പിക്കുന്നു.</string>
+    <string name="calendar_keywords_empty">പ്രധാന പരാമർശങ്ങൾ കാണാൻ കുറഞ്ഞത് 3 ആളുകളെയോ 3 സ്ഥലങ്ങളെയോ ചേർക്കുക.</string>
+    <string name="calendar_keywords_people">ആളുകൾ</string>
+    <string name="calendar_keywords_places">സ്ഥലങ്ങൾ</string>
+
+    <!-- Settings -->
+    <string name="settings_title">ക്രമീകരണങ്ങൾ</string>
+    <string name="settings_appearance">രൂപഭാവം</string>
+    <string name="settings_appearance_subtitle">തീം, നിറങ്ങൾ, ഫോണ്ടുകൾ, വ്യക്തിഗത ശൈലികൾ</string>
+    <string name="settings_theme">തീം</string>
+    <string name="settings_font">അക്ഷരരൂപം</string>
+    <string name="settings_storage">സംഭരണം</string>
+    <string name="settings_security">സുരക്ഷ</string>
+    <string name="settings_backup">കരുതൽ പകർപ്പ്</string>
+    <string name="settings_change_storage_title">സംഭരണ സ്ഥലം മാറ്റുക</string>
+    <string name="settings_backup_never">ഒരിക്കലുമില്ല</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">ക്രമീകരണങ്ങൾ തിരയുക</string>
+    <string name="settings_search_clear">തിരച്ചിൽ ഒഴിവാക്കുക</string>
+    <string name="settings_search_recent">സമീപകാല തിരച്ചിലുകൾ</string>
+    <string name="settings_search_no_results">പൊരുത്തപ്പെടുന്ന ക്രമീകരണങ്ങൾ ഒന്നുമില്ല</string>
+    <string name="settings_search_close">അടയ്ക്കുക</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">ദിനക്കുറിപ്പ് അനുഭവം</string>
+    <string name="settings_section_navigation_gestures">നാവിഗേഷനും ജെസ്റ്ററുകളും</string>
+    <string name="settings_section_review_insights">അവലോകനം &amp; വിശകലനങ്ങൾ</string>
+
+    <!-- Language -->
+    <string name="settings_language">ഭാഷ</string>
+    <string name="settings_language_title">ആപ്പ് ഭാഷ</string>
+    <string name="settings_language_subtitle">ആപ്പിൽ ഉപയോഗിക്കേണ്ട ഭാഷ തിരഞ്ഞെടുക്കുക.</string>
+    <string name="settings_language_system_default">സിസ്റ്റം സ്ഥിരസ്ഥിതി</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">കുറിപ്പ് ശൈലി</string>
+    <string name="settings_journal_entry_style_subtitle">കാർഡ് സ്റ്റൈലോ അതോ ഫ്ലാറ്റ് സ്റ്റൈലോ വേണ്ടതെന്ന് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="settings_journal_entry_style_cards">കാർഡുകൾ</string>
+    <string name="settings_journal_entry_style_flat">ഫ്ലാറ്റ്</string>
+    <string name="settings_journal_render_checkboxes_title">ചെക്ക്ബോക്സുകൾ ടെക്സ്റ്റായി കാണിക്കുക</string>
+    <string name="settings_journal_render_checkboxes_subtitle">പ്രത്യേക ചെക്ക്ബോക്സുകൾക്ക് പകരം ആപ്പിലുടനീളം ചെയ്യേണ്ടവ [ ] കൂടാതെ [x] ആയി കാണിക്കുക.</string>
+    <string name="settings_journal_day_header_counts_title">ഡേ ഹെഡറിൽ എണ്ണങ്ങൾ കാണിക്കുക</string>
+    <string name="settings_journal_day_header_counts_subtitle">ദിനക്കുറിപ്പ് ഡേ ശീർഷകങ്ങളിൽ കുറിപ്പ്, വാക്ക്, ക്യാരക്ടർ എണ്ണങ്ങൾ കാണിക്കുക.</string>
+    <string name="settings_journal_show_timestamps_title">ടൈംസ്റ്റാമ്പുകൾ കാണിക്കുക</string>
+    <string name="settings_journal_show_timestamps_subtitle">സമയരേഖയിൽ കുറിപ്പ് സമയം കാണിക്കുക.</string>
+    <string name="settings_journal_allow_future_title">ഭാവി കുറിപ്പുകൾ അനുവദിക്കുക</string>
+    <string name="settings_journal_allow_future_subtitle">ഭാവി തീയതികളിൽ കുറിപ്പുകൾ ചേർക്കാനുള്ള സൗകര്യം നൽകുക.</string>
+    <string name="settings_journal_truncate_title">നീളമുള്ള കുറിപ്പുകൾ ചുരുക്കുക</string>
+    <string name="settings_journal_truncate_subtitle">ഹോം സ്ക്രീനിൽ നീളമുള്ള കുറിപ്പുകൾ ചുരുക്കി കാണിക്കുക.</string>
+    <string name="settings_journal_char_limit_title">ക്യാരക്ടർ പരിധി</string>
+    <string name="settings_journal_char_limit_subtitle">ചുരുക്കുന്നതിന് മുമ്പ് കാണിക്കേണ്ട ക്യാരക്ടറുകളുടെ എണ്ണം നിശ്ചയിക്കുക.</string>
+    <string name="settings_journal_char_limit_min">50 ക്യാരക്ടറുകൾ</string>
+    <string name="settings_journal_char_limit_max">200 ക്യാരക്ടറുകൾ</string>
+    <string name="settings_journal_char_count">%1$d ക്യാരക്ടറുകൾ</string>
+    <string name="settings_journal_first_day_title">ആഴ്ചയിലെ ആദ്യ ദിവസം</string>
+    <string name="settings_journal_first_day_subtitle">കലണ്ടർ ആരംഭിക്കുന്നത്</string>
+    <string name="settings_journal_day_sun">ഞായർ</string>
+    <string name="settings_journal_day_mon">തിങ്കൾ</string>
+    <string name="settings_journal_date_recognition">തീയതി തിരിച്ചറിയൽ</string>
+    <string name="settings_journal_date_order_title">തീയതി ക്രമം</string>
+    <string name="settings_journal_date_order_subtitle">സംഖ്യാ തീയതികൾ എങ്ങനെ വായിക്കണം</string>
+    <string name="settings_journal_date_order_auto">ഓട്ടോമാറ്റിക്</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">തീയതി കീവേഡുകൾ</string>
+    <string name="settings_journal_date_keywords_subtitle">ഒരു തീയതിയെ സൂചിപ്പിക്കുന്ന മറ്റ് ഭാഷകളിലെ വാക്കുകൾ (ഉദാഹരണത്തിന് \'ഇന്നലെ\' എന്നതിനായുള്ള പ്രാദേശിക വാക്ക്).</string>
+    <string name="settings_journal_view_keywords">കാണുക (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">കീവേഡ് ചേർക്കുക</string>
+    <string name="settings_journal_motion">മോഷൻ</string>
+    <string name="settings_journal_animations_title">അനിമേഷനുകൾ</string>
+    <string name="settings_journal_animations_subtitle">ആപ്പിലുടനീളമുള്ള മോഷൻ നിയന്ത്രിക്കുക. \'കുറച്ചത്\' തിരഞ്ഞെടുക്കുന്നത് കുറഞ്ഞ ചലനങ്ങളോടെ കാര്യങ്ങൾ സുഗമമാക്കും.</string>
+    <string name="settings_journal_animations_full">പൂർണ്ണമായത്</string>
+    <string name="settings_journal_animations_reduced">കുറച്ചത്</string>
+    <string name="settings_journal_animations_off">ഓഫ് ചെയ്യുക</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">സൂക്ഷിച്ചതിന് ശേഷമുള്ള അവലോകനം</string>
+    <string name="settings_review_post_write_title">എഴുതിയതിന് ശേഷമുള്ള അവലോകനം</string>
+    <string name="settings_review_post_write_subtitle">ചെയ്യേണ്ടവ എടുക്കാനും, പരാമർശങ്ങൾ പരിശോധിക്കാനും, ദിവസത്തിന് സ്റ്റാർ നൽകാനും, ലേബലുകൾ നിശ്ചയിക്കാനും സൂക്ഷിച്ചതിന് ശേഷം ഒരു അവലോകന ഷീറ്റ് കാണിക്കുക.</string>
+    <string name="settings_review_people_places">ആളുകളും സ്ഥലങ്ങളും</string>
+    <string name="settings_review_highlighting_title">ഹൈലൈറ്റ് ചെയ്യൽ</string>
+    <string name="settings_review_highlighting_subtitle">ഹോം കാർഡിലും കുറിപ്പ് കാണുമ്പോഴും ആളുകളുടെയും സ്ഥലങ്ങളുടെയും പേരുകൾ ഹൈലൈറ്റ് ചെയ്യുക.</string>
+    <string name="settings_review_match_sensitivity_title">പൊരുത്തപ്പെടൽ കൃത്യത</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">ആളുകളുടെയും സ്ഥലങ്ങളുടെയും പേരുകൾ കണ്ടെത്താൻ വാക്ക് എത്രത്തോളം പൊരുത്തപ്പെടണം (കൂടുതൽ = കൂടുതൽ കൃത്യത).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">ലഘുസൂചകം ചേർക്കുക</string>
+    <string name="shortcodes_edit_title">ലഘുസൂചകം തിരുത്തുക</string>
+    <string name="shortcodes_code_label">ലഘുസൂചകം (ഉദാഹരണത്തിന് @yday)</string>
+    <string name="shortcodes_expansion_label">വികസിപ്പിച്ച രൂപം</string>
+    <string name="shortcodes_export_error">ലഘുസൂചകം എക്സ്പോർട്ട് ചെയ്യാൻ സാധിച്ചില്ല</string>
+    <string name="shortcodes_import_error">ലഘുസൂചകം ഇമ്പോർട്ട് ചെയ്യാൻ സാധിച്ചില്ല</string>
+    <string name="todos_expand_section">%1$s വികസിപ്പിക്കുക</string>
+    <string name="todos_collapse_section">%1$s ചുരുക്കുക</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">റൈറ്റിംഗ് ഹീറ്റ്മാപ്പ്</string>
+    <string name="heatmap_widget_description">നിങ്ങളുടെ ദിനക്കുറിപ്പ് എഴുത്തിന്റെ സജീവത കാണിക്കുന്ന ഹീറ്റ്മാപ്പ്.</string>
+    <string name="quick_capture_widget_name">ക്വിക്ക് ക്യാപ്ചർ</string>
+    <string name="quick_capture_widget_description">ദിനക്കുറിപ്പ് കുറിപ്പ് വേഗത്തിൽ ചേർക്കാൻ ഒറ്റ-ടാപ്പ് ബട്ടൺ.</string>
+    <string name="quick_todo_widget_name">ചെയ്യേണ്ടവ പെട്ടെന്ന്</string>
+    <string name="tasker_plugin_action_label">യജ ക്വിക്ക് ക്യാപ്ചർ</string>
+    <string name="tasker_plugin_event_label">യജ ദിനക്കുറിപ്പ് പരിപാടികൾ</string>
+    <string name="tasker_screen_allow_add_entry_title">Tasker-ന് കുറിപ്പുകൾ ചേർക്കാൻ അനുവാദം നൽകുക</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">യജയിലെ \'കുറിപ്പ് ചേർക്കുക\', \'ചെയ്യേണ്ടവ ചേർക്കുക\' എന്നീ ക്വിക്ക് ക്യാപ്ചർ ആക്ഷനുകൾ ഉപയോഗിക്കാൻ Tasker-നെ അനുവദിക്കുന്നു.</string>
+    <string name="tasker_screen_allow_events_title">Tasker പരിപാടികൾ അനുവദിക്കുക</string>
+    <string name="tasker_screen_allow_events_subtitle">യജയിൽ \'കുറിപ്പ് സൂക്ഷിച്ചു\', \'കുറിപ്പ് തിരുത്തി\', \'കുറിപ്പ് ഇല്ലാതാക്കി\' എന്നീ പരിപാടികൾ Tasker-ലേക്ക് അയക്കാൻ അനുവദിക്കുക.</string>
+    <string name="tasker_screen_include_text_title">ഇവന്റുകളിൽ കുറിപ്പ് വിവരം ഉൾപ്പെടുത്തുക</string>
+    <string name="tasker_screen_include_text_subtitle">സ്വകാര്യതയ്ക്കായി ഇത് സ്ഥിരസ്ഥിതിയായി ഓഫ് ആണ്. ഓഫ് ആണെങ്കിൽ Tasker-ന് പരിപാടി ടൈപ്പ്, തീയതി, ലേബലുകൾ, സമയം എന്നിവ മാത്രമേ ലഭിക്കൂ, ദിനക്കുറിപ്പ് വിവരം ലഭിക്കില്ല.</string>
+    <string name="tasker_screen_section_what">ഇത് എന്താണ് ചെയ്യുന്നത്</string>
+    <string name="tasker_screen_body_what">ടാസ്കറിന് യജയിലേക്ക് വേഗത്തിൽ ദിനക്കുറിപ്പ് കുറിപ്പുകളോ ചെയ്യേണ്ടവകളോ ചേർക്കാനും, \'മിസ്ഡ് കോൾ\' പോലെയുള്ള ഗ്രൂപ്പ് കുറിപ്പുകളിൽ വരികൾ ചേർക്കാനും സാധിക്കും. കൂടാതെ യജയിൽ എന്തെങ്കിലും സൂക്ഷിക്കുകയോ തിരുത്തുകയോ ഇല്ലാതാക്കുകയോ ചെയ്യുമ്പോൾ അത് ടാസ്കറിനെ അറിയിക്കാനും സാധിക്കും.</string>
+    <string name="tasker_screen_section_how">എങ്ങനെ ഉപയോഗിക്കാം</string>
+    <string name="tasker_screen_body_how">ആദ്യം ഇവിടെ ആവശ്യമുള്ള ടോഗിളുകൾ ഓൺ ചെയ്യുക. ശേഷം Tasker തുറന്ന് യജ ക്വിക്ക് ക്യാപ്ചർ ആക്ഷൻ അല്ലെങ്കിൽ യജ ദിനക്കുറിപ്പ് പരിപാടികൾ തിരഞ്ഞെടുക്കുക.</string>
+    <string name="tasker_screen_section_notes">കുറിപ്പുകൾ</string>
+    <string name="tasker_screen_body_notes">\'ഇവന്റുകളിൽ കുറിപ്പ് വിവരം ഉൾപ്പെടുത്തുക\' എന്നത് ഓൺ ചെയ്തില്ലെങ്കിൽ ദിനക്കുറിപ്പ് വിവരം Tasker-മായി പങ്കിടില്ല. യജ അപ്ഡേറ്റ് ചെയ്ത ശേഷം പുതിയ ഓപ്ഷനുകൾ കാണുന്നില്ലെങ്കിൽ Tasker കോൺഫിഗറേഷൻ സ്ക്രീൻ വീണ്ടും തുറക്കുക.</string>
+    <string name="tasker_screen_section_example">ഉദാഹരണം</string>
+    <string name="tasker_screen_body_example">ആക്ഷൻ ഉദാഹരണം: Tasker ആക്ഷൻ &gt; യജ ക്വിക്ക് ക്യാപ്ചർ &gt; കൂട്ടിച്ചേർക്കുക, ഇതിൽ മാച്ച് / ശീർഷകം \'മിസ്ഡ് കോൾ\' എന്നും ചേർക്കേണ്ട വരി Tasker വേരിയബിളായും നിശ്ചയിക്കുക. പരിപാടി ഉദാഹരണം: Tasker പരിപാടി &gt; യജ ദിനക്കുറിപ്പ് പരിപാടികൾ &gt; കുറിപ്പ് തിരുത്തി, തുടർന്ന് %%yaja_event_type, %%yaja_date, %%yaja_entry_text എന്നീ വേരിയബിളുകൾ ഉപയോഗിക്കാം.</string>
+    <string name="tasker_screen_section_use_cases">ഉപയോഗങ്ങൾ</string>
+    <string name="tasker_screen_use_case_1">1. യജയിൽ കുറിപ്പ് മാറുമ്പോൾ നിങ്ങളുടെ യജ ഫോൾഡർ ഏതെങ്കിലും ക്ലൗഡിലേക്ക് സമന്വയിപ്പിക്കുന്നതിനായി FolderSync ആക്ഷൻ ട്രിഗർ ചെയ്യാൻ Tasker-ൽ യജ ദിനക്കുറിപ്പ് പരിപാടി ഉപയോഗിക്കുക.</string>
+    <string name="tasker_screen_use_case_2">2. നിശ്ചിത വിവരം നിങ്ങളുടെ ഇന്നത്തെ ദിനക്കുറിപ്പിലേക്ക് ഒരു പുതിയ കുറിപ്പായി സേവ് ചെയ്യുന്നതിന് Tasker-നൊപ്പം Pushbullet ഉപയോഗിച്ച് യജ ക്വിക്ക് ക്യാപ്ചറിലേക്ക് വിവരം അയക്കുക.</string>
+    <string name="tasker_screen_use_case_3">3. മിസ്ഡ് കോൾ വിവരങ്ങൾ ഓരോന്നായി ചേർക്കുന്നതിന് പകരം \'മിസ്ഡ് കോൾ\' എന്ന ഒരൊറ്റ കുറിപ്പിന് കീഴിൽ ചേർക്കുന്നതിന് മിസ്ഡ്-കോൾ Tasker പ്രൊഫൈൽ വഴി യജയിലേക്ക് അപ്പൻഡ് ആക്ഷൻ അയക്കുക.</string>
+    <string name="quick_todo_widget_description">ഇന്നത്തേക്ക് പുതിയ ചെയ്യേണ്ടവ ക്യാപ്ചർ ചെയ്യാൻ ഒറ്റ-ടാപ്പ് ബട്ടൺ.</string>
+    <string name="todo_list_widget_name">ടു-ഡു ലിസ്റ്റ്</string>
+    <string name="todo_list_widget_description">ദിനക്കുറിപ്പ് ചെയ്യേണ്ടവകളുടെ സ്ക്രോൾ ചെയ്യാവുന്ന ലിസ്റ്റ്. പൂർത്തിയാക്കിയതായി അടയാളപ്പെടുത്താൻ ടാപ്പ് ചെയ്യുക.</string>
+    <string name="todo_cd_add_todo">ടു-ഡു ചേർക്കുക</string>
+    <string name="heatmap_widget_status_loading">ഹീറ്റ്മാപ്പ് ലോഡ് ചെയ്യുന്നു…</string>
+    <string name="heatmap_widget_status_empty">കുറിപ്പുകൾ ഒന്നും തന്നെയില്ല</string>
+    <string name="heatmap_widget_status_refresh">ഹീറ്റ്മാപ്പ് പുതുക്കാൻ യജ തുറക്കുക</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">കാഷെ പുനർനിർമ്മിച്ചു.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">പുതിയ കുറിപ്പ്</string>
+    <string name="shortcut_new_entry_long">ഒരു ദിനക്കുറിപ്പ് കുറിപ്പ് ചേർക്കുക</string>
+    <string name="shortcut_add_todo_short">ചെയ്യേണ്ടവ ചേർക്കുക</string>
+    <string name="shortcut_add_todo_long">ഇന്നത്തേക്ക് ഒരു ചെയ്യേണ്ടവ ചേർക്കുക</string>
+    <string name="shortcut_add_event_short">പരിപാടി ചേർക്കുക</string>
+    <string name="shortcut_add_event_long">ഒരു പരിപാടി ചേർക്കുക</string>
+    <string name="shortcut_today_short">ഇന്ന്</string>
+    <string name="shortcut_today_long">ഇന്നത്തെ ദിനക്കുറിപ്പ് തുറക്കുക</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">നാവിഗേഷൻ</string>
+    <string name="settings_bottom_nav_style_label">താഴത്തെ നാവിഗേഷൻ ശൈലി</string>
+    <string name="settings_navigation_mode_title">നാവിഗേഷൻ മോഡ്</string>
+    <string name="settings_navigation_mode_subtitle">ഫ്ലോട്ടിംഗ് നാവിഗേഷൻ ബാറോ അതോ താഴത്തെ പൂർണ്ണ പാനലോ വേണമെന്ന് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="settings_nav_mode_floating">ഫ്ലോട്ടിംഗ്</string>
+    <string name="settings_nav_mode_panel">പാനൽ</string>
+    <string name="settings_navigation_screens_label">നാവിഗേഷൻ സ്ക്രീനുകൾ</string>
+    <string name="settings_nav_summary_floating">ജേർണലും കലണ്ടറും എപ്പോഴും ഫ്ലോട്ടിംഗ് ബാറിലുണ്ടാകും. പരമാവധി 2 സ്ക്രീനുകൾ കൂടി തിരഞ്ഞെടുക്കാം. നിലവിൽ തിരഞ്ഞെടുത്തവ: %2$d-ൽ %1$d.</string>
+    <string name="settings_nav_summary_panel">ജേർണലും കലണ്ടറും എപ്പോഴും താഴത്തെ പാനലിലുണ്ടാകും. പരമാവധി 3 സ്ക്രീനുകൾ കൂടി തിരഞ്ഞെടുക്കാം. നിലവിൽ തിരഞ്ഞെടുത്തവ: %2$d-ൽ %1$d.</string>
+    <string name="settings_nav_lookback_subtitle">തിരിഞ്ഞുനോട്ടം നാവിഗേഷൻ ബാറിലോ പാനലിലോ കാണിക്കുക.</string>
+    <string name="settings_nav_people_places_subtitle">ആളുകളും സ്ഥലങ്ങളും നാവിഗേഷൻ ബാറിലോ പാനലിലോ കാണിക്കുക.</string>
+    <string name="settings_nav_todos_title">ചെയ്യേണ്ടവ</string>
+    <string name="settings_nav_todos_subtitle">ചെയ്യേണ്ടവ നാവിഗേഷൻ ബാറിലോ പാനലിലോ കാണിക്കുക.</string>
+    <string name="todos_quick_add_title">പെട്ടെന്ന് ചേർക്കുക</string>
+    <string name="todos_hero_subtitle">ദിനക്കുറിപ്പ് ടാസ്കുകളും നിമിഷങ്ങളും ട്രാക്ക് ചെയ്യുക</string>
+    <string name="todos_hero_all_activity">എല്ലാ പ്രവർത്തനങ്ങളും</string>
+    <string name="todos_hero_open_focus">ബാക്കിയുള്ള ടാസ്കുകൾ</string>
+    <string name="todos_hero_completed">പൂർത്തിയായവ</string>
+    <string name="todos_stat_today_open">ഇന്ന് ബാക്കിയുള്ളവ</string>
+    <string name="todos_stat_done_today">ഇന്ന് പൂർത്തിയാക്കിയവ</string>
+    <string name="todos_stat_events">പരിപാടികൾ</string>
+    <string name="todos_stat_still_open">ഇപ്പോഴും ബാക്കിയുള്ളവ</string>
+    <string name="todos_stat_past_7d">കഴിഞ്ഞ 7 ദിവസങ്ങൾ</string>
+    <string name="todos_stat_days">ദിവസങ്ങൾ</string>
+    <string name="todos_empty_done">പourdത്തിയാക്കിയ ചെയ്യേണ്ടവ ഒന്നുമില്ല</string>
+    <string name="todos_empty_events">പരിപാടി കുറിപ്പുകൾ ഒന്നുമില്ല</string>
+    <string name="todos_section_open">ബാക്കിയുള്ളവ</string>
+    <string name="todos_section_later">പിന്നീട്</string>
+    <string name="todos_section_upcoming">വരാനിരിക്കുന്നവ</string>
+    <string name="todos_section_future_events">ഭാവി പരിപാടികൾ</string>
+    <string name="todos_section_past_events">കഴിഞ്ഞ പരിപാടികൾ</string>
+    <string name="todos_cd_open_day">ദിവസം തുറക്കുക</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d ചുമതല ബാക്കിയുണ്ട്</item>
+        <item quantity="other">%1$d ടാസ്കുകൾ ബാക്കിയുണ്ട്</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d ചുമതല പൂർത്തിയാക്കി</item>
+        <item quantity="other">%1$d ടാസ്കുകൾ പൂർത്തിയാക്കി</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d വരാനിരിക്കുന്ന പരിപാടി</item>
+        <item quantity="other">%1$d വരാനിരിക്കുന്ന പരിപാടികൾ</item>
+    </plurals>
+    <string name="todos_filter_all_format">എല്ലാ %1$d</string>
+    <string name="todos_filter_open_format">ബാക്കിയുള്ള %1$d</string>
+    <string name="todos_filter_done_format">പൂർത്തിയായ %1$d</string>
+    <string name="todos_filter_events_format">പരിപാടികൾ %1$d</string>
+    <string name="todos_cheer_all_clear">എല്ലാം ഭദ്രം. വളരെ നല്ലത്.</string>
+    <string name="todos_cheer_done_and_dusted">പൂർത്തിയായി കഴിഞ്ഞു.</string>
+    <string name="todos_cheer_nothing_pending">ഒന്നും ബാക്കിയില്ല.</string>
+    <string name="todos_cheer_caught_up">നിങ്ങൾ എല്ലാം പൂർത്തിയാക്കി.</string>
+    <string name="todos_cheer_clean_slate">പുതിയ തുടക്കം.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d ദിവസത്തിൽ</item>
+        <item quantity="other">%1$d ദിവസങ്ങളിൽ</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d ദിവസം മുൻപ്</item>
+        <item quantity="other">%1$d ദിവസങ്ങൾക്ക് മുൻപ്</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d ആഴ്ചയിൽ</item>
+        <item quantity="other">%1$d ആഴ്ചകളിൽ</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d ആഴ്ച മുൻപ്</item>
+        <item quantity="other">%1$d ആഴ്ചകൾക്ക് മുൻപ്</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 മാസത്തിൽ</string>
+    <string name="todos_relative_one_month_ago">1 മാസം മുൻപ്</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d മാസത്തിൽ</item>
+        <item quantity="other">%1$d മാസങ്ങളിൽ</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d മാസം മുൻപ്</item>
+        <item quantity="other">%1$d മാസങ്ങൾക്ക് മുൻപ്</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="settings_nav_statistics_subtitle_on">സ്റ്റാറ്റിസ്റ്റിക്സ് നാവിഗേഷൻ ബാറിലോ പാനലിലോ കാണിക്കുക.</string>
+    <string name="settings_nav_statistics_subtitle_off">സ്റ്റാറ്റിസ്റ്റിക്സ് നാവിഗേഷനിൽ ഉൾപ്പെടുത്താൻ ആദ്യം അത് ഓൺ ചെയ്യുക.</string>
+    <string name="settings_show_labels_bottom_panel_title">താഴത്തെ പാനലിൽ ലേബലുകൾ കാണിക്കുക</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">താഴത്തെ പാനലിലെ ഐക്കണുകൾക്ക് താഴെ പേര് കാണിക്കുക.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">ജെസ്റ്ററുകൾ</string>
+    <string name="settings_entry_delete_title">കുറിപ്പ് ഇല്ലാതാക്കൽ</string>
+    <string name="settings_entry_delete_subtitle">ഒരു കുറിപ്പ് തിരഞ്ഞെടുക്കാൻ അതിൽ അമർത്തിപ്പിടിക്കുക. ഒന്നിൽക്കൂടുതൽ കുറിപ്പുകൾ തിരഞ്ഞെടുക്കാൻ മറ്റുള്ളവയിലും ടാപ്പ് ചെയ്യുക, തുടർന്ന് ഡിലീറ്റ് ബട്ടൺ അമർത്തുക. തിരഞ്ഞെടുപ്പ് ഒഴിവാക്കാൻ ശൂന്യമായ സ്ഥലത്ത് ടാപ്പ് ചെയ്യുക.</string>
+    <string name="settings_swipe_navigate_title">തീയതികൾ മാറ്റാൻ സ്വൈപ്പ് ചെയ്യുക</string>
+    <string name="settings_swipe_navigate_subtitle">അടുത്ത ദിവസത്തിലേക്ക് പോകാൻ ഇടത്തോട്ടും മുൻപത്തെ ദിവസത്തിലേക്ക് പോകാൻ വലത്തോട്ടും സ്വൈപ്പ് ചെയ്യുക.</string>
+    <string name="settings_drag_reorder_title">ഡ്രാഗ് ആൻഡ് ഡ്രോപ്പ് അനുവദിക്കുക</string>
+    <string name="settings_drag_reorder_subtitle">കുറിപ്പുകൾ പുനഃക്രമീകരിക്കാൻ അതിൽ അമർത്തിപ്പിടിച്ച് വലിക്കുക</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">ഡാറ്റ &amp; വീണ്ടെടുക്കൽ</string>
+    <string name="settings_swipe_rebuild_index">ഇൻഡെക്‌സ് പുനർനിർമ്മിക്കാൻ ഹോം സ്ക്രീനിൽ താഴേക്ക് സ്വൈപ്പ് ചെയ്യുക</string>
+    <string name="settings_large_journal_safe_mode_title">വലിയ ദിനക്കുറിപ്പ് സേഫ് മോഡ്</string>
+    <string name="settings_large_journal_safe_mode_subtitle">വഹള വലിയ ദിനക്കുറിപ്പ് കണ്ടെത്തുമ്പോൾ, ആപ്പ് വേഗത്തിലും സുരക്ഷിതമായും തുറക്കുന്നതിനായി അനാവശ്യമായ പ്രാരംഭ സ്റ്റാറ്റിസ്റ്റിക്സ് ടാസ്കുകൾ ഒഴിവാക്കുന്നു.</string>
+    <string name="settings_version_history_title">പതിപ്പ് ചരിത്രം</string>
+    <string name="settings_version_history_subtitle">കുറിപ്പുകൾ തിരുത്തുകയോ, ഇല്ലാതാക്കുകയോ, ലേബലുകൾ മാറ്റുകയോ, റിവിസിറ്റ് ചെയ്യുകയോ ചെയ്യുന്നതിന് മുൻപ് അവയുടെ സുരക്ഷിത പകർപ്പുകൾ സൂക്ഷിക്കുക.</string>
+    <string name="settings_storage_location_label">സംഭരണ സ്ഥലം</string>
+    <string name="settings_reset_to_default">ഡിഫോൾട്ടിലേക്ക് റീനിശ്ചയിക്കുക</string>
+    <string name="settings_choose_folder">ഫോൾഡർ തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_backup_description">ദിനക്കുറിപ്പ് കുറിപ്പുകൾ, ലഘുസൂചകങ്ങൾ, തീയതി കീവേഡുകൾ, ആളുകളുടെയും സ്ഥലങ്ങളുടെയും വിവരങ്ങൾ എന്നിവ ഉൾക്കൊള്ളുന്ന ഒരു യജ കരുതൽ പകർപ്പ് സിപ്പ് (.zip) ഫയൽ നിർമ്മിക്കുക. ഇത് പിന്നീട് സുരക്ഷിതമായി പുനഃസ്ഥാപിക്കാൻ സാധിക്കും.</string>
+    <string name="settings_last_backup">അവസാന കരുതൽ പകർപ്പ്: %1$s</string>
+    <string name="settings_backup_reminder_age_label">കരുതൽ പകർപ്പ് ഓർമ്മപ്പെടുത്തൽ കാലയളവ്</string>
+    <string name="settings_backup_reminder_disabled">ഓഫ് ചെയ്യുക</string>
+    <string name="settings_backup_reminder_desc">%1$d ദിവസത്തിൽ കൂടുതൽ പഴക്കമുള്ളതാണെങ്കിൽ സൈഡ്ബാറിൽ കരുതൽ പകർപ്പ് ഹൈലൈറ്റ് ചെയ്യുക.</string>
+    <string name="settings_backup_reminder_days_disabled">0 ദിവസം (ഓഫ് ചെയ്യുക)</string>
+    <string name="settings_backup_reminder_days">%1$d ദിവസം</string>
+    <string name="settings_restore_button">പുനഃസ്ഥാപിക്കുക</string>
+    <string name="settings_backup_now_button">ഇപ്പോൾ കരുതൽ പകർപ്പ് എടുക്കുക</string>
+    <string name="settings_db_index_management_label">ഡാറ്റാബേസ് ഇൻഡെക്‌സ് മാനേജ്‌മെന്റ്</string>
+    <string name="settings_db_index_management_desc">ചെയ്യേണ്ടവ, ആളുകൾ &amp; സ്ഥലങ്ങൾ, അല്ലെങ്കിൽ മുഴുവൻ ഡാറ്റാബേസ് ഇൻഡെക്‌സും പുനർനിർമ്മിക്കുന്നതിനുള്ള ടൂളുകൾ തുറക്കുക.</string>
+    <string name="settings_rebuild_tools_button">റീബിൽഡ് ടൂളുകൾ</string>
+    <string name="settings_import_label">ഇമ്പോർട്ട്</string>
+    <string name="settings_import_info_cd">ഇമ്പോർട്ട് വിവരങ്ങൾ</string>
+    <string name="settings_import_info_title">ഇമ്പോർട്ട് വിവരങ്ങൾ</string>
+    <string name="settings_import_day_one_title">Day One ഇമ്പോർട്ട്</string>
+    <string name="settings_import_day_one_bullet1">- ഫോട്ടോകൾ ഇല്ലാതെ Day One-ൽ നിന്ന് എക്സ്പോർട്ട് ചെയ്യുക</string>
+    <string name="settings_import_day_one_bullet2">- വിവരം വിവരങ്ങൾ മാത്രമേ ഇമ്പോർട്ട് ചെയ്യൂ</string>
+    <string name="settings_import_day_one_bullet3">- ലഭ്യമാണെങ്കിൽ ടൈംസ്റ്റാമ്പും സ്ഥലവിവരങ്ങളും നിലനിർത്തും</string>
+    <string name="settings_import_perf_warning_title">പെർഫോമൻസ് മുന്നറിയിപ്പ്</string>
+    <string name="settings_import_perf_warning_desc">വളരെ വലിയ കുറിപ്പുകൾ (%1$d+) ഇമ്പോർട്ട് ചെയ്യാൻ ഏതാനും മിനിറ്റുകൾ എടുത്തേക്കാം. ഇമ്പോർട്ട് പശ്ചാത്തലത്തിൽ നടക്കുമ്പോൾ തന്നെ നിങ്ങൾക്ക് ആപ്പിലെ മറ്റ് കാര്യങ്ങൾ ചെയ്യാം.</string>
+    <string name="settings_got_it">മനസ്സിലായി</string>
+    <string name="settings_import_success">%1$d പുതിയ ദിവസങ്ങൾ, %2$d മെർജ് ചെയ്തവ, %3$d ഒഴിവാക്കിയവ</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip അല്ലെങ്കിൽ .json ഫയലുകൾ</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json ഫയൽ</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">യജ എങ്ങനെ ഉപയോഗിക്കാമെന്ന് പഠിക്കുക</string>
+    <string name="help_footer_website">വെബ്സൈറ്റ്</string>
+    <string name="help_footer_share">പങ്കിടുക</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">യജ പങ്കിടുക</string>
+    <string name="help_share_yaja_text">യജ — yet another journaling app\n\nനിങ്ങളുടെ എഴുത്ത് സുഗമമാക്കാൻ സഹായിക്കുന്ന ലളിതമായ ഒരു ലോക്കൽ ദിനക്കുറിപ്പ്. എഴുത്തുകൾ പ്ലെയിൻ മാർക്ക്ഡൗൺ ഫയലുകളായി സൂക്ഷിക്കുന്നു. സമയരേഖ, തിരിഞ്ഞുനോട്ടം, ആളുകളും സ്ഥലങ്ങളും, എഴുത്തുമാതൃകകൾ, അവലോകനങ്ങൾ, സ്റ്റാറ്റിസ്റ്റിക്സ്, വിജറ്റുകൾ എന്നിവ ഇതിലുണ്ട്.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord ഉപയോക്തൃനാമം പകർത്തി!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">RJ ലോഗോ</string>
+    <string name="help_screen_title">സഹായം &amp; വിവരങ്ങൾ</string>
+    <string name="help_welcome_title">യജയിലേക്ക് സ്വാഗതം</string>
+    <string name="help_welcome_body">നിങ്ങളുടെ ദിവസങ്ങൾ, ആളുകൾ, സ്ഥലങ്ങൾ, റിവിസിറ്റ് കാര്യങ്ങൾ എന്നിവ അടയാളപ്പെടുത്താനുള്ള ലോക്കൽ-ഫസ്റ്റ് മാർക്ക്ഡൗൺ ദിനക്കുറിപ്പ് ആണ് യജ. പ്രധാന ഭാഗങ്ങളെക്കുറിച്ചുള്ള ലളിതമായ വിവരങ്ങൾ ഈ പേജിലുണ്ട്.</string>
+    <string name="help_start_here">ഇവിടെ തുടങ്ങുക</string>
+    <string name="help_cd_collapse">ചുരുക്കുക</string>
+    <string name="help_cd_expand">വികസിപ്പിക്കുക</string>
+    <string name="help_group_everyday_title">ദൈനംദിന ഉപയോഗം</string>
+    <string name="help_group_everyday_desc">ദിനക്കുറിപ്പ് എഴുത്തും അതിനായുള്ള നാവിഗേഷനും.</string>
+    <string name="help_group_reviews_title">അവലോകനങ്ങളും കണ്ടെത്തലുകളും</string>
+    <string name="help_group_reviews_desc">തിരിഞ്ഞുനോട്ടം, ട്രെൻഡുകൾ, ആളുകൾ, സ്ഥലങ്ങൾ, വിശകലനം.</string>
+    <string name="help_group_advanced_title">അഡ്വാൻസ്ഡ് ടൂളുകൾ</string>
+    <string name="help_group_advanced_desc">വിജറ്റുകൾ, സംഭരണം, സ്വകാര്യത, കരുതൽ പകർപ്പ്, ടെക്നിക്കൽ ടൂളുകൾ.</string>
+    <string name="help_onboard_todos_events_title">ചെയ്യേണ്ടവകളും ഇവന്റുകളും</string>
+    <string name="help_onboard_todos_events_body">വ്യക്തിഗത ഓർമ്മപ്പെടുത്തലുകൾ, കുടുംബ കാര്യങ്ങൾ എന്നിവ ദിനക്കുറിപ്പ് വഴി തന്നെ എളുപ്പത്തിൽ കൈകാര്യം ചെയ്യാം.</string>
+    <string name="help_onboard_widgets_title">വിജറ്റുകൾ</string>
+    <string name="help_onboard_widgets_body">ഹോം സ്ക്രീനിൽ എഴുത്ത് ഹീറ്റ്മാപ്പ്, ക്വിക്ക് ക്യാപ്ചർ, ചെയ്യേണ്ടവ പെട്ടെന്ന്, അല്ലെങ്കിൽ ചെയ്യേണ്ട കാര്യങ്ങളുടെ ലിസ്റ്റ് വിജറ്റുകൾ എന്നിവ ചേർക്കാം.</string>
+    <string name="help_onboard_version_history_title">പതിപ്പ് ചരിത്രം</string>
+    <string name="help_onboard_version_history_body">ക്രമീകരണങ്ങൾ &gt; ഡാറ്റ എന്നതിൽ പതിപ്പ് ചരിത്രം ഓൺ ചെയ്താൽ സുരക്ഷിതമായ കരുതൽ പകർപ്പ് സൂക്ഷിക്കാൻ സാധിക്കും.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">വേഗത്തിൽ എഴുതാനും മറ്റും Tasker വഴിയുള്ള ക്വിക്ക് ആക്ഷനുകൾ ഉപയോഗിക്കാം.</string>
+    <string name="help_section_writing_editor_title">എഴുത്തും എഡിറ്ററും</string>
+    <string name="help_section_writing_editor_preview">എഴുത്തുമാതൃകകൾ, മാർക്ക്ഡൗൺ ഹെഡിംഗുകൾ, ചെയ്യേണ്ടവ, പരിപാടികൾ, എഡിറ്റർ ടൂളുകൾ.</string>
+    <string name="help_section_writing_editor_content">+ ആ ദിവസത്തെ എഴുത്ത് തുടങ്ങാൻ ഫ്ലോട്ടിംഗ് \'+\' ബട്ടണിൽ അമർത്തുക.\n+ മീറ്റിംഗ് നോട്ട്, യാത്ര വിവരങ്ങൾ, ഡയറി എഴുത്തുകൾ എന്നിവയ്ക്കുള്ള എഴുത്തുമാതൃകകൾ ഉപയോഗിക്കാം.\n+ ഈ എഴുത്തുമാതൃകകൾ എഴുത്തിന്റെ തുടക്കത്തിലോ, നിലവിലുള്ള വരികൾക്കിടയിലോ ചേർക്കാൻ സാധിക്കും.\n+ എഡിറ്റർ ബാറിലെ ബട്ടണുകൾ ഉപയോഗിച്ച് ചെയ്യേണ്ടവ, പരിപാടി, ലിസ്റ്റുകൾ എന്നിവ എളുപ്പത്തിൽ നിർമ്മിക്കാം.\n+ എഡിറ്റിംഗിനും വായനയ്ക്കും \'### ഹെഡിംഗ്\' പോലുള്ള മാർക്ക്ഡൗൺ ശൈലി ഉപയോഗിക്കാം.</string>
+    <string name="help_section_post_write_review_title">എഴുതിയതിന് ശേഷമുള്ള അവലോകനം</string>
+    <string name="help_section_post_write_review_preview">ചെയ്യേണ്ടവ കണ്ടെത്തൽ, ആളുകളും സ്ഥലങ്ങളും കണ്ടെത്തൽ, റിവിസിറ്റ് കാര്യങ്ങൾ നിശ്ചയിക്കൽ.</string>
+    <string name="help_section_post_write_review_content">+ എഴുതിയ ശേഷം, യജ സേവ് ചെയ്യുന്നതിന് മുൻപ് ഒരു അവലോകന ഷീറ്റ് തുറക്കുന്നു.\n+ ഇത് ചെയ്യേണ്ടവ കണ്ടെത്താനും, ആളുകളെയും സ്ഥലങ്ങളെയും ട്രാക്ക് ചെയ്യാനും, ദിവസത്തിന് സ്റ്റാർ നൽകാനും സഹായിക്കും.\n+ നിങ്ങൾക്ക് ഇത് ആവശ്യമെങ്കിൽ ക്രമീകരണങ്ങൾ വഴി ഓഫ് ചെയ്യാവുന്നതാണ്.</string>
+    <string name="help_section_revisit_followup_title">റിവിസിറ്റ് &amp; ഫോളോ-അപ്പ് തീയതികൾ</string>
+    <string name="help_section_revisit_followup_preview">എളുപ്പമുള്ള തീയതി തിരഞ്ഞെടുക്കലുകളോടെ ജേർണലുമായി ബന്ധിപ്പിച്ച റിവിസിറ്റുകൾ.</string>
+    <string name="help_section_revisit_followup_content">+ നാളെ, അടുത്ത ആഴ്ച, അടുത്ത മാസം അല്ലെങ്കിൽ കസ്റ്റം തീയതികൾ റിവിസിറ്റിനായി ചേർക്കാം.\n+ ഇങ്ങനെ ചേർത്ത കാര്യങ്ങൾ ഹോം സ്ക്രീനിലും കലണ്ടറിലും തിരിഞ്ഞുനോട്ടത്തിലും കാണിക്കും.\n+ ഭാവിയിലെ ആവശ്യങ്ങൾ ഓർമ്മിപ്പിക്കാൻ ഇത് വളരെ ഉപയോഗപ്രദമാണ്.</string>
+    <string name="help_section_navigation_gestures_title">നാവിഗേഷനും ജെസ്റ്ററുകളും</string>
+    <string name="help_section_navigation_gestures_preview">തീയതി നാവിഗേഷൻ, ഒന്നിലധികം ഇല്ലാതാക്കൽ, സ്വൈപ്പ് സൗകര്യങ്ങൾ.</string>
+    <string name="help_section_navigation_gestures_content">+ തീയതികൾ മാറ്റാൻ ഹോം സ്ക്രീൻ ബട്ടണുകളോ സ്വൈപ്പ് ജെസ്റ്ററോ ഉപയോഗിക്കാം.\n+ ഇല്ലാതാക്കാൻ ഒരു കുറിപ്പ് അമർത്തിപ്പിടിക്കുക. തുടർന്ന് മറ്റുള്ളവയും തിരഞ്ഞെടുത്ത് ഒന്നിച്ച് ഡിലീറ്റ് ചെയ്യാം.\n+ ശൂന്യമായ സ്ഥലത്ത് ടാപ്പ് ചെയ്ത് തിരഞ്ഞെടുപ്പ് ഒഴിവാക്കാം. ഇല്ലാതാക്കിയവ നിശ്ചിത സമയത്തിനുള്ളിൽ തിരികെ കൊണ്ടുവരാനും സാധിക്കും.</string>
+    <string name="help_section_shortcodes_quick_capture_title">ഷോർട്ട്കോഡുകളും ക്വിക്ക് ക്യാപ്ചറും</string>
+    <string name="help_section_shortcodes_quick_capture_preview">വേഗത്തിലുള്ള ക്യാപ്ചറും എളുപ്പത്തിൽ ഉപയോഗിക്കാവുന്ന വിവരം ഷോർട്ട്കോഡുകളും.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ പതിവായി എഴുതുന്ന കാര്യങ്ങൾ വേഗത്തിലാക്കാൻ ലഘുസൂചകങ്ങൾ നിർമ്മിക്കാം.\n+ ഷോർട്ട്കോഡുകളിൽ {{today:format}} പോലുള്ള ഡൈനാമിക് തീയതികൾ ഉപയോഗിക്കാം.\n+ പൂർണ്ണമായ എഡിറ്റർ തുറക്കാതെ തന്നെ ക്വിക്ക് ക്യാപ്ചർ വഴി വേഗത്തിൽ എഴുതാം.\n+ ചെയ്യേണ്ടവ പെട്ടെന്ന് വിജറ്റ് വഴിയും പരിപാടികൾ ചേർക്കാം.</string>
+    <string name="help_section_todos_events_title">ചെയ്യേണ്ടവകളും ഇവന്റുകളും</string>
+    <string name="help_section_todos_events_preview">ഓർമ്മപ്പെടുത്തലുകളും പ്ലാനുകളും തീയതി അനുസരിച്ച് ക്രമീകരിക്കുക.</string>
+    <string name="help_section_todos_events_content">+ ദിനക്കുറിപ്പ് കുറിപ്പുകളിൽ നേരിട്ട് [ ] അല്ലെങ്കിൽ [x] എന്ന് എഴുതി ചെയ്യേണ്ടവ ഉണ്ടാക്കാം.\n+ പരിപാടികൾ വഴി യാത്രാ പ്ലാനുകളും അപ്പോയിന്റ്മെന്റുകളും ദിനക്കുറിപ്പിൽ രേഖപ്പെടുത്താം.\n+ ചെയ്യേണ്ടവ സ്ക്രീൻ വഴി എല്ലാ ചെയ്യേണ്ടവകളും പൂർത്തിയായവയും വരാനിരിക്കുന്ന ഇവന്റുകളും കാണാം.\n+ തീയതി ഹെഡറിൽ ക്ലിക്ക് ചെയ്താൽ ആ ദിവസത്തെ ദിനക്കുറിപ്പ് തുറക്കാം.\n+ ഇൻഡെക്‌സ് പുതുക്കാൻ താഴേക്ക് വലിച്ച് റിഫ്രഷ് ചെയ്യാം.\n+ കഴിഞ്ഞ കാര്യങ്ങൾ കാണുന്നത് ആപ്പ് ഓർത്തു വെയ്ക്കും.\n+ ചെയ്യേണ്ടവയുടെ വിജറ്റ് വഴി ബാക്കിയുള്ള ടാസ്കുകൾ കാണാം, പെൻഡിങ് കാര്യങ്ങൾ ഒന്നുമില്ലെങ്കിൽ വിജറ്റ് തനിയെ മറയും.</string>
+    <string name="help_section_people_places_title">ആളുകളും സ്ഥലങ്ങളും</string>
+    <string name="help_section_people_places_preview">കീവേഡുകൾ, ഉളിപ്പേരുകൾ, ബന്ധങ്ങൾ എന്നിവ വഴി കണക്ഷനുകൾ ട്രാക്ക് ചെയ്യുക.</string>
+    <string name="help_section_people_places_content">+ ആളുകളുടെയും സ്ഥലങ്ങളുടെയും വിവരങ്ങൾ അവരുടെ റിലേഷൻഷിപ്പ് ലേബലുകൾ ഉൾപ്പെടെ ട്രാക്ക് ചെയ്യാം.\n+ ലിസ്റ്റ് എളുപ്പത്തിൽ തിരയാനും തരംതിരിക്കാനും സാധിക്കും.\n+ വിശദവിവര പേജിൽ അവരുടെ ആകെ പരാമർശങ്ങൾ, കണക്ഷൻ സ്കോർ എന്നിവ കാണാം.\n+ സെൻസിറ്റിവിറ്റി ക്രമീകരണങ്ങൾ വഴി മാറ്റാവുന്നതാണ്.</string>
+    <string name="help_section_timeline_lookback_title">ടൈംലൈനും ലുക്ക്ബാക്കും</string>
+    <string name="help_section_timeline_lookback_preview">കഴിഞ്ഞ കാര്യങ്ങൾ ഓർത്തെടുക്കാനും, ഹൈലൈറ്റുകൾ കാണാനും ഉള്ള പ്രത്യേക ഭാഗങ്ങൾ.</string>
+    <string name="help_section_timeline_lookback_content">+ സമയരേഖയിൽ കസ്റ്റം ഫിൽട്ടറുകൾ ഉപയോഗിച്ച് കഴിഞ്ഞ ദിനക്കുറിപ്പുകൾ തിരയാം.\n+ തിരിഞ്ഞുനോട്ടത്തിൽ മുൻ വർഷങ്ങളിലെ ഇന്നത്തെ ദിവസത്തെ കുറിപ്പുകൾ കാണാം.\n+ \'എന്നെ അത്ഭുതപ്പെടുത്തൂ\' വഴി കഴിഞ്ഞ കാലത്തെ ഏതെങ്കിലും ഒരു ഓർമ്മ സ്വയമേവ കാണിക്കും.\n+ തിരിഞ്ഞുനോട്ടത്തിൽ വീക്കിലി, പ്രതിമാസ അവലോകനങ്ങളും ലഭ്യമാണ്.</string>
+    <string name="help_section_statistics_reviews_title">സ്റ്റാറ്റിസ്റ്റിക്സും അവലോകനംകളും</string>
+    <string name="help_section_statistics_reviews_preview">കമ്പാരിസൺ മോഡ്, എഴുത്തുമാതൃക വിശകലനങ്ങൾ, ഇഷ്ടാനുസൃത സ്റ്റാറ്റുകൾ.</string>
+    <string name="help_section_statistics_reviews_content">+ സ്റ്റാറ്റിസ്റ്റിക്സിൽ കമ്പാരിസൺ മോഡും ട്രെൻഡുകളും എഴുത്തുമാതൃക ഇൻസൈറ്റുകളും ഉണ്ട്.\n+ നിങ്ങൾക്ക് ആവശ്യമുള്ള സ്റ്റാറ്റ് സെക്ഷനുകൾ മാത്രം കാണാൻ ക്രമീകരണങ്ങൾ വഴി തിരഞ്ഞെടുക്കാം.\n+ കമ്പാരിസൺ മോഡ് വഴി ആകെ എഴുത്തുകളെ മുൻ മാസങ്ങളുമായി താരതമ്യം ചെയ്യാം.\n+ അവലോകനം സ്ക്രീനിൽ കൂടുതൽ സജീവമായ ദിവസങ്ങൾ, മികച്ച ആളുകൾ/സ്ഥലങ്ങൾ, സ്ട്രീക്കുകൾ എന്നിവ കാണാം.</string>
+    <string name="help_section_widgets_home_title">വിജറ്റുകളും ഹോം സ്ക്രീനും</string>
+    <string name="help_section_widgets_home_preview">റൈറ്റിംഗ് ഹീറ്റ്മാപ്പ്, ക്വിക്ക് ക്യാപ്ചർ, ഹോം സ്ഥിതിവിവരങ്ങൾ.</string>
+    <string name="help_section_widgets_home_content">+ ഹോം സ്ക്രീനിൽ എഴുത്ത് ഹീറ്റ്മാപ്പ്, ക്വിക്ക് ക്യാപ്ചർ, ചെയ്യേണ്ട കാര്യങ്ങളുടെ ലിസ്റ്റ് വിജറ്റുകൾ എന്നിവ ചേർക്കാം.\n+ വിജറ്റ് ക്രമീകരണങ്ങൾ വഴി ഡിസൈനും വലിപ്പവും മാറ്റാവുന്നതാണ്.\n+ ഹീറ്റ്മാപ്പ് വിജറ്റ് വഴി എഴുത്തിന്റെ കൃത്യത നിറങ്ങൾ വഴി എളുപ്പത്തിൽ മനസ്സിലാക്കാം.\n+ ഹോം സ്ക്രീനിൽ ആളുകളെയും സ്ഥലങ്ങളെയും ഹൈലൈറ്റ് ചെയ്യാൻ സാധിക്കും.\n+ ഡേ ഹെഡറിൽ വാക്കുകളുടെ എണ്ണം കാണിക്കാനും മറയ്ക്കാനും ടോഗിൾ ഉണ്ട്.</string>
+    <string name="help_section_language_text_analysis_title">ലാംഗ്വേജ് &amp; വിവരം അനാലിസിസ്</string>
+    <string name="help_section_language_text_analysis_preview">നിങ്ങളുടെ ദിനക്കുറിപ്പ് എഴുത്തിലെ ഭാഷ തിരിച്ചറിയൽ.</string>
+    <string name="help_section_language_text_analysis_content">+ യജ കുറിപ്പുകളിലെ എഴുത്തിന്റെ പ്രധാന ഭാഷ സ്വയമേവ തിരിച്ചറിയുന്നു.\n+ ഏത് ഭാഷയാണ് കൂടുതൽ ഉപയോഗിച്ചതെന്ന് സ്റ്റാറ്റിൽ കാണിക്കും.\n+ ഈ അനാലിസിസ് പൂർണ്ണമായും നിങ്ങളുടെ ഫോണിലാണ് നടക്കുന്നത്, വിവരങ്ങൾ പുറത്തുപോകില്ല.</string>
+    <string name="help_section_data_privacy_cache_title">ഡാറ്റ, സ്വകാര്യത &amp; കാഷെ</string>
+    <string name="help_section_data_privacy_cache_preview">പ്ലെയിൻ മാർക്ക്ഡൗൺ എഴുത്ത്, പതിപ്പ് ബാക്കപ്പുകൾ, ആപ്പ് ലോക്ക്, ഇൻഡെക്സ് പുനർനിർമ്മിക്കൽ.</string>
+    <string name="help_section_data_privacy_cache_content">+ സ്വകാര്യത: നിങ്ങളുടെ ദിനക്കുറിപ്പ് വിവരങ്ങൾ നിങ്ങളുടെ ഫോണിൽ മാത്രം സൂക്ഷിക്കുന്നു. യജയിൽ ക്ലൗഡ് ഡാറ്റാബേസോ ടെലിമെട്രിയോ ഇല്ല.\n+ ദിനക്കുറിപ്പുകൾ മാസവും വർഷവും അനുസരിച്ച് സാധാരണ മാർക്ക്ഡൗൺ ഫയലുകളായാണ് സൂക്ഷിക്കുന്നത്.\n+ മാറ്റങ്ങൾ വരുത്തുന്നതിന് മുൻപ് പതിപ്പ് ചരിത്രം അതിന്റെ സുരക്ഷിത പകർപ്പ് സൂക്ഷിക്കും.\n+ പതിപ്പുകൾ എത്ര ദിവസം സൂക്ഷിക്കണമെന്ന് ക്രമീകരണങ്ങൾ വഴി നിശ്ചയിക്കാം.\n+ ലോഗുകളിൽ പ്രധാന ആക്ഷനുകൾ രേഖപ്പെടുത്തുന്നു, എഴുത്തുകൾ ലോഗിൽ ഉണ്ടാകില്ല.\n+ കാഷെ പുനർനിർമ്മാണം വഴി ആപ്പ് സ്പീഡ് നിലനിർത്താം.\n+ ആപ്പ് ലോക്ക് ചെയ്യാൻ പിൻ, ഫിംഗർപ്രിന്റ് ഓപ്ഷനുകൾ ഉണ്ട്.\n+ ആപ്പ് സ്പീഡ് മികച്ചതാക്കാൻ പശ്ചാത്തലത്തിലാണ് ഇൻഡെക്‌സിംഗ് കാര്യങ്ങൾ നടക്കുന്നത്.</string>
+
+    <string name="settings_app_log_title">ആപ്പ് ലോഗ്</string>
+    <string name="settings_app_log_subtitle">സ്വകാര്യത സുരക്ഷിതമായ ഡയഗ്നോസ്റ്റിക്സും കഴിഞ്ഞ ക്രഷുകളും കാണുക</string>
+    <string name="app_log_cd_share">ആപ്പ് ലോഗ് ഷെയർ ചെയ്യുക</string>
+    <string name="app_log_cd_clear">ആപ്പ് ലോഗ് ക്ലിയർ ചെയ്യുക</string>
+    <string name="app_log_privacy_title">സ്വകാര്യത സുരക്ഷിതമായ ഡയഗ്നോസ്റ്റിക്സ്</string>
+    <string name="app_log_privacy_description">ഈ ലോഗിൽ പ്രധാന ആപ്പ് പ്രവർത്തനങ്ങൾ, കാഷെ റീബിൽഡുകൾ, ക്രഷുകൾ എന്നിവ മാത്രമേ ഉണ്ടാകൂ. നിങ്ങളുടെ സ്വകാര്യ എഴുത്തുകളോ ചെയ്യേണ്ടവകളോ ഇതിൽ ഉണ്ടാകില്ല.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">കഴിഞ്ഞ %d ദിവസത്തെ ലോഗ് സൂക്ഷിക്കുക</item>
+        <item quantity="other">കഴിഞ്ഞ %d ദിവസത്തെ ലോഗ് സൂക്ഷിക്കുക</item>
+    </plurals>
+    <string name="app_log_retention_description">ഈ കാലയളവിന് ശേഷമുള്ള പഴയ ലോഗുകൾ സ്വയമേവ ഇല്ലാതാക്കപ്പെടും.</string>
+    <string name="app_log_empty">ലോഗുകൾ ഒന്നും തന്നെയില്ല.</string>
+    <string name="app_log_refresh">ലോഗ് റിഫ്രഷ് ചെയ്യുക</string>
+    <string name="app_log_share_empty">ഷെയർ ചെയ്യാൻ യജ ആപ്പ് ലോഗുകൾ ഒന്നുമില്ല.</string>
+    <string name="app_log_share_subject">യജ ആപ്പ് ലോഗ്</string>
+    <string name="app_log_share_chooser">യജ ആപ്പ് ലോഗ് ഷെയർ ചെയ്യുക</string>
+    <string name="app_log_local_time_format">%1$s | പ്രാദേശിക സമയം\n%2$s</string>
+    <string name="settings_website_title">യജ വെബ്സൈറ്റ്</string>
+    <string name="settings_website_subtitle">പുതിയ അപ്ഡേറ്റുകൾക്കും വിവരങ്ങൾക്കുമായി വെബ്സൈറ്റ് സന്ദർശിക്കുക</string>
+    <string name="settings_advanced_integrations_title">അഡ്വാൻസ്ഡ് ഇന്റഗ്രേഷനുകൾ</string>
+    <string name="settings_tasker_integration_title">Tasker ഇന്റഗ്രേഷൻ</string>
+    <string name="settings_tasker_integration_subtitle">ക്വിക്ക് ക്യാപ്ചർ ആക്ഷനുകളും ദിനക്കുറിപ്പ് പരിപാടി ട്രിഗറുകളും</string>
+    <string name="settings_shortcodes_subtitle">എഴുതുമ്പോൾ തനിയെ വികസിക്കുന്ന ലഘുസൂചകങ്ങൾ ക്രമീകരിക്കുക.</string>
+    <string name="settings_privacy_security_title">സ്വകാര്യത &amp; സുരക്ഷ</string>
+    <string name="settings_pin_lock_title">PIN ലോക്ക്</string>
+    <string name="settings_app_locked">ആപ്പ് ലോക്ക് ചെയ്തിരിക്കുന്നു</string>
+    <string name="settings_app_unlocked">ആപ്പ് അൺലോക്ക് ചെയ്തിരിക്കുന്നു</string>
+    <string name="settings_change_pin">PIN മാറ്റുക</string>
+    <string name="settings_biometric_unlock_title">ബയോമെട്രിക് അൺലോക്ക്</string>
+    <string name="settings_biometric_enabled_desc">ഫിംഗർപ്രിന്റ് അല്ലെങ്കിൽ ഫേസ് ഐഡി ഓൺ ആണ്</string>
+    <string name="settings_biometric_disabled_desc">PIN-ന് പകരം ബയോമെട്രിക് ഉപയോഗിക്കുക</string>
+    <string name="settings_autolock_timeout_title">ഓട്ടോ-ലോക്ക് സമയം</string>
+    <string name="settings_pin_lock_disclaimer">പിൻ ലോക്ക് ആപ്പിലേക്ക് മറ്റുള്ളവർ പ്രവേശിക്കുന്നത് തടയുമെങ്കിലും ഫയലുകൾ ഡയറക്ട് റീഡ് ചെയ്യുന്നത് തടയില്ല (എൻക്രിപ്റ്റ് ചെയ്യുന്നില്ല).</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d മിനിറ്റ്</item>
+        <item quantity="other">%1$d മിനിറ്റുകൾ</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">സിസ്റ്റം</string>
+    <string name="settings_theme_light">ലൈറ്റ്</string>
+    <string name="settings_theme_dark">ഡാർക്ക്</string>
+    <string name="settings_theme_amoled">അമലോഡ് (Amoled)</string>
+    <string name="settings_colors_label">നിറങ്ങൾ</string>
+    <string name="settings_color_intensity_title">കളർ ഇന്റൻസിറ്റി</string>
+    <string name="settings_background_tint_title">പശ്ചാത്തല നിറം</string>
+    <string name="settings_font_sans">സാൻസ് (Sans)</string>
+    <string name="settings_font_serif">സെരിഫ് (Serif)</string>
+    <string name="settings_font_mono">മോണോ (Mono)</string>
+    <string name="settings_font_custom">കസ്റ്റം</string>
+    <string name="settings_font_size_label">അക്ഷരവലിപ്പം</string>
+    <string name="settings_color_source_material_you">മെറ്റീരിയൽ യു (Material You)</string>
+    <string name="settings_theme_preview_title">തീം പ്രിവ്യൂ</string>
+    <string name="settings_journal_entry_preview">ദിനക്കുറിപ്പ് കുറിപ്പ്</string>
+    <string name="settings_journal_entry_preview_desc">കാർഡുകളും ബട്ടണുകളും ഈ നിറങ്ങൾ ഉപയോഗിക്കും.</string>
+    <string name="settings_preview_chip_chip">ചിപ്പ്</string>
+    <string name="settings_preview_chip_accent">ആക്സന്റ്</string>
+    <string name="settings_preview_chip_fab">എഫ്.എ.ബി (FAB)</string>
+    <string name="settings_intensity_label">തീവ്രത: %1$s</string>
+    <string name="settings_personal_themes_title">സ്വന്തം തീം</string>
+    <string name="settings_theme_name_label">തീമിന്റെ പേര്</string>
+    <string name="settings_main_color_label">പ്രധാന നിറം</string>
+    <string name="settings_hue_label">ഹ്യു (Hue)</string>
+    <string name="settings_sat_label">സാച്ചുറേഷൻ (Saturation)</string>
+    <string name="settings_bright_label">ബ്രൈറ്റ്നസ്</string>
+    <string name="settings_generated_accents_title">ജനറേറ്റ് ചെയ്ത ആക്സന്റുകൾ</string>
+    <string name="settings_personal_theme_desc">ഒരു നിറം തിരഞ്ഞെടുക്കുക, യജ അതിനോട് പൊരുത്തപ്പെടുന്ന മറ്റ് നിറങ്ങൾ നിർമ്മിക്കും.</string>
+    <string name="settings_preview_chip_main">പ്രധാനം</string>
+    <string name="settings_preview_chip_support">സഹായകം</string>
+    <string name="settings_no_font_selected">ഫോണ്ടുകൾ ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല</string>
+    <string name="settings_custom_font_desc">യൂണി കോഡ് പിന്തുണയുള്ള .ttf അല്ലെങ്കിൽ .otf ഫയലുകൾ തിരഞ്ഞെടുക്കാം. ചില അക്ഷരങ്ങൾ ഇല്ലെങ്കിൽ സിസ്റ്റം അക്ഷരരൂപം ഉപയോഗിക്കും.</string>
+    <string name="settings_font_replace">മാറ്റുക</string>
+    <string name="settings_choose_font_file">അക്ഷരരൂപ ഫയൽ തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_intensity_muted">മ്യൂട്ടഡ്</string>
+    <string name="settings_intensity_normal">നോർമൽ</string>
+    <string name="settings_intensity_vivid">വിവിഡ്</string>
+    <string name="settings_intensity_pop">പോപ്പ്</string>
+    <string name="settings_tint_clean">ക്ലീൻ</string>
+    <string name="settings_tint_soft">സോഫ്റ്റ്</string>
+    <string name="settings_tint_rich">റിച്ച്</string>
+    <string name="settings_tint_deep">ഡീപ്പ്</string>
+    <string name="settings_accent_complementary">കോംപ്ലിമെന്ററി</string>
+    <string name="settings_accent_analogous">അനലോഗസ്</string>
+    <string name="settings_accent_triadic">ട്രയാഡിക്</string>
+    <string name="settings_accent_soft">സോഫ്റ്റ്</string>
+    <string name="settings_mono_weight_thin">തിൻ (Thin)</string>
+    <string name="settings_mono_weight_extra_light">എക്സ്ട്രാ ലൈറ്റ്</string>
+    <string name="settings_mono_weight_light">ലൈറ്റ്</string>
+    <string name="settings_mono_weight_regular">റെഗുലർ</string>
+    <string name="settings_mono_weight_medium">മീഡിയം</string>
+    <string name="settings_mono_weight_semi_bold">സെമി ബോൾഡ്</string>
+    <string name="settings_mono_weight_bold">ബോൾഡ്</string>
+    <string name="settings_mono_weight_extra_bold">എക്സ്ട്രാ ബോൾഡ്</string>
+    <string name="settings_mono_weight_title">വെയിറ്റ് (Weight)</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">തീയതി കീവേഡ് ചേർക്കുക</string>
+    <string name="settings_keyword_label">കീവേഡ്</string>
+    <string name="settings_keyword_placeholder_example">ഉദാ: നാളെ</string>
+    <string name="settings_means_label">അർത്ഥം</string>
+    <string name="settings_add_button">ചേർക്കുക</string>
+    <string name="settings_no_keywords_yet">കീവേഡുകൾ ഒന്നും ചേർത്തിട്ടില്ല.</string>
+    <string name="settings_added_keywords_title">ചേർത്ത കീവേഡുകൾ (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">കീവേഡ് ചേർക്കുക</string>
+    <string name="keywords_dialog_add_title">കീവേഡ് ചേർക്കുക</string>
+    <string name="keywords_dialog_edit_title">കീവേഡ് തിരുത്തുക</string>
+    <string name="keywords_cd_import_csv">CSV ഇമ്പോർട്ട് ചെയ്യുക</string>
+    <string name="keywords_cd_export_csv">CSV എക്സ്പോർട്ട് ചെയ്യുക</string>
+    <string name="keywords_cd_download_template">എഴുത്തുമാതൃക ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="rebuild_cache_storage_transparency_title">ഓൺ-ഡിവൈസ് സംഭരണം സ്വഭാവം</string>
+    <string name="rebuild_cache_storage_transparency_desc">യജ സുരക്ഷിതമായ ലോക്കൽ സംഭരണം മോഡലാണ് ഉപയോഗിക്കുന്നത്. നിങ്ങളുടെ വിവരങ്ങൾ ഫോണിൽ മാത്രം സൂക്ഷിക്കുന്നു:</string>
+    <string name="rebuild_cache_source_of_truth_title">വിവരങ്ങളുടെ ഉറവിടം (മാർക്ക്ഡൗൺ ഫയലുകൾ)</string>
+    <string name="rebuild_cache_source_of_truth_desc">നിങ്ങളുടെ എല്ലാ കുറിപ്പ്കളും, ചെയ്യേണ്ടവകളും, ഇവന്റുകളും, ലേബലുകളും പ്ലെയിൻ മാർക്ക്ഡൗൺ (.md) ഫയലുകളായാണ് ഫോൾഡറിൽ സൂക്ഷിക്കുന്നത്.</string>
+    <string name="rebuild_cache_read_cache_title">റീഡ് കാഷെ &amp; ഇൻഡെക്സ് (SQLite ഡാറ്റാബേസ്)</string>
+    <string name="rebuild_cache_read_cache_desc">ഫോൾഡറുകൾ എപ്പോഴും സ്കാൻ ചെയ്യാതെ വേഗത്തിൽ കുറിപ്പ്കളും കലണ്ടറും കാണിക്കാൻ യജ ഇവയെ SQLite ഡാറ്റാബേസിലേക്ക് ഇൻഡെക്സ് ചെയ്യുന്നു.</string>
+    <string name="rebuild_cache_local_private_title">100% ലോക്കൽ &amp; പ്രൈവറ്റ്</string>
+    <string name="rebuild_cache_local_private_desc">യജയ്ക്ക് ക്ലൗഡ് സർവറോ മറ്റ് ഡാറ്റാ ട്രാക്കിംഗോ ഇല്ല. നിങ്ങളുടെ വിവരങ്ങൾ നിങ്ങളുടെ ഫോണിൽ മാത്രം സുരക്ഷിതമാണ്.</string>
+    <string name="keywords_export_success">കീവേഡുകൾ എക്സ്പോർട്ട് ചെയ്തു</string>
+    <string name="keywords_export_failed">കീവേഡുകൾ എക്സ്പോർട്ട് ചെയ്യാൻ സാധിച്ചില്ല</string>
+    <string name="keywords_template_saved">എഴുത്തുമാതൃക സൂക്ഷിച്ചു</string>
+    <string name="keywords_template_save_failed">എഴുത്തുമാതൃക സൂക്ഷിക്കാൻ സാധിച്ചില്ല</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d കീവേഡ് ഉൾപ്പെടുത്തി</item>
+        <item quantity="other">%d കീവേഡുകൾ ഉൾപ്പെടുത്തി</item>
+    </plurals>
+    <string name="keywords_import_none_valid">സാധുവായ കീവേഡുകളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="keywords_import_failed">കീവേഡുകൾ ഉൾപ്പെടുത്താൻ സാധിച്ചില്ല</string>
+    <string name="keywords_status_indexing">സൂചീകരിക്കുന്നു</string>
+    <string name="keywords_status_indexed">സൂചീകരിച്ചു</string>
+    <string name="keywords_metric_mentions">പരാമർശങ്ങൾ</string>
+    <string name="keywords_metric_days">ദിവസങ്ങൾ</string>
+    <string name="keywords_timeline_range_all">എല്ലാം</string>
+    <string name="keywords_connections_filter_all">എല്ലാം</string>
+    <string name="keywords_connections_filter_people">ആളുകൾ</string>
+    <string name="keywords_connections_filter_places">സ്ഥലങ്ങൾ</string>
+    <string name="keywords_connections_filter_recent">സമീപകാലം</string>
+    <string name="keywords_connections_filter_strongest">ഏറ്റവും ശക്തം</string>
+    <string name="keywords_filter_needs_reindex">വീണ്ടും സൂചീകരിക്കണം</string>
+    <string name="keywords_search_placeholder">ആളുകൾ, സ്ഥലങ്ങൾ, വിളിപ്പേരുകൾ, ബന്ധം എന്നിവ തിരയുക</string>
+    <string name="keywords_refreshing_counters">കീവേഡ് എണ്ണികൾ പുതുക്കുന്നു…</string>
+    <string name="keywords_empty_title">ഇതുവരെ കീവേഡുകൾ ഇല്ല</string>
+    <string name="keywords_empty_subtitle">ആപ്പ് പ്രാദേശികമായി നിരീക്ഷിക്കേണ്ട ആളുകളെയും സ്ഥലങ്ങളെയും ചേർക്കുക.</string>
+    <string name="keywords_no_results_title">പൊരുത്തമുള്ള ഫലങ്ങളൊന്നുമില്ല</string>
+    <string name="keywords_no_results_subtitle">വ്യത്യസ്തമായ തിരയൽ, ക്രമം, അല്ലെങ്കിൽ ഫിൽട്ടർ പരീക്ഷിക്കുക.</string>
+    <string name="keywords_people_title">ആളുകൾ</string>
+    <string name="keywords_places_title">സ്ഥലങ്ങൾ</string>
+    <string name="keywords_people_empty">ഇതുവരെ ആളുകളെ ചേർത്തിട്ടില്ല.</string>
+    <string name="keywords_people_filtered_empty">നിലവിലെ ഫിൽട്ടറുകളുമായി പൊരുത്തപ്പെടുന്ന ആളുകളില്ല.</string>
+    <string name="keywords_places_empty">ഇതുവരെ സ്ഥലങ്ങൾ ചേർത്തിട്ടില്ല.</string>
+    <string name="keywords_places_filtered_empty">നിലവിലെ ഫിൽട്ടറുകളുമായി പൊരുത്തപ്പെടുന്ന സ്ഥലങ്ങളില്ല.</string>
+    <string name="keywords_delete_person_title">വ്യക്തിയെ ഇല്ലാതാക്കണോ?</string>
+    <string name="keywords_delete_place_title">സ്ഥലം ഇല്ലാതാക്കണോ?</string>
+    <string name="keywords_delete_message">"%1$s"-നെ ആളുകളും സ്ഥലങ്ങളും എന്നതിൽ നിന്ന് ഇല്ലാതാക്കണോ? ഇത് ഈ കീവേഡിനെയും അതിന്റെ സൂചികയിലുള്ള പൊരുത്തങ്ങളെയും നീക്കം ചെയ്യും.</string>
+    <string name="keywords_timeline_title">കാലക്രമത്തിലെ പരാമർശങ്ങൾ</string>
+    <string name="keywords_timeline_empty_pattern">ഇതുവരെ പ്രതിമാസ രീതി ഒന്നുമില്ല</string>
+    <string name="keywords_timeline_total_format">മൊത്തം %1$d</string>
+    <string name="keywords_timeline_empty_chart">സൂചികയിൽ കുറിപ്പുകൾ കണ്ടെത്തിയ ശേഷം പരാമർശങ്ങൾ ഇവിടെ ചാർട്ടായി കാണാം.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">മികച്ച %1$s • %2$d തവണ</item>
+        <item quantity="other">മികച്ച %1$s • %2$d തവണ</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">പരാമർശിച്ച ദിവസങ്ങൾ</string>
+    <string name="keywords_recency_title">സമീപകാല വിവരങ്ങൾ</string>
+    <string name="keywords_recency_none">ഇതുവരെ പൊരുത്തപ്പെടുന്നവയില്ല</string>
+    <string name="keywords_recency_today">ഇന്ന് പരാമർശിച്ചു</string>
+    <string name="keywords_recency_yesterday">ഇന്നലെ പരാമർശിച്ചു</string>
+    <string name="keywords_recency_days_ago_format">അവസാനം പരാമർശിച്ചത് %1$d ദിവസം മുൻപ്</string>
+    <string name="keywords_first_seen">ആദ്യം കണ്ടത്</string>
+    <string name="keywords_last_seen">അവസാനം കണ്ടത്</string>
+    <string name="keywords_unknown">അജ്ഞാതം</string>
+    <string name="keywords_co_mentioned_with">ഒപ്പം പരാമർശിച്ചവ</string>
+    <string name="keywords_connections_title">കണക്ഷനുകൾ</string>
+    <string name="keywords_connections_subtitle">ഒപ്പമുള്ള പരാമർശങ്ങളുടെ അടിസ്ഥാനത്തിൽ ക്രമീകരിച്ചത്</string>
+    <string name="keywords_connections_linked_format">%1$d ബന്ധിപ്പിച്ചവ</string>
+    <string name="keywords_connections_show">കണക്ഷനുകൾ കാണിക്കുക</string>
+    <string name="keywords_connections_hide">കണക്ഷനുകൾ മറയ്ക്കുക</string>
+    <string name="keywords_connections_items_in_view">ലിസ്റ്റിലുള്ള %1$d എണ്ണം</string>
+    <string name="keywords_connections_tap_to_expand">ബന്ധിപ്പിച്ച %1$d എണ്ണം വികസിപ്പിക്കാൻ ടാപ്പ് ചെയ്യുക</string>
+    <string name="keywords_connections_empty">ഫിൽട്ടറിന് അനുയോജ്യമായ കണക്ഷനുകൾ ഇല്ല.</string>
+    <string name="keywords_open_day">ദിവസം തുറക്കുക</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">കൂടുതൽ പരാമർശിച്ചവ</string>
+    <string name="keywords_sort_recently_added">പുതുതായി ചേർത്തവ</string>
+    <string name="keywords_peak_mentions_format">മികച്ച %1$s • %2$d പരാമർശം %3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d ദിവസം</string>
+    <string name="keywords_connections_meta_days_suffix_plural">ദിവസങ്ങൾ</string>
+    <string name="keywords_connections_meta_together">ഒന്നിച്ച്</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d പങ്കിട്ട കുറിപ്പ്</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">കൾ</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">കൾ</string>
+    <string name="keywords_connections_meta_last_prefix">| അവസാനം %1$s</string>
+    <string name="keywords_connections_score_format">സ്കോർ %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d ദിവസം</string>
+    <string name="keywords_connections_shared_chip">പങ്കിട്ട %1$d</string>
+    <string name="keywords_match_type_exact">കൃത്യമായ</string>
+    <string name="keywords_match_type_fuzzy">ഫസി (Fuzzy)</string>
+    <string name="keywords_match_type_alias">ഉളിപ്പേര്</string>
+    <string name="keywords_match_type_relation">ബന്ധം</string>
+    <string name="keywords_action_delete">ഇല്ലാതാക്കുക</string>
+    <string name="keywords_action_edit">തിരുത്തുക</string>
+    <string name="keywords_action_view">കാണുക</string>
+    <string name="keywords_name_label">പേര്</string>
+    <string name="keywords_relation_context_label">ബന്ധം / കോൺവിവരം</string>
+    <string name="keywords_aliases_label">ഉളിപ്പേരുകൾ (കോമ ഇട്ട് നൽകുക)</string>
+    <string name="keywords_aliases_label_short">ഉളിപ്പേരുകൾ</string>
+    <string name="keywords_type_person">വ്യക്തി</string>
+    <string name="keywords_type_place">സ്ഥലം</string>
+    <string name="keywords_save_disabled_hint">സൂക്ഷിച്ച കീവേഡുകൾ കാണാൻ ലിസ്റ്റിൽ നിന്നും എനേബിൾ ചെയ്യുക.</string>
+    <string name="settings_meaning_yesterday">ഇന്നലെ</string>
+    <string name="settings_meaning_today">ഇന്ന്</string>
+    <string name="lookback_chip_weekly">പ്രതിവാര</string>
+    <string name="lookback_chip_monthly">പ്രതിമാസ</string>
+    <string name="timeline_screen_title">സമയരേഖ</string>
+    <string name="timeline_empty_title">ഇവിടെ ഒന്നുമില്ല</string>
+    <string name="timeline_empty_subtitle">മറ്റൊരു ഫിൽട്ടർ ഉപയോഗിക്കുകയോ ലേബലുകൾ മാറ്റുകയോ ചെയ്യുക.</string>
+    <string name="timeline_quick_today">ഇന്ന്</string>
+    <string name="timeline_quick_month">മാസം</string>
+
+    <string name="timeline_quick_filters">ഫിൽട്ടറുകൾ</string>
+    <string name="timeline_all_dates">എല്ലാ തീയതികളും</string>
+    <string name="timeline_label_prefix">ലേബൽ: %1$s</string>
+    <string name="timeline_label_search_placeholder">ഡേ ലേബലുകൾ തിരയുക</string>
+    <string name="timeline_filters_title">കുറ്ററ്റ സമയരേഖ ഫിൽട്ടറുകളും ലേഔട്ടും</string>
+    <string name="settings_meaning_tomorrow">നാളെ (വരാനിരിക്കുന്നത്)</string>
+    <string name="settings_meaning_day_before_yesterday">മിനിഞ്ഞാന്ന്</string>
+    <string name="settings_meaning_day_after_tomorrow">മറ്റന്നാൾ</string>
+    <string name="settings_meaning_last_week">കഴിഞ്ഞ ആഴ്ച</string>
+    <string name="settings_meaning_next_week">അടുത്ത ആഴ്ച</string>
+    <string name="settings_meaning_monday">തിങ്കളാഴ്ച</string>
+    <string name="settings_meaning_tuesday">ചൊവ്വാഴ്ച</string>
+    <string name="settings_meaning_wednesday">ബുധനാഴ്ച</string>
+    <string name="settings_meaning_thursday">വ്യാഴാഴ്ച</string>
+    <string name="settings_meaning_friday">വെള്ളിയാഴ്ച</string>
+    <string name="settings_meaning_saturday">ശനിയാഴ്ച</string>
+    <string name="settings_meaning_sunday">ഞായറാഴ്ച</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">ആപ്പ് ഇന്റേണൽ സംഭരണം</string>
+    <string name="settings_storage_internal_default">ആപ്പ് ഇന്റേണൽ സംഭരണം (സ്ഥിരസ്ഥിതി)</string>
+    <string name="settings_storage_new_folder_fallback">പുതിയ ഫോൾഡർ</string>
+    <string name="settings_storage_current_folder_fallback">നിലവിലെ ഫോൾഡർ</string>
+    <string name="settings_storage_move_confirm">നിലവിലുള്ള എല്ലാ കുറിപ്പ്കളും %1$s-ൽ നിന്ന് %2$s-ലേക്ക് മാറ്റും. തുടരണോ?</string>
+    <string name="settings_restore_added_skipped">ചേർത്തവ: %1$d\nഒഴിവാക്കിയ ഡ്യൂപ്ലിക്കേറ്റുകൾ: %2$d</string>
+    <string name="settings_storage_custom_folder">കസ്റ്റം ഫോൾഡർ:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">ഷോർട്ട്കട്ട് സഹായം</string>
+    <string name="addentry_cd_insert_template">എഴുത്തുമാതൃക ചേർക്കുക</string>
+    <string name="addentry_cd_jump_to_today">ഇന്നത്തെ ദിവസത്തിലേക്ക് പോവുക</string>
+    <string name="addentry_cd_share">പങ്കിടുക</string>
+    <string name="addentry_cd_bold">ബോൾഡ് (Bold)</string>
+    <string name="addentry_cd_italic">ഇറ്റാലിക് (Italic)</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">സമയം നിശ്ചയിക്കുക</string>
+    <string name="addentry_event_chip">പരിപാടി</string>
+    <string name="addentry_pick_time_title">സമയം തിരഞ്ഞെടുക്കുക</string>
+    <string name="addentry_hour_label">മണിക്കൂർ</string>
+    <string name="addentry_minute_label">മിനിറ്റ്</string>
+    <string name="addentry_new_event_title">പുതിയ പരിപാടി</string>
+    <string name="addentry_title_label">തലക്കെട്ട്</string>
+    <string name="addentry_event_description_label">പരിപാടി വിവരണം</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">ചെയ്യേണ്ടവ കണ്ടെത്തി</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d വരി ചെക്ക്ലിസ്റ്റിലേക്ക് മാറ്റുക</item>
+        <item quantity="other">%1$d വരികൾ ചെക്ക്ലിസ്റ്റിലേക്ക് മാറ്റുക</item>
+    </plurals>
+    <string name="addentry_people_places_title">ആളുകളും സ്ഥലങ്ങളും</string>
+    <string name="addentry_no_tracked_mentions">ഈ കുറിപ്പ്യിൽ ട്രാക്ക് ചെയ്യുന്ന ആളുകളെയോ സ്ഥലങ്ങളെയോ കണ്ടെത്തിയില്ല.</string>
+    <string name="addentry_day_memory_title">ഓർമ്മ ചിത്രം</string>
+    <string name="addentry_star_day_title">ഈ ദിവസത്തിന് സ്റ്റാർ നൽകുക</string>
+    <string name="addentry_star_day_subtitle">ഇത് തിരിഞ്ഞുനോട്ടത്തിൽ പ്രധാന ഓർമ്മയായി കാണിക്കും.</string>
+    <string name="addentry_day_label_label">ഡേ ലേബൽ</string>
+    <string name="addentry_day_label_placeholder">ഉദാ: അവധി ദിവസം</string>
+    <string name="addentry_follow_up_title">റിവിസിറ്റ് തീയതി</string>
+    <string name="addentry_next_month">അടുത്ത മാസം</string>
+    <string name="addentry_custom">കസ്റ്റം</string>
+    <string name="addentry_due_date_format">തീരേണ്ടത് %1$s</string>
+    <string name="addentry_cd_clear_follow_up">റിവിസിറ്റ് ഒഴിവാക്കുക</string>
+    <string name="addentry_follow_up_note_label">റിവിസിറ്റ് കുറിപ്പ്</string>
+    <string name="addentry_follow_up_note_placeholder">എന്തിനെക്കുറിച്ചാണ് വീണ്ടും ചിന്തിക്കേണ്ടത്?</string>
+    <string name="addentry_review_entry_title">കുറിപ്പ് അവലോകനം ചെയ്യുക</string>
+    <string name="addentry_review_entry_subtitle">സേവ് ചെയ്യുന്നതിന് മുൻപ് ഒരു പരിശോധന. ചെയ്യേണ്ടവ തിരിക്കാനും, ആളുകളെയും സ്ഥലങ്ങളെയും ട്രാക്ക് ചെയ്യാനും, ആവശ്യമെങ്കിൽ സ്റ്റാർ നൽകാനും സാധിക്കും.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d ചെയ്യേണ്ടവ</item>
+        <item quantity="other">%1$d ചെയ്യേണ്ടവ</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d പരാമർശം</item>
+        <item quantity="other">%1$d പരാമർശങ്ങൾ</item>
+    </plurals>
+    <string name="addentry_save_entry_button">കുറിപ്പ് സൂക്ഷിക്കുക</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">മാറ്റങ്ങൾ ഒഴിവാക്കുക</string>
+    <string name="addentry_discard_changes_message">നിങ്ങളുടെ മാറ്റങ്ങൾ സൂക്ഷിച്ചിട്ടില്ല. അത് ഒഴിവാക്കി തിരികെ പോകണോ, അതോ തിരുത്തൽ തുടരണോ?</string>
+    <string name="addentry_go_back">തിരികെ പോകുക</string>
+    <string name="addentry_stay">ഇവിടെ തുടരുക</string>
+    <string name="addentry_shortcuts_title">ഷോർട്ട്കട്ടുകൾ</string>
+    <string name="addentry_help_bold_suffix"> അക്ഷരങ്ങൾ ബോൾഡ് ആക്കാൻ (അല്ലെങ്കിൽ അക്ഷരങ്ങൾ തിരഞ്ഞെടുത്ത് ബോൾഡ് ബട്ടണിൽ ടാപ്പ് ചെയ്യുക)</string>
+    <string name="addentry_help_italic_suffix"> അക്ഷരങ്ങൾ ഇറ്റാലിക് ആക്കാൻ (അല്ലെങ്കിൽ അക്ഷരങ്ങൾ തിരഞ്ഞെടുത്ത് ഇറ്റാലിക് ബട്ടണിൽ ടാപ്പ് ചെയ്യുക)</string>
+    <string name="addentry_help_today_suffix">: നിലവിലെ തീയതി വെയ്ക്കാൻ (ഉദാ, 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: നിലവിലെ സമയം വെയ്ക്കാൻ (ഉദാ, 14:30)</string>
+    <string name="addentry_help_week_suffix">: നിലവിലെ വാരം വെയ്ക്കാൻ (ഉദാ, ആഴ്ച 52)</string>
+    <string name="addentry_help_day_suffix">: നിലവിലെ ആഴ്ചയിലെ ദിവസം വെയ്ക്കാൻ (ഉദാ, തിങ്കൾ)</string>
+    <string name="addentry_help_todo_suffix">: ഒരു ചെയ്യേണ്ടവയുടെ ചെക്ക്ബോക്സ് വെയ്ക്കാൻ (ഉദാ, [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: ചെയ്യേണ്ടവയുടെ ചെക്ക്ബോക്സുള്ള വരിയിൽ എവിടെയെങ്കിലും ചേർത്താൽ അത് ടോഗിൾ ചെയ്യും.</string>
+    <string name="addentry_okey">ശരി!</string>
+    <string name="addentry_template_merge_message">ഈ ഡ്രാഫ്റ്റിൽ നിലവിൽ വിവരം ഉണ്ട്. എഴുത്തുമാതൃക എങ്ങനെ ചേർക്കണമെന്ന് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="addentry_template_merge_subtitle">\'താഴെ ചേർക്കുക\' എന്നത് നിലവിലെ വിവരം നിലനിർത്തും. \'കഴ്സറിൽ ചേർക്കുക\' എന്നത് നിങ്ങളുടെ കഴ്സറുള്ള ഭാഗത്ത് എഴുത്തുമാതൃക ചേർക്കും.</string>
+    <string name="addentry_insert_below">താഴെ ചേർക്കുക</string>
+    <string name="addentry_at_cursor">കഴ്സറിൽ ചേർക്കുക</string>
+    <string name="addentry_replace_draft">ഡ്രാഫ്റ്റ് മാറ്റുക</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">ജനപ്രിയം</string>
+    <string name="addentry_new_chip">പുതിയത്</string>
+    <string name="addentry_best_for_format">അനുയോജ്യം: %1$s</string>
+    <string name="addentry_cd_remove_favorite">എഴുത്തുമാതൃക ഫേവറിറ്റിൽ നിന്ന് ഒഴിവാക്കുക</string>
+    <string name="addentry_cd_favorite_template">ഫേവറിറ്റ് എഴുത്തുമാതൃക</string>
+    <string name="addentry_checklist_chip">ചെക്ക്ലിസ്റ്റ്</string>
+    <string name="addentry_followup_chip">ഫോളോ-അപ്പ്</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d സെക്ഷൻ</item>
+        <item quantity="other">%1$d സെക്ഷനുകൾ</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">ഫേവറിറ്റ് എഴുത്തുമാതൃക ടോഗിൾ ചെയ്യുക</string>
+    <string name="addentry_template_preview_label">എഴുത്തുമാതൃക പ്രിവ്യൂ</string>
+    <string name="addentry_use_template_button">എഴുത്തുമാതൃക ഉപയോഗിക്കുക</string>
+    <string name="addentry_start_blank_title">ബ്ലാങ്ക് ആയി തുടങ്ങുക</string>
+    <string name="addentry_start_blank_subtitle">എഴുത്തുമാതൃകകൾ ഒഴിവാക്കി ഒരു ശൂന്യ പേജിൽ എഴുത്ത് തുടങ്ങുക.</string>
+    <string name="addentry_blank_entry_name">ശൂന്യ കുറിപ്പ്</string>
+    <string name="addentry_blank_entry_description">പലെയ്ൻ ദിനക്കുറിപ്പ് കുറിപ്പ്</string>
+    <string name="addentry_blank_category">പൊതുവായവ</string>
+    <string name="addentry_quick_picks_title">ക്വിക്ക് പിക്സ്</string>
+    <string name="addentry_sort_recommended">ശുപാർശ ചെയ്തവ</string>
+    <string name="addentry_sort_recent">സമീപകാലത്തെ</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">എഴുത്തുമാതൃകകൾ ഒന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="addentry_no_templates_subtitle">മറ്റൊരു തിരച്ചിലോ കാറ്റഗറിയോ പരീക്ഷിക്കുക.</string>
+    <string name="addentry_search_templates_label">എഴുത്തുമാതൃകകൾ തിരയുക</string>
+    <string name="addentry_search_templates_placeholder">മീറ്റിംഗ്, ആരോഗ്യം, ചിന്തകൾ...</string>
+    <string name="addentry_cd_clear_search">തിരച്ചിൽ ഒഴിവാക്കുക</string>
+    <string name="addentry_choose_template_title">ഒരു എഴുത്തുമാതൃക തിരഞ്ഞെടുക്കുക</string>
+    <string name="addentry_templates_ready_format">%2$d-ൽ %1$d എഴുത്തുമാതൃകകൾ സജ്ജമാണ്</string>
+    <string name="addentry_category_all">എല്ലാം</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">എന്ത് പറ്റി?</string>
+    <string name="addentry_todo_chip">ചെയ്യേണ്ടവ</string>
+    <string name="addentry_numbered_list_chip">N ലിസ്റ്റ്</string>
+    <string name="addentry_bulleted_list_chip">B ലിസ്റ്റ്</string>
+    <string name="addentry_words_count_format">%1$d വാക്കുകൾ</string>
+    <string name="addentry_chars_count_format">%1$d ക്യാരക്ടറുകൾ</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">ഇന്ന് ചെയ്യേണ്ട ഫോളോ-അപ്പ്</item>
+        <item quantity="other">ഇന്ന് ചെയ്യേണ്ട ഫോളോ-അപ്പുകൾ</item>
+    </plurals>
+    <string name="home_followup_subtitle">ബന്ധിപ്പിച്ച ദിവസത്തിലേക്ക് തിരികെ പോയി അവിടെ നിന്ന് എഴുത്ത് തുടരാം.</string>
+    <string name="home_from_date_format">%1$s-ൽ നിന്ന്</string>
+    <string name="home_more_due_today_format">ഇന്ന് +%1$d എണ്ണം കൂടി ചെയ്യാനുണ്ട്</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">ലേബൽ ചേർക്കുക</string>
+    <string name="home_edit_label_title">ലേബൽ തിരുത്തുക</string>
+    <string name="home_day_label_hint">ഈ ദിവസത്തിനായി ഒരു ചെറിയ ലേബൽ നൽകുക (പരമാവധി 30 ക്യാരക്ടറുകൾ).</string>
+    <string name="home_day_label_placeholder">ഉദാ: സ്കൂളിലെ ആദ്യ ദിവസം</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">ഈ ദിവസത്തിനായി ഒരു ലേബൽ നൽകുക</string>
+    <string name="home_star_label_hint">ഓർമ്മയിൽ നിൽക്കുന്ന ഒരു ലേബൽ നൽകുക (പരമാവധി 30 ക്യാരക്ടറുകൾ)</string>
+    <string name="home_star_label_placeholder">ഉദാ: എന്റെ ജന്മദിനം, അവധി ദിവസം</string>
+    <string name="home_star_button">സ്റ്റാർ ചെയ്യുക</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">കുറിപ്പ് ഇല്ലാതാക്കി</item>
+        <item quantity="other">%1$d കുറിപ്പുകൾ ഇല്ലാതാക്കി</item>
+    </plurals>
+    <string name="home_restore_button">പുനഃസ്ഥാപിക്കുക</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">കുറിപ്പുകൾ തിരയുക...</string>
+    <string name="home_cd_search">തിരയുക</string>
+    <string name="home_cd_clear_search">തിരച്ചിൽ ഒഴിവാക്കുക</string>
+    <string name="home_cd_favorite">ഫേവറിറ്റ്</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">കുറിപ്പുകൾ</string>
+    <string name="home_stat_words">വാക്കുകൾ</string>
+    <string name="home_stat_chars">ക്യാരക്ടറുകൾ</string>
+    <string name="home_stat_versions">പതിപ്പുകൾ</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">ലേബൽ ചേർക്കുക</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d പൊരുത്തം കണ്ടെത്തി</item>
+        <item quantity="other">%1$d പൊരുത്തങ്ങൾ കണ്ടെത്തി</item>
+    </plurals>
+    <string name="home_no_keyword_matches">ഈ കീവേഡിന് അനുയോജ്യമായവ ഒന്നും കണ്ടെത്തിയില്ല.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">ശൂന്യമായ നില ഐക്കൺ</string>
+    <string name="home_empty_future">ഇത് ഭാവിയാണ്. ഒരു ഓർമ്മപ്പെടുത്തൽ രേഖപ്പെടുത്തൂ!</string>
+    <string name="home_empty_past">നിങ്ങൾ കഴിഞ്ഞ കാലത്താണ്. ഓർമ്മകൾ മങ്ങുന്നതിന് മുൻപ് എഴുതൂ...</string>
+    <string name="home_empty_today">കുറിപ്പുകൾ ഒന്നുമില്ല. നിങ്ങളുടെ ദിവസം എഴുതിത്തുടങ്ങുക.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">സൂക്ഷിക്കുന്നു</string>
+    <string name="home_cd_add_entry">കുറിപ്പ് ചേർക്കുക</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d ഇല്ലാതാക്കുക</string>
+    <string name="home_future_date_title">ഭാവി തീയതി കുറിപ്പ്</string>
+    <string name="home_future_date_message_format">നിങ്ങൾ ഭാവി തീയതിയിലാണ് (%1$s) കുറിപ്പ് ചേർക്കുന്നത്. തുടരണോ?</string>
+    <string name="home_cache_issue_title">ഡാറ്റ കാഷെ പ്രശ്നം കണ്ടെത്തി</string>
+    <string name="home_cache_issue_message">കാഷെയിൽ നിന്നും ധാരാളം ദിനക്കുറിപ്പ് കുറിപ്പുകൾ നഷ്ടപ്പെട്ടതായി കാണുന്നു. കാഷെ പൂർണ്ണമായി റിഫ്രഷ് ചെയ്യാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?</string>
+    <string name="home_refresh_button">റിഫ്രഷ് ചെയ്യുക</string>
+    <string name="home_ignore_button">അവഗണിക്കുക</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">ആളുകളും സ്ഥലങ്ങളും</string>
+    <string name="nav_statistics">സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="nav_todos">ചെയ്യേണ്ടവ</string>
+    <string name="nav_rebuild_index">ഡാറ്റാബേസ് ഇൻഡെക്‌സ് പുനർനിർമ്മിക്കുക</string>
+    <string name="nav_backup_data">ഡാറ്റ കരുതൽ പകർപ്പ് എടുക്കുക</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">നില</string>
+    <string name="nav_finishing_index_rebuild">ഇൻഡെക്‌സ് പുനർനിർമ്മാണം പൂർത്തിയാക്കുന്നു...</string>
+    <string name="nav_rebuilding_index">ഡാറ്റാബേസ് ഇൻഡെക്‌സ് പുനർനിർമ്മിക്കുന്നു</string>
+    <string name="nav_refreshing_index">ഇൻഡെക്‌സ് റിഫ്രഷ് ചെയ്യുന്നു</string>
+    <string name="nav_backup_too_old">ബാക്കപ്പിന് വളരെ പഴക്കമുണ്ട്...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">പ്രവർത്തിക്കുന്നു...</string>
+    <string name="nav_eta_almost_done">ഏകദേശം പൂർത്തിയായി</string>
+    <string name="nav_eta_seconds_left_format">~%1$d സെക്കൻഡ് ബാക്കി</string>
+    <string name="nav_eta_minutes_left_format">~%1$d മിനിറ്റ് ബാക്കി</string>
+    <string name="nav_eta_hours_left_format">~%1$d മണിക്കൂർ ബാക്കി</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">മെനു</string>
+    <string name="nav_cd_rj_logo">RJ ലോഗോ</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">വെബ്സൈറ്റ്</string>
+    <string name="nav_cd_share_app">ആപ്പ് പങ്കിടുക</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">യജ ലോഗോ</string>
+    <string name="nav_easter_quote_part1">"മനസ്സിലൂടെ കടന്നുപോയ ലളിതമായ ഒരു ചിന്തയോ ഉച്ചയ്ക്ക് കഴിച്ച ഭക്ഷണത്തെക്കുറിച്ചോ എഴുതാം; അതിന് വലിയ അർത്ഥമൊന്നും ഉണ്ടാകണമെന്നില്ല.\n</string>
+    <string name="nav_easter_quote_part2">നിങ്ങളുടെ വാക്കുകൾ അങ്ങനെ തന്നെ നിലനിൽക്കട്ടെ.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">RJ-യുടെ ലാബുകളിൽ നിന്ന്</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">യജ പങ്കിടുക</string>
+    <string name="nav_share_text_body">യജ — yet another journaling app\n\nഎഴുത്തുകൾ പ്ലെയിൻ മാർക്ക്ഡൗൺ ഫയലുകളായി ഫോണിൽ മാത്രം സൂക്ഷിക്കുന്ന ലളിതമായ ദിനക്കുറിപ്പ്.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">സംഭരണ സ്ഥലം മാറ്റുക</string>
+    <string name="settings_change_storage_location_message">നിലവിലുള്ള എല്ലാ കുറിപ്പ്കളും %1$s-ൽ നിന്ന് %2$s-ലേക്ക് മാറ്റും. തുടരണോ?</string>
+    <string name="settings_yes">അതെ</string>
+    <string name="settings_no">ഇല്ല</string>
+    <string name="settings_restore_summary_title">പുനഃസ്ഥാപന സംഗ്രഹം</string>
+    <string name="settings_restore_section_journal">ദിനക്കുറിപ്പ്</string>
+    <string name="settings_restore_section_shortcodes">ലഘുസൂചകങ്ങൾ</string>
+    <string name="settings_restore_section_date_keywords">തീയതി കീവേഡുകൾ</string>
+    <string name="settings_restore_section_people_places">ആളുകളും സ്ഥലങ്ങളും</string>
+    <string name="settings_restore_journal_summary">പുതിയ ദിവസങ്ങളിലേക്ക് ചേർത്തത്: %1$d\nനിലവിലുള്ള ദിവസങ്ങളിലേക്ക് മെർജ് ചെയ്തത്: %2$d\nഒഴിവാക്കിയ ഡ്യൂപ്ലിക്കേറ്റ് കുറിപ്പുകൾ: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">ചേർത്തത്: %1$d\nഒഴിവാക്കിയ ഡ്യൂപ്ലിക്കേറ്റുകൾ: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">ചേർത്തത്: %1$d\nഒഴിവാക്കിയ ഡ്യൂപ്ലിക്കേറ്റുകൾ: %2$d</string>
+    <string name="settings_restore_people_places_summary">ചേർത്തത്: %1$d\nഒഴിവാക്കിയ ഡ്യൂപ്ലിക്കേറ്റുകൾ: %2$d</string>
+    <string name="rebuild_tools_title">റീബിൽഡ് ടൂളുകൾ</string>
+    <string name="rebuild_tools_back">തിരികെ</string>
+    <string name="rebuild_tools_intro">ആവശ്യമായവ മാത്രം പുനർനിർമ്മിക്കുക. ഡാറ്റാബേസ് മുഴുവൻ പുനർനിർമ്മിക്കുന്നത് ഫയലുകൾക്ക് എന്തെങ്കിലും പ്രശ്നമുണ്ടെങ്കിൽ മാത്രം മതിയാകും.</string>
+    <string name="rebuild_todo_index_title">ചെയ്യേണ്ടവയുടെ ഇൻഡെക്സ് പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_todo_index_subtitle">ഫയലുകളിൽ നിന്നും ചെയ്യേണ്ടവ പുതുക്കുകയും ചെയ്യേണ്ടവ സ്ക്രീൻ/വിജറ്റ് അപ്ഡേറ്റ് ചെയ്യുകയും ചെയ്യുന്നു.</string>
+    <string name="rebuild_todo_index_button">ചെയ്യേണ്ടവ പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_people_places_title">ആളുകളും സ്ഥലങ്ങളും പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_people_places_subtitle">കീവേഡ് ഉളിപ്പേരുകൾ, കണക്ഷനുകൾ, ട്രെൻഡുകൾ എന്നിവ പുതുക്കുക.</string>
+    <string name="rebuild_people_places_button">ആളുകൾ &amp; സ്ഥലങ്ങൾ പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_database_title">ഡാറ്റാബേസ് പൂർണ്ണമായി പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_database_subtitle">മാർക്ക്ഡൗൺ ഫയലുകളിൽ നിന്നും SQLite ഡാറ്റാബേസ് മുഴുവനായി റീകംപൈൽ ചെയ്യുക.</string>
+    <string name="rebuild_database_button">ഡാറ്റാബേസ് പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_database_confirm_title">ഡാറ്റാബേസ് ഇൻഡെക്‌സ് പുനർനിർമ്മിക്കുക</string>
+    <string name="rebuild_database_confirm_message">ഇത് നിങ്ങളുടെ ഫയലുകളിൽ നിന്നും Room SQLite ഡാറ്റാബേസ് ക്ലിയർ ചെയ്ത് വീണ്ടും ഇൻഡെക്‌സ് ചെയ്യും. വലിയ ദിനക്കുറിപ്പുകൾക്ക് ഏതാനും മിനിറ്റുകൾ എടുത്തേക്കാം.</string>
+    <string name="rebuild_database_confirm_start">പുനർനിർമ്മാണം തുടങ്ങുക</string>
+
+    <string name="rebuild_database_status_title">ഡാറ്റാബേസ് ഇൻഡെക്‌സ് നില</string>
+    <string name="rebuild_database_storage_engine">സംഭരണം എൻജിൻ</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite ഡാറ്റാബേസ്</string>
+    <string name="rebuild_database_indexed_days">ഇൻഡെക്‌സ് ചെയ്ത ദിവസങ്ങൾ</string>
+    <string name="rebuild_database_indexed_days_value">%1$d ദിവസങ്ങൾ ഇൻഡെക്‌സ് ചെയ്തു</string>
+    <string name="rebuild_database_file_size">ഡാറ്റാബേസ് ഫയൽ സൈസ്</string>
+    <string name="rebuild_database_last_sync">അവസാന ഇൻഡെക്‌സ് സമന്വയം</string>
+    <string name="rebuild_database_age_never">ഒരിക്കലുമില്ല</string>
+    <string name="rebuild_database_age_just_now">ഇപ്പോൾ തന്നെ</string>
+    <string name="rebuild_database_age_one_minute">1 മിനിറ്റ് മുൻപ്</string>
+    <string name="rebuild_database_age_minutes">%1$d മിനിറ്റുകൾക്ക് മുൻപ്</string>
+    <string name="rebuild_database_age_one_hour">1 മണിക്കൂർ മുൻപ്</string>
+    <string name="rebuild_database_age_hours">%1$d മണിക്കൂറുകൾക്ക് മുൻപ്</string>
+    <string name="shortcodes_title">ലഘുസൂചകങ്ങൾ</string>
+    <string name="shortcodes_import_cd">ഇമ്പോർട്ട് ചെയ്യുക</string>
+    <string name="shortcodes_export_cd">എക്സ്പോർട്ട് ചെയ്യുക</string>
+    <string name="shortcodes_help_cd">സഹായം</string>
+    <string name="shortcodes_new">പുതിയ ലഘുസൂചകം</string>
+    <string name="shortcodes_empty_title">കസ്റ്റം ലഘുസൂചകങ്ങൾ ഒന്നും ലഭ്യമല്ല</string>
+    <string name="shortcodes_empty_subtitle">@yday പോലെയുള്ള സ്നിപ്പറ്റുകൾ ഡൈനാമിക് ടെക്സ്റ്റായി മാറ്റാൻ ഒരെണ്ണം ചേർക്കുക.</string>
+    <string name="shortcodes_dynamic_dates_hint">ഡൈനാമിക് തീയതികൾക്കായി {{today:format}} ഉപയോഗിക്കുക.</string>
+    <string name="shortcodes_help_title">ലഘുസൂചകം സഹായം</string>
+    <string name="shortcodes_help_built_in">ബിൽറ്റ്-ഇൻ ലഘുസൂചകങ്ങൾ:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (ചെക്ക്ബോക്സ്), @x (ടോഗിൾ ചെക്ക്ബോക്സ്)</string>
+    <string name="shortcodes_help_dynamic_patterns">ഡൈനാമിക് പാറ്റേണുകൾ:</string>
+    <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, അല്ലെങ്കിൽ {{now:FORMAT}} ഉപയോഗിക്കുക.</string>
+    <string name="shortcodes_help_example">ഉദാഹരണം: @yday -> ഇന്നലെ: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">സാധാരണ ഫോർമാറ്റുകൾ: dd-MM-yy, HH:mm, EEEE (ദിവസത്തിന്റെ പേര്).</string>
+    <string name="action_close">അടയ്ക്കുക</string>
+    <string name="keyword_detail_title_fallback">കീവേഡ്</string>
+    <string name="keyword_detail_not_found">കീവേഡ് കണ്ടെത്താനായില്ല</string>
+    <string name="keyword_detail_last_indexed">അവസാനം ഇൻഡെക്‌സ് ചെയ്തത് %1$s</string>
+    <string name="keyword_detail_mentions_section">പരാമർശങ്ങൾ</string>
+    <string name="pin_biometric_prompt_title">ബയോമെട്രിക് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക</string>
+    <string name="pin_biometric_prompt_subtitle">അൺലോക്ക് ചെയ്യാൻ ഫിംഗർപ്രിന്റ് അല്ലെങ്കിൽ മുഖം ഉപയോഗിക്കുക</string>
+    <string name="pin_error_no_biometric_enrolled">ബയോമെട്രിക് ഒന്നും ചേർത്തിട്ടില്ല. ഫോൺ സെറ്റിംഗ്സിൽ ഫിംഗർപ്രിന്റ് അല്ലെങ്കിൽ ഫേസ് ലോക്ക് നിശ്ചയിക്കുക.</string>
+    <string name="pin_error_hardware_unavailable">ബയോമെട്രിക് ഹാർഡ്‌വെയർ ലഭ്യമല്ല.</string>
+    <string name="pin_error_no_hardware">ഈ ഉപകരണത്തിൽ ബയോമെട്രിക് ഹാർഡ്‌വെയർ ഇല്ല.</string>
+    <string name="pin_error_not_available">ബയോമെട്രിക് വെരിഫിക്കേഷൻ ലഭ്യമല്ല.</string>
+    <string name="pin_title_confirm">പിൻ സ്ഥിരീകരിക്കുക</string>
+    <string name="pin_title_set_new">പുതിയ പിൻ നിശ്ചയിക്കുക</string>
+    <string name="pin_title_disable">പിൻ ഒഴിവാക്കാൻ നിലവിലുള്ള പിൻ നൽകുക</string>
+    <string name="pin_title_enter">പിൻ നൽകുക</string>
+    <string name="pin_error_incorrect">തെറ്റായ പിൻ. വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="pin_error_mismatch">പിൻ പൊരുത്തപ്പെടുന്നില്ല. ആദ്യം മുതൽ തുടങ്ങുക.</string>
+    <string name="pin_cd_use_biometric">ബയോമെട്രിക് ഉപയോഗിക്കുക</string>
+    <string name="pin_cd_backspace">തിരികെസ്പേസ്</string>
+    <string name="timeline_preview_empty_labeled">ഈ ദിവസത്തിന് ലേബൽ നൽകിയിട്ടുണ്ട്, പക്ഷേ ദിനക്കുറിപ്പ് കുറിപ്പുകൾ ഒന്നും ഇല്ല.</string>
+    <string name="timeline_preview_loading">പ്രിവ്യൂ ലോഡ് ചെയ്യുന്നു...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ ഈ ദിവസം %1$d അധിക കുറിപ്പ് കൂടിയുണ്ട്</item>
+        <item quantity="other">+ ഈ ദിവസം %1$d അധിക കുറിപ്പുകൾ കൂടിയുണ്ട്</item>
+    </plurals>
+    <string name="timeline_preview_open_day">ഈ ദിവസം തുറക്കുക</string>
+    <string name="timeline_chip_today">ഇന്ന്</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d കുറിപ്പ്</item>
+        <item quantity="other">%1$d കുറിപ്പുകൾ</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">തുടർനടപടി</string>
+    <string name="timeline_chip_label_only">ലേബൽ മാത്രം</string>
+    <string name="timeline_cd_favorite">പ്രിയപ്പെട്ടത്</string>
+    <string name="version_history_title">പതിപ്പ് ചരിത്രം</string>
+    <string name="version_history_day_versions_title">ദിവസത്തെ പതിപ്പുകൾ</string>
+    <string name="version_history_keep_copies_title">സുരക്ഷാ പകർപ്പുകൾ സൂക്ഷിക്കുക</string>
+    <string name="version_history_keep_copies_subtitle">യജ ഒരു ദിവസത്തെ ഫയലിൽ മാറ്റങ്ങൾ വരുത്തുന്നതിന് മുൻപ്, ആ ഫയലിന്റെ നിലവിലെ രൂപം ആപ്പ് ഡാറ്റയിലെ \'ചരിത്ര ഫയലുകൾ\' എന്നതിലേക്ക് സേവ് ചെയ്യും.</string>
+    <string name="version_history_versions_kept_title">ഓരോ ദിവസവും സൂക്ഷിക്കുന്ന പതിപ്പുകൾ</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">ഓരോ തീയതിക്കും പുതിയ %1$d പതിപ്പ് വീതം യജ സൂക്ഷിക്കുന്നു.</item>
+        <item quantity="other">ഓരോ തീയതിക്കും പുതിയ %1$d പതിപ്പുകൾ വീതം യജ സൂക്ഷിക്കുന്നു.</item>
+    </plurals>
+    <string name="version_history_retention_title">നിലനിർത്തൽ കാലാവധി</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">%1$d ദിവസത്തിൽ കൂടുതൽ പഴക്കമുള്ള സ്നാപ്പ്ഷോട്ടുകൾ സ്വയമേവ ഇല്ലാതാക്കപ്പെടും.</item>
+        <item quantity="other">%1$d ദിവസങ്ങളിൽ കൂടുതൽ പഴക്കമുള്ള സ്നാപ്പ്ഷോട്ടുകൾ സ്വയമേവ ഇല്ലാതാക്കപ്പെടും.</item>
+    </plurals>
+    <string name="version_history_notes">കുറിപ്പ്: ചേർക്കുക, തിരുത്തുക, ഇല്ലാതാക്കുക, പുനഃക്രമീകരിക്കുക, ലേബൽ ചെയ്യുക, സ്റ്റാർ ചെയ്യുക, റിവിസിറ്റ് മാറ്റങ്ങൾ വരുത്തുക എന്നിവയ്ക്ക് മുൻപ് നിങ്ങളുടെ മാർക്ക്ഡൗൺ ഫയലുകളെ സംരക്ഷിക്കാൻ വെർഷൻ ചരിത്രം സഹായിക്കും. ഇത് ക്ലൗഡ് കരുതൽ പകർപ്പ് അല്ല; പോർട്ടബിൾ കോപ്പികൾക്കായി തുടർന്നും കരുതൽ പകർപ്പ് ഉപയോഗിക്കുക.</string>
+    <string name="version_history_snapshots_for">%1$s-ന്റെ സ്നാപ്പ്ഷോട്ടുകൾ</string>
+    <string name="version_history_snapshots_subtitle">ഒരു പതിപ്പ് തുറന്ന് പരിശോധിച്ച ശേഷം ആവശ്യമെങ്കിൽ ഈ ദിവസത്തേക്ക് പുനഃസ്ഥാപിക്കുക.</string>
+    <string name="version_history_empty">ഈ തീയതിക്കായി ഇതുവരെ ഒരു പതിപ്പും സൂക്ഷിച്ചിട്ടില്ല.</string>
+    <string name="action_view">കാണുക</string>
+    <string name="version_history_date_intro">ഈ ദിവസത്തെ മുൻപത്തെ പതിപ്പ് തുറന്ന് പരിശോധിച്ച്, ആവശ്യമെങ്കിൽ അത് പുനഃസ്ഥാപിക്കുക.</string>
+    <string name="action_next">അടുത്തത്</string>
+    <string name="action_apply">പ്രയോഗിക്കുക</string>
+    <string name="action_restore">പുനഃസ്ഥാപിക്കുക</string>
+    <string name="statistics_choose_title">സ്റ്റാറ്റിസ്റ്റിക്സ് തിരഞ്ഞെടുക്കുക</string>
+    <string name="statistics_choose_subtitle">നിങ്ങൾക്ക് വേണ്ടാത്ത ഭാഗങ്ങൾ മറയ്ക്കുക. കുറഞ്ഞത് ഒരു ഭാഗമെങ്കിലും കാണണം.</string>
+    <string name="statistics_visible_count">%2$d-ൽ %1$d കാണിക്കുന്നു</string>
+    <string name="statistics_show_all">എല്ലാം കാണിക്കുക</string>
+    <string name="statistics_one_section_visible">കുറഞ്ഞത് ഒരു ഭാഗമെങ്കിലും കാണിക്കണം</string>
+    <string name="statistics_shown">സ്റ്റാറ്റിസ്റ്റിക്സിൽ കാണിക്കുന്നത്</string>
+    <string name="statistics_hidden">സ്റ്റാറ്റിസ്റ്റിക്സിൽ നിന്ന് മറച്ചത്</string>
+    <string name="statistics_select_start_date">ആരംഭ തീയതി തിരഞ്ഞെടുക്കുക</string>
+    <string name="statistics_select_end_date">അവസാന തീയതി തിരഞ്ഞെടുക്കുക</string>
+    <string name="statistics_filter_by_period">കാലയളവ് അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യുക</string>
+    <string name="statistics_cd_reorder">പുനഃക്രമീകരിക്കാൻ ദീർഘനേരം അമർത്തുക</string>
+    <string name="statistics_total_entries">ആകെ കുറിപ്പുകൾ</string>
+    <string name="statistics_total_words">ആകെ വാക്കുകൾ</string>
+    <string name="statistics_avg_words_per_entry">ശരാശരി വാക്കുകൾ/കുറിപ്പ്</string>
+    <string name="statistics_current_streak">നിലവിലെ സ്ട്രീക്ക്</string>
+    <string name="statistics_pages_written">എഴുതിയ പേജുകൾ</string>
+    <string name="statistics_days_highlighted">ഹൈലൈറ്റ് ചെയ്ത ദിവസങ്ങൾ</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d ദിവസം</item>
+        <item quantity="other">%1$d ദിവസങ്ങൾ</item>
+    </plurals>
+    <string name="statistics_period_all_time">എക്കാലത്തെയും സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_current_year">ഈ വർഷത്തെ സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_previous_year">കഴിഞ്ഞ വർഷത്തെ സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_current_month">ഈ മാസത്തെ സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_previous_month">കഴിഞ്ഞ മാസത്തെ സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_custom">പ്രത്യേക കാലയളവിലെ സ്റ്റാറ്റിസ്റ്റിക്സ്</string>
+    <string name="statistics_period_chip_all_time">എക്കാലവും</string>
+    <string name="statistics_period_chip_current_year">ഈ വർഷം</string>
+    <string name="statistics_period_chip_previous_year">കഴിഞ്ഞ വർഷം</string>
+    <string name="statistics_period_chip_current_month">ഈ മാസം</string>
+    <string name="statistics_period_chip_previous_month">കഴിഞ്ഞ മാസം</string>
+    <string name="statistics_period_chip_custom">ഇഷ്ടാനുസരണം</string>
+    <string name="statistics_sections_visible">%2$d-ൽ %1$d ഭാഗങ്ങൾ കാണിക്കുന്നു</string>
+    <string name="statistics_loading_stages">ഘട്ടം ഘട്ടമായി സ്റ്റാറ്റിസ്റ്റിക്സ് ലോഡ് ചെയ്യുന്നു...</string>
+    <string name="review_period_weekly">പ്രതിവാര അവലോകനം</string>
+    <string name="review_period_monthly">പ്രതിമാസ അവലോകനം</string>
+    <string name="review_anchor_week">%1$s ഉൾപ്പെടുന്ന ആഴ്ച</string>
+    <string name="review_anchor_month">%1$s ഉൾപ്പെടുന്ന മാസം</string>
+    <string name="review_chip_entries">കുറിപ്പുകൾ %1$d</string>
+    <string name="review_chip_words">വാക്കുകൾ %1$d</string>
+    <string name="review_chip_days">ദിവസങ്ങൾ %1$d</string>
+    <string name="review_hint_jump">ദിനക്കുറിപ്പിലേക്ക് മടങ്ങാൻ താഴെയുള്ള തീയതി ചിപ്പുകളിൽ ടാപ്പ് ചെയ്യുക.</string>
+    <string name="review_chip_streak">സ്ട്രീക്ക് %1$d</string>
+    <string name="review_chip_gap">വിടവ് %1$d</string>
+    <string name="review_chip_labels">ലേബലുകൾ %1$d</string>
+    <string name="review_chip_favorites">പ്രിയപ്പെട്ടവ %1$d</string>
+    <string name="review_empty_period">ഈ കാലയളവിൽ ഇതുവരെ ദിനക്കുറിപ്പ് കുറിപ്പുകൾ ഒന്നുമില്ല. ലേബലുകളും ഹൈലൈറ്റുകളും ഉണ്ടെങ്കിൽ താഴെ കാണിക്കും.</string>
+    <string name="review_writing_rhythm">എഴുത്തിന്റെ താളം</string>
+    <string name="review_best_streak">മികച്ച സ്ട്രീക്ക്</string>
+    <string name="review_longest_gap">ഏറ്റവും വലിയ വിടവ്</string>
+    <string name="review_most_active_days">ഏറ്റവും സജീവമായ ദിവസങ്ങൾ</string>
+    <string name="review_day_entries_words">%1$d കുറിപ്പുകൾ | %2$d വാക്കുകൾ</string>
+    <string name="review_top_people">പ്രധാന വ്യക്തികൾ</string>
+    <string name="review_top_places">പ്രധാന സ്ഥലങ്ങൾ</string>
+    <string name="review_no_people_mentions">വ്യക്തികളുടെ പരാമർശങ്ങൾ ഇല്ല</string>
+    <string name="review_no_place_mentions">സ്ഥലങ്ങളുടെ പരാമർശങ്ങൾ ഇല്ല</string>
+    <string name="review_favorite_moments">പ്രിയപ്പെട്ട നിമിഷങ്ങൾ</string>
+    <string name="review_starred_day">സ്റ്റാർ ചെയ്ത ദിവസം</string>
+    <string name="review_highlighted_in_period">ഈ കാലയളവിൽ ഹൈലൈറ്റ് ചെയ്തവ</string>
+    <string name="review_labels_created">നിർമ്മിച്ച ലേബലുകൾ</string>
+    <string name="review_labeled_day">ലേബൽ ചെയ്ത ദിവസം</string>
+    <string name="review_language_split">ഭാഷകളുടെ വിഭജനം</string>
+    <string name="review_not_enough_text">ഈ കാലയളവിൽ ആവശ്യത്തിന് വിവരം ഇല്ല</string>
+    <string name="lookback_reviews_title">അവലോകനങ്ങൾ</string>
+    <string name="lookback_reviews_intro">തിരഞ്ഞെടുത്ത ദിനക്കുറിപ്പ് ദിവസത്തെക്കുറിച്ച് വേഗത്തിൽ ഒരു അവലോകനം ഉണ്ടാക്കുക.</string>
+    <string name="lookback_seven_days">7 ദിവസങ്ങൾ</string>
+    <string name="lookback_one_month">1 മാസം</string>
+    <string name="lookback_weekly_review">പ്രതിവാര അവലോകനം</string>
+    <string name="lookback_weekly_review_subtitle">ഈ ആഴ്ച ഒറ്റനോട്ടത്തിൽ</string>
+    <string name="lookback_monthly_review">പ്രതിമാസ അവലോകനം</string>
+    <string name="lookback_monthly_review_subtitle">ഈ മാസത്തെ സംഗ്രഹം</string>
+    <string name="lookback_flashbacks_title">കഴിഞ്ഞ വർഷങ്ങളിൽ ഈ ദിവസം</string>
+    <string name="lookback_highlights_title">നിങ്ങളുടെ ഹൈലൈറ്റുകൾ</string>
+    <string name="lookback_empty_title">ലുക്ക്ബാക്കുകളോ ഹൈലൈറ്റുകളോ ഇതുവരെ ഇല്ല.</string>
+    <string name="lookback_empty_subtitle">പ്രധാനപ്പെട്ട ദിവസങ്ങൾ പ്രിയപ്പെട്ടവയായി അടയാളപ്പെടുത്തുമ്പോൾ അവ ഇവിടെ കാണാം!</string>
+    <string name="lookback_cd_random_entry">ഏതെങ്കിലും ഒരു കുറിപ്പിലേക്ക് പോവുക</string>
+    <string name="statistics_period_label">കാലയളവ്</string>
+    <string name="statistics_compare_mode_title">കമ്പയർ മോഡ്</string>
+    <string name="statistics_compare_mode_subtitle">മാസം, വർഷം, കീവേഡ് മാറ്റങ്ങൾ</string>
+    <string name="statistics_this_year">ഈ വർഷം</string>
+    <string name="statistics_writing_days_delta">എഴുതിയ ദിവസങ്ങളിലെ മാറ്റം</string>
+    <string name="statistics_top_person_delta">പ്രധാന വ്യക്തിയിലെ മാറ്റം</string>
+    <string name="statistics_no_people_mentions">ഇതുവരെ വ്യക്തികളുടെ പരാമർശങ്ങൾ ഇല്ല</string>
+    <string name="statistics_top_place_delta">പ്രധാന സ്ഥലത്തിലെ മാറ്റം</string>
+    <string name="statistics_no_place_mentions">ഇതുവരെ സ്ഥലങ്ങളുടെ പരാമർശങ്ങൾ ഇല്ല</string>
+    <string name="statistics_structured_writing">Structured Writing</string>
+    <string name="statistics_template_led_format">എഴുത്തുമാതൃക അടിസ്ഥാനമാക്കിയത് %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">ബ്ലാങ്ക് %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">ഏറ്റവും കൂടുതൽ ഉപയോഗിച്ച എഴുത്തുമാതൃകകൾ</string>
+    <string name="statistics_template_mix">ടെംപ്ലേറ്റുകളുടെ അനുപാതം</string>
+    <string name="statistics_follow_up_leaders">തുടർനടപടികളിൽ മുന്നിൽ നിൽക്കുന്നവ</string>
+    <string name="statistics_compare_details">താരതമ്യ വിവരങ്ങൾ</string>
+    <string name="statistics_label_month">മാസം</string>
+    <string name="statistics_label_year">വർഷം</string>
+    <string name="statistics_this_month_count_format">ഈ മാസം %1$d</string>
+    <string name="statistics_last_month_count_format">കഴിഞ്ഞ മാസം %1$d</string>
+    <string name="statistics_longest_streak">ഏറ്റവും നീണ്ട സ്ട്രീക്ക്</string>
+    <string name="statistics_most_active_day">ഏറ്റവും സജീവമായ ദിവസം</string>
+    <string name="statistics_writing_consistency">എഴുത്തിലെ തുടർച്ച</string>
+    <string name="statistics_days_with_entries">കുറിപ്പ്കളുള്ള ദിവസങ്ങൾ</string>
+    <string name="statistics_best_month">മികച്ച മാസം</string>
+    <string name="statistics_best_month_format">%1$s · %2$d entries</string>
+    <string name="statistics_avg_writing_days_week">ആഴ്ചയിൽ എഴുതുന്ന ശരാശരി ദിവസങ്ങൾ</string>
+    <string name="statistics_days_decimal_format">%1$.1f ദിവസങ്ങൾ</string>
+    <string name="statistics_based_on_total_words">ഒരു ദിവസം എഴുതിയ ആകെ വാക്കുകളെ അടിസ്ഥാനമാക്കി</string>
+    <string name="statistics_light_words">കുറവ് (&lt; 50 വാക്കുകൾ)</string>
+    <string name="statistics_moderate_words">ഇടത്തരം (50-200 വാക്കുകൾ)</string>
+    <string name="statistics_heavy_words">കൂടുതൽ (200-500 വാക്കുകൾ)</string>
+    <string name="statistics_intense_words">വഹളെയേറെ (500+ വാക്കുകൾ)</string>
+    <string name="statistics_not_enough_text_languages">ഭാഷ കണ്ടെത്താൻ ആവശ്യത്തിന് വിവരം ഇല്ല</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d ഭാഷ കണ്ടെത്തി</item>
+        <item quantity="other">%1$d ഭാഷകൾ കണ്ടെത്തി</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">ഭാഷ കണ്ടെത്തൽ പ്രവർത്തനം ക്രമീകരിക്കപ്പെടുന്നതേയുള്ളൂ.</string>
+    <string name="statistics_latin_scripts_as_english">ലാറ്റിൻ ലിപികൾ ഇംഗ്ലീഷ് ആയി കാണിക്കും</string>
+    <string name="statistics_use_more_accurate_detection">കൂടുതൽ കൃത്യതയുള്ള കണ്ടെത്തൽ രീതി ഉപയോഗിക്കുക</string>
+    <string name="statistics_write_more_entries_languages">ഭാഷാ സ്റ്റാറ്റിസ്റ്റിക്സ് കാണാൻ കൂടുതൽ കുറിപ്പുകൾ എഴുതുക.</string>
+    <string name="statistics_based_on_entry_time">എഴുതിയ സമയത്തെ അടിസ്ഥാനമാക്കി</string>
+    <string name="statistics_morning_time">രാവിലെ (5am-ഉച്ചയ്ക്ക്)</string>
+    <string name="statistics_afternoon_time">ഉച്ചതിരിഞ്ഞ് (ഉച്ചയ്ക്ക്-5pm)</string>
+    <string name="statistics_evening_time">വൈകുന്നേരം (5pm-9pm)</string>
+    <string name="statistics_night_time">രാത്രി (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">ഹീറ്റ്മാപ്പ് അപ്ഡേറ്റ് ആയിക്കൊണ്ടിരിക്കുകയാണ്.</string>
+    <string name="statistics_heatmap_less">കുറവ്</string>
+    <string name="statistics_heatmap_more">കൂടുതൽ</string>
+    <string name="action_open">തുറക്കുക</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">യജ ദിനക്കുറിപ്പ് പരിപാടികൾ</string>
+    <string name="tasker_event_desc">ഈ ടാസ്‌കർ പ്രൊഫൈൽ ഏത് യജ ദിനക്കുറിപ്പ് പരിപാടികൾ വഴിയാണ് പ്രവർത്തിക്കേണ്ടതെന്ന് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="tasker_event_saved">കുറിപ്പ് സൂക്ഷിച്ചു</string>
+    <string name="tasker_event_edited">കുറിപ്പ് തിരുത്തി</string>
+    <string name="tasker_event_deleted">കുറിപ്പ് ഇല്ലാതാക്കി</string>
+    <string name="tasker_event_default_hint">ഒന്നും തിരഞ്ഞെടുത്തില്ലെങ്കിൽ, യജ കുറിപ്പ് സൂക്ഷിച്ചതായി കണക്കാക്കും.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">യജ ക്വിക്ക് ക്യാപ്ചർ</string>
+    <string name="tasker_action_desc">യജയിൽ ടാസ്‌കർ പെട്ടെന്ന് രേഖപ്പെടുത്തേണ്ട കാര്യങ്ങൾ ക്രമീകരിക്കുക.</string>
+    <string name="tasker_action_add_entry">കുറിപ്പ് ചേർക്കുക</string>
+    <string name="tasker_action_add_event">പരിപാടി ചേർക്കുക</string>
+    <string name="tasker_action_add_todo">ചെയ്യേണ്ടവ ചേർക്കുക</string>
+    <string name="tasker_action_append">അവസാനം കൂട്ടിച്ചേർക്കുക</string>
+    <string name="tasker_action_match_header_label">മാച്ച് / ശീർഷകം</string>
+    <string name="tasker_action_match_header_placeholder">മിസ്ഡ് കോളുകൾ</string>
+    <string name="tasker_action_line_to_append_label">കൂട്ടിച്ചേർക്കേണ്ട വരി</string>
+    <string name="tasker_action_text_label">വിവരം</string>
+    <string name="tasker_action_placeholder_event">ടാസ്‌കറിൽ നിന്നുള്ള പരിപാടി കുറിപ്പ്</string>
+    <string name="tasker_action_placeholder_todo">പാൽ വാങ്ങുക</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">ടാസ്‌കറിൽ നിന്നുള്ള പെട്ടെന്നുള്ള കുറിപ്പ്</string>
+    <string name="tasker_action_tip_append">ആദ്യ ആക്ഷൻ മാച്ച് വിവരം ഉപയോഗിച്ച് ഒരു കുറിപ്പ് നിർമ്മിക്കും. പിന്നീടുള്ള ആക്ഷനുകൾ ആ വരിയുടെ താഴെയായി വിവരങ്ങൾ കൂട്ടിച്ചേർക്കും.</string>
+    <string name="tasker_action_tip_default">ടിപ്പ്: ടാസ്‌കർ വേരിയബിളുകൾ വിവരം ഫീൽഡിൽ ഉപയോഗിക്കാം.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">മുൻപത്തെ ക്രാഷ് ലോഗ്</string>
+    <string name="crash_log_clear_close">ക്ലിയർ ചെയ്ത് അടയ്ക്കുക</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">ആപ്പ് തുറക്കുക</string>
+    <string name="tap_action_quick_capture">ക്വിക്ക് ക്യാപ്ചർ</string>
+    <string name="tap_action_do_nothing">ഒന്നും ചെയ്യേണ്ടതില്ല</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">യജ റൈറ്റിംഗ് ഹീറ്റ്മാപ്പ്</string>
+    <string name="widget_cell_shape">സെൽ രൂപം</string>
+    <string name="widget_corner_radius">കോർണർ റേഡിയസ്: %1$ddp</string>
+    <string name="widget_square">ചതുരം</string>
+    <string name="widget_round">വൃത്തം</string>
+    <string name="widget_inner_margin">ഉള്ളിലെ മാർജിൻ: %1$ddp</string>
+    <string name="widget_inner_margin_desc">ഹീറ്റ്മാപ്പും വിജറ്റിന്റെ അരികുകളും തമ്മിലുള്ള അകലം</string>
+    <string name="widget_none">ഇല്ല</string>
+    <string name="widget_max">പരമാവധി</string>
+    <string name="widget_on_tap">ടാപ്പ് ചെയ്യുമ്പോൾ</string>
+    <string name="widget_on_tap_desc">വിജറ്റിൽ ടാപ്പ് ചെയ്യുമ്പോൾ ചെയ്യേണ്ട ആക്ഷൻ</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">ക്യാപ്ചർ</string>
+    <string name="widget_qc_shape">വിജറ്റിന്റെ രൂപം</string>
+    <string name="widget_show_label">ലേബൽ കാണിക്കുക</string>
+    <string name="widget_show_label_desc">വിജറ്റിൽ \'ക്യാപ്ചർ\' എന്ന് കാണിക്കുക</string>
+    <string name="widget_show_icon">ഐക്കൺ കാണിക്കുക</string>
+    <string name="widget_show_icon_required">ലേബൽ മറച്ചിരിക്കുമ്പോൾ ഐക്കൺ നിർബന്ധമാണ്</string>
+    <string name="widget_show_icon_desc">വിജറ്റിൽ പേനയുടെ ഐക്കൺ കാണിക്കുക</string>
+    <string name="widget_label_text">ലേബൽ വിവരം</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">ചെയ്യേണ്ടവയുടെ വിജറ്റ്</string>
+    <string name="widget_todo_desc">വൃത്താകൃതിയിലുള്ള ഹീറ്റ്മാപ്പ് പോലെയുള്ള ചെയ്യേണ്ട കാര്യങ്ങളുടെ ലിസ്റ്റ് വിജറ്റ്.</string>
+    <string name="widget_todo_corner_radius">കോർണർ റേഡിയസ്: %1$ddp</string>
+    <string name="widget_todo_padding">പാഡിംഗ്: %1$ddp</string>
+    <string name="widget_todo_show_completed">പൂർത്തിയാക്കിയ ടാസ്കുകൾ കാണിക്കുക</string>
+    <string name="widget_todo_show_completed_desc">വിജറ്റ് ലിസ്റ്റിൽ പൂർത്തിയാക്കിയവയും ഉൾപ്പെടുത്തുക</string>
+    <string name="widget_todo_include_events">പരിപാടികൾ ഉൾപ്പെടുത്തുക</string>
+    <string name="widget_todo_include_events_desc">വിജറ്റിൽ ചെയ്യേണ്ടവക്കൊപ്പം പരിപാടി കുറിപ്പ്കളും കാണിക്കുക</string>
+    <string name="widget_todo_show_header">ചെയ്യേണ്ടവയുടെ ശീർഷകം കാണിക്കുക</string>
+    <string name="widget_todo_show_header_desc">വിജറ്റ് ശീർഷക വരി കാണിക്കുകയോ മറയ്ക്കുകയോ ചെയ്യുക</string>
+    <string name="widget_todo_auto_hide">എല്ലാ ചെയ്യേണ്ടവകളും പൂർത്തിയാകുമ്പോൾ വിജറ്റ് സ്വയമേവ മറയ്ക്കുക</string>
+    <string name="widget_todo_auto_hide_unavailable">പൂർത്തിയാക്കിയ ടാസ്കുകൾ കാണിക്കുമ്പോൾ ഈ സൗകര്യം ലഭ്യല്ല</string>
+    <string name="widget_todo_auto_hide_desc">ചെയ്യാനുള്ള ടാസ്കുകൾ ഇല്ലെങ്കിൽ വിജറ്റ് സുതാര്യമാക്കുക</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">പൂർത്തിയായി</string>
+    <string name="todo_confirm_mark_not_done">പൂർത്തിയായില്ല</string>
+    <string name="todo_confirm_title">ചുമതല %1$s ആയി അടയാളപ്പെടുത്തണോ?</string>
+    <string name="todo_confirm_reopen">ഈ ചെയ്യേണ്ടവ നിലവിൽ പൂർത്തിയാക്കിയതാണ്. ഇത് വീണ്ടും തുറക്കുന്നതിന് മുൻപ് സ്ഥിരീകരിക്കുക.</string>
+    <string name="todo_confirm_complete">ഈ ചെയ്യേണ്ടവ ഇനിയും ചെയ്യാനുണ്ട്. ഇത് പൂർത്തിയായതായി അടയാളപ്പെടുത്തുന്നതിന് മുൻപ് സ്ഥിരീകരിക്കുക.</string>
+    <string name="todo_confirm_accidental_tap">അബദ്ധത്തിൽ ടാപ്പ് ചെയ്താൽ ടാസ്കിന് മാറ്റം വരില്ല.</string>
+    <string name="todo_confirm_yes_mark">അതെ, %1$s ആയി അടയാളപ്പെടുത്തുക</string>
+    <string name="todo_confirm_open_yaja">യജയിൽ തുറക്കുക</string>
+    <string name="todo_confirm_keep_as_is">മാറ്റമില്ലാതെ തുടരുക</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">RJ-യുടെ ലാബുകളിൽ നിന്ന്</string>
+    <string name="help_made_in">Made in 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">ഇമ്പോർട്ട് റദ്ദാക്കുക</string>
+    <string name="timeline_show_all_dates">എല്ലാ തീയതികളും കാണിക്കുക</string>
+    <string name="timeline_show_all_dates_subtitle">കുറിപ്പുകൾ ഇല്ലെങ്കിലും മുൻകാല ദിവസങ്ങളെല്ലാം ഉൾപ്പെടുത്തുക</string>
+    <string name="settings_background_tint_clean">ക്ലീൻ</string>
+    <string name="settings_background_tint_soft">സോഫ്റ്റ്</string>
+    <string name="settings_background_tint_rich">റിച്ച്</string>
+    <string name="settings_background_tint_deep">ഡീപ്പ്</string>
+    <string name="settings_accent_style_complementary">കോംപ്ലിമെന്ററി</string>
+    <string name="settings_accent_style_analogous">അനലോഗസ്</string>
+    <string name="settings_accent_style_triadic">ട്രയാഡിക്</string>
+    <string name="settings_accent_style_soft">സോഫ്റ്റ്</string>
+</resources>

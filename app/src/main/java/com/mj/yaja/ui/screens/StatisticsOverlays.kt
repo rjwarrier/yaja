@@ -22,8 +22,10 @@ import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.Instant
 import java.time.LocalDate
@@ -45,12 +47,12 @@ internal fun StatisticsSectionSettingsSheet(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Text(
-                text = "Choose Statistics",
+                text = stringResource(R.string.statistics_choose_title),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
-                text = "Hide sections you do not want. At least one section must stay visible.",
+                text = stringResource(R.string.statistics_choose_subtitle),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -60,7 +62,11 @@ internal fun StatisticsSectionSettingsSheet(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "${visibleSections.size} of ${sectionOrder.size} visible",
+                    text = stringResource(
+                        R.string.statistics_visible_count,
+                        visibleSections.size,
+                        sectionOrder.size
+                    ),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
@@ -72,7 +78,7 @@ internal fun StatisticsSectionSettingsSheet(
                             )
                         }
                     ) {
-                        Text("Show All")
+                        Text(stringResource(R.string.statistics_show_all))
                     }
                 }
             }
@@ -100,9 +106,9 @@ internal fun StatisticsSectionSettingsSheet(
                             )
                             Text(
                                 text = when {
-                                    isLastVisible -> "One section must remain visible"
-                                    enabled -> "Shown in statistics"
-                                    else -> "Hidden from statistics"
+                                    isLastVisible -> stringResource(R.string.statistics_one_section_visible)
+                                    enabled -> stringResource(R.string.statistics_shown)
+                                    else -> stringResource(R.string.statistics_hidden)
                                 },
                                 style = MaterialTheme.typography.labelSmall,
                                 color = if (isLastVisible) {
@@ -167,10 +173,10 @@ internal fun StatisticsStartDatePickerDialog(
                     }
                     onNext()
                 }
-            ) { Text("Next") }
+            ) { Text(stringResource(R.string.action_next)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         }
     ) {
         DatePicker(
@@ -178,7 +184,7 @@ internal fun StatisticsStartDatePickerDialog(
             showModeToggle = false,
             headline = {
                 Text(
-                    "Select Start Date",
+                    stringResource(R.string.statistics_select_start_date),
                     modifier = Modifier.padding(start = 24.dp, bottom = 8.dp)
                 )
             }
@@ -222,10 +228,10 @@ internal fun StatisticsEndDatePickerDialog(
                     }
                     onApply()
                 }
-            ) { Text("Apply") }
+            ) { Text(stringResource(R.string.action_apply)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         }
     ) {
         DatePicker(
@@ -233,7 +239,7 @@ internal fun StatisticsEndDatePickerDialog(
             showModeToggle = false,
             headline = {
                 Text(
-                    "Select End Date",
+                    stringResource(R.string.statistics_select_end_date),
                     modifier = Modifier.padding(start = 24.dp, bottom = 8.dp)
                 )
             }

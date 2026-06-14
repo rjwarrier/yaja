@@ -1,0 +1,1248 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">ジャーナル</string>
+    <string name="nav_calendar">カレンダー</string>
+    <string name="nav_lookback">振り返り</string>
+    <string name="nav_settings">設定</string>
+    <string name="nav_shortcodes">ショートコード</string>
+    <string name="nav_help">ヘルプと情報</string>
+
+    <!-- Common actions -->
+    <string name="action_save">保存</string>
+    <string name="action_cancel">キャンセル</string>
+    <string name="action_delete">削除</string>
+    <string name="action_edit">編集</string>
+    <string name="action_back">戻る</string>
+    <string name="action_undo">元に戻す</string>
+    <string name="action_yes">はい</string>
+    <string name="action_no">いいえ</string>
+    <string name="action_remove">削除</string>
+    <string name="action_done">完了</string>
+    <string name="action_set">設定</string>
+    <string name="action_select">選択</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">キャッシュを再構築中</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">クイックキャプチャ</string>
+    <string name="quick_capture_hint">何がありましたか？</string>
+    <string name="quick_capture_helper_shortcodes">ショートコードはここに自動的に展開され、EnterキーでToDo行が継続します。</string>
+    <string name="quick_capture_save_delayed">保存が遅延しています。確認するにはYajaを再起動してください。</string>
+    <string name="cd_saved">保存完了</string>
+    <string name="quick_todo_dialog_title">クイック追加</string>
+    <string name="quick_todo_save_delayed">ToDoの保存が遅延しています。確認するにはYajaを再起動してください。</string>
+    <string name="quick_todo_placeholder">ToDoを追加</string>
+    <string name="quick_event_placeholder">イベントを追加</string>
+    <string name="quick_todo_task_date">タスクの日付</string>
+    <string name="quick_todo_event_date">イベントの日付</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s を選択</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">選択した日のToDoエントリとして保存されます。</string>
+    <string name="quick_event_selected_day_hint">選択した日のイベントエントリとして保存されます。</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">前へ</string>
+    <string name="cd_next">次へ</string>
+    <string name="cd_surprise_me">おまかせ</string>
+    <string name="calendar_cd_go_to_current_month">今月に移動</string>
+    <string name="calendar_quick_action_timeline_title">タイムライン</string>
+    <string name="calendar_quick_action_timeline_subtitle">時系列で閲覧</string>
+    <string name="calendar_quick_action_jump_title">日付へ移動</string>
+    <string name="calendar_quick_action_jump_subtitle">特定の日を開く</string>
+    <string name="calendar_jump_placeholder">日-月-年</string>
+    <string name="calendar_jump_invalid_date">無効な日付です。日-月-年（DD-MM-YY）形式を使用してください。</string>
+    <string name="calendar_action_go">移動</string>
+    <string name="calendar_enable_future_dates_title">未来の日付を有効にする</string>
+    <string name="calendar_enable_future_dates_message">未来の日付のエントリは無効になっています。有効にしますか？</string>
+    <string name="calendar_action_enable">有効にする</string>
+    <string name="calendar_future_entry_enabled">未来の日付のエントリが有効になりました</string>
+    <string name="calendar_weekday_sun_short">日</string>
+    <string name="calendar_weekday_mon_short">月</string>
+    <string name="calendar_weekday_tue_short">火</string>
+    <string name="calendar_weekday_wed_short">水</string>
+    <string name="calendar_weekday_thu_short">木</string>
+    <string name="calendar_weekday_fri_short">金</string>
+    <string name="calendar_weekday_sat_short">土</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">今月のエントリ</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d 日</item>
+        <item quantity="other">%1$d / %2$d 日</item>
+    </plurals>
+    <string name="calendar_days_of_memories">日間の思い出</string>
+    <string name="calendar_consistency_last_12_months">過去12ヶ月</string>
+    <string name="calendar_consistency_title_format">継続性 - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">最初の期間</string>
+    <string name="calendar_graph_frequency_month">月</string>
+    <string name="calendar_graph_frequency_year">年</string>
+    <string name="calendar_yearly_consistency_title">継続性 (年間)</string>
+    <string name="calendar_keywords_title">登場回数の多い項目</string>
+    <string name="calendar_keywords_syncing">人物と場所の統計は、キーワードのインデックス登録と同期中です。</string>
+    <string name="calendar_keywords_empty">最も多く言及されている項目を表示するには、少なくとも3つの人物または3つの場所を追加してください。</string>
+    <string name="calendar_keywords_people">人物</string>
+    <string name="calendar_keywords_places">場所</string>
+
+    <!-- Settings -->
+    <string name="settings_title">設定</string>
+    <string name="settings_appearance">外観</string>
+    <string name="settings_appearance_subtitle">テーマ、色、フォント、個人スタイル</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_font">フォント</string>
+    <string name="settings_storage">ストレージ</string>
+    <string name="settings_security">セキュリティ</string>
+    <string name="settings_backup">バックアップ</string>
+    <string name="settings_change_storage_title">ストレージの保存場所を変更</string>
+    <string name="settings_backup_never">未実行</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">設定を検索</string>
+    <string name="settings_search_clear">検索をクリア</string>
+    <string name="settings_search_recent">最近の検索</string>
+    <string name="settings_search_no_results">一致する設定はありません</string>
+    <string name="settings_search_close">閉じる</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">ジャーナル体験</string>
+    <string name="settings_section_navigation_gestures">ナビゲーションとジェスチャー</string>
+    <string name="settings_section_review_insights">レビューとインサイト</string>
+
+    <!-- Language -->
+    <string name="settings_language">言語</string>
+    <string name="settings_language_title">アプリの言語</string>
+    <string name="settings_language_subtitle">アプリ全体で使用する言語を選択します。</string>
+    <string name="settings_language_system_default">システムデフォルト</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">エントリのスタイル</string>
+    <string name="settings_journal_entry_style_subtitle">立体的なカードと、フラットなジャーナルの外観から選択します。</string>
+    <string name="settings_journal_entry_style_cards">カード</string>
+    <string name="settings_journal_entry_style_flat">フラット</string>
+    <string name="settings_journal_render_checkboxes_title">チェックボックスをテキストとしてレンダリング</string>
+    <string name="settings_journal_render_checkboxes_subtitle">チェックボックスの代わりに、アプリ全体でToDoを [ ] と [x] として表示します。</string>
+    <string name="settings_journal_day_header_counts_title">日ヘッダーに件数を表示</string>
+    <string name="settings_journal_day_header_counts_subtitle">ジャーナルの日ヘッダーにエントリ、単語、文字数を表示します。</string>
+    <string name="settings_journal_show_timestamps_title">タイムスタンプを表示</string>
+    <string name="settings_journal_show_timestamps_subtitle">タイムラインにエントリ時間を表示します。</string>
+    <string name="settings_journal_allow_future_title">未来のエントリを許可</string>
+    <string name="settings_journal_allow_future_subtitle">未来の日付にエントリを追加できるようにします。</string>
+    <string name="settings_journal_truncate_title">長いエントリを切り詰める</string>
+    <string name="settings_journal_truncate_subtitle">ホーム画面で長いエントリを短く表示します。</string>
+    <string name="settings_journal_char_limit_title">文字数制限</string>
+    <string name="settings_journal_char_limit_subtitle">切り詰める前に表示する文字数を設定します。</string>
+    <string name="settings_journal_char_limit_min">50 文字</string>
+    <string name="settings_journal_char_limit_max">200 文字</string>
+    <string name="settings_journal_char_count">%1$d 文字</string>
+    <string name="settings_journal_first_day_title">週の始まりの曜日</string>
+    <string name="settings_journal_first_day_subtitle">カレンダーの開始曜日</string>
+    <string name="settings_journal_day_sun">日</string>
+    <string name="settings_journal_day_mon">月</string>
+    <string name="settings_journal_date_recognition">日付認識</string>
+    <string name="settings_journal_date_order_title">日付の順序</string>
+    <string name="settings_journal_date_order_subtitle">数値の日付の読み方</string>
+    <string name="settings_journal_date_order_auto">自動</string>
+    <string name="settings_journal_date_order_dmy">日/月</string>
+    <string name="settings_journal_date_order_mdy">月/日</string>
+    <string name="settings_journal_date_keywords_title">日付キーワード</string>
+    <string name="settings_journal_date_keywords_subtitle">日付を意味する他言語の単語（例：現地語での「昨日」）。</string>
+    <string name="settings_journal_view_keywords">表示 (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">キーワードを追加</string>
+    <string name="settings_journal_motion">モーション</string>
+    <string name="settings_journal_animations_title">アニメーション</string>
+    <string name="settings_journal_animations_subtitle">アプリ全体のモーションを制御します。「控えめ」に設定すると動きが少なくなります。</string>
+    <string name="settings_journal_animations_full">完全</string>
+    <string name="settings_journal_animations_reduced">控えめ</string>
+    <string name="settings_journal_animations_off">オフ</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">保存後のレビュー</string>
+    <string name="settings_review_post_write_title">保存後のレビュー</string>
+    <string name="settings_review_post_write_subtitle">保存タップ後にレビューシートを表示し、ToDoの抽出、メンションの確認、日のスター付け、ラベル設定を行います。</string>
+    <string name="settings_review_people_places">人物と場所</string>
+    <string name="settings_review_highlighting_title">ハイライト表示</string>
+    <string name="settings_review_highlighting_subtitle">ホームのカードやエントリ表示モードで、登録された人物や場所をハイライトします。</string>
+    <string name="settings_review_match_sensitivity_title">一致の感度</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">人物や場所として検出されるための一致の度合い（高いほど厳密）。</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">ショートコードを追加</string>
+    <string name="shortcodes_edit_title">ショートコードを編集</string>
+    <string name="shortcodes_code_label">ショートコード (例: @yday)</string>
+    <string name="shortcodes_expansion_label">展開するテキスト</string>
+    <string name="shortcodes_export_error">ショートコードの出力に失敗しました</string>
+    <string name="shortcodes_import_error">ショートコードの取り込みに失敗しました</string>
+    <string name="todos_expand_section">%1$s を展開</string>
+    <string name="todos_collapse_section">%1$s を折りたたむ</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">執筆ヒートマップ</string>
+    <string name="heatmap_widget_description">ジャーナルの最近 of 執筆活動ヒートマップ。</string>
+    <string name="quick_capture_widget_name">クイックキャプチャ</string>
+    <string name="quick_capture_widget_description">1タップで素早くジャーナルエントリを追加します。</string>
+    <string name="quick_todo_widget_name">クイックToDo</string>
+    <string name="tasker_plugin_action_label">Yajaクイックキャプチャ</string>
+    <string name="tasker_plugin_event_label">Yajaジャーナルイベント</string>
+    <string name="tasker_screen_allow_add_entry_title">Taskerのエントリ追加を許可</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Taskerが「エントリの追加」や「ToDoの追加」などのYajaクイックキャプチャアクションを使用できるようにします。</string>
+    <string name="tasker_screen_allow_events_title">Taskerのイベントを許可</string>
+    <string name="tasker_screen_allow_events_subtitle">Yajaがエントリの保存、変更、削除イベントをTaskerに送信できるようにします。</string>
+    <string name="tasker_screen_include_text_title">イベントにエントリ本文を含める</string>
+    <string name="tasker_screen_include_text_subtitle">プライバシー保護のためデフォルトはオフです。オフの場合、Taskerはイベントタイプ、日付、ラベル、時間は受信しますが、ジャーナル本文は受信しません。</string>
+    <string name="tasker_screen_section_what">機能の概要</string>
+    <string name="tasker_screen_body_what">Taskerを使用してYajaにジャーナルエントリやToDoを素早く追加したり、「不在着信」などのグループ化されたエントリに行を追加したりできます。また、Yajaはエントリが保存、編集、または削除されたときにTaskerに通知できます。</string>
+    <string name="tasker_screen_section_how">使用方法</string>
+    <string name="tasker_screen_body_how">まずここで必要なトグルをオンにします。その後、Taskerを開き、YajaクイックキャプチャアクションまたはYajaジャーナルイベントイベントを追加します。</string>
+    <string name="tasker_screen_section_notes">注意事項</string>
+    <string name="tasker_screen_body_notes">「イベントにエントリ本文を含める」を有効にしない限り、エントリテキストはTaskerと共有されません。Yajaをアップデートした後に最新のオプションや変数がTaskerに表示されない場合は、Taskerの設定画面を再度開いてください。</string>
+    <string name="tasker_screen_section_example">設定例</string>
+    <string name="tasker_screen_body_example">アクションの例: Taskerアクション &gt; Yajaクイックキャプチャ &gt; 追加。一致/ヘッダーを「不在着信」に設定し、追加する行をTasker変数に設定します。イベントの例: Taskerイベント &gt; Yajaジャーナルイベント &gt; エントリ変更。その後、%%yaja_event_type、%%yaja_date、およびオプションで %%yaja_entry_text などの変数を使用します。</string>
+    <string name="tasker_screen_section_use_cases">ユースケース</string>
+    <string name="tasker_screen_use_case_1">1. TaskerでYajaジャーナルイベントを使用してFolderSync同期アクションをトリガーし、エントリが変更された後にYajaフォルダーをクラウドプロバイダーにプッシュします。</string>
+    <string name="tasker_screen_use_case_2">2. PushbulletとTaskerを使用してYajaクイックキャプチャにテキストを送信し、プッシュされたテキストを今日の新しいエントリとして保存します。</string>
+    <string name="tasker_screen_use_case_3">3. 不在着信のTaskerプロファイルを使用してYajaに追加アクションを送信し、すべての不在着信の詳細を個別のエントリにするのではなく、1つの「不在着信」エントリの下にまとめます。</string>
+    <string name="quick_todo_widget_description">1タップでToDoを今日の新しいエントリとしてキャプチャするボタン。</string>
+    <string name="todo_list_widget_name">ToDo一覧</string>
+    <string name="todo_list_widget_description">ジャーナルToDoのスクロール可能なリスト。ToDoをタップして完了/未完了を切り替えます。</string>
+    <string name="todo_cd_add_todo">ToDoを追加</string>
+    <string name="heatmap_widget_status_loading">ヒートマップを読み込み中…</string>
+    <string name="heatmap_widget_status_empty">エントリはまだありません</string>
+    <string name="heatmap_widget_status_refresh">Yajaを開いてヒートマップを更新してください</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">キャッシュが再構築されました。</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">新しいエントリ</string>
+    <string name="shortcut_new_entry_long">ジャーナルエントリを追加</string>
+    <string name="shortcut_add_todo_short">ToDoを追加</string>
+    <string name="shortcut_add_todo_long">今日のToDoを追加</string>
+    <string name="shortcut_add_event_short">イベントを追加</string>
+    <string name="shortcut_add_event_long">イベントを追加</string>
+    <string name="shortcut_today_short">今日</string>
+    <string name="shortcut_today_long">今日のジャーナルを開く</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">ナビゲーション</string>
+    <string name="settings_bottom_nav_style_label">下部ナビゲーションのスタイル</string>
+    <string name="settings_navigation_mode_title">ナビゲーションモード</string>
+    <string name="settings_navigation_mode_subtitle">フローティングナビゲーションバーとフルボトムパネルから選択します。</string>
+    <string name="settings_nav_mode_floating">フローティング</string>
+    <string name="settings_nav_mode_panel">パネル</string>
+    <string name="settings_navigation_screens_label">ナビゲーション画面</string>
+    <string name="settings_nav_summary_floating">ジャーナルとカレンダーは常にフローティングバーに表示されます。他に最大2つの画面を選択できます。現在選択中: %2$d個中%1$d個。</string>
+    <string name="settings_nav_summary_panel">ジャーナルとカレンダーは常に下部パネルに表示されます。他に最大3つの画面を選択できます。現在選択中: %2$d個中%1$d個。</string>
+    <string name="settings_nav_lookback_subtitle">アクティブなナビゲーションバーまたはパネルに「振り返り」を表示します。</string>
+    <string name="settings_nav_people_places_subtitle">アクティブなナビゲーションバーまたはパネルに「人物と場所」を表示します。</string>
+    <string name="settings_nav_todos_title">ToDo</string>
+    <string name="settings_nav_todos_subtitle">アクティブなナビゲーションバーまたはパネルに「ToDo」を表示します。</string>
+    <string name="todos_quick_add_title">クイック追加</string>
+    <string name="todos_hero_subtitle">ジャーナルのタスクや瞬間を記録</string>
+    <string name="todos_hero_all_activity">すべてのアクティビティ</string>
+    <string name="todos_hero_open_focus">進行中</string>
+    <string name="todos_hero_completed">完了</string>
+    <string name="todos_stat_today_open">今日の残り</string>
+    <string name="todos_stat_done_today">今日の完了分</string>
+    <string name="todos_stat_events">イベント</string>
+    <string name="todos_stat_still_open">進行中</string>
+    <string name="todos_stat_past_7d">過去7日間</string>
+    <string name="todos_stat_days">日数</string>
+    <string name="todos_empty_done">完了したToDoはまだありません</string>
+    <string name="todos_empty_events">イベントエントリはまだありません</string>
+    <string name="todos_section_open">未完了</string>
+    <string name="todos_section_later">後で</string>
+    <string name="todos_section_upcoming">今後の予定</string>
+    <string name="todos_section_future_events">今後のイベント</string>
+    <string name="todos_section_past_events">過去のイベント</string>
+    <string name="todos_cd_open_day">日を開く</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d 個の未完了タスク</item>
+        <item quantity="other">%1$d 個の未完了タスク</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d 個の完了タスク</item>
+        <item quantity="other">%1$d 個の完了タスク</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d 件の今後のイベント</item>
+        <item quantity="other">%1$d 件の今後のイベント</item>
+    </plurals>
+    <string name="todos_filter_all_format">すべて %1$d</string>
+    <string name="todos_filter_open_format">未完了 %1$d</string>
+    <string name="todos_filter_done_format">完了 %1$d</string>
+    <string name="todos_filter_events_format">イベント %1$d</string>
+    <string name="todos_cheer_all_clear">すべてクリア。素晴らしい！</string>
+    <string name="todos_cheer_done_and_dusted">無事に完了しました。</string>
+    <string name="todos_cheer_nothing_pending">保留中のものはありません。</string>
+    <string name="todos_cheer_caught_up">すべてやり遂げました！</string>
+    <string name="todos_cheer_clean_slate">すっきり片付きました。</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d 日後</item>
+        <item quantity="other">%1$d 日後</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d 日前</item>
+        <item quantity="other">%1$d 日前</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d 週間後</item>
+        <item quantity="other">%1$d 週間後</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d 週間前</item>
+        <item quantity="other">%1$d 週間前</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1ヶ月後</string>
+    <string name="todos_relative_one_month_ago">1ヶ月前</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d ヶ月後</item>
+        <item quantity="other">%1$d ヶ月後</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d ヶ月前</item>
+        <item quantity="other">%1$d ヶ月前</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">統計</string>
+    <string name="settings_nav_statistics_subtitle_on">アクティブなナビゲーションバーまたはパネルに「統計」を表示します。</string>
+    <string name="settings_nav_statistics_subtitle_off">ナビゲーションに配置するには、まず統計をオンにしてください。</string>
+    <string name="settings_show_labels_bottom_panel_title">下部パネルにラベルを表示</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">下部パネルのアイコンの下にテキストラベルを表示します。</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">ジェスチャー</string>
+    <string name="settings_entry_delete_title">エントリの削除</string>
+    <string name="settings_entry_delete_subtitle">エントリを長押しして選択します。他のエントリをタップして複数選択し、中央の削除ボタンを使用します。余白をタップすると選択を解除できます。</string>
+    <string name="settings_swipe_navigate_title">スワイプで日付を移動</string>
+    <string name="settings_swipe_navigate_subtitle">右から左へスワイプして1日進み、左から右へスワイプして1日戻ります。</string>
+    <string name="settings_drag_reorder_title">ドラッグによる並べ替えを有効にする</string>
+    <string name="settings_drag_reorder_subtitle">エントリを長押しして並べ替えます</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">データと復旧</string>
+    <string name="settings_swipe_rebuild_index">ホーム画面を下にスワイプしてインデックスを再構築</string>
+    <string name="settings_large_journal_safe_mode_title">大容量ジャーナルセーフモード</string>
+    <string name="settings_large_journal_safe_mode_subtitle">非常に大きなジャーナルが検出された場合、起動時の不要な統計処理を遅らせることで、アプリの起動を高速化し、安全性を高めます。</string>
+    <string name="settings_version_history_title">バージョン履歴</string>
+    <string name="settings_version_history_subtitle">エントリの編集、削除、ラベル設定、振り返りの変更を行う前に、安全なコピーを保存します。</string>
+    <string name="settings_storage_location_label">ストレージの保存場所</string>
+    <string name="settings_reset_to_default">デフォルトに戻す</string>
+    <string name="settings_choose_folder">フォルダーを選択</string>
+    <string name="settings_backup_description">ジャーナルエントリ、ショートコード、日付キーワード、人物と場所のデータを含む1つのYajaバックアップZIPを作成します。後で安全に復元・マージできます。</string>
+    <string name="settings_last_backup">最終バックアップ: %1$s</string>
+    <string name="settings_backup_reminder_age_label">バックアップのリマインダー期間</string>
+    <string name="settings_backup_reminder_disabled">無効</string>
+    <string name="settings_backup_reminder_desc">バックアップが %1$d 日より古い場合に、サイドバーでバックアップを強調表示します。</string>
+    <string name="settings_backup_reminder_days_disabled">0 日 (無効)</string>
+    <string name="settings_backup_reminder_days">%1$d 日</string>
+    <string name="settings_restore_button">復元</string>
+    <string name="settings_backup_now_button">今すぐバックアップ</string>
+    <string name="settings_db_index_management_label">データベースインデックス管理</string>
+    <string name="settings_db_index_management_desc">ToDo、人物と場所の再構築ツール、またはデータベースインデックス全体の再構築ツールを開きます。</string>
+    <string name="settings_rebuild_tools_button">再構築ツール</string>
+    <string name="settings_import_label">インポート</string>
+    <string name="settings_import_info_cd">インポート情報</string>
+    <string name="settings_import_info_title">インポート情報</string>
+    <string name="settings_import_day_one_title">Day One インポート</string>
+    <string name="settings_import_day_one_bullet1">- 画像なしでDay Oneからエクスポートします</string>
+    <string name="settings_import_day_one_bullet2">- テキストデータのみがインポートされます</string>
+    <string name="settings_import_day_one_bullet3">- タイムスタンプと位置情報（利用可能な場合）は保持されます</string>
+    <string name="settings_import_perf_warning_title">パフォーマンスに関する警告</string>
+    <string name="settings_import_perf_warning_desc">大量のエントリ（500件以上）をインポートすると、数分かかる場合があります。この画面から移動しても、インポートはバックグラウンドで継続されます。</string>
+    <string name="settings_got_it">了解</string>
+    <string name="settings_import_success">新規: %1$d 日、マージ: %2$d 件、スキップ: %3$d 件</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip または .json の書き出しファイル</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json の書き出しファイル</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Yajaの使い方を学ぶ</string>
+    <string name="help_footer_website">ウェブサイト</string>
+    <string name="help_footer_share">共有</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Yajaを共有</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nエントリをプレーンテキストのMarkdownファイルとして保存する、気が散らないローカルジャーナルアプリ。タイムライン、振り返り、人物と場所、テンプレート、レビュー、統計、ウィジェットなどの機能を備えています。\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discordのユーザー名をコピーしました！</string>
+    <string name="help_footer_play_store">Play ストア</string>
+    <string name="help_cd_rj_logo">RJ ロゴ</string>
+    <string name="help_screen_title">ヘルプと情報</string>
+    <string name="help_welcome_title">Yajaへようこそ</string>
+    <string name="help_welcome_body">Yajaは、日々のできごと、人物、場所、フォローアップ、レビュー、パターンなどを、邪魔になることなく記録するためのローカルファーストのMarkdownジャーナルです。このページでは、アプリの主要な機能について簡単に説明します。</string>
+    <string name="help_start_here">ここからスタート</string>
+    <string name="help_cd_collapse">折りたたむ</string>
+    <string name="help_cd_expand">展開</string>
+    <string name="help_group_everyday_title">日常の記録</string>
+    <string name="help_group_everyday_desc">ジャーナリング、執筆フロー、日々のナビゲーション。</string>
+    <string name="help_group_reviews_title">レビューとインサイト</string>
+    <string name="help_group_reviews_desc">振り返り、傾向、人物、場所、分析。</string>
+    <string name="help_group_advanced_title">高度なツール</string>
+    <string name="help_group_advanced_desc">ウィジェット、ストレージ、プライバシー、バックアップ、技術的ツール。</string>
+    <string name="help_onboard_todos_events_title">ToDoとイベント</string>
+    <string name="help_onboard_todos_events_body">個人のリマインダー、家族の予定、忘れたくない些細なことなどを、同じジャーナルのフローの中で管理できます。</string>
+    <string name="help_onboard_widgets_title">ウィジェット</string>
+    <string name="help_onboard_widgets_body">ランチャーからヒートマップ、クイックキャプチャ、クイックToDo、ToDoリストのウィジェットを追加できます。</string>
+    <string name="help_onboard_version_history_title">バージョン履歴</string>
+    <string name="help_onboard_version_history_body">設定 &gt; データ の「履歴ファイル」を有効にすると、重要な変更を行う前に安全なスナップショットを保存できます。</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Taskerを使用して、個人的にすぐに記録する必要があるエントリ、ToDo、またはイベントをすばやく追加できます。</string>
+    <string name="help_section_writing_editor_title">執筆とエディタ</string>
+    <string name="help_section_writing_editor_preview">テンプレート、Markdownの見出し、ToDo、イベント、柔軟な下書き挿入。</string>
+    <string name="help_section_writing_editor_content">+ 選択した日付で執筆するには、フローティングの「+」ボタンをタップします。\n+ ミーティングノート、旅行の日、健康ログ、振り返り、仕事ログなどのテンプレートを使用できます。\n+ テンプレートは、空の下書きへの挿入、下への追記、下書きの置換、またはカーソル位置への挿入が可能です。\n+ エディタのチップを使用して、ToDo、イベント、番号付きリスト、箇条書きリストを素早く挿入できます。\n+ エントリの表示および編集は、「### セクション」のようなMarkdown形式の見出しに対応しています。</string>
+    <string name="help_section_post_write_review_title">執筆後のレビュー</string>
+    <string name="help_section_post_write_review_preview">ToDoの抽出、キーワード検出、スター、ラベル、再訪設定。</string>
+    <string name="help_section_post_write_review_content">+ 執筆後、保存する前にレビューシートを開くことができます。\n+ ToDo項目の抽出、人物や場所の検出、日のスター付け、日のラベル設定、再訪日のスケジュールが可能です。\n+ 直接保存したい場合は、設定から執筆後のレビューを無効にできます。</string>
+    <string name="help_section_revisit_followup_title">再訪とフォローアップ日</string>
+    <string name="help_section_revisit_followup_preview">クイック選択とカスタムオプションを備えた、ジャーナルリンク型のフォローアップ日。</string>
+    <string name="help_section_revisit_followup_content">+ 明日、来週、来月、またはカスタム日付で再訪日を追加できます。\n+ 期限が来た再訪項目はホームに表示され、カレンダーやタイムラインでもマークされます。\n+ これは、ジャーナルの文脈に関連付けられた約束事、決定事項、健康チェック、リマインダーに最適です。</string>
+    <string name="help_section_navigation_gestures_title">ナビゲーションとジェスチャー</string>
+    <string name="help_section_navigation_gestures_preview">日付の移動、選択削除、スワイプ設定、キャッシュ再構築の動作。</string>
+    <string name="help_section_navigation_gestures_content">+ ホーム画面では、矢印キーやスワイプ操作（有効な場合）で日付を移動できます。\n+ エントリを長押しして選択します。さらにエントリをタップして複数選択し、追加ボタン近くの削除ボタンを使用します。\n+ 選択範囲外をタップすると選択が解除されます。削除されたエントリは、カウントダウン中にまとめて元に戻すことができます。\n+ Yajaの外部でジャーナルファイルが変更された場合、キャッシュを再構築できます。</string>
+    <string name="help_section_shortcodes_quick_capture_title">ショートコードとクイックキャプチャ</string>
+    <string name="help_section_shortcodes_quick_capture_preview">高速な個別キャプチャと、再利用可能な動的テキストスニペット。</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ 頻繁に使用するテキストを素早く挿入するためのショートコードを作成できます。\n+ ショートコード内では、{{today:dd-MMM}} や {{now:HH:mm}} などの動的なプレースホルダーが機能します。\n+ クイックキャプチャは、フルエディタを開かずに素早くログを記録するのに役立ちます。\n+ ウィジェット、ToDo画面、またはTaskerから、選択した日付のToDoまたはイベントをクイック追加で保存できます。</string>
+    <string name="help_section_todos_events_title">ToDoとイベント</string>
+    <string name="help_section_todos_events_preview">日付ごとにグループ化された、個人のリマインダー、予定、および注目すべきイベント。</string>
+    <string name="help_section_todos_events_content">+ ToDoは、ジャーナルエントリ内に [ ] および [x] の行として直接記述されます。\n+ イベントは、「イベント」としてマークされた通常のジャーナルエントリであり、家族の予定、アポイントメント、旅行など、後で気づきたい内容に便利です。\n+ ToDo画面では、Yajaを単なるタスク管理ツールにすることなく、未完了のToDo、完了したToDo、およびイベントを確認できます。\n+ 日付ヘッダーをタップすると、ジャーナルでその日を開きます。\n+ Yajaの外部でファイルが変更された場合、ToDo画面をプルダウンしてToDoインデックスを再構築できます。\n+ 「完了したタスクを表示」の設定は記憶されるため、再度開いたときにも好みのビューが維持されます。\n+ ToDoウィジェットには、保留中のタスクを表示したり、切り替え前に確認したり、完了したタスクを非表示にしたり、保留中のタスクがない場合に自動的に非表示にしたりするオプションがあります。</string>
+    <string name="help_section_people_places_title">人物と場所</string>
+    <string name="help_section_people_places_preview">キーワード、エイリアス、傾向、およびランク付けされたつながりビュー。</string>
+    <string name="help_section_people_places_content">+ エイリアスや関係ラベルを使用して、人物や場所を追跡します。\n+ キーワードリストの検索、フィルタリング、並べ替えが可能です。\n+ キーワードの詳細ページでは、最近の状況、推移、共同言及、およびランク付けされた「つながり」が表示されます。\n+ 一致の感度は設定から調整できます。</string>
+    <string name="help_section_timeline_lookback_title">タイムラインと振り返り</string>
+    <string name="help_section_timeline_lookback_preview">過去の日の閲覧、ハイライト、「おまかせ」、およびレビューへのエントリポイント。</string>
+    <string name="help_section_timeline_lookback_content">+ タイムラインでは、フィルター、年別チップ、オプションの全日付モードを使用して、過去の日を閲覧できます。\n+ 振り返りには、過去の同じ日のエントリと、お気に入りのハイライトが表示されます。\n+ 「おまかせ」をクリックすると、振り返りからランダムに過去のエントリが開きます。\n+ 週間レビューと月間レビューは振り返りの中にあります。</string>
+    <string name="help_section_statistics_reviews_title">統計とレビュー</string>
+    <string name="help_section_statistics_reviews_preview">比較モード、テンプレートインサイト、カスタム表示セクション、およびサマリー。</string>
+    <string name="help_section_statistics_reviews_content">+ 統計には、比較モード、キーワードの差分、テンプレートインサイトが含まれます。\n+ 統計画面内から、表示したままにする統計セクションを選択できます。\n+ 比較モードは「全期間」で利用でき、月および年の差分をまとめます。\n+ レビューページでは、最もアクティブな日、上位の人物と場所、お気に入りの瞬間、ラベル、使用言語の割合、継続期間や空白期間のパターンがまとめられます。</string>
+    <string name="help_section_widgets_home_title">ウィジェットとホーム画面</string>
+    <string name="help_section_widgets_home_preview">ランチャーウィジェット、ハイライトされたキーワード、および日レベルのホーム統計。</string>
+    <string name="help_section_widgets_home_content">+ 執筆ヒートマップ、クイックキャプチャ、クイック追加、ToDoリストのウィジェットがランチャーで利用できます。\n+ ウィジェットの設定画面では、角丸、パディング、形状、ヘッダー、完了したタスクの表示、およびその他のウィジェットオプションを調整できます。\n+ ヒートマップウィジェットは、より多くの色の濃淡を使用して、スムーズな執筆履歴を表示します。\n+ 設定が有効な場合、ホーム画面のエントリ内で人物と場所をハイライト表示できます。\n+ ホームの日付ヘッダーでは、エントリ数、単語数、文字数の表示/非表示を切り替えることができます。</string>
+    <string name="help_section_language_text_analysis_title">言語とテキスト分析</string>
+    <string name="help_section_language_text_analysis_preview">統計とレビューインサイトのためのローカル言語検出。</string>
+    <string name="help_section_language_text_analysis_content">+ Yajaはエントリ全体の主要な文字体系または言語を検出してインサイトを提供します。\n+ 使用言語の割合は、統計とレビューに表示されます。\n+ 検出はデバイス内でローカルに実行され、ジャーナル本文がデバイス外に送信されることはありません。</string>
+    <string name="help_section_data_privacy_cache_title">データ、プライバシー、キャッシュ</string>
+    <string name="help_section_data_privacy_cache_preview">Markdownストレージ、バージョン履歴、アプリログ、アプリロック、キャッシュ再構築。</string>
+    <string name="help_section_data_privacy_cache_content">+ データのプライバシー: すべての個人ジャーナルデータは物理デバイス上にのみ保存され、デバイス外に送信されることは一切ありません。Yajaはクラウドデータベース、リモートバックアップサーバー、追跡用のテレメトリを運用していません。\n+ ジャーナルエントリは、年と月ごとに整理された標準のMarkdownファイルとして保存されます。\n+ バージョン履歴を使用すると、編集、削除、ラベル、再訪設定の変更などの前に安全なスナップショットを保存できます。\n+ 保存するバージョン数と履歴の保持日数を設定できます。\n+ アプリログは、ジャーナル本文を保存することなく、技術的なイベント、クラッシュの詳細、およびキャッシュの活動を記録します。\n+ アプリキャッシュの再構築では、ToDoや完全なキャッシュ再構築を含め、アプリのデータをモジュールごとにリフレッシュできます。\n+ アプリロックはPINと指紋認証に対応しています。\n+ Yajaは、起動や保存が常に軽快であるよう、負荷の高いインデックス作成や統計処理を可能な限り遅延させています。</string>
+
+    <string name="settings_app_log_title">アプリログ</string>
+    <string name="settings_app_log_subtitle">プライバシー保護されたログと前回のクラッシュ詳細を表示</string>
+    <string name="app_log_cd_share">アプリログを共有</string>
+    <string name="app_log_cd_clear">アプリログを消去</string>
+    <string name="app_log_privacy_title">プライバシー保護されたログ</string>
+    <string name="app_log_privacy_description">このログは、主要なアプリイベント、キャッシュ/ストレージ操作、ウィジェットの更新、およびクラッシュの詳細を記録します。ジャーナルエントリ、ToDoテキスト、またはプライベートなメモ本文は含まれません。</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">過去 %d 日間を保持</item>
+        <item quantity="other">過去 %d 日間を保持</item>
+    </plurals>
+    <string name="app_log_retention_description">古いログイベントは、ログ記録中およびこの設定が変更された直後に自動的に削除されます。</string>
+    <string name="app_log_empty">アプリログはまだありません。</string>
+    <string name="app_log_refresh">ログを更新</string>
+    <string name="app_log_share_empty">Yajaアプリログのエントリはまだありません。</string>
+    <string name="app_log_share_subject">Yaja アプリログ</string>
+    <string name="app_log_share_chooser">Yajaアプリログの共有</string>
+    <string name="app_log_local_time_format">%1$s | 現地時間\n%2$s</string>
+    <string name="settings_website_title">Yaja ウェブサイト</string>
+    <string name="settings_website_subtitle">更新情報や詳細について公式ウェブサイトを開く</string>
+    <string name="settings_advanced_integrations_title">高度な連携</string>
+    <string name="settings_tasker_integration_title">Tasker 連携</string>
+    <string name="settings_tasker_integration_subtitle">クイックキャプチャアクションとジャーナルイベントトリガー</string>
+    <string name="settings_shortcodes_subtitle">執筆時やクイックキャプチャ時に展開される再利用可能なスニペットを管理します。</string>
+    <string name="settings_privacy_security_title">プライバシーとセキュリティ</string>
+    <string name="settings_pin_lock_title">PIN ロック</string>
+    <string name="settings_app_locked">アプリはロックされています</string>
+    <string name="settings_app_unlocked">アプリはロック解除されています</string>
+    <string name="settings_change_pin">PINを変更</string>
+    <string name="settings_biometric_unlock_title">生体認証によるロック解除</string>
+    <string name="settings_biometric_enabled_desc">指紋認証または顔認証が有効</string>
+    <string name="settings_biometric_disabled_desc">PINの代わりに生体認証を使用</string>
+    <string name="settings_autolock_timeout_title">自動ロックのタイムアウト</string>
+    <string name="settings_pin_lock_disclaimer">PINロックはアプリへの不正アクセスを防ぎますが、ディスク上のジャーナルデータは暗号化されません。ファイルを直接操作できる環境にあれば、エントリを読み取られる可能性があります。</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d 分</item>
+        <item quantity="other">%1$d 分</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">システム</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">カラー</string>
+    <string name="settings_color_intensity_title">色の濃さ</string>
+    <string name="settings_background_tint_title">背景の着色</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">カスタムフォント</string>
+    <string name="settings_font_size_label">フォントサイズ</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">テーマのプレビュー</string>
+    <string name="settings_journal_entry_preview">ジャーナルエントリ</string>
+    <string name="settings_journal_entry_preview_desc">カード、チップ、ボタンにはこれらの色が使用されます。</string>
+    <string name="settings_preview_chip_chip">チップ</string>
+    <string name="settings_preview_chip_accent">アクセント</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">濃さ: %1$s</string>
+    <string name="settings_personal_themes_title">パーソナルテーマ</string>
+    <string name="settings_theme_name_label">テーマ名</string>
+    <string name="settings_main_color_label">メインカラー</string>
+    <string name="settings_hue_label">色相</string>
+    <string name="settings_sat_label">彩度</string>
+    <string name="settings_bright_label">明るさ</string>
+    <string name="settings_generated_accents_title">生成されたアクセント</string>
+    <string name="settings_personal_theme_desc">1つの色を選択します。Yajaが一致するアクセントカラーとサポートカラーを作成します。</string>
+    <string name="settings_preview_chip_main">メイン</string>
+    <string name="settings_preview_chip_support">サポート</string>
+    <string name="settings_no_font_selected">フォントが選択されていません</string>
+    <string name="settings_custom_font_desc">Unicodeに対応した任意の .ttf または .otf ファイル（例：日本語フォント）を選択します。フォントに含まれていない文字は、システムフォントが使用されます。</string>
+    <string name="settings_font_replace">変更</string>
+    <string name="settings_choose_font_file">フォントファイルを選択</string>
+    <string name="settings_intensity_muted">控えめ</string>
+    <string name="settings_intensity_normal">通常</string>
+    <string name="settings_intensity_vivid">鮮やか</string>
+    <string name="settings_intensity_pop">ポップ</string>
+    <string name="settings_tint_clean">クリーン</string>
+    <string name="settings_tint_soft">ソフト</string>
+    <string name="settings_tint_rich">リッチ</string>
+    <string name="settings_tint_deep">ディープ</string>
+    <string name="settings_accent_complementary">補色</string>
+    <string name="settings_accent_analogous">類似色</string>
+    <string name="settings_accent_triadic">分裂補色</string>
+    <string name="settings_accent_soft">ソフト</string>
+    <string name="settings_mono_weight_thin">Thin (極細)</string>
+    <string name="settings_mono_weight_extra_light">Extra Light (超極細)</string>
+    <string name="settings_mono_weight_light">Light (極細)</string>
+    <string name="settings_mono_weight_regular">Regular (標準)</string>
+    <string name="settings_mono_weight_medium">Medium (中太)</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold (太字)</string>
+    <string name="settings_mono_weight_bold">Bold (極太)</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold (超極太)</string>
+    <string name="settings_mono_weight_title">ウェイト</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">日付キーワードを追加</string>
+    <string name="settings_keyword_label">キーワード</string>
+    <string name="settings_keyword_placeholder_example">例：きのう</string>
+    <string name="settings_means_label">意味</string>
+    <string name="settings_add_button">追加</string>
+    <string name="settings_no_keywords_yet">キーワードはまだ追加されていません。</string>
+    <string name="settings_added_keywords_title">追加されたキーワード (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">キーワードを追加</string>
+    <string name="keywords_dialog_add_title">キーワードを追加</string>
+    <string name="keywords_dialog_edit_title">キーワードを編集</string>
+    <string name="keywords_cd_import_csv">CSVをインポート</string>
+    <string name="keywords_cd_export_csv">CSVをエクスポート</string>
+    <string name="keywords_cd_download_template">テンプレートをダウンロード</string>
+    <string name="rebuild_cache_storage_transparency_title">端末内ストレージの透明性</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yajaは安全なローカルストレージモデルを使用しています。あなたの個人ジャーナルデータは端末内にのみ保存され、デバイスから送信されることはありません。</string>
+    <string name="rebuild_cache_source_of_truth_title">真実のソース (Markdownファイル)</string>
+    <string name="rebuild_cache_source_of_truth_desc">すべてのエントリ、チェックリスト項目（ToDo）、タイムラインイベント、スター、タグは、選択したローカルジャーナルフォルダー内のプレーンテキストのMarkdown（.md）ファイルに永続的に保存されます。データは100%あなたが所有し、端末内のみに存在します。</string>
+    <string name="rebuild_cache_read_cache_title">読み込み用キャッシュとインデックス (SQLiteデータベース)</string>
+    <string name="rebuild_cache_read_cache_desc">スクロールのたびにファイルシステムをスキャンすることなく、画面の即時読み込み、カレンダーの強調表示、キーワード、統計を有効にするために、YajaはMarkdownファイルを解析し、ローカルのRoom SQLiteデータベースにインデックスを作成します。</string>
+    <string name="rebuild_cache_local_private_title">100% ローカル &amp; プライベート</string>
+    <string name="rebuild_cache_local_private_desc">Yajaには、クラウドデータベース、リモートバックアップサーバー、またはテキストを追跡するテレメトリはありません。すべてのジャーナルエントリと解析されたデータは、物理デバイス上にのみ残り、送信されることは一切ありません。</string>
+    <string name="keywords_export_success">キーワードをエクスポートしました</string>
+    <string name="keywords_export_failed">キーワードのエクスポートに失敗しました</string>
+    <string name="keywords_template_saved">テンプレートを保存しました</string>
+    <string name="keywords_template_save_failed">テンプレートの保存に失敗しました</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d件のキーワードをインポートしました</item>
+        <item quantity="other">%d件のキーワードをインポートしました</item>
+    </plurals>
+    <string name="keywords_import_none_valid">有効なキーワードが見つかりませんでした</string>
+    <string name="keywords_import_failed">キーワードのインポートに失敗しました</string>
+    <string name="keywords_status_indexing">インデックス作成中</string>
+    <string name="keywords_status_indexed">インデックス済み</string>
+    <string name="keywords_metric_mentions">言及</string>
+    <string name="keywords_metric_days">日数</string>
+    <string name="keywords_timeline_range_all">すべて</string>
+    <string name="keywords_connections_filter_all">すべて</string>
+    <string name="keywords_connections_filter_people">人物</string>
+    <string name="keywords_connections_filter_places">場所</string>
+    <string name="keywords_connections_filter_recent">最近</string>
+    <string name="keywords_connections_filter_strongest">最も強い</string>
+    <string name="keywords_filter_needs_reindex">再インデックスが必要</string>
+    <string name="keywords_search_placeholder">人物、場所、エイリアス、関係を検索</string>
+    <string name="keywords_refreshing_counters">キーワードの集計を更新しています…</string>
+    <string name="keywords_empty_title">キーワードはまだありません</string>
+    <string name="keywords_empty_subtitle">アプリにローカルで追跡させたい人物や場所を追加してください。</string>
+    <string name="keywords_no_results_title">一致する結果がありません</string>
+    <string name="keywords_no_results_subtitle">検索、並べ替え、フィルターを変えてみてください。</string>
+    <string name="keywords_people_title">人物</string>
+    <string name="keywords_places_title">場所</string>
+    <string name="keywords_people_empty">人物はまだ追加されていません。</string>
+    <string name="keywords_people_filtered_empty">現在のフィルターに一致する人物はいません。</string>
+    <string name="keywords_places_empty">場所はまだ追加されていません。</string>
+    <string name="keywords_places_filtered_empty">現在のフィルターに一致する場所はありません。</string>
+    <string name="keywords_delete_person_title">この人物を削除しますか？</string>
+    <string name="keywords_delete_place_title">この場所を削除しますか？</string>
+    <string name="keywords_delete_message">「%1$s」を人物と場所から削除しますか？このキーワードとそのインデックス済みの一致がすべて削除されます。</string>
+    <string name="keywords_timeline_title">時間別の言及</string>
+    <string name="keywords_timeline_empty_pattern">月別パターンはまだありません</string>
+    <string name="keywords_timeline_total_format">合計%1$d件</string>
+    <string name="keywords_timeline_empty_chart">インデックス作成でエントリが見つかると、ここに言及がチャート表示されます。</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">%1$s のピーク • %2$d 回の言及</item>
+        <item quantity="other">%1$s のピーク • %2$d 回の言及</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">言及された日数</string>
+    <string name="keywords_recency_title">最近の言及</string>
+    <string name="keywords_recency_none">一致はまだありません</string>
+    <string name="keywords_recency_today">今日言及されました</string>
+    <string name="keywords_recency_yesterday">昨日言及されました</string>
+    <string name="keywords_recency_days_ago_format">最後の言及: %1$d 日前</string>
+    <string name="keywords_first_seen">最初の検出</string>
+    <string name="keywords_last_seen">最後の検出</string>
+    <string name="keywords_unknown">不明</string>
+    <string name="keywords_co_mentioned_with">共同言及された項目</string>
+    <string name="keywords_connections_title">つながり</string>
+    <string name="keywords_connections_subtitle">繰り返しの重複と言及の近さでランク付け</string>
+    <string name="keywords_connections_linked_format">%1$d 件のリンク</string>
+    <string name="keywords_connections_show">つながりを表示</string>
+    <string name="keywords_connections_hide">つながりを非表示</string>
+    <string name="keywords_connections_items_in_view">このビューに %1$d 件の項目があります</string>
+    <string name="keywords_connections_tap_to_expand">タップして %1$d 個のランク付きリンクを展開</string>
+    <string name="keywords_connections_empty">このフィルターに一致するつながりはまだありません。</string>
+    <string name="keywords_open_day">日を開く</string>
+    <string name="keywords_sort_alphabetical">A-Z順</string>
+    <string name="keywords_sort_most_mentioned">言及の多い順</string>
+    <string name="keywords_sort_recently_added">最近追加された順</string>
+    <string name="keywords_peak_mentions_format">%1$s のピーク • %2$d 回の言及%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d 日</string>
+    <string name="keywords_connections_meta_days_suffix_plural">日</string>
+    <string name="keywords_connections_meta_together"> 一緒に</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d 個の共有エントリ</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">件</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">件</string>
+    <string name="keywords_connections_meta_last_prefix"> | 最後は %1$s</string>
+    <string name="keywords_connections_score_format">スコア %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d 日</string>
+    <string name="keywords_connections_shared_chip">共有 %1$d</string>
+    <string name="keywords_match_type_exact">完全一致</string>
+    <string name="keywords_match_type_fuzzy">あいまい一致</string>
+    <string name="keywords_match_type_alias">エイリアス</string>
+    <string name="keywords_match_type_relation">関係</string>
+    <string name="keywords_action_delete">削除</string>
+    <string name="keywords_action_edit">編集</string>
+    <string name="keywords_action_view">表示</string>
+    <string name="keywords_name_label">名前</string>
+    <string name="keywords_relation_context_label">関係 / 文脈</string>
+    <string name="keywords_aliases_label">エイリアス (カンマ区切り)</string>
+    <string name="keywords_aliases_label_short">エイリアス</string>
+    <string name="keywords_type_person">人物</string>
+    <string name="keywords_type_place">場所</string>
+    <string name="keywords_save_disabled_hint">キーワードはオフの状態で保存されます。インデックス作成を実行したいときにリストからオンにしてください。</string>
+    <string name="settings_meaning_yesterday">昨日</string>
+    <string name="settings_meaning_today">今日</string>
+    <string name="lookback_chip_weekly">週次</string>
+    <string name="lookback_chip_monthly">月次</string>
+    <string name="timeline_screen_title">タイムライン</string>
+    <string name="timeline_empty_title">まだ何もありません</string>
+    <string name="timeline_empty_subtitle">別のフィルターを試すか、ラベル検索を調整してください。</string>
+    <string name="timeline_quick_today">今日</string>
+    <string name="timeline_quick_month">月</string>
+
+    <string name="timeline_quick_filters">フィルター</string>
+    <string name="timeline_all_dates">全日付</string>
+    <string name="timeline_label_prefix">ラベル: %1$s</string>
+    <string name="timeline_label_search_placeholder">日のラベルを検索</string>
+    <string name="timeline_filters_title">タイムラインのフィルターとレイアウト</string>
+    <string name="settings_meaning_tomorrow">明日</string>
+    <string name="settings_meaning_day_before_yesterday">一昨日</string>
+    <string name="settings_meaning_day_after_tomorrow">明後日</string>
+    <string name="settings_meaning_last_week">先週</string>
+    <string name="settings_meaning_next_week">来週</string>
+    <string name="settings_meaning_monday">月曜日</string>
+    <string name="settings_meaning_tuesday">火曜日</string>
+    <string name="settings_meaning_wednesday">水曜日</string>
+    <string name="settings_meaning_thursday">木曜日</string>
+    <string name="settings_meaning_friday">金曜日</string>
+    <string name="settings_meaning_saturday">土曜日</string>
+    <string name="settings_meaning_sunday">日曜日</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">アプリの内部ストレージ</string>
+    <string name="settings_storage_internal_default">アプリの内部ストレージ (デフォルト)</string>
+    <string name="settings_storage_new_folder_fallback">新しいフォルダー</string>
+    <string name="settings_storage_current_folder_fallback">現在のフォルダー</string>
+    <string name="settings_storage_move_confirm">既存のすべてのエントリが %1$s から %2$s に移動されます。続行しますか？</string>
+    <string name="settings_restore_added_skipped">追加: %1$d\n重複スキップ: %2$d</string>
+    <string name="settings_storage_custom_folder">カスタムフォルダー:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">ショートカットのヘルプ</string>
+    <string name="addentry_cd_insert_template">テンプレートを挿入</string>
+    <string name="addentry_cd_jump_to_today">今日にジャンプ</string>
+    <string name="addentry_cd_share">共有</string>
+    <string name="addentry_cd_bold">太字</string>
+    <string name="addentry_cd_italic">斜体</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">時間を設定</string>
+    <string name="addentry_event_chip">イベント</string>
+    <string name="addentry_pick_time_title">時間を選択</string>
+    <string name="addentry_hour_label">時</string>
+    <string name="addentry_minute_label">分</string>
+    <string name="addentry_new_event_title">新規イベント</string>
+    <string name="addentry_title_label">タイトル</string>
+    <string name="addentry_event_description_label">イベントの説明</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">検出されたToDo</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d 行をチェックリストに変換</item>
+        <item quantity="other">%1$d 行をチェックリストに変換</item>
+    </plurals>
+    <string name="addentry_people_places_title">人物と場所</string>
+    <string name="addentry_no_tracked_mentions">このエントリには、登録済みの人物や場所は見つかりませんでした。</string>
+    <string name="addentry_day_memory_title">今日の思い出</string>
+    <string name="addentry_star_day_title">この日にスターを付ける</string>
+    <string name="addentry_star_day_subtitle">ハイライトとして保存し、振り返りで再表示できるようにします。</string>
+    <string name="addentry_day_label_label">日のラベル</string>
+    <string name="addentry_day_label_placeholder">例：リセット日</string>
+    <string name="addentry_follow_up_title">フォローアップ</string>
+    <string name="addentry_next_month">来月</string>
+    <string name="addentry_custom">カスタム</string>
+    <string name="addentry_due_date_format">期日: %1$s</string>
+    <string name="addentry_cd_clear_follow_up">フォローアップをクリア</string>
+    <string name="addentry_follow_up_note_label">フォローアップのメモ</string>
+    <string name="addentry_follow_up_note_placeholder">何を再訪しますか？</string>
+    <string name="addentry_review_entry_title">エントリのレビュー</string>
+    <string name="addentry_review_entry_subtitle">保存前のクイックチェック。ToDoの抽出、メンションの確認、重要な日のマークなどを行います。</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d 件のToDo</item>
+        <item quantity="other">%1$d 件のToDo</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d 件のメンション</item>
+        <item quantity="other">%1$d 件のメンション</item>
+    </plurals>
+    <string name="addentry_save_entry_button">エントリを保存</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">変更を破棄しますか？</string>
+    <string name="addentry_discard_changes_message">保存されていない変更があります。戻って変更を破棄するか、このまま編集を続けます。</string>
+    <string name="addentry_go_back">戻る</string>
+    <string name="addentry_stay">このまま続ける</string>
+    <string name="addentry_shortcuts_title">ショートカット</string>
+    <string name="addentry_help_bold_suffix"> でテキストを太字にします (またはテキストを選択して太字ボタンをタップ)</string>
+    <string name="addentry_help_italic_suffix"> でテキストを斜体にします (またはテキストを選択して斜体ボタンをタップ)</string>
+    <string name="addentry_help_today_suffix">: 現在の日付に展開されます (例：25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: 現在の時刻に展開されます (例：14:30)</string>
+    <string name="addentry_help_week_suffix">: 現在の週に展開されます (例：Week 52)</string>
+    <string name="addentry_help_day_suffix">: 現在の曜日に展開されます (例：Monday)</string>
+    <string name="addentry_help_todo_suffix">: ToDoチェックボックスに展開されます (例：[ ] )</string>
+    <string name="addentry_help_toggle_suffix">: ToDoチェックボックスを含む行の任意の位置に入力すると、チェック状態を切り替えます。</string>
+    <string name="addentry_okey">了解！</string>
+    <string name="addentry_template_merge_message">この下書きにはすでにテキストがあります。テンプレートの挿入方法を選択してください。</string>
+    <string name="addentry_template_merge_subtitle">「下に追加」を選択すると現在のテキストが保持されます。「カーソル位置」を選択するとカーソルがある位置に挿入されます。</string>
+    <string name="addentry_insert_below">下に追加</string>
+    <string name="addentry_at_cursor">カーソル位置</string>
+    <string name="addentry_replace_draft">下書きを置換</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">人気</string>
+    <string name="addentry_new_chip">新規</string>
+    <string name="addentry_best_for_format">最適: %1$s</string>
+    <string name="addentry_cd_remove_favorite">テンプレートのお気に入りを解除</string>
+    <string name="addentry_cd_favorite_template">テンプレートをお気に入りに追加</string>
+    <string name="addentry_checklist_chip">チェックリスト</string>
+    <string name="addentry_followup_chip">フォローアップ</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d 個のセクション</item>
+        <item quantity="other">%1$d 個のセクション</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">お気に入りテンプレートの切り替え</string>
+    <string name="addentry_template_preview_label">テンプレートのプレビュー</string>
+    <string name="addentry_use_template_button">テンプレートを使用</string>
+    <string name="addentry_start_blank_title">白紙から始める</string>
+    <string name="addentry_start_blank_subtitle">テンプレートを使用せず、白紙の下書きから執筆します。</string>
+    <string name="addentry_blank_entry_name">白紙のエントリ</string>
+    <string name="addentry_blank_entry_description">シンプルなジャーナルエントリ</string>
+    <string name="addentry_blank_category">一般</string>
+    <string name="addentry_quick_picks_title">クイック選択</string>
+    <string name="addentry_sort_recommended">おすすめ</string>
+    <string name="addentry_sort_recent">最近</string>
+    <string name="addentry_sort_az">A-Z順</string>
+    <string name="addentry_no_templates_title">テンプレートが見つかりません</string>
+    <string name="addentry_no_templates_subtitle">別の検索ワードやカテゴリを試してください。</string>
+    <string name="addentry_search_templates_label">テンプレートを検索</string>
+    <string name="addentry_search_templates_placeholder">ミーティング、健康、振り返り…</string>
+    <string name="addentry_cd_clear_search">検索をクリア</string>
+    <string name="addentry_choose_template_title">テンプレートを選択</string>
+    <string name="addentry_templates_ready_format">%2$d個中%1$d個のテンプレートが利用可能</string>
+    <string name="addentry_category_all">すべて</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">何がありましたか？</string>
+    <string name="addentry_todo_chip">ToDo</string>
+    <string name="addentry_numbered_list_chip">番号付きリスト</string>
+    <string name="addentry_bulleted_list_chip">箇条書きリスト</string>
+    <string name="addentry_words_count_format">%1$d 単語</string>
+    <string name="addentry_chars_count_format">%1$d 文字</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">本日が期日のフォローアップ</item>
+        <item quantity="other">本日が期日のフォローアップ</item>
+    </plurals>
+    <string name="home_followup_subtitle">リンクされた日に戻り、そこから続きを執筆します。</string>
+    <string name="home_from_date_format">元の日付: %1$s</string>
+    <string name="home_more_due_today_format">他、本日が期日のもの: +%1$d 件</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">ラベルを追加</string>
+    <string name="home_edit_label_title">ラベルを編集</string>
+    <string name="home_day_label_hint">この日に短いラベルを追加します (最大30文字)。</string>
+    <string name="home_day_label_placeholder">例：入学初日</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">この日にラベルを追加</string>
+    <string name="home_star_label_hint">記憶に残るラベルをこの日に付けます (最大30文字)</string>
+    <string name="home_star_label_placeholder">例：私の誕生日、学校にて</string>
+    <string name="home_star_button">スターを追加</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">エントリを削除しました</item>
+        <item quantity="other">%1$d 件のエントリを削除しました</item>
+    </plurals>
+    <string name="home_restore_button">元に戻す</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">エントリを検索…</string>
+    <string name="home_cd_search">検索</string>
+    <string name="home_cd_clear_search">検索をクリア</string>
+    <string name="home_cd_favorite">お気に入り</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">エントリ</string>
+    <string name="home_stat_words">単語数</string>
+    <string name="home_stat_chars">文字数</string>
+    <string name="home_stat_versions">履歴</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">ラベル追加</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d 件の一致を検出</item>
+        <item quantity="other">%1$d 件の一致を検出</item>
+    </plurals>
+    <string name="home_no_keyword_matches">このキーワードに一致するものはまだ見つかっていません。</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">空のステータスアイコン</string>
+    <string name="home_empty_future">ここは未来です。リマインダーを記録しておきましょう！</string>
+    <string name="home_empty_past">過去にいます。思い出が薄れる前に記録に残しましょう…</string>
+    <string name="home_empty_today">エントリはまだありません。一日を記録し始めましょう。</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">保存中</string>
+    <string name="home_cd_add_entry">エントリを追加</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d 件を削除</string>
+    <string name="home_future_date_title">未来の日付のエントリ</string>
+    <string name="home_future_date_message_format">未来の日付 (%1$s) にエントリを追加しようとしています。続行しますか？</string>
+    <string name="home_cache_issue_title">データキャッシュの問題を検出</string>
+    <string name="home_cache_issue_message">キャッシュ内に相当数のジャーナルエントリが見つかりません。すべてのデータを復旧するため、フルキャッシュ再構築を実行しますか？</string>
+    <string name="home_refresh_button">更新</string>
+    <string name="home_ignore_button">無視</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">人物と場所</string>
+    <string name="nav_statistics">統計</string>
+    <string name="nav_todos">ToDo</string>
+    <string name="nav_rebuild_index">データベースインデックスの再構築</string>
+    <string name="nav_backup_data">データのバックアップ</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">ステータス</string>
+    <string name="nav_finishing_index_rebuild">インデックス再構築を完了中…</string>
+    <string name="nav_rebuilding_index">データベースインデックスを再構築中</string>
+    <string name="nav_refreshing_index">インデックスを更新中</string>
+    <string name="nav_backup_too_old">バックアップが古すぎます…</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">処理中…</string>
+    <string name="nav_eta_almost_done">まもなく完了</string>
+    <string name="nav_eta_seconds_left_format">残り約 %1$d 秒</string>
+    <string name="nav_eta_minutes_left_format">残り約 %1$d 分</string>
+    <string name="nav_eta_hours_left_format">残り約 %1$d 時間</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">メニュー</string>
+    <string name="nav_cd_rj_logo">RJ ロゴ</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play ストア</string>
+    <string name="nav_cd_website">ウェブサイト</string>
+    <string name="nav_cd_share_app">アプリを共有</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja ロゴ</string>
+    <string name="nav_easter_quote_part1">\"ふと思い浮かんだことや昼食に何を食べたかなどを書き留めてみましょう。深い内容である必要はありません。\n</string>
+    <string name="nav_easter_quote_part2">言葉はただそこに存在するだけでいいのです。\"</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">from the labs of RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Yajaを共有</string>
+    <string name="nav_share_text_body">yaja — yet another journaling app\n\nエントリをプレーンなMarkdownファイルとして保存する、気が散らないデイリージャーナルアプリ。\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">ストレージの保存場所を変更</string>
+    <string name="settings_change_storage_location_message">既存のすべてのエントリが %1$s から %2$s に移動されます。続行しますか？</string>
+    <string name="settings_yes">はい</string>
+    <string name="settings_no">いいえ</string>
+    <string name="settings_restore_summary_title">復元の概要</string>
+    <string name="settings_restore_section_journal">ジャーナル</string>
+    <string name="settings_restore_section_shortcodes">ショートコード</string>
+    <string name="settings_restore_section_date_keywords">日付キーワード</string>
+    <string name="settings_restore_section_people_places">人物と場所</string>
+    <string name="settings_restore_journal_summary">新規追加された日数: %1$d\n既存の日にマージ: %2$d\n重複スキップされたジャーナルエントリ: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">追加: %1$d\n重複スキップ: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">追加: %1$d\n重複スキップ: %2$d</string>
+    <string name="settings_restore_people_places_summary">追加: %1$d\n重複スキップ: %2$d</string>
+    <string name="rebuild_tools_title">再構築ツール</string>
+    <string name="rebuild_tools_back">戻る</string>
+    <string name="rebuild_tools_intro">まずは特定の再構築を使用してください。データベース全体の再構築は、保存先の変更、データベースの破損、またはインデックスの不一致が発生した場合にのみ行います。</string>
+    <string name="rebuild_todo_index_title">ToDoインデックスの再構築</string>
+    <string name="rebuild_todo_index_subtitle">ジャーナルファイルからToDoを再読み込みし、ToDo画面/ウィジェットを更新します。ToDoが古く感じられる場合に最適です。</string>
+    <string name="rebuild_todo_index_button">ToDoの再構築</string>
+    <string name="rebuild_people_places_title">人物と場所の再構築</string>
+    <string name="rebuild_people_places_subtitle">キーワードエイリアス、共同言及、トレンド、および関係データを更新します。</string>
+    <string name="rebuild_people_places_button">人物と場所の再構築</string>
+    <string name="rebuild_database_title">データベース全体の再構築</string>
+    <string name="rebuild_database_subtitle">Markdownファイルからデータベースキャッシュを再コンパイルします。エントリ、件数、ToDo、人物と場所、ウィジェットのインデックスを最初から作成し直します。</string>
+    <string name="rebuild_database_button">データベースの再構築</string>
+    <string name="rebuild_database_confirm_title">データベースインデックスの再構築</string>
+    <string name="rebuild_database_confirm_message">これにより、Markdownファイルから Room SQLite データベース全体を消去して再インデックスします。大規模なジャーナルの場合、数分かかることがあります。</string>
+    <string name="rebuild_database_confirm_start">再構築を開始</string>
+
+    <string name="rebuild_database_status_title">データベースインデックスのステータス</string>
+    <string name="rebuild_database_storage_engine">ストレージエンジン</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLiteデータベース</string>
+    <string name="rebuild_database_indexed_days">インデックス作成済みの日数</string>
+    <string name="rebuild_database_indexed_days_value">%1$d 日インデックス作成済み</string>
+    <string name="rebuild_database_file_size">データベースのファイルサイズ</string>
+    <string name="rebuild_database_last_sync">最終インデックス同期</string>
+    <string name="rebuild_database_age_never">未実行</string>
+    <string name="rebuild_database_age_just_now">今すぐ</string>
+    <string name="rebuild_database_age_one_minute">1分前</string>
+    <string name="rebuild_database_age_minutes">%1$d 分前</string>
+    <string name="rebuild_database_age_one_hour">1時間前</string>
+    <string name="rebuild_database_age_hours">%1$d 時間前</string>
+    <string name="shortcodes_title">ショートコード</string>
+    <string name="shortcodes_import_cd">インポート</string>
+    <string name="shortcodes_export_cd">Export</string>
+    <string name="shortcodes_help_cd">ヘルプ</string>
+    <string name="shortcodes_new">新規ショートコード</string>
+    <string name="shortcodes_empty_title">カスタムショートコードはありません</string>
+    <string name="shortcodes_empty_subtitle">追加して、@yday などを動的テキストに展開します。</string>
+    <string name="shortcodes_dynamic_dates_hint">動的な日付には {{today:format}} を使用します。</string>
+    <string name="shortcodes_help_title">ショートコードのヘルプ</string>
+    <string name="shortcodes_help_built_in">組み込みショートコード:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (チェックボックス), @x (トグルチェックボックス)</string>
+    <string name="shortcodes_help_dynamic_patterns">動的パターン:</string>
+    <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}、{{yesterday:FORMAT}}、{{tomorrow:FORMAT}}、または {{now:FORMAT}} を使用します。</string>
+    <string name="shortcodes_help_example">例: @yday -> 昨日: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">一般的な形式: dd-MM-yy, HH:mm, EEEE (曜日名)。</string>
+    <string name="action_close">閉じる</string>
+    <string name="keyword_detail_title_fallback">キーワード</string>
+    <string name="keyword_detail_not_found">キーワードが見つかりません</string>
+    <string name="keyword_detail_last_indexed">最終インデックス作成: %1$s</string>
+    <string name="keyword_detail_mentions_section">言及</string>
+    <string name="pin_biometric_prompt_title">生体認証でロック解除</string>
+    <string name="pin_biometric_prompt_subtitle">指紋または顔を使用してロック解除します</string>
+    <string name="pin_error_no_biometric_enrolled">生体認証が登録されていません。端末の設定で指紋または顔を登録してください。</string>
+    <string name="pin_error_hardware_unavailable">生体認証のハードウェアは利用できません。</string>
+    <string name="pin_error_no_hardware">この端末には生体認証のハードウェアが搭載されていません。</string>
+    <string name="pin_error_not_available">生体認証は利用できません。</string>
+    <string name="pin_title_confirm">PINの確認</string>
+    <string name="pin_title_set_new">新しいPINの設定</string>
+    <string name="pin_title_disable">無効にするには現在のPINを入力してください</string>
+    <string name="pin_title_enter">PINを入力してください</string>
+    <string name="pin_error_incorrect">PINが正しくありません。もう一度お試しください。</string>
+    <string name="pin_error_mismatch">PINが一致しません。最初からやり直してください。</string>
+    <string name="pin_cd_use_biometric">生体認証を使用</string>
+    <string name="pin_cd_backspace">バックスペース</string>
+    <string name="timeline_preview_empty_labeled">この日にはラベルが設定されていますが、ジャーナルエントリはまだありません。</string>
+    <string name="timeline_preview_loading">プレビューを読み込み中...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">他、この日のエントリ: +%1$d 件</item>
+        <item quantity="other">他、この日のエントリ: +%1$d 件</item>
+    </plurals>
+    <string name="timeline_preview_open_day">この日を開く</string>
+    <string name="timeline_chip_today">今日</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d 件のエントリ</item>
+        <item quantity="other">%1$d 件のエントリ</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">フォローアップ</string>
+    <string name="timeline_chip_label_only">ラベルのみ</string>
+    <string name="timeline_cd_favorite">お気に入り</string>
+    <string name="version_history_title">バージョン履歴</string>
+    <string name="version_history_day_versions_title">日ごとのバージョン</string>
+    <string name="version_history_keep_copies_title">安全なコピーを保持</string>
+    <string name="version_history_keep_copies_subtitle">Yajaが日付ファイルを変更する前に、現在のファイルをアプリデータの「履歴ファイル」の下に保存します。</string>
+    <string name="version_history_versions_kept_title">1日あたりに保持するバージョン数</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yajaは各日付について最新の %1$d バージョンを保持します。</item>
+        <item quantity="other">Yajaは各日付について最新の %1$d バージョンを保持します。</item>
+    </plurals>
+    <string name="version_history_retention_title">保持期間</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">%1$d 日より古いスナップショットは自動的にクリーンアップされます。</item>
+        <item quantity="other">%1$d 日より古いスナップショットは自動的にクリーンアップされます。</item>
+    </plurals>
+    <string name="version_history_notes">注意: バージョン履歴は、エントリの追加、編集、削除、並べ替え、ラベル設定、スター、再訪設定の変更前に、日ごとのMarkdownファイルを保護します。これはクラウドバックアップではないため、移動用のコピーには引き続き「バックアップ」を使用してください。</string>
+    <string name="version_history_snapshots_for">%1$s のスナップショット</string>
+    <string name="version_history_snapshots_subtitle">保存されたバージョンを開いて検査し、この日に復元します。</string>
+    <string name="version_history_empty">この日付の保存されたバージョンはまだありません。</string>
+    <string name="action_view">表示</string>
+    <string name="version_history_date_intro">この日の以前に保存されたバージョンを開いて検査し、必要に応じて復元します。</string>
+    <string name="action_next">次へ</string>
+    <string name="action_apply">適用</string>
+    <string name="action_restore">復元</string>
+    <string name="statistics_choose_title">統計を選択</string>
+    <string name="statistics_choose_subtitle">表示したくないセクションを非表示にします。少なくとも1つのセクションは表示されたままである必要があります。</string>
+    <string name="statistics_visible_count">%1$d of %2$d が表示中</string>
+    <string name="statistics_show_all">すべて表示</string>
+    <string name="statistics_one_section_visible">少なくとも1つのセクションを表示する必要があります</string>
+    <string name="statistics_shown">統計に表示</string>
+    <string name="statistics_hidden">統計で非表示</string>
+    <string name="statistics_select_start_date">開始日を選択</string>
+    <string name="statistics_select_end_date">終了日を選択</string>
+    <string name="statistics_filter_by_period">期間でフィルター</string>
+    <string name="statistics_cd_reorder">長押しして並べ替え</string>
+    <string name="statistics_total_entries">総エントリ数</string>
+    <string name="statistics_total_words">総単語数</string>
+    <string name="statistics_avg_words_per_entry">平均単語数/エントリ</string>
+    <string name="statistics_current_streak">現在の継続日数</string>
+    <string name="statistics_pages_written">執筆ページ数</string>
+    <string name="statistics_days_highlighted">ハイライトされた日数</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d 日</item>
+        <item quantity="other">%1$d 日</item>
+    </plurals>
+    <string name="statistics_period_all_time">全期間の統計</string>
+    <string name="statistics_period_current_year">今年の統計</string>
+    <string name="statistics_period_previous_year">前年の統計</string>
+    <string name="statistics_period_current_month">今月の統計</string>
+    <string name="statistics_period_previous_month">前月の統計</string>
+    <string name="statistics_period_custom">カスタム期間の統計</string>
+    <string name="statistics_period_chip_all_time">全期間</string>
+    <string name="statistics_period_chip_current_year">今年</string>
+    <string name="statistics_period_chip_previous_year">前年</string>
+    <string name="statistics_period_chip_current_month">今月</string>
+    <string name="statistics_period_chip_previous_month">先月</string>
+    <string name="statistics_period_chip_custom">カスタム</string>
+    <string name="statistics_sections_visible">%1$d of %2$d セクションが表示中</string>
+    <string name="statistics_loading_stages">段階的に統計を読み込み中...</string>
+    <string name="review_period_weekly">週間レビュー</string>
+    <string name="review_period_monthly">月間レビュー</string>
+    <string name="review_anchor_week">%1$s を含む週</string>
+    <string name="review_anchor_month">%1$s を含む月</string>
+    <string name="review_chip_entries">エントリ %1$d</string>
+    <string name="review_chip_words">単語数 %1$d</string>
+    <string name="review_chip_days">日数 %1$d</string>
+    <string name="review_hint_jump">下の日付チップをタップして、ジャーナルに戻ります。</string>
+    <string name="review_chip_streak">継続 %1$d</string>
+    <string name="review_chip_gap">空白 %1$d</string>
+    <string name="review_chip_labels">ラベル %1$d</string>
+    <string name="review_chip_favorites">お気に入り %1$d</string>
+    <string name="review_empty_period">この期間にはジャーナルエントリがまだありません。ラベルやハイライトがある場合は下に表示されます。</string>
+    <string name="review_writing_rhythm">執筆のリズム</string>
+    <string name="review_best_streak">最長継続</string>
+    <string name="review_longest_gap">最長空白</string>
+    <string name="review_most_active_days">最もアクティブな曜日</string>
+    <string name="review_day_entries_words">%1$d 件のエントリ | %2$d 単語</string>
+    <string name="review_top_people">上位の人物</string>
+    <string name="review_top_places">上位の場所</string>
+    <string name="review_no_people_mentions">人物の言及はありません</string>
+    <string name="review_no_place_mentions">場所の言及はありません</string>
+    <string name="review_favorite_moments">お気に入りの瞬間</string>
+    <string name="review_starred_day">スター付きの日</string>
+    <string name="review_highlighted_in_period">この期間のハイライト</string>
+    <string name="review_labels_created">作成されたラベル</string>
+    <string name="review_labeled_day">ラベル付きの日</string>
+    <string name="review_language_split">使用言語の割合</string>
+    <string name="review_not_enough_text">この期間のテキストが不足しています</string>
+    <string name="lookback_reviews_title">レビュー</string>
+    <string name="lookback_reviews_intro">選択したジャーナルの日付を中心に、簡単な振り返りを作成します。</string>
+    <string name="lookback_seven_days">7 日間</string>
+    <string name="lookback_one_month">1 ヶ月</string>
+    <string name="lookback_weekly_review">週間レビュー</string>
+    <string name="lookback_weekly_review_subtitle">今週をひと目で振り返る</string>
+    <string name="lookback_monthly_review">月間レビュー</string>
+    <string name="lookback_monthly_review_subtitle">今月をまとめる</string>
+    <string name="lookback_flashbacks_title">過去のこの日</string>
+    <string name="lookback_highlights_title">ハイライト</string>
+    <string name="lookback_empty_title">振り返りやハイライトはまだありません。</string>
+    <string name="lookback_empty_subtitle">重要な日をお気に入りに追加すると、ここに表示されます！</string>
+    <string name="lookback_cd_random_entry">ランダムなエントリを開く</string>
+
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">期間</string>
+    <string name="statistics_compare_mode_title">比較モード</string>
+    <string name="statistics_compare_mode_subtitle">月、年、キーワードの差分</string>
+    <string name="statistics_this_year">今年</string>
+    <string name="statistics_writing_days_delta">執筆日数の差分</string>
+    <string name="statistics_top_person_delta">上位人物の差分</string>
+    <string name="statistics_no_people_mentions">人物の言及はまだありません</string>
+    <string name="statistics_top_place_delta">上位場所の差分</string>
+    <string name="statistics_no_place_mentions">場所の言及はまだありません</string>
+    <string name="statistics_structured_writing">構造化された執筆</string>
+    <string name="statistics_template_led_format">テンプレート使用 %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">白紙 %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">最も使用されたテンプレート</string>
+    <string name="statistics_template_mix">テンプレートの組み合わせ</string>
+    <string name="statistics_follow_up_leaders">フォローアップの多い日</string>
+    <string name="statistics_compare_details">比較の詳細</string>
+    <string name="statistics_label_month">月</string>
+    <string name="statistics_label_year">年</string>
+    <string name="statistics_this_month_count_format">今月 %1$d</string>
+    <string name="statistics_last_month_count_format">先月 %1$d</string>
+    <string name="statistics_longest_streak">最長継続日数</string>
+    <string name="statistics_most_active_day">最もアクティブな日</string>
+    <string name="statistics_writing_consistency">執筆の安定性</string>
+    <string name="statistics_days_with_entries">エントリのある日数</string>
+    <string name="statistics_best_month">最多エントリ月</string>
+    <string name="statistics_best_month_format">%1$s · %2$d 件のエントリ</string>
+    <string name="statistics_avg_writing_days_week">週平均執筆日数</string>
+    <string name="statistics_days_decimal_format">%1$.1f 日</string>
+    <string name="statistics_based_on_total_words">1日の総執筆単語数に基づく</string>
+    <string name="statistics_light_words">軽め (&lt; 50 単語)</string>
+    <string name="statistics_moderate_words">普通 (50-200 単語)</string>
+    <string name="statistics_heavy_words">多め (200-500 単語)</string>
+    <string name="statistics_intense_words">非常に多め (500+ 単語)</string>
+    <string name="statistics_not_enough_text_languages">言語を検出するのに十分なテキストがありません</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d 個の言語を検出</item>
+        <item quantity="other">%1$d 個の言語を検出</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">言語検出はまだ安定していません。</string>
+    <string name="statistics_latin_scripts_as_english">ラテン文字は英語として表示されます</string>
+    <string name="statistics_use_more_accurate_detection">より正確な検出を使用する</string>
+    <string name="statistics_write_more_entries_languages">言語統計を表示するには、さらにエントリを書いてください。</string>
+    <string name="statistics_based_on_entry_time">エントリ時間に基づく</string>
+    <string name="statistics_morning_time">朝 (5:00-12:00)</string>
+    <string name="statistics_afternoon_time">昼 (12:00-17:00)</string>
+    <string name="statistics_evening_time">夕方 (17:00-21:00)</string>
+    <string name="statistics_night_time">夜 (21:00-5:00)</string>
+    <string name="statistics_heatmap_filling">ヒートマップはまだデータ収集中です。</string>
+    <string name="statistics_heatmap_less">少ない</string>
+    <string name="statistics_heatmap_more">多い</string>
+    <string name="action_open">開く</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yajaジャーナルイベント</string>
+    <string name="tasker_event_desc">このTaskerプロファイルをトリガーするYajaジャーナルイベントを選択します。</string>
+    <string name="tasker_event_saved">エントリ保存</string>
+    <string name="tasker_event_edited">エントリ編集</string>
+    <string name="tasker_event_deleted">エントリ削除</string>
+    <string name="tasker_event_default_hint">何も選択されていない場合、Yajaはデフォルトで「エントリ保存」を使用します。</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yajaクイックキャプチャ</string>
+    <string name="tasker_action_desc">TaskerがYajaで素早くキャプチャする項目を設定します。</string>
+    <string name="tasker_action_add_entry">エントリ追加</string>
+    <string name="tasker_action_add_event">イベント追加</string>
+    <string name="tasker_action_add_todo">ToDo追加</string>
+    <string name="tasker_action_append">追記</string>
+    <string name="tasker_action_match_header_label">一致/ヘッダー</string>
+    <string name="tasker_action_match_header_placeholder">不在着信</string>
+    <string name="tasker_action_line_to_append_label">追記する行</string>
+    <string name="tasker_action_text_label">テキスト</string>
+    <string name="tasker_action_placeholder_event">Taskerからのイベントメモ</string>
+    <string name="tasker_action_placeholder_todo">牛乳を買う</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Taskerからのクイックメモ</string>
+    <string name="tasker_action_tip_append">初回の呼び出しでは、一致するテキストで始まるエントリが作成されます。2回目以降の呼び出しでは、その下に行が追記されます。</string>
+    <string name="tasker_action_tip_default">ヒント: テキストフィールドにはTasker変数を使用できます。</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">前回のセッションのクラッシュログ</string>
+    <string name="crash_log_clear_close">クリアして閉じる</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">アプリを起動</string>
+    <string name="tap_action_quick_capture">クイックキャプチャ</string>
+    <string name="tap_action_do_nothing">何もしない</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja執筆ヒートマップ</string>
+    <string name="widget_cell_shape">セルの形状</string>
+    <string name="widget_corner_radius">角丸の半径: %1$ddp</string>
+    <string name="widget_square">四角</string>
+    <string name="widget_round">丸</string>
+    <string name="widget_inner_margin">内側マージン: %1$ddp</string>
+    <string name="widget_inner_margin_desc">ヒートマップとウィジェット端の間のスペース</string>
+    <string name="widget_none">なし</string>
+    <string name="widget_max">最大</string>
+    <string name="widget_on_tap">タップ時の動作</string>
+    <string name="widget_on_tap_desc">ウィジェットをタップしたときのアクション</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">キャプチャ</string>
+    <string name="widget_qc_shape">ウィジェットの形状</string>
+    <string name="widget_show_label">ラベルを表示</string>
+    <string name="widget_show_label_desc">ウィジェットに「キャプチャ」テキストを表示します</string>
+    <string name="widget_show_icon">アイコンを表示</string>
+    <string name="widget_show_icon_required">ラベルが非表示の場合はアイコンが必須です</string>
+    <string name="widget_show_icon_desc">ウィジェットにペンアイコンを表示します</string>
+    <string name="widget_label_text">ラベルテキスト</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">ToDoウィジェット</string>
+    <string name="widget_todo_desc">角丸のヒートマップ風ToDoリストウィジェット。</string>
+    <string name="widget_todo_corner_radius">角丸の半径: %1$ddp</string>
+    <string name="widget_todo_padding">パディング: %1$ddp</string>
+    <string name="widget_todo_show_completed">完了したタスクを表示</string>
+    <string name="widget_todo_show_completed_desc">ウィジェットリストにチェック済みの項目を含めます</string>
+    <string name="widget_todo_include_events">イベントを含める</string>
+    <string name="widget_todo_include_events_desc">ウィジェット内でToDoと並んでイベントエントリを表示します</string>
+    <string name="widget_todo_show_header">ToDoヘッダーを表示</string>
+    <string name="widget_todo_show_header_desc">ウィジェットのタイトル行の表示/非表示</string>
+    <string name="widget_todo_auto_hide">すべてのToDo完了時にウィジェットを自動的に非表示</string>
+    <string name="widget_todo_auto_hide_unavailable">完了したタスクが表示されている間は利用できません</string>
+    <string name="widget_todo_auto_hide_desc">保留中のタスクがない場合にウィジェットを透明にします</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">完了</string>
+    <string name="todo_confirm_mark_not_done">未完了</string>
+    <string name="todo_confirm_title">タスクを%1$sにしますか？</string>
+    <string name="todo_confirm_reopen">このToDoは現在完了しています。未完了に戻す前に確認してください。</string>
+    <string name="todo_confirm_complete">このToDoは現在未完了です。完了にする前に確認してください。</string>
+    <string name="todo_confirm_accidental_tap">誤タップではタスクは変更されません。</string>
+    <string name="todo_confirm_yes_mark">はい、%1$sにします</string>
+    <string name="todo_confirm_open_yaja">Yajaで開く</string>
+    <string name="todo_confirm_keep_as_is">そのままにする</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">from the labs of RJ</string>
+    <string name="help_made_in">Made in 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">インポートをキャンセル</string>
+    <string name="timeline_show_all_dates">全日付を表示</string>
+    <string name="timeline_show_all_dates_subtitle">エントリのない過去の日も含める</string>
+    <string name="settings_background_tint_clean">クリーン</string>
+    <string name="settings_background_tint_soft">ソフト</string>
+    <string name="settings_background_tint_rich">リッチ</string>
+    <string name="settings_background_tint_deep">ディープ</string>
+    <string name="settings_accent_style_complementary">補色</string>
+    <string name="settings_accent_style_analogous">類似色</string>
+    <string name="settings_accent_style_triadic">分裂補色</string>
+    <string name="settings_accent_style_soft">ソフト</string>
+</resources>

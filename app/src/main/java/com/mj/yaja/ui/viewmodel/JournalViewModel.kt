@@ -38,6 +38,7 @@ import com.mj.yaja.data.TodoIndexRepository
 import com.mj.yaja.data.TodoItem
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
 import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.AppLanguage
 import com.mj.yaja.data.AppLogRepository
 import com.mj.yaja.data.DueRevisitItem
 import com.mj.yaja.data.RevisitMarker
@@ -217,12 +218,16 @@ class JournalViewModel(
     val personalThemeSlots = settingsRepository.personalThemeSlots
     val activePersonalThemeSlotId = settingsRepository.activePersonalThemeSlotId
     val appFontFamily = settingsRepository.appFontFamily
+    val monoFontWeight = settingsRepository.monoFontWeight
+    val customFontPath = settingsRepository.customFontPath
+    val customFontName = settingsRepository.customFontName
     val entryStyle = settingsRepository.entryStyle
     val storageUri = settingsRepository.storageUri
     val showTimestamps = settingsRepository.showTimestamps
     val showDayHeaderStats = settingsRepository.showDayHeaderStats
     val renderCheckboxesAsText = settingsRepository.renderCheckboxesAsText
     val fontScalePreference = settingsRepository.fontScalePreference
+    val appLanguage = settingsRepository.appLanguage
     val animationPreference = settingsRepository.animationPreference
     val lastBackupTimestamp = settingsRepository.lastBackupTimestamp
     val backupReminderDays = settingsRepository.backupReminderDays
@@ -869,13 +874,16 @@ class JournalViewModel(
     private fun loadEntries(date: LocalDate, showLoading: Boolean = true) {
         entriesJob?.cancel()
         val requestId = ++latestEntriesRequestId
-        
-        val immediateEntries = fileManager.getEntriesForDate(date)
-        
-        if (showLoading) {
-            _uiState.update { it.copy(isLoading = true, entries = immediateEntries) }
-        } else {
-            _uiState.update { it.copy(entries = immediateEntries) }
+
+        // Memory-cache only on the caller (main) thread — a cache miss must not trigger a
+        // synchronous SAF/disk read here. The coroutine below loads from disk on IO.
+        val cachedEntries = fileManager.getCachedEntriesForDate(date)
+
+        _uiState.update {
+            it.copy(
+                isLoading = if (showLoading) true else it.isLoading,
+                entries = cachedEntries ?: if (showLoading) emptyList() else it.entries
+            )
         }
         entriesJob = launchSelectedDateLoad(
             scope = viewModelScope,
@@ -1528,11 +1536,57 @@ class JournalViewModel(
     fun setAppFontFamily(fontFamily: com.mj.yaja.data.AppFontFamily) =
         settingsRepository.setAppFontFamily(fontFamily)
 
+    fun setMonoFontWeight(weight: Int) = settingsRepository.setMonoFontWeight(weight)
+
+    /** Copies a user-picked font file (TTF/OTF) into app storage and activates it. */
+    fun setCustomFontFromUri(uri: android.net.Uri, context: android.content.Context) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val previousPath = settingsRepository.customFontPath.value
+            val fontsDir = java.io.File(context.filesDir, "fonts").apply { mkdirs() }
+            // Unique name per upload so the Compose font cache never serves a stale file.
+            val target = java.io.File(fontsDir, "custom_font_${System.currentTimeMillis()}.ttf")
+            val result = runCatching {
+                context.contentResolver.openInputStream(uri)?.use { input ->
+                    target.outputStream().use { output -> input.copyTo(output) }
+                } ?: error("Could not open the selected file")
+                android.graphics.Typeface.Builder(target).build()
+                    ?: error("Not a valid font file")
+                val displayName = context.contentResolver
+                    .query(uri, null, null, null, null)
+                    ?.use { cursor ->
+                        val index =
+                            cursor.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+                        if (index >= 0 && cursor.moveToFirst()) cursor.getString(index) else null
+                    } ?: target.name
+                settingsRepository.setCustomFont(target.absolutePath, displayName)
+                settingsRepository.setAppFontFamily(com.mj.yaja.data.AppFontFamily.CUSTOM)
+                previousPath?.let { java.io.File(it).delete() }
+            }
+            if (result.isFailure) {
+                target.delete()
+                _toastEvents.emit("Couldn't load that file. Pick a valid .ttf or .otf font.")
+            }
+        }
+    }
+
+    fun clearCustomFont() {
+        viewModelScope.launch(Dispatchers.IO) {
+            settingsRepository.customFontPath.value?.let { java.io.File(it).delete() }
+            settingsRepository.clearCustomFont()
+            if (settingsRepository.appFontFamily.value == com.mj.yaja.data.AppFontFamily.CUSTOM) {
+                settingsRepository.setAppFontFamily(com.mj.yaja.data.AppFontFamily.MONO)
+            }
+        }
+    }
+
     fun setEntryStyle(style: com.mj.yaja.data.EntryStyle) =
         settingsRepository.setEntryStyle(style)
 
     fun setFontScalePreference(preference: FontScalePreference) =
         settingsRepository.setFontScalePreference(preference)
+
+    fun setAppLanguage(language: AppLanguage) =
+        settingsRepository.setAppLanguage(language)
 
     fun setAnimationPreference(preference: AnimationPreference) =
         settingsRepository.setAnimationPreference(preference)
@@ -2087,7 +2141,8 @@ class JournalViewModel(
             period = period,
             startDate = startDate,
             endDate = endDate,
-            showToasts = true
+            showToasts = true,
+            forceDateRescan = true
         )
         if (includeComparison) ensureStatisticsComparisonLoaded(force = true)
         if (includeHeatmap) ensureHeatmapDataLoaded(force = true)
@@ -2097,7 +2152,8 @@ class JournalViewModel(
           period: com.mj.yaja.ui.screens.StatisticsPeriod,
           startDate: LocalDate? = null,
           endDate: LocalDate? = null,
-          showToasts: Boolean = false
+          showToasts: Boolean = false,
+          forceDateRescan: Boolean = false
     ) {
         val requestKey = buildStatisticsRequestKey(
             period = period,
@@ -2131,7 +2187,9 @@ class JournalViewModel(
                 val rangeStart = range.start
                 val rangeEnd = range.end
 
-                val knownDates = fileManager.getAllJournalDatesLightweight(forceRefresh = true)
+                // Re-listing the whole storage tree over SAF is expensive; only do it on an
+                // explicit user refresh. Background freshness comes from warmup/resume refresh.
+                val knownDates = fileManager.getAllJournalDatesLightweight(forceRefresh = forceDateRescan)
                 val allDates = filterDatesForStatisticsRange(
                     knownDates = knownDates,
                     range = range

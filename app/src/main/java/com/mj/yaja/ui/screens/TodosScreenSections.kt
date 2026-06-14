@@ -29,6 +29,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.data.EventItem
 import com.mj.yaja.data.TodoItem
+import com.mj.yaja.R
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import com.mj.yaja.ui.components.AnimatedMenuButton
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -36,11 +39,11 @@ import com.mj.yaja.ui.design.rememberAppEntrance
 import java.time.LocalDate
 
 private val todoCheerMessages = listOf(
-    "All clear. Nice.",
-    "Done and dusted.",
-    "Nothing pending.",
-    "You caught up.",
-    "Clean slate."
+    R.string.todos_cheer_all_clear,
+    R.string.todos_cheer_done_and_dusted,
+    R.string.todos_cheer_nothing_pending,
+    R.string.todos_cheer_caught_up,
+    R.string.todos_cheer_clean_slate
 )
 
 internal enum class TodoFilter {
@@ -70,7 +73,7 @@ internal fun TodosTopBar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                text = "Todos",
+                text = stringResource(R.string.settings_nav_todos_title),
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -146,60 +149,63 @@ internal fun TodosScreenContent(
         openGrouped.filter { it.first.isAfter(farFutureCutoff) }
     }
     val entranceTriggered = rememberAppEntrance(delayMillis = 110)
-    val heroMetrics = remember(selectedFilter, todos, events, today, farFutureCutoff) {
-        val todayOpen = todos.count { !it.isChecked && it.date == today }
-        val todayDone = todos.count { it.isChecked && it.date == today }
-        val todayEvents = events.count { it.date == today }
-        val recentEvents = events.count { it.date >= today.minusDays(6) }
-        val eventDays = events.map { it.date }.toSet().size
-        val upcomingEventsCount = events.count { !it.date.isBefore(today) && !it.date.isAfter(farFutureCutoff) }
-
-        when (selectedFilter) {
-            TodoFilter.ALL -> TodoHeroMetrics(
-                mainValue = todos.count { !it.isChecked },
-                mainLabel = if (todos.count { !it.isChecked } == 1) "open task" else "open tasks",
-                accentTitle = "All activity",
-                statAValue = todayOpen,
-                statALabel = "Today open",
-                statBValue = todayDone,
-                statBLabel = "Done today",
-                statCValue = upcomingEventsCount,
-                statCLabel = "Events"
-            )
-            TodoFilter.OPEN -> TodoHeroMetrics(
-                mainValue = openTodos.size,
-                mainLabel = if (openTodos.size == 1) "open task" else "open tasks",
-                accentTitle = "Open focus",
-                statAValue = todayOpen,
-                statALabel = "Today",
-                statBValue = doneTodos.size,
-                statBLabel = "Completed",
-                statCValue = upcomingEventsCount,
-                statCLabel = "Events"
-            )
-            TodoFilter.DONE -> TodoHeroMetrics(
-                mainValue = doneTodos.size,
-                mainLabel = if (doneTodos.size == 1) "done task" else "done tasks",
-                accentTitle = "Completed",
-                statAValue = todayDone,
-                statALabel = "Today",
-                statBValue = openTodos.size,
-                statBLabel = "Still open",
-                statCValue = upcomingEventsCount,
-                statCLabel = "Events"
-            )
-            TodoFilter.EVENTS -> TodoHeroMetrics(
-                mainValue = upcomingEventsCount,
-                mainLabel = if (upcomingEventsCount == 1) "upcoming event" else "upcoming events",
-                accentTitle = "Events",
-                statAValue = todayEvents,
-                statALabel = "Today",
-                statBValue = recentEvents,
-                statBLabel = "Past 7d",
-                statCValue = eventDays,
-                statCLabel = "Days"
-            )
-        }
+    val sectionUpcoming = stringResource(R.string.todos_section_upcoming)
+    val sectionFutureEvents = stringResource(R.string.todos_section_future_events)
+    val sectionPastEvents = stringResource(R.string.todos_section_past_events)
+    val sectionOpen = stringResource(R.string.todos_section_open)
+    val sectionLater = stringResource(R.string.todos_section_later)
+    val todayOpen = todos.count { !it.isChecked && it.date == today }
+    val todayDone = todos.count { it.isChecked && it.date == today }
+    val todayEvents = events.count { it.date == today }
+    val recentEvents = events.count { it.date >= today.minusDays(6) }
+    val eventDays = events.map { it.date }.toSet().size
+    val upcomingEventsCount = events.count { !it.date.isBefore(today) && !it.date.isAfter(farFutureCutoff) }
+    val openTasksCount = todos.count { !it.isChecked }
+    val heroMetrics = when (selectedFilter) {
+        TodoFilter.ALL -> TodoHeroMetrics(
+            mainValue = openTasksCount,
+            mainLabel = pluralStringResource(R.plurals.todos_main_open_tasks, openTasksCount, openTasksCount),
+            accentTitle = stringResource(R.string.todos_hero_all_activity),
+            statAValue = todayOpen,
+            statALabel = stringResource(R.string.todos_stat_today_open),
+            statBValue = todayDone,
+            statBLabel = stringResource(R.string.todos_stat_done_today),
+            statCValue = upcomingEventsCount,
+            statCLabel = stringResource(R.string.todos_stat_events)
+        )
+        TodoFilter.OPEN -> TodoHeroMetrics(
+            mainValue = openTodos.size,
+            mainLabel = pluralStringResource(R.plurals.todos_main_open_tasks, openTodos.size, openTodos.size),
+            accentTitle = stringResource(R.string.todos_hero_open_focus),
+            statAValue = todayOpen,
+            statALabel = stringResource(R.string.settings_meaning_today),
+            statBValue = doneTodos.size,
+            statBLabel = stringResource(R.string.action_done),
+            statCValue = upcomingEventsCount,
+            statCLabel = stringResource(R.string.todos_stat_events)
+        )
+        TodoFilter.DONE -> TodoHeroMetrics(
+            mainValue = doneTodos.size,
+            mainLabel = pluralStringResource(R.plurals.todos_main_done_tasks, doneTodos.size, doneTodos.size),
+            accentTitle = stringResource(R.string.todos_hero_completed),
+            statAValue = todayDone,
+            statALabel = stringResource(R.string.settings_meaning_today),
+            statBValue = openTodos.size,
+            statBLabel = stringResource(R.string.todos_stat_still_open),
+            statCValue = upcomingEventsCount,
+            statCLabel = stringResource(R.string.todos_stat_events)
+        )
+        TodoFilter.EVENTS -> TodoHeroMetrics(
+            mainValue = upcomingEventsCount,
+            mainLabel = pluralStringResource(R.plurals.todos_main_upcoming_events, upcomingEventsCount, upcomingEventsCount),
+            accentTitle = stringResource(R.string.todos_stat_events),
+            statAValue = todayEvents,
+            statALabel = stringResource(R.string.settings_meaning_today),
+            statBValue = recentEvents,
+            statBLabel = stringResource(R.string.todos_stat_past_7d),
+            statCValue = eventDays,
+            statCLabel = stringResource(R.string.todos_stat_days)
+        )
     }
     LaunchedEffect(selectedFilter, openTodos.size) {
         if (selectedFilter == TodoFilter.OPEN && openTodos.isEmpty()) {
@@ -221,12 +227,10 @@ internal fun TodosScreenContent(
                 TodoFilter.DONE -> doneTodos
                 TodoFilter.EVENTS -> emptyList()
             }
-            val emptyMessage = remember(selectedFilter, filteredVisibleTodos.isEmpty(), events.isEmpty()) {
-                when (selectedFilter) {
-                    TodoFilter.DONE -> "No completed todos yet"
-                    TodoFilter.EVENTS -> "No event entries yet"
-                    else -> todoCheerMessages.random()
-                }
+            val emptyMessage = when (selectedFilter) {
+                TodoFilter.DONE -> stringResource(R.string.todos_empty_done)
+                TodoFilter.EVENTS -> stringResource(R.string.todos_empty_events)
+                else -> stringResource(todoCheerMessages.random())
             }
             when {
                 selectedFilter != TodoFilter.EVENTS && filteredVisibleTodos.isEmpty() && syncProgress != null -> {
@@ -276,9 +280,9 @@ internal fun TodosScreenContent(
                         }
                         if (selectedFilter == TodoFilter.EVENTS) {
                             val eventSections = listOf(
-                                Triple("UPCOMING", upcomingEvents, true to {}),
-                                Triple("FUTURE EVENTS", futureEvents, futureEventsExpanded to { futureEventsExpanded = !futureEventsExpanded }),
-                                Triple("PAST EVENTS", pastEvents, pastEventsExpanded to { pastEventsExpanded = !pastEventsExpanded })
+                                Triple(sectionUpcoming, upcomingEvents, true to {}),
+                                Triple(sectionFutureEvents, futureEvents, futureEventsExpanded to { futureEventsExpanded = !futureEventsExpanded }),
+                                Triple(sectionPastEvents, pastEvents, pastEventsExpanded to { pastEventsExpanded = !pastEventsExpanded })
                             )
                             eventSections.forEach { (title, grouped, expansion) ->
                                 val (expanded, onToggle) = expansion
@@ -350,8 +354,8 @@ internal fun TodosScreenContent(
                         }
                         if (selectedFilter != TodoFilter.DONE && selectedFilter != TodoFilter.EVENTS && openTodos.isNotEmpty()) {
                             val openSections = listOf(
-                                Triple("OPEN", upcomingOpenTodos, openExpanded to { openExpanded = !openExpanded }),
-                                Triple("LATER", futureOpenTodos, laterTodosExpanded to { laterTodosExpanded = !laterTodosExpanded })
+                                Triple(sectionOpen, upcomingOpenTodos, openExpanded to { openExpanded = !openExpanded }),
+                                Triple(sectionLater, futureOpenTodos, laterTodosExpanded to { laterTodosExpanded = !laterTodosExpanded })
                             )
                             openSections.forEach { (title, grouped, expansion) ->
                                 val (expanded, onToggle) = expansion
@@ -432,7 +436,7 @@ internal fun TodosScreenContent(
                                     strength = AppEntranceStrength.SECTION
                                 ) {
                                     TodoSectionHeader(
-                                        title = "DONE",
+                                        title = stringResource(R.string.action_done).uppercase(),
                                         count = doneTodos.size,
                                         expanded = doneExpanded,
                                         onToggle = { doneExpanded = !doneExpanded }

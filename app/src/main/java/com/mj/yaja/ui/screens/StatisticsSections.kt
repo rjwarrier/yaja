@@ -18,10 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordMatchCache
 import com.mj.yaja.data.KeywordType
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -91,7 +93,7 @@ private fun StatisticsSectionHeader(
         )
         Icon(
             imageVector = Icons.Rounded.DragIndicator,
-            contentDescription = "Long press to reorder",
+            contentDescription = stringResource(R.string.statistics_cd_reorder),
             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
             modifier = dragHandleModifier
         )

@@ -34,8 +34,10 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import com.mj.yaja.ui.design.rememberAppEntrance
@@ -97,12 +99,13 @@ fun CalendarScreen(
         var jumpDateError by remember { mutableStateOf(false) }
         val context = LocalContext.current
         val today = remember { LocalDate.now() }
+        val futureEntryEnabledText = stringResource(R.string.calendar_future_entry_enabled)
         Scaffold(
                 topBar = {
                         CenterAlignedTopAppBar(
                                 title = {
                                         Text(
-                                                "Calendar",
+                                                stringResource(R.string.nav_calendar),
                                                 style = MaterialTheme.typography.headlineSmall,
                                                 fontWeight = FontWeight.Bold,
                                                 color = MaterialTheme.colorScheme.primary
@@ -260,7 +263,7 @@ fun CalendarScreen(
                                                                                 },
                                                                                 label = {
                                                                                         Text(
-                                                                                                text = "Today",
+                                                                                                text = stringResource(R.string.shortcut_today_short),
                                                                                                 style = MaterialTheme.typography.labelMedium,
                                                                                                 fontWeight = FontWeight.Bold
                                                                                         )
@@ -268,7 +271,7 @@ fun CalendarScreen(
                                                                                 icon = {
                                                                                         Icon(
                                                                                                 imageVector = Icons.Rounded.Today,
-                                                                                                contentDescription = "Go to current month",
+                                                                                                contentDescription = stringResource(R.string.calendar_cd_go_to_current_month),
                                                                                                 modifier = Modifier.size(16.dp)
                                                                                         )
                                                                                 },
@@ -462,7 +465,7 @@ fun CalendarScreen(
                         viewModel.setAllowFutureEntries(true)
                         android.widget.Toast.makeText(
                                         context,
-                                        "Future date entry has been enabled",
+                                        futureEntryEnabledText,
                                         android.widget.Toast.LENGTH_SHORT
                                 )
                                 .show()

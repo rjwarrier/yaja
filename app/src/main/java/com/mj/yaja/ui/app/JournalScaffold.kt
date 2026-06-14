@@ -433,7 +433,7 @@ private fun ImportProgressChip(
             }
 
             Text(
-                text = "Import",
+                text = stringResource(R.string.settings_import_label),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1
@@ -447,7 +447,7 @@ private fun ImportProgressChip(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Close,
-                    contentDescription = "Cancel import",
+                    contentDescription = stringResource(R.string.settings_import_cancel_cd),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(16.dp)
                 )

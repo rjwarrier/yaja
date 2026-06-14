@@ -39,8 +39,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
@@ -68,31 +70,34 @@ fun RebuildCacheScreen(
         }
     }
 
-    val formattedAge = remember(cacheAgeMs) {
-        if (cacheAgeMs == null) "Never"
+    val formattedAge =
+        if (cacheAgeMs == null) stringResource(R.string.rebuild_database_age_never)
         else {
             val minutes = cacheAgeMs / 60000L
             when {
-                minutes < 1 -> "Just now"
-                minutes == 1L -> "1 minute ago"
-                minutes < 60 -> "$minutes minutes ago"
+                minutes < 1 -> stringResource(R.string.rebuild_database_age_just_now)
+                minutes == 1L -> stringResource(R.string.rebuild_database_age_one_minute)
+                minutes < 60 -> stringResource(R.string.rebuild_database_age_minutes, minutes)
                 else -> {
                     val hours = minutes / 60
-                    if (hours == 1L) "1 hour ago" else "$hours hours ago"
+                    if (hours == 1L) {
+                        stringResource(R.string.rebuild_database_age_one_hour)
+                    } else {
+                        stringResource(R.string.rebuild_database_age_hours, hours)
+                    }
                 }
             }
         }
-    }
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Rebuild Tools", color = MaterialTheme.colorScheme.primary) },
+                title = { Text(stringResource(R.string.rebuild_tools_title), color = MaterialTheme.colorScheme.primary) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.rebuild_tools_back)
                         )
                     }
                 },
@@ -112,7 +117,7 @@ fun RebuildCacheScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Text(
-                text = "Use focused rebuilds first. Rebuilding the database is only for storage changes, database corruption, or index mismatch.",
+                text = stringResource(R.string.rebuild_tools_intro),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -127,25 +132,25 @@ fun RebuildCacheScreen(
 
             RebuildActionCard(
                 icon = Icons.Rounded.Checklist,
-                title = "Rebuild Todo Index",
-                subtitle = "Refresh todos from journal files and update Todo screen/widget. Best when todos look stale.",
-                buttonText = "Rebuild Todos",
+                title = stringResource(R.string.rebuild_todo_index_title),
+                subtitle = stringResource(R.string.rebuild_todo_index_subtitle),
+                buttonText = stringResource(R.string.rebuild_todo_index_button),
                 onClick = { viewModel.refreshTodos(forceRebuild = true) }
             )
 
             RebuildActionCard(
                 icon = Icons.Rounded.Groups,
-                title = "Rebuild People & Places",
-                subtitle = "Refresh keyword aliases, co-mentions, trends, and relationship data.",
-                buttonText = "Rebuild People & Places",
+                title = stringResource(R.string.rebuild_people_places_title),
+                subtitle = stringResource(R.string.rebuild_people_places_subtitle),
+                buttonText = stringResource(R.string.rebuild_people_places_button),
                 onClick = { viewModel.rebuildKeywordIndex(immediate = true) }
             )
 
             RebuildActionCard(
                 icon = Icons.Rounded.Storage,
-                title = "Full Database Rebuild",
-                subtitle = "Recompile database cache from markdown files. Re-indexes entries, counts, todos, People & Places, and widgets from scratch.",
-                buttonText = "Rebuild Database",
+                title = stringResource(R.string.rebuild_database_title),
+                subtitle = stringResource(R.string.rebuild_database_subtitle),
+                buttonText = stringResource(R.string.rebuild_database_button),
                 danger = true,
                 onClick = { showFullRebuildWarning = true }
             )
@@ -158,10 +163,10 @@ fun RebuildCacheScreen(
         AlertDialog(
             onDismissRequest = { showFullRebuildWarning = false },
             icon = { Icon(Icons.Rounded.Refresh, contentDescription = null) },
-            title = { Text("Rebuild database index") },
+            title = { Text(stringResource(R.string.rebuild_database_confirm_title)) },
             text = {
                 Text(
-                    "This will clear and re-index the entire Room SQLite database from your Markdown files. For large journals, this may take a few minutes."
+                    stringResource(R.string.rebuild_database_confirm_message)
                 )
             },
             confirmButton = {
@@ -171,12 +176,12 @@ fun RebuildCacheScreen(
                         viewModel.refreshCache()
                     }
                 ) {
-                    Text("Start Rebuild")
+                    Text(stringResource(R.string.rebuild_database_confirm_start))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showFullRebuildWarning = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.action_cancel))
                 }
             }
         )
@@ -209,7 +214,7 @@ private fun DatabaseCacheStatusCard(
                     modifier = Modifier.size(24.dp)
                 )
                 Text(
-                    text = "Database Index Status",
+                    text = stringResource(R.string.rebuild_database_status_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary
@@ -218,14 +223,15 @@ private fun DatabaseCacheStatusCard(
             Spacer(modifier = Modifier.height(12.dp))
             
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                StatusRow(label = "Storage Engine", value = "Room SQLite Database")
-                StatusRow(label = "Indexed Days", value = "$cachedDays days indexed")
-                StatusRow(label = "Database File Size", value = formattedDbSize)
-                StatusRow(label = "Last Index Sync", value = lastUpdated)
+                StatusRow(label = stringResource(R.string.rebuild_database_storage_engine), value = stringResource(R.string.rebuild_database_storage_engine_value))
+                StatusRow(label = stringResource(R.string.rebuild_database_indexed_days), value = stringResource(R.string.rebuild_database_indexed_days_value, cachedDays))
+                StatusRow(label = stringResource(R.string.rebuild_database_file_size), value = formattedDbSize)
+                StatusRow(label = stringResource(R.string.rebuild_database_last_sync), value = lastUpdated)
             }
         }
     }
 }
+
 
 @Composable
 private fun StatusRow(label: String, value: String) {
@@ -321,38 +327,38 @@ private fun DataArchitectureInfoCard() {
                     modifier = Modifier.size(24.dp)
                 )
                 Text(
-                    text = "On-Device Storage Transparency",
+                    text = stringResource(R.string.rebuild_cache_storage_transparency_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.secondary
                 )
             }
             Spacer(modifier = Modifier.height(12.dp))
-            
+
             Text(
-                text = "Yaja uses a secure local storage model. Your personal journal data remains local and never leaves your device at any time:",
+                text = stringResource(R.string.rebuild_cache_storage_transparency_desc),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
 
             ArchitectureDetailRow(
-                title = "Source of Truth (Markdown Files)",
-                desc = "All entries, checklist items (todos), timeline events, stars, and tags are permanently saved in plaintext Markdown (.md) files in your selected local journal folder. Your data is 100% owned by you and resides entirely on your device."
+                title = stringResource(R.string.rebuild_cache_source_of_truth_title),
+                desc = stringResource(R.string.rebuild_cache_source_of_truth_desc)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             ArchitectureDetailRow(
-                title = "Read Cache & Index (SQLite Database)",
-                desc = "To enable instant screen loading, calendar highlights, keywords, and statistics without scanning the filesystem on every scroll, Yaja parses your Markdown files and indexes them in a local Room SQLite database on your device."
+                title = stringResource(R.string.rebuild_cache_read_cache_title),
+                desc = stringResource(R.string.rebuild_cache_read_cache_desc)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             ArchitectureDetailRow(
-                title = "100% Local & Private",
-                desc = "Yaja does not have any cloud databases, remote backup servers, or telemetry tracking your text. All journal entries and parsed data remain strictly on your physical device and never leave it at any time."
+                title = stringResource(R.string.rebuild_cache_local_private_title),
+                desc = stringResource(R.string.rebuild_cache_local_private_desc)
             )
         }
     }

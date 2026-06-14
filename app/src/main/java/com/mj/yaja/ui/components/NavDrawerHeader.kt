@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -52,7 +53,7 @@ internal fun DrawerBrandHeader(
                         Box(contentAlignment = Alignment.Center) {
                                 androidx.compose.material3.Icon(
                                         painter = painterResource(id = R.drawable.rj_logo),
-                                        contentDescription = "RJ Logo",
+                                        contentDescription = stringResource(R.string.nav_cd_rj_logo),
                                         modifier = Modifier.size(52.dp).padding(10.dp),
                                         tint = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
@@ -69,7 +70,7 @@ internal fun DrawerBrandHeader(
                         color = MaterialTheme.colorScheme.primary
                 )
                 Text(
-                        "yet another journaling app",
+                        stringResource(R.string.nav_tagline),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -87,7 +88,7 @@ internal fun DrawerBrandHeader(
                                         contentAlignment = Alignment.Center
                                 ) {
                                         Text(
-                                                text = "v$versionName",
+                                                text = stringResource(R.string.nav_version_format, versionName),
                                                 style = MaterialTheme.typography.labelSmall,
                                                 fontWeight = FontWeight.Bold,
                                                 textAlign = TextAlign.Center
@@ -96,17 +97,17 @@ internal fun DrawerBrandHeader(
                         }
                         DrawerHeaderIconButton(
                                 icon = Icons.Rounded.Shop,
-                                contentDescription = "Play Store",
+                                contentDescription = stringResource(R.string.nav_cd_play_store),
                                 onClick = onOpenPlayStore
                         )
                         DrawerHeaderIconButton(
                                 icon = Icons.Rounded.Language,
-                                contentDescription = "Website",
+                                contentDescription = stringResource(R.string.nav_cd_website),
                                 onClick = onOpenWebsite
                         )
                         DrawerHeaderIconButton(
                                 icon = Icons.Rounded.Share,
-                                contentDescription = "Share App",
+                                contentDescription = stringResource(R.string.nav_cd_share_app),
                                 onClick = onShareApp
                         )
                 }

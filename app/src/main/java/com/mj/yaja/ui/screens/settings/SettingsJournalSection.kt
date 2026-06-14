@@ -36,9 +36,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
@@ -98,12 +100,12 @@ fun JournalExperienceSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Entry Style",
+                    text = stringResource(R.string.settings_journal_entry_style_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Choose between elevated cards and a flatter journal look.",
+                    text = stringResource(R.string.settings_journal_entry_style_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -119,8 +121,8 @@ fun JournalExperienceSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 listOf(
-                    "Cards" to EntryStyle.CARDS,
-                    "Flat" to EntryStyle.FLAT
+                    stringResource(R.string.settings_journal_entry_style_cards) to EntryStyle.CARDS,
+                    stringResource(R.string.settings_journal_entry_style_flat) to EntryStyle.FLAT
                 ).forEach { (label, style) ->
                     Box(
                         modifier = Modifier
@@ -151,8 +153,8 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Render Checkboxes as Text",
-            subtitle = "Show todos as [ ] and [x] across the app instead of expressive checkboxes.",
+            title = stringResource(R.string.settings_journal_render_checkboxes_title),
+            subtitle = stringResource(R.string.settings_journal_render_checkboxes_subtitle),
             checked = renderCheckboxesAsText,
             onCheckedChange = onRenderCheckboxesAsTextChange
         )
@@ -160,8 +162,8 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Show Day Header Counts",
-            subtitle = "Show entry, word, and character counts in the journal day header.",
+            title = stringResource(R.string.settings_journal_day_header_counts_title),
+            subtitle = stringResource(R.string.settings_journal_day_header_counts_subtitle),
             checked = showDayHeaderStats,
             onCheckedChange = onShowDayHeaderStatsChange
         )
@@ -169,8 +171,8 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Show Timestamps",
-            subtitle = "Display entry time on the timeline.",
+            title = stringResource(R.string.settings_journal_show_timestamps_title),
+            subtitle = stringResource(R.string.settings_journal_show_timestamps_subtitle),
             checked = showTimestamps,
             onCheckedChange = onShowTimestampsChange
         )
@@ -178,8 +180,8 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Allow Future Entries",
-            subtitle = "Enable adding entries to future dates.",
+            title = stringResource(R.string.settings_journal_allow_future_title),
+            subtitle = stringResource(R.string.settings_journal_allow_future_subtitle),
             checked = allowFutureEntries,
             onCheckedChange = onAllowFutureEntriesChange
         )
@@ -187,8 +189,8 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Truncate Long Entries",
-            subtitle = "Shorten long entries on the home screen.",
+            title = stringResource(R.string.settings_journal_truncate_title),
+            subtitle = stringResource(R.string.settings_journal_truncate_subtitle),
             checked = isPreviewLimitEnabled,
             onCheckedChange = onIsPreviewLimitEnabledChange
         )
@@ -207,12 +209,12 @@ fun JournalExperienceSection(
                 HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
                 Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
                     Text(
-                        text = "Character Limit",
+                        text = stringResource(R.string.settings_journal_char_limit_title),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "Set how many characters to display before truncating.",
+                        text = stringResource(R.string.settings_journal_char_limit_subtitle),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -244,18 +246,18 @@ fun JournalExperienceSection(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            "50 chars",
+                            stringResource(R.string.settings_journal_char_limit_min),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            "${_sliderValue.toInt()} characters",
+                            stringResource(R.string.settings_journal_char_count, _sliderValue.toInt()),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            "200 chars",
+                            stringResource(R.string.settings_journal_char_limit_max),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -275,12 +277,12 @@ fun JournalExperienceSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "First Day of Week",
+                    text = stringResource(R.string.settings_journal_first_day_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Start calendar on",
+                    text = stringResource(R.string.settings_journal_first_day_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -309,7 +311,7 @@ fun JournalExperienceSection(
                         .padding(horizontal = 14.dp, vertical = 8.dp)
                 ) {
                     Text(
-                        "Sun",
+                        stringResource(R.string.settings_journal_day_sun),
                         style = MaterialTheme.typography.labelLarge,
                         color = if (firstDayOfWeek == DayOfWeek.SUNDAY) {
                             MaterialTheme.colorScheme.onPrimaryContainer
@@ -333,7 +335,7 @@ fun JournalExperienceSection(
                         .padding(horizontal = 14.dp, vertical = 8.dp)
                 ) {
                     Text(
-                        "Mon",
+                        stringResource(R.string.settings_journal_day_mon),
                         style = MaterialTheme.typography.labelLarge,
                         color = if (firstDayOfWeek == DayOfWeek.MONDAY) {
                             MaterialTheme.colorScheme.onPrimaryContainer
@@ -348,7 +350,7 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         Text(
-            text = "Date Recognition",
+            text = stringResource(R.string.settings_journal_date_recognition),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 10.dp)
@@ -363,12 +365,12 @@ fun JournalExperienceSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Date Order",
+                    text = stringResource(R.string.settings_journal_date_order_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "How to read numeric dates",
+                    text = stringResource(R.string.settings_journal_date_order_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -384,9 +386,9 @@ fun JournalExperienceSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 listOf(
-                    "Auto" to DateOrderPreference.AUTO,
-                    "DD/MM" to DateOrderPreference.DMY,
-                    "MM/DD" to DateOrderPreference.MDY
+                    stringResource(R.string.settings_journal_date_order_auto) to DateOrderPreference.AUTO,
+                    stringResource(R.string.settings_journal_date_order_dmy) to DateOrderPreference.DMY,
+                    stringResource(R.string.settings_journal_date_order_mdy) to DateOrderPreference.MDY
                 ).forEach { (label, pref) ->
                     Box(
                         modifier = Modifier
@@ -426,12 +428,12 @@ fun JournalExperienceSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Date Keywords",
+                    text = stringResource(R.string.settings_journal_date_keywords_title),
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = "Words in other languages that mean a date (for example a local word for yesterday).",
+                    text = stringResource(R.string.settings_journal_date_keywords_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -445,7 +447,7 @@ fun JournalExperienceSection(
                         onClick = { showKeywordsListDialog = true }
                     ) {
                         Text(
-                            text = "View (${customDateKeywords.size})",
+                            text = stringResource(R.string.settings_journal_view_keywords, customDateKeywords.size),
                             style = MaterialTheme.typography.labelMedium
                         )
                     }
@@ -453,7 +455,7 @@ fun JournalExperienceSection(
                 IconButton(onClick = { showAddKeywordDialog = true }) {
                     Icon(
                         Icons.Rounded.Add,
-                        contentDescription = "Add keyword",
+                        contentDescription = stringResource(R.string.settings_journal_add_keyword_cd),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
@@ -463,7 +465,7 @@ fun JournalExperienceSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         Text(
-            text = "Motion",
+            text = stringResource(R.string.settings_journal_motion),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 10.dp)
@@ -478,12 +480,12 @@ fun JournalExperienceSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Animations",
+                    text = stringResource(R.string.settings_journal_animations_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Control motion across the app. Reduced keeps things fluid with less movement.",
+                    text = stringResource(R.string.settings_journal_animations_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -499,9 +501,9 @@ fun JournalExperienceSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 listOf(
-                    "Full" to AnimationPreference.FULL,
-                    "Reduced" to AnimationPreference.REDUCED,
-                    "Off" to AnimationPreference.OFF
+                    stringResource(R.string.settings_journal_animations_full) to AnimationPreference.FULL,
+                    stringResource(R.string.settings_journal_animations_reduced) to AnimationPreference.REDUCED,
+                    stringResource(R.string.settings_journal_animations_off) to AnimationPreference.OFF
                 ).forEach { (label, preference) ->
                     Box(
                         modifier = Modifier
@@ -574,7 +576,7 @@ fun ReviewAndInsightsSection(
         shape = MaterialTheme.shapes.medium
     ) {
         Text(
-            text = "Post-save Review",
+            text = stringResource(R.string.settings_review_post_save),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 10.dp)
@@ -589,12 +591,12 @@ fun ReviewAndInsightsSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Post-write Review",
+                    text = stringResource(R.string.settings_review_post_write_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Show review sheet after tapping save to extract todos, check mentions, star day, or set label.",
+                    text = stringResource(R.string.settings_review_post_write_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -608,7 +610,7 @@ fun ReviewAndInsightsSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         Text(
-            text = "People & Places",
+            text = stringResource(R.string.settings_review_people_places),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 10.dp)
@@ -623,12 +625,12 @@ fun ReviewAndInsightsSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Highlighting",
+                    text = stringResource(R.string.settings_review_highlighting_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Highlight tracked people and places in Home cards and View Entry mode.",
+                    text = stringResource(R.string.settings_review_highlighting_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -652,19 +654,19 @@ fun ReviewAndInsightsSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Match Sensitivity",
+                    text = stringResource(R.string.settings_review_match_sensitivity_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "${(fuzzyThreshold * 100).roundToInt()}%",
+                    text = stringResource(R.string.settings_review_match_sensitivity_percent, (fuzzyThreshold * 100).roundToInt()),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.primary
                 )
             }
             Text(
-                text = "How closely a word must match to be detected by People & Places (higher = stricter).",
+                text = stringResource(R.string.settings_review_match_sensitivity_subtitle),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

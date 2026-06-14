@@ -59,6 +59,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -84,12 +85,10 @@ import androidx.compose.animation.core.tween
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MenuAnchorType
-import com.mj.yaja.data.AppFontFamily
+import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.EntryStyle
-import com.mj.yaja.data.FontScalePreference
-import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import kotlinx.coroutines.launch
 import java.time.DayOfWeek
@@ -108,6 +107,7 @@ fun SettingsScreen(
         onNavigateToTaskerIntegration: () -> Unit,
         onNavigateToRebuildCache: () -> Unit,
         onNavigateToVersionHistory: () -> Unit,
+        onNavigateToAppearance: () -> Unit,
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
         onNavigateToShortcodes: () -> Unit,
@@ -116,7 +116,7 @@ fun SettingsScreen(
         onNavigateToLookback: () -> Unit
 ) {
         val scope = rememberCoroutineScope()
-        val appearanceRequester = remember { BringIntoViewRequester() }
+        val languageRequester = remember { BringIntoViewRequester() }
         val journalRequester = remember { BringIntoViewRequester() }
         val navigationRequester = remember { BringIntoViewRequester() }
         val reviewRequester = remember { BringIntoViewRequester() }
@@ -124,14 +124,7 @@ fun SettingsScreen(
         val dataRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
         val helpRequester = remember { BringIntoViewRequester() }
-        val themePreference by viewModel.themePreference.collectAsState()
-        val colorSource by viewModel.colorSource.collectAsState()
-        val customPalette by viewModel.customPalette.collectAsState()
-        val themeColorIntensity by viewModel.themeColorIntensity.collectAsState()
-        val backgroundTintLevel by viewModel.backgroundTintLevel.collectAsState()
-        val personalThemeSlots by viewModel.personalThemeSlots.collectAsState()
-        val activePersonalThemeSlotId by viewModel.activePersonalThemeSlotId.collectAsState()
-        val fontScalePreference by viewModel.fontScalePreference.collectAsState()
+        val appLanguage by viewModel.appLanguage.collectAsState()
         val animationPreference by viewModel.animationPreference.collectAsState()
         val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
         val previewLimitLength by viewModel.previewLimitLength.collectAsState()
@@ -161,7 +154,6 @@ fun SettingsScreen(
         val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
         val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsState()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsState()
-        val appFontFamily by viewModel.appFontFamily.collectAsState()
         val entryStyle by viewModel.entryStyle.collectAsState()
         val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsState()
         val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsState()
@@ -197,11 +189,12 @@ fun SettingsScreen(
         val settingsSearchTargets =
                 remember {
                         listOf(
-                                SettingsSearchTarget("Theme", "Appearance", listOf("light", "dark", "amoled", "system"), appearanceRequester),
-                                SettingsSearchTarget("Colors", "Appearance", listOf("material you", "custom", "palette"), appearanceRequester),
-                                SettingsSearchTarget("Personal Themes", "Appearance", listOf("personal", "theme slots", "generated accents"), appearanceRequester),
-                                SettingsSearchTarget("Font", "Appearance", listOf("sans", "serif", "mono"), appearanceRequester),
-                                SettingsSearchTarget("Font Size", "Appearance", listOf("text size", "scale"), appearanceRequester),
+                                SettingsSearchTarget("Theme", "Appearance", listOf("light", "dark", "amoled", "system"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Colors", "Appearance", listOf("material you", "custom", "palette"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Personal Themes", "Appearance", listOf("personal", "theme slots", "generated accents"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Font", "Appearance", listOf("sans", "serif", "mono"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Font Size", "Appearance", listOf("text size", "scale"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Language", "Language", listOf("español", "português", "français", "translate", "locale"), languageRequester),
                                 SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), journalRequester),
                                 SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), journalRequester),
                                 SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), journalRequester),
@@ -259,7 +252,8 @@ fun SettingsScreen(
                 settingsSearchHistory =
                         listOf(target.title) + settingsSearchHistory.filterNot { it == target.title }.take(4)
                 showSettingsSuggestions = false
-                scope.launch { target.requester.bringIntoView() }
+                target.onSelect?.invoke()
+                target.requester?.let { requester -> scope.launch { requester.bringIntoView() } }
         }
 
         val confirmLocationChange = { uriString: String? ->
@@ -308,10 +302,10 @@ fun SettingsScreen(
 
                 AlertDialog(
                         onDismissRequest = { showDialog = false },
-                        title = { Text("Change Storage Location") },
+                        title = { Text(stringResource(R.string.settings_change_storage_location_title)) },
                         text = {
                                 Text(
-                                        "All existing entries will be moved from $currentName to $destName. Do you want to continue?"
+                                        stringResource(R.string.settings_change_storage_location_message, currentName, destName)
                                 )
                         },
                         confirmButton = {
@@ -320,10 +314,10 @@ fun SettingsScreen(
                                                 viewModel.setStorageUri(pendingUriString)
                                                 showDialog = false
                                         }
-                                ) { Text("Yes") }
+                                ) { Text(stringResource(R.string.settings_yes)) }
                         },
                         dismissButton = {
-                                TextButton(onClick = { showDialog = false }) { Text("No") }
+                                TextButton(onClick = { showDialog = false }) { Text(stringResource(R.string.settings_no)) }
                         }
                 )
         }
@@ -331,50 +325,50 @@ fun SettingsScreen(
         restoreSummary?.let { summary ->
                 AlertDialog(
                         onDismissRequest = { viewModel.dismissRestoreSummary() },
-                        title = { Text("Restore Summary") },
+                        title = { Text(stringResource(R.string.settings_restore_summary_title)) },
                         text = {
                                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                                         Text(
-                                                "Journal",
+                                                stringResource(R.string.settings_restore_section_journal),
                                                 style = MaterialTheme.typography.bodyMedium,
                                                 fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                                "Added to new days: ${summary.newDays}\nMerged into existing days: ${summary.mergedDays}\nDuplicate journal entries skipped: ${summary.skippedJournalEntries}",
+                                                stringResource(R.string.settings_restore_journal_summary, summary.newDays, summary.mergedDays, summary.skippedJournalEntries),
                                                 style = MaterialTheme.typography.bodySmall
                                         )
                                         Text(
-                                                "Shortcodes",
+                                                stringResource(R.string.settings_restore_section_shortcodes),
                                                 style = MaterialTheme.typography.bodyMedium,
                                                 fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                                "Added: ${summary.shortcodesAdded}\nSkipped duplicates: ${summary.shortcodesSkipped}",
+                                                stringResource(R.string.settings_restore_shortcodes_summary, summary.shortcodesAdded, summary.shortcodesSkipped),
                                                 style = MaterialTheme.typography.bodySmall
                                         )
                                         Text(
-                                                "Date Keywords",
+                                                stringResource(R.string.settings_restore_section_date_keywords),
                                                 style = MaterialTheme.typography.bodyMedium,
                                                 fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                                "Added: ${summary.dateKeywordsAdded}\nSkipped duplicates: ${summary.dateKeywordsSkipped}",
+                                                stringResource(R.string.settings_restore_date_keywords_summary, summary.dateKeywordsAdded, summary.dateKeywordsSkipped),
                                                 style = MaterialTheme.typography.bodySmall
                                         )
                                         Text(
-                                                "People & Places",
+                                                stringResource(R.string.settings_restore_section_people_places),
                                                 style = MaterialTheme.typography.bodyMedium,
                                                 fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                                "Added: ${summary.peoplePlacesAdded}\nSkipped duplicates: ${summary.peoplePlacesSkipped}",
+                                                stringResource(R.string.settings_restore_people_places_summary, summary.peoplePlacesAdded, summary.peoplePlacesSkipped),
                                                 style = MaterialTheme.typography.bodySmall
                                         )
                                 }
                         },
                         confirmButton = {
                                 TextButton(onClick = { viewModel.dismissRestoreSummary() }) {
-                                        Text("Done")
+                                        Text(stringResource(R.string.action_done))
                                 }
                         }
                 )
@@ -385,7 +379,7 @@ fun SettingsScreen(
                         CenterAlignedTopAppBar(
                                 title = {
                                         Text(
-                                                "Settings",
+                                                stringResource(R.string.settings_title),
                                                 style = MaterialTheme.typography.headlineSmall,
                                                 fontWeight = FontWeight.Bold,
                                                 color = MaterialTheme.colorScheme.primary
@@ -457,55 +451,20 @@ fun SettingsScreen(
                                         )
                                         Spacer(modifier = Modifier.height(20.dp))
 
-                                        Column(modifier = Modifier.bringIntoViewRequester(appearanceRequester)) {
-                                                AppearanceSection(
-                                                        themePreference = themePreference,
-                                                        onThemeSelected = { viewModel.setThemePreference(it) },
-                                                        colorSource = colorSource,
-                                                        onColorSourceSelected = { viewModel.setColorSource(it) },
-                                                        customPalette = customPalette,
-                                                        onCustomPaletteSelected = { viewModel.setCustomPalette(it) },
-                                                        themeColorIntensity = themeColorIntensity,
-                                                        onThemeColorIntensitySelected = {
-                                                                viewModel.setThemeColorIntensity(it)
-                                                        },
-                                                        backgroundTintLevel = backgroundTintLevel,
-                                                        onBackgroundTintLevelSelected = {
-                                                                viewModel.setBackgroundTintLevel(it)
-                                                        },
-                                                        personalThemeSlots = personalThemeSlots,
-                                                        activePersonalThemeSlotId = activePersonalThemeSlotId,
-                                                        onActivePersonalThemeSlotSelected = {
-                                                                viewModel.setActivePersonalThemeSlotId(it)
-                                                        },
-                                                        onRenamePersonalThemeSlot = { slotId, name ->
-                                                                viewModel.renamePersonalThemeSlot(slotId, name)
-                                                        },
-                                                        onPersonalThemeHueChange = { slotId, hue ->
-                                                                viewModel.setPersonalThemeHue(slotId, hue)
-                                                        },
-                                                        onPersonalThemeSaturationChange = { slotId, saturation ->
-                                                                viewModel.setPersonalThemeSaturation(slotId, saturation)
-                                                        },
-                                                        onPersonalThemeBrightnessChange = { slotId, brightness ->
-                                                                viewModel.setPersonalThemeBrightness(slotId, brightness)
-                                                        },
-                                                        onPersonalThemeAccentStyleSelected = { slotId, style ->
-                                                                viewModel.setPersonalThemeAccentStyle(slotId, style)
-                                                        },
-                                                        appFontFamily = appFontFamily,
-                                                        onFontFamilySelected = { viewModel.setAppFontFamily(it) },
-                                                        fontScalePreference = fontScalePreference,
-                                                        onFontScaleSelected = { viewModel.setFontScalePreference(it) }
+                                        AppearanceEntrySection(onNavigateToAppearance = onNavigateToAppearance)
+
+                                        Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
+                                                LanguageSection(
+                                                        appLanguage = appLanguage,
+                                                        onLanguageSelected = { viewModel.setAppLanguage(it) }
                                                 )
                                         }
-                                        Spacer(modifier = Modifier.height(32.dp))
 
                                         // ── Preferences Section ──
                                         Column(modifier = Modifier.bringIntoViewRequester(journalRequester)) {
                                                 SettingsSectionHeader(
                                                         icon = Icons.Rounded.Settings,
-                                                        title = "Journal Experience"
+                                                        title = stringResource(R.string.settings_section_journal_experience)
                                                 )
 
                                                 Spacer(modifier = Modifier.height(12.dp))
@@ -550,7 +509,7 @@ fun SettingsScreen(
                                         Column(modifier = Modifier.bringIntoViewRequester(navigationRequester)) {
                                                 SettingsSectionHeader(
                                                         icon = Icons.Rounded.Swipe,
-                                                        title = "Navigation & Gestures"
+                                                        title = stringResource(R.string.settings_section_navigation_gestures)
                                                 )
                                                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -596,7 +555,7 @@ fun SettingsScreen(
                                         Column(modifier = Modifier.bringIntoViewRequester(reviewRequester)) {
                                                 SettingsSectionHeader(
                                                         icon = Icons.Rounded.Info,
-                                                        title = "Review & Insights"
+                                                        title = stringResource(R.string.settings_section_review_insights)
                                                 )
                                                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -692,7 +651,8 @@ private data class SettingsSearchTarget(
         val title: String,
         val section: String,
         val keywords: List<String>,
-        val requester: BringIntoViewRequester
+        val requester: BringIntoViewRequester? = null,
+        val onSelect: (() -> Unit)? = null
 )
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -731,7 +691,7 @@ private fun SettingsSearchCard(
                                         IconButton(onClick = onClearQuery) {
                                                 Icon(
                                                         imageVector = Icons.Rounded.Close,
-                                                        contentDescription = "Clear search",
+                                                        contentDescription = stringResource(R.string.settings_search_clear),
                                                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                                                 )
                                         }
@@ -739,7 +699,7 @@ private fun SettingsSearchCard(
                         },
                         placeholder = {
                                 Text(
-                                        text = "Search settings",
+                                        text = stringResource(R.string.settings_search_placeholder),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                         },
@@ -781,7 +741,7 @@ private fun SettingsSearchCard(
                                         verticalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
                                         Text(
-                                                text = "Recent searches",
+                                                text = stringResource(R.string.settings_search_recent),
                                                 style = MaterialTheme.typography.titleSmall,
                                                 color = MaterialTheme.colorScheme.primary
                                         )
@@ -864,11 +824,11 @@ private fun SettingsSearchCard(
                                         horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
                                         Text(
-                                                text = "No matching settings",
+                                                text = stringResource(R.string.settings_search_no_results),
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                         TextButton(onClick = onDismissSuggestions) {
-                                                Text("Close")
+                                                Text(stringResource(R.string.settings_search_close))
                                         }
                                 }
                         }

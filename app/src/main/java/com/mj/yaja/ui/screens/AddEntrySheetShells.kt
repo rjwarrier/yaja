@@ -31,9 +31,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryTemplate
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -94,11 +97,11 @@ fun EntryReviewSheet(
                                                 }
                                                 showRevisitDatePicker = false
                                         }
-                                ) { Text("Set") }
+                                ) { Text(stringResource(R.string.action_set)) }
                         },
                         dismissButton = {
                                 TextButton(onClick = { showRevisitDatePicker = false }) {
-                                        Text("Cancel")
+                                        Text(stringResource(R.string.action_cancel))
                                 }
                         }
                 ) {
@@ -115,13 +118,12 @@ fun EntryReviewSheet(
                 verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
                 Text(
-                        text = "Review Entry",
+                        text = stringResource(R.string.addentry_review_entry_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                 )
                 Text(
-                        text =
-                                "Quick pass before save. Pull todos out, check tracked mentions, and mark day if it matters.",
+                        text = stringResource(R.string.addentry_review_entry_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -133,7 +135,11 @@ fun EntryReviewSheet(
                                 onClick = {},
                                 label = {
                                         Text(
-                                                "${reviewTodos.size} todo${if (reviewTodos.size == 1) "" else "s"}"
+                                                pluralStringResource(
+                                                        R.plurals.addentry_todos_count,
+                                                        reviewTodos.size,
+                                                        reviewTodos.size
+                                                )
                                         )
                                 }
                         )
@@ -141,7 +147,11 @@ fun EntryReviewSheet(
                                 onClick = {},
                                 label = {
                                         Text(
-                                                "${reviewMentions.size} mention${if (reviewMentions.size == 1) "" else "s"}"
+                                                pluralStringResource(
+                                                        R.plurals.addentry_mentions_count,
+                                                        reviewMentions.size,
+                                                        reviewMentions.size
+                                                )
                                         )
                                 }
                         )
@@ -173,7 +183,7 @@ fun EntryReviewSheet(
                 )
 
                 Button(onClick = onSave, modifier = Modifier.fillMaxWidth()) {
-                        Text("Save Entry")
+                        Text(stringResource(R.string.addentry_save_entry_button))
                 }
                 Spacer(modifier = Modifier.height(12.dp))
         }
@@ -325,12 +335,12 @@ fun EntryTemplateSheet(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
                 Text(
-                        text = "Choose a Template",
+                        text = stringResource(R.string.addentry_choose_template_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                 )
                 Text(
-                        text = "${filteredTemplates.size} of ${templates.size} templates ready",
+                        text = stringResource(R.string.addentry_templates_ready_format, filteredTemplates.size, templates.size),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -339,8 +349,8 @@ fun EntryTemplateSheet(
                         onValueChange = { searchQuery = it },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true,
-                        label = { Text("Search templates") },
-                        placeholder = { Text("Meeting, health, reflection...") },
+                        label = { Text(stringResource(R.string.addentry_search_templates_label)) },
+                        placeholder = { Text(stringResource(R.string.addentry_search_templates_placeholder)) },
                         leadingIcon = {
                                 Icon(
                                         imageVector = Icons.Rounded.Search,
@@ -352,7 +362,7 @@ fun EntryTemplateSheet(
                                         IconButton(onClick = { searchQuery = "" }) {
                                                 Icon(
                                                         imageVector = Icons.Rounded.Close,
-                                                        contentDescription = "Clear search"
+                                                        contentDescription = stringResource(R.string.addentry_cd_clear_search)
                                                 )
                                         }
                                 }

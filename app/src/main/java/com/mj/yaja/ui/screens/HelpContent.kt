@@ -48,10 +48,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 
 internal data class HelpSection(
     val group: String,
@@ -67,181 +69,145 @@ internal data class HelpOnboardingCard(
     val body: String
 )
 
+@Composable
 internal fun defaultHelpOnboardingCards(): List<HelpOnboardingCard> = listOf(
     HelpOnboardingCard(
         icon = Icons.Rounded.TaskAlt,
-        title = "Todos & Events",
-        body = "Keep personal reminders, family plans, and little things you do not want to forget inside the same journal flow."
+        title = stringResource(R.string.help_onboard_todos_events_title),
+        body = stringResource(R.string.help_onboard_todos_events_body)
     ),
     HelpOnboardingCard(
         icon = Icons.Rounded.Widgets,
-        title = "Widgets",
-        body = "Add Heatmap, Quick Capture, Quick Todo, or Todo List widgets from launcher."
+        title = stringResource(R.string.help_onboard_widgets_title),
+        body = stringResource(R.string.help_onboard_widgets_body)
     ),
     HelpOnboardingCard(
         icon = Icons.Rounded.History,
-        title = "Version History",
-        body = "Enable History Files in Settings > Data to keep safe snapshots before risky changes."
+        title = stringResource(R.string.help_onboard_version_history_title),
+        body = stringResource(R.string.help_onboard_version_history_body)
     ),
     HelpOnboardingCard(
         icon = Icons.Rounded.Bolt,
-        title = "Tasker",
-        body = "Use Tasker to quickly add entries, todos, or events when something personal needs to be captured right away."
+        title = stringResource(R.string.help_onboard_tasker_title),
+        body = stringResource(R.string.help_onboard_tasker_body)
     )
 )
 
+@Composable
 internal fun defaultHelpSections(): List<HelpSection> = listOf(
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.Edit,
-        title = "Writing & Editor",
-        preview = "Templates, markdown headings, todos, events, and flexible draft insertion.",
-        content = "+ Tap the floating '+' button to write for the selected day.\n" +
-            "+ Use templates like Meeting Note, Travel Day, Health Log, Reflection, Work Log, and more.\n" +
-            "+ Templates can be inserted into a blank draft, appended below, used to replace a draft, or inserted at the cursor.\n" +
-            "+ Editor chips can quickly insert todos, events, numbered lists, and bullet lists.\n" +
-            "+ View Entry and Edit Entry support markdown-style headings such as ### Section."
+        title = stringResource(R.string.help_section_writing_editor_title),
+        preview = stringResource(R.string.help_section_writing_editor_preview),
+        content = stringResource(R.string.help_section_writing_editor_content)
     ),
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.AutoAwesome,
-        title = "Post-Write Review",
-        preview = "Todo extraction, keyword detection, starring, labels, and revisit setup.",
-        content = "+ After writing, Yaja can open a review sheet before save.\n" +
-            "+ It can extract todo items, detect People & Places, star the day, set a day label, and schedule revisit dates.\n" +
-            "+ You can disable Post-write Review from Settings if you prefer direct save."
+        title = stringResource(R.string.help_section_post_write_review_title),
+        preview = stringResource(R.string.help_section_post_write_review_preview),
+        content = stringResource(R.string.help_section_post_write_review_content)
     ),
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.EventRepeat,
-        title = "Revisit & Follow-up Dates",
-        preview = "Journal-linked follow-up dates with quick picks and a custom option.",
-        content = "+ Add revisit dates with Tomorrow, Next week, Next month, or a custom date.\n" +
-            "+ Due revisit items surface on Home and are marked in Calendar and Timeline.\n" +
-            "+ This works well for promises, decisions, health checks, and reminders tied to journal context."
+        title = stringResource(R.string.help_section_revisit_followup_title),
+        preview = stringResource(R.string.help_section_revisit_followup_preview),
+        content = stringResource(R.string.help_section_revisit_followup_content)
     ),
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.Swipe,
-        title = "Navigation & Gestures",
-        preview = "Date movement, selection delete, swipe preferences, and rebuild cache behavior.",
-        content = "+ Home supports date navigation with arrows and optional swipe navigation when enabled.\n" +
-            "+ Long-press an entry to select it. Tap more entries to select them too, then use the Delete pill near the Add button.\n" +
-            "+ Tapping outside selected entries clears selection. Deleted entries can be restored together from the restore countdown.\n" +
-            "+ You can rebuild cache when journal files change outside Yaja."
+        title = stringResource(R.string.help_section_navigation_gestures_title),
+        preview = stringResource(R.string.help_section_navigation_gestures_preview),
+        content = stringResource(R.string.help_section_navigation_gestures_content)
     ),
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.Bolt,
-        title = "Shortcodes & Quick Capture",
-        preview = "Fast personal capture plus reusable dynamic text snippets.",
-        content = "+ Create shortcodes to insert repeated text quickly.\n" +
-            "+ Dynamic placeholders like {{today:dd-MMM}} and {{now:HH:mm}} work inside shortcodes.\n" +
-            "+ Quick Capture helps log something fast without opening the full editor.\n" +
-            "+ Quick add can save either a todo or an event for a chosen date from the widget, Todos screen, or Tasker."
+        title = stringResource(R.string.help_section_shortcodes_quick_capture_title),
+        preview = stringResource(R.string.help_section_shortcodes_quick_capture_preview),
+        content = stringResource(R.string.help_section_shortcodes_quick_capture_content)
     ),
     HelpSection(
-        group = "Everyday",
+        group = "everyday",
         icon = Icons.Rounded.Bolt,
-        title = "Todos & Events",
-        preview = "Personal reminders, plans, and noteworthy events grouped by date.",
-        content = "+ Todos are written directly in journal entries as [ ] and [x] lines.\n" +
-            "+ Events are normal journal entries marked as Event, useful for family plans, appointments, travel, or anything you want to notice later.\n" +
-            "+ The Todos screen helps you view open todos, completed todos, and events without turning Yaja into a productivity dashboard.\n" +
-            "+ Tap a date header to open that day in Journal.\n" +
-            "+ Pull down on Todos to rebuild the todo index if files changed outside Yaja.\n" +
-            "+ Show Completed Tasks is remembered, so your preferred view sticks when you leave and return.\n" +
-            "+ Todo widgets can show pending tasks, confirm before toggling, hide completed tasks, and optionally auto-hide when nothing is pending."
+        title = stringResource(R.string.help_section_todos_events_title),
+        preview = stringResource(R.string.help_section_todos_events_preview),
+        content = stringResource(R.string.help_section_todos_events_content)
     ),
     HelpSection(
-        group = "Reviews & Insights",
+        group = "reviews_insights",
         icon = Icons.Rounded.People,
-        title = "People & Places",
-        preview = "Keywords, aliases, trends, and ranked connection views.",
-        content = "+ Track people and places with aliases and relation labels.\n" +
-            "+ Search, filter, and sort the keyword list.\n" +
-            "+ Keyword detail pages show recency, mentions over time, co-mentions, and ranked Connections.\n" +
-            "+ Match Sensitivity can be adjusted from Settings."
+        title = stringResource(R.string.help_section_people_places_title),
+        preview = stringResource(R.string.help_section_people_places_preview),
+        content = stringResource(R.string.help_section_people_places_content)
     ),
     HelpSection(
-        group = "Reviews & Insights",
+        group = "reviews_insights",
         icon = Icons.Rounded.Timeline,
-        title = "Timeline & Lookback",
-        preview = "Past-day browsing, highlights, Surprise Me, and review entry points.",
-        content = "+ Timeline lets you browse past days with filters, year chips, and optional all-date mode.\n" +
-            "+ Lookback shows entries from the same day in past years and your starred highlights.\n" +
-            "+ Surprise Me opens a random past entry from Lookback.\n" +
-            "+ Weekly Review and Monthly Review live inside Lookback."
+        title = stringResource(R.string.help_section_timeline_lookback_title),
+        preview = stringResource(R.string.help_section_timeline_lookback_preview),
+        content = stringResource(R.string.help_section_timeline_lookback_content)
     ),
     HelpSection(
-        group = "Reviews & Insights",
+        group = "reviews_insights",
         icon = Icons.Rounded.Insights,
-        title = "Statistics & Reviews",
-        preview = "Compare mode, template insights, custom visible sections, and summaries.",
-        content = "+ Statistics include compare mode, keyword deltas, and Template Insights.\n" +
-            "+ You can choose which statistics sections stay visible from inside the Statistics screen.\n" +
-            "+ Compare Mode is available for All Time and summarizes month and year deltas.\n" +
-            "+ Review pages summarize most active days, top people and places, favorite moments, labels, language split, and streak or gap patterns."
+        title = stringResource(R.string.help_section_statistics_reviews_title),
+        preview = stringResource(R.string.help_section_statistics_reviews_preview),
+        content = stringResource(R.string.help_section_statistics_reviews_content)
     ),
     HelpSection(
-        group = "Advanced Tools",
+        group = "advanced_tools",
         icon = Icons.Rounded.Widgets,
-        title = "Widgets & Home Surface",
-        preview = "Launcher widgets, highlighted keywords, and day-level home stats.",
-        content = "+ Writing Heatmap, Quick Capture, Quick Add, and Todo List widgets are available on the launcher.\n" +
-            "+ Widget configure screens let you adjust corners, padding, shape, headers, completed-task visibility, and other widget options where supported.\n" +
-            "+ The heatmap widget uses more intensity shades for a smoother writing-history view.\n" +
-            "+ Home can highlight People & Places inside entries when the setting is enabled.\n" +
-            "+ The Home date header can show or hide entry count, words, and character count."
+        title = stringResource(R.string.help_section_widgets_home_title),
+        preview = stringResource(R.string.help_section_widgets_home_preview),
+        content = stringResource(R.string.help_section_widgets_home_content)
     ),
     HelpSection(
-        group = "Reviews & Insights",
+        group = "reviews_insights",
         icon = Icons.Rounded.Language,
-        title = "Language & Text Analysis",
-        preview = "Local language detection for statistics and review insights.",
-        content = "+ Yaja detects dominant script or language across entries for insights.\n" +
-            "+ Language split appears in Statistics and Reviews.\n" +
-            "+ Detection runs locally and does not send journal text out of the device."
+        title = stringResource(R.string.help_section_language_text_analysis_title),
+        preview = stringResource(R.string.help_section_language_text_analysis_preview),
+        content = stringResource(R.string.help_section_language_text_analysis_content)
     ),
     HelpSection(
-        group = "Advanced Tools",
+        group = "advanced_tools",
         icon = Icons.Rounded.Security,
-        title = "Data, Privacy & Cache",
-        preview = "Markdown storage, version history, app log, app lock, and rebuild cache.",
-        content = "+ Data Privacy: All personal journal data resides strictly on your physical device and never leaves it at any time. Yaja does not run cloud databases, remote backup servers, or telemetry to track your text.\n" +
-            "+ Journal entries are stored as standard Markdown files arranged by year and month.\n" +
-            "+ Version History can keep safe snapshots before edits, deletes, labels, and revisit changes.\n" +
-            "+ You can choose how many versions to keep and how many days history is retained.\n" +
-            "+ App Log records technical events, crash details, and cache activity without storing journal text.\n" +
-            "+ Rebuild App Cache lets you refresh app data modularly, including todos and full cache rebuilds.\n" +
-            "+ App lock supports PIN and fingerprint.\n" +
-            "+ Yaja keeps heavy indexing and stats work deferred where possible so app launch and saves stay responsive."
+        title = stringResource(R.string.help_section_data_privacy_cache_title),
+        preview = stringResource(R.string.help_section_data_privacy_cache_preview),
+        content = stringResource(R.string.help_section_data_privacy_cache_content)
     )
 )
 
 internal val helpSectionGroupOrder = listOf(
-    "Everyday",
-    "Reviews & Insights",
-    "Advanced Tools"
+    "everyday",
+    "reviews_insights",
+    "advanced_tools"
 )
 
 @Composable
-internal fun HelpGroupHeader(title: String) {
+internal fun HelpGroupHeader(groupId: String) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(6.dp)
     ) {
         Text(
-            text = title,
+            text = when (groupId) {
+                "everyday" -> stringResource(R.string.help_group_everyday_title)
+                "reviews_insights" -> stringResource(R.string.help_group_reviews_title)
+                else -> stringResource(R.string.help_group_advanced_title)
+            },
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
         )
         Text(
-            text = when (title) {
-                "Everyday" -> "Journaling, writing flow, and daily navigation."
-                "Reviews & Insights" -> "Lookbacks, trends, people, places, and analysis."
-                else -> "Widgets, storage, privacy, backups, and technical tools."
+            text = when (groupId) {
+                "everyday" -> stringResource(R.string.help_group_everyday_desc)
+                "reviews_insights" -> stringResource(R.string.help_group_reviews_desc)
+                else -> stringResource(R.string.help_group_advanced_desc)
             },
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -257,7 +223,7 @@ internal fun HelpOnboardingCards(cards: List<HelpOnboardingCard>) {
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Text(
-            text = "Start Here",
+            text = stringResource(R.string.help_start_here),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
@@ -411,7 +377,11 @@ internal fun CollapsibleHelpCard(
                 )
                 Icon(
                     imageVector = if (expanded) Icons.Rounded.ExpandLess else Icons.Rounded.ExpandMore,
-                    contentDescription = if (expanded) "Collapse" else "Expand",
+                    contentDescription = if (expanded) {
+                        stringResource(R.string.help_cd_collapse)
+                    } else {
+                        stringResource(R.string.help_cd_expand)
+                    },
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }

@@ -51,9 +51,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordCoOccurrence
 import com.mj.yaja.data.KeywordMatch
 import com.mj.yaja.data.KeywordType
@@ -152,7 +155,15 @@ internal fun KeywordHeroCard(
                                     )
                                 }
                             },
-                            label = { Text(if (isIndexing) "Indexing" else "Indexed") }
+                            label = {
+                                Text(
+                                    if (isIndexing) {
+                                        stringResource(R.string.keywords_status_indexing)
+                                    } else {
+                                        stringResource(R.string.keywords_status_indexed)
+                                    }
+                                )
+                            }
                         )
                     }
                 }
@@ -163,12 +174,12 @@ internal fun KeywordHeroCard(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 HeroMetricPill(
-                    label = "Mentions",
+                    label = stringResource(R.string.keywords_metric_mentions),
                     value = totalMentions.toString(),
                     modifier = Modifier.weight(1f)
                 )
                 HeroMetricPill(
-                    label = "Days",
+                    label = stringResource(R.string.keywords_metric_days),
                     value = uniqueDays.toString(),
                     modifier = Modifier.weight(1f)
                 )
@@ -239,15 +250,20 @@ internal fun KeywordTimelineCard(
             ) {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text(
-                        text = "Mentions Over Time",
+                        text = stringResource(R.string.keywords_timeline_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
                         text = if (peakMonth != null) {
-                            "Peak ${peakMonth.first.format(keywordTimelineMonthFormatter)} • ${peakMonth.second} mention${if (peakMonth.second == 1) "" else "s"}"
+                            pluralStringResource(
+                                R.plurals.keywords_timeline_peak_mentions,
+                                peakMonth.second,
+                                peakMonth.first.format(keywordTimelineMonthFormatter),
+                                peakMonth.second
+                            )
                         } else {
-                            "No monthly pattern yet"
+                            stringResource(R.string.keywords_timeline_empty_pattern)
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -269,7 +285,7 @@ internal fun KeywordTimelineCard(
                             modifier = Modifier.size(18.dp)
                         )
                         Text(
-                            text = "$totalMentions total",
+                            text = stringResource(R.string.keywords_timeline_total_format, totalMentions),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.onTertiaryContainer
                         )
@@ -283,7 +299,15 @@ internal fun KeywordTimelineCard(
                 KeywordTimelineRange.values().forEach { range ->
                     AssistChip(
                         onClick = { selectedRange = range },
-                        label = { Text(range.label) },
+                        label = {
+                            Text(
+                                if (range == KeywordTimelineRange.ALL) {
+                                    stringResource(R.string.keywords_timeline_range_all)
+                                } else {
+                                    range.label
+                                }
+                            )
+                        },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = if (selectedRange == range) {
                                 MaterialTheme.colorScheme.primaryContainer
@@ -302,7 +326,7 @@ internal fun KeywordTimelineCard(
 
             if (visiblePoints.isEmpty()) {
                 Text(
-                    text = "Mentions will chart here after indexing finds entries.",
+                    text = stringResource(R.string.keywords_timeline_empty_chart),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -355,7 +379,7 @@ internal fun KeywordTimelineCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Days with mentions",
+                        text = stringResource(R.string.keywords_days_with_mentions),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -512,11 +536,11 @@ internal fun LastSeenCard(
 ) {
     val daysAgo = lastSeen?.let { ChronoUnit.DAYS.between(it, LocalDate.now()).toInt() }
     val status = when {
-        lastSeen == null -> "No matches yet"
-        daysAgo == 0 -> "Mentioned today"
-        daysAgo == 1 -> "Mentioned yesterday"
-        daysAgo != null -> "Last mention $daysAgo days ago"
-        else -> "No matches yet"
+        lastSeen == null -> stringResource(R.string.keywords_recency_none)
+        daysAgo == 0 -> stringResource(R.string.keywords_recency_today)
+        daysAgo == 1 -> stringResource(R.string.keywords_recency_yesterday)
+        daysAgo != null -> stringResource(R.string.keywords_recency_days_ago_format, daysAgo)
+        else -> stringResource(R.string.keywords_recency_none)
     }
 
     ElevatedCard(
@@ -550,7 +574,7 @@ internal fun LastSeenCard(
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     Text(
-                        text = "Recency",
+                        text = stringResource(R.string.keywords_recency_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -567,12 +591,12 @@ internal fun LastSeenCard(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 HeroMetricPill(
-                    label = "First Seen",
+                    label = stringResource(R.string.keywords_first_seen),
                     value = firstSeen?.format(keywordDetailDateFormatter) ?: "—",
                     modifier = Modifier.weight(1f)
                 )
                 HeroMetricPill(
-                    label = "Last Seen",
+                    label = stringResource(R.string.keywords_last_seen),
                     value = lastSeen?.format(keywordDetailDateFormatter) ?: "—",
                     modifier = Modifier.weight(1f)
                 )
@@ -600,7 +624,7 @@ internal fun ConnectionsCard(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Text(
-                "Co-mentioned With",
+                stringResource(R.string.keywords_co_mentioned_with),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -622,7 +646,15 @@ internal fun ConnectionsCard(
                                 modifier = Modifier.size(16.dp)
                             )
                         },
-                        label = { Text("${coOccurrence.name} • ${coOccurrence.daysTogether}") }
+                        label = {
+                            Text(
+                                stringResource(
+                                    R.string.keywords_co_occurrence_days_format,
+                                    coOccurrence.name,
+                                    coOccurrence.daysTogether
+                                )
+                            )
+                        }
                     )
                 }
             }
@@ -675,12 +707,12 @@ internal fun RankedConnectionsCard(
             ) {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text(
-                        text = "Connections",
+                        text = stringResource(R.string.keywords_connections_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = "Ranked by repeated overlap and recency",
+                        text = stringResource(R.string.keywords_connections_subtitle),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -701,7 +733,7 @@ internal fun RankedConnectionsCard(
                             tint = MaterialTheme.colorScheme.onSecondaryContainer
                         )
                         Text(
-                            text = "${coOccurring.size} linked",
+                            text = stringResource(R.string.keywords_connections_linked_format, coOccurring.size),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.onSecondaryContainer
                         )
@@ -729,15 +761,15 @@ internal fun RankedConnectionsCard(
                         verticalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
                         Text(
-                            text = if (expanded) "Hide connections" else "Show connections",
+                            text = if (expanded) stringResource(R.string.keywords_connections_hide) else stringResource(R.string.keywords_connections_show),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
                             text = if (expanded) {
-                                "${visibleConnections.size} items in this view"
+                                stringResource(R.string.keywords_connections_items_in_view, visibleConnections.size)
                             } else {
-                                "Tap to expand ${visibleConnections.size} ranked links"
+                                stringResource(R.string.keywords_connections_tap_to_expand, visibleConnections.size)
                             },
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -759,7 +791,17 @@ internal fun RankedConnectionsCard(
                     ConnectionFilter.values().forEach { filter ->
                         AssistChip(
                             onClick = { selectedFilter = filter },
-                            label = { Text(filter.label) },
+                            label = {
+                                Text(
+                                    when (filter) {
+                                        ConnectionFilter.ALL -> stringResource(R.string.keywords_connections_filter_all)
+                                        ConnectionFilter.PEOPLE -> stringResource(R.string.keywords_connections_filter_people)
+                                        ConnectionFilter.PLACES -> stringResource(R.string.keywords_connections_filter_places)
+                                        ConnectionFilter.RECENT -> stringResource(R.string.keywords_connections_filter_recent)
+                                        ConnectionFilter.STRONGEST -> stringResource(R.string.keywords_connections_filter_strongest)
+                                    }
+                                )
+                            },
                             colors = AssistChipDefaults.assistChipColors(
                                 containerColor = if (selectedFilter == filter) {
                                     MaterialTheme.colorScheme.primaryContainer
@@ -778,7 +820,7 @@ internal fun RankedConnectionsCard(
 
                 if (visibleConnections.isEmpty()) {
                     Text(
-                        text = "No connections for this filter yet.",
+                        text = stringResource(R.string.keywords_connections_empty),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -806,16 +848,22 @@ private fun RankedConnectionRow(
     relationship: KeywordCoOccurrence,
     onClick: () -> Unit
 ) {
-    val lastSeenLabel = relationship.lastSeenTogether?.format(keywordDetailDateFormatter) ?: "Unknown"
+    val lastSeenLabel = relationship.lastSeenTogether?.format(keywordDetailDateFormatter) ?: stringResource(R.string.keywords_unknown)
     val metaLine = buildString {
-        append("${relationship.daysTogether} day")
-        if (relationship.daysTogether != 1) append("s")
-        append(" together")
+        append(stringResource(R.string.keywords_connections_meta_days_format, relationship.daysTogether))
+        if (relationship.daysTogether != 1) append(stringResource(R.string.keywords_connections_meta_days_suffix_plural))
+        append(stringResource(R.string.keywords_connections_meta_together))
         if (relationship.sharedEntries > 0) {
-            append(" | ${relationship.sharedEntries} shared entr")
-            append(if (relationship.sharedEntries == 1) "y" else "ies")
+            append(stringResource(R.string.keywords_connections_meta_shared_entry_prefix, relationship.sharedEntries))
+            append(
+                if (relationship.sharedEntries == 1) {
+                    stringResource(R.string.keywords_connections_meta_shared_entry_singular_suffix)
+                } else {
+                    stringResource(R.string.keywords_connections_meta_shared_entry_plural_suffix)
+                }
+            )
         }
-        append(" | last $lastSeenLabel")
+        append(stringResource(R.string.keywords_connections_meta_last_prefix, lastSeenLabel))
     }
 
     Row(
@@ -887,7 +935,7 @@ private fun RankedConnectionRow(
                     shape = RoundedCornerShape(14.dp)
                 ) {
                     Text(
-                        text = "Score ${relationship.score.toInt()}",
+                        text = stringResource(R.string.keywords_connections_score_format, relationship.score.toInt()),
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurface
@@ -907,7 +955,7 @@ private fun RankedConnectionRow(
             ) {
                 AssistChip(
                     onClick = onClick,
-                    label = { Text("${relationship.daysTogether} days") },
+                    label = { Text(stringResource(R.string.keywords_connections_days_chip, relationship.daysTogether)) },
                     colors = AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
@@ -915,7 +963,7 @@ private fun RankedConnectionRow(
                 if (relationship.sharedEntries > 0) {
                     AssistChip(
                         onClick = onClick,
-                        label = { Text("${relationship.sharedEntries} shared") },
+                        label = { Text(stringResource(R.string.keywords_connections_shared_chip, relationship.sharedEntries)) },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                         )
@@ -1001,12 +1049,18 @@ internal fun MatchCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = match.matchType.name.lowercase().replace('_', ' '),
+                    text = when (match.matchType.name) {
+                        "EXACT" -> stringResource(R.string.keywords_match_type_exact)
+                        "FUZZY" -> stringResource(R.string.keywords_match_type_fuzzy)
+                        "ALIAS" -> stringResource(R.string.keywords_match_type_alias)
+                        "RELATION" -> stringResource(R.string.keywords_match_type_relation)
+                        else -> match.matchType.name.lowercase().replace('_', ' ')
+                    },
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
                 TextButton(onClick = { onNavigateToDate(LocalDate.parse(match.date)) }) {
-                    Text("Open Day")
+                    Text(stringResource(R.string.keywords_open_day))
                 }
             }
         }

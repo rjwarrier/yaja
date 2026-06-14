@@ -23,12 +23,14 @@ import androidx.compose.foundation.layout.offset
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.FragmentActivity
+import com.mj.yaja.R
 import kotlinx.coroutines.delay
 
 /** Walk the ContextWrapper chain to find the underlying FragmentActivity.
@@ -69,15 +71,15 @@ private fun showBiometricPrompt(activity: FragmentActivity, onSuccess: () -> Uni
     when (canAuthenticate) {
         BiometricManager.BIOMETRIC_SUCCESS -> {
             val promptInfo = BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Unlock with Biometric")
-                .setSubtitle("Use your fingerprint or face to unlock")
+                .setTitle(activity.getString(R.string.pin_biometric_prompt_title))
+                .setSubtitle(activity.getString(R.string.pin_biometric_prompt_subtitle))
                 .setAllowedAuthenticators(
                     if (canAuthenticateWeak == BiometricManager.BIOMETRIC_SUCCESS)
                         BiometricManager.Authenticators.BIOMETRIC_WEAK
                     else
                         BiometricManager.Authenticators.BIOMETRIC_STRONG
                 )
-                .setNegativeButtonText("Cancel")
+                .setNegativeButtonText(activity.getString(R.string.action_cancel))
                 .build()
 
             val biometricPrompt = BiometricPrompt(
@@ -105,16 +107,16 @@ private fun showBiometricPrompt(activity: FragmentActivity, onSuccess: () -> Uni
             biometricPrompt.authenticate(promptInfo)
         }
         BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-            onError("No biometric enrolled. Please enroll a fingerprint or face in device settings.")
+            onError(activity.getString(R.string.pin_error_no_biometric_enrolled))
         }
         BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-            onError("Biometric hardware is unavailable.")
+            onError(activity.getString(R.string.pin_error_hardware_unavailable))
         }
         BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-            onError("This device does not have biometric hardware.")
+            onError(activity.getString(R.string.pin_error_no_hardware))
         }
         else -> {
-            onError("Biometric authentication is not available.")
+            onError(activity.getString(R.string.pin_error_not_available))
         }
     }
 }
@@ -169,10 +171,10 @@ fun PinLockScreen(
     }
 
     val title = when {
-        mode == PinMode.SETUP && isConfirming -> "Confirm PIN"
-        mode == PinMode.SETUP -> "Set New PIN"
-        mode == PinMode.DISABLE -> "Enter Current PIN to Disable"
-        else -> "Enter PIN"
+        mode == PinMode.SETUP && isConfirming -> stringResource(R.string.pin_title_confirm)
+        mode == PinMode.SETUP -> stringResource(R.string.pin_title_set_new)
+        mode == PinMode.DISABLE -> stringResource(R.string.pin_title_disable)
+        else -> stringResource(R.string.pin_title_enter)
     }
 
     // Handle a digit tap
@@ -196,7 +198,7 @@ fun PinLockScreen(
                 if (checkPin != null && checkPin(pin)) {
                     onEnterCorrect()
                 } else {
-                    errorMessage = "Incorrect PIN. Try again."
+                    errorMessage = context.getString(R.string.pin_error_incorrect)
                     triggerShake()
                     delay(100)
                     pin = ""
@@ -211,7 +213,7 @@ fun PinLockScreen(
                     if (pin == confirmPin) {
                         onSetupComplete(pin)
                     } else {
-                        errorMessage = "PINs don't match. Start over."
+                        errorMessage = context.getString(R.string.pin_error_mismatch)
                         triggerShake()
                         delay(100)
                         pin = ""
@@ -325,7 +327,7 @@ fun PinLockScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Fingerprint,
-                            contentDescription = "Use Biometric",
+                            contentDescription = stringResource(R.string.pin_cd_use_biometric),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(32.dp)
                         )
@@ -335,7 +337,7 @@ fun PinLockScreen(
                 // Cancel button (optional, shown in Settings flows)
                 if (onCancel != null) {
                     TextButton(onClick = onCancel) {
-                        Text("Cancel")
+                        Text(stringResource(R.string.action_cancel))
                     }
                 }
             }
@@ -382,7 +384,7 @@ private fun PinNumpad(
                                 ) {
                                     Icon(
                                         imageVector = Icons.AutoMirrored.Rounded.Backspace,
-                                        contentDescription = "Backspace",
+                                        contentDescription = stringResource(R.string.pin_cd_backspace),
                                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                                         modifier = Modifier.size(24.dp)
                                     )

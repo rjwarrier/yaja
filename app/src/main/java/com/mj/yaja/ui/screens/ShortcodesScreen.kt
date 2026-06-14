@@ -16,8 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import com.mj.yaja.ui.design.rememberAppEntrance
@@ -213,7 +215,7 @@ fun ShortcodeItem(
                         IconButton(onClick = onDelete) {
                                 Icon(
                                         Icons.Rounded.Delete,
-                                        contentDescription = "Delete",
+                                        contentDescription = stringResource(R.string.action_delete),
                                         tint = MaterialTheme.colorScheme.error
                                 )
                         }
@@ -235,13 +237,21 @@ fun ShortcodeEditDialog(
     AlertDialog(
             onDismissRequest = onDismiss,
             icon = { Icon(Icons.Rounded.Edit, contentDescription = null) },
-            title = { Text(if (initialCode.isEmpty()) "Add Shortcode" else "Edit Shortcode") },
+            title = {
+                Text(
+                    if (initialCode.isEmpty()) {
+                        stringResource(R.string.shortcodes_add_title)
+                    } else {
+                        stringResource(R.string.shortcodes_edit_title)
+                    }
+                )
+            },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     OutlinedTextField(
                             value = code,
                             onValueChange = { code = it },
-                            label = { Text("Shortcode (e.g. @yday)") },
+                            label = { Text(stringResource(R.string.shortcodes_code_label)) },
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth(),
                             shape = MaterialTheme.shapes.medium
@@ -249,7 +259,7 @@ fun ShortcodeEditDialog(
                     OutlinedTextField(
                             value = value,
                             onValueChange = { value = it },
-                            label = { Text("Expansion Text") },
+                            label = { Text(stringResource(R.string.shortcodes_expansion_label)) },
                             modifier = Modifier.fillMaxWidth(),
                             shape = MaterialTheme.shapes.medium
                     )
@@ -259,7 +269,7 @@ fun ShortcodeEditDialog(
                             modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                                "Use {{today:format}} for dynamic dates.",
+                                stringResource(R.string.shortcodes_dynamic_dates_hint),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
                                 modifier = Modifier.padding(8.dp)
@@ -271,9 +281,9 @@ fun ShortcodeEditDialog(
                 Button(
                         onClick = { if (code.isNotBlank()) onConfirm(code, value) },
                         enabled = code.startsWith("@") && code.length > 1
-                ) { Text("Save") }
+                ) { Text(stringResource(R.string.action_save)) }
             },
-            dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+            dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) } }
     )
 }
 
@@ -282,42 +292,42 @@ fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
     AlertDialog(
             onDismissRequest = onDismiss,
             icon = { Icon(Icons.AutoMirrored.Rounded.HelpOutline, contentDescription = null) },
-            title = { Text("Shortcode Help") },
+            title = { Text(stringResource(R.string.shortcodes_help_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(
-                            "Built-in Shortcodes:",
+                            stringResource(R.string.shortcodes_help_built_in),
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleSmall
                     )
                     Text(
-                            "@today, @now, @week, @day, @t (checkbox), @x (toggle checkbox)",
+                            stringResource(R.string.shortcodes_help_built_in_examples),
                             style = MaterialTheme.typography.bodyMedium
                     )
 
                     HorizontalDivider()
 
                     Text(
-                            "Dynamic Patterns:",
+                            stringResource(R.string.shortcodes_help_dynamic_patterns),
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleSmall
                     )
                     Text(
-                            "Use {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, or {{now:FORMAT}}.",
+                            stringResource(R.string.shortcodes_help_dynamic_desc),
                             style = MaterialTheme.typography.bodyMedium
                     )
                     Text(
-                            "Example: @yday -> Yesterday: {{yesterday:dd-MMM-yy}}",
+                            stringResource(R.string.shortcodes_help_example),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                            "Common formats: dd-MM-yy, HH:mm, EEEE (day name).",
+                            stringResource(R.string.shortcodes_help_common_formats),
                             style = MaterialTheme.typography.bodySmall
                     )
                 }
             },
-            confirmButton = { TextButton(onClick = onDismiss) { Text("Close") } }
+            confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_close)) } }
     )
 }
 

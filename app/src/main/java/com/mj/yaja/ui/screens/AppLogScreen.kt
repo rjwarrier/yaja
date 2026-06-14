@@ -36,6 +36,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.Instant
 import java.time.ZoneId
@@ -50,7 +53,7 @@ fun AppLogScreen(
     val appLogText by viewModel.appLogText.collectAsStateWithLifecycle()
     val appLogRetentionDays by viewModel.appLogRetentionDays.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val displayLogText = appLogText.toNewestFirstLog()
+    val displayLogText = appLogText.toNewestFirstLog(localTimeLabel = stringResource(R.string.app_log_local_time_format))
 
     LaunchedEffect(Unit) {
         viewModel.loadAppLog()
@@ -59,26 +62,36 @@ fun AppLogScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("App Log") },
+                title = { Text(stringResource(R.string.settings_app_log_title)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.action_back)
                         )
                     }
                 },
                 actions = {
-                    IconButton(onClick = { shareAppLog(context, appLogText) }) {
+                    IconButton(
+                        onClick = {
+                            shareAppLog(
+                                context = context,
+                                logText = appLogText,
+                                emptyText = context.getString(R.string.app_log_share_empty),
+                                subject = context.getString(R.string.app_log_share_subject),
+                                chooserTitle = context.getString(R.string.app_log_share_chooser)
+                            )
+                        }
+                    ) {
                         Icon(
                             imageVector = Icons.Rounded.Share,
-                            contentDescription = "Share app log"
+                            contentDescription = stringResource(R.string.app_log_cd_share)
                         )
                     }
                     IconButton(onClick = { viewModel.clearAppLog() }) {
                         Icon(
                             imageVector = Icons.Rounded.DeleteSweep,
-                            contentDescription = "Clear app log"
+                            contentDescription = stringResource(R.string.app_log_cd_clear)
                         )
                     }
                 },
@@ -110,20 +123,24 @@ fun AppLogScreen(
                             tint = MaterialTheme.colorScheme.primary
                         )
                         Text(
-                            text = "Privacy-safe diagnostics",
+                            text = stringResource(R.string.app_log_privacy_title),
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "This log records major app events, cache/storage operations, widget refreshes, and crash details. It does not include journal entries, todo text, or private note content.",
+                        text = stringResource(R.string.app_log_privacy_description),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Spacer(modifier = Modifier.height(14.dp))
                     Text(
-                        text = "Keep last $appLogRetentionDays ${if (appLogRetentionDays == 1) "day" else "days"}",
+                        text = pluralStringResource(
+                            R.plurals.app_log_retention_days,
+                            appLogRetentionDays,
+                            appLogRetentionDays
+                        ),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.primary
                     )
@@ -136,7 +153,7 @@ fun AppLogScreen(
                         steps = 28
                     )
                     Text(
-                        text = "Older log events are pruned automatically during logging and immediately when this setting changes.",
+                        text = stringResource(R.string.app_log_retention_description),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -148,7 +165,7 @@ fun AppLogScreen(
                 shape = MaterialTheme.shapes.large
             ) {
                 Text(
-                    text = displayLogText.ifBlank { "No app log yet." },
+                    text = displayLogText.ifBlank { stringResource(R.string.app_log_empty) },
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -156,23 +173,29 @@ fun AppLogScreen(
             }
 
             TextButton(onClick = { viewModel.loadAppLog() }) {
-                Text("Refresh Log")
+                Text(stringResource(R.string.app_log_refresh))
             }
         }
     }
 }
 
-private fun shareAppLog(context: Context, logText: String) {
-    val shareText = logText.ifBlank { "No Yaja app log entries yet." }
+private fun shareAppLog(
+    context: Context,
+    logText: String,
+    emptyText: String,
+    subject: String,
+    chooserTitle: String
+) {
+    val shareText = logText.ifBlank { emptyText }
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
-        putExtra(Intent.EXTRA_SUBJECT, "Yaja App Log")
+        putExtra(Intent.EXTRA_SUBJECT, subject)
         putExtra(Intent.EXTRA_TEXT, shareText)
     }
-    context.startActivity(Intent.createChooser(intent, "Share Yaja app log"))
+    context.startActivity(Intent.createChooser(intent, chooserTitle))
 }
 
-private fun String.toNewestFirstLog(): String {
+private fun String.toNewestFirstLog(localTimeLabel: String): String {
     if (isBlank()) return ""
     val eventStart = Regex("""(?m)^\d{4}-\d{2}-\d{2}T""")
     val starts = eventStart.findAll(this).map { it.range.first }.toList()
@@ -182,20 +205,20 @@ private fun String.toNewestFirstLog(): String {
         .map { index ->
             val start = starts[index]
             val end = starts.getOrNull(index + 1) ?: length
-            substring(start, end).trim().withLocalTimestampPrefix()
+            substring(start, end).trim().withLocalTimestampPrefix(localTimeLabel)
         }
         .asReversed()
         .joinToString("\n\n")
 }
 
-private fun String.withLocalTimestampPrefix(): String {
+private fun String.withLocalTimestampPrefix(localTimeFormat: String): String {
     val separatorIndex = indexOf(" | ")
     if (separatorIndex <= 0) return this
     val rawTimestamp = take(separatorIndex)
     val localTimestamp = runCatching {
         LOCAL_LOG_TIME_FORMAT.format(Instant.parse(rawTimestamp).atZone(ZoneId.systemDefault()))
     }.getOrNull() ?: return this
-    return "$localTimestamp | local time\n${substring(separatorIndex + 3)}"
+    return localTimeFormat.format(localTimestamp, substring(separatorIndex + 3))
 }
 
 private val LOCAL_LOG_TIME_FORMAT: DateTimeFormatter =

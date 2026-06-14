@@ -22,10 +22,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.TextFields
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Slider
@@ -41,11 +44,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.data.AppFontFamily
 import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.ColorSource
@@ -56,6 +61,7 @@ import com.mj.yaja.data.PersonalThemeSlot
 import com.mj.yaja.data.ThemeColorIntensity
 import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.theme.YajaCustomPalettes
+import com.mj.yaja.ui.theme.customFontFamily
 import com.mj.yaja.ui.theme.customPaletteSpec
 import com.mj.yaja.ui.theme.hsvColor
 import com.mj.yaja.ui.theme.personalThemeSpec
@@ -85,6 +91,53 @@ private val AppearanceCardColorLight = Color(0xFFFFFFFF)
 private val AppearanceCardColorAltLight = Color(0xFFF3F6F9)
 
 @Composable
+fun AppearanceEntrySection(onNavigateToAppearance: () -> Unit) {
+    SettingsSectionHeader(icon = Icons.Rounded.Palette, title = stringResource(R.string.settings_appearance))
+    Spacer(modifier = Modifier.height(12.dp))
+    val interactionSource = remember { MutableInteractionSource() }
+    ElevatedCard(
+        onClick = onNavigateToAppearance,
+        modifier = Modifier
+            .fillMaxWidth()
+            .expressivePressMotion(interactionSource, pressedScale = 0.96f),
+        shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        interactionSource = interactionSource
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Palette,
+                contentDescription = stringResource(R.string.settings_appearance),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(28.dp)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_appearance),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_appearance_subtitle),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
+    Spacer(modifier = Modifier.height(32.dp))
+}
+
+@Composable
 fun AppearanceSection(
     themePreference: ThemePreference,
     onThemeSelected: (ThemePreference) -> Unit,
@@ -106,6 +159,12 @@ fun AppearanceSection(
     onPersonalThemeAccentStyleSelected: (Int, PersonalAccentStyle) -> Unit,
     appFontFamily: AppFontFamily,
     onFontFamilySelected: (AppFontFamily) -> Unit,
+    monoFontWeight: Int,
+    onMonoFontWeightChange: (Int) -> Unit,
+    customFontPath: String?,
+    customFontName: String?,
+    onPickCustomFont: () -> Unit,
+    onClearCustomFont: () -> Unit,
     fontScalePreference: FontScalePreference,
     onFontScaleSelected: (FontScalePreference) -> Unit
 ) {
@@ -114,24 +173,17 @@ fun AppearanceSection(
         personalThemeSlots.firstOrNull { it.slotId == activePersonalThemeSlotId }
             ?: personalThemeSlots.firstOrNull()
 
-    SettingsSectionHeader(
-        icon = Icons.Rounded.Palette,
-        title = "Appearance"
-    )
-
-    Spacer(modifier = Modifier.height(12.dp))
-
-    SectionLabel("Theme")
+    SectionLabel(stringResource(R.string.settings_theme))
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         listOf(
-            ThemePreference.SYSTEM to "System",
-            ThemePreference.LIGHT to "Light",
-            ThemePreference.DARK to "Dark",
-            ThemePreference.AMOLED to "Amoled"
+            ThemePreference.SYSTEM to stringResource(R.string.settings_theme_system),
+            ThemePreference.LIGHT to stringResource(R.string.settings_theme_light),
+            ThemePreference.DARK to stringResource(R.string.settings_theme_dark),
+            ThemePreference.AMOLED to stringResource(R.string.settings_theme_amoled)
         ).forEach { (theme, label) ->
             ThemeModeCard(
                 modifier = Modifier.weight(1f),
@@ -145,7 +197,7 @@ fun AppearanceSection(
     }
 
     Spacer(modifier = Modifier.height(24.dp))
-    SectionLabel("Colors")
+    SectionLabel(stringResource(R.string.settings_colors_label))
     SourceToggleRow(
         selected = colorSource,
         panelColors = panelColors,
@@ -188,25 +240,27 @@ fun AppearanceSection(
             }
 
             Spacer(modifier = Modifier.height(20.dp))
+            val intensityLabels = ThemeColorIntensity.entries.map { it.label() }
             LabeledDiscreteSlider(
-                title = "Color intensity",
+                title = stringResource(R.string.settings_color_intensity_title),
                 selectedLabel = themeColorIntensity.label(),
                 options = ThemeColorIntensity.entries,
                 selectedIndex = ThemeColorIntensity.entries.indexOf(themeColorIntensity),
                 panelColors = panelColors,
                 onSelectIndex = { onThemeColorIntensitySelected(ThemeColorIntensity.entries[it]) },
-                optionLabel = { it.label() }
+                optionLabel = { intensityLabels[ThemeColorIntensity.entries.indexOf(it)] }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
+            val tintLabels = BackgroundTintLevel.entries.map { it.label() }
             LabeledDiscreteSlider(
-                title = "Background tint",
+                title = stringResource(R.string.settings_background_tint_title),
                 selectedLabel = backgroundTintLevel.label(),
                 options = BackgroundTintLevel.entries,
                 selectedIndex = BackgroundTintLevel.entries.indexOf(backgroundTintLevel),
                 panelColors = panelColors,
                 onSelectIndex = { onBackgroundTintLevelSelected(BackgroundTintLevel.entries[it]) },
-                optionLabel = { it.label() }
+                optionLabel = { tintLabels[BackgroundTintLevel.entries.indexOf(it)] }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -261,29 +315,75 @@ fun AppearanceSection(
     }
 
     Spacer(modifier = Modifier.height(24.dp))
-    SectionLabel("Font")
+    SectionLabel(stringResource(R.string.settings_font))
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
+        val customFamily = remember(customFontPath) { customFontFamily(customFontPath) }
         listOf(
-            AppFontFamily.SANS_SERIF to "Sans",
-            AppFontFamily.SERIF to "Serif",
-            AppFontFamily.MONO to "Mono"
+            AppFontFamily.SANS_SERIF to stringResource(R.string.settings_font_sans),
+            AppFontFamily.SERIF to stringResource(R.string.settings_font_serif),
+            AppFontFamily.MONO to stringResource(R.string.settings_font_mono),
+            AppFontFamily.CUSTOM to stringResource(R.string.settings_font_custom)
         ).forEach { (font, label) ->
             FontSelectionCard(
                 modifier = Modifier.weight(1f),
                 label = label,
                 isSelected = appFontFamily == font,
                 onClick = { onFontFamilySelected(font) },
-                fontFamily = font
+                fontFamily = font,
+                customFamily = customFamily
+            )
+        }
+    }
+
+    AnimatedVisibility(
+        visible = appFontFamily == AppFontFamily.MONO,
+        enter = animationPreference.enterOrNone(
+            expandVertically(animationSpec = animationPreference.tweenSpec(320)) +
+                fadeIn(animationSpec = animationPreference.tweenSpec(240))
+        ),
+        exit = animationPreference.exitOrNone(
+            shrinkVertically(animationSpec = animationPreference.tweenSpec(260)) +
+                fadeOut(animationSpec = animationPreference.tweenSpec(180))
+        )
+    ) {
+        Column {
+            Spacer(modifier = Modifier.height(16.dp))
+            MonoWeightCard(
+                monoFontWeight = monoFontWeight,
+                panelColors = panelColors,
+                onMonoFontWeightChange = onMonoFontWeightChange
+            )
+        }
+    }
+
+    AnimatedVisibility(
+        visible = appFontFamily == AppFontFamily.CUSTOM,
+        enter = animationPreference.enterOrNone(
+            expandVertically(animationSpec = animationPreference.tweenSpec(320)) +
+                fadeIn(animationSpec = animationPreference.tweenSpec(240))
+        ),
+        exit = animationPreference.exitOrNone(
+            shrinkVertically(animationSpec = animationPreference.tweenSpec(260)) +
+                fadeOut(animationSpec = animationPreference.tweenSpec(180))
+        )
+    ) {
+        Column {
+            Spacer(modifier = Modifier.height(16.dp))
+            CustomFontCard(
+                customFontName = customFontName,
+                panelColors = panelColors,
+                onPickCustomFont = onPickCustomFont,
+                onClearCustomFont = onClearCustomFont
             )
         }
     }
 
     Spacer(modifier = Modifier.height(24.dp))
-    SectionLabel("Font Size")
+    SectionLabel(stringResource(R.string.settings_font_size_label))
     FontScaleCard(
         fontScalePreference = fontScalePreference,
         panelColors = panelColors,
@@ -427,7 +527,7 @@ private fun SourceToggleRow(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight(),
-                        label = "Material You",
+                        label = stringResource(R.string.settings_color_source_material_you),
                         selected = selected == ColorSource.MATERIAL_YOU,
                         panelColors = panelColors,
                         onClick = { onSelected(ColorSource.MATERIAL_YOU) }
@@ -436,7 +536,7 @@ private fun SourceToggleRow(
                         modifier = Modifier
                             .weight(1f)
                             .fillMaxHeight(),
-                        label = "Custom",
+                        label = stringResource(R.string.settings_font_custom),
                         selected = selected == ColorSource.CUSTOM,
                         panelColors = panelColors,
                         onClick = { onSelected(ColorSource.CUSTOM) }
@@ -684,7 +784,7 @@ private fun ThemePreviewCard(
             modifier = Modifier.fillMaxWidth().padding(20.dp)
         ) {
             Text(
-                text = "Theme preview",
+                text = stringResource(R.string.settings_theme_preview_title),
                 style = MaterialTheme.typography.titleLarge,
                 color = panelColors.primaryText
             )
@@ -705,12 +805,12 @@ private fun ThemePreviewCard(
                 Spacer(modifier = Modifier.width(14.dp))
                 Column {
                     Text(
-                        text = "Journal entry",
+                        text = stringResource(R.string.settings_journal_entry_preview),
                         style = MaterialTheme.typography.titleLarge,
                         color = panelColors.primaryText
                     )
                     Text(
-                        text = "Cards, chips and buttons will use these colors.",
+                        text = stringResource(R.string.settings_journal_entry_preview_desc),
                         style = MaterialTheme.typography.bodyMedium,
                         color = panelColors.secondaryText
                     )
@@ -718,13 +818,13 @@ private fun ThemePreviewCard(
             }
             Spacer(modifier = Modifier.height(18.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                PreviewChip("Chip", secondary)
-                PreviewChip("Accent", tertiary)
-                PreviewChip("FAB", accent, darkText = true)
+                PreviewChip(stringResource(R.string.settings_preview_chip_chip), secondary)
+                PreviewChip(stringResource(R.string.settings_preview_chip_accent), tertiary)
+                PreviewChip(stringResource(R.string.settings_preview_chip_fab), accent, darkText = true)
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Intensity: ${themeColorIntensity.label()}",
+                text = stringResource(R.string.settings_intensity_label, themeColorIntensity.label()),
                 style = MaterialTheme.typography.labelLarge,
                 color = panelColors.secondaryText
             )
@@ -758,7 +858,7 @@ private fun PersonalThemesEditor(
     ) {
         Column(modifier = Modifier.fillMaxWidth().padding(18.dp)) {
             Text(
-                text = "Personal themes",
+                text = stringResource(R.string.settings_personal_themes_title),
                 style = MaterialTheme.typography.titleLarge,
                 color = panelColors.primaryText
             )
@@ -783,7 +883,7 @@ private fun PersonalThemesEditor(
                 value = activeSlot.name,
                 onValueChange = { onRenameSlot(activeSlot.slotId, it) },
                 modifier = Modifier.fillMaxWidth(),
-                label = { Text("Theme name") },
+                label = { Text(stringResource(R.string.settings_theme_name_label)) },
                 shape = RoundedCornerShape(22.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = panelColors.cardBase,
@@ -808,7 +908,7 @@ private fun PersonalThemesEditor(
                         .background(mainColor, CircleShape)
                 )
                 Text(
-                    text = "Main color",
+                    text = stringResource(R.string.settings_main_color_label),
                     style = MaterialTheme.typography.titleMedium,
                     color = panelColors.primaryText
                 )
@@ -822,21 +922,21 @@ private fun PersonalThemesEditor(
 
             Spacer(modifier = Modifier.height(12.dp))
             PersonalColorSlider(
-                label = "Hue",
+                label = stringResource(R.string.settings_hue_label),
                 value = activeSlot.hue,
                 valueRange = 0f..360f,
                 panelColors = panelColors,
                 onValueChange = { onHueChange(activeSlot.slotId, it) }
             )
             PersonalColorSlider(
-                label = "Sat",
+                label = stringResource(R.string.settings_sat_label),
                 value = activeSlot.saturation,
                 valueRange = 0f..1f,
                 panelColors = panelColors,
                 onValueChange = { onSaturationChange(activeSlot.slotId, it) }
             )
             PersonalColorSlider(
-                label = "Bright",
+                label = stringResource(R.string.settings_bright_label),
                 value = activeSlot.brightness,
                 valueRange = 0f..1f,
                 panelColors = panelColors,
@@ -845,7 +945,7 @@ private fun PersonalThemesEditor(
 
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Generated accents",
+                text = stringResource(R.string.settings_generated_accents_title),
                 style = MaterialTheme.typography.titleMedium,
                 color = panelColors.primaryText
             )
@@ -873,7 +973,7 @@ private fun PersonalThemesEditor(
             }
 
             Text(
-                text = "Pick one color. Yaja creates matching accent and support colors.",
+                text = stringResource(R.string.settings_personal_theme_desc),
                 style = MaterialTheme.typography.bodyMedium,
                 color = panelColors.secondaryText
             )
@@ -882,9 +982,9 @@ private fun PersonalThemesEditor(
                 spec.preview.forEachIndexed { index, color ->
                     PreviewChip(
                         label = when (index) {
-                            0 -> "Main"
-                            1 -> "Accent"
-                            else -> "Support"
+                            0 -> stringResource(R.string.settings_preview_chip_main)
+                            1 -> stringResource(R.string.settings_preview_chip_accent)
+                            else -> stringResource(R.string.settings_preview_chip_support)
                         },
                         color = color,
                         darkText = color.luminance() > 0.58f
@@ -1029,6 +1129,183 @@ private fun PreviewChip(
     }
 }
 
+// JetBrains Mono variable font exposes a single wght axis spanning 100-800.
+private const val MONO_WEIGHT_SLIDER_MIN = 100f
+private const val MONO_WEIGHT_SLIDER_MAX = 800f
+private const val MONO_WEIGHT_SLIDER_STEP = 50
+
+@Composable
+private fun MonoWeightCard(
+    monoFontWeight: Int,
+    panelColors: AppearancePanelColors,
+    onMonoFontWeightChange: (Int) -> Unit
+) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = panelColors.cardAlt
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.settings_mono_weight_title),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_mono_weight_value, monoWeightLabel(monoFontWeight), monoFontWeight),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+
+            Slider(
+                value = monoFontWeight.toFloat(),
+                onValueChange = { value ->
+                    val snapped =
+                        (value / MONO_WEIGHT_SLIDER_STEP).roundToInt() * MONO_WEIGHT_SLIDER_STEP
+                    if (snapped != monoFontWeight) onMonoFontWeightChange(snapped)
+                },
+                valueRange = MONO_WEIGHT_SLIDER_MIN..MONO_WEIGHT_SLIDER_MAX,
+                colors = SliderDefaults.colors(
+                    thumbColor = MaterialTheme.colorScheme.primary,
+                    activeTrackColor = MaterialTheme.colorScheme.primary,
+                    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Aa",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Thin,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    text = "Aa",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun CustomFontCard(
+    customFontName: String?,
+    panelColors: AppearancePanelColors,
+    onPickCustomFont: () -> Unit,
+    onClearCustomFont: () -> Unit
+) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = panelColors.cardAlt
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 16.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = Icons.Rounded.TextFields,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.size(22.dp)
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(14.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = customFontName ?: stringResource(R.string.settings_no_font_selected),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = if (customFontName != null) {
+                            MaterialTheme.colorScheme.onSurface
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                    Text(
+                        text = stringResource(R.string.settings_custom_font_desc),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 2.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                if (customFontName != null) {
+                    OutlinedButton(
+                        onClick = onClearCustomFont,
+                        modifier = Modifier.weight(1f)
+                    ) { Text(stringResource(R.string.action_remove)) }
+                }
+                FilledTonalButton(
+                    onClick = onPickCustomFont,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        if (customFontName != null) {
+                            stringResource(R.string.settings_font_replace)
+                        } else {
+                            stringResource(R.string.settings_choose_font_file)
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun monoWeightLabel(weight: Int): String =
+    when ((weight + 50) / 100 * 100) {
+        100 -> stringResource(R.string.settings_mono_weight_thin)
+        200 -> stringResource(R.string.settings_mono_weight_extra_light)
+        300 -> stringResource(R.string.settings_mono_weight_light)
+        400 -> stringResource(R.string.settings_mono_weight_regular)
+        500 -> stringResource(R.string.settings_mono_weight_medium)
+        600 -> stringResource(R.string.settings_mono_weight_semi_bold)
+        700 -> stringResource(R.string.settings_mono_weight_bold)
+        else -> stringResource(R.string.settings_mono_weight_extra_bold)
+    }
+
 @Composable
 private fun FontScaleCard(
     fontScalePreference: FontScalePreference,
@@ -1111,28 +1388,31 @@ private fun FontScaleCard(
     }
 }
 
+@Composable
 private fun ThemeColorIntensity.label(): String =
     when (this) {
-        ThemeColorIntensity.MUTED -> "Muted"
-        ThemeColorIntensity.NORMAL -> "Normal"
-        ThemeColorIntensity.VIVID -> "Vivid"
-        ThemeColorIntensity.POP -> "Pop"
+        ThemeColorIntensity.MUTED -> stringResource(R.string.settings_intensity_muted)
+        ThemeColorIntensity.NORMAL -> stringResource(R.string.settings_intensity_normal)
+        ThemeColorIntensity.VIVID -> stringResource(R.string.settings_intensity_vivid)
+        ThemeColorIntensity.POP -> stringResource(R.string.settings_intensity_pop)
     }
 
+@Composable
 private fun BackgroundTintLevel.label(): String =
     when (this) {
-        BackgroundTintLevel.CLEAN -> "Clean"
-        BackgroundTintLevel.SOFT -> "Soft"
-        BackgroundTintLevel.RICH -> "Rich"
-        BackgroundTintLevel.DEEP -> "Deep"
+        BackgroundTintLevel.CLEAN -> stringResource(R.string.settings_background_tint_clean)
+        BackgroundTintLevel.SOFT -> stringResource(R.string.settings_background_tint_soft)
+        BackgroundTintLevel.RICH -> stringResource(R.string.settings_background_tint_rich)
+        BackgroundTintLevel.DEEP -> stringResource(R.string.settings_background_tint_deep)
     }
 
+@Composable
 private fun PersonalAccentStyle.label(): String =
     when (this) {
-        PersonalAccentStyle.COMPLEMENTARY -> "Complementary"
-        PersonalAccentStyle.ANALOGOUS -> "Analogous"
-        PersonalAccentStyle.TRIADIC -> "Triadic"
-        PersonalAccentStyle.SOFT -> "Soft"
+        PersonalAccentStyle.COMPLEMENTARY -> stringResource(R.string.settings_accent_style_complementary)
+        PersonalAccentStyle.ANALOGOUS -> stringResource(R.string.settings_accent_style_analogous)
+        PersonalAccentStyle.TRIADIC -> stringResource(R.string.settings_accent_style_triadic)
+        PersonalAccentStyle.SOFT -> stringResource(R.string.settings_accent_style_soft)
     }
 
 private fun Color.toHexString(): String =

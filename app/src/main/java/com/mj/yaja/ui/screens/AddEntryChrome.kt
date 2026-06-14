@@ -55,9 +55,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -109,7 +111,7 @@ fun AddEntryTopBar(
                                 ) {
                                         Icon(
                                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                                contentDescription = "Cancel"
+                                                contentDescription = stringResource(R.string.action_cancel)
                                         )
                                 }
 
@@ -136,7 +138,7 @@ fun AddEntryTopBar(
                                                 ) {
                                                         Icon(
                                                                 imageVector = Icons.Outlined.Info,
-                                                                contentDescription = "Shortcuts help",
+                                                                contentDescription = stringResource(R.string.addentry_cd_shortcuts_help),
                                                                 tint = MaterialTheme.colorScheme.primary
                                                         )
                                                 }
@@ -147,7 +149,7 @@ fun AddEntryTopBar(
                                                 ) {
                                                         Icon(
                                                                 imageVector = Icons.Rounded.Description,
-                                                                contentDescription = "Insert template",
+                                                                contentDescription = stringResource(R.string.addentry_cd_insert_template),
                                                                 tint = MaterialTheme.colorScheme.onSecondaryContainer
                                                         )
                                                 }
@@ -158,7 +160,7 @@ fun AddEntryTopBar(
                                                         ) {
                                                                 Icon(
                                                                         imageVector = Icons.Rounded.Delete,
-                                                                        contentDescription = "Delete"
+                                                                        contentDescription = stringResource(R.string.action_delete)
                                                                 )
                                                         }
                                                 }
@@ -170,7 +172,7 @@ fun AddEntryTopBar(
                                                         ) {
                                                                 Icon(
                                                                         imageVector = Icons.Rounded.Today,
-                                                                        contentDescription = "Jump to today"
+                                                                        contentDescription = stringResource(R.string.addentry_cd_jump_to_today)
                                                                 )
                                                         }
                                                 }
@@ -188,7 +190,7 @@ fun AddEntryTopBar(
                                                 ) {
                                                         Icon(
                                                                 imageVector = Icons.Rounded.Share,
-                                                                contentDescription = "Share"
+                                                                contentDescription = stringResource(R.string.addentry_cd_share)
                                                         )
                                                 }
                                         }
@@ -262,13 +264,13 @@ fun AddEntryFloatingChrome(
                                         IconButton(onClick = onBold) {
                                                 Icon(
                                                         Icons.Rounded.FormatBold,
-                                                        contentDescription = "Bold"
+                                                        contentDescription = stringResource(R.string.addentry_cd_bold)
                                                 )
                                         }
                                         IconButton(onClick = onItalic) {
                                                 Icon(
                                                         Icons.Rounded.FormatItalic,
-                                                        contentDescription = "Italic"
+                                                        contentDescription = stringResource(R.string.addentry_cd_italic)
                                                 )
                                         }
                                 }
@@ -379,12 +381,12 @@ fun AddEntryFloatingChrome(
                                                 "save" ->
                                                         Icon(
                                                                 imageVector = Icons.Rounded.Check,
-                                                                contentDescription = "Save"
+                                                                contentDescription = stringResource(R.string.action_save)
                                                         )
                                                 else ->
                                                         Icon(
                                                                 imageVector = Icons.Rounded.Edit,
-                                                                contentDescription = "Edit"
+                                                                contentDescription = stringResource(R.string.action_edit)
                                                         )
                                         }
                                 }

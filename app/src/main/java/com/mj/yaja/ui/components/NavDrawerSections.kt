@@ -27,7 +27,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 
 @Composable
 internal fun DrawerPrimarySection(
@@ -40,21 +42,21 @@ internal fun DrawerPrimarySection(
 ) {
         NavigationDrawerItem(
                 icon = { Icon(Icons.AutoMirrored.Rounded.MenuBook, contentDescription = null) },
-                label = { Text("Journal") },
+                label = { Text(stringResource(R.string.nav_journal)) },
                 selected = currentRoute == "home",
                 onClick = onNavigateToJournal,
                 modifier = Modifier.padding(horizontal = 12.dp)
         )
         if (syncProgress != null) {
                 Spacer(Modifier.height(12.dp))
-                DrawerSectionHeader("Status")
+                DrawerSectionHeader(stringResource(R.string.nav_status_header))
                 val syncPercent = (syncProgress * 100).toInt()
                 val syncEta = estimateNavRemainingTimeText(syncProgress, syncStartedAtMillis)
                 val syncLabel =
                         backgroundWorkLabel ?: if (syncProgress >= 0.9f) {
-                                "Finishing index rebuild..."
+                                stringResource(R.string.nav_finishing_index_rebuild)
                         } else {
-                                "Rebuilding database index"
+                                stringResource(R.string.nav_rebuilding_index)
                         }
                 Spacer(Modifier.height(6.dp))
                 androidx.compose.material3.Surface(
@@ -81,7 +83,11 @@ internal fun DrawerPrimarySection(
                                 )
                                 Spacer(Modifier.height(4.dp))
                                 Text(
-                                        text = if (syncEta != null) "$syncPercent% - $syncEta" else "$syncPercent%",
+                                        text = if (syncEta != null) {
+                                                stringResource(R.string.nav_sync_percent_eta_format, syncPercent, syncEta)
+                                        } else {
+                                                stringResource(R.string.nav_sync_percent_format, syncPercent)
+                                        },
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -91,7 +97,7 @@ internal fun DrawerPrimarySection(
         Spacer(Modifier.height(8.dp))
         NavigationDrawerItem(
                 icon = { Icon(Icons.Rounded.CalendarMonth, contentDescription = null) },
-                label = { Text("Calendar") },
+                label = { Text(stringResource(R.string.nav_calendar)) },
                 selected = currentRoute == "calendar",
                 onClick = onNavigateToCalendar,
                 modifier = Modifier.padding(horizontal = 12.dp)
@@ -115,7 +121,7 @@ internal fun DrawerPowerFeaturesSection(
         if (!showLookbackInNavBar) {
                 NavigationDrawerItem(
                         icon = { Icon(Icons.Rounded.History, contentDescription = null) },
-                        label = { Text("Lookback") },
+                        label = { Text(stringResource(R.string.nav_lookback)) },
                         selected = currentRoute == "lookback",
                         onClick = onNavigateToLookback,
                         modifier = Modifier.padding(horizontal = 12.dp)
@@ -125,7 +131,7 @@ internal fun DrawerPowerFeaturesSection(
                 Spacer(Modifier.height(8.dp))
                 NavigationDrawerItem(
                         icon = { Icon(Icons.Rounded.People, contentDescription = null) },
-                        label = { Text("People & Places") },
+                        label = { Text(stringResource(R.string.nav_people_places)) },
                         selected = currentRoute == "keywords",
                         onClick = onNavigateToKeywords,
                         modifier = Modifier.padding(horizontal = 12.dp)
@@ -135,7 +141,7 @@ internal fun DrawerPowerFeaturesSection(
                 Spacer(Modifier.height(8.dp))
                 NavigationDrawerItem(
                         icon = { Icon(Icons.AutoMirrored.Rounded.TrendingUp, contentDescription = null) },
-                        label = { Text("Statistics") },
+                        label = { Text(stringResource(R.string.nav_statistics)) },
                         selected = currentRoute == "statistics",
                         onClick = onNavigateToStatistics,
                         modifier = Modifier.padding(horizontal = 12.dp)
@@ -145,7 +151,7 @@ internal fun DrawerPowerFeaturesSection(
                 Spacer(Modifier.height(8.dp))
                 NavigationDrawerItem(
                         icon = { Icon(Icons.Rounded.Checklist, contentDescription = null) },
-                        label = { Text("Todos") },
+                        label = { Text(stringResource(R.string.nav_todos)) },
                         selected = currentRoute == "todos",
                         onClick = onNavigateToTodos,
                         modifier = Modifier.padding(horizontal = 12.dp)
@@ -163,7 +169,7 @@ internal fun DrawerWritingToolsSection(
         Spacer(Modifier.height(12.dp))
         NavigationDrawerItem(
                 icon = { Icon(Icons.Rounded.IntegrationInstructions, contentDescription = null) },
-                label = { Text("Shortcodes") },
+                label = { Text(stringResource(R.string.nav_shortcodes)) },
                 selected = currentRoute == "shortcodes",
                 onClick = onNavigateToShortcodes,
                 modifier = Modifier.padding(horizontal = 12.dp)
@@ -187,7 +193,7 @@ internal fun DrawerAdvancedAndAppSection(
         )
         NavigationDrawerItem(
                 icon = { Icon(Icons.Rounded.Cached, contentDescription = null) },
-                label = { Text("Rebuild Database Index") },
+                label = { Text(stringResource(R.string.nav_rebuild_index)) },
                 selected = currentRoute == "rebuild_cache",
                 onClick = onNavigateToRebuildCache,
                 modifier = Modifier.padding(horizontal = 12.dp)
@@ -196,10 +202,10 @@ internal fun DrawerAdvancedAndAppSection(
                 icon = { Icon(Icons.Rounded.Backup, contentDescription = null) },
                 label = {
                         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                                Text("Backup Data")
+                                Text(stringResource(R.string.nav_backup_data))
                                 if (showBackupReminder) {
                                         Text(
-                                                text = "backup is too old...",
+                                                text = stringResource(R.string.nav_backup_too_old),
                                                 style = MaterialTheme.typography.labelSmall,
                                                 color = MaterialTheme.colorScheme.error
                                         )
@@ -233,14 +239,14 @@ internal fun DrawerAdvancedAndAppSection(
         if (syncProgress != null || backgroundWorkLabel != null) {
                 DrawerCacheStatus(
                         progress = syncProgress,
-                        label = backgroundWorkLabel ?: "Refreshing index",
+                        label = backgroundWorkLabel ?: stringResource(R.string.nav_refreshing_index),
                         startedAtMillis = syncStartedAtMillis
                 )
         }
         Spacer(Modifier.height(8.dp))
         NavigationDrawerItem(
                 icon = { Icon(Icons.Rounded.Settings, contentDescription = null) },
-                label = { Text("Settings") },
+                label = { Text(stringResource(R.string.nav_settings)) },
                 selected = currentRoute == "settings",
                 onClick = onNavigateToSettings,
                 modifier = Modifier.padding(horizontal = 12.dp)
@@ -248,7 +254,7 @@ internal fun DrawerAdvancedAndAppSection(
         Spacer(Modifier.height(8.dp))
         NavigationDrawerItem(
                 icon = { Icon(Icons.AutoMirrored.Rounded.Help, contentDescription = null) },
-                label = { Text("Help & About") },
+                label = { Text(stringResource(R.string.nav_help)) },
                 selected = currentRoute == "help",
                 onClick = onNavigateToHelp,
                 modifier = Modifier.padding(horizontal = 12.dp)

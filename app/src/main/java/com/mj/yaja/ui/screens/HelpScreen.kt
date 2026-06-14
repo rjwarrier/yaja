@@ -56,6 +56,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,8 +78,8 @@ fun HelpScreen(
     var expandedSection by remember { mutableStateOf<String?>(null) }
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
-    val helpSections = remember { defaultHelpSections() }
-    val onboardingCards = remember { defaultHelpOnboardingCards() }
+    val helpSections = defaultHelpSections()
+    val onboardingCards = defaultHelpOnboardingCards()
     val groupedHelpSections = remember(helpSections) {
         helpSectionGroupOrder.mapNotNull { group ->
             val sections = helpSections.filter { it.group == group }
@@ -91,7 +92,7 @@ fun HelpScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        "Help & About",
+                        stringResource(R.string.help_screen_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -133,14 +134,14 @@ fun HelpScreen(
                 ) {
                     Column {
                         Text(
-                            text = "Welcome to yaja",
+                            text = stringResource(R.string.help_welcome_title),
                             style = MaterialTheme.typography.headlineMedium,
                             fontWeight = FontWeight.ExtraBold,
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.padding(bottom = 8.dp)
                         )
                         Text(
-                            text = "Yaja is a local-first markdown journal for capturing days, people, places, follow-ups, reviews, and patterns without getting in your way. This page gives a quick guide to the main parts of the app.",
+                            text = stringResource(R.string.help_welcome_body),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -170,7 +171,7 @@ fun HelpScreen(
                         visible = entranceTriggered,
                         index = groupIndex + 2
                     ) {
-                        HelpGroupHeader(title = groupTitle)
+                        HelpGroupHeader(groupId = groupTitle)
                     }
                 }
 
@@ -220,7 +221,7 @@ fun HelpScreen(
                             Box(contentAlignment = Alignment.Center) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.rj_logo),
-                                    contentDescription = "RJ Logo",
+                                    contentDescription = stringResource(R.string.help_cd_rj_logo),
                                     modifier = Modifier
                                         .size(80.dp)
                                         .padding(14.dp),
@@ -238,12 +239,12 @@ fun HelpScreen(
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "yet another journaling app",
+                            text = stringResource(R.string.help_tagline),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = "v ${BuildConfig.VERSION_NAME}",
+                            text = stringResource(R.string.help_version_prefix, BuildConfig.VERSION_NAME),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.Bold,
@@ -257,14 +258,14 @@ fun HelpScreen(
                         )
                         Spacer(modifier = Modifier.height(24.dp))
                         Text(
-                            text = "from the labs of RJ",
+                            text = stringResource(R.string.help_from_labs),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                             letterSpacing = 1.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "Made in \uD83C\uDDEE\uD83C\uDDF3",
+                            text = stringResource(R.string.help_made_in),
                             style = MaterialTheme.typography.labelMedium
                         )
                         Spacer(modifier = Modifier.height(20.dp))
@@ -275,7 +276,7 @@ fun HelpScreen(
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.Rounded.Shop,
-                                label = "Play Store",
+                                label = stringResource(R.string.help_footer_play_store),
                                 onClick = {
                                     uriHandler.openUri("https://play.google.com/store/apps/details?id=com.mj.yaja")
                                 }
@@ -283,7 +284,7 @@ fun HelpScreen(
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.Rounded.Language,
-                                label = "Website",
+                                label = stringResource(R.string.help_footer_website),
                                 onClick = {
                                     uriHandler.openUri("https://ranjithj.in/yaja/")
                                 }
@@ -291,21 +292,14 @@ fun HelpScreen(
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.Rounded.Share,
-                                label = "Share",
+                                label = stringResource(R.string.help_footer_share),
                                 onClick = {
-                                    val shareText = """
-yaja - yet another journaling app
-
-A distraction-free local journal that stores entries as markdown files. It includes timeline, lookback, people and places, templates, reviews, statistics, and widgets.
-
-https://play.google.com/store/apps/details?id=com.mj.yaja
-                                    """.trimIndent()
                                     val intent = Intent(Intent.ACTION_SEND).apply {
                                         type = "text/plain"
-                                        putExtra(Intent.EXTRA_TEXT, shareText)
+                                        putExtra(Intent.EXTRA_TEXT, context.getString(R.string.help_share_yaja_text))
                                     }
                                     context.startActivity(
-                                        Intent.createChooser(intent, "Share yaja")
+                                        Intent.createChooser(intent, context.getString(R.string.help_share_yaja))
                                     )
                                 }
                             )
@@ -318,7 +312,7 @@ https://play.google.com/store/apps/details?id=com.mj.yaja
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.Rounded.Code,
-                                label = "GitHub",
+                                label = stringResource(R.string.help_footer_github),
                                 onClick = {
                                     uriHandler.openUri("https://github.com/rjwarrier/yaja/tree/feature/ui-improvements-and-fixes")
                                 }
@@ -327,16 +321,16 @@ https://play.google.com/store/apps/details?id=com.mj.yaja
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.AutoMirrored.Rounded.Chat,
-                                label = "Discord",
+                                label = stringResource(R.string.help_footer_discord),
                                 onClick = {
                                     clipboardManager.setText(AnnotatedString("medvl_jedi"))
-                                    Toast.makeText(context, "Discord username copied!", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, context.getString(R.string.help_discord_copied), Toast.LENGTH_SHORT).show()
                                 }
                             )
                             HelpFooterActionButton(
                                 modifier = Modifier.weight(1f),
                                 icon = Icons.Rounded.Forum,
-                                label = "Reddit",
+                                label = stringResource(R.string.help_footer_reddit),
                                 onClick = {
                                     uriHandler.openUri("https://www.reddit.com/r/yaja_journal/")
                                 }

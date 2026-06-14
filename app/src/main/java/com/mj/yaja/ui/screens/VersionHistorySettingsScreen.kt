@@ -43,8 +43,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
@@ -76,12 +79,17 @@ fun VersionHistorySettingsScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Version History", color = MaterialTheme.colorScheme.primary) },
+                title = {
+                    Text(
+                        stringResource(R.string.version_history_title),
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.action_back)
                         )
                     }
                 },
@@ -123,13 +131,13 @@ fun VersionHistorySettingsScreen(
                     )
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "Keep safety copies",
+                            text = stringResource(R.string.version_history_keep_copies_title),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "Before Yaja changes a day file, it saves the current file into app data under History Files.",
+                            text = stringResource(R.string.version_history_keep_copies_subtitle),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -143,8 +151,12 @@ fun VersionHistorySettingsScreen(
 
             HistorySliderCard(
                 icon = Icons.Rounded.History,
-                title = "Versions kept per day",
-                subtitle = "Yaja keeps the newest $maxVersions version${if (maxVersions == 1) "" else "s"} for each date.",
+                title = stringResource(R.string.version_history_versions_kept_title),
+                subtitle = pluralStringResource(
+                    R.plurals.version_history_versions_kept_subtitle,
+                    maxVersions,
+                    maxVersions
+                ),
                 value = maxVersions.toFloat(),
                 valueRange = 1f..10f,
                 steps = 8,
@@ -154,8 +166,12 @@ fun VersionHistorySettingsScreen(
 
             HistorySliderCard(
                 icon = Icons.Rounded.Storage,
-                title = "Retention",
-                subtitle = "Snapshots older than $retentionDays days are cleaned up automatically.",
+                title = stringResource(R.string.version_history_retention_title),
+                subtitle = pluralStringResource(
+                    R.plurals.version_history_retention_subtitle,
+                    retentionDays,
+                    retentionDays
+                ),
                 value = retentionDays.toFloat(),
                 valueRange = 2f..30f,
                 steps = 27,
@@ -164,7 +180,7 @@ fun VersionHistorySettingsScreen(
             )
 
             Text(
-                text = "Notes: version history protects day markdown files before add, edit, delete, reorder, label, star, and revisit changes. It is not a cloud backup; keep using Backup for portable copies.",
+                text = stringResource(R.string.version_history_notes),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)
@@ -290,13 +306,13 @@ fun VersionSnapshotsCard(
                 )
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Snapshots for $selectedDateLabel",
+                        text = stringResource(R.string.version_history_snapshots_for, selectedDateLabel),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "Open a saved version, inspect it, and restore it for this day.",
+                        text = stringResource(R.string.version_history_snapshots_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -305,7 +321,7 @@ fun VersionSnapshotsCard(
 
             if (snapshots.isEmpty()) {
                 Text(
-                    text = "No saved versions yet for this date.",
+                    text = stringResource(R.string.version_history_empty),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -340,7 +356,7 @@ fun VersionSnapshotsCard(
                             }
                             Spacer(modifier = Modifier.width(12.dp))
                             OutlinedButton(onClick = { onPreview(snapshot) }) {
-                                Text("View")
+                                Text(stringResource(R.string.action_view))
                             }
                         }
                     }
@@ -391,7 +407,7 @@ fun SnapshotPreviewDialog(
                 onClick = onRestore,
                 enabled = !restoreInProgress
             ) {
-                Text("Restore")
+                Text(stringResource(R.string.action_restore))
             }
         },
         dismissButton = {
@@ -399,7 +415,7 @@ fun SnapshotPreviewDialog(
                 onClick = onDismiss,
                 enabled = !restoreInProgress
             ) {
-                Text("Close")
+                Text(stringResource(R.string.action_close))
             }
         }
     )

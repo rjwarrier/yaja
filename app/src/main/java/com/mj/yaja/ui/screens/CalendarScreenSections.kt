@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -29,6 +32,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.mj.yaja.R
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -50,22 +55,22 @@ fun CalendarQuickActions(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
                 Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                         CalendarActionCard(
-                                title = "Timeline",
-                                subtitle = "Browse chronologically",
+                                title = stringResource(R.string.calendar_quick_action_timeline_title),
+                                subtitle = stringResource(R.string.calendar_quick_action_timeline_subtitle),
                                 icon = Icons.Rounded.Timeline,
-                                modifier = Modifier.weight(1f),
+                                modifier = Modifier.weight(1f).fillMaxHeight(),
                                 emphasized = false,
                                 onClick = onNavigateToTimeline
                         )
                         CalendarActionCard(
-                                title = "Jump to Date",
-                                subtitle = "Open a specific day",
+                                title = stringResource(R.string.calendar_quick_action_jump_title),
+                                subtitle = stringResource(R.string.calendar_quick_action_jump_subtitle),
                                 icon = Icons.Rounded.EditCalendar,
-                                modifier = Modifier.weight(1f),
+                                modifier = Modifier.weight(1f).fillMaxHeight(),
                                 emphasized = true,
                                 onClick = onJumpToDate
                         )

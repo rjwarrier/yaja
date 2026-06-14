@@ -25,7 +25,11 @@ class JournalStorage(
         val rootDir: DocumentFile,
         val lock: Any = Any(),
         val yearDirs: MutableMap<String, DocumentFile?> = mutableMapOf(),
-        val monthDirsByYear: MutableMap<String, MutableMap<String, DocumentFile?>> = mutableMapOf()
+        val monthDirsByYear: MutableMap<String, MutableMap<String, DocumentFile?>> = mutableMapOf(),
+        // Positive day-file lookups only. DocumentFile.findFile lists the whole month
+        // directory per call, so caching hits avoids O(month size) IPC per read. Misses
+        // are always re-verified with a real findFile so external changes are still seen.
+        val dayFilesByMonth: MutableMap<String, MutableMap<String, DocumentFile>> = mutableMapOf()
     )
 
     private val safDirectoryCacheLock = Any()
@@ -123,9 +127,14 @@ class JournalStorage(
         val uriString = rootUriStringProvider()
         return if (uriString != null) {
             val docFile = getDocumentFileForDate(date, createIfNotExists = false) ?: return false
-            if (!docFile.exists()) return false
+            if (!docFile.exists()) {
+                evictCachedDayFile(date)
+                return false
+            }
             try {
-                docFile.delete()
+                docFile.delete().also { deleted ->
+                    if (deleted) evictCachedDayFile(date)
+                }
             } catch (e: Exception) {
                 logError("Exception caught", e)
                 false
@@ -479,8 +488,28 @@ class JournalStorage(
     }
 
     fun getDateFileMetadata(date: LocalDate, uriString: String?): Pair<Long, Long>? {
-        val metadataResolver = createDateMetadataResolver(uriString)
-        return metadataResolver(date)
+        if (uriString != null) {
+            return try {
+                val dayFile = getDocumentFileForDate(date, uriString, createIfNotExists = false)
+                    ?: return null
+                if (!dayFile.exists()) {
+                    evictCachedDayFile(date)
+                    return null
+                }
+                dayFile.length().coerceAtLeast(0L) to dayFile.lastModified().coerceAtLeast(0L)
+            } catch (e: Exception) {
+                logError("Failed to read file metadata for $date", e)
+                null
+            }
+        }
+        return try {
+            val file = getFileForDate(date)
+            if (!file.exists()) null
+            else file.length().coerceAtLeast(0L) to file.lastModified().coerceAtLeast(0L)
+        } catch (e: Exception) {
+            logError("Failed to read file metadata for $date", e)
+            null
+        }
     }
 
     fun getDateWindowPresence(
@@ -582,7 +611,12 @@ class JournalStorage(
         val directoryCache = getOrCreateSafDirectoryCache(uriString) ?: return null
         val year = date.year.toString()
         val month = date.format(monthFormatter)
+        val monthKey = "$year/$month"
         val dayFileName = "$date.md"
+
+        synchronized(directoryCache.lock) {
+            directoryCache.dayFilesByMonth[monthKey]?.get(dayFileName)?.let { return it }
+        }
 
         val yearDir = resolveYearDir(directoryCache, year, createIfNotExists) ?: return null
         val monthDir = resolveMonthDir(directoryCache, year, yearDir, month, createIfNotExists) ?: return null
@@ -591,7 +625,27 @@ class JournalStorage(
         if (dayFile == null && createIfNotExists) {
             dayFile = monthDir.createFile("text/markdown", dayFileName)
         }
+        if (dayFile != null) {
+            synchronized(directoryCache.lock) {
+                directoryCache.dayFilesByMonth.getOrPut(monthKey) { mutableMapOf() }[dayFileName] = dayFile
+            }
+        }
         return dayFile
+    }
+
+    private fun evictCachedDayFile(date: LocalDate) {
+        val directoryCache = safDirectoryCache ?: return
+        val monthKey = "${date.year}/${date.format(monthFormatter)}"
+        synchronized(directoryCache.lock) {
+            directoryCache.dayFilesByMonth[monthKey]?.remove("$date.md")
+        }
+    }
+
+    /** Drop all cached SAF directory/file handles (e.g. after a storage location change). */
+    fun invalidateDirectoryCache() {
+        synchronized(safDirectoryCacheLock) {
+            safDirectoryCache = null
+        }
     }
 
     private fun getOrCreateSafDirectoryCache(uriString: String): SafDirectoryCache? {

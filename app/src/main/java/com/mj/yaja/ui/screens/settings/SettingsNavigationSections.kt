@@ -23,8 +23,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.data.NavigationChromeMode
 
 @Composable
@@ -45,7 +47,7 @@ fun NavigationSection(
 ) {
     SettingsSectionHeader(
         icon = Icons.Rounded.ViewAgenda,
-        title = "Navigation"
+        title = stringResource(R.string.settings_navigation_title)
     )
 
     Spacer(modifier = Modifier.height(12.dp))
@@ -59,7 +61,7 @@ fun NavigationSection(
         shape = MaterialTheme.shapes.medium
     ) {
         Text(
-            text = "Bottom Navigation Style",
+            text = stringResource(R.string.settings_bottom_nav_style_label),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 10.dp)
@@ -74,12 +76,12 @@ fun NavigationSection(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Navigation Mode",
+                    text = stringResource(R.string.settings_navigation_mode_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Choose between the floating nav bar and the full bottom panel.",
+                    text = stringResource(R.string.settings_navigation_mode_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -95,8 +97,8 @@ fun NavigationSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 listOf(
-                    "Floating" to NavigationChromeMode.FLOATING_BAR,
-                    "Panel" to NavigationChromeMode.EXPRESSIVE_PANEL
+                    stringResource(R.string.settings_nav_mode_floating) to NavigationChromeMode.FLOATING_BAR,
+                    stringResource(R.string.settings_nav_mode_panel) to NavigationChromeMode.EXPRESSIVE_PANEL
                 ).forEach { (label, mode) ->
                     Box(
                         modifier = Modifier
@@ -135,30 +137,30 @@ fun NavigationSection(
                 showTodosInNavBar,
                 showStatistics && showStatisticsInNavBar
             ).count { it }
-        val selectionSummary =
+        val navigationScreensSummary =
             if (navigationChromeMode == NavigationChromeMode.FLOATING_BAR) {
-                "Journal and Calendar always stay in the floating bar. Pick up to 2 more screens."
+                stringResource(R.string.settings_nav_summary_floating, selectedOptionalItems, maxOptionalItems)
             } else {
-                "Journal and Calendar always stay in the bottom panel. Pick up to 3 more screens."
+                stringResource(R.string.settings_nav_summary_panel, selectedOptionalItems, maxOptionalItems)
             }
 
         Text(
-            text = "Navigation Screens",
+            text = stringResource(R.string.settings_navigation_screens_label),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(start = 16.dp, top = 14.dp, bottom = 6.dp)
         )
 
         Text(
-            text = "$selectionSummary Currently selected: $selectedOptionalItems of $maxOptionalItems.",
+            text = navigationScreensSummary,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp)
         )
 
         PreferencesSwitchRow(
-            title = "Lookback",
-            subtitle = "Show Lookback in the active navigation bar or panel.",
+            title = stringResource(R.string.nav_lookback),
+            subtitle = stringResource(R.string.settings_nav_lookback_subtitle),
             checked = showLookbackInNavBar,
             enabled = showLookbackInNavBar || selectedOptionalItems < maxOptionalItems,
             onCheckedChange = onShowLookbackChange
@@ -167,8 +169,8 @@ fun NavigationSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "People & Places",
-            subtitle = "Show People & Places in the active navigation bar or panel.",
+            title = stringResource(R.string.settings_review_people_places),
+            subtitle = stringResource(R.string.settings_nav_people_places_subtitle),
             checked = showKeywordsInNavBar,
             enabled = showKeywordsInNavBar || selectedOptionalItems < maxOptionalItems,
             onCheckedChange = onShowKeywordsChange
@@ -177,8 +179,8 @@ fun NavigationSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Todos",
-            subtitle = "Show Todos in the active navigation bar or panel.",
+            title = stringResource(R.string.settings_nav_todos_title),
+            subtitle = stringResource(R.string.settings_nav_todos_subtitle),
             checked = showTodosInNavBar,
             enabled = showTodosInNavBar || selectedOptionalItems < maxOptionalItems,
             onCheckedChange = onShowTodosChange
@@ -187,11 +189,11 @@ fun NavigationSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Statistics",
+            title = stringResource(R.string.settings_nav_statistics_title),
             subtitle = if (showStatistics) {
-                "Show Statistics in the active navigation bar or panel."
+                stringResource(R.string.settings_nav_statistics_subtitle_on)
             } else {
-                "Turn Statistics on first to place it in navigation."
+                stringResource(R.string.settings_nav_statistics_subtitle_off)
             },
             checked = showStatistics && showStatisticsInNavBar,
             enabled = showStatistics && (showStatisticsInNavBar || selectedOptionalItems < maxOptionalItems),
@@ -201,8 +203,8 @@ fun NavigationSection(
         if (navigationChromeMode == NavigationChromeMode.EXPRESSIVE_PANEL) {
             HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
             PreferencesSwitchRow(
-                title = "Show Labels In Bottom Panel",
-                subtitle = "Display text labels under icons in the bottom panel.",
+                title = stringResource(R.string.settings_show_labels_bottom_panel_title),
+                subtitle = stringResource(R.string.settings_show_labels_bottom_panel_subtitle),
                 checked = showBottomPanelLabels,
                 onCheckedChange = onShowBottomPanelLabelsChange
             )
@@ -266,7 +268,7 @@ fun GesturesSection(
 ) {
     SettingsSectionHeader(
         icon = Icons.Rounded.Fingerprint,
-        title = "Gestures"
+        title = stringResource(R.string.settings_gestures_title)
     )
 
     Spacer(modifier = Modifier.height(12.dp))
@@ -280,8 +282,8 @@ fun GesturesSection(
         shape = MaterialTheme.shapes.medium
     ) {
         PreferencesSwitchRow(
-            title = "Entry Delete",
-            subtitle = "Long-press an entry to select it. Tap more entries to select multiple, then use the centered Delete button. Tap empty space to clear selection.",
+            title = stringResource(R.string.settings_entry_delete_title),
+            subtitle = stringResource(R.string.settings_entry_delete_subtitle),
             checked = entryDeleteSelectionEnabled,
             onCheckedChange = onEntryDeleteSelectionEnabledChange
         )
@@ -289,8 +291,8 @@ fun GesturesSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Swipe to Navigate Dates",
-            subtitle = "Swipe right-to-left to move forward one date, and left-to-right to move backward.",
+            title = stringResource(R.string.settings_swipe_navigate_title),
+            subtitle = stringResource(R.string.settings_swipe_navigate_subtitle),
             checked = swipeToNavigateDatesEnabled,
             onCheckedChange = onSwipeToNavigateDatesEnabledChange
         )
@@ -298,8 +300,8 @@ fun GesturesSection(
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(
-            title = "Enable Drag-to-Reorder",
-            subtitle = "Long-press entries to rearrange them",
+            title = stringResource(R.string.settings_drag_reorder_title),
+            subtitle = stringResource(R.string.settings_drag_reorder_subtitle),
             checked = enableDragAndDrop,
             onCheckedChange = onEnableDragAndDropChange
         )

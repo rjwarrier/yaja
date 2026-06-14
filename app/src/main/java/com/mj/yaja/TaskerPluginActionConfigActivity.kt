@@ -28,8 +28,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.joaomgcd.taskerpluginlibrary.action.TaskerPluginRunnerActionNoOutput
 import com.joaomgcd.taskerpluginlibrary.config.TaskerPluginConfig
 import com.joaomgcd.taskerpluginlibrary.config.TaskerPluginConfigHelperNoOutput
@@ -173,34 +175,34 @@ private fun TaskerPluginActionConfigScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Yaja Quick Capture",
+                text = stringResource(R.string.tasker_action_title),
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Configure what Tasker should quickly capture in Yaja.",
+                text = stringResource(R.string.tasker_action_desc),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 PluginChoiceChip(
-                    label = "Add Entry",
+                    label = stringResource(R.string.tasker_action_add_entry),
                     selected = actionKind == TaskerIntegration.PluginActionKind.ADD_ENTRY,
                     onClick = { actionKind = TaskerIntegration.PluginActionKind.ADD_ENTRY }
                 )
                 PluginChoiceChip(
-                    label = "Add Event",
+                    label = stringResource(R.string.tasker_action_add_event),
                     selected = actionKind == TaskerIntegration.PluginActionKind.ADD_EVENT,
                     onClick = { actionKind = TaskerIntegration.PluginActionKind.ADD_EVENT }
                 )
                 PluginChoiceChip(
-                    label = "Add Todo",
+                    label = stringResource(R.string.tasker_action_add_todo),
                     selected = actionKind == TaskerIntegration.PluginActionKind.ADD_TODO,
                     onClick = { actionKind = TaskerIntegration.PluginActionKind.ADD_TODO }
                 )
                 PluginChoiceChip(
-                    label = "Append",
+                    label = stringResource(R.string.tasker_action_append),
                     selected = actionKind == TaskerIntegration.PluginActionKind.APPEND,
                     onClick = { actionKind = TaskerIntegration.PluginActionKind.APPEND }
                 )
@@ -210,8 +212,8 @@ private fun TaskerPluginActionConfigScreen(
                 OutlinedTextField(
                     value = matchHeader,
                     onValueChange = { matchHeader = it },
-                    label = { Text("Match / header") },
-                    placeholder = { Text("Missed Calls") },
+                    label = { Text(stringResource(R.string.tasker_action_match_header_label)) },
+                    placeholder = { Text(stringResource(R.string.tasker_action_match_header_placeholder)) },
                     modifier = Modifier.fillMaxWidth(),
                     minLines = 1,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
@@ -221,14 +223,22 @@ private fun TaskerPluginActionConfigScreen(
             OutlinedTextField(
                 value = entryText,
                 onValueChange = { entryText = it },
-                label = { Text(if (actionKind == TaskerIntegration.PluginActionKind.APPEND) "Line to append" else "Text") },
+                label = {
+                    Text(
+                        if (actionKind == TaskerIntegration.PluginActionKind.APPEND) {
+                            stringResource(R.string.tasker_action_line_to_append_label)
+                        } else {
+                            stringResource(R.string.tasker_action_text_label)
+                        }
+                    )
+                },
                 placeholder = {
                     Text(
                         when (actionKind) {
-                            TaskerIntegration.PluginActionKind.ADD_EVENT -> "Event note from Tasker"
-                            TaskerIntegration.PluginActionKind.ADD_TODO -> "Buy milk"
-                            TaskerIntegration.PluginActionKind.APPEND -> "%antextbig"
-                            else -> "Quick note from Tasker"
+                            TaskerIntegration.PluginActionKind.ADD_EVENT -> stringResource(R.string.tasker_action_placeholder_event)
+                            TaskerIntegration.PluginActionKind.ADD_TODO -> stringResource(R.string.tasker_action_placeholder_todo)
+                            TaskerIntegration.PluginActionKind.APPEND -> stringResource(R.string.tasker_action_placeholder_append)
+                            else -> stringResource(R.string.tasker_action_placeholder_default)
                         }
                     )
                 },
@@ -239,9 +249,9 @@ private fun TaskerPluginActionConfigScreen(
 
             Text(
                 text = if (actionKind == TaskerIntegration.PluginActionKind.APPEND) {
-                    "First call creates an entry starting with the match text. Later calls append the line under it."
+                    stringResource(R.string.tasker_action_tip_append)
                 } else {
-                    "Tip: Tasker variables can be placed in the text field."
+                    stringResource(R.string.tasker_action_tip_default)
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -254,7 +264,7 @@ private fun TaskerPluginActionConfigScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Button(onClick = onCancel, modifier = Modifier.weight(1f)) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.action_cancel))
                 }
                 Button(
                     onClick = { onSave(actionKind, matchHeader, entryText) },
@@ -262,7 +272,7 @@ private fun TaskerPluginActionConfigScreen(
                         (actionKind != TaskerIntegration.PluginActionKind.APPEND || matchHeader.trim().isNotEmpty()),
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text("Save")
+                    Text(stringResource(R.string.action_save))
                 }
             }
         }

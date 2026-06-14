@@ -19,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.mj.yaja.R
 import com.mj.yaja.ui.components.AnimatedMenuButton
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +32,7 @@ internal fun StatisticsTopBar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                "Statistics",
+                stringResource(R.string.nav_statistics),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary
@@ -46,7 +48,7 @@ internal fun StatisticsTopBar(
             IconButton(onClick = onOpenSectionSettings) {
                 Icon(
                     imageVector = Icons.Rounded.Tune,
-                    contentDescription = "Choose statistics"
+                    contentDescription = stringResource(R.string.statistics_choose_title)
                 )
             }
         },

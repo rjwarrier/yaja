@@ -20,7 +20,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.theme.JournalTheme
 import kotlin.math.cos
 import kotlin.math.min
@@ -65,8 +67,8 @@ class QuickCaptureWidgetConfigActivity : ComponentActivity() {
                     initialShowIcon  = currentShowIcon,
                     initialLabelText = currentLabelText,
                     initialShape     = currentShape,
-                    dialogTitle      = "Yaja Quick Capture",
-                    labelPlaceholder = "Capture",
+                    dialogTitle      = stringResource(R.string.tasker_action_title),
+                    labelPlaceholder = stringResource(R.string.widget_qc_label_placeholder),
                     onApply          = { newRadius, showLabel, showIcon, labelText, newShape ->
                         applyAndFinish(newRadius, showLabel, showIcon, labelText, newShape)
                     },
@@ -99,8 +101,8 @@ fun QcConfigDialog(
     initialShowIcon: Boolean,
     initialLabelText: String,
     initialShape: CellShape,
-    dialogTitle: String = "Yaja Quick Capture",
-    labelPlaceholder: String = "Capture",
+    dialogTitle: String = stringResource(R.string.tasker_action_title),
+    labelPlaceholder: String = stringResource(R.string.widget_qc_label_placeholder),
     onApply: (Int, Boolean, Boolean, String, CellShape) -> Unit,
     onCancel: () -> Unit
 ) {
@@ -123,7 +125,7 @@ fun QcConfigDialog(
             ) {
                 // ── Widget shape ──────────────────────────────────────────────
                 Text(
-                    text = "Widget Shape",
+                    text = stringResource(R.string.widget_qc_shape),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 LazyVerticalGrid(
@@ -181,9 +183,9 @@ fun QcConfigDialog(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column(Modifier.weight(1f)) {
-                        Text("Show Label", style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.widget_show_label), style = MaterialTheme.typography.bodyMedium)
                         Text(
-                            "Display 'Capture' text on the widget",
+                            stringResource(R.string.widget_show_label_desc),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -199,14 +201,14 @@ fun QcConfigDialog(
                 ) {
                     Column(Modifier.weight(1f)) {
                         Text(
-                            "Show Icon",
+                            stringResource(R.string.widget_show_icon),
                             style = MaterialTheme.typography.bodyMedium,
                             color = if (showLabel) MaterialTheme.colorScheme.onSurface
                                     else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                         )
                         Text(
-                            if (!showLabel) "Icon required when label is hidden"
-                            else "Display pen icon on the widget",
+                            if (!showLabel) stringResource(R.string.widget_show_icon_required)
+                            else stringResource(R.string.widget_show_icon_desc),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -223,12 +225,12 @@ fun QcConfigDialog(
                     OutlinedTextField(
                         value = labelText,
                         onValueChange = { if (it.length <= 20) labelText = it },
-                        label = { Text("Label Text") },
+                        label = { Text(stringResource(R.string.widget_label_text)) },
                         placeholder = { Text(labelPlaceholder) },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
                         supportingText = {
-                            Text("${labelText.length}/20")
+                            Text(stringResource(R.string.widget_label_char_count, labelText.length))
                         }
                     )
                 }
@@ -237,7 +239,7 @@ fun QcConfigDialog(
 
                 // ── Corner radius slider ──────────────────────────────────────
                 Text(
-                    text = "Corner Radius: ${radius.roundToInt()}dp",
+                    text = stringResource(R.string.widget_corner_radius, radius.roundToInt()),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Slider(
@@ -251,9 +253,9 @@ fun QcConfigDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Square", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_square), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text("Round", style = MaterialTheme.typography.labelSmall,
+                    Text(stringResource(R.string.widget_round), style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }

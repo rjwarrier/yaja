@@ -39,12 +39,15 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -68,7 +71,7 @@ fun ReviewScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = period.title,
+                        text = if (period == ReviewPeriodType.WEEKLY) stringResource(R.string.review_period_weekly) else stringResource(R.string.review_period_monthly),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -78,7 +81,7 @@ fun ReviewScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.action_back)
                         )
                     }
                 },
@@ -139,9 +142,9 @@ fun ReviewScreen(
                                 )
                                 Text(
                                     text = if (period == ReviewPeriodType.WEEKLY) {
-                                        "Week containing ${anchorDate.format(anchorFormatter)}"
+                                        stringResource(R.string.review_anchor_week, anchorDate.format(anchorFormatter))
                                     } else {
-                                        "Month containing ${anchorDate.format(anchorFormatter)}"
+                                        stringResource(R.string.review_anchor_month, anchorDate.format(anchorFormatter))
                                     },
                                     style = MaterialTheme.typography.titleSmall,
                                     fontWeight = FontWeight.SemiBold
@@ -156,12 +159,12 @@ fun ReviewScreen(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                                 verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
-                                ReviewChip("Entries ${data.totalEntries}", true)
-                                ReviewChip("Words ${data.totalWords}")
-                                ReviewChip("Days ${data.writingDays}")
+                                ReviewChip(stringResource(R.string.review_chip_entries, data.totalEntries), true)
+                                ReviewChip(stringResource(R.string.review_chip_words, data.totalWords))
+                                ReviewChip(stringResource(R.string.review_chip_days, data.writingDays))
                             }
                             Text(
-                                text = "Tap date chips below to jump back into the journal.",
+                                text = stringResource(R.string.review_hint_jump),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -171,19 +174,19 @@ fun ReviewScreen(
                                 verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 ReviewChip(
-                                    label = "Streak ${data.longestStreak}",
+                                    label = stringResource(R.string.review_chip_streak, data.longestStreak),
                                     emphasized = data.longestStreak > 0
                                 )
                                 ReviewChip(
-                                    label = "Gap ${data.longestGap}",
+                                    label = stringResource(R.string.review_chip_gap, data.longestGap),
                                     emphasized = false
                                 )
                                 ReviewChip(
-                                    label = "Labels ${data.labelsCreated.size}",
+                                    label = stringResource(R.string.review_chip_labels, data.labelsCreated.size),
                                     emphasized = data.labelsCreated.isNotEmpty()
                                 )
                                 ReviewChip(
-                                    label = "Favorites ${data.favoriteMoments.size}",
+                                    label = stringResource(R.string.review_chip_favorites, data.favoriteMoments.size),
                                     emphasized = data.favoriteMoments.isNotEmpty()
                                 )
                             }
@@ -199,7 +202,7 @@ fun ReviewScreen(
                             )
                         ) {
                             Text(
-                                text = "No journal entries in this period yet. Labels and highlights still appear below if they exist.",
+                                text = stringResource(R.string.review_empty_period),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 modifier = Modifier
@@ -213,11 +216,11 @@ fun ReviewScreen(
 
                 item {
                     ReviewMetricCard(
-                        title = "Writing Rhythm",
+                        title = stringResource(R.string.review_writing_rhythm),
                         icon = Icons.Rounded.History,
                         rows = listOf(
-                            "Best streak" to "${data.longestStreak} days",
-                            "Longest gap" to "${data.longestGap} days"
+                            stringResource(R.string.review_best_streak) to pluralStringResource(R.plurals.statistics_days_count, data.longestStreak, data.longestStreak),
+                            stringResource(R.string.review_longest_gap) to pluralStringResource(R.plurals.statistics_days_count, data.longestGap, data.longestGap)
                         )
                     )
                 }
@@ -225,13 +228,13 @@ fun ReviewScreen(
                 if (data.mostActiveDays.isNotEmpty()) {
                     item {
                         ReviewDatesCard(
-                            title = "Most Active Days",
+                            title = stringResource(R.string.review_most_active_days),
                             icon = Icons.Rounded.Insights,
                             items = data.mostActiveDays.map { day ->
                                 ReviewDateRow(
                                     date = day.date,
                                     title = day.label.ifBlank { day.date.format(dayTitleFormatter) },
-                                    subtitle = "${day.entryCount} entries | ${day.wordCount} words"
+                                    subtitle = stringResource(R.string.review_day_entries_words, day.entryCount, day.wordCount)
                                 )
                             },
                             onNavigateToDate = onNavigateToDate
@@ -252,17 +255,17 @@ fun ReviewScreen(
                             verticalArrangement = Arrangement.spacedBy(14.dp)
                         ) {
                             ReviewChipBlock(
-                                title = "Top People",
+                                title = stringResource(R.string.review_top_people),
                                 icon = Icons.Rounded.Person,
                                 items = data.topPeople.map { "${it.name} (${it.count})" },
-                                emptyText = "No people mentions"
+                                emptyText = stringResource(R.string.review_no_people_mentions)
                             )
                             HorizontalDivider()
                             ReviewChipBlock(
-                                title = "Top Places",
+                                title = stringResource(R.string.review_top_places),
                                 icon = Icons.Rounded.LocationOn,
                                 items = data.topPlaces.map { "${it.name} (${it.count})" },
-                                emptyText = "No place mentions"
+                                emptyText = stringResource(R.string.review_no_place_mentions)
                             )
                         }
                     }
@@ -271,13 +274,13 @@ fun ReviewScreen(
                 if (data.favoriteMoments.isNotEmpty()) {
                     item {
                         ReviewDatesCard(
-                            title = "Favorite Moments",
+                            title = stringResource(R.string.review_favorite_moments),
                             icon = Icons.Rounded.Star,
                             items = data.favoriteMoments.map {
                                 ReviewDateRow(
                                     date = it.date,
-                                    title = it.label.ifBlank { "Starred day" },
-                                    subtitle = "Highlighted in this period"
+                                    title = it.label.ifBlank { stringResource(R.string.review_starred_day) },
+                                    subtitle = stringResource(R.string.review_highlighted_in_period)
                                 )
                             },
                             onNavigateToDate = onNavigateToDate
@@ -288,13 +291,13 @@ fun ReviewScreen(
                 if (data.labelsCreated.isNotEmpty()) {
                     item {
                         ReviewDatesCard(
-                            title = "Labels Created",
+                            title = stringResource(R.string.review_labels_created),
                             icon = Icons.AutoMirrored.Rounded.Label,
                             items = data.labelsCreated.map {
                                 ReviewDateRow(
                                     date = it.date,
                                     title = it.label,
-                                    subtitle = "Labeled day"
+                                    subtitle = stringResource(R.string.review_labeled_day)
                                 )
                             },
                             onNavigateToDate = onNavigateToDate
@@ -324,14 +327,14 @@ fun ReviewScreen(
                                     tint = MaterialTheme.colorScheme.primary
                                 )
                                 Text(
-                                    text = "Language Split",
+                                    text = stringResource(R.string.review_language_split),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.SemiBold
                                 )
                             }
                             if (data.languageDistribution.isEmpty()) {
                                 Text(
-                                    text = "Not enough text in this period",
+                                    text = stringResource(R.string.review_not_enough_text),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

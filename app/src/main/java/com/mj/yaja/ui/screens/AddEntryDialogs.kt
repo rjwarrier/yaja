@@ -11,11 +11,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryTemplate
 
 @Composable
@@ -25,17 +27,17 @@ fun DiscardChangesDialog(
 ) {
         AlertDialog(
                 onDismissRequest = onDismiss,
-                title = { Text("Discard Changes") },
+                title = { Text(stringResource(R.string.addentry_discard_changes_title)) },
                 text = {
                         Text(
-                                "You have unsaved changes. Go back and discard them, or stay to keep editing."
+                                stringResource(R.string.addentry_discard_changes_message)
                         )
                 },
                 confirmButton = {
-                        TextButton(onClick = onConfirmDiscard) { Text("Go Back") }
+                        TextButton(onClick = onConfirmDiscard) { Text(stringResource(R.string.addentry_go_back)) }
                 },
                 dismissButton = {
-                        TextButton(onClick = onDismiss) { Text("Stay") }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.addentry_stay)) }
                 },
                 containerColor = MaterialTheme.colorScheme.surface,
                 titleContentColor = MaterialTheme.colorScheme.onSurface,
@@ -49,17 +51,23 @@ fun AddEntryHelpDialog(
 ) {
         AlertDialog(
                 onDismissRequest = onDismiss,
-                title = { Text("Shortcuts") },
+                title = { Text(stringResource(R.string.addentry_shortcuts_title)) },
                 text = {
+                        val boldSuffix = stringResource(R.string.addentry_help_bold_suffix)
+                        val italicSuffix = stringResource(R.string.addentry_help_italic_suffix)
+                        val todaySuffix = stringResource(R.string.addentry_help_today_suffix)
+                        val nowSuffix = stringResource(R.string.addentry_help_now_suffix)
+                        val weekSuffix = stringResource(R.string.addentry_help_week_suffix)
+                        val daySuffix = stringResource(R.string.addentry_help_day_suffix)
+                        val todoSuffix = stringResource(R.string.addentry_help_todo_suffix)
+                        val toggleSuffix = stringResource(R.string.addentry_help_toggle_suffix)
                         Column {
                                 Text(
                                         buildAnnotatedString {
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("**Bold**")
                                                 }
-                                                append(
-                                                        " to make text bold (or select text and tap Bold Button)"
-                                                )
+                                                append(boldSuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -68,9 +76,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("*Italic*")
                                                 }
-                                                append(
-                                                        " to make text italic (or select text and tap Italic Button)"
-                                                )
+                                                append(italicSuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -81,7 +87,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@today")
                                                 }
-                                                append(": Expands to current date (e.g., 25-Dec-25)")
+                                                append(todaySuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -90,7 +96,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@now")
                                                 }
-                                                append(": Expands to current time (e.g., 14:30)")
+                                                append(nowSuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -99,7 +105,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@week")
                                                 }
-                                                append(": Expands to current week (e.g., Week 52)")
+                                                append(weekSuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -108,7 +114,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@day")
                                                 }
-                                                append(": Expands to current weekday (e.g., Monday)")
+                                                append(daySuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -117,7 +123,7 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@t ")
                                                 }
-                                                append(": Expands to a todo checkbox (e.g., [ ] )")
+                                                append(todoSuffix)
                                         }
                                 )
                                 Spacer(modifier = androidx.compose.ui.Modifier.height(8.dp))
@@ -126,15 +132,13 @@ fun AddEntryHelpDialog(
                                                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
                                                         append("@x")
                                                 }
-                                                append(
-                                                        ": When entered anywhere in the line containing a todo checkbox, it will toggle it."
-                                                )
+                                                append(toggleSuffix)
                                         }
                                 )
                         }
                 },
                 confirmButton = {
-                        TextButton(onClick = onDismiss) { Text("Okey!") }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.addentry_okey)) }
                 },
                 containerColor = MaterialTheme.colorScheme.surface,
                 titleContentColor = MaterialTheme.colorScheme.onSurface,
@@ -161,10 +165,10 @@ fun TemplateMergeDialog(
                 text = {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 Text(
-                                        "This draft already has text. Choose how the template should be placed."
+                                        stringResource(R.string.addentry_template_merge_message)
                                 )
                                 Text(
-                                        text = "Insert Below keeps the current draft. At Cursor places the template where your caret is now.",
+                                        text = stringResource(R.string.addentry_template_merge_subtitle),
                                         style = MaterialTheme.typography.bodySmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -173,14 +177,14 @@ fun TemplateMergeDialog(
                 confirmButton = {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        TextButton(onClick = onInsertBelow) { Text("Insert Below") }
-                                        TextButton(onClick = onInsertAtCursor) { Text("At Cursor") }
+                                        TextButton(onClick = onInsertBelow) { Text(stringResource(R.string.addentry_insert_below)) }
+                                        TextButton(onClick = onInsertAtCursor) { Text(stringResource(R.string.addentry_at_cursor)) }
                                 }
-                                Button(onClick = onReplaceDraft) { Text("Replace Draft") }
+                                Button(onClick = onReplaceDraft) { Text(stringResource(R.string.addentry_replace_draft)) }
                         }
                 },
                 dismissButton = {
-                        TextButton(onClick = onDismiss) { Text("Cancel") }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
                 }
         )
 }

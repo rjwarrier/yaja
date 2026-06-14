@@ -42,13 +42,16 @@ fun FontSelectionCard(
         isSelected: Boolean,
         onClick: () -> Unit,
         fontFamily: AppFontFamily,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
+        customFamily: androidx.compose.ui.text.font.FontFamily? = null
 ) {
         val targetFontFamily =
                 when (fontFamily) {
                         AppFontFamily.SANS_SERIF -> GoogleSansFamily
                         AppFontFamily.SERIF -> LibreBaskervilleFamily
                         AppFontFamily.MONO -> JetBrainsMono
+                        // Falls back to the system default until a font is uploaded.
+                        AppFontFamily.CUSTOM -> customFamily
                 }
 
         Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {

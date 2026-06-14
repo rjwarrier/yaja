@@ -2,6 +2,8 @@ package com.mj.yaja.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import java.net.URLDecoder
 import java.net.URLEncoder
 import java.security.MessageDigest
@@ -74,17 +76,18 @@ data class PersonalThemeSlot(
 )
 
 enum class FontScalePreference(val scale: Float) {
-    SMALLER(0.75f),
-    SMALL(0.875f),
-    NORMAL(1.0f),
-    LARGE(1.125f),
-    LARGER(1.25f)
+    SMALLER(0.8f),
+    SMALL(0.92f),
+    NORMAL(1.05f),
+    LARGE(1.16f),
+    LARGER(1.28f)
 }
 
 enum class AppFontFamily {
     SANS_SERIF,
     SERIF,
-    MONO
+    MONO,
+    CUSTOM
 }
 
 enum class EntryStyle {
@@ -127,6 +130,31 @@ enum class NavigationChromeMode {
     EXPRESSIVE_PANEL
 }
 
+/** App display language. SYSTEM follows the device locale. */
+enum class AppLanguage(val tag: String?, val nativeName: String?) {
+    SYSTEM(null, null),
+    ENGLISH("en", "English"),
+    SPANISH("es", "Español"),
+    PORTUGUESE("pt", "Português"),
+    FRENCH("fr", "Français"),
+    ITALIAN("it", "Italiano"),
+    GERMAN("de", "Deutsch"),
+    JAPANESE("ja", "日本語"),
+    SIMPLIFIED_CHINESE("zh", "简体中文"),
+    HINDI("hi", "हिन्दी"),
+    MALAYALAM("ml", "മലയാളം"),
+    TAMIL("ta", "தமிழ்"),
+    KANNADA("kn", "ಕನ್ನಡ"),
+    TELUGU("te", "తెలుగు"),
+    BENGALI("bn", "বাংলা"),
+    MARATHI("mr", "मराठी"),
+    KOREAN("ko", "한국어"),
+    INDONESIAN("in", "Bahasa Indonesia"),
+    TURKISH("tr", "Türkçe"),
+    VIETNAMESE("vi", "Tiếng Việt"),
+    RUSSIAN("ru", "Русский")
+}
+
 class SettingsRepository(private val context: Context) {
     private val prefs: SharedPreferences =
             context.getSharedPreferences("journal_settings", Context.MODE_PRIVATE)
@@ -155,6 +183,15 @@ class SettingsRepository(private val context: Context) {
     private val _appFontFamily = MutableStateFlow(getSavedAppFontFamily())
     val appFontFamily: StateFlow<AppFontFamily> = _appFontFamily.asStateFlow()
 
+    private val _monoFontWeight = MutableStateFlow(getSavedMonoFontWeight())
+    val monoFontWeight: StateFlow<Int> = _monoFontWeight.asStateFlow()
+
+    private val _customFontPath = MutableStateFlow(prefs.getString(KEY_CUSTOM_FONT_PATH, null))
+    val customFontPath: StateFlow<String?> = _customFontPath.asStateFlow()
+
+    private val _customFontName = MutableStateFlow(prefs.getString(KEY_CUSTOM_FONT_NAME, null))
+    val customFontName: StateFlow<String?> = _customFontName.asStateFlow()
+
     private val _entryStyle = MutableStateFlow(getSavedEntryStyle())
     val entryStyle: StateFlow<EntryStyle> = _entryStyle.asStateFlow()
 
@@ -172,6 +209,9 @@ class SettingsRepository(private val context: Context) {
 
     private val _fontScalePreference = MutableStateFlow(getSavedFontScalePreference())
     val fontScalePreference: StateFlow<FontScalePreference> = _fontScalePreference.asStateFlow()
+
+    private val _appLanguage = MutableStateFlow(getCurrentAppLanguage())
+    val appLanguage: StateFlow<AppLanguage> = _appLanguage.asStateFlow()
 
     private val _animationPreference = MutableStateFlow(getSavedAnimationPreference())
     val animationPreference: StateFlow<AnimationPreference> = _animationPreference.asStateFlow()
@@ -551,6 +591,30 @@ class SettingsRepository(private val context: Context) {
         _appFontFamily.value = fontFamily
     }
 
+    fun setMonoFontWeight(weight: Int) {
+        val clamped = weight.coerceIn(MONO_FONT_WEIGHT_MIN, MONO_FONT_WEIGHT_MAX)
+        prefs.edit().putInt(KEY_MONO_FONT_WEIGHT, clamped).apply()
+        _monoFontWeight.value = clamped
+    }
+
+    fun setCustomFont(path: String, displayName: String) {
+        prefs.edit()
+                .putString(KEY_CUSTOM_FONT_PATH, path)
+                .putString(KEY_CUSTOM_FONT_NAME, displayName)
+                .apply()
+        _customFontPath.value = path
+        _customFontName.value = displayName
+    }
+
+    fun clearCustomFont() {
+        prefs.edit()
+                .remove(KEY_CUSTOM_FONT_PATH)
+                .remove(KEY_CUSTOM_FONT_NAME)
+                .apply()
+        _customFontPath.value = null
+        _customFontName.value = null
+    }
+
     fun setEntryStyle(style: EntryStyle) {
         prefs.edit().putString(KEY_ENTRY_STYLE, style.name).apply()
         _entryStyle.value = style
@@ -599,6 +663,13 @@ class SettingsRepository(private val context: Context) {
     fun setFontScalePreference(preference: FontScalePreference) {
         prefs.edit().putString(KEY_FONT_SCALE, preference.name).apply()
         _fontScalePreference.value = preference
+    }
+
+    fun setAppLanguage(language: AppLanguage) {
+        val localeList = language.tag?.let { LocaleListCompat.forLanguageTags(it) }
+                ?: LocaleListCompat.getEmptyLocaleList()
+        AppCompatDelegate.setApplicationLocales(localeList)
+        _appLanguage.value = language
     }
 
     fun setAnimationPreference(preference: AnimationPreference) {
@@ -1039,6 +1110,10 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedAppFontFamily(): AppFontFamily =
             getEnum(prefs.getString(KEY_APP_FONT, null), AppFontFamily.MONO)
 
+    private fun getSavedMonoFontWeight(): Int =
+            prefs.getInt(KEY_MONO_FONT_WEIGHT, MONO_FONT_WEIGHT_DEFAULT)
+                    .coerceIn(MONO_FONT_WEIGHT_MIN, MONO_FONT_WEIGHT_MAX)
+
     private fun getSavedEntryStyle(): EntryStyle =
             getEnum(prefs.getString(KEY_ENTRY_STYLE, null), EntryStyle.CARDS)
 
@@ -1065,6 +1140,13 @@ class SettingsRepository(private val context: Context) {
 
     private fun getSavedFontScalePreference(): FontScalePreference =
             getEnum(prefs.getString(KEY_FONT_SCALE, null), FontScalePreference.NORMAL)
+
+    private fun getCurrentAppLanguage(): AppLanguage {
+        val locales = AppCompatDelegate.getApplicationLocales()
+        if (locales.isEmpty) return AppLanguage.SYSTEM
+        val tag = locales[0]?.language
+        return AppLanguage.entries.firstOrNull { it.tag == tag } ?: AppLanguage.SYSTEM
+    }
 
     private fun getSavedLastBackupTimestamp(): Long = prefs.getLong(KEY_LAST_BACKUP, 0L)
 
@@ -1260,6 +1342,12 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_PERSONAL_THEME_SLOTS = "theme_personal_slots"
         private const val KEY_ACTIVE_PERSONAL_THEME_SLOT_ID = "theme_personal_active_slot_id"
         private const val KEY_APP_FONT = "app_font_preference"
+        private const val KEY_MONO_FONT_WEIGHT = "mono_font_weight"
+        private const val KEY_CUSTOM_FONT_PATH = "custom_font_path"
+        private const val KEY_CUSTOM_FONT_NAME = "custom_font_name"
+        const val MONO_FONT_WEIGHT_MIN = 100
+        const val MONO_FONT_WEIGHT_MAX = 800
+        const val MONO_FONT_WEIGHT_DEFAULT = 400
         private const val KEY_ENTRY_STYLE = "entry_style"
         private const val KEY_STORAGE_URI = "storage_uri"
         private const val KEY_SHOW_TIMESTAMPS = "show_timestamps"

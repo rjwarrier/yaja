@@ -36,6 +36,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -47,6 +49,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.LocalIndication
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.expressivePressMotion
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
@@ -230,7 +233,13 @@ private fun TimelineDateClassicRow(
                 Spacer(modifier = Modifier.width(8.dp))
                 AssistChip(
                     onClick = onClick,
-                    label = { Text("TODAY", fontWeight = FontWeight.Bold, letterSpacing = 0.4.sp) },
+                    label = {
+                        Text(
+                            stringResource(R.string.timeline_chip_today),
+                            fontWeight = FontWeight.Bold,
+                            letterSpacing = 0.4.sp
+                        )
+                    },
                     colors = AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         labelColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -241,7 +250,15 @@ private fun TimelineDateClassicRow(
                 Spacer(modifier = Modifier.width(8.dp))
                 AssistChip(
                     onClick = onClick,
-                    label = { Text("${node.entryCount} ${if (node.entryCount == 1) "entry" else "entries"}") },
+                    label = {
+                        Text(
+                            pluralStringResource(
+                                R.plurals.timeline_chip_entries,
+                                node.entryCount,
+                                node.entryCount
+                            )
+                        )
+                    },
                     colors = AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                         labelColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -252,7 +269,7 @@ private fun TimelineDateClassicRow(
                 Spacer(modifier = Modifier.width(8.dp))
                 AssistChip(
                     onClick = onClick,
-                    label = { Text("Follow-up") },
+                    label = { Text(stringResource(R.string.timeline_chip_follow_up)) },
                     colors = AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,
                         labelColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -263,7 +280,7 @@ private fun TimelineDateClassicRow(
                 Spacer(modifier = Modifier.width(8.dp))
                 AssistChip(
                     onClick = onClick,
-                    label = { Text("Label only") },
+                    label = { Text(stringResource(R.string.timeline_chip_label_only)) },
                     colors = AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
                         labelColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -290,7 +307,7 @@ private fun TimelineDateClassicRow(
             if (node.isFavorite) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
-                    contentDescription = "Favorite",
+                    contentDescription = stringResource(R.string.timeline_cd_favorite),
                     tint = MaterialTheme.colorScheme.tertiary,
                     modifier = Modifier.size(16.dp)
                 )
@@ -393,7 +410,13 @@ private fun TimelineDateCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     AssistChip(
                         onClick = onClick,
-                        label = { Text("TODAY", fontWeight = FontWeight.Bold, letterSpacing = 0.4.sp) },
+                        label = {
+                            Text(
+                                stringResource(R.string.timeline_chip_today),
+                                fontWeight = FontWeight.Bold,
+                                letterSpacing = 0.4.sp
+                            )
+                        },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = MaterialTheme.colorScheme.primaryContainer,
                             labelColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -404,7 +427,15 @@ private fun TimelineDateCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     AssistChip(
                         onClick = onClick,
-                        label = { Text("${node.entryCount} ${if (node.entryCount == 1) "entry" else "entries"}") },
+                        label = {
+                            Text(
+                                pluralStringResource(
+                                    R.plurals.timeline_chip_entries,
+                                    node.entryCount,
+                                    node.entryCount
+                                )
+                            )
+                        },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                             labelColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -415,7 +446,7 @@ private fun TimelineDateCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     AssistChip(
                         onClick = onClick,
-                        label = { Text("Follow-up") },
+                        label = { Text(stringResource(R.string.timeline_chip_follow_up)) },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = MaterialTheme.colorScheme.secondaryContainer,
                             labelColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -426,7 +457,7 @@ private fun TimelineDateCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     AssistChip(
                         onClick = onClick,
-                        label = { Text("Label only") },
+                        label = { Text(stringResource(R.string.timeline_chip_label_only)) },
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
                             labelColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -453,7 +484,7 @@ private fun TimelineDateCard(
                 if (node.isFavorite) {
                     Icon(
                         imageVector = Icons.Rounded.Star,
-                        contentDescription = "Favorite",
+                        contentDescription = stringResource(R.string.timeline_cd_favorite),
                         tint = MaterialTheme.colorScheme.tertiary,
                         modifier = Modifier.size(16.dp)
                     )

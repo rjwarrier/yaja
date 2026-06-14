@@ -42,6 +42,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
@@ -60,6 +61,7 @@ import com.mj.yaja.ui.design.exitOrNone
 import com.mj.yaja.ui.design.floatTween
 import com.mj.yaja.ui.utils.DateLinkUtils
 import com.mj.yaja.ui.utils.MarkdownUtils
+import com.mj.yaja.R
 import com.mj.yaja.ui.utils.MarkdownVisualTransformation
 import com.mj.yaja.ui.utils.ShortcodeManager
 import java.time.LocalDate
@@ -136,7 +138,7 @@ fun EntryEditorField(
                         onValueChange(handleEditorValueChange(value, newValue, customShortcodes))
                 },
                 modifier = modifier.focusRequester(focusRequester),
-                placeholder = { Text("What happened?") },
+                placeholder = { Text(stringResource(R.string.addentry_editor_placeholder)) },
                 keyboardOptions =
                         KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                 singleLine = false,
@@ -177,7 +179,7 @@ internal fun EntryQuickInsertChips(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
                 QuickInsertTile(
-                        label = "Event",
+                        label = stringResource(R.string.addentry_event_chip),
                         footer = null,
                         selected = selectedEntryKind == EntryKind.EVENT,
                         icon = Icons.Rounded.Event,
@@ -185,7 +187,7 @@ internal fun EntryQuickInsertChips(
                         modifier = Modifier.width(88.dp)
                 )
                 QuickInsertTile(
-                        label = "Todo",
+                        label = stringResource(R.string.addentry_todo_chip),
                         footer = null,
                         selected = false,
                         onClick = onInsertTodo,
@@ -193,7 +195,7 @@ internal fun EntryQuickInsertChips(
                         icon = Icons.Rounded.CheckCircleOutline
                 )
                 QuickInsertTile(
-                        label = "N List",
+                        label = stringResource(R.string.addentry_numbered_list_chip),
                         footer = null,
                         selected = selectedListMode == ListInsertMode.NUMBERED,
                         icon = Icons.Rounded.FormatListNumbered,
@@ -201,7 +203,7 @@ internal fun EntryQuickInsertChips(
                         modifier = Modifier.width(88.dp)
                 )
                 QuickInsertTile(
-                        label = "B List",
+                        label = stringResource(R.string.addentry_bulleted_list_chip),
                         footer = null,
                         selected = selectedListMode == ListInsertMode.BULLETED,
                         icon = Icons.AutoMirrored.Rounded.FormatListBulleted,
@@ -493,7 +495,7 @@ fun EntryCountFooter(
                                 shadowElevation = 0.dp
                         ) {
                                 Text(
-                                        text = "$wordCount WORDS",
+                                        text = stringResource(R.string.addentry_words_count_format, wordCount),
                                         modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -506,7 +508,7 @@ fun EntryCountFooter(
                                 shadowElevation = 0.dp
                         ) {
                                 Text(
-                                        text = "$charCount CHARS",
+                                        text = stringResource(R.string.addentry_chars_count_format, charCount),
                                         modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant

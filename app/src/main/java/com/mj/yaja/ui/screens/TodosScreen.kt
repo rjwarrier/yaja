@@ -26,7 +26,9 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.stringResource
 import java.time.LocalDate
+import com.mj.yaja.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -121,7 +123,7 @@ fun TodosScreen(
                 },
                 initialDate = uiState.selectedDate,
                 allowDateSelection = true,
-                title = "Quick Add"
+                title = stringResource(R.string.todos_quick_add_title)
             )
         }
     }

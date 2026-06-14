@@ -89,6 +89,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.BaselineShift
@@ -117,6 +121,7 @@ import com.mj.yaja.ui.design.scaledDuration
 import com.mj.yaja.ui.theme.metaSmallTextStyle
 import com.mj.yaja.ui.theme.metaTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
+import com.mj.yaja.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -134,30 +139,35 @@ fun DayLabelDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(if (currentDayLabel.isEmpty()) "Add Label" else "Edit Label") },
+        title = {
+            Text(
+                if (currentDayLabel.isEmpty()) stringResource(R.string.home_add_label_title)
+                else stringResource(R.string.home_edit_label_title)
+            )
+        },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
-                    "Add a short label for this day (max 30 characters).",
+                    stringResource(R.string.home_day_label_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 TextField(
                     value = dayLabelInput,
                     onValueChange = { if (it.length <= 30) onDayLabelInputChange(it) },
-                    placeholder = { Text("e.g., First day at school") },
+                    placeholder = { Text(stringResource(R.string.home_day_label_placeholder)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
-                    supportingText = { Text("${dayLabelInput.length}/30") }
+                    supportingText = { Text(stringResource(R.string.home_char_count_format, dayLabelInput.length)) }
                 )
             }
         },
-        confirmButton = { Button(onClick = onSave) { Text("Save") } },
+        confirmButton = { Button(onClick = onSave) { Text(stringResource(R.string.action_save)) } },
         dismissButton = {
             if (currentDayLabel.isNotEmpty()) {
-                TextButton(onClick = onRemove) { Text("Remove") }
+                TextButton(onClick = onRemove) { Text(stringResource(R.string.action_remove)) }
             } else {
-                TextButton(onClick = onDismiss) { Text("Cancel") }
+                TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
             }
         }
     )
@@ -172,26 +182,26 @@ fun StarLabelDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Add a Label for This Day") },
+        title = { Text(stringResource(R.string.home_star_label_title)) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
-                    "Give this day a memorable label (max 30 characters)",
+                    stringResource(R.string.home_star_label_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 TextField(
                     value = labelInput,
                     onValueChange = { if (it.length <= 30) onLabelInputChange(it) },
-                    placeholder = { Text("e.g., My Birthday, At school") },
+                    placeholder = { Text(stringResource(R.string.home_star_label_placeholder)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
-                    supportingText = { Text("${labelInput.length}/30") }
+                    supportingText = { Text(stringResource(R.string.home_char_count_format, labelInput.length)) }
                 )
             }
         },
-        confirmButton = { Button(onClick = onConfirm) { Text("Star") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+        confirmButton = { Button(onClick = onConfirm) { Text(stringResource(R.string.home_star_button)) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) } }
     )
 }
 
@@ -255,11 +265,11 @@ fun UndoDeleteBar(
                 Spacer(modifier = Modifier.size(12.dp))
                 Text(
                     text =
-                        if (deletedEntryCount > 1) {
-                            "$deletedEntryCount entries deleted"
-                        } else {
-                            "Entry deleted"
-                    },
+                        pluralStringResource(
+                            R.plurals.home_entries_deleted_count,
+                            deletedEntryCount,
+                            deletedEntryCount
+                        ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor.copy(alpha = 0.86f),
                     modifier = Modifier.weight(1f)
@@ -271,7 +281,7 @@ fun UndoDeleteBar(
                     )
                 ) {
                     Text(
-                        text = "RESTORE",
+                        text = stringResource(R.string.home_restore_button),
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.ExtraBold,
                         letterSpacing = 1.sp
@@ -335,7 +345,7 @@ fun HomeTopBar(
                     onValueChange = onSearchQueryChanged,
                     placeholder = {
                         Text(
-                            "Search entries...",
+                            stringResource(R.string.home_search_placeholder),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                         )
@@ -344,7 +354,7 @@ fun HomeTopBar(
                     leadingIcon = {
                         Icon(
                             Icons.Rounded.Search,
-                            contentDescription = "Search",
+                            contentDescription = stringResource(R.string.home_cd_search),
                             modifier = Modifier.size(24.dp),
                             tint = MaterialTheme.colorScheme.primary
                         )
@@ -354,7 +364,7 @@ fun HomeTopBar(
                             IconButton(onClick = onClearSearch) {
                                 Icon(
                                     Icons.Rounded.Close,
-                                    contentDescription = "Clear Search",
+                                    contentDescription = stringResource(R.string.home_cd_clear_search),
                                     modifier = Modifier.size(20.dp)
                                 )
                             }
@@ -429,7 +439,7 @@ fun HomeTopBar(
                         ) { starred ->
                             Icon(
                                 imageVector = if (starred) Icons.Rounded.Star else Icons.Rounded.StarOutline,
-                                contentDescription = "Favorite",
+                                contentDescription = stringResource(R.string.home_cd_favorite),
                                 tint = if (starred) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurfaceVariant,
                                 modifier = Modifier.graphicsLayer {
                                     scaleX = starScale.value
@@ -556,7 +566,7 @@ private fun HomeDailyInsightsRow(
                     verticalArrangement = Arrangement.spacedBy(2.dp)
                 ) {
                     Text(
-                        text = label.uppercase(),
+                        text = statLabel(label).uppercase(),
                         style = MaterialTheme.typography.metaSmallTextStyle().copy(fontSize = 10.sp),
                         color = if (isTodayHighlighted) {
                             Color.White.copy(alpha = 0.78f)
@@ -600,6 +610,16 @@ private fun HomeDailyInsightsRow(
 }
 
 @Composable
+private fun statLabel(label: String): String =
+    when (label) {
+        "Entries" -> stringResource(R.string.home_stat_entries)
+        "Words" -> stringResource(R.string.home_stat_words)
+        "Chars" -> stringResource(R.string.home_stat_chars)
+        "Vers" -> stringResource(R.string.home_stat_versions)
+        else -> label
+    }
+
+@Composable
 private fun HomeDateNavigator(
     selectedDate: LocalDate,
     onPreviousDate: () -> Unit,
@@ -639,7 +659,15 @@ private fun HomeDateNavigator(
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 6.dp)
     ) {
-        val density = LocalDensity.current
+        val currentDensity = LocalDensity.current
+        val cappedDensity = remember(currentDensity) {
+            Density(
+                density = currentDensity.density,
+                fontScale = currentDensity.fontScale.coerceAtMost(1.1f)
+            )
+        }
+        CompositionLocalProvider(LocalDensity provides cappedDensity) {
+            val density = LocalDensity.current
         val textMeasurer = rememberTextMeasurer()
         val compact = maxWidth < 360.dp
         val dateBlockWidth = if (compact) 68.dp else 80.dp
@@ -687,7 +715,7 @@ private fun HomeDateNavigator(
             } else {
                 MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.ExtraBold)
             }
-        val dateFontSize = remember(dateText, compact, dateBlockWidth) {
+        val dateFontSize = remember(dateText, compact, dateBlockWidth, density) {
             fitDateFontSize(
                 textMeasurer = textMeasurer,
                 text = dateText,
@@ -760,7 +788,7 @@ private fun HomeDateNavigator(
                         ) {
                             Column(
                                 modifier = Modifier
-                                    .width(dateBlockWidth)
+                                    .widthIn(min = dateBlockWidth)
                                     .padding(top = 2.dp, bottom = 2.dp, end = 2.dp)
                                     .heightIn(min = if (compact) 86.dp else 92.dp),
                                 horizontalAlignment = Alignment.Start,
@@ -860,7 +888,7 @@ private fun HomeDateNavigator(
                                         with(density) {
                                             textMeasurer
                                                 .measure(
-                                                    text = localDayLabel.ifBlank { "Add label" },
+                                                    text = localDayLabel.ifBlank { stringResource(R.string.home_add_label_chip) },
                                                     style = labelTextStyle,
                                                     maxLines = 1
                                                 )
@@ -943,7 +971,7 @@ private fun HomeDateNavigator(
                                                     onClick = onEditDayLabel,
                                                     label = {
                                                         Text(
-                                                            text = "Add label",
+                                                            text = stringResource(R.string.home_add_label_chip),
                                                             style = MaterialTheme.typography.metaSmallTextStyle(),
                                                             maxLines = 1,
                                                             softWrap = false,
@@ -1080,7 +1108,7 @@ private fun HomeDateNavigator(
                                                     onClick = onEditDayLabel,
                                                     label = {
                                                         Text(
-                                                            text = "Add label",
+                                                            text = stringResource(R.string.home_add_label_chip),
                                                             style = MaterialTheme.typography.metaSmallTextStyle(),
                                                             maxLines = 1,
                                                             softWrap = false,
@@ -1233,6 +1261,7 @@ private fun HomeDateNavigator(
                 }
             }
         }
+        }
     }
 }
 
@@ -1286,7 +1315,7 @@ fun SearchResultsContent(
 ) {
     Column {
         Text(
-            text = "${searchResults.size} Matches Found",
+            text = pluralStringResource(R.plurals.home_matches_found_count, searchResults.size, searchResults.size),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
@@ -1365,7 +1394,7 @@ fun KeywordFilterResultsContent(
         if (keywordFilteredEntries.isEmpty()) {
             item("empty-filter") {
                 Text(
-                    text = "No matches found for this keyword yet.",
+                    text = stringResource(R.string.home_no_keyword_matches),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
@@ -1460,7 +1489,7 @@ fun EmptyEntriesState(
                                 selectedDate.isBefore(LocalDate.now()) -> Icons.Rounded.HistoryEdu
                                 else -> Icons.Rounded.AutoStories
                             },
-                            contentDescription = "Empty Status Icon",
+                            contentDescription = stringResource(R.string.home_cd_empty_status_icon),
                             modifier = Modifier.size(52.dp),
                             tint = MaterialTheme.colorScheme.onSecondaryContainer
                         )
@@ -1469,9 +1498,9 @@ fun EmptyEntriesState(
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = when {
-                        selectedDate.isAfter(LocalDate.now()) -> "This is the future. Record a reminder!"
-                        selectedDate.isBefore(LocalDate.now()) -> "You are in the Past. Record a Memory before it fades..."
-                        else -> "No entries yet. Start your day."
+                        selectedDate.isAfter(LocalDate.now()) -> stringResource(R.string.home_empty_future)
+                        selectedDate.isBefore(LocalDate.now()) -> stringResource(R.string.home_empty_past)
+                        else -> stringResource(R.string.home_empty_today)
                     },
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Center,
@@ -1662,7 +1691,7 @@ fun HomeFabCluster(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer
             ) {
-                Icon(Icons.Rounded.Today, contentDescription = "Jump to Today")
+                Icon(Icons.Rounded.Today, contentDescription = stringResource(R.string.addentry_cd_jump_to_today))
             }
         }
 
@@ -1724,11 +1753,11 @@ fun HomeFabCluster(
                     label = "FabIconMorph"
                 ) { isPressed ->
                     if (isPressed) {
-                        Icon(Icons.Rounded.Check, contentDescription = "Saving")
+                        Icon(Icons.Rounded.Check, contentDescription = stringResource(R.string.home_cd_saving))
                     } else {
                         Icon(
                             Icons.Rounded.Add,
-                            contentDescription = "Add Entry",
+                            contentDescription = stringResource(R.string.home_cd_add_entry),
                             modifier = Modifier.graphicsLayer {
                                 rotationZ = animatedEntryRotation
                             }
@@ -1804,7 +1833,7 @@ fun DeleteSelectedEntriesPill(
                     tint = MaterialTheme.colorScheme.onErrorContainer
                 )
                 Text(
-                    text = "Delete $selectedEntryCount",
+                    text = stringResource(R.string.home_delete_selected_format, selectedEntryCount),
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onErrorContainer
@@ -1822,14 +1851,17 @@ fun FutureDateDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Future Date Entry") },
+        title = { Text(stringResource(R.string.home_future_date_title)) },
         text = {
             Text(
-                "You are adding an entry for a future date (${selectedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))}). Do you want to continue?"
+                stringResource(
+                    R.string.home_future_date_message_format,
+                    selectedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                )
             )
         },
-        confirmButton = { TextButton(onClick = onConfirm) { Text("Yes") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("No") } }
+        confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(R.string.action_yes)) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_no)) } }
     )
 }
 
@@ -1840,14 +1872,12 @@ fun CacheAnomalyDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Data Cache Issue Detected") },
+        title = { Text(stringResource(R.string.home_cache_issue_title)) },
         text = {
-            Text(
-                "It appears a substantial number of journal entries are missing from the cache. Would you like to perform a full data cache refresh to attempt to restore them?"
-            )
+            Text(stringResource(R.string.home_cache_issue_message))
         },
-        confirmButton = { TextButton(onClick = onRefresh) { Text("Refresh") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Ignore") } }
+        confirmButton = { TextButton(onClick = onRefresh) { Text(stringResource(R.string.home_refresh_button)) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.home_ignore_button)) } }
     )
 }
 

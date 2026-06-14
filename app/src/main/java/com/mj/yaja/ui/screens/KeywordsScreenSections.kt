@@ -41,8 +41,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.KeywordType
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -71,21 +73,21 @@ internal fun KeywordTransferActionsCard(
                                 FilledTonalIconButton(onClick = onImportCsv) {
                                         Icon(
                                                 Icons.Rounded.FileOpen,
-                                                contentDescription = "Import CSV",
+                                                contentDescription = stringResource(R.string.keywords_cd_import_csv),
                                                 tint = MaterialTheme.colorScheme.primary
                                         )
                                 }
                                 FilledTonalIconButton(onClick = onExportCsv) {
                                         Icon(
                                                 Icons.Rounded.SaveAlt,
-                                                contentDescription = "Export CSV",
+                                                contentDescription = stringResource(R.string.keywords_cd_export_csv),
                                                 tint = MaterialTheme.colorScheme.tertiary
                                         )
                                 }
                                 FilledTonalIconButton(onClick = onDownloadTemplate) {
                                         Icon(
                                                 Icons.Rounded.Description,
-                                                contentDescription = "Download template",
+                                                contentDescription = stringResource(R.string.keywords_cd_download_template),
                                                 tint = MaterialTheme.colorScheme.secondary
                                         )
                                 }
@@ -130,7 +132,7 @@ internal fun KeywordFiltersCard(
                                                 )
                                         },
                                         placeholder = {
-                                                Text("Search people, places, aliases, relation")
+                                                Text(stringResource(R.string.keywords_search_placeholder))
                                         },
                                         colors = OutlinedTextFieldDefaults.colors(
                                                 focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
@@ -147,22 +149,22 @@ internal fun KeywordFiltersCard(
                                         FilterChip(
                                                 selected = selectedTypeFilter == null,
                                                 onClick = { onSelectedTypeFilterChange(null) },
-                                                label = { Text("All") }
+                                                label = { Text(stringResource(R.string.keywords_connections_filter_all)) }
                                         )
                                         FilterChip(
                                                 selected = selectedTypeFilter == KeywordType.PERSON,
                                                 onClick = { onSelectedTypeFilterChange(KeywordType.PERSON) },
-                                                label = { Text("People") }
+                                                label = { Text(stringResource(R.string.keywords_connections_filter_people)) }
                                         )
                                         FilterChip(
                                                 selected = selectedTypeFilter == KeywordType.PLACE,
                                                 onClick = { onSelectedTypeFilterChange(KeywordType.PLACE) },
-                                                label = { Text("Places") }
+                                                label = { Text(stringResource(R.string.keywords_connections_filter_places)) }
                                         )
                                         FilterChip(
                                                 selected = showOnlyNeedsReindex,
                                                 onClick = { onShowOnlyNeedsReindexChange(!showOnlyNeedsReindex) },
-                                                label = { Text("Needs Reindex") }
+                                                label = { Text(stringResource(R.string.keywords_filter_needs_reindex)) }
                                         )
                                 }
 
@@ -183,7 +185,7 @@ internal fun KeywordFiltersCard(
                                                                         )
                                                                 }
                                                         },
-                                                        label = { Text(option.label) }
+                                                        label = { Text(stringResource(option.labelRes)) }
                                                 )
                                         }
                                 }
@@ -213,7 +215,7 @@ internal fun KeywordProgressSection(
                         verticalAlignment = Alignment.CenterVertically
                 ) {
                         Text(
-                                text = "Refreshing keyword counters…",
+                                text = stringResource(R.string.keywords_refreshing_counters),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -249,13 +251,13 @@ internal fun KeywordsEmptyState() {
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                        "No keywords yet",
+                        stringResource(R.string.keywords_empty_title),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                        "Add the people and places you want the app to track locally.",
+                        stringResource(R.string.keywords_empty_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -300,12 +302,12 @@ internal fun KeywordsListSection(
                                                 verticalArrangement = Arrangement.spacedBy(6.dp)
                                         ) {
                                                 Text(
-                                                        text = "No matching results",
+                                                        text = stringResource(R.string.keywords_no_results_title),
                                                         style = MaterialTheme.typography.titleSmall,
                                                         fontWeight = FontWeight.SemiBold
                                                 )
                                                 Text(
-                                                        text = "Try a different search, sort, or filter.",
+                                                        text = stringResource(R.string.keywords_no_results_subtitle),
                                                         style = MaterialTheme.typography.bodySmall,
                                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                                 )
@@ -318,7 +320,7 @@ internal fun KeywordsListSection(
                         item {
                                 KeywordSectionHeader(
                                         icon = Icons.Rounded.Person,
-                                        title = "People",
+                                        title = stringResource(R.string.keywords_people_title),
                                         count = people.size,
                                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                                         onContainerColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -328,9 +330,9 @@ internal fun KeywordsListSection(
                                 item {
                                         Text(
                                                 text = if (normalizedSearch.isBlank() && !showOnlyNeedsReindex) {
-                                                        "No people added yet."
+                                                        stringResource(R.string.keywords_people_empty)
                                                 } else {
-                                                        "No people match the current filters."
+                                                        stringResource(R.string.keywords_people_filtered_empty)
                                                 },
                                                 style = MaterialTheme.typography.bodySmall,
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -365,7 +367,7 @@ internal fun KeywordsListSection(
                         item {
                                 KeywordSectionHeader(
                                         icon = Icons.Rounded.LocationOn,
-                                        title = "Places",
+                                        title = stringResource(R.string.keywords_places_title),
                                         count = places.size,
                                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                                         onContainerColor = MaterialTheme.colorScheme.onTertiaryContainer
@@ -375,9 +377,9 @@ internal fun KeywordsListSection(
                                 item {
                                         Text(
                                                 text = if (normalizedSearch.isBlank() && !showOnlyNeedsReindex) {
-                                                        "No places added yet."
+                                                        stringResource(R.string.keywords_places_empty)
                                                 } else {
-                                                        "No places match the current filters."
+                                                        stringResource(R.string.keywords_places_filtered_empty)
                                                 },
                                                 style = MaterialTheme.typography.bodySmall,
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -415,21 +417,21 @@ internal fun DeleteKeywordDialog(
         AlertDialog(
                 onDismissRequest = onDismiss,
                 title = {
-                        Text("Delete ${if (keyword.type == KeywordType.PERSON) "Person" else "Place"}?")
+                        Text(if (keyword.type == KeywordType.PERSON) stringResource(R.string.keywords_delete_person_title) else stringResource(R.string.keywords_delete_place_title))
                 },
                 text = {
                         Text(
-                                "Delete \"${keyword.name}\" from People & Places? This will remove the keyword and its indexed matches."
+                                stringResource(R.string.keywords_delete_message, keyword.name)
                         )
                 },
                 confirmButton = {
                         TextButton(onClick = onConfirmDelete) {
-                                Text("Delete")
+                                Text(stringResource(R.string.keywords_action_delete))
                         }
                 },
                 dismissButton = {
                         TextButton(onClick = onDismiss) {
-                                Text("Cancel")
+                                Text(stringResource(R.string.action_cancel))
                         }
                 }
         )

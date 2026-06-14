@@ -61,8 +61,10 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.KeywordType
 
@@ -242,13 +244,13 @@ internal fun KeywordCard(
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         KeywordMetricPill(
-                            label = "Entries",
+                            label = stringResource(R.string.home_stat_entries),
                             value = matchCount.toString(),
                             accent = MetricPillAccent.PRIMARY,
                             modifier = Modifier.weight(1f)
                         )
                         KeywordMetricPill(
-                            label = "Aliases",
+                            label = stringResource(R.string.keywords_aliases_label_short),
                             value = keyword.aliases.size.toString(),
                             accent = MetricPillAccent.NEUTRAL,
                             modifier = Modifier.weight(1f)
@@ -264,7 +266,7 @@ internal fun KeywordCard(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         KeywordStatusBadge(
-                            label = if (isIndexing) "Indexing" else "Indexed",
+                            label = if (isIndexing) stringResource(R.string.keywords_status_indexing) else stringResource(R.string.keywords_status_indexed),
                             isIndexing = isIndexing
                         )
                         Spacer(modifier = Modifier.weight(1f))
@@ -272,19 +274,19 @@ internal fun KeywordCard(
                             onClick = onDelete,
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                         ) {
-                            Text("Delete", style = MaterialTheme.typography.labelLarge)
+                            Text(stringResource(R.string.keywords_action_delete), style = MaterialTheme.typography.labelLarge)
                         }
                         TextButton(
                             onClick = onEdit,
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                         ) {
-                            Text("Edit", style = MaterialTheme.typography.labelLarge)
+                            Text(stringResource(R.string.keywords_action_edit), style = MaterialTheme.typography.labelLarge)
                         }
                         TextButton(
                             onClick = onNavigateToDetail,
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                         ) {
-                            Text("View", style = MaterialTheme.typography.labelLarge)
+                            Text(stringResource(R.string.keywords_action_view), style = MaterialTheme.typography.labelLarge)
                         }
                     }
                 }
@@ -432,21 +434,21 @@ internal fun KeywordEditorDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Name") },
+                    label = { Text(stringResource(R.string.keywords_name_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true
                 )
                 OutlinedTextField(
                     value = relation,
                     onValueChange = { relation = it },
-                    label = { Text("Relation / Context") },
+                    label = { Text(stringResource(R.string.keywords_relation_context_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true
                 )
                 OutlinedTextField(
                     value = aliases,
                     onValueChange = { aliases = it },
-                    label = { Text("Aliases (comma separated)") },
+                    label = { Text(stringResource(R.string.keywords_aliases_label)) },
                     modifier = Modifier.fillMaxWidth()
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -456,7 +458,7 @@ internal fun KeywordEditorDialog(
                             type = if (checked) KeywordType.PERSON else KeywordType.PLACE
                         }
                     )
-                    Text("Person")
+                    Text(stringResource(R.string.keywords_type_person))
                     Spacer(modifier = Modifier.width(12.dp))
                     Checkbox(
                         checked = type == KeywordType.PLACE,
@@ -464,10 +466,10 @@ internal fun KeywordEditorDialog(
                             type = if (checked) KeywordType.PLACE else KeywordType.PERSON
                         }
                     )
-                    Text("Place")
+                    Text(stringResource(R.string.keywords_type_place))
                 }
                 Text(
-                    text = "Keywords are saved turned off. Enable them from the list when you want indexing to run.",
+                    text = stringResource(R.string.keywords_save_disabled_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -486,11 +488,11 @@ internal fun KeywordEditorDialog(
                 },
                 enabled = name.isNotBlank()
             ) {
-                Text("Save")
+                Text(stringResource(R.string.action_save))
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         }
     )
 }

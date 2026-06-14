@@ -180,12 +180,19 @@ class KeywordCoordinator(
         keywordRebuildJob = scope.launch {
             try {
                 if (!immediate) delay(250)
-                val dates = withContext(Dispatchers.IO) {
-                    fileManager.getAllJournalDatesLightweight().toList()
+                val (dates, entriesSnapshot) = withContext(Dispatchers.IO) {
+                    val dates = fileManager.getAllJournalDatesLightweight().toList()
+                    // Single Room DB query — much faster than opening each .md file via SAF
+                    val snapshot = fileManager.getEntriesSnapshotForRebuild()
+                    dates to snapshot
                 }
                 keywordMatchCache.rebuildAllStreaming(
                     dates = dates,
-                    entryLoader = { date -> fileManager.getEntriesForDate(date) },
+                    entryLoader = { date ->
+                        // O(1) Room lookup; disk fallback for dates not yet in Room
+                        entriesSnapshot[date]
+                            ?: fileManager.readEntriesForDateDirect(date)
+                    },
                     keywords = keywordRepository.keywords.value,
                     fuzzyThreshold = keywordRepository.fuzzyThreshold.value
                 )

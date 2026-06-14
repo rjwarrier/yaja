@@ -16,8 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryTemplate
 
 @Composable
@@ -32,13 +34,16 @@ fun TemplateStartBlankCard(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+                        val blankEntryName = stringResource(R.string.addentry_blank_entry_name)
+                        val blankEntryDescription = stringResource(R.string.addentry_blank_entry_description)
+                        val blankCategory = stringResource(R.string.addentry_blank_category)
                         Text(
-                                text = "Start Blank",
+                                text = stringResource(R.string.addentry_start_blank_title),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                                text = "Skip templates and keep writing from an empty draft.",
+                                text = stringResource(R.string.addentry_start_blank_subtitle),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -47,14 +52,14 @@ fun TemplateStartBlankCard(
                                         onTemplateSelected(
                                                 EntryTemplate(
                                                         id = "blank_entry",
-                                                        name = "Blank Entry",
-                                                        description = "Plain journal entry",
-                                                        category = "General",
+                                                        name = blankEntryName,
+                                                        description = blankEntryDescription,
+                                                        category = blankCategory,
                                                         body = ""
                                                 )
                                         )
                                 }
-                        ) { Text("Start Blank") }
+                        ) { Text(stringResource(R.string.addentry_start_blank_title)) }
                 }
         }
 }
@@ -70,7 +75,7 @@ fun TemplateQuickPicksSection(
         if (quickPicks.isEmpty()) return
 
         Text(
-                        text = "Quick Picks",
+                        text = stringResource(R.string.addentry_quick_picks_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
                 )
@@ -100,11 +105,15 @@ fun TemplateCategoryChips(
                         FilterChip(
                                 selected = selectedCategory == category,
                                 onClick = { onCategorySelected(category) },
-                                label = { Text(category) }
+                                label = { Text(categoryLabel(category)) }
                         )
                 }
         }
 }
+
+@Composable
+private fun categoryLabel(category: String): String =
+        if (category == "All") stringResource(R.string.addentry_category_all) else category
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -120,11 +129,19 @@ fun TemplateSortChips(
                         FilterChip(
                                 selected = sortMode == option,
                                 onClick = { onSortModeSelected(option) },
-                                label = { Text(option) }
+                                label = { Text(sortModeLabel(option)) }
                         )
                 }
         }
 }
+
+@Composable
+private fun sortModeLabel(option: String): String =
+        when (option) {
+                "Recent" -> stringResource(R.string.addentry_sort_recent)
+                "A-Z" -> stringResource(R.string.addentry_sort_az)
+                else -> stringResource(R.string.addentry_sort_recommended)
+        }
 
 @Composable
 fun TemplateEmptyResultsCard() {
@@ -137,12 +154,12 @@ fun TemplateEmptyResultsCard() {
                         verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                         Text(
-                                text = "No templates found",
+                                text = stringResource(R.string.addentry_no_templates_title),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                                text = "Try a different search or category.",
+                                text = stringResource(R.string.addentry_no_templates_subtitle),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -185,7 +202,7 @@ fun TemplateGroupedResultsSection(
                         verticalAlignment = Alignment.CenterVertically
                 ) {
                         Text(
-                                text = category,
+                                text = categoryLabel(category),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                         )

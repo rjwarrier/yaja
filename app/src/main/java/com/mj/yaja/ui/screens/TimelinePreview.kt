@@ -10,8 +10,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
@@ -38,8 +41,8 @@ fun TimelinePreviewSheet(
         }
         Text(
             text = when {
-                !node.hasEntries -> "This day is labeled, but there is no journal entry yet."
-                previewText.isNullOrBlank() -> "Loading preview..."
+                !node.hasEntries -> stringResource(R.string.timeline_preview_empty_labeled)
+                previewText.isNullOrBlank() -> stringResource(R.string.timeline_preview_loading)
                 else -> previewText
             },
             style = MaterialTheme.typography.bodyLarge,
@@ -47,13 +50,17 @@ fun TimelinePreviewSheet(
         )
         if (node.entryCount > 1) {
             Text(
-                text = "+ ${node.entryCount - 1} more ${if (node.entryCount == 2) "entry" else "entries"} on this day",
+                text = pluralStringResource(
+                    R.plurals.timeline_preview_more_entries,
+                    node.entryCount - 1,
+                    node.entryCount - 1
+                ),
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary
             )
         }
         FilledTonalButton(onClick = onOpenDate) {
-            Text("Open This Day")
+            Text(stringResource(R.string.timeline_preview_open_day))
         }
     }
 }

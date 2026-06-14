@@ -26,8 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.ui.components.AnimatedMenuButton
 import com.mj.yaja.ui.design.AppEntranceStrength
@@ -45,7 +47,7 @@ internal fun KeywordsTopBar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                "People & Places",
+                stringResource(R.string.nav_people_places),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary
@@ -107,7 +109,7 @@ internal fun KeywordsFab(
         ) {
             Icon(
                 Icons.Rounded.Add,
-                contentDescription = "Add Keyword",
+                contentDescription = stringResource(R.string.keywords_cd_add),
                 modifier = Modifier
                     .size(28.dp)
                     .graphicsLayer { rotationZ = animatedIconRotation }
@@ -130,7 +132,7 @@ internal fun KeywordScreenDialogs(
 ) {
     if (showCreateDialog) {
         KeywordEditorDialog(
-            title = "Add Keyword",
+            title = stringResource(R.string.keywords_dialog_add_title),
             initialKeyword = null,
             onDismiss = onDismissCreate,
             onSave = { name, type, relation, aliases, enabled ->
@@ -141,7 +143,7 @@ internal fun KeywordScreenDialogs(
 
     editingKeyword?.let { keyword ->
         KeywordEditorDialog(
-            title = "Edit Keyword",
+            title = stringResource(R.string.keywords_dialog_edit_title),
             initialKeyword = keyword,
             onDismiss = onDismissEdit,
             onSave = { name, type, relation, aliases, enabled ->

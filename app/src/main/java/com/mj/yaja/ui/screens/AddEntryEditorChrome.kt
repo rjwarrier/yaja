@@ -44,6 +44,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -52,6 +53,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.extractMentionedEventTime
 import com.mj.yaja.ui.theme.metaTextStyle
@@ -158,7 +160,7 @@ fun EditorDateHeaderCard(
                                         verticalArrangement = Arrangement.spacedBy(6.dp)
                                 ) {
                                         EntryHeaderMetaChip(
-                                                text = recordedTime ?: "Set time",
+                                                text = recordedTime ?: stringResource(R.string.addentry_set_time),
                                                 icon = Icons.Rounded.AccessTime,
                                                 onClick = onRecordedTimeClick,
                                                 containerColor =
@@ -184,7 +186,7 @@ fun EditorDateHeaderCard(
 
                                         if (selectedEntryKind == EntryKind.EVENT) {
                                                 EntryHeaderMetaChip(
-                                                        text = "Event",
+                                                        text = stringResource(R.string.addentry_event_chip),
                                                         icon = Icons.Rounded.Event,
                                                         containerColor =
                                                                 MaterialTheme.colorScheme.surfaceContainerHigh.copy(
@@ -305,13 +307,13 @@ fun EntryTimePickerDialog(
                                         )
                                 }
                         ) {
-                                Text("Set")
+                                Text(stringResource(R.string.action_set))
                         }
                 },
                 dismissButton = {
-                        TextButton(onClick = onDismiss) { Text("Cancel") }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
                 },
-                title = { Text("Pick time") },
+                title = { Text(stringResource(R.string.addentry_pick_time_title)) },
                 text = {
                         Box(
                                 modifier = Modifier.fillMaxWidth(),
@@ -380,7 +382,7 @@ fun CustomTimeInput(
                                 keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
                                 singleLine = true
                         )
-                        Text("Hour", style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
+                        Text(stringResource(R.string.addentry_hour_label), style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
                 }
 
                 Text(":", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(bottom = 24.dp))
@@ -408,7 +410,7 @@ fun CustomTimeInput(
                                 keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
                                 singleLine = true
                         )
-                        Text("Minute", style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
+                        Text(stringResource(R.string.addentry_minute_label), style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
                 }
         }
 }
@@ -436,13 +438,13 @@ fun EventInputDialog(
                                 },
                                 enabled = title.isNotBlank()
                         ) {
-                                Text("OK")
+                                Text(stringResource(R.string.action_ok))
                         }
                 },
                 dismissButton = {
-                        TextButton(onClick = onDismiss) { Text("Cancel") }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
                 },
-                title = { Text("New Event") },
+                title = { Text(stringResource(R.string.addentry_new_event_title)) },
                 text = {
                         androidx.compose.foundation.layout.Column(
                                 modifier = Modifier
@@ -463,7 +465,7 @@ fun EventInputDialog(
                                 OutlinedTextField(
                                         value = title,
                                         onValueChange = { title = it },
-                                        label = { Text("Title") },
+                                        label = { Text(stringResource(R.string.addentry_title_label)) },
                                         singleLine = true,
                                         modifier = Modifier.fillMaxWidth()
                                 )
@@ -471,7 +473,7 @@ fun EventInputDialog(
                                 OutlinedTextField(
                                         value = description,
                                         onValueChange = { description = it },
-                                        label = { Text("Event Description") },
+                                        label = { Text(stringResource(R.string.addentry_event_description_label)) },
                                         minLines = 5,
                                         modifier = Modifier.fillMaxWidth()
                                 )

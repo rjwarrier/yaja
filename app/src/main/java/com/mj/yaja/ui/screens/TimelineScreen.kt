@@ -41,9 +41,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mj.yaja.R
 import com.mj.yaja.ui.components.AnimatedMenuButton
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.design.AppEntranceStrength
@@ -187,7 +189,7 @@ fun TimelineScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        "Timeline",
+                        stringResource(R.string.timeline_screen_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -207,7 +209,7 @@ fun TimelineScreen(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = stringResource(R.string.action_back),
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
@@ -265,13 +267,13 @@ fun TimelineScreen(
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Text(
-                            text = "Nothing here yet",
+                            text = stringResource(R.string.timeline_empty_title),
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                            text = "Try a different filter or adjust the label search.",
+                            text = stringResource(R.string.timeline_empty_subtitle),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

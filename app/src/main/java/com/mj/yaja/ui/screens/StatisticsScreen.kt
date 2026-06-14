@@ -25,10 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import sh.calvin.reorderable.ReorderableItem
@@ -211,7 +214,7 @@ fun StatisticsScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        "Statistics",
+                        stringResource(R.string.settings_nav_statistics_title),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -272,14 +275,7 @@ fun StatisticsScreen(
                 item(key = "period_title") {
                     Column(modifier = Modifier.padding(top = 8.dp)) {
                         Text(
-                            when (selectedPeriod) {
-                                StatisticsPeriod.ALL_TIME -> "All-Time Statistics"
-                                StatisticsPeriod.CURRENT_YEAR -> "Current Year Statistics"
-                                StatisticsPeriod.PREVIOUS_YEAR -> "Previous Year Statistics"
-                                StatisticsPeriod.CURRENT_MONTH -> "Current Month Statistics"
-                                StatisticsPeriod.PREVIOUS_MONTH -> "Previous Month Statistics"
-                                StatisticsPeriod.CUSTOM -> "Custom Period Statistics"
-                            },
+                            selectedPeriod.titleText(),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -303,14 +299,14 @@ fun StatisticsScreen(
                     ) {
                         StatisticCard(
                             icon = Icons.AutoMirrored.Rounded.Note,
-                            title = "Total Entries",
+                            title = stringResource(R.string.statistics_total_entries),
                             value = allTimeStats!!.totalEntries.toString(),
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
                             icon = Icons.Rounded.Edit,
-                            title = "Total Words",
+                            title = stringResource(R.string.statistics_total_words),
                             value = allTimeStats!!.totalWords.toString(),
                             color = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.weight(1f)
@@ -325,15 +321,15 @@ fun StatisticsScreen(
                     ) {
                         StatisticCard(
                             icon = Icons.AutoMirrored.Rounded.TrendingUp,
-                            title = "Avg. Words/Entry",
+                            title = stringResource(R.string.statistics_avg_words_per_entry),
                             value = String.format("%.1f", allTimeStats!!.averageWordsPerEntry),
                             color = MaterialTheme.colorScheme.tertiary,
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
                             icon = Icons.Rounded.LocalFireDepartment,
-                            title = "Current Streak",
-                            value = "${allTimeStats!!.currentStreak} days",
+                            title = stringResource(R.string.statistics_current_streak),
+                            value = pluralStringResource(R.plurals.statistics_days_count, allTimeStats!!.currentStreak, allTimeStats!!.currentStreak),
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.weight(1f)
                         )
@@ -347,14 +343,14 @@ fun StatisticsScreen(
                     ) {
                         StatisticCard(
                             icon = Icons.AutoMirrored.Rounded.MenuBook,
-                            title = "Pages Written",
+                            title = stringResource(R.string.statistics_pages_written),
                             value = "~ ${(allTimeStats!!.totalWords / 250).coerceAtLeast(0)}",
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
                             icon = Icons.Rounded.Star,
-                            title = "Days Highlighted",
+                            title = stringResource(R.string.statistics_days_highlighted),
                             value = highlightedDays.toString(),
                             color = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.weight(1f)
@@ -445,19 +441,24 @@ fun StatisticsScreen(
                         showStartDatePicker = false
                         showEndDatePicker = true
                     }
-                ) { Text("Next") }
+                ) { Text(stringResource(R.string.action_next)) }
             },
             dismissButton = {
                 TextButton(onClick = {
                     showStartDatePicker = false
                     selectedPeriod = StatisticsPeriod.ALL_TIME
-                }) { Text("Cancel") }
+                }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
             DatePicker(
                 state = startDatePickerState,
                 showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
-                headline = { Text("Select Start Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
+                headline = {
+                    Text(
+                        stringResource(R.string.statistics_select_start_date),
+                        modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)
+                    )
+                }
             )
         }
     }
@@ -484,16 +485,21 @@ fun StatisticsScreen(
                         viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
                         viewModel.updateHeatmapData()
                     }
-                ) { Text("Apply") }
+                ) { Text(stringResource(R.string.action_apply)) }
             },
             dismissButton = {
-                TextButton(onClick = { showEndDatePicker = false }) { Text("Cancel") }
+                TextButton(onClick = { showEndDatePicker = false }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
             DatePicker(
                 state = endDatePickerState,
                 showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
-                headline = { Text("Select End Date", modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)) }
+                headline = {
+                    Text(
+                        stringResource(R.string.statistics_select_end_date),
+                        modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)
+                    )
+                }
             )
         }
     }
@@ -507,7 +513,7 @@ private fun PeriodSelector(
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Filter by Period",
+            text = stringResource(R.string.statistics_filter_by_period),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -522,12 +528,12 @@ private fun PeriodSelector(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             listOf(
-                StatisticsPeriod.ALL_TIME to "All Time",
-                StatisticsPeriod.CURRENT_YEAR to "Current Year",
-                StatisticsPeriod.PREVIOUS_YEAR to "Prev Year",
-                StatisticsPeriod.CURRENT_MONTH to "This Month",
-                StatisticsPeriod.PREVIOUS_MONTH to "Prev Month",
-                StatisticsPeriod.CUSTOM to "Custom"
+                StatisticsPeriod.ALL_TIME to stringResource(R.string.statistics_period_chip_all_time),
+                StatisticsPeriod.CURRENT_YEAR to stringResource(R.string.statistics_period_chip_current_year),
+                StatisticsPeriod.PREVIOUS_YEAR to stringResource(R.string.statistics_period_chip_previous_year),
+                StatisticsPeriod.CURRENT_MONTH to stringResource(R.string.statistics_period_chip_current_month),
+                StatisticsPeriod.PREVIOUS_MONTH to stringResource(R.string.statistics_period_chip_previous_month),
+                StatisticsPeriod.CUSTOM to stringResource(R.string.statistics_period_chip_custom)
             ).forEach { (period, label) ->
                 FilterChip(
                     selected = selectedPeriod == period,
@@ -538,6 +544,17 @@ private fun PeriodSelector(
         }
     }
 }
+
+@Composable
+private fun StatisticsPeriod.titleText(): String =
+    when (this) {
+        StatisticsPeriod.ALL_TIME -> stringResource(R.string.statistics_period_all_time)
+        StatisticsPeriod.CURRENT_YEAR -> stringResource(R.string.statistics_period_current_year)
+        StatisticsPeriod.PREVIOUS_YEAR -> stringResource(R.string.statistics_period_previous_year)
+        StatisticsPeriod.CURRENT_MONTH -> stringResource(R.string.statistics_period_current_month)
+        StatisticsPeriod.PREVIOUS_MONTH -> stringResource(R.string.statistics_period_previous_month)
+        StatisticsPeriod.CUSTOM -> stringResource(R.string.statistics_period_custom)
+    }
 
 @Composable
 private fun StatisticCard(

@@ -33,8 +33,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.DateKeywordEntry
 
 val DateKeywordMeanings = listOf(
@@ -43,6 +45,28 @@ val DateKeywordMeanings = listOf(
     "last week", "next week",
     "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"
 )
+
+@Composable
+fun dateKeywordMeaningLabel(meaning: String): String {
+    val resId = when (meaning) {
+        "yesterday" -> R.string.settings_meaning_yesterday
+        "today" -> R.string.settings_meaning_today
+        "tomorrow" -> R.string.settings_meaning_tomorrow
+        "day before yesterday" -> R.string.settings_meaning_day_before_yesterday
+        "day after tomorrow" -> R.string.settings_meaning_day_after_tomorrow
+        "last week" -> R.string.settings_meaning_last_week
+        "next week" -> R.string.settings_meaning_next_week
+        "monday" -> R.string.settings_meaning_monday
+        "tuesday" -> R.string.settings_meaning_tuesday
+        "wednesday" -> R.string.settings_meaning_wednesday
+        "thursday" -> R.string.settings_meaning_thursday
+        "friday" -> R.string.settings_meaning_friday
+        "saturday" -> R.string.settings_meaning_saturday
+        "sunday" -> R.string.settings_meaning_sunday
+        else -> return meaning.replaceFirstChar { it.uppercase() }
+    }
+    return stringResource(resId)
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,14 +81,14 @@ fun AddDateKeywordDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Add Date Keyword") },
+        title = { Text(stringResource(R.string.settings_add_date_keyword_title)) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 OutlinedTextField(
                     value = keyword,
                     onValueChange = { keyword = it },
-                    label = { Text("Keyword") },
-                    placeholder = { Text("e.g. ഇന്നലെ") },
+                    label = { Text(stringResource(R.string.settings_keyword_label)) },
+                    placeholder = { Text(stringResource(R.string.settings_keyword_placeholder_example)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -76,10 +100,10 @@ fun AddDateKeywordDialog(
                     }
                 ) {
                     OutlinedTextField(
-                        value = selectedMeaning.replaceFirstChar { it.uppercase() },
+                        value = dateKeywordMeaningLabel(selectedMeaning),
                         onValueChange = {},
                         readOnly = true,
-                        label = { Text("Means") },
+                        label = { Text(stringResource(R.string.settings_means_label)) },
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(
                                 expanded = dropdownExpanded
@@ -95,7 +119,7 @@ fun AddDateKeywordDialog(
                     ) {
                         DateKeywordMeanings.forEach { meaning ->
                             DropdownMenuItem(
-                                text = { Text(meaning.replaceFirstChar { it.uppercase() }) },
+                                text = { Text(dateKeywordMeaningLabel(meaning)) },
                                 onClick = {
                                     selectedMeaning = meaning
                                     dropdownExpanded = false
@@ -110,10 +134,10 @@ fun AddDateKeywordDialog(
             Button(
                 onClick = { onAdd(keyword.trim(), selectedMeaning) },
                 enabled = isValid
-            ) { Text("Add") }
+            ) { Text(stringResource(R.string.settings_add_button)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) }
         }
     )
 }
@@ -126,10 +150,10 @@ fun ViewKeywordsDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Added Keywords (${keywords.size})") },
+        title = { Text(stringResource(R.string.settings_added_keywords_title, keywords.size)) },
         text = {
             if (keywords.isEmpty()) {
-                Text("No keywords added yet.", style = MaterialTheme.typography.bodyMedium)
+                Text(stringResource(R.string.settings_no_keywords_yet), style = MaterialTheme.typography.bodyMedium)
             } else {
                 Column(
                     modifier = Modifier
@@ -157,7 +181,10 @@ fun ViewKeywordsDialog(
                                     fontWeight = FontWeight.Medium
                                 )
                                 Text(
-                                    text = "-> ${entry.meaning.replaceFirstChar { it.uppercase() }}",
+                                    text = stringResource(
+                                        R.string.settings_keyword_meaning_format,
+                                        dateKeywordMeaningLabel(entry.meaning)
+                                    ),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -168,7 +195,7 @@ fun ViewKeywordsDialog(
                             ) {
                                 Icon(
                                     Icons.Rounded.Close,
-                                    contentDescription = "Remove",
+                                    contentDescription = stringResource(R.string.action_remove),
                                     modifier = Modifier.size(16.dp),
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -179,7 +206,7 @@ fun ViewKeywordsDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Done") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_done)) }
         }
     )
 }

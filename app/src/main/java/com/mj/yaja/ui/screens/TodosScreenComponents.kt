@@ -50,10 +50,13 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.EventItem
 import com.mj.yaja.data.TodoItem
 import com.mj.yaja.ui.components.ExpressiveCheckbox
@@ -155,7 +158,7 @@ internal fun TodoHeroCard(
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = "Track journal work and moments",
+                        text = stringResource(R.string.todos_hero_subtitle),
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -261,10 +264,10 @@ internal fun TodoFilterChips(
         else -> MaterialTheme.colorScheme.onPrimaryContainer
     }
     val items = listOf(
-        TodoFilter.ALL to "All $allCount",
-        TodoFilter.OPEN to "Open $openCount",
-        TodoFilter.DONE to "Done $doneCount",
-        TodoFilter.EVENTS to "Events $eventCount"
+        TodoFilter.ALL to stringResource(R.string.todos_filter_all_format, allCount),
+        TodoFilter.OPEN to stringResource(R.string.todos_filter_open_format, openCount),
+        TodoFilter.DONE to stringResource(R.string.todos_filter_done_format, doneCount),
+        TodoFilter.EVENTS to stringResource(R.string.todos_filter_events_format, eventCount)
     )
     val selectedIndex = items.indexOfFirst { it.first == selectedFilter }.coerceAtLeast(0)
     val segmentInset = 3.dp
@@ -363,13 +366,17 @@ internal fun TodoSectionHeader(
         Text(
             text = "$title $count",
             style = MaterialTheme.typography.labelLarge,
-            color = if (title == "OPEN") MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary,
+            color = if (title == stringResource(R.string.todos_section_open)) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.weight(1f))
         Icon(
             imageVector = if (expanded) Icons.Rounded.ExpandLess else Icons.Rounded.ExpandMore,
-            contentDescription = if (expanded) "Collapse $title" else "Expand $title",
+            contentDescription = if (expanded) {
+                stringResource(R.string.todos_collapse_section, title)
+            } else {
+                stringResource(R.string.todos_expand_section, title)
+            },
             tint = MaterialTheme.colorScheme.onSurface
         )
     }
@@ -434,32 +441,33 @@ internal fun TodoDateHeader(
         Spacer(modifier = Modifier.width(8.dp))
         Icon(
             imageVector = Icons.Rounded.ChevronRight,
-            contentDescription = "Open day",
+            contentDescription = stringResource(R.string.todos_cd_open_day),
             modifier = Modifier.size(18.dp),
             tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }
 
+@Composable
 private fun getRelativePeriodLabel(date: LocalDate): String? {
     val today = LocalDate.now()
     val days = java.time.temporal.ChronoUnit.DAYS.between(today, date)
     return when {
-        days == 0L -> "Today"
-        days == 1L -> "Tomorrow"
-        days == 2L -> "Day after tomorrow"
-        days == -1L -> "Yesterday"
-        days == -2L -> "Day before yesterday"
-        days in 3L..6L -> "In $days days"
-        days in -6L..-3L -> "${Math.abs(days)} days ago"
-        days in 7L..13L -> "Next week"
-        days in -13L..-7L -> "Last week"
-        days in 14L..29L -> "In ${days / 7} weeks"
-        days in -29L..-14L -> "${Math.abs(days / 7)} weeks ago"
-        days in 30L..59L -> "In 1 month"
-        days in -59L..-30L -> "1 month ago"
-        days >= 60L -> "In ${days / 30} months"
-        days <= -60L -> "${Math.abs(days / 30)} months ago"
+        days == 0L -> stringResource(R.string.settings_meaning_today)
+        days == 1L -> stringResource(R.string.settings_meaning_tomorrow)
+        days == 2L -> stringResource(R.string.settings_meaning_day_after_tomorrow)
+        days == -1L -> stringResource(R.string.settings_meaning_yesterday)
+        days == -2L -> stringResource(R.string.settings_meaning_day_before_yesterday)
+        days in 3L..6L -> pluralStringResource(R.plurals.todos_relative_in_days, days.toInt(), days.toInt())
+        days in -6L..-3L -> pluralStringResource(R.plurals.todos_relative_days_ago, Math.abs(days).toInt(), Math.abs(days).toInt())
+        days in 7L..13L -> stringResource(R.string.settings_meaning_next_week)
+        days in -13L..-7L -> stringResource(R.string.settings_meaning_last_week)
+        days in 14L..29L -> pluralStringResource(R.plurals.todos_relative_in_weeks, (days / 7).toInt(), (days / 7).toInt())
+        days in -29L..-14L -> pluralStringResource(R.plurals.todos_relative_weeks_ago, Math.abs(days / 7).toInt(), Math.abs(days / 7).toInt())
+        days in 30L..59L -> stringResource(R.string.todos_relative_in_one_month)
+        days in -59L..-30L -> stringResource(R.string.todos_relative_one_month_ago)
+        days >= 60L -> pluralStringResource(R.plurals.todos_relative_in_months, (days / 30).toInt(), (days / 30).toInt())
+        days <= -60L -> pluralStringResource(R.plurals.todos_relative_months_ago, Math.abs(days / 30).toInt(), Math.abs(days / 30).toInt())
         else -> null
     }
 }
@@ -602,7 +610,7 @@ internal fun TodoAddFab(
     ) {
         Icon(
             imageVector = Icons.Rounded.AddTask,
-            contentDescription = "Add todo",
+            contentDescription = stringResource(R.string.todo_cd_add_todo),
             modifier = Modifier.size(28.dp)
         )
     }
@@ -713,7 +721,7 @@ internal fun EventItemCard(
                             tint = MaterialTheme.colorScheme.onTertiaryContainer
                         )
                         Text(
-                            text = "Event",
+                            text = stringResource(R.string.addentry_event_chip),
                             style = MaterialTheme.typography.metaTextStyle().copy(fontWeight = FontWeight.SemiBold),
                             color = MaterialTheme.colorScheme.onTertiaryContainer
                         )

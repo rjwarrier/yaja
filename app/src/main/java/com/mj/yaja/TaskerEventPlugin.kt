@@ -26,7 +26,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.joaomgcd.taskerpluginlibrary.condition.TaskerPluginRunnerConditionEvent
 import com.joaomgcd.taskerpluginlibrary.config.TaskerPluginConfig
 import com.joaomgcd.taskerpluginlibrary.config.TaskerPluginConfigHelper
@@ -196,26 +198,26 @@ private fun TaskerPluginEventConfigScreen(
             modifier = Modifier.fillMaxSize().statusBarsPadding().padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Text("Yaja Journal Events", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.primary)
+            Text(stringResource(R.string.tasker_event_title), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.primary)
             Text(
-                "Pick which Yaja journal events should trigger this Tasker profile.",
+                stringResource(R.string.tasker_event_desc),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            EventOptionRow("Entry Saved", savedEnabled, onSavedChange)
-            EventOptionRow("Entry Edited", editedEnabled, onEditedChange)
-            EventOptionRow("Entry Deleted", deletedEnabled, onDeletedChange)
+            EventOptionRow(stringResource(R.string.tasker_event_saved), savedEnabled, onSavedChange)
+            EventOptionRow(stringResource(R.string.tasker_event_edited), editedEnabled, onEditedChange)
+            EventOptionRow(stringResource(R.string.tasker_event_deleted), deletedEnabled, onDeletedChange)
             if (noneSelected) {
                 Text(
-                    "If none selected, Yaja will default to Entry Saved.",
+                    stringResource(R.string.tasker_event_default_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.secondary
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Button(onClick = onCancel, modifier = Modifier.weight(1f)) { Text("Cancel") }
-                Button(onClick = onSave, modifier = Modifier.weight(1f)) { Text("Save") }
+                Button(onClick = onCancel, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.action_cancel)) }
+                Button(onClick = onSave, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.action_save)) }
             }
         }
     }

@@ -18,7 +18,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.floatSpring
 
@@ -52,7 +54,7 @@ fun AnimatedMenuButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
                 Box(contentAlignment = Alignment.Center) {
                         Icon(
                                 imageVector = Icons.Rounded.Menu,
-                                contentDescription = "Menu",
+                                contentDescription = stringResource(R.string.nav_cd_menu),
                                 tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                 }

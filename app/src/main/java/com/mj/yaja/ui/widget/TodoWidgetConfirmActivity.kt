@@ -25,10 +25,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.MainActivity
+import com.mj.yaja.R
 import com.mj.yaja.ui.theme.JournalTheme
 
 class TodoWidgetConfirmActivity : ComponentActivity() {
@@ -76,7 +78,11 @@ class TodoWidgetConfirmActivity : ComponentActivity() {
 
         setContent {
             JournalTheme {
-                val nextStateLabel = if (target.isChecked) "not done" else "done"
+                val nextStateLabel = if (target.isChecked) {
+                    stringResource(R.string.todo_confirm_mark_not_done)
+                } else {
+                    stringResource(R.string.todo_confirm_mark_done)
+                }
                 AlertDialog(
                     onDismissRequest = { closeToHomeScreen() },
                     icon = {
@@ -94,7 +100,7 @@ class TodoWidgetConfirmActivity : ComponentActivity() {
                     },
                     title = {
                         Text(
-                            text = "Mark task as $nextStateLabel?",
+                            text = stringResource(R.string.todo_confirm_title, nextStateLabel),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -104,9 +110,9 @@ class TodoWidgetConfirmActivity : ComponentActivity() {
                             Text(
                                 text =
                                     if (target.isChecked) {
-                                        "This todo is currently completed. Confirm before reopening it."
+                                        stringResource(R.string.todo_confirm_reopen)
                                     } else {
-                                        "This todo is still open. Confirm before marking it done."
+                                        stringResource(R.string.todo_confirm_complete)
                                     },
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -144,7 +150,7 @@ class TodoWidgetConfirmActivity : ComponentActivity() {
                             }
 
                             Text(
-                                text = "Accidental taps will not change the task.",
+                                text = stringResource(R.string.todo_confirm_accidental_tap),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.outline
                             )
@@ -157,16 +163,16 @@ class TodoWidgetConfirmActivity : ComponentActivity() {
                                 closeToHomeScreen()
                             }
                         ) {
-                            Text("Yes, mark $nextStateLabel")
+                            Text(stringResource(R.string.todo_confirm_yes_mark, nextStateLabel))
                         }
                     },
                     dismissButton = {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             TextButton(onClick = { openYaja(intent) }) {
-                                Text("Open in Yaja")
+                                Text(stringResource(R.string.todo_confirm_open_yaja))
                             }
                             TextButton(onClick = { closeToHomeScreen() }) {
-                                Text("Keep as is")
+                                Text(stringResource(R.string.todo_confirm_keep_as_is))
                             }
                         }
                     }

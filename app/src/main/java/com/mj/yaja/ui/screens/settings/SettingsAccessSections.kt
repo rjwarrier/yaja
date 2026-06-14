@@ -36,8 +36,11 @@ import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 
 @Composable
 fun AboutSection(
@@ -45,7 +48,7 @@ fun AboutSection(
     onNavigateToAppLog: () -> Unit
 ) {
     val uriHandler = LocalUriHandler.current
-    SettingsSectionHeader(icon = Icons.Rounded.Info, title = "Help & About")
+    SettingsSectionHeader(icon = Icons.Rounded.Info, title = stringResource(R.string.nav_help))
     Spacer(modifier = Modifier.height(12.dp))
     val interactionHelp = remember { MutableInteractionSource() }
     ElevatedCard(
@@ -68,19 +71,19 @@ fun AboutSection(
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.HelpOutline,
-                contentDescription = "Help & About",
+                contentDescription = stringResource(R.string.nav_help),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Help & About",
+                    text = stringResource(R.string.nav_help),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Learn how to use yaja",
+                    text = stringResource(R.string.settings_help_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -110,19 +113,19 @@ fun AboutSection(
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.Article,
-                contentDescription = "App Log",
+                contentDescription = stringResource(R.string.settings_app_log_title),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "App Log",
+                    text = stringResource(R.string.settings_app_log_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "View privacy-safe diagnostics and previous crash details",
+                    text = stringResource(R.string.settings_app_log_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -152,20 +155,20 @@ fun AboutSection(
         ) {
             Icon(
                 imageVector = Icons.Rounded.Language,
-                contentDescription = "Yaja Website",
+                contentDescription = stringResource(R.string.settings_website_title),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Yaja Website",
+                    text = stringResource(R.string.settings_website_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    text = "Open the official website for updates and details",
+                    text = stringResource(R.string.settings_website_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -181,7 +184,7 @@ fun TaskerIntegrationSection(
     onNavigateToTaskerIntegration: () -> Unit,
     onNavigateToShortcodes: () -> Unit
 ) {
-    SettingsSectionHeader(icon = Icons.Rounded.Settings, title = "Advanced Integrations")
+    SettingsSectionHeader(icon = Icons.Rounded.Settings, title = stringResource(R.string.settings_advanced_integrations_title))
     Spacer(modifier = Modifier.height(12.dp))
     val interactionTasker = remember { MutableInteractionSource() }
     ElevatedCard(
@@ -204,19 +207,19 @@ fun TaskerIntegrationSection(
         ) {
             Icon(
                 imageVector = Icons.Rounded.Settings,
-                contentDescription = "Tasker Integration",
+                contentDescription = stringResource(R.string.settings_tasker_integration_title),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Tasker Integration",
+                    text = stringResource(R.string.settings_tasker_integration_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Quick capture actions and journal event triggers",
+                    text = stringResource(R.string.settings_tasker_integration_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -246,19 +249,19 @@ fun TaskerIntegrationSection(
         ) {
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.Article,
-                contentDescription = "Shortcodes",
+                contentDescription = stringResource(R.string.nav_shortcodes),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Shortcodes",
+                    text = stringResource(R.string.nav_shortcodes),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Manage reusable snippets that expand while writing or quick-capturing.",
+                    text = stringResource(R.string.settings_shortcodes_subtitle),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -280,7 +283,7 @@ fun SecuritySection(
     autoLockTimeoutMinutes: Int,
     onAutoLockTimeoutChange: (Int) -> Unit
 ) {
-    SettingsSectionHeader(icon = Icons.Rounded.Lock, title = "Privacy & Security")
+    SettingsSectionHeader(icon = Icons.Rounded.Lock, title = stringResource(R.string.settings_privacy_security_title))
 
     Spacer(modifier = Modifier.height(12.dp))
     ElevatedCard(
@@ -307,12 +310,16 @@ fun SecuritySection(
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "PIN Lock",
+                        text = stringResource(R.string.settings_pin_lock_title),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = if (isPinEnabled) "App is locked" else "App is unlocked",
+                        text = if (isPinEnabled) {
+                            stringResource(R.string.settings_app_locked)
+                        } else {
+                            stringResource(R.string.settings_app_unlocked)
+                        },
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -333,7 +340,7 @@ fun SecuritySection(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
-                ) { Text("Change PIN") }
+                ) { Text(stringResource(R.string.settings_change_pin)) }
 
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
@@ -357,15 +364,15 @@ fun SecuritySection(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                             Text(
-                                text = "Biometric Unlock",
+                                text = stringResource(R.string.settings_biometric_unlock_title),
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
                                 text = if (isBiometricEnabled) {
-                                    "Fingerprint or Face ID enabled"
+                                    stringResource(R.string.settings_biometric_enabled_desc)
                                 } else {
-                                    "Use biometric instead of PIN"
+                                    stringResource(R.string.settings_biometric_disabled_desc)
                                 },
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -405,12 +412,16 @@ fun SecuritySection(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = "Auto-lock Timeout",
+                                text = stringResource(R.string.settings_autolock_timeout_title),
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
-                                text = "$autoLockTimeoutMinutes minute${if (autoLockTimeoutMinutes != 1) "s" else ""}",
+                                text = pluralStringResource(
+                                    R.plurals.settings_autolock_minutes,
+                                    autoLockTimeoutMinutes,
+                                    autoLockTimeoutMinutes
+                                ),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -445,7 +456,7 @@ fun SecuritySection(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "PIN lock prevents unauthorized access to the app but does not encrypt your journal data on disk. Someone with direct file access could still read your entries.",
+                    text = stringResource(R.string.settings_pin_lock_disclaimer),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -21,8 +21,11 @@ import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import com.mj.yaja.R
 import com.mj.yaja.data.countCharsIgnoringChecklistMarkers
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
 import androidx.compose.ui.unit.Dp
@@ -605,13 +608,15 @@ internal fun DueRevisitCard(
                                 Column(modifier = Modifier.weight(1f)) {
                                         Text(
                                                 text =
-                                                        if (items.size == 1) "Follow-up due today"
-                                                        else "Follow-ups due today",
+                                                        pluralStringResource(
+                                                                R.plurals.home_followup_due_today,
+                                                                items.size,
+                                                        ),
                                                 style = MaterialTheme.typography.titleSmall,
                                                 fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                                text = "Jump back into the linked day and continue from there.",
+                                                text = stringResource(R.string.home_followup_subtitle),
                                                 style = MaterialTheme.typography.bodySmall,
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
@@ -646,7 +651,7 @@ internal fun DueRevisitCard(
                                                         Text(
                                                                 text =
                                                                         item.label.ifBlank {
-                                                                                "From ${item.sourceDate.format(dateFormatter)}"
+                                                                                stringResource(R.string.home_from_date_format, item.sourceDate.format(dateFormatter))
                                                                         },
                                                                 style = MaterialTheme.typography.bodyMedium,
                                                                 fontWeight = FontWeight.Medium,
@@ -666,7 +671,7 @@ internal fun DueRevisitCard(
                                                                 onClick = { onOpenDate(item.sourceDate) },
                                                                 label = {
                                                                         Text(
-                                                                                "From ${item.sourceDate.format(dateFormatter)}"
+                                                                                stringResource(R.string.home_from_date_format, item.sourceDate.format(dateFormatter))
                                                                         )
                                                                 },
                                                                 leadingIcon = {
@@ -689,7 +694,7 @@ internal fun DueRevisitCard(
                         }
                         if (remainingCount > 0) {
                                 Text(
-                                        text = "+$remainingCount more due today",
+                                        text = stringResource(R.string.home_more_due_today_format, remainingCount),
                                         style = MaterialTheme.typography.labelMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

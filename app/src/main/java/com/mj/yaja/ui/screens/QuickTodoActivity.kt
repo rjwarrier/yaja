@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
+import com.mj.yaja.R
 import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.MarkdownFileManager
 import com.mj.yaja.data.SettingsRepository
@@ -31,6 +32,10 @@ class QuickTodoActivity : ComponentActivity() {
                 super.onCreate(savedInstanceState)
                 enableEdgeToEdge()
 
+                val initialKind =
+                        if (intent?.action == ACTION_QUICK_ADD_EVENT) QuickAddKind.EVENT
+                        else QuickAddKind.TODO
+
                 setContent {
                         val settingsRepository = remember { SettingsRepository.getInstance(applicationContext) }
                         val animationPreference by settingsRepository.animationPreference.collectAsState(initial = AnimationPreference.FULL)
@@ -40,7 +45,8 @@ class QuickTodoActivity : ComponentActivity() {
                                                 onDismissRequest = { finish() },
                                                 onSave = { text, date, kind -> saveQuickEntry(text, date, kind) },
                                                 allowDateSelection = true,
-                                                title = "Quick Add"
+                                                title = getString(R.string.quick_todo_dialog_title),
+                                                initialKind = initialKind
                                         )
                                 }
                         }
@@ -84,7 +90,7 @@ class QuickTodoActivity : ComponentActivity() {
                                 Log.e(TAG, "Quick todo save failed or timed out", t)
                                 Toast.makeText(
                                         this@QuickTodoActivity,
-                                        "Todo save delayed. Please reopen Yaja to verify.",
+                                        getString(R.string.quick_todo_save_delayed),
                                         Toast.LENGTH_SHORT
                                 ).show()
                         } finally {
@@ -103,8 +109,11 @@ class QuickTodoActivity : ComponentActivity() {
                 return cleaned.takeIf { it.isNotBlank() }
         }
 
-        private companion object {
+        companion object {
                 private const val TAG = "QuickTodoActivity"
                 private const val QUICK_TODO_SAVE_TIMEOUT_MS = 15_000L
+
+                /** Launched by the "Add Event" app shortcut (res/xml/shortcuts.xml). */
+                const val ACTION_QUICK_ADD_EVENT = "com.mj.yaja.action.QUICK_ADD_EVENT"
         }
 }

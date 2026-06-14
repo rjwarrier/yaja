@@ -45,6 +45,8 @@ fun JournalApp(
     val personalThemeSlots by viewModel.personalThemeSlots.collectAsStateWithLifecycle()
     val activePersonalThemeSlotId by viewModel.activePersonalThemeSlotId.collectAsStateWithLifecycle()
     val appFontFamily by viewModel.appFontFamily.collectAsStateWithLifecycle()
+    val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
+    val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
     val fontScalePreference by viewModel.fontScalePreference.collectAsStateWithLifecycle()
     val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
     val isSystemDark = isSystemInDarkTheme()
@@ -61,6 +63,8 @@ fun JournalApp(
         amoledTheme = useAmoledTheme,
         fontScale = fontScalePreference.scale,
         appFontFamily = appFontFamily,
+        monoFontWeight = monoFontWeight,
+        customFontPath = customFontPath,
         colorSource = colorSource,
         customPalette = customPalette,
         colorIntensity = themeColorIntensity,

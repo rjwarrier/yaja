@@ -46,10 +46,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
 import java.time.LocalDate
 
 private val ComparisonCardMinHeight = 228.dp
@@ -73,7 +76,7 @@ fun StatisticsPeriodSelector(
                 .padding(horizontal = 16.dp, vertical = 14.dp)
         ) {
             Text(
-                text = "Period",
+                text = stringResource(R.string.statistics_period_label),
                 fontSize = 13.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.primary,
@@ -88,12 +91,12 @@ fun StatisticsPeriodSelector(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 listOf(
-                    StatisticsPeriod.ALL_TIME to "All Time",
-                    StatisticsPeriod.CURRENT_YEAR to "Current Year",
-                    StatisticsPeriod.PREVIOUS_YEAR to "Prev Year",
-                    StatisticsPeriod.CURRENT_MONTH to "This Month",
-                    StatisticsPeriod.PREVIOUS_MONTH to "Prev Month",
-                    StatisticsPeriod.CUSTOM to "Custom"
+                    StatisticsPeriod.ALL_TIME to stringResource(R.string.statistics_period_chip_all_time),
+                    StatisticsPeriod.CURRENT_YEAR to stringResource(R.string.statistics_period_chip_current_year),
+                    StatisticsPeriod.PREVIOUS_YEAR to stringResource(R.string.statistics_period_chip_previous_year),
+                    StatisticsPeriod.CURRENT_MONTH to stringResource(R.string.statistics_period_chip_current_month),
+                    StatisticsPeriod.PREVIOUS_MONTH to stringResource(R.string.statistics_period_chip_previous_month),
+                    StatisticsPeriod.CUSTOM to stringResource(R.string.statistics_period_chip_custom)
                 ).forEach { (period, label) ->
                     FilterChip(
                         selected = selectedPeriod == period,
@@ -140,12 +143,12 @@ fun CompareModeToggle(
                 )
                 Column {
                     Text(
-                        text = "Compare Mode",
+                        text = stringResource(R.string.statistics_compare_mode_title),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = "Month, year, and keyword deltas",
+                        text = stringResource(R.string.statistics_compare_mode_subtitle),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -166,7 +169,7 @@ fun StatisticsComparisonSection(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             ComparisonMetricCard(
-                title = "This Month",
+                title = stringResource(R.string.statistics_period_chip_current_month),
                 currentLabel = comparison.monthWindow.currentLabel,
                 previousLabel = comparison.monthWindow.previousLabel,
                 currentValue = comparison.monthWindow.currentEntries,
@@ -175,7 +178,7 @@ fun StatisticsComparisonSection(
                 modifier = Modifier.weight(1f)
             )
             ComparisonMetricCard(
-                title = "This Year",
+                title = stringResource(R.string.statistics_this_year),
                 currentLabel = comparison.yearWindow.currentLabel,
                 previousLabel = comparison.yearWindow.previousLabel,
                 currentValue = comparison.yearWindow.currentEntries,
@@ -190,7 +193,7 @@ fun StatisticsComparisonSection(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             ComparisonMetricCard(
-                title = "Writing Days Delta",
+                title = stringResource(R.string.statistics_writing_days_delta),
                 currentLabel = comparison.monthWindow.currentLabel,
                 previousLabel = comparison.monthWindow.previousLabel,
                 currentValue = comparison.monthWindow.currentWritingDays,
@@ -199,8 +202,8 @@ fun StatisticsComparisonSection(
                 modifier = Modifier.weight(1f)
             )
             KeywordDeltaCard(
-                title = "Top Person Delta",
-                emptyLabel = "No people mentions yet",
+                title = stringResource(R.string.statistics_top_person_delta),
+                emptyLabel = stringResource(R.string.statistics_no_people_mentions),
                 delta = comparison.topPersonDelta,
                 icon = Icons.Rounded.Person,
                 accentColor = MaterialTheme.colorScheme.primary,
@@ -209,8 +212,8 @@ fun StatisticsComparisonSection(
         }
 
         KeywordDeltaCard(
-            title = "Top Place Delta",
-            emptyLabel = "No place mentions yet",
+            title = stringResource(R.string.statistics_top_place_delta),
+            emptyLabel = stringResource(R.string.statistics_no_place_mentions),
             delta = comparison.topPlaceDelta,
             icon = Icons.Rounded.LocationOn,
             accentColor = MaterialTheme.colorScheme.secondary
@@ -253,7 +256,7 @@ fun TemplateInsightsCard(
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Text(
-                    text = "Structured Writing",
+                    text = stringResource(R.string.statistics_structured_writing),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -264,17 +267,17 @@ fun TemplateInsightsCard(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 TemplateInsightChip(
-                    label = "Template-led ${insights.templateEntryCount} · ${templateShare}%",
+                    label = stringResource(R.string.statistics_template_led_format, insights.templateEntryCount, templateShare),
                     emphasized = true
                 )
                 TemplateInsightChip(
-                    label = "Blank ${insights.blankEntryCount} · ${blankShare}%"
+                    label = stringResource(R.string.statistics_blank_format, insights.blankEntryCount, blankShare)
                 )
             }
 
             if (insights.topTemplates.isNotEmpty()) {
                 TemplateInsightBlock(
-                    title = "Most Used Templates",
+                    title = stringResource(R.string.statistics_most_used_templates),
                     items = insights.topTemplates.map { "${it.name} ${it.count}" },
                     icon = Icons.AutoMirrored.Rounded.Notes
                 )
@@ -282,7 +285,7 @@ fun TemplateInsightsCard(
 
             if (insights.categoryMix.isNotEmpty()) {
                 TemplateInsightBlock(
-                    title = "Template Mix",
+                    title = stringResource(R.string.statistics_template_mix),
                     items = insights.categoryMix.map { "${it.category} ${it.count}" },
                     icon = Icons.Rounded.DateRange
                 )
@@ -290,7 +293,7 @@ fun TemplateInsightsCard(
 
             if (insights.followUpLeaders.isNotEmpty()) {
                 TemplateInsightBlock(
-                    title = "Follow-up Leaders",
+                    title = stringResource(R.string.statistics_follow_up_leaders),
                     items = insights.followUpLeaders.map { "${it.name} ${it.count}" },
                     icon = Icons.Rounded.CheckCircle
                 )
@@ -493,8 +496,8 @@ private fun KeywordDeltaCard(
                     color = accentColor
                 )
                 CompactComparisonChips(
-                    primary = "This month ${delta.currentMentions}",
-                    secondary = "Last month ${delta.previousMentions}"
+                    primary = stringResource(R.string.statistics_this_month_count_format, delta.currentMentions),
+                    secondary = stringResource(R.string.statistics_last_month_count_format, delta.previousMentions)
                 )
             }
         }
@@ -528,14 +531,14 @@ private fun ComparisonWindowDetailCard(
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Text(
-                    text = "Compare Details",
+                    text = stringResource(R.string.statistics_compare_details),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
             }
-            ComparisonWindowRow("Month", comparison.monthWindow)
+            ComparisonWindowRow(stringResource(R.string.statistics_label_month), comparison.monthWindow)
             HorizontalDivider()
-            ComparisonWindowRow("Year", comparison.yearWindow)
+            ComparisonWindowRow(stringResource(R.string.statistics_label_year), comparison.yearWindow)
         }
     }
 }
@@ -686,37 +689,37 @@ fun WritingInsightsCard(stats: AllTimeStatsData) {
             InsightRow(
                 icon = Icons.Rounded.EmojiEvents,
                 tint = MaterialTheme.colorScheme.primary,
-                label = "Longest Streak",
-                value = "${stats.longestStreakAllTime} days"
+                label = stringResource(R.string.statistics_longest_streak),
+                value = pluralStringResource(R.plurals.statistics_days_count, stats.longestStreakAllTime, stats.longestStreakAllTime)
             )
             HorizontalDivider()
             InsightRow(
                 icon = Icons.Rounded.DateRange,
                 tint = MaterialTheme.colorScheme.secondary,
-                label = "Most Active Day",
+                label = stringResource(R.string.statistics_most_active_day),
                 value = stats.mostActiveDay ?: "-"
             )
             HorizontalDivider()
             InsightRow(
                 icon = Icons.Rounded.CheckCircle,
                 tint = MaterialTheme.colorScheme.tertiary,
-                label = "Writing Consistency",
+                label = stringResource(R.string.statistics_writing_consistency),
                 value = "${String.format("%.0f", stats.writingConsistencyScore)}%"
             )
             HorizontalDivider()
             InsightRow(
                 icon = Icons.Rounded.DateRange,
                 tint = MaterialTheme.colorScheme.error,
-                label = "Days With Entries",
+                label = stringResource(R.string.statistics_days_with_entries),
                 value = stats.totalDaysWithEntries.toString()
             )
             HorizontalDivider()
             InsightRow(
                 icon = Icons.Rounded.CalendarMonth,
                 tint = MaterialTheme.colorScheme.tertiary,
-                label = "Best Month",
+                label = stringResource(R.string.statistics_best_month),
                 value = if (stats.bestMonthLabel != null) {
-                    "${stats.bestMonthLabel} · ${stats.bestMonthCount} entries"
+                    stringResource(R.string.statistics_best_month_format, stats.bestMonthLabel, stats.bestMonthCount)
                 } else {
                     "-"
                 }
@@ -725,8 +728,8 @@ fun WritingInsightsCard(stats: AllTimeStatsData) {
             InsightRow(
                 icon = Icons.Rounded.CalendarViewWeek,
                 tint = MaterialTheme.colorScheme.primary,
-                label = "Avg. Writing Days / Week",
-                value = String.format("%.1f days", stats.averageDaysPerWeek)
+                label = stringResource(R.string.statistics_avg_writing_days_week),
+                value = stringResource(R.string.statistics_days_decimal_format, stats.averageDaysPerWeek)
             )
         }
     }
@@ -751,15 +754,15 @@ fun WritingDistributionCard(stats: AllTimeStatsData) {
             fun pct(n: Int) = if (total == 0) 0f else n.toFloat() / total * 100f
 
             Text(
-                text = "Based on total words written per day",
+                text = stringResource(R.string.statistics_based_on_total_words),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
-            StatisticProgressRow("Light (< 50 words)", dist.light, pct(dist.light), MaterialTheme.colorScheme.primary)
-            StatisticProgressRow("Moderate (50-200 words)", dist.moderate, pct(dist.moderate), MaterialTheme.colorScheme.secondary)
-            StatisticProgressRow("Heavy (200-500 words)", dist.heavy, pct(dist.heavy), MaterialTheme.colorScheme.tertiary)
-            StatisticProgressRow("Intense (500+ words)", dist.intense, pct(dist.intense), MaterialTheme.colorScheme.error)
+            StatisticProgressRow(stringResource(R.string.statistics_light_words), dist.light, pct(dist.light), MaterialTheme.colorScheme.primary)
+            StatisticProgressRow(stringResource(R.string.statistics_moderate_words), dist.moderate, pct(dist.moderate), MaterialTheme.colorScheme.secondary)
+            StatisticProgressRow(stringResource(R.string.statistics_heavy_words), dist.heavy, pct(dist.heavy), MaterialTheme.colorScheme.tertiary)
+            StatisticProgressRow(stringResource(R.string.statistics_intense_words), dist.intense, pct(dist.intense), MaterialTheme.colorScheme.error)
         }
     }
 }
@@ -792,23 +795,23 @@ fun LanguagesCard(
         ) {
             Text(
                 text = if (distinctLangs == 0) {
-                    "Not enough text to detect languages"
+                    stringResource(R.string.statistics_not_enough_text_languages)
                 } else {
-                    "$distinctLangs ${if (distinctLangs == 1) "language" else "languages"} detected"
+                    pluralStringResource(R.plurals.statistics_languages_detected_count, distinctLangs, distinctLangs)
                 },
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             if (isSettling) {
                 Text(
-                    text = "Language detection is still settling.",
+                    text = stringResource(R.string.statistics_language_detection_settling),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary
                 )
             }
             if (!useMLKitDetection) {
                 Text(
-                    text = "Latin scripts are shown as English",
+                    text = stringResource(R.string.statistics_latin_scripts_as_english),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                 )
@@ -820,7 +823,7 @@ fun LanguagesCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Use more accurate detection",
+                    text = stringResource(R.string.statistics_use_more_accurate_detection),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -832,7 +835,7 @@ fun LanguagesCard(
 
             if (sorted.isEmpty()) {
                 Text(
-                    "Write more entries to see language stats.",
+                    stringResource(R.string.statistics_write_more_entries_languages),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -875,15 +878,15 @@ fun WritingTimeCard(dist: TimeDistribution) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Based on entry time",
+                text = stringResource(R.string.statistics_based_on_entry_time),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
-            StatisticProgressRow("Morning (5am-noon)", dist.morning, pct(dist.morning), MaterialTheme.colorScheme.primary)
-            StatisticProgressRow("Afternoon (noon-5pm)", dist.afternoon, pct(dist.afternoon), MaterialTheme.colorScheme.secondary)
-            StatisticProgressRow("Evening (5pm-9pm)", dist.evening, pct(dist.evening), MaterialTheme.colorScheme.tertiary)
-            StatisticProgressRow("Night (9pm-5am)", dist.night, pct(dist.night), MaterialTheme.colorScheme.error)
+            StatisticProgressRow(stringResource(R.string.statistics_morning_time), dist.morning, pct(dist.morning), MaterialTheme.colorScheme.primary)
+            StatisticProgressRow(stringResource(R.string.statistics_afternoon_time), dist.afternoon, pct(dist.afternoon), MaterialTheme.colorScheme.secondary)
+            StatisticProgressRow(stringResource(R.string.statistics_evening_time), dist.evening, pct(dist.evening), MaterialTheme.colorScheme.tertiary)
+            StatisticProgressRow(stringResource(R.string.statistics_night_time), dist.night, pct(dist.night), MaterialTheme.colorScheme.error)
         }
     }
 }
@@ -1018,7 +1021,7 @@ fun EntryHeatmap(
         ) {
             if (isSettling) {
                 Text(
-                    text = "Heatmap is still filling in.",
+                    text = stringResource(R.string.statistics_heatmap_filling),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(bottom = 10.dp)
@@ -1059,7 +1062,7 @@ fun EntryHeatmap(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Less",
+                    stringResource(R.string.statistics_heatmap_less),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -1069,7 +1072,7 @@ fun EntryHeatmap(
                 HeatmapLegendSwatch(MaterialTheme.colorScheme.primary.copy(alpha = 0.9f))
                 HeatmapLegendSwatch(MaterialTheme.colorScheme.error)
                 Text(
-                    "More",
+                    stringResource(R.string.statistics_heatmap_more),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
