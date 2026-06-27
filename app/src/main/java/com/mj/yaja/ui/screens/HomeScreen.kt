@@ -123,6 +123,13 @@ fun HomeScreen(
                 viewModel.loadVersionHistorySnapshots(uiState.selectedDate)
         }
 
+        LaunchedEffect(Unit) {
+                viewModel.refreshSelectedDateEntries(
+                        showLoading = false,
+                        reason = "home_screen_visible"
+                )
+        }
+
         Box(modifier = Modifier.fillMaxSize()) {
                 HomeScreenContent(
                         selectedDate = uiState.selectedDate,
@@ -153,11 +160,24 @@ fun HomeScreen(
                         onOpenDrawer = onOpenDrawer,
                         onNavigateToAddEntry = onNavigateToAddEntry,
                         onPreviousDate = {
-                                viewModel.selectDate(uiState.selectedDate.minusDays(1))
+                                viewModel.selectDate(
+                                        uiState.selectedDate.minusDays(1),
+                                        source = "home_previous_date"
+                                )
                         },
-                        onNextDate = { viewModel.selectDate(uiState.selectedDate.plusDays(1)) },
-                        onSelectDate = { viewModel.selectDate(it) },
-                        onJumpToToday = { viewModel.selectDate(LocalDate.now()) },
+                        onNextDate = {
+                                viewModel.selectDate(
+                                        uiState.selectedDate.plusDays(1),
+                                        source = "home_next_date"
+                                )
+                        },
+                        onSelectDate = { viewModel.selectDate(it, source = "home_date_select") },
+                        onJumpToToday = {
+                                viewModel.selectDate(
+                                        LocalDate.now(),
+                                        source = "home_jump_to_today"
+                                )
+                        },
                         onStartEditing = { entry, index -> viewModel.startEditing(entry, index) },
                         onClearEditing = { viewModel.clearEditing() },
                         searchQuery = uiState.searchQuery,
@@ -174,7 +194,7 @@ fun HomeScreen(
                         onRefreshCache = { viewModel.refreshCache() },
                         onResultClicked = { date ->
                                 viewModel.clearSearch()
-                                viewModel.selectDate(date)
+                                viewModel.selectDate(date, source = "home_revisit_jump")
                         },
                         onDismissAnomalyDialog = { viewModel.dismissCacheAnomalyDialog() },
                         onAcceptAnomalyRefresh = { viewModel.acceptCacheAnomalyRefresh() },
@@ -186,7 +206,9 @@ fun HomeScreen(
                         starredLabels = starredLabels,
                         dueRevisits = dueRevisits,
                         entryStyle = entryStyle,
-                        onOpenDueRevisit = { sourceDate -> viewModel.selectDate(sourceDate) },
+                        onOpenDueRevisit = { sourceDate ->
+                                viewModel.selectDate(sourceDate, source = "home_due_revisit")
+                        },
                         onOpenVersionSnapshots = onNavigateToVersionSnapshots,
                         showVersionSnapshotsButton = versionSnapshots.isNotEmpty(),
                         versionSnapshotsCount = versionSnapshots.size,
@@ -209,7 +231,9 @@ fun HomeScreen(
                                         viewModel.unStarDate(uiState.selectedDate)
                                 }
                         },
-                        onDateLinkClick = { date -> viewModel.selectDate(date) },
+                        onDateLinkClick = { date ->
+                                viewModel.selectDate(date, source = "home_date_link")
+                        },
                         keywords = if (keywordHighlightingEnabled) keywords else emptyList(),
                         monthFirst = monthFirst,
                         customDateKeywords = customDateKeywords,
@@ -322,9 +346,9 @@ fun HomeScreenContent(
         isDrawerOpen: Boolean = false,
         fabBottomPadding: Dp = 0.dp
 ) {
-        val dayFormatter = DateTimeFormatter.ofPattern("dd")
-        val monthYearFormatter = DateTimeFormatter.ofPattern("MMMM, yyyy")
-        val weekdayFormatter = DateTimeFormatter.ofPattern("EEEE")
+        val dayFormatter = remember { DateTimeFormatter.ofPattern("dd") }
+        val monthYearFormatter = remember { DateTimeFormatter.ofPattern("MMMM, yyyy") }
+        val weekdayFormatter = remember { DateTimeFormatter.ofPattern("EEEE") }
         val cleanedEntries = remember(entries) {
                 entries.map(MarkdownUtils::stripMetadata)
         }
@@ -435,6 +459,7 @@ fun HomeScreenContent(
                                 modifier =
                                         Modifier.fillMaxSize().then(
                                                 if (swipeToNavigateDatesEnabled) {
+                                                        val isRtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
                                                         Modifier.pointerInput(
                                                                 selectedDate,
                                                                 swipeToNavigateDatesEnabled
@@ -448,9 +473,9 @@ fun HomeScreenContent(
                                                                         },
                                                                         onDragEnd = {
                                                                                 if (totalDrag < -50f) {
-                                                                                        onNextDate()
+                                                                                        if (isRtl) onPreviousDate() else onNextDate()
                                                                                 } else if (totalDrag > 50f) {
-                                                                                        onPreviousDate()
+                                                                                        if (isRtl) onNextDate() else onPreviousDate()
                                                                                 }
                                                                                 totalDrag = 0f
                                                                         },

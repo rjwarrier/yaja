@@ -371,6 +371,7 @@ class JournalViewModel(
     private var lookbackJob: kotlinx.coroutines.Job? = null
     private var highlightsJob: kotlinx.coroutines.Job? = null
     private var entriesJob: kotlinx.coroutines.Job? = null
+    private var loadingDate: LocalDate? = null
     private var calendarDatesJob: kotlinx.coroutines.Job? = null
     private var searchJob: kotlinx.coroutines.Job? = null
     private var deferredStartupJob: kotlinx.coroutines.Job? = null
@@ -516,7 +517,7 @@ class JournalViewModel(
             val bootstrap = bootstrapSnapshot ?: return@launch
             applyStartupBootstrapSnapshot(
                 bootstrap = bootstrap,
-                today = today,
+                startupDate = today,
                 uiState = _uiState,
                 currentDayLabel = _currentDayLabel,
                 persistHomeScreenSnapshot = { selectedDate, entries, dayLabel ->
@@ -536,7 +537,7 @@ class JournalViewModel(
                 refreshSelectedDateOnStartup = { startupDate ->
                     refreshSelectedDateOnStartup(
                         date = startupDate,
-                        loadEntries = ::loadEntries
+                        loadEntries = { d, r -> loadEntries(d, reason = r) }
                     )
                 },
                 publishCachedTodos = { ensureTodosLoaded() },
@@ -809,7 +810,7 @@ class JournalViewModel(
                 refreshSelectedDateOnResume(
                     date = date,
                     shouldForceDateRefresh = shouldForceDateRefresh,
-                    loadEntries = ::loadEntries,
+                    loadEntries = { d, show, r -> loadEntries(d, showLoading = show, reason = r) },
                     refreshCalendarDates = ::refreshCalendarDates,
                     markForcedDateRefresh = markForcedDateRefresh,
                     refreshStarredLabels = {
@@ -846,11 +847,12 @@ class JournalViewModel(
           }
       }
 
-    fun selectDate(date: LocalDate) {
+    fun selectDate(date: LocalDate, source: String = "date_select") {
         navigateToSelectedDate(
             date = date,
             uiState = _uiState,
-            loadEntries = ::loadEntries
+            loadEntries = { d, r -> loadEntries(d, reason = r) },
+            reason = source
         )
     }
 
@@ -871,8 +873,14 @@ class JournalViewModel(
         }
     }
 
-    private fun loadEntries(date: LocalDate, showLoading: Boolean = true) {
+    private fun loadEntries(date: LocalDate, showLoading: Boolean = true, reason: String = "unknown") {
+        val isForcedRefresh = reason == "selected_date_refresh" || reason == "pull_to_refresh"
+        if (!isForcedRefresh && entriesJob?.isActive == true && loadingDate == date) {
+            return
+        }
+
         entriesJob?.cancel()
+        loadingDate = date
         val requestId = ++latestEntriesRequestId
 
         // Memory-cache only on the caller (main) thread — a cache miss must not trigger a
@@ -910,7 +918,17 @@ class JournalViewModel(
                     }
                 )
             },
-            logPerf = ::logPerf
+            logPerf = ::logPerf,
+            onLoadApplied = { _, _ ->
+                if (requestId == latestEntriesRequestId) {
+                    loadingDate = null
+                }
+            },
+            onStaleResultDiscarded = { _, _ ->
+                if (requestId == latestEntriesRequestId) {
+                    loadingDate = null
+                }
+            }
         )
     }
 
@@ -1266,7 +1284,7 @@ class JournalViewModel(
         val lookbackMap = buildLookbackSnapshot(
             date = date,
             availableDates = availableDates,
-            entriesForDateProvider = fileManager::getEntriesForDateFromDisk
+            entriesForDateProvider = fileManager::getEntriesForDate
         )
         synchronized(lookbackSnapshotCache) {
             lookbackSnapshotCache[date] = lookbackMap
@@ -1421,7 +1439,7 @@ class JournalViewModel(
                     processRestoreBundle = { restoreBundle, publishProgress ->
                         processRestoreBundle(
                             bundle = restoreBundle,
-                            getEntriesForDate = fileManager::getEntriesForDateFromDisk,
+                            getEntriesForDate = fileManager::getEntriesForDate,
                             setEntriesForDate = fileManager::setEntriesForDate,
                             getDayLabel = fileManager::getDayLabel,
                             setDayLabel = fileManager::setDayLabel,
@@ -2207,7 +2225,7 @@ class JournalViewModel(
                 val entrySnapshot = linkedMapOf<LocalDate, List<String>>()
                 val metricsSnapshot = linkedMapOf<LocalDate, DailyJournalMetrics>()
                 allDates.forEachIndexed { index, date ->
-                    val entries = fileManager.getEntriesForDateFromDisk(date)
+                    val entries = fileManager.getEntriesForDate(date)
                     if (entries.isNotEmpty()) {
                         entrySnapshot[date] = entries
                         metricsSnapshot[date] = DailyJournalMetrics(
@@ -2471,7 +2489,7 @@ class JournalViewModel(
                 if (_statisticsSettling.value || !isDateInsideLoadedStatisticsRange(date)) return@withLock
                 val useMLKit = settingsRepository.useMLKitDetection.value
                 val entries = withContext(Dispatchers.IO) {
-                    fileManager.getEntriesForDateFromDisk(date)
+                    fileManager.getEntriesForDate(date)
                 }
                 val metrics =
                     if (entries.isEmpty()) {
@@ -2840,6 +2858,84 @@ class JournalViewModel(
             rebuildKeywords = ::rebuildKeywordIndex,
             logPerf = ::logPerf
         )
+    }
+
+    // --- Font scale settings delegation ---
+    val dataFontScalePreference = settingsRepository.dataFontScalePreference
+    val followUiFontScale = settingsRepository.followUiFontScale
+
+    fun setDataFontScalePreference(preference: FontScalePreference) =
+        settingsRepository.setDataFontScalePreference(preference)
+
+    fun setFollowUiFontScale(follow: Boolean) =
+        settingsRepository.setFollowUiFontScale(follow)
+
+    // --- Compliance Master feature integration ---
+    private val complianceRepository = com.mj.yaja.data.ComplianceMasterRepository.getInstance(fileManager.getContext())
+    val complianceMasters: StateFlow<List<com.mj.yaja.data.ComplianceMasterItem>> = complianceRepository.items
+
+    fun getComplianceUpcomingDates(item: com.mj.yaja.data.ComplianceMasterItem, limit: Int): List<LocalDate> =
+        complianceRepository.previewUpcomingDates(item, limit)
+
+    fun getComplianceCardSchedule(item: com.mj.yaja.data.ComplianceMasterItem): com.mj.yaja.data.CardSchedule =
+        complianceRepository.cardSchedule(item)
+
+    fun toggleComplianceMasterActive(id: String, active: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            complianceRepository.setActive(id, active, fileManager)
+        }
+    }
+
+    fun deleteComplianceMaster(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            complianceRepository.delete(id, fileManager)
+        }
+    }
+
+    fun upsertComplianceMaster(
+        id: String?,
+        title: String,
+        description: String,
+        isActive: Boolean,
+        itemType: com.mj.yaja.data.ComplianceItemType,
+        scheduleMode: com.mj.yaja.data.ComplianceScheduleMode,
+        frequency: com.mj.yaja.data.ComplianceFrequency,
+        dueDayOfMonth: Int?,
+        dueDayOfWeek: Int?,
+        leadDays: Int,
+        endMode: com.mj.yaja.data.ComplianceEndMode,
+        endDate: LocalDate?,
+        endCount: Int?,
+        anchorDate: LocalDate,
+        startMonth: YearMonth,
+        startTime: String?
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            complianceRepository.upsert(
+                id = id,
+                title = title,
+                description = description,
+                isActive = isActive,
+                itemType = itemType,
+                scheduleMode = scheduleMode,
+                frequency = frequency,
+                dueDayOfMonth = dueDayOfMonth,
+                dueDayOfWeek = dueDayOfWeek,
+                leadDays = leadDays,
+                endMode = endMode,
+                endDate = endDate,
+                endCount = endCount,
+                anchorDate = anchorDate,
+                startMonth = startMonth,
+                startTime = startTime,
+                fileManager = fileManager
+            )
+        }
+    }
+
+    // --- Home Screen visibility date entries refresh ---
+    fun refreshSelectedDateEntries(showLoading: Boolean = false, reason: String = "unknown") {
+        loadEntries(_uiState.value.selectedDate, showLoading = showLoading, reason = reason)
     }
 
     override fun onCleared() {

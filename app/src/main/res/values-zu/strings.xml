@@ -1,0 +1,1347 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Ijenali</string>
+    <string name="nav_calendar">Ikhalenda</string>
+    <string name="nav_lookback">I-boot camp</string>
+    <string name="nav_settings">Izilungiselelo</string>
+    <string name="nav_shortcodes">Amakhodi amafushane</string>
+    <string name="nav_help">Usizo &amp; Mayelana</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Londoloza</string>
+    <string name="action_cancel">Khansela</string>
+    <string name="action_delete">Susa</string>
+    <string name="action_edit">Hlela</string>
+    <string name="action_back">Emuva</string>
+    <string name="action_undo">Hlehlisa</string>
+    <string name="action_yes">Yebo</string>
+    <string name="action_no">Cha</string>
+    <string name="action_remove">Susa</string>
+    <string name="action_done">Kwenziwe</string>
+    <string name="action_set">Setha</string>
+    <string name="action_select">Khetha</string>
+    <string name="action_ok">KULUNGILE</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Ukwakha kabusha Inqolobane</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Ukuthwebula Ngokushesha</string>
+    <string name="quick_capture_hint">Kwenzenjani?</string>
+    <string name="quick_capture_helper_shortcodes">Ama-Shortcodes anwebeka lapha ngokuzenzakalelayo, futhi imigqa ye-todo iqhubeka kokuthi Enter.</string>
+    <string name="quick_capture_save_delayed">Ukulondoloza kubambezelekile. Sicela uvule kabusha i-Yaja ukuze uqinisekise.</string>
+    <string name="cd_saved">Kulondoloziwe</string>
+    <string name="quick_todo_dialog_title">Engeza Ngokushesha</string>
+    <string name="quick_todo_save_delayed">Ukulondoloza okokwenziwa kubambezelekile. Sicela uvule kabusha i-Yaja ukuze uqinisekise.</string>
+    <string name="quick_todo_placeholder">Engeza okokwenziwa</string>
+    <string name="quick_event_placeholder">Engeza umcimbi</string>
+    <string name="quick_todo_task_date">Usuku Lomsebenzi</string>
+    <string name="quick_todo_event_date">Usuku Lomcimbi</string>
+    <string name="quick_todo_pick_date_cd_format">Khetha %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Ilondoloza njengokufakiwe kokwenziwa kosuku olukhethiwe.</string>
+    <string name="quick_event_selected_day_hint">Ilondoloza njengokufakiwe komcimbi wosuku olukhethiwe.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Ngaphambilini</string>
+    <string name="cd_next">Olandelayo</string>
+    <string name="cd_surprise_me">Ngimangele</string>
+    <string name="calendar_cd_go_to_current_month">Iya enyangeni yamanje</string>
+    <string name="calendar_quick_action_timeline_title">Umugqa wesikhathi</string>
+    <string name="calendar_quick_action_timeline_subtitle">Phequlula ngokulandelana kwezikhathi</string>
+    <string name="calendar_quick_action_jump_title">Gxumela kokuthi Usuku</string>
+    <string name="calendar_quick_action_jump_subtitle">Vula usuku oluthile</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">Idethi engavumelekile. Sebenzisa ifomethi ye-DD-MM-YY.</string>
+    <string name="calendar_action_go">Hamba</string>
+    <string name="calendar_enable_future_dates_title">Nika amandla amadethi azayo</string>
+    <string name="calendar_enable_future_dates_message">Ukufakwa kwedethi yesikhathi esizayo kukhutshaziwe. Ingabe ufuna ukuyinika amandla?</string>
+    <string name="calendar_action_enable">Nika amandla</string>
+    <string name="calendar_future_entry_enabled">Ukufakwa kwedethi yesikhathi esizayo kunikwe amandla</string>
+    <string name="calendar_weekday_sun_short">Ilanga</string>
+    <string name="calendar_weekday_mon_short">Msombuluko</string>
+    <string name="calendar_weekday_tue_short">ULwesibili</string>
+    <string name="calendar_weekday_wed_short">NgoLwesithathu</string>
+    <string name="calendar_weekday_thu_short">ULwesine</string>
+    <string name="calendar_weekday_fri_short">NgoLwesihlanu</string>
+    <string name="calendar_weekday_sat_short">Sat</string>
+    <string name="calendar_percent_format">%1$dFMT_1__</string>
+    <string name="calendar_entries_this_month">OKUNGENELE KULE NYANGA</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d usuku</item>
+        <item quantity="other">%1$d / %2$d izinsuku</item>
+    </plurals>
+    <string name="calendar_days_of_memories">izinsuku zezinkumbulo</string>
+    <string name="calendar_consistency_last_12_months">IZINYANGA EZIYI-12 ezidlule</string>
+    <string name="calendar_consistency_title_format">CONSISTENCY - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">iqhudelana ne-\'%1$s</string>
+    <string name="calendar_consistency_first_period">isikhathi sokuqala</string>
+    <string name="calendar_graph_frequency_month">Inyanga</string>
+    <string name="calendar_graph_frequency_year">Unyaka</string>
+    <string name="calendar_yearly_consistency_title">Ukuvumelana (Ngonyaka)</string>
+    <string name="calendar_keywords_title">Ovela kakhulu</string>
+    <string name="calendar_keywords_syncing">Izibalo zabantu Nezindawo zisavunyelaniswa nenkomba yegama elingukhiye.</string>
+    <string name="calendar_keywords_empty">Engeza okungenani abantu abangu-3 noma izindawo ezingu-3 ukuze ubone okukhulunywe ngakho.</string>
+    <string name="calendar_keywords_people">Abantu</string>
+    <string name="calendar_keywords_places">Izindawo</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Izilungiselelo</string>
+    <string name="settings_appearance">Ukubukeka</string>
+    <string name="settings_appearance_subtitle">Itimu, imibala, amafonti nezitayela zomuntu siqu</string>
+    <string name="settings_theme">Itimu</string>
+    <string name="settings_font">Ifonti</string>
+    <string name="settings_storage">Isitoreji</string>
+    <string name="settings_security">Ezokuphepha</string>
+    <string name="settings_backup">Yenza ikhophi yasenqolobaneni</string>
+    <string name="settings_change_storage_title">Shintsha Indawo Yesitoreji</string>
+    <string name="settings_backup_never">Ungalokothi</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Sesha izilungiselelo</string>
+    <string name="settings_search_clear">Sula ukusesha</string>
+    <string name="settings_search_recent">Usesho lwakamuva</string>
+    <string name="settings_search_no_results">Azikho izilungiselelo ezifanayo</string>
+    <string name="settings_search_close">Vala</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Umuzwa wejenali</string>
+    <string name="settings_section_navigation_gestures">Ukuzulazula nokuthinta</string>
+    <string name="settings_section_review_insights">Ukubuyekeza kanye nemininingwane</string>
+
+    <!-- Language -->
+    <string name="settings_language">Ulimi</string>
+    <string name="settings_language_title">Ulimi Lokusebenza</string>
+    <string name="settings_language_subtitle">Khetha ulimi olusetshenziswa kulo lonke uhlelo lokusebenza.</string>
+    <string name="settings_language_system_default">Okuzenzakalelayo kwesistimu</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Isitayela Sokungena</string>
+    <string name="settings_journal_entry_style_subtitle">Khetha phakathi kwamakhadi aphakeme kanye nokubukeka kwejenali eyisicaba.</string>
+    <string name="settings_journal_entry_style_cards">Amakhadi</string>
+    <string name="settings_journal_entry_style_flat">Isicaba</string>
+    <string name="settings_journal_render_checkboxes_title">Nikeza Amabhokisi Okuhlola Njengombhalo</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Bonisa okokwenziwa njengo-[ ] kanye no-[x] kulo lonke uhlelo lokusebenza esikhundleni samabhokisi okuhlola acacile.</string>
+    <string name="settings_journal_day_header_counts_title">Bonisa Izibalo Zesihloko Zosuku</string>
+    <string name="settings_journal_day_header_counts_subtitle">Bonisa okufakiwe, amagama, nezibalo zezinhlamvu kunhlokweni yosuku lwejenali.</string>
+    <string name="settings_journal_show_timestamps_title">Bonisa izitembu zesikhathi</string>
+    <string name="settings_journal_show_timestamps_subtitle">Bonisa isikhathi sokufaka emugqeni wesikhathi.</string>
+    <string name="settings_journal_allow_future_title">Vumela Okufakiwe Okuzayo</string>
+    <string name="settings_journal_allow_future_subtitle">Nika amandla ukungeza okufakiwe kumadethi azayo.</string>
+    <string name="settings_journal_truncate_title">Nciphisa Okufakiwe Okude</string>
+    <string name="settings_journal_truncate_subtitle">Fushanisa okufakiwe okude esikrinini sasekhaya.</string>
+    <string name="settings_journal_char_limit_title">Umkhawulo Wezinhlamvu</string>
+    <string name="settings_journal_char_limit_subtitle">Setha ukuthi zingaki izinhlamvu ezizoboniswa ngaphambi kokunqamula.</string>
+    <string name="settings_journal_char_limit_min">50 izinhlamvu</string>
+    <string name="settings_journal_char_limit_max">200 izinhlamvu</string>
+    <string name="settings_journal_char_count">%1$d izinhlamvu</string>
+    <string name="settings_journal_first_day_title">Usuku Lokuqala Lweviki</string>
+    <string name="settings_journal_first_day_subtitle">Qala ikhalenda</string>
+    <string name="settings_journal_day_sun">Ilanga</string>
+    <string name="settings_journal_day_mon">Msombuluko</string>
+    <string name="settings_journal_date_recognition">Ukuqashelwa Usuku</string>
+    <string name="settings_journal_date_order_title">I-oda yedethi</string>
+    <string name="settings_journal_date_order_subtitle">Ungawafunda kanjani amadethi ezinombolo</string>
+    <string name="settings_journal_date_order_auto">Okuzenzakalelayo</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Amagama angukhiye Osuku</string>
+    <string name="settings_journal_date_keywords_subtitle">Amagama kwezinye izilimi asho usuku (isibonelo igama lendawo layizolo).</string>
+    <string name="settings_journal_view_keywords">Buka (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Engeza igama elingukhiye</string>
+    <string name="settings_journal_motion">Ukunyakaza</string>
+    <string name="settings_journal_animations_title">Izithombe</string>
+    <string name="settings_journal_animations_subtitle">Lawula ukunyakaza kulo lonke uhlelo lokusebenza. Ukuncishiswa kugcina izinto zimanzi ngokunyakaza okuncane.</string>
+    <string name="settings_journal_animations_full">Okugcwele</string>
+    <string name="settings_journal_animations_reduced">Yehlisiwe</string>
+    <string name="settings_journal_animations_off">Valiwe</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Ukubuyekeza kwangemuva kokulondoloza</string>
+    <string name="settings_review_post_write_title">Ukubuyekezwa kwangemuva kokubhala</string>
+    <string name="settings_review_post_write_subtitle">Bonisa ishidi lokubuyekeza ngemva kokuthepha londoloza ukuze ukhiphe okokwenziwa, hlola okukhulunywe ngakho, usuku lwenkanyezi, noma usethe ilebula.</string>
+    <string name="settings_review_people_places">Abantu Nezindawo</string>
+    <string name="settings_review_highlighting_title">Ukugqamisa</string>
+    <string name="settings_review_highlighting_subtitle">Gqamisa abantu abalandelelwe kanye nezindawo emakhadini Ekhaya kanye nemodi yokubuka yokungena.</string>
+    <string name="settings_review_match_sensitivity_title">Ukuzwela Kokufanisa</string>
+    <string name="settings_review_match_sensitivity_percent">%1$dFMT_1__</string>
+    <string name="settings_review_match_sensitivity_subtitle">Igama kufanele lifane kangakanani ukuze libonwe Abantu Nezindawo (okuphakeme = okuqinile).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Engeza Ikhodi Efushane</string>
+    <string name="shortcodes_edit_title">Hlela Ikhodi Efushane</string>
+    <string name="shortcodes_code_label">Ikhodi emfushane (isb. @yday)</string>
+    <string name="shortcodes_expansion_label">Umbhalo Wokunweba</string>
+    <string name="shortcodes_export_error">Yehlulekile ukuthumela amakhodi afushane</string>
+    <string name="shortcodes_import_error">Yehlulekile ukungenisa amakhodi amafushane</string>
+    <string name="todos_expand_section">Nweba %1$s</string>
+    <string name="todos_collapse_section">Goqa %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Ukubhala i-Heatmap</string>
+    <string name="heatmap_widget_description">Imephu yokushisa yakamuva yomsebenzi wokubhala wejenali yakho.</string>
+    <string name="quick_capture_widget_name">Ukuthwebula Ngokushesha</string>
+    <string name="quick_capture_widget_description">Inkinobho yokuthepha kanye ukuze ungeze ukufakwa kwejenali ngokushesha.</string>
+    <string name="quick_todo_widget_name">I-Quick Todo</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">I-Yaja Journal Imicimbi</string>
+    <string name="tasker_screen_allow_add_entry_title">Vumela Ukungeza Umsebenzisi</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Ivumela i-Tasker ukuthi isebenzise izenzo ze-Yaja Quick Capture njengokwengeza u-Entry kanye ne-Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Vumela Imicimbi Yomsebenzi</string>
+    <string name="tasker_screen_allow_events_subtitle">Ivumela u-Yaja ukuthi athumele Okufakiwe Kulondoloziwe, Okufakiwe Kulungisiwe, kanye Nemicimbi Esusiwe Ku-Tasker.</string>
+    <string name="tasker_screen_include_text_title">Faka umbhalo Wokungenela Emicimbini</string>
+    <string name="tasker_screen_include_text_subtitle">Vala ngokuzenzakalelayo kubumfihlo. Uma ivaliwe, i-Tasker ithola uhlobo lomcimbi, idethi, ilebula, nesikhathi, kodwa hhayi umbhalo wejenali.</string>
+    <string name="tasker_screen_section_what">Okwenza lokhu</string>
+    <string name="tasker_screen_body_what">I-Tasker ingangeza ngokushesha okufakiwe kwejenali noma okokwenziwa ku-Yaja, yengeze imigqa ibe ohlwini oluqoqwe olufana nezingcingo ezingabanjwanga, futhi u-Yaja angatshela uMsebenzi uma okufakiwe kulondoloziwe, kuhlelwa, noma kususwa.</string>
+    <string name="tasker_screen_section_how">Isetshenziswa kanjani</string>
+    <string name="tasker_screen_body_how">Vula i-toggle oyidinga lapha kuqala. Bese uvula i-Tasker bese wengeza isenzo se-Yaja Quick Capture noma umcimbi we-Yaja Journal Events.</string>
+    <string name="tasker_screen_section_notes">Amanothi</string>
+    <string name="tasker_screen_body_notes">Umbhalo wokufaka awabiwa ne-Tasker ngaphandle kokuthi unike amandla okuthi Faka Umbhalo Wokungena Emicimbini. Uma i-Tasker ingabonisi izinketho zakamuva noma okuguquguqukayo, vula kabusha isikrini sokumisa Se-Tasker ngemva kokubuyekeza i-Yaja.</string>
+    <string name="tasker_screen_section_example">Isibonelo</string>
+    <string name="tasker_screen_body_example">Isibonelo sesenzo: Isenzo Somsebenzi &gt; Ukuthwebula Ngokushesha kwe-Yaja &gt; Faka, Ngokufanisa / unhlokweni usethelwe kokuthi Izingcingo ezingaphendulwanga kanye Nolayini ozowuhlanganisa okusethwe kokuguquguqukayo Kwe-Tasker. Isibonelo somcimbi: Umcimbi womsebenzi &gt; Imicimbi yejenali ye-Yaja &gt; Ukufakwa Kulungisiwe, bese usebenzisa okuguquguqukayo okufana %%yaja_event_type, %%yaja_date, futhi ngokuzikhethela %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Sebenzisa amacala</string>
+    <string name="tasker_screen_use_case_1">1. Sebenzisa umcimbi wejenali ye-Yaja ku-Tasker ukuze uqalise isenzo sokuvumelanisa i-FolderSync, ukuze ifolda yakho ye-Yaja iphushelwe kunoma yimuphi umhlinzeki wamafu ngemva kokushintsha okufakiwe.</string>
+    <string name="tasker_screen_use_case_2">2. Sebenzisa i-Pushbullet ene-Tasker ukuze uthumele umbhalo ku-Yaja Quick Capture, ukuze umbhalo ophushiwe ulondolozwe njengokufakwa okusha kosuku lwamanje.</string>
+    <string name="tasker_screen_use_case_3">3. Sebenzisa iphrofayela Yomsebenzi Wokushaya ucingo ongaphendulwanga ukuze uthumele isenzo se-Appeed ku-Yaja, ukuze yonke imininingwane yezingcingo ezingabanjwanga ize ngaphansi kokufaka Izingcingo ezingaphendulwanga esikhundleni sokudala okufakiwe okuhlukene.</string>
+    <string name="quick_todo_widget_description">Inkinobho yokuthepha kanye ukuze uthwebule okokwenziwa njengokufakwayo okusha kwanamuhla.</string>
+    <string name="todo_list_widget_name">Okwenziwayo</string>
+    <string name="todo_list_widget_description">Uhlu olunyakazayo lwejenali todos. Thepha okokwenziwa ukuze ukumaka ukuthi kwenziwe noma kuhlehlisiwe.</string>
+    <string name="todo_cd_add_todo">Engeza ukwenza</string>
+    <string name="todos_cd_open_compliance_master">Vula imisebenzi evela njalo</string>
+    <string name="compliance_master_title">Imisebenzi / Imicimbi Ephindaphindiwe</string>
+    <string name="compliance_master_add">Engeza umsebenzi oqhubekayo</string>
+    <string name="compliance_master_edit">Hlela umsebenzi ovelayo</string>
+    <string name="compliance_master_intro_title">Imisebenzi evela njalo</string>
+    <string name="compliance_master_intro_body">Dala ama-todo aphindayo omsebenzi wamasonto onke, wanyanga zonke, wekota, wengxenye yonyaka, noma wonyaka. I-Yaja yembula umsebenzi ngamunye kuphela lapho umjikelezo wayo uba ngofanelekile.</string>
+    <string name="compliance_master_empty">Ayikho imisebenzi evelayo okwamanje. Engeza eyodwa ukuze udale ngokuzenzakalelayo okokwenziwa kushejuli yayo ekhethiwe.</string>
+    <string name="compliance_master_status_deactivated">Ivaliwe</string>
+    <string name="compliance_master_meta_format">Ifuneka ngosuku %1$d • %2$d izinsuku zokuhola</string>
+    <string name="compliance_master_field_title">Igama lomsebenzi</string>
+    <string name="compliance_master_field_title_hint">Isibonelo: Faka imbuyiselo yanyanga zonke</string>
+    <string name="compliance_master_field_description">Incazelo</string>
+    <string name="compliance_master_field_description_hint">Isibonelo: Hlola iphothali yasebhange futhi uqinisekise irisidi</string>
+    <string name="compliance_master_editor_task_section">Yini okufanele u-Yaja akukhumbuze ngayo?</string>
+    <string name="compliance_master_field_due_day">Usuku olumisiwe</string>
+    <string name="compliance_master_field_reveal_day">Dala kusengaphambili (izinsuku)</string>
+    <string name="compliance_master_field_schedule_mode">Ifuneka nini?</string>
+    <string name="compliance_master_schedule_mode_help">Khetha ukuthi i-Yaja inquma kanjani idethi yamanqamu.</string>
+    <string name="compliance_master_select_schedule_type">Khetha iphethini efanele</string>
+    <string name="compliance_master_field_frequency">Kangakanani?</string>
+    <string name="compliance_master_frequency_help">Khetha ukuthi lo msebenzi uphinda kangaki.</string>
+    <string name="compliance_master_select_frequency">Khetha imvamisa yokuphinda</string>
+    <string name="compliance_master_schedule_details">Imininingwane yeshejuli</string>
+    <string name="compliance_master_details_date_help">Faka idethi yomnqamulajuqu kanye nokuthi zingaki izinsuku kusengaphambili okufanele zibhalwe efayelini lansuku zonke.</string>
+    <string name="compliance_master_details_weekday_help">Khetha usuku lweviki lo msebenzi okufanele uwenze.</string>
+    <string name="compliance_master_details_boundary_help">Khetha ukuthi zingaki izinsuku kusengaphambili okufanele zibhalwe efayeleni lansuku zonke.</string>
+    <string name="compliance_master_field_due_weekday">Usuku lweviki olufunekayo</string>
+    <string name="compliance_master_select_weekday">Khetha usuku lweviki</string>
+    <string name="compliance_master_due_day_help">Faka idethi esuka ku-1 ukuya ku-31. Izinyanga ezimfushane zisebenzisa idethi yazo yokugcina evumelekile.</string>
+    <string name="compliance_master_reveal_day_help">Zingaki izinsuku ngaphambi kosuku lomnqamulajuqu lokubhala i-todo efayeleni lejenali yansuku zonke.</string>
+    <string name="compliance_master_first_day_selected">Ifuneka ngedethi yokuqala yenyanga ngayinye esebenzayo.</string>
+    <string name="compliance_master_last_day_selected">Ifuneka ngedethi yokugcina yenyanga ngayinye esebenzayo.</string>
+    <string name="compliance_mode_day_of_month">Idethi eqondile</string>
+    <string name="compliance_mode_day_of_month_desc">Ifuneka ngedethi enenombolo, njengomhlaka-15.</string>
+    <string name="compliance_mode_day_of_week">Usuku lwesonto</string>
+    <string name="compliance_mode_day_of_week_desc">Ifuneka ngosuku lweviki olukhethiwe, njengoMsombuluko.</string>
+    <string name="compliance_mode_first_day">Okokuqala kwenyanga</string>
+    <string name="compliance_mode_first_day_desc">Ifuneka ngedethi yokuqala yenyanga ngayinye esebenzayo.</string>
+    <string name="compliance_mode_last_day">Ekupheleni kwenyanga</string>
+    <string name="compliance_mode_last_day_desc">Ifuneka ngedethi yokugcina, okuhlanganisa nezinyanga ezimfushane.</string>
+    <string name="compliance_frequency_weekly">Maviki onke</string>
+    <string name="compliance_frequency_biweekly">Maviki onke</string>
+    <string name="compliance_frequency_monthly">Nyanga zonke</string>
+    <string name="compliance_frequency_quarterly">Ngekota</string>
+    <string name="compliance_frequency_half_yearly">Isigamu sonyaka</string>
+    <string name="compliance_frequency_annual">Ngonyaka</string>
+    <string name="compliance_master_summary_day_of_month">Usuku %1$d • %2$s • %3$d kusasele izinsuku</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Idethi yokuqala • %1$s • %2$d kusasele izinsuku</string>
+    <string name="compliance_master_summary_last_day">Idethi yokugcina • %1$s • %2$d kusasele izinsuku</string>
+    <string name="compliance_master_execution_title">Lokhu kuzosebenza kanjani</string>
+    <string name="compliance_master_execution_day_of_month">Okwenziwayo kwakhiwa %1$s ngosuku %2$d. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_execution_weekday">Okwenziwayo kwakhiwa %1$s ku-%2$s. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_execution_monthly_weekday">Okwenziwayo kwakhiwa nyanga zonke ngesenzeko %1$s esifanayo nedethi yokuqala. Kubhalwe efayelini lakho lansuku zonke kusasele izinsuku ezingu-%2$d.</string>
+    <string name="compliance_master_execution_month_boundary">Okwenziwayo kwakhiwa %1$s nge-%2$s yenyanga efanele. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_execution_day_of_month_event">Umcimbi udalwe %1$s ngosuku %2$d. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_execution_weekday_event">Umcimbi udaliwe %1$s ku-%2$s. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_execution_monthly_weekday_event">Umcimbi udalwa nyanga zonke ngesenzeko %1$s esifanayo nedethi yokuqala. Kubhalwe efayelini lakho lansuku zonke kusasele izinsuku ezingu-%2$d.</string>
+    <string name="compliance_master_execution_month_boundary_event">Umcimbi udalwe %1$s nge-%2$s yenyanga efanele. Ibhalelwe ifayela lakho lansuku zonke kusasele izinsuku ezingu-%3$d.</string>
+    <string name="compliance_master_boundary_first">usuku lokuqala</string>
+    <string name="compliance_master_boundary_last">idethi yokugcina</string>
+    <string name="compliance_master_recurrence_weekly">masonto onke</string>
+    <string name="compliance_master_recurrence_biweekly">njalo emavikini amabili</string>
+    <string name="compliance_master_recurrence_monthly">nyanga zonke</string>
+    <string name="compliance_master_recurrence_quarterly">njalo ezinyangeni ezintathu</string>
+    <string name="compliance_master_recurrence_half_yearly">njalo ezinyangeni eziyisithupha</string>
+    <string name="compliance_master_recurrence_annual">minyaka yonke</string>
+    <string name="todo_chip_compliance">Okuphindaphindayo</string>
+    <string name="compliance_master_upcoming">Okuzayo</string>
+    <string name="compliance_master_delete_confirm_title">Susa umsebenzi ovelayo?</string>
+    <string name="compliance_master_delete_confirm_body">I-\"%1$s\" izosuswa futhi akukho okunye okumele kwenziwe.</string>
+    <string name="compliance_master_next_date">Okulandelayo: %1$s</string>
+    <string name="compliance_master_end_section">Qeda isimo</string>
+    <string name="compliance_master_end_help">Khetha ukuthi lo msebenzi uyeka nini ukuphinda</string>
+    <string name="compliance_master_end_never">Ungalokothi</string>
+    <string name="compliance_master_end_on_date">Ngedethi</string>
+    <string name="compliance_master_end_after">Ngemva...</string>
+    <string name="compliance_master_end_never_desc">Iphinda unomphela ngaphandle kwedethi yokuphela.</string>
+    <string name="compliance_master_end_date_select">Khetha idethi yokuphela</string>
+    <string name="compliance_master_end_date_help">Ayikho imisebenzi edaliwe ngemva kwalolu suku.</string>
+    <string name="compliance_master_end_count_label">Inombolo yezenzeko</string>
+    <string name="compliance_master_end_count_help">Ukuma ngemva kwalokhu kwakhiwa imisebenzi eminingi.</string>
+    <string name="compliance_master_ends_on">Iphela %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d esele</string>
+    <string name="compliance_master_ended">Iphelile</string>
+    <string name="compliance_master_type_label">Dala njenge</string>
+    <string name="compliance_master_type_task">Umsebenzi</string>
+    <string name="compliance_master_type_event">Umcimbi</string>
+    <string name="compliance_master_add_event">Engeza umcimbi oqhubekayo</string>
+    <string name="compliance_master_edit_event">Hlela umcimbi oqhubekayo</string>
+    <string name="compliance_master_field_title_event">Igama lomcimbi</string>
+    <string name="compliance_master_field_title_event_hint">Isibonelo: Umhlangano wokuvumelanisa wamasonto onke</string>
+    <string name="compliance_master_frequency_help_event">Khetha ukuthi lo mcimbi uphinda kangaki.</string>
+    <string name="compliance_master_details_weekday_help_event">Khetha usuku lweviki lo mcimbi okufanele ulindeleke ngalo.</string>
+    <string name="compliance_master_delete_confirm_title_event">Susa umcimbi ophindayo?</string>
+    <string name="compliance_master_end_help_event">Khetha ukuthi lo mcimbi uyeka nini ukuphindaphinda</string>
+    <string name="compliance_master_end_count_help_event">Iyama ngemva kwalokhu kwakhiwa imicimbi eminingi.</string>
+    <string name="heatmap_widget_status_loading">Ilayisha imephu yokushisa...</string>
+    <string name="heatmap_widget_status_empty">Akukho okufakiwe okwamanje</string>
+    <string name="heatmap_widget_status_refresh">Vula i-Yaja ukuze uvuselele imephu yokushisa</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Inqolobane yakhiwe kabusha.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Ukungena Okusha</string>
+    <string name="shortcut_new_entry_long">Engeza okufakiwe kwijenali</string>
+    <string name="shortcut_add_todo_short">Engeza i-Todo</string>
+    <string name="shortcut_add_todo_long">Engeza okokwenziwa kwanamuhla</string>
+    <string name="shortcut_add_event_short">Engeza umcimbi</string>
+    <string name="shortcut_add_event_long">Engeza umcimbi</string>
+    <string name="shortcut_today_short">Namuhla</string>
+    <string name="shortcut_today_long">Vula ijenali yanamuhla</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Ukuzulazula</string>
+    <string name="settings_bottom_nav_style_label">Isitayela Sokuzula Esingezansi</string>
+    <string name="settings_navigation_mode_title">Imodi Yokuzulazula</string>
+    <string name="settings_navigation_mode_subtitle">Khetha phakathi kwebha ye-nav entantayo kanye nephaneli egcwele engezansi.</string>
+    <string name="settings_nav_mode_floating">Iyantanta</string>
+    <string name="settings_nav_mode_panel">Iphaneli</string>
+    <string name="settings_navigation_screens_label">Izikrini Zokuzula</string>
+    <string name="settings_nav_summary_floating">Ijenali kanye nekhalenda kuhlala kubha elintantayo. Thatha izikrini ezi-2 ngaphezulu. Okukhethiwe okwamanje: %1$d kwe-%2$d.</string>
+    <string name="settings_nav_summary_panel">Ijenali kanye Nekhalenda kuhlala kuphaneli engezansi. Thatha izikrini ezi-3 ngaphezulu. Okukhethiwe okwamanje: %1$d kwe-%2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Bonisa Ukubheka emuva kubha yokuzulazula esebenzayo noma iphaneli.</string>
+    <string name="settings_nav_people_places_subtitle">Bonisa Abantu Nezindawo kubha yokuzulazula esebenzayo noma iphaneli.</string>
+    <string name="settings_nav_todos_title">Okwenziwayo</string>
+    <string name="settings_nav_todos_subtitle">Bonisa i-Todos kubha yokuzulazula esebenzayo noma iphaneli.</string>
+    <string name="todos_quick_add_title">Engeza Ngokushesha</string>
+    <string name="todos_hero_subtitle">Landelela umsebenzi wejenali nezikhathi</string>
+    <string name="todos_hero_all_activity">Wonke umsebenzi</string>
+    <string name="todos_hero_open_focus">Vula ukugxila</string>
+    <string name="todos_hero_completed">Kuqediwe</string>
+    <string name="todos_stat_today_open">Namuhla kuvuliwe</string>
+    <string name="todos_stat_done_today">Kwenziwe namuhla</string>
+    <string name="todos_stat_events">Imicimbi</string>
+    <string name="todos_stat_still_open">Isavuliwe</string>
+    <string name="todos_stat_past_7d">Eyedlule 7d</string>
+    <string name="todos_stat_days">Izinsuku</string>
+    <string name="todos_empty_done">Akukho okokwenziwa okuqediwe okwamanje</string>
+    <string name="todos_empty_events">Akukho okufakiwe komcimbi okwamanje</string>
+    <string name="todos_section_open">VULA</string>
+    <string name="todos_section_later">KAMVA</string>
+    <string name="todos_section_upcoming">OKUZAYO</string>
+    <string name="todos_section_future_events">IZENZAKALO ZEZAYO</string>
+    <string name="todos_section_past_events">IZENZAKALO EZIDLULE</string>
+    <string name="todos_cd_open_day">Usuku lokuvula</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d vula umsebenzi</item>
+        <item quantity="other">%1$d vula imisebenzi</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d kwenziwe umsebenzi</item>
+        <item quantity="other">%1$d kwenziwe imisebenzi</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d umcimbi ozayo</item>
+        <item quantity="other">%1$d imicimbi ezayo</item>
+    </plurals>
+    <string name="todos_filter_all_format">Konke %1$d</string>
+    <string name="todos_filter_open_format">Vula %1$d</string>
+    <string name="todos_filter_done_format">Kwenziwe %1$d</string>
+    <string name="todos_filter_events_format">Imicimbi %1$d</string>
+    <string name="todos_cheer_all_clear">Konke kucacile. Kuhle.</string>
+    <string name="todos_cheer_done_and_dusted">Kwenziwe futhi kushuquliwe.</string>
+    <string name="todos_cheer_nothing_pending">Akukho okulindile.</string>
+    <string name="todos_cheer_caught_up">Ubambe phezulu.</string>
+    <string name="todos_cheer_clean_slate">Isilayidi esihlanzekile.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Osukwini %1$d</item>
+        <item quantity="other">Ezinsukwini ezingu-%1$d</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d usuku oludlule</item>
+        <item quantity="other">%1$d ezinsukwini ezedlule</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Evikini elingu-%1$d</item>
+        <item quantity="other">Emavikini angu-%1$d</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d isonto eledlule</item>
+        <item quantity="other">%1$d emasontweni edlule</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Enyangeni engu-1</string>
+    <string name="todos_relative_one_month_ago">Inyanga engu-1 edlule</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Enyangeni engu-%1$d</item>
+        <item quantity="other">Ezinyangeni ezingu-%1$d</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d inyanga edlule</item>
+        <item quantity="other">%1$d izinyanga ezedlule</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Izibalo</string>
+    <string name="settings_nav_statistics_subtitle_on">Bonisa Izibalo kubha yokuzulazula esebenzayo noma iphaneli.</string>
+    <string name="settings_nav_statistics_subtitle_off">Vula Izibalo kuqala ukuze uzibeke ekuzulazuleni.</string>
+    <string name="settings_show_labels_bottom_panel_title">Bonisa Amalebula Kuphaneli Engezansi</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Bonisa amalebula ombhalo ngaphansi kwezithonjana kuphaneli engezansi.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Ukushukuma komzimba</string>
+    <string name="settings_entry_delete_title">Okufakiwe Susa</string>
+    <string name="settings_entry_delete_subtitle">Cindezela isikhathi eside okufakiwe ukuze ukhethe. Thepha okufakiwe okwengeziwe ukuze ukhethe okuningi, bese usebenzisa inkinobho ethi Susa emaphakathi. Thepha isikhala esingenalutho ukuze usule okukhethiwe.</string>
+    <string name="settings_swipe_navigate_title">Swayipha ukuze Uzulazule Izinsuku</string>
+    <string name="settings_swipe_navigate_subtitle">Swayiphela kwesokudla ukuya kwesokunxele ukuze uye phambili idethi eyodwa, futhi kwesokunxele ukuya kwesokudla ukuze uye emuva.</string>
+    <string name="settings_drag_reorder_title">Nika amandla ukuhudula ukuze uhlele kabusha</string>
+    <string name="settings_drag_reorder_subtitle">Cindezela isikhathi eside okufakiwe ukuze ukuhlele kabusha</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Idatha Nokubuyisela</string>
+    <string name="settings_swipe_rebuild_index">Swayiphela phansi esikrinini sasekhaya ukuze wakhe kabusha inkomba</string>
+    <string name="settings_large_journal_safe_mode_title">Imodi Ephephile Yejenali Enkulu</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Uma kutholwa iphephabhuku elikhulu kakhulu, hlehlisa izibalo zokuqalisa ezingabalulekile ukuze uhlelo lokusebenza luvuleke ngokushesha nangokuphepha.</string>
+    <string name="settings_version_history_title">Umlando Wenguqulo</string>
+    <string name="settings_version_history_subtitle">Gcina amakhophi aphephile ngaphambi kokuhlelwa kokufakwayo, ukususa, amalebula, futhi uphinde uvakashele izinguquko.</string>
+    <string name="settings_storage_location_label">Indawo Yesitoreji</string>
+    <string name="settings_reset_to_default">Setha kabusha kokuthi Okuzenzakalelayo</string>
+    <string name="settings_choose_folder">Khetha Ifolda</string>
+    <string name="settings_backup_description">Dala i-zip eyodwa eyisipele ye-Yaja equkethe okufakwe kwijenali, amakhodi amafushane, amagama angukhiye wedethi, kanye nedatha yabantu Nezindawo. Ukubuyisela kungakuhlanganisa futhi ngokuphepha kamuva.</string>
+    <string name="settings_last_backup">Isipele Sokugcina: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Isikhumbuzi seminyaka yobudala</string>
+    <string name="settings_backup_reminder_disabled">Ikhutshaziwe</string>
+    <string name="settings_backup_reminder_desc">Gqamisa ukwenza isipele kubha eseceleni uma kundala kunezinsuku ezingu-%1$d.</string>
+    <string name="settings_backup_reminder_days_disabled">0 izinsuku (kukhutshaziwe)</string>
+    <string name="settings_backup_reminder_days">%1$d izinsuku</string>
+    <string name="settings_restore_button">Buyisela</string>
+    <string name="settings_backup_now_button">Yenza Isipele Manje</string>
+    <string name="settings_db_index_management_label">Database Index Management</string>
+    <string name="settings_db_index_management_desc">Vula amathuluzi okwakha kabusha agxilisiwe e-todos, Abantu Nezindawo, noma inkomba yokwakhiwa kabusha kwesizindalwazi esigcwele.</string>
+    <string name="settings_rebuild_tools_button">Yakha kabusha Amathuluzi</string>
+    <string name="settings_import_label">Ngenisa</string>
+    <string name="settings_import_info_cd">Ngenisa ulwazi</string>
+    <string name="settings_import_info_title">Ngenisa Ulwazi</string>
+    <string name="settings_import_day_one_title">Usuku Lokuqala Ngenisa</string>
+    <string name="settings_import_day_one_bullet1">- Thekelisa kusuka kuSuku Lokuqala ngaphandle kwezithombe</string>
+    <string name="settings_import_day_one_bullet2">- Idatha yombhalo kuphela ezongeniswa</string>
+    <string name="settings_import_day_one_bullet3">- Isitembu sesikhathi nedatha yendawo (uma ikhona) izogcinwa</string>
+    <string name="settings_import_perf_warning_title">Isexwayiso Sokusebenza</string>
+    <string name="settings_import_perf_warning_desc">Ukungenisa inombolo enkulu yokufakiwe (500+) kungase kuthathe imizuzu embalwa. Ungazulazula uye kude futhi ukungenisa kuzoqhubeka ngemuva.</string>
+    <string name="settings_got_it">Ngiyitholile</string>
+    <string name="settings_import_success">%1$d izinsuku ezintsha, %2$d kuhlanganisiwe, %3$d kweqiwe</string>
+    <string name="settings_import_source_day_one">Usuku Lokuqala</string>
+    <string name="settings_import_source_day_one_subtitle">.zip noma .json thekelisa</string>
+    <string name="settings_import_source_journalistic">Ubuntatheli</string>
+    <string name="settings_import_source_journalistic_subtitle">.json ukuthumela</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Funda indlela yokusebenzisa i-yaja</string>
+    <string name="help_footer_website">Iwebhusayithi</string>
+    <string name="help_footer_share">Yabelana</string>
+    <string name="help_footer_github">I-GitHub</string>
+    <string name="help_footer_discord">Ukungezwani</string>
+    <string name="help_footer_reddit">I-Reddit</string>
+    <string name="help_share_yaja">Yabelana nge-yaja</string>
+    <string name="help_share_yaja_text">i-yaja - olunye uhlelo lokusebenza lwejenali\n\nIjenali yendawo engenaziphazamisi egcina okufakiwe njengamafayela okumaka. Kuhlanganisa umugqa wesikhathi, ukubheka emuva, abantu nezindawo, izifanekiso, ukubuyekezwa, izibalo, namawijethi.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Igama lomsebenzisi le-Discord likopishiwe!</string>
+    <string name="help_footer_play_store">I-Google Play Isitolo</string>
+    <string name="help_cd_rj_logo">Ilogo ye-RJ</string>
+    <string name="help_screen_title">Usizo &amp; Mayelana</string>
+    <string name="help_welcome_title">Siyakwamukela ku-yaja</string>
+    <string name="help_welcome_body">I-Yaja iyijenali yendawo yokuqala yokumaka yokuthwebula izinsuku, abantu, izindawo, okulandelwayo, ukubuyekezwa, namaphethini ngaphandle kokukuphazamisa. Leli khasi linikeza umhlahlandlela osheshayo ezingxenyeni eziyinhloko zohlelo lokusebenza.</string>
+    <string name="help_start_here">Qala Lapha</string>
+    <string name="help_cd_collapse">Goqa</string>
+    <string name="help_cd_expand">Nweba</string>
+    <string name="help_group_everyday_title">Nsuku zonke</string>
+    <string name="help_group_everyday_desc">Ukwenza ijenali, ukugeleza kokubhala, nokuzulazula kwansuku zonke.</string>
+    <string name="help_group_reviews_title">Ukubuyekeza kanye nemininingwane</string>
+    <string name="help_group_reviews_desc">Ukubheka emuva, izitayela, abantu, izindawo, nokuhlaziya.</string>
+    <string name="help_group_advanced_title">Amathuluzi Athuthukile</string>
+    <string name="help_group_advanced_desc">Amawijethi, isitoreji, ubumfihlo, izipele, namathuluzi obuchwepheshe.</string>
+    <string name="help_onboard_todos_events_title">Okwenziwayo, Imicimbi &amp; Okuqhubekayo</string>
+    <string name="help_onboard_todos_events_body">Gcina izikhumbuzi zomuntu siqu, izinhlelo zomndeni, namashejuli aphindaphindayo akhiqiza ngokuzenzakalelayo imisebenzi ngezinsuku zawo zamanqamu.</string>
+    <string name="help_onboard_widgets_title">Amawijethi</string>
+    <string name="help_onboard_widgets_body">Engeza i-Heatmap, i-Quick Capture, i-Quick Todo, noma amawijethi ohlu lwe-Todo kusuka kusiqalisi.</string>
+    <string name="help_onboard_version_history_title">Umlando Wenguqulo</string>
+    <string name="help_onboard_version_history_body">Nika amandla Amafayela Omlando kokuthi Izilungiselelo &gt; Idatha ukuze ugcine izifinyezo eziphephile ngaphambi kwezinguquko eziyingozi.</string>
+    <string name="help_onboard_tasker_title">Umsebenzisi</string>
+    <string name="help_onboard_tasker_body">Sebenzisa i-Tasker ukuze wengeze ngokushesha okufakiwe, okokwenziwa, noma imicimbi lapho okuthile komuntu siqu kudinga ukushuthwa ngokushesha.</string>
+    <string name="help_section_writing_editor_title">Ukubhala &amp; Umhleli</string>
+    <string name="help_section_writing_editor_preview">Izifanekiso, izihloko zokumaka, okokwenziwa, imicimbi, nokufakwa okusalungiswa okuvumelana nezimo.</string>
+    <string name="help_section_writing_editor_content">+ Thepha inkinobho entantayo ethi \'+\' ukuze ubhalele usuku olukhethiwe.\n+ Sebenzisa izifanekiso ezifana neNothi Lomhlangano, Usuku Lokuvakasha, Irekhodi Lezempilo, I-Reflection, Ilogi Yomsebenzi, nokunye.\n+ Izifanekiso zingafakwa kokusalungiswa okungenalutho, kwengezwe ngezansi, kusetshenziswe esikhundleni sokusalungiswa, noma kufakwe kusikhombisi.\n+ Ama-chips omhleli.\imicimbi, ifake izinombolo ze-Entry, ifake izinombolo ngokushesha futhi ifake okokwenza uhlu. kanye nezihloko ezisekela u-Entry zisekela isitayela sokumaka njengesithi ### Isigaba.</string>
+    <string name="help_section_post_write_review_title">Ukubuyekeza Ngemva Kokubhala</string>
+    <string name="help_section_post_write_review_preview">Ukukhishwa kwe-Todo, ukutholwa kwegama elingukhiye, ukufaka inkanyezi, amalebula, nokusetha kabusha vakashela.</string>
+    <string name="help_section_post_write_review_content">+ Ngemva kokubhala, i-Yaja ingavula ishidi lokubuyekeza ngaphambi kokulondoloza.\n+ Ingakwazi ukukhipha izinto ze-todo, ibone Abantu Nezindawo, ifake inkanyezi usuku, isethe ilebula yosuku, futhi ihlele izinsuku zokuphinda uvakashele.\n+ Ungakhubaza Ukubuyekezwa Kokubhala kokuthi Izilungiselelo uma ukhetha ukulondoloza okuqondile.</string>
+    <string name="help_section_revisit_followup_title">Izinsuku Zokuvakashela Futhi Nezokulandelela</string>
+    <string name="help_section_revisit_followup_preview">Izinsuku zokulandelela ezixhunywe kwijenali ezinokukhethwa okusheshayo kanye nenketho yangokwezifiso.</string>
+    <string name="help_section_revisit_followup_content">+ Engeza amadethi okuvakasha kabusha ngakusasa, Iviki elizayo, Inyanga ezayo, noma idethi yangokwezifiso.\n+ Izinto okufanele uzivakashele zivela Ekhaya futhi zimakwe Kukhalenda Nomugqa Wesikhathi.\n+ Lokhu kusebenza kahle ezithembisweni, ezinqumweni, ekuhlolweni kwezempilo, nasezikhumbuzini ezihlobene nomongo wejenali.</string>
+    <string name="help_section_navigation_gestures_title">Ukuzulazula nokuthinta</string>
+    <string name="help_section_navigation_gestures_preview">Ukunyakaza kwedethi, ukususa okukhethiwe, swayipha okuncamelayo, nokwakha kabusha ukuziphatha kwenqolobane.</string>
+    <string name="help_section_navigation_gestures_content">+ Ikhaya lisekela ukuzulazula kwedethi ngemicibisholo kanye nokuzulazula kokuswayipha kokuzithandela lapho kunikwe amandla.\n+ Cindezela isikhathi eside okufakiwe ukuze ukukhethe. Thepha okufakiwe okwengeziwe ukuze uwakhethe nawo, bese usebenzisa iphilisi elithi Susa eduze kwenkinobho ethi Engeza.\n+ Ukuthepha okufakiwe okungaphandle okukhethiwe kusula ukukhetha. Okufakiwe okususiwe kungabuyiswa ndawonye kusukela ekubaleni wehla kokubuyisela.\n+ Ungakwazi ukwakha kabusha inqolobane lapho amafayela ejenali eshintsha ngaphandle kwe-Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Amakhodi amafushane &amp; Ukuthwebula Ngokushesha</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Ukuthwebula komuntu siqu okusheshayo kanye namazwibela ombhalo aguqukayo asebenziseka kabusha.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Dala amakhodi amafushane ukuze ufake umbhalo ophindaphindwayo ngokushesha.\n+ Izimeli ezinamandla njenge-{{today:dd-MMM}} kanye nokuthi {{now:HH:mm}} zisebenza ngaphakathi kwama-shortcode.\n+ I-Quick Capture isiza ukufaka okuthile ngokushesha ngaphandle kokuvula isihleli esigcwele.\n+ Ukwengeza okusheshayo kungalondoloza into yokwenza noma umcimbi wedethi ekhethiwe kusuka kusiwijethi, isikrini se-Todos, noma i-Tasker.</string>
+    <string name="help_section_todos_events_title">Okwenziwayo, Imicimbi &amp; Okuqhubekayo</string>
+    <string name="help_section_todos_events_preview">Izikhumbuzi zomuntu siqu, imicimbi ephawulekayo, namashejuli azenzakalelayo avelayo.</string>
+    <string name="help_section_todos_events_content">+ Okwenziwayo kubhalwa ngokuqondile ekufakweni kwejenali njengokuthi [ ] kanye nemigqa engu-[x].\n+ Imicimbi ingumbhalo wejenali ovamile omakwe Njengomcimbi, uwusizo ezinhlelweni zomndeni, ama-aphoyintimenti, uhambo, nanoma yini ofuna ukuyibona ngemva kwesikhathi.\n+ Imisebenzi Ephindaphindwayo Nemicimbi (Amashejuli) bhala ngokuzenzakalelayo izinto okumele zenziwe noma izihloko zomcimbi emakhasini akho ejenali yansuku zonke ngokweshejuli yazo yaminyaka yonke, ngokweshejuli yayo yaminyaka yonke (isb. ngokuthepha isithonjana Esiphindaphindayo esikrinini se-Todos.\n+ Nsuku zonke lapho uvula i-Yaja, ipayipi elingemuva ligijima ukuze lihlole ukuthi ingabe imiphi imisebenzi eshejuliwe ifuneka futhi iwafake kulokho okufakwayo kwalolo suku.\n+ Isikrini se-Todos sikusiza ukuthi ubuke okokwenziwa okuvuliwe, okokwenziwa okuqediwe, nemicimbi ngaphandle kokuguqula i-Yaja iyenze ideshibhodi yokukhiqiza.\n+ phezulu kokuthi Thepha idethi+ ukuze Ubhale Ijenali+ ukuze Thepha idethi. yakha kabusha inkomba ye-todo uma amafayela eshintshiwe ngaphandle kwe-Yaja.\n+ Bonisa Imisebenzi Eqediwe kuyakhunjulwa, ukuze ukubuka kwakho okuncamelayo kunamathele lapho uhamba futhi ubuya.\n+ Amawijethi e-Todo angabonisa imisebenzi esalindile, aqinisekise ngaphambi kokuguqula, afihle imisebenzi eqediwe, futhi ngokuzithandela azifihle lapho kungasali lutho.</string>
+    <string name="help_section_people_places_title">Abantu Nezindawo</string>
+    <string name="help_section_people_places_preview">Amagama angukhiye, iziteketiso, izitayela, kanye nokubukwa kokuxhumana okulinganiselwe.</string>
+    <string name="help_section_people_places_content">+ Landela ngomkhondo abantu nezindawo ezineziteketiso namalebula ahlobene.\n+ Sesha, hlunga, futhi uhlunge uhlu lwamagama angukhiye.\n+ Amakhasi emininingwane yamagama angukhiye abonisa okwakamuva, okukhulunywe ngakho ngokuhamba kwesikhathi, okukhulunywe ngakho, kanye Nokuxhumana okulinganiselwe.\n+ Ukuzwela Kokufana kungalungiswa kokuthi Izilungiselelo.</string>
+    <string name="help_section_timeline_lookback_title">Umugqa wesikhathi &amp; Ukubheka emuva</string>
+    <string name="help_section_timeline_lookback_preview">Ukuphequlula kosuku oludlule, amaphuzu avelele, Ngimangaze, nokubuyekeza izindawo zokungena.</string>
+    <string name="help_section_timeline_lookback_content">+ Umugqa wesikhathi ukuvumela ukuthi uphequlule izinsuku ezidlule ngezihlungi, ama-chips onyaka, nemodi yokuzikhethela yedethi yonke.\n+ Ukubheka kubonisa okufakiwe kusukela ngosuku olufanayo eminyakeni edlule kanye nezithombe zakho ezinhle kakhulu ezinenkanyezi.\n+ I-Surprise Me ivula okufakiwe okungahleliwe okudlule okuvela ku-Lookback.\n+ Ukubuyekeza Kwamasonto onke kanye Nokubuyekeza Kwanyanga Zonke bukhoma ngaphakathi kwe-Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Izibalo nezibuyekezo</string>
+    <string name="help_section_statistics_reviews_preview">Qhathanisa imodi, imininingwane yesifanekiso, izigaba ezibonakalayo ngokwezifiso, nezifinyezo.</string>
+    <string name="help_section_statistics_reviews_content">+ Izibalo zihlanganisa imodi yokuqhathanisa, i-deltas yegama elingukhiye, kanye Nemininingwane Yesifanekiso.\n+ Ungakhetha ukuthi yiziphi izigaba zezibalo ezihlala zibonakala ngaphakathi kwesikrini Sezibalo.\n+ Imodi Yokuqhathanisa itholakalela Sonke Isikhathi futhi ifingqa i-delta yenyanga nonyaka.\n+ Amakhasi wokubuyekeza afingqa izinsuku eziningi zokusebenza, abantu abaphezulu nezindawo, izikhathi eziyintandokazi, amaphethini olimi, amaphethini we-gap namalebula.</string>
+    <string name="help_section_widgets_home_title">Amawijethi Nobuso Basekhaya</string>
+    <string name="help_section_widgets_home_preview">Amawijethi esiqalisi, amagama angukhiye agqanyisiwe, nezibalo zasekhaya zezinga losuku.</string>
+    <string name="help_section_widgets_home_content">+ I-Heatmap, i-Quick Capture, i-Quick Add, kanye namawijethi Wohlu lwe-Todo ayatholakala kusiqalisi.\n+ Izikrini zokumisa iwijethi zikuvumela ukuthi ulungise amakhona, amaphedi, umumo, izihloko, ukubonakala komsebenzi oqediwe, nezinye izinketho zewijethi lapho zisekelwa khona.\n+ Iwijethi ye-heatmap isebenzisa ukuqina okwengeziwe ukuze kube nesilungiselelo esibushelelezi somlando wokubhala phakathi kokuthi Ukubuka Kwendawo Kwabantu+ kungagqamisa. kunikwe amandla.\n+ Unhlokweni wedethi Yasekhaya ungabonisa noma ufihle isibalo sokufakwayo, amagama, nesibalo sezinhlamvu.</string>
+    <string name="help_section_language_text_analysis_title">Ukuhlaziya Ulimi Nombhalo</string>
+    <string name="help_section_language_text_analysis_preview">Ukutholwa kolimi lwendawo ngezibalo kanye nemininingwane yokubuyekeza.</string>
+    <string name="help_section_language_text_analysis_content">+ I-Yaja ithola iskripthi esiphezulu noma ulimi kukho konke okufakiwe ukuze uthole imininingwane.\n+ Ukuhlukaniswa kolimi kuvela kuzibalo nezibuyekezo.\n+ Ukuthola kusebenza endaweni futhi akuthumeli umbhalo wejenali ngaphandle kwedivayisi.</string>
+    <string name="help_section_data_privacy_cache_title">Idatha, Ubumfihlo Nenqolobane</string>
+    <string name="help_section_data_privacy_cache_preview">Isitoreji se-Markdown, umlando wenguqulo, ilogi yohlelo lokusebenza, ukukhiya uhlelo lokusebenza, nokwakha kabusha inqolobane.</string>
+    <string name="help_section_data_privacy_cache_content">+ Ubumfihlo Bedatha: Yonke idatha yejenali yomuntu siqu ihlala ngokuqinile kudivayisi yakho ephathekayo futhi ayilokothi iyishiye nganoma yisiphi isikhathi. I-Yaja ayisebenzisi imininingo egciniwe yamafu, amaseva ayisipele esiqhelile, noma i-telemetry ukuze ilandelele umbhalo wakho.\n+ Okufakiwe kwejenali kugcinwa njengamafayela e-Markdown ajwayelekile ahlelwa unyaka nenyanga.\n+ Umlando wenguqulo ungagcina izifinyezo eziphephile ngaphambi kokuhlela, ukususwa, amalebula, nokuvakashela kabusha izinguquko.\n+ Ungakhetha ukuthi zingaki izinguqulo ongazigcina nokuthi zingaki izinsuku ezirekhodiwe zomlando, ukugcinwa kwemicimbi yobuchwepheshe, gcina imininingwane yohlelo lokusebenza, gcina imininingwane yohlelo lokusebenza. umsebenzi ngaphandle kokugcina umbhalo wejenali.\n+ Ukwakha kabusha Inqolobane Yohlelo Lokusebenza ikuvumela ukuthi uvuselele idatha yohlelo lokusebenza ngezikhathi ezithile, okuhlanganisa okokwenziwa nokwakhiwa kabusha kwenqolobane egcwele.\n+ Ukhiye wohlelo lokusebenza usekela iphinikhodi nezigxivizo zeminwe.\n+ I-Yaja igcina inkomba enzima futhi izibalo zisebenza ngokuhlehliswa lapho kunokwenzeka khona ukuze kwethulwe uhlelo lokusebenza futhi lulondoloze ukuhlala luphendula.</string>
+    <string name="settings_app_log_title">Ilogi yohlelo lokusebenza</string>
+    <string name="settings_app_log_subtitle">Buka ukuxilonga okuphephile kobumfihlo kanye nemininingwane yokuphahlazeka yangaphambilini</string>
+    <string name="app_log_cd_share">Yabelana ngelogi yohlelo lokusebenza</string>
+    <string name="app_log_cd_clear">Sula uhlelo lokusebenza lokungena</string>
+    <string name="app_log_privacy_title">Ukuxilongwa okuphephile kobumfihlo</string>
+    <string name="app_log_privacy_description">Le log irekhoda imicimbi emikhulu yohlelo lokusebenza, imisebenzi yenqolobane/yesitoreji, ukuvuselelwa kwewijethi, nemininingwane yokusaphazeka. Ayifaki okufakiwe kwejenali, umbhalo we-todo, noma okuqukethwe kwenothi eliyimfihlo.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Gcina usuku %d lokugcina</item>
+        <item quantity="other">Gcina izinsuku ezingu-%d zokugcina</item>
+    </plurals>
+    <string name="app_log_retention_description">Izehlakalo zelogi ezindala zithenwa ngokuzenzakalelayo phakathi nokugawulwa futhi ngokushesha uma lesi silungiselelo sishintsha.</string>
+    <string name="app_log_empty">Alukho uhlelo lokusebenza lokungena okwamanje.</string>
+    <string name="app_log_refresh">Vuselela Ilogi</string>
+    <string name="app_log_share_empty">Akukho okufakiwe kwelogi yohlelo lokusebenza lwe-Yaja okwamanje.</string>
+    <string name="app_log_share_subject">I-Yaja App Log</string>
+    <string name="app_log_share_chooser">Yabelana ngelogi yohlelo lokusebenza lwe-Yaja</string>
+    <string name="app_log_local_time_format">%1$s | isikhathi sendawo\n%2$s</string>
+    <string name="settings_website_title">Iwebhusayithi yeYaja</string>
+    <string name="settings_website_subtitle">Vula iwebhusayithi esemthethweni ukuze uthole izibuyekezo nemininingwane</string>
+    <string name="settings_advanced_integrations_title">Ukuhlanganiswa Okuthuthukile</string>
+    <string name="settings_tasker_integration_title">Ukuhlanganiswa Kwe-Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Izenzo zokuthwebula ngokushesha kanye nezicupha zomcimbi wejenali</string>
+    <string name="settings_shortcodes_subtitle">Lawula amazwibela asebenziseka kabusha anwebekayo ngenkathi ubhala noma uthwebula ngokushesha.</string>
+    <string name="settings_privacy_security_title">Ubumfihlo Nokuphepha</string>
+    <string name="settings_pin_lock_title">I-PIN Lock</string>
+    <string name="settings_app_locked">Uhlelo lokusebenza lukhiyiwe</string>
+    <string name="settings_app_unlocked">Uhlelo lokusebenza luvuliwe</string>
+    <string name="settings_change_pin">Shintsha i-PIN</string>
+    <string name="settings_biometric_unlock_title">I-Biometric Unlock</string>
+    <string name="settings_biometric_enabled_desc">Izigxivizo zeminwe noma i-Face ID inikwe amandla</string>
+    <string name="settings_biometric_disabled_desc">Sebenzisa i-biometric esikhundleni se-PIN</string>
+    <string name="settings_autolock_timeout_title">Ukuvala Ngokuzenzakalelayo Isikhathi sokuvala</string>
+    <string name="settings_pin_lock_disclaimer">I-PIN lock ivimbela ukufinyelela okungagunyaziwe kuhlelo lokusebenza kodwa ayibetheli idatha yejenali yakho kudiski. Umuntu onokufinyelela okuqondile kwefayela usengakwazi ukufunda okufakile.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d iminithi</item>
+        <item quantity="other">%1$d amaminithi</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Uhlelo</string>
+    <string name="settings_theme_light">Ukukhanya</string>
+    <string name="settings_theme_dark">Kumnyama</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Imibala</string>
+    <string name="settings_color_intensity_title">Ukuqina kombala</string>
+    <string name="settings_background_tint_title">I-tint yangemuva</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">I-Serif</string>
+    <string name="settings_font_mono">I-Mono</string>
+    <string name="settings_font_custom">Ngokwezifiso</string>
+    <string name="settings_font_size_label">Usayizi Wefonti</string>
+    <string name="settings_ui_font_size_label">UI Usayizi Wefonti</string>
+    <string name="settings_data_font_size_label">Usayizi Wefonti Yokuqukethwe</string>
+    <string name="settings_follow_ui_font_scale_label">Yenza Usayizi Wefonti Wokuqukethwe ufane ne-UI</string>
+    <string name="settings_color_source_material_you">Material Wena</string>
+    <string name="settings_theme_preview_title">Ukuhlola kuqala itimu</string>
+    <string name="settings_journal_entry_preview">Ukufakwa kwejenali</string>
+    <string name="settings_journal_entry_preview_desc">Amakhadi, ama-chips nezinkinobho kuzosebenzisa le mibala.</string>
+    <string name="settings_preview_chip_chip">I-chip</string>
+    <string name="settings_preview_chip_accent">I-Accent</string>
+    <string name="settings_preview_chip_fab">I-FAB</string>
+    <string name="settings_intensity_label">Ukuqina: %1$s</string>
+    <string name="settings_personal_themes_title">Izingqikithi zomuntu siqu</string>
+    <string name="settings_theme_name_label">Igama letimu</string>
+    <string name="settings_main_color_label">Umbala oyinhloko</string>
+    <string name="settings_hue_label">Hue</string>
+    <string name="settings_sat_label">Sat</string>
+    <string name="settings_bright_label">Okugqamile</string>
+    <string name="settings_generated_accents_title">Ama-accents akhiqiziwe</string>
+    <string name="settings_personal_theme_desc">Khetha umbala owodwa. I-Yaja idala ukugqama okufanayo nemibala esekelayo.</string>
+    <string name="settings_preview_chip_main">Okuyinhloko</string>
+    <string name="settings_preview_chip_support">Ukusekela</string>
+    <string name="settings_no_font_selected">Ayikho ifonti ekhethiwe</string>
+    <string name="settings_custom_font_desc">Khetha noma yiliphi ifayela le-unicode .ttf noma le-.otf — isb. ifonti yesiMalayalam njengeManjari. Izinhlamvu ifonti ayinazo amafonti esistimu.</string>
+    <string name="settings_font_replace">Faka esikhundleni</string>
+    <string name="settings_choose_font_file">Khetha ifayela lefonti</string>
+    <string name="settings_intensity_muted">Ithulisiwe</string>
+    <string name="settings_intensity_normal">Okuvamile</string>
+    <string name="settings_intensity_vivid">Kuyacaca</string>
+    <string name="settings_intensity_pop">I-Pop</string>
+    <string name="settings_tint_clean">Hlanza</string>
+    <string name="settings_tint_soft">Ithambile</string>
+    <string name="settings_tint_rich">Ucebile</string>
+    <string name="settings_tint_deep">Deep</string>
+    <string name="settings_accent_complementary">Okuhambisanayo</string>
+    <string name="settings_accent_analogous">Analogous</string>
+    <string name="settings_accent_triadic">I-Triadic</string>
+    <string name="settings_accent_soft">Ithambile</string>
+    <string name="settings_mono_weight_thin">Mncane</string>
+    <string name="settings_mono_weight_extra_light">Ukukhanya Okungeziwe</string>
+    <string name="settings_mono_weight_light">Ukukhanya</string>
+    <string name="settings_mono_weight_regular">Okuvamile</string>
+    <string name="settings_mono_weight_medium">Maphakathi</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">Okugqamile</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold</string>
+    <string name="settings_mono_weight_title">Isisindo</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Engeza Igama elingukhiye Losuku</string>
+    <string name="settings_keyword_label">Igama elingukhiye</string>
+    <string name="settings_keyword_placeholder_example">isib. izolo</string>
+    <string name="settings_means_label">Kusho</string>
+    <string name="settings_add_button">Engeza</string>
+    <string name="settings_no_keywords_yet">Awekho amagama angukhiye angeziwe okwamanje.</string>
+    <string name="settings_added_keywords_title">Added Keywords (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Engeza igama elingukhiye</string>
+    <string name="keywords_dialog_add_title">Engeza igama elingukhiye</string>
+    <string name="keywords_dialog_edit_title">Edit Keyword</string>
+    <string name="keywords_cd_import_csv">Ngenisa i-CSV</string>
+    <string name="keywords_cd_export_csv">Khipha i-CSV</string>
+    <string name="keywords_cd_download_template">Download template</string>
+    <string name="rebuild_cache_storage_transparency_title">Ukubonisa ngale Kwesitoreji Kudivayisi</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja uses a secure local storage model. Idatha yakho yejenali yomuntu siqu ihlala isendaweni futhi ayilokothi ishiye idivayisi yakho nganoma yisiphi isikhathi:</string>
+    <string name="rebuild_cache_source_of_truth_title">Umthombo Weqiniso (Markdown Files)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Konke okufakiwe, izinto zohlu lokuhlola (okuzokwenziwa), imicimbi yomugqa wesikhathi, izinkanyezi, nomaka kugcinwa unomphela kumafayela ombhalo ongenalutho we-Markdown (.md) kufolda yakho yejenali yendawo oyikhethile. Your data is 100% owned by you and resides entirely on your device.</string>
+    <string name="rebuild_cache_read_cache_title">Funda i-Cache &amp; Index (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">Ukuze unike amandla ukulayishwa kwesikrini okusheshayo, okuvelele kwekhalenda, amagama angukhiye, nezibalo ngaphandle kokuskena isistimu yefayela kuwo wonke umqulu, i-Yaja idlulisa amafayela akho e-Markdown futhi iwakhombe kusizindalwazi sendawo se-Room SQLite kudivayisi yakho.</string>
+    <string name="rebuild_cache_local_private_title">100% Indawo &amp; Imfihlo</string>
+    <string name="rebuild_cache_local_private_desc">I-Yaja ayinazo isizindalwazi samafu, amaseva okulondoloza akude, noma i-telemetry elandelela umbhalo wakho. Konke okufakwe kujenali kanye nedatha ehlukanisiwe kuhlala kuqinile kudivayisi yakho ephathekayo futhi ungalokothi uyishiye noma nini.</string>
+    <string name="keywords_export_success">Amagama angukhiye athunyelwe</string>
+    <string name="keywords_export_failed">Ayikwazanga ukuthumela amagama angukhiye</string>
+    <string name="keywords_template_saved">Isifanekiso silondoloziwe</string>
+    <string name="keywords_template_save_failed">Ayikwazanga ukulondoloza isifanekiso</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Kungeniswe %d igama elingukhiye</item>
+        <item quantity="other">Kungeniswe %d amagama angukhiye</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Awekho amagama angukhiye avumelekile atholiwe</string>
+    <string name="keywords_import_failed">Ayikwazanga ukungenisa amagama angukhiye</string>
+    <string name="keywords_status_indexing">Ukwenza inkomba</string>
+    <string name="keywords_status_indexed">Ikhonjwe</string>
+    <string name="keywords_metric_mentions">Isho</string>
+    <string name="keywords_metric_days">Izinsuku</string>
+    <string name="keywords_timeline_range_all">Konke</string>
+    <string name="keywords_connections_filter_all">Konke</string>
+    <string name="keywords_connections_filter_people">Abantu</string>
+    <string name="keywords_connections_filter_places">Izindawo</string>
+    <string name="keywords_connections_filter_recent">Kwakamuva</string>
+    <string name="keywords_connections_filter_strongest">Okunamandla</string>
+    <string name="keywords_filter_needs_reindex">Idinga Reindex</string>
+    <string name="keywords_search_placeholder">Okunamandla</string>
+    <string name="keywords_refreshing_counters">Ivuselela izibali zamagama angukhiye...</string>
+    <string name="keywords_empty_title">Awekho amagama angukhiye okwamanje</string>
+    <string name="keywords_empty_subtitle">Engeza abantu nezindawo ofuna uhlelo lokusebenza lizilandele endaweni.</string>
+    <string name="keywords_no_results_title">Ayikho imiphumela efanayo</string>
+    <string name="keywords_no_results_subtitle">Zama usesho oluhlukile, ukuhlunga, noma isihlungi.</string>
+    <string name="keywords_people_title">Abantu</string>
+    <string name="keywords_places_title">Izindawo</string>
+    <string name="keywords_people_empty">Abekho abantu abengeziwe okwamanje.</string>
+    <string name="keywords_people_filtered_empty">Abekho abantu abafana nezihlungi zamanje.</string>
+    <string name="keywords_places_empty">Azikho izindawo ezingeziwe okwamanje.</string>
+    <string name="keywords_places_filtered_empty">Azikho izindawo ezifana nezihlungi zamanje.</string>
+    <string name="keywords_delete_person_title">Susa Umuntu?</string>
+    <string name="keywords_delete_place_title">Susa Indawo?</string>
+    <string name="keywords_delete_message">Susa i-\"%1$s\" kubantu nasezindaweni? Lokhu kuzosusa igama elingukhiye kanye nokufana kwalo okunenkomba.</string>
+    <string name="keywords_timeline_title">Isho Ngokuhamba Kwesikhathi</string>
+    <string name="keywords_timeline_empty_pattern">Ayikho iphethini yenyanga okwamanje</string>
+    <string name="keywords_timeline_total_format">%1$d inani</string>
+    <string name="keywords_timeline_empty_chart">Okukhulunywa ngakho kuzoshadi lapha ngemva kokuthola inkomba kokungenayo.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Ukuphakama %1$s • %2$d khuluma</item>
+        <item quantity="other">Ukuphakama %1$s • %2$d ukubalulwa</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Izinsuku ezinokushiwo</string>
+    <string name="keywords_recency_title">Okwakamuva</string>
+    <string name="keywords_recency_none">Akukho okufanayo okwamanje</string>
+    <string name="keywords_recency_today">Kukhulunywe namuhla</string>
+    <string name="keywords_recency_yesterday">Ishiwo izolo</string>
+    <string name="keywords_recency_days_ago_format">Ukugcina ukukhuluma ngakho ezinsukwini ezingu-%1$d ezedlule</string>
+    <string name="keywords_first_seen">Okokuqala Ukubona</string>
+    <string name="keywords_last_seen">Ugcine Ukubonwa</string>
+    <string name="keywords_unknown">Akwaziwa</string>
+    <string name="keywords_co_mentioned_with">Okukhulunywe ngakho Nge</string>
+    <string name="keywords_connections_title">Ukuxhumana</string>
+    <string name="keywords_connections_subtitle">Kukalwe ngokugqagqana okuphindaphindiwe nokwakamuva</string>
+    <string name="keywords_connections_linked_format">%1$d kuxhunyiwe</string>
+    <string name="keywords_connections_show">Bonisa ukuxhumana</string>
+    <string name="keywords_connections_hide">Fihla ukuxhumana</string>
+    <string name="keywords_connections_items_in_view">%1$d izinto kulokhu kubuka</string>
+    <string name="keywords_connections_tap_to_expand">Thepha ukuze unwebe izixhumanisi ezilinganiselwe ezingu-%1$d</string>
+    <string name="keywords_connections_empty">Akukho ukuxhumana kwalesi sihlungi okwamanje.</string>
+    <string name="keywords_open_day">Usuku Lokuvula</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Okukhulunywe Kakhulu</string>
+    <string name="keywords_sort_recently_added">Okusanda Kungezwa</string>
+    <string name="keywords_peak_mentions_format">Ukuphakama %1$s • %2$d khuluma%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d usuku</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">ndawonye</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d kwabelwana ngokufaka</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">iy</string>
+    <string name="keywords_connections_meta_last_prefix">| okokugcina %1$s</string>
+    <string name="keywords_connections_score_format">Isikolo %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d izinsuku</string>
+    <string name="keywords_connections_shared_chip">%1$d kwabiwe</string>
+    <string name="keywords_match_type_exact">ngqo</string>
+    <string name="keywords_match_type_fuzzy">kufiphele</string>
+    <string name="keywords_match_type_alias">isibizo</string>
+    <string name="keywords_match_type_relation">ubuhlobo</string>
+    <string name="keywords_action_delete">Susa</string>
+    <string name="keywords_action_edit">Hlela</string>
+    <string name="keywords_action_view">Buka</string>
+    <string name="keywords_name_label">Igama</string>
+    <string name="keywords_relation_context_label">Ubudlelwano / Umongo</string>
+    <string name="keywords_aliases_label">Iziteketiso (kuhlukaniswa ukhefana)</string>
+    <string name="keywords_aliases_label_short">Iziteketiso</string>
+    <string name="keywords_type_person">Umuntu</string>
+    <string name="keywords_type_place">Indawo</string>
+    <string name="keywords_save_disabled_hint">Amagama angukhiye alondoloziwe avaliwe. Zinike amandla ohlwini uma ufuna ukukhomba kusebenze.</string>
+    <string name="settings_meaning_yesterday">Izolo</string>
+    <string name="settings_meaning_today">Namuhla</string>
+    <string name="lookback_chip_weekly">Maviki onke</string>
+    <string name="lookback_chip_monthly">Nyanga zonke</string>
+    <string name="timeline_screen_title">Umugqa wesikhathi</string>
+    <string name="timeline_empty_title">Akukho lutho lapha okwamanje</string>
+    <string name="timeline_empty_subtitle">Zama isihlungi esihlukile noma ulungise usesho lwelebula.</string>
+    <string name="timeline_quick_today">Namuhla</string>
+    <string name="timeline_quick_month">Inyanga</string>
+    <string name="timeline_quick_filters">Izihlungi</string>
+    <string name="timeline_all_dates">Zonke izinsuku</string>
+    <string name="timeline_label_prefix">Ilebula: %1$s</string>
+    <string name="timeline_label_search_placeholder">Sesha amalebula osuku</string>
+    <string name="timeline_filters_title">Izihlungi Nesakhiwo Somugqa Wesikhathi</string>
+    <string name="settings_meaning_tomorrow">Kusasa</string>
+    <string name="settings_meaning_day_before_yesterday">Ngosuku olwandulela izolo</string>
+    <string name="settings_meaning_day_after_tomorrow">Ngosuku olulandelayo</string>
+    <string name="settings_meaning_last_week">Evikini eledlule</string>
+    <string name="settings_meaning_next_week">Evikini elizayo</string>
+    <string name="settings_meaning_monday">UMsombuluko</string>
+    <string name="settings_meaning_tuesday">ULwesibili</string>
+    <string name="settings_meaning_wednesday">ULwesithathu</string>
+    <string name="settings_meaning_thursday">ULwesine</string>
+    <string name="settings_meaning_friday">NgoLwesihlanu</string>
+    <string name="settings_meaning_saturday">NgoMgqibelo</string>
+    <string name="settings_meaning_sunday">NgeSonto</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Isitoreji Sangaphakathi Sohlelo Lokusebenza</string>
+    <string name="settings_storage_internal_default">Isitoreji Sangaphakathi Sohlelo Lokusebenza (Okuzenzakalelayo)</string>
+    <string name="settings_storage_new_folder_fallback">ifolda entsha</string>
+    <string name="settings_storage_current_folder_fallback">ifolda yamanje</string>
+    <string name="settings_storage_move_confirm">Konke okufakiwe kuzosuswa ku-%1$s kuye ku-%2$s. Uyafuna ukuqhubeka?</string>
+    <string name="settings_restore_added_skipped">Kwengeziwe: %1$d\nIzimpinda zeqiwe: %2$d</string>
+    <string name="settings_storage_custom_folder">Ifolda Ngokwezifiso:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Usizo lwezinqamuleli</string>
+    <string name="addentry_cd_insert_template">Faka isifanekiso</string>
+    <string name="addentry_cd_jump_to_today">Gxumela namuhla</string>
+    <string name="addentry_cd_share">Yabelana</string>
+    <string name="addentry_cd_bold">Okugqamile</string>
+    <string name="addentry_cd_italic">I-ithalikhi</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Setha isikhathi</string>
+    <string name="addentry_event_chip">Umcimbi Omusha</string>
+    <string name="addentry_pick_time_title">Khetha isikhathi</string>
+    <string name="addentry_hour_label">Ihora</string>
+    <string name="addentry_minute_label">Umzuzu</string>
+    <string name="addentry_new_event_title">Umcimbi Omusha</string>
+    <string name="addentry_title_label">Isihloko</string>
+    <string name="addentry_event_description_label">Incazelo Yomcimbi</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Izinto Okuzokwenziwa Zitholakele</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Guqula %1$d umugqa ube uhlu lokuhlola</item>
+        <item quantity="other">Guqula %1$d imigqa ibe uhlu lokuhlola</item>
+    </plurals>
+    <string name="addentry_people_places_title">Abantu Nezindawo</string>
+    <string name="addentry_no_tracked_mentions">Abekho abantu abalandelwayo noma izindawo ezitholakele kulokhu kufakwa.</string>
+    <string name="addentry_day_memory_title">Inkumbulo Yosuku</string>
+    <string name="addentry_star_day_title">Inkanyezi kulolu suku</string>
+    <string name="addentry_star_day_subtitle">Ilondoloze njengokugqamisa ukuze ibuye ngokubheka emuva.</string>
+    <string name="addentry_day_label_label">Ilebula yosuku</string>
+    <string name="addentry_day_label_placeholder">isib. Setha kabusha Usuku</string>
+    <string name="addentry_follow_up_title">Landela phambili</string>
+    <string name="addentry_next_month">Inyanga ezayo</string>
+    <string name="addentry_custom">Ngokwezifiso</string>
+    <string name="addentry_due_date_format">Kufuneka %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Ukulandelela okucacile</string>
+    <string name="addentry_follow_up_note_label">Inothi lokulandelela</string>
+    <string name="addentry_follow_up_note_placeholder">Yini okufanele uyivakashele kabusha?</string>
+    <string name="addentry_review_entry_title">Buyekeza Okufakiwe</string>
+    <string name="addentry_review_entry_subtitle">Ukudlula okusheshayo ngaphambi kokulondoloza. Khipha ama-todos, hlola okukhulunywe ngakho, bese umaka usuku uma kubalulekile.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d okumele ukwenze</item>
+        <item quantity="other">%1$d okokwenziwa</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d khuluma</item>
+        <item quantity="other">%1$d okukhulunyiwe</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Londoloza Okungenayo</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Lahla Izinguquko</string>
+    <string name="addentry_discard_changes_message">Unezinguquko ezingalondoloziwe. Buyela emuva uzilahle, noma uhlale ukuze uqhubeke nokuhlela.</string>
+    <string name="addentry_go_back">Buyela emuva</string>
+    <string name="addentry_stay">Hlala</string>
+    <string name="addentry_shortcuts_title">Izinqamuleli</string>
+    <string name="addentry_help_bold_suffix">ukwenza umbhalo ugqame (noma khetha umbhalo bese ucindezela Inkinobho Egqamile)</string>
+    <string name="addentry_help_italic_suffix">ukwenza umbhalo umalukeke (noma ukhethe umbhalo bese ucindezela Inkinobho Ye-ithalikhi)</string>
+    <string name="addentry_help_today_suffix">: Inwebela kudethi yamanje (isb., 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: Inwebela esikhathini samanje (isb., 14:30)</string>
+    <string name="addentry_help_week_suffix">: Inwebela evikini lamanje (isb., Iviki 52)</string>
+    <string name="addentry_help_day_suffix">: Inwebela osukwini lwamanje lweviki (isb., uMsombuluko)</string>
+    <string name="addentry_help_todo_suffix">: Inwebela ebhokisini lokuhlola le-todo (isb., [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Uma ifakwe noma yikuphi kulayini oqukethe ibhokisi lokuhlola le-todo, lizoyiguqula.</string>
+    <string name="addentry_okey">Kulungile!</string>
+    <string name="addentry_template_merge_message">Lokhu okusalungiswa sekunombhalo. Khetha ukuthi isifanekiso kufanele sibekwe kanjani.</string>
+    <string name="addentry_template_merge_subtitle">Faka Ngezansi kugcina okusalungiswa kwamanje. E-Cursor ibeka isifanekiso lapho i-caret yakho ikhona manje.</string>
+    <string name="addentry_insert_below">Faka Ngezansi</string>
+    <string name="addentry_at_cursor">Ku-Cursor</string>
+    <string name="addentry_replace_draft">Shintsha Okusalungiswa</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Okudumile</string>
+    <string name="addentry_new_chip">Okusha</string>
+    <string name="addentry_best_for_format">Okungcono kakhulu kwe-: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Susa intandokazi yesifanekiso</string>
+    <string name="addentry_cd_favorite_template">Isifanekiso esiyintandokazi</string>
+    <string name="addentry_checklist_chip">Uhlu lokuhlola</string>
+    <string name="addentry_followup_chip">Landelela</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d isigaba</item>
+        <item quantity="other">%1$d izigaba</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Guqula isifanekiso esiyintandokazi</string>
+    <string name="addentry_template_preview_label">Ukubuka kuqala kwesifanekiso</string>
+    <string name="addentry_use_template_button">Sebenzisa Isifanekiso</string>
+    <string name="addentry_start_blank_title">Qala Okungenalutho</string>
+    <string name="addentry_start_blank_subtitle">Yeqa izifanekiso futhi ugcine ukubhala kusukela kokusalungiswa okungenalutho.</string>
+    <string name="addentry_blank_entry_name">Ukungena Okungenalutho</string>
+    <string name="addentry_blank_entry_description">Ukufakwa kwejenali engenalutho</string>
+    <string name="addentry_blank_category">Okujwayelekile</string>
+    <string name="addentry_quick_picks_title">Ukukhetha Okusheshayo</string>
+    <string name="addentry_sort_recommended">Kunconyiwe</string>
+    <string name="addentry_sort_recent">Kwakamuva</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Azikho izifanekiso ezitholiwe</string>
+    <string name="addentry_no_templates_subtitle">Zama usesho oluhlukile noma isigaba.</string>
+    <string name="addentry_search_templates_label">Sesha izifanekiso</string>
+    <string name="addentry_search_templates_placeholder">Umhlangano, impilo, ukuzindla...</string>
+    <string name="addentry_cd_clear_search">Sula ukusesha</string>
+    <string name="addentry_choose_template_title">Khetha Isifanekiso</string>
+    <string name="addentry_templates_ready_format">%1$d kwezifanekiso %2$d sezilungile</string>
+    <string name="addentry_category_all">Konke</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Kwenzenjani?</string>
+    <string name="addentry_todo_chip">Okuzo kwenziwa</string>
+    <string name="addentry_numbered_list_chip">N Uhlu</string>
+    <string name="addentry_bulleted_list_chip">B Uhlu</string>
+    <string name="addentry_words_count_format">%1$d AMAZWI</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Kuzolandelelwa namuhla</item>
+        <item quantity="other">Ukulandelela kufanele namuhla</item>
+    </plurals>
+    <string name="home_followup_subtitle">Gxumela emuva osukwini oluxhunyiwe futhi uqhubeke ukusuka lapho.</string>
+    <string name="home_from_date_format">Kusuka ku-%1$s</string>
+    <string name="home_more_due_today_format">+%1$d okwengeziwe okulindelwe namuhla</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Engeza ilebula</string>
+    <string name="home_edit_label_title">Hlela ilebula</string>
+    <string name="home_day_label_hint">Engeza ilebula emfushane yalolu suku (ubuningi bezinhlamvu ezingu-30).</string>
+    <string name="home_day_label_placeholder">isb., Usuku lokuqala esikoleni</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Engeza ilebula yalolu suku</string>
+    <string name="home_star_label_hint">Nikeza lolu suku ilebula ekhumbulekayo (ubuningi bezinhlamvu ezingu-30)</string>
+    <string name="home_star_label_placeholder">isb., Usuku Lwami Lokuzalwa, Esikoleni</string>
+    <string name="home_star_button">Inkanyezi</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Okufakiwe kususiwe</item>
+        <item quantity="other">%1$d okufakiwe kususiwe</item>
+    </plurals>
+    <string name="home_restore_button">BUYISELA</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Sesha okufakiwe...</string>
+    <string name="home_cd_search">Sesha</string>
+    <string name="home_cd_clear_search">Sula Usesho</string>
+    <string name="home_cd_favorite">Intandokazi</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Okufakiwe</string>
+    <string name="home_stat_words">Amazwi</string>
+    <string name="home_stat_chars">Izinhlamvu</string>
+    <string name="home_stat_versions">Amavesi</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Engeza ilebula</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Okufanayo Kutholakele</item>
+        <item quantity="other">%1$d Okufanayo Kutholakele</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Akukho okufanayo okutholakele kwaleli gama elingukhiye okwamanje.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Isithonjana Sesimo Esingenalutho</string>
+    <string name="home_empty_future">Ikusasa leli. Rekhoda isikhumbuzi!</string>
+    <string name="home_empty_past">Usenkathini edlule. Rekhoda Inkumbulo ngaphambi kokuthi ife...</string>
+    <string name="home_empty_today">Akukho okufakiwe okwamanje. Qala usuku lwakho.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Iyalondoloza</string>
+    <string name="home_cd_add_entry">Engeza Entry</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Susa i-%1$d</string>
+    <string name="home_future_date_title">Ukufakwa Kosuku Oluzayo</string>
+    <string name="home_future_date_message_format">Ungeza okufakiwe kwedethi ezayo (%1$s). Uyafuna ukuqhubeka?</string>
+    <string name="home_cache_issue_title">Kutholwe Inkinga Yenqolobane Yedatha</string>
+    <string name="home_cache_issue_message">Kubonakala sengathi inani elikhulu lamajenali afakiwe alikho kunqolobane. Ungathanda ukwenza kabusha inqolobane yedatha egcwele ukuze uzame ukuyibuyisela?</string>
+    <string name="home_refresh_button">Vuselela</string>
+    <string name="home_ignore_button">Ziba</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Abantu Nezindawo</string>
+    <string name="nav_statistics">Izibalo</string>
+    <string name="nav_todos">Okwenziwayo</string>
+    <string name="nav_rebuild_index">Yakha kabusha Inkomba Yesizindalwazi</string>
+    <string name="nav_backup_data">Idatha Yokulondoloza</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Isimo</string>
+    <string name="nav_finishing_index_rebuild">Iqedela ukwakhiwa kabusha kwenkomba...</string>
+    <string name="nav_rebuilding_index">Ukwakha kabusha inkomba yesizindalwazi</string>
+    <string name="nav_refreshing_index">Ivuselela inkomba</string>
+    <string name="nav_backup_too_old">ikhophi yasenqolobaneni indala kakhulu...</string>
+    <string name="nav_sync_percent_eta_format">%1$dFMT_1__ - %2$s</string>
+    <string name="nav_sync_percent_format">%1$dFMT_1__</string>
+    <string name="nav_working">Iyasebenza...</string>
+    <string name="nav_eta_almost_done">sengiyaqeda</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds asele</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm osele</string>
+    <string name="nav_eta_hours_left_format">~%1$dh esele</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Imenyu</string>
+    <string name="nav_cd_rj_logo">Ilogo ye-RJ</string>
+    <string name="nav_tagline">futhi olunye uhlelo lokusebenza lokubhalela</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">I-Google Play Isitolo</string>
+    <string name="nav_cd_website">Iwebhusayithi</string>
+    <string name="nav_cd_share_app">Yabelana ngohlelo lokusebenza</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Ilogo ye-Yaja</string>
+    <string name="nav_easter_quote_part1">\"Bhala umcabango odlulayo noma obukade ube nakho ngesidlo sasemini; akudingekile ukuthi ujule.\n</string>
+    <string name="nav_easter_quote_part2">Amazwi akho angaba khona nje.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">kusuka kumalebhu e-RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Yabelana nge-yaja</string>
+    <string name="nav_share_text_body">i-yaja — olunye uhlelo lokusebenza lwejenali\n\nIjenali yansuku zonke engenaziphazamiso egcina okufakiwe njengamafayela okumaka alula.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Shintsha Indawo Yesitoreji</string>
+    <string name="settings_change_storage_location_message">Konke okufakiwe kuzosuswa ku-%1$s kuye ku-%2$s. Uyafuna ukuqhubeka?</string>
+    <string name="settings_yes">Yebo</string>
+    <string name="settings_no">Cha</string>
+    <string name="settings_restore_summary_title">Buyisela Isifinyezo</string>
+    <string name="settings_restore_section_journal">Ijenali</string>
+    <string name="settings_restore_section_shortcodes">Amakhodi amafushane</string>
+    <string name="settings_restore_section_date_keywords">Amagama angukhiye Osuku</string>
+    <string name="settings_restore_section_people_places">Abantu Nezindawo</string>
+    <string name="settings_restore_journal_summary">Kwengezwe ezinsukwini ezintsha: %1$d\nIhlanganiswe nezinsuku ezikhona: %2$d\nOkufakwe kwijenali okuyimpinda kweqiwe: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Kwengeziwe: %1$d\nIzimpinda zeqiwe: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Kwengeziwe: %1$d\nIzimpinda zeqiwe: %2$d</string>
+    <string name="settings_restore_people_places_summary">Kwengeziwe: %1$d\nIzimpinda zeqiwe: %2$d</string>
+    <string name="rebuild_tools_title">Yakha kabusha Amathuluzi</string>
+    <string name="rebuild_tools_back">Emuva</string>
+    <string name="rebuild_tools_intro">Sebenzisa ukwakhiwa kabusha okugxilile kuqala. Ukwakha kabusha isizindalwazi kungokwezinguquko zesitoreji kuphela, ukonakala kusizindalwazi, noma ukungafani kwenkomba.</string>
+    <string name="rebuild_todo_index_title">Yakha kabusha i-Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">Vuselela ama-todos kumafayela ejenali futhi ubuyekeze isikrini/iwijethi ye-Todo. Okuhle kakhulu uma ama-todos ebukeka edala.</string>
+    <string name="rebuild_todo_index_button">Yakha kabusha i-Todos</string>
+    <string name="rebuild_people_places_title">Yakha kabusha Abantu Nezindawo</string>
+    <string name="rebuild_people_places_subtitle">Vuselela ama-todos kumafayela ejenali futhi ubuyekeze isikrini/iwijethi ye-Todo. Okuhle kakhulu uma ama-todos ebukeka edala.</string>
+    <string name="rebuild_people_places_button">Yakha kabusha Abantu Nezindawo</string>
+    <string name="rebuild_database_title">Ukwakhiwa kabusha kwesizindalwazi esigcwele</string>
+    <string name="rebuild_database_subtitle">Qoqa kabusha inqolobane yolwazi kusuka kumafayela wokumaka. Phinda wenze izinkomba okufakiwe, ukubala, okokwenziwa, Abantu Nezindawo, namawijethi kusukela ekuqaleni.</string>
+    <string name="rebuild_database_button">Yakha kabusha Isizindalwazi</string>
+    <string name="rebuild_database_confirm_title">Yakha kabusha inkomba yesizindalwazi</string>
+    <string name="rebuild_database_confirm_message">Lokhu kuzosula futhi kukhombe kabusha yonke imininingo egciniwe ye-Room SQLite kumafayela akho e-Markdown. Kumajenali amakhulu, lokhu kungase kuthathe amaminithi ambalwa.</string>
+    <string name="rebuild_database_confirm_start">Qala ukwakha kabusha</string>
+    <string name="rebuild_database_status_title">Isimo Senkomba Yesizindalwazi</string>
+    <string name="rebuild_database_storage_engine">Injini Yesitoreji</string>
+    <string name="rebuild_database_storage_engine_value">I-Database ye-SQLite yegumbi</string>
+    <string name="rebuild_database_indexed_days">Izinsuku Ezikhonjiwe</string>
+    <string name="rebuild_database_indexed_days_value">%1$d izinsuku ezikhonjiwe</string>
+    <string name="rebuild_database_file_size">Usayizi Wefayela Lesizindalwazi</string>
+    <string name="rebuild_database_last_sync">Ukuvumelanisa Kokugcina Kwenkomba</string>
+    <string name="rebuild_database_age_never">Ungalokothi</string>
+    <string name="rebuild_database_age_just_now">Khona manje</string>
+    <string name="rebuild_database_age_one_minute">1 iminithi eledlule</string>
+    <string name="rebuild_database_age_minutes">%1$d amaminithi adlule</string>
+    <string name="rebuild_database_age_one_hour">Ihora elingu-1 eledlule</string>
+    <string name="rebuild_database_age_hours">%1$d amahora adlule</string>
+    <string name="shortcodes_title">Amakhodi amafushane</string>
+    <string name="shortcodes_import_cd">Ngenisa</string>
+    <string name="shortcodes_export_cd">Thekelisa</string>
+    <string name="shortcodes_help_cd">Usizo</string>
+    <string name="shortcodes_new">Ikhodi Efushane entsha</string>
+    <string name="shortcodes_empty_title">Awekho amakhodi amafushane angokwezifiso</string>
+    <string name="shortcodes_empty_subtitle">Engeza eyodwa ukuze unwebe amazwibela afana no-@yday abe umbhalo oguqukayo.</string>
+    <string name="shortcodes_dynamic_dates_hint">Sebenzisa okuthi {{today:format}} kumadethi aguqukayo.</string>
+    <string name="shortcodes_help_title">Usizo lwekhodi emfishane</string>
+    <string name="shortcodes_help_built_in">Amakhodi Afushane akhelwe ngaphakathi:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @manje, @week, @day, @t (checkbox), @x (guqula ibhokisi lokuhlola)</string>
+    <string name="shortcodes_help_dynamic_patterns">Amaphethini Anamandla:</string>
+    <string name="shortcodes_help_dynamic_desc">Sebenzisa i-{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, noma {{manje:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Isibonelo: @yday -&gt; Izolo: {{izolo:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Amafomethi avamile: dd-MM-yy, HH:mm, EEEE (igama losuku).</string>
+    <string name="action_close">Vala</string>
+    <string name="keyword_detail_title_fallback">Igama elingukhiye</string>
+    <string name="keyword_detail_not_found">Igama elingukhiye alitholakali</string>
+    <string name="keyword_detail_last_indexed">Igcine ukukhonjwa %1$s</string>
+    <string name="keyword_detail_mentions_section">Isho</string>
+    <string name="pin_biometric_prompt_title">Vula nge-Biometric</string>
+    <string name="pin_biometric_prompt_subtitle">Sebenzisa izigxivizo zeminwe zakho noma ubuso ukuze uvule</string>
+    <string name="pin_error_no_biometric_enrolled">Ayikho i-biometric ebhalisiwe. Sicela ubhalise izigxivizo zeminwe noma ubuso kuzilungiselelo zedivayisi.</string>
+    <string name="pin_error_hardware_unavailable">Ihadiwe ye-biometric ayitholakali.</string>
+    <string name="pin_error_no_hardware">Le divayisi ayinayo ihadiwe ye-biometric.</string>
+    <string name="pin_error_not_available">Ukuqinisekiswa kwe-biometric akutholakali.</string>
+    <string name="pin_title_confirm">Qinisekisa iphinikhodi</string>
+    <string name="pin_title_set_new">Setha Iphinikhodi Entsha</string>
+    <string name="pin_title_disable">Faka iphinikhodi yamanje ukuze uyikhubaze</string>
+    <string name="pin_title_enter">Faka i-PIN</string>
+    <string name="pin_error_incorrect">I-PIN engalungile. Zama futhi.</string>
+    <string name="pin_error_mismatch">Ama-PIN awafani. Qala kabusha.</string>
+    <string name="pin_cd_use_biometric">Sebenzisa i-biometric</string>
+    <string name="pin_cd_backspace">I-Backspace</string>
+    <string name="timeline_preview_empty_labeled">Lolu suku lufakwe ilebula, kodwa akukabikho ijenali efakiwe.</string>
+    <string name="timeline_preview_loading">Ilayisha ukubuka kuqala...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d okwengeziwe ngalolu suku</item>
+        <item quantity="other">+ %1$d okunye okufakiwe kulolu suku</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Vula Lolu suku</string>
+    <string name="timeline_chip_today">NAMUHLA</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d ukungena</item>
+        <item quantity="other">%1$d okufakiwe</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Landelela</string>
+    <string name="timeline_chip_label_only">Ilebula kuphela</string>
+    <string name="timeline_cd_favorite">Intandokazi</string>
+    <string name="version_history_title">Umlando Wenguqulo</string>
+    <string name="version_history_day_versions_title">Izinguqulo Zosuku</string>
+    <string name="version_history_keep_copies_title">Gcina amakhophi okuphepha</string>
+    <string name="version_history_keep_copies_subtitle">Ngaphambi kokuthi i-Yaja iguqule ifayela losuku, igcina ifayela lamanje kudatha yohlelo lokusebenza ngaphansi kokuthi Amafayela Omlando.</string>
+    <string name="version_history_versions_kept_title">Izinguqulo ezigcinwe ngosuku</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">I-Yaja igcina %1$d inguqulo entsha yedethi ngayinye.</item>
+        <item quantity="other">I-Yaja igcina izinguqulo ze-%1$d zedethi ngayinye.</item>
+    </plurals>
+    <string name="version_history_retention_title">Ukugcinwa</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Izifinyezo ezindala kunosuku olungu-%1$d zihlanzwa ngokuzenzakalelayo.</item>
+        <item quantity="other">Izifinyezo ezindala kunezinsuku ezingu-%1$d zihlanzwa ngokuzenzakalelayo.</item>
+    </plurals>
+    <string name="version_history_notes">Amanothi: umlando wenguqulo uvikela amafayela okubeka phansi usuku ngaphambi kokwengeza, ukuhlela, susa, ukuhlela kabusha, ilebula, inkanyezi, futhi uphinde uvakashele izinguquko. Akuyona ibhekhaphu yefu; qhubeka nokusebenzisa okuthi Ukwenza Ikhophi Yasenqolobaneni ukuze uthole amakhophi aphathekayo.</string>
+    <string name="version_history_snapshots_for">Izifinyezo ze %1$s</string>
+    <string name="version_history_snapshots_subtitle">Vula inguqulo elondoloziwe, ihlole, futhi uyibuyisele kulolu suku.</string>
+    <string name="version_history_empty">Azikho izinguqulo ezilondoloziwe okwamanje zale dethi.</string>
+    <string name="action_view">Buka</string>
+    <string name="version_history_date_intro">Vula inguqulo egcinwe ngaphambilini yalolu suku, ihlole, bese uyibuyisela lapho idingeka.</string>
+    <string name="action_next">Olandelayo</string>
+    <string name="action_apply">Faka isicelo</string>
+    <string name="action_restore">Buyisela</string>
+    <string name="statistics_choose_title">Khetha Izibalo</string>
+    <string name="statistics_choose_subtitle">Fihla izigaba ongazifuni. Okungenani isigaba esisodwa kufanele sihlale sibonakala.</string>
+    <string name="statistics_visible_count">%1$d ye %2$d iyabonakala</string>
+    <string name="statistics_show_all">Bonisa Konke</string>
+    <string name="statistics_one_section_visible">Ingxenye eyodwa kufanele ihlale ibonakala</string>
+    <string name="statistics_shown">Kuboniswa izibalo</string>
+    <string name="statistics_hidden">Kufihliwe ezibalweni</string>
+    <string name="statistics_select_start_date">Khetha Idethi Yokuqala</string>
+    <string name="statistics_select_end_date">Khetha Idethi Yokuphela</string>
+    <string name="statistics_filter_by_period">Hlunga Ngenkathi</string>
+    <string name="statistics_cd_reorder">Cindezela isikhathi eside ukuze uhlele kabusha</string>
+    <string name="statistics_total_entries">Isamba Okufakiwe</string>
+    <string name="statistics_total_words">Amagama Aphelele</string>
+    <string name="statistics_avg_words_per_entry">Isilinganiso. Amagama/Ukungena</string>
+    <string name="statistics_current_streak">Ukulandelana kwamanje</string>
+    <string name="statistics_pages_written">Amakhasi Abhaliwe</string>
+    <string name="statistics_days_highlighted">Izinsuku Ezigqanyisiwe</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d usuku</item>
+        <item quantity="other">%1$d izinsuku</item>
+    </plurals>
+    <string name="statistics_period_all_time">Izibalo Zesikhathi Sonke</string>
+    <string name="statistics_period_current_year">Izibalo Zonyaka Wamanje</string>
+    <string name="statistics_period_previous_year">Izibalo Zonyaka Odlule</string>
+    <string name="statistics_period_current_month">Izibalo Zenyanga Yamanje</string>
+    <string name="statistics_period_previous_month">Izibalo Zenyanga Edlule</string>
+    <string name="statistics_period_custom">Izibalo Zenkathi Yangokwezifiso</string>
+    <string name="statistics_period_chip_all_time">Sonke isikhathi</string>
+    <string name="statistics_period_chip_current_year">Unyaka wamanje</string>
+    <string name="statistics_period_chip_previous_year">Unyaka Odlule</string>
+    <string name="statistics_period_chip_current_month">Le Nyanga</string>
+    <string name="statistics_period_chip_previous_month">Inyanga Edlule</string>
+    <string name="statistics_period_chip_custom">Ngokwezifiso</string>
+    <string name="statistics_sections_visible">%1$d yezigaba %2$d ziyabonakala</string>
+    <string name="statistics_loading_stages">Ilayisha izibalo ngezigaba...</string>
+    <string name="review_period_weekly">Ukubuyekeza Kwamasonto onke</string>
+    <string name="review_period_monthly">Ukubuyekezwa Kwanyanga zonke</string>
+    <string name="review_anchor_week">Iviki eliqukethe %1$s</string>
+    <string name="review_anchor_month">Inyanga equkethe %1$s</string>
+    <string name="review_chip_entries">Okufakiwe %1$d</string>
+    <string name="review_chip_words">Amagama %1$d</string>
+    <string name="review_chip_days">Izinsuku %1$d</string>
+    <string name="review_hint_jump">Thepha ama-chip edethi ngezansi ukuze ugxumele emuva kujenali.</string>
+    <string name="review_chip_streak">I-Streak %1$d</string>
+    <string name="review_chip_gap">Igebe %1$d</string>
+    <string name="review_chip_labels">Amalebula %1$d</string>
+    <string name="review_chip_favorites">Izintandokazi %1$d</string>
+    <string name="review_empty_period">Akukho okufakiwe kwejenali kulesi sikhathi okwamanje. Amalebula nokugqamisa kusavela ngezansi uma ekhona.</string>
+    <string name="review_writing_rhythm">Ukubhala Isigqi</string>
+    <string name="review_best_streak">I-streak ehamba phambili</string>
+    <string name="review_longest_gap">Igebe elide kakhulu</string>
+    <string name="review_most_active_days">Izinsuku Ezisebenzayo Kakhulu</string>
+    <string name="review_day_entries_words">%1$d okufakiwe | %2$d amagama</string>
+    <string name="review_top_people">Abantu Abaphezulu</string>
+    <string name="review_top_places">Izindawo eziphezulu</string>
+    <string name="review_no_people_mentions">Abekho abantu abakhulumayo</string>
+    <string name="review_no_place_mentions">Akukho zindawo ezishiwo</string>
+    <string name="review_favorite_moments">Izikhathi Eziyintandokazi</string>
+    <string name="review_starred_day">Usuku olunenkanyezi</string>
+    <string name="review_highlighted_in_period">Kuqokonyiswe kulesi sikhathi</string>
+    <string name="review_labels_created">Amalebula Akhiwe</string>
+    <string name="review_labeled_day">Usuku olunelebula</string>
+    <string name="review_language_split">Ukuhlukaniswa Kolimi</string>
+    <string name="review_not_enough_text">Awukho umbhalo owanele kulesi sikhathi</string>
+    <string name="lookback_reviews_title">Izibuyekezo</string>
+    <string name="lookback_reviews_intro">Yakha isithombe esisheshayo osukwini lwakho olukhethiwe lwejenali.</string>
+    <string name="lookback_seven_days">izinsuku ezingu-7</string>
+    <string name="lookback_one_month">Inyanga engu-1</string>
+    <string name="lookback_weekly_review">Ukubuyekeza Kwamasonto onke</string>
+    <string name="lookback_weekly_review_subtitle">Kuleli sonto ngokubuka nje</string>
+    <string name="lookback_monthly_review">Ukubuyekezwa Kwanyanga zonke</string>
+    <string name="lookback_monthly_review_subtitle">Le nyanga ifinyeziwe</string>
+    <string name="lookback_flashbacks_title">Ngalolu suku eminyakeni edlule</string>
+    <string name="lookback_highlights_title">Okugqamile Kwakho</string>
+    <string name="lookback_empty_title">Akukho ukubheka emuva noma okuvelele okwamanje.</string>
+    <string name="lookback_empty_subtitle">Izinsuku ezibalulekile eziyintandokazi zokuzibona lapha!</string>
+    <string name="lookback_cd_random_entry">Iya ekungeneni okungahleliwe</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Isikhathi</string>
+    <string name="statistics_compare_mode_title">Qhathanisa Imodi</string>
+    <string name="statistics_compare_mode_subtitle">Inyanga, unyaka, kanye ne-deltas yamagama angukhiye</string>
+    <string name="statistics_this_year">Kulo nyaka</string>
+    <string name="statistics_writing_days_delta">Ukubhala Izinsuku Delta</string>
+    <string name="statistics_top_person_delta">Umuntu Ophezulu Delta</string>
+    <string name="statistics_no_people_mentions">Abekho abantu abakhulumayo okwamanje</string>
+    <string name="statistics_top_place_delta">Indawo ephezulu yeDelta</string>
+    <string name="statistics_no_place_mentions">Azikho izindawo ezishiwo okwamanje</string>
+    <string name="statistics_structured_writing">Ukubhala Okuhlelekile</string>
+    <string name="statistics_template_led_format">Iholwa ngesifanekiso %1$d · %2$dFMT_2__</string>
+    <string name="statistics_blank_format">Akunalutho %1$d · %2$dFMT_2__</string>
+    <string name="statistics_most_used_templates">Izifanekiso Ezisetshenziswa Kakhulu</string>
+    <string name="statistics_template_mix">Imiksi Yesifanekiso</string>
+    <string name="statistics_follow_up_leaders">Abaholi Abalandelayo</string>
+    <string name="statistics_compare_details">Qhathanisa Imininingwane</string>
+    <string name="statistics_label_month">Inyanga</string>
+    <string name="statistics_label_year">Unyaka</string>
+    <string name="statistics_this_month_count_format">Kule nyanga %1$d</string>
+    <string name="statistics_last_month_count_format">Inyanga edlule %1$d</string>
+    <string name="statistics_longest_streak">Ukulandelana Okude Kakhulu</string>
+    <string name="statistics_most_active_day">Usuku Olusebenzayo Kakhulu</string>
+    <string name="statistics_writing_consistency">Ukuvumelana Kokubhala</string>
+    <string name="statistics_days_with_entries">Izinsuku Ngokungenela</string>
+    <string name="statistics_best_month">Inyanga Engcono Kakhulu</string>
+    <string name="statistics_best_month_format">%1$s · %2$d okufakiwe</string>
+    <string name="statistics_avg_writing_days_week">Isilinganiso. Izinsuku Zokubhala / Iviki</string>
+    <string name="statistics_days_decimal_format">%1$.1f izinsuku</string>
+    <string name="statistics_based_on_total_words">Ngokusekelwe engqikithini yamagama abhalwa ngosuku</string>
+    <string name="statistics_light_words">Ukukhanya (&lt; 50 amagama)</string>
+    <string name="statistics_moderate_words">Okulingene (50-200 amagama)</string>
+    <string name="statistics_heavy_words">Kunzima (amagama angama-200-500)</string>
+    <string name="statistics_intense_words">Okuqinile (amagama angu-500+)</string>
+    <string name="statistics_not_enough_text_languages">Awukho umbhalo owanele wokuthola izilimi</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d ulimi lutholiwe</item>
+        <item quantity="other">%1$d izilimi zitholiwe</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Ukutholwa kolimi kusalungiswa.</string>
+    <string name="statistics_latin_scripts_as_english">Imibhalo yesiLatini iboniswa njengesiNgisi</string>
+    <string name="statistics_use_more_accurate_detection">Sebenzisa ukuthola okunembe kakhudlwana</string>
+    <string name="statistics_write_more_entries_languages">Bhala okufakiwe okwengeziwe ukuze ubone izibalo zolimi.</string>
+    <string name="statistics_based_on_entry_time">Ngokusekelwe esikhathini sokungena</string>
+    <string name="statistics_morning_time">Ekuseni (5am-noon)</string>
+    <string name="statistics_afternoon_time">Ntambama (noon-5pm)</string>
+    <string name="statistics_evening_time">Kusihlwa (5pm-9pm)</string>
+    <string name="statistics_night_time">Ebusuku (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">I-Heatmap isagcwaliswa.</string>
+    <string name="statistics_heatmap_less">Ngaphansi</string>
+    <string name="statistics_heatmap_more">Okuningi</string>
+    <string name="action_open">Vula</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">I-Yaja Journal Imicimbi</string>
+    <string name="tasker_event_desc">Khetha ukuthi yimiphi imicimbi yejenali ye-Yaja okufanele iqalise le phrofayela yomsebenzisi.</string>
+    <string name="tasker_event_saved">Ukufaka Kulondoloziwe</string>
+    <string name="tasker_event_edited">Okufakiwe Kuhleliwe</string>
+    <string name="tasker_event_deleted">Okufakiwe Kususiwe</string>
+    <string name="tasker_event_default_hint">Uma kungekho okukhethiwe, i-Yaja izozenzakalela kokuthi Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Lungiselela ukuthi i-Tasker kufanele ithwebule ini ngokushesha ku-Yaja.</string>
+    <string name="tasker_action_add_entry">Engeza Entry</string>
+    <string name="tasker_action_add_event">Engeza umcimbi</string>
+    <string name="tasker_action_add_todo">Engeza i-Todo</string>
+    <string name="tasker_action_append">Faka</string>
+    <string name="tasker_action_match_header_label">Fanisa / unhlokweni</string>
+    <string name="tasker_action_match_header_placeholder">Izingcingo ezingabanjwanga</string>
+    <string name="tasker_action_line_to_append_label">Umugqa ozokwengezwa</string>
+    <string name="tasker_action_text_label">Umbhalo</string>
+    <string name="tasker_action_placeholder_event">Inothi lomcimbi elivela ku-Tasker</string>
+    <string name="tasker_action_placeholder_todo">Thenga ubisi</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Inothi elisheshayo elivela ku-Tasker</string>
+    <string name="tasker_action_tip_append">Ucingo lokuqala ludala okufakiwe oluqala ngombhalo wokufanisa. Izingcingo zakamuva zengeza ulayini ngaphansi kwayo.</string>
+    <string name="tasker_action_tip_default">Ithiphu: Okuguquguqukayo komsebenzisi kungabekwa endaweni yombhalo.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Ilogi Yokuphahlazeka Kweseshini Edlule</string>
+    <string name="crash_log_clear_close">Sula futhi Vala</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Yethula Uhlelo Lokusebenza</string>
+    <string name="tap_action_quick_capture">Ukuthwebula Ngokushesha</string>
+    <string name="tap_action_do_nothing">Ungenzi lutho</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">I-Yaja Writing Heatmap</string>
+    <string name="widget_cell_shape">Isimo Seseli</string>
+    <string name="widget_corner_radius">I-Corner Radius: %1$ddp</string>
+    <string name="widget_square">Isikwele</string>
+    <string name="widget_round">Umjikelezo</string>
+    <string name="widget_inner_margin">Imajini Yangaphakathi: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Isikhala phakathi kwemephu yokushisa nemiphetho yewijethi</string>
+    <string name="widget_none">Lutho</string>
+    <string name="widget_max">Ubukhulu</string>
+    <string name="widget_on_tap">Ku-Tap</string>
+    <string name="widget_on_tap_desc">Isenzo uma iwijethi ithentwa</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Thwebula</string>
+    <string name="widget_qc_shape">Umumo Wewijethi</string>
+    <string name="widget_show_label">Bonisa ilebula</string>
+    <string name="widget_show_label_desc">Bonisa umbhalo othi \'Shutha\' kuwijethi</string>
+    <string name="widget_show_icon">Bonisa Isithonjana</string>
+    <string name="widget_show_icon_required">Isithonjana siyadingeka uma ilebula ifihliwe</string>
+    <string name="widget_show_icon_desc">Bonisa isithonjana sepeni kuwijethi</string>
+    <string name="widget_label_text">Lebula Umbhalo</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">Iwijethi eyindilinga, efana nemephu yokushisa efana nohlu lwento yokwenza.</string>
+    <string name="widget_todo_corner_radius">Irediyasi yekhona: %1$ddp</string>
+    <string name="widget_todo_padding">I-Padding: %1$ddp</string>
+    <string name="widget_todo_show_completed">Bonisa imisebenzi eqediwe</string>
+    <string name="widget_todo_show_completed_desc">Faka izinto ezithikhiwe ohlwini lwewijethi</string>
+    <string name="widget_todo_include_events">Faka nemicimbi</string>
+    <string name="widget_todo_include_events_desc">Bonisa okufakiwe komcimbi okuhambisana nokokwenziwa kuwijethi</string>
+    <string name="widget_todo_show_header">Bonisa unhlokweni we-Todo</string>
+    <string name="widget_todo_show_header_desc">Bonisa noma fihla umugqa wesihloko wewijethi</string>
+    <string name="widget_todo_auto_hide">Fihla ngokuzenzakalelayo iwijethi lapho konke okwenziwayo sekuqediwe</string>
+    <string name="widget_todo_auto_hide_unavailable">Ayitholakali ngenkathi kuboniswa imisebenzi eqediwe</string>
+    <string name="widget_todo_auto_hide_desc">Yenza iwijethi ibe sobala uma ingekho imisebenzi esalindile</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">kwenziwe</string>
+    <string name="todo_confirm_mark_not_done">akwenziwanga</string>
+    <string name="todo_confirm_title">Maka umsebenzi njengokuthi %1$s?</string>
+    <string name="todo_confirm_reopen">Lokhu okwenziwayo kuqediwe okwamanje. Qinisekisa ngaphambi kokuphinda uyivule.</string>
+    <string name="todo_confirm_complete">Lokhu okumele kwenziwe kusavuliwe. Qinisekisa ngaphambi kokuyimaka ukuthi yenziwe.</string>
+    <string name="todo_confirm_accidental_tap">Ukuthepha ngengozi ngeke kushintshe umsebenzi.</string>
+    <string name="todo_confirm_yes_mark">Yebo, maka %1$s</string>
+    <string name="todo_confirm_open_yaja">Vula ku-Yaja</string>
+    <string name="todo_confirm_keep_as_is">Gcina njengoba injalo</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">futhi olunye uhlelo lokusebenza lokubhalela</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">kusuka kumalebhu e-RJ</string>
+    <string name="help_made_in">Kwenziwe ngo 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Khansela ukungenisa</string>
+    <string name="timeline_show_all_dates">Bonisa zonke izinsuku</string>
+    <string name="timeline_show_all_dates_subtitle">Bandakanya zonke izinsuku ezedlule, ngisho nangaphandle kokufakiwe</string>
+    <string name="settings_background_tint_clean">Hlanza</string>
+    <string name="settings_background_tint_soft">Ithambile</string>
+    <string name="settings_background_tint_rich">Ucebile</string>
+    <string name="settings_background_tint_deep">Okujulile</string>
+    <string name="settings_accent_style_complementary">Okuhambisanayo</string>
+    <string name="settings_accent_style_analogous">Okufanayo</string>
+    <string name="settings_accent_style_triadic">I-Triadic</string>
+    <string name="settings_accent_style_soft">Ithambile</string>
+    <string name="action_clear">Kucace</string>
+    <string name="compliance_master_start_section">Hlela Qala</string>
+    <string name="compliance_master_start_help">Khetha idethi yokuqala nesikhathi ongasikhetha sale shejuli ephindayo.</string>
+</resources>

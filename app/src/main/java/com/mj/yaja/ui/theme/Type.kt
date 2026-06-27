@@ -23,13 +23,16 @@ const val MONO_WEIGHT_MIN = 100
 const val MONO_WEIGHT_MAX = 800
 const val MONO_WEIGHT_DEFAULT = 400
 
+private fun clampedVariableWeight(weight: Int): Int =
+    weight.coerceIn(MONO_WEIGHT_MIN, MONO_WEIGHT_MAX)
+
 /**
  * Builds the JetBrains Mono family at a user-chosen base weight. Heavier styles
  * are offset from the base so bold text stays visually bolder at any setting.
  */
 @OptIn(ExperimentalTextApi::class)
 fun jetBrainsMonoFamily(baseWeight: Int = MONO_WEIGHT_DEFAULT): FontFamily {
-    val base = baseWeight.coerceIn(MONO_WEIGHT_MIN, MONO_WEIGHT_MAX)
+    val base = clampedVariableWeight(baseWeight)
     fun monoFont(weight: FontWeight, axisWeight: Int) =
             Font(
                     R.font.jetbrains_mono_variable,
@@ -49,16 +52,55 @@ fun jetBrainsMonoFamily(baseWeight: Int = MONO_WEIGHT_DEFAULT): FontFamily {
 
 val JetBrainsMono = jetBrainsMonoFamily()
 
+@RequiresApi(Build.VERSION_CODES.Q)
+private fun customFontSupportsWeightApi29(file: File): Boolean =
+    try {
+        android.graphics.fonts.Font.Builder(file)
+            .build()
+            .axes
+            ?.any { it.tag == "wght" } == true
+    } catch (_: Exception) {
+        false
+    }
+
+fun customFontSupportsWeight(path: String?): Boolean {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return false
+    val file = path?.let { File(it) }?.takeIf { it.exists() } ?: return false
+    return customFontSupportsWeightApi29(file)
+}
+
 /**
  * Loads a user-supplied font file (e.g. a Malayalam unicode font) from app storage.
  * Returns null when the path is unset, missing, or unreadable so callers can fall
  * back to a bundled family.
  */
 @OptIn(ExperimentalTextApi::class)
-fun customFontFamily(path: String?): FontFamily? {
+fun customFontFamily(
+    path: String?,
+    baseWeight: Int = MONO_WEIGHT_DEFAULT
+): FontFamily? {
     val file = path?.let { File(it) }?.takeIf { it.exists() } ?: return null
     return try {
-        FontFamily(Font(file))
+        val supportsWeight = customFontSupportsWeight(path)
+        val base = clampedVariableWeight(baseWeight)
+        fun customFont(weight: FontWeight, axisWeight: Int) =
+            if (supportsWeight) {
+                Font(
+                    file = file,
+                    weight = weight,
+                    variationSettings = FontVariation.Settings(
+                        FontVariation.weight(clampedVariableWeight(axisWeight))
+                    )
+                )
+            } else {
+                Font(file = file, weight = weight)
+            }
+        FontFamily(
+            customFont(FontWeight.Normal, base),
+            customFont(FontWeight.Medium, base + 100),
+            customFont(FontWeight.SemiBold, base + 200),
+            customFont(FontWeight.Bold, base + 300)
+        )
     } catch (_: Exception) {
         null
     }
@@ -124,7 +166,7 @@ fun resolveAppFontFamily(
         AppFontFamily.SANS_SERIF -> GoogleSansFamily
         AppFontFamily.SERIF -> LibreBaskervilleFamily
         AppFontFamily.MONO -> jetBrainsMonoFamily(monoFontWeight)
-        AppFontFamily.CUSTOM -> customFontFamily(customFontPath) ?: GoogleSansFamily
+        AppFontFamily.CUSTOM -> customFontFamily(customFontPath, monoFontWeight) ?: GoogleSansFamily
     }
 }
 
@@ -193,10 +235,23 @@ private fun buildManjariChainedFamily(
             }
             AppFontFamily.CUSTOM -> {
                 val file = customFontPath?.let { File(it) }?.takeIf { it.exists() } ?: return null
-                fun customFont() = android.graphics.fonts.Font.Builder(file).build()
+                val supportsWeight = customFontSupportsWeightApi29(file)
+                val base = clampedVariableWeight(monoFontWeight)
+                fun customFont(axisWeight: Int) =
+                    android.graphics.fonts.Font.Builder(file)
+                        .apply {
+                            if (supportsWeight) {
+                                setFontVariationSettings(
+                                    "'wght' ${clampedVariableWeight(axisWeight)}"
+                                )
+                            }
+                        }
+                        .build()
                 FontFamily(
-                        chained(customFont(), manjariRegular, FontWeight.Normal),
-                        chained(customFont(), manjariBold, FontWeight.Bold)
+                        chained(customFont(base), manjariRegular, FontWeight.Normal),
+                        chained(customFont(base + 100), manjariRegular, FontWeight.Medium),
+                        chained(customFont(base + 200), manjariBold, FontWeight.SemiBold),
+                        chained(customFont(base + 300), manjariBold, FontWeight.Bold)
                 )
             }
         }
@@ -297,7 +352,7 @@ fun getTypography(fontFamily: FontFamily): Typography {
             bodyLarge =
                     TextStyle(
                             fontFamily = fontFamily,
-                            fontWeight = FontWeight.Normal,
+                            fontWeight = FontWeight.Medium,
                             fontSize = 16.sp,
                             lineHeight = 24.sp,
                             letterSpacing = 0.5.sp

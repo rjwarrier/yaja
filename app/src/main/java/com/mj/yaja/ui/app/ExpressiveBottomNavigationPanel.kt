@@ -79,6 +79,11 @@ fun ExpressiveBottomNavigationPanel(
 ) {
     val visible = rememberAppEntrance(delayMillis = 120)
     val motionPreference = LocalAnimationPreference.current
+    val selectedRoute = if (currentRoute == Route.ComplianceMaster.path) {
+        Route.Todos.path
+    } else {
+        currentRoute
+    }
 
     val items = remember(
         showLookbackInNavBar,
@@ -111,12 +116,12 @@ fun ExpressiveBottomNavigationPanel(
     }
 
     var indicatorRoute by remember(items) {
-        mutableStateOf(currentRoute ?: items.firstOrNull()?.route.orEmpty())
+        mutableStateOf(selectedRoute ?: items.firstOrNull()?.route.orEmpty())
     }
-    LaunchedEffect(currentRoute, items) {
+    LaunchedEffect(selectedRoute, items) {
         val visibleRoutes = items.map { it.route }.toSet()
         indicatorRoute = when {
-            currentRoute != null && currentRoute in visibleRoutes -> currentRoute
+            selectedRoute != null && selectedRoute in visibleRoutes -> selectedRoute
             indicatorRoute in visibleRoutes -> indicatorRoute
             else -> items.firstOrNull()?.route.orEmpty()
         }
@@ -170,7 +175,7 @@ fun ExpressiveBottomNavigationPanel(
                     label = "bottom_panel_indicator_offset"
                 )
                 val indicatorScale by androidx.compose.animation.core.animateFloatAsState(
-                    targetValue = if (indicatorRoute != currentRoute) 1.04f else 1f,
+                    targetValue = if (indicatorRoute != selectedRoute) 1.04f else 1f,
                     animationSpec = motionPreference.floatSpring(
                         dampingRatio = if (motionPreference == AnimationPreference.REDUCED) 0.92f else 0.60f,
                         stiffness = if (motionPreference == AnimationPreference.REDUCED) 520f else 420f

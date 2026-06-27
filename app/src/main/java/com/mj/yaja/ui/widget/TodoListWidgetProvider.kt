@@ -344,7 +344,7 @@ class TodoListWidgetProvider : AppWidgetProvider() {
                 if (!saved && date != null) {
                     val settingsRepository = SettingsRepository.getInstance(appContext)
                     val fileManager = MarkdownFileManager.getInstance(appContext, settingsRepository)
-                    val diskEntries = fileManager.getEntriesForDateFromDisk(date)
+                    val diskEntries = fileManager.getEntriesForDate(date)
                     if (diskEntries.isEmpty()) {
                         todoIndexRepository.removeDate(date)
                     } else {
@@ -816,8 +816,16 @@ class TodoListWidgetProvider : AppWidgetProvider() {
             .map { event ->
             val timePrefix =
                 when {
-                    !event.mentionedTime.isNullOrBlank() -> "${event.mentionedTime} - "
-                    !event.recordedTime.isNullOrBlank() -> "${event.recordedTime} - "
+                    !event.mentionedTime.isNullOrBlank() &&
+                        !com.mj.yaja.data.eventTextStartsWithTime(
+                            event.displayText,
+                            event.mentionedTime
+                        ) -> "${event.mentionedTime} - "
+                    !event.recordedTime.isNullOrBlank() &&
+                        !com.mj.yaja.data.eventTextStartsWithTime(
+                            event.displayText,
+                            event.recordedTime
+                        ) -> "${event.recordedTime} - "
                     else -> ""
                 }
             TodoWidgetCollectionRow(

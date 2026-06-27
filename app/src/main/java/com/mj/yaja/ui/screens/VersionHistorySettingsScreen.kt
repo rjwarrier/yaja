@@ -36,7 +36,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -64,12 +64,12 @@ fun VersionHistorySettingsScreen(
     viewModel: JournalViewModel,
     onNavigateBack: () -> Unit
 ) {
-    val enabled by viewModel.versionHistoryEnabled.collectAsState()
-    val maxVersions by viewModel.versionHistoryMaxVersions.collectAsState()
-    val retentionDays by viewModel.versionHistoryRetentionDays.collectAsState()
-    val selectedDate by viewModel.uiState.collectAsState()
-    val snapshots by viewModel.versionHistorySnapshots.collectAsState()
-    val restoreInProgress by viewModel.versionHistoryRestoreInProgress.collectAsState()
+    val enabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
+    val maxVersions by viewModel.versionHistoryMaxVersions.collectAsStateWithLifecycle()
+    val retentionDays by viewModel.versionHistoryRetentionDays.collectAsStateWithLifecycle()
+    val selectedDate by viewModel.uiState.collectAsStateWithLifecycle()
+    val snapshots by viewModel.versionHistorySnapshots.collectAsStateWithLifecycle()
+    val restoreInProgress by viewModel.versionHistoryRestoreInProgress.collectAsStateWithLifecycle()
     var previewSnapshot by remember { mutableStateOf<JournalViewModel.VersionHistorySnapshotUi?>(null) }
 
     LaunchedEffect(selectedDate.selectedDate) {

@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.screens
 
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -116,20 +117,20 @@ fun StatisticsScreen(
     onNavigateToSettings: () -> Unit = {},
     onNavigateToHelp: () -> Unit = {}
 ) {
-    val allTimeStats by viewModel.allTimeStats.collectAsState()
-    val heatmapData by viewModel.heatmapData.collectAsState()
-    val uiState by viewModel.uiState.collectAsState()
+    val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
+    val heatmapData by viewModel.heatmapData.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val datesWithEntries = uiState.datesWithEntries
     val highlightedDays = uiState.favoritedHighlights.size
     var selectedPeriod by remember { mutableStateOf(StatisticsPeriod.ALL_TIME) }
 
-    val keywordIndexingIds by viewModel.keywordIndexingIds.collectAsState()
-    val keywordMatchState by viewModel.keywordMatchState.collectAsState()
-    val keywords by viewModel.keywords.collectAsState()
-    val statisticsSettling by viewModel.statisticsSettling.collectAsState()
+    val keywordIndexingIds by viewModel.keywordIndexingIds.collectAsStateWithLifecycle()
+    val keywordMatchState by viewModel.keywordMatchState.collectAsStateWithLifecycle()
+    val keywords by viewModel.keywords.collectAsStateWithLifecycle()
+    val statisticsSettling by viewModel.statisticsSettling.collectAsStateWithLifecycle()
 
     // Section order — restored from prefs, falls back to default, new sections appended at end
-    val savedSectionOrder by viewModel.statisticsSectionOrder.collectAsState()
+    val savedSectionOrder by viewModel.statisticsSectionOrder.collectAsStateWithLifecycle()
     val sectionOrder = remember(savedSectionOrder) {
         val parsed = savedSectionOrder.mapNotNull { name ->
             runCatching { StatisticsSection.valueOf(name) }.getOrNull()

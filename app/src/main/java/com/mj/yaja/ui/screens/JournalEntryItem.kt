@@ -56,10 +56,12 @@ import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.SwipeDirection
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.extractMentionedEventTime
+import com.mj.yaja.data.eventTextStartsWithTime
 import com.mj.yaja.data.parseEntryKind
 import com.mj.yaja.data.parseEntryRevisitMetadata
 import com.mj.yaja.ui.components.CheckboxMarkdownText
 import com.mj.yaja.ui.theme.contentTextStyle
+import com.mj.yaja.ui.theme.DataFontScaleWrapper
 import com.mj.yaja.ui.theme.metaSmallTextStyle
 import com.mj.yaja.ui.theme.metaTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
@@ -67,6 +69,10 @@ import com.mj.yaja.ui.design.expressivePressMotion
 import java.time.LocalDate
 import kotlin.math.absoluteValue
 import kotlinx.coroutines.delay
+
+// Compiled once at class-load instead of per recomposition of every entry row.
+private val ENTRY_TIME_METADATA_REGEX =
+        Regex("^<!--time:(\\d{2}:\\d{2})(?:, added on (.*?))?-->\\n?")
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -228,20 +234,22 @@ fun JournalEntryItem(
                                         }
                                 } else Modifier
 
-                        val timeRegex =
-                                Regex(
-                                        "^<!--time:(\\d{2}:\\d{2})(?:, added on (.*?))?-->\\n?"
-                                )
-                        val match = timeRegex.find(entry)
-                        val entryKind = parseEntryKind(entry)
+                        // All of these derive purely from `entry`; memoize so a swipe/expand/press
+                        // recomposition does not re-run the regex match and metadata stripping.
+                        val match = remember(entry) { ENTRY_TIME_METADATA_REGEX.find(entry) }
+                        val entryKind = remember(entry) { parseEntryKind(entry) }
                         val isEventEntry = entryKind == EntryKind.EVENT
-                        val revisitMetadata = parseEntryRevisitMetadata(entry)
+                        val revisitMetadata = remember(entry) { parseEntryRevisitMetadata(entry) }
                         val cleanEntry =
-                                if (match != null)
-                                        MarkdownUtils.stripMetadata(entry.replaceFirst(match.value, ""))
-                                else MarkdownUtils.stripMetadata(entry)
+                                remember(entry, match) {
+                                        if (match != null)
+                                                MarkdownUtils.stripMetadata(entry.replaceFirst(match.value, ""))
+                                        else MarkdownUtils.stripMetadata(entry)
+                                }
                         val mentionedEventTime =
-                                if (isEventEntry) extractMentionedEventTime(cleanEntry) else null
+                                remember(cleanEntry, isEventEntry) {
+                                        if (isEventEntry) extractMentionedEventTime(cleanEntry) else null
+                                }
 
                         val isTruncated = isPreviewLimitEnabled && cleanEntry.length > previewLimitLength
 
@@ -376,7 +384,11 @@ fun JournalEntryItem(
                                                                                         match?.groupValues?.getOrNull(1)
                                                                                 it != recordedTime &&
                                                                                         it !=
-                                                                                                "${recordedTime} Hrs"
+                                                                                                "${recordedTime} Hrs" &&
+                                                                                        !eventTextStartsWithTime(
+                                                                                                cleanEntry,
+                                                                                                it
+                                                                                        )
                                                                         }
                                                                         ?.let { mentionedTime ->
                                                                                 Surface(
@@ -472,17 +484,19 @@ fun JournalEntryItem(
                                                                 cleanEntry.take(previewLimitLength) + "..."
                                                         } else cleanEntry
 
-                                                CheckboxMarkdownText(
-                                                        text = truncatedEntry,
-                                                        renderCheckboxesAsText = renderCheckboxesAsText,
-                                                        style = MaterialTheme.typography.contentTextStyle(),
-                                                        color = MaterialTheme.colorScheme.onSurface,
-                                                        entryDate = entryDate,
-                                                        onDateLinkClick = onDateLinkClick,
-                                                        keywords = keywords,
-                                                        monthFirst = monthFirst,
-                                                        customKeywords = customKeywords
-                                                )
+                                                DataFontScaleWrapper {
+                                                        CheckboxMarkdownText(
+                                                                text = truncatedEntry,
+                                                                renderCheckboxesAsText = renderCheckboxesAsText,
+                                                                style = MaterialTheme.typography.contentTextStyle(),
+                                                                color = MaterialTheme.colorScheme.onSurface,
+                                                                entryDate = entryDate,
+                                                                onDateLinkClick = onDateLinkClick,
+                                                                keywords = keywords,
+                                                                monthFirst = monthFirst,
+                                                                customKeywords = customKeywords
+                                                        )
+                                                }
 
                                                 if (isEventEntry) {
                                                         renderTimestamp()

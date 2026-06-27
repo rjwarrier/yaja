@@ -64,6 +64,7 @@ import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.R
 import com.mj.yaja.ui.utils.MarkdownVisualTransformation
 import com.mj.yaja.ui.utils.ShortcodeManager
+import com.mj.yaja.ui.theme.DataFontScaleWrapper
 import java.time.LocalDate
 import kotlinx.coroutines.delay
 
@@ -104,12 +105,14 @@ fun EntryViewBody(
                 )
 
         Box(modifier = modifier) {
-                Text(
-                        text = viewText,
-                        modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()),
-                        style = MaterialTheme.typography.bodyLarge.copy(lineHeight = 28.sp, fontSize = 18.sp),
-                        color = MaterialTheme.colorScheme.onSurface
-                )
+                DataFontScaleWrapper {
+                        Text(
+                                text = viewText,
+                                modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()),
+                                style = MaterialTheme.typography.bodyLarge.copy(lineHeight = 28.sp, fontSize = 18.sp),
+                                color = MaterialTheme.colorScheme.onSurface
+                        )
+                }
         }
 }
 
@@ -132,30 +135,32 @@ fun EntryEditorField(
                 }
         }
 
-        OutlinedTextField(
-                value = value,
-                onValueChange = { newValue ->
-                        onValueChange(handleEditorValueChange(value, newValue, customShortcodes))
-                },
-                modifier = modifier.focusRequester(focusRequester),
-                placeholder = { Text(stringResource(R.string.addentry_editor_placeholder)) },
-                keyboardOptions =
-                        KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-                singleLine = false,
-                visualTransformation = MarkdownVisualTransformation(),
-                colors =
-                        OutlinedTextFieldDefaults.colors(
-                                focusedBorderColor = Color.Transparent,
-                                unfocusedBorderColor = Color.Transparent,
-                                focusedContainerColor = Color.Transparent,
-                                unfocusedContainerColor = Color.Transparent
-                        ),
-                textStyle =
-                        MaterialTheme.typography.bodyLarge.copy(
-                                lineHeight = 24.sp,
-                                color = MaterialTheme.colorScheme.onSurface
-                        )
-        )
+        DataFontScaleWrapper {
+                OutlinedTextField(
+                        value = value,
+                        onValueChange = { newValue ->
+                                onValueChange(handleEditorValueChange(value, newValue, customShortcodes))
+                        },
+                        modifier = modifier.focusRequester(focusRequester),
+                        placeholder = { Text(stringResource(R.string.addentry_editor_placeholder)) },
+                        keyboardOptions =
+                                KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
+                        singleLine = false,
+                        visualTransformation = MarkdownVisualTransformation(),
+                        colors =
+                                OutlinedTextFieldDefaults.colors(
+                                        focusedBorderColor = Color.Transparent,
+                                        unfocusedBorderColor = Color.Transparent,
+                                        focusedContainerColor = Color.Transparent,
+                                        unfocusedContainerColor = Color.Transparent
+                                ),
+                        textStyle =
+                                MaterialTheme.typography.bodyLarge.copy(
+                                        lineHeight = 24.sp,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                )
+                )
+        }
 }
 
 @OptIn(ExperimentalLayoutApi::class)

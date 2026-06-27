@@ -1,9 +1,11 @@
 package com.mj.yaja.ui.viewmodel
 
+import android.util.Log
 import com.mj.yaja.data.MarkdownFileManager
 import com.mj.yaja.data.EventIndexRepository
 import com.mj.yaja.data.TodoIndexRepository
 import com.mj.yaja.data.TodoItem
+import com.mj.yaja.data.ComplianceMasterRepository
 import com.mj.yaja.ui.widget.WidgetRefreshCoordinator
 
 internal fun sortedTodoItems(
@@ -25,13 +27,19 @@ internal suspend fun refreshTodosWorkflow(
 ) {
     publishCurrentTodos()
 
+    runCatching {
+        ComplianceMasterRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
+    }.onFailure {
+        Log.e("YajaTodoPipeline", "Error generating recurring todos", it)
+    }
+
     val dates = fileManager.getAllJournalDatesLightweight(forceRefresh = true)
     val fingerprint = fileManager.computeCurrentJournalFingerprint(knownDates = dates)
     val shouldRebuildTodos = forceRebuild || !todoIndexRepository.isCurrent(fingerprint)
     val shouldRebuildEvents = forceRebuild || !eventIndexRepository.isCurrent(fingerprint)
     if (shouldRebuildTodos || shouldRebuildEvents) {
         emitBackgroundToast("Updating todos and events...")
-        val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDateFromDisk(date) }
+        val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDate(date) }
         if (shouldRebuildTodos) {
             todoIndexRepository.rebuild(
                 dates = dates,
@@ -60,10 +68,16 @@ internal suspend fun rebuildTodoIndexWorkflow(
     emitBackgroundToast: suspend (String) -> Unit,
     publishCurrentTodos: () -> Unit
 ) {
+    runCatching {
+        ComplianceMasterRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
+    }.onFailure {
+        Log.e("YajaTodoPipeline", "Error generating recurring todos", it)
+    }
+
     val dates = fileManager.getAllJournalDatesLightweight(forceRefresh = true)
     val fingerprint = fileManager.computeCurrentJournalFingerprint(knownDates = dates)
     emitBackgroundToast("Updating todos and events...")
-    val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDateFromDisk(date) }
+    val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDate(date) }
     todoIndexRepository.rebuild(
         dates = dates,
         entriesForDate = { date -> entriesByDate[date].orEmpty() },

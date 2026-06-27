@@ -34,6 +34,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -71,12 +74,17 @@ fun TemplateCard(
         onTemplatePreview: (EntryTemplate) -> Unit,
         onTemplateSelected: (EntryTemplate) -> Unit
 ) {
+        val interactionSource = remember { MutableInteractionSource() }
         Surface(
                 modifier =
-                        Modifier.combinedClickable(
-                                onClick = { onTemplateSelected(template) },
-                                onLongClick = { onTemplatePreview(template) }
-                        ),
+                        Modifier
+                                .expressivePressMotion(interactionSource, pressedScale = 0.96f)
+                                .combinedClickable(
+                                        interactionSource = interactionSource,
+                                        indication = androidx.compose.foundation.LocalIndication.current,
+                                        onClick = { onTemplateSelected(template) },
+                                        onLongClick = { onTemplatePreview(template) }
+                                ),
                 shape = MaterialTheme.shapes.large,
                 color = MaterialTheme.colorScheme.surfaceContainerLow,
                 border =

@@ -11,6 +11,9 @@ import com.mj.yaja.ui.design.exitOrNone
 import com.mj.yaja.data.AnimationPreference
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.remember
+import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -47,6 +50,7 @@ fun CalendarDay(
         onClick: () -> Unit
 ) {
         val expressiveShape = RoundedCornerShape(18.dp)
+        val interactionSource = remember { MutableInteractionSource() }
 
         val animationPreference = LocalAnimationPreference.current
         val finalScale = if (isToday && !isSelected && animationPreference != AnimationPreference.OFF) {
@@ -112,7 +116,12 @@ fun CalendarDay(
                                 .clip(expressiveShape)
                                 .background(containerColor)
                                 .border(width = 1.dp, color = borderColor, shape = expressiveShape)
-                                .clickable { onClick() },
+                                .expressivePressMotion(interactionSource, pressedScale = 0.90f)
+                                .clickable(
+                                        interactionSource = interactionSource,
+                                        indication = androidx.compose.foundation.LocalIndication.current,
+                                        onClick = onClick
+                                ),
                 contentAlignment = Alignment.Center
         ) {
                 Column(

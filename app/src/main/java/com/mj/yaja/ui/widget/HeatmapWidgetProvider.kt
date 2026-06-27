@@ -359,6 +359,7 @@ class HeatmapWidgetProvider : AppWidgetProvider() {
         views.setImageViewBitmap(
             R.id.heatmap_image,
             buildHeatmapBitmap(
+                context,
                 widthPx, heightPx,
                 marginPx = marginDp * density,
                 density  = density,
@@ -521,6 +522,7 @@ class HeatmapWidgetProvider : AppWidgetProvider() {
      * for uniform scaling. Today is always the bottom-right cell.
      */
     private fun buildHeatmapBitmap(
+        context: Context,
         widgetWidthPx: Int,
         widgetHeightPx: Int,
         marginPx: Float,
@@ -580,6 +582,7 @@ class HeatmapWidgetProvider : AppWidgetProvider() {
         val paint  = Paint(Paint.ANTI_ALIAS_FLAG)
         val path   = Path()
 
+        val isRtl = context.resources.configuration.layoutDirection == android.view.View.LAYOUT_DIRECTION_RTL
         columns.forEachIndexed { col, column ->
             column.forEachIndexed { row, date ->
                 val wordCount = wordCounts[date] ?: 0
@@ -590,7 +593,8 @@ class HeatmapWidgetProvider : AppWidgetProvider() {
                     emptyColor = emptyColor,
                     primaryColor = primaryColor
                 )
-                val left = marginPx + col * (cellPx + gapPx)
+                val actualCol = if (isRtl) (numCols - 1 - col) else col
+                val left = marginPx + actualCol * (cellPx + gapPx)
                 val top  = marginPx + row * (cellPx + gapPx)
                 drawCell(canvas, paint, path, left, top, cellPx, cellShape, density)
             }

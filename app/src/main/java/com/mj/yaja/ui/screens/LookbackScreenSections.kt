@@ -64,6 +64,7 @@ import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import java.time.LocalDate
 import com.mj.yaja.data.DateKeywordEntry
+import com.mj.yaja.ui.theme.DataFontScaleWrapper
 
 @Composable
 fun LookbackReviewSection(
@@ -208,21 +209,23 @@ fun LookbackFlashbacksSection(
                                 index = index,
                                 strength = AppEntranceStrength.SECTION
                         ) {
-                                FlashbackCard(
-                                        yearsAgo = yearsAgo,
-                                        date = selectedDate.minusYears(yearsAgo.toLong()),
-                                        entries = entries,
-                                        isPreviewLimitEnabled = isPreviewLimitEnabled,
-                                        previewLimitLength = previewLimitLength,
-                                        onClick = {
-                                                onNavigateToDate(
-                                                        selectedDate.minusYears(yearsAgo.toLong())
-                                                )
-                                        },
-                                        onDateLinkClick = onNavigateToDate,
-                                        monthFirst = monthFirst,
-                                        customKeywords = customKeywords
-                                )
+                                DataFontScaleWrapper {
+                                        FlashbackCard(
+                                                yearsAgo = yearsAgo,
+                                                date = selectedDate.minusYears(yearsAgo.toLong()),
+                                                entries = entries,
+                                                isPreviewLimitEnabled = isPreviewLimitEnabled,
+                                                previewLimitLength = previewLimitLength,
+                                                onClick = {
+                                                        onNavigateToDate(
+                                                                selectedDate.minusYears(yearsAgo.toLong())
+                                                        )
+                                                },
+                                                onDateLinkClick = onNavigateToDate,
+                                                monthFirst = monthFirst,
+                                                customKeywords = customKeywords
+                                        )
+                                }
                         }
                 }
         }
@@ -253,11 +256,13 @@ fun LookbackHighlightsSection(
                                 index = index,
                                 strength = AppEntranceStrength.SUBTLE
                         ) {
-                                HighlightCard(
-                                        date = date,
-                                        onClick = { onNavigateToDate(date) },
-                                        label = label
-                                )
+                                DataFontScaleWrapper {
+                                        HighlightCard(
+                                                date = date,
+                                                onClick = { onNavigateToDate(date) },
+                                                label = label
+                                        )
+                                }
                         }
                 }
         }

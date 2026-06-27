@@ -2,6 +2,7 @@ package com.mj.yaja.data
 
 import java.time.LocalDate
 
+@androidx.compose.runtime.Immutable
 data class RevisitMarker(
     val sourceDate: LocalDate,
     val revisitOn: LocalDate,
@@ -9,6 +10,7 @@ data class RevisitMarker(
     val note: String = ""
 )
 
+@androidx.compose.runtime.Immutable
 data class DueRevisitItem(
     val sourceDate: LocalDate,
     val revisitOn: LocalDate,

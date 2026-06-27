@@ -9,6 +9,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Backspace
 import androidx.compose.material.icons.rounded.Lock
@@ -368,6 +370,7 @@ private fun PinNumpad(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 row.forEach { key ->
+                    val interactionSource = remember { MutableInteractionSource() }
                     Box(
                         modifier = Modifier.weight(1f),
                         contentAlignment = Alignment.Center
@@ -379,7 +382,12 @@ private fun PinNumpad(
                                     modifier = Modifier
                                         .size(72.dp)
                                         .clip(CircleShape)
-                                        .clickable { onBackspace() },
+                                        .expressivePressMotion(interactionSource, pressedScale = 0.90f)
+                                        .clickable(
+                                            interactionSource = interactionSource,
+                                            indication = androidx.compose.foundation.LocalIndication.current,
+                                            onClick = onBackspace
+                                        ),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Icon(
@@ -396,7 +404,12 @@ private fun PinNumpad(
                                         .size(72.dp)
                                         .clip(CircleShape)
                                         .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f))
-                                        .clickable { onDigit(key) },
+                                        .expressivePressMotion(interactionSource, pressedScale = 0.90f)
+                                        .clickable(
+                                            interactionSource = interactionSource,
+                                            indication = androidx.compose.foundation.LocalIndication.current,
+                                            onClick = { onDigit(key) }
+                                        ),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(

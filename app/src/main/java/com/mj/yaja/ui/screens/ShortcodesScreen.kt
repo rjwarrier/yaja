@@ -1,6 +1,7 @@
 package com.mj.yaja.ui.screens
 
 import android.util.Log
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -37,7 +38,7 @@ fun ShortcodesScreen(
         onOpenDrawer: () -> Unit,
         onNavigateBack: () -> Unit
 ) {
-    val customShortcodes by viewModel.customShortcodes.collectAsState()
+    val customShortcodes by viewModel.customShortcodes.collectAsStateWithLifecycle()
     var showAddShortcodeDialog by remember { mutableStateOf(false) }
     var editingShortcode by remember { mutableStateOf<Pair<String, String>?>(null) }
     var showHelpDialog by remember { mutableStateOf(false) }

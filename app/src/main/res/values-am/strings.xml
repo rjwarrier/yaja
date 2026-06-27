@@ -1,0 +1,1347 @@
+<resources>
+    <string name="app_name">ያጃ</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">ጆርናል</string>
+    <string name="nav_calendar">የቀን መቁጠሪያ</string>
+    <string name="nav_lookback">ወደ ኋላ ተመልከት</string>
+    <string name="nav_settings">ቅንብሮች</string>
+    <string name="nav_shortcodes">አጭር ኮዶች</string>
+    <string name="nav_help">እገዛ እና ስለ</string>
+
+    <!-- Common actions -->
+    <string name="action_save">አስቀምጥ</string>
+    <string name="action_cancel">ሰርዝ</string>
+    <string name="action_delete">ሰርዝ</string>
+    <string name="action_edit">አርትዕ</string>
+    <string name="action_back">ተመለስ</string>
+    <string name="action_undo">ቀልብስ</string>
+    <string name="action_yes">አዎ</string>
+    <string name="action_no">አይ</string>
+    <string name="action_remove">አስወግድ</string>
+    <string name="action_done">ተከናውኗል</string>
+    <string name="action_set">አዘጋጅ</string>
+    <string name="action_select">ይምረጡ</string>
+    <string name="action_ok">እሺ</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">መሸጎጫ እንደገና በመገንባት ላይ</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">ፈጣን ቀረጻ</string>
+    <string name="quick_capture_hint">ምን ሆነ፧</string>
+    <string name="quick_capture_helper_shortcodes">አጭር ኮዶች እዚህ በራስ-ሰር ይሰፋሉ፣ እና የተግባር መስመሮች አስገባ ላይ ይቀጥላሉ።</string>
+    <string name="quick_capture_save_delayed">የዘገየ አስቀምጥ። እባክዎ ለማረጋገጥ Yaja ን እንደገና ይክፈቱት።</string>
+    <string name="cd_saved">ተቀምጧል</string>
+    <string name="quick_todo_dialog_title">ፈጣን አክል</string>
+    <string name="quick_todo_save_delayed">ቶዶ ማስቀመጥ ዘግይቷል። እባክዎ ለማረጋገጥ Yaja ን እንደገና ይክፈቱት።</string>
+    <string name="quick_todo_placeholder">ቶዶ ጨምር</string>
+    <string name="quick_event_placeholder">ክስተት ጨምር</string>
+    <string name="quick_todo_task_date">የተግባር ቀን</string>
+    <string name="quick_todo_event_date">የክስተት ቀን</string>
+    <string name="quick_todo_pick_date_cd_format">%1$sን ይምረጡ</string>
+    <string name="quick_todo_date_button_format">_ኤፍኤምቲ_0__ _ኤፍኤምቲ_1__</string>
+    <string name="quick_todo_selected_day_hint">ለተመረጠው ቀን እንደ ማስገበሪያ ይቆጥባል።</string>
+    <string name="quick_event_selected_day_hint">ለተመረጠው ቀን እንደ የክስተት ግቤት ያስቀምጣል።</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">ቀዳሚ</string>
+    <string name="cd_next">ቀጥሎ</string>
+    <string name="cd_surprise_me">አስገረሙኝ።</string>
+    <string name="calendar_cd_go_to_current_month">ወደ የአሁኑ ወር ይሂዱ</string>
+    <string name="calendar_quick_action_timeline_title">የጊዜ መስመር</string>
+    <string name="calendar_quick_action_timeline_subtitle">በጊዜ ቅደም ተከተል ያስሱ</string>
+    <string name="calendar_quick_action_jump_title">ወደ ቀን ዝለል</string>
+    <string name="calendar_quick_action_jump_subtitle">የተወሰነ ቀን ይክፈቱ</string>
+    <string name="calendar_jump_placeholder">DD-ወወ-ዓዓ</string>
+    <string name="calendar_jump_invalid_date">ልክ ያልሆነ ቀን የDD-MM-YY ቅርጸት ይጠቀሙ።</string>
+    <string name="calendar_action_go">ሂድ</string>
+    <string name="calendar_enable_future_dates_title">የወደፊት ቀኖችን አንቃ</string>
+    <string name="calendar_enable_future_dates_message">የወደፊት ቀን ግቤት ተሰናክሏል። እሱን ማንቃት ይፈልጋሉ?</string>
+    <string name="calendar_action_enable">አንቃ</string>
+    <string name="calendar_future_entry_enabled">የወደፊት ቀን መግቢያ ነቅቷል።</string>
+    <string name="calendar_weekday_sun_short">ፀሐይ</string>
+    <string name="calendar_weekday_mon_short">ሰኞ</string>
+    <string name="calendar_weekday_tue_short">ማክሰኞ</string>
+    <string name="calendar_weekday_wed_short">ረቡዕ</string>
+    <string name="calendar_weekday_thu_short">ቱ</string>
+    <string name="calendar_weekday_fri_short">ዓርብ</string>
+    <string name="calendar_weekday_sat_short">ሳት</string>
+    <string name="calendar_percent_format">_ኤፍኤምቲ_0____ኤፍኤምቲ_1__</string>
+    <string name="calendar_entries_this_month">በዚህ ወር ገብቷል።</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">_FMT_0__ / %2$d ቀን</item>
+        <item quantity="other">_FMT_0__ / %2$d ቀናት</item>
+    </plurals>
+    <string name="calendar_days_of_memories">የትዝታ ቀናት</string>
+    <string name="calendar_consistency_last_12_months">ያለፉት 12 ወራት</string>
+    <string name="calendar_consistency_title_format">ወጥነት - %1$s</string>
+    <string name="calendar_consistency_delta_format">_FMT_0__%% ከ\'%2$s ጋር</string>
+    <string name="calendar_consistency_previous_period_format">ከ%1$s ጋር</string>
+    <string name="calendar_consistency_first_period">የመጀመሪያ ጊዜ</string>
+    <string name="calendar_graph_frequency_month">ወር</string>
+    <string name="calendar_graph_frequency_year">አመት</string>
+    <string name="calendar_yearly_consistency_title">ወጥነት (ዓመታዊ)</string>
+    <string name="calendar_keywords_title">ማን በብዛት ይታያል</string>
+    <string name="calendar_keywords_syncing">የሰዎች እና የቦታዎች ስታቲስቲክስ አሁንም ከቁልፍ ቃል መረጃ ጠቋሚ ጋር እየተመሳሰሉ ነው።</string>
+    <string name="calendar_keywords_empty">ከፍተኛ መጠቀሶችን ለማየት ቢያንስ 3 ሰዎችን ወይም 3 ቦታዎችን ጨምር።</string>
+    <string name="calendar_keywords_people">ሰዎች</string>
+    <string name="calendar_keywords_places">ቦታዎች</string>
+
+    <!-- Settings -->
+    <string name="settings_title">ቅንብሮች</string>
+    <string name="settings_appearance">መልክ</string>
+    <string name="settings_appearance_subtitle">ገጽታ፣ ቀለሞች፣ ቅርጸ-ቁምፊዎች እና የግል ቅጦች</string>
+    <string name="settings_theme">ጭብጥ</string>
+    <string name="settings_font">ቅርጸ-ቁምፊ</string>
+    <string name="settings_storage">ማከማቻ</string>
+    <string name="settings_security">ደህንነት</string>
+    <string name="settings_backup">ምትኬ</string>
+    <string name="settings_change_storage_title">የማከማቻ ቦታን ቀይር</string>
+    <string name="settings_backup_never">በጭራሽ</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">የፍለጋ ቅንብሮች</string>
+    <string name="settings_search_clear">ፍለጋን አጽዳ</string>
+    <string name="settings_search_recent">የቅርብ ጊዜ ፍለጋዎች</string>
+    <string name="settings_search_no_results">ምንም ተዛማጅ ቅንብሮች የሉም</string>
+    <string name="settings_search_close">ገጠመ</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">የጆርናል ልምድ</string>
+    <string name="settings_section_navigation_gestures">አሰሳ እና የእጅ ምልክቶች</string>
+    <string name="settings_section_review_insights">ግምገማ እና ግንዛቤዎች</string>
+
+    <!-- Language -->
+    <string name="settings_language">ቋንቋ</string>
+    <string name="settings_language_title">የመተግበሪያ ቋንቋ</string>
+    <string name="settings_language_subtitle">በመተግበሪያው ውስጥ ጥቅም ላይ የዋለውን ቋንቋ ይምረጡ።</string>
+    <string name="settings_language_system_default">የስርዓት ነባሪ</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">የመግቢያ ዘይቤ</string>
+    <string name="settings_journal_entry_style_subtitle">ከፍ ባሉ ካርዶች እና በጠፍጣፋ መጽሔት እይታ መካከል ይምረጡ።</string>
+    <string name="settings_journal_entry_style_cards">ካርዶች</string>
+    <string name="settings_journal_entry_style_flat">ጠፍጣፋ</string>
+    <string name="settings_journal_render_checkboxes_title">አመልካች ሳጥኖችን እንደ ጽሑፍ ቅረጽ</string>
+    <string name="settings_journal_render_checkboxes_subtitle">ገላጭ ከሆኑ የአመልካች ሳጥኖች ይልቅ ቶዶዎችን እንደ [] እና [x] ያሳዩ።</string>
+    <string name="settings_journal_day_header_counts_title">የቀን ራስጌ ቆጠራዎችን አሳይ</string>
+    <string name="settings_journal_day_header_counts_subtitle">በመጽሔቱ ቀን ራስጌ ውስጥ የመግቢያ፣ የቃል እና የቁምፊ ቆጠራን አሳይ።</string>
+    <string name="settings_journal_show_timestamps_title">የጊዜ ማህተሞችን አሳይ</string>
+    <string name="settings_journal_show_timestamps_subtitle">የመግቢያ ጊዜ በጊዜ መስመር ላይ አሳይ.</string>
+    <string name="settings_journal_allow_future_title">የወደፊት ግቤቶችን ፍቀድ</string>
+    <string name="settings_journal_allow_future_subtitle">ወደፊት ቀኖች ላይ ግቤቶችን ማከል አንቃ.</string>
+    <string name="settings_journal_truncate_title">ረጅም ግቤቶችን ይቁረጡ</string>
+    <string name="settings_journal_truncate_subtitle">በመነሻ ማያ ገጽ ላይ ረጅም ግቤቶችን ያሳጥሩ።</string>
+    <string name="settings_journal_char_limit_title">የቁምፊ ገደብ</string>
+    <string name="settings_journal_char_limit_subtitle">ከመቁረጥዎ በፊት ምን ያህል ቁምፊዎች እንደሚታዩ ያዘጋጁ።</string>
+    <string name="settings_journal_char_limit_min">50 ቁምፊዎች</string>
+    <string name="settings_journal_char_limit_max">200 ቻርልስ</string>
+    <string name="settings_journal_char_count">%1$d ቁምፊዎች</string>
+    <string name="settings_journal_first_day_title">የሳምንቱ የመጀመሪያ ቀን</string>
+    <string name="settings_journal_first_day_subtitle">የቀን መቁጠሪያ በ ላይ ይጀምሩ</string>
+    <string name="settings_journal_day_sun">ፀሐይ</string>
+    <string name="settings_journal_day_mon">ሰኞ</string>
+    <string name="settings_journal_date_recognition">ቀን እውቅና</string>
+    <string name="settings_journal_date_order_title">የቀን ትእዛዝ</string>
+    <string name="settings_journal_date_order_subtitle">የቁጥር ቀኖችን እንዴት ማንበብ እንደሚቻል</string>
+    <string name="settings_journal_date_order_auto">መኪና</string>
+    <string name="settings_journal_date_order_dmy">ዲዲ/ሚሜ</string>
+    <string name="settings_journal_date_order_mdy">ወወ/ዲዲ</string>
+    <string name="settings_journal_date_keywords_title">የቀን ቁልፍ ቃላት</string>
+    <string name="settings_journal_date_keywords_subtitle">በሌሎች ቋንቋዎች የቀን ትርጉም ያላቸው ቃላቶች (ለምሳሌ የትላንትናው የሀገር ውስጥ ቃል)።</string>
+    <string name="settings_journal_view_keywords">ይመልከቱ (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">ቁልፍ ቃል ያክሉ</string>
+    <string name="settings_journal_motion">እንቅስቃሴ</string>
+    <string name="settings_journal_animations_title">እነማዎች</string>
+    <string name="settings_journal_animations_subtitle">በመተግበሪያው ላይ እንቅስቃሴን ይቆጣጠሩ። የተቀነሰ ነገር በትንሽ እንቅስቃሴ ፈሳሽ እንዲቆይ ያደርጋል።</string>
+    <string name="settings_journal_animations_full">ሙሉ</string>
+    <string name="settings_journal_animations_reduced">ቀንሷል</string>
+    <string name="settings_journal_animations_off">ጠፍቷል</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">የድህረ-ማዳን ግምገማ</string>
+    <string name="settings_review_post_write_title">የድህረ-ጽሑፍ ግምገማ</string>
+    <string name="settings_review_post_write_subtitle">ቶዶዎችን ለማውጣት ፣የተጠቀሱትን ለመፈተሽ ፣የኮከብ ቀንን ወይም መለያን ለማዘጋጀት ማስቀመጥን መታ ካደረጉ በኋላ የግምገማ ሉህን አሳይ።</string>
+    <string name="settings_review_people_places">ሰዎች እና ቦታዎች</string>
+    <string name="settings_review_highlighting_title">ማድመቅ</string>
+    <string name="settings_review_highlighting_subtitle">በሆም ካርዶች ውስጥ ክትትል የሚደረግባቸውን ሰዎች እና ቦታዎች ያድምቁ እና የመግቢያ ሁነታን ይመልከቱ።</string>
+    <string name="settings_review_match_sensitivity_title">የግጥሚያ ትብነት</string>
+    <string name="settings_review_match_sensitivity_percent">_ኤፍኤምቲ_0____ኤፍኤምቲ_1__</string>
+    <string name="settings_review_match_sensitivity_subtitle">በሰዎች እና ቦታዎች ለማወቅ አንድ ቃል ምን ያህል መመሳሰል እንዳለበት (ከፍ ያለ = ጥብቅ)።</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">አጭር ኮድ ያክሉ</string>
+    <string name="shortcodes_edit_title">አጭር ኮድ አርትዕ</string>
+    <string name="shortcodes_code_label">አጭር ኮድ (ለምሳሌ @yday)</string>
+    <string name="shortcodes_expansion_label">የማስፋፊያ ጽሑፍ</string>
+    <string name="shortcodes_export_error">አጭር ኮዶችን ወደ ውጭ መላክ አልተሳካም።</string>
+    <string name="shortcodes_import_error">አጫጭር ኮዶችን ማስመጣት አልተሳካም።</string>
+    <string name="todos_expand_section">%1$s ዘርጋ</string>
+    <string name="todos_collapse_section">ሰብስብ %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">የሙቀት ካርታ መጻፍ</string>
+    <string name="heatmap_widget_description">ለመጽሔትዎ የቅርብ ጊዜ የጽሑፍ እንቅስቃሴ ሙቀት ካርታ።</string>
+    <string name="quick_capture_widget_name">ፈጣን ቀረጻ</string>
+    <string name="quick_capture_widget_description">የመጽሔት መግቢያን በፍጥነት ለመጨመር አንድ ጊዜ መታ ያድርጉ።</string>
+    <string name="quick_todo_widget_name">ፈጣን ቶዶ</string>
+    <string name="tasker_plugin_action_label">ያጃ ፈጣን ቀረጻ</string>
+    <string name="tasker_plugin_event_label">ያጃ ጆርናል ክስተቶች</string>
+    <string name="tasker_screen_allow_add_entry_title">Tasker እንዲጨምር ፍቀድ</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Tasker እንደ መግቢያ አክል እና ቶዶ አክል ያሉ የያጃ ፈጣን ቀረጻ እርምጃዎችን እንዲጠቀም ያስችለዋል።</string>
+    <string name="tasker_screen_allow_events_title">የተግባር ክስተቶችን ፍቀድ</string>
+    <string name="tasker_screen_allow_events_subtitle">ያጃ የተቀመጡ፣ የመግባት ተስተካክለው እና የተሰረዙ ክስተቶችን ወደ ተካፋይ እንዲልክ ያስችለዋል።</string>
+    <string name="tasker_screen_include_text_title">በክስተቶች ውስጥ የመግቢያ ጽሑፍን ያካትቱ</string>
+    <string name="tasker_screen_include_text_subtitle">ለግላዊነት በነባሪነት ጠፍቷል። ሲጠፋ Tasker የክስተት አይነት፣ ቀን፣ መለያ እና ሰዓት ይቀበላል፣ ነገር ግን የመጽሔት ጽሁፍ አይደለም።</string>
+    <string name="tasker_screen_section_what">ይህ ምን ያደርጋል</string>
+    <string name="tasker_screen_body_what">Tasker በፍጥነት የጆርናል ምዝግቦችን ወይም ቶዶዎችን ወደ ያጃ ማከል፣ መስመሮችን ወደ የተሰበሰበ ግቤት እንደ ያመለጡ ጥሪዎች ማያያዝ እና ያጃ ግቤት ሲቀመጥ፣ ሲስተካከል ወይም ሲሰረዝ ለተ Tasker መንገር ይችላል።</string>
+    <string name="tasker_screen_section_how">እንዴት መጠቀም እንደሚቻል</string>
+    <string name="tasker_screen_body_how">መጀመሪያ እዚህ የሚያስፈልገዎትን መቀያየር ያብሩ። ከዚያ Taskerን ይክፈቱ እና ወይ Yaja Quick Capture action ወይም Yaja Journal Events ክስተት ይጨምሩ።</string>
+    <string name="tasker_screen_section_notes">ማስታወሻዎች</string>
+    <string name="tasker_screen_body_notes">በክስተቶች ውስጥ የመግቢያ ጽሑፍን ማካተት እስካልቻሉ ድረስ የመግቢያ ጽሑፍ ለ Tasker አይጋራም። Tasker የቅርብ ጊዜ አማራጮችን ወይም ተለዋዋጮችን ካላሳየ ያጃ ካዘመኑ በኋላ የተግባር ውቅረት ስክሪንን እንደገና ይክፈቱ።</string>
+    <string name="tasker_screen_section_example">ለምሳሌ</string>
+    <string name="tasker_screen_body_example">የድርጊት ምሳሌ፡ Tasker action &gt; Yaja Quick Capture &gt; Append፣ Match/ርዕስ ወደ ያመለጠ ጥሪዎች እና መስመር ተቀናብሯል ከተግባር ተለዋዋጭ ጋር። የክስተት ምሳሌ፡ Tasker ክስተት &gt; ያጃ ጆርናል ክንውኖች &gt; ግቤት ተሻሽሏል፣ በመቀጠል እንደ %%yaja_event_type፣ %%yaja_date፣ እና በአማራጭ %%yaja_entry_text ያሉ ተለዋዋጮችን ተጠቀም።</string>
+    <string name="tasker_screen_section_use_cases">ጉዳዮችን ተጠቀም</string>
+    <string name="tasker_screen_use_case_1">1. የ FolderSync ማመሳሰል እርምጃን ለመቀስቀስ Tasker ውስጥ ያለውን የያጃ ጆርናል ክስተት ተጠቀም፣ ስለዚህ የYaja ማህደርህ ከገባህ ​​ለውጥ በኋላ ወደ ማንኛውም የደመና አቅራቢ ይገፋል።</string>
+    <string name="tasker_screen_use_case_2">2. ወደ Yaja Quick Capture ጽሑፍ ለመላክ Pushbullet ን ከ Tasker ጋር ይጠቀሙ፣ ስለዚህ የተገፋው ጽሑፍ ለአሁኑ ቀን እንደ አዲስ ግቤት ይቀመጣል።</string>
+    <string name="tasker_screen_use_case_3">3. አባሪ ድርጊትን ወደ Yaja ለመላክ ያመለጠ-ጥሪ Tasker መገለጫን ተጠቀም፣ስለዚህ ሁሉም ያመለጠ የጥሪ ዝርዝሮች የተለዩ ግቤቶችን ከመፍጠር ይልቅ በአንድ የጠፉ ጥሪዎች ግቤት ስር ናቸው።</string>
+    <string name="quick_todo_widget_description">አንድን መታ አዝራር ለዛሬ እንደ አዲስ ግቤት ለመያዝ።</string>
+    <string name="todo_list_widget_name">ቶዶስ</string>
+    <string name="todo_list_widget_description">ሊሸበለል የሚችል የጆርናል todos ዝርዝር። የተደረገ ወይም የተቀለበሰ ምልክት ለማድረግ አንድ ቶዶ ነካ ያድርጉ።</string>
+    <string name="todo_cd_add_todo">ቶዶ ጨምር</string>
+    <string name="todos_cd_open_compliance_master">ተደጋጋሚ ስራዎችን ይክፈቱ</string>
+    <string name="compliance_master_title">ተደጋጋሚ ተግባራት/ክስተቶች</string>
+    <string name="compliance_master_add">ተደጋጋሚ ተግባር ጨምር</string>
+    <string name="compliance_master_edit">ተደጋጋሚ ተግባር ያርትዑ</string>
+    <string name="compliance_master_intro_title">ተደጋጋሚ ተግባራት</string>
+    <string name="compliance_master_intro_body">ለሳምንታዊ፣ ወርሃዊ፣ ሩብ አመት፣ የግማሽ አመት ወይም ዓመታዊ ስራ ተደጋጋሚ ስራዎችን ይፍጠሩ። ያጃ እያንዳንዱን ተግባር የሚገልጠው ዑደቱ አስፈላጊ በሚሆንበት ጊዜ ብቻ ነው።</string>
+    <string name="compliance_master_empty">እስካሁን ምንም ተደጋጋሚ ተግባራት የሉም። በተመረጠው መርሐግብር ላይ በራስ-ሰር ቶዶዎችን ለመፍጠር አንድ ያክሉ።</string>
+    <string name="compliance_master_status_deactivated">ቦዝኗል</string>
+    <string name="compliance_master_meta_format">የሚከፈልበት ቀን %1$d • %2$d የመሪ ቀናት</string>
+    <string name="compliance_master_field_title">የተግባር ስም</string>
+    <string name="compliance_master_field_title_hint">ምሳሌ፡ ወርሃዊ ተመላሽ ይመዝገቡ</string>
+    <string name="compliance_master_field_description">መግለጫ</string>
+    <string name="compliance_master_field_description_hint">ምሳሌ፡ የባንክ መግቢያውን ያረጋግጡ እና ደረሰኝ ያረጋግጡ</string>
+    <string name="compliance_master_editor_task_section">ያጃ ስለ ምን ማስታወስ አለበት?</string>
+    <string name="compliance_master_field_due_day">የማለቂያ ቀን</string>
+    <string name="compliance_master_field_reveal_day">አስቀድመው ይፍጠሩ (ቀናት)</string>
+    <string name="compliance_master_field_schedule_mode">መቼ ነው የሚገባው?</string>
+    <string name="compliance_master_schedule_mode_help">ያጃ የማለቂያ ቀንን እንዴት እንደሚወስን ይምረጡ።</string>
+    <string name="compliance_master_select_schedule_type">ተገቢውን ስርዓተ-ጥለት ይምረጡ</string>
+    <string name="compliance_master_field_frequency">በየስንት ጊዜው?</string>
+    <string name="compliance_master_frequency_help">ይህ ተግባር ምን ያህል ጊዜ እንደሚደጋገም ይምረጡ።</string>
+    <string name="compliance_master_select_frequency">ተደጋጋሚ ድግግሞሽ ይምረጡ</string>
+    <string name="compliance_master_schedule_details">የመርሐግብር ዝርዝሮች</string>
+    <string name="compliance_master_details_date_help">የማለቂያ ቀን እና ስንት ቀናት አስቀድመው ወደ ዕለታዊ ፋይል መፃፍ እንዳለበት ያስገቡ።</string>
+    <string name="compliance_master_details_weekday_help">ይህ ተግባር የሚያበቃበትን የስራ ቀን ይምረጡ።</string>
+    <string name="compliance_master_details_boundary_help">ምን ያህል ቀናት አስቀድመው ወደ ዕለታዊ ፋይል መፃፍ እንዳለበት ይምረጡ።</string>
+    <string name="compliance_master_field_due_weekday">የሚከፈልበት የስራ ቀን</string>
+    <string name="compliance_master_select_weekday">የሳምንቱን ቀን ይምረጡ</string>
+    <string name="compliance_master_due_day_help">ከ1 እስከ 31 ያለውን ቀን አስገባ። አጭር ወራቶች የመጨረሻውን ትክክለኛ ቀን ይጠቀሙ።</string>
+    <string name="compliance_master_reveal_day_help">ቶዶውን ወደ ዕለታዊ ጋዜጣ ፋይል ለመጻፍ ከማለቂያው ቀን ስንት ቀናት በፊት።</string>
+    <string name="compliance_master_first_day_selected">በእያንዳንዱ የሚመለከተው ወር ​​የመጀመሪያ ቀን ላይ የሚከፈል።</string>
+    <string name="compliance_master_last_day_selected">በእያንዳንዱ የሚመለከተው ወር ​​የመጨረሻ ቀን ላይ የሚከፈል።</string>
+    <string name="compliance_mode_day_of_month">የተወሰነ ቀን</string>
+    <string name="compliance_mode_day_of_month_desc">እንደ 15 ኛው ያለ በተጠቀሰው ቀን።</string>
+    <string name="compliance_mode_day_of_week">የሳምንት ቀን</string>
+    <string name="compliance_mode_day_of_week_desc">በተመረጠው የስራ ቀን፣ ለምሳሌ ሰኞ።</string>
+    <string name="compliance_mode_first_day">የወር መጀመሪያ</string>
+    <string name="compliance_mode_first_day_desc">በእያንዳንዱ የሚመለከተው ወር ​​የመጀመሪያ ቀን ላይ የሚከፈል።</string>
+    <string name="compliance_mode_last_day">የወሩ መጨረሻ</string>
+    <string name="compliance_mode_last_day_desc">አጭር ወራትን ጨምሮ በመጨረሻው ቀን የሚከፈል።</string>
+    <string name="compliance_frequency_weekly">በየሳምንቱ</string>
+    <string name="compliance_frequency_biweekly">በየሁለት ሳምንቱ</string>
+    <string name="compliance_frequency_monthly">ወርሃዊ</string>
+    <string name="compliance_frequency_quarterly">በየሩብ ዓመቱ</string>
+    <string name="compliance_frequency_half_yearly">ግማሽ ዓመት</string>
+    <string name="compliance_frequency_annual">አመታዊ</string>
+    <string name="compliance_master_summary_day_of_month">ቀን %1$d • %2$s • %3$d ቀናት ቀደም ብሎ</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">የመጀመሪያ ቀን • %1$s • %2$d ቀናት ቀደም ብሎ</string>
+    <string name="compliance_master_summary_last_day">የመጨረሻ ቀን • %1$s • %2$d ቀናት ቀደም ብሎ</string>
+    <string name="compliance_master_execution_title">ይህ እንዴት እንደሚሰራ</string>
+    <string name="compliance_master_execution_day_of_month">ቶዶ የተፈጠረው %1$s በ %2$d ቀን ነው። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_weekday">ቶዶ %1$s በ%2$s ላይ ተፈጥሯል። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_monthly_weekday">ቶዶ ልክ እንደ መጀመሪያው ቀን %1$s ክስተት በየወሩ ይፈጠራል። ከ _FMT_1__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_month_boundary">ቶዶ በተጠናቀቀው ወር %2$s ላይ _FMT_0__ ተፈጥሯል። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_day_of_month_event">አንድ ክስተት የተፈጠረው %1$s በቀን %2$d ነው። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_weekday_event">አንድ ክስተት የተፈጠረው %1$s በ%2$s ላይ ነው። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_monthly_weekday_event">አንድ ክስተት በየወሩ የሚፈጠረው ልክ እንደ መጀመሪያው ቀን %1$s ክስተት ነው። ከ _FMT_1__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_execution_month_boundary_event">አንድ ክስተት የተፈጠረው _FMT_0__ በ%2$s በክፍያው ወር ነው። ከ _FMT_2__ ቀናት በፊት ወደ ዕለታዊ ፋይልዎ ይፃፋል።</string>
+    <string name="compliance_master_boundary_first">የመጀመሪያ ቀን</string>
+    <string name="compliance_master_boundary_last">የመጨረሻ ቀን</string>
+    <string name="compliance_master_recurrence_weekly">በየሳምንቱ</string>
+    <string name="compliance_master_recurrence_biweekly">በየሁለት ሳምንቱ</string>
+    <string name="compliance_master_recurrence_monthly">በየወሩ</string>
+    <string name="compliance_master_recurrence_quarterly">በየሦስት ወሩ</string>
+    <string name="compliance_master_recurrence_half_yearly">በየስድስት ወሩ</string>
+    <string name="compliance_master_recurrence_annual">በየዓመቱ</string>
+    <string name="todo_chip_compliance">ተደጋጋሚ</string>
+    <string name="compliance_master_upcoming">መጪ</string>
+    <string name="compliance_master_delete_confirm_title">ተደጋጋሚ ተግባር ይሰረዝ?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" ይወገዳል እና ምንም ተጨማሪ ስራዎች አይፈጠሩም።</string>
+    <string name="compliance_master_next_date">ቀጣይ፡%1$s</string>
+    <string name="compliance_master_end_section">የመጨረሻ ሁኔታ</string>
+    <string name="compliance_master_end_help">ይህ ተግባር መድገም ሲያቆም ይምረጡ</string>
+    <string name="compliance_master_end_never">በጭራሽ</string>
+    <string name="compliance_master_end_on_date">በቀን</string>
+    <string name="compliance_master_end_after">በኋላ…</string>
+    <string name="compliance_master_end_never_desc">ማለቂያ የሌለው ቀን ላልተወሰነ ጊዜ ይደግማል።</string>
+    <string name="compliance_master_end_date_select">የመጨረሻ ቀን ይምረጡ</string>
+    <string name="compliance_master_end_date_help">ከዚህ ቀን በኋላ ምንም ተግባራት አልተፈጠሩም።</string>
+    <string name="compliance_master_end_count_label">የክስተቶች ብዛት</string>
+    <string name="compliance_master_end_count_help">ከዚህ በኋላ ማቆሚያዎች ብዙ ተግባራት ይፈጠራሉ.</string>
+    <string name="compliance_master_ends_on">ያበቃል %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d ቀርቷል።</string>
+    <string name="compliance_master_ended">አበቃ</string>
+    <string name="compliance_master_type_label">እንደ ፍጠር</string>
+    <string name="compliance_master_type_task">ተግባር</string>
+    <string name="compliance_master_type_event">ክስተት</string>
+    <string name="compliance_master_add_event">ተደጋጋሚ ክስተት ያክሉ</string>
+    <string name="compliance_master_edit_event">ተደጋጋሚ ክስተት ያርትዑ</string>
+    <string name="compliance_master_field_title_event">የክስተት ስም</string>
+    <string name="compliance_master_field_title_event_hint">ምሳሌ፡ ሳምንታዊ የማመሳሰል ስብሰባ</string>
+    <string name="compliance_master_frequency_help_event">ይህ ክስተት ለምን ያህል ጊዜ እንደሚደጋገም ይምረጡ።</string>
+    <string name="compliance_master_details_weekday_help_event">ይህ ክስተት የሚደርስበትን የስራ ቀን ይምረጡ።</string>
+    <string name="compliance_master_delete_confirm_title_event">ተደጋጋሚ ክስተት ይሰረዝ?</string>
+    <string name="compliance_master_end_help_event">ይህ ክስተት መደጋገም ሲያቆም ይምረጡ</string>
+    <string name="compliance_master_end_count_help_event">ከዚህ በኋላ ብዙ ክስተቶች ይፈጠራሉ.</string>
+    <string name="heatmap_widget_status_loading">የሙቀት ካርታን በመጫን ላይ…</string>
+    <string name="heatmap_widget_status_empty">እስካሁን ምንም ግቤቶች የሉም</string>
+    <string name="heatmap_widget_status_refresh">የሙቀት ካርታን ለማደስ Yaja ን ይክፈቱ</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">መሸጎጫ እንደገና ተገንብቷል።</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">አዲስ መግቢያ</string>
+    <string name="shortcut_new_entry_long">የመጽሔት ግቤት ጨምር</string>
+    <string name="shortcut_add_todo_short">ቶዶን ጨምር</string>
+    <string name="shortcut_add_todo_long">ለዛሬ ቶዶ ጨምር</string>
+    <string name="shortcut_add_event_short">ክስተት አክል</string>
+    <string name="shortcut_add_event_long">ክስተት ጨምር</string>
+    <string name="shortcut_today_short">ዛሬ</string>
+    <string name="shortcut_today_long">የዛሬውን መጽሔት ክፈት</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">አሰሳ</string>
+    <string name="settings_bottom_nav_style_label">የታችኛው የአሰሳ ዘይቤ</string>
+    <string name="settings_navigation_mode_title">የአሰሳ ሁነታ</string>
+    <string name="settings_navigation_mode_subtitle">በተንሳፋፊው የባህር ኃይል አሞሌ እና ሙሉ የታችኛው ፓነል መካከል ይምረጡ።</string>
+    <string name="settings_nav_mode_floating">ተንሳፋፊ</string>
+    <string name="settings_nav_mode_panel">ፓነል</string>
+    <string name="settings_navigation_screens_label">የማውጫ ቁልፎች</string>
+    <string name="settings_nav_summary_floating">ጆርናል እና የቀን መቁጠሪያ ሁልጊዜ በተንሳፋፊው አሞሌ ውስጥ ይቆያሉ። እስከ 2 ተጨማሪ ማያዎችን ይምረጡ። በአሁኑ ጊዜ የተመረጠ፡ _FMT_0__ ከ%2$d።</string>
+    <string name="settings_nav_summary_panel">ጆርናል እና የቀን መቁጠሪያ ሁልጊዜ ከታች ፓነል ውስጥ ይቆያሉ. እስከ 3 ተጨማሪ ማያዎችን ይምረጡ። በአሁኑ ጊዜ የተመረጠ፡ _FMT_0__ ከ%2$d።</string>
+    <string name="settings_nav_lookback_subtitle">በነቃው የአሰሳ አሞሌ ወይም ፓነል ውስጥ የእይታ እይታን አሳይ።</string>
+    <string name="settings_nav_people_places_subtitle">ሰዎችን እና ቦታዎችን በንቁ የአሰሳ አሞሌ ወይም ፓነል ውስጥ አሳይ።</string>
+    <string name="settings_nav_todos_title">ቶዶስ</string>
+    <string name="settings_nav_todos_subtitle">ቶዶስን በገባሪ የአሰሳ አሞሌ ወይም ፓነል ውስጥ አሳይ።</string>
+    <string name="todos_quick_add_title">ፈጣን አክል</string>
+    <string name="todos_hero_subtitle">የመጽሔት ሥራን እና አፍታዎችን ይከታተሉ</string>
+    <string name="todos_hero_all_activity">ሁሉም እንቅስቃሴ</string>
+    <string name="todos_hero_open_focus">ትኩረትን ይክፈቱ</string>
+    <string name="todos_hero_completed">ተጠናቀቀ</string>
+    <string name="todos_stat_today_open">ዛሬ ተከፍቷል።</string>
+    <string name="todos_stat_done_today">ዛሬ ተከናውኗል</string>
+    <string name="todos_stat_events">ክስተቶች</string>
+    <string name="todos_stat_still_open">አሁንም ክፍት ነው።</string>
+    <string name="todos_stat_past_7d">ያለፈው 7 ዲ</string>
+    <string name="todos_stat_days">ቀናት</string>
+    <string name="todos_empty_done">እስካሁን ምንም የተጠናቀቁ ነገሮች የሉም</string>
+    <string name="todos_empty_events">እስካሁን ምንም የክስተት ግቤት የለም።</string>
+    <string name="todos_section_open">ክፈት</string>
+    <string name="todos_section_later">በኋላ</string>
+    <string name="todos_section_upcoming">ወደፊት</string>
+    <string name="todos_section_future_events">የወደፊት ክስተቶች</string>
+    <string name="todos_section_past_events">ያለፉ ክስተቶች</string>
+    <string name="todos_cd_open_day">ክፍት ቀን</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d ክፍት ተግባር</item>
+        <item quantity="other">%1$d ክፍት ተግባራት</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">_FMT_0__ ተከናውኗል</item>
+        <item quantity="other">_FMT_0__ ተግባራትን አከናውኗል</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">_FMT_0__ መጪ ክስተት</item>
+        <item quantity="other">_FMT_0__ መጪ ክስተቶች</item>
+    </plurals>
+    <string name="todos_filter_all_format">ሁሉም %1$d</string>
+    <string name="todos_filter_open_format">%1$d ክፈት</string>
+    <string name="todos_filter_done_format">ተከናውኗል %1$d</string>
+    <string name="todos_filter_events_format">ክስተቶች %1$d</string>
+    <string name="todos_cheer_all_clear">ሁሉም ግልጽ። ጥሩ።</string>
+    <string name="todos_cheer_done_and_dusted">ተከናውኗል እና አቧራ.</string>
+    <string name="todos_cheer_nothing_pending">በመጠባበቅ ላይ ያለ ምንም ነገር የለም።</string>
+    <string name="todos_cheer_caught_up">ያዝከው።</string>
+    <string name="todos_cheer_clean_slate">ንጹህ ሰሌዳ.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">በ%1$d ቀን ውስጥ</item>
+        <item quantity="other">በ%1$d ቀናት ውስጥ</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">_FMT_0__ ቀን በፊት</item>
+        <item quantity="other">ከ _FMT_0__ ቀናት በፊት</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">በ%1$d ሳምንት ውስጥ</item>
+        <item quantity="other">በ%1$d ሳምንታት ውስጥ</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d ሳምንት በፊት</item>
+        <item quantity="other">_FMT_0__ ሳምንታት በፊት</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">በ1 ወር ውስጥ</string>
+    <string name="todos_relative_one_month_ago">ከ 1 ወር በፊት</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">በ%1$d ወር ውስጥ</item>
+        <item quantity="other">በ%1$d ወሮች ውስጥ</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">_FMT_0__ ወር በፊት</item>
+        <item quantity="other">_FMT_0__ ወራት በፊት</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">ስታትስቲክስ</string>
+    <string name="settings_nav_statistics_subtitle_on">በነቃው የአሰሳ አሞሌ ወይም ፓነል ውስጥ ስታቲስቲክስን አሳይ።</string>
+    <string name="settings_nav_statistics_subtitle_off">በአሰሳ ውስጥ ለማስቀመጥ መጀመሪያ ስታቲስቲክስን ያብሩ።</string>
+    <string name="settings_show_labels_bottom_panel_title">በታችኛው ፓነል ውስጥ መለያዎችን አሳይ</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">በታችኛው ፓነል ውስጥ ባሉ አዶዎች ስር የጽሑፍ መለያዎችን አሳይ።</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">የእጅ ምልክቶች</string>
+    <string name="settings_entry_delete_title">የመግቢያ ሰርዝ</string>
+    <string name="settings_entry_delete_subtitle">አንድ ግቤት ለመምረጥ በረጅሙ ተጫን። ብዙ ለመምረጥ ተጨማሪ ግቤቶችን መታ ያድርጉ፣ ከዚያ መሃል ያለውን ሰርዝ ቁልፍ ይጠቀሙ። ምርጫን ለማጽዳት ባዶ ቦታን ይንኩ።</string>
+    <string name="settings_swipe_navigate_title">ቀኖችን ለማሰስ ያንሸራትቱ</string>
+    <string name="settings_swipe_navigate_subtitle">አንድ ቀን ወደፊት ለመሄድ ከቀኝ-ወደ-ግራ ያንሸራትቱ፣ እና ወደ ኋላ ለመንቀሳቀስ ከግራ ወደ ቀኝ ያንሸራትቱ።</string>
+    <string name="settings_drag_reorder_title">እንደገና ለመደርደር ጎትት አንቃ</string>
+    <string name="settings_drag_reorder_subtitle">ግቤቶችን እንደገና ለማስተካከል በረጅሙ ተጫን</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">ውሂብ እና መልሶ ማግኛ</string>
+    <string name="settings_swipe_rebuild_index">መረጃ ጠቋሚን እንደገና ለመገንባት በመነሻ ማያ ገጽ ላይ ወደ ታች ያንሸራትቱ</string>
+    <string name="settings_large_journal_safe_mode_title">ትልቅ ጆርናል አስተማማኝ ሁነታ</string>
+    <string name="settings_large_journal_safe_mode_subtitle">በጣም ትልቅ ጆርናል ሲገኝ አፕሊኬሽኑ በፍጥነት እና ደህንነቱ በተጠበቀ ሁኔታ እንዲከፈት አላስፈላጊ የጅምር ስታቲስቲክስን ለሌላ ጊዜ ያስተላልፉ።</string>
+    <string name="settings_version_history_title">የስሪት ታሪክ</string>
+    <string name="settings_version_history_subtitle">ከማስተካከያ፣ ከመሰረዝ፣ ከመለያዎ በፊት እና ለውጦችን ከመጎብኘትዎ በፊት ደህንነቱ የተጠበቀ ቅጂዎችን ያስቀምጡ።</string>
+    <string name="settings_storage_location_label">የማከማቻ ቦታ</string>
+    <string name="settings_reset_to_default">ወደ ነባሪ ዳግም አስጀምር</string>
+    <string name="settings_choose_folder">አቃፊ ይምረጡ</string>
+    <string name="settings_backup_description">የመጽሔት ግቤቶችን፣ አጫጭር ኮዶችን፣ የቀን ቁልፍ ቃላትን እና የሰዎች እና ቦታዎችን ውሂብ የያዘ አንድ የያጃ ምትኬ ዚፕ ይፍጠሩ። እነበረበት መልስ በኋላ ደህንነቱ በተጠበቀ ሁኔታ ሊያዋህደው ይችላል።</string>
+    <string name="settings_last_backup">የመጨረሻው ምትኬ፡ _FMT_0__</string>
+    <string name="settings_backup_reminder_age_label">የመጠባበቂያ አስታዋሽ ዕድሜ</string>
+    <string name="settings_backup_reminder_disabled">ተሰናክሏል።</string>
+    <string name="settings_backup_reminder_desc">ከ%1$d ቀናት በላይ ሲሆነው በጎን አሞሌ ውስጥ ምትኬን ያድምቁ።</string>
+    <string name="settings_backup_reminder_days_disabled">0 ቀናት (የተሰናከለ)</string>
+    <string name="settings_backup_reminder_days">_FMT_0__ ቀናት</string>
+    <string name="settings_restore_button">እነበረበት መልስ</string>
+    <string name="settings_backup_now_button">አሁን ምትኬ ያስቀምጡ</string>
+    <string name="settings_db_index_management_label">የውሂብ ጎታ መረጃ ጠቋሚ አስተዳደር</string>
+    <string name="settings_db_index_management_desc">ያተኮረ የመልሶ ግንባታ መሳሪያዎችን ለdos፣ ሰዎች እና ቦታዎች፣ ወይም ሙሉ የውሂብ ጎታ መረጃ ጠቋሚ መልሶ ግንባታን ይክፈቱ።</string>
+    <string name="settings_rebuild_tools_button">መሣሪያዎችን እንደገና መገንባት</string>
+    <string name="settings_import_label">አስመጣ</string>
+    <string name="settings_import_info_cd">መረጃ አስመጣ</string>
+    <string name="settings_import_info_title">የማስመጣት መረጃ</string>
+    <string name="settings_import_day_one_title">ቀን አንድ ማስመጣት</string>
+    <string name="settings_import_day_one_bullet1">- ምስሎች ሳይኖሩበት ከመጀመሪያው ቀን ወደ ውጭ ይላኩ</string>
+    <string name="settings_import_day_one_bullet2">- የጽሑፍ ውሂብ ብቻ ነው የሚመጣው</string>
+    <string name="settings_import_day_one_bullet3">- የጊዜ ማህተም እና የአካባቢ ውሂብ (ካለ) ይጠበቃሉ።</string>
+    <string name="settings_import_perf_warning_title">የአፈጻጸም ማስጠንቀቂያ</string>
+    <string name="settings_import_perf_warning_desc">ብዙ ቁጥር ያላቸውን ግቤቶች (500+) ማስመጣት ብዙ ደቂቃዎችን ሊወስድ ይችላል። ወደ ሌላ ቦታ መሄድ ይችላሉ እና ማስመጣቱ ከበስተጀርባ ይቀጥላል።</string>
+    <string name="settings_got_it">ገባኝ</string>
+    <string name="settings_import_success">%1$d አዲስ ቀናት፣ %2$d ተዋህደዋል፣ %3$d ተዘሏል</string>
+    <string name="settings_import_source_day_one">የመጀመሪያ ቀን</string>
+    <string name="settings_import_source_day_one_subtitle">.ዚፕ ወይም .json ወደ ውጪ መላክ</string>
+    <string name="settings_import_source_journalistic">ጋዜጠኝነት</string>
+    <string name="settings_import_source_journalistic_subtitle">.json ኤክስፖርት</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">ያጃን እንዴት መጠቀም እንደሚችሉ ይወቁ</string>
+    <string name="help_footer_website">ድህረገፅ</string>
+    <string name="help_footer_share">አጋራ</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">አለመግባባት</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">ያጃ አጋራ</string>
+    <string name="help_share_yaja_text">yaja - ገና ሌላ የጆርናሊንግ መተግበሪያ\n\nግቤቶችን እንደ ምልክት ማድረጊያ ፋይሎች የሚያከማች ከማስተጓጎል ነፃ የሆነ የሀገር ውስጥ ጆርናል። የጊዜ መስመርን፣ ወደ ኋላ መመልከትን፣ ሰዎችን እና ቦታዎችን፣ አብነቶችን፣ ግምገማዎችን፣ ስታቲስቲክስን እና መግብሮችን ያካትታል።\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord የተጠቃሚ ስም ተቀድቷል!</string>
+    <string name="help_footer_play_store">Play መደብር</string>
+    <string name="help_cd_rj_logo">አርጄ አርማ</string>
+    <string name="help_screen_title">እገዛ እና ስለ</string>
+    <string name="help_welcome_title">ወደ ያጃ እንኳን በደህና መጡ</string>
+    <string name="help_welcome_body">ያጃ ቀናቶችን፣ ሰዎችን፣ ቦታዎችን፣ ክትትልዎችን፣ ግምገማዎችን እና ስርዓተ ጥለቶችን ለመቅዳት በአካባቢው-የመጀመሪያ የማርክ ማድረጊያ ጆርናል ነው ይህ ገጽ ለመተግበሪያው ዋና ዋና ክፍሎች ፈጣን መመሪያ ይሰጣል።</string>
+    <string name="help_start_here">እዚ ጀምር</string>
+    <string name="help_cd_collapse">ሰብስብ</string>
+    <string name="help_cd_expand">ዘርጋ</string>
+    <string name="help_group_everyday_title">በየቀኑ</string>
+    <string name="help_group_everyday_desc">ጋዜጠኝነት፣ የመፃፍ ፍሰት እና ዕለታዊ አሰሳ።</string>
+    <string name="help_group_reviews_title">ግምገማዎች እና ግንዛቤዎች</string>
+    <string name="help_group_reviews_desc">እይታዎች፣ አዝማሚያዎች፣ ሰዎች፣ ቦታዎች እና ትንታኔዎች።</string>
+    <string name="help_group_advanced_title">የላቁ መሳሪያዎች</string>
+    <string name="help_group_advanced_desc">መግብሮች፣ ማከማቻ፣ ግላዊነት፣ ምትኬ እና ቴክኒካዊ መሳሪያዎች።</string>
+    <string name="help_onboard_todos_events_title">ቶዶስ፣ ክስተቶች እና ተደጋጋሚ</string>
+    <string name="help_onboard_todos_events_body">በማለቂያ ቀናቸው ስራዎችን በራስ ሰር የሚያመነጩ የግል አስታዋሾችን፣ የቤተሰብ እቅዶችን እና ተደጋጋሚ መርሃ ግብሮችን አቆይ።</string>
+    <string name="help_onboard_widgets_title">መግብሮች</string>
+    <string name="help_onboard_widgets_body">የሙቀት ካርታ፣ ፈጣን ቀረጻ፣ ፈጣን ቶዶ ወይም ቶዶ ዝርዝር መግብሮችን ከአስጀማሪው ያክሉ።</string>
+    <string name="help_onboard_version_history_title">የስሪት ታሪክ</string>
+    <string name="help_onboard_version_history_body">ከአደገኛ ለውጦች በፊት ደህንነቱ የተጠበቀ ቅጽበተ-ፎቶዎችን ለማቆየት የታሪክ ፋይሎችን በቅንብሮች &gt; ውሂብ ውስጥ ያንቁ።</string>
+    <string name="help_onboard_tasker_title">ተቀባዩ</string>
+    <string name="help_onboard_tasker_body">ግላዊ የሆነ ነገር ወዲያውኑ መያዙ ሲፈልግ በፍጥነት ግቤቶችን፣ ቶዶዎችን ወይም ክስተቶችን ለመጨመር Taskerን ይጠቀሙ።</string>
+    <string name="help_section_writing_editor_title">መጻፍ እና አርታዒ</string>
+    <string name="help_section_writing_editor_preview">አብነቶች፣ ምልክት ማድረጊያ ርእሶች፣ ቶዶስ፣ ክስተቶች እና ተለዋዋጭ ረቂቅ ማስገባት።</string>
+    <string name="help_section_writing_editor_content">+ ለተመረጠው ቀን ለመጻፍ ተንሳፋፊውን \'+\' ቁልፍ ነካ ያድርጉ።\n+ እንደ የስብሰባ ማስታወሻ፣ የጉዞ ቀን፣ የጤና ምዝግብ ማስታወሻ፣ ነጸብራቅ፣ የስራ ምዝግብ ማስታወሻ እና ሌሎችም ያሉ አብነቶችን ይጠቀሙ።\n+ አብነቶች ባዶ ረቂቅ ውስጥ ሊገቡ፣ ከታች ሊታከሉ፣ ረቂቅን ለመተካት ጥቅም ላይ ሊውሉ ወይም ጠቋሚው ላይ ሊጨመሩ ይችላሉ። እንደ ### ክፍል ያሉ የመግቢያ ድጋፍ ምልክት ማድረጊያ አርእስቶችን ያርትዑ።</string>
+    <string name="help_section_post_write_review_title">የድህረ-ጽሑፍ ግምገማ</string>
+    <string name="help_section_post_write_review_preview">ቶዶ ማውጣት፣ ቁልፍ ቃል ማግኘት፣ ኮከብ ማድረግ፣ መሰየሚያዎች እና ማዋቀርን እንደገና ይጎብኙ።</string>
+    <string name="help_section_post_write_review_content">+ ከፃፈ በኋላ፣ ያጃ ከማስቀመጥ በፊት የግምገማ ሉህ መክፈት ይችላል።\n+ የሚደረጉ ነገሮችን ማውጣት፣ ሰዎችን እና ቦታዎችን ማግኘት፣ ቀኑን ኮከብ ማድረግ፣ የቀን መለያ ማዘጋጀት እና የድጋሚ ቀናቶችን መርሐግብር ማድረግ ይችላል።\n+ በቀጥታ ማስቀመጥ ከፈለግክ የድህረ-ፃፍ ግምገማን ከቅንብሮች ማሰናከል ትችላለህ።</string>
+    <string name="help_section_revisit_followup_title">ድጋሚ ይጎብኙ እና ክትትል ቀኖች</string>
+    <string name="help_section_revisit_followup_preview">ከጆርናል ጋር የተገናኙ የክትትል ቀናት በፈጣን ምርጫ እና ብጁ ምርጫ።</string>
+    <string name="help_section_revisit_followup_content">+ የድጋሚ ቀናትን በነገ፣ በሚቀጥለው ሳምንት፣ በሚቀጥለው ወር ወይም በብጁ ቀን ያክሉ።\n+ የድጋሚ ጉብኝት እቃዎች በመነሻ ላይ ይታያሉ እና በቀን መቁጠሪያ እና በጊዜ መስመር ላይ ምልክት ተደርጎባቸዋል።\n+ ይህ ከመጽሔት አውድ ጋር ለተያያዙ ተስፋዎች፣ ውሳኔዎች፣ የጤና ምርመራዎች እና አስታዋሾች ጥሩ ይሰራል።</string>
+    <string name="help_section_navigation_gestures_title">አሰሳ እና የእጅ ምልክቶች</string>
+    <string name="help_section_navigation_gestures_preview">የቀን እንቅስቃሴ፣ ምርጫ ሰርዝ፣ ምርጫዎችን ያንሸራትቱ እና የመሸጎጫ ባህሪን እንደገና ይገንቡ።</string>
+    <string name="help_section_navigation_gestures_content">+ ቤት የቀን አሰሳን ከቀስቶች እና ከአማራጭ ማንሸራተት ዳሰሳ ሲነቃ ይደግፋል።\n+ እሱን ለመምረጥ በረጅሙ ይጫኑ። እነሱን ለመምረጥ ተጨማሪ ምዝግቦችን መታ ያድርጉ እና ከዚያ አክል አዝራሩ አጠገብ ያለውን ሰርዝ ክኒን ይጠቀሙ።\n+ ከተመረጡት ግቤቶች ውጭ መታ ማድረግ ምርጫን ያጸዳል። የተሰረዙ ምዝግቦችን ወደነበረበት መመለስ ከነበረበት መመለስ ይቻላል።\n+ የጆርናል ፋይሎች ከያጃ ውጭ ሲቀየሩ መሸጎጫውን እንደገና መገንባት ይችላሉ።</string>
+    <string name="help_section_shortcodes_quick_capture_title">አጭር ኮዶች እና ፈጣን ቀረጻ</string>
+    <string name="help_section_shortcodes_quick_capture_preview">ፈጣን የግል ቀረጻ እና እንደገና ጥቅም ላይ ሊውሉ የሚችሉ ተለዋዋጭ የጽሑፍ ቅንጥቦች።</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ ተደጋጋሚ ጽሁፍ በፍጥነት ለማስገባት አጫጭር ኮዶችን ይፍጠሩ።\n+ እንደ {{ዛሬ:dd-MMM}} እና {{አሁን:HH:mm}} ያሉ ተለዋዋጭ ቦታ ያዢዎች በአጭር ኮዶች ውስጥ ይሰራሉ ​​\n+ ፈጣን ቀረጻ ሙሉውን አርታኢ ሳይከፍት አንድን ነገር በፍጥነት ለማስመዝገብ ይረዳል።</string>
+    <string name="help_section_todos_events_title">ቶዶስ፣ ክስተቶች እና ተደጋጋሚ</string>
+    <string name="help_section_todos_events_preview">የግል አስታዋሾች፣ ትኩረት የሚስቡ ክስተቶች እና ራስ-ሰር ተደጋጋሚ መርሐግብሮች።</string>
+    <string name="help_section_todos_events_content">+ ቶዶስ በቀጥታ በመጽሔት ግቤቶች እንደ [ ] እና [x] መስመሮች ተጽፏል።\n+ ክስተቶች እንደ ክስተት ምልክት የተደረገባቸው የተለመዱ የመጽሔት ግቤቶች ናቸው ለቤተሰብ እቅዶች፣ ቀጠሮዎች፣ ጉዞዎች ወይም በኋላ ላይ ሊያስተውሉት ለሚፈልጉት ማንኛውም ነገር ጠቃሚ ነው። በቶዶስ ስክሪኑ ላይ ያለውን ተደጋጋሚ አዶን በመንካት መርሐግብር ያዘጋጃል።\n+ በየቀኑ ያጃን ሲከፍቱ የጀርባ ቧንቧው ማንኛቸውም የታቀዱ ተግባራት መሟላታቸውን ለማረጋገጥ ይሰራል እና በዚያ ቀን መግቢያ ውስጥ ያስገባቸዋል። ፋይሎች ከያጃ ውጭ ከተቀየሩ የቶዶ ኢንዴክስን እንደገና ይገንቡ።\n+ የተጠናቀቁ ተግባራትን አሳይ ይታወሳል፣ ስለዚህ እርስዎ ሲወጡ እና ሲመለሱ የመረጡት እይታ ይጣበቃል።\n+ የቶዶ መግብሮች በመጠባበቅ ላይ ያሉ ተግባራትን ያሳያሉ፣ ከመቀያየርዎ በፊት ያረጋግጡ፣ የተጠናቀቁ ስራዎችን ይደብቃሉ እና ምንም በመጠባበቅ ላይ ካልሆነ በራስ-ሰር ይደብቁ።</string>
+    <string name="help_section_people_places_title">ሰዎች እና ቦታዎች</string>
+    <string name="help_section_people_places_preview">ቁልፍ ቃላት፣ ተለዋጭ ስሞች፣ አዝማሚያዎች እና ደረጃ የተሰጣቸው የግንኙነት እይታዎች።</string>
+    <string name="help_section_people_places_content">+ ሰዎችን እና ቦታዎችን ተለዋጭ ስሞች እና ተዛማጅ መለያዎች ይከታተሉ።\n+ ቁልፍ ቃል ዝርዝሩን ይፈልጉ፣ ያጣሩ እና ይደርድሩ።\n+ ቁልፍ ቃል ዝርዝር ገፆች ተደጋጋሚነትን፣ በጊዜ ሂደት የተጠቀሱ፣ የተጠቀሱ እና ደረጃ የተሰጣቸው ግንኙነቶች ያሳያሉ።\n+ የግጥሚያ ትብነት ከቅንብሮች ውስጥ ሊስተካከል ይችላል።</string>
+    <string name="help_section_timeline_lookback_title">የጊዜ መስመር እና ወደ ኋላ ይመልከቱ</string>
+    <string name="help_section_timeline_lookback_preview">ያለፈው ቀን አሰሳ፣ ድምቀቶች፣ አስደነቀኝ እና የመግቢያ ነጥቦችን ይገምግሙ።</string>
+    <string name="help_section_timeline_lookback_content">+ የጊዜ መስመር ያለፉትን ቀናት በማጣሪያዎች፣ በዓመት ቺፖች እና በአማራጭ ሁለንተናዊ ሁነታ እንዲያስሱ ይፈቅድልዎታል።\n+ የኋሊት መመልከት ባለፉት አመታት ውስጥ በተመሳሳይ ቀን የተመዘገቡ ግቤቶችን እና የእርስዎን ኮከብ የተደረገባቸው ድምቀቶች ያሳያል።\n+ Surprise Me ከሎክባክ በዘፈቀደ ያለፈ ያለፈ ግቤትን ይከፍታል።\n+ ሳምንታዊ ግምገማ እና ወርሃዊ ግምገማ በውስጥ መልሶ ይመልከቱ።</string>
+    <string name="help_section_statistics_reviews_title">ስታቲስቲክስ እና ግምገማዎች</string>
+    <string name="help_section_statistics_reviews_preview">ሁነታን፣ የአብነት ግንዛቤዎችን፣ ብጁ የሚታዩ ክፍሎችን እና ማጠቃለያዎችን ያወዳድሩ።</string>
+    <string name="help_section_statistics_reviews_content">+ ስታቲስቲክስ የንጽጽር ሁነታን፣ ቁልፍ ቃል ዴልታስ እና የአብነት ግንዛቤዎችን ያጠቃልላል።\n+ የትኞቹ የስታስቲክስ ክፍሎች ከስታስቲክስ ስክሪኑ ላይ ሆነው እንደሚቆዩ መምረጥ ይችላሉ።\n+ የንፅፅር ሁነታ ለሁሉም ጊዜ ይገኛል እና ወር እና አመት ዴልታዎችን ጠቅለል አድርጎ ያሳያል።</string>
+    <string name="help_section_widgets_home_title">መግብሮች እና የቤት ወለል</string>
+    <string name="help_section_widgets_home_preview">አስጀማሪ መግብሮች፣ የደመቁ ቁልፍ ቃላት እና የቀን ደረጃ የቤት ስታቲስቲክስ።</string>
+    <string name="help_section_widgets_home_content">+ የጽሑፍ ሙቀት ካርታ፣ ፈጣን ቀረጻ፣ ፈጣን አክል እና የቶዶ ዝርዝር መግብሮች በአስጀማሪው ላይ ይገኛሉ።\n+ መግብርን የሚያዋቅሩ ማያ ገጾች ማዕዘኖችን፣ መከለያዎችን፣ ቅርፆችን፣ ራስጌዎችን፣ የተጠናቀቀ የተግባር ታይነትን እና ሌሎች የመግብር አማራጮችን በሚደገፉበት ጊዜ እንዲያስተካክሉ ያስችልዎታል።\n+ ነቅቷል።\n+ የመነሻ ቀን ራስጌ የመግቢያ ብዛትን፣ ቃላትን እና የቁምፊ ብዛትን ማሳየት ወይም መደበቅ ይችላል።</string>
+    <string name="help_section_language_text_analysis_title">የቋንቋ እና የጽሑፍ ትንተና</string>
+    <string name="help_section_language_text_analysis_preview">የአካባቢ ቋንቋ ለስታቲስቲክስ እና የግምገማ ግንዛቤዎች።</string>
+    <string name="help_section_language_text_analysis_content">+ ያጃ ለግንዛቤዎች በሁሉም ግቤቶች ውስጥ ዋና ስክሪፕት ወይም ቋንቋን ያገኛል።\n+ የቋንቋ ክፍፍል በስታቲስቲክስ እና ግምገማዎች ውስጥ ይታያል።\n+ ማወቂያ በአገር ውስጥ ይሰራል እና የመጽሔት ጽሑፍን ከመሣሪያው አይልክም።</string>
+    <string name="help_section_data_privacy_cache_title">ውሂብ፣ ግላዊነት እና መሸጎጫ</string>
+    <string name="help_section_data_privacy_cache_preview">የማርክ ማከማቻ፣ የስሪት ታሪክ፣ የመተግበሪያ ምዝግብ ማስታወሻ፣ የመተግበሪያ መቆለፊያ እና መሸጎጫ እንደገና ገንባ።</string>
+    <string name="help_section_data_privacy_cache_content">+ የውሂብ ግላዊነት: ሁሉም የግል ጆርናል ውሂብ በአካላዊ መሣሪያዎ ላይ በጥብቅ ይቀመጣል እና በማንኛውም ጊዜ አይተወውም። ያጃ የእርስዎን ጽሑፍ ለመከታተል የደመና ዳታቤዝን፣ የርቀት መጠባበቂያ አገልጋዮችን ወይም ቴሌሜትሪ አያስኬድም።\n+ የጆርናል ግቤቶች በዓመት እና በወር በተደረደሩ መደበኛ የማርክ ማውረድ ፋይሎች ይከማቻሉ።\n+ የስሪት ታሪክ ለውጦችን ከማርትዕ፣ ከመሰረዝ፣ ከመሰየሚያ እና ከመጎብኘት በፊት ደህንነቱ የተጠበቀ ቅጽበተ-ፎቶዎችን ማቆየት ይችላል። journal text።\n+ የመተግበሪያ መሸጎጫ እንደገና ገንባ የመተግበሪያ ውሂብን በሞዱል እንዲያድስ ይፈቅድልዎታል፣ ቶዶስ እና ሙሉ መሸጎጫ ዳግም ግንባታዎችን ጨምሮ።</string>
+    <string name="settings_app_log_title">የመተግበሪያ ምዝግብ ማስታወሻ</string>
+    <string name="settings_app_log_subtitle">የግላዊነት-አስተማማኝ ምርመራዎችን እና የቀድሞ የብልሽት ዝርዝሮችን ይመልከቱ</string>
+    <string name="app_log_cd_share">የመተግበሪያ ምዝግብ ማስታወሻን አጋራ</string>
+    <string name="app_log_cd_clear">የመተግበሪያ ምዝግብ ማስታወሻን ያጽዱ</string>
+    <string name="app_log_privacy_title">ግላዊነት-አስተማማኝ ምርመራዎች</string>
+    <string name="app_log_privacy_description">ይህ ምዝግብ ማስታወሻ ዋና ዋና የመተግበሪያ ክስተቶችን፣ የመሸጎጫ/የማከማቻ ስራዎችን፣ የመግብር እድሳትን እና የብልሽት ዝርዝሮችን ይመዘግባል። የመጽሔት ግቤቶችን፣ የተግባር ጽሑፍ ወይም የግል ማስታወሻ ይዘቶችን አያካትትም።</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">የመጨረሻውን %d ቀን አቆይ</item>
+        <item quantity="other">ያለፉትን %d ቀናት ያቆዩ</item>
+    </plurals>
+    <string name="app_log_retention_description">የቆዩ የምዝግብ ማስታወሻዎች በምዝግብ ማስታወሻ ጊዜ እና ይህ ቅንብር ሲቀየር በራስ-ሰር ይቆረጣሉ።</string>
+    <string name="app_log_empty">እስካሁን ምንም የመተግበሪያ መዝገብ የለም።</string>
+    <string name="app_log_refresh">አድስ ምዝግብ ማስታወሻ</string>
+    <string name="app_log_share_empty">እስካሁን ምንም የያጃ መተግበሪያ ምዝግብ ማስታወሻ የለም።</string>
+    <string name="app_log_share_subject">ያጃ መተግበሪያ ምዝግብ ማስታወሻ</string>
+    <string name="app_log_share_chooser">ያጃ መተግበሪያ ሎግ አጋራ</string>
+    <string name="app_log_local_time_format">%1$s | የሀገር ውስጥ ሰዓት\n%2$s</string>
+    <string name="settings_website_title">ያጃ ድር ጣቢያ</string>
+    <string name="settings_website_subtitle">ለዝማኔዎች እና ዝርዝሮች ኦፊሴላዊውን ድር ጣቢያ ይክፈቱ</string>
+    <string name="settings_advanced_integrations_title">የላቀ ውህደቶች</string>
+    <string name="settings_tasker_integration_title">Tasker ውህደት</string>
+    <string name="settings_tasker_integration_subtitle">ፈጣን ቀረጻ ድርጊቶች እና የመጽሔት ክስተት ቀስቅሴዎች</string>
+    <string name="settings_shortcodes_subtitle">በሚጽፉበት ጊዜ ወይም በፍጥነት እየያዙ የሚሰፉ ድጋሚ ጥቅም ላይ ሊውሉ የሚችሉ ቅንጥቦችን ያቀናብሩ።</string>
+    <string name="settings_privacy_security_title">ግላዊነት እና ደህንነት</string>
+    <string name="settings_pin_lock_title">ፒን ቆልፍ</string>
+    <string name="settings_app_locked">መተግበሪያ ተቆልፏል</string>
+    <string name="settings_app_unlocked">መተግበሪያ ተከፍቷል።</string>
+    <string name="settings_change_pin">ፒን ቀይር</string>
+    <string name="settings_biometric_unlock_title">ባዮሜትሪክ ክፈት</string>
+    <string name="settings_biometric_enabled_desc">የጣት አሻራ ወይም የፊት መታወቂያ ነቅቷል።</string>
+    <string name="settings_biometric_disabled_desc">ከፒን ይልቅ ባዮሜትሪክ ይጠቀሙ</string>
+    <string name="settings_autolock_timeout_title">የራስ-መቆለፊያ ጊዜ አልቋል</string>
+    <string name="settings_pin_lock_disclaimer">የፒን መቆለፊያ ያልተፈቀደለት የመተግበሪያውን መዳረሻ ይከለክላል ነገር ግን የመጽሔት ውሂብዎን በዲስክ ላይ አያመሰጥርም። ቀጥተኛ ፋይል መዳረሻ ያለው ሰው አሁንም የእርስዎን ግቤቶች ማንበብ ይችላል።</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">_FMT_0__ ደቂቃ</item>
+        <item quantity="other">_FMT_0__ ደቂቃ</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">ስርዓት</string>
+    <string name="settings_theme_light">ብርሃን</string>
+    <string name="settings_theme_dark">ጨለማ</string>
+    <string name="settings_theme_amoled">አሞሌድ</string>
+    <string name="settings_colors_label">ቀለሞች</string>
+    <string name="settings_color_intensity_title">የቀለም ጥንካሬ</string>
+    <string name="settings_background_tint_title">የበስተጀርባ ቀለም</string>
+    <string name="settings_font_sans">ሳንስ</string>
+    <string name="settings_font_serif">ሰሪፍ</string>
+    <string name="settings_font_mono">ሞኖ</string>
+    <string name="settings_font_custom">ብጁ</string>
+    <string name="settings_font_size_label">የቅርጸ ቁምፊ መጠን</string>
+    <string name="settings_ui_font_size_label">የዩአይ ፊደል መጠን</string>
+    <string name="settings_data_font_size_label">የይዘት ቅርጸ-ቁምፊ መጠን</string>
+    <string name="settings_follow_ui_font_scale_label">የይዘት ቅርጸ-ቁምፊ መጠን ከUI ጋር ተመሳሳይ ያድርጉት</string>
+    <string name="settings_color_source_material_you">ቁሳቁስ እርስዎ</string>
+    <string name="settings_theme_preview_title">የገጽታ ቅድመ እይታ</string>
+    <string name="settings_journal_entry_preview">የጆርናል መግቢያ</string>
+    <string name="settings_journal_entry_preview_desc">ካርዶች, ቺፕስ እና አዝራሮች እነዚህን ቀለሞች ይጠቀማሉ.</string>
+    <string name="settings_preview_chip_chip">ቺፕ</string>
+    <string name="settings_preview_chip_accent">ዘዬ</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">ጥንካሬ፡ _FMT_0__</string>
+    <string name="settings_personal_themes_title">የግል ገጽታዎች</string>
+    <string name="settings_theme_name_label">የገጽታ ስም</string>
+    <string name="settings_main_color_label">ዋናው ቀለም</string>
+    <string name="settings_hue_label">ሁ</string>
+    <string name="settings_sat_label">ሳት</string>
+    <string name="settings_bright_label">ብሩህ</string>
+    <string name="settings_generated_accents_title">የመነጩ ዘዬዎች</string>
+    <string name="settings_personal_theme_desc">አንድ ቀለም ይምረጡ. ያጃ ተዛማጅ ዘዬ እና የድጋፍ ቀለሞችን ይፈጥራል።</string>
+    <string name="settings_preview_chip_main">ዋና</string>
+    <string name="settings_preview_chip_support">ድጋፍ</string>
+    <string name="settings_no_font_selected">ምንም ቅርጸ-ቁምፊ አልተመረጠም።</string>
+    <string name="settings_custom_font_desc">ማንኛውንም የዩኒኮድ .ttf ወይም .otf ፋይል ይምረጡ - ለምሳሌ እንደ ማንጃሪ ያለ የማላያላም ፊደል። ቅርጸ-ቁምፊው የጎደላቸው ቁምፊዎች የስርዓት ቅርጸ-ቁምፊዎችን ይጠቀማሉ።</string>
+    <string name="settings_font_replace">ተካ</string>
+    <string name="settings_choose_font_file">የቅርጸ-ቁምፊ ፋይልን ይምረጡ</string>
+    <string name="settings_intensity_muted">ድምጸ-ከል ተደርጓል</string>
+    <string name="settings_intensity_normal">መደበኛ</string>
+    <string name="settings_intensity_vivid">ግልጽ</string>
+    <string name="settings_intensity_pop">ፖፕ</string>
+    <string name="settings_tint_clean">ንጹህ</string>
+    <string name="settings_tint_soft">ለስላሳ</string>
+    <string name="settings_tint_rich">ሀብታም</string>
+    <string name="settings_tint_deep">ጥልቅ</string>
+    <string name="settings_accent_complementary">ማሟያ</string>
+    <string name="settings_accent_analogous">አናሎግ</string>
+    <string name="settings_accent_triadic">ትሪያዲክ</string>
+    <string name="settings_accent_soft">ለስላሳ</string>
+    <string name="settings_mono_weight_thin">ብርሃን</string>
+    <string name="settings_mono_weight_extra_light">ተጨማሪ ብርሃን</string>
+    <string name="settings_mono_weight_light">ብርሃን</string>
+    <string name="settings_mono_weight_regular">መደበኛ</string>
+    <string name="settings_mono_weight_medium">መካከለኛ</string>
+    <string name="settings_mono_weight_semi_bold">ከፊል ደፋር</string>
+    <string name="settings_mono_weight_bold">ደፋር</string>
+    <string name="settings_mono_weight_extra_bold">ተጨማሪ ደፋር</string>
+    <string name="settings_mono_weight_title">ክብደት</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">የቀን ቁልፍ ቃል ያክሉ</string>
+    <string name="settings_keyword_label">ቁልፍ ቃል</string>
+    <string name="settings_keyword_placeholder_example">ለምሳሌ. ትናንት</string>
+    <string name="settings_means_label">ማለት ነው።</string>
+    <string name="settings_add_button">አክል</string>
+    <string name="settings_no_keywords_yet">እስካሁን ምንም ቁልፍ ቃላት አልተጨመሩም።</string>
+    <string name="settings_added_keywords_title">የታከሉ ቁልፍ ቃላት (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; __ኤፍኤምቲ_0__</string>
+    <string name="keywords_cd_add">ቁልፍ ቃል ያክሉ</string>
+    <string name="keywords_dialog_add_title">ቁልፍ ቃል ያክሉ</string>
+    <string name="keywords_dialog_edit_title">ቁልፍ ቃል አርትዕ</string>
+    <string name="keywords_cd_import_csv">CSV አስመጣ</string>
+    <string name="keywords_cd_export_csv">CSV ወደ ውጪ ላክ</string>
+    <string name="keywords_cd_download_template">አብነት አውርድ</string>
+    <string name="rebuild_cache_storage_transparency_title">በመሣሪያ ላይ ማከማቻ ግልጽነት</string>
+    <string name="rebuild_cache_storage_transparency_desc">ያጃ ደህንነቱ የተጠበቀ የአካባቢ ማከማቻ ሞዴል ይጠቀማል። የእርስዎ የግል ጆርናል ውሂብ አካባቢያዊ ሆኖ ይቆያል እና በማንኛውም ጊዜ መሣሪያዎን አይተወውም፦</string>
+    <string name="rebuild_cache_source_of_truth_title">የእውነት ምንጭ (Markdown Files)</string>
+    <string name="rebuild_cache_source_of_truth_desc">ሁሉም ግቤቶች፣ የማረጋገጫ ዝርዝሮች (ቶዶስ)፣ የጊዜ መስመር ክስተቶች፣ ኮከቦች እና መለያዎች በቋሚነት በመረጡት የአካባቢያዊ ጆርናል አቃፊ ውስጥ በPintext Markdown (.md) ፋይሎች ውስጥ ይቀመጣሉ። የእርስዎ ውሂብ 100% የእርስዎ ነው እና ሙሉ በሙሉ በእርስዎ መሣሪያ ላይ ይኖራል።</string>
+    <string name="rebuild_cache_read_cache_title">መሸጎጫ እና ማውጫ (SQLite Database) አንብብ</string>
+    <string name="rebuild_cache_read_cache_desc">ፈጣን ስክሪን መጫንን፣ የቀን መቁጠሪያ ድምቀቶችን፣ ቁልፍ ቃላትን እና ስታቲስቲክስን በእያንዳንዱ ጥቅልል ​​ላይ ያለውን የፋይል ስርዓት ሳይቃኙ ለማንቃት ያጃ የማርክውርድ ፋይሎችን ይተነተን እና በመሣሪያዎ ላይ ባለው የአካባቢ ክፍል SQLite ዳታቤዝ ውስጥ ይጠቁማል።</string>
+    <string name="rebuild_cache_local_private_title">100% የአካባቢ እና የግል</string>
+    <string name="rebuild_cache_local_private_desc">ያጃ ምንም አይነት የደመና ዳታቤዝ፣ የርቀት ምትኬ አገልጋይ ወይም የጽሑፍ መልእክትን የሚከታተል ቴሌሜትሪ የለውም። ሁሉም የመጽሔት ግቤቶች እና የተተነተኑ መረጃዎች በአካላዊ መሳሪያዎ ላይ በጥብቅ ይቆያሉ እና በማንኛውም ጊዜ አይተዉትም።</string>
+    <string name="keywords_export_success">ቁልፍ ቃላት ወደ ውጭ ተልከዋል።</string>
+    <string name="keywords_export_failed">ቁልፍ ቃላትን ወደ ውጭ መላክ አልተቻለም</string>
+    <string name="keywords_template_saved">አብነት ተቀምጧል</string>
+    <string name="keywords_template_save_failed">አብነት ማስቀመጥ አልተቻለም</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">የመጣ %d ቁልፍ ቃል</item>
+        <item quantity="other">%d ቁልፍ ቃላት ከውጭ መጥተዋል።</item>
+    </plurals>
+    <string name="keywords_import_none_valid">ምንም ትክክለኛ ቁልፍ ቃላት አልተገኙም።</string>
+    <string name="keywords_import_failed">ቁልፍ ቃላትን ማስመጣት አልተቻለም</string>
+    <string name="keywords_status_indexing">መረጃ ጠቋሚ ማድረግ</string>
+    <string name="keywords_status_indexed">ኢንዴክስ የተደረገ</string>
+    <string name="keywords_metric_mentions">ይጠቅሳል</string>
+    <string name="keywords_metric_days">ቀናት</string>
+    <string name="keywords_timeline_range_all">ሁሉም</string>
+    <string name="keywords_connections_filter_all">ሁሉም</string>
+    <string name="keywords_connections_filter_people">ሰዎች</string>
+    <string name="keywords_connections_filter_places">ቦታዎች</string>
+    <string name="keywords_connections_filter_recent">የቅርብ ጊዜ</string>
+    <string name="keywords_connections_filter_strongest">በጣም ጠንካራው</string>
+    <string name="keywords_filter_needs_reindex">Reindex ያስፈልገዋል</string>
+    <string name="keywords_search_placeholder">ሰዎችን ፣ ቦታዎችን ፣ ተለዋጭ ስሞችን ፣ ግንኙነትን ይፈልጉ</string>
+    <string name="keywords_refreshing_counters">ቁልፍ ቃል ቆጣሪዎችን በማደስ ላይ…</string>
+    <string name="keywords_empty_title">እስካሁን ምንም ቁልፍ ቃላት የሉም</string>
+    <string name="keywords_empty_subtitle">መተግበሪያው በአካባቢው እንዲከታተል የሚፈልጓቸውን ሰዎች እና ቦታዎች ያክሉ።</string>
+    <string name="keywords_no_results_title">ምንም ተዛማጅ ውጤቶች የሉም</string>
+    <string name="keywords_no_results_subtitle">የተለየ ፍለጋ፣ መደርደር ወይም ማጣሪያ ይሞክሩ።</string>
+    <string name="keywords_people_title">ሰዎች</string>
+    <string name="keywords_places_title">ቦታዎች</string>
+    <string name="keywords_people_empty">እስካሁን ምንም ሰዎች አልተጨመሩም።</string>
+    <string name="keywords_people_filtered_empty">ከአሁኑ ማጣሪያዎች ጋር የሚዛመዱ ሰዎች የሉም።</string>
+    <string name="keywords_places_empty">እስካሁን ምንም ቦታዎች አልተጨመሩም።</string>
+    <string name="keywords_places_filtered_empty">ከአሁኑ ማጣሪያዎች ጋር የሚዛመዱ ቦታዎች የሉም።</string>
+    <string name="keywords_delete_person_title">ሰው ይሰረዝ?</string>
+    <string name="keywords_delete_place_title">ቦታ ይሰረዝ?</string>
+    <string name="keywords_delete_message">\"%1$s\" ከሰዎች እና ቦታዎች ይሰረዝ? ይህ ቁልፍ ቃሉን እና በመረጃ ጠቋሚው ላይ ያለውን ግጥሚያ ያስወግዳል።</string>
+    <string name="keywords_timeline_title">በጊዜ ሂደት ተጠቅሷል</string>
+    <string name="keywords_timeline_empty_pattern">እስካሁን ምንም ወርሃዊ ንድፍ የለም።</string>
+    <string name="keywords_timeline_total_format">%1$d ጠቅላላ</string>
+    <string name="keywords_timeline_empty_chart">ግኝቶችን ከመረጃ ጠቋሚ በኋላ መጥቀስ እዚህ ሰንጠረዥ ይሆናል።</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">ከፍተኛ %1$s • %2$d መጥቀስ</item>
+        <item quantity="other">ከተጠቀሱት ጋር ቀናት</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">ከተጠቀሱት ጋር ቀናት</string>
+    <string name="keywords_recency_title">የቅርብ ጊዜ</string>
+    <string name="keywords_recency_none">እስካሁን ምንም ተዛማጅ የለም።</string>
+    <string name="keywords_recency_today">ዛሬ ተጠቅሷል</string>
+    <string name="keywords_recency_yesterday">ትናንት ተጠቅሷል</string>
+    <string name="keywords_recency_days_ago_format">ለመጨረሻ ጊዜ የተጠቀሰው ከ%1$d ቀናት በፊት ነው።</string>
+    <string name="keywords_first_seen">መጀመሪያ ታየ</string>
+    <string name="keywords_last_seen">ለመጨረሻ ጊዜ የታየው</string>
+    <string name="keywords_unknown">ያልታወቀ</string>
+    <string name="keywords_co_mentioned_with">ጋር አብሮ ተጠቅሷል</string>
+    <string name="keywords_connections_title">ግንኙነቶች</string>
+    <string name="keywords_connections_subtitle">በተደጋጋሚ መደራረብ እና ተደጋጋሚነት ደረጃ የተሰጠው</string>
+    <string name="keywords_connections_linked_format">%1$d ተገናኝቷል።</string>
+    <string name="keywords_connections_show">ግንኙነቶችን አሳይ</string>
+    <string name="keywords_connections_hide">ግንኙነቶችን ደብቅ</string>
+    <string name="keywords_connections_items_in_view">%1$d ንጥሎች በዚህ እይታ ውስጥ</string>
+    <string name="keywords_connections_tap_to_expand">%1$d ደረጃ የተሰጣቸው አገናኞችን ለማስፋት ይንኩ።</string>
+    <string name="keywords_connections_empty">ለዚህ ማጣሪያ እስካሁን ምንም ግንኙነት የለም።</string>
+    <string name="keywords_open_day">ክፍት ቀን</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">በብዛት ተጠቅሷል</string>
+    <string name="keywords_sort_recently_added">በቅርቡ የተጨመረ</string>
+    <string name="keywords_peak_mentions_format">ከፍተኛ %1$s • %2$d መጠቀሱ%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">_FMT_0__ ቀን</string>
+    <string name="keywords_connections_meta_days_suffix_plural">ኤስ</string>
+    <string name="keywords_connections_meta_together">አንድ ላየ</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d የተጋራ መግቢያ</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">አይ</string>
+    <string name="keywords_connections_meta_last_prefix">| የመጨረሻው %1$s</string>
+    <string name="keywords_connections_score_format">ነጥብ %1$d</string>
+    <string name="keywords_connections_days_chip">_FMT_0__ ቀናት</string>
+    <string name="keywords_connections_shared_chip">%1$d ተጋርቷል።</string>
+    <string name="keywords_match_type_exact">ትክክለኛ</string>
+    <string name="keywords_match_type_fuzzy">ደብዛዛ</string>
+    <string name="keywords_match_type_alias">ተለዋጭ ስም</string>
+    <string name="keywords_match_type_relation">ግንኙነት</string>
+    <string name="keywords_action_delete">ሰርዝ</string>
+    <string name="keywords_action_edit">አርትዕ</string>
+    <string name="keywords_action_view">ይመልከቱ</string>
+    <string name="keywords_name_label">ስም</string>
+    <string name="keywords_relation_context_label">ግንኙነት / አውድ</string>
+    <string name="keywords_aliases_label">ተለዋጭ ስሞች (በነጠላ ሰረዝ ተለያይተዋል)</string>
+    <string name="keywords_aliases_label_short">ተለዋጭ ስሞች</string>
+    <string name="keywords_type_person">ሰው</string>
+    <string name="keywords_type_place">ቦታ</string>
+    <string name="keywords_save_disabled_hint">ቁልፍ ቃላት ጠፍተዋል። ኢንዴክስ እንዲሰራ ሲፈልጉ ከዝርዝሩ አንቃ።</string>
+    <string name="settings_meaning_yesterday">ትናንት</string>
+    <string name="settings_meaning_today">ዛሬ</string>
+    <string name="lookback_chip_weekly">በየሳምንቱ</string>
+    <string name="lookback_chip_monthly">ወርሃዊ</string>
+    <string name="timeline_screen_title">የጊዜ መስመር</string>
+    <string name="timeline_empty_title">እስካሁን ምንም እዚህ የለም።</string>
+    <string name="timeline_empty_subtitle">የተለየ ማጣሪያ ይሞክሩ ወይም የመለያ ፍለጋውን ያስተካክሉ።</string>
+    <string name="timeline_quick_today">ዛሬ</string>
+    <string name="timeline_quick_month">ወር</string>
+    <string name="timeline_quick_filters">ማጣሪያዎች</string>
+    <string name="timeline_all_dates">ሁሉም ቀኖች</string>
+    <string name="timeline_label_prefix">መለያ: _FMT_0__</string>
+    <string name="timeline_label_search_placeholder">የቀን መለያዎችን ይፈልጉ</string>
+    <string name="timeline_filters_title">የጊዜ መስመር ማጣሪያዎች እና አቀማመጥ</string>
+    <string name="settings_meaning_tomorrow">ነገ</string>
+    <string name="settings_meaning_day_before_yesterday">ከትናንት በፊት አንድ ቀን</string>
+    <string name="settings_meaning_day_after_tomorrow">ከነገ ወዲያ</string>
+    <string name="settings_meaning_last_week">ባለፈው ሳምንት</string>
+    <string name="settings_meaning_next_week">በሚቀጥለው ሳምንት</string>
+    <string name="settings_meaning_monday">ሰኞ</string>
+    <string name="settings_meaning_tuesday">ማክሰኞ</string>
+    <string name="settings_meaning_wednesday">እሮብ</string>
+    <string name="settings_meaning_thursday">ሐሙስ</string>
+    <string name="settings_meaning_friday">አርብ</string>
+    <string name="settings_meaning_saturday">ቅዳሜ</string>
+    <string name="settings_meaning_sunday">እሁድ</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">የመተግበሪያ ውስጣዊ ማከማቻ</string>
+    <string name="settings_storage_internal_default">የመተግበሪያ ውስጣዊ ማከማቻ (ነባሪ)</string>
+    <string name="settings_storage_new_folder_fallback">አዲሱ አቃፊ</string>
+    <string name="settings_storage_current_folder_fallback">የአሁኑ አቃፊ</string>
+    <string name="settings_storage_move_confirm">ሁሉም ነባር ግቤቶች ከ%1$s ወደ %2$s ይንቀሳቀሳሉ። መቀጠል ትፈልጋለህ?</string>
+    <string name="settings_restore_added_skipped">ታክሏል፡ %1$d\nየተዘለሉ ብዜቶች፡ %2$d</string>
+    <string name="settings_storage_custom_folder">ብጁ አቃፊ፡\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">አቋራጮች ይረዳሉ</string>
+    <string name="addentry_cd_insert_template">አብነት አስገባ</string>
+    <string name="addentry_cd_jump_to_today">ወደ ዛሬ ዝለል</string>
+    <string name="addentry_cd_share">አጋራ</string>
+    <string name="addentry_cd_bold">ደፋር</string>
+    <string name="addentry_cd_italic">ኢታሊክ</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">ጊዜ ያዘጋጁ</string>
+    <string name="addentry_event_chip">ክስተት</string>
+    <string name="addentry_pick_time_title">ጊዜ ይምረጡ</string>
+    <string name="addentry_hour_label">ሰአት</string>
+    <string name="addentry_minute_label">ደቂቃ</string>
+    <string name="addentry_new_event_title">አዲስ ክስተት</string>
+    <string name="addentry_title_label">ርዕስ</string>
+    <string name="addentry_event_description_label">የክስተት መግለጫ</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">ቶዶስ ተገኝቷል</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d መስመርን ወደ ማረጋገጫ ዝርዝር ቀይር</item>
+        <item quantity="other">%1$d መስመሮችን ወደ ማረጋገጫ ዝርዝር ቀይር</item>
+    </plurals>
+    <string name="addentry_people_places_title">ሰዎች እና ቦታዎች</string>
+    <string name="addentry_no_tracked_mentions">በዚህ ግቤት ውስጥ ምንም ክትትል የሚደረግባቸው ሰዎች ወይም ቦታዎች አልተገኙም።</string>
+    <string name="addentry_day_memory_title">የቀን ትውስታ</string>
+    <string name="addentry_star_day_title">በዚህ ቀን ኮከብ ያድርጉ</string>
+    <string name="addentry_star_day_subtitle">ወደ ኋላ በመመልከት እንዲመለስ እንደ ማድመቂያ ያስቀምጡት።</string>
+    <string name="addentry_day_label_label">የቀን መለያ</string>
+    <string name="addentry_day_label_placeholder">ለምሳሌ. ዳግም ማስጀመር ቀን</string>
+    <string name="addentry_follow_up_title">ይከታተሉት።</string>
+    <string name="addentry_next_month">በሚቀጥለው ወር</string>
+    <string name="addentry_custom">ብጁ</string>
+    <string name="addentry_due_date_format">የሚከፈልበት %1$s</string>
+    <string name="addentry_cd_clear_follow_up">ክትትልን አጽዳ</string>
+    <string name="addentry_follow_up_note_label">የክትትል ማስታወሻ</string>
+    <string name="addentry_follow_up_note_placeholder">ምን እንደገና መጎብኘት አለብዎት?</string>
+    <string name="addentry_review_entry_title">የግምገማ ግቤት</string>
+    <string name="addentry_review_entry_subtitle">ከማዳንዎ በፊት በፍጥነት ይለፉ። ቶዶዎችን ያውጡ፣ ክትትል የሚደረግባቸውን ጥቅሶች ይፈትሹ እና አስፈላጊ ከሆነ ቀንን ምልክት ያድርጉ።</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d ማድረግ</item>
+        <item quantity="other">_FMT_0__ ቶዶስ</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d ጠቅሷል</item>
+        <item quantity="other">%1$d ጠቅሷል</item>
+    </plurals>
+    <string name="addentry_save_entry_button">መግቢያን አስቀምጥ</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">ለውጦችን አስወግድ</string>
+    <string name="addentry_discard_changes_message">ያልተቀመጡ ለውጦች አሉዎት። ተመልሰው ይመለሱ እና ያስወግዷቸው፣ ወይም አርትዖትን ለመቀጠል ይቆዩ።</string>
+    <string name="addentry_go_back">ተመለስ</string>
+    <string name="addentry_stay">ይቆዩ</string>
+    <string name="addentry_shortcuts_title">አቋራጮች</string>
+    <string name="addentry_help_bold_suffix">ጽሑፍን ደፋር ለማድረግ (ወይም ጽሑፍ ይምረጡ እና ደማቅ ቁልፍን ይንኩ)</string>
+    <string name="addentry_help_italic_suffix">ጽሑፍ ሰያፍ ለማድረግ (ወይም ጽሑፍ ይምረጡ እና ኢታሊክ ቁልፍን ይንኩ)</string>
+    <string name="addentry_help_today_suffix">እስከ አሁን ድረስ ይዘልቃል (ለምሳሌ፣ ታህሳስ 25-25)</string>
+    <string name="addentry_help_now_suffix">አሁን ወዳለው ጊዜ (ለምሳሌ፡ 14፡30) ይጨምራል።</string>
+    <string name="addentry_help_week_suffix">አሁን ወዳለው ሳምንት ይዘልቃል (ለምሳሌ፡ 52ኛ ሳምንት)</string>
+    <string name="addentry_help_day_suffix">አሁን ባለው የስራ ቀን (ለምሳሌ ሰኞ) ይዘልቃል</string>
+    <string name="addentry_help_todo_suffix">ወደ ቶዶ አመልካች ሳጥን ይዘልቃል (ለምሳሌ፣ [])</string>
+    <string name="addentry_help_toggle_suffix">፦ ቶዶ አመልካች ሳጥን በያዘው መስመር ውስጥ የትኛውም ቦታ ላይ ሲገባ ይቀይረዋል።</string>
+    <string name="addentry_okey">እሺ!</string>
+    <string name="addentry_template_merge_message">ይህ ረቂቅ አስቀድሞ ጽሑፍ አለው። አብነት እንዴት መቀመጥ እንዳለበት ይምረጡ።</string>
+    <string name="addentry_template_merge_subtitle">ከታች አስገባ የአሁኑን ረቂቅ ያስቀምጣል። Cursor ላይ የእርስዎ እንክብካቤ አሁን ያለበትን አብነት ያስቀምጣል።</string>
+    <string name="addentry_insert_below">ከታች አስገባ</string>
+    <string name="addentry_at_cursor">Cursor ላይ</string>
+    <string name="addentry_replace_draft">ረቂቅ ተካ</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">ታዋቂ</string>
+    <string name="addentry_new_chip">አዲስ</string>
+    <string name="addentry_best_for_format">ምርጥ ለ፡%1$s</string>
+    <string name="addentry_cd_remove_favorite">አብነት ተወዳጅ አስወግድ</string>
+    <string name="addentry_cd_favorite_template">ተወዳጅ አብነት</string>
+    <string name="addentry_checklist_chip">የማረጋገጫ ዝርዝር</string>
+    <string name="addentry_followup_chip">ክትትል</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d ክፍል</item>
+        <item quantity="other">%1$d ክፍሎች</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">ተወዳጅ አብነት ቀይር</string>
+    <string name="addentry_template_preview_label">የአብነት ቅድመ እይታ</string>
+    <string name="addentry_use_template_button">አብነት ይጠቀሙ</string>
+    <string name="addentry_start_blank_title">ባዶ ጀምር</string>
+    <string name="addentry_start_blank_subtitle">አብነቶችን ይዝለሉ እና ከባዶ ረቂቅ መፃፍዎን ይቀጥሉ።</string>
+    <string name="addentry_blank_entry_name">ባዶ መግቢያ</string>
+    <string name="addentry_blank_entry_description">ግልጽ ጆርናል መግቢያ</string>
+    <string name="addentry_blank_category">አጠቃላይ</string>
+    <string name="addentry_quick_picks_title">ፈጣን ምርጫዎች</string>
+    <string name="addentry_sort_recommended">የሚመከር</string>
+    <string name="addentry_sort_recent">የቅርብ ጊዜ</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">ምንም አብነቶች አልተገኙም።</string>
+    <string name="addentry_no_templates_subtitle">የተለየ ፍለጋ ወይም ምድብ ይሞክሩ።</string>
+    <string name="addentry_search_templates_label">አብነቶችን ይፈልጉ</string>
+    <string name="addentry_search_templates_placeholder">ስብሰባ፣ ጤና፣ ነጸብራቅ...</string>
+    <string name="addentry_cd_clear_search">ፍለጋን አጽዳ</string>
+    <string name="addentry_choose_template_title">አብነት ይምረጡ</string>
+    <string name="addentry_templates_ready_format">_FMT_0__ ከ _FMT_1__ አብነቶች ተዘጋጅተዋል።</string>
+    <string name="addentry_category_all">ሁሉም</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">ምን ሆነ፧</string>
+    <string name="addentry_todo_chip">ቶዶ</string>
+    <string name="addentry_numbered_list_chip">N ዝርዝር</string>
+    <string name="addentry_bulleted_list_chip">ቢ ዝርዝር</string>
+    <string name="addentry_words_count_format">%1$d ቃላት</string>
+    <string name="addentry_chars_count_format">%1$d ቻርስ</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">ክትትል ዛሬ ይጠናቀቃል</item>
+        <item quantity="other">ክትትሎች ዛሬ ይጠናቀቃሉ</item>
+    </plurals>
+    <string name="home_followup_subtitle">ወደ የተገናኘው ቀን ተመልሰው ይዝለሉ እና ከዚያ ይቀጥሉ።</string>
+    <string name="home_from_date_format">ከ%1$s</string>
+    <string name="home_more_due_today_format">+%1$d ተጨማሪ ዛሬ</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">መለያ ያክሉ</string>
+    <string name="home_edit_label_title">መለያ አርትዕ</string>
+    <string name="home_day_label_hint">ለዚህ ቀን አጭር መለያ ያክሉ (ቢበዛ 30 ቁምፊዎች)።</string>
+    <string name="home_day_label_placeholder">ለምሳሌ በትምህርት ቤት የመጀመሪያ ቀን</string>
+    <string name="home_char_count_format">_FMT_0__/30</string>
+    <string name="home_star_label_title">ለዚህ ቀን መለያ ያክሉ</string>
+    <string name="home_star_label_hint">ለዚህ ቀን የማይረሳ መለያ ስጡ (ቢበዛ 30 ቁምፊዎች)</string>
+    <string name="home_star_label_placeholder">ለምሳሌ፡- የእኔ ልደት፣ በትምህርት ቤት</string>
+    <string name="home_star_button">ኮከብ</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">መግባት ተሰርዟል።</item>
+        <item quantity="other">%1$d ግቤቶች ተሰርዘዋል</item>
+    </plurals>
+    <string name="home_restore_button">ወደነበረበት መልስ</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">ግቤቶችን ፈልግ...</string>
+    <string name="home_cd_search">ፈልግ</string>
+    <string name="home_cd_clear_search">ፍለጋን አጽዳ</string>
+    <string name="home_cd_favorite">ተወዳጅ</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">ግቤቶች</string>
+    <string name="home_stat_words">ቃላት</string>
+    <string name="home_stat_chars">Chars</string>
+    <string name="home_stat_versions">ግ</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">መለያ ያክሉ</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">_FMT_0__ ተዛማጅ ተገኝቷል</item>
+        <item quantity="other">_FMT_0__ ግጥሚያዎች ተገኝተዋል</item>
+    </plurals>
+    <string name="home_no_keyword_matches">እስካሁን ለዚህ ቁልፍ ቃል ምንም ተዛማጅ አልተገኘም።</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">ባዶ ሁኔታ አዶ</string>
+    <string name="home_empty_future">ይህ ወደፊት ነው። አስታዋሽ ይቅረጹ!</string>
+    <string name="home_empty_past">እርስዎ ባለፈው ውስጥ ነዎት። ማህደረ ትውስታ ከመጥፋቱ በፊት ይቅዱ...</string>
+    <string name="home_empty_today">እስካሁን ምንም ግቤቶች የሉም። ቀንህን ጀምር።</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">በማስቀመጥ ላይ</string>
+    <string name="home_cd_add_entry">መግቢያ ጨምር</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">ሰርዝ %1$d</string>
+    <string name="home_future_date_title">የወደፊቱ የመግቢያ ቀን</string>
+    <string name="home_future_date_message_format">ለወደፊት ቀን (%1$s) ግቤት እያከሉ ነው። መቀጠል ትፈልጋለህ?</string>
+    <string name="home_cache_issue_title">የውሂብ መሸጎጫ ችግር ተገኝቷል</string>
+    <string name="home_cache_issue_message">ከመሸጎጫው ውስጥ በርካታ የመጽሔት ግቤቶች የጠፉ ይመስላል። እነሱን ወደነበሩበት ለመመለስ ሙሉ የውሂብ መሸጎጫ ማደስን ማከናወን ይፈልጋሉ?</string>
+    <string name="home_refresh_button">አድስ</string>
+    <string name="home_ignore_button">ችላ በል</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">ሰዎች እና ቦታዎች</string>
+    <string name="nav_statistics">ስታትስቲክስ</string>
+    <string name="nav_todos">ቶዶስ</string>
+    <string name="nav_rebuild_index">የውሂብ ጎታ ኢንዴክስን እንደገና ገንባ</string>
+    <string name="nav_backup_data">የመጠባበቂያ ውሂብ</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">ሁኔታ</string>
+    <string name="nav_finishing_index_rebuild">የመረጃ ጠቋሚ መልሶ ግንባታን በማጠናቀቅ ላይ...</string>
+    <string name="nav_rebuilding_index">የውሂብ ጎታ ኢንዴክስን እንደገና መገንባት</string>
+    <string name="nav_refreshing_index">የሚያድስ መረጃ ጠቋሚ</string>
+    <string name="nav_backup_too_old">ምትኬ በጣም ያረጀ ነው...</string>
+    <string name="nav_sync_percent_eta_format">_ኤፍኤምቲ_0____ኤፍኤምቲ_1__ - __ኤፍኤምቲ_2__</string>
+    <string name="nav_sync_percent_format">_ኤፍኤምቲ_0____ኤፍኤምቲ_1__</string>
+    <string name="nav_working">በመስራት ላይ...</string>
+    <string name="nav_eta_almost_done">ሊጠናቀቅ ተቃርቧል</string>
+    <string name="nav_eta_seconds_left_format">~%1$d ቀርቷል።</string>
+    <string name="nav_eta_minutes_left_format">~%1$dሜ ይቀራል</string>
+    <string name="nav_eta_hours_left_format">~%1$dሰ ይቀራል</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">ምናሌ</string>
+    <string name="nav_cd_rj_logo">አርጄ አርማ</string>
+    <string name="nav_tagline">አሁንም ሌላ የመጽሔት መተግበሪያ</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play መደብር</string>
+    <string name="nav_cd_website">ድህረገፅ</string>
+    <string name="nav_cd_share_app">መተግበሪያ አጋራ</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">ያጃ ሎጎ</string>
+    <string name="nav_easter_quote_part1">\"የሚያልፈውን ሃሳብ ወይም ለምሳ የበላህውን ጻፍ፤ ጥልቅ መሆን የለበትም።\n</string>
+    <string name="nav_easter_quote_part2">ቃላትህ ብቻ ሊኖሩ ይችላሉ።</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">ከ RJ ቤተ-ሙከራዎች</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">ያጃ አጋራ</string>
+    <string name="nav_share_text_body">ያጃ — ገና ሌላ የጋዜጠኝነት አፕሊኬሽን\n\nከማዘናጋት የጸዳ ዕለታዊ ጆርናል ግቤቶችን እንደ ግልጽ ምልክት ማድረጊያ ፋይሎች የሚያከማች።\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">የማከማቻ ቦታን ቀይር</string>
+    <string name="settings_change_storage_location_message">ሁሉም ነባር ግቤቶች ከ%1$s ወደ %2$s ይንቀሳቀሳሉ። መቀጠል ትፈልጋለህ?</string>
+    <string name="settings_yes">አዎ</string>
+    <string name="settings_no">አይ</string>
+    <string name="settings_restore_summary_title">ማጠቃለያ እነበረበት መልስ</string>
+    <string name="settings_restore_section_journal">ጆርናል</string>
+    <string name="settings_restore_section_shortcodes">አጭር ኮዶች</string>
+    <string name="settings_restore_section_date_keywords">የቀን ቁልፍ ቃላት</string>
+    <string name="settings_restore_section_people_places">ሰዎች እና ቦታዎች</string>
+    <string name="settings_restore_journal_summary">ወደ አዲስ ቀናት ታክሏል፡ _FMT_0__\nበነባር ቀናት የተዋሃደ፡ %2$d\nየተባዙ ጆርናል ግቤቶች ተዘለዋል፡ %3$d</string>
+    <string name="settings_restore_shortcodes_summary">ታክሏል፡ %1$d\nየተዘለሉ ብዜቶች፡ %2$d</string>
+    <string name="settings_restore_date_keywords_summary">ታክሏል፡ %1$d\nየተዘለሉ ብዜቶች፡ %2$d</string>
+    <string name="settings_restore_people_places_summary">ታክሏል፡ %1$d\nየተዘለሉ ብዜቶች፡ %2$d</string>
+    <string name="rebuild_tools_title">መሣሪያዎችን እንደገና መገንባት</string>
+    <string name="rebuild_tools_back">ተመለስ</string>
+    <string name="rebuild_tools_intro">በመጀመሪያ ያተኮሩ መልሶ ግንባታዎችን ይጠቀሙ። የውሂብ ጎታውን መልሶ መገንባት የማከማቻ ለውጦች፣ የውሂብ ጎታ ብልሹነት ወይም የመረጃ ጠቋሚ አለመመጣጠን ብቻ ነው።</string>
+    <string name="rebuild_todo_index_title">ቶዶ ኢንዴክስን እንደገና ገንባ</string>
+    <string name="rebuild_todo_index_subtitle">ከጆርናል ፋይሎች ውስጥ ያሉትን ነገሮች አድስ እና ቶዶ ስክሪን/መግብርን አዘምን። ቶዶዎች ያረጁ ሲመስሉ ይሻላል።</string>
+    <string name="rebuild_todo_index_button">ቶዶስን እንደገና ገንባ</string>
+    <string name="rebuild_people_places_title">ሰዎችን እና ቦታዎችን እንደገና ገንባ</string>
+    <string name="rebuild_people_places_subtitle">ቁልፍ ቃል ተለዋጭ ስሞችን፣ ጥቅሶችን፣ አዝማሚያዎችን እና የግንኙነት ውሂብን ያድሱ።</string>
+    <string name="rebuild_people_places_button">ሰዎችን እና ቦታዎችን እንደገና ገንባ</string>
+    <string name="rebuild_database_title">ሙሉ የውሂብ ጎታ ዳግም ግንባታ</string>
+    <string name="rebuild_database_subtitle">የውሂብ ጎታ መሸጎጫውን ከምልክት ማድረጊያ ፋይሎች ያሰባስቡ። ግቤቶችን፣ ቆጠራዎችን፣ ቶዶዎችን፣ ሰዎች እና ቦታዎችን፣ እና መግብሮችን ከባዶ ዳግመኛ ኢንዴክስ ያወጣል።</string>
+    <string name="rebuild_database_button">የውሂብ ጎታ ዳግም ገንባ</string>
+    <string name="rebuild_database_confirm_title">የውሂብ ጎታ ኢንዴክስን እንደገና ገንባ</string>
+    <string name="rebuild_database_confirm_message">ይህ ሙሉውን የክፍል SQLite ዳታቤዝ ከማርክ ማውረጃ ፋይሎችዎ ያጸዳል እና እንደገና ያመላክታል። ለትልቅ መጽሔቶች ይህ ጥቂት ደቂቃዎችን ሊወስድ ይችላል።</string>
+    <string name="rebuild_database_confirm_start">እንደገና መገንባት ይጀምሩ</string>
+    <string name="rebuild_database_status_title">የውሂብ ጎታ መረጃ ጠቋሚ ሁኔታ</string>
+    <string name="rebuild_database_storage_engine">የማጠራቀሚያ ሞተር</string>
+    <string name="rebuild_database_storage_engine_value">ክፍል SQLite ጎታ</string>
+    <string name="rebuild_database_indexed_days">የተጠቆሙ ቀናት</string>
+    <string name="rebuild_database_indexed_days_value">_FMT_0__ ቀናት መረጃ ጠቋሚ ተሰጥቷል።</string>
+    <string name="rebuild_database_file_size">የውሂብ ጎታ ፋይል መጠን</string>
+    <string name="rebuild_database_last_sync">የመጨረሻው መረጃ ጠቋሚ ማመሳሰል</string>
+    <string name="rebuild_database_age_never">በጭራሽ</string>
+    <string name="rebuild_database_age_just_now">ልክ አሁን</string>
+    <string name="rebuild_database_age_one_minute">ከ1 ደቂቃ በፊት</string>
+    <string name="rebuild_database_age_minutes">ከ _FMT_0__ ደቂቃ በፊት</string>
+    <string name="rebuild_database_age_one_hour">ከ1 ሰአት በፊት</string>
+    <string name="rebuild_database_age_hours">ከ _FMT_0__ ሰዓታት በፊት</string>
+    <string name="shortcodes_title">አጭር ኮዶች</string>
+    <string name="shortcodes_import_cd">አስመጣ</string>
+    <string name="shortcodes_export_cd">ወደ ውጪ ላክ</string>
+    <string name="shortcodes_help_cd">እገዛ</string>
+    <string name="shortcodes_new">አዲስ አጭር ኮድ</string>
+    <string name="shortcodes_empty_title">ምንም ብጁ አጭር ኮዶች የሉም</string>
+    <string name="shortcodes_empty_subtitle">እንደ @yday ያሉ ቅንጥቦችን ወደ ተለዋዋጭ ጽሑፍ ለማስፋት አንድ ያክሉ።</string>
+    <string name="shortcodes_dynamic_dates_hint">ለተለዋዋጭ ቀኖች {{today:format}}ን ተጠቀም።</string>
+    <string name="shortcodes_help_title">የአጭር ኮድ እገዛ</string>
+    <string name="shortcodes_help_built_in">አብሮ የተሰሩ አጭር ኮዶች፡-</string>
+    <string name="shortcodes_help_built_in_examples">@ዛሬ፣ @አሁን፣ @ ሳምንት፣ @day፣ @t (አመልካች ሳጥን)፣ @x (አመልካች ሳጥን ቀይር)</string>
+    <string name="shortcodes_help_dynamic_patterns">ተለዋዋጭ ቅጦች፡</string>
+    <string name="shortcodes_help_dynamic_desc">{{ዛሬ፡ፎርማት}}፣ {{ትላንት፡ፎርማት}}፣ {{ነገ፡ፎርማት}}፣ ወይም {{አሁን፡FORMAT}} ተጠቀም።</string>
+    <string name="shortcodes_help_example">ምሳሌ፡ @yday -&gt; ትላንት፡ {{ትላንትና፡dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">የተለመዱ ቅርጸቶች፡dd-MM-yy፣ HH:mm፣ EEEE (የቀን ስም)።</string>
+    <string name="action_close">ገጠመ</string>
+    <string name="keyword_detail_title_fallback">ቁልፍ ቃል</string>
+    <string name="keyword_detail_not_found">ቁልፍ ቃል አልተገኘም።</string>
+    <string name="keyword_detail_last_indexed">መጨረሻ የተጠቆመው %1$s</string>
+    <string name="keyword_detail_mentions_section">ይጠቅሳል</string>
+    <string name="pin_biometric_prompt_title">በባዮሜትሪክ ይክፈቱ</string>
+    <string name="pin_biometric_prompt_subtitle">ለመክፈት የጣት አሻራዎን ወይም ፊትዎን ይጠቀሙ</string>
+    <string name="pin_error_no_biometric_enrolled">ምንም ባዮሜትሪክ አልተመዘገበም። እባክዎ በመሣሪያ ቅንብሮች ውስጥ የጣት አሻራ ወይም ፊት ያስመዝግቡ።</string>
+    <string name="pin_error_hardware_unavailable">ባዮሜትሪክ ሃርድዌር አይገኝም።</string>
+    <string name="pin_error_no_hardware">ይህ መሳሪያ ባዮሜትሪክ ሃርድዌር የለውም።</string>
+    <string name="pin_error_not_available">የባዮሜትሪክ ማረጋገጫ አይገኝም።</string>
+    <string name="pin_title_confirm">ፒን ያረጋግጡ</string>
+    <string name="pin_title_set_new">አዲስ ፒን ያዘጋጁ</string>
+    <string name="pin_title_disable">ለማሰናከል የአሁኑን ፒን ያስገቡ</string>
+    <string name="pin_title_enter">ፒን ያስገቡ</string>
+    <string name="pin_error_incorrect">የተሳሳተ ፒን እንደገና ይሞክሩ።</string>
+    <string name="pin_error_mismatch">ፒኖች አይዛመዱም። እንደገና ጀምር።</string>
+    <string name="pin_cd_use_biometric">ባዮሜትሪክ ይጠቀሙ</string>
+    <string name="pin_cd_backspace">የኋላ ቦታ</string>
+    <string name="timeline_preview_empty_labeled">ይህ ቀን ተሰይሟል፣ ግን እስካሁን ምንም የመጽሔት መግቢያ የለም።</string>
+    <string name="timeline_preview_loading">ቅድመ እይታን በመጫን ላይ...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d በዚህ ቀን ተጨማሪ ግቤት</item>
+        <item quantity="other">+ %1$d በዚህ ቀን ተጨማሪ ግቤቶች</item>
+    </plurals>
+    <string name="timeline_preview_open_day">በዚህ ቀን ክፈት</string>
+    <string name="timeline_chip_today">ዛሬ</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">_FMT_0__ መግባት</item>
+        <item quantity="other">%1$d ግቤቶች</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">ክትትል</string>
+    <string name="timeline_chip_label_only">መለያ ብቻ</string>
+    <string name="timeline_cd_favorite">ተወዳጅ</string>
+    <string name="version_history_title">የስሪት ታሪክ</string>
+    <string name="version_history_day_versions_title">የቀን ስሪቶች</string>
+    <string name="version_history_keep_copies_title">የደህንነት ቅጂዎችን ያስቀምጡ</string>
+    <string name="version_history_keep_copies_subtitle">ያጃ የቀን ፋይል ከመቀየሩ በፊት፣ አሁን ያለውን ፋይል በታሪክ ፋይሎች ስር ወደ መተግበሪያ ውሂብ ያስቀምጣል።</string>
+    <string name="version_history_versions_kept_title">በቀን የተቀመጡ ስሪቶች</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">ያጃ አዲሱን የ%1$d ስሪት ለእያንዳንዱ ቀን ያስቀምጣል።</item>
+        <item quantity="other">ያጃ ለእያንዳንዱ ቀን አዲሱን የ%1$d ስሪቶችን ይይዛል።</item>
+    </plurals>
+    <string name="version_history_retention_title">ማቆየት።</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">ከ%1$d ቀን በላይ የቆዩ ቅጽበተ-ፎቶዎች በራስ-ሰር ይጸዳሉ።</item>
+        <item quantity="other">ከ%1$d ቀናት በላይ የቆዩ ቅጽበተ-ፎቶዎች በራስ-ሰር ይጸዳሉ።</item>
+    </plurals>
+    <string name="version_history_notes">ማስታወሻዎች፡ የስሪት ታሪክ ለውጦቹን ከመጨመራቸው፣ ከማርትዕ፣ ከመሰረዝ፣ ከመደርደር፣ ከመሰየም፣ ከኮከብ እና ከመጎብኘት በፊት የቀን ምልክት ማድረጊያ ፋይሎችን ይጠብቃል። የደመና ምትኬ አይደለም; ለተንቀሳቃሽ ቅጂዎች ምትኬን መጠቀምዎን ይቀጥሉ።</string>
+    <string name="version_history_snapshots_for">ቅጽበተ-ፎቶዎች ለ%1$s</string>
+    <string name="version_history_snapshots_subtitle">የተቀመጠ ሥሪት ይክፈቱ፣ ይመርምሩ እና ለዚህ ቀን ይመልሱት።</string>
+    <string name="version_history_empty">ለዚህ ቀን እስካሁን ምንም የተቀመጡ ስሪቶች የሉም።</string>
+    <string name="action_view">ይመልከቱ</string>
+    <string name="version_history_date_intro">ለዚህ ቀን ቀደም ብሎ የተቀመጠ ስሪት ይክፈቱ፣ ይፈትሹት እና ሲያስፈልግ ወደነበረበት ይመልሱት።</string>
+    <string name="action_next">ቀጥሎ</string>
+    <string name="action_apply">ያመልክቱ</string>
+    <string name="action_restore">እነበረበት መልስ</string>
+    <string name="statistics_choose_title">ስታቲስቲክስን ይምረጡ</string>
+    <string name="statistics_choose_subtitle">የማይፈልጓቸውን ክፍሎች ደብቅ። ቢያንስ አንድ ክፍል መታየት አለበት።</string>
+    <string name="statistics_visible_count">%1$d ከ%2$d ይታያል</string>
+    <string name="statistics_show_all">ሁሉንም አሳይ</string>
+    <string name="statistics_one_section_visible">አንድ ክፍል መታየት አለበት</string>
+    <string name="statistics_shown">በስታቲስቲክስ ውስጥ ይታያል</string>
+    <string name="statistics_hidden">ከስታቲስቲክስ ተደብቋል</string>
+    <string name="statistics_select_start_date">የመጀመሪያ ቀንን ይምረጡ</string>
+    <string name="statistics_select_end_date">የማለቂያ ቀንን ይምረጡ</string>
+    <string name="statistics_filter_by_period">በጊዜ አጣራ</string>
+    <string name="statistics_cd_reorder">እንደገና ለመደርደር በረጅሙ ተጫን</string>
+    <string name="statistics_total_entries">ጠቅላላ ግቤቶች</string>
+    <string name="statistics_total_words">ጠቅላላ ቃላት</string>
+    <string name="statistics_avg_words_per_entry">አማካኝ ቃላት/መግቢያ</string>
+    <string name="statistics_current_streak">የአሁኑ ጅምር</string>
+    <string name="statistics_pages_written">የተፃፉ ገፆች</string>
+    <string name="statistics_days_highlighted">የደመቁ ቀናት</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">_FMT_0__ ቀን</item>
+        <item quantity="other">_FMT_0__ ቀናት</item>
+    </plurals>
+    <string name="statistics_period_all_time">የሁሉም ጊዜ ስታቲስቲክስ</string>
+    <string name="statistics_period_current_year">የአሁኑ ዓመት ስታቲስቲክስ</string>
+    <string name="statistics_period_previous_year">ያለፈው ዓመት ስታቲስቲክስ</string>
+    <string name="statistics_period_current_month">የአሁኑ ወር ስታቲስቲክስ</string>
+    <string name="statistics_period_previous_month">ያለፈው ወር ስታቲስቲክስ</string>
+    <string name="statistics_period_custom">ብጁ ክፍለ ጊዜ ስታቲስቲክስ</string>
+    <string name="statistics_period_chip_all_time">ሁል ጊዜ</string>
+    <string name="statistics_period_chip_current_year">የአሁኑ ዓመት</string>
+    <string name="statistics_period_chip_previous_year">ያለፈው ዓመት</string>
+    <string name="statistics_period_chip_current_month">በዚህ ወር</string>
+    <string name="statistics_period_chip_previous_month">ቀዳሚ ወር</string>
+    <string name="statistics_period_chip_custom">ብጁ</string>
+    <string name="statistics_sections_visible">%1$d ከ%2$d ክፍሎች ይታያል</string>
+    <string name="statistics_loading_stages">ስታቲስቲክስን በደረጃ በመጫን ላይ...</string>
+    <string name="review_period_weekly">ሳምንታዊ ግምገማ</string>
+    <string name="review_period_monthly">ወርሃዊ ግምገማ</string>
+    <string name="review_anchor_week">%1$s የያዘ ሳምንት</string>
+    <string name="review_anchor_month">%1$s የያዘ ወር</string>
+    <string name="review_chip_entries">ግቤቶች %1$d</string>
+    <string name="review_chip_words">ቃላት %1$d</string>
+    <string name="review_chip_days">ቀናት %1$d</string>
+    <string name="review_hint_jump">ወደ ጆርናል ለመመለስ ከዚህ በታች የቀን ቺፖችን ይንኩ።</string>
+    <string name="review_chip_streak">ተከታታይ %1$d</string>
+    <string name="review_chip_gap">ክፍተት %1$d</string>
+    <string name="review_chip_labels">መለያዎች %1$d</string>
+    <string name="review_chip_favorites">ተወዳጆች %1$d</string>
+    <string name="review_empty_period">በዚህ ጊዜ ውስጥ እስካሁን ምንም የመጽሔት ግቤቶች የሉም። መለያዎች እና ድምቀቶች ካሉ አሁንም ከታች ይታያሉ።</string>
+    <string name="review_writing_rhythm">ሪትም መጻፍ</string>
+    <string name="review_best_streak">ምርጥ ሩጫ</string>
+    <string name="review_longest_gap">በጣም ረጅም ክፍተት</string>
+    <string name="review_most_active_days">በጣም ንቁ ቀናት</string>
+    <string name="review_day_entries_words">%1$d ግቤቶች | %2$d ቃላት</string>
+    <string name="review_top_people">ከፍተኛ ሰዎች</string>
+    <string name="review_top_places">ከፍተኛ ቦታዎች</string>
+    <string name="review_no_people_mentions">ሰዎች አይጠቅሱም።</string>
+    <string name="review_no_place_mentions">ምንም ቦታ አልተጠቀሰም።</string>
+    <string name="review_favorite_moments">ተወዳጅ አፍታዎች</string>
+    <string name="review_starred_day">ኮከብ የተደረገበት ቀን</string>
+    <string name="review_highlighted_in_period">በዚህ ወቅት ጎልቶ ታይቷል።</string>
+    <string name="review_labels_created">መለያዎች ተፈጥረዋል።</string>
+    <string name="review_labeled_day">የተሰየመ ቀን</string>
+    <string name="review_language_split">የቋንቋ ክፍፍል</string>
+    <string name="review_not_enough_text">በዚህ ጊዜ ውስጥ በቂ ጽሑፍ የለም።</string>
+    <string name="lookback_reviews_title">ግምገማዎች</string>
+    <string name="lookback_reviews_intro">በተመረጠው የመጽሔት ቀንዎ ዙሪያ ፈጣን ነጸብራቅ ይገንቡ።</string>
+    <string name="lookback_seven_days">7 ቀናት</string>
+    <string name="lookback_one_month">1 ወር</string>
+    <string name="lookback_weekly_review">ሳምንታዊ ግምገማ</string>
+    <string name="lookback_weekly_review_subtitle">በዚህ ሳምንት በአንድ እይታ</string>
+    <string name="lookback_monthly_review">ወርሃዊ ግምገማ</string>
+    <string name="lookback_monthly_review_subtitle">በዚህ ወር ተጠቃሏል</string>
+    <string name="lookback_flashbacks_title">ባለፉት አመታት በዚህ ቀን</string>
+    <string name="lookback_highlights_title">የእርስዎ ዋና ዋና ዜናዎች</string>
+    <string name="lookback_empty_title">እስካሁን ምንም እይታዎች ወይም ድምቀቶች የሉም።</string>
+    <string name="lookback_empty_subtitle">እዚህ እነሱን ለማየት ተወዳጅ አስፈላጊ ቀናት!</string>
+    <string name="lookback_cd_random_entry">ወደ የዘፈቀደ ግቤት ይሂዱ</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">ጊዜ</string>
+    <string name="statistics_compare_mode_title">አወዳድር ሁነታ</string>
+    <string name="statistics_compare_mode_subtitle">ወር፣ ዓመት እና ቁልፍ ቃል ዴልታስ</string>
+    <string name="statistics_this_year">በዚህ አመት</string>
+    <string name="statistics_writing_days_delta">ቀናት ዴልታ መጻፍ</string>
+    <string name="statistics_top_person_delta">ከፍተኛ ሰው ዴልታ</string>
+    <string name="statistics_no_people_mentions">እስካሁን የጠቀሱት ሰዎች የሉም</string>
+    <string name="statistics_top_place_delta">ከፍተኛ ቦታ ዴልታ</string>
+    <string name="statistics_no_place_mentions">እስካሁን የተጠቀሰ ቦታ የለም።</string>
+    <string name="statistics_structured_writing">የተዋቀረ ጽሑፍ</string>
+    <string name="statistics_template_led_format">በአብነት የሚመራ %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">ባዶ %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">በብዛት ጥቅም ላይ የዋሉ አብነቶች</string>
+    <string name="statistics_template_mix">የአብነት ቅልቅል</string>
+    <string name="statistics_follow_up_leaders">ተከታይ መሪዎች</string>
+    <string name="statistics_compare_details">ዝርዝሮችን አወዳድር</string>
+    <string name="statistics_label_month">ወር</string>
+    <string name="statistics_label_year">አመት</string>
+    <string name="statistics_this_month_count_format">በዚህ ወር %1$d</string>
+    <string name="statistics_last_month_count_format">ያለፈው ወር _FMT_0__</string>
+    <string name="statistics_longest_streak">ረጅሙ ጅምር</string>
+    <string name="statistics_most_active_day">በጣም ንቁ ቀን</string>
+    <string name="statistics_writing_consistency">የአጻጻፍ ወጥነት</string>
+    <string name="statistics_days_with_entries">ከመግቢያዎች ጋር ቀናት</string>
+    <string name="statistics_best_month">ምርጥ ወር</string>
+    <string name="statistics_best_month_format">%1$s · %2$d ግቤቶች</string>
+    <string name="statistics_avg_writing_days_week">አማካኝ የጽሑፍ ቀናት / ሳምንት</string>
+    <string name="statistics_days_decimal_format">_FMT_0__ ቀናት</string>
+    <string name="statistics_based_on_total_words">በቀን በተፃፉ ጠቅላላ ቃላት ላይ በመመስረት</string>
+    <string name="statistics_light_words">ብርሃን (&lt; 50 ቃላት)</string>
+    <string name="statistics_moderate_words">መካከለኛ (50-200 ቃላት)</string>
+    <string name="statistics_heavy_words">ከባድ (200-500 ቃላት)</string>
+    <string name="statistics_intense_words">ኃይለኛ (500+ ቃላት)</string>
+    <string name="statistics_not_enough_text_languages">ቋንቋዎችን ለማግኘት በቂ ጽሑፍ የለም።</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">_FMT_0__ ቋንቋ ተገኝቷል</item>
+        <item quantity="other">_FMT_0__ ቋንቋዎች ተገኝተዋል</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">ቋንቋ ማወቂያ አሁንም በመስተካከል ላይ ነው።</string>
+    <string name="statistics_latin_scripts_as_english">የላቲን ስክሪፕቶች እንደ እንግሊዝኛ ይታያሉ</string>
+    <string name="statistics_use_more_accurate_detection">የበለጠ ትክክለኛ ማወቂያን ተጠቀም</string>
+    <string name="statistics_write_more_entries_languages">የቋንቋ ስታቲስቲክስን ለማየት ተጨማሪ ግቤቶችን ይጻፉ።</string>
+    <string name="statistics_based_on_entry_time">በመግቢያ ጊዜ ላይ በመመስረት</string>
+    <string name="statistics_morning_time">ጥዋት (ከምሽቱ 5 ሰዓት)</string>
+    <string name="statistics_afternoon_time">ከሰአት (ከሰአት - 5 ሰአት)</string>
+    <string name="statistics_evening_time">ምሽት (ከ5pm-9pm)</string>
+    <string name="statistics_night_time">ምሽት (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">የሙቀት ካርታ አሁንም እየሞላ ነው።</string>
+    <string name="statistics_heatmap_less">ያነሰ</string>
+    <string name="statistics_heatmap_more">ተጨማሪ</string>
+    <string name="action_open">ክፈት</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">ያጃ ጆርናል ክስተቶች</string>
+    <string name="tasker_event_desc">የትኛዎቹ የያጃ ጆርናል ክስተቶች ይህንን የተግባር መገለጫ መቀስቀስ እንዳለባቸው ይምረጡ።</string>
+    <string name="tasker_event_saved">መግቢያ ተቀምጧል</string>
+    <string name="tasker_event_edited">መግቢያ ተስተካክሏል።</string>
+    <string name="tasker_event_deleted">መግባት ተሰርዟል።</string>
+    <string name="tasker_event_default_hint">አንዳቸውም ካልመረጡ፣ ያጃ በነባሪነት ወደ የተቀመጠ መግቢያ ይሆናል።</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">ያጃ ፈጣን ቀረጻ</string>
+    <string name="tasker_action_desc">በያጃ ውስጥ Tasker በፍጥነት መያዝ ያለበትን ያዋቅሩ።</string>
+    <string name="tasker_action_add_entry">መግቢያ ጨምር</string>
+    <string name="tasker_action_add_event">ክስተት አክል</string>
+    <string name="tasker_action_add_todo">ቶዶን ጨምር</string>
+    <string name="tasker_action_append">አባሪ</string>
+    <string name="tasker_action_match_header_label">ግጥሚያ / ራስጌ</string>
+    <string name="tasker_action_match_header_placeholder">ያመለጡ ጥሪዎች</string>
+    <string name="tasker_action_line_to_append_label">ለማያያዝ መስመር</string>
+    <string name="tasker_action_text_label">ጽሑፍ</string>
+    <string name="tasker_action_placeholder_event">የክስተት ማስታወሻ ከTasker</string>
+    <string name="tasker_action_placeholder_todo">ወተት ይግዙ</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">ፈጣን ማስታወሻ ከ Tasker</string>
+    <string name="tasker_action_tip_append">የመጀመሪያ ጥሪ በግጥሚያው ጽሑፍ የሚጀምር ግቤት ይፈጥራል። በኋላ ላይ ጥሪዎች በእሱ ስር ያለውን መስመር ይጨምራሉ.</string>
+    <string name="tasker_action_tip_default">ጠቃሚ ምክር፡ Tasker ተለዋዋጮች በጽሑፍ መስኩ ውስጥ ሊቀመጡ ይችላሉ።</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">ያለፈው ክፍለ ጊዜ የብልሽት ምዝግብ ማስታወሻ</string>
+    <string name="crash_log_clear_close">አጽዳ እና ዝጋ</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">መተግበሪያን ያስጀምሩ</string>
+    <string name="tap_action_quick_capture">ፈጣን ቀረጻ</string>
+    <string name="tap_action_do_nothing">ምንም አታድርግ</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">ያጃ መጻፊያ የሙቀት ካርታ</string>
+    <string name="widget_cell_shape">የሕዋስ ቅርጽ</string>
+    <string name="widget_corner_radius">የማዕዘን ራዲየስ፡ _FMT_0__ዲፒ</string>
+    <string name="widget_square">ካሬ</string>
+    <string name="widget_round">ዙር</string>
+    <string name="widget_inner_margin">የውስጥ ህዳግ፡ _FMT_0__ዲፒ</string>
+    <string name="widget_inner_margin_desc">በሙቀት ካርታው እና በመግብር ጠርዝ መካከል ያለው ክፍተት</string>
+    <string name="widget_none">ምንም</string>
+    <string name="widget_max">ከፍተኛ</string>
+    <string name="widget_on_tap">በመንካት ላይ</string>
+    <string name="widget_on_tap_desc">መግብር ሲነካ እርምጃ ይውሰዱ</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">ያንሱ</string>
+    <string name="widget_qc_shape">የመግብር ቅርጽ</string>
+    <string name="widget_show_label">መለያ አሳይ</string>
+    <string name="widget_show_label_desc">በመግብሩ ላይ \'ያንሱ\' ጽሑፍ አሳይ</string>
+    <string name="widget_show_icon">አዶ አሳይ</string>
+    <string name="widget_show_icon_required">መለያ ሲደበቅ አዶ ያስፈልጋል</string>
+    <string name="widget_show_icon_desc">በመግብር ላይ የብዕር አዶ አሳይ</string>
+    <string name="widget_label_text">መለያ ጽሑፍ</string>
+    <string name="widget_label_char_count">_FMT_0__/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">ቶዶ መግብር</string>
+    <string name="widget_todo_desc">የተጠጋጋ፣ ሙቀት ካርታ የሚመስል የቶዶ ዝርዝር መግብር።</string>
+    <string name="widget_todo_corner_radius">የማዕዘን ራዲየስ፡ %1$dዲፒ</string>
+    <string name="widget_todo_padding">ንጣፍ፡ %1$dዲፒ</string>
+    <string name="widget_todo_show_completed">የተጠናቀቁ ተግባራትን አሳይ</string>
+    <string name="widget_todo_show_completed_desc">ምልክት የተደረገባቸው ንጥሎችን በመግብር ዝርዝር ውስጥ ያካትቱ</string>
+    <string name="widget_todo_include_events">ክስተቶችን ያካትቱ</string>
+    <string name="widget_todo_include_events_desc">የክስተት ግቤቶችን ከቶዶዎች ጋር በመግብር ውስጥ አሳይ</string>
+    <string name="widget_todo_show_header">የቶዶ ራስጌን አሳይ</string>
+    <string name="widget_todo_show_header_desc">የመግብር ርዕስ ረድፍ አሳይ ወይም ደብቅ</string>
+    <string name="widget_todo_auto_hide">ሁሉም ነገሮች ሲጠናቀቁ መግብርን በራስ ሰር ደብቅ</string>
+    <string name="widget_todo_auto_hide_unavailable">የተጠናቀቁ ተግባራት ሲታዩ አይገኝም</string>
+    <string name="widget_todo_auto_hide_desc">ምንም በመጠባበቅ ላይ ያሉ ተግባራት በሌሉበት ጊዜ መግብሩን ግልጽ ያድርጉት</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">ተከናውኗል</string>
+    <string name="todo_confirm_mark_not_done">አልተሰራም።</string>
+    <string name="todo_confirm_title">ተግባር እንደ %1$s ምልክት አድርግበት?</string>
+    <string name="todo_confirm_reopen">ይህ ቶዶ በአሁኑ ጊዜ ተጠናቅቋል። እንደገና ከመክፈትዎ በፊት ያረጋግጡ።</string>
+    <string name="todo_confirm_complete">ይህ ቶዶ አሁንም ክፍት ነው። እንደተከናወነ ምልክት ከማድረግዎ በፊት ያረጋግጡ።</string>
+    <string name="todo_confirm_accidental_tap">በአጋጣሚ መታ ማድረግ ስራውን አይለውጠውም።</string>
+    <string name="todo_confirm_yes_mark">አዎ፣ %1$sን ምልክት አድርግበት</string>
+    <string name="todo_confirm_open_yaja">በያጃ ክፈት</string>
+    <string name="todo_confirm_keep_as_is">እንዳለ አቆይ</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">አሁንም ሌላ የመጽሔት መተግበሪያ</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">ከ RJ ቤተ-ሙከራዎች</string>
+    <string name="help_made_in">በ 🇮🇳 የተሰራ</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">ማስመጣትን ሰርዝ</string>
+    <string name="timeline_show_all_dates">ሁሉንም ቀኖች አሳይ</string>
+    <string name="timeline_show_all_dates_subtitle">ያለፉትን ቀናት ያካትቱ፣ ምንም እንኳን ግቤት ባይኖርም።</string>
+    <string name="settings_background_tint_clean">ንጹህ</string>
+    <string name="settings_background_tint_soft">ለስላሳ</string>
+    <string name="settings_background_tint_rich">ሀብታም</string>
+    <string name="settings_background_tint_deep">ጥልቅ</string>
+    <string name="settings_accent_style_complementary">ማሟያ</string>
+    <string name="settings_accent_style_analogous">አናሎግ</string>
+    <string name="settings_accent_style_triadic">ትሪያዲክ</string>
+    <string name="settings_accent_style_soft">ለስላሳ</string>
+    <string name="action_clear">ግልጽ</string>
+    <string name="compliance_master_start_section">የመርሐግብር ጅምር</string>
+    <string name="compliance_master_start_help">ለዚህ ተደጋጋሚ መርሃ ግብር የመጀመሪያ ቀን እና አማራጭ ጊዜ ይምረጡ።</string>
+</resources>

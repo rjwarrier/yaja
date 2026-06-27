@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+@androidx.compose.runtime.Immutable
 data class TodoIndexEntry(
     val date: LocalDate,
     val entryIndex: Int,
@@ -23,7 +24,8 @@ data class TodoIndexEntry(
     val displayText: String,
     val isChecked: Boolean,
     val dayLabel: String,
-    val lineHash: String = ""
+    val lineHash: String = "",
+    val complianceId: String? = null
 )
 
 class TodoIndexRepository private constructor(context: Context) {
@@ -102,7 +104,9 @@ class TodoIndexRepository private constructor(context: Context) {
                 lineIndexInEntry = it.lineIndexInEntry,
                 displayText = it.displayText,
                 isChecked = it.isChecked,
-                lineHash = it.lineHash
+                lineHash = it.lineHash,
+                sourceType = if (it.complianceId != null) TodoSourceType.COMPLIANCE else TodoSourceType.JOURNAL,
+                sourceId = it.complianceId
             )
         }
 
@@ -240,7 +244,8 @@ class TodoIndexRepository private constructor(context: Context) {
                     displayText = parsed.displayText,
                     isChecked = parsed.isChecked,
                     dayLabel = dayLabel,
-                    lineHash = parsed.lineHash
+                    lineHash = parsed.lineHash,
+                    complianceId = parsed.complianceId
                 )
             }
         }
@@ -261,7 +266,8 @@ class TodoIndexRepository private constructor(context: Context) {
         displayText = displayText,
         isChecked = isChecked,
         dayLabel = dayLabel,
-        lineHash = lineHash
+        lineHash = lineHash,
+        complianceId = complianceId
     )
 
     private fun TodoIndexEntry.toTodoIndexEntity() = TodoIndexEntity(
@@ -271,6 +277,7 @@ class TodoIndexRepository private constructor(context: Context) {
         displayText = displayText,
         isChecked = isChecked,
         dayLabel = dayLabel,
-        lineHash = lineHash
+        lineHash = lineHash,
+        complianceId = complianceId
     )
 }

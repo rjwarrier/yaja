@@ -25,7 +25,7 @@ internal fun launchLookbackRefresh(
         val lookbackMap = buildLookbackSnapshot(
             date = date,
             availableDates = availableDates,
-            entriesForDateProvider = fileManager::getEntriesForDateFromDisk
+            entriesForDateProvider = fileManager::getEntriesForDate
         )
         synchronized(lookbackSnapshotCache) {
             lookbackSnapshotCache[date] = lookbackMap

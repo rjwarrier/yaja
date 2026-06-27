@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Density
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import android.content.ContextWrapper
 import androidx.core.view.WindowCompat
 import com.mj.yaja.data.BackgroundTintLevel
@@ -98,11 +99,36 @@ private val AmoledColorScheme = DarkColorScheme.copy(
     surfaceContainerHighest = Color(0xFF242424)
 )
 
+val LocalUiFontScale = staticCompositionLocalOf { 1.0f }
+val LocalDataFontScale = staticCompositionLocalOf { 1.0f }
+
+@Composable
+fun DataFontScaleWrapper(content: @Composable () -> Unit) {
+    val uiScale = LocalUiFontScale.current
+    val dataScale = LocalDataFontScale.current
+    if (uiScale == dataScale) {
+        content()
+    } else {
+        val currentDensity = LocalDensity.current
+        val systemScale = currentDensity.fontScale / uiScale
+        val dataDensity = remember(currentDensity.density, systemScale, dataScale) {
+            Density(
+                density = currentDensity.density,
+                fontScale = systemScale * dataScale
+            )
+        }
+        CompositionLocalProvider(LocalDensity provides dataDensity) {
+            content()
+        }
+    }
+}
+
 @Composable
 fun JournalTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     amoledTheme: Boolean = false,
     fontScale: Float = 1.0f,
+    dataFontScale: Float = 1.0f,
     appFontFamily: com.mj.yaja.data.AppFontFamily = com.mj.yaja.data.AppFontFamily.MONO,
     monoFontWeight: Int = MONO_WEIGHT_DEFAULT,
     customFontPath: String? = null,
@@ -189,7 +215,11 @@ fun JournalTheme(
         fontScale = currentDensity.fontScale * fontScale
     )
 
-    CompositionLocalProvider(LocalDensity provides customDensity) {
+    CompositionLocalProvider(
+        LocalDensity provides customDensity,
+        LocalUiFontScale provides fontScale,
+        LocalDataFontScale provides dataFontScale
+    ) {
         MaterialTheme(
             colorScheme = colorScheme,
             shapes = Shapes,

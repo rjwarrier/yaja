@@ -25,38 +25,50 @@ import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.floatSpring
 
 @Composable
-fun AnimatedMenuButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
-        val motionPreference = LocalAnimationPreference.current
-        val menuInteractionSource = remember { MutableInteractionSource() }
-        val isMenuPressed by menuInteractionSource.collectIsPressedAsState()
-        val menuScale by
-                animateFloatAsState(
-                        targetValue = if (isMenuPressed) 0.85f else 1f,
-                        animationSpec =
-                                motionPreference.floatSpring(
-                                        dampingRatio = 0.5f,
-                                        stiffness = Spring.StiffnessMedium
-                                ),
-                        label = "MenuScale"
-                )
+fun AnimatedIconButton(
+    imageVector: androidx.compose.ui.graphics.vector.ImageVector,
+    contentDescription: String?,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val motionPreference = LocalAnimationPreference.current
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.85f else 1f,
+        animationSpec = motionPreference.floatSpring(
+            dampingRatio = 0.5f,
+            stiffness = Spring.StiffnessMedium
+        ),
+        label = "ButtonScale"
+    )
 
-        Surface(
-                color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                shape = RoundedCornerShape(18.dp),
-                modifier =
-                        modifier.size(46.dp).graphicsLayer {
-                                scaleX = menuScale
-                                scaleY = menuScale
-                        },
-                interactionSource = menuInteractionSource,
-                onClick = onClick
-        ) {
-                Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                                imageVector = Icons.Rounded.Menu,
-                                contentDescription = stringResource(R.string.nav_cd_menu),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                }
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        shape = RoundedCornerShape(18.dp),
+        modifier = modifier.size(46.dp).graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        },
+        interactionSource = interactionSource,
+        onClick = onClick
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                imageVector = imageVector,
+                contentDescription = contentDescription,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
+    }
+}
+
+@Composable
+fun AnimatedMenuButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+    AnimatedIconButton(
+        imageVector = Icons.Rounded.Menu,
+        contentDescription = stringResource(R.string.nav_cd_menu),
+        onClick = onClick,
+        modifier = modifier
+    )
 }

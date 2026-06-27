@@ -436,9 +436,10 @@ private fun KeywordTimelineChart(
             strokeWidth = 1.dp.toPx()
         )
 
+        val isRtl = layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl
         val plotPoints = points.mapIndexed { index, (_, count) ->
             val normalized = count / maxCount.toFloat()
-            val x = left + (stepX * index)
+            val x = if (isRtl) right - (stepX * index) else left + (stepX * index)
             val y = bottom - (normalized * chartHeight)
             Offset(x, y)
         }

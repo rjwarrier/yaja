@@ -19,7 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,9 +38,9 @@ fun VersionSnapshotsScreen(
     viewModel: JournalViewModel,
     onNavigateBack: () -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    val snapshots by viewModel.versionHistorySnapshots.collectAsState()
-    val restoreInProgress by viewModel.versionHistoryRestoreInProgress.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val snapshots by viewModel.versionHistorySnapshots.collectAsStateWithLifecycle()
+    val restoreInProgress by viewModel.versionHistoryRestoreInProgress.collectAsStateWithLifecycle()
     val selectedDate = uiState.selectedDate
     var previewSnapshot by remember { mutableStateOf<JournalViewModel.VersionHistorySnapshotUi?>(null) }
 

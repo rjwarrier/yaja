@@ -1,5 +1,6 @@
 package com.mj.yaja.data
 
+import androidx.compose.runtime.Immutable
 import java.time.LocalDate
 import java.time.YearMonth
 
@@ -25,6 +26,7 @@ enum class KeywordMatchType {
  * @param isEnabled Whether this keyword participates in matching.
  * @param createdAt Epoch millis when the keyword was created.
  */
+@Immutable
 data class KeywordDefinition(
     val id: String,
     val name: String,
@@ -46,6 +48,7 @@ data class KeywordDefinition(
  * @param matchType    How the match was found.
  * @param snippet      ~100-char excerpt of cleaned entry text around the match.
  */
+@Immutable
 data class KeywordMatch(
     val keywordId: String,
     val date: String,
@@ -58,6 +61,7 @@ data class KeywordMatch(
     val endExclusive: Int = -1
 )
 
+@Immutable
 data class KeywordCoOccurrence(
     val keywordId: String,
     val name: String,
@@ -80,6 +84,7 @@ data class KeywordCoOccurrence(
  * @param mentionsByMonth Monthly breakdown: list of (YearMonth, count) sorted ascending.
  * @param coOccurring     Other keywords that appeared on the same day, with their co-occurrence count, sorted descending.
  */
+@Immutable
 data class KeywordStats(
     val keyword: KeywordDefinition,
     val totalMentions: Int,

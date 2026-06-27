@@ -19,5 +19,6 @@ data class TodoIndexEntity(
     val displayText: String,
     val isChecked: Boolean,
     val dayLabel: String,
-    val lineHash: String
+    val lineHash: String,
+    val complianceId: String? = null
 )

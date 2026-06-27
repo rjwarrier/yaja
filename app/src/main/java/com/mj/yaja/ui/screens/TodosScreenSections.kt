@@ -16,6 +16,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.EventRepeat
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,10 +35,12 @@ import com.mj.yaja.R
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import com.mj.yaja.ui.components.AnimatedMenuButton
+import com.mj.yaja.ui.components.AnimatedIconButton
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import com.mj.yaja.ui.design.rememberAppEntrance
 import java.time.LocalDate
+import com.mj.yaja.ui.theme.DataFontScaleWrapper
 
 private val todoCheerMessages = listOf(
     R.string.todos_cheer_all_clear,
@@ -68,7 +72,8 @@ internal data class TodoHeroMetrics(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TodosTopBar(
-    onOpenDrawer: () -> Unit
+    onOpenDrawer: () -> Unit,
+    onOpenComplianceMaster: () -> Unit
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -82,6 +87,14 @@ internal fun TodosTopBar(
             AnimatedMenuButton(
                 onClick = onOpenDrawer,
                 modifier = Modifier.padding(start = 8.dp)
+            )
+        },
+        actions = {
+            AnimatedIconButton(
+                imageVector = Icons.Rounded.EventRepeat,
+                contentDescription = stringResource(R.string.compliance_master_intro_title),
+                onClick = onOpenComplianceMaster,
+                modifier = Modifier.padding(end = 8.dp)
             )
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -328,23 +341,25 @@ internal fun TodosScreenContent(
                                                     index = (index + 4).coerceAtMost(7),
                                                     strength = AppEntranceStrength.SUBTLE
                                                 ) {
-                                                    EventItemCard(
-                                                        item = item,
-                                                        modifier = Modifier.animateItem(
-                                                            fadeInSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessLow
-                                                            ),
-                                                            fadeOutSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessLow
-                                                            ),
-                                                            placementSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessMediumLow
+                                                    DataFontScaleWrapper {
+                                                        EventItemCard(
+                                                            item = item,
+                                                            modifier = Modifier.animateItem(
+                                                                fadeInSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessLow
+                                                                ),
+                                                                fadeOutSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessLow
+                                                                ),
+                                                                placementSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessMediumLow
+                                                                )
                                                             )
                                                         )
-                                                    )
+                                                    }
                                                 }
                                             }
                                         }
@@ -402,25 +417,27 @@ internal fun TodosScreenContent(
                                                     index = (index + 4).coerceAtMost(7),
                                                     strength = AppEntranceStrength.SUBTLE
                                                 ) {
-                                                    TodoItemCard(
-                                                        item = keyedItem.item,
-                                                        renderCheckboxesAsText = renderCheckboxesAsText,
-                                                        onToggle = { onToggleTodo(keyedItem.item) },
-                                                        modifier = Modifier.animateItem(
-                                                            fadeInSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessLow
-                                                            ),
-                                                            fadeOutSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessLow
-                                                            ),
-                                                            placementSpec = androidx.compose.animation.core.spring(
-                                                                dampingRatio = Spring.DampingRatioNoBouncy,
-                                                                stiffness = Spring.StiffnessMediumLow
+                                                    DataFontScaleWrapper {
+                                                        TodoItemCard(
+                                                            item = keyedItem.item,
+                                                            renderCheckboxesAsText = renderCheckboxesAsText,
+                                                            onToggle = { onToggleTodo(keyedItem.item) },
+                                                            modifier = Modifier.animateItem(
+                                                                fadeInSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessLow
+                                                                ),
+                                                                fadeOutSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessLow
+                                                                ),
+                                                                placementSpec = androidx.compose.animation.core.spring(
+                                                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                                                    stiffness = Spring.StiffnessMediumLow
+                                                                )
                                                             )
                                                         )
-                                                    )
+                                                    }
                                                 }
                                             }
                                         }
@@ -471,25 +488,27 @@ internal fun TodosScreenContent(
                                             index = (index + 4).coerceAtMost(7),
                                             strength = AppEntranceStrength.SUBTLE
                                         ) {
-                                            TodoItemCard(
-                                                item = keyedItem.item,
-                                                renderCheckboxesAsText = renderCheckboxesAsText,
-                                                onToggle = { onToggleTodo(keyedItem.item) },
-                                                modifier = Modifier.animateItem(
-                                                    fadeInSpec = androidx.compose.animation.core.spring(
-                                                        dampingRatio = Spring.DampingRatioNoBouncy,
-                                                        stiffness = Spring.StiffnessLow
-                                                    ),
-                                                    fadeOutSpec = androidx.compose.animation.core.spring(
-                                                        dampingRatio = Spring.DampingRatioNoBouncy,
-                                                        stiffness = Spring.StiffnessLow
-                                                    ),
-                                                    placementSpec = androidx.compose.animation.core.spring(
-                                                        dampingRatio = Spring.DampingRatioNoBouncy,
-                                                        stiffness = Spring.StiffnessMediumLow
+                                            DataFontScaleWrapper {
+                                                TodoItemCard(
+                                                    item = keyedItem.item,
+                                                    renderCheckboxesAsText = renderCheckboxesAsText,
+                                                    onToggle = { onToggleTodo(keyedItem.item) },
+                                                    modifier = Modifier.animateItem(
+                                                        fadeInSpec = androidx.compose.animation.core.spring(
+                                                            dampingRatio = Spring.DampingRatioNoBouncy,
+                                                            stiffness = Spring.StiffnessLow
+                                                        ),
+                                                        fadeOutSpec = androidx.compose.animation.core.spring(
+                                                            dampingRatio = Spring.DampingRatioNoBouncy,
+                                                            stiffness = Spring.StiffnessLow
+                                                        ),
+                                                        placementSpec = androidx.compose.animation.core.spring(
+                                                            dampingRatio = Spring.DampingRatioNoBouncy,
+                                                            stiffness = Spring.StiffnessMediumLow
+                                                        )
                                                     )
                                                 )
-                                            )
+                                            }
                                         }
                                     }
                                 }

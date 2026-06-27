@@ -5,6 +5,7 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.time.LocalDate
 
+@androidx.compose.runtime.Immutable
 data class EntryRevisitMetadata(
     val revisitOn: LocalDate? = null,
     val note: String = ""

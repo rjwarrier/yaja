@@ -1,0 +1,1347 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Folyóirat</string>
+    <string name="nav_calendar">Naptár</string>
+    <string name="nav_lookback">Visszatekintés</string>
+    <string name="nav_settings">Beállítások elemre</string>
+    <string name="nav_shortcodes">Rövid kódok</string>
+    <string name="nav_help">Súgó és névjegy</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Megtakarítás</string>
+    <string name="action_cancel">Mégse</string>
+    <string name="action_delete">Töröl</string>
+    <string name="action_edit">Szerkesztés</string>
+    <string name="action_back">Vissza</string>
+    <string name="action_undo">Visszavonás</string>
+    <string name="action_yes">Igen</string>
+    <string name="action_no">Nem</string>
+    <string name="action_remove">Távolítsa el</string>
+    <string name="action_done">Kész</string>
+    <string name="action_set">Készlet</string>
+    <string name="action_select">Válassza ki</string>
+    <string name="action_ok">RENDBEN</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Gyorsítótár újraépítése</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Gyors rögzítés</string>
+    <string name="quick_capture_hint">Mi történt?</string>
+    <string name="quick_capture_helper_shortcodes">A rövid kódok itt automatikusan bővülnek, a teendősorok pedig Enter-rel folytatódnak.</string>
+    <string name="quick_capture_save_delayed">Mentés késik. Az ellenőrzéshez nyissa meg újra a Yaja-t.</string>
+    <string name="cd_saved">Mentve</string>
+    <string name="quick_todo_dialog_title">Gyors hozzáadás</string>
+    <string name="quick_todo_save_delayed">A teendő mentése késik. Az ellenőrzéshez nyissa meg újra a Yaja-t.</string>
+    <string name="quick_todo_placeholder">Adjon hozzá egy teendőt</string>
+    <string name="quick_event_placeholder">Esemény hozzáadása</string>
+    <string name="quick_todo_task_date">Feladat dátuma</string>
+    <string name="quick_todo_event_date">Esemény dátuma</string>
+    <string name="quick_todo_pick_date_cd_format">Válassz %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Mentés a kiválasztott napra vonatkozó teendőbejegyzésként.</string>
+    <string name="quick_event_selected_day_hint">Eseménybejegyzésként menti a kiválasztott napra.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Előző</string>
+    <string name="cd_next">Következő</string>
+    <string name="cd_surprise_me">Lepj meg</string>
+    <string name="calendar_cd_go_to_current_month">Ugrás az aktuális hónapra</string>
+    <string name="calendar_quick_action_timeline_title">Idővonal</string>
+    <string name="calendar_quick_action_timeline_subtitle">Böngésszen időrendben</string>
+    <string name="calendar_quick_action_jump_title">Ugrás a dátumra</string>
+    <string name="calendar_quick_action_jump_subtitle">Nyissa meg egy adott napon</string>
+    <string name="calendar_jump_placeholder">NN-HH-ÉÉ</string>
+    <string name="calendar_jump_invalid_date">Érvénytelen dátum. NN-HH-ÉÉ formátumot használjon.</string>
+    <string name="calendar_action_go">Megy</string>
+    <string name="calendar_enable_future_dates_title">Jövőbeli dátumok engedélyezése</string>
+    <string name="calendar_enable_future_dates_message">A jövőbeli dátumbevitel le van tiltva. Engedélyezni szeretné?</string>
+    <string name="calendar_action_enable">Engedélyezés</string>
+    <string name="calendar_future_entry_enabled">A jövőbeli dátumbevitel engedélyezve van</string>
+    <string name="calendar_weekday_sun_short">Nap</string>
+    <string name="calendar_weekday_mon_short">Hétfő</string>
+    <string name="calendar_weekday_tue_short">kedd</string>
+    <string name="calendar_weekday_wed_short">Házasodik</string>
+    <string name="calendar_weekday_thu_short">cs</string>
+    <string name="calendar_weekday_fri_short">Péntek</string>
+    <string name="calendar_weekday_sat_short">Ült</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">BEVÉTELEK EBBEN A HÓNAPBAN</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d nap</item>
+        <item quantity="other">%1$d / %2$d nap</item>
+    </plurals>
+    <string name="calendar_days_of_memories">emlékek napjai</string>
+    <string name="calendar_consistency_last_12_months">ELMÚLT 12 HÓNAPBAN</string>
+    <string name="calendar_consistency_title_format">ÖSSZEFOGLALÁS – %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">első időszak</string>
+    <string name="calendar_graph_frequency_month">Hónap</string>
+    <string name="calendar_graph_frequency_year">Év</string>
+    <string name="calendar_yearly_consistency_title">Konzisztencia (évente)</string>
+    <string name="calendar_keywords_title">Ki jelenik meg a legtöbbet</string>
+    <string name="calendar_keywords_syncing">Az emberek és helyek statisztikái továbbra is szinkronizálódnak a kulcsszóindexeléssel.</string>
+    <string name="calendar_keywords_empty">Adjon hozzá legalább 3 embert vagy 3 helyet a legfontosabb említések megtekintéséhez.</string>
+    <string name="calendar_keywords_people">Emberek</string>
+    <string name="calendar_keywords_places">Helyek</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Beállítások elemre</string>
+    <string name="settings_appearance">Megjelenés</string>
+    <string name="settings_appearance_subtitle">Téma, színek, betűtípusok és személyes stílusok</string>
+    <string name="settings_theme">Téma</string>
+    <string name="settings_font">Betűtípus</string>
+    <string name="settings_storage">Tárolás</string>
+    <string name="settings_security">Biztonság</string>
+    <string name="settings_backup">Biztonsági mentés</string>
+    <string name="settings_change_storage_title">Tárolási hely módosítása</string>
+    <string name="settings_backup_never">Soha</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Keresési beállítások</string>
+    <string name="settings_search_clear">Keresés törlése</string>
+    <string name="settings_search_recent">Legutóbbi keresések</string>
+    <string name="settings_search_no_results">Nincsenek megfelelő beállítások</string>
+    <string name="settings_search_close">Közeli</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Folyóirat tapasztalat</string>
+    <string name="settings_section_navigation_gestures">Navigáció és gesztusok</string>
+    <string name="settings_section_review_insights">Review &amp; Insights</string>
+
+    <!-- Language -->
+    <string name="settings_language">Nyelv</string>
+    <string name="settings_language_title">Alkalmazás nyelve</string>
+    <string name="settings_language_subtitle">Válassza ki az alkalmazásban használt nyelvet.</string>
+    <string name="settings_language_system_default">Rendszer alapértelmezett</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Belépési stílus</string>
+    <string name="settings_journal_entry_style_subtitle">Válassz az emelt kártyák és a laposabb napló megjelenés között.</string>
+    <string name="settings_journal_entry_style_cards">Kártyák</string>
+    <string name="settings_journal_entry_style_flat">Lakás</string>
+    <string name="settings_journal_render_checkboxes_title">A jelölőnégyzetek megjelenítése szövegként</string>
+    <string name="settings_journal_render_checkboxes_subtitle">A teendőket [ ] és [x] alakban jelenítse meg az alkalmazásban kifejező jelölőnégyzetek helyett.</string>
+    <string name="settings_journal_day_header_counts_title">Napi fejlécek számának megjelenítése</string>
+    <string name="settings_journal_day_header_counts_subtitle">Bejegyzés, szó és karakterszám megjelenítése a naplónap fejlécében.</string>
+    <string name="settings_journal_show_timestamps_title">Időbélyegek megjelenítése</string>
+    <string name="settings_journal_show_timestamps_subtitle">A belépési idő megjelenítése az idővonalon.</string>
+    <string name="settings_journal_allow_future_title">Jövőbeli bejegyzések engedélyezése</string>
+    <string name="settings_journal_allow_future_subtitle">Bejegyzések hozzáadásának engedélyezése a jövőbeli dátumokhoz.</string>
+    <string name="settings_journal_truncate_title">A hosszú bejegyzések csonkolása</string>
+    <string name="settings_journal_truncate_subtitle">Rövidítse le a hosszú bejegyzéseket a kezdőképernyőn.</string>
+    <string name="settings_journal_char_limit_title">Karakterkorlát</string>
+    <string name="settings_journal_char_limit_subtitle">Állítsa be, hogy hány karakter jelenjen meg a csonkítás előtt.</string>
+    <string name="settings_journal_char_limit_min">50 karakter</string>
+    <string name="settings_journal_char_limit_max">200 karakter</string>
+    <string name="settings_journal_char_count">%1$d karakter</string>
+    <string name="settings_journal_first_day_title">A hét első napja</string>
+    <string name="settings_journal_first_day_subtitle">Indítsa el a naptárat</string>
+    <string name="settings_journal_day_sun">Nap</string>
+    <string name="settings_journal_day_mon">Hétfő</string>
+    <string name="settings_journal_date_recognition">Dátum felismerés</string>
+    <string name="settings_journal_date_order_title">Dátum Rendelés</string>
+    <string name="settings_journal_date_order_subtitle">Hogyan kell olvasni a numerikus dátumokat</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">NN/MM</string>
+    <string name="settings_journal_date_order_mdy">HH/NN</string>
+    <string name="settings_journal_date_keywords_title">Dátum Kulcsszavak</string>
+    <string name="settings_journal_date_keywords_subtitle">Más nyelvű szavak, amelyek dátumot jelentenek (például helyi szó a tegnapra).</string>
+    <string name="settings_journal_view_keywords">Megtekintés (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Kulcsszó hozzáadása</string>
+    <string name="settings_journal_motion">Mozgás</string>
+    <string name="settings_journal_animations_title">Animációk</string>
+    <string name="settings_journal_animations_subtitle">Irányítsd a mozgást az alkalmazásban. A csökkentett érték kevesebb mozgás mellett is folyékonyan tartja a dolgokat.</string>
+    <string name="settings_journal_animations_full">Tele</string>
+    <string name="settings_journal_animations_reduced">Csökkent</string>
+    <string name="settings_journal_animations_off">Le</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Mentés utáni áttekintés</string>
+    <string name="settings_review_post_write_title">Írás utáni értékelés</string>
+    <string name="settings_review_post_write_subtitle">Az áttekintési lap megjelenítése, miután a Mentés gombra koppintott a teendők kivonásához, az említések ellenőrzéséhez, a csillagnapok ellenőrzéséhez vagy a címke beállításához.</string>
+    <string name="settings_review_people_places">Emberek és helyek</string>
+    <string name="settings_review_highlighting_title">Kiemelés</string>
+    <string name="settings_review_highlighting_subtitle">Emelje ki a követett személyeket és helyeket a Kezdőlap kártyák és a Belépés megtekintése módban.</string>
+    <string name="settings_review_match_sensitivity_title">Match érzékenység</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Mennyire kell egy szónak egyeznie ahhoz, hogy az emberek és helyek észleljék (magasabb = szigorúbb).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Rövid kód hozzáadása</string>
+    <string name="shortcodes_edit_title">Rövid kód szerkesztése</string>
+    <string name="shortcodes_code_label">Rövid kód (pl. @yday)</string>
+    <string name="shortcodes_expansion_label">Kiterjesztés szövege</string>
+    <string name="shortcodes_export_error">Nem sikerült exportálni a rövid kódokat</string>
+    <string name="shortcodes_import_error">Nem sikerült importálni a rövid kódokat</string>
+    <string name="todos_expand_section">Kibontás %1$s</string>
+    <string name="todos_collapse_section">Összecsukás %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Hőtérkép írása</string>
+    <string name="heatmap_widget_description">Legutóbbi írási tevékenység hőtérképe a naplójához.</string>
+    <string name="quick_capture_widget_name">Gyors rögzítés</string>
+    <string name="quick_capture_widget_description">Naplóbejegyzés gyors hozzáadásához egyetlen érintéssel.</string>
+    <string name="quick_todo_widget_name">Gyors teendő</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal események</string>
+    <string name="tasker_screen_allow_add_entry_title">Engedélyezze a Tasker bejegyzést</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Lehetővé teszi, hogy a Tasker használjon Yaja Quick Capture műveleteket, például Bejegyzés hozzáadása és Teendő hozzáadása.</string>
+    <string name="tasker_screen_allow_events_title">Tasker események engedélyezése</string>
+    <string name="tasker_screen_allow_events_subtitle">Lehetővé teszi, hogy a Yaja elküldje a Mentett bejegyzés, a Módosított bejegyzés és a Bejegyzés törölt eseményeket a Taskernek.</string>
+    <string name="tasker_screen_include_text_title">Bejegyzés szövegének felvétele az eseményekbe</string>
+    <string name="tasker_screen_include_text_subtitle">Alapértelmezés szerint ki van kapcsolva az adatvédelem érdekében. Kikapcsolt állapotban a Tasker megkapja az esemény típusát, dátumát, címkéjét és időpontját, de a napló szövegét nem.</string>
+    <string name="tasker_screen_section_what">Mit csinál ez</string>
+    <string name="tasker_screen_body_what">A Tasker gyorsan hozzáadhat naplóbejegyzéseket vagy teendőket a Yaja-hoz, sorokat fűzhet egy csoportos bejegyzéshez, például nem fogadott hívásokhoz, és a Yaja tájékoztathatja a Taskert, ha egy bejegyzést elmentenek, szerkesztenek vagy töröltek.</string>
+    <string name="tasker_screen_section_how">Hogyan kell használni</string>
+    <string name="tasker_screen_body_how">Először kapcsolja be az itt szükséges kapcsolót. Ezután nyissa meg a Taskert, és adjon hozzá egy Yaja Quick Capture műveletet vagy egy Yaja Journal Events eseményt.</string>
+    <string name="tasker_screen_section_notes">Megjegyzések</string>
+    <string name="tasker_screen_body_notes">A beviteli szöveget nem osztja meg a Taskerrel, hacsak nem engedélyezi a Bejegyzés szövegének belefoglalását az eseményekben. Ha a Tasker nem jeleníti meg a legújabb beállításokat vagy változókat, a Yaja frissítése után nyissa meg újra a Tasker konfigurációs képernyőt.</string>
+    <string name="tasker_screen_section_example">Példa</string>
+    <string name="tasker_screen_body_example">Példa a műveletre: Tasker-művelet &gt; Yaja Gyorsrögzítés &gt; Hozzáfűzés, az Egyezés/fejléc beállításával Nem fogadott hívások, és a Line to append beállítva egy Tasker-változóhoz. Eseménypélda: Tasker esemény &gt; Yaja Journal Events &gt; Entry Modified, majd használjon változókat, például %%yaja_event_type, %%yaja_date és opcionálisan %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Használati esetek</string>
+    <string name="tasker_screen_use_case_1">1. Használjon Yaja naplóeseményt a Taskerben a FolderSync szinkronizálási művelet elindításához, így a Yaja mappája a bejegyzések módosítása után bármely felhőszolgáltatóhoz kerül.</string>
+    <string name="tasker_screen_use_case_2">2. Használja a Pushbulletet a Taskerrel, hogy szöveget küldjön a Yaja Quick Capture alkalmazásba, így a megküldött szöveg új bejegyzésként kerül mentésre az aktuális napra.</string>
+    <string name="tasker_screen_use_case_3">3. Használjon egy nem fogadott hívás Tasker-profilt egy Hozzáfűzés művelet küldéséhez a Yaja-ba, így az összes nem fogadott hívás adata egy Nem fogadott hívás bejegyzés alá kerül, ahelyett, hogy külön bejegyzéseket hozna létre.</string>
+    <string name="quick_todo_widget_description">Egyetlen érintéssel rögzíthet egy teendőt a mai nap új bejegyzéseként.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">A folyóiratteendők görgethető listája. Koppintson egy teendőre, hogy készként vagy visszavonva jelölje meg.</string>
+    <string name="todo_cd_add_todo">Teendő hozzáadása</string>
+    <string name="todos_cd_open_compliance_master">Nyissa meg az ismétlődő feladatokat</string>
+    <string name="compliance_master_title">Ismétlődő feladatok / események</string>
+    <string name="compliance_master_add">Ismétlődő feladat hozzáadása</string>
+    <string name="compliance_master_edit">Ismétlődő feladat szerkesztése</string>
+    <string name="compliance_master_intro_title">Ismétlődő feladatok</string>
+    <string name="compliance_master_intro_body">Hozzon létre ismétlődő teendőket heti, havi, negyedéves, féléves vagy éves munkához. Yaja csak akkor fedi fel az egyes feladatokat, amikor azok ciklusa relevánssá válik.</string>
+    <string name="compliance_master_empty">Még nincsenek visszatérő feladatok. Adjon hozzá egyet, hogy automatikusan létrehozza a teendőket a kiválasztott ütemterv szerint.</string>
+    <string name="compliance_master_status_deactivated">Deaktiválva</string>
+    <string name="compliance_master_meta_format">Esedékesség: %1$d • %2$d átfutási nap</string>
+    <string name="compliance_master_field_title">Feladat neve</string>
+    <string name="compliance_master_field_title_hint">Példa: Havi bevallás benyújtása</string>
+    <string name="compliance_master_field_description">Leírás</string>
+    <string name="compliance_master_field_description_hint">Példa: Ellenőrizze a banki portált, és ellenőrizze a nyugtát</string>
+    <string name="compliance_master_editor_task_section">Mire emlékeztethet Yaja?</string>
+    <string name="compliance_master_field_due_day">Esedékesség</string>
+    <string name="compliance_master_field_reveal_day">Készítsen előre (nap)</string>
+    <string name="compliance_master_field_schedule_mode">Mikor esedékes?</string>
+    <string name="compliance_master_schedule_mode_help">Válassza ki, hogyan határozza meg a Yaja a határidőt.</string>
+    <string name="compliance_master_select_schedule_type">Válassza ki az esedékes mintát</string>
+    <string name="compliance_master_field_frequency">Milyen gyakran?</string>
+    <string name="compliance_master_frequency_help">Válassza ki, milyen gyakran ismétlődik ez a feladat.</string>
+    <string name="compliance_master_select_frequency">Válassza ki az ismétlési frekvenciát</string>
+    <string name="compliance_master_schedule_details">Ütemezés részletei</string>
+    <string name="compliance_master_details_date_help">Adja meg az esedékesség dátumát és azt, hogy hány nappal korábban kell a napi fájlba írni.</string>
+    <string name="compliance_master_details_weekday_help">Válassza ki azt a munkanapot, amelyen ez a feladat esedékessé válik.</string>
+    <string name="compliance_master_details_boundary_help">Válassza ki, hány nappal korábban írja be a napi fájlba.</string>
+    <string name="compliance_master_field_due_weekday">Esedékes hétköznap</string>
+    <string name="compliance_master_select_weekday">Válassza ki a hét napját</string>
+    <string name="compliance_master_due_day_help">Adjon meg egy dátumot 1 és 31 között. A rövidebb hónapok az utolsó érvényes dátumot használják.</string>
+    <string name="compliance_master_reveal_day_help">Hány nappal az esedékesség előtt kell írni a teendőt a napi naplófájlba.</string>
+    <string name="compliance_master_first_day_selected">Minden alkalmazandó hónap első napján esedékes.</string>
+    <string name="compliance_master_last_day_selected">Minden vonatkozó hónap utolsó napján esedékes.</string>
+    <string name="compliance_mode_day_of_month">Konkrét dátum</string>
+    <string name="compliance_mode_day_of_month_desc">Számozott napon esedékes, például 15-én.</string>
+    <string name="compliance_mode_day_of_week">Hétköznap</string>
+    <string name="compliance_mode_day_of_week_desc">Esedékesség egy választott hétköznapon, például hétfőn.</string>
+    <string name="compliance_mode_first_day">Hónap első</string>
+    <string name="compliance_mode_first_day_desc">Minden alkalmazandó hónap első napján esedékes.</string>
+    <string name="compliance_mode_last_day">Hónap vége</string>
+    <string name="compliance_mode_last_day_desc">Esedékesség a végső dátumig, beleértve a rövidebb hónapokat is.</string>
+    <string name="compliance_frequency_weekly">Heti</string>
+    <string name="compliance_frequency_biweekly">Kéthetente</string>
+    <string name="compliance_frequency_monthly">Havi</string>
+    <string name="compliance_frequency_quarterly">Negyedévenként</string>
+    <string name="compliance_frequency_half_yearly">Félévente</string>
+    <string name="compliance_frequency_annual">Évi</string>
+    <string name="compliance_master_summary_day_of_month">%1$d nap • %2$s • %3$d nappal előre</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Első időpont • %1$s • %2$d nappal korábban</string>
+    <string name="compliance_master_summary_last_day">Utolsó dátum • %1$s • %2$d nappal előre</string>
+    <string name="compliance_master_execution_title">Hogyan fog ez futni</string>
+    <string name="compliance_master_execution_day_of_month">Egy feladat jön létre %1$s a %2$d napon. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_weekday">Egy teendő jön létre %1$s, %2$s. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_monthly_weekday">A teendő havonta jön létre a kezdő dátummal azonos %1$s előforduláskor. %2$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_month_boundary">A teendő %1$s az esedékes hónap %2$s napján jön létre. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_day_of_month_event">Egy esemény jön létre %1$s a %2$d napon. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_weekday_event">Egy esemény jön létre %1$s a %2$s napon. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_monthly_weekday_event">Egy esemény havonta jön létre a kezdő dátummal azonos %1$s előforduláskor. %2$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_execution_month_boundary_event">Esemény jön létre %1$s az esedékes hónap %2$s napján. %3$d nappal korábban írják a napi fájljába.</string>
+    <string name="compliance_master_boundary_first">első randevú</string>
+    <string name="compliance_master_boundary_last">utolsó dátum</string>
+    <string name="compliance_master_recurrence_weekly">minden héten</string>
+    <string name="compliance_master_recurrence_biweekly">kéthetente</string>
+    <string name="compliance_master_recurrence_monthly">minden hónapban</string>
+    <string name="compliance_master_recurrence_quarterly">háromhavonta</string>
+    <string name="compliance_master_recurrence_half_yearly">félévente</string>
+    <string name="compliance_master_recurrence_annual">minden évben</string>
+    <string name="todo_chip_compliance">Visszatérő</string>
+    <string name="compliance_master_upcoming">Közelgő</string>
+    <string name="compliance_master_delete_confirm_title">Törli az ismétlődő feladatot?</string>
+    <string name="compliance_master_delete_confirm_body">A „%1$s” el lesz távolítva, és további teendők nem jönnek létre.</string>
+    <string name="compliance_master_next_date">Után…</string>
+    <string name="compliance_master_end_section">Végfeltétel</string>
+    <string name="compliance_master_end_help">Válassza ki, mikor fejeződik be a feladat ismétlődése</string>
+    <string name="compliance_master_end_never">Soha</string>
+    <string name="compliance_master_end_on_date">A dátumon</string>
+    <string name="compliance_master_end_after">Után…</string>
+    <string name="compliance_master_end_never_desc">Határtalanul ismétlődik, befejezési dátum nélkül.</string>
+    <string name="compliance_master_end_date_select">Válassza ki a befejezési dátumot</string>
+    <string name="compliance_master_end_date_help">Ezen dátum után nem jön létre feladat.</string>
+    <string name="compliance_master_end_count_label">Az előfordulások száma</string>
+    <string name="compliance_master_end_count_help">Sok feladat létrehozása után leáll.</string>
+    <string name="compliance_master_ends_on">Vége: %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d maradt</string>
+    <string name="compliance_master_ended">Véget ért</string>
+    <string name="compliance_master_type_label">Létrehozás mint</string>
+    <string name="compliance_master_type_task">Feladat</string>
+    <string name="compliance_master_type_event">Esemény</string>
+    <string name="compliance_master_add_event">Ismétlődő esemény hozzáadása</string>
+    <string name="compliance_master_edit_event">Ismétlődő esemény szerkesztése</string>
+    <string name="compliance_master_field_title_event">Esemény neve</string>
+    <string name="compliance_master_field_title_event_hint">Példa: Heti szinkronizálási értekezlet</string>
+    <string name="compliance_master_frequency_help_event">Válassza ki, hogy milyen gyakran ismétlődik ez az esemény.</string>
+    <string name="compliance_master_details_weekday_help_event">Válassza ki azt a hétköznapot, amelyen ez az esemény esedékessé válik.</string>
+    <string name="compliance_master_delete_confirm_title_event">Törli az ismétlődő eseményt?</string>
+    <string name="compliance_master_end_help_event">Válassza ki, mikor fejeződik be az esemény ismétlődése</string>
+    <string name="compliance_master_end_count_help_event">Sok esemény létrehozása után leáll.</string>
+    <string name="heatmap_widget_status_loading">Hőtérkép betöltése…</string>
+    <string name="heatmap_widget_status_empty">Még nincsenek bejegyzések</string>
+    <string name="heatmap_widget_status_refresh">Nyissa meg a Yaja-t a hőtérkép frissítéséhez</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">A gyorsítótár újraépült.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Új bejegyzés</string>
+    <string name="shortcut_new_entry_long">Naplóbejegyzés hozzáadása</string>
+    <string name="shortcut_add_todo_short">Todo hozzáadása</string>
+    <string name="shortcut_add_todo_long">Adjon hozzá egy teendőt a mai napra</string>
+    <string name="shortcut_add_event_short">Esemény hozzáadása</string>
+    <string name="shortcut_add_event_long">Esemény hozzáadása</string>
+    <string name="shortcut_today_short">Ma</string>
+    <string name="shortcut_today_long">Nyissa meg a mai naplót</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigáció</string>
+    <string name="settings_bottom_nav_style_label">Alsó navigációs stílus</string>
+    <string name="settings_navigation_mode_title">Navigációs mód</string>
+    <string name="settings_navigation_mode_subtitle">Válasszon a lebegő navigációs sáv és a teljes alsó panel között.</string>
+    <string name="settings_nav_mode_floating">Úszó</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Navigációs képernyők</string>
+    <string name="settings_nav_summary_floating">A napló és a naptár mindig a lebegő sávban marad. Válasszon még 2 képernyőt. Jelenleg kiválasztott: %1$d/%2$d.</string>
+    <string name="settings_nav_summary_panel">A napló és a naptár mindig az alsó panelen marad. Válasszon még 3 képernyőt. Jelenleg kiválasztott: %1$d/%2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Visszatekintés megjelenítése az aktív navigációs sávon vagy panelen.</string>
+    <string name="settings_nav_people_places_subtitle">Emberek és helyek megjelenítése az aktív navigációs sávon vagy panelen.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Teendők megjelenítése az aktív navigációs sávon vagy panelen.</string>
+    <string name="todos_quick_add_title">Gyors hozzáadás</string>
+    <string name="todos_hero_subtitle">Kövesse nyomon a napló munkáját és pillanatait</string>
+    <string name="todos_hero_all_activity">Minden tevékenység</string>
+    <string name="todos_hero_open_focus">Nyitott fókusz</string>
+    <string name="todos_hero_completed">Befejezve</string>
+    <string name="todos_stat_today_open">Ma nyitva</string>
+    <string name="todos_stat_done_today">Ma kész</string>
+    <string name="todos_stat_events">Események</string>
+    <string name="todos_stat_still_open">Még mindig nyitva</string>
+    <string name="todos_stat_past_7d">Elmúlt 7d</string>
+    <string name="todos_stat_days">Napok</string>
+    <string name="todos_empty_done">Még nincsenek befejezett feladatok</string>
+    <string name="todos_empty_events">Még nincsenek eseménybejegyzések</string>
+    <string name="todos_section_open">NYITOTT</string>
+    <string name="todos_section_later">KÉSŐBB</string>
+    <string name="todos_section_upcoming">KÖTELEZŐ</string>
+    <string name="todos_section_future_events">JÖVŐBELI ESEMÉNYEK</string>
+    <string name="todos_section_past_events">MÚLT ESEMÉNYEK</string>
+    <string name="todos_cd_open_day">Nyílt nap</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d nyitott feladat</item>
+        <item quantity="other">%1$d nyitott feladatok</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d kész feladat</item>
+        <item quantity="other">%1$d elvégzett feladatok</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d közelgő esemény</item>
+        <item quantity="other">%1$d közelgő események</item>
+    </plurals>
+    <string name="todos_filter_all_format">Mind %1$d</string>
+    <string name="todos_filter_open_format">Megnyitás %1$d</string>
+    <string name="todos_filter_done_format">Kész %1$d</string>
+    <string name="todos_filter_events_format">Események %1$d</string>
+    <string name="todos_cheer_all_clear">Minden világos. Szép.</string>
+    <string name="todos_cheer_done_and_dusted">Kész és leporolt.</string>
+    <string name="todos_cheer_nothing_pending">Semmi függőben.</string>
+    <string name="todos_cheer_caught_up">Utolérted.</string>
+    <string name="todos_cheer_clean_slate">Tiszta lappal.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d napon belül</item>
+        <item quantity="other">%1$d napon belül</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d napja</item>
+        <item quantity="other">%1$d napja</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d hét múlva</item>
+        <item quantity="other">%1$d hét múlva</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d héttel ezelőtt</item>
+        <item quantity="other">%1$d héttel ezelőtt</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 hónap alatt</string>
+    <string name="todos_relative_one_month_ago">1 hónapja</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d hónap múlva</item>
+        <item quantity="other">%1$d hónap múlva</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d hónapja</item>
+        <item quantity="other">%1$d hónappal ezelőtt</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statisztika</string>
+    <string name="settings_nav_statistics_subtitle_on">Statisztikák megjelenítése az aktív navigációs sávon vagy panelen.</string>
+    <string name="settings_nav_statistics_subtitle_off">Először kapcsolja be a Statisztikát, hogy elhelyezze a navigációban.</string>
+    <string name="settings_show_labels_bottom_panel_title">Címkék megjelenítése az alsó panelen</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Jelenítse meg a szöveges címkéket az alsó panel ikonjai alatt.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gesztusok</string>
+    <string name="settings_entry_delete_title">Bejegyzés törlése</string>
+    <string name="settings_entry_delete_subtitle">Nyomja meg hosszan egy bejegyzést a kiválasztásához. Több bejegyzés kiválasztásához koppintson a további bejegyzésekre, majd használja a középen lévő Törlés gombot. Érintse meg az üres helyet a kijelölés törléséhez.</string>
+    <string name="settings_swipe_navigate_title">Csúsztassa az ujját a Navigálás dátumok lehetőséghez</string>
+    <string name="settings_swipe_navigate_subtitle">Csúsztassa jobbról balra egy dátummal előre, balról jobbra pedig a visszalépéshez.</string>
+    <string name="settings_drag_reorder_title">Engedélyezze a Drag-to-Reorder</string>
+    <string name="settings_drag_reorder_subtitle">Nyomja meg hosszan a bejegyzéseket az átrendezésükhöz</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Adatok és helyreállítás</string>
+    <string name="settings_swipe_rebuild_index">Csúsztassa lefelé az ujját a kezdőképernyőn az index újjáépítéséhez</string>
+    <string name="settings_large_journal_safe_mode_title">Nagy napló biztonságos mód</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Ha nagyon nagy naplót észlel, késleltesse a nem lényeges indítási statisztikák működését, így az alkalmazás gyorsabban és biztonságosabban nyílik meg.</string>
+    <string name="settings_version_history_title">Verziótörténet</string>
+    <string name="settings_version_history_subtitle">A bejegyzések szerkesztése, törlése, címkézése és újbóli áttekintése előtt őrizzen meg biztonságos másolatokat.</string>
+    <string name="settings_storage_location_label">Tárolási hely</string>
+    <string name="settings_reset_to_default">Visszaállítás alapértelmezettre</string>
+    <string name="settings_choose_folder">Válassza a Mappa lehetőséget</string>
+    <string name="settings_backup_description">Hozzon létre egy Yaja biztonsági mentési zip-et, amely naplóbejegyzéseket, rövid kódokat, dátumkulcsszavakat és People &amp; Places adatokat tartalmaz. A Restore később biztonságosan visszaolvaszthatja.</string>
+    <string name="settings_last_backup">Utolsó biztonsági mentés: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Biztonsági emlékeztető életkora</string>
+    <string name="settings_backup_reminder_disabled">Letiltva</string>
+    <string name="settings_backup_reminder_desc">Jelölje ki a biztonsági másolatot az oldalsávon, ha %1$d napnál régebbi.</string>
+    <string name="settings_backup_reminder_days_disabled">0 nap (letiltva)</string>
+    <string name="settings_backup_reminder_days">%1$d nap</string>
+    <string name="settings_restore_button">Visszaállítás</string>
+    <string name="settings_backup_now_button">Biztonsági mentés most</string>
+    <string name="settings_db_index_management_label">Adatbázis-indexkezelés</string>
+    <string name="settings_db_index_management_desc">Nyissa meg a fókuszált újraépítési eszközöket a feladatokhoz, a People &amp; Places-hez vagy egy teljes adatbázis-index újraépítéséhez.</string>
+    <string name="settings_rebuild_tools_button">Újraépítési eszközök</string>
+    <string name="settings_import_label">Importálás</string>
+    <string name="settings_import_info_cd">Információk importálása</string>
+    <string name="settings_import_info_title">Információk importálása</string>
+    <string name="settings_import_day_one_title">Első nap import</string>
+    <string name="settings_import_day_one_bullet1">- Exportálás az első naptól képek nélkül</string>
+    <string name="settings_import_day_one_bullet2">- Csak szöveges adatok kerülnek importálásra</string>
+    <string name="settings_import_day_one_bullet3">- Az időbélyeg és a helyadatok (ha rendelkezésre állnak) megőrzésre kerülnek</string>
+    <string name="settings_import_perf_warning_title">Teljesítményre vonatkozó figyelmeztetés</string>
+    <string name="settings_import_perf_warning_desc">Nagyszámú bejegyzés (500+) importálása több percig is eltarthat. Elnavigálhat, és az importálás a háttérben folytatódik.</string>
+    <string name="settings_got_it">Értem</string>
+    <string name="settings_import_success">%1$d új napok, %2$d összevonva, %3$d kihagyva</string>
+    <string name="settings_import_source_day_one">Első nap</string>
+    <string name="settings_import_source_day_one_subtitle">.zip vagy .json exportálás</string>
+    <string name="settings_import_source_journalistic">Újságírói</string>
+    <string name="settings_import_source_journalistic_subtitle">.json exportálás</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Tanuld meg a yaja használatát</string>
+    <string name="help_footer_website">Weboldal</string>
+    <string name="help_footer_share">Részesedés</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Viszály</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Oszd meg yaja</string>
+    <string name="help_share_yaja_text">yaja – egy újabb naplózó alkalmazás\n\nEgy zavaró helyi napló, amely a bejegyzéseket leértékelési fájlként tárolja. Idővonalat, visszatekintést, személyeket és helyeket, sablonokat, véleményeket, statisztikákat és modulokat tartalmaz.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord felhasználónév másolva!</string>
+    <string name="help_footer_play_store">Play Áruház</string>
+    <string name="help_cd_rj_logo">RJ logó</string>
+    <string name="help_screen_title">Súgó és névjegy</string>
+    <string name="help_welcome_title">Üdvözöljük a yaja-ban</string>
+    <string name="help_welcome_body">A Yaja egy helyi első leértékelési napló, amely napok, emberek, helyek, nyomon követések, vélemények és minták rögzítésére szolgál anélkül, hogy az utadba kerülne. Ez az oldal rövid útmutatót nyújt az alkalmazás főbb részeihez.</string>
+    <string name="help_start_here">Kezdje itt</string>
+    <string name="help_cd_collapse">Összeomlás</string>
+    <string name="help_cd_expand">Bontsa ki</string>
+    <string name="help_group_everyday_title">Mindennapi</string>
+    <string name="help_group_everyday_desc">Naplózás, írásfolyamat és napi navigáció.</string>
+    <string name="help_group_reviews_title">Vélemények és betekintések</string>
+    <string name="help_group_reviews_desc">Visszatekintések, trendek, emberek, helyek és elemzések.</string>
+    <string name="help_group_advanced_title">Speciális eszközök</string>
+    <string name="help_group_advanced_desc">Widgetek, tárhely, adatvédelem, biztonsági mentések és technikai eszközök.</string>
+    <string name="help_onboard_todos_events_title">Teendők, események és ismétlődő</string>
+    <string name="help_onboard_todos_events_body">Tartson személyes emlékeztetőket, családi terveket és ismétlődő ütemterveket, amelyek automatikusan generálnak feladatokat az esedékességükön.</string>
+    <string name="help_onboard_widgets_title">Widgetek</string>
+    <string name="help_onboard_widgets_body">Adjon hozzá Heatmap, Quick Capture, Quick Todo vagy Todo List widgeteket az indítóból.</string>
+    <string name="help_onboard_version_history_title">Verziótörténet</string>
+    <string name="help_onboard_version_history_body">Engedélyezze az Előzmények fájlokat a Beállítások &gt; Adatok menüpontban, hogy biztonságos pillanatképeket készítsen a kockázatos változtatások előtt.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">A Tasker segítségével gyorsan hozzáadhat bejegyzéseket, teendőket vagy eseményeket, ha valami személyeset azonnal rögzíteni kell.</string>
+    <string name="help_section_writing_editor_title">Író és szerkesztő</string>
+    <string name="help_section_writing_editor_preview">Sablonok, leértékelési címsorok, teendők, események és rugalmas piszkozatbeillesztés.</string>
+    <string name="help_section_writing_editor_content">+ Érintse meg a lebegő „+” gombot a kiválasztott nap írásához.\n+ Használjon olyan sablonokat, mint a Meeting Note, Travel Day, Health Log, Reflection, Work Log és egyebek.\n+ A sablonok beszúrhatók egy üres piszkozatba, amelyek alább csatolhatók, helyettesíthetők a piszkozatokkal, vagy beilleszthetők a kurzorba.\n+ A szerkesztő chipekkel gyorsan beszúrhatók a teendők, események és számok listák, események és számok szerkesztése. Bejegyzéstámogatja a leértékelés stílusú címsorokat, például a ### szakaszt.</string>
+    <string name="help_section_post_write_review_title">Írás utáni értékelés</string>
+    <string name="help_section_post_write_review_preview">Teendők kinyerése, kulcsszóészlelés, csillagozás, címkék és ismételt látogatás.</string>
+    <string name="help_section_post_write_review_content">+ Írás után a Yaja megnyithat egy áttekintési lapot a mentés előtt.\n+ Kibonthatja a teendőket, felismerheti a személyeket és helyeket, megjelölheti a napot, beállíthat egy nap címkét, és ütemezheti az újralátogatási dátumokat.\n+ Ha a közvetlen mentést részesíti előnyben, letilthatja az írás utáni ellenőrzést a Beállításokban.</string>
+    <string name="help_section_revisit_followup_title">Újralátogatás és nyomon követési dátumok</string>
+    <string name="help_section_revisit_followup_preview">Naplóhoz kötött nyomon követési dátumok gyors választással és egyéni lehetőséggel.</string>
+    <string name="help_section_revisit_followup_content">+ Adjon hozzá újralátogatási dátumokat holnap, jövő héten, jövő hónapban vagy egyéni dátummal.\n+ Az esedékes újralátogatási tételek megjelennek a Kezdőlapon, és meg vannak jelölve a naptárban és az idővonalon.\n+ Ez jól működik a naplókontextushoz kötött ígéretek, döntések, állapotfelmérés és emlékeztetők esetén.</string>
+    <string name="help_section_navigation_gestures_title">Navigáció és gesztusok</string>
+    <string name="help_section_navigation_gestures_preview">Dátummozgatás, kijelölés törlése, csúsztatási beállítások és a gyorsítótár viselkedésének újraépítése.</string>
+    <string name="help_section_navigation_gestures_content">+ A Kezdőlap támogatja a dátum-navigációt nyilakkal, és az opcionális ellop navigációt, ha be van kapcsolva.\n+ Nyomja meg hosszan egy bejegyzést a kiválasztásához. Koppintson további bejegyzésekre is, hogy kijelölje őket, majd használja a Hozzáadás gomb melletti Pillanat törlése elemet.\n+ A kiválasztott bejegyzéseken kívülre koppintva törli a kijelölést. A törölt bejegyzések a visszaszámlálásból együtt állíthatók vissza.\n+ Újraépítheti a gyorsítótárat, amikor a naplófájlok a Yaja-n kívül módosulnak.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Rövid kódok és gyors rögzítés</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Gyors személyes rögzítés és újrafelhasználható dinamikus szövegrészletek.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Hozzon létre rövid kódokat az ismétlődő szövegek gyors beszúrásához.\n+ A dinamikus helyőrzők, például a {{today:dd-MMM}} és a {{now:HH:mm}}, a rövid kódokon belül működnek.\n+ A Quick Capture segítségével gyorsan naplózhat valamit a teljes szerkesztő megnyitása nélkül.\n+ A gyors hozzáadással elmenthető egy teendő vagy egy esemény egy kiválasztott dátumra a widgetről, a Teendők képernyőről vagy a Taskerről.</string>
+    <string name="help_section_todos_events_title">Teendők, események és ismétlődő</string>
+    <string name="help_section_todos_events_preview">Személyes emlékeztetők, figyelemre méltó események és automatizált ismétlődő ütemezések.</string>
+    <string name="help_section_todos_events_content">+ A teendők közvetlenül a naplóbejegyzésekbe vannak írva [ ] és [x] sorként.\n+ Az események normál naplóbejegyzések, amelyek Eseményként vannak megjelölve, és hasznosak családi tervekhez, találkozókhoz, utazásokhoz vagy bármihez, amit később szeretnének észrevenni.\n+ Az ismétlődő feladatok és események (ütemezések) automatikusan írják a teendőket vagy események fejléceit a napi napló oldalaira, éves ütemezésüknek megfelelően, évente, havonta. ütemezéshez koppintson az Ismétlődő ikonra a Todos képernyőn.\n+ A Yaja megnyitásakor a háttérfolyamat minden nap lefut annak ellenőrzésére, hogy esedékesek-e az ütemezett feladatok, és beilleszti azokat az adott napi bejegyzésbe.\n+ A Todos képernyő segítségével megtekintheti a megnyitott feladatokat, a befejezett feladatokat és az eseményeket anélkül, hogy a Yaja-t termelékenységi irányítópulttá változtatná.\n+ Koppintson egy dátum fejlécére a Naplóban a naptár megnyitásához. todo index, ha a Yaja-n kívül módosultak a fájlok.\n+ A Befejezett feladatok megjelenítése a rendszer megjegyzi, így a kívánt nézet megmarad, amikor kilép és visszatér.\n+ A Todo modulok megjeleníthetik a függőben lévő feladatokat, megerősíthetik a váltás előtt, elrejthetik a befejezett feladatokat, és opcionálisan automatikusan elrejthetik, ha nincs függőben.</string>
+    <string name="help_section_people_places_title">Emberek és helyek</string>
+    <string name="help_section_people_places_preview">Kulcsszavak, álnevek, trendek és rangsorolt ​​kapcsolati nézetek.</string>
+    <string name="help_section_people_places_content">+ Kövesse nyomon az embereket és a helyeket álnevekkel és kapcsolatcímkékkel.\n+ Keressen, szűrjön és rendezzen a kulcsszólistában.\n+ A kulcsszórészletező oldalakon a legutóbbi idők, az idők során történt említések, a közös említések és a rangsorolt ​​kapcsolatok láthatók.\n+ Az egyezésérzékenység a Beállításokban állítható be.</string>
+    <string name="help_section_timeline_lookback_title">Idővonal és visszatekintés</string>
+    <string name="help_section_timeline_lookback_preview">Elmúlt napos böngészés, kiemelések, Lepj meg engem és értékelések belépési pontjai.</string>
+    <string name="help_section_timeline_lookback_content">+ Az idővonalon böngészhet az elmúlt napokban szűrőkkel, évszelvényekkel és opcionális, minden dátumot tartalmazó móddal.\n+ A Lookback az elmúlt évek ugyanazon napjának bejegyzéseit és az Ön csillaggal megjelölt pontjait jeleníti meg.\n+ A Surprise Me egy véletlenszerű múltbeli bejegyzést nyit meg a Lookbackből.\n+ Heti áttekintés és Havi áttekintés élőben a Lookbackben.</string>
+    <string name="help_section_statistics_reviews_title">Statisztikák és vélemények</string>
+    <string name="help_section_statistics_reviews_preview">Hasonlítsa össze a módot, a sablonbetekintést, az egyéni látható szakaszokat és az összefoglalókat.</string>
+    <string name="help_section_statistics_reviews_content">+ A statisztikák közé tartozik az összehasonlítási mód, a kulcsszódelták és a Template Insights.\n+ Kiválaszthatja, hogy a Statisztikák képernyőn mely statisztikai szakaszok maradjanak láthatók.\n+ Az Összehasonlítási mód minden időkhöz elérhető, és összefoglalja a hónap és év deltákat.\n+ Az áttekintési oldalak összefoglalják a legaktívabb napokat, a legnépszerűbb embereket és helyeket, kedvenc pillanatokat, címkéket, nyelvi felosztást és sorozat- vagy hézagmintákat.</string>
+    <string name="help_section_widgets_home_title">Widgetek és otthoni felület</string>
+    <string name="help_section_widgets_home_preview">Indító widgetek, kiemelt kulcsszavak és napi szintű kezdőstatisztikák.</string>
+    <string name="help_section_widgets_home_content">+ A hőtérkép írása, a gyorsrögzítés, a gyors hozzáadása és a teendőlista widgetek elérhetők az indítón.\n+ A modulkonfigurációs képernyők segítségével beállíthatja a sarkokat, a kitöltést, az alakzatot, a fejléceket, az elvégzett feladatok láthatóságát és egyéb widget-beállításokat, ahol támogatott.\n+ A hőtérkép widget több intenzitású árnyalatot használ, amikor az emberek simábban írják a kezdőlap bejegyzéseit.\n+. beállítás engedélyezve van.\n+ Az Otthon dátuma fejléc megjelenítheti vagy elrejtheti a bejegyzések számát, a szavakat és a karakterek számát.</string>
+    <string name="help_section_language_text_analysis_title">Nyelv- és szövegelemzés</string>
+    <string name="help_section_language_text_analysis_preview">Helyi nyelvérzékelés statisztikákhoz és áttekintési információkhoz.</string>
+    <string name="help_section_language_text_analysis_content">+ A Yaja felismeri a domináns szkriptet vagy nyelvet a bejegyzések között, hogy betekintést nyerjen.\n+ A nyelvi felosztás a Statisztikák és az Áttekintések oldalon jelenik meg.\n+ Az észlelés helyileg fut, és nem küldi ki a naplószöveget az eszközről.</string>
+    <string name="help_section_data_privacy_cache_title">Adatok, adatvédelem és gyorsítótár</string>
+    <string name="help_section_data_privacy_cache_preview">Leértékelési tárhely, verzióelőzmények, alkalmazásnapló, alkalmazászár és gyorsítótár újraépítése.</string>
+    <string name="help_section_data_privacy_cache_content">+ Adatvédelem: Minden személyes naplóadat szigorúan az Ön fizikai eszközén található, és soha nem hagyja el azt. A Yaja nem futtat felhőalapú adatbázisokat, távoli biztonsági mentési szervereket vagy telemetriát a szöveg nyomon követésére.\n+ A naplóbejegyzések szabványos Markdown-fájlokként tárolódnak, év és hónap szerint elrendezve.\n+ A Verzióelőzmények biztonságos pillanatképeket tárolhatnak a szerkesztések, törlések, címkézések és a módosítások újralátogatása előtt.\n+ Kiválaszthatja, hogy hány verziót kell megőrizni, és hány napon keresztül rögzítheti az alkalmazás-előzményeket, a műszaki eseményeket és az összeomlást. naplószöveg tárolása nélkül.\n+ A Rebuild App Cache lehetővé teszi az alkalmazásadatok moduláris frissítését, beleértve a feladatokat és a teljes gyorsítótár-újraépítést.\n+ Az Alkalmazászár támogatja a PIN-kódot és az ujjlenyomatot.\n+ A Yaja lehetőség szerint elhalasztja a nehéz indexelést és a statisztikai munkát, így az alkalmazás indítása és mentése folyamatosan reagál.</string>
+    <string name="settings_app_log_title">Alkalmazásnapló</string>
+    <string name="settings_app_log_subtitle">Tekintse meg a magánélet védelmét biztosító diagnosztikát és a korábbi összeomlás részleteit</string>
+    <string name="app_log_cd_share">Alkalmazásnapló megosztása</string>
+    <string name="app_log_cd_clear">Alkalmazásnapló törlése</string>
+    <string name="app_log_privacy_title">Magánélet-biztos diagnosztika</string>
+    <string name="app_log_privacy_description">Ez a napló rögzíti a főbb alkalmazáseseményeket, a gyorsítótár/tárolási műveleteket, a widgetek frissítéseit és az összeomlás részleteit. Nem tartalmazza a naplóbejegyzéseket, a teendő szövegét vagy a magánjegyzetek tartalmát.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Az utolsó %d nap megtartása</item>
+        <item quantity="other">Az utolsó %d nap megtartása</item>
+    </plurals>
+    <string name="app_log_retention_description">A régebbi naplóesemények automatikusan levágásra kerülnek a naplózás során, és azonnal, ha ez a beállítás megváltozik.</string>
+    <string name="app_log_empty">Még nincs alkalmazásnapló.</string>
+    <string name="app_log_refresh">Napló frissítése</string>
+    <string name="app_log_share_empty">Még nincsenek Yaja alkalmazás naplóbejegyzései.</string>
+    <string name="app_log_share_subject">Yaja App Log</string>
+    <string name="app_log_share_chooser">Ossza meg a Yaja alkalmazásnaplót</string>
+    <string name="app_log_local_time_format">%1$s | helyi idő\n%2$s</string>
+    <string name="settings_website_title">Yaja webhely</string>
+    <string name="settings_website_subtitle">Nyissa meg a hivatalos webhelyet a frissítésekért és a részletekért</string>
+    <string name="settings_advanced_integrations_title">Speciális integrációk</string>
+    <string name="settings_tasker_integration_title">Tasker integráció</string>
+    <string name="settings_tasker_integration_subtitle">Gyors rögzítési műveletek és napló eseményindítók</string>
+    <string name="settings_shortcodes_subtitle">Kezelje az újrafelhasználható kódrészleteket, amelyek írás vagy gyorsrögzítés közben kitágulnak.</string>
+    <string name="settings_privacy_security_title">Adatvédelem és biztonság</string>
+    <string name="settings_pin_lock_title">PIN-zár</string>
+    <string name="settings_app_locked">Az alkalmazás zárolva van</string>
+    <string name="settings_app_unlocked">Az alkalmazás fel van oldva</string>
+    <string name="settings_change_pin">PIN módosítása</string>
+    <string name="settings_biometric_unlock_title">Biometrikus feloldás</string>
+    <string name="settings_biometric_enabled_desc">Az ujjlenyomat vagy az arcazonosító engedélyezve</string>
+    <string name="settings_biometric_disabled_desc">Használjon biometrikus kódot PIN helyett</string>
+    <string name="settings_autolock_timeout_title">Auto-lock Timeout</string>
+    <string name="settings_pin_lock_disclaimer">A PIN-zár megakadályozza az alkalmazáshoz való jogosulatlan hozzáférést, de nem titkosítja a lemezen lévő naplóadatokat. A közvetlen fájlhozzáféréssel rendelkezők továbbra is elolvashatják a bejegyzéseidet.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d perc</item>
+        <item quantity="other">%1$d perc</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Rendszer</string>
+    <string name="settings_theme_light">Fény</string>
+    <string name="settings_theme_dark">Sötét</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Színek</string>
+    <string name="settings_color_intensity_title">Színintenzitás</string>
+    <string name="settings_background_tint_title">Háttér árnyalat</string>
+    <string name="settings_font_sans">Nélkül</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Monó</string>
+    <string name="settings_font_custom">Szokás</string>
+    <string name="settings_font_size_label">Betűméret</string>
+    <string name="settings_ui_font_size_label">UI betűméret</string>
+    <string name="settings_data_font_size_label">Tartalom betűmérete</string>
+    <string name="settings_follow_ui_font_scale_label">Legyen a tartalom betűmérete a felhasználói felülettel megegyező</string>
+    <string name="settings_color_source_material_you">Anyag Te</string>
+    <string name="settings_theme_preview_title">Téma előnézete</string>
+    <string name="settings_journal_entry_preview">Naplóbejegyzés</string>
+    <string name="settings_journal_entry_preview_desc">A kártyák, zsetonok és gombok ezeket a színeket fogják használni.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Hangsúly</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intenzitás: %1$s</string>
+    <string name="settings_personal_themes_title">Személyes témák</string>
+    <string name="settings_theme_name_label">A téma neve</string>
+    <string name="settings_main_color_label">Fő szín</string>
+    <string name="settings_hue_label">Színárnyalat</string>
+    <string name="settings_sat_label">Ült</string>
+    <string name="settings_bright_label">Fényes</string>
+    <string name="settings_generated_accents_title">Hangsúlyokat generált</string>
+    <string name="settings_personal_theme_desc">Válasszon egy színt. A Yaja hozzáillő akcentus- és támasztószíneket hoz létre.</string>
+    <string name="settings_preview_chip_main">Fő</string>
+    <string name="settings_preview_chip_support">Támogatás</string>
+    <string name="settings_no_font_selected">Nincs kiválasztva betűtípus</string>
+    <string name="settings_custom_font_desc">Válasszon bármilyen unicode .ttf vagy .otf fájlt – pl. egy malajálam betűtípus, mint a Manjari. A betűtípusból hiányzó karakterek rendszer-betűtípusokat használnak.</string>
+    <string name="settings_font_replace">Cserélje ki</string>
+    <string name="settings_choose_font_file">Válasszon betűtípusfájlt</string>
+    <string name="settings_intensity_muted">Tompított</string>
+    <string name="settings_intensity_normal">Normál</string>
+    <string name="settings_intensity_vivid">Élénk</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Tiszta</string>
+    <string name="settings_tint_soft">Puha</string>
+    <string name="settings_tint_rich">Gazdag</string>
+    <string name="settings_tint_deep">Mély</string>
+    <string name="settings_accent_complementary">Kiegészítő</string>
+    <string name="settings_accent_analogous">Hasonló</string>
+    <string name="settings_accent_triadic">Triadikus</string>
+    <string name="settings_accent_soft">Puha</string>
+    <string name="settings_mono_weight_thin">Vékony</string>
+    <string name="settings_mono_weight_extra_light">Extra könnyű</string>
+    <string name="settings_mono_weight_light">Fény</string>
+    <string name="settings_mono_weight_regular">Szabályos</string>
+    <string name="settings_mono_weight_medium">Közepes</string>
+    <string name="settings_mono_weight_semi_bold">Félig merész</string>
+    <string name="settings_mono_weight_bold">Bátor</string>
+    <string name="settings_mono_weight_extra_bold">Extra félkövér</string>
+    <string name="settings_mono_weight_title">Súly</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Dátum kulcsszó hozzáadása</string>
+    <string name="settings_keyword_label">Kulcsszó</string>
+    <string name="settings_keyword_placeholder_example">például tegnap</string>
+    <string name="settings_means_label">Eszközök</string>
+    <string name="settings_add_button">Hozzáadás</string>
+    <string name="settings_no_keywords_yet">Még nincsenek kulcsszavak hozzáadva.</string>
+    <string name="settings_added_keywords_title">Hozzáadott kulcsszavak (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Kulcsszó hozzáadása lehetőségre</string>
+    <string name="keywords_dialog_add_title">Kulcsszó hozzáadása lehetőségre</string>
+    <string name="keywords_dialog_edit_title">Kulcsszó szerkesztése</string>
+    <string name="keywords_cd_import_csv">CSV importálása</string>
+    <string name="keywords_cd_export_csv">CSV exportálása</string>
+    <string name="keywords_cd_download_template">Sablon letöltése</string>
+    <string name="rebuild_cache_storage_transparency_title">Az eszközön lévő tárhely átlátszósága</string>
+    <string name="rebuild_cache_storage_transparency_desc">A Yaja biztonságos helyi tárolási modellt használ. Személyes naplóadatai helyi szinten maradnak, és soha nem hagyják el az eszközt:</string>
+    <string name="rebuild_cache_source_of_truth_title">Az igazság forrása (Markdown fájlok)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Minden bejegyzés, ellenőrzőlista elem (teendő), idővonal-esemény, csillagok és címkék véglegesen mentésre kerülnek egyszerű szöveges Markdown (.md) fájlokban a kiválasztott helyi naplómappában. Adatai 100%-ban az Ön tulajdonában vannak, és teljes egészében az Ön eszközén találhatók.</string>
+    <string name="rebuild_cache_read_cache_title">Gyorsítótár és index olvasása (SQLite adatbázis)</string>
+    <string name="rebuild_cache_read_cache_desc">Annak érdekében, hogy az azonnali képernyőbetöltést, naptárkiemeléseket, kulcsszavakat és statisztikákat engedélyezze anélkül, hogy minden görgetésnél átvizsgálná a fájlrendszert, a Yaja elemzi a Markdown fájlokat, és indexeli őket egy helyi Room SQLite adatbázisban az eszközön.</string>
+    <string name="rebuild_cache_local_private_title">100% helyi és privát</string>
+    <string name="rebuild_cache_local_private_desc">A Yaja nem rendelkezik felhőalapú adatbázisokkal, távoli biztonsági mentési szerverekkel vagy telemetriával, amely nyomon követné a szöveget. Minden naplóbejegyzés és elemzett adat szigorúan a fizikai eszközön marad, és soha nem hagyja el azt.</string>
+    <string name="keywords_export_success">Kulcsszavak exportálva</string>
+    <string name="keywords_export_failed">Nem sikerült exportálni a kulcsszavakat</string>
+    <string name="keywords_template_saved">Sablon mentve</string>
+    <string name="keywords_template_save_failed">Nem sikerült menteni a sablont</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d kulcsszó importálva</item>
+        <item quantity="other">%d kulcsszó importált</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Nem található érvényes kulcsszó</string>
+    <string name="keywords_import_failed">Nem sikerült a kulcsszavak importálása</string>
+    <string name="keywords_status_indexing">Indexelés</string>
+    <string name="keywords_status_indexed">Indexelt</string>
+    <string name="keywords_metric_mentions">Említések</string>
+    <string name="keywords_metric_days">Napok</string>
+    <string name="keywords_timeline_range_all">Minden</string>
+    <string name="keywords_connections_filter_all">Minden</string>
+    <string name="keywords_connections_filter_people">Emberek</string>
+    <string name="keywords_connections_filter_places">Helyek</string>
+    <string name="keywords_connections_filter_recent">Legutóbbi</string>
+    <string name="keywords_connections_filter_strongest">Legerősebb</string>
+    <string name="keywords_filter_needs_reindex">Reindex kell</string>
+    <string name="keywords_search_placeholder">Emberek, helyek, álnevek, kapcsolatok keresése</string>
+    <string name="keywords_refreshing_counters">Kulcsszószámlálók frissítése…</string>
+    <string name="keywords_empty_title">Még nincsenek kulcsszavak</string>
+    <string name="keywords_empty_subtitle">Adja hozzá azokat a személyeket és helyeket, amelyeket az alkalmazásnak nyomon szeretne követni.</string>
+    <string name="keywords_no_results_title">Nincsenek megfelelő eredmények</string>
+    <string name="keywords_no_results_subtitle">Próbálkozzon másik kereséssel, rendezéssel vagy szűrővel.</string>
+    <string name="keywords_people_title">Emberek</string>
+    <string name="keywords_places_title">Helyek</string>
+    <string name="keywords_people_empty">Még nincsenek hozzáadva emberek.</string>
+    <string name="keywords_people_filtered_empty">Egyetlen személy sem felel meg a jelenlegi szűrőknek.</string>
+    <string name="keywords_places_empty">Még nincsenek hozzáadott helyek.</string>
+    <string name="keywords_places_filtered_empty">Egyetlen hely sem felel meg a jelenlegi szűrőknek.</string>
+    <string name="keywords_delete_person_title">Törli a személyt?</string>
+    <string name="keywords_delete_place_title">Törli a helyet?</string>
+    <string name="keywords_delete_message">Törli a \"%1$s\" fájlt a Személyek és helyek közül? Ezzel eltávolítja a kulcsszót és indexelt egyezéseit.</string>
+    <string name="keywords_timeline_title">Említések az idők során</string>
+    <string name="keywords_timeline_empty_pattern">Még nincs havi minta</string>
+    <string name="keywords_timeline_total_format">%1$d összesen</string>
+    <string name="keywords_timeline_empty_chart">A bejegyzések indexelése után az említések itt jelennek meg.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Csúcs %1$s • %2$d említés</item>
+        <item quantity="other">Csúcs %1$s • %2$d említ</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Napok említésekkel</string>
+    <string name="keywords_recency_title">Frissség</string>
+    <string name="keywords_recency_none">Még nincsenek mérkőzések</string>
+    <string name="keywords_recency_today">Ma említve</string>
+    <string name="keywords_recency_yesterday">Tegnap említettük</string>
+    <string name="keywords_recency_days_ago_format">Utolsó említés %1$d napja</string>
+    <string name="keywords_first_seen">Először látott</string>
+    <string name="keywords_last_seen">Utoljára látott</string>
+    <string name="keywords_unknown">Ismeretlen</string>
+    <string name="keywords_co_mentioned_with">Közösen megemlítve vele</string>
+    <string name="keywords_connections_title">Kapcsolatok</string>
+    <string name="keywords_connections_subtitle">Rangsorolva ismétlődő átfedés és aktualitás szerint</string>
+    <string name="keywords_connections_linked_format">%1$d linkelve</string>
+    <string name="keywords_connections_show">Kapcsolatok megjelenítése</string>
+    <string name="keywords_connections_hide">Kapcsolatok elrejtése</string>
+    <string name="keywords_connections_items_in_view">%1$d elem ebben a nézetben</string>
+    <string name="keywords_connections_tap_to_expand">Koppintson a %1$d rangsorolt ​​linkek kibontásához</string>
+    <string name="keywords_connections_empty">Még nincsenek csatlakozások ehhez a szűrőhöz.</string>
+    <string name="keywords_open_day">Nyílt nap</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Legtöbbször említett</string>
+    <string name="keywords_sort_recently_added">Nemrég hozzáadva</string>
+    <string name="keywords_peak_mentions_format">Csúcs %1$s • %2$d említés%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d nap</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">együtt</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d megosztott bejegyzés</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| utolsó %1$s</string>
+    <string name="keywords_connections_score_format">Pontszám %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d nap</string>
+    <string name="keywords_connections_shared_chip">%1$d megosztva</string>
+    <string name="keywords_match_type_exact">pontos</string>
+    <string name="keywords_match_type_fuzzy">bolyhos</string>
+    <string name="keywords_match_type_alias">álnév</string>
+    <string name="keywords_match_type_relation">kapcsolat</string>
+    <string name="keywords_action_delete">Töröl</string>
+    <string name="keywords_action_edit">Szerkesztés</string>
+    <string name="keywords_action_view">Kilátás</string>
+    <string name="keywords_name_label">Név</string>
+    <string name="keywords_relation_context_label">Kapcsolat / Kontextus</string>
+    <string name="keywords_aliases_label">Aliasok (vesszővel elválasztva)</string>
+    <string name="keywords_aliases_label_short">Álnevek</string>
+    <string name="keywords_type_person">Személy</string>
+    <string name="keywords_type_place">Hely</string>
+    <string name="keywords_save_disabled_hint">A kulcsszavak mentése ki van kapcsolva. Ha szeretné futtatni az indexelést, engedélyezze őket a listából.</string>
+    <string name="settings_meaning_yesterday">Tegnap</string>
+    <string name="settings_meaning_today">Ma</string>
+    <string name="lookback_chip_weekly">Heti</string>
+    <string name="lookback_chip_monthly">Havi</string>
+    <string name="timeline_screen_title">Idővonal</string>
+    <string name="timeline_empty_title">Itt még semmi</string>
+    <string name="timeline_empty_subtitle">Próbáljon ki egy másik szűrőt, vagy módosítsa a címkekeresést.</string>
+    <string name="timeline_quick_today">Ma</string>
+    <string name="timeline_quick_month">Hónap</string>
+    <string name="timeline_quick_filters">Szűrők</string>
+    <string name="timeline_all_dates">Minden dátum</string>
+    <string name="timeline_label_prefix">Címke: %1$s</string>
+    <string name="timeline_label_search_placeholder">Napi címkék keresése</string>
+    <string name="timeline_filters_title">Idővonal-szűrők és elrendezés</string>
+    <string name="settings_meaning_tomorrow">Holnap</string>
+    <string name="settings_meaning_day_before_yesterday">Tegnapelőtt</string>
+    <string name="settings_meaning_day_after_tomorrow">Holnap után</string>
+    <string name="settings_meaning_last_week">Múlt héten</string>
+    <string name="settings_meaning_next_week">Jövő héten</string>
+    <string name="settings_meaning_monday">hétfő</string>
+    <string name="settings_meaning_tuesday">kedd</string>
+    <string name="settings_meaning_wednesday">szerda</string>
+    <string name="settings_meaning_thursday">csütörtök</string>
+    <string name="settings_meaning_friday">péntek</string>
+    <string name="settings_meaning_saturday">szombat</string>
+    <string name="settings_meaning_sunday">vasárnap</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Alkalmazás belső tárhelye</string>
+    <string name="settings_storage_internal_default">Alkalmazás belső tárhelye (alapértelmezett)</string>
+    <string name="settings_storage_new_folder_fallback">az új mappát</string>
+    <string name="settings_storage_current_folder_fallback">az aktuális mappát</string>
+    <string name="settings_storage_move_confirm">Minden meglévő bejegyzés átkerül %1$s helyről %2$s helyre. Folytatja?</string>
+    <string name="settings_restore_added_skipped">Hozzáadva: %1$d\nKihagyott ismétlődések: %2$d</string>
+    <string name="settings_storage_custom_folder">Egyéni mappa:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">A gyorsbillentyűk segítenek</string>
+    <string name="addentry_cd_insert_template">Sablon beszúrása</string>
+    <string name="addentry_cd_jump_to_today">Ugrás a mai napra</string>
+    <string name="addentry_cd_share">Részesedés</string>
+    <string name="addentry_cd_bold">Bátor</string>
+    <string name="addentry_cd_italic">Dőlt</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Állítsa be az időt</string>
+    <string name="addentry_event_chip">Esemény</string>
+    <string name="addentry_pick_time_title">Válassz időpontot</string>
+    <string name="addentry_hour_label">Óra</string>
+    <string name="addentry_minute_label">Perc</string>
+    <string name="addentry_new_event_title">Új esemény</string>
+    <string name="addentry_title_label">Cím</string>
+    <string name="addentry_event_description_label">Esemény leírása</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos megtalálta</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Konvertálja a %1$d sort ellenőrzőlistává</item>
+        <item quantity="other">Konvertáljon %1$d sort ellenőrzőlistává</item>
+    </plurals>
+    <string name="addentry_people_places_title">Emberek és helyek</string>
+    <string name="addentry_no_tracked_mentions">Ebben a bejegyzésben nem találhatók nyomon követett személyek vagy helyek.</string>
+    <string name="addentry_day_memory_title">Napi memória</string>
+    <string name="addentry_star_day_title">Csillag ez a nap</string>
+    <string name="addentry_star_day_subtitle">Mentse el kiemelésként, hogy visszatérjen visszatekintésben.</string>
+    <string name="addentry_day_label_label">Napi címke</string>
+    <string name="addentry_day_label_placeholder">például Reset Day</string>
+    <string name="addentry_follow_up_title">Nyomon követni</string>
+    <string name="addentry_next_month">Következő hónapban</string>
+    <string name="addentry_custom">Szokás</string>
+    <string name="addentry_due_date_format">esedékesség %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Világos nyomon követés</string>
+    <string name="addentry_follow_up_note_label">Nyomon követési megjegyzés</string>
+    <string name="addentry_follow_up_note_placeholder">Mit érdemes újra megnézni?</string>
+    <string name="addentry_review_entry_title">Bejegyzés áttekintése</string>
+    <string name="addentry_review_entry_subtitle">Gyors passz mentés előtt. Húzza ki a teendőket, ellenőrizze a nyomon követett említéseket, és jelölje meg a napot, ha ez számít.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d teendő</item>
+        <item quantity="other">%1$d todos</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d említést</item>
+        <item quantity="other">%1$d említi</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Bejegyzés mentése</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Változások elvetése</string>
+    <string name="addentry_discard_changes_message">Nem mentett módosításai vannak. Menjen vissza, és dobja el őket, vagy maradjon a szerkesztés folytatásához.</string>
+    <string name="addentry_go_back">Menj vissza</string>
+    <string name="addentry_stay">Marad</string>
+    <string name="addentry_shortcuts_title">Parancsikonok</string>
+    <string name="addentry_help_bold_suffix">a szöveg félkövérré tételéhez (vagy jelölje ki a szöveget, és koppintson a Félkövér gombra)</string>
+    <string name="addentry_help_italic_suffix">a szöveg dőltté tételéhez (vagy jelölje ki a szöveget, és koppintson a Dőlt gombra)</string>
+    <string name="addentry_help_today_suffix">: Az aktuális dátumra bővül (pl. december 25-25)</string>
+    <string name="addentry_help_now_suffix">: Az aktuális időre bővül (pl. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Az aktuális hétre bővül (pl. 52. hét)</string>
+    <string name="addentry_help_day_suffix">: Kibővíti az aktuális hétköznapra (pl. hétfő)</string>
+    <string name="addentry_help_todo_suffix">: Egy teendő jelölőnégyzetgé bővül (pl. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Ha a teendő jelölőnégyzetet tartalmazó sorban bárhová beírja, átkapcsolja azt.</string>
+    <string name="addentry_okey">Oké!</string>
+    <string name="addentry_template_merge_message">Ennek a piszkozatnak már van szövege. Válassza ki, hogyan helyezze el a sablont.</string>
+    <string name="addentry_template_merge_subtitle">A Beszúrás alább megtartja az aktuális piszkozatot. A kurzornál a sablont ott helyezi el, ahol a karika jelenleg van.</string>
+    <string name="addentry_insert_below">Beszúrás alább</string>
+    <string name="addentry_at_cursor">A kurzornál</string>
+    <string name="addentry_replace_draft">Cserélje ki a piszkozatot</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Népszerű</string>
+    <string name="addentry_new_chip">Új</string>
+    <string name="addentry_best_for_format">Legjobb ehhez: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Távolítsa el a kedvenc sablont</string>
+    <string name="addentry_cd_favorite_template">Kedvenc sablon</string>
+    <string name="addentry_checklist_chip">Ellenőrző lista</string>
+    <string name="addentry_followup_chip">Nyomon követés</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d szakaszban</item>
+        <item quantity="other">%1$d szakaszok</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Kedvenc sablon váltása</string>
+    <string name="addentry_template_preview_label">Sablon előnézete</string>
+    <string name="addentry_use_template_button">Sablon használata</string>
+    <string name="addentry_start_blank_title">Kezdje üresen</string>
+    <string name="addentry_start_blank_subtitle">Hagyja ki a sablonokat, és folytassa az üres piszkozatból való írást.</string>
+    <string name="addentry_blank_entry_name">Üres bejegyzés</string>
+    <string name="addentry_blank_entry_description">Egyszerű naplóbejegyzés</string>
+    <string name="addentry_blank_category">Általános</string>
+    <string name="addentry_quick_picks_title">Gyors választások</string>
+    <string name="addentry_sort_recommended">Ajánlott</string>
+    <string name="addentry_sort_recent">Legutóbbi</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Nem található sablon</string>
+    <string name="addentry_no_templates_subtitle">Próbálkozzon másik kereséssel vagy kategóriával.</string>
+    <string name="addentry_search_templates_label">Keresési sablonok</string>
+    <string name="addentry_search_templates_placeholder">Találkozás, egészség, elmélkedés...</string>
+    <string name="addentry_cd_clear_search">Keresés törlése</string>
+    <string name="addentry_choose_template_title">Válasszon egy sablont</string>
+    <string name="addentry_templates_ready_format">%1$d/%2$d sablon készen áll</string>
+    <string name="addentry_category_all">Minden</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Mi történt?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N Lista</string>
+    <string name="addentry_bulleted_list_chip">B lista</string>
+    <string name="addentry_words_count_format">%1$d SZAVAK</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">A nyomon követés ma esedékes</item>
+        <item quantity="other">Ma esedékes nyomon követés</item>
+    </plurals>
+    <string name="home_followup_subtitle">Ugorjon vissza a linkelt napra, és folytassa onnan.</string>
+    <string name="home_from_date_format">%1$s</string>
+    <string name="home_more_due_today_format">+%1$d még ma esedékes</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Címke hozzáadása</string>
+    <string name="home_edit_label_title">Címke szerkesztése</string>
+    <string name="home_day_label_hint">Adjon hozzá egy rövid címkét erre a napra (max. 30 karakter).</string>
+    <string name="home_day_label_placeholder">pl. Első nap az iskolában</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Adjon hozzá egy címkét erre a napra</string>
+    <string name="home_star_label_hint">Adjon egy emlékezetes címkét ennek a napnak (maximum 30 karakter)</string>
+    <string name="home_star_label_placeholder">pl.: Születésnapom, Iskolában</string>
+    <string name="home_star_button">Csillag</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Bejegyzés törölve</item>
+        <item quantity="other">%1$d bejegyzés törölve</item>
+    </plurals>
+    <string name="home_restore_button">VISSZAÁLLÍTÁS</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Bejegyzések keresése...</string>
+    <string name="home_cd_search">Keresés</string>
+    <string name="home_cd_clear_search">Keresés törlése</string>
+    <string name="home_cd_favorite">Kedvenc</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Bejegyzések</string>
+    <string name="home_stat_words">Szavak</string>
+    <string name="home_stat_chars">Karakterek</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Címke hozzáadása</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Egyezés található</item>
+        <item quantity="other">%1$d Találatok egyezést</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Erre a kulcsszóra még nem található egyezés.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Üres állapot ikon</string>
+    <string name="home_empty_future">Ez a jövő. Rögzítsen egy emlékeztetőt!</string>
+    <string name="home_empty_past">A Múltban vagy. Rögzítsen egy emléket, mielőtt elhalványul...</string>
+    <string name="home_empty_today">Még nincsenek bejegyzések. Kezdje a napot.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Megtakarítás</string>
+    <string name="home_cd_add_entry">Bejegyzés hozzáadása</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d törlése</string>
+    <string name="home_future_date_title">Jövőbeli dátum bejegyzés</string>
+    <string name="home_future_date_message_format">Egy jövőbeli dátumra vonatkozó bejegyzést ad hozzá (%1$s). Folytatja?</string>
+    <string name="home_cache_issue_title">Adatgyorsítótár probléma észlelve</string>
+    <string name="home_cache_issue_message">Úgy tűnik, jelentős számú naplóbejegyzés hiányzik a gyorsítótárból. Szeretné végrehajtani az adatgyorsítótár teljes frissítését, hogy megpróbálja visszaállítani őket?</string>
+    <string name="home_refresh_button">Frissítés</string>
+    <string name="home_ignore_button">Figyelmen kívül hagyni</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Emberek és helyek</string>
+    <string name="nav_statistics">Statisztika</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Adatbázis-index újraépítése</string>
+    <string name="nav_backup_data">Adatok biztonsági mentése</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Állapot</string>
+    <string name="nav_finishing_index_rebuild">Az index újraépítésének befejezése...</string>
+    <string name="nav_rebuilding_index">Adatbázis-index újraépítése</string>
+    <string name="nav_refreshing_index">Frissítő index</string>
+    <string name="nav_backup_too_old">a biztonsági mentés túl régi...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Dolgozó...</string>
+    <string name="nav_eta_almost_done">majdnem kész</string>
+    <string name="nav_eta_seconds_left_format">~%1$d maradt</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm van hátra</string>
+    <string name="nav_eta_hours_left_format">~%1$dh van hátra</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menü</string>
+    <string name="nav_cd_rj_logo">RJ logó</string>
+    <string name="nav_tagline">még egy naplóíró alkalmazás</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Áruház</string>
+    <string name="nav_cd_website">Weboldal</string>
+    <string name="nav_cd_share_app">Share App</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja logó</string>
+    <string name="nav_easter_quote_part1">\"Írj le egy elmúló gondolatot, vagy mit ebédeltél; ennek nem kell mélyrehatónak lennie.\n</string>
+    <string name="nav_easter_quote_part2">A szavaid csak létezhetnek.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">az RJ laboratóriumaiból</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Oszd meg yaja</string>
+    <string name="nav_share_text_body">yaja – egy újabb naplózási alkalmazás\n\nEgy figyelemeltereléstől mentes napi napló, amely a bejegyzéseket egyszerű leértékelési fájlként tárolja.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Tárolási hely módosítása</string>
+    <string name="settings_change_storage_location_message">Minden meglévő bejegyzés átkerül %1$s helyről %2$s helyre. Folytatja?</string>
+    <string name="settings_yes">Igen</string>
+    <string name="settings_no">Nem</string>
+    <string name="settings_restore_summary_title">Összegzés visszaállítása</string>
+    <string name="settings_restore_section_journal">Folyóirat</string>
+    <string name="settings_restore_section_shortcodes">Rövid kódok</string>
+    <string name="settings_restore_section_date_keywords">Dátum Kulcsszavak</string>
+    <string name="settings_restore_section_people_places">Emberek és helyek</string>
+    <string name="settings_restore_journal_summary">Új napokhoz hozzáadva: %1$d\nÖsszevonva a meglévő napokkal: %2$d\nDuplikált naplóbejegyzések kihagyva: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Hozzáadva: %1$d\nKihagyott ismétlődések: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Hozzáadva: %1$d\nKihagyott ismétlődések: %2$d</string>
+    <string name="settings_restore_people_places_summary">Hozzáadva: %1$d\nKihagyott ismétlődések: %2$d</string>
+    <string name="rebuild_tools_title">Újraépítési eszközök</string>
+    <string name="rebuild_tools_back">Vissza</string>
+    <string name="rebuild_tools_intro">Először használjon fókuszált újraépítéseket. Az adatbázis újraépítése csak a tárhely módosítására, az adatbázis sérülésére vagy az indexeltérésekre vonatkozik.</string>
+    <string name="rebuild_todo_index_title">Todo Index újraépítése</string>
+    <string name="rebuild_todo_index_subtitle">Frissítse a teendőket a naplófájlokból, és frissítse a Todo képernyőt/widgetet. A legjobb, ha a todos kopottnak tűnik.</string>
+    <string name="rebuild_todo_index_button">Építsd újra a Todost</string>
+    <string name="rebuild_people_places_title">Emberek és helyek újjáépítése</string>
+    <string name="rebuild_people_places_subtitle">Frissítse a kulcsszó-aliasokat, a közös említéseket, a trendeket és a kapcsolati adatokat.</string>
+    <string name="rebuild_people_places_button">Emberek és helyek újjáépítése</string>
+    <string name="rebuild_database_title">Teljes adatbázis újraépítés</string>
+    <string name="rebuild_database_subtitle">Fordítsa újra az adatbázis-gyorsítótárat leértékelési fájlokból. Újraindexeli a bejegyzéseket, a számlálásokat, a teendőket, az embereket és helyeket, valamint a widgeteket a semmiből.</string>
+    <string name="rebuild_database_button">Adatbázis újraépítése</string>
+    <string name="rebuild_database_confirm_title">Az adatbázis indexének újraépítése</string>
+    <string name="rebuild_database_confirm_message">Ezzel törli és újraindexeli a teljes Room SQLite adatbázist a Markdown fájlokból. Nagy folyóiratok esetén ez eltarthat néhány percig.</string>
+    <string name="rebuild_database_confirm_start">Indítsa el az újjáépítést</string>
+    <string name="rebuild_database_status_title">Adatbázis-index állapota</string>
+    <string name="rebuild_database_storage_engine">Tároló motor</string>
+    <string name="rebuild_database_storage_engine_value">Szoba SQLite adatbázis</string>
+    <string name="rebuild_database_indexed_days">Indexelt napok</string>
+    <string name="rebuild_database_indexed_days_value">%1$d nap indexelve</string>
+    <string name="rebuild_database_file_size">Adatbázis fájl mérete</string>
+    <string name="rebuild_database_last_sync">Utolsó indexszinkronizálás</string>
+    <string name="rebuild_database_age_never">Soha</string>
+    <string name="rebuild_database_age_just_now">Éppen most</string>
+    <string name="rebuild_database_age_one_minute">1 perccel ezelőtt</string>
+    <string name="rebuild_database_age_minutes">%1$d perce</string>
+    <string name="rebuild_database_age_one_hour">1 órája</string>
+    <string name="rebuild_database_age_hours">%1$d órája</string>
+    <string name="shortcodes_title">Rövid kódok</string>
+    <string name="shortcodes_import_cd">Importálás</string>
+    <string name="shortcodes_export_cd">Export</string>
+    <string name="shortcodes_help_cd">Segítség</string>
+    <string name="shortcodes_new">Új rövid kód</string>
+    <string name="shortcodes_empty_title">Nincsenek egyéni rövid kódok</string>
+    <string name="shortcodes_empty_subtitle">Adjon hozzá egyet, hogy dinamikus szöveggé bővítse az olyan kivonatokat, mint a @yday.</string>
+    <string name="shortcodes_dynamic_dates_hint">Dinamikus dátumokhoz használja a {{today:format}} lehetőséget.</string>
+    <string name="shortcodes_help_title">Shortcode Help</string>
+    <string name="shortcodes_help_built_in">Beépített rövid kódok:</string>
+    <string name="shortcodes_help_built_in_examples">@ma, @most, @hét, @nap, @t (jelölőnégyzet), @x (jelölőnégyzet váltása)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dinamikus minták:</string>
+    <string name="shortcodes_help_dynamic_desc">Használja a következőt: {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} vagy {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Példa: @yday -&gt; Tegnap: {{tegnap:nn-HH-éé}}</string>
+    <string name="shortcodes_help_common_formats">Általános formátumok: nn-MM-yy, ÓÓ:pp, EEEE (nap neve).</string>
+    <string name="action_close">Közeli</string>
+    <string name="keyword_detail_title_fallback">Kulcsszó</string>
+    <string name="keyword_detail_not_found">A kulcsszó nem található</string>
+    <string name="keyword_detail_last_indexed">Utolsó indexelés: %1$s</string>
+    <string name="keyword_detail_mentions_section">Említések</string>
+    <string name="pin_biometric_prompt_title">Oldja fel a biometrikus funkcióval</string>
+    <string name="pin_biometric_prompt_subtitle">Használja ujjlenyomatát vagy arcát a feloldáshoz</string>
+    <string name="pin_error_no_biometric_enrolled">Nincs biometrikus adat. Kérjük, regisztráljon ujjlenyomatot vagy arcot az eszköz beállításaiban.</string>
+    <string name="pin_error_hardware_unavailable">A biometrikus hardver nem érhető el.</string>
+    <string name="pin_error_no_hardware">Ez az eszköz nem rendelkezik biometrikus hardverrel.</string>
+    <string name="pin_error_not_available">A biometrikus hitelesítés nem elérhető.</string>
+    <string name="pin_title_confirm">Erősítse meg a PIN kódot</string>
+    <string name="pin_title_set_new">Új PIN-kód beállítása</string>
+    <string name="pin_title_disable">A letiltáshoz írja be a jelenlegi PIN-kódot</string>
+    <string name="pin_title_enter">Írja be a PIN-kódot</string>
+    <string name="pin_error_incorrect">Helytelen PIN-kód. Próbáld újra.</string>
+    <string name="pin_error_mismatch">A PIN-kódok nem egyeznek. Kezdje elölről.</string>
+    <string name="pin_cd_use_biometric">Használjon biometrikus adatot</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Ez a nap fel van címkézve, de még nincs naplóbejegyzés.</string>
+    <string name="timeline_preview_loading">Előnézet betöltése...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d további bejegyzés ezen a napon</item>
+        <item quantity="other">+ %1$d további bejegyzés ezen a napon</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Nyitva ezen a napon</string>
+    <string name="timeline_chip_today">MA</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d bejegyzés</item>
+        <item quantity="other">%1$d bejegyzés</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Nyomon követés</string>
+    <string name="timeline_chip_label_only">Csak címke</string>
+    <string name="timeline_cd_favorite">Kedvenc</string>
+    <string name="version_history_title">Verziótörténet</string>
+    <string name="version_history_day_versions_title">Napi verziók</string>
+    <string name="version_history_keep_copies_title">Őrizzen meg biztonsági másolatokat</string>
+    <string name="version_history_keep_copies_subtitle">Mielőtt a Yaja módosítana egy napi fájlt, elmenti az aktuális fájlt az alkalmazásadatok közé az Előzményfájlok alatt.</string>
+    <string name="version_history_versions_kept_title">Naponta megőrzött verziók</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">A Yaja minden dátumhoz megtartja a legújabb %1$d verziót.</item>
+        <item quantity="other">A Yaja minden dátumhoz megtartja a legújabb %1$d verziót.</item>
+    </plurals>
+    <string name="version_history_retention_title">Visszatartás</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">A %1$d napnál régebbi pillanatképek automatikusan törlődnek.</item>
+        <item quantity="other">A %1$d napnál régebbi pillanatképek automatikusan törlődnek.</item>
+    </plurals>
+    <string name="version_history_notes">Megjegyzések: A verzióelőzmények védik a napleíró fájlokat a módosítások hozzáadása, szerkesztése, törlése, átrendezése, címkézése, csillagozása és újbóli megtekintése előtt. Ez nem felhőalapú biztonsági mentés; továbbra is használja a Biztonsági másolatot a hordozható másolatokhoz.</string>
+    <string name="version_history_snapshots_for">Pillanatképek %1$s</string>
+    <string name="version_history_snapshots_subtitle">Nyisson meg egy mentett verziót, ellenőrizze, és állítsa vissza erre a napra.</string>
+    <string name="version_history_empty">Erre a dátumra még nincs mentett verzió.</string>
+    <string name="action_view">Kilátás</string>
+    <string name="version_history_date_intro">Nyisson meg egy korábbi mentett verziót erre a napra, ellenőrizze, és szükség esetén állítsa vissza.</string>
+    <string name="action_next">Következő</string>
+    <string name="action_apply">Alkalmazni</string>
+    <string name="action_restore">Visszaállítás</string>
+    <string name="statistics_choose_title">Válassza a Statisztika lehetőséget</string>
+    <string name="statistics_choose_subtitle">A nem kívánt szakaszok elrejtése. Legalább egy szakasznak láthatónak kell maradnia.</string>
+    <string name="statistics_visible_count">%1$d/%2$d látható</string>
+    <string name="statistics_show_all">Összes megjelenítése</string>
+    <string name="statistics_one_section_visible">Az egyik szakasznak láthatónak kell maradnia</string>
+    <string name="statistics_shown">Megjelenik a statisztikákban</string>
+    <string name="statistics_hidden">A statisztikák elől elrejtve</string>
+    <string name="statistics_select_start_date">Válassza a Kezdő dátum lehetőséget</string>
+    <string name="statistics_select_end_date">Válassza a Befejezés dátumát</string>
+    <string name="statistics_filter_by_period">Szűrés időszak szerint</string>
+    <string name="statistics_cd_reorder">Nyomja meg hosszan az átrendezéshez</string>
+    <string name="statistics_total_entries">Összes bejegyzés</string>
+    <string name="statistics_total_words">Összes szavak</string>
+    <string name="statistics_avg_words_per_entry">Átl. Szavak/Bejegyzés</string>
+    <string name="statistics_current_streak">Aktuális sorozat</string>
+    <string name="statistics_pages_written">Írott oldalak</string>
+    <string name="statistics_days_highlighted">Kiemelt napok</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d nap</item>
+        <item quantity="other">%1$d nap</item>
+    </plurals>
+    <string name="statistics_period_all_time">Minden idők statisztikái</string>
+    <string name="statistics_period_current_year">Aktuális év statisztika</string>
+    <string name="statistics_period_previous_year">Előző év statisztika</string>
+    <string name="statistics_period_current_month">Aktuális havi statisztika</string>
+    <string name="statistics_period_previous_month">Előző havi statisztika</string>
+    <string name="statistics_period_custom">Egyéni időszak statisztika</string>
+    <string name="statistics_period_chip_all_time">Minden idők</string>
+    <string name="statistics_period_chip_current_year">Folyó év</string>
+    <string name="statistics_period_chip_previous_year">Előző év</string>
+    <string name="statistics_period_chip_current_month">Ebben a hónapban</string>
+    <string name="statistics_period_chip_previous_month">Előző hónap</string>
+    <string name="statistics_period_chip_custom">Szokás</string>
+    <string name="statistics_sections_visible">%1$d / %2$d szakasz látható</string>
+    <string name="statistics_loading_stages">Statisztikák szakaszos betöltése...</string>
+    <string name="review_period_weekly">Heti Szemle</string>
+    <string name="review_period_monthly">Havi áttekintés</string>
+    <string name="review_anchor_week">%1$s-t tartalmazó hét</string>
+    <string name="review_anchor_month">%1$s tartalmazó hónap</string>
+    <string name="review_chip_entries">Bejegyzések %1$d</string>
+    <string name="review_chip_words">Szavak %1$d</string>
+    <string name="review_chip_days">Napok %1$d</string>
+    <string name="review_hint_jump">Koppintson az alábbi dátumjelekre, hogy visszaugorjon a naplóba.</string>
+    <string name="review_chip_streak">Sorozat %1$d</string>
+    <string name="review_chip_gap">Rés %1$d</string>
+    <string name="review_chip_labels">Címkék %1$d</string>
+    <string name="review_chip_favorites">Kedvencek %1$d</string>
+    <string name="review_empty_period">Ebben az időszakban még nincsenek naplóbejegyzések. A címkék és a kiemelések továbbra is megjelennek lent, ha vannak.</string>
+    <string name="review_writing_rhythm">Írási ritmus</string>
+    <string name="review_best_streak">A legjobb sorozat</string>
+    <string name="review_longest_gap">Leghosszabb rés</string>
+    <string name="review_most_active_days">A legaktívabb napok</string>
+    <string name="review_day_entries_words">%1$d bejegyzés | %2$d szó</string>
+    <string name="review_top_people">Legjobb emberek</string>
+    <string name="review_top_places">Legnépszerűbb helyek</string>
+    <string name="review_no_people_mentions">Az emberek nem említik</string>
+    <string name="review_no_place_mentions">Nincs hely említés</string>
+    <string name="review_favorite_moments">Kedvenc pillanatok</string>
+    <string name="review_starred_day">Csillaggal megjelölt nap</string>
+    <string name="review_highlighted_in_period">Kiemelve ebben az időszakban</string>
+    <string name="review_labels_created">Címkék létrehozva</string>
+    <string name="review_labeled_day">Felcímkézett nap</string>
+    <string name="review_language_split">Nyelvfelosztás</string>
+    <string name="review_not_enough_text">Nincs elég szöveg ebben az időszakban</string>
+    <string name="lookback_reviews_title">Vélemények</string>
+    <string name="lookback_reviews_intro">Készítsen egy gyors gondolkodást a kiválasztott naplónapról.</string>
+    <string name="lookback_seven_days">7 nap</string>
+    <string name="lookback_one_month">1 hónap</string>
+    <string name="lookback_weekly_review">Heti Szemle</string>
+    <string name="lookback_weekly_review_subtitle">Ezen a héten egy pillantással</string>
+    <string name="lookback_monthly_review">Havi áttekintés</string>
+    <string name="lookback_monthly_review_subtitle">Ez a hónap összefoglalva</string>
+    <string name="lookback_flashbacks_title">Ezen a napon az elmúlt években</string>
+    <string name="lookback_highlights_title">Az Ön kiemelései</string>
+    <string name="lookback_empty_title">Még nincsenek visszatekintések vagy kiemelések.</string>
+    <string name="lookback_empty_subtitle">Kedvenc fontos napok, amikor itt láthatod őket!</string>
+    <string name="lookback_cd_random_entry">Ugrás a véletlenszerű bejegyzéshez</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Időszak</string>
+    <string name="statistics_compare_mode_title">Mód összehasonlítása</string>
+    <string name="statistics_compare_mode_subtitle">Hónap, év és kulcsszó-delták</string>
+    <string name="statistics_this_year">Idén</string>
+    <string name="statistics_writing_days_delta">Írásnapok Delta</string>
+    <string name="statistics_top_person_delta">Top Person Delta</string>
+    <string name="statistics_no_people_mentions">Az emberek még nem említik</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Helyet még nem említenek</string>
+    <string name="statistics_structured_writing">Strukturált írás</string>
+    <string name="statistics_template_led_format">Sablon által vezetett %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Üres %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Leggyakrabban használt sablonok</string>
+    <string name="statistics_template_mix">Sablonkeverék</string>
+    <string name="statistics_follow_up_leaders">Nyomon követési vezetők</string>
+    <string name="statistics_compare_details">Részletek összehasonlítása</string>
+    <string name="statistics_label_month">Hónap</string>
+    <string name="statistics_label_year">Év</string>
+    <string name="statistics_this_month_count_format">Ebben a hónapban %1$d</string>
+    <string name="statistics_last_month_count_format">Múlt hónap %1$d</string>
+    <string name="statistics_longest_streak">Leghosszabb sorozat</string>
+    <string name="statistics_most_active_day">A legaktívabb nap</string>
+    <string name="statistics_writing_consistency">Az írás következetessége</string>
+    <string name="statistics_days_with_entries">Napok bejegyzésekkel</string>
+    <string name="statistics_best_month">Legjobb hónap</string>
+    <string name="statistics_best_month_format">%1$s · %2$d bejegyzés</string>
+    <string name="statistics_avg_writing_days_week">Átl. Írásnapok / hét</string>
+    <string name="statistics_days_decimal_format">%1$.1f nap</string>
+    <string name="statistics_based_on_total_words">A naponta írt összes szó alapján</string>
+    <string name="statistics_light_words">Világos (&lt; 50 szó)</string>
+    <string name="statistics_moderate_words">Közepes (50-200 szó)</string>
+    <string name="statistics_heavy_words">Nehéz (200-500 szó)</string>
+    <string name="statistics_intense_words">Intenzív (500+ szó)</string>
+    <string name="statistics_not_enough_text_languages">Nincs elég szöveg a nyelvek észleléséhez</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d nyelv észlelve</item>
+        <item quantity="other">%1$d nyelv észlelve</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">A nyelvészlelés még mindig megoldódik.</string>
+    <string name="statistics_latin_scripts_as_english">A latin betűk angolként jelennek meg</string>
+    <string name="statistics_use_more_accurate_detection">Használjon pontosabb észlelést</string>
+    <string name="statistics_write_more_entries_languages">Írjon további bejegyzéseket a nyelvi statisztikák megtekintéséhez.</string>
+    <string name="statistics_based_on_entry_time">Belépési idő alapján</string>
+    <string name="statistics_morning_time">Reggel (5-től délig)</string>
+    <string name="statistics_afternoon_time">Délután (17:00)</string>
+    <string name="statistics_evening_time">Este (17-21 óráig)</string>
+    <string name="statistics_night_time">Éjszaka (21:00-05:00)</string>
+    <string name="statistics_heatmap_filling">A hőtérkép még töltődik.</string>
+    <string name="statistics_heatmap_less">Kevesebb</string>
+    <string name="statistics_heatmap_more">Több</string>
+    <string name="action_open">Nyitott</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal események</string>
+    <string name="tasker_event_desc">Válassza ki, hogy mely Yaja naplóesemények aktiválják ezt a Tasker-profilt.</string>
+    <string name="tasker_event_saved">Bejegyzés mentve</string>
+    <string name="tasker_event_edited">Bejegyzés szerkesztve</string>
+    <string name="tasker_event_deleted">Bejegyzés törölve</string>
+    <string name="tasker_event_default_hint">Ha egyik sem van kiválasztva, a Yaja alapértelmezés szerint a Bejegyzés mentve lesz.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Ha egyiket sem választja ki, a Yaja alapértelmezés szerint a Bejegyzés mentve lesz.</string>
+    <string name="tasker_action_add_entry">Bejegyzés hozzáadása</string>
+    <string name="tasker_action_add_event">Esemény hozzáadása</string>
+    <string name="tasker_action_add_todo">Todo hozzáadása</string>
+    <string name="tasker_action_append">Mellékel</string>
+    <string name="tasker_action_match_header_label">Egyezés / fejléc</string>
+    <string name="tasker_action_match_header_placeholder">Nem fogadott hívások</string>
+    <string name="tasker_action_line_to_append_label">Hozzáfűzendő sor</string>
+    <string name="tasker_action_text_label">Szöveg</string>
+    <string name="tasker_action_placeholder_event">Eseményjegyzet a Taskertől</string>
+    <string name="tasker_action_placeholder_todo">Vásároljon tejet</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Gyors megjegyzés a Taskertől</string>
+    <string name="tasker_action_tip_append">Az első hívás egy bejegyzést hoz létre, amely a megfelelő szöveggel kezdődik. A későbbi hívások hozzáfűzik a sort alá.</string>
+    <string name="tasker_action_tip_default">Tipp: Tasker változók helyezhetők el a szövegmezőben.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Előző munkamenet összeomlási naplója</string>
+    <string name="crash_log_clear_close">Törlés és bezárás</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Indítsa el az alkalmazást</string>
+    <string name="tap_action_quick_capture">Gyors rögzítés</string>
+    <string name="tap_action_do_nothing">Ne csinálj semmit</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja írás hőtérkép</string>
+    <string name="widget_cell_shape">Sejt alakja</string>
+    <string name="widget_corner_radius">Saroksugár: %1$ddp</string>
+    <string name="widget_square">Négyzet</string>
+    <string name="widget_round">Kerek</string>
+    <string name="widget_inner_margin">Belső margó: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Tér a hőtérkép és a widget élei között</string>
+    <string name="widget_none">Egyik sem</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">On Tap</string>
+    <string name="widget_on_tap_desc">Művelet a widget megérintésekor</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Elfog</string>
+    <string name="widget_qc_shape">Widget alakja</string>
+    <string name="widget_show_label">Címke megjelenítése</string>
+    <string name="widget_show_label_desc">Jelenítse meg a „Rögzítés” szöveget a widgeten</string>
+    <string name="widget_show_icon">Ikon megjelenítése</string>
+    <string name="widget_show_icon_required">Ikonra van szükség, ha a címke el van rejtve</string>
+    <string name="widget_show_icon_desc">Toll ikon megjelenítése a widgeten</string>
+    <string name="widget_label_text">Címke szövege</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">Lekerekített, hőtérkép-szerű teendőlista widget.</string>
+    <string name="widget_todo_corner_radius">Saroksugár: %1$ddp</string>
+    <string name="widget_todo_padding">Kitöltés: %1$ddp</string>
+    <string name="widget_todo_show_completed">Elvégzett feladatok megjelenítése</string>
+    <string name="widget_todo_show_completed_desc">Vegye fel a bejelölt elemeket a widget-listába</string>
+    <string name="widget_todo_include_events">Tartalmazzon eseményeket</string>
+    <string name="widget_todo_include_events_desc">Az eseménybejegyzések megjelenítése a teendők mellett a widgetben</string>
+    <string name="widget_todo_show_header">Todo fejléc megjelenítése</string>
+    <string name="widget_todo_show_header_desc">A widget címsorának megjelenítése vagy elrejtése</string>
+    <string name="widget_todo_auto_hide">A widget automatikus elrejtése, ha minden feladat elkészült</string>
+    <string name="widget_todo_auto_hide_unavailable">Nem érhető el, amíg a befejezett feladatok megjelennek</string>
+    <string name="widget_todo_auto_hide_desc">Tegye átláthatóvá a widgetet, ha nincsenek függőben lévő feladatok</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">kész</string>
+    <string name="todo_confirm_mark_not_done">nem kész</string>
+    <string name="todo_confirm_title">Megjelöli a feladatot mint %1$s?</string>
+    <string name="todo_confirm_reopen">Ez a feladat jelenleg befejeződött. Erősítse meg, mielőtt újra kinyitná.</string>
+    <string name="todo_confirm_complete">Ez a teendő még nyitott. Erősítse meg, mielőtt késznek jelöli.</string>
+    <string name="todo_confirm_accidental_tap">A véletlen érintések nem változtatják meg a feladatot.</string>
+    <string name="todo_confirm_yes_mark">Igen, jelölje meg %1$s</string>
+    <string name="todo_confirm_open_yaja">Nyitás Yajában</string>
+    <string name="todo_confirm_keep_as_is">Maradjon úgy ahogy van</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">még egy naplóíró alkalmazás</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">az RJ laboratóriumaiból</string>
+    <string name="help_made_in">Készült: 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Importálás megszakítása</string>
+    <string name="timeline_show_all_dates">Az összes dátum megjelenítése</string>
+    <string name="timeline_show_all_dates_subtitle">Tartalmazza az összes elmúlt napot, még bejegyzések nélkül is</string>
+    <string name="settings_background_tint_clean">Tiszta</string>
+    <string name="settings_background_tint_soft">Puha</string>
+    <string name="settings_background_tint_rich">Gazdag</string>
+    <string name="settings_background_tint_deep">Mély</string>
+    <string name="settings_accent_style_complementary">Kiegészítő</string>
+    <string name="settings_accent_style_analogous">Hasonló</string>
+    <string name="settings_accent_style_triadic">Triadikus</string>
+    <string name="settings_accent_style_soft">Puha</string>
+    <string name="action_clear">Világos</string>
+    <string name="compliance_master_start_section">Kezdés ütemezése</string>
+    <string name="compliance_master_start_help">Válassza ki a kezdési dátumot és az opcionális időpontot ehhez az ismétlődő ütemezéshez.</string>
+</resources>

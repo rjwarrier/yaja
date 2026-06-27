@@ -32,6 +32,7 @@ import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.EditCalendar
 import androidx.compose.material.icons.rounded.EmojiEvents
+import androidx.compose.material.icons.rounded.EventRepeat
 import androidx.compose.material.icons.rounded.ExpandLess
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material3.FloatingActionButton
@@ -44,6 +45,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import com.mj.yaja.ui.design.expressiveFabMotion
+import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -151,8 +153,16 @@ internal fun TodoHeroCard(
                     modifier = Modifier.padding(top = 4.dp),
                     verticalArrangement = Arrangement.spacedBy(0.dp)
                 ) {
+                    val cleanLabel = remember(metrics.mainLabel) {
+                        val firstSpace = metrics.mainLabel.indexOf(' ')
+                        if (firstSpace != -1 && metrics.mainLabel.substring(0, firstSpace).all { it.isDigit() }) {
+                            metrics.mainLabel.substring(firstSpace + 1)
+                        } else {
+                            metrics.mainLabel
+                        }
+                    }
                     Text(
-                        text = metrics.mainLabel,
+                        text = cleanLabel,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.SemiBold
@@ -271,13 +281,13 @@ internal fun TodoFilterChips(
     )
     val selectedIndex = items.indexOfFirst { it.first == selectedFilter }.coerceAtLeast(0)
     val segmentInset = 3.dp
-    val barHeight = 28.dp
+    val barHeight = 38.dp
 
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-        val slotWidth = maxWidth / items.size
-        val selectedWidth = (slotWidth - 12.dp).coerceAtLeast(52.dp)
+        val innerMaxWidth = maxWidth - segmentInset * 2
+        val slotWidth = innerMaxWidth / items.size
         val animatedOffset by animateDpAsState(
-            targetValue = slotWidth * selectedIndex + ((slotWidth - selectedWidth) / 2),
+            targetValue = slotWidth * selectedIndex,
             label = "todo_filter_segment_offset"
         )
         Surface(
@@ -296,7 +306,7 @@ internal fun TodoFilterChips(
                 Surface(
                     modifier = Modifier
                         .offset(x = animatedOffset)
-                        .width(selectedWidth)
+                        .width(slotWidth)
                         .height(barHeight - (segmentInset * 2)),
                     shape = RoundedCornerShape(12.dp),
                     color = selectedContainer,
@@ -334,11 +344,18 @@ private fun TodoFilterSegment(
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
     Box(
         modifier = modifier
             .alpha(if (enabled || selected) 1f else 0.45f)
             .clip(RoundedCornerShape(10.dp))
-            .clickable(enabled = enabled, onClick = onClick),
+            .expressivePressMotion(interactionSource, pressedScale = 0.94f)
+            .clickable(
+                enabled = enabled,
+                interactionSource = interactionSource,
+                indication = androidx.compose.foundation.LocalIndication.current,
+                onClick = onClick
+            ),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -520,15 +537,19 @@ internal fun TodoItemCard(
         label = "todo_item_card_scale"
     )
 
+    val interactionSource = remember { MutableInteractionSource() }
+
     Surface(
         modifier = modifier
             .fillMaxWidth()
             .animateContentSize()
-            .scale(cardScale),
+            .scale(cardScale)
+            .expressivePressMotion(interactionSource, pressedScale = 0.97f),
         shape = RoundedCornerShape(22.dp),
         color = containerColor,
         tonalElevation = 0.dp,
         shadowElevation = 0.dp,
+        interactionSource = interactionSource,
         onClick = onToggle
     ) {
         Row(
@@ -611,6 +632,29 @@ internal fun TodoAddFab(
         Icon(
             imageVector = Icons.Rounded.AddTask,
             contentDescription = stringResource(R.string.todo_cd_add_todo),
+            modifier = Modifier.size(28.dp)
+        )
+    }
+}
+
+@Composable
+internal fun TodoAddRecurringFab(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    FloatingActionButton(
+        onClick = onClick,
+        interactionSource = interactionSource,
+        modifier = modifier
+            .size(64.dp)
+            .expressiveFabMotion(interactionSource),
+        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+    ) {
+        Icon(
+            imageVector = Icons.Rounded.EventRepeat,
+            contentDescription = stringResource(R.string.todos_cd_open_compliance_master),
             modifier = Modifier.size(28.dp)
         )
     }

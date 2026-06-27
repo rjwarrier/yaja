@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">jaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Tidning</string>
+    <string name="nav_calendar">Kalender</string>
+    <string name="nav_lookback">Tillbakablick</string>
+    <string name="nav_settings">Inställningar</string>
+    <string name="nav_shortcodes">Kortkoder</string>
+    <string name="nav_help">Hjälp &amp; Om</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Spara</string>
+    <string name="action_cancel">Avboka</string>
+    <string name="action_delete">Radera</string>
+    <string name="action_edit">Redigera</string>
+    <string name="action_back">Tillbaka</string>
+    <string name="action_undo">Ångra</string>
+    <string name="action_yes">Ja</string>
+    <string name="action_no">Inga</string>
+    <string name="action_remove">Ta bort</string>
+    <string name="action_done">Gjort</string>
+    <string name="action_set">Uppsättning</string>
+    <string name="action_select">Välja</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Bygger om cachen</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Snabbfångst</string>
+    <string name="quick_capture_hint">Vad hände?</string>
+    <string name="quick_capture_helper_shortcodes">Kortkoder expanderar här automatiskt och att göra-raderna fortsätter på Enter.</string>
+    <string name="quick_capture_save_delayed">Spara försenat. Öppna Yaja igen för att verifiera.</string>
+    <string name="cd_saved">Sparad</string>
+    <string name="quick_todo_dialog_title">Snabb tillägg</string>
+    <string name="quick_todo_save_delayed">Att göra spara försenat. Öppna Yaja igen för att verifiera.</string>
+    <string name="quick_todo_placeholder">Lägg till en uppgift</string>
+    <string name="quick_event_placeholder">Lägg till en händelse</string>
+    <string name="quick_todo_task_date">Uppgiftsdatum</string>
+    <string name="quick_todo_event_date">Händelsedatum</string>
+    <string name="quick_todo_pick_date_cd_format">Välj %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Sparar som en att göra-post för den valda dagen.</string>
+    <string name="quick_event_selected_day_hint">Sparar som en händelsepost för den valda dagen.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Tidigare</string>
+    <string name="cd_next">Nästa</string>
+    <string name="cd_surprise_me">Överraska mig</string>
+    <string name="calendar_cd_go_to_current_month">Gå till aktuell månad</string>
+    <string name="calendar_quick_action_timeline_title">Tidslinje</string>
+    <string name="calendar_quick_action_timeline_subtitle">Bläddra kronologiskt</string>
+    <string name="calendar_quick_action_jump_title">Hoppa till datum</string>
+    <string name="calendar_quick_action_jump_subtitle">Öppet en viss dag</string>
+    <string name="calendar_jump_placeholder">DD-MM-ÅÅ</string>
+    <string name="calendar_jump_invalid_date">Ogiltigt datum. Använd formatet DD-MM-ÅÅ.</string>
+    <string name="calendar_action_go">Gå</string>
+    <string name="calendar_enable_future_dates_title">Aktivera framtida datum</string>
+    <string name="calendar_enable_future_dates_message">Framtida datuminmatning är inaktiverad. Vill du aktivera det?</string>
+    <string name="calendar_action_enable">Aktivera</string>
+    <string name="calendar_future_entry_enabled">Framtida datuminmatning har aktiverats</string>
+    <string name="calendar_weekday_sun_short">Sol</string>
+    <string name="calendar_weekday_mon_short">mån</string>
+    <string name="calendar_weekday_tue_short">tis</string>
+    <string name="calendar_weekday_wed_short">ons</string>
+    <string name="calendar_weekday_thu_short">tors</string>
+    <string name="calendar_weekday_fri_short">fre</string>
+    <string name="calendar_weekday_sat_short">lö</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ANMÄLAN DENNA MÅNAD</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d dag</item>
+        <item quantity="other">%1$d / %2$d dagar</item>
+    </plurals>
+    <string name="calendar_days_of_memories">dagar av minnen</string>
+    <string name="calendar_consistency_last_12_months">SENASTE 12 MÅNADERNA</string>
+    <string name="calendar_consistency_title_format">KONSISTENS - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">mot \'%1$s</string>
+    <string name="calendar_consistency_first_period">första perioden</string>
+    <string name="calendar_graph_frequency_month">Månad</string>
+    <string name="calendar_graph_frequency_year">År</string>
+    <string name="calendar_yearly_consistency_title">Konsistens (årligen)</string>
+    <string name="calendar_keywords_title">Vem dyker upp mest</string>
+    <string name="calendar_keywords_syncing">Statistik över människor och platser synkroniseras fortfarande med sökordsindexering.</string>
+    <string name="calendar_keywords_empty">Lägg till minst 3 personer eller 3 platser för att se toppomnämnanden.</string>
+    <string name="calendar_keywords_people">Personer</string>
+    <string name="calendar_keywords_places">Platser</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_appearance">Utseende</string>
+    <string name="settings_appearance_subtitle">Tema, färger, typsnitt och personliga stilar</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_font">Font</string>
+    <string name="settings_storage">Lagring</string>
+    <string name="settings_security">Säkerhet</string>
+    <string name="settings_backup">Säkerhetskopiering</string>
+    <string name="settings_change_storage_title">Ändra lagringsplats</string>
+    <string name="settings_backup_never">Aldrig</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Sökinställningar</string>
+    <string name="settings_search_clear">Rensa sökning</string>
+    <string name="settings_search_recent">Senaste sökningar</string>
+    <string name="settings_search_no_results">Inga matchande inställningar</string>
+    <string name="settings_search_close">Nära</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Journalerfarenhet</string>
+    <string name="settings_section_navigation_gestures">Navigering och gester</string>
+    <string name="settings_section_review_insights">Recension &amp; Insikter</string>
+
+    <!-- Language -->
+    <string name="settings_language">Språk</string>
+    <string name="settings_language_title">Appens språk</string>
+    <string name="settings_language_subtitle">Välj det språk som används i appen.</string>
+    <string name="settings_language_system_default">Systemstandard</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Entry Style</string>
+    <string name="settings_journal_entry_style_subtitle">Välj mellan förhöjda kort och en plattare journallook.</string>
+    <string name="settings_journal_entry_style_cards">Kort</string>
+    <string name="settings_journal_entry_style_flat">Platt</string>
+    <string name="settings_journal_render_checkboxes_title">Återge kryssrutor som text</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Visa antal rubriker för dag</string>
+    <string name="settings_journal_day_header_counts_title">Visa antal rubriker för dag</string>
+    <string name="settings_journal_day_header_counts_subtitle">Visa post-, ord- och teckenantal i dagbokens rubrik.</string>
+    <string name="settings_journal_show_timestamps_title">Visa tidsstämplar</string>
+    <string name="settings_journal_show_timestamps_subtitle">Visa ingångstid på tidslinjen.</string>
+    <string name="settings_journal_allow_future_title">Tillåt framtida poster</string>
+    <string name="settings_journal_allow_future_subtitle">Aktivera att lägga till poster till framtida datum.</string>
+    <string name="settings_journal_truncate_title">Trunkera långa poster</string>
+    <string name="settings_journal_truncate_subtitle">Förkorta långa poster på startskärmen.</string>
+    <string name="settings_journal_char_limit_title">Karaktärsgräns</string>
+    <string name="settings_journal_char_limit_subtitle">Ställ in hur många tecken som ska visas innan trunkering.</string>
+    <string name="settings_journal_char_limit_min">50 tecken</string>
+    <string name="settings_journal_char_limit_max">200 tecken</string>
+    <string name="settings_journal_char_count">%1$d tecken</string>
+    <string name="settings_journal_first_day_title">Första dagen i veckan</string>
+    <string name="settings_journal_first_day_subtitle">Starta kalendern på</string>
+    <string name="settings_journal_day_sun">Sol</string>
+    <string name="settings_journal_day_mon">mån</string>
+    <string name="settings_journal_date_recognition">Datumigenkänning</string>
+    <string name="settings_journal_date_order_title">Beställning av datum</string>
+    <string name="settings_journal_date_order_subtitle">Hur man läser numeriska datum</string>
+    <string name="settings_journal_date_order_auto">Bil</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Nyckelord för datum</string>
+    <string name="settings_journal_date_keywords_subtitle">Ord på andra språk som betyder ett datum (till exempel ett lokalt ord för igår).</string>
+    <string name="settings_journal_view_keywords">Visa (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Lägg till nyckelord</string>
+    <string name="settings_journal_motion">Rörelse</string>
+    <string name="settings_journal_animations_title">Animationer</string>
+    <string name="settings_journal_animations_subtitle">Styr rörelse över appen. Reducerad håller saker flytande med mindre rörelse.</string>
+    <string name="settings_journal_animations_full">Full</string>
+    <string name="settings_journal_animations_reduced">Nedsatt</string>
+    <string name="settings_journal_animations_off">Av</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Granskning efter sparande</string>
+    <string name="settings_review_post_write_title">Recension efter skrivning</string>
+    <string name="settings_review_post_write_subtitle">Visa recensionsark efter att ha tryckt på spara för att extrahera uppgifter, kontrollera omnämnanden, stjärna dag eller ställa in etikett.</string>
+    <string name="settings_review_people_places">Människor &amp; platser</string>
+    <string name="settings_review_highlighting_title">Markering</string>
+    <string name="settings_review_highlighting_subtitle">Markera spårade personer och platser i hemkort och Visa inmatningsläge.</string>
+    <string name="settings_review_match_sensitivity_title">Matchkänslighet</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Hur nära ett ord måste matcha för att upptäckas av People &amp; Places (högre = striktare).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Lägg till kortkod</string>
+    <string name="shortcodes_edit_title">Redigera kortkod</string>
+    <string name="shortcodes_code_label">Kortkod (t.ex. @yday)</string>
+    <string name="shortcodes_expansion_label">Expansionstext</string>
+    <string name="shortcodes_export_error">Det gick inte att exportera kortkoder</string>
+    <string name="shortcodes_import_error">Det gick inte att importera kortkoder</string>
+    <string name="todos_expand_section">Expandera %1$s</string>
+    <string name="todos_collapse_section">Komprimera %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Att skriva värmekarta</string>
+    <string name="heatmap_widget_description">Senaste skrivaktivitetens värmekarta för din dagbok.</string>
+    <string name="quick_capture_widget_name">Snabbfångst</string>
+    <string name="quick_capture_widget_description">En knapptryckning för att snabbt lägga till en journalanteckning.</string>
+    <string name="quick_todo_widget_name">Snabbt att göra</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal Events</string>
+    <string name="tasker_screen_allow_add_entry_title">Tillåt Tasker Lägg till post</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Låter Tasker använda Yaja Quick Capture-åtgärder som Add Entry och Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Tillåt Tasker-evenemang</string>
+    <string name="tasker_screen_allow_events_subtitle">Låter Yaja skicka Entry Saved, Entry Modified och Entry Deleted events till Tasker.</string>
+    <string name="tasker_screen_include_text_title">Inkludera inläggstext i händelser</string>
+    <string name="tasker_screen_include_text_subtitle">Av som standard för sekretess. När den är avstängd får Tasker händelsetyp, datum, etikett och tid, men inte journaltext.</string>
+    <string name="tasker_screen_section_what">Vad detta gör</string>
+    <string name="tasker_screen_body_what">Tasker kan snabbt lägga till journalanteckningar eller uppgifter i Yaja, lägga till rader i en grupperad post som missade samtal och Yaja kan berätta för Tasker när en post sparas, redigeras eller tas bort.</string>
+    <string name="tasker_screen_section_how">Hur man använder</string>
+    <string name="tasker_screen_body_how">Slå på reglaget du behöver här först. Öppna sedan Tasker och lägg till antingen en Yaja Quick Capture-åtgärd eller en Yaja Journal Event-händelse.</string>
+    <string name="tasker_screen_section_notes">Anteckningar</string>
+    <string name="tasker_screen_body_notes">Inläggstext delas inte med Tasker om du inte aktiverar Inkludera inläggstext i händelser. Om Tasker inte visar de senaste alternativen eller variablerna, öppna Tasker-konfigurationsskärmen igen efter att ha uppdaterat Yaja.</string>
+    <string name="tasker_screen_section_example">Exempel</string>
+    <string name="tasker_screen_body_example">Åtgärdsexempel: Tasker-åtgärd &gt; Yaja Quick Capture &gt; Lägg till, med Match / header inställd på Missade samtal och Linje att lägga till inställd på en Tasker-variabel. Händelseexempel: Taskerhändelse &gt; Yaja Journal Events &gt; Entry Modified, använd sedan variabler som %%yaja_event_type, %%yaja_date och eventuellt %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Användningsfall</string>
+    <string name="tasker_screen_use_case_1">1. Använd en Yaja-journalhändelse i Tasker för att utlösa en FolderSync-synkroniseringsåtgärd, så att din Yaja-mapp skickas till valfri molnleverantör efter att posterna ändrats.</string>
+    <string name="tasker_screen_use_case_2">2. Använd Pushbullet med Tasker för att skicka text till Yaja Quick Capture, så att den pushade texten sparas som en ny post för den aktuella dagen.</string>
+    <string name="tasker_screen_use_case_3">3. Använd en Tasker-profil för missat samtal för att skicka en Lägg till-åtgärd till Yaja, så att alla missade samtalsdetaljer hamnar under en post för Missade samtal istället för att skapa separata poster.</string>
+    <string name="quick_todo_widget_description">En knapptryckning för att fånga en uppgift som en ny post för idag.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Rullbar lista över journaluppgifter. Tryck på en uppgift för att markera den som klar eller ångrad.</string>
+    <string name="todo_cd_add_todo">Lägg till att göra</string>
+    <string name="todos_cd_open_compliance_master">Öppna återkommande uppgifter</string>
+    <string name="compliance_master_title">Återkommande uppgifter/evenemang</string>
+    <string name="compliance_master_add">Lägg till återkommande uppgift</string>
+    <string name="compliance_master_edit">Redigera återkommande uppgift</string>
+    <string name="compliance_master_intro_title">Återkommande uppgifter</string>
+    <string name="compliance_master_intro_body">Skapa upprepade uppgifter för vecko-, månads-, kvartals-, halvårs- eller årsarbete. Yaja avslöjar varje uppgift först när dess cykel blir relevant.</string>
+    <string name="compliance_master_empty">Inga återkommande uppgifter ännu. Lägg till en för att automatiskt skapa uppgifter enligt det valda schemat.</string>
+    <string name="compliance_master_status_deactivated">Inaktiverad</string>
+    <string name="compliance_master_meta_format">Förfaller dagen %1$d • %2$d leddagar</string>
+    <string name="compliance_master_field_title">Uppgiftens namn</string>
+    <string name="compliance_master_field_title_hint">Exempel: Arkiv månadsdeklaration</string>
+    <string name="compliance_master_field_description">Beskrivning</string>
+    <string name="compliance_master_field_description_hint">Exempel: Kontrollera bankportalen och verifiera mottagandet</string>
+    <string name="compliance_master_editor_task_section">Vad ska Yaja påminna dig om?</string>
+    <string name="compliance_master_field_due_day">Förfallodatum</string>
+    <string name="compliance_master_field_reveal_day">Skapa i förväg (dagar)</string>
+    <string name="compliance_master_field_schedule_mode">När är det dags?</string>
+    <string name="compliance_master_schedule_mode_help">Välj hur Yaja bestämmer förfallodatumet.</string>
+    <string name="compliance_master_select_schedule_type">Välj förfallomönster</string>
+    <string name="compliance_master_field_frequency">Hur ofta?</string>
+    <string name="compliance_master_frequency_help">Välj hur ofta denna uppgift ska upprepas.</string>
+    <string name="compliance_master_select_frequency">Välj upprepningsfrekvens</string>
+    <string name="compliance_master_schedule_details">Schemadetaljer</string>
+    <string name="compliance_master_details_date_help">Ange förfallodatum och hur många dagar i förväg det ska skrivas till dagsakten.</string>
+    <string name="compliance_master_details_weekday_help">Välj den veckodag då denna uppgift ska förfalla.</string>
+    <string name="compliance_master_details_boundary_help">Välj hur många dagar i förväg det ska skrivas till dagsfilen.</string>
+    <string name="compliance_master_field_due_weekday">Förfaller veckodag</string>
+    <string name="compliance_master_select_weekday">Välj veckodag</string>
+    <string name="compliance_master_due_day_help">Ange ett datum från 1 till 31. Kortare månader använder sitt senaste giltiga datum.</string>
+    <string name="compliance_master_reveal_day_help">Hur många dagar före förfallodatum för att skriva uppgiften till den dagliga journalfilen.</string>
+    <string name="compliance_master_first_day_selected">Förfaller det första datumet i varje tillämplig månad.</string>
+    <string name="compliance_master_last_day_selected">Förfaller sista dagen i varje aktuell månad.</string>
+    <string name="compliance_mode_day_of_month">Specifikt datum</string>
+    <string name="compliance_mode_day_of_month_desc">Förfaller på ett numrerat datum, till exempel den 15:e.</string>
+    <string name="compliance_mode_day_of_week">Veckodag</string>
+    <string name="compliance_mode_day_of_week_desc">Förfaller en vald vardag, till exempel måndag.</string>
+    <string name="compliance_mode_first_day">Första i månaden</string>
+    <string name="compliance_mode_first_day_desc">Förfaller det första datumet i varje tillämplig månad.</string>
+    <string name="compliance_mode_last_day">Slutet av månaden</string>
+    <string name="compliance_mode_last_day_desc">Förfaller på sista datum, inklusive kortare månader.</string>
+    <string name="compliance_frequency_weekly">Varje vecka</string>
+    <string name="compliance_frequency_biweekly">Som utkommer varannan vecka</string>
+    <string name="compliance_frequency_monthly">Månatlig</string>
+    <string name="compliance_frequency_quarterly">Kvartalsvis</string>
+    <string name="compliance_frequency_half_yearly">Halvårsvis</string>
+    <string name="compliance_frequency_annual">Årlig</string>
+    <string name="compliance_master_summary_day_of_month">Dag %1$d • %2$s • %3$d dagar i förväg</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Första dejten • %1$s • %2$d dagar i förväg</string>
+    <string name="compliance_master_summary_last_day">Sista datum • %1$s • %2$d dagar i förväg</string>
+    <string name="compliance_master_execution_title">Hur detta kommer att fungera</string>
+    <string name="compliance_master_execution_day_of_month">En uppgift skapas %1$s på dag %2$d. Det skrivs till din dagliga fil %3$d dagar i förväg.</string>
+    <string name="compliance_master_execution_weekday">En uppgift skapas %1$s på %2$s. Det skrivs till din dagliga fil %3$d dagar i förväg.</string>
+    <string name="compliance_master_execution_monthly_weekday">En uppgift skapas varje månad på samma %1$s-förekomst som startdatumet. Det skrivs till din dagliga fil %2$d dagar i förväg.</string>
+    <string name="compliance_master_execution_month_boundary">En uppgift skapas %1$s på %2$s för förfallomånaden. Det skrivs till din dagliga fil %3$d dagar i förväg.</string>
+    <string name="compliance_master_boundary_first">första dejten</string>
+    <string name="compliance_master_boundary_last">sista dejten</string>
+    <string name="compliance_master_recurrence_weekly">varje vecka</string>
+    <string name="compliance_master_recurrence_biweekly">varannan vecka</string>
+    <string name="compliance_master_recurrence_monthly">varje månad</string>
+    <string name="compliance_master_recurrence_quarterly">var tredje månad</string>
+    <string name="compliance_master_recurrence_half_yearly">var sjätte månad</string>
+    <string name="compliance_master_recurrence_annual">varje år</string>
+    <string name="todo_chip_compliance">Återkommande</string>
+    <string name="compliance_master_upcoming">Kommande</string>
+    <string name="compliance_master_delete_confirm_title">Ta bort återkommande uppgift?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" kommer att tas bort och inga fler uppgifter kommer att skapas.</string>
+    <string name="compliance_master_next_date">Nästa: %1$s</string>
+    <string name="compliance_master_end_section">Slutskick</string>
+    <string name="compliance_master_end_help">Välj när den här uppgiften slutar upprepas</string>
+    <string name="compliance_master_end_never">Aldrig</string>
+    <string name="compliance_master_end_on_date">På dejt</string>
+    <string name="compliance_master_end_after">Efter…</string>
+    <string name="compliance_master_end_never_desc">Upprepas på obestämd tid utan slutdatum.</string>
+    <string name="compliance_master_end_date_select">Välj slutdatum</string>
+    <string name="compliance_master_end_date_help">Inga uppgifter skapas efter detta datum.</string>
+    <string name="compliance_master_end_count_label">Antal händelser</string>
+    <string name="compliance_master_end_count_help">Stoppar efter att många uppgifter har skapats.</string>
+    <string name="compliance_master_ends_on">Slutar %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d kvar</string>
+    <string name="compliance_master_ended">Avslutade</string>
+    <string name="compliance_master_type_label">Skapa som</string>
+    <string name="compliance_master_type_task">Uppgift</string>
+    <string name="compliance_master_type_event">Händelse</string>
+    <string name="heatmap_widget_status_loading">Laddar värmekarta...</string>
+    <string name="heatmap_widget_status_empty">Inga inlägg ännu</string>
+    <string name="heatmap_widget_status_refresh">Öppna Yaja för att uppdatera värmekartan</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cache återuppbyggd.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Nytt inlägg</string>
+    <string name="shortcut_new_entry_long">Lägg till en journalanteckning</string>
+    <string name="shortcut_add_todo_short">Lägg till Todo</string>
+    <string name="shortcut_add_todo_long">Lägg till en uppgift för idag</string>
+    <string name="shortcut_add_event_short">Lägg till händelse</string>
+    <string name="shortcut_add_event_long">Lägg till en händelse</string>
+    <string name="shortcut_today_short">I dag</string>
+    <string name="shortcut_today_long">Öppna dagens journal</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigering</string>
+    <string name="settings_bottom_nav_style_label">Nedre navigeringsstil</string>
+    <string name="settings_navigation_mode_title">Navigationsläge</string>
+    <string name="settings_navigation_mode_subtitle">Välj mellan det flytande navigeringsfältet och den fullständiga bottenpanelen.</string>
+    <string name="settings_nav_mode_floating">Flytande</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Navigationsskärmar</string>
+    <string name="settings_nav_summary_floating">Journal och kalender stannar alltid i den flytande stapeln. Välj upp till 2 skärmar till. För närvarande vald: %1$d av %2$d.</string>
+    <string name="settings_nav_summary_panel">Journal och Kalender stannar alltid i den nedre panelen. Välj upp till 3 skärmar till. För närvarande vald: %1$d av %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Visa tillbakablick i det aktiva navigeringsfältet eller panelen.</string>
+    <string name="settings_nav_people_places_subtitle">Visa personer och platser i det aktiva navigeringsfältet eller panelen.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Visa uppgifter i det aktiva navigeringsfältet eller panelen.</string>
+    <string name="todos_quick_add_title">Snabb tillägg</string>
+    <string name="todos_hero_subtitle">Spåra journalarbete och ögonblick</string>
+    <string name="todos_hero_all_activity">All aktivitet</string>
+    <string name="todos_hero_open_focus">Öppet fokus</string>
+    <string name="todos_hero_completed">Avslutad</string>
+    <string name="todos_stat_today_open">Idag öppet</string>
+    <string name="todos_stat_done_today">Klart idag</string>
+    <string name="todos_stat_events">Händelser</string>
+    <string name="todos_stat_still_open">Fortfarande öppet</string>
+    <string name="todos_stat_past_7d">Senaste 7d</string>
+    <string name="todos_stat_days">dagar</string>
+    <string name="todos_empty_done">Inga slutförda uppgifter ännu</string>
+    <string name="todos_empty_events">Inga evenemangsinlägg ännu</string>
+    <string name="todos_section_open">ÖPPNA</string>
+    <string name="todos_section_later">SENARE</string>
+    <string name="todos_section_upcoming">KOMMANDE</string>
+    <string name="todos_section_future_events">FRAMTIDA HÄNDELSER</string>
+    <string name="todos_section_past_events">TIDIGARE HÄNDELSER</string>
+    <string name="todos_cd_open_day">Öppen dag</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d öppen uppgift</item>
+        <item quantity="other">%1$d öppna uppgifter</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d klar uppgift</item>
+        <item quantity="other">%1$d utförda uppgifter</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d kommande evenemang</item>
+        <item quantity="other">%1$d kommande evenemang</item>
+    </plurals>
+    <string name="todos_filter_all_format">Alla %1$d</string>
+    <string name="todos_filter_open_format">Öppna %1$d</string>
+    <string name="todos_filter_done_format">Klar %1$d</string>
+    <string name="todos_filter_events_format">Händelser %1$d</string>
+    <string name="todos_cheer_all_clear">Faran över. Trevlig.</string>
+    <string name="todos_cheer_done_and_dusted">Klart och dammat.</string>
+    <string name="todos_cheer_nothing_pending">Inget väntande.</string>
+    <string name="todos_cheer_caught_up">Du kom ikapp.</string>
+    <string name="todos_cheer_clean_slate">Ren skiffer.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Om %1$d dag</item>
+        <item quantity="other">Om %1$d dagar</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d dag sedan</item>
+        <item quantity="other">%1$d dagar sedan</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Om %1$d vecka</item>
+        <item quantity="other">Om %1$d veckor</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d vecka sedan</item>
+        <item quantity="other">%1$d veckor sedan</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Om 1 månad</string>
+    <string name="todos_relative_one_month_ago">1 månad sedan</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Om %1$d månad</item>
+        <item quantity="other">Om %1$d månader</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d månad sedan</item>
+        <item quantity="other">%1$d månader sedan</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistik</string>
+    <string name="settings_nav_statistics_subtitle_on">Visa statistik i det aktiva navigeringsfältet eller panelen.</string>
+    <string name="settings_nav_statistics_subtitle_off">Slå på Statistik först för att placera den i navigeringen.</string>
+    <string name="settings_show_labels_bottom_panel_title">Visa etiketter i den nedre panelen</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Visa textetiketter under ikoner i den nedre panelen.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gester</string>
+    <string name="settings_entry_delete_title">Entry Ta bort</string>
+    <string name="settings_entry_delete_subtitle">Tryck länge på en post för att välja den. Tryck på fler poster för att välja flera och använd sedan den centrerade Radera-knappen. Tryck på tomt utrymme för att rensa markeringen.</string>
+    <string name="settings_swipe_navigate_title">Svep för att navigera datum</string>
+    <string name="settings_swipe_navigate_subtitle">Svep från höger till vänster för att flytta ett datum framåt och från vänster till höger för att gå bakåt.</string>
+    <string name="settings_drag_reorder_title">Aktivera Dra för att ändra ordning</string>
+    <string name="settings_drag_reorder_subtitle">Tryck länge på poster för att ordna om dem</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data &amp; Återställning</string>
+    <string name="settings_swipe_rebuild_index">Svep nedåt på startskärmen för att bygga om index</string>
+    <string name="settings_large_journal_safe_mode_title">Stor journal säkert läge</string>
+    <string name="settings_large_journal_safe_mode_subtitle">När en mycket stor journal upptäcks, skjut upp icke-nödvändig startstatistik så att appen öppnas snabbare och säkrare.</string>
+    <string name="settings_version_history_title">Versionshistorik</string>
+    <string name="settings_version_history_subtitle">Förvara säkra kopior innan du redigerar, raderar, etiketterar och återgår till ändringar.</string>
+    <string name="settings_storage_location_label">Lagringsplats</string>
+    <string name="settings_reset_to_default">Återställ till standard</string>
+    <string name="settings_choose_folder">Välj Mapp</string>
+    <string name="settings_backup_description">Skapa en Yaja backup-zip som innehåller journalanteckningar, kortkoder, datumnyckelord och person- och platsdata. Återställ kan slå ihop det på ett säkert sätt senare.</string>
+    <string name="settings_last_backup">Senaste säkerhetskopiering: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Ålder för säkerhetskopiering</string>
+    <string name="settings_backup_reminder_disabled">Inaktiverad</string>
+    <string name="settings_backup_reminder_desc">Markera säkerhetskopiering i sidofältet när den är äldre än %1$d dagar.</string>
+    <string name="settings_backup_reminder_days_disabled">0 dagar (inaktiverad)</string>
+    <string name="settings_backup_reminder_days">%1$d dagar</string>
+    <string name="settings_restore_button">Återställa</string>
+    <string name="settings_backup_now_button">Säkerhetskopiera nu</string>
+    <string name="settings_db_index_management_label">Databasindexhantering</string>
+    <string name="settings_db_index_management_desc">Öppna fokuserade ombyggnadsverktyg för saker, människor och platser, eller en fullständig ombyggnad av databasindex.</string>
+    <string name="settings_rebuild_tools_button">Bygg om verktyg</string>
+    <string name="settings_import_label">Importera</string>
+    <string name="settings_import_info_cd">Importera information</string>
+    <string name="settings_import_info_title">Importera information</string>
+    <string name="settings_import_day_one_title">Dag ett import</string>
+    <string name="settings_import_day_one_bullet1">- Exportera från dag ett utan bilder</string>
+    <string name="settings_import_day_one_bullet2">- Endast textdata kommer att importeras</string>
+    <string name="settings_import_day_one_bullet3">- Tidsstämpel och platsdata (om tillgänglig) kommer att bevaras</string>
+    <string name="settings_import_perf_warning_title">Prestandavarning</string>
+    <string name="settings_import_perf_warning_desc">Att importera ett stort antal poster (500+) kan ta flera minuter. Du kan navigera bort och importen fortsätter i bakgrunden.</string>
+    <string name="settings_got_it">Jag förstår</string>
+    <string name="settings_import_success">%1$d nya dagar, %2$d sammanslagna, %3$d hoppade över</string>
+    <string name="settings_import_source_day_one">Dag ett</string>
+    <string name="settings_import_source_day_one_subtitle">.zip eller .json export</string>
+    <string name="settings_import_source_journalistic">Journalistisk</string>
+    <string name="settings_import_source_journalistic_subtitle">.json export</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Lär dig hur du använder yaja</string>
+    <string name="help_footer_website">Webbplats</string>
+    <string name="help_footer_share">Dela</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Disharmoni</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Dela yaja</string>
+    <string name="help_share_yaja_text">yaja - ännu en journalapp\n\nEn distraktionsfri lokal journal som lagrar poster som nedskrivningsfiler. Det inkluderar tidslinje, tillbakablick, personer och platser, mallar, recensioner, statistik och widgets.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord användarnamn kopierat!</string>
+    <string name="help_footer_play_store">Play Butik</string>
+    <string name="help_cd_rj_logo">RJ-logotyp</string>
+    <string name="help_screen_title">Hjälp &amp; Om</string>
+    <string name="help_welcome_title">Välkommen till yaja</string>
+    <string name="help_welcome_body">Yaja är en lokal första markdown-dagbok för att fånga dagar, personer, platser, uppföljningar, recensioner och mönster utan att stå i vägen. Den här sidan ger en snabbguide till de viktigaste delarna av appen.</string>
+    <string name="help_start_here">Börja här</string>
+    <string name="help_cd_collapse">Kollapsa</string>
+    <string name="help_cd_expand">Expandera</string>
+    <string name="help_group_everyday_title">Daglig</string>
+    <string name="help_group_everyday_desc">Journalföring, skrivflöde och daglig navigering.</string>
+    <string name="help_group_reviews_title">Recensioner och insikter</string>
+    <string name="help_group_reviews_desc">Tillbakablickar, trender, människor, platser och analyser.</string>
+    <string name="help_group_advanced_title">Avancerade verktyg</string>
+    <string name="help_group_advanced_desc">Widgets, lagring, integritet, säkerhetskopior och tekniska verktyg.</string>
+    <string name="help_onboard_todos_events_title">Att göra, evenemang och återkommande</string>
+    <string name="help_onboard_todos_events_body">Håll personliga påminnelser, familjeplaner och återkommande scheman som automatiskt genererar uppgifter på deras förfallodatum.</string>
+    <string name="help_onboard_widgets_title">Widgets</string>
+    <string name="help_onboard_widgets_body">Lägg till widgets för Heatmap, Quick Capture, Quick Todo eller Todo List från startprogrammet.</string>
+    <string name="help_onboard_version_history_title">Versionshistorik</string>
+    <string name="help_onboard_version_history_body">Aktivera historikfiler i Inställningar &gt; Data för att hålla säkra ögonblicksbilder före riskfyllda ändringar.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Använd Tasker för att snabbt lägga till poster, uppgifter eller händelser när något personligt behöver fångas direkt.</string>
+    <string name="help_section_writing_editor_title">Skrivande &amp; Redaktör</string>
+    <string name="help_section_writing_editor_preview">Mallar, markdown-rubriker, uppgifter, händelser och flexibel utkastsinfogning.</string>
+    <string name="help_section_writing_editor_content">+ Tryck på den flytande \'+\'-knappen för att skriva för den valda dagen.\n+ Använd mallar som Mötesanteckning, Resedag, Hälsologg, Reflektion, Arbetslogg med mera.\n+ Mallar kan infogas i ett tomt utkast, läggas till nedan, användas för att ersätta ett utkast eller infogas vid markören.\n+ Redaktörsmarker kan snabbt infoga till doss,+ numrerade listor, händelser, punkter och händelser. och Redigera post stöder rubriker i markdown-stil som ### Sektion.</string>
+    <string name="help_section_post_write_review_title">Recension efter skrivning</string>
+    <string name="help_section_post_write_review_preview">Att göra extrahering, sökordsidentifiering, stjärnmärkning, etiketter och återbesök inställningarna.</string>
+    <string name="help_section_post_write_review_content">+ Efter att ha skrivit kan Yaja öppna ett recensionsark innan det sparas.\n+ Det kan extrahera att göra-objekt, upptäcka personer och platser, stjärnmärka dagen, ställa in en dagetikett och schemalägga återbesöksdatum.\n+ Du kan inaktivera Granskning efter skrivning från Inställningar om du föredrar att spara direkt.</string>
+    <string name="help_section_revisit_followup_title">Återbesök och uppföljningsdatum</string>
+    <string name="help_section_revisit_followup_preview">Journallänkade uppföljningsdatum med snabbval och ett anpassat alternativ.</string>
+    <string name="help_section_revisit_followup_content">+ Lägg till återbesöksdatum med imorgon, nästa vecka, nästa månad eller ett anpassat datum.\n+ Föremål för återbesök visas på startsidan och är markerade i kalendern och tidslinjen.\n+ Detta fungerar bra för löften, beslut, hälsokontroller och påminnelser kopplade till journalsammanhang.</string>
+    <string name="help_section_navigation_gestures_title">Navigering och gester</string>
+    <string name="help_section_navigation_gestures_preview">Datumförflyttning, radering av val, svepinställningar och återskapa cachebeteende.</string>
+    <string name="help_section_navigation_gestures_content">+ Hem stöder datumnavigering med pilar och valfri svepnavigering när aktiverat.\n+ Tryck länge på en post för att välja den. Tryck på fler poster för att välja dem också, använd sedan pillret Ta bort nära knappen Lägg till.\n+ Om du trycker utanför markerade poster rensas valet. Raderade poster kan återställas tillsammans från återställningsnedräkningen.\n+ Du kan bygga om cachen när journalfiler ändras utanför Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Kortkoder och snabbfångst</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Snabb personlig infångning plus återanvändbara dynamiska textutdrag.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Skapa kortkoder för att snabbt infoga upprepad text.\n+ Dynamiska platshållare som {{today:dd-MMM}} och {{now:HH:mm}} fungerar inuti kortkoder.\n+ Quick Capture hjälper till att logga något snabbt utan att öppna hela redigeraren.\n+ Quick Add kan spara antingen en uppgift eller en händelse för ett valt datum från skärmen, eller Tasker.</string>
+    <string name="help_section_todos_events_title">Att göra, evenemang och återkommande</string>
+    <string name="help_section_todos_events_preview">Personliga påminnelser, anmärkningsvärda händelser och automatiska återkommande scheman.</string>
+    <string name="help_section_todos_events_content">+ Uppgifter skrivs direkt i journalanteckningar som [ ] och [x] rader.\n+ Händelser är normala journalanteckningar markerade som händelse, användbara för familjeplaner, möten, resor eller allt du vill lägga märke till senare.\n+ Återkommande uppgifter och händelser (scheman) skriver automatiskt att göra-poster eller händelserubriker till dina dagliga journalsidor (t.ex. varje månad, t.ex. varje månad). dina scheman genom att trycka på ikonen Återkommande på Todos-skärmen.\n+ Varje dag när du öppnar Yaja, körs bakgrundspipelinen för att kontrollera om några schemalagda uppgifter är klara och infogar dem i dagens post.\n+ Todos-skärmen hjälper dig att se öppna uppgifter, slutförda uppgifter och händelser utan att förvandla Yaja till en produktivitetsöversikt i journalen+ för att öppna en dag i journalen+.\n+. på Todos för att bygga om att göra-indexet om filer ändras utanför Yaja.\n+ Visa slutförda uppgifter kommer ihåg, så din föredragna vy fastnar när du lämnar och återvänder.\n+ Todo-widgets kan visa väntande uppgifter, bekräfta innan du växlar, dölja slutförda uppgifter och eventuellt automatiskt dölja när ingenting väntar.</string>
+    <string name="help_section_people_places_title">Människor &amp; platser</string>
+    <string name="help_section_people_places_preview">Nyckelord, alias, trender och rankade anslutningsvyer.</string>
+    <string name="help_section_people_places_content">+ Spåra personer och platser med alias och relationsetiketter.\n+ Sök, filtrera och sortera sökordslistan.\n+ Sökordsdetaljsidor visar aktualitet, omnämnanden över tid, samomnämnanden och rankade anslutningar.\n+ Matchningskänslighet kan justeras från Inställningar.</string>
+    <string name="help_section_timeline_lookback_title">Tidslinje &amp; tillbakablick</string>
+    <string name="help_section_timeline_lookback_preview">Senaste dagarnas surfning, höjdpunkter, överraska mig och granska startpunkter.</string>
+    <string name="help_section_timeline_lookback_content">+ Tidslinjen låter dig bläddra bland de senaste dagarna med filter, årsmarker och valfritt läge för alla datum.\n+ Tillbakablick visar bidrag från samma dag under tidigare år och dina stjärnmärkta höjdpunkter.\n+ Överraska mig öppnar ett slumpmässigt tidigare inlägg från Tillbakablick.\n+ Veckogranskning och månadsrecension live i Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistik &amp; recensioner</string>
+    <string name="help_section_statistics_reviews_preview">Jämförelseläge, mallinsikter, anpassade synliga avsnitt och sammanfattningar.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistik inkluderar jämförelseläge, nyckelordsdelta och mallinsikter.\n+ Du kan välja vilka statistiksektioner som ska vara synliga från statistikskärmen.\n+ Jämförelseläge är tillgängligt för alla tider och sammanfattar månads- och årsdelta.\n+ Recensionssidor sammanfattar de flesta aktiva dagarna, populäraste personer och platser, favoritögonblick, etiketter, språkfördelningar och streck eller gap.</string>
+    <string name="help_section_widgets_home_title">Widgets &amp; Home Surface</string>
+    <string name="help_section_widgets_home_preview">Launcher-widgets, markerade nyckelord och hemstatistik på dagnivå.</string>
+    <string name="help_section_widgets_home_content">+ Writing Heatmap, Quick Capture, Quick Add och Todo List-widgets är tillgängliga på startprogrammet.\n+ Widgetkonfigurationsskärmar låter dig justera hörn, utfyllnad, form, rubriker, synlighet för utförda uppgifter och andra widgetalternativ där det stöds.\n+ Värmekartaswidgeten använder fler intensitetsnyanser för en jämnare skriv- och historikvyn för personer\n+inställningen för människor. aktiverad.\n+ Hem-datumhuvudet kan visa eller dölja antal poster, ord och tecken.</string>
+    <string name="help_section_language_text_analysis_title">Språk &amp; textanalys</string>
+    <string name="help_section_language_text_analysis_preview">Lokalt språkdetektering för statistik och granskningsinsikter.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja upptäcker dominerande skript eller språk över poster för insikter.\n+ Språkdelning visas i statistik och recensioner.\n+ Identifiering körs lokalt och skickar inte journaltext från enheten.</string>
+    <string name="help_section_data_privacy_cache_title">Data, integritet och cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown-lagring, versionshistorik, applogg, applås och återskapa cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Datasekretess: All personlig journaldata finns strikt på din fysiska enhet och lämnar den aldrig när som helst. Yaja kör inte molndatabaser, fjärrservrar för säkerhetskopiering eller telemetri för att spåra din text.\n+ Journalposter lagras som standard Markdown-filer ordnade efter år och månad.\n+ Versionshistorik kan spara säkra ögonblicksbilder innan redigeringar, raderingar, etiketter och återbesök ändringar.\n+ Du kan välja hur många versioner som ska behållas och hur många dagar historiken, apploggar och tekniska händelser lagras utan cache-aktivitet och tekniska data. journaltext.\n+ Återskapa appcache låter dig uppdatera appdata modulärt, inklusive uppgifter och ombyggnader av fullständig cache.\n+ Applås stöder PIN-kod och fingeravtryck.\n+ Yaja håller tung indexering och statistikarbete uppskjutet där det är möjligt så att appstart och sparar förblir responsiva.</string>
+    <string name="settings_app_log_title">Applogg</string>
+    <string name="settings_app_log_subtitle">Visa integritetssäker diagnostik och tidigare kraschdetaljer</string>
+    <string name="app_log_cd_share">Dela applogg</string>
+    <string name="app_log_cd_clear">Rensa applogg</string>
+    <string name="app_log_privacy_title">Integritetssäker diagnostik</string>
+    <string name="app_log_privacy_description">Den här loggen registrerar stora apphändelser, cache-/lagringsoperationer, widgetuppdateringar och kraschdetaljer. Det inkluderar inte journalanteckningar, uppgiftstext eller innehåll för privata anteckningar.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Behåll den senaste %d dagen</item>
+        <item quantity="other">Spara de senaste %d dagarna</item>
+    </plurals>
+    <string name="app_log_retention_description">Äldre logghändelser beskärs automatiskt under loggning och omedelbart när denna inställning ändras.</string>
+    <string name="app_log_empty">Ingen applogg ännu.</string>
+    <string name="app_log_refresh">Uppdatera logg</string>
+    <string name="app_log_share_empty">Inga Yaja-apploggposter än.</string>
+    <string name="app_log_share_subject">Yaja applogg</string>
+    <string name="app_log_share_chooser">Dela Yaja applogg</string>
+    <string name="app_log_local_time_format">%1$s | lokal tid\n%2$s</string>
+    <string name="settings_website_title">Yaja hemsida</string>
+    <string name="settings_website_subtitle">Öppna den officiella webbplatsen för uppdateringar och detaljer</string>
+    <string name="settings_advanced_integrations_title">Avancerade integrationer</string>
+    <string name="settings_tasker_integration_title">Tasker Integration</string>
+    <string name="settings_tasker_integration_subtitle">Snabbfångståtgärder och journalhändelsutlösare</string>
+    <string name="settings_shortcodes_subtitle">Hantera återanvändbara utdrag som expanderar medan du skriver eller snabbfångar.</string>
+    <string name="settings_privacy_security_title">Sekretess och säkerhet</string>
+    <string name="settings_pin_lock_title">PIN-lås</string>
+    <string name="settings_app_locked">Appen är låst</string>
+    <string name="settings_app_unlocked">Appen är upplåst</string>
+    <string name="settings_change_pin">Ändra PIN-kod</string>
+    <string name="settings_biometric_unlock_title">Biometrisk upplåsning</string>
+    <string name="settings_biometric_enabled_desc">Fingeravtryck eller Face ID aktiverat</string>
+    <string name="settings_biometric_disabled_desc">Använd biometrisk istället för PIN-kod</string>
+    <string name="settings_autolock_timeout_title">Timeout för automatisk låsning</string>
+    <string name="settings_pin_lock_disclaimer">PIN-lås förhindrar obehörig åtkomst till appen men krypterar inte dina journaldata på disken. Någon med direkt filåtkomst kunde fortfarande läsa dina poster.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minut</item>
+        <item quantity="other">%1$d minuter</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Ljus</string>
+    <string name="settings_theme_dark">Mörk</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Färger</string>
+    <string name="settings_color_intensity_title">Färgintensitet</string>
+    <string name="settings_background_tint_title">Bakgrundsfärg</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Beställnings</string>
+    <string name="settings_font_size_label">Fontstorlek</string>
+    <string name="settings_ui_font_size_label">UI-teckensnittsstorlek</string>
+    <string name="settings_data_font_size_label">Innehåll Teckenstorlek</string>
+    <string name="settings_follow_ui_font_scale_label">Gör innehållets teckensnittsstorlek till samma som UI</string>
+    <string name="settings_color_source_material_you">Material du</string>
+    <string name="settings_theme_preview_title">Förhandsgranskning av tema</string>
+    <string name="settings_journal_entry_preview">Journalanteckning</string>
+    <string name="settings_journal_entry_preview_desc">Kort, marker och knappar kommer att använda dessa färger.</string>
+    <string name="settings_preview_chip_chip">Chips</string>
+    <string name="settings_preview_chip_accent">Accent</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensitet: %1$s</string>
+    <string name="settings_personal_themes_title">Personliga teman</string>
+    <string name="settings_theme_name_label">Temanamn</string>
+    <string name="settings_main_color_label">Huvudfärg</string>
+    <string name="settings_hue_label">Nyans</string>
+    <string name="settings_sat_label">lö</string>
+    <string name="settings_bright_label">Ljus</string>
+    <string name="settings_generated_accents_title">Genererade accenter</string>
+    <string name="settings_personal_theme_desc">Välj en färg. Yaja skapar matchande accent- och stödfärger.</string>
+    <string name="settings_preview_chip_main">Main</string>
+    <string name="settings_preview_chip_support">Stöd</string>
+    <string name="settings_no_font_selected">Inget teckensnitt valt</string>
+    <string name="settings_custom_font_desc">Välj valfri unicode .ttf- eller .otf-fil – t.ex. ett malayalam-typsnitt som Manjari. Tecken teckensnittet saknar använder systemteckensnitt.</string>
+    <string name="settings_font_replace">Ersätta</string>
+    <string name="settings_choose_font_file">Välj teckensnittsfil</string>
+    <string name="settings_intensity_muted">Dämpad</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Levande</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Rena</string>
+    <string name="settings_tint_soft">Mjuk</string>
+    <string name="settings_tint_rich">Rik</string>
+    <string name="settings_tint_deep">Djup</string>
+    <string name="settings_accent_complementary">Komplementär</string>
+    <string name="settings_accent_analogous">Analog</string>
+    <string name="settings_accent_triadic">Triadisk</string>
+    <string name="settings_accent_soft">Mjuk</string>
+    <string name="settings_mono_weight_thin">Tunn</string>
+    <string name="settings_mono_weight_extra_light">Extra ljus</string>
+    <string name="settings_mono_weight_light">Ljus</string>
+    <string name="settings_mono_weight_regular">Regelbunden</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Halvfet</string>
+    <string name="settings_mono_weight_bold">Djärv</string>
+    <string name="settings_mono_weight_extra_bold">Extra fet</string>
+    <string name="settings_mono_weight_title">Vikt</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Lägg till nyckelord för datum</string>
+    <string name="settings_keyword_label">Nyckelord</string>
+    <string name="settings_keyword_placeholder_example">till exempel i går</string>
+    <string name="settings_means_label">Medel</string>
+    <string name="settings_add_button">Tillägga</string>
+    <string name="settings_no_keywords_yet">Inga sökord har lagts till ännu.</string>
+    <string name="settings_added_keywords_title">Tillagda sökord (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Lägg till nyckelord</string>
+    <string name="keywords_dialog_add_title">Lägg till nyckelord</string>
+    <string name="keywords_dialog_edit_title">Redigera nyckelord</string>
+    <string name="keywords_cd_import_csv">Importera CSV</string>
+    <string name="keywords_cd_export_csv">Exportera CSV</string>
+    <string name="keywords_cd_download_template">Ladda ner mall</string>
+    <string name="rebuild_cache_storage_transparency_title">Transparens för lagring på enheten</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja använder en säker lokal lagringsmodell. Din personliga journaldata förblir lokal och lämnar aldrig din enhet när som helst:</string>
+    <string name="rebuild_cache_source_of_truth_title">Sanningens källa (Markdown-filer)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Alla poster, checklistobjekt (todos), tidslinjehändelser, stjärnor och taggar sparas permanent i Markdown-filer (.md) i ren text i din valda lokala journalmapp. Din data ägs till 100 % av dig och finns helt och hållet på din enhet.</string>
+    <string name="rebuild_cache_read_cache_title">Läs cache och index (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">För att möjliggöra omedelbar skärmladdning, kalenderhöjdpunkter, nyckelord och statistik utan att skanna filsystemet på varje rullning, analyserar Yaja dina Markdown-filer och indexerar dem i en lokal Room SQLite-databas på din enhet.</string>
+    <string name="rebuild_cache_local_private_title">100 % lokalt och privat</string>
+    <string name="rebuild_cache_local_private_desc">Yaja har inga molndatabaser, fjärrbackupservrar eller telemetri som spårar din text. Alla journalanteckningar och analyserad data förblir strikt på din fysiska enhet och lämnar den aldrig när som helst.</string>
+    <string name="keywords_export_success">Sökord exporterade</string>
+    <string name="keywords_export_failed">Det gick inte att exportera sökord</string>
+    <string name="keywords_template_saved">Mallen har sparats</string>
+    <string name="keywords_template_save_failed">Det gick inte att spara mallen</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Importerat %d nyckelord</item>
+        <item quantity="other">Importerade %d nyckelord</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Inga giltiga sökord hittades</string>
+    <string name="keywords_import_failed">Det gick inte att importera sökord</string>
+    <string name="keywords_status_indexing">Indexering</string>
+    <string name="keywords_status_indexed">Indexerad</string>
+    <string name="keywords_metric_mentions">Omnämnanden</string>
+    <string name="keywords_metric_days">dagar</string>
+    <string name="keywords_timeline_range_all">Alla</string>
+    <string name="keywords_connections_filter_all">Alla</string>
+    <string name="keywords_connections_filter_people">Personer</string>
+    <string name="keywords_connections_filter_places">Platser</string>
+    <string name="keywords_connections_filter_recent">Ny</string>
+    <string name="keywords_connections_filter_strongest">Starkast</string>
+    <string name="keywords_filter_needs_reindex">Behöver omindex</string>
+    <string name="keywords_search_placeholder">Sök personer, platser, alias, relation</string>
+    <string name="keywords_refreshing_counters">Uppdaterar sökordsräknare...</string>
+    <string name="keywords_empty_title">Inga nyckelord ännu</string>
+    <string name="keywords_empty_subtitle">Lägg till de personer och platser du vill att appen ska spåra lokalt.</string>
+    <string name="keywords_no_results_title">Inga matchande resultat</string>
+    <string name="keywords_no_results_subtitle">Prova en annan sökning, sortering eller filter.</string>
+    <string name="keywords_people_title">Personer</string>
+    <string name="keywords_places_title">Platser</string>
+    <string name="keywords_people_empty">Inga personer har lagts till ännu.</string>
+    <string name="keywords_people_filtered_empty">Inga personer matchar de aktuella filtren.</string>
+    <string name="keywords_places_empty">Inga platser har lagts till ännu.</string>
+    <string name="keywords_places_filtered_empty">Inga platser matchar de aktuella filtren.</string>
+    <string name="keywords_delete_person_title">Ta bort person?</string>
+    <string name="keywords_delete_place_title">Ta bort plats?</string>
+    <string name="keywords_delete_message">Ta bort \"%1$s\" från People &amp; Places? Detta tar bort sökordet och dess indexerade matchningar.</string>
+    <string name="keywords_timeline_title">Omnämnanden över tid</string>
+    <string name="keywords_timeline_empty_pattern">Inget månadsmönster ännu</string>
+    <string name="keywords_timeline_total_format">%1$d totalt</string>
+    <string name="keywords_timeline_empty_chart">Omnämnanden kommer att diagram här efter indexering hittar poster.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Topp %1$s • %2$d omnämnande</item>
+        <item quantity="other">Topp %1$s • %2$d omnämnanden</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Dagar med omnämnanden</string>
+    <string name="keywords_recency_title">Senaste nytt</string>
+    <string name="keywords_recency_none">Inga matchningar än</string>
+    <string name="keywords_recency_today">Omnämnt idag</string>
+    <string name="keywords_recency_yesterday">Nämnde igår</string>
+    <string name="keywords_recency_days_ago_format">Senaste omnämnandet för %1$d dagar sedan</string>
+    <string name="keywords_first_seen">Första sett</string>
+    <string name="keywords_last_seen">Senaste omnämnandet för __FMT_0__ dagar sedan</string>
+    <string name="keywords_unknown">Okänd</string>
+    <string name="keywords_co_mentioned_with">Omnämnt med</string>
+    <string name="keywords_connections_title">Anslutningar</string>
+    <string name="keywords_connections_subtitle">Rangordnas efter upprepad överlappning och uppdatering</string>
+    <string name="keywords_connections_linked_format">%1$d länkad</string>
+    <string name="keywords_connections_show">Visa kopplingar</string>
+    <string name="keywords_connections_hide">Dölj anslutningar</string>
+    <string name="keywords_connections_items_in_view">%1$d objekt i den här vyn</string>
+    <string name="keywords_connections_tap_to_expand">Tryck för att expandera %1$d rankade länkar</string>
+    <string name="keywords_connections_empty">Inga anslutningar för detta filter ännu.</string>
+    <string name="keywords_open_day">Öppen dag</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Mest omnämnda</string>
+    <string name="keywords_sort_recently_added">Nyligen tillagd</string>
+    <string name="keywords_peak_mentions_format">Topp %1$s • %2$d omnämnande%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d dag</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">tillsammans</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d delad entr</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">dvs</string>
+    <string name="keywords_connections_meta_last_prefix">| senaste %1$s</string>
+    <string name="keywords_connections_score_format">Poäng %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d dagar</string>
+    <string name="keywords_connections_shared_chip">%1$d delade</string>
+    <string name="keywords_match_type_exact">exakt</string>
+    <string name="keywords_match_type_fuzzy">suddig</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">relation</string>
+    <string name="keywords_action_delete">Radera</string>
+    <string name="keywords_action_edit">Redigera</string>
+    <string name="keywords_action_view">Se</string>
+    <string name="keywords_name_label">Namn</string>
+    <string name="keywords_relation_context_label">Relation / sammanhang</string>
+    <string name="keywords_aliases_label">Alias ​​(kommaseparerade)</string>
+    <string name="keywords_aliases_label_short">Alias</string>
+    <string name="keywords_type_person">Person</string>
+    <string name="keywords_type_place">Plats</string>
+    <string name="keywords_save_disabled_hint">Nyckelord sparas avstängt. Aktivera dem från listan när du vill att indexering ska köras.</string>
+    <string name="settings_meaning_yesterday">I går</string>
+    <string name="settings_meaning_today">I dag</string>
+    <string name="lookback_chip_weekly">Varje vecka</string>
+    <string name="lookback_chip_monthly">Månatlig</string>
+    <string name="timeline_screen_title">Tidslinje</string>
+    <string name="timeline_empty_title">Inget här ännu</string>
+    <string name="timeline_empty_subtitle">Prova ett annat filter eller justera etikettsökningen.</string>
+    <string name="timeline_quick_today">I dag</string>
+    <string name="timeline_quick_month">Månad</string>
+    <string name="timeline_quick_filters">Filter</string>
+    <string name="timeline_all_dates">Alla datum</string>
+    <string name="timeline_label_prefix">Etikett: %1$s</string>
+    <string name="timeline_label_search_placeholder">Sök dagetiketter</string>
+    <string name="timeline_filters_title">Tidslinjefilter och layout</string>
+    <string name="settings_meaning_tomorrow">I morgon</string>
+    <string name="settings_meaning_day_before_yesterday">I förrgår</string>
+    <string name="settings_meaning_day_after_tomorrow">I övermorgon</string>
+    <string name="settings_meaning_last_week">Förra veckan</string>
+    <string name="settings_meaning_next_week">Nästa vecka</string>
+    <string name="settings_meaning_monday">måndag</string>
+    <string name="settings_meaning_tuesday">tisdag</string>
+    <string name="settings_meaning_wednesday">onsdag</string>
+    <string name="settings_meaning_thursday">torsdag</string>
+    <string name="settings_meaning_friday">fredag</string>
+    <string name="settings_meaning_saturday">lördag</string>
+    <string name="settings_meaning_sunday">söndag</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">App intern lagring</string>
+    <string name="settings_storage_internal_default">App internt lagring (standard)</string>
+    <string name="settings_storage_new_folder_fallback">den nya mappen</string>
+    <string name="settings_storage_current_folder_fallback">den aktuella mappen</string>
+    <string name="settings_storage_move_confirm">Alla befintliga poster kommer att flyttas från %1$s till %2$s. Vill du fortsätta?</string>
+    <string name="settings_restore_added_skipped">Tillagd: %1$d\nÖverhoppade dubbletter: %2$d</string>
+    <string name="settings_storage_custom_folder">Anpassad mapp:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Genvägar hjälper</string>
+    <string name="addentry_cd_insert_template">Infoga mall</string>
+    <string name="addentry_cd_jump_to_today">Hoppa till idag</string>
+    <string name="addentry_cd_share">Dela</string>
+    <string name="addentry_cd_bold">Djärv</string>
+    <string name="addentry_cd_italic">Kursiv</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Ställ in tid</string>
+    <string name="addentry_event_chip">Händelse</string>
+    <string name="addentry_pick_time_title">Välj tid</string>
+    <string name="addentry_hour_label">Timme</string>
+    <string name="addentry_minute_label">Minut</string>
+    <string name="addentry_new_event_title">Ny händelse</string>
+    <string name="addentry_title_label">Titel</string>
+    <string name="addentry_event_description_label">Händelsebeskrivning</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos hittades</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Konvertera %1$d rad till checklista</item>
+        <item quantity="other">Konvertera %1$d rader till checklista</item>
+    </plurals>
+    <string name="addentry_people_places_title">Människor &amp; platser</string>
+    <string name="addentry_no_tracked_mentions">Inga spårade personer eller platser hittades i denna post.</string>
+    <string name="addentry_day_memory_title">Dagens minne</string>
+    <string name="addentry_star_day_title">Stjärna denna dag</string>
+    <string name="addentry_star_day_subtitle">Spara den som en höjdpunkt så att den kommer tillbaka i tillbakablick.</string>
+    <string name="addentry_day_label_label">Dag etikett</string>
+    <string name="addentry_day_label_placeholder">till exempel Återställ dag</string>
+    <string name="addentry_follow_up_title">Följ upp</string>
+    <string name="addentry_next_month">Nästa månad</string>
+    <string name="addentry_custom">Beställnings</string>
+    <string name="addentry_due_date_format">Förfaller %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Tydlig uppföljning</string>
+    <string name="addentry_follow_up_note_label">Uppföljningsanteckning</string>
+    <string name="addentry_follow_up_note_placeholder">Vad ska du återkomma till?</string>
+    <string name="addentry_review_entry_title">Granska inlägg</string>
+    <string name="addentry_review_entry_subtitle">Snabbpass innan räddning. Ta fram uppgifter, kontrollera spårade omnämnanden och markera dag om det är viktigt.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d att göra</item>
+        <item quantity="other">%1$d uppgifter</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d nämna</item>
+        <item quantity="other">%1$d nämner</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Spara post</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Släng ändringar</string>
+    <string name="addentry_discard_changes_message">Du har osparade ändringar. Gå tillbaka och släng dem, eller stanna kvar för att fortsätta redigera.</string>
+    <string name="addentry_go_back">Gå tillbaka</string>
+    <string name="addentry_stay">Vistelse</string>
+    <string name="addentry_shortcuts_title">Genvägar</string>
+    <string name="addentry_help_bold_suffix">för att göra text fet (eller markera text och tryck på Fet knapp)</string>
+    <string name="addentry_help_italic_suffix">för att göra text kursiv (eller välj text och tryck på Kursiv-knappen)</string>
+    <string name="addentry_help_today_suffix">: Expanderas till aktuellt datum (t.ex. 25 december-25)</string>
+    <string name="addentry_help_now_suffix">: Expanderas till aktuell tid (t.ex. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Expanderas till aktuell vecka (t.ex. vecka 52)</string>
+    <string name="addentry_help_day_suffix">: Expanderas till aktuell veckodag (t.ex. måndag)</string>
+    <string name="addentry_help_todo_suffix">: Expanderas till en att göra-kryssruta (t.ex. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: När den anges var som helst på raden som innehåller en att göra-kryssruta, kommer den att växla mellan den.</string>
+    <string name="addentry_okey">Okej!</string>
+    <string name="addentry_template_merge_message">Det här utkastet har redan text. Välj hur mallen ska placeras.</string>
+    <string name="addentry_template_merge_subtitle">Infoga nedan behåller det aktuella utkastet. På markören placerar mallen där din caret är nu.</string>
+    <string name="addentry_insert_below">Infoga nedan</string>
+    <string name="addentry_at_cursor">Vid Cursor</string>
+    <string name="addentry_replace_draft">Ersätt utkast</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populär</string>
+    <string name="addentry_new_chip">Ny</string>
+    <string name="addentry_best_for_format">Bäst för: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Ta bort mallfavorit</string>
+    <string name="addentry_cd_favorite_template">Favorit mall</string>
+    <string name="addentry_checklist_chip">Checklista</string>
+    <string name="addentry_followup_chip">Uppföljning</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d avsnitt</item>
+        <item quantity="other">%1$d sektioner</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Växla favoritmall</string>
+    <string name="addentry_template_preview_label">Förhandsgranskning av mall</string>
+    <string name="addentry_use_template_button">Använd mall</string>
+    <string name="addentry_start_blank_title">Börja tomt</string>
+    <string name="addentry_start_blank_subtitle">Hoppa över mallar och fortsätt skriva från ett tomt utkast.</string>
+    <string name="addentry_blank_entry_name">Tom post</string>
+    <string name="addentry_blank_entry_description">Vanlig journalanteckning</string>
+    <string name="addentry_blank_category">Allmän</string>
+    <string name="addentry_quick_picks_title">Snabbval</string>
+    <string name="addentry_sort_recommended">Rekommenderad</string>
+    <string name="addentry_sort_recent">Ny</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Inga mallar hittades</string>
+    <string name="addentry_no_templates_subtitle">Prova en annan sökning eller kategori.</string>
+    <string name="addentry_search_templates_label">Sök mallar</string>
+    <string name="addentry_search_templates_placeholder">Möte, hälsa, reflektion...</string>
+    <string name="addentry_cd_clear_search">Rensa sökning</string>
+    <string name="addentry_choose_template_title">Välj en mall</string>
+    <string name="addentry_templates_ready_format">%1$d av %2$d mallar redo</string>
+    <string name="addentry_category_all">Alla</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Vad hände?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N lista</string>
+    <string name="addentry_bulleted_list_chip">B-listan</string>
+    <string name="addentry_words_count_format">%1$d ORD</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Uppföljning sker idag</item>
+        <item quantity="other">Uppföljning sker idag</item>
+    </plurals>
+    <string name="home_followup_subtitle">Hoppa tillbaka till den länkade dagen och fortsätt därifrån.</string>
+    <string name="home_from_date_format">Från %1$s</string>
+    <string name="home_more_due_today_format">+%1$d till i dag</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Lägg till etikett</string>
+    <string name="home_edit_label_title">Redigera etikett</string>
+    <string name="home_day_label_hint">Lägg till en kort etikett för denna dag (max 30 tecken).</string>
+    <string name="home_day_label_placeholder">ex första dagen i skolan</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Lägg till en etikett för denna dag</string>
+    <string name="home_star_label_hint">Ge denna dag en minnesvärd etikett (max 30 tecken)</string>
+    <string name="home_star_label_placeholder">t.ex. min födelsedag, i skolan</string>
+    <string name="home_star_button">Stjärna</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Posten raderad</item>
+        <item quantity="other">%1$d poster raderade</item>
+    </plurals>
+    <string name="home_restore_button">ÅTERSTÄLLA</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Sök poster...</string>
+    <string name="home_cd_search">Söka</string>
+    <string name="home_cd_clear_search">Rensa sökning</string>
+    <string name="home_cd_favorite">Favorit</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Inlägg</string>
+    <string name="home_stat_words">Ord</string>
+    <string name="home_stat_chars">Tecken</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Lägg till etikett</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Matchning hittades</item>
+        <item quantity="other">%1$d Hittade matchningar</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Inga matchningar hittades för detta sökord ännu.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Tom statusikon</string>
+    <string name="home_empty_future">Det här är framtiden. Spela in en påminnelse!</string>
+    <string name="home_empty_past">Du är i det förflutna. Spela in ett minne innan det bleknar...</string>
+    <string name="home_empty_today">Inga inlägg ännu. Börja din dag.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Sparande</string>
+    <string name="home_cd_add_entry">Lägg till post</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Ta bort %1$d</string>
+    <string name="home_future_date_title">Framtida datuminträde</string>
+    <string name="home_future_date_message_format">Du lägger till en post för ett framtida datum (%1$s). Vill du fortsätta?</string>
+    <string name="home_cache_issue_title">Datacache-problem upptäckt</string>
+    <string name="home_cache_issue_message">Det verkar som om ett stort antal journalanteckningar saknas i cachen. Vill du utföra en fullständig datacache-uppdatering för att försöka återställa dem?</string>
+    <string name="home_refresh_button">Uppdatera</string>
+    <string name="home_ignore_button">Ignorera</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Människor &amp; platser</string>
+    <string name="nav_statistics">Statistik</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Bygg om databasindex</string>
+    <string name="nav_backup_data">Säkerhetskopiera data</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Slutför ombyggnad av index...</string>
+    <string name="nav_rebuilding_index">Bygger om databasindex</string>
+    <string name="nav_refreshing_index">Uppfriskande index</string>
+    <string name="nav_backup_too_old">säkerhetskopian är för gammal...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Arbetssätt...</string>
+    <string name="nav_eta_almost_done">nästan klar</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds kvar</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm kvar</string>
+    <string name="nav_eta_hours_left_format">~%1$dh kvar</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Meny</string>
+    <string name="nav_cd_rj_logo">RJ-logotyp</string>
+    <string name="nav_tagline">ännu en journalapp</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Butik</string>
+    <string name="nav_cd_website">Webbplats</string>
+    <string name="nav_cd_share_app">Dela appen</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja logotyp</string>
+    <string name="nav_easter_quote_part1">\"Skriv ner en förbigående tanke eller vad du åt till lunch, det behöver inte vara djupgående.\n</string>
+    <string name="nav_easter_quote_part2">Dina ord kan bara existera.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">från RJs labb</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Dela yaja</string>
+    <string name="nav_share_text_body">yaja — ännu en journalapp\n\nEn distraktionsfri daglig journal som lagrar poster som vanliga nedskrivningsfiler.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Ändra lagringsplats</string>
+    <string name="settings_change_storage_location_message">Alla befintliga poster kommer att flyttas från %1$s till %2$s. Vill du fortsätta?</string>
+    <string name="settings_yes">Ja</string>
+    <string name="settings_no">Inga</string>
+    <string name="settings_restore_summary_title">Återställ sammanfattning</string>
+    <string name="settings_restore_section_journal">Tidning</string>
+    <string name="settings_restore_section_shortcodes">Kortkoder</string>
+    <string name="settings_restore_section_date_keywords">Nyckelord för datum</string>
+    <string name="settings_restore_section_people_places">Människor &amp; platser</string>
+    <string name="settings_restore_journal_summary">Tillagd till nya dagar: %1$d\nSammanslagna till befintliga dagar: %2$d\nDuplicerade journalanteckningar hoppade över: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Tillagd: %1$d\nÖverhoppade dubbletter: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Tillagd: %1$d\nÖverhoppade dubbletter: %2$d</string>
+    <string name="settings_restore_people_places_summary">Tillagd: %1$d\nÖverhoppade dubbletter: %2$d</string>
+    <string name="rebuild_tools_title">Bygg om verktyg</string>
+    <string name="rebuild_tools_back">Tillbaka</string>
+    <string name="rebuild_tools_intro">Använd fokuserade ombyggnader först. Återuppbyggnad av databasen är endast för lagringsändringar, databaskorruption eller indexfel.</string>
+    <string name="rebuild_todo_index_title">Bygg om Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">Uppdatera uppgifter från journalfiler och uppdatera Todo-skärmen/widgeten. Bäst när todos ser inaktuella ut.</string>
+    <string name="rebuild_todo_index_button">Bygg om Todos</string>
+    <string name="rebuild_people_places_title">Bygg om människor och platser</string>
+    <string name="rebuild_people_places_subtitle">Uppdatera sökordsalias, samomnämnanden, trender och relationsdata.</string>
+    <string name="rebuild_people_places_button">Bygg om människor och platser</string>
+    <string name="rebuild_database_title">Fullständig återuppbyggnad av databas</string>
+    <string name="rebuild_database_subtitle">Kompilera om databascache från markdown-filer. Indexerar om poster, räkningar, uppgifter, personer och platser och widgets från grunden.</string>
+    <string name="rebuild_database_button">Bygg om databasen</string>
+    <string name="rebuild_database_confirm_title">Bygg om databasindex</string>
+    <string name="rebuild_database_confirm_message">Detta kommer att rensa och återindexera hela Room SQLite-databasen från dina Markdown-filer. För stora tidskrifter kan detta ta några minuter.</string>
+    <string name="rebuild_database_confirm_start">Starta ombyggnad</string>
+    <string name="rebuild_database_status_title">Databasindexstatus</string>
+    <string name="rebuild_database_storage_engine">Förvaringsmotor</string>
+    <string name="rebuild_database_storage_engine_value">Rum SQLite Database</string>
+    <string name="rebuild_database_indexed_days">Indexerade dagar</string>
+    <string name="rebuild_database_indexed_days_value">%1$d dagar indexerade</string>
+    <string name="rebuild_database_file_size">Databasfilstorlek</string>
+    <string name="rebuild_database_last_sync">Senaste indexsynkronisering</string>
+    <string name="rebuild_database_age_never">Aldrig</string>
+    <string name="rebuild_database_age_just_now">Just nu</string>
+    <string name="rebuild_database_age_one_minute">1 minut sedan</string>
+    <string name="rebuild_database_age_minutes">%1$d minuter sedan</string>
+    <string name="rebuild_database_age_one_hour">1 timme sedan</string>
+    <string name="rebuild_database_age_hours">%1$d timmar sedan</string>
+    <string name="shortcodes_title">Kortkoder</string>
+    <string name="shortcodes_import_cd">Importera</string>
+    <string name="shortcodes_export_cd">Exportera</string>
+    <string name="shortcodes_help_cd">Hjälp</string>
+    <string name="shortcodes_new">Ny kortkod</string>
+    <string name="shortcodes_empty_title">Inga anpassade kortkoder</string>
+    <string name="shortcodes_empty_subtitle">Lägg till en för att utöka utdrag som @yday till dynamisk text.</string>
+    <string name="shortcodes_dynamic_dates_hint">Använd {{today:format}} för dynamiska datum.</string>
+    <string name="shortcodes_help_title">Kortkodshjälp</string>
+    <string name="shortcodes_help_built_in">Inbyggda kortkoder:</string>
+    <string name="shortcodes_help_built_in_examples">@idag, @nu, @vecka, @dag, @t (kryssruta), @x (växla kryssruta)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynamiska mönster:</string>
+    <string name="shortcodes_help_dynamic_desc">Använd {{today:FORMAT}}, {{yesterday:FORMAT}}, {{morgon:FORMAT}} eller {{nu:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Exempel: @yday -&gt; Igår: {{igår:dd-MMM-åå}}</string>
+    <string name="shortcodes_help_common_formats">Vanliga format: dd-MM-åå, TT:mm, EEEE (dagens namn).</string>
+    <string name="action_close">Nära</string>
+    <string name="keyword_detail_title_fallback">Nyckelord</string>
+    <string name="keyword_detail_not_found">Sökordet hittades inte</string>
+    <string name="keyword_detail_last_indexed">Senast indexerad %1$s</string>
+    <string name="keyword_detail_mentions_section">Omnämnanden</string>
+    <string name="pin_biometric_prompt_title">Lås upp med Biometric</string>
+    <string name="pin_biometric_prompt_subtitle">Använd ditt fingeravtryck eller ansikte för att låsa upp</string>
+    <string name="pin_error_no_biometric_enrolled">Ingen biometrisk inskriven. Vänligen registrera ett fingeravtryck eller ansikte i enhetsinställningarna.</string>
+    <string name="pin_error_hardware_unavailable">Biometrisk hårdvara är inte tillgänglig.</string>
+    <string name="pin_error_no_hardware">Den här enheten har inte biometrisk hårdvara.</string>
+    <string name="pin_error_not_available">Biometrisk autentisering är inte tillgänglig.</string>
+    <string name="pin_title_confirm">Bekräfta PIN-koden</string>
+    <string name="pin_title_set_new">Ställ in ny PIN-kod</string>
+    <string name="pin_title_disable">Ange aktuell PIN-kod för att inaktivera</string>
+    <string name="pin_title_enter">Ange PIN-kod</string>
+    <string name="pin_error_incorrect">Felaktig PIN-kod. Försök igen.</string>
+    <string name="pin_error_mismatch">PIN-koderna matchar inte. Börja om från början.</string>
+    <string name="pin_cd_use_biometric">Använd biometriska</string>
+    <string name="pin_cd_backspace">Backsteg</string>
+    <string name="timeline_preview_empty_labeled">Denna dag är märkt, men det finns ingen journalanteckning ännu.</string>
+    <string name="timeline_preview_loading">Laddar förhandsvisning...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d fler inlägg denna dag</item>
+        <item quantity="other">+ %1$d fler inlägg den här dagen</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Öppet denna dag</string>
+    <string name="timeline_chip_today">I DAG</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d post</item>
+        <item quantity="other">%1$d poster</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Uppföljning</string>
+    <string name="timeline_chip_label_only">Endast etikett</string>
+    <string name="timeline_cd_favorite">Favorit</string>
+    <string name="version_history_title">Versionshistorik</string>
+    <string name="version_history_day_versions_title">Dagversioner</string>
+    <string name="version_history_keep_copies_title">Spara säkerhetskopior</string>
+    <string name="version_history_keep_copies_subtitle">Innan Yaja ändrar en dagsfil, sparar den den aktuella filen i appdata under Historikfiler.</string>
+    <string name="version_history_versions_kept_title">Versioner sparas per dag</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja behåller den senaste versionen %1$d för varje datum.</item>
+        <item quantity="other">Yaja behåller de senaste %1$d-versionerna för varje datum.</item>
+    </plurals>
+    <string name="version_history_retention_title">Retention</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Ögonblicksbilder äldre än %1$d dag rensas automatiskt.</item>
+        <item quantity="other">Ögonblicksbilder äldre än %1$d dagar rensas automatiskt.</item>
+    </plurals>
+    <string name="version_history_notes">Anmärkningar: versionshistorik skyddar nedskrivningsfiler för dag innan du lägger till, redigerar, tar bort, ordnar om, märker, stjärnmärker och går tillbaka till ändringar. Det är inte en molnbackup; fortsätt använda Backup för bärbara kopior.</string>
+    <string name="version_history_snapshots_for">Ögonblicksbilder för %1$s</string>
+    <string name="version_history_snapshots_subtitle">Öppna en sparad version, inspektera den och återställ den för denna dag.</string>
+    <string name="version_history_empty">Inga sparade versioner ännu för detta datum.</string>
+    <string name="action_view">Se</string>
+    <string name="version_history_date_intro">Öppna en tidigare sparad version för denna dag, inspektera den och återställ den vid behov.</string>
+    <string name="action_next">Nästa</string>
+    <string name="action_apply">Tillämpas</string>
+    <string name="action_restore">Återställa</string>
+    <string name="statistics_choose_title">Välj Statistik</string>
+    <string name="statistics_choose_subtitle">Dölj avsnitt du inte vill ha. Minst en sektion måste vara synlig.</string>
+    <string name="statistics_visible_count">%1$d av %2$d synliga</string>
+    <string name="statistics_show_all">Visa alla</string>
+    <string name="statistics_one_section_visible">En sektion måste förbli synlig</string>
+    <string name="statistics_shown">Visas i statistiken</string>
+    <string name="statistics_hidden">Dold från statistik</string>
+    <string name="statistics_select_start_date">Välj Startdatum</string>
+    <string name="statistics_select_end_date">Välj Slutdatum</string>
+    <string name="statistics_filter_by_period">Filtrera efter period</string>
+    <string name="statistics_cd_reorder">Tryck länge för att ändra ordning</string>
+    <string name="statistics_total_entries">Totalt antal poster</string>
+    <string name="statistics_total_words">Totala ord</string>
+    <string name="statistics_avg_words_per_entry">Genomsnittlig Ord/Entry</string>
+    <string name="statistics_current_streak">Aktuell Streak</string>
+    <string name="statistics_pages_written">Skrivna sidor</string>
+    <string name="statistics_days_highlighted">Dagar markerade</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dagar</item>
+    </plurals>
+    <string name="statistics_period_all_time">Alla tiders statistik</string>
+    <string name="statistics_period_current_year">Aktuell årsstatistik</string>
+    <string name="statistics_period_previous_year">Tidigare års statistik</string>
+    <string name="statistics_period_current_month">Aktuell månadsstatistik</string>
+    <string name="statistics_period_previous_month">Föregående månads statistik</string>
+    <string name="statistics_period_custom">Anpassad periodstatistik</string>
+    <string name="statistics_period_chip_all_time">Hela tiden</string>
+    <string name="statistics_period_chip_current_year">Aktuellt år</string>
+    <string name="statistics_period_chip_previous_year">Föregående år</string>
+    <string name="statistics_period_chip_current_month">Denna månad</string>
+    <string name="statistics_period_chip_previous_month">Föregående månad</string>
+    <string name="statistics_period_chip_custom">Beställnings</string>
+    <string name="statistics_sections_visible">%1$d av %2$d sektioner synliga</string>
+    <string name="statistics_loading_stages">Laddar statistik stegvis...</string>
+    <string name="review_period_weekly">Veckoöversikt</string>
+    <string name="review_period_monthly">Månadsöversikt</string>
+    <string name="review_anchor_week">Vecka som innehåller %1$s</string>
+    <string name="review_anchor_month">Månad som innehåller %1$s</string>
+    <string name="review_chip_entries">Inlägg %1$d</string>
+    <string name="review_chip_words">Ord %1$d</string>
+    <string name="review_chip_days">Dagar %1$d</string>
+    <string name="review_hint_jump">Tryck på datumchips nedan för att hoppa tillbaka till journalen.</string>
+    <string name="review_chip_streak">Sträcka %1$d</string>
+    <string name="review_chip_gap">Gap %1$d</string>
+    <string name="review_chip_labels">Etiketter %1$d</string>
+    <string name="review_chip_favorites">Favoriter %1$d</string>
+    <string name="review_empty_period">Inga journalanteckningar under denna period ännu. Etiketter och höjdpunkter visas fortfarande nedan om de finns.</string>
+    <string name="review_writing_rhythm">Skriva rytm</string>
+    <string name="review_best_streak">Bästa streak</string>
+    <string name="review_longest_gap">Längsta mellanrummet</string>
+    <string name="review_most_active_days">Mest aktiva dagar</string>
+    <string name="review_day_entries_words">%1$d poster | %2$d ord</string>
+    <string name="review_top_people">Toppmänniskor</string>
+    <string name="review_top_places">Toppplatser</string>
+    <string name="review_no_people_mentions">Inga personer nämner</string>
+    <string name="review_no_place_mentions">Ingen plats nämns</string>
+    <string name="review_favorite_moments">Favoritögonblick</string>
+    <string name="review_starred_day">Stjärnmärkt dag</string>
+    <string name="review_highlighted_in_period">Framhävd under denna period</string>
+    <string name="review_labels_created">Etiketter skapade</string>
+    <string name="review_labeled_day">Märkt dag</string>
+    <string name="review_language_split">Språkdelning</string>
+    <string name="review_not_enough_text">Inte tillräckligt med text under denna period</string>
+    <string name="lookback_reviews_title">Recensioner</string>
+    <string name="lookback_reviews_intro">Skapa en snabb reflektion kring din valda dagboksdag.</string>
+    <string name="lookback_seven_days">7 dagar</string>
+    <string name="lookback_one_month">1 månad</string>
+    <string name="lookback_weekly_review">Veckoöversikt</string>
+    <string name="lookback_weekly_review_subtitle">Den här veckan i en blick</string>
+    <string name="lookback_monthly_review">Månadsöversikt</string>
+    <string name="lookback_monthly_review_subtitle">Denna månad sammanfattat</string>
+    <string name="lookback_flashbacks_title">På denna dag under tidigare år</string>
+    <string name="lookback_highlights_title">Dina höjdpunkter</string>
+    <string name="lookback_empty_title">Inga tillbakablickar eller höjdpunkter ännu.</string>
+    <string name="lookback_empty_subtitle">Favoritdagar att se dem här!</string>
+    <string name="lookback_cd_random_entry">Gå till slumpmässig inmatning</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Period</string>
+    <string name="statistics_compare_mode_title">Jämför läge</string>
+    <string name="statistics_compare_mode_subtitle">Månads-, år- och sökordsdeltas</string>
+    <string name="statistics_this_year">I år</string>
+    <string name="statistics_writing_days_delta">Writing Days Delta</string>
+    <string name="statistics_top_person_delta">Toppperson Delta</string>
+    <string name="statistics_no_people_mentions">Inga personer nämner ännu</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Ingen plats nämns ännu</string>
+    <string name="statistics_structured_writing">Strukturerat skrivande</string>
+    <string name="statistics_template_led_format">Mallledd %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Tom %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Mest använda mallar</string>
+    <string name="statistics_template_mix">Mallmix</string>
+    <string name="statistics_follow_up_leaders">Uppföljande ledare</string>
+    <string name="statistics_compare_details">Jämför detaljer</string>
+    <string name="statistics_label_month">Månad</string>
+    <string name="statistics_label_year">År</string>
+    <string name="statistics_this_month_count_format">Denna månad %1$d</string>
+    <string name="statistics_last_month_count_format">Förra månaden %1$d</string>
+    <string name="statistics_longest_streak">Längsta rad</string>
+    <string name="statistics_most_active_day">Mest aktiva dagen</string>
+    <string name="statistics_writing_consistency">Skrivkonsistens</string>
+    <string name="statistics_days_with_entries">Dagar med anmälningar</string>
+    <string name="statistics_best_month">Bästa månaden</string>
+    <string name="statistics_best_month_format">%1$s · %2$d poster</string>
+    <string name="statistics_avg_writing_days_week">Genomsnittlig Skrivdagar/vecka</string>
+    <string name="statistics_days_decimal_format">%1$.1f dagar</string>
+    <string name="statistics_based_on_total_words">Baserat på totalt antal ord skrivna per dag</string>
+    <string name="statistics_light_words">Ljus (&lt; 50 ord)</string>
+    <string name="statistics_moderate_words">Måttlig (50-200 ord)</string>
+    <string name="statistics_heavy_words">Tung (200-500 ord)</string>
+    <string name="statistics_intense_words">Intensiv (500+ ord)</string>
+    <string name="statistics_not_enough_text_languages">Inte tillräckligt med text för att upptäcka språk</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d språk upptäckt</item>
+        <item quantity="other">%1$d språk upptäcktes</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Språkdetektering håller fortfarande på att lösa sig.</string>
+    <string name="statistics_latin_scripts_as_english">Latinska skrifter visas som engelska</string>
+    <string name="statistics_use_more_accurate_detection">Använd mer exakt detektering</string>
+    <string name="statistics_write_more_entries_languages">Skriv fler poster för att se språkstatistik.</string>
+    <string name="statistics_based_on_entry_time">Baserat på ingångstid</string>
+    <string name="statistics_morning_time">Morgon (5:00-12:00)</string>
+    <string name="statistics_afternoon_time">Eftermiddag (12.00-17.00)</string>
+    <string name="statistics_evening_time">Kväll (17.00-21.00)</string>
+    <string name="statistics_night_time">Natt (21:00-05:00)</string>
+    <string name="statistics_heatmap_filling">Heatmap fylls fortfarande i.</string>
+    <string name="statistics_heatmap_less">Mindre</string>
+    <string name="statistics_heatmap_more">Mer</string>
+    <string name="action_open">Öppna</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal Events</string>
+    <string name="tasker_event_desc">Välj vilka Yaja-journalhändelser som ska utlösa denna Tasker-profil.</string>
+    <string name="tasker_event_saved">Posten sparad</string>
+    <string name="tasker_event_edited">Inlägget redigerat</string>
+    <string name="tasker_event_deleted">Posten raderad</string>
+    <string name="tasker_event_default_hint">Om ingen markeras kommer Yaja som standard till Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Konfigurera vad Tasker snabbt ska fånga i Yaja.</string>
+    <string name="tasker_action_add_entry">Lägg till post</string>
+    <string name="tasker_action_add_event">Lägg till händelse</string>
+    <string name="tasker_action_add_todo">Lägg till Todo</string>
+    <string name="tasker_action_append">Bifoga</string>
+    <string name="tasker_action_match_header_label">Match / header</string>
+    <string name="tasker_action_match_header_placeholder">Missade samtal</string>
+    <string name="tasker_action_line_to_append_label">Rad att lägga till</string>
+    <string name="tasker_action_text_label">Text</string>
+    <string name="tasker_action_placeholder_event">Händelsenotis från Tasker</string>
+    <string name="tasker_action_placeholder_todo">Köp mjölk</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Snabb anteckning från Tasker</string>
+    <string name="tasker_action_tip_append">Första samtalet skapar en post som börjar med matchningstexten. Senare samtal lägger till raden under den.</string>
+    <string name="tasker_action_tip_default">Tips: Taskervariabler kan placeras i textfältet.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Föregående session Crash Log</string>
+    <string name="crash_log_clear_close">Rensa &amp; Stäng</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Starta appen</string>
+    <string name="tap_action_quick_capture">Snabbfångst</string>
+    <string name="tap_action_do_nothing">Gör ingenting</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja skriver värmekarta</string>
+    <string name="widget_cell_shape">Cellform</string>
+    <string name="widget_corner_radius">Hörnradie: %1$ddp</string>
+    <string name="widget_square">Fyrkant</string>
+    <string name="widget_round">Runda</string>
+    <string name="widget_inner_margin">Inre marginal: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Utrymmet mellan värmekartan och widgetens kanter</string>
+    <string name="widget_none">Ingen</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">On Tap</string>
+    <string name="widget_on_tap_desc">Åtgärd när widgeten trycks</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Fånga</string>
+    <string name="widget_qc_shape">Widget Shape</string>
+    <string name="widget_show_label">Visa etikett</string>
+    <string name="widget_show_label_desc">Visa \"Fånga\" text på widgeten</string>
+    <string name="widget_show_icon">Visa ikon</string>
+    <string name="widget_show_icon_required">Ikon krävs när etiketten är dold</string>
+    <string name="widget_show_icon_desc">Visa pennikonen på widgeten</string>
+    <string name="widget_label_text">Etiketttext</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo-widget</string>
+    <string name="widget_todo_desc">Rundad, heatmap-liknande att göra-lista-widget.</string>
+    <string name="widget_todo_corner_radius">Hörnradie: %1$ddp</string>
+    <string name="widget_todo_padding">Stoppning: %1$ddp</string>
+    <string name="widget_todo_show_completed">Visa utförda uppgifter</string>
+    <string name="widget_todo_show_completed_desc">Inkludera markerade objekt i widgetlistan</string>
+    <string name="widget_todo_include_events">Inkludera händelser</string>
+    <string name="widget_todo_include_events_desc">Visa händelseposter tillsammans med uppgifter i widgeten</string>
+    <string name="widget_todo_show_header">Visa uppgiftshuvud</string>
+    <string name="widget_todo_show_header_desc">Visa eller dölj widgettitelrad</string>
+    <string name="widget_todo_auto_hide">Dölj widget automatiskt när alla uppgifter är klara</string>
+    <string name="widget_todo_auto_hide_unavailable">Ej tillgänglig när slutförda uppgifter visas</string>
+    <string name="widget_todo_auto_hide_desc">Gör widgeten transparent när det inte finns några väntande uppgifter</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">gjort</string>
+    <string name="todo_confirm_mark_not_done">inte gjort</string>
+    <string name="todo_confirm_title">Markera uppgiften som %1$s?</string>
+    <string name="todo_confirm_reopen">Denna uppgift är för närvarande klar. Bekräfta innan du öppnar den igen.</string>
+    <string name="todo_confirm_complete">Denna uppgift är fortfarande öppen. Bekräfta innan du markerar det som gjort.</string>
+    <string name="todo_confirm_accidental_tap">Oavsiktliga tryckningar kommer inte att ändra uppgiften.</string>
+    <string name="todo_confirm_yes_mark">Ja, markera %1$s</string>
+    <string name="todo_confirm_open_yaja">Öppet i Yaja</string>
+    <string name="todo_confirm_keep_as_is">Behåll som det är</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">ännu en journalapp</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">från RJs labb</string>
+    <string name="help_made_in">Tillverkad i 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Avbryt import</string>
+    <string name="timeline_show_all_dates">Visa alla datum</string>
+    <string name="timeline_show_all_dates_subtitle">Inkludera alla tidigare dagar, även utan poster</string>
+    <string name="settings_background_tint_clean">Rena</string>
+    <string name="settings_background_tint_soft">Mjuk</string>
+    <string name="settings_background_tint_rich">Rik</string>
+    <string name="settings_background_tint_deep">Djup</string>
+    <string name="settings_accent_style_complementary">Komplementär</string>
+    <string name="settings_accent_style_analogous">Analog</string>
+    <string name="settings_accent_style_triadic">Triadisk</string>
+    <string name="settings_accent_style_soft">Mjuk</string>
+</resources>

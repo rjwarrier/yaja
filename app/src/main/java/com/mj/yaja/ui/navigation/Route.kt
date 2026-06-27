@@ -18,6 +18,7 @@ sealed class Route(val path: String) {
     data object VersionHistory : Route("version_history")
     data object VersionSnapshots : Route("version_snapshots")
     data object TaskerIntegration : Route("tasker_integration")
+    data object ComplianceMaster : Route("compliance_master")
     data object AppLog : Route("app_log")
     data object Shortcodes : Route("shortcodes")
     data object Todos : Route("todos")

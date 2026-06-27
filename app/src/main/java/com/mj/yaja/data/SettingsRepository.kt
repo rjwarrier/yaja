@@ -152,7 +152,32 @@ enum class AppLanguage(val tag: String?, val nativeName: String?) {
     INDONESIAN("in", "Bahasa Indonesia"),
     TURKISH("tr", "Türkçe"),
     VIETNAMESE("vi", "Tiếng Việt"),
-    RUSSIAN("ru", "Русский")
+    RUSSIAN("ru", "Русский"),
+    FILIPINO("fil", "Filipino"),
+    SWAHILI("sw", "Kiswahili"),
+    POLISH("pl", "Polski"),
+    THAI("th", "ไทย"),
+    UKRAINIAN("uk", "Українська"),
+    DUTCH("nl", "Nederlands"),
+    MALAY("ms", "Bahasa Melayu"),
+    ROMANIAN("ro", "Română"),
+    ARABIC("ar", "العربية"),
+    URDU("ur", "اردو"),
+    PERSIAN("fa", "فارسی"),
+    HEBREW("he", "עברית"),
+    TRADITIONAL_CHINESE("zh-TW", "繁體中文"),
+    SWEDISH("sv", "Svenska"),
+    GREEK("el", "Ελληνικά"),
+    CZECH("cs", "Čeština"),
+    DANISH("da", "Dansk"),
+    NORWEGIAN("nb", "Norsk Bokmål"),
+    FINNISH("fi", "Suomi"),
+    HUNGARIAN("hu", "Magyar"),
+    PUNJABI("pa", "ਪੰਜਾਬੀ"),
+    GUJARATI("gu", "ગુજરાતી"),
+    ODIA("or", "ଓଡ଼ିଆ"),
+    AMHARIC("am", "አማርኛ"),
+    ZULU("zu", "isiZulu")
 }
 
 class SettingsRepository(private val context: Context) {
@@ -209,6 +234,12 @@ class SettingsRepository(private val context: Context) {
 
     private val _fontScalePreference = MutableStateFlow(getSavedFontScalePreference())
     val fontScalePreference: StateFlow<FontScalePreference> = _fontScalePreference.asStateFlow()
+
+    private val _dataFontScalePreference = MutableStateFlow(getSavedDataFontScalePreference())
+    val dataFontScalePreference: StateFlow<FontScalePreference> = _dataFontScalePreference.asStateFlow()
+
+    private val _followUiFontScale = MutableStateFlow(getSavedFollowUiFontScale())
+    val followUiFontScale: StateFlow<Boolean> = _followUiFontScale.asStateFlow()
 
     private val _appLanguage = MutableStateFlow(getCurrentAppLanguage())
     val appLanguage: StateFlow<AppLanguage> = _appLanguage.asStateFlow()
@@ -665,6 +696,16 @@ class SettingsRepository(private val context: Context) {
         _fontScalePreference.value = preference
     }
 
+    fun setDataFontScalePreference(preference: FontScalePreference) {
+        prefs.edit().putString(KEY_DATA_FONT_SCALE, preference.name).apply()
+        _dataFontScalePreference.value = preference
+    }
+
+    fun setFollowUiFontScale(follow: Boolean) {
+        prefs.edit().putBoolean(KEY_FOLLOW_UI_FONT_SCALE, follow).apply()
+        _followUiFontScale.value = follow
+    }
+
     fun setAppLanguage(language: AppLanguage) {
         val localeList = language.tag?.let { LocaleListCompat.forLanguageTags(it) }
                 ?: LocaleListCompat.getEmptyLocaleList()
@@ -1080,7 +1121,7 @@ class SettingsRepository(private val context: Context) {
                         hue = item.optDouble("hue", defaultPersonalThemeSlots()[slotId - 1].hue.toDouble()).toFloat(),
                         saturation = item.optDouble("saturation", defaultPersonalThemeSlots()[slotId - 1].saturation.toDouble()).toFloat(),
                         brightness = item.optDouble("brightness", defaultPersonalThemeSlots()[slotId - 1].brightness.toDouble()).toFloat(),
-                        accentStyle = getEnum(item.optString("accentStyle", null), defaultPersonalThemeSlots()[slotId - 1].accentStyle)
+                        accentStyle = getEnum(if (item.isNull("accentStyle")) null else item.optString("accentStyle"), defaultPersonalThemeSlots()[slotId - 1].accentStyle)
                     )
                 }.sortedBy { it.slotId }
             if (restored.size == 3) restored else defaultPersonalThemeSlots()
@@ -1140,6 +1181,12 @@ class SettingsRepository(private val context: Context) {
 
     private fun getSavedFontScalePreference(): FontScalePreference =
             getEnum(prefs.getString(KEY_FONT_SCALE, null), FontScalePreference.NORMAL)
+
+    private fun getSavedDataFontScalePreference(): FontScalePreference =
+            getEnum(prefs.getString(KEY_DATA_FONT_SCALE, null), FontScalePreference.NORMAL)
+
+    private fun getSavedFollowUiFontScale(): Boolean =
+            prefs.getBoolean(KEY_FOLLOW_UI_FONT_SCALE, true)
 
     private fun getCurrentAppLanguage(): AppLanguage {
         val locales = AppCompatDelegate.getApplicationLocales()
@@ -1354,6 +1401,8 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_SHOW_DAY_HEADER_STATS = "show_day_header_stats"
         private const val KEY_RENDER_CHECKBOXES_AS_TEXT = "render_checkboxes_as_text"
         private const val KEY_FONT_SCALE = "font_scale"
+        private const val KEY_DATA_FONT_SCALE = "data_font_scale"
+        private const val KEY_FOLLOW_UI_FONT_SCALE = "follow_ui_font_scale"
         private const val KEY_ANIMATION_PREFERENCE = "animation_preference"
         private const val KEY_LAST_BACKUP = "last_backup_timestamp"
         private const val KEY_BACKUP_REMINDER_DAYS = "backup_reminder_days"

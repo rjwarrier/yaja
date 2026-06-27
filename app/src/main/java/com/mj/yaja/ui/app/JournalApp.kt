@@ -48,6 +48,8 @@ fun JournalApp(
     val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
     val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
     val fontScalePreference by viewModel.fontScalePreference.collectAsStateWithLifecycle()
+    val dataFontScalePreference by viewModel.dataFontScalePreference.collectAsStateWithLifecycle()
+    val followUiFontScale by viewModel.followUiFontScale.collectAsStateWithLifecycle()
     val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
     val isSystemDark = isSystemInDarkTheme()
     val useDarkTheme = when (themePreference) {
@@ -62,6 +64,7 @@ fun JournalApp(
         darkTheme = useDarkTheme,
         amoledTheme = useAmoledTheme,
         fontScale = fontScalePreference.scale,
+        dataFontScale = if (followUiFontScale) fontScalePreference.scale else dataFontScalePreference.scale,
         appFontFamily = appFontFamily,
         monoFontWeight = monoFontWeight,
         customFontPath = customFontPath,
@@ -131,7 +134,10 @@ fun JournalApp(
                     add(Route.Calendar.path)
                     if (showLookbackInNavBar) add(Route.Lookback.path)
                     if (showKeywordsInNavBar) add(Route.Keywords.path)
-                    if (showTodosInNavBar) add(Route.Todos.path)
+                    if (showTodosInNavBar) {
+                        add(Route.Todos.path)
+                        add(Route.ComplianceMaster.path)
+                    }
                     if (showStatistics && showStatisticsInNavBar) add(Route.Statistics.path)
                 }
             }

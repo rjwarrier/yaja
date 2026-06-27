@@ -873,7 +873,7 @@ class MarkdownFileManager(
      * Checks if the disk file has been modified since it was cached.
      * If so, updates the cache with the new contents.
      */
-    fun revalidateDateCache(date: LocalDate): Boolean {
+    fun revalidateDateCache(date: LocalDate, forceDiskRead: Boolean = false): Boolean {
         val rawMetadata = journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
         val metadata = rawMetadata?.let { DateFileMetadata(it.first, it.second) }
         val previousMetadata = dateMetadataCache[date]
@@ -888,7 +888,7 @@ class MarkdownFileManager(
             return false
         }
         
-        if (previousMetadata != metadata || !cache.containsKey(date)) {
+        if (forceDiskRead || previousMetadata != metadata || !cache.containsKey(date)) {
             val entries = journalStorage.readEntriesForDate(date)
             if (entries.isNotEmpty()) {
                 cache[date] = entries
@@ -1530,7 +1530,7 @@ class MarkdownFileManager(
                 if (cachedCount != null) {
                     snapshot[date] = cachedCount
                 } else {
-                    val entries = getEntriesForDateFromDisk(date)
+                    val entries = getEntriesForDate(date)
                     if (entries.isNotEmpty()) {
                         val count = countWords(entries)
                         entryCountCache[date] = entries.size

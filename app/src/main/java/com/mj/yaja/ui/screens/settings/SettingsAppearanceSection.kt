@@ -27,6 +27,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Switch
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -166,7 +167,11 @@ fun AppearanceSection(
     onPickCustomFont: () -> Unit,
     onClearCustomFont: () -> Unit,
     fontScalePreference: FontScalePreference,
-    onFontScaleSelected: (FontScalePreference) -> Unit
+    onFontScaleSelected: (FontScalePreference) -> Unit,
+    dataFontScalePreference: FontScalePreference,
+    onDataFontScaleSelected: (FontScalePreference) -> Unit,
+    followUiFontScale: Boolean,
+    onFollowUiFontScaleChanged: (Boolean) -> Unit
 ) {
     val panelColors = appearancePanelColors()
     val activePersonalThemeSlot =
@@ -383,12 +388,50 @@ fun AppearanceSection(
     }
 
     Spacer(modifier = Modifier.height(24.dp))
-    SectionLabel(stringResource(R.string.settings_font_size_label))
+    SectionLabel(stringResource(R.string.settings_ui_font_size_label))
     FontScaleCard(
         fontScalePreference = fontScalePreference,
         panelColors = panelColors,
         onFontScaleSelected = onFontScaleSelected
     )
+
+    Spacer(modifier = Modifier.height(16.dp))
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onFollowUiFontScaleChanged(!followUiFontScale) }
+            .padding(vertical = 8.dp, horizontal = 6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = stringResource(R.string.settings_follow_ui_font_scale_label),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Switch(
+            checked = followUiFontScale,
+            onCheckedChange = onFollowUiFontScaleChanged
+        )
+    }
+
+    AnimatedVisibility(
+        visible = !followUiFontScale,
+        enter = expandVertically() + fadeIn(),
+        exit = shrinkVertically() + fadeOut()
+    ) {
+        Column {
+            Spacer(modifier = Modifier.height(16.dp))
+            SectionLabel(stringResource(R.string.settings_data_font_size_label))
+            FontScaleCard(
+                fontScalePreference = dataFontScalePreference,
+                panelColors = panelColors,
+                onFontScaleSelected = onDataFontScaleSelected
+            )
+        }
+    }
 
     Spacer(modifier = Modifier.height(32.dp))
 }

@@ -12,8 +12,8 @@ android {
         applicationId = "com.mj.yaja"
         minSdk = 26
         targetSdk = 35
-        versionCode = 84
-        versionName = "2.96"
+        versionCode = 87
+        versionName = "3.00"
 
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -46,6 +46,16 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+}
+
+// Compose compiler stability/recomposition reports.
+// Off by default (zero build overhead); enable with: ./gradlew assembleDebug -PcomposeMetrics=true
+// Output lands in app/build/compose_compiler/*-composables.txt — inspect "unstable" params.
+composeCompiler {
+    if (project.findProperty("composeMetrics") == "true") {
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
+        metricsDestination = layout.buildDirectory.dir("compose_compiler")
     }
 }
 

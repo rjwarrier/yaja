@@ -16,8 +16,10 @@ import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import com.mj.yaja.ui.design.AppScreenReveal
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.WindowInsets
@@ -35,7 +37,8 @@ import com.mj.yaja.R
 fun TodosScreen(
     viewModel: JournalViewModel,
     onOpenDrawer: () -> Unit,
-    onNavigateToDate: (LocalDate) -> Unit
+    onNavigateToDate: (LocalDate) -> Unit,
+    onNavigateToComplianceMaster: () -> Unit
 ) {
     val todos by viewModel.todos.collectAsStateWithLifecycle()
     val events by viewModel.events.collectAsStateWithLifecycle()
@@ -51,8 +54,9 @@ fun TodosScreen(
     LaunchedEffect(Unit) {
         viewModel.ensureTodosLoaded()
     }
-    val grouped = todos.groupBy { it.date }.toList().sortedByDescending { it.first }
-    val groupedEvents = events.groupBy { it.date }.toList().sortedByDescending { it.first }
+    // Recomputed only when the lists change — not on every sync-progress recomposition.
+    val grouped = remember(todos) { todos.groupBy { it.date }.toList().sortedByDescending { it.first } }
+    val groupedEvents = remember(events) { events.groupBy { it.date }.toList().sortedByDescending { it.first } }
 
     val fabBottomPadding = remember(showBottomBar, navigationChromeMode, showBottomPanelLabels) {
         if (showBottomBar) {
@@ -72,7 +76,8 @@ fun TodosScreen(
     Scaffold(
         topBar = {
             TodosTopBar(
-                onOpenDrawer = onOpenDrawer
+                onOpenDrawer = onOpenDrawer,
+                onOpenComplianceMaster = onNavigateToComplianceMaster
             )
         },
         floatingActionButton = {
@@ -82,10 +87,18 @@ fun TodosScreen(
                     .padding(horizontal = 16.dp)
                     .padding(bottom = fabBottomPadding)
             ) {
-                TodoAddFab(
-                    onClick = { showAddTodoDialog = true },
-                    modifier = Modifier.align(Alignment.BottomEnd)
-                )
+                Column(
+                    modifier = Modifier.align(Alignment.BottomEnd),
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    TodoAddRecurringFab(
+                        onClick = onNavigateToComplianceMaster
+                    )
+                    TodoAddFab(
+                        onClick = { showAddTodoDialog = true }
+                    )
+                }
             }
         },
         containerColor = MaterialTheme.colorScheme.background

@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.screens
 
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -56,17 +57,17 @@ fun LookbackScreen(
         onNavigateToReview: (ReviewPeriodType) -> Unit,
         onSurpriseMeNavigate: (LocalDate) -> Unit
 ) {
-        val uiState by viewModel.uiState.collectAsState()
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val flashbacks = uiState.lookbackEntries
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsState()
-        val starredLabels by viewModel.starredLabels.collectAsState()
-        val dateOrderPreference by viewModel.dateOrderPreference.collectAsState()
+        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
+        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
+        val starredLabels by viewModel.starredLabels.collectAsStateWithLifecycle()
+        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
         val monthFirst = com.mj.yaja.ui.utils.DateLinkUtils.resolveMonthFirst(dateOrderPreference)
-        val customDateKeywords by viewModel.customDateKeywords.collectAsState()
-        val showBottomBar by viewModel.showBottomBar.collectAsState()
-        val navigationChromeMode by viewModel.navigationChromeMode.collectAsState()
-        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsState()
+        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
+        val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
+        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
+        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
         val entranceTriggered = rememberAppEntrance()
         val motionPreference = LocalAnimationPreference.current
         val listState = rememberLazyListState()

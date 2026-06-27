@@ -1,7 +1,7 @@
 package com.mj.yaja.ui.app
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -26,7 +26,7 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
         onOpenDrawer: () -> Unit
 ) {
         composable(Route.PinLock.path) {
-                val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
+                val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
                 PinLockScreen(
                         mode = PinMode.ENTER,
                         checkPin = { viewModel.checkPin(it) },

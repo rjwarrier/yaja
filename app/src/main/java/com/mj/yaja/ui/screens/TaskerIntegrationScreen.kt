@@ -27,7 +27,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
@@ -44,9 +44,9 @@ fun TaskerIntegrationScreen(
     viewModel: JournalViewModel,
     onNavigateBack: () -> Unit
 ) {
-    val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsState()
-    val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsState()
-    val includeEntryTextInTaskerEvents by viewModel.includeEntryTextInTaskerEvents.collectAsState()
+    val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
+    val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
+    val includeEntryTextInTaskerEvents by viewModel.includeEntryTextInTaskerEvents.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {

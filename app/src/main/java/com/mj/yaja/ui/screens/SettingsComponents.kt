@@ -35,6 +35,9 @@ import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.theme.GoogleSansFamily
 import com.mj.yaja.ui.theme.JetBrainsMono
 import com.mj.yaja.ui.theme.LibreBaskervilleFamily
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.remember
+import com.mj.yaja.ui.design.expressivePressMotion
 
 @Composable
 fun FontSelectionCard(
@@ -54,10 +57,13 @@ fun FontSelectionCard(
                         AppFontFamily.CUSTOM -> customFamily
                 }
 
+        val interactionSource = remember { MutableInteractionSource() }
+
         Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
                 ElevatedCard(
                         onClick = onClick,
-                        modifier = Modifier.fillMaxWidth().height(80.dp),
+                        interactionSource = interactionSource,
+                        modifier = Modifier.fillMaxWidth().height(80.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                         shape = MaterialTheme.shapes.medium,
                         colors =
                                 CardDefaults.elevatedCardColors(
@@ -135,9 +141,11 @@ fun ThemeSelectionCard(
         preference: ThemePreference,
         modifier: Modifier = Modifier
 ) {
+        val interactionSource = remember { MutableInteractionSource() }
         ElevatedCard(
                 onClick = onClick,
-                modifier = modifier.height(100.dp),
+                interactionSource = interactionSource,
+                modifier = modifier.height(100.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                 shape = MaterialTheme.shapes.medium,
                 colors =
                         CardDefaults.elevatedCardColors(

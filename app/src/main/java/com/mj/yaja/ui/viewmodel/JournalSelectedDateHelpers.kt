@@ -15,7 +15,8 @@ import kotlinx.coroutines.withContext
 internal fun navigateToSelectedDate(
     date: LocalDate,
     uiState: MutableStateFlow<JournalUiState>,
-    loadEntries: (LocalDate) -> Unit
+    loadEntries: (LocalDate, String) -> Unit,
+    reason: String
 ) {
     uiState.update {
         it.copy(
@@ -23,25 +24,29 @@ internal fun navigateToSelectedDate(
             searchResults = emptyList()
         )
     }
-    loadEntries(date)
+    loadEntries(date, reason)
 }
 
 internal fun refreshSelectedDateOnStartup(
     date: LocalDate,
-    loadEntries: (LocalDate) -> Unit
+    loadEntries: (LocalDate, String) -> Unit
 ) {
-    loadEntries(date)
+    loadEntries(date, "startup_bootstrap")
 }
 
 internal fun refreshSelectedDateOnResume(
     date: LocalDate,
     shouldForceDateRefresh: Boolean,
-    loadEntries: (LocalDate, Boolean) -> Unit,
+    loadEntries: (LocalDate, Boolean, String) -> Unit,
     refreshCalendarDates: (Boolean) -> Unit,
     markForcedDateRefresh: () -> Unit,
     refreshStarredLabels: () -> Unit
 ) {
-    loadEntries(date, false)
+    loadEntries(
+        date,
+        false,
+        if (shouldForceDateRefresh) "app_resume_forced" else "app_resume"
+    )
     refreshCalendarDates(false)
     refreshStarredLabels()
 }
@@ -83,15 +88,19 @@ internal fun launchSelectedDateLoad(
     currentRevisitNote: MutableStateFlow<String>,
     dueRevisits: MutableStateFlow<List<DueRevisitItem>>,
     persistHomeScreenSnapshot: (LocalDate, List<String>, String) -> Unit,
-    logPerf: (String, Long) -> Unit
+    logPerf: (String, Long) -> Unit,
+    onLoadApplied: (LoadedDateState, Long) -> Unit = { _, _ -> },
+    onStaleResultDiscarded: (LoadedDateState, Long) -> Unit = { _, _ -> }
 ): Job =
     scope.launch {
         val startedAt = System.currentTimeMillis()
         val loaded = withContext(Dispatchers.IO) {
-            fileManager.revalidateDateCache(date)
+            fileManager.revalidateDateCache(date, forceDiskRead = true)
             loadDateStateSnapshot(fileManager, date)
         }
+        val elapsedMs = System.currentTimeMillis() - startedAt
         if (!isRequestStillCurrent()) {
+            onStaleResultDiscarded(loaded, elapsedMs)
             return@launch
         }
         currentDayLabel.value = loaded.dayLabel
@@ -109,5 +118,6 @@ internal fun launchSelectedDateLoad(
             loaded.entries,
             currentDayLabel.value
         )
-        logPerf("loadEntries", System.currentTimeMillis() - startedAt)
+        onLoadApplied(loaded, elapsedMs)
+        logPerf("loadEntries", elapsedMs)
     }

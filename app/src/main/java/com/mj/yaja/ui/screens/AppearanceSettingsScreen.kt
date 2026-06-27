@@ -18,7 +18,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -36,24 +37,36 @@ fun AppearanceSettingsScreen(
 ) {
         val context = LocalContext.current
 
-        val themePreference by viewModel.themePreference.collectAsState()
-        val colorSource by viewModel.colorSource.collectAsState()
-        val customPalette by viewModel.customPalette.collectAsState()
-        val themeColorIntensity by viewModel.themeColorIntensity.collectAsState()
-        val backgroundTintLevel by viewModel.backgroundTintLevel.collectAsState()
-        val personalThemeSlots by viewModel.personalThemeSlots.collectAsState()
-        val activePersonalThemeSlotId by viewModel.activePersonalThemeSlotId.collectAsState()
-        val fontScalePreference by viewModel.fontScalePreference.collectAsState()
-        val appFontFamily by viewModel.appFontFamily.collectAsState()
-        val monoFontWeight by viewModel.monoFontWeight.collectAsState()
-        val customFontPath by viewModel.customFontPath.collectAsState()
-        val customFontName by viewModel.customFontName.collectAsState()
+        val themePreference by viewModel.themePreference.collectAsStateWithLifecycle()
+        val colorSource by viewModel.colorSource.collectAsStateWithLifecycle()
+        val customPalette by viewModel.customPalette.collectAsStateWithLifecycle()
+        val themeColorIntensity by viewModel.themeColorIntensity.collectAsStateWithLifecycle()
+        val backgroundTintLevel by viewModel.backgroundTintLevel.collectAsStateWithLifecycle()
+        val personalThemeSlots by viewModel.personalThemeSlots.collectAsStateWithLifecycle()
+        val activePersonalThemeSlotId by viewModel.activePersonalThemeSlotId.collectAsStateWithLifecycle()
+        val fontScalePreference by viewModel.fontScalePreference.collectAsStateWithLifecycle()
+        val dataFontScalePreference by viewModel.dataFontScalePreference.collectAsStateWithLifecycle()
+        val followUiFontScale by viewModel.followUiFontScale.collectAsStateWithLifecycle()
+        val appFontFamily by viewModel.appFontFamily.collectAsStateWithLifecycle()
+        val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
+        val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
+        val customFontName by viewModel.customFontName.collectAsStateWithLifecycle()
 
         // Font files come through with inconsistent MIME types across file managers,
         // so accept everything and validate the bytes after picking.
         val customFontLauncher = rememberLauncherForActivityResult(
                 ActivityResultContracts.OpenDocument()
         ) { uri -> if (uri != null) viewModel.setCustomFontFromUri(uri, context) }
+
+        val scrollState = rememberScrollState()
+
+        LaunchedEffect(followUiFontScale) {
+                if (!followUiFontScale) {
+                        // Wait for AnimatedVisibility to start expanding, then scroll to the bottom
+                        kotlinx.coroutines.delay(200)
+                        scrollState.animateScrollTo(scrollState.maxValue)
+                }
+        }
 
         Scaffold(
                 topBar = {
@@ -80,7 +93,7 @@ fun AppearanceSettingsScreen(
                                         .fillMaxSize()
                                         .padding(paddingValues)
                                         .padding(horizontal = 20.dp)
-                                        .verticalScroll(rememberScrollState())
+                                        .verticalScroll(scrollState)
                         ) {
                                 AppearanceSection(
                                         themePreference = themePreference,
@@ -132,7 +145,11 @@ fun AppearanceSettingsScreen(
                                                 viewModel.clearCustomFont()
                                         },
                                         fontScalePreference = fontScalePreference,
-                                        onFontScaleSelected = { viewModel.setFontScalePreference(it) }
+                                        onFontScaleSelected = { viewModel.setFontScalePreference(it) },
+                                        dataFontScalePreference = dataFontScalePreference,
+                                        onDataFontScaleSelected = { viewModel.setDataFontScalePreference(it) },
+                                        followUiFontScale = followUiFontScale,
+                                        onFollowUiFontScaleChanged = { viewModel.setFollowUiFontScale(it) }
                                 )
                         }
                 }

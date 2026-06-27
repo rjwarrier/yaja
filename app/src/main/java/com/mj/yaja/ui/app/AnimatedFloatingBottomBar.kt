@@ -57,6 +57,11 @@ fun AnimatedFloatingBottomBar(
     showTodosInNavBar: Boolean = false,
     showStatisticsInNavBar: Boolean = false
 ) {
+    val selectedRoute = if (currentRoute == Route.ComplianceMaster.path) {
+        Route.Todos.path
+    } else {
+        currentRoute
+    }
     val items = remember(
         showLookbackInNavBar,
         showKeywordsInNavBar,
@@ -73,7 +78,7 @@ fun AnimatedFloatingBottomBar(
         }
     }
 
-    val selectedIndex = items.indexOfFirst { it.first == currentRoute }.coerceAtLeast(0)
+    val selectedIndex = items.indexOfFirst { it.first == selectedRoute }.coerceAtLeast(0)
     val navigationFabSize = 64.dp
     val itemWidth = navigationFabSize
     // Set a uniform 2.dp gap between the highlight circle shape and the outer pill.

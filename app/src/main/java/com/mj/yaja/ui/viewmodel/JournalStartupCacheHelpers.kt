@@ -141,7 +141,7 @@ internal fun progressFor(stage: CacheRefreshStage): Float = stage.progress
 
 internal fun applyStartupBootstrapSnapshot(
     bootstrap: StartupBootstrapSnapshot,
-    today: LocalDate,
+    startupDate: LocalDate,
     uiState: MutableStateFlow<JournalUiState>,
     currentDayLabel: MutableStateFlow<String>,
     persistHomeScreenSnapshot: (LocalDate, List<String>, String) -> Unit,
@@ -170,13 +170,24 @@ internal fun applyStartupBootstrapSnapshot(
         }
     }
 
+    // Seed the selected date and its cached content before the async refresh starts so the
+    // request is not discarded as stale and Home has something stable to render immediately.
+    currentDayLabel.value = bootstrap.cachedSelectedDayLabel
+    uiState.update {
+        it.copy(
+            selectedDate = startupDate,
+            entries = bootstrap.cachedSelectedEntries,
+            isLoading = true
+        )
+    }
+
     Log.d(
         logTag,
         "startup.refreshingSelectedDateFromDisk cachePrimed=${bootstrap.loadedFromDiskCache} " +
             "cachedSelectedEntries=${bootstrap.cachedSelectedEntries.size}"
     )
     onFallbackImmediateLoad()
-    refreshSelectedDateOnStartup(today)
+    refreshSelectedDateOnStartup(startupDate)
 
     publishCachedTodos()
 }
