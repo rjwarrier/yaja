@@ -271,7 +271,7 @@ class MarkdownFileManager(
         if (!cachePopulated) {
             synchronized(this) {
                 if (!cachePopulated) {
-                    if (!migrationJob.isCompleted) {
+                    if (!migrationJob.isCompleted && android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) {
                         kotlinx.coroutines.runBlocking {
                             migrationJob.join()
                         }
@@ -292,7 +292,7 @@ class MarkdownFileManager(
         if (!frontmatterPopulated) {
             synchronized(this) {
                 if (!frontmatterPopulated) {
-                    if (!migrationJob.isCompleted) {
+                    if (!migrationJob.isCompleted && android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) {
                         kotlinx.coroutines.runBlocking {
                             migrationJob.join()
                         }

@@ -49,11 +49,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
-import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Date
 import java.util.Locale
 import kotlin.math.roundToInt
+
+private val SNAPSHOT_TIMESTAMP_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm:ss a", Locale.getDefault()).withZone(ZoneId.systemDefault())
+private val SNAPSHOT_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.getDefault()).withZone(ZoneId.systemDefault())
 
 private val snapshotTimeMarkerRegex = Regex("^<!--time:(\\d{2}:\\d{2})(?:, added on (.*?))?-->\\n?")
 private val snapshotMetadataLineRegex = Regex("^<!--[^\\n]*-->\\n?")
@@ -278,10 +281,6 @@ fun VersionSnapshotsCard(
     snapshots: List<JournalViewModel.VersionHistorySnapshotUi>,
     onPreview: (JournalViewModel.VersionHistorySnapshotUi) -> Unit
 ) {
-    val timestampFormatter = remember {
-        SimpleDateFormat("dd MMM yyyy, hh:mm:ss a", Locale.getDefault())
-    }
-
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.elevatedCardColors(
@@ -343,7 +342,7 @@ fun VersionSnapshotsCard(
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    text = timestampFormatter.format(Date(snapshot.createdAt)),
+                                    text = SNAPSHOT_TIMESTAMP_FORMATTER.format(Instant.ofEpochMilli(snapshot.createdAt)),
                                     style = MaterialTheme.typography.titleSmall,
                                     color = MaterialTheme.colorScheme.onSurface
                                 )
@@ -373,17 +372,13 @@ fun SnapshotPreviewDialog(
     onDismiss: () -> Unit,
     onRestore: () -> Unit
 ) {
-    val dateFormatter = remember {
-        SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-    }
-
     AlertDialog(
         onDismissRequest = onDismiss,
         icon = {
             Icon(Icons.Rounded.History, contentDescription = null)
         },
         title = {
-            Text(dateFormatter.format(Date(snapshot.createdAt)))
+            Text(SNAPSHOT_DATE_FORMATTER.format(Instant.ofEpochMilli(snapshot.createdAt)))
         },
         text = {
             Column(

@@ -1719,71 +1719,79 @@ class JournalViewModel(
     /** Set a date as starred with an optional label (max 30 characters). */
     fun setStarredWithLabel(date: java.time.LocalDate, label: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = setStarredWithLabelMutation(
-                fileManager = fileManager,
-                settingsRepository = settingsRepository,
-                date = date,
-                label = label,
-                selectedDate = _uiState.value.selectedDate
-            )
-            result.selectedDayLabel?.let { updatedLabel ->
-                _currentDayLabel.value = updatedLabel
-                persistHomeSnapshotIfChanged(
-                    selectedDate = date,
-                    entries = _uiState.value.entries,
-                    dayLabel = updatedLabel,
-                    lastPersistedSnapshot = lastPersistedHomeSnapshot,
-                    persistSnapshot = settingsRepository::setHomeScreenSnapshot,
-                    updateLastPersistedSnapshot = { snapshot ->
-                        lastPersistedHomeSnapshot = snapshot
-                    }
+            runCatching {
+                val result = setStarredWithLabelMutation(
+                    fileManager = fileManager,
+                    settingsRepository = settingsRepository,
+                    date = date,
+                    label = label,
+                    selectedDate = _uiState.value.selectedDate
                 )
+                result.selectedDayLabel?.let { updatedLabel ->
+                    _currentDayLabel.value = updatedLabel
+                    persistHomeSnapshotIfChanged(
+                        selectedDate = date,
+                        entries = _uiState.value.entries,
+                        dayLabel = updatedLabel,
+                        lastPersistedSnapshot = lastPersistedHomeSnapshot,
+                        persistSnapshot = settingsRepository::setHomeScreenSnapshot,
+                        updateLastPersistedSnapshot = { snapshot ->
+                            lastPersistedHomeSnapshot = snapshot
+                        }
+                    )
+                }
+                val starredState = result.starredState ?: loadStarredStateSnapshot(fileManager)
+                _starredDates.value = starredState.starredDates
+                _favoritedDates.value = starredState.favoritedDates
+                _starredLabels.value = starredState.starredLabels
+                highlightsJob = refreshFavoritedHighlightsWorkflow(
+                    scope = viewModelScope,
+                    currentJob = highlightsJob,
+                    starredDates = _starredDates.value,
+                    uiState = _uiState
+                )
+            }.onFailure { e ->
+                Log.e(TAG, "Failed to set starred label", e)
             }
-            val starredState = result.starredState ?: loadStarredStateSnapshot(fileManager)
-            _starredDates.value = starredState.starredDates
-            _favoritedDates.value = starredState.favoritedDates
-            _starredLabels.value = starredState.starredLabels
-            highlightsJob = refreshFavoritedHighlightsWorkflow(
-                scope = viewModelScope,
-                currentJob = highlightsJob,
-                starredDates = _starredDates.value,
-                uiState = _uiState
-            )
         }
     }
 
     /** Un-star a date. */
     fun unStarDate(date: java.time.LocalDate) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = unsetStarredDateMutation(
-                fileManager = fileManager,
-                settingsRepository = settingsRepository,
-                date = date,
-                selectedDate = _uiState.value.selectedDate
-            )
-            result.selectedDayLabel?.let { updatedLabel ->
-                _currentDayLabel.value = updatedLabel
-                persistHomeSnapshotIfChanged(
-                    selectedDate = date,
-                    entries = _uiState.value.entries,
-                    dayLabel = updatedLabel,
-                    lastPersistedSnapshot = lastPersistedHomeSnapshot,
-                    persistSnapshot = settingsRepository::setHomeScreenSnapshot,
-                    updateLastPersistedSnapshot = { snapshot ->
-                        lastPersistedHomeSnapshot = snapshot
-                    }
+            runCatching {
+                val result = unsetStarredDateMutation(
+                    fileManager = fileManager,
+                    settingsRepository = settingsRepository,
+                    date = date,
+                    selectedDate = _uiState.value.selectedDate
                 )
+                result.selectedDayLabel?.let { updatedLabel ->
+                    _currentDayLabel.value = updatedLabel
+                    persistHomeSnapshotIfChanged(
+                        selectedDate = date,
+                        entries = _uiState.value.entries,
+                        dayLabel = updatedLabel,
+                        lastPersistedSnapshot = lastPersistedHomeSnapshot,
+                        persistSnapshot = settingsRepository::setHomeScreenSnapshot,
+                        updateLastPersistedSnapshot = { snapshot ->
+                            lastPersistedHomeSnapshot = snapshot
+                        }
+                    )
+                }
+                val starredState = result.starredState ?: loadStarredStateSnapshot(fileManager)
+                _starredDates.value = starredState.starredDates
+                _favoritedDates.value = starredState.favoritedDates
+                _starredLabels.value = starredState.starredLabels
+                highlightsJob = refreshFavoritedHighlightsWorkflow(
+                    scope = viewModelScope,
+                    currentJob = highlightsJob,
+                    starredDates = _starredDates.value,
+                    uiState = _uiState
+                )
+            }.onFailure { e ->
+                Log.e(TAG, "Failed to unstar date", e)
             }
-            val starredState = result.starredState ?: loadStarredStateSnapshot(fileManager)
-            _starredDates.value = starredState.starredDates
-            _favoritedDates.value = starredState.favoritedDates
-            _starredLabels.value = starredState.starredLabels
-            highlightsJob = refreshFavoritedHighlightsWorkflow(
-                scope = viewModelScope,
-                currentJob = highlightsJob,
-                starredDates = _starredDates.value,
-                uiState = _uiState
-            )
         }
     }
 

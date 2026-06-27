@@ -270,7 +270,11 @@ fun SettingsScreen(
                                         android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or
                                                 android.content.Intent
                                                         .FLAG_GRANT_WRITE_URI_PERMISSION
-                                contentResolver.takePersistableUriPermission(uri, takeFlags)
+                                try {
+                                        contentResolver.takePersistableUriPermission(uri, takeFlags)
+                                } catch (e: SecurityException) {
+                                        android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission", e)
+                                }
                                 val newUriString = uri.toString()
                                 if (newUriString != storageUriString) {
                                         confirmLocationChange(newUriString)
