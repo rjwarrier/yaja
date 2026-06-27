@@ -432,12 +432,15 @@ private fun buildContinuationPrefix(
         }
 }
 
+private val NUMERIC_CONTINUATION_REGEX = Regex("""^(\d+)([.)]?)(?:\s+.*)?$""")
+private val ALPHABETIC_CONTINUATION_REGEX = Regex("""^([a-zA-Z])([.)]?)(?:\s+.*)?$""")
+
 private fun buildNumericContinuation(
         trimmedLine: String,
         leadingWhitespace: String
 ): String? {
         val match =
-                Regex("""^(\d+)([.)]?)(?:\s+.*)?$""").matchEntire(trimmedLine) ?: return null
+                NUMERIC_CONTINUATION_REGEX.matchEntire(trimmedLine) ?: return null
         val nextNumber = (match.groupValues[1].toIntOrNull() ?: return null) + 1
         val punctuation = match.groupValues[2]
         return leadingWhitespace + nextNumber + punctuation + " "
@@ -448,7 +451,7 @@ private fun buildAlphabeticContinuation(
         leadingWhitespace: String
 ): String? {
         val match =
-                Regex("""^([a-zA-Z])([.)]?)(?:\s+.*)?$""").matchEntire(trimmedLine) ?: return null
+                ALPHABETIC_CONTINUATION_REGEX.matchEntire(trimmedLine) ?: return null
         val currentChar = match.groupValues[1].single()
         if (currentChar == 'z' || currentChar == 'Z') return null
         val nextChar = currentChar + 1

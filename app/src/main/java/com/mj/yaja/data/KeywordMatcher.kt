@@ -24,6 +24,8 @@ import kotlin.math.abs
 object KeywordMatcher {
 
     private val TIMESTAMP_REGEX = Regex("<!--.*?-->", RegexOption.DOT_MATCHES_ALL)
+    private val WHITESPACE_REGEX = Regex("\\s+")
+    private val NON_LETTER_DIGIT_REGEX = Regex("[^\\p{L}\\d]")
     private val SNIPPET_MAX = 120
 
     // ── Public API ────────────────────────────────────────────────────────
@@ -174,7 +176,9 @@ object KeywordMatcher {
 
     /** Split text into lowercase words (letters and digits only, strips punctuation). */
     private fun tokenize(text: String): List<String> =
-        text.lowercase().split(Regex("\\s+")).map { it.replace(Regex("[^\\p{L}\\d]"), "") }.filter { it.isNotEmpty() }
+        text.lowercase().splitToSequence(WHITESPACE_REGEX)
+            .mapNotNull { token -> token.replace(NON_LETTER_DIGIT_REGEX, "").takeIf { it.isNotEmpty() } }
+            .toList()
 
     private data class TokenSpan(
         val normalized: String,

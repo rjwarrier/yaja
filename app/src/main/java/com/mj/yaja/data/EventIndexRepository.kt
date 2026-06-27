@@ -101,12 +101,14 @@ class EventIndexRepository private constructor(context: Context) {
             rebuilt += parseDate(date, entriesForDate(date)).map { it.toEventIndexEntity() }
         }
         persistenceScope.launch {
-            val dateStrings = dates.map { it.toString() }
-            if (dateStrings.isNotEmpty()) {
-                eventDao.deleteByDates(dateStrings)
-            }
-            if (rebuilt.isNotEmpty()) {
-                eventDao.insertAll(rebuilt)
+            database.runInTransaction {
+                val dateStrings = dates.map { it.toString() }
+                if (dateStrings.isNotEmpty()) {
+                    eventDao.deleteByDates(dateStrings)
+                }
+                if (rebuilt.isNotEmpty()) {
+                    eventDao.insertAll(rebuilt)
+                }
             }
         }
         writeFingerprint(fingerprint)

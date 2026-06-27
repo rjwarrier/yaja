@@ -12,8 +12,8 @@ android {
         applicationId = "com.mj.yaja"
         minSdk = 26
         targetSdk = 35
-        versionCode = 87
-        versionName = "3.00"
+        versionCode = 88
+        versionName = "3.0.1"
 
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

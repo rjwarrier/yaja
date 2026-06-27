@@ -119,9 +119,11 @@ class TodoIndexRepository private constructor(context: Context) {
     ) {
         val parsed = parseDate(date, entries, dayLabel).map { it.toTodoIndexEntity() }
         persistenceScope.launch {
-            todoDao.deleteByDate(date.toString())
-            if (parsed.isNotEmpty()) {
-                todoDao.insertAll(parsed)
+            database.runInTransaction {
+                todoDao.deleteByDate(date.toString())
+                if (parsed.isNotEmpty()) {
+                    todoDao.insertAll(parsed)
+                }
             }
         }
         markFingerprint(fingerprint)

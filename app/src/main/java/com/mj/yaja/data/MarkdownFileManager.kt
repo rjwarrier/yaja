@@ -1553,7 +1553,7 @@ class MarkdownFileManager(
         val results = mutableListOf<SearchResult>()
         val timestampRegex = Regex("<!--.*?-->")
         // Split into words for AND-logic: all words must appear in the entry or label
-        val words = query.trim().lowercase().split(Regex("\\s+")).filter { it.isNotBlank() }
+        val words = query.trim().lowercase().splitToSequence(Regex("\\s+")).filter { it.isNotBlank() }.toList()
 
         for (date in getAllJournalDatesLightweight().sortedDescending()) {
             // Check day label — surfaces dates whose label matches even if no entry does
