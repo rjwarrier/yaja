@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">יאג\'ה</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">כְּתַב הָעֵת</string>
+    <string name="nav_calendar">לוּחַ שָׁנָה</string>
+    <string name="nav_lookback">מבט לאחור</string>
+    <string name="nav_settings">הגדרות</string>
+    <string name="nav_shortcodes">קודים קצרים</string>
+    <string name="nav_help">עזרה ואודות</string>
+
+    <!-- Common actions -->
+    <string name="action_save">לְהַצִיל</string>
+    <string name="action_cancel">לְבַטֵל</string>
+    <string name="action_delete">לִמְחוֹק</string>
+    <string name="action_edit">לַעֲרוֹך</string>
+    <string name="action_back">בְּחֲזָרָה</string>
+    <string name="action_undo">לְבַטֵל</string>
+    <string name="action_yes">כֵּן</string>
+    <string name="action_no">לֹא</string>
+    <string name="action_remove">לְהַסִיר</string>
+    <string name="action_done">נַעֲשָׂה</string>
+    <string name="action_set">מַעֲרֶכֶת</string>
+    <string name="action_select">לִבחוֹר</string>
+    <string name="action_ok">בְּסֵדֶר</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">בנייה מחדש של מטמון</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">לכידה מהירה</string>
+    <string name="quick_capture_hint">מה קרה?</string>
+    <string name="quick_capture_helper_shortcodes">קודים קצרים מתרחבים כאן באופן אוטומטי, ושורות המשימות ממשיכות ב-Enter.</string>
+    <string name="quick_capture_save_delayed">השמירה מתעכבת. אנא פתח מחדש את Yaja כדי לאמת.</string>
+    <string name="cd_saved">נשמר</string>
+    <string name="quick_todo_dialog_title">הוסף מהיר</string>
+    <string name="quick_todo_save_delayed">שמירה על משימה מתעכבת. אנא פתח מחדש את Yaja כדי לאמת.</string>
+    <string name="quick_todo_placeholder">הוסף מטלה</string>
+    <string name="quick_event_placeholder">הוסף אירוע</string>
+    <string name="quick_todo_task_date">תאריך משימה</string>
+    <string name="quick_todo_event_date">תאריך האירוע</string>
+    <string name="quick_todo_pick_date_cd_format">בחר %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">נשמר כערך מטלה עבור היום הנבחר.</string>
+    <string name="quick_event_selected_day_hint">נשמר כערך אירוע עבור היום הנבחר.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">קוֹדֵם</string>
+    <string name="cd_next">הַבָּא</string>
+    <string name="cd_surprise_me">תפתיע אותי</string>
+    <string name="calendar_cd_go_to_current_month">עבור לחודש הנוכחי</string>
+    <string name="calendar_quick_action_timeline_title">ציר זמן</string>
+    <string name="calendar_quick_action_timeline_subtitle">דפדוף בצורה כרונולוגית</string>
+    <string name="calendar_quick_action_jump_title">קפוץ לתאריך</string>
+    <string name="calendar_quick_action_jump_subtitle">פתח יום מסוים</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">תאריך לא חוקי. השתמש בפורמט DD-MM-YY.</string>
+    <string name="calendar_action_go">לָלֶכֶת</string>
+    <string name="calendar_enable_future_dates_title">אפשר תאריכים עתידיים</string>
+    <string name="calendar_enable_future_dates_message">הזנת תאריך עתידי מושבתת. האם אתה רוצה להפעיל את זה?</string>
+    <string name="calendar_action_enable">לְאַפשֵׁר</string>
+    <string name="calendar_future_entry_enabled">הזנת תאריך עתידי הופעלה</string>
+    <string name="calendar_weekday_sun_short">שֶׁמֶש</string>
+    <string name="calendar_weekday_mon_short">יום שני</string>
+    <string name="calendar_weekday_tue_short">ג\'</string>
+    <string name="calendar_weekday_wed_short">לְהִתְחַתֵן</string>
+    <string name="calendar_weekday_thu_short">יום ה\'</string>
+    <string name="calendar_weekday_fri_short">שישי</string>
+    <string name="calendar_weekday_sat_short">שבת</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">כניסות החודש</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d יום</item>
+        <item quantity="other">%1$d / %2$d ימים</item>
+    </plurals>
+    <string name="calendar_days_of_memories">ימים של זכרונות</string>
+    <string name="calendar_consistency_last_12_months">12 החודשים האחרונים</string>
+    <string name="calendar_consistency_title_format">עקביות - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% לעומת \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">לעומת \'%1$s</string>
+    <string name="calendar_consistency_first_period">תקופה ראשונה</string>
+    <string name="calendar_graph_frequency_month">חוֹדֶשׁ</string>
+    <string name="calendar_graph_frequency_year">שָׁנָה</string>
+    <string name="calendar_yearly_consistency_title">עקביות (שנתי)</string>
+    <string name="calendar_keywords_title">מי מופיע הכי הרבה</string>
+    <string name="calendar_keywords_syncing">הנתונים הסטטיסטיים של אנשים ומקומות עדיין מסתנכרנים עם אינדקס מילות מפתח.</string>
+    <string name="calendar_keywords_empty">הוסף לפחות 3 אנשים או 3 מקומות כדי לראות אזכורים מובילים.</string>
+    <string name="calendar_keywords_people">אֲנָשִׁים</string>
+    <string name="calendar_keywords_places">מקומות</string>
+
+    <!-- Settings -->
+    <string name="settings_title">הגדרות</string>
+    <string name="settings_appearance">הוֹפָעָה</string>
+    <string name="settings_appearance_subtitle">נושא, צבעים, גופנים וסגנונות אישיים</string>
+    <string name="settings_theme">נוֹשֵׂא</string>
+    <string name="settings_font">גוֹפָן</string>
+    <string name="settings_storage">אִחסוּן</string>
+    <string name="settings_security">בִּטָחוֹן</string>
+    <string name="settings_backup">גיבוי</string>
+    <string name="settings_change_storage_title">שנה מיקום אחסון</string>
+    <string name="settings_backup_never">לְעוֹלָם לֹא</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">הגדרות חיפוש</string>
+    <string name="settings_search_clear">נקה חיפוש</string>
+    <string name="settings_search_recent">חיפושים אחרונים</string>
+    <string name="settings_search_no_results">אין הגדרות תואמות</string>
+    <string name="settings_search_close">לִסְגוֹר</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">ניסיון ביומן</string>
+    <string name="settings_section_navigation_gestures">ניווט ומחוות</string>
+    <string name="settings_section_review_insights">סקירה ותובנות</string>
+
+    <!-- Language -->
+    <string name="settings_language">שָׂפָה</string>
+    <string name="settings_language_title">שפת האפליקציה</string>
+    <string name="settings_language_subtitle">בחר את השפה המשמשת בכל האפליקציה.</string>
+    <string name="settings_language_system_default">ברירת המחדל של המערכת</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">סגנון כניסה</string>
+    <string name="settings_journal_entry_style_subtitle">בחר בין קלפים מוגבהים ומראה יומן שטוח יותר.</string>
+    <string name="settings_journal_entry_style_cards">קלפים</string>
+    <string name="settings_journal_entry_style_flat">שָׁטוּחַ</string>
+    <string name="settings_journal_render_checkboxes_title">עיבוד תיבות סימון כטקסט</string>
+    <string name="settings_journal_render_checkboxes_subtitle">הצג מטלות כמו [ ] ו- [x] על פני האפליקציה במקום תיבות סימון אקספרסיביות.</string>
+    <string name="settings_journal_day_header_counts_title">הצג ספירות כותרות של יום</string>
+    <string name="settings_journal_day_header_counts_subtitle">הצג ספירת ערכים, מילים ותווים בכותרת של יום היומן.</string>
+    <string name="settings_journal_show_timestamps_title">הצג חותמות זמן</string>
+    <string name="settings_journal_show_timestamps_subtitle">הצג את זמן הכניסה על ציר הזמן.</string>
+    <string name="settings_journal_allow_future_title">אפשר כניסות עתידיות</string>
+    <string name="settings_journal_allow_future_subtitle">אפשר הוספת ערכים לתאריכים עתידיים.</string>
+    <string name="settings_journal_truncate_title">חתוך ערכים ארוכים</string>
+    <string name="settings_journal_truncate_subtitle">קצר ערכים ארוכים במסך הבית.</string>
+    <string name="settings_journal_char_limit_title">מגבלת אופי</string>
+    <string name="settings_journal_char_limit_subtitle">הגדר כמה תווים להציג לפני הקיצוץ.</string>
+    <string name="settings_journal_char_limit_min">50 תווים</string>
+    <string name="settings_journal_char_limit_max">200 תווים</string>
+    <string name="settings_journal_char_count">%1$d תווים</string>
+    <string name="settings_journal_first_day_title">היום הראשון בשבוע</string>
+    <string name="settings_journal_first_day_subtitle">התחל את לוח השנה</string>
+    <string name="settings_journal_day_sun">שֶׁמֶש</string>
+    <string name="settings_journal_day_mon">יום שני</string>
+    <string name="settings_journal_date_recognition">זיהוי תאריך</string>
+    <string name="settings_journal_date_order_title">הזמנת תאריך</string>
+    <string name="settings_journal_date_order_subtitle">כיצד לקרוא תאריכים מספריים</string>
+    <string name="settings_journal_date_order_auto">אוטומטי</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">תאריך מילות מפתח</string>
+    <string name="settings_journal_date_keywords_subtitle">מילים בשפות אחרות שמשמעותן תאריך (למשל מילה מקומית לאתמול).</string>
+    <string name="settings_journal_view_keywords">הצג (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">הוסף מילת מפתח</string>
+    <string name="settings_journal_motion">תְנוּעָה</string>
+    <string name="settings_journal_animations_title">אנימציות</string>
+    <string name="settings_journal_animations_subtitle">שליטה בתנועה על פני האפליקציה. מופחת שומר על נוזלים עם פחות תנועה.</string>
+    <string name="settings_journal_animations_full">מָלֵא</string>
+    <string name="settings_journal_animations_reduced">מוּפחָת</string>
+    <string name="settings_journal_animations_off">כבוי</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">סקירה לאחר שמירה</string>
+    <string name="settings_review_post_write_title">ביקורת לאחר כתיבה</string>
+    <string name="settings_review_post_write_subtitle">הצג גיליון סקירה לאחר הקשה על שמור כדי לחלץ מטלות, לבדוק אזכורים, לסמן יום או להגדיר תווית.</string>
+    <string name="settings_review_people_places">אנשים ומקומות</string>
+    <string name="settings_review_highlighting_title">הדגשה</string>
+    <string name="settings_review_highlighting_subtitle">הדגש אנשים ומקומות במעקב בכרטיסי בית ובמצב הצג כניסה.</string>
+    <string name="settings_review_match_sensitivity_title">רגישות להתאמה</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">עד כמה מילה חייבת להתאים כדי להיות מזוהה על ידי אנשים ומקומות (גבוהה = מחמירה יותר).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">הוסף קוד קצר</string>
+    <string name="shortcodes_edit_title">ערוך קוד קצר</string>
+    <string name="shortcodes_code_label">קוד קצר (למשל @yday)</string>
+    <string name="shortcodes_expansion_label">טקסט הרחבה</string>
+    <string name="shortcodes_export_error">ייצוא קודים קצרים נכשל</string>
+    <string name="shortcodes_import_error">ייבוא ​​קודי קצר נכשל</string>
+    <string name="todos_expand_section">הרחב את %1$s</string>
+    <string name="todos_collapse_section">כווץ %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">כתיבת מפת חום</string>
+    <string name="heatmap_widget_description">מפת חום של פעילות כתיבה אחרונה עבור היומן שלך.</string>
+    <string name="quick_capture_widget_name">לכידה מהירה</string>
+    <string name="quick_capture_widget_description">לחצן בלחיצה אחת כדי להוסיף רישום יומן במהירות.</string>
+    <string name="quick_todo_widget_name">טודו מהיר</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">אירועי יומן יאג\'ה</string>
+    <string name="tasker_screen_allow_add_entry_title">אפשר לטאסקר להוסיף ערך</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">מאפשר ל-Tasker להשתמש בפעולות של Yaja Quick Capture כמו Add Entry ו-Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">אפשר אירועי Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">מאפשר ל-Yaja לשלוח אירועים שנשמרו, רשומה השתנתה ורשומה נמחקה ל-Tasker.</string>
+    <string name="tasker_screen_include_text_title">כלול טקסט כניסה באירועים</string>
+    <string name="tasker_screen_include_text_subtitle">כבוי כברירת מחדל לפרטיות. כאשר כבוי, Tasker מקבל סוג אירוע, תאריך, תווית ושעה, אך לא טקסט יומן.</string>
+    <string name="tasker_screen_section_what">מה זה עושה</string>
+    <string name="tasker_screen_body_what">Tasker יכול להוסיף במהירות רשומות יומן או פעולות ל-Yaja, להוסיף שורות לרשומה מקובצת כגון שיחות שלא נענו, ו-Yaja יכולה לומר ל-Tasker כאשר רשומה נשמרת, נערכת או נמחקת.</string>
+    <string name="tasker_screen_section_how">כיצד להשתמש</string>
+    <string name="tasker_screen_body_how">הפעל תחילה את המתג שאתה צריך כאן. לאחר מכן פתח את Tasker והוסף פעולה של Yaja Quick Capture או אירוע Yaja Journal Events.</string>
+    <string name="tasker_screen_section_notes">הערות</string>
+    <string name="tasker_screen_body_notes">טקסט רשומה אינו משותף עם Tasker אלא אם כן תפעיל את כלול טקסט רשומה באירועים. אם Tasker אינו מציג את האפשרויות או המשתנים העדכניים ביותר, פתח מחדש את מסך תצורת Tasker לאחר עדכון Yaja.</string>
+    <string name="tasker_screen_section_example">דוּגמָה</string>
+    <string name="tasker_screen_body_example">1. השתמש באירוע יומן Yaja ב-Tasker כדי להפעיל פעולת סינכרון של FolderSync, כך שתיקיית Yaja שלך תידחף לכל ספק ענן לאחר שינוי הערכים.</string>
+    <string name="tasker_screen_section_use_cases">מקרי שימוש</string>
+    <string name="tasker_screen_use_case_1">1. השתמש באירוע יומן Yaja ב-Tasker כדי להפעיל פעולת סינכרון של FolderSync, כך שתיקיית Yaja שלך תידחף לכל ספק ענן לאחר שינוי הערכים.</string>
+    <string name="tasker_screen_use_case_2">2. השתמש ב-Pushbullet עם Tasker כדי לשלוח טקסט לתוך Yaja Quick Capture, כך שהטקסט שנדחף יישמר כערך חדש ליום הנוכחי.</string>
+    <string name="tasker_screen_use_case_3">3. השתמש בפרופיל Tasker של שיחה שלא נענתה כדי לשלוח פעולת הוספה לתוך Yaja, כך שכל פרטי השיחה שלא נענו ינחתו מתחת לערך אחד של שיחות שלא נענו במקום ליצור ערכים נפרדים.</string>
+    <string name="quick_todo_widget_description">כפתור בלחיצה אחת כדי ללכוד מטלה כרשומה חדשה להיום.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">רשימה ניתנת לגלילה של פעולות יומן. הקש על מטלה כדי לסמן אותה כבוצעה או בוטלה.</string>
+    <string name="todo_cd_add_todo">הוסף מטלה</string>
+    <string name="todos_cd_open_compliance_master">פתח משימות חוזרות</string>
+    <string name="compliance_master_title">משימות / אירועים חוזרים</string>
+    <string name="compliance_master_add">הוסף משימה חוזרת</string>
+    <string name="compliance_master_edit">ערוך משימה חוזרת</string>
+    <string name="compliance_master_intro_title">משימות חוזרות</string>
+    <string name="compliance_master_intro_body">צור מטלות חוזרות לעבודה שבועית, חודשית, רבעונית, חצי שנתית או שנתית. Yaja חושף כל משימה רק כאשר המחזור שלה הופך להיות רלוונטי.</string>
+    <string name="compliance_master_empty">עדיין אין משימות חוזרות. הוסף אחד כדי ליצור אוטומטית מטלות לפי לוח הזמנים הנבחר שלו.</string>
+    <string name="compliance_master_status_deactivated">מושבת</string>
+    <string name="compliance_master_meta_format">לפירעון ביום %1$d • %2$d ימי לידים</string>
+    <string name="compliance_master_field_title">שם המשימה</string>
+    <string name="compliance_master_field_title_hint">דוגמה: קובץ החזר חודשי</string>
+    <string name="compliance_master_field_description">תֵאוּר</string>
+    <string name="compliance_master_field_description_hint">דוגמה: בדוק את פורטל הבנקים ואמת קבלה</string>
+    <string name="compliance_master_editor_task_section">על מה יאג\'ה צריך להזכיר לך?</string>
+    <string name="compliance_master_field_due_day">תאריך יעד</string>
+    <string name="compliance_master_field_reveal_day">צור מראש (ימים)</string>
+    <string name="compliance_master_field_schedule_mode">מתי זה אמור להגיע?</string>
+    <string name="compliance_master_schedule_mode_help">בחר כיצד Yaja קובע את תאריך היעד.</string>
+    <string name="compliance_master_select_schedule_type">בחר את תבנית התשלום</string>
+    <string name="compliance_master_field_frequency">באיזו תדירות?</string>
+    <string name="compliance_master_frequency_help">בחר באיזו תדירות משימה זו תחזור על עצמה.</string>
+    <string name="compliance_master_select_frequency">בחר תדירות חזרה</string>
+    <string name="compliance_master_schedule_details">פרטי לוח זמנים</string>
+    <string name="compliance_master_details_date_help">הזינו את תאריך היעד וכמה ימים מראש יש לכתוב אותו לקובץ היומי.</string>
+    <string name="compliance_master_details_weekday_help">בחר את יום השבוע שבו משימה זו אמורה להגיע.</string>
+    <string name="compliance_master_details_boundary_help">בחרו כמה ימים מראש יש לכתוב אותו לקובץ היומי.</string>
+    <string name="compliance_master_field_due_weekday">מועד יום חול</string>
+    <string name="compliance_master_select_weekday">בחר את יום השבוע</string>
+    <string name="compliance_master_due_day_help">הזן תאריך מ-1 עד 31. חודשים קצרים יותר משתמשים בתאריך התקף האחרון שלהם.</string>
+    <string name="compliance_master_reveal_day_help">כמה ימים לפני תאריך היעד לכתוב את ה-todo לקובץ היומן היומי.</string>
+    <string name="compliance_master_first_day_selected">לפירעון בתאריך הראשון של כל חודש רלוונטי.</string>
+    <string name="compliance_master_last_day_selected">לפירעון בתאריך האחרון של כל חודש רלוונטי.</string>
+    <string name="compliance_mode_day_of_month">תאריך ספציפי</string>
+    <string name="compliance_mode_day_of_month_desc">לפירעון בתאריך ממוספר, כגון ה-15.</string>
+    <string name="compliance_mode_day_of_week">יוֹם חוֹל</string>
+    <string name="compliance_mode_day_of_week_desc">לתשלום ביום חול נבחר, כגון יום שני.</string>
+    <string name="compliance_mode_first_day">ראשון לחודש</string>
+    <string name="compliance_mode_first_day_desc">לפירעון בתאריך הראשון של כל חודש רלוונטי.</string>
+    <string name="compliance_mode_last_day">סוף חודש</string>
+    <string name="compliance_mode_last_day_desc">לפירעון בתאריך הסופי, כולל חודשים קצרים יותר.</string>
+    <string name="compliance_frequency_weekly">שְׁבוּעִי</string>
+    <string name="compliance_frequency_biweekly">דו שבועי</string>
+    <string name="compliance_frequency_monthly">יַרחוֹן</string>
+    <string name="compliance_frequency_quarterly">רִבעוֹן</string>
+    <string name="compliance_frequency_half_yearly">חצי שנה</string>
+    <string name="compliance_frequency_annual">שְׁנָתִי</string>
+    <string name="compliance_master_summary_day_of_month">יום %1$d • %2$s • %3$d ימים מראש</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">דייט ראשון • %1$s • %2$d ימים מראש</string>
+    <string name="compliance_master_summary_last_day">תאריך אחרון • %1$s • %2$d ימים מראש</string>
+    <string name="compliance_master_execution_title">איך זה יתנהל</string>
+    <string name="compliance_master_execution_day_of_month">מטלה נוצרת %1$s ביום %2$d. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="compliance_master_execution_weekday">מטלה נוצרת %1$s ב-%2$s. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="compliance_master_execution_monthly_weekday">מטלה נוצרת מדי חודש באותו מופע %1$s כמו תאריך ההתחלה. זה נכתב לקובץ היומי שלך %2$d ימים מראש.</string>
+    <string name="compliance_master_execution_month_boundary">מטלה נוצרת %1$s ב-%2$s של החודש המיועד. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="compliance_master_boundary_first">דייט ראשון</string>
+    <string name="compliance_master_boundary_last">דייט אחרון</string>
+    <string name="compliance_master_recurrence_weekly">כל שבוע</string>
+    <string name="compliance_master_recurrence_biweekly">כל שבועיים</string>
+    <string name="compliance_master_recurrence_monthly">כל חודש</string>
+    <string name="compliance_master_recurrence_quarterly">כל שלושה חודשים</string>
+    <string name="compliance_master_recurrence_half_yearly">כל שישה חודשים</string>
+    <string name="compliance_master_recurrence_annual">כל שנה</string>
+    <string name="todo_chip_compliance">מַחזוֹרִי</string>
+    <string name="compliance_master_upcoming">בקרוב</string>
+    <string name="compliance_master_delete_confirm_title">למחוק משימה חוזרת?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" יוסר ולא ייווצרו פעולות נוספות.</string>
+    <string name="compliance_master_next_date">הבא: %1$s</string>
+    <string name="compliance_master_end_section">תנאי סיום</string>
+    <string name="compliance_master_end_help">בחר מתי משימה זו תפסיק לחזור</string>
+    <string name="compliance_master_end_never">לְעוֹלָם לֹא</string>
+    <string name="compliance_master_end_on_date">בדייט</string>
+    <string name="compliance_master_end_after">לְאַחַר…</string>
+    <string name="compliance_master_end_never_desc">חוזר ללא הגבלת זמן ללא תאריך סיום.</string>
+    <string name="compliance_master_end_date_select">בחר תאריך סיום</string>
+    <string name="compliance_master_end_date_help">לא נוצרות משימות לאחר תאריך זה.</string>
+    <string name="compliance_master_end_count_label">מספר התרחשויות</string>
+    <string name="compliance_master_end_count_help">מפסיק לאחר כל כך הרבה משימות נוצרות.</string>
+    <string name="compliance_master_ends_on">מסתיים %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d נותרו</string>
+    <string name="compliance_master_ended">הסתיים</string>
+    <string name="compliance_master_type_label">צור בתור</string>
+    <string name="compliance_master_type_task">מְשִׁימָה</string>
+    <string name="compliance_master_type_event">מִקרֶה</string>
+    <string name="heatmap_widget_status_loading">טוען מפת חום...</string>
+    <string name="heatmap_widget_status_empty">עדיין אין ערכים</string>
+    <string name="heatmap_widget_status_refresh">פתח את Yaja כדי לרענן את מפת החום</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">המטמון נבנה מחדש.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">כניסה חדשה</string>
+    <string name="shortcut_new_entry_long">הוסף רישום יומן</string>
+    <string name="shortcut_add_todo_short">הוסף Todo</string>
+    <string name="shortcut_add_todo_long">הוסף מטלה להיום</string>
+    <string name="shortcut_add_event_short">הוסף אירוע</string>
+    <string name="shortcut_add_event_long">הוסף אירוע</string>
+    <string name="shortcut_today_short">הַיוֹם</string>
+    <string name="shortcut_today_long">פתח את היומן של היום</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">ניווט</string>
+    <string name="settings_bottom_nav_style_label">סגנון ניווט תחתון</string>
+    <string name="settings_navigation_mode_title">מצב ניווט</string>
+    <string name="settings_navigation_mode_subtitle">בחר בין סרגל הניווט הצף לבין הפאנל התחתון המלא.</string>
+    <string name="settings_nav_mode_floating">צָף</string>
+    <string name="settings_nav_mode_panel">לוּחַ</string>
+    <string name="settings_navigation_screens_label">מסכי ניווט</string>
+    <string name="settings_nav_summary_floating">יומן ולוח שנה תמיד נשארים בסרגל הצף. בחר עד 2 מסכים נוספים. נבחר כרגע: %1$d מתוך %2$d.</string>
+    <string name="settings_nav_summary_panel">יומן ויומן נשארים תמיד בחלונית התחתונה. בחר עד 3 מסכים נוספים. נבחר כרגע: %1$d מתוך %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">הצג מבט לאחור בסרגל הניווט הפעיל או בחלונית.</string>
+    <string name="settings_nav_people_places_subtitle">הצג אנשים ומקומות בסרגל הניווט הפעיל או בחלונית.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">הצג Todos בסרגל הניווט הפעיל או בחלונית.</string>
+    <string name="todos_quick_add_title">הוסף מהיר</string>
+    <string name="todos_hero_subtitle">עקוב אחר עבודת יומן ורגעים</string>
+    <string name="todos_hero_all_activity">כל הפעילות</string>
+    <string name="todos_hero_open_focus">פוקוס פתוח</string>
+    <string name="todos_hero_completed">הושלם</string>
+    <string name="todos_stat_today_open">היום פתוח</string>
+    <string name="todos_stat_done_today">נעשה היום</string>
+    <string name="todos_stat_events">אירועים</string>
+    <string name="todos_stat_still_open">עדיין פתוח</string>
+    <string name="todos_stat_past_7d">7 ימים שעברו</string>
+    <string name="todos_stat_days">ימים</string>
+    <string name="todos_empty_done">אין עדיין פעולות שהושלמו</string>
+    <string name="todos_empty_events">אין עדיין רשומות לאירועים</string>
+    <string name="todos_section_open">לִפְתוֹחַ</string>
+    <string name="todos_section_later">מְאוּחָר יוֹתֵר</string>
+    <string name="todos_section_upcoming">בקרוב</string>
+    <string name="todos_section_future_events">אירועים עתידיים</string>
+    <string name="todos_section_past_events">אירועי עבר</string>
+    <string name="todos_cd_open_day">יום פתוח</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d משימה פתוחה</item>
+        <item quantity="other">%1$d משימות פתוחות</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d המשימה בוצעה</item>
+        <item quantity="other">%1$d בוצעו משימות</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d אירוע קרוב</item>
+        <item quantity="other">%1$d אירועים קרובים</item>
+    </plurals>
+    <string name="todos_filter_all_format">כל %1$d</string>
+    <string name="todos_filter_open_format">פתח את %1$d</string>
+    <string name="todos_filter_done_format">בוצע %1$d</string>
+    <string name="todos_filter_events_format">אירועים %1$d</string>
+    <string name="todos_cheer_all_clear">הכל ברור. נֶחְמָד.</string>
+    <string name="todos_cheer_done_and_dusted">נעשה ואבק.</string>
+    <string name="todos_cheer_nothing_pending">שום דבר לא בהמתנה.</string>
+    <string name="todos_cheer_caught_up">השגת.</string>
+    <string name="todos_cheer_clean_slate">צפחה נקייה.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">בעוד %1$d יום</item>
+        <item quantity="other">בעוד %1$d ימים</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">לפני %1$d יום</item>
+        <item quantity="other">לפני %1$d ימים</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">בעוד %1$d שבוע</item>
+        <item quantity="other">בעוד %1$d שבועות</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d לפני שבוע</item>
+        <item quantity="other">לפני %1$d שבועות</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">בעוד חודש</string>
+    <string name="todos_relative_one_month_ago">לפני חודש</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">בעוד %1$d חודש</item>
+        <item quantity="other">בעוד %1$d חודשים</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">לפני %1$d חודש</item>
+        <item quantity="other">לפני %1$d חודשים</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">סטָטִיסטִיקָה</string>
+    <string name="settings_nav_statistics_subtitle_on">הצג סטטיסטיקה בסרגל הניווט הפעיל או בחלונית.</string>
+    <string name="settings_nav_statistics_subtitle_off">הפעל תחילה סטטיסטיקה כדי למקם אותה בניווט.</string>
+    <string name="settings_show_labels_bottom_panel_title">הצג תוויות בלוח התחתון</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">הצג תוויות טקסט מתחת לסמלים בחלונית התחתונה.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">מחוות</string>
+    <string name="settings_entry_delete_title">ערך מחק</string>
+    <string name="settings_entry_delete_subtitle">לחץ לחיצה ארוכה על ערך כדי לבחור בו. הקש על ערכים נוספים כדי לבחור ערכים מרובים, ולאחר מכן השתמש בלחצן המחיקה במרכז. הקש על שטח ריק כדי לנקות את הבחירה.</string>
+    <string name="settings_swipe_navigate_title">החלק כדי לנווט בתאריכים</string>
+    <string name="settings_swipe_navigate_subtitle">החלק מימין לשמאל כדי להתקדם תאריך אחד, ומשמאל לימין כדי לעבור אחורה.</string>
+    <string name="settings_drag_reorder_title">הפעל גרירה לסדר מחדש</string>
+    <string name="settings_drag_reorder_subtitle">לחץ לחיצה ארוכה על ערכים כדי לסדר אותם מחדש</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">נתונים ושחזור</string>
+    <string name="settings_swipe_rebuild_index">החלק מטה על מסך הבית כדי לבנות מחדש את האינדקס</string>
+    <string name="settings_large_journal_safe_mode_title">מצב בטוח של יומן גדול</string>
+    <string name="settings_large_journal_safe_mode_subtitle">כאשר מזוהה יומן גדול מאוד, דחה את עבודת סטטיסטיקת ההפעלה הלא חיונית כדי שהאפליקציה תיפתח מהר יותר ובטוח יותר.</string>
+    <string name="settings_version_history_title">היסטוריית גרסאות</string>
+    <string name="settings_version_history_subtitle">שמור עותקים בטוחים לפני עריכות, מחיקות, תוויות וביקור מחדש בשינויים.</string>
+    <string name="settings_storage_location_label">מיקום אחסון</string>
+    <string name="settings_reset_to_default">אפס לברירת מחדל</string>
+    <string name="settings_choose_folder">בחר תיקייה</string>
+    <string name="settings_backup_description">צור zip אחד לגיבוי של Yaja המכיל רשומות יומן, קודים קצרים, מילות מפתח של תאריך ונתוני אנשים ומקומות. שחזור יכול למזג אותו בחזרה בבטחה מאוחר יותר.</string>
+    <string name="settings_last_backup">גיבוי אחרון: %1$s</string>
+    <string name="settings_backup_reminder_age_label">גיל תזכורת לגיבוי</string>
+    <string name="settings_backup_reminder_disabled">נָכֶה</string>
+    <string name="settings_backup_reminder_desc">הדגש את הגיבוי בסרגל הצד כשהוא ישן מ-%1$d ימים.</string>
+    <string name="settings_backup_reminder_days_disabled">0 ימים (מושבת)</string>
+    <string name="settings_backup_reminder_days">%1$d ימים</string>
+    <string name="settings_restore_button">לְשַׁחְזֵר</string>
+    <string name="settings_backup_now_button">גיבוי עכשיו</string>
+    <string name="settings_db_index_management_label">ניהול אינדקס מסדי נתונים</string>
+    <string name="settings_db_index_management_desc">פתח כלי בנייה מחדש ממוקדים עבור todos, אנשים ומקומות, או בנייה מחדש של אינדקס מסד נתונים מלא.</string>
+    <string name="settings_rebuild_tools_button">בניית כלים מחדש</string>
+    <string name="settings_import_label">יְבוּא</string>
+    <string name="settings_import_info_cd">ייבוא ​​מידע</string>
+    <string name="settings_import_info_title">ייבוא ​​מידע</string>
+    <string name="settings_import_day_one_title">יבוא יום ראשון</string>
+    <string name="settings_import_day_one_bullet1">- ייצוא מהיום הראשון ללא תמונות</string>
+    <string name="settings_import_day_one_bullet2">- רק נתוני טקסט ייובאו</string>
+    <string name="settings_import_day_one_bullet3">- חותמת זמן ונתוני מיקום (אם זמינים) יישמרו</string>
+    <string name="settings_import_perf_warning_title">אזהרת ביצועים</string>
+    <string name="settings_import_perf_warning_desc">ייבוא ​​של מספר רב של ערכים (500+) עשוי להימשך מספר דקות. אתה יכול לנווט משם והייבוא ​​ימשיך ברקע.</string>
+    <string name="settings_got_it">הבנתי</string>
+    <string name="settings_import_success">%1$d ימים חדשים, %2$d מוזגו, %3$d דילגו</string>
+    <string name="settings_import_source_day_one">היום הראשון</string>
+    <string name="settings_import_source_day_one_subtitle">ייצוא ‎.zip או ‎.json</string>
+    <string name="settings_import_source_journalistic">עיתונאי</string>
+    <string name="settings_import_source_journalistic_subtitle">ייצוא ‎.json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">למד כיצד להשתמש ב-yaja</string>
+    <string name="help_footer_website">אֲתַר אִינטֶרנֶט</string>
+    <string name="help_footer_share">לַחֲלוֹק</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">מַחֲלוֹקֶת</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">שתפו את יאג\'ה</string>
+    <string name="help_share_yaja_text">yaja - עוד אפליקציית יומן\n\nיומן מקומי נטול הסחות דעת המאחסן ערכים כקובצי סימון. הוא כולל ציר זמן, מבט לאחור, אנשים ומקומות, תבניות, ביקורות, סטטיסטיקות ווידג\'טים.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">שם המשתמש של דיסקורד הועתק!</string>
+    <string name="help_footer_play_store">חנות Play</string>
+    <string name="help_cd_rj_logo">לוגו RJ</string>
+    <string name="help_screen_title">עזרה ואודות</string>
+    <string name="help_welcome_title">ברוכים הבאים ל-yaja</string>
+    <string name="help_welcome_body">Yaja הוא יומן סימון מקומי ראשון לצילום ימים, אנשים, מקומות, מעקבים, ביקורות ודפוסים מבלי להפריע לך. דף זה נותן מדריך מהיר לחלקים העיקריים של האפליקציה.</string>
+    <string name="help_start_here">התחל כאן</string>
+    <string name="help_cd_collapse">הִתמוֹטְטוּת</string>
+    <string name="help_cd_expand">לְהַרְחִיב</string>
+    <string name="help_group_everyday_title">כל יום</string>
+    <string name="help_group_everyday_desc">רישום יומן, זרימת כתיבה וניווט יומיומי.</string>
+    <string name="help_group_reviews_title">ביקורות ותובנות</string>
+    <string name="help_group_reviews_desc">מבט לאחור, מגמות, אנשים, מקומות וניתוח.</string>
+    <string name="help_group_advanced_title">כלים מתקדמים</string>
+    <string name="help_group_advanced_desc">ווידג\'טים, אחסון, פרטיות, גיבויים וכלים טכניים.</string>
+    <string name="help_onboard_todos_events_title">מטלות, אירועים וחוזרים</string>
+    <string name="help_onboard_todos_events_body">שמור על תזכורות אישיות, תוכניות משפחתיות ולוחות זמנים חוזרים שיוצרים משימות אוטומטית בתאריכי היעד שלהן.</string>
+    <string name="help_onboard_widgets_title">ווידג\'טים</string>
+    <string name="help_onboard_widgets_body">הוסף ווידג\'טים של Heatmap, Quick Capture, Quick Todo, או Todo List מתוך המשגר.</string>
+    <string name="help_onboard_version_history_title">היסטוריית גרסאות</string>
+    <string name="help_onboard_version_history_body">אפשר קובצי היסטוריה בהגדרות &gt; נתונים כדי לשמור על תצלומים בטוחים לפני שינויים מסוכנים.</string>
+    <string name="help_onboard_tasker_title">טאסקר</string>
+    <string name="help_onboard_tasker_body">השתמש ב-Tasker כדי להוסיף במהירות ערכים, פעולות או אירועים כאשר משהו אישי צריך להיקלט מיד.</string>
+    <string name="help_section_writing_editor_title">כתיבה ועורך</string>
+    <string name="help_section_writing_editor_preview">תבניות, כותרות סימון, מטלות, אירועים והכנסת טיוטה גמישה.</string>
+    <string name="help_section_writing_editor_content">+ הקש על כפתור ה-\'+\' הצף כדי לכתוב עבור היום שנבחר.\n+ השתמש בתבניות כמו פגישה, יום נסיעות, יומן בריאות, רפלקציה, יומן עבודה ועוד.\n+ ניתן להכניס תבניות לטיוטה ריקה, לצרף למטה, להשתמש בהן כדי להחליף טיוטה, או להכניס אותן בסמן.\n+ צ\'יפים של עורך יכולים להכניס במהירות רשימות, רשומות ואירועים ממוספרים,\n. ועריכת ערך תומכים בכותרות בסגנון סימון כמו ### סעיף.</string>
+    <string name="help_section_post_write_review_title">ביקורת לאחר כתיבה</string>
+    <string name="help_section_post_write_review_preview">חילוץ מטלות, זיהוי מילות מפתח, סימון בכוכבים, תוויות וביקור מחדש בהגדרה.</string>
+    <string name="help_section_post_write_review_content">+ לאחר הכתיבה, Yaja יכול לפתוח גיליון ביקורת לפני השמירה.\n+ הוא יכול לחלץ פריטי מטלות, לזהות אנשים ומקומות, לסמן את היום, להגדיר תווית יום ולתזמן תאריכי ביקור חוזר.\n+ ניתן להשבית ביקורת לאחר כתיבה מהגדרות אם אתה מעדיף שמירה ישירה.</string>
+    <string name="help_section_revisit_followup_title">תאריכי ביקור חוזר ומעקב</string>
+    <string name="help_section_revisit_followup_preview">תאריכי מעקב מקושרים ליומן עם בחירות מהירות ואפשרות מותאמת אישית.</string>
+    <string name="help_section_revisit_followup_content">+ הוסף תאריכי ביקור חוזר עם מחר, שבוע הבא, חודש הבא, או תאריך מותאם אישית.\n+ פריטי ביקור חוזר מועדים מופיעים בדף הבית ומסומנים ביומן ובציר הזמן.\n+ זה עובד היטב עבור הבטחות, החלטות, בדיקות תקינות ותזכורות הקשורות להקשר היומן.</string>
+    <string name="help_section_navigation_gestures_title">ניווט ומחוות</string>
+    <string name="help_section_navigation_gestures_preview">הזזת תאריך, מחיקת בחירה, העדפות החלקה ובנה מחדש את התנהגות המטמון.</string>
+    <string name="help_section_navigation_gestures_content">+ הבית תומך בניווט בתאריכים עם חיצים וניווט החלקה אופציונלי כאשר מופעל.\n+ לחץ לחיצה ארוכה על ערך כדי לבחור בו. הקש על ערכים נוספים כדי לבחור גם אותם, ולאחר מכן השתמש בגלולת מחק ליד לחצן הוסף.\n+ הקשה מחוץ לערכים שנבחרו מנקה את הבחירה. ניתן לשחזר ערכים שנמחקו יחד מהספירה לאחור של השחזור.\n+ ניתן לבנות מחדש מטמון כאשר קובצי יומן משתנים מחוץ ל-Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">קודים קצרים ולכידה מהירה</string>
+    <string name="help_section_shortcodes_quick_capture_preview">לכידה אישית מהירה בתוספת קטעי טקסט דינמיים לשימוש חוזר.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ צור קודים קצרים כדי להוסיף טקסט חוזר במהירות.\n+ מצייני מיקום דינמיים כמו {{today:dd-MMM}} ו-{{now:HH:mm}} פועלים בתוך קודים קצרים.\n+ לכידה מהירה עוזרת לרשום משהו מהר מבלי לפתוח את העורך המלא.\n+ הוספה מהירה יכולה לשמור מטלה או אירוע עבור תאריך נבחר מהיישומון, או מטלות.</string>
+    <string name="help_section_todos_events_title">מטלות, אירועים וחוזרים</string>
+    <string name="help_section_todos_events_preview">תזכורות אישיות, אירועים ראויים לציון ולוחות זמנים חוזרים אוטומטיים.</string>
+    <string name="help_section_todos_events_content">+ מטלות כתובות ישירות ברשומות ביומן כשורות [ ] ו-[x].\n+ אירועים הם רשומות יומן רגילות המסומנות כאירוע, שימושיות עבור תוכניות משפחתיות, פגישות, נסיעות או כל דבר שתרצו לשים לב אליהם מאוחר יותר.\n+ משימות ואירועים חוזרים (לוחות זמנים) כתובים באופן אוטומטי פריטי מטלות או כותרות לאירועים בעמודי היומן היומי שלך (למשל, חודשי, חודשי, למשל) שלהם. לוחות הזמנים שלך על ידי הקשה על הסמל החוזר במסך המשימות.\n+ בכל יום כשאתה פותח את Yaja, צינור הרקע פועל כדי לבדוק אם יש לבצע משימות מתוזמנות ומכניס אותם לערך של אותו היום.\n+ מסך המשימות עוזר לך להציג משימות פתוחות, משימות שהושלמו ואירועים מבלי להפוך את Yaja ללוח מחוונים לפרודוקטיביות ב-Journal+ כדי לפתוח את לוח המחוונים של יומן+. ב-Todos כדי לבנות מחדש את אינדקס המטלות אם קבצים השתנו מחוץ ל-Yaja.\n+ הצג משימות שהושלמו נזכר, כך שהתצוגה המועדפת עליך נשארת כשאתה עוזב וחוזר.\n+ ווידג\'טים של Todo יכולים להציג משימות ממתינות, לאשר לפני החלפת מצב, להסתיר משימות שהושלמו, ולחלופין להסתיר אוטומטית כאשר שום דבר לא ממתין.</string>
+    <string name="help_section_people_places_title">אנשים ומקומות</string>
+    <string name="help_section_people_places_preview">מילות מפתח, כינויים, מגמות ותצוגות חיבור מדורגות.</string>
+    <string name="help_section_people_places_content">+ עקוב אחר אנשים ומקומות עם כינויים ותוויות יחס.\n+ חפש, סנן ומיין את רשימת מילות המפתח.\n+ דפי פרטי מילות מפתח מציגים עדכניות, אזכורים לאורך זמן, אזכורים משותפים וחיבורים מדורגים.\n+ ניתן להתאים את רגישות ההתאמה מההגדרות.</string>
+    <string name="help_section_timeline_lookback_title">ציר זמן ומבט לאחור</string>
+    <string name="help_section_timeline_lookback_preview">גלישה מהימים האחרונים, הדגשות, הפתיע אותי וסקור את נקודות הכניסה.</string>
+    <string name="help_section_timeline_lookback_content">+ ציר הזמן מאפשר לך לדפדף בימים עברו עם מסננים, שבבי שנה ומצב אופציונלי של כל התאריכים.\n+ מבט לאחור מציג ערכים מאותו יום בשנים האחרונות והדגשים שלך בכוכב.\n+ Surprise Me פותחת ערך עבר אקראי ממבט לאחור.\n+ סקירה שבועית וסקירה חודשית בשידור חי בתוך מבט לאחור.</string>
+    <string name="help_section_statistics_reviews_title">סטטיסטיקה וסקירות</string>
+    <string name="help_section_statistics_reviews_preview">מצב השוואה, תובנות תבנית, קטעים גלויים מותאמים אישית וסיכומים.</string>
+    <string name="help_section_statistics_reviews_content">+ הסטטיסטיקה כוללת מצב השוואה, דלתות מילות מפתח ותובנות תבנית.\n+ תוכל לבחור אילו קטעי סטטיסטיקה יישארו גלויים מתוך מסך הסטטיסטיקה.\n+ מצב השוואה זמין עבור כל הזמנים ומסכם דלתות של חודש ושנה.\n+ דפי סקירה מסכמים את רוב הימים הפעילים, האנשים והמקומות המובילים, רגעים מועדפים, תוויות, דפוסי שפה ורצף או פערים.</string>
+    <string name="help_section_widgets_home_title">ווידג\'טים ומשטח הבית</string>
+    <string name="help_section_widgets_home_preview">ווידג\'טים של משגר, מילות מפתח מודגשות וסטטיסטיקות ביתיות ברמת היום.</string>
+    <string name="help_section_widgets_home_content">+ ווידג\'טים של כתיבת מפת חום, לכידה מהירה, הוספה מהירה ורשימת מטלות זמינים במפעיל.\n+ מסכי תצורה של ווידג\'טים מאפשרים לך להתאים פינות, ריפוד, צורה, כותרות, נראות של משימה שהושלמה ואפשרויות ווידג\'ט אחרות שבהן נתמכות.\n+ ווידג\'ט מפת החום משתמש בגוונים עוצמתיים יותר להדגשה חלקה יותר של תצוגת כתיבה והיסטוריה של כתובות והיסטוריה של אנשים. מופעל.\n+ כותרת תאריך הבית יכולה להציג או להסתיר את ספירת הכניסות, המילים וספירת התווים.</string>
+    <string name="help_section_language_text_analysis_title">ניתוח שפה וטקסט</string>
+    <string name="help_section_language_text_analysis_preview">זיהוי שפה מקומית לסטטיסטיקה ותובנות סקירה.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja מזהה סקריפט או שפה דומיננטיים בערכים לתובנות.\n+ פיצול שפה מופיע בסטטיסטיקה ובביקורות.\n+ זיהוי פועל באופן מקומי ואינו שולח טקסט יומן מהמכשיר.</string>
+    <string name="help_section_data_privacy_cache_title">נתונים, פרטיות ומטמון</string>
+    <string name="help_section_data_privacy_cache_preview">אחסון סימון, היסטוריית גרסאות, יומן אפליקציה, נעילת אפליקציה ובניית מטמון מחדש.</string>
+    <string name="help_section_data_privacy_cache_content">+ פרטיות נתונים: כל נתוני היומן האישיים נמצאים אך ורק על המכשיר הפיזי שלך ולעולם לא עוזבים אותו בכל עת. Yaja אינה מפעילה מסדי נתונים בענן, שרתי גיבוי מרוחקים או טלמטריה כדי לעקוב אחר הטקסט שלך.\n+ רשומות יומן מאוחסנות כקובצי Markdown סטנדרטיים מסודרים לפי שנה וחודש.\n+ היסטוריית גרסאות יכולה לשמור צילומי מצב בטוחים לפני עריכות, מחיקות, תוויות וביקור מחדש בשינויים.\n+ תוכל לבחור כמה גרסאות לשמור וכמה ימים היסטורית היסטוריה, רישום אירועי אפליקציה ופרטי קריסה יישמר ללא אירועי מטמון ופרטי קריסה. טקסט יומן.\n+ בנייה מחדש של מטמון האפליקציה מאפשרת לך לרענן את נתוני האפליקציה באופן מודולרי, כולל פעולות ובנייה מחדש של מטמון מלא.\n+ נעילת אפליקציה תומכת ב-PIN וטביעת אצבע.\n+ Yaja שומר על דחיית אינדקס ועבודת סטטיסטיקה כבדה במידת האפשר, כך שההפעלה והחיסכון של האפליקציה תישאר מגיבה.</string>
+    <string name="settings_app_log_title">יומן אפליקציה</string>
+    <string name="settings_app_log_subtitle">הצג אבחון בטוח בפרטיות ופרטי קריסה קודמים</string>
+    <string name="app_log_cd_share">שתף יומן אפליקציה</string>
+    <string name="app_log_cd_clear">נקה יומן אפליקציה</string>
+    <string name="app_log_privacy_title">אבחון בטוח בפרטיות</string>
+    <string name="app_log_privacy_description">יומן זה מתעד אירועי אפליקציה גדולים, פעולות מטמון/אחסון, רענון ווידג\'ט ופרטי קריסה. זה לא כולל רשומות ביומן, טקסט מטלות או תוכן הערות פרטיות.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">שמור על %d היום האחרון</item>
+        <item quantity="other">אין עדיין יומן אפליקציה.</item>
+    </plurals>
+    <string name="app_log_retention_description">אירועי יומן ישנים יותר נגזמים באופן אוטומטי במהלך רישום ומיד כאשר הגדרה זו משתנה.</string>
+    <string name="app_log_empty">אין עדיין יומן אפליקציה.</string>
+    <string name="app_log_refresh">רענן יומן</string>
+    <string name="app_log_share_empty">אין עדיין רשומות ביומן של אפליקציית Yaja.</string>
+    <string name="app_log_share_subject">יומן אפליקציות Yaja</string>
+    <string name="app_log_share_chooser">שתף יומן אפליקציית Yaja</string>
+    <string name="app_log_local_time_format">%1$s | זמן מקומי\n%2$s</string>
+    <string name="settings_website_title">אתר Yaja</string>
+    <string name="settings_website_subtitle">פתח את האתר הרשמי לקבלת עדכונים ופרטים</string>
+    <string name="settings_advanced_integrations_title">אינטגרציות מתקדמות</string>
+    <string name="settings_tasker_integration_title">שילוב Tasker</string>
+    <string name="settings_tasker_integration_subtitle">פעולות לכידה מהירה וטריגרים של אירועי יומן</string>
+    <string name="settings_shortcodes_subtitle">נהל קטעים לשימוש חוזר שמתרחבים תוך כדי כתיבה או לכידה מהירה.</string>
+    <string name="settings_privacy_security_title">פרטיות ואבטחה</string>
+    <string name="settings_pin_lock_title">נעילת PIN</string>
+    <string name="settings_app_locked">האפליקציה נעולה</string>
+    <string name="settings_app_unlocked">האפליקציה לא נעולה</string>
+    <string name="settings_change_pin">שנה PIN</string>
+    <string name="settings_biometric_unlock_title">פתיחה ביומטרית</string>
+    <string name="settings_biometric_enabled_desc">טביעת אצבע או מזהה פנים מופעלים</string>
+    <string name="settings_biometric_disabled_desc">השתמש ביומטרי במקום PIN</string>
+    <string name="settings_autolock_timeout_title">פסק זמן לנעילה אוטומטית</string>
+    <string name="settings_pin_lock_disclaimer">נעילת ה-PIN מונעת גישה לא מורשית לאפליקציה אך אינה מצפינה את נתוני היומן שלך בדיסק. מישהו עם גישה ישירה לקובץ עדיין יכול לקרוא את הערכים שלך.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d דקה</item>
+        <item quantity="other">%1$d דקות</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">מַעֲרֶכֶת</string>
+    <string name="settings_theme_light">אוֹר</string>
+    <string name="settings_theme_dark">כֵּהֶה</string>
+    <string name="settings_theme_amoled">אמולד</string>
+    <string name="settings_colors_label">צבעים</string>
+    <string name="settings_color_intensity_title">עוצמת צבע</string>
+    <string name="settings_background_tint_title">גוון רקע</string>
+    <string name="settings_font_sans">סאנס</string>
+    <string name="settings_font_serif">תָג</string>
+    <string name="settings_font_mono">מונו</string>
+    <string name="settings_font_custom">מִנְהָג</string>
+    <string name="settings_font_size_label">גודל גופן</string>
+    <string name="settings_ui_font_size_label">גודל גופן ממשק משתמש</string>
+    <string name="settings_data_font_size_label">גודל גופן תוכן</string>
+    <string name="settings_follow_ui_font_scale_label">הפוך את גודל גופן התוכן לזהה לממשק המשתמש</string>
+    <string name="settings_color_source_material_you">חומר אתה</string>
+    <string name="settings_theme_preview_title">תצוגה מקדימה של ערכת הנושא</string>
+    <string name="settings_journal_entry_preview">רישום ביומן</string>
+    <string name="settings_journal_entry_preview_desc">קלפים, צ\'יפים וכפתורים ישתמשו בצבעים אלה.</string>
+    <string name="settings_preview_chip_chip">שְׁבָב</string>
+    <string name="settings_preview_chip_accent">מִבטָא</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">עוצמה: %1$s</string>
+    <string name="settings_personal_themes_title">נושאים אישיים</string>
+    <string name="settings_theme_name_label">שם נושא</string>
+    <string name="settings_main_color_label">צבע עיקרי</string>
+    <string name="settings_hue_label">צֶבַע</string>
+    <string name="settings_sat_label">שבת</string>
+    <string name="settings_bright_label">בָּהִיר</string>
+    <string name="settings_generated_accents_title">נוצרו מבטאים</string>
+    <string name="settings_personal_theme_desc">בחר צבע אחד. Yaja יוצר צבעי מבטא ותמיכה תואמים.</string>
+    <string name="settings_preview_chip_main">רָאשִׁי</string>
+    <string name="settings_preview_chip_support">תְמִיכָה</string>
+    <string name="settings_no_font_selected">לא נבחר גופן</string>
+    <string name="settings_custom_font_desc">בחר כל קובץ .ttf או .otf של Unicode - למשל. גופן מליאלם כמו מנג\'ארי. תווים שחסרים לגופן משתמשים בגופני מערכת.</string>
+    <string name="settings_font_replace">לְהַחלִיף</string>
+    <string name="settings_choose_font_file">בחר קובץ גופן</string>
+    <string name="settings_intensity_muted">מושתק</string>
+    <string name="settings_intensity_normal">נוֹרמָלִי</string>
+    <string name="settings_intensity_vivid">בָּהִיר</string>
+    <string name="settings_intensity_pop">פּוֹפּ</string>
+    <string name="settings_tint_clean">לְנַקוֹת</string>
+    <string name="settings_tint_soft">רַך</string>
+    <string name="settings_tint_rich">עָשִׁיר</string>
+    <string name="settings_tint_deep">עָמוֹק</string>
+    <string name="settings_accent_complementary">מַשׁלִים</string>
+    <string name="settings_accent_analogous">מַקְבִּיל</string>
+    <string name="settings_accent_triadic">טריאדי</string>
+    <string name="settings_accent_soft">רַך</string>
+    <string name="settings_mono_weight_thin">דַק</string>
+    <string name="settings_mono_weight_extra_light">תוספת אור</string>
+    <string name="settings_mono_weight_light">אוֹר</string>
+    <string name="settings_mono_weight_regular">קָבוּעַ</string>
+    <string name="settings_mono_weight_medium">בֵּינוֹנִי</string>
+    <string name="settings_mono_weight_semi_bold">חצי מודגש</string>
+    <string name="settings_mono_weight_bold">נוֹעָז</string>
+    <string name="settings_mono_weight_extra_bold">מודגש במיוחד</string>
+    <string name="settings_mono_weight_title">מִשׁקָל</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">הוסף מילת מפתח של תאריך</string>
+    <string name="settings_keyword_label">מילת מפתח</string>
+    <string name="settings_keyword_placeholder_example">לְמָשָׁל אֶתמוֹל</string>
+    <string name="settings_means_label">אֶמְצָעִי</string>
+    <string name="settings_add_button">לְהוֹסִיף</string>
+    <string name="settings_no_keywords_yet">עדיין לא נוספו מילות מפתח.</string>
+    <string name="settings_added_keywords_title">מילות מפתח נוספו (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">הוסף מילת מפתח</string>
+    <string name="keywords_dialog_add_title">הוסף מילת מפתח</string>
+    <string name="keywords_dialog_edit_title">ערוך מילת מפתח</string>
+    <string name="keywords_cd_import_csv">ייבוא ​​CSV</string>
+    <string name="keywords_cd_export_csv">ייצא CSV</string>
+    <string name="keywords_cd_download_template">הורד תבנית</string>
+    <string name="rebuild_cache_storage_transparency_title">שקיפות אחסון במכשיר</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja משתמש במודל אחסון מקומי מאובטח. נתוני היומן האישיים שלך נשארים מקומיים ולעולם לא עוזבים את המכשיר שלך בכל עת:</string>
+    <string name="rebuild_cache_source_of_truth_title">מקור האמת (קבצי Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">כל הערכים, פריטי הבדיקה (מטלות), אירועי ציר הזמן, הכוכבים והתגים נשמרים לצמיתות בקבצי Markdown (.md) רגיל בתיקיית היומן המקומית שבחרת. הנתונים שלך נמצאים בבעלותך ב-100% והם נמצאים כולו במכשיר שלך.</string>
+    <string name="rebuild_cache_read_cache_title">קרא מטמון ואינדקס (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">כדי לאפשר טעינת מסך מיידית, הדגשות לוח שנה, מילות מפתח וסטטיסטיקות מבלי לסרוק את מערכת הקבצים בכל גלילה, Yaja מנתח את קבצי ה-Markdown שלך ומאנדקסת אותם במסד נתונים מקומי של Room SQLite במכשיר שלך.</string>
+    <string name="rebuild_cache_local_private_title">100% מקומי ופרטי</string>
+    <string name="rebuild_cache_local_private_desc">ל-Yaja אין מסדי נתונים בענן, שרתי גיבוי מרוחקים או טלמטריה העוקבים אחר הטקסט שלך. כל רשומות היומן והנתונים המנותחים נשארים אך ורק במכשיר הפיזי שלך ולעולם לא עוזבים אותו בכל עת.</string>
+    <string name="keywords_export_success">מילות מפתח יוצאו</string>
+    <string name="keywords_export_failed">לא ניתן לייצא מילות מפתח</string>
+    <string name="keywords_template_saved">התבנית נשמרה</string>
+    <string name="keywords_template_save_failed">לא ניתן לשמור את התבנית</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">מילת מפתח %d מיובאת</item>
+        <item quantity="other">%d מילות מפתח מיובאות</item>
+    </plurals>
+    <string name="keywords_import_none_valid">לא נמצאו מילות מפתח חוקיות</string>
+    <string name="keywords_import_failed">לא ניתן לייבא מילות מפתח</string>
+    <string name="keywords_status_indexing">יצירת אינדקס</string>
+    <string name="keywords_status_indexed">הוספה לאינדקס</string>
+    <string name="keywords_metric_mentions">אזכורים</string>
+    <string name="keywords_metric_days">ימים</string>
+    <string name="keywords_timeline_range_all">כֹּל</string>
+    <string name="keywords_connections_filter_all">כֹּל</string>
+    <string name="keywords_connections_filter_people">אֲנָשִׁים</string>
+    <string name="keywords_connections_filter_places">מקומות</string>
+    <string name="keywords_connections_filter_recent">לאחרונה</string>
+    <string name="keywords_connections_filter_strongest">הכי חזק</string>
+    <string name="keywords_filter_needs_reindex">צריך Reindex</string>
+    <string name="keywords_search_placeholder">חפש אנשים, מקומות, כינויים, קשר</string>
+    <string name="keywords_refreshing_counters">מרענן את מוני מילות המפתח...</string>
+    <string name="keywords_empty_title">עדיין אין מילות מפתח</string>
+    <string name="keywords_empty_subtitle">הוסף את האנשים והמקומות שאתה רוצה שהאפליקציה תעקוב אחריהם באופן מקומי.</string>
+    <string name="keywords_no_results_title">אין תוצאות תואמות</string>
+    <string name="keywords_no_results_subtitle">נסה חיפוש, מיון או סינון אחר.</string>
+    <string name="keywords_people_title">אֲנָשִׁים</string>
+    <string name="keywords_places_title">מקומות</string>
+    <string name="keywords_people_empty">עדיין לא נוספו אנשים.</string>
+    <string name="keywords_people_filtered_empty">אין אנשים שתואמים למסננים הנוכחיים.</string>
+    <string name="keywords_places_empty">עדיין לא נוספו מקומות.</string>
+    <string name="keywords_places_filtered_empty">אין מקומות שתואמים למסננים הנוכחיים.</string>
+    <string name="keywords_delete_person_title">למחוק אדם?</string>
+    <string name="keywords_delete_place_title">למחוק מקום?</string>
+    <string name="keywords_delete_message">למחוק את \"%1$s\" מאנשים ומקומות? פעולה זו תסיר את מילת המפתח ואת ההתאמות שלה באינדקס.</string>
+    <string name="keywords_timeline_title">אזכורים לאורך זמן</string>
+    <string name="keywords_timeline_empty_pattern">אין עדיין דפוס חודשי</string>
+    <string name="keywords_timeline_total_format">%1$d סך הכל</string>
+    <string name="keywords_timeline_empty_chart">אזכורים יתרשמו כאן לאחר הוספת ערכים לאינדקס.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">שיא %1$s • %2$d אזכור</item>
+        <item quantity="other">שיא %1$s • %2$d אזכורים</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">ימים עם אזכורים</string>
+    <string name="keywords_recency_title">הִתרַחֲשׁוּת לְאֲחרוֹנָה</string>
+    <string name="keywords_recency_none">עדיין אין התאמות</string>
+    <string name="keywords_recency_today">מוזכר היום</string>
+    <string name="keywords_recency_yesterday">הוזכר אתמול</string>
+    <string name="keywords_recency_days_ago_format">אזכור אחרון לפני %1$d ימים</string>
+    <string name="keywords_first_seen">נראה לראשונה</string>
+    <string name="keywords_last_seen">נראה לאחרונה</string>
+    <string name="keywords_unknown">לֹא יְדוּעַ</string>
+    <string name="keywords_co_mentioned_with">מוזכר יחד עם</string>
+    <string name="keywords_connections_title">חיבורים</string>
+    <string name="keywords_connections_subtitle">מדורג לפי חפיפה חוזרת ונשנות</string>
+    <string name="keywords_connections_linked_format">%1$d מקושר</string>
+    <string name="keywords_connections_show">הצג קשרים</string>
+    <string name="keywords_connections_hide">הסתר קשרים</string>
+    <string name="keywords_connections_items_in_view">%1$d פריטים בתצוגה זו</string>
+    <string name="keywords_connections_tap_to_expand">הקש כדי להרחיב את הקישורים המדורגים %1$d</string>
+    <string name="keywords_connections_empty">אין עדיין חיבורים למסנן זה.</string>
+    <string name="keywords_open_day">יום פתוח</string>
+    <string name="keywords_sort_alphabetical">א-ז</string>
+    <string name="keywords_sort_most_mentioned">הכי מוזכר</string>
+    <string name="keywords_sort_recently_added">נוספו לאחרונה</string>
+    <string name="keywords_peak_mentions_format">שיא %1$s • %2$d אזכור%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d יום</string>
+    <string name="keywords_connections_meta_days_suffix_plural">ס</string>
+    <string name="keywords_connections_meta_together">יַחַד</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d כניסה משותפת</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| %1$s אחרון</string>
+    <string name="keywords_connections_score_format">ציון %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d ימים</string>
+    <string name="keywords_connections_shared_chip">%1$d משותף</string>
+    <string name="keywords_match_type_exact">מְדוּיָק</string>
+    <string name="keywords_match_type_fuzzy">מְעוּרפָּל</string>
+    <string name="keywords_match_type_alias">כינוי</string>
+    <string name="keywords_match_type_relation">יַחַס</string>
+    <string name="keywords_action_delete">לִמְחוֹק</string>
+    <string name="keywords_action_edit">לַעֲרוֹך</string>
+    <string name="keywords_action_view">נוֹף</string>
+    <string name="keywords_name_label">שֵׁם</string>
+    <string name="keywords_relation_context_label">קשר / הקשר</string>
+    <string name="keywords_aliases_label">כינויים (מופרדים בפסיק)</string>
+    <string name="keywords_aliases_label_short">כינויים</string>
+    <string name="keywords_type_person">אָדָם</string>
+    <string name="keywords_type_place">מָקוֹם</string>
+    <string name="keywords_save_disabled_hint">מילות מפתח נשמרות כבויות. הפעל אותם מהרשימה כאשר אתה רוצה שהאינדקס יפעל.</string>
+    <string name="settings_meaning_yesterday">אֶתמוֹל</string>
+    <string name="settings_meaning_today">הַיוֹם</string>
+    <string name="lookback_chip_weekly">שְׁבוּעִי</string>
+    <string name="lookback_chip_monthly">יַרחוֹן</string>
+    <string name="timeline_screen_title">ציר זמן</string>
+    <string name="timeline_empty_title">שום דבר כאן עדיין</string>
+    <string name="timeline_empty_subtitle">נסה מסנן אחר או התאם את חיפוש התווית.</string>
+    <string name="timeline_quick_today">ציר זמן</string>
+    <string name="timeline_quick_month">חוֹדֶשׁ</string>
+    <string name="timeline_quick_filters">מסננים</string>
+    <string name="timeline_all_dates">כל התאריכים</string>
+    <string name="timeline_label_prefix">תווית: %1$s</string>
+    <string name="timeline_label_search_placeholder">חפש תוויות יום</string>
+    <string name="timeline_filters_title">מסננים ופריסה של ציר זמן</string>
+    <string name="settings_meaning_tomorrow">מָחָר</string>
+    <string name="settings_meaning_day_before_yesterday">שִׁלשׁוֹם</string>
+    <string name="settings_meaning_day_after_tomorrow">מחרתיים</string>
+    <string name="settings_meaning_last_week">שבוע שעבר</string>
+    <string name="settings_meaning_next_week">בשבוע הבא</string>
+    <string name="settings_meaning_monday">יוֹם שֵׁנִי</string>
+    <string name="settings_meaning_tuesday">יוֹם שְׁלִישִׁי</string>
+    <string name="settings_meaning_wednesday">יוֹם רְבִיעִי</string>
+    <string name="settings_meaning_thursday">יוֹם חֲמִישִׁי</string>
+    <string name="settings_meaning_friday">יוֹם שִׁישִׁי</string>
+    <string name="settings_meaning_saturday">שַׁבָּת</string>
+    <string name="settings_meaning_sunday">יוֹם רִאשׁוֹן</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">אחסון פנימי לאפליקציה</string>
+    <string name="settings_storage_internal_default">אחסון פנימי לאפליקציה (ברירת מחדל)</string>
+    <string name="settings_storage_new_folder_fallback">התיקיה החדשה</string>
+    <string name="settings_storage_current_folder_fallback">התיקיה הנוכחית</string>
+    <string name="settings_storage_move_confirm">כל הערכים הקיימים יועברו מ-%1$s ל-%2$s. האם אתה רוצה להמשיך?</string>
+    <string name="settings_restore_added_skipped">נוסף: %1$d\nכפילויות שדילגתם עליהן: %2$d</string>
+    <string name="settings_storage_custom_folder">תיקיה מותאמת אישית:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">קיצורי דרך עוזרים</string>
+    <string name="addentry_cd_insert_template">הכנס תבנית</string>
+    <string name="addentry_cd_jump_to_today">קפוץ להיום</string>
+    <string name="addentry_cd_share">לַחֲלוֹק</string>
+    <string name="addentry_cd_bold">נוֹעָז</string>
+    <string name="addentry_cd_italic">נטוי</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">הגדר זמן</string>
+    <string name="addentry_event_chip">מִקרֶה</string>
+    <string name="addentry_pick_time_title">בחר זמן</string>
+    <string name="addentry_hour_label">שָׁעָה</string>
+    <string name="addentry_minute_label">דַקָה</string>
+    <string name="addentry_new_event_title">אירוע חדש</string>
+    <string name="addentry_title_label">כּוֹתֶרֶת</string>
+    <string name="addentry_event_description_label">תיאור האירוע</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos נמצא</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">המר את השורה %1$d לרשימת בדיקה</item>
+        <item quantity="other">המר %1$d שורות לרשימת בדיקה</item>
+    </plurals>
+    <string name="addentry_people_places_title">אנשים ומקומות</string>
+    <string name="addentry_no_tracked_mentions">לא נמצאו אנשים או מקומות במעקב זה בערך זה.</string>
+    <string name="addentry_day_memory_title">זיכרון יום</string>
+    <string name="addentry_star_day_title">כוכב את היום הזה</string>
+    <string name="addentry_star_day_subtitle">שמור אותו כהדגשה כך שהוא יחזור במבט לאחור.</string>
+    <string name="addentry_day_label_label">תווית יום</string>
+    <string name="addentry_day_label_placeholder">לְמָשָׁל יום איפוס</string>
+    <string name="addentry_follow_up_title">המשך</string>
+    <string name="addentry_next_month">בחודש הבא</string>
+    <string name="addentry_custom">מִנְהָג</string>
+    <string name="addentry_due_date_format">מועד %1$s</string>
+    <string name="addentry_cd_clear_follow_up">מעקב ברור</string>
+    <string name="addentry_follow_up_note_label">הערת המשך</string>
+    <string name="addentry_follow_up_note_placeholder">מה כדאי לחזור ולראות?</string>
+    <string name="addentry_review_entry_title">סקירת ערך</string>
+    <string name="addentry_review_entry_subtitle">מעבר מהיר לפני שמירה. משוך מטלות החוצה, בדוק אזכורים במעקב, וסמן יום אם זה משנה.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d לעשות</item>
+        <item quantity="other">%1$d פעולות</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d אזכור</item>
+        <item quantity="other">%1$d אזכור</item>
+    </plurals>
+    <string name="addentry_save_entry_button">שמור ערך</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">בטל שינויים</string>
+    <string name="addentry_discard_changes_message">יש לך שינויים שלא נשמרו. חזור והשליך אותם, או הישאר כדי להמשיך לערוך.</string>
+    <string name="addentry_go_back">לַחֲזוֹר</string>
+    <string name="addentry_stay">שָׁהוּת</string>
+    <string name="addentry_shortcuts_title">קיצורי דרך</string>
+    <string name="addentry_help_bold_suffix">כדי להפוך טקסט למודגש (או בחר טקסט והקש על כפתור מודגש)</string>
+    <string name="addentry_help_italic_suffix">כדי להפוך את הטקסט לנטוי (או בחר טקסט והקש על לחצן נטוי)</string>
+    <string name="addentry_help_today_suffix">: מתרחב לתאריך הנוכחי (לדוגמה, 25-25 בדצמבר)</string>
+    <string name="addentry_help_now_suffix">: מתרחב לשעה הנוכחית (לדוגמה, 14:30)</string>
+    <string name="addentry_help_week_suffix">: מתרחב לשבוע הנוכחי (לדוגמה, שבוע 52)</string>
+    <string name="addentry_help_day_suffix">: מתרחב ליום השבוע הנוכחי (למשל, יום שני)</string>
+    <string name="addentry_help_todo_suffix">: מתרחב לתיבת סימון מטלות (לדוגמה, [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: כשהזנת בכל מקום בשורה המכילה תיבת סימון מטלות, היא תחליף אותה.</string>
+    <string name="addentry_okey">אוקיי!</string>
+    <string name="addentry_template_merge_message">לטיוטה הזו כבר יש טקסט. בחר כיצד יש למקם את התבנית.</string>
+    <string name="addentry_template_merge_subtitle">Insert Below שומר על הטיוטה הנוכחית. ב-Cursor ממקמים את התבנית במקום בו ה-caret שלך נמצא כעת.</string>
+    <string name="addentry_insert_below">הכנס למטה</string>
+    <string name="addentry_at_cursor">בסמן</string>
+    <string name="addentry_replace_draft">החלף טיוטה</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">פּוֹפּוּלָרִי</string>
+    <string name="addentry_new_chip">חָדָשׁ</string>
+    <string name="addentry_best_for_format">הטוב ביותר עבור: %1$s</string>
+    <string name="addentry_cd_remove_favorite">הסר תבנית מועדפת</string>
+    <string name="addentry_cd_favorite_template">תבנית מועדפת</string>
+    <string name="addentry_checklist_chip">רשימת תיוג</string>
+    <string name="addentry_followup_chip">מעקב</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d קטע</item>
+        <item quantity="other">%1$d קטעים</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">החלף את התבנית המועדפת</string>
+    <string name="addentry_template_preview_label">תצוגה מקדימה של תבנית</string>
+    <string name="addentry_use_template_button">השתמש בתבנית</string>
+    <string name="addentry_start_blank_title">התחל ריק</string>
+    <string name="addentry_start_blank_subtitle">דלג על תבניות והמשך לכתוב מטיוטה ריקה.</string>
+    <string name="addentry_blank_entry_name">כניסה ריקה</string>
+    <string name="addentry_blank_entry_description">רישום יומן רגיל</string>
+    <string name="addentry_blank_category">כְּלָלִי</string>
+    <string name="addentry_quick_picks_title">בחירות מהירות</string>
+    <string name="addentry_sort_recommended">מוּמלָץ</string>
+    <string name="addentry_sort_recent">לאחרונה</string>
+    <string name="addentry_sort_az">א-ז</string>
+    <string name="addentry_no_templates_title">לא נמצאו תבניות</string>
+    <string name="addentry_no_templates_subtitle">נסה חיפוש או קטגוריה אחרת.</string>
+    <string name="addentry_search_templates_label">חפש תבניות</string>
+    <string name="addentry_search_templates_placeholder">מפגש, בריאות, הרהור...</string>
+    <string name="addentry_cd_clear_search">נקה חיפוש</string>
+    <string name="addentry_choose_template_title">בחר תבנית</string>
+    <string name="addentry_templates_ready_format">%1$d מתוך %2$d תבניות מוכנות</string>
+    <string name="addentry_category_all">כֹּל</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">מה קרה?</string>
+    <string name="addentry_todo_chip">טודו</string>
+    <string name="addentry_numbered_list_chip">N רשימה</string>
+    <string name="addentry_bulleted_list_chip">רשימה ב\'</string>
+    <string name="addentry_words_count_format">%1$d מילים</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">מעקב צפוי היום</item>
+        <item quantity="other">מעקבים צפויים היום</item>
+    </plurals>
+    <string name="home_followup_subtitle">קפוץ חזרה ליום המקושר והמשיכו משם.</string>
+    <string name="home_from_date_format">מ-%1$s</string>
+    <string name="home_more_due_today_format">+%1$d נוספים מועדים היום</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">הוסף תווית</string>
+    <string name="home_edit_label_title">ערוך תווית</string>
+    <string name="home_day_label_hint">הוסף תווית קצרה ליום זה (מקסימום 30 תווים).</string>
+    <string name="home_day_label_placeholder">למשל, היום הראשון בבית הספר</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">הוסף תווית ליום זה</string>
+    <string name="home_star_label_hint">תן ליום הזה תווית בלתי נשכחת (מקסימום 30 תווים)</string>
+    <string name="home_star_label_placeholder">למשל, יום ההולדת שלי, בבית הספר</string>
+    <string name="home_star_button">כּוֹכָב</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">הערך נמחק</item>
+        <item quantity="other">%1$d ערכים נמחקו</item>
+    </plurals>
+    <string name="home_restore_button">לְשַׁחְזֵר</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">חפש ערכים...</string>
+    <string name="home_cd_search">לְחַפֵּשׂ</string>
+    <string name="home_cd_clear_search">נקה חיפוש</string>
+    <string name="home_cd_favorite">מוּעֲדָף</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">ערכים</string>
+    <string name="home_stat_words">מילים</string>
+    <string name="home_stat_chars">תווים</string>
+    <string name="home_stat_versions">ורס</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">הוסף תווית</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d נמצאה התאמה</item>
+        <item quantity="other">%1$d נמצאו התאמות</item>
+    </plurals>
+    <string name="home_no_keyword_matches">לא נמצאו עדיין התאמות עבור מילת מפתח זו.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">סמל סטטוס ריק</string>
+    <string name="home_empty_future">זה העתיד. הקלט תזכורת!</string>
+    <string name="home_empty_past">אתה בעבר. הקלט זיכרון לפני שהוא דוהה...</string>
+    <string name="home_empty_today">עדיין אין ערכים. התחל את היום שלך.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">חִסָכוֹן</string>
+    <string name="home_cd_add_entry">הוסף ערך</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">מחק את %1$d</string>
+    <string name="home_future_date_title">כניסת תאריך עתידי</string>
+    <string name="home_future_date_message_format">אתה מוסיף ערך לתאריך עתידי (%1$s). האם אתה רוצה להמשיך?</string>
+    <string name="home_cache_issue_title">זוהתה בעיית מטמון נתונים</string>
+    <string name="home_cache_issue_message">נראה שמספר לא מבוטל של רשומות יומן חסרות במטמון. האם תרצה לבצע רענון מלא של מטמון הנתונים כדי לנסות לשחזר אותם?</string>
+    <string name="home_refresh_button">לְרַעֲנֵן</string>
+    <string name="home_ignore_button">לְהִתְעַלֵם</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">אנשים ומקומות</string>
+    <string name="nav_statistics">סטָטִיסטִיקָה</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">בניית אינדקס מסד נתונים מחדש</string>
+    <string name="nav_backup_data">נתוני גיבוי</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">סטָטוּס</string>
+    <string name="nav_finishing_index_rebuild">מסיים לבנות מחדש את האינדקס...</string>
+    <string name="nav_rebuilding_index">בנייה מחדש של אינדקס מסד הנתונים</string>
+    <string name="nav_refreshing_index">אינדקס מרענן</string>
+    <string name="nav_backup_too_old">הגיבוי ישן מדי...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">עובד...</string>
+    <string name="nav_eta_almost_done">כמעט בוצע</string>
+    <string name="nav_eta_seconds_left_format">נותרו ~%1$ds</string>
+    <string name="nav_eta_minutes_left_format">נותרו ~%1$dמ\'</string>
+    <string name="nav_eta_hours_left_format">נותרו ~%1$dh</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">תַפרִיט</string>
+    <string name="nav_cd_rj_logo">לוגו RJ</string>
+    <string name="nav_tagline">עוד אפליקציית יומן</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">חנות Play</string>
+    <string name="nav_cd_website">אֲתַר אִינטֶרנֶט</string>
+    <string name="nav_cd_share_app">שתף אפליקציה</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">לוגו יאג\'ה</string>
+    <string name="nav_easter_quote_part1">\"רשום מחשבה חולפת או מה אכלת לארוחת צהריים; זה לא חייב להיות עמוק.\n</string>
+    <string name="nav_easter_quote_part2">המילים שלך יכולות פשוט להתקיים.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">מהמעבדות של RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">שתפו את יאג\'ה</string>
+    <string name="nav_share_text_body">yaja - עוד אפליקציית יומן\n\nיומן יומי נטול הסחות דעת המאחסן ערכים כקובצי סימון פשוטים.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">שנה מיקום אחסון</string>
+    <string name="settings_change_storage_location_message">כל הערכים הקיימים יועברו מ-%1$s ל-%2$s. האם אתה רוצה להמשיך?</string>
+    <string name="settings_yes">כֵּן</string>
+    <string name="settings_no">לֹא</string>
+    <string name="settings_restore_summary_title">שחזור סיכום</string>
+    <string name="settings_restore_section_journal">כְּתַב הָעֵת</string>
+    <string name="settings_restore_section_shortcodes">קודים קצרים</string>
+    <string name="settings_restore_section_date_keywords">תאריך מילות מפתח</string>
+    <string name="settings_restore_section_people_places">אנשים ומקומות</string>
+    <string name="settings_restore_journal_summary">התווסף לימים חדשים: %1$d\nמוזג לימים קיימים: %2$d\nדילוג על רשומות יומן כפולות: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">נוסף: %1$d\nכפילויות שדילגתם עליהן: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">נוסף: %1$d\nכפילויות שדילגתם עליהן: %2$d</string>
+    <string name="settings_restore_people_places_summary">נוסף: %1$d\nכפילויות שדילגתם עליהן: %2$d</string>
+    <string name="rebuild_tools_title">בניית כלים מחדש</string>
+    <string name="rebuild_tools_back">בְּחֲזָרָה</string>
+    <string name="rebuild_tools_intro">השתמש תחילה בבנייה מחדש ממוקדת. בנייה מחדש של מסד הנתונים מיועדת רק לשינויי אחסון, השחתת מסד הנתונים או אי-התאמה של אינדקס.</string>
+    <string name="rebuild_todo_index_title">בנייה מחדש של אינדקס Todo</string>
+    <string name="rebuild_todo_index_subtitle">רענן מטלות מקובצי יומן ועדכן מסך/יישומון Todo. הכי טוב כשמטלות נראים מעופש.</string>
+    <string name="rebuild_todo_index_button">לבנות מחדש את Todos</string>
+    <string name="rebuild_people_places_title">בנה מחדש אנשים ומקומות</string>
+    <string name="rebuild_people_places_subtitle">רענן כינויים של מילות מפתח, אזכורים משותפים, מגמות ונתוני קשרים.</string>
+    <string name="rebuild_people_places_button">בנה מחדש אנשים ומקומות</string>
+    <string name="rebuild_database_title">בנייה מחדש של מסד נתונים מלא</string>
+    <string name="rebuild_database_subtitle">הידור מחדש של מטמון מסד הנתונים מקובצי סימון. הוספת מחדש לאינדקס ערכים, ספירות, פעולות, אנשים ומקומות ווידג\'טים מאפס.</string>
+    <string name="rebuild_database_button">בנייה מחדש של מסד נתונים</string>
+    <string name="rebuild_database_confirm_title">בניית אינדקס מסד נתונים מחדש</string>
+    <string name="rebuild_database_confirm_message">פעולה זו תנקה ויוסיף מחדש את כל מסד הנתונים של Room SQLite מקבצי ה-Markdown שלך. עבור יומנים גדולים, זה עשוי להימשך מספר דקות.</string>
+    <string name="rebuild_database_confirm_start">התחל לבנות מחדש</string>
+    <string name="rebuild_database_status_title">סטטוס אינדקס מסד נתונים</string>
+    <string name="rebuild_database_storage_engine">מנוע אחסון</string>
+    <string name="rebuild_database_storage_engine_value">חדר SQLite Database</string>
+    <string name="rebuild_database_indexed_days">ימים עם אינדקס</string>
+    <string name="rebuild_database_indexed_days_value">%1$d ימים נוספו לאינדקס</string>
+    <string name="rebuild_database_file_size">גודל קובץ מסד נתונים</string>
+    <string name="rebuild_database_last_sync">סנכרון אינדקס אחרון</string>
+    <string name="rebuild_database_age_never">לְעוֹלָם לֹא</string>
+    <string name="rebuild_database_age_just_now">זֶה עַתָה</string>
+    <string name="rebuild_database_age_one_minute">לפני דקה אחת</string>
+    <string name="rebuild_database_age_minutes">לפני %1$d דקות</string>
+    <string name="rebuild_database_age_one_hour">לפני שעה</string>
+    <string name="rebuild_database_age_hours">לפני %1$d שעות</string>
+    <string name="shortcodes_title">קודים קצרים</string>
+    <string name="shortcodes_import_cd">יְבוּא</string>
+    <string name="shortcodes_export_cd">יְצוּא</string>
+    <string name="shortcodes_help_cd">עֶזרָה</string>
+    <string name="shortcodes_new">קוד קצר חדש</string>
+    <string name="shortcodes_empty_title">אין קודי קצר מותאמים אישית</string>
+    <string name="shortcodes_empty_subtitle">הוסף אחד כדי להרחיב קטעים כמו @yday לטקסט דינמי.</string>
+    <string name="shortcodes_dynamic_dates_hint">השתמש ב-{{today:format}} לתאריכים דינמיים.</string>
+    <string name="shortcodes_help_title">עזרה קצרה</string>
+    <string name="shortcodes_help_built_in">קודים קצרים מובנים:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (תיבת סימון), @x (החלפת תיבת סימון)</string>
+    <string name="shortcodes_help_dynamic_patterns">תבניות דינמיות:</string>
+    <string name="shortcodes_help_dynamic_desc">השתמש ב-{{today:FORMAT}}, {{yesterday:FORMAT}}, {{מחר:FORMAT}} או {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">דוגמה: @yday -&gt; אתמול: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">פורמטים נפוצים: dd-MM-yy, HH:mm, EEEE (שם יום).</string>
+    <string name="action_close">לִסְגוֹר</string>
+    <string name="keyword_detail_title_fallback">מילת מפתח</string>
+    <string name="keyword_detail_not_found">מילת מפתח לא נמצאה</string>
+    <string name="keyword_detail_last_indexed">אינדקס לאחרונה %1$s</string>
+    <string name="keyword_detail_mentions_section">אזכורים</string>
+    <string name="pin_biometric_prompt_title">פתח את הנעילה באמצעות ביומטרי</string>
+    <string name="pin_biometric_prompt_subtitle">השתמש בטביעת האצבע או בפנים שלך כדי לבטל את הנעילה</string>
+    <string name="pin_error_no_biometric_enrolled">לא נרשם ביומטרי. נא לרשום טביעת אצבע או פנים בהגדרות המכשיר.</string>
+    <string name="pin_error_hardware_unavailable">חומרה ביומטרית אינה זמינה.</string>
+    <string name="pin_error_no_hardware">למכשיר זה אין חומרה ביומטרית.</string>
+    <string name="pin_error_not_available">אימות ביומטרי אינו זמין.</string>
+    <string name="pin_title_confirm">אשר את ה-PIN</string>
+    <string name="pin_title_set_new">הגדר PIN חדש</string>
+    <string name="pin_title_disable">הזן PIN נוכחי כדי להשבית</string>
+    <string name="pin_title_enter">הזן PIN</string>
+    <string name="pin_error_incorrect">PIN שגוי. נסה שוב.</string>
+    <string name="pin_error_mismatch">מספרי ה-PIN אינם תואמים. תתחיל מחדש.</string>
+    <string name="pin_cd_use_biometric">השתמש ביומטרי</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">יום זה מסומן, אך אין עדיין רישום ביומן.</string>
+    <string name="timeline_preview_loading">טוען תצוגה מקדימה...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d כניסה נוספת ביום זה</item>
+        <item quantity="other">+ %1$d כניסות נוספות ביום זה</item>
+    </plurals>
+    <string name="timeline_preview_open_day">פתוח היום</string>
+    <string name="timeline_chip_today">הַיוֹם</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d כניסה</item>
+        <item quantity="other">%1$d ערכים</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">מעקב</string>
+    <string name="timeline_chip_label_only">תווית בלבד</string>
+    <string name="timeline_cd_favorite">מוּעֲדָף</string>
+    <string name="version_history_title">היסטוריית גרסאות</string>
+    <string name="version_history_day_versions_title">גרסאות יום</string>
+    <string name="version_history_keep_copies_title">שמור עותקי בטיחות</string>
+    <string name="version_history_keep_copies_subtitle">לפני ש-Yaja משנה קובץ יום, היא שומרת את הקובץ הנוכחי בנתוני האפליקציה תחת קובצי היסטוריה.</string>
+    <string name="version_history_versions_kept_title">גרסאות נשמרות ביום</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja שומרת את הגרסה החדשה ביותר של %1$d עבור כל תאריך.</item>
+        <item quantity="other">Yaja שומרת את הגרסאות החדשות ביותר של %1$d עבור כל תאריך.</item>
+    </plurals>
+    <string name="version_history_retention_title">הַחזָקָה</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">צילומי מצב מעל %1$d יום מנקים אוטומטית.</item>
+        <item quantity="other">צילומי מצב מעל %1$d ימים מנוקים באופן אוטומטי.</item>
+    </plurals>
+    <string name="version_history_notes">הערות: היסטוריית גרסאות מגנה על קבצי סימון יום לפני הוספה, עריכה, מחיקה, סדר מחדש, תווית, סימון וביקור מחדש בשינויים. זה לא גיבוי בענן; המשך להשתמש בגיבוי עבור עותקים ניידים.</string>
+    <string name="version_history_snapshots_for">תמונות של %1$s</string>
+    <string name="version_history_snapshots_subtitle">פתח גרסה שמורה, בדוק אותה ושחזר אותה ליום זה.</string>
+    <string name="version_history_empty">אין עדיין גרסאות שמורות לתאריך זה.</string>
+    <string name="action_view">נוֹף</string>
+    <string name="version_history_date_intro">פתח גרסה שמורה קודמת ליום זה, בדוק אותה ושחזר אותה בעת הצורך.</string>
+    <string name="action_next">הַבָּא</string>
+    <string name="action_apply">לִפְנוֹת</string>
+    <string name="action_restore">לְשַׁחְזֵר</string>
+    <string name="statistics_choose_title">בחר סטטיסטיקה</string>
+    <string name="statistics_choose_subtitle">הסתר קטעים שאתה לא רוצה. לפחות חלק אחד חייב להישאר גלוי.</string>
+    <string name="statistics_visible_count">%1$d מתוך %2$d גלויים</string>
+    <string name="statistics_show_all">הצג הכל</string>
+    <string name="statistics_one_section_visible">חלק אחד חייב להישאר גלוי</string>
+    <string name="statistics_shown">מוצג בסטטיסטיקה</string>
+    <string name="statistics_hidden">מוסתר מסטטיסטיקה</string>
+    <string name="statistics_select_start_date">בחר תאריך התחלה</string>
+    <string name="statistics_select_end_date">בחר תאריך סיום</string>
+    <string name="statistics_filter_by_period">סנן לפי תקופה</string>
+    <string name="statistics_cd_reorder">לחץ לחיצה ארוכה כדי לסדר מחדש</string>
+    <string name="statistics_total_entries">סך כל הכניסות</string>
+    <string name="statistics_total_words">סך הכל מילים</string>
+    <string name="statistics_avg_words_per_entry">ממוצע מילים/ערך</string>
+    <string name="statistics_current_streak">רצף נוכחי</string>
+    <string name="statistics_pages_written">דפים נכתבים</string>
+    <string name="statistics_days_highlighted">ימים מודגשים</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d יום</item>
+        <item quantity="other">%1$d ימים</item>
+    </plurals>
+    <string name="statistics_period_all_time">סטטיסטיקות של כל הזמנים</string>
+    <string name="statistics_period_current_year">סטטיסטיקות שנה נוכחית</string>
+    <string name="statistics_period_previous_year">סטטיסטיקה של שנה קודמת</string>
+    <string name="statistics_period_current_month">סטטיסטיקת חודש נוכחי</string>
+    <string name="statistics_period_previous_month">סטטיסטיקה של החודש הקודם</string>
+    <string name="statistics_period_custom">סטטיסטיקת תקופה מותאמת אישית</string>
+    <string name="statistics_period_chip_all_time">כל הזמן</string>
+    <string name="statistics_period_chip_current_year">שנה נוכחית</string>
+    <string name="statistics_period_chip_previous_year">שנה קודמת</string>
+    <string name="statistics_period_chip_current_month">החודש הזה</string>
+    <string name="statistics_period_chip_previous_month">חודש קודם</string>
+    <string name="statistics_period_chip_custom">מִנְהָג</string>
+    <string name="statistics_sections_visible">%1$d מתוך %2$d קטעים גלויים</string>
+    <string name="statistics_loading_stages">טוען נתונים סטטיסטיים בשלבים...</string>
+    <string name="review_period_weekly">סקירה שבועית</string>
+    <string name="review_period_monthly">סקירה חודשית</string>
+    <string name="review_anchor_week">שבוע המכיל %1$s</string>
+    <string name="review_anchor_month">חודש המכיל %1$s</string>
+    <string name="review_chip_entries">ערכים %1$d</string>
+    <string name="review_chip_words">מילים %1$d</string>
+    <string name="review_chip_days">ימים %1$d</string>
+    <string name="review_hint_jump">הקש על שבבי תמרים למטה כדי לחזור ליומן.</string>
+    <string name="review_chip_streak">רצף %1$d</string>
+    <string name="review_chip_gap">פער %1$d</string>
+    <string name="review_chip_labels">תוויות %1$d</string>
+    <string name="review_chip_favorites">מועדפים %1$d</string>
+    <string name="review_empty_period">אין עדיין רשומות ביומן בתקופה זו. תוויות והדגשות עדיין מופיעות למטה אם הן קיימות.</string>
+    <string name="review_writing_rhythm">קצב כתיבה</string>
+    <string name="review_best_streak">הרצף הטוב ביותר</string>
+    <string name="review_longest_gap">הפער הארוך ביותר</string>
+    <string name="review_most_active_days">הימים הפעילים ביותר</string>
+    <string name="review_day_entries_words">%1$d ערכים | %2$d מילים</string>
+    <string name="review_top_people">אנשים מובילים</string>
+    <string name="review_top_places">מקומות מובילים</string>
+    <string name="review_no_people_mentions">אף אדם לא מזכיר</string>
+    <string name="review_no_place_mentions">שום מקום לא מוזכר</string>
+    <string name="review_favorite_moments">רגעים אהובים</string>
+    <string name="review_starred_day">יום עם כוכב</string>
+    <string name="review_highlighted_in_period">מודגש בתקופה זו</string>
+    <string name="review_labels_created">תוויות נוצרו</string>
+    <string name="review_labeled_day">יום מסומן</string>
+    <string name="review_language_split">פיצול שפה</string>
+    <string name="review_not_enough_text">לא מספיק טקסט בתקופה הזו</string>
+    <string name="lookback_reviews_title">ביקורות</string>
+    <string name="lookback_reviews_intro">בנה השתקפות מהירה סביב יום היומן שבחרת.</string>
+    <string name="lookback_seven_days">7 ימים</string>
+    <string name="lookback_one_month">1 חודש</string>
+    <string name="lookback_weekly_review">סקירה שבועית</string>
+    <string name="lookback_weekly_review_subtitle">השבוע במבט אחד</string>
+    <string name="lookback_monthly_review">סקירה חודשית</string>
+    <string name="lookback_monthly_review_subtitle">החודש הזה בסיכום</string>
+    <string name="lookback_flashbacks_title">ביום זה בשנים האחרונות</string>
+    <string name="lookback_highlights_title">ההדגשים שלך</string>
+    <string name="lookback_empty_title">עדיין אין מבטים לאחור או הבהרה.</string>
+    <string name="lookback_empty_subtitle">ימים חשובים מועדפים לראות אותם כאן!</string>
+    <string name="lookback_cd_random_entry">עבור לערך אקראי</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">תְקוּפָה</string>
+    <string name="statistics_compare_mode_title">מצב השוואה</string>
+    <string name="statistics_compare_mode_subtitle">דלתא של חודש, שנה ומילות מפתח</string>
+    <string name="statistics_this_year">השנה</string>
+    <string name="statistics_writing_days_delta">דלתא של ימי כתיבה</string>
+    <string name="statistics_top_person_delta">דלתא טופ אדם</string>
+    <string name="statistics_no_people_mentions">אנשים עדיין לא הזכירו</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">עדיין לא אזכור מקום</string>
+    <string name="statistics_structured_writing">כתיבה מובנית</string>
+    <string name="statistics_template_led_format">מונחה תבנית %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">ריק %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">התבניות הנפוצות ביותר</string>
+    <string name="statistics_template_mix">מיקס תבנית</string>
+    <string name="statistics_follow_up_leaders">מנהיגי מעקב</string>
+    <string name="statistics_compare_details">השווה פרטים</string>
+    <string name="statistics_label_month">חוֹדֶשׁ</string>
+    <string name="statistics_label_year">שָׁנָה</string>
+    <string name="statistics_this_month_count_format">החודש %1$d</string>
+    <string name="statistics_last_month_count_format">בחודש שעבר %1$d</string>
+    <string name="statistics_longest_streak">הרצף הארוך ביותר</string>
+    <string name="statistics_most_active_day">היום הכי פעיל</string>
+    <string name="statistics_writing_consistency">עקביות כתיבה</string>
+    <string name="statistics_days_with_entries">ימים עם ערכים</string>
+    <string name="statistics_best_month">החודש הטוב ביותר</string>
+    <string name="statistics_best_month_format">%1$s · %2$d ערכים</string>
+    <string name="statistics_avg_writing_days_week">ממוצע ימי כתיבה/שבוע</string>
+    <string name="statistics_days_decimal_format">%1$.1f ימים</string>
+    <string name="statistics_based_on_total_words">מבוסס על סך המילים שנכתבו ביום</string>
+    <string name="statistics_light_words">אור (&lt;50 מילים)</string>
+    <string name="statistics_moderate_words">בינוני (50-200 מילים)</string>
+    <string name="statistics_heavy_words">כבד (200-500 מילים)</string>
+    <string name="statistics_intense_words">אינטנסיבי (500+ מילים)</string>
+    <string name="statistics_not_enough_text_languages">אין מספיק טקסט כדי לזהות שפות</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">זוהתה שפה %1$d</item>
+        <item quantity="other">זוהו %1$d שפות</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">זיהוי השפה עדיין מסתדר.</string>
+    <string name="statistics_latin_scripts_as_english">כתבים לטיניים מוצגים כאנגלית</string>
+    <string name="statistics_use_more_accurate_detection">השתמש בזיהוי מדויק יותר</string>
+    <string name="statistics_write_more_entries_languages">כתוב ערכים נוספים כדי לראות סטטיסטיקות שפה.</string>
+    <string name="statistics_based_on_entry_time">מבוסס על זמן כניסה</string>
+    <string name="statistics_morning_time">בוקר (5 בבוקר עד צהריים)</string>
+    <string name="statistics_afternoon_time">אחר הצהריים (צהריים-17:00)</string>
+    <string name="statistics_evening_time">ערב (17:00-21:00)</string>
+    <string name="statistics_night_time">לילה (9 בערב-5 בבוקר)</string>
+    <string name="statistics_heatmap_filling">מפת חום עדיין מתמלאת.</string>
+    <string name="statistics_heatmap_less">פָּחוֹת</string>
+    <string name="statistics_heatmap_more">יוֹתֵר</string>
+    <string name="action_open">לִפְתוֹחַ</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">אירועי יומן יאג\'ה</string>
+    <string name="tasker_event_desc">בחר אילו אירועי יומן Yaja צריכים להפעיל את הפרופיל הזה של Tasker.</string>
+    <string name="tasker_event_saved">הערך נשמר</string>
+    <string name="tasker_event_edited">הערך נערך</string>
+    <string name="tasker_event_deleted">ערך נמחק</string>
+    <string name="tasker_event_default_hint">אם אף אחד לא נבחר, Yaja יקבע כברירת מחדל לערך שמור.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">הגדר מה Tasker צריך לתפוס במהירות ב-Yaja.</string>
+    <string name="tasker_action_add_entry">הוסף ערך</string>
+    <string name="tasker_action_add_event">הוסף אירוע</string>
+    <string name="tasker_action_add_todo">הוסף Todo</string>
+    <string name="tasker_action_append">לְצַרֵף</string>
+    <string name="tasker_action_match_header_label">התאמה / כותרת</string>
+    <string name="tasker_action_match_header_placeholder">שיחות שלא נענו</string>
+    <string name="tasker_action_line_to_append_label">שורה להוספה</string>
+    <string name="tasker_action_text_label">טֶקסט</string>
+    <string name="tasker_action_placeholder_event">הערת אירוע מטאסקר</string>
+    <string name="tasker_action_placeholder_todo">קנה חלב</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">הערה מהירה מטאסקר</string>
+    <string name="tasker_action_tip_append">שיחה ראשונה יוצרת ערך שמתחיל בטקסט ההתאמה. שיחות מאוחרות יותר מצרף את הקו תחתיו.</string>
+    <string name="tasker_action_tip_default">טיפ: ניתן למקם משתני Tasker בשדה הטקסט.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">יומן קריסה במפגש הקודם</string>
+    <string name="crash_log_clear_close">נקה וסגור</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">הפעל את האפליקציה</string>
+    <string name="tap_action_quick_capture">לכידה מהירה</string>
+    <string name="tap_action_do_nothing">אל תעשה כלום</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja כתיבת מפת חום</string>
+    <string name="widget_cell_shape">צורת תא</string>
+    <string name="widget_corner_radius">רדיוס פינתי: %1$ddp</string>
+    <string name="widget_square">מְרוּבָּע</string>
+    <string name="widget_round">עִגוּל</string>
+    <string name="widget_inner_margin">שוליים פנימיים: %1$ddp</string>
+    <string name="widget_inner_margin_desc">רווח בין מפת החום לקצוות הווידג\'ט</string>
+    <string name="widget_none">אַף לֹא אֶחָד</string>
+    <string name="widget_max">מקסימום</string>
+    <string name="widget_on_tap">מוּכָן וּמְזוּמָן</string>
+    <string name="widget_on_tap_desc">פעולה כאשר מקישים על ווידג\'ט</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">לִלְכּוֹד</string>
+    <string name="widget_qc_shape">Widget Shape</string>
+    <string name="widget_show_label">הצג תווית</string>
+    <string name="widget_show_label_desc">הצג טקסט \'ללכוד\' בווידג\'ט</string>
+    <string name="widget_show_icon">הצג סמל</string>
+    <string name="widget_show_icon_required">סמל נדרש כאשר התווית מוסתרת</string>
+    <string name="widget_show_icon_desc">הצג את סמל העט בווידג\'ט</string>
+    <string name="widget_label_text">טקסט תווית</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">ווידג\'ט רשימת מטלות מעוגל דמוי מפת חום.</string>
+    <string name="widget_todo_corner_radius">רדיוס פינתי: %1$ddp</string>
+    <string name="widget_todo_padding">ריפוד: %1$ddp</string>
+    <string name="widget_todo_show_completed">הצג משימות שהושלמו</string>
+    <string name="widget_todo_show_completed_desc">כלול פריטים מסומנים ברשימת הווידג\'טים</string>
+    <string name="widget_todo_include_events">כלול אירועים</string>
+    <string name="widget_todo_include_events_desc">הצג ערכי אירועים לצד מטלות בווידג\'ט</string>
+    <string name="widget_todo_show_header">הצג את הכותרת Todo</string>
+    <string name="widget_todo_show_header_desc">הצג או הסתר שורת כותרת הווידג\'ט</string>
+    <string name="widget_todo_auto_hide">הסתר אוטומטית ווידג\'ט כאשר כל המשימות הושלמו</string>
+    <string name="widget_todo_auto_hide_unavailable">לא זמין בזמן שהמשימות שהושלמו מוצגות</string>
+    <string name="widget_todo_auto_hide_desc">הפוך את הווידג\'ט לשקוף כאשר אין משימות ממתינות</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">נַעֲשָׂה</string>
+    <string name="todo_confirm_mark_not_done">לא נעשה</string>
+    <string name="todo_confirm_title">לסמן את המשימה כ-%1$s?</string>
+    <string name="todo_confirm_reopen">מטלה זו הושלמה כעת. אשר לפני פתיחתו מחדש.</string>
+    <string name="todo_confirm_complete">המשימה הזו עדיין פתוחה. אשר לפני סימון זה כבוצע.</string>
+    <string name="todo_confirm_accidental_tap">לחיצות בשוגג לא ישנו את המשימה.</string>
+    <string name="todo_confirm_yes_mark">כן, סמן %1$s</string>
+    <string name="todo_confirm_open_yaja">פתוח ב-Yaja</string>
+    <string name="todo_confirm_keep_as_is">שמור כפי שהוא</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">עוד אפליקציית יומן</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">מהמעבדות של RJ</string>
+    <string name="help_made_in">תוצרת 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">בטל את הייבוא</string>
+    <string name="timeline_show_all_dates">הצג את כל התאריכים</string>
+    <string name="timeline_show_all_dates_subtitle">כלול את כל הימים האחרונים, גם ללא ערכים</string>
+    <string name="settings_background_tint_clean">לְנַקוֹת</string>
+    <string name="settings_background_tint_soft">רַך</string>
+    <string name="settings_background_tint_rich">עָשִׁיר</string>
+    <string name="settings_background_tint_deep">עָמוֹק</string>
+    <string name="settings_accent_style_complementary">מַשׁלִים</string>
+    <string name="settings_accent_style_analogous">מַקְבִּיל</string>
+    <string name="settings_accent_style_triadic">טריאדי</string>
+    <string name="settings_accent_style_soft">רַך</string>
+</resources>

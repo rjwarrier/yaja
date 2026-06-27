@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Journal</string>
+    <string name="nav_calendar">Kalendaryo</string>
+    <string name="nav_lookback">Pagbabalik tanaw</string>
+    <string name="nav_settings">Mga setting</string>
+    <string name="nav_shortcodes">Mga shortcode</string>
+    <string name="nav_help">Tulong at Tungkol sa</string>
+
+    <!-- Common actions -->
+    <string name="action_save">I-save</string>
+    <string name="action_cancel">Kanselahin</string>
+    <string name="action_delete">Tanggalin</string>
+    <string name="action_edit">I-edit</string>
+    <string name="action_back">Bumalik</string>
+    <string name="action_undo">I-undo</string>
+    <string name="action_yes">Oo</string>
+    <string name="action_no">Hindi</string>
+    <string name="action_remove">Alisin</string>
+    <string name="action_done">Tapos na</string>
+    <string name="action_set">Itakda</string>
+    <string name="action_select">Pumili</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Muling Pagbubuo ng Cache</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Mabilis na Pagkuha</string>
+    <string name="quick_capture_hint">anong nangyari?</string>
+    <string name="quick_capture_helper_shortcodes">Awtomatikong lumalawak dito ang mga shortcode, at magpapatuloy ang mga linya ng todo sa Enter.</string>
+    <string name="quick_capture_save_delayed">Naantala ang pag-save. Mangyaring buksan muli ang Yaja upang i-verify.</string>
+    <string name="cd_saved">Nai-save</string>
+    <string name="quick_todo_dialog_title">Mabilis na Magdagdag</string>
+    <string name="quick_todo_save_delayed">Todo save delayed. Mangyaring buksan muli ang Yaja upang i-verify.</string>
+    <string name="quick_todo_placeholder">Magdagdag ng todo</string>
+    <string name="quick_event_placeholder">Magdagdag ng kaganapan</string>
+    <string name="quick_todo_task_date">Petsa ng Gawain</string>
+    <string name="quick_todo_event_date">Petsa ng Kaganapan</string>
+    <string name="quick_todo_pick_date_cd_format">Pumili ng %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Sine-save bilang todo entry para sa napiling araw.</string>
+    <string name="quick_event_selected_day_hint">Sine-save bilang entry ng kaganapan para sa napiling araw.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Nakaraang</string>
+    <string name="cd_next">Susunod</string>
+    <string name="cd_surprise_me">Sorpresahin Ako</string>
+    <string name="calendar_cd_go_to_current_month">Pumunta sa kasalukuyang buwan</string>
+    <string name="calendar_quick_action_timeline_title">Timeline</string>
+    <string name="calendar_quick_action_timeline_subtitle">Mag-browse ayon sa pagkakasunod-sunod</string>
+    <string name="calendar_quick_action_jump_title">Tumalon sa Petsa</string>
+    <string name="calendar_quick_action_jump_subtitle">Buksan ang isang partikular na araw</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">Di-wastong petsa. Gumamit ng DD-MM-YY na format.</string>
+    <string name="calendar_action_go">Pumunta ka</string>
+    <string name="calendar_enable_future_dates_title">Paganahin ang Mga Petsa sa Hinaharap</string>
+    <string name="calendar_enable_future_dates_message">Ang pagpasok ng petsa sa hinaharap ay hindi pinagana. Gusto mo ba itong paganahin?</string>
+    <string name="calendar_action_enable">Paganahin</string>
+    <string name="calendar_future_entry_enabled">Ang pagpasok ng petsa sa hinaharap ay pinagana</string>
+    <string name="calendar_weekday_sun_short">Araw</string>
+    <string name="calendar_weekday_mon_short">Mon</string>
+    <string name="calendar_weekday_tue_short">Tue</string>
+    <string name="calendar_weekday_wed_short">Wed</string>
+    <string name="calendar_weekday_thu_short">Huwebes</string>
+    <string name="calendar_weekday_fri_short">Biyernes</string>
+    <string name="calendar_weekday_sat_short">Sab</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">MGA ENTRIES NGAYONG BUWAN</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d araw</item>
+        <item quantity="other">%1$d / %2$d araw</item>
+    </plurals>
+    <string name="calendar_days_of_memories">araw ng mga alaala</string>
+    <string name="calendar_consistency_last_12_months">LAST 12 BUWAN</string>
+    <string name="calendar_consistency_title_format">KONSISTENSIYON - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">laban sa \'%1$s</string>
+    <string name="calendar_consistency_first_period">unang yugto</string>
+    <string name="calendar_graph_frequency_month">buwan</string>
+    <string name="calendar_graph_frequency_year">taon</string>
+    <string name="calendar_yearly_consistency_title">Consistency (Taun-taon)</string>
+    <string name="calendar_keywords_title">Sino ang higit na nagpapakita</string>
+    <string name="calendar_keywords_syncing">Ang mga istatistika ng Mga Tao at Lugar ay nagsi-sync pa rin sa pag-index ng keyword.</string>
+    <string name="calendar_keywords_empty">Magdagdag ng hindi bababa sa 3 tao o 3 lugar upang makita ang mga nangungunang pagbanggit.</string>
+    <string name="calendar_keywords_people">Mga tao</string>
+    <string name="calendar_keywords_places">Mga lugar</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Mga setting</string>
+    <string name="settings_appearance">Hitsura</string>
+    <string name="settings_appearance_subtitle">Tema, kulay, font at personal na istilo</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_font">Font</string>
+    <string name="settings_storage">Imbakan</string>
+    <string name="settings_security">Seguridad</string>
+    <string name="settings_backup">Backup</string>
+    <string name="settings_change_storage_title">Baguhin ang Lokasyon ng Storage</string>
+    <string name="settings_backup_never">Hindi kailanman</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Mga setting ng paghahanap</string>
+    <string name="settings_search_clear">I-clear ang paghahanap</string>
+    <string name="settings_search_recent">Mga kamakailang paghahanap</string>
+    <string name="settings_search_no_results">Walang tumutugmang setting</string>
+    <string name="settings_search_close">Isara</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Karanasan sa Journal</string>
+    <string name="settings_section_navigation_gestures">Navigation at Mga Galaw</string>
+    <string name="settings_section_review_insights">Pagsusuri at Mga Insight</string>
+
+    <!-- Language -->
+    <string name="settings_language">Wika</string>
+    <string name="settings_language_title">Wika ng App</string>
+    <string name="settings_language_subtitle">Piliin ang wikang ginagamit sa buong app.</string>
+    <string name="settings_language_system_default">Default ng system</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Estilo ng Pagpasok</string>
+    <string name="settings_journal_entry_style_subtitle">Pumili sa pagitan ng mga nakataas na card at isang mas flat na hitsura sa journal.</string>
+    <string name="settings_journal_entry_style_cards">Mga kard</string>
+    <string name="settings_journal_entry_style_flat">patag</string>
+    <string name="settings_journal_render_checkboxes_title">I-render ang Mga Checkbox bilang Teksto</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Ipakita ang mga todos bilang [ ] at [x] sa buong app sa halip na mga nagpapahayag na mga checkbox.</string>
+    <string name="settings_journal_day_header_counts_title">Mga Bilang ng Show Day Header</string>
+    <string name="settings_journal_day_header_counts_subtitle">Ipakita ang entry, salita, at bilang ng character sa header ng araw ng journal.</string>
+    <string name="settings_journal_show_timestamps_title">Ipakita ang mga timestamp</string>
+    <string name="settings_journal_show_timestamps_subtitle">Ipakita ang oras ng pagpasok sa timeline.</string>
+    <string name="settings_journal_allow_future_title">Payagan ang Mga Entri sa Hinaharap</string>
+    <string name="settings_journal_allow_future_subtitle">Paganahin ang pagdaragdag ng mga entry sa mga petsa sa hinaharap.</string>
+    <string name="settings_journal_truncate_title">Putulin ang Mahabang Entries</string>
+    <string name="settings_journal_truncate_subtitle">Paikliin ang mahahabang entry sa home screen.</string>
+    <string name="settings_journal_char_limit_title">Limit ng Character</string>
+    <string name="settings_journal_char_limit_subtitle">Itakda kung gaano karaming mga character ang ipapakita bago putulin.</string>
+    <string name="settings_journal_char_limit_min">50 karakter</string>
+    <string name="settings_journal_char_limit_max">200 character</string>
+    <string name="settings_journal_char_count">%1$d character</string>
+    <string name="settings_journal_first_day_title">Unang Araw ng Linggo</string>
+    <string name="settings_journal_first_day_subtitle">Simulan ang kalendaryo sa</string>
+    <string name="settings_journal_day_sun">Araw</string>
+    <string name="settings_journal_day_mon">Mon</string>
+    <string name="settings_journal_date_recognition">Pagkilala sa Petsa</string>
+    <string name="settings_journal_date_order_title">Araw</string>
+    <string name="settings_journal_date_order_subtitle">Paano basahin ang mga numerong petsa</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Mga Keyword ng Petsa</string>
+    <string name="settings_journal_date_keywords_subtitle">Mga salita sa ibang wika na nangangahulugang petsa (halimbawa, lokal na salita para sa kahapon).</string>
+    <string name="settings_journal_view_keywords">Tingnan (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Magdagdag ng keyword</string>
+    <string name="settings_journal_motion">galaw</string>
+    <string name="settings_journal_animations_title">Mga animation</string>
+    <string name="settings_journal_animations_subtitle">Kontrolin ang paggalaw sa buong app. Ang nabawasan ay nagpapanatili ng mga bagay na tuluy-tuloy na may kaunting paggalaw.</string>
+    <string name="settings_journal_animations_full">Puno</string>
+    <string name="settings_journal_animations_reduced">Nabawasan</string>
+    <string name="settings_journal_animations_off">Puno</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Post-save Review</string>
+    <string name="settings_review_post_write_title">Post-write Review</string>
+    <string name="settings_review_post_write_subtitle">Ipakita ang review sheet pagkatapos i-tap ang save para i-extract ang mga todos, tingnan ang mga pagbanggit, star day, o itakda ang label.</string>
+    <string name="settings_review_people_places">Mga Tao at Lugar</string>
+    <string name="settings_review_highlighting_title">Nagha-highlight</string>
+    <string name="settings_review_highlighting_subtitle">I-highlight ang mga sinusubaybayang tao at lugar sa mga Home card at View Entry mode.</string>
+    <string name="settings_review_match_sensitivity_title">Sensitivity ng Tugma</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Gaano kalapit dapat tumugma ang isang salita upang matukoy ng Mga Tao at Lugar (mas mataas = mas mahigpit).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Magdagdag ng Shortcode</string>
+    <string name="shortcodes_edit_title">I-edit ang Shortcode</string>
+    <string name="shortcodes_code_label">Shortcode (hal. @yday)</string>
+    <string name="shortcodes_expansion_label">Expansion Text</string>
+    <string name="shortcodes_export_error">Nabigong mag-export ng mga shortcode</string>
+    <string name="shortcodes_import_error">Nabigong mag-import ng mga shortcode</string>
+    <string name="todos_expand_section">Palawakin ang %1$s</string>
+    <string name="todos_collapse_section">I-collapse ang %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Pagsusulat ng Heatmap</string>
+    <string name="heatmap_widget_description">Heatmap ng aktibidad sa pagsulat kamakailan para sa iyong journal.</string>
+    <string name="quick_capture_widget_name">Mabilis na Pagkuha</string>
+    <string name="quick_capture_widget_description">Isang-tap na button para mabilis na magdagdag ng journal entry.</string>
+    <string name="quick_todo_widget_name">Mabilis na Todo</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Mga Kaganapan sa Yaja Journal</string>
+    <string name="tasker_screen_allow_add_entry_title">Payagan ang Tasker Magdagdag ng Entry</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Hinahayaan ang Tasker na gumamit ng Yaja Quick Capture na mga aksyon tulad ng Add Entry at Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Payagan ang Mga Kaganapan sa Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Hinahayaan si Yaja na magpadala ng Entry Saved, Entry Modified, at Entry Deleted na mga event sa Tasker.</string>
+    <string name="tasker_screen_include_text_title">Isama ang Entry Text sa Mga Kaganapan</string>
+    <string name="tasker_screen_include_text_subtitle">Naka-off bilang default para sa privacy. Kapag naka-off, natatanggap ng Tasker ang uri ng kaganapan, petsa, label, at oras, ngunit hindi teksto ng journal.</string>
+    <string name="tasker_screen_section_what">Ano ang ginagawa nito</string>
+    <string name="tasker_screen_body_what">Ang Tasker ay maaaring mabilis na magdagdag ng mga entry sa journal o todos sa Yaja, magdagdag ng mga linya sa isang nakagrupong entry tulad ng Mga Hindi Nasagot na Tawag, at maaaring sabihin ni Yaja sa Tasker kapag ang isang entry ay na-save, na-edit, o tinanggal.</string>
+    <string name="tasker_screen_section_how">Paano gamitin</string>
+    <string name="tasker_screen_body_how">I-on muna ang toggle na kailangan mo dito. Pagkatapos ay buksan ang Tasker at magdagdag ng alinman sa isang Yaja Quick Capture action o isang Yaja Journal Events na kaganapan.</string>
+    <string name="tasker_screen_section_notes">Mga Tala</string>
+    <string name="tasker_screen_body_notes">Ang teksto ng entry ay hindi ibinabahagi sa Tasker maliban kung pinagana mo ang Isama ang Teksto ng Entry sa Mga Kaganapan. Kung hindi ipinapakita ng Tasker ang pinakabagong mga opsyon o variable, muling buksan ang screen ng configuration ng Tasker pagkatapos i-update ang Yaja.</string>
+    <string name="tasker_screen_section_example">Halimbawa</string>
+    <string name="tasker_screen_body_example">Halimbawa ng pagkilos: Tasker action &gt; Yaja Quick Capture &gt; Append, na may Match / header na nakatakda sa Mga Hindi Nasagot na Tawag at Line para idagdag ang set sa isang Tasker variable. Halimbawa ng event: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, pagkatapos ay gumamit ng mga variable tulad ng %%yaja_event_type, %%yaja_date, at opsyonal na %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Mga kaso ng paggamit</string>
+    <string name="tasker_screen_use_case_1">1. Gumamit ng event sa Yaja journal sa Tasker para mag-trigger ng pagkilos sa pag-sync ng FolderSync, para ma-push ang iyong Yaja folder sa anumang cloud provider pagkatapos magbago ng mga entry.</string>
+    <string name="tasker_screen_use_case_2">2. Gamitin ang Pushbullet kasama ang Tasker upang magpadala ng text sa Yaja Quick Capture, upang ang itinulak na text ay mase-save bilang isang bagong entry para sa kasalukuyang araw.</string>
+    <string name="tasker_screen_use_case_3">3. Gumamit ng profile ng hindi nasagot na tawag na Tasker upang magpadala ng pagkilos na Idagdag sa Yaja, upang ang lahat ng mga detalye ng hindi nasagot na tawag ay mapunta sa ilalim ng isang entry na Mga Hindi Nasagot na Tawag sa halip na lumikha ng hiwalay na mga entry.</string>
+    <string name="quick_todo_widget_description">Isang-tap na button para kumuha ng todo bilang bagong entry para sa araw na ito.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Scrollable na listahan ng mga journal todos. Mag-tap ng todo para markahan itong tapos na o bawiin.</string>
+    <string name="todo_cd_add_todo">Magdagdag ng todo</string>
+    <string name="todos_cd_open_compliance_master">Buksan ang mga umuulit na gawain</string>
+    <string name="compliance_master_title">Mga Paulit-ulit na Gawain / Pangyayari</string>
+    <string name="compliance_master_add">Magdagdag ng paulit-ulit na gawain</string>
+    <string name="compliance_master_edit">I-edit ang umuulit na gawain</string>
+    <string name="compliance_master_intro_title">Mga paulit-ulit na gawain</string>
+    <string name="compliance_master_intro_body">Gumawa ng paulit-ulit na todos para sa lingguhan, buwanan, quarterly, kalahating taon, o taunang gawain. Ibinubunyag lamang ni Yaja ang bawat gawain kapag naging may kaugnayan ang cycle nito.</string>
+    <string name="compliance_master_empty">Wala pang umuulit na gawain. Magdagdag ng isa upang awtomatikong gumawa ng mga todos sa napili nitong iskedyul.</string>
+    <string name="compliance_master_status_deactivated">Na-deactivate</string>
+    <string name="compliance_master_meta_format">Dapat bayaran sa araw na %1$d • %2$d lead days</string>
+    <string name="compliance_master_field_title">Pangalan ng gawain</string>
+    <string name="compliance_master_field_title_hint">Halimbawa: Mag-file ng buwanang pagbabalik</string>
+    <string name="compliance_master_field_description">Paglalarawan</string>
+    <string name="compliance_master_field_description_hint">Halimbawa: Suriin ang banking portal at i-verify ang resibo</string>
+    <string name="compliance_master_editor_task_section">Ano ang dapat ipaalala sa iyo ni Yaja?</string>
+    <string name="compliance_master_field_due_day">takdang petsa</string>
+    <string name="compliance_master_field_reveal_day">Gumawa nang maaga (mga araw)</string>
+    <string name="compliance_master_field_schedule_mode">Kailan ito dapat bayaran?</string>
+    <string name="compliance_master_schedule_mode_help">Piliin kung paano tinutukoy ni Yaja ang takdang petsa.</string>
+    <string name="compliance_master_select_schedule_type">Piliin ang angkop na pattern</string>
+    <string name="compliance_master_field_frequency">Gaano kadalas?</string>
+    <string name="compliance_master_frequency_help">Piliin kung gaano kadalas umuulit ang gawaing ito.</string>
+    <string name="compliance_master_select_frequency">Piliin ang dalas ng pag-uulit</string>
+    <string name="compliance_master_schedule_details">Mga detalye ng iskedyul</string>
+    <string name="compliance_master_details_date_help">Ilagay ang takdang petsa at kung gaano karaming araw bago ito dapat isulat sa pang-araw-araw na file.</string>
+    <string name="compliance_master_details_weekday_help">Piliin ang araw ng linggo kung kailan dapat bayaran ang gawaing ito.</string>
+    <string name="compliance_master_details_boundary_help">Piliin kung ilang araw bago ito dapat isulat sa pang-araw-araw na file.</string>
+    <string name="compliance_master_field_due_weekday">Nakatakdang araw ng linggo</string>
+    <string name="compliance_master_select_weekday">Piliin ang weekday</string>
+    <string name="compliance_master_due_day_help">Maglagay ng petsa mula 1 hanggang 31. Ginagamit ng mas maikling buwan ang huling wastong petsa ng mga ito.</string>
+    <string name="compliance_master_reveal_day_help">Ilang araw bago ang takdang petsa para isulat ang todo sa daily journal file.</string>
+    <string name="compliance_master_first_day_selected">Dapat bayaran sa unang petsa ng bawat naaangkop na buwan.</string>
+    <string name="compliance_master_last_day_selected">Dapat bayaran sa huling petsa ng bawat naaangkop na buwan.</string>
+    <string name="compliance_mode_day_of_month">Tiyak na petsa</string>
+    <string name="compliance_mode_day_of_month_desc">Dapat bayaran sa isang may bilang na petsa, gaya ng ika-15.</string>
+    <string name="compliance_mode_day_of_week">Linggo</string>
+    <string name="compliance_mode_day_of_week_desc">Dapat bayaran sa napiling araw ng linggo, gaya ng Lunes.</string>
+    <string name="compliance_mode_first_day">Una ng buwan</string>
+    <string name="compliance_mode_first_day_desc">Dapat bayaran sa unang petsa ng bawat naaangkop na buwan.</string>
+    <string name="compliance_mode_last_day">Katapusan ng buwan</string>
+    <string name="compliance_mode_last_day_desc">Dapat bayaran sa huling petsa, kabilang ang mas maikling buwan.</string>
+    <string name="compliance_frequency_weekly">Linggu-linggo</string>
+    <string name="compliance_frequency_biweekly">Biweekly</string>
+    <string name="compliance_frequency_monthly">Buwan-buwan</string>
+    <string name="compliance_frequency_quarterly">quarterly</string>
+    <string name="compliance_frequency_half_yearly">Kalahating taon</string>
+    <string name="compliance_frequency_annual">Taunang</string>
+    <string name="compliance_master_summary_day_of_month">Araw %1$d • %2$s • %3$d araw na mas maaga</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Unang petsa • %1$s • %2$d araw na mas maaga</string>
+    <string name="compliance_master_summary_last_day">Huling petsa • %1$s • %2$d araw na mas maaga</string>
+    <string name="compliance_master_execution_title">Paano ito tatakbo</string>
+    <string name="compliance_master_execution_day_of_month">Ang isang todo ay ginawa %1$s sa araw na %2$d. Ito ay nakasulat sa iyong pang-araw-araw na file %3$d araw nang maaga.</string>
+    <string name="compliance_master_execution_weekday">Ang isang todo ay ginawa %1$s sa %2$s. Ito ay nakasulat sa iyong pang-araw-araw na file %3$d araw nang maaga.</string>
+    <string name="compliance_master_execution_monthly_weekday">Ang isang todo ay ginawa buwan-buwan sa parehong %1$s na pangyayari bilang petsa ng pagsisimula. Ito ay nakasulat sa iyong pang-araw-araw na file %2$d araw nang maaga.</string>
+    <string name="compliance_master_execution_month_boundary">Ang isang todo ay ginawa %1$s sa %2$s ng takdang buwan. Ito ay nakasulat sa iyong pang-araw-araw na file %3$d araw nang maaga.</string>
+    <string name="compliance_master_boundary_first">unang petsa</string>
+    <string name="compliance_master_boundary_last">huling petsa</string>
+    <string name="compliance_master_recurrence_weekly">bawat linggo</string>
+    <string name="compliance_master_recurrence_biweekly">tuwing dalawang linggo</string>
+    <string name="compliance_master_recurrence_monthly">bawat buwan</string>
+    <string name="compliance_master_recurrence_quarterly">tuwing tatlong buwan</string>
+    <string name="compliance_master_recurrence_half_yearly">tuwing anim na buwan</string>
+    <string name="compliance_master_recurrence_annual">bawat taon</string>
+    <string name="todo_chip_compliance">Paulit-ulit</string>
+    <string name="compliance_master_upcoming">Paparating</string>
+    <string name="compliance_master_delete_confirm_title">Tanggalin ang umuulit na gawain?</string>
+    <string name="compliance_master_delete_confirm_body">Aalisin ang \"%1$s\" at wala nang gagawin pang todos.</string>
+    <string name="compliance_master_next_date">Susunod: %1$s</string>
+    <string name="compliance_master_end_section">Katapusan na kondisyon</string>
+    <string name="compliance_master_end_help">Piliin kung kailan huminto sa pag-uulit ang gawaing ito</string>
+    <string name="compliance_master_end_never">Hindi kailanman</string>
+    <string name="compliance_master_end_on_date">Sa petsa</string>
+    <string name="compliance_master_end_after">Pagkatapos…</string>
+    <string name="compliance_master_end_never_desc">Umuulit nang walang katapusan nang walang petsa ng pagtatapos.</string>
+    <string name="compliance_master_end_date_select">Piliin ang petsa ng pagtatapos</string>
+    <string name="compliance_master_end_date_help">Walang nagagawang gawain pagkatapos ng petsang ito.</string>
+    <string name="compliance_master_end_count_label">Bilang ng mga pangyayari</string>
+    <string name="compliance_master_end_count_help">Humihinto pagkatapos nitong maraming gawain ang nalikha.</string>
+    <string name="compliance_master_ends_on">Nagtatapos sa %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d umalis</string>
+    <string name="compliance_master_ended">Natapos na</string>
+    <string name="compliance_master_type_label">Lumikha bilang</string>
+    <string name="compliance_master_type_task">Gawain</string>
+    <string name="compliance_master_type_event">Kaganapan</string>
+    <string name="heatmap_widget_status_loading">Nilo-load ang heatmap...</string>
+    <string name="heatmap_widget_status_empty">Wala pang entry</string>
+    <string name="heatmap_widget_status_refresh">Buksan ang Yaja para i-refresh ang heatmap</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Muling itinayo ang cache.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Bagong Entry</string>
+    <string name="shortcut_new_entry_long">Magdagdag ng entry sa journal</string>
+    <string name="shortcut_add_todo_short">Magdagdag ng Todo</string>
+    <string name="shortcut_add_todo_long">Magdagdag ng todo para sa araw na ito</string>
+    <string name="shortcut_add_event_short">Magdagdag ng Kaganapan</string>
+    <string name="shortcut_add_event_long">Magdagdag ng kaganapan</string>
+    <string name="shortcut_today_short">Ngayong araw</string>
+    <string name="shortcut_today_long">Buksan ang journal ngayon</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Pag-navigate</string>
+    <string name="settings_bottom_nav_style_label">Ibaba na Estilo ng Nabigasyon</string>
+    <string name="settings_navigation_mode_title">Mode ng Nabigasyon</string>
+    <string name="settings_navigation_mode_subtitle">Pumili sa pagitan ng floating nav bar at ang buong panel sa ibaba.</string>
+    <string name="settings_nav_mode_floating">Lumulutang</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Mga Screen ng Nabigasyon</string>
+    <string name="settings_nav_summary_floating">Palaging nananatili ang Journal at Calendar sa floating bar. Pumili ng hanggang 2 pang screen. Kasalukuyang napili: %1$d ng %2$d.</string>
+    <string name="settings_nav_summary_panel">Palaging nananatili ang Journal at Calendar sa ilalim na panel. Pumili ng hanggang 3 pang screen. Kasalukuyang napili: %1$d ng %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Ipakita ang Lookback sa aktibong navigation bar o panel.</string>
+    <string name="settings_nav_people_places_subtitle">Ipakita ang Mga Tao at Lugar sa aktibong navigation bar o panel.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Ipakita ang Todos sa aktibong navigation bar o panel.</string>
+    <string name="todos_quick_add_title">Mabilis na Magdagdag</string>
+    <string name="todos_hero_subtitle">Subaybayan ang gawain sa journal at mga sandali</string>
+    <string name="todos_hero_all_activity">Lahat ng aktibidad</string>
+    <string name="todos_hero_open_focus">Buksan ang focus</string>
+    <string name="todos_hero_completed">Nakumpleto</string>
+    <string name="todos_stat_today_open">Bukas ngayon</string>
+    <string name="todos_stat_done_today">Tapos ngayon</string>
+    <string name="todos_stat_events">Mga kaganapan</string>
+    <string name="todos_stat_still_open">Bukas pa</string>
+    <string name="todos_stat_past_7d">Nakalipas na 7d</string>
+    <string name="todos_stat_days">Mga araw</string>
+    <string name="todos_empty_done">Wala pang natapos na todos</string>
+    <string name="todos_empty_events">Wala pang entry sa kaganapan</string>
+    <string name="todos_section_open">BUKAS</string>
+    <string name="todos_section_later">MAMAYA</string>
+    <string name="todos_section_upcoming">Paparating na</string>
+    <string name="todos_section_future_events">MGA PANGYAYARI SA HINAHARAP</string>
+    <string name="todos_section_past_events">MGA NAKARAANG PANGYAYARI</string>
+    <string name="todos_cd_open_day">Bukas na araw</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d bukas na gawain</item>
+        <item quantity="other">%1$d bukas na mga gawain</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d tapos na ang gawain</item>
+        <item quantity="other">%1$d tapos na ang mga gawain</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d paparating na kaganapan</item>
+        <item quantity="other">%1$d paparating na mga kaganapan</item>
+    </plurals>
+    <string name="todos_filter_all_format">Lahat ng %1$d</string>
+    <string name="todos_filter_open_format">Buksan ang %1$d</string>
+    <string name="todos_filter_done_format">Tapos na %1$d</string>
+    <string name="todos_filter_events_format">Mga Kaganapan %1$d</string>
+    <string name="todos_cheer_all_clear">Malinaw lahat. Ang ganda.</string>
+    <string name="todos_cheer_done_and_dusted">Tapos at nag-alikabok.</string>
+    <string name="todos_cheer_nothing_pending">Walang nakabinbin.</string>
+    <string name="todos_cheer_caught_up">Naabutan mo.</string>
+    <string name="todos_cheer_clean_slate">Malinis na slate.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Sa %1$d araw</item>
+        <item quantity="other">Sa %1$d araw</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d araw ang nakalipas</item>
+        <item quantity="other">%1$d araw ang nakalipas</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Sa %1$d linggo</item>
+        <item quantity="other">Sa %1$d linggo</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d linggo ang nakalipas</item>
+        <item quantity="other">%1$d linggo ang nakalipas</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Sa 1 buwan</string>
+    <string name="todos_relative_one_month_ago">1 buwan na ang nakalipas</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Sa %1$d buwan</item>
+        <item quantity="other">Sa %1$d buwan</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d buwan ang nakalipas</item>
+        <item quantity="other">%1$d buwan ang nakalipas</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Mga istatistika</string>
+    <string name="settings_nav_statistics_subtitle_on">Ipakita ang Mga Istatistika sa aktibong navigation bar o panel.</string>
+    <string name="settings_nav_statistics_subtitle_off">I-on muna ang Statistics para ilagay ito sa navigation.</string>
+    <string name="settings_show_labels_bottom_panel_title">Ipakita ang Mga Label Sa Ibabang Panel</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Ipakita ang mga text label sa ilalim ng mga icon sa ibabang panel.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Mga galaw</string>
+    <string name="settings_entry_delete_title">Tanggalin ang Entry</string>
+    <string name="settings_entry_delete_subtitle">Pindutin nang matagal ang isang entry upang piliin ito. I-tap ang higit pang mga entry para pumili ng marami, pagkatapos ay gamitin ang nakasentro na Delete button. I-tap ang bakanteng espasyo para i-clear ang pagpili.</string>
+    <string name="settings_swipe_navigate_title">Mag-swipe para Mag-navigate sa Mga Petsa</string>
+    <string name="settings_swipe_navigate_subtitle">Mag-swipe pakanan-pakaliwa upang sumulong sa isang petsa, at kaliwa-pakanan upang umusad.</string>
+    <string name="settings_drag_reorder_title">Paganahin ang Drag-to-Reorder</string>
+    <string name="settings_drag_reorder_subtitle">Pindutin nang matagal ang mga entry upang muling ayusin ang mga ito</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data at Pagbawi</string>
+    <string name="settings_swipe_rebuild_index">Mag-swipe pababa sa home screen para muling buuin ang index</string>
+    <string name="settings_large_journal_safe_mode_title">Malaking Journal Safe Mode</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Kapag may nakitang napakalaking journal, ipagpaliban ang hindi mahalagang mga istatistika ng pagsisimula upang magbukas nang mas mabilis at mas ligtas ang app.</string>
+    <string name="settings_version_history_title">Kasaysayan ng Bersyon</string>
+    <string name="settings_version_history_subtitle">Panatilihin ang ligtas na mga kopya bago i-edit, tanggalin, lagyan ng label, at bisitahing muli ang mga pagbabago.</string>
+    <string name="settings_storage_location_label">Lokasyon ng Imbakan</string>
+    <string name="settings_reset_to_default">I-reset sa Default</string>
+    <string name="settings_choose_folder">Piliin ang Folder</string>
+    <string name="settings_backup_description">Gumawa ng isang backup na zip ng Yaja na naglalaman ng mga entry sa journal, shortcode, keyword ng petsa, at data ng Mga Tao at Lugar. Maaaring i-merge ito ng Restore nang ligtas sa ibang pagkakataon.</string>
+    <string name="settings_last_backup">Huling Backup: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Edad ng paalala ng backup</string>
+    <string name="settings_backup_reminder_disabled">Hindi pinagana</string>
+    <string name="settings_backup_reminder_desc">I-highlight ang backup sa sidebar kapag mas matanda sa %1$d araw.</string>
+    <string name="settings_backup_reminder_days_disabled">0 araw (naka-disable)</string>
+    <string name="settings_backup_reminder_days">%1$d araw</string>
+    <string name="settings_restore_button">Ibalik</string>
+    <string name="settings_backup_now_button">I-backup Ngayon</string>
+    <string name="settings_db_index_management_label">Pamamahala ng Index ng Database</string>
+    <string name="settings_db_index_management_desc">Buksan ang nakatutok na mga tool sa muling pagtatayo para sa mga todos, Mga Tao at Lugar, o isang buong muling pagbuo ng database index.</string>
+    <string name="settings_rebuild_tools_button">Muling Buuin ang Mga Tool</string>
+    <string name="settings_import_label">Mag-import</string>
+    <string name="settings_import_info_cd">Mag-import ng impormasyon</string>
+    <string name="settings_import_info_title">Mag-import ng Impormasyon</string>
+    <string name="settings_import_day_one_title">Unang Araw na Pag-import</string>
+    <string name="settings_import_day_one_bullet1">- I-export mula sa Unang Araw nang walang mga larawan</string>
+    <string name="settings_import_day_one_bullet2">- Tanging data ng text ang mai-import</string>
+    <string name="settings_import_day_one_bullet3">- Ang data ng timestamp at lokasyon (kung magagamit) ay papanatilihin</string>
+    <string name="settings_import_perf_warning_title">Babala sa Pagganap</string>
+    <string name="settings_import_perf_warning_desc">Ang pag-import ng malaking bilang ng mga entry (500+) ay maaaring tumagal ng ilang minuto. Maaari kang mag-navigate palayo at magpapatuloy ang pag-import sa background.</string>
+    <string name="settings_got_it">Nakuha ko</string>
+    <string name="settings_import_success">%1$d bagong araw, %2$d pinagsama, %3$d nilaktawan</string>
+    <string name="settings_import_source_day_one">Unang Araw</string>
+    <string name="settings_import_source_day_one_subtitle">.zip o .json export</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json export</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Alamin kung paano gamitin ang yaja</string>
+    <string name="help_footer_website">Website</string>
+    <string name="help_footer_share">Ibahagi</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Share yaja</string>
+    <string name="help_share_yaja_text">yaja - isa pang journaling app\n\nIsang lokal na journal na walang distraction na nag-iimbak ng mga entry bilang markdown file. Kabilang dito ang timeline, lookback, mga tao at lugar, mga template, mga review, mga istatistika, at mga widget.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Nakopya ang username ng Discord!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Logo ng RJ</string>
+    <string name="help_screen_title">Tulong at Tungkol sa</string>
+    <string name="help_welcome_title">Maligayang pagdating sa yaja</string>
+    <string name="help_welcome_body">Ang Yaja ay isang local-first markdown journal para sa pagkuha ng mga araw, tao, lugar, follow-up, review, at pattern nang hindi nakakasagabal sa iyong paraan. Nagbibigay ang page na ito ng mabilis na gabay sa mga pangunahing bahagi ng app.</string>
+    <string name="help_start_here">Magsimula Dito</string>
+    <string name="help_cd_collapse">I-collapse</string>
+    <string name="help_cd_expand">Palawakin</string>
+    <string name="help_group_everyday_title">Araw-araw</string>
+    <string name="help_group_everyday_desc">Journaling, daloy ng pagsulat, at pang-araw-araw na nabigasyon.</string>
+    <string name="help_group_reviews_title">Mga Review at Insight</string>
+    <string name="help_group_reviews_desc">Mga lookback, trend, tao, lugar, at pagsusuri.</string>
+    <string name="help_group_advanced_title">Mga Advanced na Tool</string>
+    <string name="help_group_advanced_desc">Mga widget, storage, privacy, backup, at mga teknikal na tool.</string>
+    <string name="help_onboard_todos_events_title">Mga Todos, Mga Kaganapan at Paulit-ulit</string>
+    <string name="help_onboard_todos_events_body">Panatilihin ang mga personal na paalala, mga plano ng pamilya, at mga umuulit na iskedyul na awtomatikong bumubuo ng mga gawain sa kanilang mga takdang petsa.</string>
+    <string name="help_onboard_widgets_title">Mga Widget</string>
+    <string name="help_onboard_widgets_body">Magdagdag ng Heatmap, Quick Capture, Quick Todo, o Todo List na mga widget mula sa launcher.</string>
+    <string name="help_onboard_version_history_title">Kasaysayan ng Bersyon</string>
+    <string name="help_onboard_version_history_body">Paganahin ang Mga File ng Kasaysayan sa Mga Setting &gt; Data upang panatilihing ligtas ang mga snapshot bago ang mga peligrosong pagbabago.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Gamitin ang Tasker upang mabilis na magdagdag ng mga entry, todos, o kaganapan kapag may personal na kailangang makuha kaagad.</string>
+    <string name="help_section_writing_editor_title">Pagsusulat at Editor</string>
+    <string name="help_section_writing_editor_preview">Mga template, markdown heading, todos, event, at flexible draft insertion.</string>
+    <string name="help_section_writing_editor_content">+ I-tap ang lumulutang na \'+\' na button para magsulat para sa napiling araw.\n+ Gumamit ng mga template tulad ng Meeting Note, Travel Day, Health Log, Reflection, Work Log, at higit pa.\n+ Ang mga template ay maaaring ipasok sa isang blangkong draft, idinagdag sa ibaba, gamitin upang palitan ang draft, o ipasok sa cursor.\n+ Editor chips ay maaaring mabilis na magpasok ng mga todos, mga kaganapan, mga listahan ng suporta sa Entry, at mga bullet na Tingnan ang Entry. markdown-style na mga heading gaya ng ### Seksyon.</string>
+    <string name="help_section_post_write_review_title">Post-Write Review</string>
+    <string name="help_section_post_write_review_preview">Todo extraction, keyword detection, starring, label, at muling pagbisita sa setup.</string>
+    <string name="help_section_post_write_review_content">+ Pagkatapos magsulat, maaaring magbukas si Yaja ng review sheet bago i-save.\n+ Maaari itong mag-extract ng mga todo item, mag-detect ng Mga Tao at Lugar, maglagay ng star sa araw, magtakda ng label ng araw, at mag-iskedyul ng mga petsa ng muling pagbisita.\n+ Maaari mong i-disable ang Post-write Review mula sa Mga Setting kung mas gusto mo ang direktang pag-save.</string>
+    <string name="help_section_revisit_followup_title">Muling Bisitahin at Mga Petsa ng Pagsubaybay</string>
+    <string name="help_section_revisit_followup_preview">Mga follow-up na petsa na naka-link sa journal na may mga mabilisang pagpili at custom na opsyon.</string>
+    <string name="help_section_revisit_followup_content">+ Magdagdag ng mga petsa ng muling pagbisita na may Bukas, Sa susunod na linggo, Sa susunod na buwan, o isang custom na petsa.\n+ Lumalabas sa Home ang mga item dahil sa muling pagbisita at minarkahan sa Calendar at Timeline.\n+ Gumagana ito nang maayos para sa mga pangako, desisyon, pagsusuri sa kalusugan, at mga paalala na nauugnay sa konteksto ng journal.</string>
+    <string name="help_section_navigation_gestures_title">Navigation at Mga Galaw</string>
+    <string name="help_section_navigation_gestures_preview">Pagkilos ng petsa, pagtanggal ng pagpili, pag-swipe ng mga kagustuhan, at muling pag-uugali ng cache.</string>
+    <string name="help_section_navigation_gestures_content">+ Sinusuportahan ng Home ang pag-navigate sa petsa gamit ang mga arrow at opsyonal na pag-navigate sa pag-swipe kapag pinagana.\n+ Pindutin nang matagal ang isang entry upang piliin ito. I-tap ang higit pang mga entry para piliin din ang mga ito, pagkatapos ay gamitin ang Delete pill malapit sa Add button.\n+ Ang pag-tap sa labas ng mga napiling entry ay nag-clear ng pagpili. Maaaring i-restore ang mga na-delete na entry nang magkasama mula sa restore countdown.\n+ Maaari mong buuin muli ang cache kapag nagbago ang mga journal file sa labas ng Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Mga Shortcode at Mabilis na Pagkuha</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Mabilis na personal na pagkuha at magagamit muli ang mga dynamic na snippet ng teksto.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Lumikha ng mga shortcode upang mabilis na magpasok ng paulit-ulit na teksto.\n+ Ang mga dynamic na placeholder tulad ng {{today:dd-MMM}} at {{now:HH:mm}} ay gumagana sa loob ng mga shortcode.\n+ Nakakatulong ang Quick Capture na mag-log ng isang bagay nang mabilis nang hindi binubuksan ang buong editor.\n+ Ang mabilisang pagdaragdag ay makakapag-save ng alinman sa todo o isang kaganapan para sa napiling petsa mula sa widget, Todos screen, o Tasker.</string>
+    <string name="help_section_todos_events_title">Mga Todos, Mga Kaganapan at Paulit-ulit</string>
+    <string name="help_section_todos_events_preview">Mga personal na paalala, kapansin-pansing kaganapan, at awtomatikong umuulit na iskedyul.</string>
+    <string name="help_section_todos_events_content">+ Direktang isinulat ang mga Todos sa mga entry sa journal bilang [ ] at [x] na mga linya.\n+ Ang mga kaganapan ay normal na mga entry sa journal na minarkahan bilang Kaganapan, kapaki-pakinabang para sa mga plano ng pamilya, appointment, paglalakbay, o anumang bagay na gusto mong mapansin sa ibang pagkakataon.\n+ Mga Umuulit na Gawain at Kaganapan (Mga Iskedyul) ay awtomatikong sumulat ng mga todo item o heading ng kaganapan sa iyong pang-araw-araw na mga pahina ng journal ayon sa iyong mga pahina ng journal bawat araw ayon sa kanilang iskedyul bawat linggo (hal. ang Paulit-ulit na icon sa screen ng Todos.\n+ Araw-araw kapag binuksan mo ang Yaja, tumatakbo ang background pipeline para tingnan kung may mga naka-iskedyul na gawain at ipinapasok ang mga ito sa entry sa araw na iyon.\n+ Tinutulungan ka ng screen ng Todos na tingnan ang mga bukas na todos, natapos na mga todos, at mga kaganapan nang hindi ginagawang isang productivity dashboard ang Yaja.\n+ I-tap ang isang header ng petsa sa\n+ upang buksan ang mga file ng Todo sa araw na iyon kung binago ang Pull Journal. sa labas ng Yaja.\n+ Naaalala ang Ipakita ang Mga Nakumpletong Gawain, kaya nananatili ang iyong ginustong view kapag umalis ka at bumalik.\n+ Ang mga widget ng Todo ay maaaring magpakita ng mga nakabinbing gawain, magkumpirma bago mag-togg, magtago ng mga natapos na gawain, at opsyonal na mag-auto-hide kapag walang nakabinbin.</string>
+    <string name="help_section_people_places_title">Mga Tao at Lugar</string>
+    <string name="help_section_people_places_preview">Timeline at Pagbabalik-tanaw</string>
+    <string name="help_section_people_places_content">+ Subaybayan ang mga tao at lugar na may mga alyas at label ng kaugnayan.\n+ Hanapin, i-filter, at pagbukud-bukurin ang listahan ng keyword.\n+ Ang mga pahina ng detalye ng keyword ay nagpapakita ng kabago-bago, pagbanggit sa paglipas ng panahon, mga co-pagbanggit, at niraranggo na Mga Koneksyon.\n+ Maaaring isaayos ang Match Sensitivity mula sa Mga Setting.</string>
+    <string name="help_section_timeline_lookback_title">Timeline at Pagbabalik-tanaw</string>
+    <string name="help_section_timeline_lookback_preview">Nakalipas na araw na pagba-browse, mga highlight, Surprise Me, at pagsusuri ng mga entry point.</string>
+    <string name="help_section_timeline_lookback_content">+ Hinahayaan ka ng Timeline na mag-browse sa mga nakaraang araw gamit ang mga filter, year chips, at opsyonal na all-date mode.\n+ Ang Lookback ay nagpapakita ng mga entry mula sa parehong araw sa mga nakaraang taon at ang iyong mga naka-star na highlight.\n+ Ang Surprise Me ay nagbubukas ng random na nakaraang entry mula sa Lookback.\n+ Lingguhang Pagsusuri at Buwanang Pagsusuri nang live sa loob ng Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Mga Istatistika at Pagsusuri</string>
+    <string name="help_section_statistics_reviews_preview">Paghambingin ang mode, mga insight sa template, custom na nakikitang mga seksyon, at mga buod.</string>
+    <string name="help_section_statistics_reviews_content">+ Kasama sa mga istatistika ang mode ng paghahambing, mga delta ng keyword, at Mga Insight sa Template.\n+ Maaari mong piliin kung aling mga seksyon ng istatistika ang mananatiling nakikita mula sa loob ng screen ng Mga Istatistika.\n+ Available ang Compare Mode para sa Lahat ng Oras at nagbubuod ng buwan at taon na mga delta.\n+ Binubuod ng mga page ng review ang mga pinaka-aktibong araw, nangungunang mga tao at lugar, paboritong mga sandali, label, streak ng pattern ng wika, at gap pattern streak.</string>
+    <string name="help_section_widgets_home_title">Mga Widget at Ibabaw ng Bahay</string>
+    <string name="help_section_widgets_home_preview">Mga widget ng launcher, mga naka-highlight na keyword, at mga istatistika ng bahay sa antas ng araw.</string>
+    <string name="help_section_widgets_home_content">+ Available ang mga widget ng Writing Heatmap, Quick Capture, Quick Add, at Todo List sa launcher.\n+ Hinahayaan ka ng mga widget sa pag-configure ng mga screen na ayusin ang mga sulok, padding, hugis, header, visibility na nakumpleto ang gawain, at iba pang mga opsyon sa widget kung saan sinusuportahan.\n+ Gumagamit ang widget ng heatmap ng mas maraming intensity shade para sa mas malinaw na pagsusulat-history sa loob ng view.\n+ Maaaring i-enable ang setting ng People &amp; Places.\n+ Home. Maaaring ipakita o itago ng header ng petsa ng tahanan ang bilang ng entry, mga salita, at bilang ng character.</string>
+    <string name="help_section_language_text_analysis_title">Pagsusuri sa Wika at Teksto</string>
+    <string name="help_section_language_text_analysis_preview">Pag-detect ng lokal na wika para sa mga istatistika at pagsusuri ng mga insight.</string>
+    <string name="help_section_language_text_analysis_content">+ Nakikita ni Yaja ang nangingibabaw na script o wika sa mga entry para sa mga insight.\n+ Lumalabas ang paghahati ng wika sa Mga Istatistika at Mga Review.\n+ Gumagana ang pag-detect nang lokal at hindi nagpapadala ng text ng journal mula sa device.</string>
+    <string name="help_section_data_privacy_cache_title">Data, Privacy at Cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown na storage, history ng bersyon, log ng app, lock ng app, at muling buuin ang cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Data Privacy: Ang lahat ng personal na data ng journal ay namamalagi nang mahigpit sa iyong pisikal na device at hindi ito iiwan anumang oras. Ang Yaja ay hindi nagpapatakbo ng mga cloud database, remote backup server, o telemetry upang subaybayan ang iyong text.\n+ Ang mga entry sa journal ay iniimbak bilang karaniwang Markdown file na nakaayos ayon sa taon at buwan.\n+ Maaaring panatilihin ng History ng Bersyon ang mga ligtas na snapshot bago ang mga pag-edit, pagtanggal, paglalagay ng label, at muling pagbisita sa mga pagbabago.\n+ Maaari mong piliin kung ilang bersyon ang pananatilihin at kung ilang araw ang history ng pag-crash at mga kaganapan sa pag-cache\n+ pinapanatili ang mga detalye ng pag-crash at pag-cache ng app. pag-iimbak ng text ng journal.\n+ Ang Rebuild App Cache ay nagbibigay-daan sa iyong i-refresh ang data ng app sa modularly, kabilang ang mga todos at buong cache na muling pagbuo.\n+ Sinusuportahan ng lock ng app ang PIN at fingerprint.\n+ Pinapanatili ng Yaja ang mabigat na pag-index at ang mga istatistika ay ipinagpaliban kung posible upang manatiling tumutugon ang paglunsad at pag-save ng app.</string>
+    <string name="settings_app_log_title">Log ng App</string>
+    <string name="settings_app_log_subtitle">Tingnan ang mga diagnostic na ligtas sa privacy at mga nakaraang detalye ng pag-crash</string>
+    <string name="app_log_cd_share">Ibahagi ang log ng app</string>
+    <string name="app_log_cd_clear">I-clear ang log ng app</string>
+    <string name="app_log_privacy_title">Mga diagnostic na ligtas sa privacy</string>
+    <string name="app_log_privacy_description">Itinatala ng log na ito ang mga pangunahing kaganapan sa app, pagpapatakbo ng cache/storage, pag-refresh ng widget, at mga detalye ng pag-crash. Hindi ito kasama ang mga entry sa journal, todo text, o pribadong nilalaman ng tala.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Panatilihin ang huling %d araw</item>
+        <item quantity="other">Panatilihin ang huling %d araw</item>
+    </plurals>
+    <string name="app_log_retention_description">Awtomatikong pinuputol ang mga lumang log event sa panahon ng pag-log at kaagad kapag nagbago ang setting na ito.</string>
+    <string name="app_log_empty">Wala pang log ng app.</string>
+    <string name="app_log_refresh">I-refresh ang Log</string>
+    <string name="app_log_share_empty">Wala pang Yaja app log entry.</string>
+    <string name="app_log_share_subject">Log ng Yaja App</string>
+    <string name="app_log_share_chooser">Ibahagi ang log ng Yaja app</string>
+    <string name="app_log_local_time_format">%1$s | lokal na oras\n%2$s</string>
+    <string name="settings_website_title">Website ng Yaja</string>
+    <string name="settings_website_subtitle">Buksan ang opisyal na website para sa mga update at detalye</string>
+    <string name="settings_advanced_integrations_title">Mga Advanced na Pagsasama</string>
+    <string name="settings_tasker_integration_title">Pagsasama ng Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Mabilis na pagkuha ng mga aksyon at pag-trigger ng kaganapan sa journal</string>
+    <string name="settings_shortcodes_subtitle">Pamahalaan ang magagamit muli na mga snippet na lumalawak habang nagsusulat o mabilis na kumukuha.</string>
+    <string name="settings_privacy_security_title">Privacy at Seguridad</string>
+    <string name="settings_pin_lock_title">PIN Lock</string>
+    <string name="settings_app_locked">Naka-lock ang app</string>
+    <string name="settings_app_unlocked">Naka-unlock ang app</string>
+    <string name="settings_change_pin">Baguhin ang PIN</string>
+    <string name="settings_biometric_unlock_title">Biometric Unlock</string>
+    <string name="settings_biometric_enabled_desc">Naka-enable ang fingerprint o Face ID</string>
+    <string name="settings_biometric_disabled_desc">Gumamit ng biometric sa halip na PIN</string>
+    <string name="settings_autolock_timeout_title">Auto-lock Timeout</string>
+    <string name="settings_pin_lock_disclaimer">Pinipigilan ng PIN lock ang hindi awtorisadong pag-access sa app ngunit hindi ine-encrypt ang iyong data ng journal sa disk. Mababasa pa rin ng isang taong may direktang access sa file ang iyong mga entry.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="other">%1$d minuto</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Sistema</string>
+    <string name="settings_theme_light">Liwanag</string>
+    <string name="settings_theme_dark">Madilim</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Mga kulay</string>
+    <string name="settings_color_intensity_title">Tindi ng kulay</string>
+    <string name="settings_background_tint_title">Kulay ng background</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Custom</string>
+    <string name="settings_font_size_label">Laki ng Font</string>
+    <string name="settings_ui_font_size_label">Laki ng Font ng UI</string>
+    <string name="settings_data_font_size_label">Laki ng Font ng Nilalaman</string>
+    <string name="settings_follow_ui_font_scale_label">Gawing kapareho ng UI ang Laki ng Font ng Nilalaman</string>
+    <string name="settings_color_source_material_you">Materyal Ikaw</string>
+    <string name="settings_theme_preview_title">Preview ng tema</string>
+    <string name="settings_journal_entry_preview">entry sa journal</string>
+    <string name="settings_journal_entry_preview_desc">Gagamitin ng mga card, chip at button ang mga kulay na ito.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Accent</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensity: %1$s</string>
+    <string name="settings_personal_themes_title">Mga personal na tema</string>
+    <string name="settings_theme_name_label">Pangalan ng tema</string>
+    <string name="settings_main_color_label">Pangunahing kulay</string>
+    <string name="settings_hue_label">Hue</string>
+    <string name="settings_sat_label">Sab</string>
+    <string name="settings_bright_label">Maliwanag</string>
+    <string name="settings_generated_accents_title">Mga nabuong accent</string>
+    <string name="settings_personal_theme_desc">Pumili ng isang kulay. Gumagawa si Yaja ng magkatugmang accent at mga kulay ng suporta.</string>
+    <string name="settings_preview_chip_main">Pangunahing</string>
+    <string name="settings_preview_chip_support">Suporta</string>
+    <string name="settings_no_font_selected">Walang napiling font</string>
+    <string name="settings_custom_font_desc">Pumili ng anumang unicode .ttf o .otf file — hal. isang Malayalam na font tulad ng Manjari. Ang mga character na kulang sa font ay gumagamit ng mga font ng system.</string>
+    <string name="settings_font_replace">Palitan</string>
+    <string name="settings_choose_font_file">Pumili ng font file</string>
+    <string name="settings_intensity_muted">Naka-mute</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Matingkad</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Malinis</string>
+    <string name="settings_tint_soft">Malambot</string>
+    <string name="settings_tint_rich">Mayaman</string>
+    <string name="settings_tint_deep">Malalim</string>
+    <string name="settings_accent_complementary">Komplementaryo</string>
+    <string name="settings_accent_analogous">Katulad</string>
+    <string name="settings_accent_triadic">Triadic</string>
+    <string name="settings_accent_soft">Malambot</string>
+    <string name="settings_mono_weight_thin">Manipis</string>
+    <string name="settings_mono_weight_extra_light">Dagdag Liwanag</string>
+    <string name="settings_mono_weight_light">Liwanag</string>
+    <string name="settings_mono_weight_regular">Regular</string>
+    <string name="settings_mono_weight_medium">Katamtaman</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">Matapang</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold</string>
+    <string name="settings_mono_weight_title">Timbang</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Magdagdag ng Keyword ng Petsa</string>
+    <string name="settings_keyword_label">Keyword</string>
+    <string name="settings_keyword_placeholder_example">hal. kahapon</string>
+    <string name="settings_means_label">ibig sabihin</string>
+    <string name="settings_add_button">Idagdag</string>
+    <string name="settings_no_keywords_yet">Wala pang naidagdag na mga keyword.</string>
+    <string name="settings_added_keywords_title">Mga Idinagdag na Keyword (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Magdagdag ng Keyword</string>
+    <string name="keywords_dialog_add_title">Magdagdag ng Keyword</string>
+    <string name="keywords_dialog_edit_title">I-edit ang Keyword</string>
+    <string name="keywords_cd_import_csv">Mag-import ng CSV</string>
+    <string name="keywords_cd_export_csv">I-export ang CSV</string>
+    <string name="keywords_cd_download_template">I-download ang template</string>
+    <string name="rebuild_cache_storage_transparency_title">On-Device Storage Transparency</string>
+    <string name="rebuild_cache_storage_transparency_desc">Gumagamit si Yaja ng isang secure na modelo ng lokal na storage. Ang iyong personal na data sa journal ay nananatiling lokal at hindi kailanman umaalis sa iyong device anumang oras:</string>
+    <string name="rebuild_cache_source_of_truth_title">Pinagmulan ng Katotohanan (Markdown Files)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Ang lahat ng mga entry, checklist item (todos), mga kaganapan sa timeline, mga bituin, at mga tag ay permanenteng naka-save sa plaintext Markdown (.md) na mga file sa iyong napiling lokal na folder ng journal. Ang iyong data ay 100% na pagmamay-ari mo at ganap na nasa iyong device.</string>
+    <string name="rebuild_cache_read_cache_title">Basahin ang Cache at Index (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">Upang paganahin ang instant na pag-load ng screen, mga highlight sa kalendaryo, mga keyword, at mga istatistika nang hindi ini-scan ang filesystem sa bawat scroll, pina-parse ni Yaja ang iyong mga Markdown file at ini-index ang mga ito sa isang lokal na database ng Room SQLite sa iyong device.</string>
+    <string name="rebuild_cache_local_private_title">100% Lokal at Pribado</string>
+    <string name="rebuild_cache_local_private_desc">Ang Yaja ay walang anumang cloud database, remote backup server, o telemetry na sumusubaybay sa iyong text. Ang lahat ng mga entry sa journal at na-parse na data ay nananatiling mahigpit sa iyong pisikal na device at hinding-hindi ito iiwan anumang oras.</string>
+    <string name="keywords_export_success">Na-export ang mga keyword</string>
+    <string name="keywords_export_failed">Hindi ma-export ang mga keyword</string>
+    <string name="keywords_template_saved">Na-save ang template</string>
+    <string name="keywords_template_save_failed">Hindi ma-save ang template</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Na-import na %d keyword</item>
+        <item quantity="other">Mga na-import na %d na keyword</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Walang nakitang wastong mga keyword</string>
+    <string name="keywords_import_failed">Hindi makapag-import ng mga keyword</string>
+    <string name="keywords_status_indexing">Pag-index</string>
+    <string name="keywords_status_indexed">Na-index</string>
+    <string name="keywords_metric_mentions">Mga pagbanggit</string>
+    <string name="keywords_metric_days">Mga araw</string>
+    <string name="keywords_timeline_range_all">Lahat</string>
+    <string name="keywords_connections_filter_all">Lahat</string>
+    <string name="keywords_connections_filter_people">Mga tao</string>
+    <string name="keywords_connections_filter_places">Mga lugar</string>
+    <string name="keywords_connections_filter_recent">Kamakailan</string>
+    <string name="keywords_connections_filter_strongest">Pinakamalakas</string>
+    <string name="keywords_filter_needs_reindex">Kailangan ng Reindex</string>
+    <string name="keywords_search_placeholder">Maghanap ng mga tao, lugar, alyas, kaugnayan</string>
+    <string name="keywords_refreshing_counters">Nire-refresh ang mga counter ng keyword...</string>
+    <string name="keywords_empty_title">Wala pang mga keyword</string>
+    <string name="keywords_empty_subtitle">Idagdag ang mga tao at lugar na gusto mong subaybayan ng app nang lokal.</string>
+    <string name="keywords_no_results_title">Walang tugmang resulta</string>
+    <string name="keywords_no_results_subtitle">Subukan ang ibang paghahanap, pag-uri-uriin, o filter.</string>
+    <string name="keywords_people_title">Mga tao</string>
+    <string name="keywords_places_title">Mga lugar</string>
+    <string name="keywords_people_empty">Wala pang idinagdag na tao.</string>
+    <string name="keywords_people_filtered_empty">Walang taong tumutugma sa kasalukuyang mga filter.</string>
+    <string name="keywords_places_empty">Wala pang naidagdag na lugar.</string>
+    <string name="keywords_places_filtered_empty">Walang mga lugar na tumutugma sa kasalukuyang mga filter.</string>
+    <string name="keywords_delete_person_title">Tanggalin ang Tao?</string>
+    <string name="keywords_delete_place_title">Tanggalin ang Lugar?</string>
+    <string name="keywords_delete_message">Tanggalin ang \"%1$s\" mula sa Mga Tao at Lugar? Aalisin nito ang keyword at ang mga naka-index na tugma nito.</string>
+    <string name="keywords_timeline_title">Pagbanggit sa Paglipas ng Panahon</string>
+    <string name="keywords_timeline_empty_pattern">Wala pang buwanang pattern</string>
+    <string name="keywords_timeline_total_format">%1$d kabuuan</string>
+    <string name="keywords_timeline_empty_chart">Ang mga pagbanggit ay magtatala dito pagkatapos mahanap ng pag-index ang mga entry.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Peak %1$s • %2$d pagbanggit</item>
+        <item quantity="other">Peak %1$s • %2$d pagbanggit</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Mga araw na may mga pagbanggit</string>
+    <string name="keywords_recency_title">Kabago-bago</string>
+    <string name="keywords_recency_none">Wala pang tugma</string>
+    <string name="keywords_recency_today">Nabanggit ngayon</string>
+    <string name="keywords_recency_yesterday">Nabanggit kahapon</string>
+    <string name="keywords_recency_days_ago_format">Huling pagbanggit %1$d araw ang nakalipas</string>
+    <string name="keywords_first_seen">Unang Nakita</string>
+    <string name="keywords_last_seen">Huling Nakita</string>
+    <string name="keywords_unknown">Hindi kilala</string>
+    <string name="keywords_co_mentioned_with">Kasamang binanggit ni</string>
+    <string name="keywords_connections_title">Mga koneksyon</string>
+    <string name="keywords_connections_subtitle">Niraranggo ayon sa paulit-ulit na overlap at reency</string>
+    <string name="keywords_connections_linked_format">%1$d naka-link</string>
+    <string name="keywords_connections_show">Ipakita ang mga koneksyon</string>
+    <string name="keywords_connections_hide">Itago ang mga koneksyon</string>
+    <string name="keywords_connections_items_in_view">%1$d item sa view na ito</string>
+    <string name="keywords_connections_tap_to_expand">I-tap para palawakin ang %1$d na mga link na niraranggo</string>
+    <string name="keywords_connections_empty">Wala pang koneksyon para sa filter na ito.</string>
+    <string name="keywords_open_day">Bukas na Araw</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Pinaka Nabanggit</string>
+    <string name="keywords_sort_recently_added">Kamakailang Idinagdag</string>
+    <string name="keywords_peak_mentions_format">Peak %1$s • %2$d pagbanggit%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d araw</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">magkasama</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d shared entr</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| huling %1$s</string>
+    <string name="keywords_connections_score_format">Iskor %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d araw</string>
+    <string name="keywords_connections_shared_chip">Ibinahagi ni %1$d</string>
+    <string name="keywords_match_type_exact">eksakto</string>
+    <string name="keywords_match_type_fuzzy">malabo</string>
+    <string name="keywords_match_type_alias">alyas</string>
+    <string name="keywords_match_type_relation">relasyon</string>
+    <string name="keywords_action_delete">Tanggalin</string>
+    <string name="keywords_action_edit">I-edit</string>
+    <string name="keywords_action_view">Tingnan</string>
+    <string name="keywords_name_label">Pangalan</string>
+    <string name="keywords_relation_context_label">Relasyon / Konteksto</string>
+    <string name="keywords_aliases_label">Mga alias (pinaghihiwalay ng kuwit)</string>
+    <string name="keywords_aliases_label_short">Mga alyas</string>
+    <string name="keywords_type_person">Tao</string>
+    <string name="keywords_type_place">Lugar</string>
+    <string name="keywords_save_disabled_hint">Naka-off ang mga keyword ay nai-save. Paganahin ang mga ito mula sa listahan kapag gusto mong tumakbo ang pag-index.</string>
+    <string name="settings_meaning_yesterday">Kahapon</string>
+    <string name="settings_meaning_today">Ngayong araw</string>
+    <string name="lookback_chip_weekly">Linggu-linggo</string>
+    <string name="lookback_chip_monthly">Buwan-buwan</string>
+    <string name="timeline_screen_title">Timeline</string>
+    <string name="timeline_empty_title">Wala pa dito</string>
+    <string name="timeline_empty_subtitle">Subukan ang ibang filter o ayusin ang paghahanap ng label.</string>
+    <string name="timeline_quick_today">Ngayong araw</string>
+    <string name="timeline_quick_month">buwan</string>
+    <string name="timeline_quick_filters">Mga filter</string>
+    <string name="timeline_all_dates">Lahat ng mga petsa</string>
+    <string name="timeline_label_prefix">Label: %1$s</string>
+    <string name="timeline_label_search_placeholder">Maghanap ng mga label ng araw</string>
+    <string name="timeline_filters_title">Mga Filter at Layout ng Timeline</string>
+    <string name="settings_meaning_tomorrow">Bukas</string>
+    <string name="settings_meaning_day_before_yesterday">Araw bago ang kahapon</string>
+    <string name="settings_meaning_day_after_tomorrow">Kinabukasan</string>
+    <string name="settings_meaning_last_week">Noong nakaraang linggo</string>
+    <string name="settings_meaning_next_week">Sa susunod na linggo</string>
+    <string name="settings_meaning_monday">Lunes</string>
+    <string name="settings_meaning_tuesday">Martes</string>
+    <string name="settings_meaning_wednesday">Miyerkules</string>
+    <string name="settings_meaning_thursday">Huwebes</string>
+    <string name="settings_meaning_friday">Biyernes</string>
+    <string name="settings_meaning_saturday">Sabado</string>
+    <string name="settings_meaning_sunday">Linggo</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Panloob na Storage ng App</string>
+    <string name="settings_storage_internal_default">Panloob na Storage ng App (Default)</string>
+    <string name="settings_storage_new_folder_fallback">ang bagong folder</string>
+    <string name="settings_storage_current_folder_fallback">ang kasalukuyang folder</string>
+    <string name="settings_storage_move_confirm">Lahat ng umiiral na mga entry ay ililipat mula sa %1$s patungo sa %2$s. Gusto mo bang magpatuloy?</string>
+    <string name="settings_restore_added_skipped">Idinagdag: %1$d\nNilaktawan ang mga duplicate: %2$d</string>
+    <string name="settings_storage_custom_folder">Custom na Folder:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Nakakatulong ang mga shortcut</string>
+    <string name="addentry_cd_insert_template">Ipasok ang template</string>
+    <string name="addentry_cd_jump_to_today">Tumalon sa ngayon</string>
+    <string name="addentry_cd_share">Ibahagi</string>
+    <string name="addentry_cd_bold">Matapang</string>
+    <string name="addentry_cd_italic">Italic</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Itakda ang oras</string>
+    <string name="addentry_event_chip">Kaganapan</string>
+    <string name="addentry_pick_time_title">Pumili ng oras</string>
+    <string name="addentry_hour_label">Oras</string>
+    <string name="addentry_minute_label">minuto</string>
+    <string name="addentry_new_event_title">Bagong Kaganapan</string>
+    <string name="addentry_title_label">Pamagat</string>
+    <string name="addentry_event_description_label">Paglalarawan ng Kaganapan</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Natagpuan ang Todos</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">I-convert ang %1$d na linya sa checklist</item>
+        <item quantity="other">I-convert ang %1$d na linya sa checklist</item>
+    </plurals>
+    <string name="addentry_people_places_title">Mga Tao at Lugar</string>
+    <string name="addentry_no_tracked_mentions">Walang nakitang sinusubaybayang tao o lugar sa entry na ito.</string>
+    <string name="addentry_day_memory_title">Alaala ng Araw</string>
+    <string name="addentry_star_day_title">Bituin sa araw na ito</string>
+    <string name="addentry_star_day_subtitle">I-save ito bilang isang highlight upang bumalik ito sa pagbabalik-tanaw.</string>
+    <string name="addentry_day_label_label">Label ng araw</string>
+    <string name="addentry_day_label_placeholder">hal. I-reset ang Araw</string>
+    <string name="addentry_follow_up_title">Subaybayan ang</string>
+    <string name="addentry_next_month">Sa susunod na buwan</string>
+    <string name="addentry_custom">Custom</string>
+    <string name="addentry_due_date_format">Nakatakdang %1$s</string>
+    <string name="addentry_cd_clear_follow_up">I-clear ang follow-up</string>
+    <string name="addentry_follow_up_note_label">follow-up na tala</string>
+    <string name="addentry_follow_up_note_placeholder">Ano ang dapat mong bisitahin muli?</string>
+    <string name="addentry_review_entry_title">Review Entry</string>
+    <string name="addentry_review_entry_subtitle">Mabilis na pass bago i-save. Pull todos out, tingnan ang mga sinusubaybayang pagbanggit, at markahan ang araw kung mahalaga ito.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d todo</item>
+        <item quantity="other">%1$d todos</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d pagbanggit</item>
+        <item quantity="other">%1$d pagbanggit</item>
+    </plurals>
+    <string name="addentry_save_entry_button">I-save ang Entry</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Itapon ang mga Pagbabago</string>
+    <string name="addentry_discard_changes_message">Mayroon kang mga hindi na-save na pagbabago. Bumalik at itapon ang mga ito, o manatili upang patuloy na mag-edit.</string>
+    <string name="addentry_go_back">Bumalik ka</string>
+    <string name="addentry_stay">Manatili</string>
+    <string name="addentry_shortcuts_title">Mga shortcut</string>
+    <string name="addentry_help_bold_suffix">para gawing bold ang text (o piliin ang text at i-tap ang Bold Button)</string>
+    <string name="addentry_help_italic_suffix">para gawing italic ang text (o piliin ang text at i-tap ang Italic Button)</string>
+    <string name="addentry_help_today_suffix">: Lumalawak sa kasalukuyang petsa (hal., 25-Dis-25)</string>
+    <string name="addentry_help_now_suffix">: Lumalawak sa kasalukuyang oras (hal., 14:30)</string>
+    <string name="addentry_help_week_suffix">: Lumalawak sa kasalukuyang linggo (hal., Linggo 52)</string>
+    <string name="addentry_help_day_suffix">: Lumalawak sa kasalukuyang araw ng linggo (hal., Lunes)</string>
+    <string name="addentry_help_todo_suffix">: Lumalawak sa isang todo checkbox (hal., [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Kapag inilagay kahit saan sa linyang naglalaman ng todo checkbox, ito ay magpapalipat-lipat nito.</string>
+    <string name="addentry_okey">Okay!</string>
+    <string name="addentry_template_merge_message">May text na ang draft na ito. Piliin kung paano dapat ilagay ang template.</string>
+    <string name="addentry_template_merge_subtitle">Pinapanatili ng Insert sa ibaba ang kasalukuyang draft. Sa Cursor ay inilalagay ang template kung nasaan ngayon ang iyong caret.</string>
+    <string name="addentry_insert_below">Ipasok sa ibaba</string>
+    <string name="addentry_at_cursor">Sa Cursor</string>
+    <string name="addentry_replace_draft">Palitan ang Draft</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Sikat</string>
+    <string name="addentry_new_chip">Bago</string>
+    <string name="addentry_best_for_format">Pinakamahusay para sa: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Alisin ang paborito ng template</string>
+    <string name="addentry_cd_favorite_template">Paboritong template</string>
+    <string name="addentry_checklist_chip">Checklist</string>
+    <string name="addentry_followup_chip">Pagsubaybay</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d seksyon</item>
+        <item quantity="other">%1$d na mga seksyon</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">I-toggle ang paboritong template</string>
+    <string name="addentry_template_preview_label">Preview ng template</string>
+    <string name="addentry_use_template_button">Gumamit ng Template</string>
+    <string name="addentry_start_blank_title">Simulan ang Blangko</string>
+    <string name="addentry_start_blank_subtitle">Laktawan ang mga template at magpatuloy sa pagsusulat mula sa isang walang laman na draft.</string>
+    <string name="addentry_blank_entry_name">Blangkong Entry</string>
+    <string name="addentry_blank_entry_description">Plain journal entry</string>
+    <string name="addentry_blank_category">Heneral</string>
+    <string name="addentry_quick_picks_title">Mga Mabilisang Pinili</string>
+    <string name="addentry_sort_recommended">Inirerekomenda</string>
+    <string name="addentry_sort_recent">Kamakailan</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Walang nakitang mga template</string>
+    <string name="addentry_no_templates_subtitle">Subukan ang ibang paghahanap o kategorya.</string>
+    <string name="addentry_search_templates_label">Maghanap ng mga template</string>
+    <string name="addentry_search_templates_placeholder">Pagpupulong, kalusugan, pagmumuni-muni...</string>
+    <string name="addentry_cd_clear_search">I-clear ang paghahanap</string>
+    <string name="addentry_choose_template_title">Pumili ng isang Template</string>
+    <string name="addentry_templates_ready_format">%1$d ng %2$d template ang handa na</string>
+    <string name="addentry_category_all">Lahat</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">anong nangyari?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N Listahan</string>
+    <string name="addentry_bulleted_list_chip">B Listahan</string>
+    <string name="addentry_words_count_format">%1$d MGA SALITA</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Nakatakda ang follow-up ngayong araw</item>
+        <item quantity="other">Mga follow-up ngayong araw</item>
+    </plurals>
+    <string name="home_followup_subtitle">Bumalik sa naka-link na araw at magpatuloy mula doon.</string>
+    <string name="home_from_date_format">Mula sa %1$s</string>
+    <string name="home_more_due_today_format">+%1$d higit pa ngayong araw</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Magdagdag ng Label</string>
+    <string name="home_edit_label_title">I-edit ang Label</string>
+    <string name="home_day_label_hint">Magdagdag ng maikling label para sa araw na ito (max 30 character).</string>
+    <string name="home_day_label_placeholder">hal., Unang araw sa paaralan</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Magdagdag ng Label para sa Araw na Ito</string>
+    <string name="home_star_label_hint">Bigyan ang araw na ito ng hindi malilimutang label (max 30 character)</string>
+    <string name="home_star_label_placeholder">hal., Kaarawan Ko, Sa paaralan</string>
+    <string name="home_star_button">Bituin</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Ang entry ay tinanggal</item>
+        <item quantity="other">%1$d entry ay tinanggal</item>
+    </plurals>
+    <string name="home_restore_button">IBALIK</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Maghanap ng mga entry...</string>
+    <string name="home_cd_search">Maghanap</string>
+    <string name="home_cd_clear_search">I-clear ang Paghahanap</string>
+    <string name="home_cd_favorite">Paborito</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Mga entry</string>
+    <string name="home_stat_words">Mga salita</string>
+    <string name="home_stat_chars">Chars</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Magdagdag ng label</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Natagpuan ang Tugma</item>
+        <item quantity="other">%1$d Natagpuan ang mga Tugma</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Wala pang nahanap na katugma para sa keyword na ito.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Walang laman na Icon ng Katayuan</string>
+    <string name="home_empty_future">Ito ang kinabukasan. Mag-record ng paalala!</string>
+    <string name="home_empty_past">Ikaw ay nasa Nakaraan. Mag-record ng Memory bago ito kumupas...</string>
+    <string name="home_empty_today">Wala pang entry. Simulan ang iyong araw.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Nagtitipid</string>
+    <string name="home_cd_add_entry">Magdagdag ng Entry</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Tanggalin ang %1$d</string>
+    <string name="home_future_date_title">Pagpasok ng Petsa sa Hinaharap</string>
+    <string name="home_future_date_message_format">Nagdaragdag ka ng entry para sa hinaharap na petsa (%1$s). Gusto mo bang magpatuloy?</string>
+    <string name="home_cache_issue_title">Natukoy ang Isyu sa Data Cache</string>
+    <string name="home_cache_issue_message">Lumalabas na may malaking bilang ng mga entry sa journal ang nawawala sa cache. Gusto mo bang magsagawa ng kumpletong pag-refresh ng cache ng data upang subukang ibalik ang mga ito?</string>
+    <string name="home_refresh_button">I-refresh</string>
+    <string name="home_ignore_button">Huwag pansinin</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Mga Tao at Lugar</string>
+    <string name="nav_statistics">Mga istatistika</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Muling Buuin ang Index ng Database</string>
+    <string name="nav_backup_data">Backup na Data</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Katayuan</string>
+    <string name="nav_finishing_index_rebuild">Tinatapos ang muling pagbuo ng index...</string>
+    <string name="nav_rebuilding_index">Muling pagtatayo ng database index</string>
+    <string name="nav_refreshing_index">Nire-refresh ang index</string>
+    <string name="nav_backup_too_old">masyadong luma ang backup...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Nagtatrabaho...</string>
+    <string name="nav_eta_almost_done">halos tapos na</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds natitira</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm ang natitira</string>
+    <string name="nav_eta_hours_left_format">~%1$dh natitira</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">Logo ng RJ</string>
+    <string name="nav_tagline">isa pang journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Website</string>
+    <string name="nav_cd_share_app">Ibahagi ang App</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Logo ng Yaja</string>
+    <string name="nav_easter_quote_part1">\"Isulat ang isang lumilipas na kaisipan o kung ano ang iyong nananghalian; hindi ito kailangang maging malalim.\n</string>
+    <string name="nav_easter_quote_part2">Ang iyong mga salita ay maaaring umiral lamang.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">galing sa labs ni RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Share yaja</string>
+    <string name="nav_share_text_body">yaja — isa pang journaling app\n\nIsang pang-araw-araw na journal na walang distraction na nag-iimbak ng mga entry bilang plain markdown file.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Baguhin ang Lokasyon ng Storage</string>
+    <string name="settings_change_storage_location_message">Lahat ng umiiral na mga entry ay ililipat mula sa %1$s patungo sa %2$s. Gusto mo bang magpatuloy?</string>
+    <string name="settings_yes">Oo</string>
+    <string name="settings_no">Hindi</string>
+    <string name="settings_restore_summary_title">Ibalik ang Buod</string>
+    <string name="settings_restore_section_journal">Journal</string>
+    <string name="settings_restore_section_shortcodes">Mga shortcode</string>
+    <string name="settings_restore_section_date_keywords">Mga Keyword ng Petsa</string>
+    <string name="settings_restore_section_people_places">Mga Tao at Lugar</string>
+    <string name="settings_restore_journal_summary">Idinagdag sa mga bagong araw: %1$d\nPinagsama sa mga kasalukuyang araw: %2$d\nNilaktawan ang mga duplicate na entry sa journal: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Idinagdag: %1$d\nNilaktawan ang mga duplicate: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Idinagdag: %1$d\nNilaktawan ang mga duplicate: %2$d</string>
+    <string name="settings_restore_people_places_summary">Idinagdag: %1$d\nNilaktawan ang mga duplicate: %2$d</string>
+    <string name="rebuild_tools_title">Muling Buuin ang Mga Tool</string>
+    <string name="rebuild_tools_back">Bumalik</string>
+    <string name="rebuild_tools_intro">Gumamit muna ng mga nakatutok na muling pagtatayo. Ang muling pagtatayo ng database ay para lamang sa mga pagbabago sa storage, pagkasira ng database, o hindi pagkakatugma ng index.</string>
+    <string name="rebuild_todo_index_title">Muling itayo ang Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">I-refresh ang mga todos mula sa mga journal file at i-update ang Todo screen/widget. Pinakamaganda kapag mukhang lipas na ang todos.</string>
+    <string name="rebuild_todo_index_button">Muling itayo ang Todos</string>
+    <string name="rebuild_people_places_title">Muling Buuin ang Mga Tao at Lugar</string>
+    <string name="rebuild_people_places_subtitle">I-refresh ang mga alias ng keyword, co-mention, trend, at data ng relasyon.</string>
+    <string name="rebuild_people_places_button">Muling Buuin ang Mga Tao at Lugar</string>
+    <string name="rebuild_database_title">Buong Pagbuo ng Database</string>
+    <string name="rebuild_database_subtitle">I-compile muli ang cache ng database mula sa mga markdown na file. Muling ini-index ang mga entry, bilang, todos, Tao at Lugar, at mga widget mula sa simula.</string>
+    <string name="rebuild_database_button">Muling Buuin ang Database</string>
+    <string name="rebuild_database_confirm_title">Muling itayo ang index ng database</string>
+    <string name="rebuild_database_confirm_message">Iki-clear at muling i-index nito ang buong database ng Room SQLite mula sa iyong Markdown file. Para sa malalaking journal, maaaring tumagal ito ng ilang minuto.</string>
+    <string name="rebuild_database_confirm_start">Simulan ang Rebuild</string>
+    <string name="rebuild_database_status_title">Katayuan ng Index ng Database</string>
+    <string name="rebuild_database_storage_engine">Storage Engine</string>
+    <string name="rebuild_database_storage_engine_value">Database ng Room SQLite</string>
+    <string name="rebuild_database_indexed_days">Mga Na-index na Araw</string>
+    <string name="rebuild_database_indexed_days_value">%1$d araw na na-index</string>
+    <string name="rebuild_database_file_size">Laki ng File ng Database</string>
+    <string name="rebuild_database_last_sync">Huling Index Sync</string>
+    <string name="rebuild_database_age_never">Hindi kailanman</string>
+    <string name="rebuild_database_age_just_now">Ngayon lang</string>
+    <string name="rebuild_database_age_one_minute">1 minuto ang nakalipas</string>
+    <string name="rebuild_database_age_minutes">%1$d minuto ang nakalipas</string>
+    <string name="rebuild_database_age_one_hour">1 oras ang nakalipas</string>
+    <string name="rebuild_database_age_hours">%1$d oras ang nakalipas</string>
+    <string name="shortcodes_title">Mga shortcode</string>
+    <string name="shortcodes_import_cd">Mag-import</string>
+    <string name="shortcodes_export_cd">I-export</string>
+    <string name="shortcodes_help_cd">Tulong</string>
+    <string name="shortcodes_new">Bagong Shortcode</string>
+    <string name="shortcodes_empty_title">Walang custom na shortcode</string>
+    <string name="shortcodes_empty_subtitle">Magdagdag ng isa para palawakin ang mga snippet tulad ng @yday sa dynamic na text.</string>
+    <string name="shortcodes_dynamic_dates_hint">Gamitin ang {{today:format}} para sa mga dynamic na petsa.</string>
+    <string name="shortcodes_help_title">Tulong sa Shortcode</string>
+    <string name="shortcodes_help_built_in">Mga Built-in na Shortcode:</string>
+    <string name="shortcodes_help_built_in_examples">@ngayon, @ngayon, @linggo, @araw, @t (checkbox), @x (i-toggle ang checkbox)</string>
+    <string name="shortcodes_help_dynamic_patterns">Mga Dynamic na Pattern:</string>
+    <string name="shortcodes_help_dynamic_desc">Gamitin ang {{ngayon:FORMAT}}, {{kahapon:FORMAT}}, {{bukas:FORMAT}}, o {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Halimbawa: @yday -&gt; Kahapon: {{kahapon:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Mga karaniwang format: dd-MM-yy, HH:mm, EEEE (pangalan ng araw).</string>
+    <string name="action_close">Isara</string>
+    <string name="keyword_detail_title_fallback">Keyword</string>
+    <string name="keyword_detail_not_found">Hindi nahanap ang keyword</string>
+    <string name="keyword_detail_last_indexed">Huling na-index %1$s</string>
+    <string name="keyword_detail_mentions_section">Mga pagbanggit</string>
+    <string name="pin_biometric_prompt_title">I-unlock gamit ang Biometric</string>
+    <string name="pin_biometric_prompt_subtitle">Gamitin ang iyong fingerprint o mukha para i-unlock</string>
+    <string name="pin_error_no_biometric_enrolled">Walang naka-enroll na biometric. Mangyaring mag-enroll ng fingerprint o mukha sa mga setting ng device.</string>
+    <string name="pin_error_hardware_unavailable">Hindi available ang biometric hardware.</string>
+    <string name="pin_error_no_hardware">Walang biometric hardware ang device na ito.</string>
+    <string name="pin_error_not_available">Hindi available ang biometric authentication.</string>
+    <string name="pin_title_confirm">Kumpirmahin ang PIN</string>
+    <string name="pin_title_set_new">Itakda ang Bagong PIN</string>
+    <string name="pin_title_disable">Ilagay ang Kasalukuyang PIN upang I-disable</string>
+    <string name="pin_title_enter">Ilagay ang PIN</string>
+    <string name="pin_error_incorrect">Maling PIN. Subukan muli.</string>
+    <string name="pin_error_mismatch">Hindi tugma ang mga PIN. Magsimula muli.</string>
+    <string name="pin_cd_use_biometric">Gumamit ng biometric</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Ang araw na ito ay may label, ngunit wala pang journal entry.</string>
+    <string name="timeline_preview_loading">Nilo-load ang preview...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d pang entry sa araw na ito</item>
+        <item quantity="other">+ %1$d higit pang mga entry sa araw na ito</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Buksan Ngayong Araw</string>
+    <string name="timeline_chip_today">NGAYONG ARAW</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d entry</item>
+        <item quantity="other">%1$d entry</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Pagsubaybay</string>
+    <string name="timeline_chip_label_only">Label lang</string>
+    <string name="timeline_cd_favorite">Paborito</string>
+    <string name="version_history_title">Kasaysayan ng Bersyon</string>
+    <string name="version_history_day_versions_title">Mga Bersyon ng Araw</string>
+    <string name="version_history_keep_copies_title">Panatilihin ang mga kopya ng kaligtasan</string>
+    <string name="version_history_keep_copies_subtitle">Bago baguhin ni Yaja ang isang araw na file, sine-save nito ang kasalukuyang file sa data ng app sa ilalim ng Mga History File.</string>
+    <string name="version_history_versions_kept_title">Mga bersyon na pinananatili bawat araw</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Pinapanatili ni Yaja ang pinakabagong bersyon ng %1$d para sa bawat petsa.</item>
+        <item quantity="other">Pinapanatili ni Yaja ang mga pinakabagong bersyon ng %1$d para sa bawat petsa.</item>
+    </plurals>
+    <string name="version_history_retention_title">Pagpapanatili</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Ang mga snapshot na mas matanda sa %1$d araw ay awtomatikong nililinis.</item>
+        <item quantity="other">Ang mga snapshot na mas matanda sa %1$d araw ay awtomatikong nililinis.</item>
+    </plurals>
+    <string name="version_history_notes">Mga Tala: pinoprotektahan ng history ng bersyon ang mga day markdown file bago magdagdag, mag-edit, magtanggal, mag-ayos muli, mag-label, maglagay ng star, at muling bisitahin ang mga pagbabago. Ito ay hindi isang cloud backup; patuloy na gumamit ng Backup para sa mga portable na kopya.</string>
+    <string name="version_history_snapshots_for">Mga snapshot para sa %1$s</string>
+    <string name="version_history_snapshots_subtitle">Magbukas ng naka-save na bersyon, siyasatin ito, at i-restore ito para sa araw na ito.</string>
+    <string name="version_history_empty">Wala pang naka-save na bersyon para sa petsang ito.</string>
+    <string name="action_view">Tingnan</string>
+    <string name="version_history_date_intro">Magbukas ng mas naunang naka-save na bersyon para sa araw na ito, siyasatin ito, at i-restore ito kapag kinakailangan.</string>
+    <string name="action_next">Susunod</string>
+    <string name="action_apply">Mag-apply</string>
+    <string name="action_restore">Ibalik</string>
+    <string name="statistics_choose_title">Piliin ang Statistics</string>
+    <string name="statistics_choose_subtitle">Itago ang mga seksyon na hindi mo gusto. Hindi bababa sa isang seksyon ang dapat manatiling nakikita.</string>
+    <string name="statistics_visible_count">%1$d ng %2$d nakikita</string>
+    <string name="statistics_show_all">Ipakita ang Lahat</string>
+    <string name="statistics_one_section_visible">Dapat manatiling nakikita ang isang seksyon</string>
+    <string name="statistics_shown">Ipinapakita sa mga istatistika</string>
+    <string name="statistics_hidden">Nakatago sa mga istatistika</string>
+    <string name="statistics_select_start_date">Piliin ang Petsa ng Pagsisimula</string>
+    <string name="statistics_select_end_date">Piliin ang Petsa ng Pagtatapos</string>
+    <string name="statistics_filter_by_period">I-filter ayon sa Panahon</string>
+    <string name="statistics_cd_reorder">Pindutin nang matagal upang muling ayusin</string>
+    <string name="statistics_total_entries">Kabuuang mga Entry</string>
+    <string name="statistics_total_words">Kabuuang mga Salita</string>
+    <string name="statistics_avg_words_per_entry">Avg. Mga Salita/Pagpasok</string>
+    <string name="statistics_current_streak">Kasalukuyang Streak</string>
+    <string name="statistics_pages_written">Mga Pahinang Isinulat</string>
+    <string name="statistics_days_highlighted">Mga Araw na Naka-highlight</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d araw</item>
+        <item quantity="other">%1$d araw</item>
+    </plurals>
+    <string name="statistics_period_all_time">All-Time Statistics</string>
+    <string name="statistics_period_current_year">Kasalukuyang Istatistika ng Taon</string>
+    <string name="statistics_period_previous_year">Mga Istatistika ng Nakaraang Taon</string>
+    <string name="statistics_period_current_month">Kasalukuyang Istatistika ng Buwan</string>
+    <string name="statistics_period_previous_month">Mga Istatistika ng Nakaraang Buwan</string>
+    <string name="statistics_period_custom">Mga Istatistika ng Custom na Panahon</string>
+    <string name="statistics_period_chip_all_time">Lahat ng Panahon</string>
+    <string name="statistics_period_chip_current_year">Kasalukuyang Taon</string>
+    <string name="statistics_period_chip_previous_year">Nakaraang Taon</string>
+    <string name="statistics_period_chip_current_month">Ngayong Buwan</string>
+    <string name="statistics_period_chip_previous_month">Nakaraang Buwan</string>
+    <string name="statistics_period_chip_custom">Custom</string>
+    <string name="statistics_sections_visible">%1$d ng %2$d seksyon ang nakikita</string>
+    <string name="statistics_loading_stages">Nilo-load ang mga istatistika sa mga yugto...</string>
+    <string name="review_period_weekly">Lingguhang Pagsusuri</string>
+    <string name="review_period_monthly">Buwanang Pagsusuri</string>
+    <string name="review_anchor_week">Linggo na naglalaman ng %1$s</string>
+    <string name="review_anchor_month">Buwan na naglalaman ng %1$s</string>
+    <string name="review_chip_entries">Mga entry %1$d</string>
+    <string name="review_chip_words">Mga Salita %1$d</string>
+    <string name="review_chip_days">Mga Araw %1$d</string>
+    <string name="review_hint_jump">I-tap ang mga date chips sa ibaba para tumalon pabalik sa journal.</string>
+    <string name="review_chip_streak">Streak %1$d</string>
+    <string name="review_chip_gap">Gap %1$d</string>
+    <string name="review_chip_labels">Mga Label %1$d</string>
+    <string name="review_chip_favorites">Mga Paborito %1$d</string>
+    <string name="review_empty_period">Wala pang mga journal entry sa panahong ito. Lumalabas pa rin sa ibaba ang mga label at highlight kung mayroon sila.</string>
+    <string name="review_writing_rhythm">Pagsulat ng Ritmo</string>
+    <string name="review_best_streak">Pinakamahusay na streak</string>
+    <string name="review_longest_gap">Pinakamahabang gap</string>
+    <string name="review_most_active_days">Mga Pinaka-aktibong Araw</string>
+    <string name="review_day_entries_words">%1$d entry | %2$d salita</string>
+    <string name="review_top_people">Mga Nangungunang Tao</string>
+    <string name="review_top_places">Mga Nangungunang Lugar</string>
+    <string name="review_no_people_mentions">Walang binabanggit na tao</string>
+    <string name="review_no_place_mentions">Walang binanggit na lugar</string>
+    <string name="review_favorite_moments">Mga Paboritong Sandali</string>
+    <string name="review_starred_day">Araw na may bituin</string>
+    <string name="review_highlighted_in_period">Naka-highlight sa panahong ito</string>
+    <string name="review_labels_created">Nagawa ang Mga Label</string>
+    <string name="review_labeled_day">May label na araw</string>
+    <string name="review_language_split">Paghati ng Wika</string>
+    <string name="review_not_enough_text">Hindi sapat ang text sa panahong ito</string>
+    <string name="lookback_reviews_title">Mga pagsusuri</string>
+    <string name="lookback_reviews_intro">Bumuo ng mabilis na pagmuni-muni sa iyong napiling araw ng journal.</string>
+    <string name="lookback_seven_days">7 araw</string>
+    <string name="lookback_one_month">1 buwan</string>
+    <string name="lookback_weekly_review">Lingguhang Pagsusuri</string>
+    <string name="lookback_weekly_review_subtitle">Ngayong linggo sa isang sulyap</string>
+    <string name="lookback_monthly_review">Buwanang Pagsusuri</string>
+    <string name="lookback_monthly_review_subtitle">Ang buwang ito ay buod</string>
+    <string name="lookback_flashbacks_title">Sa araw na ito sa mga nakaraang taon</string>
+    <string name="lookback_highlights_title">Iyong Highlight</string>
+    <string name="lookback_empty_title">Wala pang lookback o highlight.</string>
+    <string name="lookback_empty_subtitle">Mga paboritong mahahalagang araw para makita sila dito!</string>
+    <string name="lookback_cd_random_entry">Pumunta sa random na entry</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Panahon</string>
+    <string name="statistics_compare_mode_title">Ihambing ang Mode</string>
+    <string name="statistics_compare_mode_subtitle">Buwan, taon, at keyword deltas</string>
+    <string name="statistics_this_year">Ngayong Taon</string>
+    <string name="statistics_writing_days_delta">Delta ng mga Araw ng Pagsusulat</string>
+    <string name="statistics_top_person_delta">Nangungunang Tao Delta</string>
+    <string name="statistics_no_people_mentions">Wala pang nagbabanggit ng mga tao</string>
+    <string name="statistics_top_place_delta">Nangungunang Lugar Delta</string>
+    <string name="statistics_no_place_mentions">Wala pang nababanggit na lugar</string>
+    <string name="statistics_structured_writing">Nakabalangkas na Pagsulat</string>
+    <string name="statistics_template_led_format">Pinamunuan ng template %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Blangko %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Karamihan sa mga Ginamit na Template</string>
+    <string name="statistics_template_mix">Template Mix</string>
+    <string name="statistics_follow_up_leaders">Mga Follow-up Leaders</string>
+    <string name="statistics_compare_details">Ihambing ang mga Detalye</string>
+    <string name="statistics_label_month">buwan</string>
+    <string name="statistics_label_year">taon</string>
+    <string name="statistics_this_month_count_format">Ngayong buwan %1$d</string>
+    <string name="statistics_last_month_count_format">Noong nakaraang buwan %1$d</string>
+    <string name="statistics_longest_streak">Pinakamahabang Streak</string>
+    <string name="statistics_most_active_day">Pinaka-aktibong Araw</string>
+    <string name="statistics_writing_consistency">Pagkakaayon sa Pagsulat</string>
+    <string name="statistics_days_with_entries">Mga Araw na May Entries</string>
+    <string name="statistics_best_month">Pinakamahusay na Buwan</string>
+    <string name="statistics_best_month_format">%1$s · %2$d entry</string>
+    <string name="statistics_avg_writing_days_week">Avg. Mga Araw / Linggo ng Pagsulat</string>
+    <string name="statistics_days_decimal_format">%1$.1f araw</string>
+    <string name="statistics_based_on_total_words">Batay sa kabuuang mga salita na isinulat bawat araw</string>
+    <string name="statistics_light_words">Banayad (&lt; 50 salita)</string>
+    <string name="statistics_moderate_words">Katamtaman (50-200 salita)</string>
+    <string name="statistics_heavy_words">Mabigat (200-500 salita)</string>
+    <string name="statistics_intense_words">Matinding (500+ salita)</string>
+    <string name="statistics_not_enough_text_languages">Hindi sapat na text para makita ang mga wika</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d wika ang natukoy</item>
+        <item quantity="other">%1$d wika ang natukoy</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Nag-aayos pa rin ang pagtuklas ng wika.</string>
+    <string name="statistics_latin_scripts_as_english">Ang mga Latin na script ay ipinapakita bilang Ingles</string>
+    <string name="statistics_use_more_accurate_detection">Gumamit ng mas tumpak na pagtuklas</string>
+    <string name="statistics_write_more_entries_languages">Sumulat ng higit pang mga entry upang makita ang mga istatistika ng wika.</string>
+    <string name="statistics_based_on_entry_time">Batay sa oras ng pagpasok</string>
+    <string name="statistics_morning_time">Umaga (5am-tanghali)</string>
+    <string name="statistics_afternoon_time">Hapon (tanghali-5pm)</string>
+    <string name="statistics_evening_time">Gabi (5pm-9pm)</string>
+    <string name="statistics_night_time">Gabi (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">Pumupuno pa rin ang heatmap.</string>
+    <string name="statistics_heatmap_less">Mas kaunti</string>
+    <string name="statistics_heatmap_more">Higit pa</string>
+    <string name="action_open">Bukas</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Mga Kaganapan sa Yaja Journal</string>
+    <string name="tasker_event_desc">Piliin kung aling mga kaganapan sa journal ng Yaja ang dapat mag-trigger sa profile ng Tasker na ito.</string>
+    <string name="tasker_event_saved">Nai-save ang Entry</string>
+    <string name="tasker_event_edited">Na-edit ang Entry</string>
+    <string name="tasker_event_deleted">Natanggal ang Entry</string>
+    <string name="tasker_event_default_hint">Kung walang napili, ang Yaja ay magiging default sa Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">I-configure kung ano ang dapat mabilis na makuha ng Tasker sa Yaja.</string>
+    <string name="tasker_action_add_entry">Magdagdag ng Entry</string>
+    <string name="tasker_action_add_event">Magdagdag ng Kaganapan</string>
+    <string name="tasker_action_add_todo">Magdagdag ng Todo</string>
+    <string name="tasker_action_append">Idugtong</string>
+    <string name="tasker_action_match_header_label">Tugma / header</string>
+    <string name="tasker_action_match_header_placeholder">Mga Missed Call</string>
+    <string name="tasker_action_line_to_append_label">Linya upang idagdag</string>
+    <string name="tasker_action_text_label">Text</string>
+    <string name="tasker_action_placeholder_event">Tala ng kaganapan mula sa Tasker</string>
+    <string name="tasker_action_placeholder_todo">Bumili ng gatas</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Mabilis na tala mula sa Tasker</string>
+    <string name="tasker_action_tip_append">Lumilikha ang unang tawag ng entry na nagsisimula sa text ng tugma. Ang mga tawag sa ibang pagkakataon ay nagdaragdag sa linya sa ilalim nito.</string>
+    <string name="tasker_action_tip_default">Tip: Maaaring ilagay ang mga variable ng Tasker sa field ng text.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Nakaraang Session Crash Log</string>
+    <string name="crash_log_clear_close">I-clear at Isara</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Ilunsad ang App</string>
+    <string name="tap_action_quick_capture">Mabilis na Pagkuha</string>
+    <string name="tap_action_do_nothing">Walang Gawin</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Heatmap sa Pagsusulat ng Yaja</string>
+    <string name="widget_cell_shape">Hugis ng Cell</string>
+    <string name="widget_corner_radius">Radius ng Sulok: %1$ddp</string>
+    <string name="widget_square">Square</string>
+    <string name="widget_round">Bilog</string>
+    <string name="widget_inner_margin">Inner Margin: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Puwang sa pagitan ng heatmap at ng mga gilid ng widget</string>
+    <string name="widget_none">wala</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Sa Tapikin</string>
+    <string name="widget_on_tap_desc">Aksyon kapag na-tap ang widget</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Kunin</string>
+    <string name="widget_qc_shape">Hugis ng Widget</string>
+    <string name="widget_show_label">Ipakita ang Label</string>
+    <string name="widget_show_label_desc">Ipakita ang \'Capture\' na text sa widget</string>
+    <string name="widget_show_icon">Ipakita ang Icon</string>
+    <string name="widget_show_icon_required">Kinakailangan ang icon kapag nakatago ang label</string>
+    <string name="widget_show_icon_desc">Ipakita ang icon ng panulat sa widget</string>
+    <string name="widget_label_text">Teksto ng Label</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">Bilugan, tulad ng heatmap ng todo list widget.</string>
+    <string name="widget_todo_corner_radius">Corner radius: %1$ddp</string>
+    <string name="widget_todo_padding">Padding: %1$ddp</string>
+    <string name="widget_todo_show_completed">Ipakita ang mga natapos na gawain</string>
+    <string name="widget_todo_show_completed_desc">Isama ang mga naka-check na item sa listahan ng widget</string>
+    <string name="widget_todo_include_events">Isama ang mga kaganapan</string>
+    <string name="widget_todo_include_events_desc">Ipakita ang mga entry ng kaganapan kasama ng mga todos sa widget</string>
+    <string name="widget_todo_show_header">Ipakita ang Todo header</string>
+    <string name="widget_todo_show_header_desc">Ipakita o itago ang hilera ng pamagat ng widget</string>
+    <string name="widget_todo_auto_hide">Awtomatikong itago ang widget kapag nakumpleto na ang lahat</string>
+    <string name="widget_todo_auto_hide_unavailable">Hindi available habang ipinapakita ang mga natapos na gawain</string>
+    <string name="widget_todo_auto_hide_desc">Gawing transparent ang widget kapag walang mga nakabinbing gawain</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">tapos na</string>
+    <string name="todo_confirm_mark_not_done">hindi tapos</string>
+    <string name="todo_confirm_title">Markahan ang gawain bilang %1$s?</string>
+    <string name="todo_confirm_reopen">Kasalukuyang natapos ang todo na ito. Kumpirmahin bago ito muling buksan.</string>
+    <string name="todo_confirm_complete">Bukas pa rin ang todo na ito. Kumpirmahin bago markahan itong tapos na.</string>
+    <string name="todo_confirm_accidental_tap">Hindi mababago ng hindi sinasadyang pag-tap ang gawain.</string>
+    <string name="todo_confirm_yes_mark">Oo, markahan ang %1$s</string>
+    <string name="todo_confirm_open_yaja">Buksan sa Yaja</string>
+    <string name="todo_confirm_keep_as_is">Panatilihin bilang ay</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">isa pang journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">galing sa labs ni RJ</string>
+    <string name="help_made_in">Ginawa sa 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Kanselahin ang pag-import</string>
+    <string name="timeline_show_all_dates">Ipakita ang lahat ng petsa</string>
+    <string name="timeline_show_all_dates_subtitle">Isama ang lahat ng mga nakaraang araw, kahit na walang mga entry</string>
+    <string name="settings_background_tint_clean">Malinis</string>
+    <string name="settings_background_tint_soft">Malambot</string>
+    <string name="settings_background_tint_rich">Mayaman</string>
+    <string name="settings_background_tint_deep">Malalim</string>
+    <string name="settings_accent_style_complementary">Komplementaryo</string>
+    <string name="settings_accent_style_analogous">Katulad</string>
+    <string name="settings_accent_style_triadic">Triadic</string>
+    <string name="settings_accent_style_soft">Malambot</string>
+</resources>

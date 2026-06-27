@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">یاجا</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">مجله</string>
+    <string name="nav_calendar">تقویم</string>
+    <string name="nav_lookback">نگاه به عقب</string>
+    <string name="nav_settings">تنظیمات</string>
+    <string name="nav_shortcodes">کدهای کوتاه</string>
+    <string name="nav_help">راهنما و درباره</string>
+
+    <!-- Common actions -->
+    <string name="action_save">ذخیره کنید</string>
+    <string name="action_cancel">لغو کنید</string>
+    <string name="action_delete">حذف کنید</string>
+    <string name="action_edit">ویرایش کنید</string>
+    <string name="action_back">برگشت</string>
+    <string name="action_undo">واگرد</string>
+    <string name="action_yes">بله</string>
+    <string name="action_no">خیر</string>
+    <string name="action_remove">حذف کنید</string>
+    <string name="action_done">انجام شد</string>
+    <string name="action_set">تنظیم کنید</string>
+    <string name="action_select">انتخاب کنید</string>
+    <string name="action_ok">باشه</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">بازسازی کش</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">ضبط سریع</string>
+    <string name="quick_capture_hint">چه اتفاقی افتاد؟</string>
+    <string name="quick_capture_helper_shortcodes">کدهای کوتاه در اینجا به طور خودکار گسترش می یابند و خطوط انجام کار روی Enter ادامه می یابد.</string>
+    <string name="quick_capture_save_delayed">ذخیره با تاخیر لطفاً Yaja را دوباره باز کنید تا تأیید شود.</string>
+    <string name="cd_saved">ذخیره شد</string>
+    <string name="quick_todo_dialog_title">افزودن سریع</string>
+    <string name="quick_todo_save_delayed">ذخیره کار با تاخیر لطفاً Yaja را دوباره باز کنید تا تأیید شود.</string>
+    <string name="quick_todo_placeholder">یک کار اضافه کنید</string>
+    <string name="quick_event_placeholder">یک رویداد اضافه کنید</string>
+    <string name="quick_todo_task_date">تاریخ کار</string>
+    <string name="quick_todo_event_date">تاریخ رویداد</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s را انتخاب کنید</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">به عنوان یک ورودی برای انجام کار برای روز انتخابی ذخیره می شود.</string>
+    <string name="quick_event_selected_day_hint">به عنوان ورودی رویداد برای روز انتخابی ذخیره می شود.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">قبلی</string>
+    <string name="cd_next">بعدی</string>
+    <string name="cd_surprise_me">غافلگیرم کن</string>
+    <string name="calendar_cd_go_to_current_month">برو به ماه جاری</string>
+    <string name="calendar_quick_action_timeline_title">جدول زمانی</string>
+    <string name="calendar_quick_action_timeline_subtitle">مرور زمانی</string>
+    <string name="calendar_quick_action_jump_title">پرش به تاریخ</string>
+    <string name="calendar_quick_action_jump_subtitle">یک روز خاص باز کنید</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">تاریخ نامعتبر از فرمت DD-MM-YY استفاده کنید.</string>
+    <string name="calendar_action_go">برو</string>
+    <string name="calendar_enable_future_dates_title">تاریخ های آینده را فعال کنید</string>
+    <string name="calendar_enable_future_dates_message">ورود تاریخ آینده غیرفعال است. آیا می خواهید آن را فعال کنید؟</string>
+    <string name="calendar_action_enable">فعال کردن</string>
+    <string name="calendar_future_entry_enabled">ورود تاریخ آینده فعال شده است</string>
+    <string name="calendar_weekday_sun_short">خورشید</string>
+    <string name="calendar_weekday_mon_short">دوشنبه</string>
+    <string name="calendar_weekday_tue_short">سه شنبه</string>
+    <string name="calendar_weekday_wed_short">چهارشنبه</string>
+    <string name="calendar_weekday_thu_short">پنج شنبه</string>
+    <string name="calendar_weekday_fri_short">جمعه</string>
+    <string name="calendar_weekday_sat_short">نشست</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ورودی های این ماه</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d روز</item>
+        <item quantity="other">%1$d / %2$d روز</item>
+    </plurals>
+    <string name="calendar_days_of_memories">روزهای خاطره</string>
+    <string name="calendar_consistency_last_12_months">12 ماه گذشته</string>
+    <string name="calendar_consistency_title_format">ثبات - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% در مقابل \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">در مقابل \'%1$s</string>
+    <string name="calendar_consistency_first_period">دوره اول</string>
+    <string name="calendar_graph_frequency_month">ماه</string>
+    <string name="calendar_graph_frequency_year">سال</string>
+    <string name="calendar_yearly_consistency_title">ثبات (سالانه)</string>
+    <string name="calendar_keywords_title">چه کسی بیشتر نشان می دهد</string>
+    <string name="calendar_keywords_syncing">آمار افراد و مکان‌ها همچنان با فهرست‌بندی کلمات کلیدی همگام‌سازی می‌شوند.</string>
+    <string name="calendar_keywords_empty">حداقل 3 نفر یا 3 مکان را برای مشاهده نام‌های برتر اضافه کنید.</string>
+    <string name="calendar_keywords_people">مردم</string>
+    <string name="calendar_keywords_places">مکان ها</string>
+
+    <!-- Settings -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_appearance">ظاهر</string>
+    <string name="settings_appearance_subtitle">تم، رنگ ها، فونت ها و سبک های شخصی</string>
+    <string name="settings_theme">تم</string>
+    <string name="settings_font">فونت</string>
+    <string name="settings_storage">ذخیره سازی</string>
+    <string name="settings_security">امنیت</string>
+    <string name="settings_backup">پشتیبان گیری</string>
+    <string name="settings_change_storage_title">تغییر مکان ذخیره سازی</string>
+    <string name="settings_backup_never">هرگز</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">تنظیمات جستجو</string>
+    <string name="settings_search_clear">جستجو را پاک کنید</string>
+    <string name="settings_search_recent">جستجوهای اخیر</string>
+    <string name="settings_search_no_results">تنظیمات منطبقی وجود ندارد</string>
+    <string name="settings_search_close">بستن</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">تجربه مجله</string>
+    <string name="settings_section_navigation_gestures">ناوبری و حرکات</string>
+    <string name="settings_section_review_insights">بررسی و بینش</string>
+
+    <!-- Language -->
+    <string name="settings_language">زبان</string>
+    <string name="settings_language_title">زبان برنامه</string>
+    <string name="settings_language_subtitle">زبان مورد استفاده در برنامه را انتخاب کنید.</string>
+    <string name="settings_language_system_default">پیش فرض سیستم</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">سبک ورود</string>
+    <string name="settings_journal_entry_style_subtitle">بین کارت‌های برجسته و ظاهر مجله‌ای صاف‌تر انتخاب کنید.</string>
+    <string name="settings_journal_entry_style_cards">کارت ها</string>
+    <string name="settings_journal_entry_style_flat">تخت</string>
+    <string name="settings_journal_render_checkboxes_title">چک باکس ها را به صورت متن ارائه دهید</string>
+    <string name="settings_journal_render_checkboxes_subtitle">به جای چک باکس های رسا، کارها را به صورت [ ] و [x] در برنامه نشان دهید.</string>
+    <string name="settings_journal_day_header_counts_title">نمایش تعداد سرصفحه روز</string>
+    <string name="settings_journal_day_header_counts_subtitle">تعداد ورودی، کلمه و کاراکتر را در سرصفحه روز مجله نمایش دهید.</string>
+    <string name="settings_journal_show_timestamps_title">نمایش مهرهای زمانی</string>
+    <string name="settings_journal_show_timestamps_subtitle">نمایش زمان ورود در جدول زمانی</string>
+    <string name="settings_journal_allow_future_title">اجازه ورود به آینده</string>
+    <string name="settings_journal_allow_future_subtitle">افزودن ورودی ها به تاریخ های آینده را فعال کنید.</string>
+    <string name="settings_journal_truncate_title">کوتاه کردن ورودی های طولانی</string>
+    <string name="settings_journal_truncate_subtitle">ورودی های طولانی در صفحه اصلی را کوتاه کنید.</string>
+    <string name="settings_journal_char_limit_title">محدودیت کاراکتر</string>
+    <string name="settings_journal_char_limit_subtitle">تعداد کاراکترهای نمایش داده شده را قبل از کوتاه کردن تنظیم کنید.</string>
+    <string name="settings_journal_char_limit_min">50 کاراکتر</string>
+    <string name="settings_journal_char_limit_max">200 کاراکتر</string>
+    <string name="settings_journal_char_count">%1$d کاراکتر</string>
+    <string name="settings_journal_first_day_title">روز اول هفته</string>
+    <string name="settings_journal_first_day_subtitle">شروع تقویم روشن است</string>
+    <string name="settings_journal_day_sun">خورشید</string>
+    <string name="settings_journal_day_mon">دوشنبه</string>
+    <string name="settings_journal_date_recognition">تشخیص تاریخ</string>
+    <string name="settings_journal_date_order_title">سفارش تاریخ</string>
+    <string name="settings_journal_date_order_subtitle">نحوه خواندن تاریخ های عددی</string>
+    <string name="settings_journal_date_order_auto">خودکار</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">کلمات کلیدی تاریخ</string>
+    <string name="settings_journal_date_keywords_subtitle">کلماتی در زبان های دیگر که به معنای تاریخ هستند (مثلاً یک کلمه محلی برای دیروز).</string>
+    <string name="settings_journal_view_keywords">مشاهده (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">کلمه کلیدی را اضافه کنید</string>
+    <string name="settings_journal_motion">حرکت</string>
+    <string name="settings_journal_animations_title">انیمیشن ها</string>
+    <string name="settings_journal_animations_subtitle">کنترل حرکت در سراسر برنامه کاهش یافته با حرکت کمتر چیزها را روان نگه می دارد.</string>
+    <string name="settings_journal_animations_full">کامل</string>
+    <string name="settings_journal_animations_reduced">کاهش یافته است</string>
+    <string name="settings_journal_animations_off">خاموش</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">بررسی پس از ذخیره</string>
+    <string name="settings_review_post_write_title">بررسی پس از نوشتن</string>
+    <string name="settings_review_post_write_subtitle">پس از ضربه زدن روی ذخیره برای استخراج کارها، بررسی ذکرها، روز ستاره یا برچسب تنظیم، برگه مرور را نشان دهید.</string>
+    <string name="settings_review_people_places">افراد و مکان ها</string>
+    <string name="settings_review_highlighting_title">برجسته کردن</string>
+    <string name="settings_review_highlighting_subtitle">افراد و مکان‌های ردیابی‌شده را در کارت‌های Home و حالت View Entry برجسته کنید.</string>
+    <string name="settings_review_match_sensitivity_title">حساسیت مطابقت</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">یک کلمه چقدر باید مطابقت داشته باشد تا توسط افراد و مکان‌ها شناسایی شود (بالاتر = سخت‌گیرانه‌تر).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">اضافه کردن کد کوتاه</string>
+    <string name="shortcodes_edit_title">ویرایش کد کوتاه</string>
+    <string name="shortcodes_code_label">کد کوتاه (به عنوان مثال @yday)</string>
+    <string name="shortcodes_expansion_label">متن بسط</string>
+    <string name="shortcodes_export_error">کدهای کوتاه صادر نشد</string>
+    <string name="shortcodes_import_error">وارد کردن کدهای کوتاه انجام نشد</string>
+    <string name="todos_expand_section">گسترش %1$s</string>
+    <string name="todos_collapse_section">کوچک کردن %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">نوشتن نقشه حرارتی</string>
+    <string name="heatmap_widget_description">نقشه حرارتی فعالیت نوشتن اخیر برای مجله شما.</string>
+    <string name="quick_capture_widget_name">ضبط سریع</string>
+    <string name="quick_capture_widget_description">دکمه یک ضربه برای اضافه کردن سریع یک مدخل مجله.</string>
+    <string name="quick_todo_widget_name">کار سریع</string>
+    <string name="tasker_plugin_action_label">یاجا ضبط سریع</string>
+    <string name="tasker_plugin_event_label">رویدادهای مجله یاجا</string>
+    <string name="tasker_screen_allow_add_entry_title">به Tasker Add Entry اجازه دهید</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">به Tasker اجازه می دهد از اقدامات Yaja Quick Capture مانند Add Entry و Add Todo استفاده کند.</string>
+    <string name="tasker_screen_allow_events_title">رویدادهای Tasker را مجاز کنید</string>
+    <string name="tasker_screen_allow_events_subtitle">به Yaja اجازه می‌دهد رویدادهای Entry Saved، Entry Modified و Entry Deleted را به Tasker ارسال کند.</string>
+    <string name="tasker_screen_include_text_title">متن ورودی را در رویدادها قرار دهید</string>
+    <string name="tasker_screen_include_text_subtitle">به طور پیش فرض برای حفظ حریم خصوصی خاموش است. وقتی خاموش است، Tasker نوع رویداد، تاریخ، برچسب و زمان را دریافت می کند، اما متن مجله را دریافت نمی کند.</string>
+    <string name="tasker_screen_section_what">این چه کاری انجام می دهد</string>
+    <string name="tasker_screen_body_what">Tasker می‌تواند به سرعت ورودی‌های مجله یا کارها را به Yaja اضافه کند، خطوط را به ورودی گروه‌بندی‌شده مانند تماس‌های از دست رفته اضافه کند، و Yaja می‌تواند به Tasker بگوید که ورودی ذخیره، ویرایش یا حذف می‌شود.</string>
+    <string name="tasker_screen_section_how">نحوه استفاده</string>
+    <string name="tasker_screen_body_how">ابتدا کلید مورد نیاز خود را در اینجا روشن کنید. سپس Tasker را باز کنید و یا یک اقدام Yaja Quick Capture یا یک رویداد Yaja Journal Events را اضافه کنید.</string>
+    <string name="tasker_screen_section_notes">یادداشت ها</string>
+    <string name="tasker_screen_body_notes">متن ورودی با Tasker به اشتراک گذاشته نمی شود مگر اینکه Include Entry Text in Events را فعال کنید. اگر Tasker آخرین گزینه‌ها یا متغیرها را نشان نمی‌دهد، پس از به‌روزرسانی Yaja، صفحه پیکربندی Tasker را دوباره باز کنید.</string>
+    <string name="tasker_screen_section_example">مثال</string>
+    <string name="tasker_screen_body_example">مثال اقدام: Tasker action &gt; Yaja Quick Capture &gt; Append، با Match / header روی تماس‌های از دست رفته و Line برای اضافه کردن مجموعه به متغیر Tasker تنظیم شده است. مثال رویداد: Tasker event &gt; Yaja Journal Events &gt; Entry Modified، سپس از متغیرهایی مانند %%yaja_event_type، %%yaja_date، و به صورت اختیاری %%yaja_entry_text استفاده کنید.</string>
+    <string name="tasker_screen_section_use_cases">موارد استفاده کنید</string>
+    <string name="tasker_screen_use_case_1">1. از یک رویداد ژورنال Yaja در Tasker برای راه اندازی یک عمل همگام سازی FolderSync استفاده کنید تا پوشه Yaja شما پس از تغییر ورودی ها به هر ارائه دهنده ابری منتقل شود.</string>
+    <string name="tasker_screen_use_case_2">2. از Pushbullet با Tasker برای ارسال متن به Yaja Quick Capture استفاده کنید تا متن فشار داده شده به عنوان ورودی جدید برای روز جاری ذخیره شود.</string>
+    <string name="tasker_screen_use_case_3">3. از نمایه Tasker تماس بی‌پاسخ برای ارسال یک اقدام Append به Yaja استفاده کنید، بنابراین همه جزئیات تماس‌های از دست رفته به جای ایجاد ورودی‌های جداگانه، در زیر یک ورودی تماس‌های از دست رفته قرار می‌گیرند.</string>
+    <string name="quick_todo_widget_description">دکمه یک ضربه برای گرفتن یک کار به عنوان یک ورودی جدید برای امروز.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">فهرست قابل پیمایش کارهای مجله. روی یک todo ضربه بزنید تا آن را انجام یا لغو کنید.</string>
+    <string name="todo_cd_add_todo">اضافه کردن کار</string>
+    <string name="todos_cd_open_compliance_master">باز کردن کارهای تکراری</string>
+    <string name="compliance_master_title">وظایف / رویدادهای تکراری</string>
+    <string name="compliance_master_add">کار تکراری را اضافه کنید</string>
+    <string name="compliance_master_edit">کار تکراری را ویرایش کنید</string>
+    <string name="compliance_master_intro_title">کارهای تکراری</string>
+    <string name="compliance_master_intro_body">کارهای تکراری برای کارهای هفتگی، ماهانه، سه ماهه، شش ماهه یا سالانه ایجاد کنید. یاجا هر کار را تنها زمانی آشکار می کند که چرخه آن مرتبط شود.</string>
+    <string name="compliance_master_empty">هنوز هیچ کار تکراری وجود ندارد. یکی را اضافه کنید تا به طور خودکار کارها را در برنامه زمانی انتخابی خود ایجاد کند.</string>
+    <string name="compliance_master_status_deactivated">غیر فعال شد</string>
+    <string name="compliance_master_meta_format">سررسید روز %1$d • %2$d روزهای سررسید</string>
+    <string name="compliance_master_field_title">نام وظیفه</string>
+    <string name="compliance_master_field_title_hint">مثال: بایگانی ماهانه</string>
+    <string name="compliance_master_field_description">توضیحات</string>
+    <string name="compliance_master_field_description_hint">مثال: درگاه بانکی را بررسی کنید و رسید را تأیید کنید</string>
+    <string name="compliance_master_editor_task_section">یاجا باید چه چیزی را به شما یادآوری کند؟</string>
+    <string name="compliance_master_field_due_day">سررسید</string>
+    <string name="compliance_master_field_reveal_day">ایجاد از قبل (روزها)</string>
+    <string name="compliance_master_field_schedule_mode">چه زمانی موعد آن است؟</string>
+    <string name="compliance_master_schedule_mode_help">نحوه تعیین تاریخ سررسید یاجا را انتخاب کنید.</string>
+    <string name="compliance_master_select_schedule_type">الگوی مورد نظر را انتخاب کنید</string>
+    <string name="compliance_master_field_frequency">چند وقت یکبار؟</string>
+    <string name="compliance_master_frequency_help">تعداد دفعات تکرار این کار را انتخاب کنید.</string>
+    <string name="compliance_master_select_frequency">فرکانس تکرار را انتخاب کنید</string>
+    <string name="compliance_master_schedule_details">جزئیات برنامه</string>
+    <string name="compliance_master_details_date_help">تاریخ سررسید و چند روز قبل باید در پرونده روزانه نوشته شود را وارد کنید.</string>
+    <string name="compliance_master_details_weekday_help">روز هفته ای را انتخاب کنید که این وظیفه در آن موعد مقرر می شود.</string>
+    <string name="compliance_master_details_boundary_help">انتخاب کنید چند روز قبل باید در فایل روزانه نوشته شود.</string>
+    <string name="compliance_master_field_due_weekday">سررسید هفته</string>
+    <string name="compliance_master_select_weekday">روز هفته را انتخاب کنید</string>
+    <string name="compliance_master_due_day_help">تاریخ را از 1 تا 31 وارد کنید. ماه های کوتاه تر از آخرین تاریخ معتبر خود استفاده می کنند.</string>
+    <string name="compliance_master_reveal_day_help">چند روز قبل از موعد مقرر باید کار را در فایل ژورنال روزانه بنویسید.</string>
+    <string name="compliance_master_first_day_selected">سررسید در اولین تاریخ هر ماه قابل اجرا.</string>
+    <string name="compliance_master_last_day_selected">سررسید در آخرین تاریخ هر ماه قابل اجرا است.</string>
+    <string name="compliance_mode_day_of_month">تاریخ مشخص</string>
+    <string name="compliance_mode_day_of_month_desc">سررسید در تاریخ شماره گذاری شده، مانند 15.</string>
+    <string name="compliance_mode_day_of_week">روز هفته</string>
+    <string name="compliance_mode_day_of_week_desc">پرداخت در یک روز هفته انتخاب شده، مانند دوشنبه.</string>
+    <string name="compliance_mode_first_day">اول ماه</string>
+    <string name="compliance_mode_first_day_desc">سررسید در اولین تاریخ هر ماه قابل اجرا.</string>
+    <string name="compliance_mode_last_day">پایان ماه</string>
+    <string name="compliance_mode_last_day_desc">سررسید در تاریخ نهایی، از جمله ماه های کوتاه تر.</string>
+    <string name="compliance_frequency_weekly">هفتگی</string>
+    <string name="compliance_frequency_biweekly">دوهفته ای</string>
+    <string name="compliance_frequency_monthly">ماهانه</string>
+    <string name="compliance_frequency_quarterly">فصلنامه</string>
+    <string name="compliance_frequency_half_yearly">نیم سال</string>
+    <string name="compliance_frequency_annual">سالانه</string>
+    <string name="compliance_master_summary_day_of_month">روز %1$d • %2$s • %3$d روز قبل</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">اولین قرار • %1$s • %2$d روز قبل</string>
+    <string name="compliance_master_summary_last_day">آخرین تاریخ • %1$s • %2$d روز قبل</string>
+    <string name="compliance_master_execution_title">چگونه این اجرا خواهد شد</string>
+    <string name="compliance_master_execution_day_of_month">یک todo %1$s در روز %2$d ایجاد می شود. %3$d روز قبل در فایل روزانه شما نوشته می شود.</string>
+    <string name="compliance_master_execution_weekday">یک todo %1$s در %2$s ایجاد می شود. %3$d روز قبل در فایل روزانه شما نوشته می شود.</string>
+    <string name="compliance_master_execution_monthly_weekday">یک کار ماهانه در همان تاریخ شروع %1$s ایجاد می شود. در فایل روزانه شما %2$d روز قبل نوشته می شود.</string>
+    <string name="compliance_master_execution_month_boundary">یک todo %1$s در %2$s ماه مقرر ایجاد می شود. %3$d روز قبل در فایل روزانه شما نوشته می شود.</string>
+    <string name="compliance_master_boundary_first">اولین قرار</string>
+    <string name="compliance_master_boundary_last">آخرین تاریخ</string>
+    <string name="compliance_master_recurrence_weekly">هر هفته</string>
+    <string name="compliance_master_recurrence_biweekly">هر دو هفته یکبار</string>
+    <string name="compliance_master_recurrence_monthly">هر ماه</string>
+    <string name="compliance_master_recurrence_quarterly">هر سه ماه</string>
+    <string name="compliance_master_recurrence_half_yearly">هر شش ماه</string>
+    <string name="compliance_master_recurrence_annual">هر سال</string>
+    <string name="todo_chip_compliance">تکرار شونده</string>
+    <string name="compliance_master_upcoming">آینده</string>
+    <string name="compliance_master_delete_confirm_title">کار تکراری حذف شود؟</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" حذف خواهد شد و هیچ کار دیگری ایجاد نخواهد شد.</string>
+    <string name="compliance_master_next_date">بعدی: %1$s</string>
+    <string name="compliance_master_end_section">شرط پایان</string>
+    <string name="compliance_master_end_help">زمانی را انتخاب کنید که تکرار این کار متوقف شود</string>
+    <string name="compliance_master_end_never">هرگز</string>
+    <string name="compliance_master_end_on_date">در تاریخ</string>
+    <string name="compliance_master_end_after">پس از…</string>
+    <string name="compliance_master_end_never_desc">به طور نامحدود بدون تاریخ پایان تکرار می شود.</string>
+    <string name="compliance_master_end_date_select">تاریخ پایان را انتخاب کنید</string>
+    <string name="compliance_master_end_date_help">پس از این تاریخ هیچ کاری ایجاد نمی شود.</string>
+    <string name="compliance_master_end_count_label">تعداد رخدادها</string>
+    <string name="compliance_master_end_count_help">متوقف می شود پس از این بسیاری از وظایف ایجاد شده است.</string>
+    <string name="compliance_master_ends_on">پایان %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d سمت چپ</string>
+    <string name="compliance_master_ended">پایان یافت</string>
+    <string name="compliance_master_type_label">ایجاد به عنوان</string>
+    <string name="compliance_master_type_task">وظیفه</string>
+    <string name="compliance_master_type_event">رویداد</string>
+    <string name="heatmap_widget_status_loading">در حال بارگیری نقشه حرارتی…</string>
+    <string name="heatmap_widget_status_empty">هنوز هیچ ورودی وجود ندارد</string>
+    <string name="heatmap_widget_status_refresh">Yaja را برای بازخوانی نقشه حرارتی باز کنید</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">حافظه پنهان بازسازی شد.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">ورودی جدید</string>
+    <string name="shortcut_new_entry_long">یک مدخل مجله اضافه کنید</string>
+    <string name="shortcut_add_todo_short">Todo را اضافه کنید</string>
+    <string name="shortcut_add_todo_long">یک کار برای امروز اضافه کنید</string>
+    <string name="shortcut_add_event_short">افزودن رویداد</string>
+    <string name="shortcut_add_event_long">یک رویداد اضافه کنید</string>
+    <string name="shortcut_today_short">امروز</string>
+    <string name="shortcut_today_long">ژورنال امروز را باز کنید</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">ناوبری</string>
+    <string name="settings_bottom_nav_style_label">سبک ناوبری پایین</string>
+    <string name="settings_navigation_mode_title">حالت ناوبری</string>
+    <string name="settings_navigation_mode_subtitle">بین نوار ناوبری شناور و پانل کامل پایینی انتخاب کنید.</string>
+    <string name="settings_nav_mode_floating">شناور</string>
+    <string name="settings_nav_mode_panel">پانل</string>
+    <string name="settings_navigation_screens_label">صفحه های ناوبری</string>
+    <string name="settings_nav_summary_floating">نمایش Lookback در نوار یا پانل پیمایش فعال.</string>
+    <string name="settings_nav_summary_panel">مجله و تقویم همیشه در پانل پایین باقی می مانند. حداکثر 3 صفحه نمایش دیگر را انتخاب کنید. در حال حاضر انتخاب شده: %1$d از %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">نمایش Lookback در نوار یا پانل پیمایش فعال.</string>
+    <string name="settings_nav_people_places_subtitle">نمایش افراد و مکان‌ها در نوار یا پانل پیمایش فعال.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Todos را در نوار یا پانل پیمایش فعال نشان دهید.</string>
+    <string name="todos_quick_add_title">افزودن سریع</string>
+    <string name="todos_hero_subtitle">کار و لحظه های مجله را پیگیری کنید</string>
+    <string name="todos_hero_all_activity">تمام فعالیت</string>
+    <string name="todos_hero_open_focus">باز کردن فوکوس</string>
+    <string name="todos_hero_completed">تکمیل شد</string>
+    <string name="todos_stat_today_open">امروز باز است</string>
+    <string name="todos_stat_done_today">امروز انجام شد</string>
+    <string name="todos_stat_events">رویدادها</string>
+    <string name="todos_stat_still_open">هنوز باز است</string>
+    <string name="todos_stat_past_7d">7 روز گذشته</string>
+    <string name="todos_stat_days">روزها</string>
+    <string name="todos_empty_done">هنوز کار تکمیل شده ای وجود ندارد</string>
+    <string name="todos_empty_events">هنوز هیچ ورودی رویدادی وجود ندارد</string>
+    <string name="todos_section_open">باز کردن</string>
+    <string name="todos_section_later">بعدا</string>
+    <string name="todos_section_upcoming">آینده</string>
+    <string name="todos_section_future_events">رویدادهای آینده</string>
+    <string name="todos_section_past_events">رویدادهای گذشته</string>
+    <string name="todos_cd_open_day">روز باز</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d کار را باز کنید</item>
+        <item quantity="other">%1$d وظایف را باز کنید</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d کار انجام شد</item>
+        <item quantity="other">%1$d کارهای انجام شده</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d رویداد آینده</item>
+        <item quantity="other">%1$d رویدادهای آینده</item>
+    </plurals>
+    <string name="todos_filter_all_format">همه %1$d</string>
+    <string name="todos_filter_open_format">باز کردن %1$d</string>
+    <string name="todos_filter_done_format">انجام شد %1$d</string>
+    <string name="todos_filter_events_format">رویدادها %1$d</string>
+    <string name="todos_cheer_all_clear">همه روشن خوبه</string>
+    <string name="todos_cheer_done_and_dusted">انجام شد و گردگیری شد.</string>
+    <string name="todos_cheer_nothing_pending">چیزی در انتظار نیست.</string>
+    <string name="todos_cheer_caught_up">تو گرفتی</string>
+    <string name="todos_cheer_clean_slate">تخته سنگ تمیز.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">در %1$d روز</item>
+        <item quantity="other">در %1$d روز</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d روز پیش</item>
+        <item quantity="other">%1$d روز پیش</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">در %1$d هفته</item>
+        <item quantity="other">در %1$d هفته</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d هفته پیش</item>
+        <item quantity="other">%1$d هفته پیش</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">در 1 ماه</string>
+    <string name="todos_relative_one_month_ago">1 ماه پیش</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">در %1$d ماه</item>
+        <item quantity="other">در %1$d ماه</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d ماه پیش</item>
+        <item quantity="other">%1$d ماه پیش</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">آمار</string>
+    <string name="settings_nav_statistics_subtitle_on">نمایش آمار در نوار یا پانل پیمایش فعال.</string>
+    <string name="settings_nav_statistics_subtitle_off">ابتدا Statistics را روشن کنید تا آن را در ناوبری قرار دهید.</string>
+    <string name="settings_show_labels_bottom_panel_title">نمایش برچسب ها در پانل پایین</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">برچسب های متنی را در زیر نمادها در پانل پایین نمایش دهید.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">حرکات</string>
+    <string name="settings_entry_delete_title">ورود حذف</string>
+    <string name="settings_entry_delete_subtitle">برای انتخاب یک ورودی، آن را طولانی فشار دهید. برای انتخاب چند مورد روی ورودی های بیشتر ضربه بزنید، سپس از دکمه مرکزی حذف استفاده کنید. روی فضای خالی ضربه بزنید تا انتخاب پاک شود.</string>
+    <string name="settings_swipe_navigate_title">برای پیمایش تاریخ ها انگشت خود را بکشید</string>
+    <string name="settings_swipe_navigate_subtitle">برای حرکت به جلو یک تاریخ از راست به چپ و برای حرکت به عقب از چپ به راست بکشید.</string>
+    <string name="settings_drag_reorder_title">کشیدن به ترتیب مجدد را فعال کنید</string>
+    <string name="settings_drag_reorder_subtitle">مدخل ها را برای مرتب کردن مجدد آنها فشار دهید</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">داده و بازیابی</string>
+    <string name="settings_swipe_rebuild_index">صفحه اصلی را به پایین بکشید تا نمایه را دوباره بسازید</string>
+    <string name="settings_large_journal_safe_mode_title">حالت ایمن مجله بزرگ</string>
+    <string name="settings_large_journal_safe_mode_subtitle">هنگامی که یک ژورنال بسیار بزرگ شناسایی می‌شود، کار آمارهای غیرضروری راه‌اندازی را به تعویق بیندازید تا برنامه سریع‌تر و ایمن‌تر باز شود.</string>
+    <string name="settings_version_history_title">تاریخچه نسخه</string>
+    <string name="settings_version_history_subtitle">نسخه‌های ایمن را قبل از ویرایش، حذف، برچسب‌گذاری و مشاهده مجدد تغییرات ورودی نگهداری کنید.</string>
+    <string name="settings_storage_location_label">محل ذخیره سازی</string>
+    <string name="settings_reset_to_default">به حالت پیش فرض بازنشانی کنید</string>
+    <string name="settings_choose_folder">پوشه را انتخاب کنید</string>
+    <string name="settings_backup_description">یک زیپ پشتیبان Yaja ایجاد کنید که حاوی ورودی‌های مجله، کدهای کوتاه، کلمات کلیدی تاریخ و داده‌های افراد و مکان‌ها باشد. بازیابی می‌تواند بعداً آن را با خیال راحت ادغام کند.</string>
+    <string name="settings_last_backup">آخرین نسخه پشتیبان: %1$s</string>
+    <string name="settings_backup_reminder_age_label">سن یادآوری پشتیبان</string>
+    <string name="settings_backup_reminder_disabled">از کار افتاده است</string>
+    <string name="settings_backup_reminder_desc">وقتی از %1$d روز بیشتر است، پشتیبان‌گیری را در نوار کناری برجسته کنید.</string>
+    <string name="settings_backup_reminder_days_disabled">0 روز (غیرفعال)</string>
+    <string name="settings_backup_reminder_days">%1$d روز</string>
+    <string name="settings_restore_button">بازیابی کنید</string>
+    <string name="settings_backup_now_button">اکنون پشتیبان گیری کنید</string>
+    <string name="settings_db_index_management_label">مدیریت فهرست پایگاه داده</string>
+    <string name="settings_db_index_management_desc">ابزارهای بازسازی متمرکز را برای کارها، افراد و مکان‌ها یا بازسازی فهرست کامل پایگاه داده باز کنید.</string>
+    <string name="settings_rebuild_tools_button">ابزارهای بازسازی</string>
+    <string name="settings_import_label">واردات</string>
+    <string name="settings_import_info_cd">اطلاعات وارد کنید</string>
+    <string name="settings_import_info_title">اطلاعات واردات</string>
+    <string name="settings_import_day_one_title">واردات روز اول</string>
+    <string name="settings_import_day_one_bullet1">- صادرات از روز اول بدون تصاویر</string>
+    <string name="settings_import_day_one_bullet2">- فقط داده های متنی وارد خواهد شد</string>
+    <string name="settings_import_day_one_bullet3">- اطلاعات مُهر زمان و مکان (در صورت وجود) حفظ خواهد شد</string>
+    <string name="settings_import_perf_warning_title">هشدار عملکرد</string>
+    <string name="settings_import_perf_warning_desc">وارد کردن تعداد زیادی ورودی (500+) ممکن است چند دقیقه طول بکشد. می‌توانید دور بروید و واردات در پس‌زمینه ادامه خواهد یافت.</string>
+    <string name="settings_got_it">متوجه شدم</string>
+    <string name="settings_import_success">%1$d روزهای جدید، %2$d ادغام شد، %3$d رد شد</string>
+    <string name="settings_import_source_day_one">روز اول</string>
+    <string name="settings_import_source_day_one_subtitle">صادرات زیپ یا json</string>
+    <string name="settings_import_source_journalistic">روزنامه نگاری</string>
+    <string name="settings_import_source_journalistic_subtitle">صادرات json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">یاد بگیرید که چگونه از یاجا استفاده کنید</string>
+    <string name="help_footer_website">وب سایت</string>
+    <string name="help_footer_share">به اشتراک بگذارید</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">اختلاف نظر</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">یاجا را به اشتراک بگذارید</string>
+    <string name="help_share_yaja_text">yaja - یک برنامه ژورنال‌نویسی دیگر\n\nیک مجله محلی بدون حواس‌پرتی که ورودی‌ها را به‌عنوان فایل‌های نشانه‌گذاری ذخیره می‌کند. این شامل جدول زمانی، نگاه، افراد و مکان‌ها، الگوها، نظرات، آمار و ابزارک است.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">نام کاربری Discord کپی شد!</string>
+    <string name="help_footer_play_store">فروشگاه Play</string>
+    <string name="help_cd_rj_logo">آرم RJ</string>
+    <string name="help_screen_title">راهنما و درباره</string>
+    <string name="help_welcome_title">به یاجا خوش آمدید</string>
+    <string name="help_welcome_body">Yaja اولین مجله محلی برای ثبت روزها، افراد، مکان‌ها، پیگیری‌ها، بررسی‌ها و الگوها است بدون اینکه مانعی برای شما ایجاد کند. این صفحه راهنمای سریع بخش‌های اصلی برنامه را ارائه می‌دهد.</string>
+    <string name="help_start_here">از اینجا شروع کنید</string>
+    <string name="help_cd_collapse">فرو ریختن</string>
+    <string name="help_cd_expand">گسترش دهید</string>
+    <string name="help_group_everyday_title">هر روز</string>
+    <string name="help_group_everyday_desc">ژورنال نویسی، جریان نوشتن، و ناوبری روزانه.</string>
+    <string name="help_group_reviews_title">نظرات و بینش</string>
+    <string name="help_group_reviews_desc">نگاه ها، روندها، افراد، مکان ها و تحلیل ها.</string>
+    <string name="help_group_advanced_title">ابزارهای پیشرفته</string>
+    <string name="help_group_advanced_desc">ابزارک ها، ذخیره سازی، حریم خصوصی، پشتیبان گیری و ابزارهای فنی.</string>
+    <string name="help_onboard_todos_events_title">کارها، رویدادها و تکرارشونده</string>
+    <string name="help_onboard_todos_events_body">یادآوری‌های شخصی، برنامه‌های خانوادگی و برنامه‌های تکراری را نگه دارید که به‌طور خودکار وظایف را در موعد مقرر ایجاد می‌کنند.</string>
+    <string name="help_onboard_widgets_title">ابزارک ها</string>
+    <string name="help_onboard_widgets_body">ویجت‌های Heatmap، Quick Capture، Quick Todo یا Todo List را از لانچر اضافه کنید.</string>
+    <string name="help_onboard_version_history_title">تاریخچه نسخه</string>
+    <string name="help_onboard_version_history_body">History Files را در Settings &gt; Data فعال کنید تا قبل از تغییرات مخاطره‌آمیز، عکس‌های فوری را ایمن نگه دارید.</string>
+    <string name="help_onboard_tasker_title">وظیفه</string>
+    <string name="help_onboard_tasker_body">از Tasker برای اضافه کردن سریع ورودی‌ها، کارها یا رویدادها در مواقعی که چیزی شخصی نیاز دارد فوراً ضبط شود، استفاده کنید.</string>
+    <string name="help_section_writing_editor_title">نگارش و ویرایشگر</string>
+    <string name="help_section_writing_editor_preview">الگوها، سرفصل‌های علامت‌گذاری، کارها، رویدادها و درج پیش‌نویس انعطاف‌پذیر.</string>
+    <string name="help_section_writing_editor_content">+ روی دکمه شناور «+» ضربه بزنید تا برای روز انتخابی بنویسید.\n+ از الگوهایی مانند یادداشت جلسه، روز سفر، گزارش سلامت، بازتاب، گزارش کار و موارد دیگر استفاده کنید.\n+ الگوها را می‌توان در یک پیش‌نویس خالی درج کرد، در زیر اضافه کرد، برای جایگزینی پیش‌نویس استفاده کرد، یا در مکان‌نما درج کرد.\n+ تراشه‌های ویرایشگر را می‌توان به سرعت وارد کرد. لیست‌ها.\n+ مشاهده ورودی و ویرایش ورودی از سرفصل‌های سبک نشانه‌گذاری مانند بخش ### پشتیبانی می‌کند.</string>
+    <string name="help_section_post_write_review_title">بررسی پس از نوشتن</string>
+    <string name="help_section_post_write_review_preview">استخراج Todo، تشخیص کلیدواژه، ستاره‌گذاری، برچسب‌گذاری و تنظیم مجدد بازدید.</string>
+    <string name="help_section_post_write_review_content">+ پس از نوشتن، Yaja می‌تواند یک برگه مرور را قبل از ذخیره باز کند.\n+ می‌تواند موارد انجام کار را استخراج کند، افراد و مکان‌ها را شناسایی کند، روز را ستاره‌دار کند، برچسب روز تنظیم کند، و تاریخ‌های بازدید مجدد را برنامه‌ریزی کند.\n+ اگر ذخیره مستقیم را ترجیح می‌دهید، می‌توانید مرور پس از نوشتن را از تنظیمات غیرفعال کنید.</string>
+    <string name="help_section_revisit_followup_title">تاریخ های بازدید مجدد و پیگیری</string>
+    <string name="help_section_revisit_followup_preview">تاریخ های پیگیری مرتبط با مجله با انتخاب های سریع و یک گزینه سفارشی.</string>
+    <string name="help_section_revisit_followup_content">+ تاریخ‌های بازدید مجدد را با فردا، هفته آینده، ماه آینده یا یک تاریخ سفارشی اضافه کنید.\n+ موارد بازدید مجدد در صفحه اصلی ظاهر می‌شوند و در تقویم و جدول زمانی علامت‌گذاری می‌شوند.\n+ این برای وعده‌ها، تصمیم‌گیری‌ها، بررسی‌های سلامت و یادآوری‌های مرتبط با زمینه مجله به خوبی عمل می‌کند.</string>
+    <string name="help_section_navigation_gestures_title">ناوبری و حرکات</string>
+    <string name="help_section_navigation_gestures_preview">حرکت تاریخ، حذف انتخاب، تنظیمات برگزیده و بازسازی رفتار حافظه پنهان.</string>
+    <string name="help_section_navigation_gestures_content">+ صفحه اصلی از پیمایش تاریخ با فلش‌ها و پیمایش تند کشیدن اختیاری در صورت فعال بودن پشتیبانی می‌کند.\n+ یک ورودی را برای انتخاب آن فشار طولانی دهید. روی ورودی‌های بیشتری ضربه بزنید تا آنها را نیز انتخاب کنید، سپس از قرص حذف در نزدیکی دکمه افزودن استفاده کنید.\n+ ضربه زدن به خارج از ورودی‌های انتخاب‌شده، انتخاب را پاک می‌کند. ورودی‌های حذف‌شده را می‌توان با هم از شمارش معکوس بازیابی بازیابی کرد.\n+ وقتی فایل‌های مجله در خارج از Yaja تغییر می‌کنند، می‌توانید حافظه پنهان را بازسازی کنید.</string>
+    <string name="help_section_shortcodes_quick_capture_title">کدهای کوتاه و ضبط سریع</string>
+    <string name="help_section_shortcodes_quick_capture_preview">عکسبرداری سریع شخصی به همراه تکه های متن پویا قابل استفاده مجدد.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ کدهای کوتاه برای درج سریع متن تکراری ایجاد کنید.\n+ متغیرهای پویا مانند {{today:dd-MMM}} و {{now:HH:mm}} در کدهای کوتاه کار می‌کنند.\n+ Quick Capture به ثبت سریع چیزی بدون باز کردن ویرایشگر کامل کمک می‌کند.\n+ افزودن سریع می‌تواند یک کار یا یک رویداد را برای یک تاریخ انتخابی از صفحه نمایش، Tadosker، ابزارک ذخیره کند.</string>
+    <string name="help_section_todos_events_title">کارها، رویدادها و تکرارشونده</string>
+    <string name="help_section_todos_events_preview">یادآوری های شخصی، رویدادهای قابل توجه و برنامه های تکرار شونده خودکار.</string>
+    <string name="help_section_todos_events_content">+ کارها مستقیماً در نوشته‌های مجله به صورت خطوط [ ] و [x] نوشته می‌شوند.\n+ رویدادها ورودی‌های روزانه معمولی هستند که به‌عنوان رویداد علامت‌گذاری شده‌اند، برای برنامه‌های خانوادگی، قرار ملاقات‌ها، سفر، یا هر چیزی که بعداً می‌خواهید به آن توجه کنید مفید است.\n+ وظایف و رویدادهای تکراری (برنامه‌ها) به‌طور خودکار موارد انجام کارها یا سرفصل‌های رویدادها را به صورت ماهانه می‌نویسند. سالانه).\n+ با ضربه زدن روی نماد تکرارشونده در صفحه Todos، برنامه‌های خود را مدیریت کنید.\n+ هر روز وقتی Yaja را باز می‌کنید، خط لوله پس‌زمینه برای بررسی اینکه آیا وظایف برنامه‌ریزی‌شده موعد مقرر هستند اجرا می‌شود و آن‌ها را در ورودی آن روز درج می‌کند.\n+ صفحه Todos به شما کمک می‌کند کارهای باز، کارهای انجام‌شده، و رویدادها را بدون تبدیل کردن برنامه‌ها به صفحه اصلی به روز محصول، مشاهده کنید. مجله.\n+ اگر فایل‌ها در خارج از Yaja تغییر کردند، Todos را پایین بکشید تا نمایه todo را دوباره بسازید.\n+ نمایش وظایف تکمیل‌شده به خاطر سپرده می‌شود، بنابراین نمای دلخواه شما هنگام خروج و بازگشت باقی می‌ماند.\n+ ویجت‌های Todo می‌توانند کارهای در حال انتظار را نشان دهند، قبل از تغییر وضعیت تأیید کنند، کارهای تکمیل‌شده را پنهان کنند، و به‌صورت اختیاری وقتی چیزی معلق نیست، به صورت خودکار پنهان شوند.</string>
+    <string name="help_section_people_places_title">افراد و مکان ها</string>
+    <string name="help_section_people_places_preview">کلمات کلیدی، نام های مستعار، گرایش ها و نماهای ارتباط رتبه بندی شده.</string>
+    <string name="help_section_people_places_content">+ افراد و مکان‌ها را با نام‌های مستعار و برچسب‌های رابطه ردیابی کنید.\n+ فهرست کلمات کلیدی را جستجو، فیلتر و مرتب کنید.\n+ صفحه‌های جزئیات کلیدواژه جدید بودن، ذکرها در طول زمان، اشاره‌ها و اتصالات رتبه‌بندی شده را نشان می‌دهند.\n+ حساسیت مطابقت را می‌توان از تنظیمات تنظیم کرد.</string>
+    <string name="help_section_timeline_lookback_title">جدول زمانی و نگاه</string>
+    <string name="help_section_timeline_lookback_preview">مرور روز گذشته، نکات برجسته، مرا غافلگیر کن، و نقاط ورودی را مرور کن.</string>
+    <string name="help_section_timeline_lookback_content">+ جدول زمانی به شما امکان می‌دهد روزهای گذشته را با فیلترها، تراشه‌های سال و حالت اختیاری تمام تاریخ مرور کنید.\n+ Lookback ورودی‌های همان روز در سال‌های گذشته و نکات برجسته ستاره‌دار شما را نشان می‌دهد.\n+ Surprise Me یک ورودی تصادفی گذشته از Lookback باز می‌کند.\n+ بررسی هفتگی و مرور ماهانه به صورت زنده در Lookback.</string>
+    <string name="help_section_statistics_reviews_title">آمار و بررسی</string>
+    <string name="help_section_statistics_reviews_preview">حالت مقایسه، بینش الگو، بخش‌های قابل مشاهده سفارشی و خلاصه‌ها.</string>
+    <string name="help_section_statistics_reviews_content">+ آمار شامل حالت مقایسه، دلتاهای کلیدواژه، و اطلاعات آماری است.\n+ شما می‌توانید انتخاب کنید کدام بخش‌های آماری از داخل صفحه آمار قابل مشاهده باشند.\n+ حالت مقایسه برای همه زمان‌ها در دسترس است و دلتاهای ماه و سال را خلاصه می‌کند.\n+ صفحات مرور بیشتر روزهای فعال، افراد و مکان‌های برتر، لحظات مورد علاقه، برچسب‌ها و الگوهای تقسیم زبان را خلاصه می‌کنند.</string>
+    <string name="help_section_widgets_home_title">ابزارک ها و صفحه اصلی</string>
+    <string name="help_section_widgets_home_preview">ویجت‌های راه‌انداز، کلیدواژه‌های برجسته و آمار خانه در سطح روز.</string>
+    <string name="help_section_widgets_home_content">+ ویجت‌های Writing Heatmap، Capture سریع، Quick Add، و Todo List در راه‌انداز در دسترس هستند.\n+ صفحه‌های پیکربندی ویجت به شما امکان می‌دهند گوشه‌ها، بالشتک‌ها، شکل، سرصفحه‌ها، نمایان شدن وظایف تکمیل‌شده و سایر گزینه‌های ویجت را در مواردی که پشتیبانی می‌شوند تنظیم کنید.\n+ ویجت Heatmap از سایه‌های با شدت و شدت بیشتر در صفحه اصلی استفاده می‌کند. وقتی تنظیم فعال باشد، ورودی‌ها را وارد می‌کند.\n+ سرصفحه تاریخ خانه می‌تواند تعداد ورودی، کلمات و تعداد کاراکترها را نشان دهد یا پنهان کند.</string>
+    <string name="help_section_language_text_analysis_title">تجزیه و تحلیل زبان و متن</string>
+    <string name="help_section_language_text_analysis_preview">تشخیص زبان محلی برای آمار و بررسی بینش.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja اسکریپت یا زبان غالب را در ورودی‌ها برای اطلاعات آماری تشخیص می‌دهد.\n+ تقسیم زبان در آمار و بررسی‌ها ظاهر می‌شود.\n+ تشخیص به صورت محلی اجرا می‌شود و متن مجله را به خارج از دستگاه ارسال نمی‌کند.</string>
+    <string name="help_section_data_privacy_cache_title">داده، حریم خصوصی و حافظه پنهان</string>
+    <string name="help_section_data_privacy_cache_preview">ذخیره سازی Markdown، تاریخچه نسخه، گزارش برنامه، قفل برنامه، و بازسازی حافظه پنهان.</string>
+    <string name="help_section_data_privacy_cache_content">+ حفظ حریم خصوصی داده ها: همه داده های مجله شخصی به طور دقیق در دستگاه فیزیکی شما قرار دارند و هرگز آن را در هیچ زمانی ترک نمی کنند. Yaja پایگاه‌های داده ابری، سرورهای پشتیبان از راه دور یا تله‌متری را برای ردیابی متن شما اجرا نمی‌کند.\n+ ورودی‌های مجله به‌عنوان فایل‌های Markdown استاندارد که بر اساس سال و ماه مرتب شده‌اند ذخیره می‌شوند.\n+ سابقه نسخه می‌تواند عکس‌های فوری ایمن را قبل از ویرایش، حذف، برچسب‌گذاری و بازدید مجدد از تغییرات نگه دارد.\n+ می‌توانید تعداد نسخه‌های ثبت شده برنامه را انتخاب کنید و تعداد نسخه‌های ثبت شده را برای چند روز نگهداری کنید. رویدادها، جزئیات خرابی و فعالیت حافظه پنهان بدون ذخیره نوشتار مجله.\n+ Rebuild Cache برنامه به شما امکان می‌دهد داده‌های برنامه را به‌صورت مدولار بازخوانی کنید، از جمله کارهای انجام شده و بازسازی کامل حافظه پنهان.\n+ قفل برنامه از پین و اثر انگشت پشتیبانی می‌کند.\n+ Yaja فهرست‌سازی و آمارهای سنگین را تا جایی که ممکن است به تعویق می‌اندازد، بنابراین راه‌اندازی برنامه و صرفه‌جویی در زمان‌های باقی‌مانده.</string>
+    <string name="settings_app_log_title">گزارش برنامه</string>
+    <string name="settings_app_log_subtitle">عیب یابی ایمن برای حفظ حریم خصوصی و جزئیات خرابی قبلی را مشاهده کنید</string>
+    <string name="app_log_cd_share">گزارش برنامه را به اشتراک بگذارید</string>
+    <string name="app_log_cd_clear">پاک کردن گزارش برنامه</string>
+    <string name="app_log_privacy_title">تشخیص ایمن برای حفظ حریم خصوصی</string>
+    <string name="app_log_privacy_description">این گزارش رویدادهای اصلی برنامه، عملیات حافظه پنهان/ذخیره‌سازی، تازه‌سازی ویجت و جزئیات خرابی را ثبت می‌کند. این شامل ورودی های مجله، متن انجام کار، یا محتوای یادداشت خصوصی نمی شود.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">آخرین %d روز را نگه دارید</item>
+        <item quantity="other">آخرین %d روز نگه دارید</item>
+    </plurals>
+    <string name="app_log_retention_description">رویدادهای گزارش قدیمی‌تر به‌طور خودکار در حین ورود به سیستم و بلافاصله پس از تغییر این تنظیم، هرس می‌شوند.</string>
+    <string name="app_log_empty">هنوز گزارش برنامه وجود ندارد.</string>
+    <string name="app_log_refresh">تازه کردن گزارش</string>
+    <string name="app_log_share_empty">هنوز هیچ ورودی گزارش برنامه Yaja وجود ندارد.</string>
+    <string name="app_log_share_subject">گزارش برنامه Yaja</string>
+    <string name="app_log_share_chooser">گزارش برنامه Yaja را به اشتراک بگذارید</string>
+    <string name="app_log_local_time_format">%1$s | به وقت محلی\n%2$s</string>
+    <string name="settings_website_title">وب سایت یاجا</string>
+    <string name="settings_website_subtitle">وب سایت رسمی را برای به روز رسانی و جزئیات باز کنید</string>
+    <string name="settings_advanced_integrations_title">ادغام های پیشرفته</string>
+    <string name="settings_tasker_integration_title">یکپارچه سازی Tasker</string>
+    <string name="settings_tasker_integration_subtitle">اقدامات ضبط سریع و محرک های رویداد مجله</string>
+    <string name="settings_shortcodes_subtitle">قطعات قابل استفاده مجدد را مدیریت کنید که در حین نوشتن یا گرفتن سریع بزرگ می شوند.</string>
+    <string name="settings_privacy_security_title">حریم خصوصی و امنیت</string>
+    <string name="settings_pin_lock_title">قفل پین</string>
+    <string name="settings_app_locked">برنامه قفل شده است</string>
+    <string name="settings_app_unlocked">برنامه آنلاک است</string>
+    <string name="settings_change_pin">پین را تغییر دهید</string>
+    <string name="settings_biometric_unlock_title">باز کردن قفل بیومتریک</string>
+    <string name="settings_biometric_enabled_desc">اثر انگشت یا Face ID فعال است</string>
+    <string name="settings_biometric_disabled_desc">به جای پین از بیومتریک استفاده کنید</string>
+    <string name="settings_autolock_timeout_title">مهلت قفل خودکار</string>
+    <string name="settings_pin_lock_disclaimer">قفل پین از دسترسی غیرمجاز به برنامه جلوگیری می کند اما داده های مجله شما را روی دیسک رمزگذاری نمی کند. شخصی با دسترسی مستقیم به فایل همچنان می تواند ورودی های شما را بخواند.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d دقیقه</item>
+        <item quantity="other">%1$d دقیقه</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">سیستم</string>
+    <string name="settings_theme_light">نور</string>
+    <string name="settings_theme_dark">تاریک</string>
+    <string name="settings_theme_amoled">آملد</string>
+    <string name="settings_colors_label">رنگ ها</string>
+    <string name="settings_color_intensity_title">شدت رنگ</string>
+    <string name="settings_background_tint_title">رنگ پس زمینه</string>
+    <string name="settings_font_sans">بدون</string>
+    <string name="settings_font_serif">سریف</string>
+    <string name="settings_font_mono">مونونوکلئوز</string>
+    <string name="settings_font_custom">سفارشی</string>
+    <string name="settings_font_size_label">اندازه فونت</string>
+    <string name="settings_ui_font_size_label">اندازه قلم UI</string>
+    <string name="settings_data_font_size_label">اندازه قلم محتوا</string>
+    <string name="settings_follow_ui_font_scale_label">اندازه قلم محتوا را مانند UI قرار دهید</string>
+    <string name="settings_color_source_material_you">مادی شما</string>
+    <string name="settings_theme_preview_title">پیش نمایش تم</string>
+    <string name="settings_journal_entry_preview">مدخل مجله</string>
+    <string name="settings_journal_entry_preview_desc">کارت ها، تراشه ها و دکمه ها از این رنگ ها استفاده خواهند کرد.</string>
+    <string name="settings_preview_chip_chip">تراشه</string>
+    <string name="settings_preview_chip_accent">لهجه</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">شدت: %1$s</string>
+    <string name="settings_personal_themes_title">تم های شخصی</string>
+    <string name="settings_theme_name_label">نام تم</string>
+    <string name="settings_main_color_label">رنگ اصلی</string>
+    <string name="settings_hue_label">رنگ</string>
+    <string name="settings_sat_label">نشست</string>
+    <string name="settings_bright_label">روشن</string>
+    <string name="settings_generated_accents_title">لهجه های تولید شده</string>
+    <string name="settings_personal_theme_desc">یک رنگ را انتخاب کنید یاجا لهجه و رنگ‌های پشتیبان منطبق را ایجاد می‌کند.</string>
+    <string name="settings_preview_chip_main">اصلی</string>
+    <string name="settings_preview_chip_support">پشتیبانی کنید</string>
+    <string name="settings_no_font_selected">هیچ فونتی انتخاب نشده است</string>
+    <string name="settings_custom_font_desc">هر فایل unicode .ttf یا otf. را انتخاب کنید - به عنوان مثال. یک فونت مالایایی مانند منجری. نویسه هایی که فونت فاقد آنهاست از فونت های سیستمی استفاده می کنند.</string>
+    <string name="settings_font_replace">جایگزین کنید</string>
+    <string name="settings_choose_font_file">فایل فونت را انتخاب کنید</string>
+    <string name="settings_intensity_muted">بی صدا شد</string>
+    <string name="settings_intensity_normal">عادی</string>
+    <string name="settings_intensity_vivid">زنده</string>
+    <string name="settings_intensity_pop">پاپ</string>
+    <string name="settings_tint_clean">تمیز</string>
+    <string name="settings_tint_soft">نرم</string>
+    <string name="settings_tint_rich">ثروتمند</string>
+    <string name="settings_tint_deep">عمیق</string>
+    <string name="settings_accent_complementary">مکمل</string>
+    <string name="settings_accent_analogous">مشابه</string>
+    <string name="settings_accent_triadic">سه گانه</string>
+    <string name="settings_accent_soft">نرم</string>
+    <string name="settings_mono_weight_thin">نازک</string>
+    <string name="settings_mono_weight_extra_light">نور اضافی</string>
+    <string name="settings_mono_weight_light">نور</string>
+    <string name="settings_mono_weight_regular">منظم</string>
+    <string name="settings_mono_weight_medium">متوسط</string>
+    <string name="settings_mono_weight_semi_bold">نیمه پررنگ</string>
+    <string name="settings_mono_weight_bold">پررنگ</string>
+    <string name="settings_mono_weight_extra_bold">فوق العاده پررنگ</string>
+    <string name="settings_mono_weight_title">وزن</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">کلمه کلیدی تاریخ را اضافه کنید</string>
+    <string name="settings_keyword_label">کلمه کلیدی</string>
+    <string name="settings_keyword_placeholder_example">به عنوان مثال دیروز</string>
+    <string name="settings_means_label">به معنی</string>
+    <string name="settings_add_button">اضافه کنید</string>
+    <string name="settings_no_keywords_yet">هنوز هیچ کلمه کلیدی اضافه نشده است.</string>
+    <string name="settings_added_keywords_title">کلمات کلیدی اضافه شده (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">کلمه کلیدی را اضافه کنید</string>
+    <string name="keywords_dialog_add_title">کلمه کلیدی را اضافه کنید</string>
+    <string name="keywords_dialog_edit_title">ویرایش کلمه کلیدی</string>
+    <string name="keywords_cd_import_csv">CSV را وارد کنید</string>
+    <string name="keywords_cd_export_csv">صادرات CSV</string>
+    <string name="keywords_cd_download_template">دانلود قالب</string>
+    <string name="rebuild_cache_storage_transparency_title">شفافیت ذخیره سازی روی دستگاه</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja از یک مدل ذخیره سازی محلی امن استفاده می کند. اطلاعات دفترچه شخصی شما محلی باقی می ماند و هرگز دستگاه شما را در هیچ زمانی ترک نمی کند:</string>
+    <string name="rebuild_cache_source_of_truth_title">منبع حقیقت (فایل های Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">همه ورودی‌ها، موارد فهرست چک (todos)، رویدادهای جدول زمانی، ستاره‌ها و برچسب‌ها به‌طور دائم در فایل‌های Markdown (.md) متن ساده در پوشه مجله محلی انتخابی شما ذخیره می‌شوند. داده های شما 100٪ متعلق به شما است و به طور کامل در دستگاه شما قرار دارد.</string>
+    <string name="rebuild_cache_read_cache_title">خواندن حافظه پنهان و فهرست (پایگاه داده SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">برای فعال کردن بارگذاری فوری صفحه، نکات برجسته تقویم، کلمات کلیدی و آمار بدون اسکن سیستم فایل در هر اسکرول، Yaja فایل‌های Markdown شما را تجزیه و در یک پایگاه داده محلی Room SQLite در دستگاه شما فهرست می‌کند.</string>
+    <string name="rebuild_cache_local_private_title">100٪ محلی و خصوصی</string>
+    <string name="rebuild_cache_local_private_desc">Yaja هیچ پایگاه داده ابری، سرورهای پشتیبان از راه دور یا ردیابی متن شما از راه دور ندارد. همه ورودی‌های مجله و داده‌های تجزیه‌شده دقیقاً روی دستگاه فیزیکی شما باقی می‌مانند و هرگز آن را در هیچ زمانی ترک نمی‌کنند.</string>
+    <string name="keywords_export_success">کلمات کلیدی صادر شد</string>
+    <string name="keywords_export_failed">کلمات کلیدی صادر نشد</string>
+    <string name="keywords_template_saved">الگو ذخیره شد</string>
+    <string name="keywords_template_save_failed">الگو ذخیره نشد</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">کلمه کلیدی %d وارد شده است</item>
+        <item quantity="other">کلمات کلیدی %d وارد شده است</item>
+    </plurals>
+    <string name="keywords_import_none_valid">هیچ کلمه کلیدی معتبری یافت نشد</string>
+    <string name="keywords_import_failed">کلمات کلیدی وارد نشد</string>
+    <string name="keywords_status_indexing">نمایه سازی</string>
+    <string name="keywords_status_indexed">نمایه شده است</string>
+    <string name="keywords_metric_mentions">اشاره می کند</string>
+    <string name="keywords_metric_days">روزها</string>
+    <string name="keywords_timeline_range_all">همه</string>
+    <string name="keywords_connections_filter_all">همه</string>
+    <string name="keywords_connections_filter_people">مردم</string>
+    <string name="keywords_connections_filter_places">مکان ها</string>
+    <string name="keywords_connections_filter_recent">اخیر</string>
+    <string name="keywords_connections_filter_strongest">قوی ترین</string>
+    <string name="keywords_filter_needs_reindex">نیاز به فهرست مجدد دارد</string>
+    <string name="keywords_search_placeholder">افراد، مکان‌ها، نام‌های مستعار، رابطه را جستجو کنید</string>
+    <string name="keywords_refreshing_counters">تازه کردن شمارنده کلمات کلیدی…</string>
+    <string name="keywords_empty_title">هنوز هیچ کلمه کلیدی وجود ندارد</string>
+    <string name="keywords_empty_subtitle">افراد و مکان هایی را که می خواهید برنامه به صورت محلی ردیابی کند اضافه کنید.</string>
+    <string name="keywords_no_results_title">نتایج منطبقی وجود ندارد</string>
+    <string name="keywords_no_results_subtitle">جستجو، مرتب‌سازی یا فیلتر متفاوتی را امتحان کنید.</string>
+    <string name="keywords_people_title">مردم</string>
+    <string name="keywords_places_title">مکان ها</string>
+    <string name="keywords_people_empty">هنوز هیچ فردی اضافه نشده است.</string>
+    <string name="keywords_people_filtered_empty">هیچ فردی با فیلترهای فعلی مطابقت ندارد.</string>
+    <string name="keywords_places_empty">هنوز مکانی اضافه نشده است.</string>
+    <string name="keywords_places_filtered_empty">هیچ مکانی با فیلترهای فعلی مطابقت ندارد.</string>
+    <string name="keywords_delete_person_title">شخص حذف شود؟</string>
+    <string name="keywords_delete_place_title">مکان حذف شود؟</string>
+    <string name="keywords_delete_message">\"%1$s\" از افراد و مکان‌ها حذف شود؟ با این کار کلمه کلیدی و موارد منطبق ایندکس شده آن حذف می شود.</string>
+    <string name="keywords_timeline_title">در طول زمان ذکر می کند</string>
+    <string name="keywords_timeline_empty_pattern">هنوز الگوی ماهانه وجود ندارد</string>
+    <string name="keywords_timeline_total_format">%1$d در مجموع</string>
+    <string name="keywords_timeline_empty_chart">پس از نمایه‌سازی ورودی‌های یافته، منشن‌ها در اینجا نمودار می‌شوند.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">اوج %1$s • %2$d ذکر</item>
+        <item quantity="other">اوج %1$s • %2$d اشاره می کند</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">روزهای با ذکر</string>
+    <string name="keywords_recency_title">تازگی</string>
+    <string name="keywords_recency_none">هنوز هیچ مسابقه ای وجود ندارد</string>
+    <string name="keywords_recency_today">امروز ذکر شد</string>
+    <string name="keywords_recency_yesterday">دیروز ذکر شد</string>
+    <string name="keywords_recency_days_ago_format">آخرین اشاره %1$d روز پیش</string>
+    <string name="keywords_first_seen">اولین بار دیده شد</string>
+    <string name="keywords_last_seen">آخرین بازدید</string>
+    <string name="keywords_unknown">ناشناس</string>
+    <string name="keywords_co_mentioned_with">با</string>
+    <string name="keywords_connections_title">اتصالات</string>
+    <string name="keywords_connections_subtitle">رتبه بندی بر اساس همپوشانی مکرر و تازگی</string>
+    <string name="keywords_connections_linked_format">%1$d پیوند داده شد</string>
+    <string name="keywords_connections_show">نمایش اتصالات</string>
+    <string name="keywords_connections_hide">پنهان کردن اتصالات</string>
+    <string name="keywords_connections_items_in_view">%1$d موارد در این نما</string>
+    <string name="keywords_connections_tap_to_expand">برای گسترش %1$d پیوندهای رتبه‌بندی شده، ضربه بزنید</string>
+    <string name="keywords_connections_empty">هنوز اتصالی برای این فیلتر وجود ندارد.</string>
+    <string name="keywords_open_day">روز باز</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">بیشترین ذکر شده</string>
+    <string name="keywords_sort_recently_added">اخیرا اضافه شده است</string>
+    <string name="keywords_peak_mentions_format">اوج %1$s • %2$d ذکر%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d روز</string>
+    <string name="keywords_connections_meta_days_suffix_plural">س</string>
+    <string name="keywords_connections_meta_together">با هم</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d ورودی مشترک</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| آخرین %1$s</string>
+    <string name="keywords_connections_score_format">امتیاز %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d روز</string>
+    <string name="keywords_connections_shared_chip">%1$d به اشتراک گذاشت</string>
+    <string name="keywords_match_type_exact">دقیق</string>
+    <string name="keywords_match_type_fuzzy">مبهم</string>
+    <string name="keywords_match_type_alias">نام مستعار</string>
+    <string name="keywords_match_type_relation">رابطه</string>
+    <string name="keywords_action_delete">حذف کنید</string>
+    <string name="keywords_action_edit">ویرایش کنید</string>
+    <string name="keywords_action_view">مشاهده کنید</string>
+    <string name="keywords_name_label">نام</string>
+    <string name="keywords_relation_context_label">رابطه / زمینه</string>
+    <string name="keywords_aliases_label">نام مستعار (با کاما از هم جدا شده اند)</string>
+    <string name="keywords_aliases_label_short">نام مستعار</string>
+    <string name="keywords_type_person">شخص</string>
+    <string name="keywords_type_place">مکان</string>
+    <string name="keywords_save_disabled_hint">کلمات کلیدی ذخیره شده خاموش هستند. هنگامی که می خواهید نمایه سازی اجرا شود، آنها را از لیست فعال کنید.</string>
+    <string name="settings_meaning_yesterday">دیروز</string>
+    <string name="settings_meaning_today">امروز</string>
+    <string name="lookback_chip_weekly">هفتگی</string>
+    <string name="lookback_chip_monthly">ماهانه</string>
+    <string name="timeline_screen_title">جدول زمانی</string>
+    <string name="timeline_empty_title">اینجا هنوز چیزی نیست</string>
+    <string name="timeline_empty_subtitle">فیلتر دیگری را امتحان کنید یا جستجوی برچسب را تنظیم کنید.</string>
+    <string name="timeline_quick_today">امروز</string>
+    <string name="timeline_quick_month">ماه</string>
+    <string name="timeline_quick_filters">فیلترها</string>
+    <string name="timeline_all_dates">تمام تاریخ ها</string>
+    <string name="timeline_label_prefix">برچسب: %1$s</string>
+    <string name="timeline_label_search_placeholder">جستجوی برچسب های روز</string>
+    <string name="timeline_filters_title">فیلترها و طرح‌بندی جدول زمانی</string>
+    <string name="settings_meaning_tomorrow">فردا</string>
+    <string name="settings_meaning_day_before_yesterday">روز قبل از دیروز</string>
+    <string name="settings_meaning_day_after_tomorrow">پس فردا</string>
+    <string name="settings_meaning_last_week">هفته گذشته</string>
+    <string name="settings_meaning_next_week">هفته آینده</string>
+    <string name="settings_meaning_monday">دوشنبه</string>
+    <string name="settings_meaning_tuesday">سه شنبه</string>
+    <string name="settings_meaning_wednesday">چهارشنبه</string>
+    <string name="settings_meaning_thursday">پنج شنبه</string>
+    <string name="settings_meaning_friday">جمعه</string>
+    <string name="settings_meaning_saturday">شنبه</string>
+    <string name="settings_meaning_sunday">یکشنبه</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">حافظه داخلی برنامه</string>
+    <string name="settings_storage_internal_default">حافظه داخلی برنامه (پیش‌فرض)</string>
+    <string name="settings_storage_new_folder_fallback">پوشه جدید</string>
+    <string name="settings_storage_current_folder_fallback">پوشه فعلی</string>
+    <string name="settings_storage_move_confirm">همه ورودی‌های موجود از %1$s به %2$s منتقل خواهند شد. آیا می خواهید ادامه دهید؟</string>
+    <string name="settings_restore_added_skipped">اضافه شده: %1$d\nتکرارهای حذف شده: %2$d</string>
+    <string name="settings_storage_custom_folder">پوشه سفارشی:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">میانبرها کمک می کنند</string>
+    <string name="addentry_cd_insert_template">درج الگو</string>
+    <string name="addentry_cd_jump_to_today">پرش به امروز</string>
+    <string name="addentry_cd_share">به اشتراک بگذارید</string>
+    <string name="addentry_cd_bold">پررنگ</string>
+    <string name="addentry_cd_italic">مورب</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">زمان را تنظیم کنید</string>
+    <string name="addentry_event_chip">رویداد</string>
+    <string name="addentry_pick_time_title">زمان را انتخاب کنید</string>
+    <string name="addentry_hour_label">ساعت</string>
+    <string name="addentry_minute_label">دقیقه</string>
+    <string name="addentry_new_event_title">رویداد جدید</string>
+    <string name="addentry_title_label">عنوان</string>
+    <string name="addentry_event_description_label">شرح رویداد</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos پیدا شد</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">خط %1$d را به چک لیست تبدیل کنید</item>
+        <item quantity="other">خطوط %1$d را به چک لیست تبدیل کنید</item>
+    </plurals>
+    <string name="addentry_people_places_title">افراد و مکان ها</string>
+    <string name="addentry_no_tracked_mentions">هیچ فرد یا مکان ردیابی شده ای در این ورودی یافت نشد.</string>
+    <string name="addentry_day_memory_title">حافظه روز</string>
+    <string name="addentry_star_day_title">ستاره این روز</string>
+    <string name="addentry_star_day_subtitle">آن را به عنوان برجسته ذخیره کنید تا در نگاه به عقب برگردد.</string>
+    <string name="addentry_day_label_label">برچسب روز</string>
+    <string name="addentry_day_label_placeholder">به عنوان مثال بازنشانی روز</string>
+    <string name="addentry_follow_up_title">پیگیری کنید</string>
+    <string name="addentry_next_month">ماه آینده</string>
+    <string name="addentry_custom">سفارشی</string>
+    <string name="addentry_due_date_format">سررسید %1$s</string>
+    <string name="addentry_cd_clear_follow_up">پیگیری را پاک کنید</string>
+    <string name="addentry_follow_up_note_label">یادداشت پیگیری</string>
+    <string name="addentry_follow_up_note_placeholder">چه چیزی را باید دوباره مرور کنید؟</string>
+    <string name="addentry_review_entry_title">بررسی ورودی</string>
+    <string name="addentry_review_entry_subtitle">پاس سریع قبل از ذخیره. کارها را بیرون بکشید، ذکرهای ردیابی شده را بررسی کنید، و اگر مهم است، روز را علامت بزنید.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d انجام دهید</item>
+        <item quantity="other">%1$d کارها</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d ذکر</item>
+        <item quantity="other">%1$d اشاره می کند</item>
+    </plurals>
+    <string name="addentry_save_entry_button">ذخیره ورودی</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">حذف تغییرات</string>
+    <string name="addentry_discard_changes_message">شما تغییرات ذخیره نشده ای دارید. به عقب برگردید و آنها را کنار بگذارید یا برای ادامه ویرایش بمانید.</string>
+    <string name="addentry_go_back">به عقب برگرد</string>
+    <string name="addentry_stay">بمان</string>
+    <string name="addentry_shortcuts_title">میانبرها</string>
+    <string name="addentry_help_bold_suffix">برای پررنگ کردن متن (یا متن را انتخاب کنید و روی دکمه Bold ضربه بزنید)</string>
+    <string name="addentry_help_italic_suffix">برای ایتالیک کردن متن (یا متن را انتخاب کنید و روی دکمه کج ضربه بزنید)</string>
+    <string name="addentry_help_today_suffix">: به تاریخ فعلی گسترش می یابد (به عنوان مثال، 25-دسامبر-25)</string>
+    <string name="addentry_help_now_suffix">: به زمان فعلی گسترش می یابد (مثلاً 14:30)</string>
+    <string name="addentry_help_week_suffix">: به هفته جاری گسترش می یابد (به عنوان مثال، هفته 52)</string>
+    <string name="addentry_help_day_suffix">: به روز هفته جاری (به عنوان مثال، دوشنبه) گسترش می یابد</string>
+    <string name="addentry_help_todo_suffix">: به یک چک باکس todo گسترش می یابد (به عنوان مثال، [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: هنگامی که در هر نقطه از خط حاوی چک باکس todo وارد می شود، آن را تغییر می دهد.</string>
+    <string name="addentry_okey">باشه!</string>
+    <string name="addentry_template_merge_message">این پیش نویس از قبل دارای متن است. نحوه قرار دادن الگو را انتخاب کنید.</string>
+    <string name="addentry_template_merge_subtitle">Insert Below پیش نویس فعلی را حفظ می کند. در مکان‌نما، الگو را در جایی قرار می‌دهد که در حال حاضر کارت شما قرار دارد.</string>
+    <string name="addentry_insert_below">در زیر درج کنید</string>
+    <string name="addentry_at_cursor">در مکان نما</string>
+    <string name="addentry_replace_draft">پیش نویس را جایگزین کنید</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">محبوب</string>
+    <string name="addentry_new_chip">جدید</string>
+    <string name="addentry_best_for_format">بهترین برای: %1$s</string>
+    <string name="addentry_cd_remove_favorite">حذف قالب دلخواه</string>
+    <string name="addentry_cd_favorite_template">قالب مورد علاقه</string>
+    <string name="addentry_checklist_chip">چک لیست</string>
+    <string name="addentry_followup_chip">پیگیری</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">بخش %1$d</item>
+        <item quantity="other">بخش های %1$d</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">الگوی مورد علاقه را تغییر دهید</string>
+    <string name="addentry_template_preview_label">پیش نمایش الگو</string>
+    <string name="addentry_use_template_button">از قالب استفاده کنید</string>
+    <string name="addentry_start_blank_title">خالی را شروع کنید</string>
+    <string name="addentry_start_blank_subtitle">از الگوها بگذرید و از پیش نویس خالی بنویسید.</string>
+    <string name="addentry_blank_entry_name">ورودی خالی</string>
+    <string name="addentry_blank_entry_description">مدخل ژورنال ساده</string>
+    <string name="addentry_blank_category">ژنرال</string>
+    <string name="addentry_quick_picks_title">انتخاب های سریع</string>
+    <string name="addentry_sort_recommended">توصیه می شود</string>
+    <string name="addentry_sort_recent">اخیر</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">هیچ قالبی پیدا نشد</string>
+    <string name="addentry_no_templates_subtitle">جستجو یا دسته بندی دیگری را امتحان کنید.</string>
+    <string name="addentry_search_templates_label">جستجو در قالب ها</string>
+    <string name="addentry_search_templates_placeholder">جلسه، سلامتی، تامل...</string>
+    <string name="addentry_cd_clear_search">جستجو را پاک کنید</string>
+    <string name="addentry_choose_template_title">یک الگو را انتخاب کنید</string>
+    <string name="addentry_templates_ready_format">%1$d از الگوهای %2$d آماده است</string>
+    <string name="addentry_category_all">همه</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">چه اتفاقی افتاد؟</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">لیست N</string>
+    <string name="addentry_bulleted_list_chip">لیست B</string>
+    <string name="addentry_words_count_format">%1$d WORDS</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">پیگیری امروز</item>
+        <item quantity="other">پیگیری ها امروز</item>
+    </plurals>
+    <string name="home_followup_subtitle">پیگیری امروز</string>
+    <string name="home_from_date_format">از %1$s</string>
+    <string name="home_more_due_today_format">+%1$d بیشتر امروز موعد مقرر است</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">برچسب اضافه کنید</string>
+    <string name="home_edit_label_title">ویرایش برچسب</string>
+    <string name="home_day_label_hint">یک برچسب کوتاه برای این روز اضافه کنید (حداکثر 30 نویسه).</string>
+    <string name="home_day_label_placeholder">به عنوان مثال، اولین روز در مدرسه</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">یک برچسب برای این روز اضافه کنید</string>
+    <string name="home_star_label_hint">به این روز یک برچسب به یاد ماندنی بدهید (حداکثر 30 نویسه)</string>
+    <string name="home_star_label_placeholder">به عنوان مثال، تولد من، در مدرسه</string>
+    <string name="home_star_button">ستاره</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">ورودی حذف شد</item>
+        <item quantity="other">ورودی های %1$d حذف شدند</item>
+    </plurals>
+    <string name="home_restore_button">بازیابی</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">جستجوی ورودی ها...</string>
+    <string name="home_cd_search">جستجو کنید</string>
+    <string name="home_cd_clear_search">جستجو را پاک کنید</string>
+    <string name="home_cd_favorite">مورد علاقه</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">ورودی ها</string>
+    <string name="home_stat_words">کلمات</string>
+    <string name="home_stat_chars">کاراکترها</string>
+    <string name="home_stat_versions">آیات</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">برچسب اضافه کنید</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d مطابقت پیدا شد</item>
+        <item quantity="other">%1$d مسابقات پیدا شد</item>
+    </plurals>
+    <string name="home_no_keyword_matches">هنوز هیچ منطبقی برای این کلمه کلیدی پیدا نشده است.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">نماد وضعیت خالی</string>
+    <string name="home_empty_future">این آینده است. یک یادآوری ضبط کنید!</string>
+    <string name="home_empty_past">شما در گذشته هستید. یک حافظه را قبل از محو شدن ضبط کنید...</string>
+    <string name="home_empty_today">هنوز هیچ ورودی وجود ندارد. روزت را شروع کن</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">صرفه جویی</string>
+    <string name="home_cd_add_entry">ورودی را اضافه کنید</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">حذف %1$d</string>
+    <string name="home_future_date_title">ورودی تاریخ آینده</string>
+    <string name="home_future_date_message_format">شما در حال افزودن یک ورودی برای تاریخ آینده هستید (%1$s). آیا می خواهید ادامه دهید؟</string>
+    <string name="home_cache_issue_title">مشکل حافظه پنهان داده شناسایی شد</string>
+    <string name="home_cache_issue_message">به نظر می رسد تعداد قابل توجهی از مدخل های مجله از حافظه پنهان وجود ندارد. آیا می‌خواهید برای تلاش برای بازیابی آنها، یک به‌روزرسانی کامل حافظه پنهان داده‌ها انجام دهید؟</string>
+    <string name="home_refresh_button">تازه کردن</string>
+    <string name="home_ignore_button">نادیده گرفتن</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">افراد و مکان ها</string>
+    <string name="nav_statistics">آمار</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">بازسازی فهرست پایگاه داده</string>
+    <string name="nav_backup_data">پشتیبان گیری از داده ها</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">وضعیت</string>
+    <string name="nav_finishing_index_rebuild">در حال تکمیل بازسازی نمایه...</string>
+    <string name="nav_rebuilding_index">بازسازی فهرست پایگاه داده</string>
+    <string name="nav_refreshing_index">شاخص طراوت</string>
+    <string name="nav_backup_too_old">نسخه پشتیبان خیلی قدیمی است...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">در حال کار...</string>
+    <string name="nav_eta_almost_done">تقریبا انجام شده است</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds باقی مانده است</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm باقی مانده است</string>
+    <string name="nav_eta_hours_left_format">~%1$dساعت باقی مانده است</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">منو</string>
+    <string name="nav_cd_rj_logo">آرم RJ</string>
+    <string name="nav_tagline">یکی دیگر از برنامه های روزنامه نگاری</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">فروشگاه Play</string>
+    <string name="nav_cd_website">وب سایت</string>
+    <string name="nav_cd_share_app">اشتراک گذاری برنامه</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">لوگوی یاجا</string>
+    <string name="nav_easter_quote_part1">«یک فکر گذرا یا آنچه برای ناهار خورده‌اید را بنویسید؛ لازم نیست عمیق باشد.\n</string>
+    <string name="nav_easter_quote_part2">کلمات شما فقط می توانند وجود داشته باشند.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">از آزمایشگاه های RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">یاجا را به اشتراک بگذارید</string>
+    <string name="nav_share_text_body">yaja — یکی دیگر از برنامه‌های ژورنال‌نویسی\n\nیک مجله روزانه بدون حواس‌پرتی که ورودی‌ها را به‌عنوان فایل‌های علامت‌گذاری ساده ذخیره می‌کند.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">تغییر مکان ذخیره سازی</string>
+    <string name="settings_change_storage_location_message">همه ورودی‌های موجود از %1$s به %2$s منتقل خواهند شد. آیا می خواهید ادامه دهید؟</string>
+    <string name="settings_yes">بله</string>
+    <string name="settings_no">خیر</string>
+    <string name="settings_restore_summary_title">بازیابی خلاصه</string>
+    <string name="settings_restore_section_journal">مجله</string>
+    <string name="settings_restore_section_shortcodes">کدهای کوتاه</string>
+    <string name="settings_restore_section_date_keywords">کلمات کلیدی تاریخ</string>
+    <string name="settings_restore_section_people_places">افراد و مکان ها</string>
+    <string name="settings_restore_journal_summary">به روزهای جدید اضافه شد: %1$d\nدر روزهای موجود ادغام شد: %2$d\nدخل های مجله تکراری حذف شد: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">اضافه شده: %1$d\nتکرارهای حذف شده: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">اضافه شده: %1$d\nتکرارهای حذف شده: %2$d</string>
+    <string name="settings_restore_people_places_summary">اضافه شده: %1$d\nتکرارهای حذف شده: %2$d</string>
+    <string name="rebuild_tools_title">ابزارهای بازسازی</string>
+    <string name="rebuild_tools_back">برگشت</string>
+    <string name="rebuild_tools_intro">ابتدا از بازسازی های متمرکز استفاده کنید. بازسازی پایگاه داده فقط برای تغییرات ذخیره سازی، خرابی پایگاه داده یا عدم تطابق فهرست است.</string>
+    <string name="rebuild_todo_index_title">نمایه Todo را بازسازی کنید</string>
+    <string name="rebuild_todo_index_subtitle">کارها را از فایل های ژورنال تازه کنید و صفحه/ویجت Todo را به روز کنید. بهترین زمانی که کارها کهنه به نظر می رسند.</string>
+    <string name="rebuild_todo_index_button">Todos را بازسازی کنید</string>
+    <string name="rebuild_people_places_title">مردم و مکان ها را بازسازی کنید</string>
+    <string name="rebuild_people_places_subtitle">نام مستعار کلمات کلیدی، اشتراک‌گذاری‌ها، روندها و داده‌های رابطه را بازخوانی کنید.</string>
+    <string name="rebuild_people_places_button">مردم و مکان ها را بازسازی کنید</string>
+    <string name="rebuild_database_title">بازسازی کامل پایگاه داده</string>
+    <string name="rebuild_database_subtitle">کش پایگاه داده را از فایل های علامت گذاری مجدد کامپایل کنید. ورودی‌ها، شمارش‌ها، کارها، افراد و مکان‌ها و ویجت‌ها را از ابتدا فهرست‌بندی مجدد می‌کند.</string>
+    <string name="rebuild_database_button">بازسازی پایگاه داده</string>
+    <string name="rebuild_database_confirm_title">بازسازی فهرست پایگاه داده</string>
+    <string name="rebuild_database_confirm_message">این کار کل پایگاه داده Room SQLite را از فایل‌های Markdown پاک می‌کند و دوباره فهرست می‌کند. برای مجلات بزرگ، این ممکن است چند دقیقه طول بکشد.</string>
+    <string name="rebuild_database_confirm_start">بازسازی را شروع کنید</string>
+    <string name="rebuild_database_status_title">وضعیت فهرست پایگاه داده</string>
+    <string name="rebuild_database_storage_engine">موتور ذخیره سازی</string>
+    <string name="rebuild_database_storage_engine_value">پایگاه داده اتاق SQLite</string>
+    <string name="rebuild_database_indexed_days">روزهای نمایه شده</string>
+    <string name="rebuild_database_indexed_days_value">%1$d روز نمایه شد</string>
+    <string name="rebuild_database_file_size">اندازه فایل پایگاه داده</string>
+    <string name="rebuild_database_last_sync">آخرین همگام سازی فهرست</string>
+    <string name="rebuild_database_age_never">هرگز</string>
+    <string name="rebuild_database_age_just_now">همین الان</string>
+    <string name="rebuild_database_age_one_minute">1 دقیقه پیش</string>
+    <string name="rebuild_database_age_minutes">%1$d دقیقه قبل</string>
+    <string name="rebuild_database_age_one_hour">1 ساعت پیش</string>
+    <string name="rebuild_database_age_hours">%1$d ساعت قبل</string>
+    <string name="shortcodes_title">کدهای کوتاه</string>
+    <string name="shortcodes_import_cd">واردات</string>
+    <string name="shortcodes_export_cd">صادرات</string>
+    <string name="shortcodes_help_cd">کمک کنید</string>
+    <string name="shortcodes_new">کد کوتاه جدید</string>
+    <string name="shortcodes_empty_title">بدون کد کوتاه سفارشی</string>
+    <string name="shortcodes_empty_subtitle">یکی اضافه کنید تا قطعاتی مانند @yday را در متن پویا گسترش دهید.</string>
+    <string name="shortcodes_dynamic_dates_hint">برای تاریخ های پویا از {{today:format}} استفاده کنید.</string>
+    <string name="shortcodes_help_title">راهنمای کد کوتاه</string>
+    <string name="shortcodes_help_built_in">کدهای کوتاه داخلی:</string>
+    <string name="shortcodes_help_built_in_examples">@today، @now، @week، @day، @t (چک باکس)، @x (تغییر چک باکس)</string>
+    <string name="shortcodes_help_dynamic_patterns">الگوهای پویا:</string>
+    <string name="shortcodes_help_dynamic_desc">از {{today:FORMAT}}، {{yesterday:FORMAT}}، {{tomorrow:FORMAT}} یا {{now:FORMAT}} استفاده کنید.</string>
+    <string name="shortcodes_help_example">مثال: @yday -&gt; دیروز: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">قالب‌های رایج: dd-MM-yy، HH:mm، EEEE (نام روز).</string>
+    <string name="action_close">بستن</string>
+    <string name="keyword_detail_title_fallback">کلمه کلیدی</string>
+    <string name="keyword_detail_not_found">کلمه کلیدی پیدا نشد</string>
+    <string name="keyword_detail_last_indexed">آخرین فهرست بندی %1$s</string>
+    <string name="keyword_detail_mentions_section">اشاره می کند</string>
+    <string name="pin_biometric_prompt_title">باز کردن قفل با بیومتریک</string>
+    <string name="pin_biometric_prompt_subtitle">از اثر انگشت یا چهره خود برای باز کردن قفل استفاده کنید</string>
+    <string name="pin_error_no_biometric_enrolled">بیومتریک ثبت نام نشده است. لطفاً اثر انگشت یا چهره را در تنظیمات دستگاه ثبت کنید.</string>
+    <string name="pin_error_hardware_unavailable">سخت افزار بیومتریک در دسترس نیست.</string>
+    <string name="pin_error_no_hardware">این دستگاه سخت افزار بیومتریک ندارد.</string>
+    <string name="pin_error_not_available">احراز هویت بیومتریک در دسترس نیست.</string>
+    <string name="pin_title_confirm">پین را تایید کنید</string>
+    <string name="pin_title_set_new">پین جدید را تنظیم کنید</string>
+    <string name="pin_title_disable">پین فعلی را برای غیرفعال کردن وارد کنید</string>
+    <string name="pin_title_enter">پین را وارد کنید</string>
+    <string name="pin_error_incorrect">پین نادرست دوباره امتحان کنید.</string>
+    <string name="pin_error_mismatch">پین ها مطابقت ندارند. از نو شروع کن</string>
+    <string name="pin_cd_use_biometric">پین را وارد کنید</string>
+    <string name="pin_cd_backspace">بک اسپیس</string>
+    <string name="timeline_preview_empty_labeled">این روز برچسب گذاری شده است، اما هنوز هیچ مدخل مجله ای وجود ندارد.</string>
+    <string name="timeline_preview_loading">در حال بارگیری پیش نمایش...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d ورودی بیشتر در این روز</item>
+        <item quantity="other">+ %1$d ورودی های بیشتر در این روز</item>
+    </plurals>
+    <string name="timeline_preview_open_day">این روز باز است</string>
+    <string name="timeline_chip_today">امروز</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">ورودی %1$d</item>
+        <item quantity="other">ورودی های %1$d</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">پیگیری</string>
+    <string name="timeline_chip_label_only">فقط برچسب بزنید</string>
+    <string name="timeline_cd_favorite">مورد علاقه</string>
+    <string name="version_history_title">تاریخچه نسخه</string>
+    <string name="version_history_day_versions_title">نسخه های روز</string>
+    <string name="version_history_keep_copies_title">کپی های ایمنی را نگه دارید</string>
+    <string name="version_history_keep_copies_subtitle">قبل از اینکه Yaja یک فایل روز را تغییر دهد، فایل فعلی را در داده های برنامه در زیر فایل های تاریخچه ذخیره می کند.</string>
+    <string name="version_history_versions_kept_title">نسخه های نگهداری شده در روز</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">یاجا جدیدترین نسخه %1$d را برای هر تاریخ نگه می دارد.</item>
+        <item quantity="other">Yaja جدیدترین نسخه های %1$d را برای هر تاریخ نگه می دارد.</item>
+    </plurals>
+    <string name="version_history_retention_title">حفظ</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">عکس های فوری قدیمی تر از %1$d روز به طور خودکار پاک می شوند.</item>
+        <item quantity="other">عکس های فوری قدیمی تر از %1$d روز به طور خودکار پاک می شوند.</item>
+    </plurals>
+    <string name="version_history_notes">یادداشت‌ها: تاریخچه نسخه از فایل‌های علامت‌گذاری روز قبل از افزودن، ویرایش، حذف، مرتب‌سازی مجدد، برچسب‌گذاری، ستاره‌گذاری و بازدید مجدد از تغییرات محافظت می‌کند. این یک نسخه پشتیبان ابری نیست. به استفاده از پشتیبان‌گیری برای کپی‌های قابل حمل ادامه دهید.</string>
+    <string name="version_history_snapshots_for">عکس های فوری برای %1$s</string>
+    <string name="version_history_snapshots_subtitle">یک نسخه ذخیره شده را باز کنید، آن را بررسی کنید و آن را برای این روز بازیابی کنید.</string>
+    <string name="version_history_empty">هنوز نسخه ذخیره شده ای برای این تاریخ وجود ندارد.</string>
+    <string name="action_view">مشاهده کنید</string>
+    <string name="version_history_date_intro">یک نسخه ذخیره شده قبلی را برای این روز باز کنید، آن را بررسی کنید و در صورت نیاز آن را بازیابی کنید.</string>
+    <string name="action_next">بعدی</string>
+    <string name="action_apply">درخواست کنید</string>
+    <string name="action_restore">بازیابی کنید</string>
+    <string name="statistics_choose_title">Statistics را انتخاب کنید</string>
+    <string name="statistics_choose_subtitle">قسمت هایی را که نمی خواهید پنهان کنید. حداقل یک بخش باید قابل مشاهده باشد.</string>
+    <string name="statistics_visible_count">%1$d از %2$d قابل مشاهده است</string>
+    <string name="statistics_show_all">نمایش همه</string>
+    <string name="statistics_one_section_visible">یک بخش باید قابل مشاهده باقی بماند</string>
+    <string name="statistics_shown">در آمار نشان داده شده است</string>
+    <string name="statistics_hidden">پنهان از آمار</string>
+    <string name="statistics_select_start_date">تاریخ شروع را انتخاب کنید</string>
+    <string name="statistics_select_end_date">تاریخ پایان را انتخاب کنید</string>
+    <string name="statistics_filter_by_period">فیلتر بر اساس دوره</string>
+    <string name="statistics_cd_reorder">برای سفارش مجدد طولانی فشار دهید</string>
+    <string name="statistics_total_entries">کل ورودی ها</string>
+    <string name="statistics_total_words">کل کلمات</string>
+    <string name="statistics_avg_words_per_entry">میانگین کلمات / ورودی</string>
+    <string name="statistics_current_streak">رگه فعلی</string>
+    <string name="statistics_pages_written">صفحات نوشته شده</string>
+    <string name="statistics_days_highlighted">روزهای برجسته شده</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d روز</item>
+        <item quantity="other">%1$d روز</item>
+    </plurals>
+    <string name="statistics_period_all_time">آمار تمام وقت</string>
+    <string name="statistics_period_current_year">آمار سال جاری</string>
+    <string name="statistics_period_previous_year">آمار سال قبل</string>
+    <string name="statistics_period_current_month">آمار ماه جاری</string>
+    <string name="statistics_period_previous_month">آمار ماه قبل</string>
+    <string name="statistics_period_custom">آمار دوره سفارشی</string>
+    <string name="statistics_period_chip_all_time">همه زمان ها</string>
+    <string name="statistics_period_chip_current_year">سال جاری</string>
+    <string name="statistics_period_chip_previous_year">سال قبل</string>
+    <string name="statistics_period_chip_current_month">این ماه</string>
+    <string name="statistics_period_chip_previous_month">ماه قبل</string>
+    <string name="statistics_period_chip_custom">سفارشی</string>
+    <string name="statistics_sections_visible">بخش %1$d از %2$d قابل مشاهده است</string>
+    <string name="statistics_loading_stages">بارگیری آمار به صورت مرحله ای...</string>
+    <string name="review_period_weekly">بررسی هفتگی</string>
+    <string name="review_period_monthly">بررسی ماهانه</string>
+    <string name="review_anchor_week">هفته حاوی %1$s</string>
+    <string name="review_anchor_month">ماه حاوی %1$s</string>
+    <string name="review_chip_entries">ورودی های %1$d</string>
+    <string name="review_chip_words">کلمات %1$d</string>
+    <string name="review_chip_days">روز %1$d</string>
+    <string name="review_hint_jump">روی تراشه‌های تاریخ در زیر ضربه بزنید تا دوباره به مجله بروید.</string>
+    <string name="review_chip_streak">خط %1$d</string>
+    <string name="review_chip_gap">شکاف %1$d</string>
+    <string name="review_chip_labels">برچسب‌ها %1$d</string>
+    <string name="review_chip_favorites">موارد دلخواه %1$d</string>
+    <string name="review_empty_period">هنوز هیچ مدخل مجله ای در این دوره وجود ندارد. برچسب‌ها و نکات برجسته در صورت وجود همچنان در زیر ظاهر می‌شوند.</string>
+    <string name="review_writing_rhythm">ریتم نوشتن</string>
+    <string name="review_best_streak">بهترین خط</string>
+    <string name="review_longest_gap">طولانی ترین فاصله</string>
+    <string name="review_most_active_days">فعال ترین روزها</string>
+    <string name="review_day_entries_words">%1$d ورودی | %2$d کلمات</string>
+    <string name="review_top_people">افراد برتر</string>
+    <string name="review_top_places">مکان های برتر</string>
+    <string name="review_no_people_mentions">هیچ مردمی اشاره نمی کند</string>
+    <string name="review_no_place_mentions">جایی ذکر نشده است</string>
+    <string name="review_favorite_moments">لحظات مورد علاقه</string>
+    <string name="review_starred_day">روز ستاره دار</string>
+    <string name="review_highlighted_in_period">در این دوره برجسته شده است</string>
+    <string name="review_labels_created">برچسب ها ایجاد شد</string>
+    <string name="review_labeled_day">روز با برچسب</string>
+    <string name="review_language_split">تقسیم زبان</string>
+    <string name="review_not_enough_text">متن کافی در این دوره وجود ندارد</string>
+    <string name="lookback_reviews_title">بررسی ها</string>
+    <string name="lookback_reviews_intro">یک بازتاب سریع در مورد روز انتخابی خود ایجاد کنید.</string>
+    <string name="lookback_seven_days">7 روز</string>
+    <string name="lookback_one_month">1 ماه</string>
+    <string name="lookback_weekly_review">بررسی هفتگی</string>
+    <string name="lookback_weekly_review_subtitle">این هفته در یک نگاه</string>
+    <string name="lookback_monthly_review">بررسی ماهانه</string>
+    <string name="lookback_monthly_review_subtitle">این ماه خلاصه شد</string>
+    <string name="lookback_flashbacks_title">سال های گذشته در چنین روزی</string>
+    <string name="lookback_highlights_title">نکات برجسته شما</string>
+    <string name="lookback_empty_title">هنوز هیچ نگاه به عقب یا برجسته ای وجود ندارد.</string>
+    <string name="lookback_empty_subtitle">روزهای مهم مورد علاقه برای دیدن آنها در اینجا!</string>
+    <string name="lookback_cd_random_entry">به ورودی تصادفی بروید</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">دوره</string>
+    <string name="statistics_compare_mode_title">حالت مقایسه</string>
+    <string name="statistics_compare_mode_subtitle">دلتاهای ماه، سال و کلیدواژه</string>
+    <string name="statistics_this_year">امسال</string>
+    <string name="statistics_writing_days_delta">دلتا روزهای نوشتن</string>
+    <string name="statistics_top_person_delta">نفر برتر دلتا</string>
+    <string name="statistics_no_people_mentions">هنوز کسی اشاره نکرده است</string>
+    <string name="statistics_top_place_delta">دلتا مکان بالا</string>
+    <string name="statistics_no_place_mentions">هنوز جایی ذکر نشده است</string>
+    <string name="statistics_structured_writing">نگارش ساختاریافته</string>
+    <string name="statistics_template_led_format">رهبری الگو %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">خالی %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">پرکاربردترین قالب ها</string>
+    <string name="statistics_template_mix">میکس قالب</string>
+    <string name="statistics_follow_up_leaders">رهبران پیگیری</string>
+    <string name="statistics_compare_details">مقایسه جزئیات</string>
+    <string name="statistics_label_month">ماه</string>
+    <string name="statistics_label_year">سال</string>
+    <string name="statistics_this_month_count_format">این ماه %1$d</string>
+    <string name="statistics_last_month_count_format">ماه گذشته %1$d</string>
+    <string name="statistics_longest_streak">طولانی ترین رگه</string>
+    <string name="statistics_most_active_day">فعال ترین روز</string>
+    <string name="statistics_writing_consistency">سازگاری نوشتاری</string>
+    <string name="statistics_days_with_entries">روزهای با ورودی</string>
+    <string name="statistics_best_month">بهترین ماه</string>
+    <string name="statistics_best_month_format">%1$s · ورودی های %2$d</string>
+    <string name="statistics_avg_writing_days_week">میانگین روزهای / هفته نوشتن</string>
+    <string name="statistics_days_decimal_format">%1$.1f روز</string>
+    <string name="statistics_based_on_total_words">بر اساس کل کلمات نوشته شده در روز</string>
+    <string name="statistics_light_words">نور (&lt;50 کلمه)</string>
+    <string name="statistics_moderate_words">متوسط ​​(50-200 کلمه)</string>
+    <string name="statistics_heavy_words">سنگین (200-500 کلمه)</string>
+    <string name="statistics_intense_words">شدید (500+ کلمه)</string>
+    <string name="statistics_not_enough_text_languages">متن کافی برای شناسایی زبان ها وجود ندارد</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">زبان %1$d شناسایی شد</item>
+        <item quantity="other">%1$d زبان شناسایی شد</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">تشخیص زبان هنوز در حال حل و فصل است.</string>
+    <string name="statistics_latin_scripts_as_english">خط های لاتین به صورت انگلیسی نشان داده می شوند</string>
+    <string name="statistics_use_more_accurate_detection">از تشخیص دقیق تر استفاده کنید</string>
+    <string name="statistics_write_more_entries_languages">برای مشاهده آمار زبان، مطالب بیشتری بنویسید.</string>
+    <string name="statistics_based_on_entry_time">بر اساس زمان ورود</string>
+    <string name="statistics_morning_time">صبح (5 صبح تا ظهر)</string>
+    <string name="statistics_afternoon_time">بعد از ظهر (ظهر تا 5 بعد از ظهر)</string>
+    <string name="statistics_evening_time">عصر (5 عصر تا 9 بعد از ظهر)</string>
+    <string name="statistics_night_time">شب (9 شب تا 5 صبح)</string>
+    <string name="statistics_heatmap_filling">نقشه حرارتی هنوز در حال تکمیل است.</string>
+    <string name="statistics_heatmap_less">کمتر</string>
+    <string name="statistics_heatmap_more">بیشتر</string>
+    <string name="action_open">باز کنید</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">رویدادهای مجله یاجا</string>
+    <string name="tasker_event_desc">انتخاب کنید کدام رویدادهای مجله Yaja باید این نمایه Tasker را فعال کنند.</string>
+    <string name="tasker_event_saved">ورودی ذخیره شد</string>
+    <string name="tasker_event_edited">مدخل ویرایش شد</string>
+    <string name="tasker_event_deleted">ورودی حذف شد</string>
+    <string name="tasker_event_default_hint">اگر هیچ کدام انتخاب نشد، Yaja به طور پیش‌فرض روی Entry Saved خواهد بود.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">یاجا ضبط سریع</string>
+    <string name="tasker_action_desc">آنچه را که Tasker باید به سرعت در Yaja بگیرد، پیکربندی کنید.</string>
+    <string name="tasker_action_add_entry">ورودی را اضافه کنید</string>
+    <string name="tasker_action_add_event">مطابقت / هدر</string>
+    <string name="tasker_action_add_todo">Todo را اضافه کنید</string>
+    <string name="tasker_action_append">اضافه کنید</string>
+    <string name="tasker_action_match_header_label">مطابقت / هدر</string>
+    <string name="tasker_action_match_header_placeholder">تماس های از دست رفته</string>
+    <string name="tasker_action_line_to_append_label">خطی برای الحاق</string>
+    <string name="tasker_action_text_label">متن</string>
+    <string name="tasker_action_placeholder_event">یادداشت رویداد از Tasker</string>
+    <string name="tasker_action_placeholder_todo">شیر بخر</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">یادداشت سریع از Tasker</string>
+    <string name="tasker_action_tip_append">تماس اول یک ورودی ایجاد می کند که با متن مطابقت شروع می شود. تماس‌های بعدی خط زیر آن را اضافه می‌کنند.</string>
+    <string name="tasker_action_tip_default">نکته: متغیرهای Tasker را می توان در قسمت متن قرار داد.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">گزارش خرابی جلسه قبلی</string>
+    <string name="crash_log_clear_close">پاک کردن و بستن</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">برنامه را راه اندازی کنید</string>
+    <string name="tap_action_quick_capture">ضبط سریع</string>
+    <string name="tap_action_do_nothing">هیچ کاری نکن</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">نقشه حرارتی نوشتن یاجا</string>
+    <string name="widget_cell_shape">شکل سلولی</string>
+    <string name="widget_corner_radius">شعاع گوشه: %1$ddp</string>
+    <string name="widget_square">مربع</string>
+    <string name="widget_round">گرد</string>
+    <string name="widget_inner_margin">حاشیه داخلی: %1$ddp</string>
+    <string name="widget_inner_margin_desc">فاصله بین نقشه حرارتی و لبه های ویجت</string>
+    <string name="widget_none">هیچ کدام</string>
+    <string name="widget_max">حداکثر</string>
+    <string name="widget_on_tap">روی ضربه بزنید</string>
+    <string name="widget_on_tap_desc">هنگام ضربه زدن به ویجت اقدام کنید</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">گرفتن</string>
+    <string name="widget_qc_shape">شکل ویجت</string>
+    <string name="widget_show_label">نمایش برچسب</string>
+    <string name="widget_show_label_desc">نمایش متن «گرفتن» در ویجت</string>
+    <string name="widget_show_icon">نمایش نماد</string>
+    <string name="widget_show_icon_required">وقتی برچسب پنهان است، نماد مورد نیاز است</string>
+    <string name="widget_show_icon_desc">نمایش نماد قلم روی ویجت</string>
+    <string name="widget_label_text">متن برچسب</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">ابزارک Todo</string>
+    <string name="widget_todo_desc">ویجت فهرست کار گرد، مانند نقشه حرارتی.</string>
+    <string name="widget_todo_corner_radius">شعاع گوشه: %1$ddp</string>
+    <string name="widget_todo_padding">بالشتک: %1$ddp</string>
+    <string name="widget_todo_show_completed">نمایش وظایف تکمیل شده</string>
+    <string name="widget_todo_show_completed_desc">موارد بررسی شده را در لیست ویجت قرار دهید</string>
+    <string name="widget_todo_include_events">شامل رویدادها</string>
+    <string name="widget_todo_include_events_desc">نمایش ورودی های رویداد در کنار کارها در ویجت</string>
+    <string name="widget_todo_show_header">نمایش سرصفحه Todo</string>
+    <string name="widget_todo_show_header_desc">نمایش یا پنهان کردن ردیف عنوان ویجت</string>
+    <string name="widget_todo_auto_hide">پنهان کردن خودکار ویجت هنگامی که همه کارها تکمیل شد</string>
+    <string name="widget_todo_auto_hide_unavailable">زمانی که کارهای تکمیل شده نشان داده می شوند، در دسترس نیست</string>
+    <string name="widget_todo_auto_hide_desc">هنگامی که هیچ کار معلقی وجود ندارد، ویجت را شفاف کنید</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">انجام شد</string>
+    <string name="todo_confirm_mark_not_done">انجام نشده است</string>
+    <string name="todo_confirm_title">کار به عنوان %1$s علامت‌گذاری شود؟</string>
+    <string name="todo_confirm_reopen">این کار در حال حاضر تکمیل شده است. قبل از باز کردن مجدد آن را تأیید کنید.</string>
+    <string name="todo_confirm_complete">این کار هنوز باز است. قبل از علامت گذاری انجام شده آن را تأیید کنید.</string>
+    <string name="todo_confirm_accidental_tap">ضربه های تصادفی کار را تغییر نمی دهد.</string>
+    <string name="todo_confirm_yes_mark">بله، %1$s را علامت بزنید</string>
+    <string name="todo_confirm_open_yaja">در یاجا باز شود</string>
+    <string name="todo_confirm_keep_as_is">همانطور که هست نگه دارید</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">یکی دیگر از برنامه های روزنامه نگاری</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">از آزمایشگاه های RJ</string>
+    <string name="help_made_in">ساخت 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">لغو واردات</string>
+    <string name="timeline_show_all_dates">نمایش همه تاریخ ها</string>
+    <string name="timeline_show_all_dates_subtitle">شامل تمام روزهای گذشته، حتی بدون ورودی</string>
+    <string name="settings_background_tint_clean">تمیز</string>
+    <string name="settings_background_tint_soft">نرم</string>
+    <string name="settings_background_tint_rich">ثروتمند</string>
+    <string name="settings_background_tint_deep">عمیق</string>
+    <string name="settings_accent_style_complementary">مکمل</string>
+    <string name="settings_accent_style_analogous">مشابه</string>
+    <string name="settings_accent_style_triadic">سه گانه</string>
+    <string name="settings_accent_style_soft">نرم</string>
+</resources>

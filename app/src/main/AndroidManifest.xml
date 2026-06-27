@@ -6,16 +6,6 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
-    <!--
-        Custom permission required to send ACTION_ADD_ENTRY broadcasts to TaskerReceiver.
-        protectionLevel="signature" means only apps signed with the same key (or apps the
-        user has explicitly approved on debuggable builds) can hold this permission.
-        Tasker (and your own widgets) can be authorised by granting this permission explicitly.
-    -->
-    <permission
-        android:name="com.mj.yaja.permission.ADD_ENTRY"
-        android:protectionLevel="signature" />
-
     <application
         android:name=".YajaApplication"
         android:allowBackup="true"
@@ -24,6 +14,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.Journal"
         tools:targetApi="31">
@@ -36,35 +27,162 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <receiver
             android:name=".TaskerReceiver"
-            android:exported="true"
-            android:permission="com.mj.yaja.permission.ADD_ENTRY">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.mj.yaja.ACTION_ADD_ENTRY" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".TaskerPluginActionConfigActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_tasker_plugin_action"
+            android:label="@string/tasker_plugin_action_label"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TaskerPluginEventConfigActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_tasker_plugin_event"
+            android:label="@string/tasker_plugin_event_label"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="net.dinglisch.android.tasker.ACTION_EDIT_EVENT" />
+            </intent-filter>
+        </activity>
+
+
         <!-- Quick Capture Activity (Transparent full screen to host the Jetpack Compose Dialog) -->
-        <!-- Not exported: only launched via PendingIntent from the widget (same app) -->
+        <!-- Not exported: only launched via PendingIntent from the widget (same app) or via
+             app shortcuts (the system launches static shortcuts with the app's own identity).
+             Separate task affinity: shortcut launches force NEW_TASK|CLEAR_TASK, which would
+             otherwise wipe the main app task to show this dialog. -->
         <activity
             android:name=".ui.screens.QuickCaptureActivity"
             android:exported="false"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.screens.QuickTodoActivity"
+            android:exported="false"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Heatmap Widget Config (corner radius) -->
+        <activity
+            android:name=".ui.widget.HeatmapWidgetConfigActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Quick Capture Widget Config (corner radius) -->
+        <activity
+            android:name=".ui.widget.QuickCaptureWidgetConfigActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.QuickTodoWidgetConfigActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TodoListWidgetConfigActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.widget.TodoWidgetConfirmActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Quick Capture Widget Provider -->
         <receiver
             android:name=".ui.widget.QuickCaptureWidgetProvider"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/quick_capture_widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/quick_capture_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.widget.QuickTodoWidgetProvider"
+            android:exported="true"
+            android:label="@string/quick_todo_widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/quick_todo_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.widget.TodoListWidgetProvider"
+            android:exported="true"
+            android:label="@string/todo_list_widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.mj.yaja.ACTION_TOGGLE_TODO_FROM_WIDGET" />
+                <action android:name="com.mj.yaja.ACTION_REFRESH_TODO_LIST_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/todo_list_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.widget.WidgetAppearanceChangeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- Heatmap Widget Provider (RemoteViews — fast, no Glance overhead) -->
+        <receiver
+            android:name=".ui.widget.HeatmapWidgetProvider"
+            android:exported="true"
+            android:label="@string/heatmap_widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/heatmap_widget_info" />
         </receiver>
 
         <provider
@@ -76,6 +194,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
     </application>
 
 </manifest>
+

@@ -1,0 +1,1329 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Günlük</string>
+    <string name="nav_calendar">Takvim</string>
+    <string name="nav_lookback">Geçmişe Bakış</string>
+    <string name="nav_settings">Ayarlar</string>
+    <string name="nav_shortcodes">Kısayollar</string>
+    <string name="nav_help">Yardım &amp; Hakkında</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Kaydet</string>
+    <string name="action_cancel">İptal</string>
+    <string name="action_delete">Sil</string>
+    <string name="action_edit">Düzenle</string>
+    <string name="action_back">Geri</string>
+    <string name="action_undo">Geri Al</string>
+    <string name="action_yes">Evet</string>
+    <string name="action_no">Hayır</string>
+    <string name="action_remove">Kaldır</string>
+    <string name="action_done">Tamamlandı</string>
+    <string name="action_set">Ayarla</string>
+    <string name="action_select">Seç</string>
+    <string name="action_ok">Tamam</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Önbellek Yeniden Oluşturuluyor</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Hızlı Yakalama</string>
+    <string name="quick_capture_hint">Ne oldu?</string>
+    <string name="quick_capture_helper_shortcodes">Kısayollar burada otomatik olarak genişletilir ve Enter tuşuna basıldığında yapılacaklar satırları devam eder.</string>
+    <string name="quick_capture_save_delayed">Kaydetme gecikti. Doğrulamak için lütfen Yaja\'yı yeniden açın.</string>
+    <string name="cd_saved">Kaydedildi</string>
+    <string name="quick_todo_dialog_title">Hızlı Ekle</string>
+    <string name="quick_todo_save_delayed">Yapılacaklar kaydetme gecikti. Doğrulamak için lütfen Yaja\'yı yeniden açın.</string>
+    <string name="quick_todo_placeholder">Yapılacak ekle</string>
+    <string name="quick_event_placeholder">Etkinlik ekle</string>
+    <string name="quick_todo_task_date">Görev Tarihi</string>
+    <string name="quick_todo_event_date">Etkinlik Tarihi</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s Seç</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">Seçilen gün için bir yapılacaklar girişi olarak kaydedilir.</string>
+    <string name="quick_event_selected_day_hint">Seçilen gün için bir etkinlik girişi olarak kaydedilir.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Önceki</string>
+    <string name="cd_next">Sonraki</string>
+    <string name="cd_surprise_me">Beni Şaşırt</string>
+    <string name="calendar_cd_go_to_current_month">Mevcut aya git</string>
+    <string name="calendar_quick_action_timeline_title">Zaman Tüneli</string>
+    <string name="calendar_quick_action_timeline_subtitle">Kronolojik olarak göz atın</string>
+    <string name="calendar_quick_action_jump_title">Tarihe Atla</string>
+    <string name="calendar_quick_action_jump_subtitle">Belirli bir günü açın</string>
+    <string name="calendar_jump_placeholder">GG-AA-YY</string>
+    <string name="calendar_jump_invalid_date">Geçersiz tarih. GG-AA-YY biçimini kullanın.</string>
+    <string name="calendar_action_go">Git</string>
+    <string name="calendar_enable_future_dates_title">Gelecek Tarihleri Etkinleştir</string>
+    <string name="calendar_enable_future_dates_message">Gelecek tarih girişi devre dışı bırakıldı. Etkinleştirmek istiyor musunuz?</string>
+    <string name="calendar_action_enable">Etkinleştir</string>
+    <string name="calendar_future_entry_enabled">Gelecek tarih girişi etkinleştirildi</string>
+    <string name="calendar_weekday_sun_short">Paz</string>
+    <string name="calendar_weekday_mon_short">Pzt</string>
+    <string name="calendar_weekday_tue_short">Sal</string>
+    <string name="calendar_weekday_wed_short">Çar</string>
+    <string name="calendar_weekday_thu_short">Per</string>
+    <string name="calendar_weekday_fri_short">Cum</string>
+    <string name="calendar_weekday_sat_short">Cmt</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">BU AYIN GİRİŞLERİ</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d gün</item>
+        <item quantity="other">%1$d / %2$d gün</item>
+    </plurals>
+    <string name="calendar_days_of_memories">anılarla dolu günler</string>
+    <string name="calendar_consistency_last_12_months">SON 12 AY</string>
+    <string name="calendar_consistency_title_format">TUTARLILIK - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">ilk dönem</string>
+    <string name="calendar_graph_frequency_month">Ay</string>
+    <string name="calendar_graph_frequency_year">Yıl</string>
+    <string name="calendar_yearly_consistency_title">Tutarlılık (Yıllık)</string>
+    <string name="calendar_keywords_title">En çok kimler görünüyor</string>
+    <string name="calendar_keywords_syncing">Kişiler &amp; Yerler istatistikleri hala anahtar kelime dizini ile senkronize ediliyor.</string>
+    <string name="calendar_keywords_empty">En çok bahsedilenleri görmek için en az 3 kişi veya 3 yer ekleyin.</string>
+    <string name="calendar_keywords_people">Kişiler</string>
+    <string name="calendar_keywords_places">Yerler</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_appearance">Görünüm</string>
+    <string name="settings_appearance_subtitle">Tema, renkler, yazı tipleri ve kişisel stiller</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_font">Yazı Tipi</string>
+    <string name="settings_storage">Depolama</string>
+    <string name="settings_security">Güvenlik</string>
+    <string name="settings_backup">Yedekleme</string>
+    <string name="settings_change_storage_title">Depolama Konumunu Değiştir</string>
+    <string name="settings_backup_never">Hiçbir Zaman</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Ayarlarda ara</string>
+    <string name="settings_search_clear">Aramayı temizle</string>
+    <string name="settings_search_recent">Son aramalar</string>
+    <string name="settings_search_no_results">Eşleşen ayar bulunamadı</string>
+    <string name="settings_search_close">Kapat</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Günlük Deneyimi</string>
+    <string name="settings_section_navigation_gestures">Gezinme &amp; Hareketler</string>
+    <string name="settings_section_review_insights">İnceleme &amp; Öngörüler</string>
+
+    <!-- Language -->
+    <string name="settings_language">Dil</string>
+    <string name="settings_language_title">Uygulama Dili</string>
+    <string name="settings_language_subtitle">Uygulama genelinde kullanılacak dili seçin.</string>
+    <string name="settings_language_system_default">Sistem varsayılanı</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Giriş Stili</string>
+    <string name="settings_journal_entry_style_subtitle">Kayan kartlar ile daha düz bir günlük görünümü arasında seçim yapın.</string>
+    <string name="settings_journal_entry_style_cards">Kartlar</string>
+    <string name="settings_journal_entry_style_flat">Düz</string>
+    <string name="settings_journal_render_checkboxes_title">Onay Kutularını Metin Olarak Göster</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Normal onay kutuları yerine uygulama genelinde yapılacakları [ ] and [x] olarak göster.</string>
+    <string name="settings_journal_day_header_counts_title">Gün Başlığında Sayıları Göster</string>
+    <string name="settings_journal_day_header_counts_subtitle">Günlük günü başlıklarında giriş, kelime ve karakter sayısını göster.</string>
+    <string name="settings_journal_show_timestamps_title">Zaman Damgalarını Göster</string>
+    <string name="settings_journal_show_timestamps_subtitle">Zaman tünelinde giriş zamanını göster.</string>
+    <string name="settings_journal_allow_future_title">Gelecek Girişlere İzin Ver</string>
+    <string name="settings_journal_allow_future_subtitle">Gelecek tarihler için giriş eklemeyi etkinleştir.</string>
+    <string name="settings_journal_truncate_title">Uzun Girişleri Kısalt</string>
+    <string name="settings_journal_truncate_subtitle">Ana ekrandaki uzun girişleri kısaltır.</string>
+    <string name="settings_journal_char_limit_title">Karakter Sınırı</string>
+    <string name="settings_journal_char_limit_subtitle">Kısaltılmadan önce kaç karakter gösterileceğini ayarlayın.</string>
+    <string name="settings_journal_char_limit_min">50 karakter</string>
+    <string name="settings_journal_char_limit_max">200 karakter</string>
+    <string name="settings_journal_char_count">%1$d karakter</string>
+    <string name="settings_journal_first_day_title">Haftanın İlk Günü</string>
+    <string name="settings_journal_first_day_subtitle">Takvimi başlat</string>
+    <string name="settings_journal_day_sun">Paz</string>
+    <string name="settings_journal_day_mon">Pzt</string>
+    <string name="settings_journal_date_recognition">Tarih Tanıma</string>
+    <string name="settings_journal_date_order_title">Tarih Sırası</string>
+    <string name="settings_journal_date_order_subtitle">Belirsiz sayısal tarihlerin nasıl çözümleneceği</string>
+    <string name="settings_journal_date_order_auto">Otomatik</string>
+    <string name="settings_journal_date_order_dmy">GG/AA</string>
+    <string name="settings_journal_date_order_mdy">AA/GG</string>
+    <string name="settings_journal_date_keywords_title">Tarih Anahtar Kelimeleri</string>
+    <string name="settings_journal_date_keywords_subtitle">Diğer dillerde bir tarih anlamına gelen kelimeler (örneğin dünkü yerel kelime).</string>
+    <string name="settings_journal_view_keywords">Görüntüle (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Anahtar kelime ekle</string>
+    <string name="settings_journal_motion">Hareket</string>
+    <string name="settings_journal_animations_title">Animasyonlar</string>
+    <string name="settings_journal_animations_subtitle">Uygulama genelindeki animasyonları kontrol edin. Azaltılmış mod, daha az hareketle işleri akıcı tutar.</string>
+    <string name="settings_journal_animations_full">Tam</string>
+    <string name="settings_journal_animations_reduced">Azaltılmış</string>
+    <string name="settings_journal_animations_off">Kapalı</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Kaydetme Sonrası İnceleme</string>
+    <string name="settings_review_post_write_title">Yazma Sonrası İnceleme</string>
+    <string name="settings_review_post_write_subtitle">Yapılacakları çıkarmak, bahsedilenleri kontrol etmek, günü etiketlemek veya etiketleri ayarlamak için kaydet seçeneğine dokunduktan sonra inceleme sayfasını göster.</string>
+    <string name="settings_review_people_places">Kişiler &amp; Yerler</string>
+    <string name="settings_review_highlighting_title">Vurgulama</string>
+    <string name="settings_review_highlighting_subtitle">Takip edilen kişileri ve yerleri Ana sayfa kartlarında ve Girişi Görüntüle modunda vurgulayın.</string>
+    <string name="settings_review_match_sensitivity_title">Eşleşme Hassasiyeti</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Kişiler &amp; Yerler için bir kelimenin algılanabilmesi için ne kadar benzer olması gerektiği (daha yüksek = daha sıkı).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Kısayol Ekle</string>
+    <string name="shortcodes_edit_title">Kısayolu Düzenle</string>
+    <string name="shortcodes_code_label">Kısayol (örn. @yday)</string>
+    <string name="shortcodes_expansion_label">Genişletme Metni</string>
+    <string name="shortcodes_export_error">Kısayollar dışa aktarılamadı</string>
+    <string name="shortcodes_import_error">Kısayollar içe aktarılamadı</string>
+    <string name="todos_expand_section">%1$s Genişlet</string>
+    <string name="todos_collapse_section">%1$s Daralt</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Yazma Isı Haritası</string>
+    <string name="heatmap_widget_description">Son günlük yazma etkinliğinizin bir ısı haritası.</string>
+    <string name="quick_capture_widget_name">Hızlı Yakalama</string>
+    <string name="quick_capture_widget_description">Günlük girişlerini hızlıca eklemek için tek dokunuşluk düğme.</string>
+    <string name="quick_todo_widget_name">Hızlı Yapılacak</string>
+    <string name="tasker_plugin_action_label">Yaja Hızlı Yakalama</string>
+    <string name="tasker_plugin_event_label">Yaja Günlük Etkinlikleri</string>
+    <string name="tasker_screen_allow_add_entry_title">Tasker\'ın Giriş Eklemesine İzin Ver</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Tasker\'ın Giriş Ekle ve Yapılacak Ekle gibi Yaja hızlı yakalama eylemlerini kullanmasına izin verir.</string>
+    <string name="tasker_screen_allow_events_title">Tasker Etkinliklerine İzin Ver</string>
+    <string name="tasker_screen_allow_events_subtitle">Yaja\'nın Tasker\'a Giriş Kaydedildi, Giriş Düzenlendi ve Giriş Silindi etkinlikleri göndermesine izin verir.</string>
+    <string name="tasker_screen_include_text_title">Etkinliklerde Giriş Metnini Dahil Et</string>
+    <string name="tasker_screen_include_text_subtitle">Gizlilik nedeniyle varsayılan olarak devre dışıdır. Kapalı olduğunda, Tasker etkinlik türünü, tarihi, etiketleri ve saati alır, ancak günlük metnini almaz.</string>
+    <string name="tasker_screen_section_what">Bu ne işe yarar</string>
+    <string name="tasker_screen_body_what">Tasker, Yaja\'ya hızlıca günlük girişleri veya yapılacaklar ekleyebilir, Cevapsız Aramalar gibi gruplandırılmış girişlere satırlar ekleyebilir ve girişler kaydedildiğinde, düzenlendiğinde veya silindiğinde Yaja Tasker\'ı bilgilendirebilir.</string>
+    <string name="tasker_screen_section_how">Nasıl kullanılır</string>
+    <string name="tasker_screen_body_how">Öncelikle ihtiyacınız olan anahtarları buradan etkinleştirin. Ardından Tasker\'ı açın ve bir Yaja Hızlı Yakalama eylemi veya bir Yaja Günlük Etkinliği ekleyin.</string>
+    <string name="tasker_screen_section_notes">Notlar</string>
+    <string name="tasker_screen_body_notes">Etkinliklerde Giriş Metnini Dahil Et seçeneğini etkinleştirmediğiniz sürece giriş metni Tasker ile paylaşılmaz. Tasker son seçenekleri veya değişkenleri göstermiyorsa, Yaja\'yı güncelledikten sonra Tasker\'ın yapılandırma ekranını yeniden açın.</string>
+    <string name="tasker_screen_section_example">Örnek</string>
+    <string name="tasker_screen_body_example">Örnek eylem: Tasker Eylemi &gt; Yaja Hızlı Yakalama &gt; Ekle, Eşleşme / başlık Cevapsız Aramalar olarak ve Eklenecek satır Tasker değişkeni olarak ayarlanmış. Örnek etkinlik: Tasker Etkinliği &gt; Yaja Günlük Etkinlikleri &gt; Giriş Düzenlendi, ardından %yaja_event_type, %yaja_date ve isteğe bağlı olarak %yaja_entry_text gibi değişkenleri kullanın.</string>
+    <string name="tasker_screen_section_use_cases">Kullanım senaryoları</string>
+    <string name="tasker_screen_use_case_1">1. Girişler değiştikten sonra Yaja klasörünüzün herhangi bir bulut sağlayıcısına gönderilmesi için Tasker\'da Yaja günlük etkinliklerini kullanarak bir FolderSync senkronizasyon eylemini tetikleyin.</string>
+    <string name="tasker_screen_use_case_2">2. Yaja Hızlı Yakalama\'ya metin göndermek için Tasker ile Pushbullet kullanın, böylece gönderilen metin bugün için yeni bir giriş olarak kaydedilir.</string>
+    <string name="tasker_screen_use_case_3">3. Yaja\'ya bir Ekle eylemi göndermek için Tasker cevapsız arama profilini kullanın, böylece tüm cevapsız arama ayrıntıları ayrı girişler yapmak yerine tek bir Cevapsız Aramalar girişi altında toplanır.</string>
+    <string name="quick_todo_widget_description">Yapılacakları bugün için yeni girişler olarak yakalamak için tek dokunuşluk düğme.</string>
+    <string name="todo_list_widget_name">Yapılacaklar Listesi</string>
+    <string name="todo_list_widget_description">Kaydırılabilir günlük yapılacaklar listesi. Bir görevi tamamlandı veya tamamlanmadı olarak işaretlemek için üzerine dokunun.</string>
+    <string name="todo_cd_add_todo">Yapılacak ekle</string>
+    <string name="heatmap_widget_status_loading">Isı haritası yükleniyor…</string>
+    <string name="heatmap_widget_status_empty">Henüz giriş yok</string>
+    <string name="heatmap_widget_status_refresh">Isı haritasını yenilemek için Yaja\'yı açın</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Önbellek yeniden oluşturuldu.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Yeni Giriş</string>
+    <string name="shortcut_new_entry_long">Günlük girişi ekle</string>
+    <string name="shortcut_add_todo_short">Yapılacak Ekle</string>
+    <string name="shortcut_add_todo_long">Bugün için yapılacak ekle</string>
+    <string name="shortcut_add_event_short">Etkinlik Ekle</string>
+    <string name="shortcut_add_event_long">Etkinlik ekle</string>
+    <string name="shortcut_today_short">Bugün</string>
+    <string name="shortcut_today_long">Bugünün günlüğünü aç</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Gezinme</string>
+    <string name="settings_bottom_nav_style_label">Alt Gezinme Stili</string>
+    <string name="settings_navigation_mode_title">Gezinme Modu</string>
+    <string name="settings_navigation_mode_subtitle">Kayan gezinme çubuğu ile tam alt panel arasında seçim yapın.</string>
+    <string name="settings_nav_mode_floating">Kayan</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Gezinme Ekranları</string>
+    <string name="settings_nav_summary_floating">Günlük ve Takvim her zaman kayan çubuktadır. En fazla 2 ek ekran seçin. Şu anda seçilen: %1$d / %2$d.</string>
+    <string name="settings_nav_summary_panel">Günlük ve Takvim her zaman alt paneldedir. En fazla 3 ek ekran seçin. Şu anda seçilen: %1$d / %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Geçmişe Bakış\'ı etkin gezinme çubuğunda veya panelinde göster.</string>
+    <string name="settings_nav_people_places_subtitle">Kişiler &amp; Yerler\'i etkin gezinme çubuğunda veya panelinde göster.</string>
+    <string name="settings_nav_todos_title">Yapılacaklar</string>
+    <string name="settings_nav_todos_subtitle">Yapılacaklar\'ı etkin gezinme çubuğunda veya panelinde göster.</string>
+    <string name="todos_quick_add_title">Hızlı Ekle</string>
+    <string name="todos_hero_subtitle">Günlük çalışmalarını ve anlarını takip edin</string>
+    <string name="todos_hero_all_activity">Tüm etkinlikler</string>
+    <string name="todos_hero_open_focus">Aktif odak</string>
+    <string name="todos_hero_completed">Tamamlandı</string>
+    <string name="todos_stat_today_open">Bugün aktif</string>
+    <string name="todos_stat_done_today">Bugün tamamlandı</string>
+    <string name="todos_stat_events">Etkinlikler</string>
+    <string name="todos_stat_still_open">Hala aktif</string>
+    <string name="todos_stat_past_7d">Son 7 gün</string>
+    <string name="todos_stat_days">Gün</string>
+    <string name="todos_empty_done">Henüz tamamlanmış yapılacak yok</string>
+    <string name="todos_empty_events">Henüz etkinlik girişi yok</string>
+    <string name="todos_section_open">AKTİF</string>
+    <string name="todos_section_later">SONRA</string>
+    <string name="todos_section_upcoming">YAKLAŞAN</string>
+    <string name="todos_section_future_events">YAKLAŞAN ETKİNLİKLER</string>
+    <string name="todos_section_past_events">GEÇMİŞ ETKİNLİKLER</string>
+    <string name="todos_cd_open_day">Günü aç</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d aktif görev</item>
+        <item quantity="other">%1$d aktif görev</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d tamamlanmış görev</item>
+        <item quantity="other">%1$d tamamlanmış görev</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d yaklaşan etkinlik</item>
+        <item quantity="other">%1$d yaklaşan etkinlik</item>
+    </plurals>
+    <string name="todos_filter_all_format">Tümü %1$d</string>
+    <string name="todos_filter_open_format">Aktif %1$d</string>
+    <string name="todos_filter_done_format">Tamamlandı %1$d</string>
+    <string name="todos_filter_events_format">Etkinlikler %1$d</string>
+    <string name="todos_cheer_all_clear">Her şey temiz. Güzel.</string>
+    <string name="todos_cheer_done_and_dusted">Bitti ve gitti.</string>
+    <string name="todos_cheer_nothing_pending">Bekleyen bir şey yok.</string>
+    <string name="todos_cheer_caught_up">Her şeye yetiştiniz.</string>
+    <string name="todos_cheer_clean_slate">Temiz bir sayfa.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d gün içinde</item>
+        <item quantity="other">%1$d gün içinde</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d gün önce</item>
+        <item quantity="other">%1$d gün önce</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d hafta içinde</item>
+        <item quantity="other">%1$d hafta içinde</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d hafta önce</item>
+        <item quantity="other">%1$d hafta önce</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 ay içinde</string>
+    <string name="todos_relative_one_month_ago">1 ay önce</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d ay içinde</item>
+        <item quantity="other">%1$d ay içinde</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d ay önce</item>
+        <item quantity="other">%1$d ay önce</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">İstatistikler</string>
+    <string name="settings_nav_statistics_subtitle_on">İstatistikler\'i etkin gezinme çubuğunda veya panelinde göster.</string>
+    <string name="settings_nav_statistics_subtitle_off">Gezinmeye yerleştirmek için önce İstatistikler\'i etkinleştirin.</string>
+    <string name="settings_show_labels_bottom_panel_title">Alt Panelde Etiketleri Göster</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Alt paneldeki simgelerin altında metin etiketlerini göster.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Hareketler</string>
+    <string name="settings_entry_delete_title">Girişleri Sil</string>
+    <string name="settings_entry_delete_subtitle">Seçmek için bir girişe uzun basın. Birden fazla seçmek için diğer girişlere dokunun, ardından üstteki Sil düğmesini kullanın. Seçimi temizlemek için boş alana dokunun.</string>
+    <string name="settings_swipe_navigate_title">Tarih Gezinmesi için Kaydır</string>
+    <string name="settings_swipe_navigate_subtitle">Bir gün ilerlemek için sağdan sola, bir gün geri gitmek için soldan sağa kaydırın.</string>
+    <string name="settings_drag_reorder_title">Sürükleyip Sıralamayı Etkinleştir</string>
+    <string name="settings_drag_reorder_subtitle">Yeniden sıralamak için bir girişe uzun basın</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Veri &amp; Kurtarma</string>
+    <string name="settings_swipe_rebuild_index">Dizini yeniden oluşturmak için ana ekranda aşağı kaydırın</string>
+    <string name="settings_large_journal_safe_mode_title">Büyük Günlük Güvenli Modu</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Çok büyük bir günlük algılandığında, uygulamanın daha hızlı ve güvenli açılması için kritik olmayan başlangıç istatistik işlerini erteleyin.</string>
+    <string name="settings_version_history_title">Sürüm Geçmişi</string>
+    <string name="settings_version_history_subtitle">Girişleri düzenlemeden, silmeden, etiketlemeden ve ziyaretleri değiştirmeden önce güvenli bir kopya kaydedin.</string>
+    <string name="settings_storage_location_label">Depolama Konumu</string>
+    <string name="settings_reset_to_default">Varsayılana Sıfırla</string>
+    <string name="settings_choose_folder">Klasör Seç</string>
+    <string name="settings_backup_description">Günlük girişlerinizi, kısayollarınızı, tarih anahtar kelimelerinizi ve Kişiler &amp; Yerler verilerinizi içeren tek bir Yaja yedek zip dosyası oluşturun. Geri yükleme bunları daha sonra güvenle birleştirebilir.</string>
+    <string name="settings_last_backup">Son Yedekleme: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Yedekleme hatırlatıcı süresi</string>
+    <string name="settings_backup_reminder_disabled">Devre dışı</string>
+    <string name="settings_backup_reminder_desc">%1$d günden daha eski olduğunda yedeklemeyi yan menüde vurgulayın.</string>
+    <string name="settings_backup_reminder_days_disabled">0 gün (devre dışı)</string>
+    <string name="settings_backup_reminder_days">%1$d gün</string>
+    <string name="settings_restore_button">Geri Yükle</string>
+    <string name="settings_backup_now_button">Şimdi Yedekle</string>
+    <string name="settings_db_index_management_label">Veritabanı Dizin Yönetimi</string>
+    <string name="settings_db_index_management_desc">Yapılacaklar, Kişiler &amp; Yerler veya tam veritabanı dizin yeniden oluşturma için odaklanmış yeniden oluşturma araçlarını açın.</string>
+    <string name="settings_rebuild_tools_button">Yeniden Oluşturma Araçları</string>
+    <string name="settings_import_label">İçe Aktar</string>
+    <string name="settings_import_info_cd">İçe aktarma bilgisi</string>
+    <string name="settings_import_info_title">İçe Aktarma Bilgisi</string>
+    <string name="settings_import_day_one_title">Day One İçe Aktar</string>
+    <string name="settings_import_day_one_bullet1">- Day One\'dan görseller olmadan dışa aktarın</string>
+    <string name="settings_import_day_one_bullet2">- Yalnızca metin verileri içe aktarılacaktır</string>
+    <string name="settings_import_day_one_bullet3">- Zaman damgası ve konum verileri (varsa) korunacaktır</string>
+    <string name="settings_import_perf_warning_title">Performans Uyarısı</string>
+    <string name="settings_import_perf_warning_desc">Çok sayıda girişi (500+) içe aktarmak birkaç dakika sürebilir. Bu ekrandan ayrılabilirsiniz, içe aktarma arka planda devam edecektir.</string>
+    <string name="settings_got_it">Anladım</string>
+    <string name="settings_import_success">%1$d yeni gün, %2$d birleştirildi, %3$d atlandı</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip veya .json dışa aktarımı</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json dışa aktarımı</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">yaja\'yı nasıl kullanacağınızı öğrenin</string>
+    <string name="help_footer_website">Web Sitesi</string>
+    <string name="help_footer_share">Paylaş</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">yaja\'yı paylaş</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nGirişleri markdown dosyaları olarak saklayan, dikkat dağıtmayan yerel günlük. Zaman tüneli, geçmişe bakış, kişiler ve yerler, temalar, incelemeler, istatistikler ve widget\'lar içerir.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord kullanıcı adı kopyalandı!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">RJ Logosu</string>
+    <string name="help_screen_title">Yardım &amp; Bilgi</string>
+    <string name="help_welcome_title">yaja\'ya hoş geldiniz</string>
+    <string name="help_welcome_body">Yaja, günlerinizi, kişileri, yerleri, takipleri, incelemeleri ve kalıpları sizi rahatsız etmeden yakalamak için yerel tabanlı bir markdown günlüğüdür. Bu sayfa, uygulamanın ana bölümleri hakkında hızlı bir kılavuz sunar.</string>
+    <string name="help_start_here">Buradan Başlayın</string>
+    <string name="help_cd_collapse">Daralt</string>
+    <string name="help_cd_expand">Genişlet</string>
+    <string name="help_group_everyday_title">Günlük</string>
+    <string name="help_group_everyday_desc">Günlük yazma, seriler ve günlük gezinme.</string>
+    <string name="help_group_reviews_title">İnceleme &amp; Öngörüler</string>
+    <string name="help_group_reviews_desc">Geçmişe bakış, trendler, kişiler, yerler ve analizler.</string>
+    <string name="help_group_advanced_title">Gelişmiş Araçlar</string>
+    <string name="help_group_advanced_desc">Widget\'lar, depolama, gizlilik, yedekleme ve teknik araçlar.</string>
+    <string name="help_onboard_todos_events_title">Görevler, Etkinlikler &amp; Yinelenenler</string>
+    <string name="help_onboard_todos_events_body">Kişisel hatırlatıcıları, aile planlarını ve son teslim tarihlerinde otomatik olarak görevler oluşturan yinelenen programları günlük akışınızda tutun.</string>
+    <string name="help_onboard_widgets_title">Widget\'lar</string>
+    <string name="help_onboard_widgets_body">Başlatıcıdan Isı Haritası, Hızlı Yakalama, Hızlı Yapılacak veya Yapılacaklar Listesi widget\'larını ekleyin.</string>
+    <string name="help_onboard_version_history_title">Sürüm Geçmişi</string>
+    <string name="help_onboard_version_history_body">Riskli değişikliklerden önce güvenli anlık görüntüler kaydetmek için Ayarlar &gt; Veri bölümünden Geçmiş Dosyalarını etkinleştirin.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Kişisel bir şeyin hemen yakalanması gerektiğinde hızlıca günlük girişleri veya yapılacaklar eklemek için Tasker\'ı kullanın.</string>
+    <string name="help_section_writing_editor_title">Yazma &amp; Editör</string>
+    <string name="help_section_writing_editor_preview">Şablonlar, markdown başlıkları, yapılacaklar, etkinlikler ve esnek taslak ekleme.</string>
+    <string name="help_section_writing_editor_content">+ Seçilen günde yazmak için kayan \'+\' düğmesine dokunun.\n+ Toplantı Notları, Seyahat Günü, Sağlık Günlüğü, Düşünceler, İş Günlüğü ve daha fazlası gibi şablonları kullanın.\n+ Şablonlar boş bir taslağa eklenebilir, altına eklenebilir, taslağın yerini alabilir veya imleç konumuna eklenebilir.\n+ Editör düğmeleri hızlıca yapılacaklar, etkinlikler, numaralı listeler ve madde işaretli listeler ekleyebilir.\n+ Giriş ve Düzenleme görünümleri ### Bölüm gibi markdown tarzı başlıkları destekler.</string>
+    <string name="help_section_post_write_review_title">Yazma Sonrası İnceleme</string>
+    <string name="help_section_post_write_review_preview">Yapılacakları çıkarma, anahtar kelime algılama, yıldızlama, etiketler ve ziyaretleri ayarlama.</string>
+    <string name="help_section_post_write_review_content">+ Yazdıktan sonra, Yaja kaydetmeden önce bir inceleme sayfası açabilir.\n+ Bu sayfa yapılacakları çıkarabilir, Kişiler &amp; Yerler\'i algılayabilir, günü yıldızla işaretleyebilir, gün etiketlerini ayarlayabilir dan bir ziyaret tarihi planlayabilir.\n+ Doğrudan kaydetmeyi tercih ederseniz Ayarlar\'dan Yazma Sonrası İnceleme\'yi devre dışı bırakabilirsiniz.</string>
+    <string name="help_section_revisit_followup_title">Ziyaret Tarihleri &amp; Takip</string>
+    <string name="help_section_revisit_followup_preview">Hızlı seçimler ve özel seçeneklerle günlüğe bağlı takip tarihleri.</string>
+    <string name="help_section_revisit_followup_content">+ Yarın, Gelecek hafta, Gelecek ay veya özel bir tarih ile bir ziyaret tarihi ekleyin.\n+ Vadesi gelen ziyaret öğeleri Ana ekranda görünür ve Takvim ile Zaman Tüneli\'nde işaretlenir.\n+ Bu, günlük bağlamına bağlı randevular, kararlar, sağlık kontrolleri ve hatırlatıcılar için harika çalışır.</string>
+    <string name="help_section_navigation_gestures_title">Gezinme &amp; Hareketler</string>
+    <string name="help_section_navigation_gestures_preview">Tarih geçişi, seçimleri temizleme, kaydırma tercihleri ve önbellek yeniden oluşturma davranışları.</string>
+    <string name="help_section_navigation_gestures_content">+ Ana ekran oklarla tarih gezinmesini ve etkinleştirilirse isteğe bağlı kaydırma gezinmesini destekler.\n+ Seçmek için bir girişe uzun basın. Diğer girişleri de seçmek için onlara dokunun, ardından Ekle düğmesinin yanındaki Sil düğmesini kullanın.\n+ Seçilen girişlerin dışına dokunmak seçimi temizler. Silinen girişler, geri alma geri sayımından birlikte kurtarılabilir.\n+ Günlük dosyaları Yaja dışında değiştiğinde önbelleği yeniden oluşturabilirsiniz.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Kısayollar &amp; Hızlı Yakalama</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Hızlı kişisel yakalama ve yeniden kullanılabilir dinamik metin parçacıkları.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Yinelenen metinleri hızlıca eklemek için kısayollar oluşturun.\n+ {{today:dd-MMM}} ve {{now:HH:mm}} gibi dinamik yer tutucular kısayollar içinde çalışır.\n+ Hızlı Yakalama, tam editörü açmadan bir şeyi hızlıca kaydetmeye yardımcı olur.\n+ Hızlı Ekleme, widget\'lardan, Yapılacaklar ekranından veya Tasker\'dan seçilen tarih için yapılacak veya etkinlik kaydedebilir.</string>
+    <string name="help_section_todos_events_title">Görevler, Etkinlikler &amp; Yinelenenler</string>
+    <string name="help_section_todos_events_preview">Kişisel hatırlatıcılar, önemli etkinlikler ve otomatik yinelenen programlar.</string>
+    <string name="help_section_todos_events_content">+ Görevler doğrudan günlük girişlerine [ ] ve [x] satırları olarak yazılır.\n+ Etkinlikler, Etkinlik olarak işaretlenmiş normal günlük girişleridir; aile planları, randevular, seyahatler veya daha sonra hatırlamak isteyeceğiniz şeyler için kullanışlıdır.\n+ Yinelenen Görevler ve Etkinlikler (Programlar), programlarına göre (ör. haftalık, aylık, yıllık) günlük sayfalarınıza otomatik olarak görev öğeleri veya etkinlik başlıkları yazar.\n+ Görevler ekranındaki Yinelenen simgesine dokunarak programlarınızı yönetin.\n+ Yaja\'yı her açtığınızda arka plan sistemi çalışarak süresi gelen planlanmış görevleri kontrol eder ve o günkü girişe ekler.\n+ Görevler ekranı, Yaja\'yı bir üretkenlik paneline dönüştürmeden açık görevleri, tamamlanan görevleri ve etkinlikleri görüntülemenize yardımcı olur.\n+ Günlükte o günü açmak için tarih başlığına dokunun.\n+ Yaja dışında dosyalar değiştiyse görev dizinini yeniden oluşturmak için Görevler ekranını aşağı kaydırın.\n+ Tamamlanan Görevleri Göster seçeneği hatırlanır, böylece tercih ettiğiniz görünüm korunur.\n+ Görev widget\'ları bekleyen görevleri gösterebilir, durum değiştirmeden önce onay isteyebilir, tamamlanan görevleri gizleyebilir ve bekleyen görev yoksa otomatik olarak gizlenebilir.</string>
+    <string name="help_section_people_places_title">Kişiler &amp; Yerler</string>
+    <string name="help_section_people_places_preview">Anahtar kelimeler, takma adlar, trendler ve sıralı bağlantı görünümü.</string>
+    <string name="help_section_people_places_content">+ Takma adlar ve ilişki etiketleri ile kişileri ve yerleri takip edin.\n+ Anahtar kelime listesini arayın, filtreleyin ve sıralayın.\n+ Anahtar kelime detay sayfası son görünme durumunu, zaman içindeki bahsedilmeleri, birlikte bahsedilmeleri ve sıralı bağlantıları gösterir.\n+ Eşleşme Hassasiyeti Ayarlar\'dan ayarlanabilir.</string>
+    <string name="help_section_timeline_lookback_title">Zaman Tüneli &amp; Geçmişe Bakış</string>
+    <string name="help_section_timeline_lookback_preview">Geçmiş günleri tarama, özetler, Beni Şaşırt ve inceleme giriş noktaları.</string>
+    <string name="help_section_timeline_lookback_content">+ Zaman tüneli, filtreler, yıl düğmeleri ve isteğe bağlı tüm tarihler modu ile geçmiş günleri taramanıza olanak tanır.\n+ Geçmişe Bakış, geçmiş yıllardaki aynı güne ait girişleri ve yıldızlı özetlerinizi gösterir.\n+ Beni Şaşırt, Geçmişe Bakış\'tan rastgele geçmiş bir girişi açar.\n+ Haftalık İnceleme ve Aylık İnceleme, Geçmişe Bakış içindedir.</string>
+    <string name="help_section_statistics_reviews_title">İstatistikler &amp; İncelemeler</string>
+    <string name="help_section_statistics_reviews_preview">Karşılaştırma modu, şablon öngörüleri, özelleştirilmiş görünür bölümler ve özetler.</string>
+    <string name="help_section_statistics_reviews_content">+ İstatistikler, karşılaştırma modunu, anahtar kelime deltalarını ve Şablon Öngörüleri\'ni içerir.\n+ İstatistikler ekranından hangi istatistik bölümlerinin görünür kalacağını seçebilirsiniz.\n+ Karşılaştırma Modu Tüm Zamanlar için kullanılabilir ve ay ve yıl deltalarını özetler.\n+ İnceleme sayfası en aktif günleri, en çok bahsedilen kişileri &amp; yerleri, favori anları, etiketleri, dil dağılımını ve serileri veya boşlukları özetler.</string>
+    <string name="help_section_widgets_home_title">Widget\'lar &amp; Ana Ekran</string>
+    <string name="help_section_widgets_home_preview">Başlatıcı widget\'ları, vurgulanan anahtar kelimeler ve gün düzeyinde ana ekran istatistikleri.</string>
+    <string name="help_section_widgets_home_content">+ Yazma Isı Haritası, Hızlı Yakalama, Hızlı Ekle ve Yapılacaklar Listesi widget\'ları başlatıcıda mevcuttur.\n+ Widget yapılandırma ekranı, destekleniyorsa köşeleri, dolguyu, şekilleri, başlığı, tamamlanan görevlerin görünürlüğünü ve diğer widget seçeneklerini özelleştirmenize olanak tanır.\n+ Isı haritası widget\'ı, daha pürüzsüz yazma geçmişi görünümü için daha fazla yoğunluk seviyesi kullanır.\n+ Ana ekran, ayar etkinleştirildiğinde girişlerdeki Kişiler &amp; Yerler\'i vurgulayabilir.\n+ Ana ekran tarih başlığı giriş sayısını, kelime sayısını ve karakter sayısını gösterebilir veya gizleyebilir.</string>
+    <string name="help_section_language_text_analysis_title">Dil &amp; Metin Analizi</string>
+    <string name="help_section_language_text_analysis_preview">İstatistikler ve inceleme öngörüleri için yerel dil algılama.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja, öngörüler elde etmek için girişlerdeki hakim alfabeyi veya dili algılar.\n+ Dil dağılımı İstatistikler ve İncelemeler bölümünde görünür.\n+ Algılama tamamen yerel olarak çalışır ve günlük metnini cihaz dışına göndermez.</string>
+    <string name="help_section_data_privacy_cache_title">Veri, Gizlilik &amp; Önbellek</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown depolama, sürüm geçmişi, uygulama günlükleri, uygulama kilidi dan önbellek yeniden oluşturma.</string>
+    <string name="help_section_data_privacy_cache_content">+ Veri Gizliliği: Tüm kişisel günlük verileri kesinlikle fiziksel cihazınızda kalır ve hiçbir zaman cihazınızdan ayrılmaz. Yaja, metinlerinizi takip etmek için bulut veritabanları, uzak yedekleme sunucuları veya telemetri çalıştırmaz.\n+ Günlük girişleri, yıl ve aya göre düzenlenmiş standart Markdown dosyaları olarak saklanır.\n+ Sürüm Geçmişi, düzenlemeler, silmeler, etiketler ve ziyaret değişiklikleri gibi riskli işlemlerden önce güvenli anlık görüntüler kaydedebilir.\n+ Kaç sürümün saklanacağını ve sürüm geçmişinin kaç gün tutulacağını seçebilirsiniz.\n+ Uygulama Günlüğü günlük metnini saklamadan teknik olayları, kilitlenme ayrıntılarını ve önbellek etkinliklerini kaydeder.\n+ Uygulama Önbelleğini Yeniden Oluşturma, yapılacaklar ve tam önbellek oluşturma dahil olmak üzere uygulama verilerini modüler olarak yenilemenizi sağlar.\n+ Uygulama kilidi PIN ve parmak izini destekler.\n+ Yaja, uygulama açılışını ve kaydetmeyi duyarlı tutmak için ağır dizinleme ve istatistik işlerini mümkün olduğunca erteler.</string>
+    <string name="settings_app_log_title">Uygulama Günlüğü</string>
+    <string name="settings_app_log_subtitle">Gizlilik açısından güvenli tanılamaları ve geçmiş kilitlenme ayrıntılarını görüntüleyin</string>
+    <string name="app_log_cd_share">Uygulama günlüğünü paylaş</string>
+    <string name="app_log_cd_clear">Uygulama günlüğünü temizle</string>
+    <string name="app_log_privacy_title">Gizlilik açısından güvenli tanılama</string>
+    <string name="app_log_privacy_description">Bu günlük, önemli uygulama etkinliklerini, önbellek/depolama işlemlerini, widget yenilemelerini ve kilitlenme ayrıntılarını kaydeder. Günlük girişlerini, yapılacaklar metnini veya kişisel not içeriğini içermez.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Son %d günü tut</item>
+        <item quantity="other">Son %d günü tut</item>
+    </plurals>
+    <string name="app_log_retention_description">Daha eski günlük etkinlikleri, günlük kaydı sırasında ve bu ayar değiştiğinde otomatik olarak temizlenir.</string>
+    <string name="app_log_empty">Henüz uygulama günlüğü yok.</string>
+    <string name="app_log_refresh">Günlüğü Yenile</string>
+    <string name="app_log_share_empty">Henüz Yaja uygulama günlüğü girişi yok.</string>
+    <string name="app_log_share_subject">Yaja Uygulama Günlüğü</string>
+    <string name="app_log_share_chooser">Yaja uygulama günlüğünü paylaş</string>
+    <string name="app_log_local_time_format">%1$s | yerel saat\n%2$s</string>
+    <string name="settings_website_title">Yaja Web Sitesi</string>
+    <string name="settings_website_subtitle">Güncellemeler ve ayrıntılar için resmi web sitesini açın</string>
+    <string name="settings_advanced_integrations_title">Gelişmiş Entegrasyonlar</string>
+    <string name="settings_tasker_integration_title">Tasker Entegrasyonu</string>
+    <string name="settings_tasker_integration_subtitle">Hızlı yakalama eylemleri ve günlük etkinliği tetikleyicileri</string>
+    <string name="settings_shortcodes_subtitle">Yazarken veya hızlı yakalama sırasında genişletilen yeniden kullanılabilir metinleri yönetin.</string>
+    <string name="settings_privacy_security_title">Gizlilik &amp; Güvenlik</string>
+    <string name="settings_pin_lock_title">PIN Kilidi</string>
+    <string name="settings_app_locked">Uygulama kilitli</string>
+    <string name="settings_app_unlocked">Uygulama kilidi açıldı</string>
+    <string name="settings_change_pin">PIN Değiştir</string>
+    <string name="settings_biometric_unlock_title">Biyometrik Kilit Açma</string>
+    <string name="settings_biometric_enabled_desc">Parmak izi veya Yüz Tanıma etkinleştirildi</string>
+    <string name="settings_biometric_disabled_desc">PIN yerine biyometri kullan</string>
+    <string name="settings_autolock_timeout_title">Otomatik Kilitleme Süresi</string>
+    <string name="settings_pin_lock_disclaimer">PIN kilidi, uygulamaya yetkisiz erişimi engeller ancak diski şifrelemez. Doğrudan dosya erişimi olan bir kişi girişlerinizi okuyabilir.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d dakika</item>
+        <item quantity="other">%1$d dakika</item>
+    </plurals>
+    <string name="settings_theme_system">Sistem</string>
+    <string name="settings_theme_light">Açık</string>
+    <string name="settings_theme_dark">Koyu</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Renkler</string>
+    <string name="settings_color_intensity_title">Renk yoğunluğu</string>
+    <string name="settings_background_tint_title">Arka plan tonu</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Özel</string>
+    <string name="settings_font_size_label">Yazı Tipi Boyutu</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">Tema önizlemesi</string>
+    <string name="settings_journal_entry_preview">Günlük girişi</string>
+    <string name="settings_journal_entry_preview_desc">Kartlar, düğmeler ve chipler bu renkleri kullanacaktır.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Aksen</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Yoğunluk: %1$s</string>
+    <string name="settings_personal_themes_title">Kişisel temalar</string>
+    <string name="settings_theme_name_label">Tema adı</string>
+    <string name="settings_main_color_label">Ana renk</string>
+    <string name="settings_hue_label">Ton (Hue)</string>
+    <string name="settings_sat_label">Doygunluk</string>
+    <string name="settings_bright_label">Parlaklık</string>
+    <string name="settings_generated_accents_title">Oluşturulan aksanlar</string>
+    <string name="settings_personal_theme_desc">Tek bir renk seçin. Yaja eşleşen aksan ve destekleyici renkler oluşturur.</string>
+    <string name="settings_preview_chip_main">Ana</string>
+    <string name="settings_preview_chip_support">Destek</string>
+    <string name="settings_no_font_selected">Seçili yazı tipi yok</string>
+    <string name="settings_custom_font_desc">Herhangi bir .ttf veya .otf yazı tipi dosyası seçin. Yazı tipinin desteklemediği karakterler için sistem yazı tipi kullanılır.</string>
+    <string name="settings_font_replace">Değiştir</string>
+    <string name="settings_choose_font_file">Yazı tipi dosyası seç</string>
+    <string name="settings_intensity_muted">Mat</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Canlı</string>
+    <string name="settings_intensity_pop">Belirgin</string>
+    <string name="settings_tint_clean">Temiz</string>
+    <string name="settings_tint_soft">Yumuşak</string>
+    <string name="settings_tint_rich">Zengin</string>
+    <string name="settings_tint_deep">Derin</string>
+    <string name="settings_accent_complementary">Tamamlayıcı</string>
+    <string name="settings_accent_analogous">Analog</string>
+    <string name="settings_accent_triadic">Üçlü</string>
+    <string name="settings_accent_soft">Yumuşak</string>
+    <string name="settings_mono_weight_thin">Thin</string>
+    <string name="settings_mono_weight_extra_light">Extra Light</string>
+    <string name="settings_mono_weight_light">Light</string>
+    <string name="settings_mono_weight_regular">Regular</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">Bold</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold</string>
+    <string name="settings_mono_weight_title">Ağırlık</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+    <string name="settings_add_date_keyword_title">Tarih Anahtar Kelimesi Ekle</string>
+    <string name="settings_keyword_label">Anahtar Kelime</string>
+    <string name="settings_keyword_placeholder_example">örn. dün</string>
+    <string name="settings_means_label">Anlamı</string>
+    <string name="settings_add_button">Ekle</string>
+    <string name="settings_no_keywords_yet">Henüz anahtar kelime eklenmedi.</string>
+    <string name="settings_added_keywords_title">Eklenen Anahtar Kelimeler (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Anahtar kelime ekle</string>
+    <string name="keywords_dialog_add_title">Anahtar Kelime Ekle</string>
+    <string name="keywords_dialog_edit_title">Anahtar Kelimeyi Düzenle</string>
+    <string name="keywords_cd_import_csv">CSV İçe Aktar</string>
+    <string name="keywords_cd_export_csv">CSV Dışa Aktar</string>
+    <string name="keywords_cd_download_template">Şablonu indir</string>
+    <string name="rebuild_cache_storage_transparency_title">Cihaz İçi Depolama Şeffaflığı</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja güvenli bir yerel depolama modeli kullanır. Kişisel günlük verileriniz yerel kalır ve hiçbir zaman cihazınızdan ayrılmaz:</string>
+    <string name="rebuild_cache_source_of_truth_title">Doğruluk Kaynağı (Markdown Dosyaları)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Tüm girişler, yapılacaklar, zaman tüneli etkinlikleri, yıldızlar ve etiketler, seçtiğiniz yerel günlük klasöründeki düz metin Markdown (.md) dosyalarında kalıcı olarak saklanır. Verileriniz %100 size aittir.</string>
+    <string name="rebuild_cache_read_cache_title">Önbellek &amp; Dizin Okuma (SQLite Veritabanı)</string>
+    <string name="rebuild_cache_read_cache_desc">Her kaydırmada dosya sistemini taramadan anında ekran yükleme, takvim vurguları ve istatistikleri etkinleştirmek için Yaja Markdown dosyalarınızı ayrıştırır ve cihazınızdaki yerel SQLite Room veritabanında dizinler.</string>
+    <string name="rebuild_cache_local_private_title">%100 Yerel &amp; Özel</string>
+    <string name="rebuild_cache_local_private_desc">Yaja\'nın bulut veritabanı, uzak yedekleme sunucusu veya telemetri takibi yoktur. Tüm günlük girişleri ve ayrıştırılan veriler kesinlikle fiziksel cihazınızda kalır.</string>
+    <string name="keywords_export_success">Anahtar kelimeler dışa aktarıldı</string>
+    <string name="keywords_export_failed">Anahtar kelimeler dışa aktarılamadı</string>
+    <string name="keywords_template_saved">Şablon kaydedildi</string>
+    <string name="keywords_template_save_failed">Şablon kaydedilemedi</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d anahtar kelime içe aktarıldı</item>
+        <item quantity="other">%d anahtar kelime içe aktarıldı</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Geçerli anahtar kelime bulunamadı</string>
+    <string name="keywords_import_failed">Anahtar kelimeler içe aktarılamadı</string>
+    <string name="keywords_status_indexing">Dizin oluşturuluyor</string>
+    <string name="keywords_status_indexed">Dizinlendi</string>
+    <string name="keywords_metric_mentions">Bahsedilme</string>
+    <string name="keywords_metric_days">Gün</string>
+    <string name="keywords_timeline_range_all">Tümü</string>
+    <string name="keywords_connections_filter_all">Tümü</string>
+    <string name="keywords_connections_filter_people">Kişiler</string>
+    <string name="keywords_connections_filter_places">Yerler</string>
+    <string name="keywords_connections_filter_recent">Son</string>
+    <string name="keywords_connections_filter_strongest">En Güçlü</string>
+    <string name="keywords_filter_needs_reindex">Yeniden Dizin Oluşturulması Gerekiyor</string>
+    <string name="keywords_search_placeholder">Kişi, yer, takma ad, ilişki ara</string>
+    <string name="keywords_refreshing_counters">Anahtar kelime sayaçları yenileniyor…</string>
+    <string name="keywords_empty_title">Henüz anahtar kelime yok</string>
+    <string name="keywords_empty_subtitle">Uygulamanın yerel olarak takip etmesini istediğiniz kişileri ve yerleri ekleyin.</string>
+    <string name="keywords_no_results_title">Eşleşen sonuç bulunamadı</string>
+    <string name="keywords_no_results_subtitle">Farklı bir arama, sıralama veya filtre deneyin.</string>
+    <string name="keywords_people_title">Kişiler</string>
+    <string name="keywords_places_title">Yerler</string>
+    <string name="keywords_people_empty">Henüz kişi eklenmedi.</string>
+    <string name="keywords_people_filtered_empty">Mevcut filtreyle eşleşen kişi yok.</string>
+    <string name="keywords_places_empty">Henüz yer eklenmedi.</string>
+    <string name="keywords_places_filtered_empty">Mevcut filtreyle eşleşen yer yok.</string>
+    <string name="keywords_delete_person_title">Kişiyi Sil?</string>
+    <string name="keywords_delete_place_title">Yeri Sil?</string>
+    <string name="keywords_delete_message">"%1$s" Kişiler &amp; Yerler listesinden silinsin mi? Bu işlem anahtar kelimeyi ve dizinlenmiş eşleşmeleri silecektir.</string>
+    <string name="keywords_timeline_title">Zaman İçindeki Bahsedilmeler</string>
+    <string name="keywords_timeline_empty_pattern">Henüz aylık model yok</string>
+    <string name="keywords_timeline_total_format">total %1$d</string>
+    <string name="keywords_timeline_empty_chart">Dizin oluşturma girişleri bulduğunda bahsedilmeler burada grafiklendirilecektir.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Zirve %1$s • %2$d bahsedilme</item>
+        <item quantity="other">Zirve %1$s • %2$d bahsedilme</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Bahsedilen gün sayısı</string>
+    <string name="keywords_recency_title">Yenilik</string>
+    <string name="keywords_recency_none">Henüz eşleşme yok</string>
+    <string name="keywords_recency_today">Bugün bahsedildi</string>
+    <string name="keywords_recency_yesterday">Dün bahsedildi</string>
+    <string name="keywords_recency_days_ago_format">Son bahsedilme %1$d gün önce</string>
+    <string name="keywords_first_seen">İlk Görülme</string>
+    <string name="keywords_last_seen">Son Görülme</string>
+    <string name="keywords_unknown">Bilinmiyor</string>
+    <string name="keywords_co_mentioned_with">Birlikte Bahsedilenler</string>
+    <string name="keywords_connections_title">Bağlantılar</string>
+    <string name="keywords_connections_subtitle">Tekrarlanan örtüşmelere ve yeniliğe göre sıralanmıştır</string>
+    <string name="keywords_connections_linked_format">%1$d bağlantılı</string>
+    <string name="keywords_connections_show">Bağlantıları göster</string>
+    <string name="keywords_connections_hide">Bağlantıları gizle</string>
+    <string name="keywords_connections_items_in_view">Bu görünümde %1$d öğe</string>
+    <string name="keywords_connections_tap_to_expand">%1$d dereceli bağlantıyı genişletmek için dokunun</string>
+    <string name="keywords_connections_empty">Bu filtre için henüz bağlantı yok.</string>
+    <string name="keywords_open_day">Günü Aç</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">En Çok Bahsedilen</string>
+    <string name="keywords_sort_recently_added">Son Eklenenler</string>
+    <string name="keywords_peak_mentions_format">Zirve %1$s • %2$d bahsedilme%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d gün</string>
+    <string name="keywords_connections_meta_days_suffix_plural"></string>
+    <string name="keywords_connections_meta_together"> birlikte</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d ortak giriş</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix"></string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix"></string>
+    <string name="keywords_connections_meta_last_prefix"> | son %1$s</string>
+    <string name="keywords_connections_score_format">Skor %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d gün</string>
+    <string name="keywords_connections_shared_chip">%1$d ortak</string>
+    <string name="keywords_match_type_exact">tam</string>
+    <string name="keywords_match_type_fuzzy">bulanık</string>
+    <string name="keywords_match_type_alias">takma ad</string>
+    <string name="keywords_match_type_relation">ilişki</string>
+    <string name="keywords_action_delete">Sil</string>
+    <string name="keywords_action_edit">Düzenle</string>
+    <string name="keywords_action_view">Görüntüle</string>
+    <string name="keywords_name_label">Ad</string>
+    <string name="keywords_relation_context_label">İlişki / Bağlam</string>
+    <string name="keywords_aliases_label">Takma Adlar (virgülle ayrılmış)</string>
+    <string name="keywords_aliases_label_short">Takma Adlar</string>
+    <string name="keywords_type_person">Kişi</string>
+    <string name="keywords_type_place">Yer</string>
+    <string name="keywords_save_disabled_hint">Anahtar kelimeler kapalı olarak kaydedilir. Dizin oluşturmanın çalışmasını istediğinizde listeden etkinleştirin.</string>
+    <string name="settings_meaning_yesterday">Dün</string>
+    <string name="settings_meaning_today">Bugün</string>
+    <string name="lookback_chip_weekly">Haftalık</string>
+    <string name="lookback_chip_monthly">Aylık</string>
+    <string name="timeline_screen_title">Zaman Tüneli</string>
+    <string name="timeline_empty_title">Henüz burada bir şey yok</string>
+    <string name="timeline_empty_subtitle">Farklı bir filtre deneyin veya etiket aramasını ayarlayın.</string>
+    <string name="timeline_quick_today">Bugün</string>
+    <string name="timeline_quick_month">Ay</string>
+    <string name="timeline_quick_filters">Filtreler</string>
+    <string name="timeline_all_dates">Tüm tarihler</string>
+    <string name="timeline_label_prefix">Etiket: %1$s</string>
+    <string name="timeline_label_search_placeholder">Gün etiketlerini ara</string>
+    <string name="timeline_filters_title">Zaman Tüneli Filtreleri &amp; Düzeni</string>
+    <string name="settings_meaning_tomorrow">Yarın</string>
+    <string name="settings_meaning_day_before_yesterday">Evvelsi gün</string>
+    <string name="settings_meaning_day_after_tomorrow">Ertesi gün</string>
+    <string name="settings_meaning_last_week">Geçen hafta</string>
+    <string name="settings_meaning_next_week">Gelecek hafta</string>
+    <string name="settings_meaning_monday">Pazartesi</string>
+    <string name="settings_meaning_tuesday">Salı</string>
+    <string name="settings_meaning_wednesday">Çarşamba</string>
+    <string name="settings_meaning_thursday">Perşembe</string>
+    <string name="settings_meaning_friday">Cuma</string>
+    <string name="settings_meaning_saturday">Cumartesi</string>
+    <string name="settings_meaning_sunday">Pazar</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Uygulama İçi Depolama</string>
+    <string name="settings_storage_internal_default">Uygulama İçi Depolama (Varsayılan)</string>
+    <string name="settings_storage_new_folder_fallback">yeni klasör</string>
+    <string name="settings_storage_current_folder_fallback">mevcut klasör</string>
+    <string name="settings_storage_move_confirm">Mevcut tüm girişler %1$s konumundan %2$s konumuna taşınacaktır. Devam etmek istiyor musunuz?</string>
+    <string name="settings_restore_added_skipped">Eklenen: %1$d\nAtlanan duplikatlar: %2$d</string>
+    <string name="settings_storage_custom_folder">Özel Klasör:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Kısayol yardımı</string>
+    <string name="addentry_cd_insert_template">Şablon ekle</string>
+    <string name="addentry_cd_jump_to_today">Bugüne atla</string>
+    <string name="addentry_cd_share">Paylaş</string>
+    <string name="addentry_cd_bold">Kalın</string>
+    <string name="addentry_cd_italic">İtalik</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Saati ayarla</string>
+    <string name="addentry_event_chip">Etkinlik</string>
+    <string name="addentry_pick_time_title">Saat seç</string>
+    <string name="addentry_hour_label">Saat</string>
+    <string name="addentry_minute_label">Dakika</string>
+    <string name="addentry_new_event_title">Yeni Etkinlik</string>
+    <string name="addentry_title_label">Başlık</string>
+    <string name="addentry_event_description_label">Etkinlik Açıklaması</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Bulunan Yapılacaklar</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d satırı kontrol listesine dönüştür</item>
+        <item quantity="other">%1$d satırı kontrol listesine dönüştür</item>
+    </plurals>
+    <string name="addentry_people_places_title">Kişiler &amp; Yerler</string>
+    <string name="addentry_no_tracked_mentions">Bu girişte takip edilen kişi veya yer bulunamadı.</string>
+    <string name="addentry_day_memory_title">Gün Anısı</string>
+    <string name="addentry_star_day_title">Bu günü yıldızla</string>
+    <string name="addentry_star_day_subtitle">Geçmişe bakışta geri dönmesi için bir vurgu olarak kaydedin.</string>
+    <string name="addentry_day_label_label">Gün etiketi</string>
+    <string name="addentry_day_label_placeholder">örn. Dinlenme Günü</string>
+    <string name="addentry_follow_up_title">Takip et</string>
+    <string name="addentry_next_month">Gelecek ay</string>
+    <string name="addentry_custom">Özel</string>
+    <string name="addentry_due_date_format">Vade %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Takibi temizle</string>
+    <string name="addentry_follow_up_note_label">Takip notu</string>
+    <string name="addentry_follow_up_note_placeholder">Neyi tekrar ziyaret etmelisiniz?</string>
+    <string name="addentry_review_entry_title">Girişi İncele</string>
+    <string name="addentry_review_entry_subtitle">Kaydetmeden önce hızlı geçiş. Yapılacakları çıkarın, takip edilen bahsedilenleri kontrol edin ve önemliyse günü işaretleyin.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d yapılacak</item>
+        <item quantity="other">%1$d yapılacak</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d bahsedilme</item>
+        <item quantity="other">%1$d bahsedilme</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Girişi Kaydet</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Değişiklikleri İptal Et</string>
+    <string name="addentry_discard_changes_message">Kaydedilmemiş değişiklikleriniz var. Geri dönüp bunları iptal edin veya düzenlemeye devam etmek için kalın.</string>
+    <string name="addentry_go_back">Geri Dön</string>
+    <string name="addentry_stay">Kal</string>
+    <string name="addentry_shortcuts_title">Kısayollar</string>
+    <string name="addentry_help_bold_suffix"> metni kalın yapmak için (veya metni seçip Kalın Düğmesine dokunun)</string>
+    <string name="addentry_help_italic_suffix"> metni italik yapmak için (veya metni seçip İtalik Düğmesine dokunun)</string>
+    <string name="addentry_help_today_suffix">: Mevcut tarihe genişler (örn. 25-Ara-25)</string>
+    <string name="addentry_help_now_suffix">: Mevcut saate genişler (örn. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Mevcut haftaya genişler (örn. Hafta 52)</string>
+    <string name="addentry_help_day_suffix">: Mevcut gün adına genişler (örn. Pazartesi)</string>
+    <string name="addentry_help_todo_suffix">: Bir yapılacaklar onay kutusuna genişler (örn. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Bir yapılacaklar onay kutusu içeren satırın herhangi bir yerine girildiğinde, bunu değiştirir.</string>
+    <string name="addentry_okey">Tamam!</string>
+    <string name="addentry_template_merge_message">Bu taslakta zaten metin var. Şablonun nasıl yerleştirileceğini seçin.</string>
+    <string name="addentry_template_merge_subtitle">Alta Ekle mevcut taslağı korur. İmleçte şablonu imlecinizin şu anda bulunduğu yere yerleştirir.</string>
+    <string name="addentry_insert_below">Alta Ekle</string>
+    <string name="addentry_at_cursor">İmleçte</string>
+    <string name="addentry_replace_draft">Taslağı Değiştir</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populer</string>
+    <string name="addentry_new_chip">Yeni</string>
+    <string name="addentry_best_for_format">En iyi kullanım: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Şablon favorisini kaldır</string>
+    <string name="addentry_cd_favorite_template">Şablonu favorilere ekle</string>
+    <string name="addentry_checklist_chip">Kontrol listesi</string>
+    <string name="addentry_followup_chip">Takip</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d bölüm</item>
+        <item quantity="other">%1$d bölüm</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Şablon favorisini değiştir</string>
+    <string name="addentry_template_preview_label">Şablon önizlemesi</string>
+    <string name="addentry_use_template_button">Şablonu Kullan</string>
+    <string name="addentry_start_blank_title">Boş Başla</string>
+    <string name="addentry_start_blank_subtitle">Şablonları atlayın ve boş bir taslaktan yazmaya devam edin.</string>
+    <string name="addentry_blank_entry_name">Boş Giriş</string>
+    <string name="addentry_blank_entry_description">Düz günlük girişi</string>
+    <string name="addentry_blank_category">Genel</string>
+    <string name="addentry_quick_picks_title">Hızlı Seçimler</string>
+    <string name="addentry_sort_recommended">Önerilen</string>
+    <string name="addentry_sort_recent">Son</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Şablon bulunamadı</string>
+    <string name="addentry_no_templates_subtitle">Farklı bir arama veya kategori deneyin.</string>
+    <string name="addentry_search_templates_label">Şablon ara</string>
+    <string name="addentry_search_templates_placeholder">Toplantı, sağlık, düşünce…</string>
+    <string name="addentry_cd_clear_search">Aramayı temizle</string>
+    <string name="addentry_choose_template_title">Şablon Seç</string>
+    <string name="addentry_templates_ready_format">%1$d / %2$d şablon hazır</string>
+    <string name="addentry_category_all">Tümü</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Ne oldu?</string>
+    <string name="addentry_todo_chip">Yapılacak</string>
+    <string name="addentry_numbered_list_chip">N Listesi</string>
+    <string name="addentry_bulleted_list_chip">M Listesi</string>
+    <string name="addentry_words_count_format">%1$d KELİME</string>
+    <string name="addentry_chars_count_format">%1$d KARAKTER</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Bugün vadesi gelen takip</item>
+        <item quantity="other">Bugün vadesi gelen takipler</item>
+    </plurals>
+    <string name="home_followup_subtitle">Bağlantılı güne geri dönün ve oradan devam edin.</string>
+    <string name="home_from_date_format">%1$s tarihinden</string>
+    <string name="home_more_due_today_format">+Bugün %1$d tane daha var</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Etiket Ekle</string>
+    <string name="home_edit_label_title">Etiketi Düzenle</string>
+    <string name="home_day_label_hint">Bu gün için kısa bir etiket ekleyin (maks. 30 karakter).</string>
+    <string name="home_day_label_placeholder">örn. Okuldaki ilk gün</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Bu Gün İçin Etiket Ekle</string>
+    <string name="home_star_label_hint">Bu güne akılda kalıcı bir etiket verin (maks. 30 karakter)</string>
+    <string name="home_star_label_placeholder">örn. Doğum Günüm, Okulda</string>
+    <string name="home_star_button">Yıldızla</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Giriş silindi</item>
+        <item quantity="other">%1$d giriş silindi</item>
+    </plurals>
+    <string name="home_restore_button">GERİ YÜKLE</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Girişlerde ara…</string>
+    <string name="home_cd_search">Ara</string>
+    <string name="home_cd_clear_search">Aramayı Temizle</string>
+    <string name="home_cd_favorite">Favori</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Girişler</string>
+    <string name="home_stat_words">Kelimeler</string>
+    <string name="home_stat_chars">Karakterler</string>
+    <string name="home_stat_versions">Sürümler</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Etiket ekle</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Eşleşme Bulundu</item>
+        <item quantity="other">%1$d Eşleşme Bulundu</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Bu anahtar kelime için henüz eşleşme bulunamadı.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Boş Durum Simgesi</string>
+    <string name="home_empty_future">Bu gelecek. Bir hatırlatıcı kaydedin!</string>
+    <string name="home_empty_past">Geçmiştiniz. Solmadan önce bir Anı kaydedin…</string>
+    <string name="home_empty_today">Henüz giriş yok. Gününüzü başlatın.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Kaydediliyor</string>
+    <string name="home_cd_add_entry">Giriş Ekle</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d Sil</string>
+    <string name="home_future_date_title">Gelecek Tarihli Giriş</string>
+    <string name="home_future_date_message_format">Gelecek bir tarih (%1$s) için giriş ekliyorsunuz. Devam etmek istiyor musunuz?</string>
+    <string name="home_cache_issue_title">Veri Önbelleği Sorunu Algılandı</string>
+    <string name="home_cache_issue_message">Önbellekte çok sayıda günlük girişinin eksik olduğu görülüyor. Bunları geri yüklemeyi denemek için tam bir veri önbelleği yenilemesi gerçekleştirmek ister misiniz?</string>
+    <string name="home_refresh_button">Yenile</string>
+    <string name="home_ignore_button">Yoksay</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Kişiler &amp; Yerler</string>
+    <string name="nav_statistics">İstatistikler</string>
+    <string name="nav_todos">Yapılacaklar</string>
+    <string name="nav_rebuild_index">Veritabanı Dizinini Yeniden Oluştur</string>
+    <string name="nav_backup_data">Verileri Yedekle</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Durum</string>
+    <string name="nav_finishing_index_rebuild">Dizin yeniden oluşturma tamamlanıyor…</string>
+    <string name="nav_rebuilding_index">Veritabanı dizini yeniden oluşturuluyor</string>
+    <string name="nav_refreshing_index">Dizin yenileniyor</string>
+    <string name="nav_backup_too_old">yedekleme çok eski…</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Çalışıyor…</string>
+    <string name="nav_eta_almost_done">neredeyse bitti</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds kaldı</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm kaldı</string>
+    <string name="nav_eta_hours_left_format">~%1$dh kaldı</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menü</string>
+    <string name="nav_cd_rj_logo">RJ Logosu</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Web Sitesi</string>
+    <string name="nav_cd_share_app">Uygulamayı Paylaş</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja Logosu</string>
+    <string name="nav_easter_quote_part1">"Geçici bir düşünceyi veya öğle yemeğinde ne yediğinizi yazın; derin olması gerekmez.\n</string>
+    <string name="nav_easter_quote_part2">Kelimeleriniz sadece var olabilir.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">RJ laboratuvarlarından</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Share yaja</string>
+    <string name="nav_share_text_body">yaja — yet another journaling app\n\nGirişleri düz markdown dosyaları olarak saklayan, dikkat dağıtmayan günlük.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Depolama Konumunu Değiştir</string>
+    <string name="settings_change_storage_location_message">Mevcut tüm girişler %1$s konumundan %2$s konumuna taşınacaktır. Devam etmek istiyor musunuz?</string>
+    <string name="settings_yes">Evet</string>
+    <string name="settings_no">No</string>
+    <string name="settings_restore_summary_title">Geri Yükleme Özeti</string>
+    <string name="settings_restore_section_journal">Günlük</string>
+    <string name="settings_restore_section_shortcodes">Kısayollar</string>
+    <string name="settings_restore_section_date_keywords">Tarih Anahtar Kelimeleri</string>
+    <string name="settings_restore_section_people_places">Kişiler &amp; Yerler</string>
+    <string name="settings_restore_journal_summary">Yeni günlere eklenen: %1$d\nMevcut günlerle birleştirilen: %2$d\nAtlanan yinelenen günlük girişleri: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Eklenen: %1$d\nAtlanan duplikatlar: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Eklenen: %1$d\nAtlanan duplikatlar: %2$d</string>
+    <string name="settings_restore_people_places_summary">Eklenen: %1$d\nAtlanan duplikatlar: %2$d</string>
+    <string name="rebuild_tools_title">Yeniden Oluşturma Araçları</string>
+    <string name="rebuild_tools_back">Geri</string>
+    <string name="rebuild_tools_intro">Öncelikle odaklanmış yeniden oluşturmaları kullanın. Veritabanını yeniden oluşturmak yalnızca depolama değişiklikleri, veritabanı bozulması veya dizin eşleşmezliği içindir.</string>
+    <string name="rebuild_todo_index_title">Yapılacaklar Dizinini Yeniden Oluştur</string>
+    <string name="rebuild_todo_index_subtitle">Günlük dosyalarından yapılacakları yenileyin ve Yapılacaklar ekranını/widget\'ını güncelleyin. Yapılacaklar güncel görünmediğinde en iyisidir.</string>
+    <string name="rebuild_todo_index_button">Yapılacakları Yeniden Oluştur</string>
+    <string name="rebuild_people_places_title">Kişiler &amp; Yerler Yeniden Oluştur</string>
+    <string name="rebuild_people_places_subtitle">Anahtar kelime takma adlarını, birlikte bahsedilmeleri, trendleri ve ilişki verilerini yenileyin.</string>
+    <string name="rebuild_people_places_button">Kişiler &amp; Yerler Yeniden Oluştur</string>
+    <string name="rebuild_database_title">Tam Veritabanı Yeniden Oluşturma</string>
+    <string name="rebuild_database_subtitle">Markdown dosyalarından veritabanı önbelleğini yeniden derleyin. Girişleri, sayıları, yapılacakları, Kişiler &amp; Yerler ve widget\'ları sıfırdan yeniden dizinler.</string>
+    <string name="rebuild_database_button">Veritabanını Yeniden Oluştur</string>
+    <string name="rebuild_database_confirm_title">Veritabanı dizinini yeniden oluştur</string>
+    <string name="rebuild_database_confirm_message">Bu, Room SQLite veritabanının tamamını temizleyecek ve Markdown dosyalarınızdan yeniden dizinleyecektir. Büyük günlükler için bu işlem birkaç dakika sürebilir.</string>
+    <string name="rebuild_database_confirm_start">Yeniden Oluşturmayı Başlat</string>
+    <string name="rebuild_database_status_title">Veritabanı Dizin Durumu</string>
+    <string name="rebuild_database_storage_engine">Depolama Motoru</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite Veritabanı</string>
+    <string name="rebuild_database_indexed_days">Dizinlenmiş Günler</string>
+    <string name="rebuild_database_indexed_days_value">%1$d gün dizinlendi</string>
+    <string name="rebuild_database_file_size">Veritabanı Dosya Boyutu</string>
+    <string name="rebuild_database_last_sync">Son Dizin Senkronizasyonu</string>
+    <string name="rebuild_database_age_never">Hiçbir Zaman</string>
+    <string name="rebuild_database_age_just_now">Az önce</string>
+    <string name="rebuild_database_age_one_minute">1 dakika önce</string>
+    <string name="rebuild_database_age_minutes">%1$d dakika önce</string>
+    <string name="rebuild_database_age_one_hour">1 saat önce</string>
+    <string name="rebuild_database_age_hours">%1$d saat önce</string>
+    <string name="shortcodes_title">Kısayollar</string>
+    <string name="shortcodes_import_cd">İçe Aktar</string>
+    <string name="shortcodes_export_cd">Dışa Aktar</string>
+    <string name="shortcodes_help_cd">Yardım</string>
+    <string name="shortcodes_new">Yeni Kısayol</string>
+    <string name="shortcodes_empty_title">Özel kısayol yok</string>
+    <string name="shortcodes_empty_subtitle">@yday gibi kelimeleri dinamik metne genişletmek için bir tane ekleyin.</string>
+    <string name="shortcodes_dynamic_dates_hint">Dinamik tarihler için {{today:format}} kullanın.</string>
+    <string name="shortcodes_help_title">Kısayol Yardımı</string>
+    <string name="shortcodes_help_built_in">Yerleşik Kısayollar:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (onay kutusu), @x (onay kutusunu değiştir)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dinamik Desenler:</string>
+    <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} veya {{now:FORMAT}} kullanın.</string>
+    <string name="shortcodes_help_example">Örnek: @yday -> Dün: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Ortak biçimler: dd-MM-yy, HH:mm, EEEE (gün adı).</string>
+    <string name="action_close">Kapat</string>
+    <string name="keyword_detail_title_fallback">Anahtar Kelime</string>
+    <string name="keyword_detail_not_found">Anahtar kelime bulunamadı</string>
+    <string name="keyword_detail_last_indexed">Son dizinlenme %1$s</string>
+    <string name="keyword_detail_mentions_section">Bahsedilmeler</string>
+    <string name="pin_biometric_prompt_title">Biyometrik ile Kilidi Aç</string>
+    <string name="pin_biometric_prompt_subtitle">Kilidi açmak için parmak izinizi veya yüzünüzü kullanın</string>
+    <string name="pin_error_no_biometric_enrolled">Biyometri kayıtlı değil. Lütfen cihaz ayarlarında bir parmak izi veya yüz kaydedin.</string>
+    <string name="pin_error_hardware_unavailable">Biyometrik donanım mevcut değil.</string>
+    <string name="pin_error_no_hardware">Bu cihazda biyometrik donanım bulunmamaktadır.</string>
+    <string name="pin_error_not_available">Biyometrik kimlik doğrulama mevcut değil.</string>
+    <string name="pin_title_confirm">PIN\'i Onayla</string>
+    <string name="pin_title_set_new">Yeni PIN Ayarla</string>
+    <string name="pin_title_disable">Devre Dışı Bırakmak İçin Mevcut PIN\'i Girin</string>
+    <string name="pin_title_enter">PIN Girin</string>
+    <string name="pin_error_incorrect">Yanlış PIN. Tekrar deneyin.</string>
+    <string name="pin_error_mismatch">PIN\'ler eşleşmedi. Baştan başlayın.</string>
+    <string name="pin_cd_use_biometric">Biyometri kullan</string>
+    <string name="pin_cd_backspace">Geri al</string>
+    <string name="timeline_preview_empty_labeled">Bu gün etiketlendi, ancak henüz günlük girişi yok.</string>
+    <string name="timeline_preview_loading">Önizleme yükleniyor…</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ bu günde %1$d giriş daha</item>
+        <item quantity="other">+ bu günde %1$d giriş daha</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Bu Günü Aç</string>
+    <string name="timeline_chip_today">BUGÜN</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d giriş</item>
+        <item quantity="other">%1$d giriş</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Takip</string>
+    <string name="timeline_chip_label_only">Yalnızca etiket</string>
+    <string name="timeline_cd_favorite">Favori</string>
+    <string name="version_history_title">Sürüm Geçmişi</string>
+    <string name="version_history_day_versions_title">Gün Sürümleri</string>
+    <string name="version_history_keep_copies_title">Güvenlik kopyalarını sakla</string>
+    <string name="version_history_keep_copies_subtitle">Yaja bir gün dosyasını değiştirmeden önce mevcut dosyayı Geçmiş Dosyaları altındaki uygulama verilerine kaydeder.</string>
+    <string name="version_history_versions_kept_title">Gün başına saklanan sürüm sayısı</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja her tarih için en yeni %1$d sürümü saklar.</item>
+        <item quantity="other">Yaja her tarih için en yeni %1$d sürümü saklar.</item>
+    </plurals>
+    <string name="version_history_retention_title">Tutma</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">%1$d günden eski anlık görüntüler otomatik olarak temizlenir.</item>
+        <item quantity="other">%1$d günden eski anlık görüntüler otomatik olarak temizlenir.</item>
+    </plurals>
+    <string name="version_history_notes">Notlar: Sürüm geçmişi ekleme, düzenleme, silme, yeniden sıralama, etiketleme, yıldızlama ve yeniden ziyaret değişikliklerinden önce gün markdown dosyalarını korur. Bu bir bulut yedeklemesi değildir; taşınabilir kopyalar için Yedeklemeyi kullanmaya devam edin.</string>
+    <string name="version_history_snapshots_for">%1$s için anlık görüntüler</string>
+    <string name="version_history_snapshots_subtitle">Kaydedilmiş bir sürümü açın, inceleyin ve bu gün için geri yükleyin.</string>
+    <string name="version_history_empty">Bu tarih için henüz kaydedilmiş bir sürüm yok.</string>
+    <string name="action_view">Görüntüle</string>
+    <string name="version_history_date_intro">Bu gün için daha önce kaydedilmiş bir sürümü açın, inceleyin ve gerektiğinde geri yükleyin.</string>
+    <string name="action_next">İleri</string>
+    <string name="action_apply">Uygula</string>
+    <string name="action_restore">Geri Yükle</string>
+    <string name="statistics_choose_title">İstatistikleri Seç</string>
+    <string name="statistics_choose_subtitle">İstemediğiniz bölümleri gizleyin. En az bir bölüm görünür kalmalıdır.</string>
+    <string name="statistics_visible_count">%1$d / %2$d görünür</string>
+    <string name="statistics_show_all">Tümünü Göster</string>
+    <string name="statistics_one_section_visible">En az bir bölüm görünür kalmalı</string>
+    <string name="statistics_shown">İstatistiklerde gösteriliyor</string>
+    <string name="statistics_hidden">İstatistiklerden gizlendi</string>
+    <string name="statistics_select_start_date">Başlangıç Tarihini Seç</string>
+    <string name="statistics_select_end_date">Bitiş Tarihini Seç</string>
+    <string name="statistics_filter_by_period">Döneme Göre Filtrele</string>
+    <string name="statistics_cd_reorder">Yeniden sıralamak için uzun basın</string>
+    <string name="statistics_total_entries">Toplam Giriş</string>
+    <string name="statistics_total_words">Toplam Kelime</string>
+    <string name="statistics_avg_words_per_entry">Ort. Kelime/Giriş</string>
+    <string name="statistics_current_streak">Mevcut Seri</string>
+    <string name="statistics_pages_written">Yazılan Sayfa</string>
+    <string name="statistics_days_highlighted">Öne Çıkarılan Günler</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <string name="statistics_period_all_time">Tüm Zamanlar İstatistikleri</string>
+    <string name="statistics_period_current_year">Bu Yıl İstatistikleri</string>
+    <string name="statistics_period_previous_year">Geçen Yıl İstatistikleri</string>
+    <string name="statistics_period_current_month">Bu Ay İstatistikleri</string>
+    <string name="statistics_period_previous_month">Geçen Ay İstatistikleri</string>
+    <string name="statistics_period_custom">Özel Dönem İstatistikleri</string>
+    <string name="statistics_period_chip_all_time">Tüm Zamanlar</string>
+    <string name="statistics_period_chip_current_year">Bu Yıl</string>
+    <string name="statistics_period_chip_previous_year">Geçen Yıl</string>
+    <string name="statistics_period_chip_current_month">Bu Ay</string>
+    <string name="statistics_period_chip_previous_month">Geçen Ay</string>
+    <string name="statistics_period_chip_custom">Özel</string>
+    <string name="statistics_sections_visible">%1$d / %2$d bölüm görünür</string>
+    <string name="statistics_loading_stages">İstatistikler aşamalı olarak yükleniyor…</string>
+    <string name="review_period_weekly">Haftalık İnceleme</string>
+    <string name="review_period_monthly">Aylık İnceleme</string>
+    <string name="review_anchor_week">%1$s içeren hafta</string>
+    <string name="review_anchor_month">%1$s içeren ay</string>
+    <string name="review_chip_entries">Girişler %1$d</string>
+    <string name="review_chip_words">Kelimeler %1$d</string>
+    <string name="review_chip_days">Günler %1$d</string>
+    <string name="review_hint_jump">Günlüğe geri dönmek için aşağıdaki tarih kartlarına dokunun.</string>
+    <string name="review_chip_streak">Seri %1$d</string>
+    <string name="review_chip_gap">Boşluk %1$d</string>
+    <string name="review_chip_labels">Etiketler %1$d</string>
+    <string name="review_chip_favorites">Favoriler %1$d</string>
+    <string name="review_empty_period">Bu dönemde henüz günlük girişi yok. Varsa etiketler ve öne çıkanlar aşağıda görünmeye devam eder.</string>
+    <string name="review_writing_rhythm">Yazma Ritmi</string>
+    <string name="review_best_streak">En iyi seri</string>
+    <string name="review_longest_gap">En uzun boşluk</string>
+    <string name="review_most_active_days">En Aktif Günler</string>
+    <string name="review_day_entries_words">%1$d giriş | %2$d kelime</string>
+    <string name="review_top_people">En Çok Bahsedilen Kişiler</string>
+    <string name="review_top_places">En Çok Bahsedilen Yerler</string>
+    <string name="review_no_people_mentions">Kişi bahsi yok</string>
+    <string name="review_no_place_mentions">Yer bahsi yok</string>
+    <string name="review_favorite_moments">Favori Anlar</string>
+    <string name="review_starred_day">Yıldızlı gün</string>
+    <string name="review_highlighted_in_period">Bu dönemde öne çıkarılanlar</string>
+    <string name="review_labels_created">Oluşturulan Etiketler</string>
+    <string name="review_labeled_day">Etiketli gün</string>
+    <string name="review_language_split">Dil Dağılımı</string>
+    <string name="review_not_enough_text">Bu dönemde yeterli metin yok</string>
+    <string name="lookback_reviews_title">İncelemeler</string>
+    <string name="lookback_reviews_intro">Seçtiğiniz günlük günü etrafında hızlı bir yansıma oluşturun.</string>
+    <string name="lookback_seven_days">7 gün</string>
+    <string name="lookback_one_month">1 ay</string>
+    <string name="lookback_weekly_review">Haftalık İnceleme</string>
+    <string name="lookback_weekly_review_subtitle">Bir bakışta bu hafta</string>
+    <string name="lookback_monthly_review">Aylık İnceleme</string>
+    <string name="lookback_monthly_review_subtitle">Bu ayın özeti</string>
+    <string name="lookback_flashbacks_title">Geçmiş yıllarda bugün</string>
+    <string name="lookback_highlights_title">Vurgularınız</string>
+    <string name="lookback_empty_title">Henüz geçmişe bakış veya vurgu yok.</string>
+    <string name="lookback_empty_subtitle">Onları burada görmek için önemli günleri favorilere ekleyin!</string>
+    <string name="lookback_cd_random_entry">Rastgele girişe git</string>
+
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Dönem</string>
+    <string name="statistics_compare_mode_title">Karşılaştırma Modu</string>
+    <string name="statistics_compare_mode_subtitle">Ay, yıl ve anahtar kelime deltaları</string>
+    <string name="statistics_this_year">Bu Yıl</string>
+    <string name="statistics_writing_days_delta">Yazma Günleri Deltası</string>
+    <string name="statistics_top_person_delta">En Çok Bahsedilen Kişi Deltası</string>
+    <string name="statistics_no_people_mentions">Henüz kişi bahsi yok</string>
+    <string name="statistics_top_place_delta">En Çok Bahsedilen Yer Deltası</string>
+    <string name="statistics_no_place_mentions">Henüz yer bahsi yok</string>
+    <string name="statistics_structured_writing">Yapılandırılmış Yazma</string>
+    <string name="statistics_template_led_format">Şablon odaklı %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Boş %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">En Çok Kullanılan Şablonlar</string>
+    <string name="statistics_template_mix">Şablon Karışımı</string>
+    <string name="statistics_follow_up_leaders">Takip Öncüleri</string>
+    <string name="statistics_compare_details">Karşılaştırma Ayrıntıları</string>
+    <string name="statistics_label_month">Ay</string>
+    <string name="statistics_label_year">Yıl</string>
+    <string name="statistics_this_month_count_format">Bu ay %1$d</string>
+    <string name="statistics_last_month_count_format">Geçen ay %1$d</string>
+    <string name="statistics_longest_streak">En Uzun Seri</string>
+    <string name="statistics_most_active_day">En Aktif Gün</string>
+    <string name="statistics_writing_consistency">Yazma Tutarlılığı</string>
+    <string name="statistics_days_with_entries">Giriş Yapılan Günler</string>
+    <string name="statistics_best_month">En İyi Ay</string>
+    <string name="statistics_best_month_format">%1$s · %2$d giriş</string>
+    <string name="statistics_avg_writing_days_week">Ort. Haftalık Yazma Günü</string>
+    <string name="statistics_days_decimal_format">%1$.1f gün</string>
+    <string name="statistics_based_on_total_words">Günlük yazılan toplam kelime sayısına göre</string>
+    <string name="statistics_light_words">Hafif (&lt; 50 kelime)</string>
+    <string name="statistics_moderate_words">Orta (50-200 kelime)</string>
+    <string name="statistics_heavy_words">Ağır (200-500 kelime)</string>
+    <string name="statistics_intense_words">Yoğun (500+ kelime)</string>
+    <string name="statistics_not_enough_text_languages">Dilleri algılamak için yeterli metin yok</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d dil algılandı</item>
+        <item quantity="other">%1$d dil algılandı</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Dil algılama hala yerleşiyor.</string>
+    <string name="statistics_latin_scripts_as_english">Latin alfabeleri İngilizce olarak gösterilir</string>
+    <string name="statistics_use_more_accurate_detection">Daha doğru algılama kullan</string>
+    <string name="statistics_write_more_entries_languages">Dil istatistiklerini görmek için daha fazla giriş yazın.</string>
+    <string name="statistics_based_on_entry_time">Giriş zamanına göre</string>
+    <string name="statistics_morning_time">Sabah (05:00-Öğle)</string>
+    <string name="statistics_afternoon_time">Öğleden Sonra (Öğle-17:00)</string>
+    <string name="statistics_evening_time">Akşam (17:00-21:00)</string>
+    <string name="statistics_night_time">Gece (21:00-05:00)</string>
+    <string name="statistics_heatmap_filling">Isı haritası hala doluyor.</string>
+    <string name="statistics_heatmap_less">Daha Az</string>
+    <string name="statistics_heatmap_more">Daha Çok</string>
+    <string name="action_open">Aç</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Günlük Etkinlikleri</string>
+    <string name="tasker_event_desc">Hangi Yaja günlük etkinliklerinin bu Tasker profilini tetikleyeceğini seçin.</string>
+    <string name="tasker_event_saved">Giriş Kaydedildi</string>
+    <string name="tasker_event_edited">Giriş Düzenlendi</string>
+    <string name="tasker_event_deleted">Giriş Silindi</string>
+    <string name="tasker_event_default_hint">Hiçbiri seçilmezse, Yaja varsayılan olarak Giriş Kaydedildi eylemini kullanır.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Hızlı Yakalama</string>
+    <string name="tasker_action_desc">Tasker\'ın Yaja\'da neleri hızlıca yakalayacağını yapılandırın.</string>
+    <string name="tasker_action_add_entry">Giriş Ekle</string>
+    <string name="tasker_action_add_event">Etkinlik Ekle</string>
+    <string name="tasker_action_add_todo">Yapılacak Ekle</string>
+    <string name="tasker_action_append">Ekle</string>
+    <string name="tasker_action_match_header_label">Eşleşme / başlık</string>
+    <string name="tasker_action_match_header_placeholder">Cevapsız Aramalar</string>
+    <string name="tasker_action_line_to_append_label">Eklenecek satır</string>
+    <string name="tasker_action_text_label">Metin</string>
+    <string name="tasker_action_placeholder_event">Tasker\'dan etkinlik notu</string>
+    <string name="tasker_action_placeholder_todo">Süt al</string>
+    <string name="tasker_action_placeholder_append">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Tasker\'dan hızlı not</string>
+    <string name="tasker_action_tip_append">İlk arama, eşleşen metinle başlayan bir giriş oluşturur. Sonraki aramalar satırı onun altına ekler.</string>
+    <string name="tasker_action_tip_default">İpucu: Tasker değişkenleri metin alanına yerleştirilebilir.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Önceki Oturum Kilitlenme Günlüğü</string>
+    <string name="crash_log_clear_close">Temizle &amp; Kapat</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Uygulamayı Başlat</string>
+    <string name="tap_action_quick_capture">Hızlı Yakalama</string>
+    <string name="tap_action_do_nothing">Hiçbir Şey Yapma</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja Yazma Isı Haritası</string>
+    <string name="widget_cell_shape">Hücre Şekli</string>
+    <string name="widget_corner_radius">Köşe Yarıçapı: %1$ddp</string>
+    <string name="widget_square">Kare</string>
+    <string name="widget_round">Yuvarlak</string>
+    <string name="widget_inner_margin">İç Kenar Boşluğu: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Isı haritası ile widget kenarları arasındaki boşluk</string>
+    <string name="widget_none">Yok</string>
+    <string name="widget_max">Maks</string>
+    <string name="widget_on_tap">Dokunulduğunda</string>
+    <string name="widget_on_tap_desc">Widget\'a dokunulduğunda yapılacak eylem</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Yakalama</string>
+    <string name="widget_qc_shape">Widget Şekli</string>
+    <string name="widget_show_label">Etiketi Göster</string>
+    <string name="widget_show_label_desc">Widget üzerinde \'Yakalama\' metnini görüntüle</string>
+    <string name="widget_show_icon">Simgeyi Göster</string>
+    <string name="widget_show_icon_required">Etiket gizlendiğinde simge gereklidir</string>
+    <string name="widget_show_icon_desc">Widget üzerinde kalem simgesini görüntüle</string>
+    <string name="widget_label_text">Etiket Metni</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Yapılacaklar Widget\'ı</string>
+    <string name="widget_todo_desc">Yuvarlak, ısı haritası benzeri yapılacaklar listesi widget\'ı.</string>
+    <string name="widget_todo_corner_radius">Köşe yarıçapı: %1$ddp</string>
+    <string name="widget_todo_padding">Dolgu: %1$ddp</string>
+    <string name="widget_todo_show_completed">Tamamlanan görevleri göster</string>
+    <string name="widget_todo_show_completed_desc">İşaretlenen öğeleri widget listesine dahil et</string>
+    <string name="widget_todo_include_events">Etkinlikleri dahil et</string>
+    <string name="widget_todo_include_events_desc">Widget\'ta yapılacakların yanında etkinlik girişlerini de göster</string>
+    <string name="widget_todo_show_header">Yapılacaklar başlığını göster</string>
+    <string name="widget_todo_show_header_desc">Widget başlık satırını göster veya gizle</string>
+    <string name="widget_todo_auto_hide">Tüm yapılacaklar tamamlandığında widget\'ı otomatik gizle</string>
+    <string name="widget_todo_auto_hide_unavailable">Tamamlanan görevler gösterilirken kullanılamaz</string>
+    <string name="widget_todo_auto_hide_desc">Bekleyen görev olmadığında widget\'ı şeffaf yap</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">tamamlandı</string>
+    <string name="todo_confirm_mark_not_done">tamamlanmadı</string>
+    <string name="todo_confirm_title">Görev %1$s olarak işaretlensin mi?</string>
+    <string name="todo_confirm_reopen">Bu yapılacak iş şu anda tamamlanmış durumda. Yeniden açmadan önce onaylayın.</string>
+    <string name="todo_confirm_complete">Bu yapılacak iş hala açık durumda. Tamamlandı olarak işaretlemeden önce onaylayın.</string>
+    <string name="todo_confirm_accidental_tap">Yanlışlıkla yapılan dokunuşlar görevi değiştirmeyecektir.</string>
+    <string name="todo_confirm_yes_mark">Evet, %1$s olarak işaretle</string>
+    <string name="todo_confirm_open_yaja">Yaja\'da Aç</string>
+    <string name="todo_confirm_keep_as_is">Olduğu gibi koru</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">RJ laboratuvarlarından</string>
+    <string name="help_made_in">🇮🇳\'de üretildi</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">İçe aktarmayı iptal et</string>
+    <string name="timeline_show_all_dates">Tüm tarihleri göster</string>
+    <string name="timeline_show_all_dates_subtitle">Giriş olmayanlar da dahil olmak üzere tüm geçmiş günleri dahil et</string>
+    <string name="settings_background_tint_clean">Temiz</string>
+    <string name="settings_background_tint_soft">Yumuşak</string>
+    <string name="settings_background_tint_rich">Zengin</string>
+    <string name="settings_background_tint_deep">Derin</string>
+    <string name="settings_accent_style_complementary">Tamamlayıcı</string>
+    <string name="settings_accent_style_analogous">Analog</string>
+    <string name="settings_accent_style_triadic">Üçlü</string>
+    <string name="settings_accent_style_soft">Yumuşak</string>
+    <string name="compliance_frequency_annual">Yıllık</string>
+    <string name="compliance_frequency_biweekly">İki haftada bir</string>
+    <string name="compliance_frequency_half_yearly">Altı aylık</string>
+    <string name="compliance_frequency_monthly">Aylık</string>
+    <string name="compliance_frequency_quarterly">Üç aylık</string>
+    <string name="compliance_frequency_weekly">Haftalık</string>
+    <string name="compliance_master_add">Tekrarlanan görev ekle</string>
+    <string name="compliance_master_boundary_first">ilk gün</string>
+    <string name="compliance_master_boundary_last">son gün</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" silinecek ve bundan sonra yeni bir iş oluşturulmayacaktır.</string>
+    <string name="compliance_master_delete_confirm_title">Tekrarlanan görev silinsin mi?</string>
+    <string name="compliance_master_details_boundary_help">Görevin günlük dosyaya bitiş tarihinden kaç gün önce yazılacağını seçin.</string>
+    <string name="compliance_master_details_date_help">Bitiş tarihini ve görevin günlük dosyaya bitiş tarihinden kaç gün önce yazılacağını girin.</string>
+    <string name="compliance_master_details_weekday_help">Bu görevin hangi gün yapılacağını seçin.</string>
+    <string name="compliance_master_due_day_help">1 ile 31 arasında bir gün girin. Daha kısa aylar son geçerli günlerini kullanacaktır.</string>
+    <string name="compliance_master_edit">Tekrarlanan görevi düzenle</string>
+    <string name="compliance_master_editor_task_section">Yaja size neyi hatırlatmalı?</string>
+    <string name="compliance_master_empty">Henüz tekrarlanan bir görev yok. Seçilen plana göre otomatik işler oluşturmak için bir tane ekleyin.</string>
+    <string name="compliance_master_execution_day_of_month">Görev %1$s %2$d. günde oluşturulur. Günlük dosyanıza bitiş tarihinden %3$d gün önce yazılır.</string>
+    <string name="compliance_master_execution_month_boundary">Görev %1$s bitiş ayının %2$sinde oluşturulur. Günlük dosyanıza bitiş tarihinden %3$d gün önce yazılır.</string>
+    <string name="compliance_master_execution_monthly_weekday">Görev, aylık olarak başlangıç tarihiyle aynı günde oluşturulur. Günlük dosyanıza bitiş tarihinden %2$d gün önce yazılır.</string>
+    <string name="compliance_master_execution_title">Nasıl çalışacak?</string>
+    <string name="compliance_master_execution_weekday">Görev %1$s %2$s günü oluşturulur. Günlük dosyanıza bitiş tarihinden %3$d gün önce yazılır.</string>
+    <string name="compliance_master_field_description">Açıklama</string>
+    <string name="compliance_master_field_description_hint">Örnek: Aylık vergi beyannamesini gönder</string>
+    <string name="compliance_master_field_due_day">Bitiş tarihi</string>
+    <string name="compliance_master_field_due_weekday">Bitiş günü</string>
+    <string name="compliance_master_field_frequency">Ne sıklıkla?</string>
+    <string name="compliance_master_field_reveal_day">Önceden oluştur (gün)</string>
+    <string name="compliance_master_field_schedule_mode">Ne zaman yapılmalı?</string>
+    <string name="compliance_master_field_title">Görev adı</string>
+    <string name="compliance_master_field_title_hint">Örnek: Aylık raporu teslim et</string>
+    <string name="compliance_master_first_day_selected">Her ilgili ayın ilk gününde yapılır.</string>
+    <string name="compliance_master_frequency_help">Bu görevin ne sıklıkla tekrarlanacağını seçin.</string>
+    <string name="compliance_master_intro_body">Haftalık, aylık, üç aylık, altı aylık veya yıllık işler için tekrarlanan görevler oluşturun. Yaja, her görevi yalnızca zamanı geldiğinde gösterir.</string>
+    <string name="compliance_master_intro_title">Tekrarlanan Görevler</string>
+    <string name="compliance_master_last_day_selected">Her ilgili ayın son gününde yapılır.</string>
+    <string name="compliance_master_meta_format">Ayın %1$d. günü yapılacak • %2$d gün önceden göster</string>
+    <string name="compliance_master_next_date">Sonraki: %1$s</string>
+    <string name="compliance_master_end_section">Bitiş koşulu</string>
+    <string name="compliance_master_end_help">Bu görevin ne zaman tekrarlamayı bırakacağını seçin</string>
+    <string name="compliance_master_end_never">Asla</string>
+    <string name="compliance_master_end_on_date">Tarihte</string>
+    <string name="compliance_master_end_after">Şu kadar sonra…</string>
+    <string name="compliance_master_end_never_desc">Bitiş tarihi olmadan süresiz tekrarlanır.</string>
+    <string name="compliance_master_end_date_select">Bitiş tarihini seç</string>
+    <string name="compliance_master_end_date_help">Bu tarihten sonra görev oluşturulmaz.</string>
+    <string name="compliance_master_end_count_label">Tekrar sayısı</string>
+    <string name="compliance_master_end_count_help">Bu kadar görev oluşturulduktan sonra durur.</string>
+    <string name="compliance_master_ends_on">Bitiş: %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d kaldı</string>
+    <string name="compliance_master_ended">Bitti</string>
+    <string name="compliance_master_type_label">Şu olarak oluştur</string>
+    <string name="compliance_master_type_task">Görev</string>
+    <string name="compliance_master_type_event">Etkinlik</string>
+    <string name="compliance_master_recurrence_annual">her yıl</string>
+    <string name="compliance_master_recurrence_biweekly">her iki haftada bir</string>
+    <string name="compliance_master_recurrence_half_yearly">her altı ayda bir</string>
+    <string name="compliance_master_recurrence_monthly">her ay</string>
+    <string name="compliance_master_recurrence_quarterly">her üç ayda bir</string>
+    <string name="compliance_master_recurrence_weekly">her hafta</string>
+    <string name="compliance_master_reveal_day_help">Görevin günlük günlüğe bitiş tarihinden kaç gün önce yazılacağı.</string>
+    <string name="compliance_master_schedule_details">Plan ayrıntıları</string>
+    <string name="compliance_master_schedule_mode_help">Yaja\'nın bitiş tarihini nasıl belirleyeceğini seçin.</string>
+    <string name="compliance_master_select_frequency">Tekrarlama sıklığını seçin</string>
+    <string name="compliance_master_select_schedule_type">Bitiş şeklini seçin</string>
+    <string name="compliance_master_select_weekday">Günü seçin</string>
+    <string name="compliance_master_status_deactivated">Devre dışı bırakıldı</string>
+    <string name="compliance_master_summary_day_of_month">%1$d. gün • %2$s • %3$d gün önceden</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">İlk gün • %1$s • %2$d gün önceden</string>
+    <string name="compliance_master_summary_last_day">Son gün • %1$s • %2$d gün önceden</string>
+    <string name="compliance_master_title">Yinelenen Görevler / Etkinlikler</string>
+    <string name="compliance_master_upcoming">Yaklaşanlar</string>
+    <string name="compliance_mode_day_of_month">Belirli tarih</string>
+    <string name="compliance_mode_day_of_month_desc">Ayın 15\'i gibi belirli bir günde yapılır.</string>
+    <string name="compliance_mode_day_of_week">Haftanın günü</string>
+    <string name="compliance_mode_day_of_week_desc">Pazartesi gibi seçilen bir günde yapılır.</string>
+    <string name="compliance_mode_first_day">Ayın ilk günü</string>
+    <string name="compliance_mode_first_day_desc">Her ilgili ayın ilk gününde yapılır.</string>
+    <string name="compliance_mode_last_day">Ayın son günü</string>
+    <string name="compliance_mode_last_day_desc">Daha kısa aylar dahil olmak üzere ayın son gününde yapılır.</string>
+    <string name="todo_chip_compliance">Tekrarlanan</string>
+    <string name="todos_cd_open_compliance_master">Tekrarlanan görevleri aç</string>
+
+    <string name="settings_ui_font_size_label">Arayüz Yazı Tipi Boyutu</string>
+    <string name="settings_data_font_size_label">İçerik Yazı Tipi Boyutu</string>
+    <string name="settings_follow_ui_font_scale_label">İçerik yazı tipi boyutunu arayüzle aynı yap</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_todo_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="14dp"
+    android:paddingTop="3dp"
+    android:paddingRight="14dp"
+    android:paddingBottom="3dp">
+
+    <LinearLayout
+        android:id="@+id/widget_todo_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_todo_widget_item"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingTop="7dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="7dp">
+
+        <TextView
+            android:id="@+id/widget_todo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="3"
+            android:text="[ ] Buy milk"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/widget_todo_meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:text="Tue, 30 Apr | Home"
+            android:textSize="12sp" />
+    </LinearLayout>
+</FrameLayout>

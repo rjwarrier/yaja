@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">jaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Tijdschrift</string>
+    <string name="nav_calendar">Kalender</string>
+    <string name="nav_lookback">Terugblik</string>
+    <string name="nav_settings">Instellingen</string>
+    <string name="nav_shortcodes">Shortcodes</string>
+    <string name="nav_help">Hulp &amp; Over</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Redden</string>
+    <string name="action_cancel">Annuleren</string>
+    <string name="action_delete">Verwijderen</string>
+    <string name="action_edit">Bewerking</string>
+    <string name="action_back">Rug</string>
+    <string name="action_undo">Ongedaan maken</string>
+    <string name="action_yes">Ja</string>
+    <string name="action_no">Nee</string>
+    <string name="action_remove">Verwijderen</string>
+    <string name="action_done">Klaar</string>
+    <string name="action_set">Set</string>
+    <string name="action_select">Selecteer</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Cache opnieuw opbouwen</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Snelle opname</string>
+    <string name="quick_capture_hint">Wat is er gebeurd?</string>
+    <string name="quick_capture_helper_shortcodes">Shortcodes worden hier automatisch uitgebreid en de todo-regels gaan verder op Enter.</string>
+    <string name="quick_capture_save_delayed">Opslaan uitgesteld. Open Yaja opnieuw om het te verifiëren.</string>
+    <string name="cd_saved">Opgeslagen</string>
+    <string name="quick_todo_dialog_title">Snel toevoegen</string>
+    <string name="quick_todo_save_delayed">Todo opslaan uitgesteld. Open Yaja opnieuw om het te verifiëren.</string>
+    <string name="quick_todo_placeholder">Voeg een taak toe</string>
+    <string name="quick_event_placeholder">Voeg een evenement toe</string>
+    <string name="quick_todo_task_date">Taak Datum</string>
+    <string name="quick_todo_event_date">Datum evenement</string>
+    <string name="quick_todo_pick_date_cd_format">Kies %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Wordt opgeslagen als een todo-item voor de geselecteerde dag.</string>
+    <string name="quick_event_selected_day_hint">Wordt opgeslagen als een gebeurtenisinvoer voor de geselecteerde dag.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Vorig</string>
+    <string name="cd_next">Volgende</string>
+    <string name="cd_surprise_me">Verras mij</string>
+    <string name="calendar_cd_go_to_current_month">Ga naar de huidige maand</string>
+    <string name="calendar_quick_action_timeline_title">Tijdlijn</string>
+    <string name="calendar_quick_action_timeline_subtitle">Blader chronologisch</string>
+    <string name="calendar_quick_action_jump_title">Ga naar Datum</string>
+    <string name="calendar_quick_action_jump_subtitle">Open een specifieke dag</string>
+    <string name="calendar_jump_placeholder">DD-MM-JJ</string>
+    <string name="calendar_jump_invalid_date">Ongeldige datum. Gebruik het DD-MM-JJ-formaat.</string>
+    <string name="calendar_action_go">Gaan</string>
+    <string name="calendar_enable_future_dates_title">Schakel toekomstige datums in</string>
+    <string name="calendar_enable_future_dates_message">Invoer van toekomstige datums is uitgeschakeld. Wilt u dit inschakelen?</string>
+    <string name="calendar_action_enable">Inschakelen</string>
+    <string name="calendar_future_entry_enabled">Invoer van toekomstige datums is ingeschakeld</string>
+    <string name="calendar_weekday_sun_short">Zon</string>
+    <string name="calendar_weekday_mon_short">ma</string>
+    <string name="calendar_weekday_tue_short">di</string>
+    <string name="calendar_weekday_wed_short">wo</string>
+    <string name="calendar_weekday_thu_short">Do</string>
+    <string name="calendar_weekday_fri_short">Vr</string>
+    <string name="calendar_weekday_sat_short">Zat</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">INSCHRIJVINGEN DEZE MAAND</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d dag</item>
+        <item quantity="other">%1$d / %2$d dagen</item>
+    </plurals>
+    <string name="calendar_days_of_memories">dagen vol herinneringen</string>
+    <string name="calendar_consistency_last_12_months">DE LAATSTE 12 MAANDEN</string>
+    <string name="calendar_consistency_title_format">CONSISTENTIE - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% versus \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">versus \'%1$s</string>
+    <string name="calendar_consistency_first_period">eerste periode</string>
+    <string name="calendar_graph_frequency_month">Maand</string>
+    <string name="calendar_graph_frequency_year">Jaar</string>
+    <string name="calendar_yearly_consistency_title">Consistentie (jaarlijks)</string>
+    <string name="calendar_keywords_title">Wie komt het meeste opdagen</string>
+    <string name="calendar_keywords_syncing">Statistieken van Mensen en Plaatsen worden nog steeds gesynchroniseerd met trefwoordindexering.</string>
+    <string name="calendar_keywords_empty">Voeg minimaal 3 mensen of 3 plaatsen toe om topvermeldingen te zien.</string>
+    <string name="calendar_keywords_people">Mensen</string>
+    <string name="calendar_keywords_places">Plaatsen</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_appearance">Verschijning</string>
+    <string name="settings_appearance_subtitle">Thema, kleuren, lettertypen en persoonlijke stijlen</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_font">Lettertype</string>
+    <string name="settings_storage">Opslag</string>
+    <string name="settings_security">Beveiliging</string>
+    <string name="settings_backup">Back-up</string>
+    <string name="settings_change_storage_title">Wijzig de opslaglocatie</string>
+    <string name="settings_backup_never">Nooit</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Zoekinstellingen</string>
+    <string name="settings_search_clear">Duidelijke zoekopdracht</string>
+    <string name="settings_search_recent">Recente zoekopdrachten</string>
+    <string name="settings_search_no_results">Geen overeenkomende instellingen</string>
+    <string name="settings_search_close">Dichtbij</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Tijdschriftervaring</string>
+    <string name="settings_section_navigation_gestures">Navigatie en gebaren</string>
+    <string name="settings_section_review_insights">Beoordeling en inzichten</string>
+
+    <!-- Language -->
+    <string name="settings_language">Taal</string>
+    <string name="settings_language_title">App-taal</string>
+    <string name="settings_language_subtitle">Kies de taal die in de app wordt gebruikt.</string>
+    <string name="settings_language_system_default">Systeemstandaard</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Instapstijl</string>
+    <string name="settings_journal_entry_style_subtitle">Kies tussen verhoogde kaarten en een vlakkere dagboeklook.</string>
+    <string name="settings_journal_entry_style_cards">Kaarten</string>
+    <string name="settings_journal_entry_style_flat">Vlak</string>
+    <string name="settings_journal_render_checkboxes_title">Geef selectievakjes weer als tekst</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Toon taken als [ ] en [x] in de app in plaats van expressieve selectievakjes.</string>
+    <string name="settings_journal_day_header_counts_title">Toon dagkoptellingen</string>
+    <string name="settings_journal_day_header_counts_subtitle">Toon het aantal vermeldingen, woorden en tekens in de dagkop van het journaal.</string>
+    <string name="settings_journal_show_timestamps_title">Tijdstempels weergeven</string>
+    <string name="settings_journal_show_timestamps_subtitle">Geef de inlooptijd weer op de tijdlijn.</string>
+    <string name="settings_journal_allow_future_title">Toekomstige invoer toestaan</string>
+    <string name="settings_journal_allow_future_subtitle">Schakel het toevoegen van vermeldingen aan toekomstige datums in.</string>
+    <string name="settings_journal_truncate_title">Lange vermeldingen afkappen</string>
+    <string name="settings_journal_truncate_subtitle">Verkort lange vermeldingen op het startscherm.</string>
+    <string name="settings_journal_char_limit_title">Tekenlimiet</string>
+    <string name="settings_journal_char_limit_subtitle">Stel in hoeveel tekens moeten worden weergegeven vóór het afkappen.</string>
+    <string name="settings_journal_char_limit_min">50 tekens</string>
+    <string name="settings_journal_char_limit_max">200 tekens</string>
+    <string name="settings_journal_char_count">%1$d tekens</string>
+    <string name="settings_journal_first_day_title">Eerste dag van de week</string>
+    <string name="settings_journal_first_day_subtitle">Agenda starten aan</string>
+    <string name="settings_journal_day_sun">Zon</string>
+    <string name="settings_journal_day_mon">ma</string>
+    <string name="settings_journal_date_recognition">Datumherkenning</string>
+    <string name="settings_journal_date_order_title">Datumvolgorde</string>
+    <string name="settings_journal_date_order_subtitle">Hoe numerieke datums te lezen</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Woorden in andere talen die een datum betekenen (bijvoorbeeld een lokaal woord voor gisteren).</string>
+    <string name="settings_journal_date_keywords_subtitle">Woorden in andere talen die een datum betekenen (bijvoorbeeld een lokaal woord voor gisteren).</string>
+    <string name="settings_journal_view_keywords">Bekijk (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Zoekwoord toevoegen</string>
+    <string name="settings_journal_motion">Beweging</string>
+    <string name="settings_journal_animations_title">Animaties</string>
+    <string name="settings_journal_animations_subtitle">Beheer bewegingen in de app. Reduced houdt alles vloeiend met minder beweging.</string>
+    <string name="settings_journal_animations_full">Vol</string>
+    <string name="settings_journal_animations_reduced">Verminderd</string>
+    <string name="settings_journal_animations_off">Uit</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Beoordeling na opslaan</string>
+    <string name="settings_review_post_write_title">Beoordeling na schrijven</string>
+    <string name="settings_review_post_write_subtitle">Toon het beoordelingsblad nadat u op Opslaan hebt getikt om taken uit te pakken, vermeldingen te bekijken, een sterrendag te vieren of een label in te stellen.</string>
+    <string name="settings_review_people_places">Mensen en plaatsen</string>
+    <string name="settings_review_highlighting_title">Markering</string>
+    <string name="settings_review_highlighting_subtitle">Markeer gevolgde personen en plaatsen in de thuiskaarten en de modus Toegang bekijken.</string>
+    <string name="settings_review_match_sensitivity_title">Matchgevoeligheid</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Hoe nauw een woord moet overeenkomen om te worden gedetecteerd door Mensen en plaatsen (hoger = strenger).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Voeg een shortcode toe</string>
+    <string name="shortcodes_edit_title">Shortcode bewerken</string>
+    <string name="shortcodes_code_label">Shortcode (bijvoorbeeld @yday)</string>
+    <string name="shortcodes_expansion_label">Uitbreidingstekst</string>
+    <string name="shortcodes_export_error">Kan shortcodes niet exporteren</string>
+    <string name="shortcodes_import_error">Kan shortcodes niet importeren</string>
+    <string name="todos_expand_section">Vouw %1$s uit</string>
+    <string name="todos_collapse_section">Samenvouwen %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Heatmap schrijven</string>
+    <string name="heatmap_widget_description">Heatmap voor recente schrijfactiviteiten voor uw dagboek.</string>
+    <string name="quick_capture_widget_name">Snelle opname</string>
+    <string name="quick_capture_widget_description">Met één tik kunt u snel een journaalboeking toevoegen.</string>
+    <string name="quick_todo_widget_name">Snel Todo</string>
+    <string name="tasker_plugin_action_label">Yaja snelle opname</string>
+    <string name="tasker_plugin_event_label">Yaja Journal-evenementen</string>
+    <string name="tasker_screen_allow_add_entry_title">Sta Tasker toe om toegang toe te voegen</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Laat Tasker Yaja Quick Capture-acties gebruiken, zoals Add Entry en Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Sta Tasker-evenementen toe</string>
+    <string name="tasker_screen_allow_events_subtitle">Hiermee kan Yaja de gebeurtenissen Invoer opgeslagen, Invoer gewijzigd en Invoer verwijderd naar Tasker sturen.</string>
+    <string name="tasker_screen_include_text_title">Voeg invoertekst toe aan gebeurtenissen</string>
+    <string name="tasker_screen_include_text_subtitle">Standaard uitgeschakeld vanwege privacy. Wanneer uitgeschakeld, ontvangt Tasker het gebeurtenistype, de datum, het label en de tijd, maar geen journaaltekst.</string>
+    <string name="tasker_screen_section_what">Wat dit doet</string>
+    <string name="tasker_screen_body_what">Tasker kan snel journaalposten of taken toevoegen aan Yaja, regels toevoegen aan een gegroepeerd item zoals Gemiste oproepen, en Yaja kan Tasker vertellen wanneer een item wordt opgeslagen, bewerkt of verwijderd.</string>
+    <string name="tasker_screen_section_how">Hoe te gebruiken</string>
+    <string name="tasker_screen_body_how">Schakel hier eerst de schakelaar in die u nodig heeft. Open vervolgens Tasker en voeg een Yaja Quick Capture-actie of een Yaja Journal Events-evenement toe.</string>
+    <string name="tasker_screen_section_notes">Opmerkingen</string>
+    <string name="tasker_screen_body_notes">Invoertekst wordt niet gedeeld met Tasker tenzij u Inclusief invoertekst in gebeurtenissen inschakelt. Als Tasker niet de nieuwste opties of variabelen toont, open dan het Tasker-configuratiescherm opnieuw nadat u Yaja hebt bijgewerkt.</string>
+    <string name="tasker_screen_section_example">Voorbeeld</string>
+    <string name="tasker_screen_body_example">Actievoorbeeld: Tasker-actie &gt; Yaja Quick Capture &gt; Toevoegen, waarbij Match/header is ingesteld op Gemiste oproepen en Lijn om toe te voegen is ingesteld op een Tasker-variabele. Voorbeeld van een gebeurtenis: Tasker-gebeurtenis &gt; Yaja Journal-gebeurtenissen &gt; Invoer gewijzigd en gebruik vervolgens variabelen zoals %%yaja_event_type, %%yaja_date en optioneel %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Gebruiksgevallen</string>
+    <string name="tasker_screen_use_case_1">1. Gebruik een Yaja-logboekgebeurtenis in Tasker om een ​​FolderSync-synchronisatieactie te activeren, zodat uw Yaja-map naar een willekeurige cloudprovider wordt gepusht nadat de gegevens zijn gewijzigd.</string>
+    <string name="tasker_screen_use_case_2">2. Gebruik Pushbullet met Tasker om tekst naar Yaja Quick Capture te sturen, zodat de gepushte tekst wordt opgeslagen als een nieuw item voor de huidige dag.</string>
+    <string name="tasker_screen_use_case_3">3. Gebruik een Tasker-profiel voor gemiste oproepen om een ​​toevoegactie naar Yaja te sturen, zodat alle gegevens over gemiste oproepen onder één item voor Gemiste oproepen terechtkomen in plaats van afzonderlijke vermeldingen te maken.</string>
+    <string name="quick_todo_widget_description">Met één tik kunt u een taak vastleggen als nieuw item voor vandaag.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Scrollbare lijst met dagboektaken. Tik op een taak om deze als voltooid of ongedaan te markeren.</string>
+    <string name="todo_cd_add_todo">Todo toevoegen</string>
+    <string name="todos_cd_open_compliance_master">Terugkerende taken openen</string>
+    <string name="compliance_master_title">Terugkerende taken/gebeurtenissen</string>
+    <string name="compliance_master_add">Terugkerende taak toevoegen</string>
+    <string name="compliance_master_edit">Terugkerende taak bewerken</string>
+    <string name="compliance_master_intro_title">Terugkerende taken</string>
+    <string name="compliance_master_intro_body">Maak herhalende taken voor wekelijks, maandelijks, driemaandelijks, halfjaarlijks of jaarlijks werk. Yaja onthult elke taak alleen wanneer de cyclus ervan relevant wordt.</string>
+    <string name="compliance_master_empty">Nog geen terugkerende taken. Voeg er een toe om automatisch taken te maken volgens het gekozen schema.</string>
+    <string name="compliance_master_status_deactivated">Gedeactiveerd</string>
+    <string name="compliance_master_meta_format">Vervaldatum op dag %1$d • %2$d leaddagen</string>
+    <string name="compliance_master_field_title">Taaknaam</string>
+    <string name="compliance_master_field_title_hint">Voorbeeld: Maandaangifte indienen</string>
+    <string name="compliance_master_field_description">Beschrijving</string>
+    <string name="compliance_master_field_description_hint">Voorbeeld: Controleer het bankportaal en verifieer de ontvangst</string>
+    <string name="compliance_master_editor_task_section">Waar moet Yaja je aan herinneren?</string>
+    <string name="compliance_master_field_due_day">Deadline</string>
+    <string name="compliance_master_field_reveal_day">Vooraf aanmaken (dagen)</string>
+    <string name="compliance_master_field_schedule_mode">Wanneer moet het gebeuren?</string>
+    <string name="compliance_master_schedule_mode_help">Kies hoe Yaja de uitgerekende datum bepaalt.</string>
+    <string name="compliance_master_select_schedule_type">Selecteer het gewenste patroon</string>
+    <string name="compliance_master_field_frequency">Hoe vaak?</string>
+    <string name="compliance_master_frequency_help">Kies hoe vaak deze taak wordt herhaald.</string>
+    <string name="compliance_master_select_frequency">Selecteer herhaalfrequentie</string>
+    <string name="compliance_master_schedule_details">Schemadetails</string>
+    <string name="compliance_master_details_date_help">Voer de vervaldatum in en hoeveel dagen van tevoren deze naar het dagbestand moet worden geschreven.</string>
+    <string name="compliance_master_details_weekday_help">Kies de weekdag waarop deze taak moet worden uitgevoerd.</string>
+    <string name="compliance_master_details_boundary_help">Kies hoeveel dagen van tevoren het naar het dagbestand moet worden geschreven.</string>
+    <string name="compliance_master_field_due_weekday">Vervaldag weekdag</string>
+    <string name="compliance_master_select_weekday">Selecteer de weekdag</string>
+    <string name="compliance_master_due_day_help">Voer een datum in van 1 tot 31. Kortere maanden gebruiken hun laatste geldige datum.</string>
+    <string name="compliance_master_reveal_day_help">Hoeveel dagen vóór de vervaldatum moet de taak naar het dagelijkse journaalbestand worden geschreven.</string>
+    <string name="compliance_master_first_day_selected">Verschuldigd op de eerste datum van elke toepasselijke maand.</string>
+    <string name="compliance_master_last_day_selected">Verschuldigd op de laatste datum van elke toepasselijke maand.</string>
+    <string name="compliance_mode_day_of_month">Specifieke datum</string>
+    <string name="compliance_mode_day_of_month_desc">Verschuldigd op een genummerde datum, zoals de 15e.</string>
+    <string name="compliance_mode_day_of_week">Weekdag</string>
+    <string name="compliance_mode_day_of_week_desc">Te betalen op een gekozen weekdag, bijvoorbeeld maandag.</string>
+    <string name="compliance_mode_first_day">Eerste van de maand</string>
+    <string name="compliance_mode_first_day_desc">Verschuldigd op de eerste datum van elke toepasselijke maand.</string>
+    <string name="compliance_mode_last_day">Einde van de maand</string>
+    <string name="compliance_mode_last_day_desc">Vervaldatum op de einddatum, ook kortere maanden.</string>
+    <string name="compliance_frequency_weekly">Wekelijks</string>
+    <string name="compliance_frequency_biweekly">Tweewekelijks</string>
+    <string name="compliance_frequency_monthly">Maandelijks</string>
+    <string name="compliance_frequency_quarterly">Driemaandelijks</string>
+    <string name="compliance_frequency_half_yearly">Halfjaarlijks</string>
+    <string name="compliance_frequency_annual">Jaarlijks</string>
+    <string name="compliance_master_summary_day_of_month">Dag %1$d • %2$s • %3$d dagen van tevoren</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Eerste date • %1$s • %2$d dagen van tevoren</string>
+    <string name="compliance_master_summary_last_day">Laatste datum • %1$s • %2$d dagen van tevoren</string>
+    <string name="compliance_master_execution_title">Hoe dit zal verlopen</string>
+    <string name="compliance_master_execution_day_of_month">Er wordt een taak aangemaakt %1$s op dag %2$d. Het wordt %3$d dagen van tevoren naar uw dagelijkse bestand geschreven.</string>
+    <string name="compliance_master_execution_weekday">Er wordt een taak aangemaakt %1$s op %2$s. Het wordt %3$d dagen van tevoren naar uw dagelijkse bestand geschreven.</string>
+    <string name="compliance_master_execution_monthly_weekday">Er wordt maandelijks een taak aangemaakt op dezelfde %1$s gebeurtenis als de startdatum. Het wordt %2$d dagen van tevoren naar uw dagelijkse bestand geschreven.</string>
+    <string name="compliance_master_execution_month_boundary">Er wordt een taak aangemaakt %1$s op de %2$s van de vervaldatum. Het wordt %3$d dagen van tevoren naar uw dagelijkse bestand geschreven.</string>
+    <string name="compliance_master_boundary_first">eerste date</string>
+    <string name="compliance_master_boundary_last">laatste datum</string>
+    <string name="compliance_master_recurrence_weekly">elke week</string>
+    <string name="compliance_master_recurrence_biweekly">elke twee weken</string>
+    <string name="compliance_master_recurrence_monthly">elke maand</string>
+    <string name="compliance_master_recurrence_quarterly">elke drie maanden</string>
+    <string name="compliance_master_recurrence_half_yearly">elke zes maanden</string>
+    <string name="compliance_master_recurrence_annual">elk jaar</string>
+    <string name="todo_chip_compliance">Terugkerend</string>
+    <string name="compliance_master_upcoming">Aankomend</string>
+    <string name="compliance_master_delete_confirm_title">Terugkerende taak verwijderen?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" wordt verwijderd en er worden geen verdere taken meer gemaakt.</string>
+    <string name="compliance_master_next_date">Volgende: %1$s</string>
+    <string name="compliance_master_end_section">Eindtoestand</string>
+    <string name="compliance_master_end_help">Kies wanneer deze taak niet meer wordt herhaald</string>
+    <string name="compliance_master_end_never">Nooit</string>
+    <string name="compliance_master_end_on_date">Op datum</string>
+    <string name="compliance_master_end_after">Na…</string>
+    <string name="compliance_master_end_never_desc">Wordt voor onbepaalde tijd herhaald zonder einddatum.</string>
+    <string name="compliance_master_end_date_select">Selecteer einddatum</string>
+    <string name="compliance_master_end_date_help">Na deze datum worden er geen taken aangemaakt.</string>
+    <string name="compliance_master_end_count_label">Aantal voorvallen</string>
+    <string name="compliance_master_end_count_help">Stopt nadat er veel taken zijn aangemaakt.</string>
+    <string name="compliance_master_ends_on">Eindigt op %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d over</string>
+    <string name="compliance_master_ended">Beëindigd</string>
+    <string name="compliance_master_type_label">Maak als</string>
+    <string name="compliance_master_type_task">Taak</string>
+    <string name="compliance_master_type_event">Evenement</string>
+    <string name="heatmap_widget_status_loading">Warmtekaart laden…</string>
+    <string name="heatmap_widget_status_empty">Nog geen vermeldingen</string>
+    <string name="heatmap_widget_status_refresh">Open Yaja om de heatmap te vernieuwen</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cache opnieuw opgebouwd.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Nieuwe invoer</string>
+    <string name="shortcut_new_entry_long">Voeg een journaalboeking toe</string>
+    <string name="shortcut_add_todo_short">Todo toevoegen</string>
+    <string name="shortcut_add_todo_long">Voeg een todo toe voor vandaag</string>
+    <string name="shortcut_add_event_short">Evenement toevoegen</string>
+    <string name="shortcut_add_event_long">Voeg een evenement toe</string>
+    <string name="shortcut_today_short">Vandaag</string>
+    <string name="shortcut_today_long">Open het dagboek van vandaag</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigatie</string>
+    <string name="settings_bottom_nav_style_label">Navigatiestijl onderaan</string>
+    <string name="settings_navigation_mode_title">Navigatiemodus</string>
+    <string name="settings_navigation_mode_subtitle">Kies tussen de zwevende navigatiebalk en het volledige onderste paneel.</string>
+    <string name="settings_nav_mode_floating">Zwevend</string>
+    <string name="settings_nav_mode_panel">Paneel</string>
+    <string name="settings_navigation_screens_label">Navigatieschermen</string>
+    <string name="settings_nav_summary_floating">Journaal en Agenda blijven altijd in de zwevende balk staan. Pak nog twee schermen op. Momenteel geselecteerd: %1$d van %2$d.</string>
+    <string name="settings_nav_summary_panel">Journaal en Agenda blijven altijd in het onderste paneel staan. Pak maximaal 3 extra schermen. Momenteel geselecteerd: %1$d van %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Toon Lookback in de actieve navigatiebalk of paneel.</string>
+    <string name="settings_nav_people_places_subtitle">Toon Mensen en Plaatsen in de actieve navigatiebalk of paneel.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Toon Taken in de actieve navigatiebalk of paneel.</string>
+    <string name="todos_quick_add_title">Snel toevoegen</string>
+    <string name="todos_hero_subtitle">Houd dagboekwerk en momenten bij</string>
+    <string name="todos_hero_all_activity">Alle activiteit</string>
+    <string name="todos_hero_open_focus">Focus openen</string>
+    <string name="todos_hero_completed">Voltooid</string>
+    <string name="todos_stat_today_open">Vandaag geopend</string>
+    <string name="todos_stat_done_today">Vandaag klaar</string>
+    <string name="todos_stat_events">Evenementen</string>
+    <string name="todos_stat_still_open">Nog steeds geopend</string>
+    <string name="todos_stat_past_7d">Afgelopen 7d</string>
+    <string name="todos_stat_days">Dagen</string>
+    <string name="todos_empty_done">Nog geen voltooide taken</string>
+    <string name="todos_empty_events">Nog geen evenementeninzendingen</string>
+    <string name="todos_section_open">OPEN</string>
+    <string name="todos_section_later">LATER</string>
+    <string name="todos_section_upcoming">AANKOMEND</string>
+    <string name="todos_section_future_events">TOEKOMSTIGE EVENEMENTEN</string>
+    <string name="todos_section_past_events">VERLEDEN EVENEMENTEN</string>
+    <string name="todos_cd_open_day">Open dag</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d open taak</item>
+        <item quantity="other">%1$d openstaande taken</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d voltooide taak</item>
+        <item quantity="other">%1$d uitgevoerde taken</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d aankomend evenement</item>
+        <item quantity="other">%1$d aankomende evenementen</item>
+    </plurals>
+    <string name="todos_filter_all_format">Alles %1$d</string>
+    <string name="todos_filter_open_format">Open %1$d</string>
+    <string name="todos_filter_done_format">Klaar %1$d</string>
+    <string name="todos_filter_events_format">Evenementen %1$d</string>
+    <string name="todos_cheer_all_clear">Allemaal duidelijk. Leuk.</string>
+    <string name="todos_cheer_done_and_dusted">Klaar en afgestoft.</string>
+    <string name="todos_cheer_nothing_pending">Niets in behandeling.</string>
+    <string name="todos_cheer_caught_up">Je hebt het ingehaald.</string>
+    <string name="todos_cheer_clean_slate">Schone lei.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Over %1$d dag</item>
+        <item quantity="other">Over %1$d dagen</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d dag geleden</item>
+        <item quantity="other">%1$d dagen geleden</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Over %1$d week</item>
+        <item quantity="other">Over %1$d weken</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d week geleden</item>
+        <item quantity="other">%1$d weken geleden</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Binnen 1 maand</string>
+    <string name="todos_relative_one_month_ago">1 maand geleden</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Over %1$d maand</item>
+        <item quantity="other">Over %1$d maanden</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d maand geleden</item>
+        <item quantity="other">%1$d maanden geleden</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistieken</string>
+    <string name="settings_nav_statistics_subtitle_on">Toon statistieken in de actieve navigatiebalk of paneel.</string>
+    <string name="settings_nav_statistics_subtitle_off">Schakel eerst Statistieken in om deze in de navigatie te plaatsen.</string>
+    <string name="settings_show_labels_bottom_panel_title">Toon labels in het onderste paneel</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Geef tekstlabels weer onder pictogrammen in het onderste paneel.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gebaren</string>
+    <string name="settings_entry_delete_title">Invoer Verwijderen</string>
+    <string name="settings_entry_delete_subtitle">Houd een item lang ingedrukt om het te selecteren. Tik op meer items om er meerdere te selecteren en gebruik vervolgens de gecentreerde knop Verwijderen. Tik op een lege ruimte om de selectie te wissen.</string>
+    <string name="settings_swipe_navigate_title">Veeg om door datums te navigeren</string>
+    <string name="settings_swipe_navigate_subtitle">Veeg van rechts naar links om één datum vooruit te gaan en van links naar rechts om achteruit te gaan.</string>
+    <string name="settings_drag_reorder_title">Schakel slepen om opnieuw te ordenen in</string>
+    <string name="settings_drag_reorder_subtitle">Houd de vermeldingen lang ingedrukt om ze opnieuw te rangschikken</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Gegevens en herstel</string>
+    <string name="settings_swipe_rebuild_index">Veeg omlaag op het startscherm om de index opnieuw op te bouwen</string>
+    <string name="settings_large_journal_safe_mode_title">Veilige modus voor groot journaal</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Wanneer een zeer groot dagboek wordt gedetecteerd, stelt u de werking van niet-essentiële opstartstatistieken uit, zodat de app sneller en veiliger wordt geopend.</string>
+    <string name="settings_version_history_title">Versiegeschiedenis</string>
+    <string name="settings_version_history_subtitle">Bewaar veilige kopieën voordat u wijzigingen gaat bewerken, verwijderen, labelen en opnieuw bekijken.</string>
+    <string name="settings_storage_location_label">Opslaglocatie</string>
+    <string name="settings_reset_to_default">Terugzetten naar standaard</string>
+    <string name="settings_choose_folder">Kies Map</string>
+    <string name="settings_backup_description">Maak één Yaja-back-upzip met daarin journaalboekingen, shortcodes, datumtrefwoorden en gegevens over mensen en plaatsen. Herstellen kan het later veilig samenvoegen.</string>
+    <string name="settings_last_backup">Laatste back-up: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Leeftijd back-upherinnering</string>
+    <string name="settings_backup_reminder_disabled">Gehandicapt</string>
+    <string name="settings_backup_reminder_desc">Markeer back-up in zijbalk als deze ouder is dan %1$d dagen.</string>
+    <string name="settings_backup_reminder_days_disabled">0 dagen (uitgeschakeld)</string>
+    <string name="settings_backup_reminder_days">%1$d dagen</string>
+    <string name="settings_restore_button">Herstellen</string>
+    <string name="settings_backup_now_button">Maak nu een back-up</string>
+    <string name="settings_db_index_management_label">Database-indexbeheer</string>
+    <string name="settings_db_index_management_desc">Open gerichte herbouwtools voor taken, Mensen en plaatsen, of een volledige herbouw van de database-index.</string>
+    <string name="settings_rebuild_tools_button">Gereedschappen opnieuw opbouwen</string>
+    <string name="settings_import_label">Importeren</string>
+    <string name="settings_import_info_cd">Informatie importeren</string>
+    <string name="settings_import_info_title">Informatie importeren</string>
+    <string name="settings_import_day_one_title">Dag één import</string>
+    <string name="settings_import_day_one_bullet1">- Exporteer vanaf dag één zonder afbeeldingen</string>
+    <string name="settings_import_day_one_bullet2">- Alleen tekstgegevens worden geïmporteerd</string>
+    <string name="settings_import_day_one_bullet3">- Tijdstempel en locatiegegevens (indien beschikbaar) blijven behouden</string>
+    <string name="settings_import_perf_warning_title">Prestatiewaarschuwing</string>
+    <string name="settings_import_perf_warning_desc">Het importeren van een groot aantal vermeldingen (500+) kan enkele minuten duren. U kunt weg navigeren en het importeren gaat op de achtergrond verder.</string>
+    <string name="settings_got_it">Ik heb het</string>
+    <string name="settings_import_success">%1$d nieuwe dagen, %2$d samengevoegd, %3$d overgeslagen</string>
+    <string name="settings_import_source_day_one">Dag één</string>
+    <string name="settings_import_source_day_one_subtitle">.zip- of .json-export</string>
+    <string name="settings_import_source_journalistic">Journalistiek</string>
+    <string name="settings_import_source_journalistic_subtitle">.json-export</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Leer hoe u Yaja gebruikt</string>
+    <string name="help_footer_website">Website</string>
+    <string name="help_footer_share">Deel</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Meningsverschil</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Deel jaja</string>
+    <string name="help_share_yaja_text">yaja - nog een andere dagboekapp\n\nEen lokaal dagboek zonder afleiding dat vermeldingen opslaat als afwaarderingsbestanden. Het bevat een tijdlijn, terugblik, mensen en plaatsen, sjablonen, recensies, statistieken en widgets.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord-gebruikersnaam gekopieerd!</string>
+    <string name="help_footer_play_store">Speel Winkel</string>
+    <string name="help_cd_rj_logo">RJ-logo</string>
+    <string name="help_screen_title">Hulp &amp; Over</string>
+    <string name="help_welcome_title">Welkom bij Yaja</string>
+    <string name="help_welcome_body">Yaja is een lokaal-eerst afprijsdagboek voor het vastleggen van dagen, mensen, plaatsen, follow-ups, recensies en patronen zonder je in de weg te staan. Deze pagina geeft een korte handleiding voor de belangrijkste onderdelen van de app.</string>
+    <string name="help_start_here">Begin hier</string>
+    <string name="help_cd_collapse">Instorten</string>
+    <string name="help_cd_expand">Uitbreiden</string>
+    <string name="help_group_everyday_title">Elke dag</string>
+    <string name="help_group_everyday_desc">Journaling, schrijfstroom en dagelijkse navigatie.</string>
+    <string name="help_group_reviews_title">Recensies en inzichten</string>
+    <string name="help_group_reviews_desc">Terugblik, trends, mensen, plaatsen en analyses.</string>
+    <string name="help_group_advanced_title">Geavanceerde hulpmiddelen</string>
+    <string name="help_group_advanced_desc">Widgets, opslag, privacy, back-ups en technische hulpmiddelen.</string>
+    <string name="help_onboard_todos_events_title">Todos, evenementen en terugkerend</string>
+    <string name="help_onboard_todos_events_body">Bewaar persoonlijke herinneringen, gezinsplannen en terugkerende schema\'s die automatisch taken genereren op de vervaldatum.</string>
+    <string name="help_onboard_widgets_title">Widgets</string>
+    <string name="help_onboard_widgets_body">Voeg Heatmap-, Quick Capture-, Quick Todo- of Todo List-widgets toe vanuit het opstartprogramma.</string>
+    <string name="help_onboard_version_history_title">Versiegeschiedenis</string>
+    <string name="help_onboard_version_history_body">Schakel Geschiedenisbestanden in Instellingen &gt; Gegevens in om veilige momentopnamen te bewaren vóór risicovolle wijzigingen.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Gebruik Tasker om snel items, taken of gebeurtenissen toe te voegen wanneer er meteen iets persoonlijks moet worden vastgelegd.</string>
+    <string name="help_section_writing_editor_title">Schrijven en redacteur</string>
+    <string name="help_section_writing_editor_preview">Sjablonen, prijsverlagingskoppen, taken, evenementen en flexibele conceptinvoeging.</string>
+    <string name="help_section_writing_editor_content">+ Tik op de zwevende knop \'+\' om voor de geselecteerde dag te schrijven.\n+ Gebruik sjablonen zoals vergadernotitie, reisdag, gezondheidslogboek, reflectie, werklogboek en meer.\n+ Sjablonen kunnen in een leeg concept worden ingevoegd, hieronder worden toegevoegd, worden gebruikt om een ​​concept te vervangen of bij de cursor worden ingevoegd.\n+ Editorchips kunnen snel taken, evenementen, genummerde lijsten en opsommingstekens invoegen.\n+ Invoer bekijken en invoer bewerken ondersteunen markdown-stijlkoppen zoals ### Sectie.</string>
+    <string name="help_section_post_write_review_title">Beoordeling na schrijven</string>
+    <string name="help_section_post_write_review_preview">Todo-extractie, trefwoorddetectie, hoofdrol, labels en opnieuw instellen.</string>
+    <string name="help_section_post_write_review_content">+ Na het schrijven kan Yaja een beoordelingsblad openen voordat het wordt opgeslagen.\n+ Het kan taken uitpakken, mensen en plaatsen detecteren, een ster aan de dag geven, een daglabel instellen en datums voor herbezoek plannen.\n+ Je kunt de beoordeling na het schrijven uitschakelen via Instellingen als je de voorkeur geeft aan direct opslaan.</string>
+    <string name="help_section_revisit_followup_title">Herbezoek- en vervolgdata</string>
+    <string name="help_section_revisit_followup_preview">Aan dagboeken gekoppelde vervolgdata met snelle keuzes en een aangepaste optie.</string>
+    <string name="help_section_revisit_followup_content">+ Voeg datums voor een nieuw bezoek toe met Morgen, Volgende week, Volgende maand of een aangepaste datum.\n+ Items voor een nieuw bezoek verschijnen op Home en zijn gemarkeerd in Agenda en Tijdlijn.\n+ Dit werkt goed voor beloften, beslissingen, gezondheidscontroles en herinneringen die verband houden met de context van het dagboek.</string>
+    <string name="help_section_navigation_gestures_title">Navigatie en gebaren</string>
+    <string name="help_section_navigation_gestures_preview">Datumverplaatsing, selectie verwijderen, veegvoorkeuren en cachegedrag opnieuw opbouwen.</string>
+    <string name="help_section_navigation_gestures_content">+ Home ondersteunt datumnavigatie met pijlen en optionele veegnavigatie indien ingeschakeld.\n+ Druk lang op een item om het te selecteren. Tik op meer items om deze ook te selecteren en gebruik vervolgens de verwijderpil naast de knop Toevoegen.\n+ Als je buiten geselecteerde items tikt, wordt de selectie gewist. Verwijderde items kunnen samen worden hersteld vanaf het aftellen van het herstel.\n+ Je kunt de cache opnieuw opbouwen als journaalbestanden buiten Yaja veranderen.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Shortcodes en snelle opname</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Snelle persoonlijke opname plus herbruikbare dynamische tekstfragmenten.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Maak shortcodes om snel herhaalde tekst in te voegen.\n+ Dynamische tijdelijke aanduidingen zoals {{today:dd-MMM}} en {{now:HH:mm}} werken binnen shortcodes.\n+ Met Quick Capture kunt u snel iets vastleggen zonder de volledige editor te openen.\n+ Met Snel toevoegen kunt u een todo of een afspraak voor een gekozen datum opslaan in de widget, het Todos-scherm of Tasker.</string>
+    <string name="help_section_todos_events_title">Todos, evenementen en terugkerend</string>
+    <string name="help_section_todos_events_preview">Persoonlijke herinneringen, opmerkelijke gebeurtenissen en geautomatiseerde terugkerende schema\'s.</string>
+    <string name="help_section_todos_events_content">+ Taken worden rechtstreeks in journaalboekingen geschreven als regels [ ] en [x].\n+ Gebeurtenissen zijn normale journaalboekingen gemarkeerd als Gebeurtenis, handig voor gezinsplannen, afspraken, reizen of alles wat je later wilt opmerken.\n+ Terugkerende taken en evenementen (schema\'s) schrijven automatisch taken of gebeurteniskoppen naar je dagelijkse dagboekpagina\'s volgens hun schema (bijvoorbeeld wekelijks, maandelijks, jaarlijks).\n+ Beheer je planningen door op het pictogram Terugkerend op de takenlijst te tikken. scherm.\n+ Elke dag wanneer u Yaja opent, wordt de achtergrondpijplijn uitgevoerd om te controleren of er geplande taken moeten worden uitgevoerd en deze in de invoer van die dag ingevoegd.\n+ Het scherm Taken helpt u open taken, voltooide taken en gebeurtenissen te bekijken zonder Yaja in een productiviteitsdashboard te veranderen.\n+ Tik op een datumkop om die dag in Journal te openen.\n+ Trek Taken naar beneden om de takenindex opnieuw op te bouwen als bestanden buiten Yaja zijn gewijzigd.\n+ Toon voltooide taken wordt onthouden, zodat uw voorkeursweergave blijft hangen. wanneer je weggaat en terugkeert.\n+ Todo-widgets kunnen taken in behandeling tonen, bevestigen voordat er wordt geschakeld, voltooide taken verbergen en optioneel automatisch verbergen wanneer er niets in behandeling is.</string>
+    <string name="help_section_people_places_title">Mensen en plaatsen</string>
+    <string name="help_section_people_places_preview">Trefwoorden, aliassen, trends en gerangschikte verbindingsweergaven.</string>
+    <string name="help_section_people_places_content">+ Volg mensen en plaatsen met aliassen en relatielabels.\n+ Zoek, filter en sorteer de lijst met zoekwoorden.\n+ Detailpagina\'s van zoekwoorden tonen recentheid, vermeldingen in de loop van de tijd, co-vermeldingen en gerangschikte verbindingen.\n+ De overeenkomstgevoeligheid kan worden aangepast via Instellingen.</string>
+    <string name="help_section_timeline_lookback_title">Tijdlijn en terugblik</string>
+    <string name="help_section_timeline_lookback_preview">Bladeren door de afgelopen dag, hoogtepunten, Verras mij en bekijk toegangspunten.</string>
+    <string name="help_section_timeline_lookback_content">+ Met de tijdlijn kun je door afgelopen dagen bladeren met filters, jaarfiches en de optionele modus voor alle datums.\n+ Lookback toont items van dezelfde dag in voorgaande jaren en je hoogtepunten met ster.\n+ Surprise Me opent een willekeurige eerdere item uit Lookback.\n+ Wekelijkse en maandelijkse review live in Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistieken en recensies</string>
+    <string name="help_section_statistics_reviews_preview">Vergelijkingsmodus, sjablooninzichten, aangepaste zichtbare secties en samenvattingen.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistieken omvatten de vergelijkingsmodus, zoekwoorddelta\'s en sjablooninzichten.\n+ Je kunt kiezen welke statistische secties zichtbaar blijven vanuit het scherm Statistieken.\n+ De vergelijkingsmodus is voor altijd beschikbaar en geeft een overzicht van maand- en jaardelta\'s.\n+ Beoordelingspagina\'s geven een overzicht van de meest actieve dagen, topmensen en -plaatsen, favoriete momenten, labels, taalsplitsing en streak- of gap-patronen.</string>
+    <string name="help_section_widgets_home_title">Widgets en startoppervlak</string>
+    <string name="help_section_widgets_home_preview">Launcher-widgets, gemarkeerde trefwoorden en huisstatistieken op dagniveau.</string>
+    <string name="help_section_widgets_home_content">+ Widgets voor het schrijven van Heatmap, Snel vastleggen, Snel toevoegen en Takenlijst zijn beschikbaar in het opstartprogramma.\n+ Widgetconfiguratieschermen laten je hoeken, opvulling, vorm, kopteksten, zichtbaarheid van voltooide taken en andere widgetopties aanpassen waar ondersteund.\n+ De heatmapwidget gebruikt meer intensiteitsniveaus voor een soepelere weergave van de schrijfgeschiedenis.\n+ Thuis kan Mensen en plaatsen in items markeren als de instelling is ingeschakeld.\n+ De kop van de startdatum kan het aantal items, woorden en tekens tonen of verbergen. tellen.</string>
+    <string name="help_section_language_text_analysis_title">Taal- en tekstanalyse</string>
+    <string name="help_section_language_text_analysis_preview">Lokale taaldetectie voor statistieken en beoordelingsinzichten.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja detecteert het dominante script of de dominante taal in de inzendingen voor inzichten.\n+ Taalsplitsing verschijnt in Statistieken en Recensies.\n+ Detectie wordt lokaal uitgevoerd en stuurt geen journaaltekst uit het apparaat.</string>
+    <string name="help_section_data_privacy_cache_title">Gegevens, privacy en cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown-opslag, versiegeschiedenis, app-logboek, app-vergrendeling en cache opnieuw opbouwen.</string>
+    <string name="help_section_data_privacy_cache_content">+ Gegevensprivacy: alle persoonlijke dagboekgegevens bevinden zich strikt op uw fysieke apparaat en verlaten dit nooit. Yaja gebruikt geen clouddatabases, externe back-upservers of telemetrie om uw tekst bij te houden.\n+ Journaalgegevens worden opgeslagen als standaard Markdown-bestanden, gerangschikt op jaar en maand.\n+ Versiegeschiedenis kan veilige momentopnamen bewaren voordat wijzigingen worden bewerkt, verwijderd, gelabeld en opnieuw bezocht.\n+ U kunt kiezen hoeveel versies u wilt behouden en hoeveel dagen de geschiedenis behouden blijft.\n+ App Log registreert technische gebeurtenissen, crashdetails en cache-activiteit zonder dagboektekst op te slaan.\n+ App-cache opnieuw opbouwen waarmee u app-gegevens kunt vernieuwen. modulair, inclusief taken en volledige herbouw van de cache.\n+ App-vergrendeling ondersteunt pincode en vingerafdruk.\n+ Yaja laat zware indexering en statistiekenwerk waar mogelijk uitstellen, zodat het starten en opslaan van apps responsief blijft.</string>
+    <string name="settings_app_log_title">App-logboek</string>
+    <string name="settings_app_log_subtitle">Bekijk privacyveilige diagnostiek en eerdere crashdetails</string>
+    <string name="app_log_cd_share">App-logboek delen</string>
+    <string name="app_log_cd_clear">App-logboek wissen</string>
+    <string name="app_log_privacy_title">Privacyveilige diagnostiek</string>
+    <string name="app_log_privacy_description">In dit logboek worden belangrijke app-gebeurtenissen, cache-/opslagbewerkingen, widgetvernieuwingen en crashdetails vastgelegd. Het bevat geen journaalposten, takentekst of inhoud van privénotities.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Laatste %d dag behouden</item>
+        <item quantity="other">Bewaar de laatste %d dagen</item>
+    </plurals>
+    <string name="app_log_retention_description">Oudere loggebeurtenissen worden automatisch verwijderd tijdens het loggen en onmiddellijk wanneer deze instelling verandert.</string>
+    <string name="app_log_empty">Nog geen app-logboek.</string>
+    <string name="app_log_refresh">Logboek vernieuwen</string>
+    <string name="app_log_share_empty">Nog geen Yaja-app-logboekvermeldingen.</string>
+    <string name="app_log_share_subject">Yaja App-logboek</string>
+    <string name="app_log_share_chooser">Deel het Yaja-app-logboek</string>
+    <string name="app_log_local_time_format">%1$s | lokale tijd\n%2$s</string>
+    <string name="settings_website_title">Yaja-website</string>
+    <string name="settings_website_subtitle">Open de officiële website voor updates en details</string>
+    <string name="settings_advanced_integrations_title">Geavanceerde integraties</string>
+    <string name="settings_tasker_integration_title">Tasker-integratie</string>
+    <string name="settings_tasker_integration_subtitle">Snelle vastlegacties en triggers voor journaalgebeurtenissen</string>
+    <string name="settings_shortcodes_subtitle">Beheer herbruikbare fragmenten die groter worden tijdens het schrijven of snel vastleggen.</string>
+    <string name="settings_privacy_security_title">Privacy en veiligheid</string>
+    <string name="settings_pin_lock_title">PIN-vergrendeling</string>
+    <string name="settings_app_locked">App is vergrendeld</string>
+    <string name="settings_app_unlocked">App is ontgrendeld</string>
+    <string name="settings_change_pin">Wijzig pincode</string>
+    <string name="settings_biometric_unlock_title">Biometrische ontgrendeling</string>
+    <string name="settings_biometric_enabled_desc">Vingerafdruk of Face ID ingeschakeld</string>
+    <string name="settings_biometric_disabled_desc">Gebruik biometrisch in plaats van pincode</string>
+    <string name="settings_autolock_timeout_title">Time-out voor automatische vergrendeling</string>
+    <string name="settings_pin_lock_disclaimer">PIN-vergrendeling voorkomt ongeautoriseerde toegang tot de app, maar codeert uw journaalgegevens op schijf niet. Iemand met directe bestandstoegang kan uw invoer nog steeds lezen.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minuut</item>
+        <item quantity="other">%1$d minuten</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Systeem</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Kleuren</string>
+    <string name="settings_color_intensity_title">Kleurintensiteit</string>
+    <string name="settings_background_tint_title">Achtergrondtint</string>
+    <string name="settings_font_sans">Zonder</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Aangepast</string>
+    <string name="settings_font_size_label">Lettergrootte</string>
+    <string name="settings_ui_font_size_label">UI-lettergrootte</string>
+    <string name="settings_data_font_size_label">Lettergrootte inhoud</string>
+    <string name="settings_follow_ui_font_scale_label">Zorg ervoor dat de lettergrootte van de inhoud hetzelfde is als de gebruikersinterface</string>
+    <string name="settings_color_source_material_you">Materiaal jij</string>
+    <string name="settings_theme_preview_title">Themavoorbeeld</string>
+    <string name="settings_journal_entry_preview">Journaalboeking</string>
+    <string name="settings_journal_entry_preview_desc">Kaarten, fiches en knoppen zullen deze kleuren gebruiken.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Accent</string>
+    <string name="settings_preview_chip_fab">fantastisch</string>
+    <string name="settings_intensity_label">Intensiteit: %1$s</string>
+    <string name="settings_personal_themes_title">Persoonlijke thema\'s</string>
+    <string name="settings_theme_name_label">Thema naam</string>
+    <string name="settings_main_color_label">Hoofdkleur</string>
+    <string name="settings_hue_label">Tint</string>
+    <string name="settings_sat_label">Zat</string>
+    <string name="settings_bright_label">Helder</string>
+    <string name="settings_generated_accents_title">Gegenereerde accenten</string>
+    <string name="settings_personal_theme_desc">Kies één kleur. Yaja creëert bijpassende accent- en steunkleuren.</string>
+    <string name="settings_preview_chip_main">Voornaamst</string>
+    <string name="settings_preview_chip_support">Steun</string>
+    <string name="settings_no_font_selected">Geen lettertype geselecteerd</string>
+    <string name="settings_custom_font_desc">Kies een Unicode .ttf- of .otf-bestand, bijvoorbeeld een Malayalam-lettertype zoals Manjari. Tekens die in het lettertype ontbreken, gebruiken systeemlettertypen.</string>
+    <string name="settings_font_replace">Vervangen</string>
+    <string name="settings_choose_font_file">Kies lettertypebestand</string>
+    <string name="settings_intensity_muted">Gedempt</string>
+    <string name="settings_intensity_normal">Normaal</string>
+    <string name="settings_intensity_vivid">Levendig</string>
+    <string name="settings_intensity_pop">Knal</string>
+    <string name="settings_tint_clean">Schoon</string>
+    <string name="settings_tint_soft">Zacht</string>
+    <string name="settings_tint_rich">Rijk</string>
+    <string name="settings_tint_deep">Diep</string>
+    <string name="settings_accent_complementary">Complementair</string>
+    <string name="settings_accent_analogous">Analoog</string>
+    <string name="settings_accent_triadic">Triadisch</string>
+    <string name="settings_accent_soft">Zacht</string>
+    <string name="settings_mono_weight_thin">Dun</string>
+    <string name="settings_mono_weight_extra_light">Extra licht</string>
+    <string name="settings_mono_weight_light">Licht</string>
+    <string name="settings_mono_weight_regular">Normaal</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Half vet</string>
+    <string name="settings_mono_weight_bold">Vetgedrukt</string>
+    <string name="settings_mono_weight_extra_bold">Extra vet</string>
+    <string name="settings_mono_weight_title">Gewicht</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Datumtrefwoord toevoegen</string>
+    <string name="settings_keyword_label">Trefwoord</string>
+    <string name="settings_keyword_placeholder_example">bijv. gisteren</string>
+    <string name="settings_means_label">Er zijn nog geen trefwoorden toegevoegd.</string>
+    <string name="settings_add_button">Toevoegen</string>
+    <string name="settings_no_keywords_yet">Er zijn nog geen trefwoorden toegevoegd.</string>
+    <string name="settings_added_keywords_title">Toegevoegde trefwoorden (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Zoekwoord toevoegen</string>
+    <string name="keywords_dialog_add_title">Zoekwoord toevoegen</string>
+    <string name="keywords_dialog_edit_title">Zoekwoord bewerken</string>
+    <string name="keywords_cd_import_csv">CSV importeren</string>
+    <string name="keywords_cd_export_csv">CSV exporteren</string>
+    <string name="keywords_cd_download_template">Sjabloon downloaden</string>
+    <string name="rebuild_cache_storage_transparency_title">Transparantie van opslag op het apparaat</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja maakt gebruik van een veilig lokaal opslagmodel. Uw persoonlijke dagboekgegevens blijven lokaal en verlaten nooit uw apparaat:</string>
+    <string name="rebuild_cache_source_of_truth_title">Bron van waarheid (Markdown-bestanden)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Alle vermeldingen, checklistitems (todos), tijdlijngebeurtenissen, sterren en tags worden permanent opgeslagen in Markdown-bestanden (.md) in platte tekst in de door u geselecteerde lokale dagboekmap. Uw gegevens zijn 100% uw eigendom en bevinden zich volledig op uw apparaat.</string>
+    <string name="rebuild_cache_read_cache_title">Cache en index lezen (SQLite-database)</string>
+    <string name="rebuild_cache_read_cache_desc">Om direct schermladen, agendamarkeringen, trefwoorden en statistieken mogelijk te maken zonder het bestandssysteem bij elke scroll te scannen, ontleedt Yaja uw Markdown-bestanden en indexeert ze in een lokale Room SQLite-database op uw apparaat.</string>
+    <string name="rebuild_cache_local_private_title">100% lokaal en privé</string>
+    <string name="rebuild_cache_local_private_desc">Yaja heeft geen clouddatabases, externe back-upservers of telemetrie die uw tekst volgen. Alle journaalboekingen en geparseerde gegevens blijven strikt op uw fysieke apparaat en verlaten dit nooit.</string>
+    <string name="keywords_export_success">Trefwoorden geëxporteerd</string>
+    <string name="keywords_export_failed">Kan zoekwoorden niet exporteren</string>
+    <string name="keywords_template_saved">Sjabloon opgeslagen</string>
+    <string name="keywords_template_save_failed">Kan sjabloon niet opslaan</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Geïmporteerd trefwoord %d</item>
+        <item quantity="other">Geïmporteerde %d trefwoorden</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Geen geldige trefwoorden gevonden</string>
+    <string name="keywords_import_failed">Kan zoekwoorden niet importeren</string>
+    <string name="keywords_status_indexing">Indexeren</string>
+    <string name="keywords_status_indexed">Geïndexeerd</string>
+    <string name="keywords_metric_mentions">Vermeldingen</string>
+    <string name="keywords_metric_days">Dagen</string>
+    <string name="keywords_timeline_range_all">Alle</string>
+    <string name="keywords_connections_filter_all">Alle</string>
+    <string name="keywords_connections_filter_people">Mensen</string>
+    <string name="keywords_connections_filter_places">Plaatsen</string>
+    <string name="keywords_connections_filter_recent">Recent</string>
+    <string name="keywords_connections_filter_strongest">Sterkste</string>
+    <string name="keywords_filter_needs_reindex">Moet opnieuw geïndexeerd worden</string>
+    <string name="keywords_search_placeholder">Zoek naar mensen, plaatsen, aliassen, relaties</string>
+    <string name="keywords_refreshing_counters">Zoekwoordentellers vernieuwen…</string>
+    <string name="keywords_empty_title">Nog geen zoekwoorden</string>
+    <string name="keywords_empty_subtitle">Voeg de mensen en plaatsen toe waarvan u wilt dat de app deze lokaal bijhoudt.</string>
+    <string name="keywords_no_results_title">Geen overeenkomende resultaten</string>
+    <string name="keywords_no_results_subtitle">Probeer een andere zoekopdracht, sortering of filter.</string>
+    <string name="keywords_people_title">Mensen</string>
+    <string name="keywords_places_title">Plaatsen</string>
+    <string name="keywords_people_empty">Er zijn nog geen mensen toegevoegd.</string>
+    <string name="keywords_people_filtered_empty">Er zijn geen mensen die overeenkomen met de huidige filters.</string>
+    <string name="keywords_places_empty">Er zijn nog geen plaatsen toegevoegd.</string>
+    <string name="keywords_places_filtered_empty">Er zijn geen plaatsen die overeenkomen met de huidige filters.</string>
+    <string name="keywords_delete_person_title">Persoon verwijderen?</string>
+    <string name="keywords_delete_place_title">Plaats verwijderen?</string>
+    <string name="keywords_delete_message">\'%1$s\' verwijderen uit Mensen en plaatsen? Hierdoor worden het trefwoord en de geïndexeerde overeenkomsten verwijderd.</string>
+    <string name="keywords_timeline_title">Vermeldingen in de loop van de tijd</string>
+    <string name="keywords_timeline_empty_pattern">Nog geen maandpatroon</string>
+    <string name="keywords_timeline_total_format">%1$d totaal</string>
+    <string name="keywords_timeline_empty_chart">Vermeldingen worden hier in kaart gebracht nadat de indexering van de gevonden vermeldingen heeft plaatsgevonden.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Piek %1$s • %2$d vermelding</item>
+        <item quantity="other">Piek %1$s • %2$d vermeldingen</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Dagen met vermeldingen</string>
+    <string name="keywords_recency_title">Recentheid</string>
+    <string name="keywords_recency_none">Nog geen wedstrijden</string>
+    <string name="keywords_recency_today">Vandaag genoemd</string>
+    <string name="keywords_recency_yesterday">Gisteren genoemd</string>
+    <string name="keywords_recency_days_ago_format">Laatste vermelding %1$d dagen geleden</string>
+    <string name="keywords_first_seen">Voor het eerst gezien</string>
+    <string name="keywords_last_seen">Laatst gezien</string>
+    <string name="keywords_unknown">Onbekend</string>
+    <string name="keywords_co_mentioned_with">Mede genoemd met</string>
+    <string name="keywords_connections_title">Verbindingen</string>
+    <string name="keywords_connections_subtitle">Gerangschikt op basis van herhaalde overlap en recentheid</string>
+    <string name="keywords_connections_linked_format">%1$d gekoppeld</string>
+    <string name="keywords_connections_show">Toon verbindingen</string>
+    <string name="keywords_connections_hide">Verbindingen verbergen</string>
+    <string name="keywords_connections_items_in_view">%1$d items in deze weergave</string>
+    <string name="keywords_connections_tap_to_expand">Tik om %1$d gerangschikte links uit te vouwen</string>
+    <string name="keywords_connections_empty">Er zijn nog geen aansluitingen voor dit filter.</string>
+    <string name="keywords_open_day">Open Dag</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Meest genoemd</string>
+    <string name="keywords_sort_recently_added">Recent toegevoegd</string>
+    <string name="keywords_peak_mentions_format">Piek %1$s • %2$d vermelding%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d dag</string>
+    <string name="keywords_connections_meta_days_suffix_plural">S</string>
+    <string name="keywords_connections_meta_together">samen</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d gedeelde inzending</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">j</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ij</string>
+    <string name="keywords_connections_meta_last_prefix">| laatste %1$s</string>
+    <string name="keywords_connections_score_format">Score %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d dagen</string>
+    <string name="keywords_connections_shared_chip">%1$d gedeeld</string>
+    <string name="keywords_match_type_exact">exact</string>
+    <string name="keywords_match_type_fuzzy">wazig</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">relatie</string>
+    <string name="keywords_action_delete">Verwijderen</string>
+    <string name="keywords_action_edit">Bewerking</string>
+    <string name="keywords_action_view">Weergave</string>
+    <string name="keywords_name_label">Naam</string>
+    <string name="keywords_relation_context_label">Relatie / Context</string>
+    <string name="keywords_aliases_label">Aliassen (door komma\'s gescheiden)</string>
+    <string name="keywords_aliases_label_short">Aliassen</string>
+    <string name="keywords_type_person">Persoon</string>
+    <string name="keywords_type_place">Plaats</string>
+    <string name="keywords_save_disabled_hint">Trefwoorden worden uitgeschakeld opgeslagen. Schakel ze in vanuit de lijst wanneer u wilt dat de indexering wordt uitgevoerd.</string>
+    <string name="settings_meaning_yesterday">Gisteren</string>
+    <string name="settings_meaning_today">Vandaag</string>
+    <string name="lookback_chip_weekly">Wekelijks</string>
+    <string name="lookback_chip_monthly">Maandelijks</string>
+    <string name="timeline_screen_title">Tijdlijn</string>
+    <string name="timeline_empty_title">Hier nog niets</string>
+    <string name="timeline_empty_subtitle">Probeer een ander filter of pas de labelzoekopdracht aan.</string>
+    <string name="timeline_quick_today">Vandaag</string>
+    <string name="timeline_quick_month">Maand</string>
+    <string name="timeline_quick_filters">Filters</string>
+    <string name="timeline_all_dates">Alle data</string>
+    <string name="timeline_label_prefix">Etiket: %1$s</string>
+    <string name="timeline_label_search_placeholder">Zoek daglabels</string>
+    <string name="timeline_filters_title">Tijdlijnfilters en lay-out</string>
+    <string name="settings_meaning_tomorrow">Morgen</string>
+    <string name="settings_meaning_day_before_yesterday">Eergisteren</string>
+    <string name="settings_meaning_day_after_tomorrow">Overmorgen</string>
+    <string name="settings_meaning_last_week">Vorige week</string>
+    <string name="settings_meaning_next_week">Volgende week</string>
+    <string name="settings_meaning_monday">Maandag</string>
+    <string name="settings_meaning_tuesday">Dinsdag</string>
+    <string name="settings_meaning_wednesday">Woensdag</string>
+    <string name="settings_meaning_thursday">Donderdag</string>
+    <string name="settings_meaning_friday">Vrijdag</string>
+    <string name="settings_meaning_saturday">Zaterdag</string>
+    <string name="settings_meaning_sunday">Zondag</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Interne opslag van app</string>
+    <string name="settings_storage_internal_default">Interne opslag van app (standaard)</string>
+    <string name="settings_storage_new_folder_fallback">de nieuwe map</string>
+    <string name="settings_storage_current_folder_fallback">de huidige map</string>
+    <string name="settings_storage_move_confirm">Alle bestaande vermeldingen worden verplaatst van %1$s naar %2$s. Wil je doorgaan?</string>
+    <string name="settings_restore_added_skipped">Toegevoegd: %1$d\nOvergeslagen duplicaten: %2$d</string>
+    <string name="settings_storage_custom_folder">Aangepaste map:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Snelkoppelingen helpen</string>
+    <string name="addentry_cd_insert_template">Sjabloon invoegen</string>
+    <string name="addentry_cd_jump_to_today">Spring naar vandaag</string>
+    <string name="addentry_cd_share">Deel</string>
+    <string name="addentry_cd_bold">Vetgedrukt</string>
+    <string name="addentry_cd_italic">Cursief</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Tijd instellen</string>
+    <string name="addentry_event_chip">Evenement</string>
+    <string name="addentry_pick_time_title">Kies tijd</string>
+    <string name="addentry_hour_label">Uur</string>
+    <string name="addentry_minute_label">Minuut</string>
+    <string name="addentry_new_event_title">Nieuw evenement</string>
+    <string name="addentry_title_label">Titel</string>
+    <string name="addentry_event_description_label">Evenementbeschrijving</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos gevonden</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Converteer %1$d regel naar checklist</item>
+        <item quantity="other">Converteer %1$d regels naar checklist</item>
+    </plurals>
+    <string name="addentry_people_places_title">Mensen en plaatsen</string>
+    <string name="addentry_no_tracked_mentions">Er zijn geen gevolgde mensen of plaatsen gevonden in dit bericht.</string>
+    <string name="addentry_day_memory_title">Dag geheugen</string>
+    <string name="addentry_star_day_title">Ster deze dag</string>
+    <string name="addentry_star_day_subtitle">Sla het op als hoogtepunt, zodat het terugkeert in de terugblik.</string>
+    <string name="addentry_day_label_label">Dag etiket</string>
+    <string name="addentry_day_label_placeholder">bijv. Dag opnieuw instellen</string>
+    <string name="addentry_follow_up_title">Opvolgen</string>
+    <string name="addentry_next_month">Volgende maand</string>
+    <string name="addentry_custom">Aangepast</string>
+    <string name="addentry_due_date_format">Vervaldatum %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Duidelijke opvolging</string>
+    <string name="addentry_follow_up_note_label">Vervolgnotitie</string>
+    <string name="addentry_follow_up_note_placeholder">Wat moet je opnieuw bekijken?</string>
+    <string name="addentry_review_entry_title">Inzending beoordelen</string>
+    <string name="addentry_review_entry_subtitle">Snelle pass voordat je opslaat. Haal de taken eruit, controleer de bijgehouden vermeldingen en markeer de dag als het ertoe doet.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d taak</item>
+        <item quantity="other">%1$d taken</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d vermelding</item>
+        <item quantity="other">%1$d vermeldt</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Invoer opslaan</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Wijzigingen negeren</string>
+    <string name="addentry_discard_changes_message">U heeft niet-opgeslagen wijzigingen. Ga terug en gooi ze weg, of blijf om te blijven bewerken.</string>
+    <string name="addentry_go_back">Ga terug</string>
+    <string name="addentry_stay">Verblijf</string>
+    <string name="addentry_shortcuts_title">Snelkoppelingen</string>
+    <string name="addentry_help_bold_suffix">om tekst vetgedrukt te maken (of selecteer tekst en tik op Vetgedrukte knop)</string>
+    <string name="addentry_help_italic_suffix">om tekst cursief te maken (of selecteer tekst en tik op de knop Cursief)</string>
+    <string name="addentry_help_today_suffix">: wordt uitgebreid naar de huidige datum (bijvoorbeeld 25-dec-25)</string>
+    <string name="addentry_help_now_suffix">: Breidt uit naar de huidige tijd (bijvoorbeeld 14:30)</string>
+    <string name="addentry_help_week_suffix">: wordt uitgebreid naar de huidige week (bijvoorbeeld week 52)</string>
+    <string name="addentry_help_day_suffix">: wordt uitgebreid naar de huidige weekdag (bijvoorbeeld maandag)</string>
+    <string name="addentry_help_todo_suffix">: Uitbreiden naar een todo-selectievakje (bijvoorbeeld [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Wanneer ergens in de regel met een todo-selectievakje wordt ingevoerd, wordt deze omgeschakeld.</string>
+    <string name="addentry_okey">Oké!</string>
+    <string name="addentry_template_merge_message">Dit concept bevat al tekst. Kies hoe de sjabloon geplaatst moet worden.</string>
+    <string name="addentry_template_merge_subtitle">Invoegen hieronder behoudt het huidige concept. Bij Cursor plaatst u het sjabloon op de plek waar uw cursor nu staat.</string>
+    <string name="addentry_insert_below">Vul hieronder in</string>
+    <string name="addentry_at_cursor">Bij Cursor</string>
+    <string name="addentry_replace_draft">Vervang concept</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populair</string>
+    <string name="addentry_new_chip">Nieuw</string>
+    <string name="addentry_best_for_format">Beste voor: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Sjabloonfavoriet verwijderen</string>
+    <string name="addentry_cd_favorite_template">Favoriete sjabloon</string>
+    <string name="addentry_checklist_chip">Controlelijst</string>
+    <string name="addentry_followup_chip">Vervolg</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d sectie</item>
+        <item quantity="other">%1$d secties</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Schakel favoriete sjabloon in</string>
+    <string name="addentry_template_preview_label">Sjabloonvoorbeeld</string>
+    <string name="addentry_use_template_button">Gebruik sjabloon</string>
+    <string name="addentry_start_blank_title">Begin blanco</string>
+    <string name="addentry_start_blank_subtitle">Sla sjablonen over en blijf schrijven vanuit een leeg concept.</string>
+    <string name="addentry_blank_entry_name">Lege invoer</string>
+    <string name="addentry_blank_entry_description">Gewoon journaalboeking</string>
+    <string name="addentry_blank_category">Algemeen</string>
+    <string name="addentry_quick_picks_title">Snelle keuzes</string>
+    <string name="addentry_sort_recommended">Aanbevolen</string>
+    <string name="addentry_sort_recent">Recent</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Geen sjablonen gevonden</string>
+    <string name="addentry_no_templates_subtitle">Probeer een andere zoekopdracht of categorie.</string>
+    <string name="addentry_search_templates_label">Sjablonen zoeken</string>
+    <string name="addentry_search_templates_placeholder">Ontmoeting, gezondheid, reflectie...</string>
+    <string name="addentry_cd_clear_search">Duidelijke zoekopdracht</string>
+    <string name="addentry_choose_template_title">Kies een sjabloon</string>
+    <string name="addentry_templates_ready_format">%1$d van %2$d sjablonen gereed</string>
+    <string name="addentry_category_all">Alle</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Wat is er gebeurd?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N Lijst</string>
+    <string name="addentry_bulleted_list_chip">B-lijst</string>
+    <string name="addentry_words_count_format">%1$d WOORDEN</string>
+    <string name="addentry_chars_count_format">%1$d TEKENS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Vervolgafspraak vandaag</item>
+        <item quantity="other">Vervolgafspraken moeten vandaag plaatsvinden</item>
+    </plurals>
+    <string name="home_followup_subtitle">Spring terug naar de gekoppelde dag en ga vanaf daar verder.</string>
+    <string name="home_from_date_format">Vanaf %1$s</string>
+    <string name="home_more_due_today_format">+%1$d meer vandaag</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Etiket toevoegen</string>
+    <string name="home_edit_label_title">Etiket bewerken</string>
+    <string name="home_day_label_hint">Voeg een kort label toe voor deze dag (max. 30 tekens).</string>
+    <string name="home_day_label_placeholder">bijvoorbeeld de eerste schooldag</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Voeg een label toe voor deze dag</string>
+    <string name="home_star_label_hint">Geef deze dag een gedenkwaardig label (max. 30 tekens)</string>
+    <string name="home_star_label_placeholder">bijvoorbeeld Mijn verjaardag, Op school</string>
+    <string name="home_star_button">Ster</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Invoer verwijderd</item>
+        <item quantity="other">%1$d vermeldingen verwijderd</item>
+    </plurals>
+    <string name="home_restore_button">HERSTELLEN</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Zoek vermeldingen...</string>
+    <string name="home_cd_search">Zoekopdracht</string>
+    <string name="home_cd_clear_search">Zoekopdracht wissen</string>
+    <string name="home_cd_favorite">Favoriet</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Inzendingen</string>
+    <string name="home_stat_words">Woorden</string>
+    <string name="home_stat_chars">Chars</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Etiket toevoegen</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Overeenkomst gevonden</item>
+        <item quantity="other">%1$d Overeenkomsten gevonden</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Er zijn nog geen overeenkomsten gevonden voor dit zoekwoord.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Leeg statuspictogram</string>
+    <string name="home_empty_future">Dit is de toekomst. Neem een ​​herinnering op!</string>
+    <string name="home_empty_past">Je bent in het verleden. Neem een ​​herinnering op voordat deze vervaagt...</string>
+    <string name="home_empty_today">Nog geen vermeldingen. Begin uw dag.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Besparing</string>
+    <string name="home_cd_add_entry">Invoer toevoegen</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Verwijder %1$d</string>
+    <string name="home_future_date_title">Toekomstige datuminvoer</string>
+    <string name="home_future_date_message_format">U voegt een vermelding toe voor een toekomstige datum (%1$s). Wil je doorgaan?</string>
+    <string name="home_cache_issue_title">Probleem met gegevenscache gedetecteerd</string>
+    <string name="home_cache_issue_message">Het lijkt erop dat een aanzienlijk aantal journaalposten in de cache ontbreekt. Wilt u de gegevenscache volledig vernieuwen om te proberen deze te herstellen?</string>
+    <string name="home_refresh_button">Vernieuwen</string>
+    <string name="home_ignore_button">Negeren</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Mensen en plaatsen</string>
+    <string name="nav_statistics">Statistieken</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Database-index opnieuw opbouwen</string>
+    <string name="nav_backup_data">Back-upgegevens</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Het opnieuw opbouwen van de index voltooien...</string>
+    <string name="nav_rebuilding_index">Database-index opnieuw opbouwen</string>
+    <string name="nav_refreshing_index">Verfrissende index</string>
+    <string name="nav_backup_too_old">back-up is te oud...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Werken...</string>
+    <string name="nav_eta_almost_done">bijna klaar</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds over</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm over</string>
+    <string name="nav_eta_hours_left_format">~%1$dh over</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">RJ-logo</string>
+    <string name="nav_tagline">nog een andere dagboekapp</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Speel Winkel</string>
+    <string name="nav_cd_website">Website</string>
+    <string name="nav_cd_share_app">Deel app</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja-logo</string>
+    <string name="nav_easter_quote_part1">\'Schrijf een voorbijgaande gedachte op of wat je tijdens de lunch hebt gegeten; het hoeft niet diepzinnig te zijn.\n</string>
+    <string name="nav_easter_quote_part2">Jouw woorden kunnen gewoon bestaan.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">uit de laboratoria van RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Deel jaja</string>
+    <string name="nav_share_text_body">yaja: nog een dagboek-app\n\nEen dagelijks dagboek zonder afleiding waarin gegevens worden opgeslagen als duidelijke prijsverlagingsbestanden.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Wijzig de opslaglocatie</string>
+    <string name="settings_change_storage_location_message">Alle bestaande vermeldingen worden verplaatst van %1$s naar %2$s. Wil je doorgaan?</string>
+    <string name="settings_yes">Ja</string>
+    <string name="settings_no">Nee</string>
+    <string name="settings_restore_summary_title">Samenvatting herstellen</string>
+    <string name="settings_restore_section_journal">Tijdschrift</string>
+    <string name="settings_restore_section_shortcodes">Shortcodes</string>
+    <string name="settings_restore_section_date_keywords">Datum trefwoorden</string>
+    <string name="settings_restore_section_people_places">Mensen en plaatsen</string>
+    <string name="settings_restore_journal_summary">Toegevoegd aan nieuwe dagen: %1$d\nSamengevoegd in bestaande dagen: %2$d\nDubbele journaalboekingen overgeslagen: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Toegevoegd: %1$d\nOvergeslagen duplicaten: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Toegevoegd: %1$d\nOvergeslagen duplicaten: %2$d</string>
+    <string name="settings_restore_people_places_summary">Toegevoegd: %1$d\nOvergeslagen duplicaten: %2$d</string>
+    <string name="rebuild_tools_title">Gereedschappen opnieuw opbouwen</string>
+    <string name="rebuild_tools_back">Rug</string>
+    <string name="rebuild_tools_intro">Gebruik eerst gerichte herbouwingen. Het opnieuw opbouwen van de database is alleen bedoeld voor opslagwijzigingen, databasebeschadiging of niet-overeenkomende indexen.</string>
+    <string name="rebuild_todo_index_title">Todo-index opnieuw opbouwen</string>
+    <string name="rebuild_todo_index_subtitle">Vernieuw de taken uit journaalbestanden en update het takenscherm/widget. Het beste als alles er muf uitziet.</string>
+    <string name="rebuild_todo_index_button">Todos opnieuw opbouwen</string>
+    <string name="rebuild_people_places_title">Herbouw mensen en plaatsen</string>
+    <string name="rebuild_people_places_subtitle">Vernieuw zoekwoordaliassen, co-vermeldingen, trends en relatiegegevens.</string>
+    <string name="rebuild_people_places_button">Herbouw mensen en plaatsen</string>
+    <string name="rebuild_database_title">Volledige database opnieuw opbouwen</string>
+    <string name="rebuild_database_subtitle">Hercompileer de databasecache van markdown-bestanden. Indexeert items, tellingen, taken, mensen en plaatsen en widgets helemaal opnieuw.</string>
+    <string name="rebuild_database_button">Database opnieuw opbouwen</string>
+    <string name="rebuild_database_confirm_title">Database-index opnieuw opbouwen</string>
+    <string name="rebuild_database_confirm_message">Hierdoor wordt de volledige Room SQLite-database uit uw Markdown-bestanden gewist en opnieuw geïndexeerd. Bij grote tijdschriften kan dit enkele minuten duren.</string>
+    <string name="rebuild_database_confirm_start">Begin met de wederopbouw</string>
+    <string name="rebuild_database_status_title">Database-indexstatus</string>
+    <string name="rebuild_database_storage_engine">Opslagmotor</string>
+    <string name="rebuild_database_storage_engine_value">Kamer SQLite-database</string>
+    <string name="rebuild_database_indexed_days">Geïndexeerde dagen</string>
+    <string name="rebuild_database_indexed_days_value">%1$d dagen geïndexeerd</string>
+    <string name="rebuild_database_file_size">Databasebestandsgrootte</string>
+    <string name="rebuild_database_last_sync">Laatste indexsynchronisatie</string>
+    <string name="rebuild_database_age_never">Nooit</string>
+    <string name="rebuild_database_age_just_now">Zojuist</string>
+    <string name="rebuild_database_age_one_minute">1 minuut geleden</string>
+    <string name="rebuild_database_age_minutes">%1$d minuten geleden</string>
+    <string name="rebuild_database_age_one_hour">1 uur geleden</string>
+    <string name="rebuild_database_age_hours">%1$d uur geleden</string>
+    <string name="shortcodes_title">Shortcodes</string>
+    <string name="shortcodes_import_cd">Importeren</string>
+    <string name="shortcodes_export_cd">Exporteren</string>
+    <string name="shortcodes_help_cd">Hulp</string>
+    <string name="shortcodes_new">Nieuwe shortcode</string>
+    <string name="shortcodes_empty_title">Geen aangepaste shortcodes</string>
+    <string name="shortcodes_empty_subtitle">Voeg er een toe om fragmenten zoals @yday uit te breiden naar dynamische tekst.</string>
+    <string name="shortcodes_dynamic_dates_hint">Gebruik {{today:format}} voor dynamische datums.</string>
+    <string name="shortcodes_help_title">Hulp bij shortcodes</string>
+    <string name="shortcodes_help_built_in">Ingebouwde shortcodes:</string>
+    <string name="shortcodes_help_built_in_examples">@vandaag, @nu, @week, @dag, @t (selectievakje), @x (schakel selectievakje in)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynamische patronen:</string>
+    <string name="shortcodes_help_dynamic_desc">Gebruik {{vandaag:FORMAT}}, {{gisteren:FORMAT}}, {{morgen:FORMAT}} of {{nu:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Voorbeeld: @yday -&gt; Gisteren: {{gisteren:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Trefwoord</string>
+    <string name="action_close">Dichtbij</string>
+    <string name="keyword_detail_title_fallback">Trefwoord</string>
+    <string name="keyword_detail_not_found">Zoekwoord niet gevonden</string>
+    <string name="keyword_detail_last_indexed">Laatst geïndexeerd %1$s</string>
+    <string name="keyword_detail_mentions_section">Vermeldingen</string>
+    <string name="pin_biometric_prompt_title">Ontgrendel met biometrisch</string>
+    <string name="pin_biometric_prompt_subtitle">Gebruik uw vingerafdruk of gezicht om te ontgrendelen</string>
+    <string name="pin_error_no_biometric_enrolled">Geen biometrie geregistreerd. Registreer een vingerafdruk of gezicht in de apparaatinstellingen.</string>
+    <string name="pin_error_hardware_unavailable">Biometrische hardware is niet beschikbaar.</string>
+    <string name="pin_error_no_hardware">Dit apparaat beschikt niet over biometrische hardware.</string>
+    <string name="pin_error_not_available">Biometrische authenticatie is niet beschikbaar.</string>
+    <string name="pin_title_confirm">Bevestig pincode</string>
+    <string name="pin_title_set_new">Stel een nieuwe pincode in</string>
+    <string name="pin_title_disable">Voer de huidige pincode in om uit te schakelen</string>
+    <string name="pin_title_enter">Voer pincode in</string>
+    <string name="pin_error_incorrect">Onjuiste pincode. Probeer het opnieuw.</string>
+    <string name="pin_error_mismatch">Pincodes komen niet overeen. Begin opnieuw.</string>
+    <string name="pin_cd_use_biometric">Gebruik biometrie</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Deze dag is gelabeld, maar er is nog geen journaalboeking.</string>
+    <string name="timeline_preview_loading">Voorbeeld laden...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d extra deelname op deze dag</item>
+        <item quantity="other">+ %1$d meer inzendingen op deze dag</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Deze dag geopend</string>
+    <string name="timeline_chip_today">VANDAAG</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d invoer</item>
+        <item quantity="other">%1$d vermeldingen</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Vervolg</string>
+    <string name="timeline_chip_label_only">Alleen etiket</string>
+    <string name="timeline_cd_favorite">Favoriet</string>
+    <string name="version_history_title">Versiegeschiedenis</string>
+    <string name="version_history_day_versions_title">Dagversies</string>
+    <string name="version_history_keep_copies_title">Bewaar veiligheidskopieën</string>
+    <string name="version_history_keep_copies_subtitle">Voordat Yaja een dagbestand wijzigt, slaat het het huidige bestand op in app-gegevens onder Geschiedenisbestanden.</string>
+    <string name="version_history_versions_kept_title">Versies worden per dag bewaard</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja bewaart voor elke datum de nieuwste %1$d versie.</item>
+        <item quantity="other">Yaja bewaart voor elke datum de nieuwste %1$d versies.</item>
+    </plurals>
+    <string name="version_history_retention_title">Behoud</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Snapshots ouder dan %1$d dag worden automatisch opgeschoond.</item>
+        <item quantity="other">Snapshots ouder dan %1$d dagen worden automatisch opgeschoond.</item>
+    </plurals>
+    <string name="version_history_notes">Opmerkingen: de versiegeschiedenis beschermt bestanden met dagmarkeringen voordat wijzigingen worden toegevoegd, bewerkt, verwijderd, opnieuw gerangschikt, van een label voorzien, van een ster worden voorzien en opnieuw worden bekeken. Het is geen cloudback-up; blijf Backup gebruiken voor draagbare kopieën.</string>
+    <string name="version_history_snapshots_for">Opmerkingen: de versiegeschiedenis beschermt bestanden met dagmarkering voordat wijzigingen worden toegevoegd, bewerkt, verwijderd, opnieuw gerangschikt, van een label voorzien, van een ster worden voorzien en opnieuw worden bekeken. Het is geen cloudback-up; blijf Backup gebruiken voor draagbare kopieën.</string>
+    <string name="version_history_snapshots_subtitle">Open een opgeslagen versie, inspecteer deze en herstel deze voor deze dag.</string>
+    <string name="version_history_empty">Nog geen opgeslagen versies voor deze datum.</string>
+    <string name="action_view">Weergave</string>
+    <string name="version_history_date_intro">Open een eerder opgeslagen versie voor deze dag, inspecteer deze en herstel deze indien nodig.</string>
+    <string name="action_next">Volgende</string>
+    <string name="action_apply">Toepassen</string>
+    <string name="action_restore">Herstellen</string>
+    <string name="statistics_choose_title">Kies Statistieken</string>
+    <string name="statistics_choose_subtitle">Verberg secties die u niet wilt. Er moet minimaal één sectie zichtbaar blijven.</string>
+    <string name="statistics_visible_count">%1$d van %2$d zichtbaar</string>
+    <string name="statistics_show_all">Toon alles</string>
+    <string name="statistics_one_section_visible">Eén deel moet zichtbaar blijven</string>
+    <string name="statistics_shown">Weergegeven in statistieken</string>
+    <string name="statistics_hidden">Verborgen voor statistieken</string>
+    <string name="statistics_select_start_date">Selecteer Startdatum</string>
+    <string name="statistics_select_end_date">Selecteer Einddatum</string>
+    <string name="statistics_filter_by_period">Filter op periode</string>
+    <string name="statistics_cd_reorder">Druk lang om opnieuw te ordenen</string>
+    <string name="statistics_total_entries">Totaal aantal inzendingen</string>
+    <string name="statistics_total_words">Totaal woorden</string>
+    <string name="statistics_avg_words_per_entry">Gem. Woorden/invoer</string>
+    <string name="statistics_current_streak">Huidige reeks</string>
+    <string name="statistics_pages_written">Pagina\'s geschreven</string>
+    <string name="statistics_days_highlighted">Dagen gemarkeerd</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dagen</item>
+    </plurals>
+    <string name="statistics_period_all_time">Statistieken aller tijden</string>
+    <string name="statistics_period_current_year">Statistieken van het huidige jaar</string>
+    <string name="statistics_period_previous_year">Statistieken van vorig jaar</string>
+    <string name="statistics_period_current_month">Statistieken van de huidige maand</string>
+    <string name="statistics_period_previous_month">Statistieken van vorige maand</string>
+    <string name="statistics_period_custom">Aangepaste periodestatistieken</string>
+    <string name="statistics_period_chip_all_time">Altijd</string>
+    <string name="statistics_period_chip_current_year">Huidig ​​jaar</string>
+    <string name="statistics_period_chip_previous_year">Vorig jaar</string>
+    <string name="statistics_period_chip_current_month">Deze maand</string>
+    <string name="statistics_period_chip_previous_month">Vorige maand</string>
+    <string name="statistics_period_chip_custom">Aangepast</string>
+    <string name="statistics_sections_visible">%1$d van %2$d secties zichtbaar</string>
+    <string name="statistics_loading_stages">Statistieken in fasen laden...</string>
+    <string name="review_period_weekly">Wekelijkse recensie</string>
+    <string name="review_period_monthly">Maandelijks overzicht</string>
+    <string name="review_anchor_week">Week met %1$s</string>
+    <string name="review_anchor_month">Maand met %1$s</string>
+    <string name="review_chip_entries">Inzendingen %1$d</string>
+    <string name="review_chip_words">Woorden %1$d</string>
+    <string name="review_chip_days">Dagen %1$d</string>
+    <string name="review_hint_jump">Tik hieronder op datumchips om terug te gaan naar het dagboek.</string>
+    <string name="review_chip_streak">Streak %1$d</string>
+    <string name="review_chip_gap">Tussenruimte %1$d</string>
+    <string name="review_chip_labels">Etiketten %1$d</string>
+    <string name="review_chip_favorites">Favorieten %1$d</string>
+    <string name="review_empty_period">Er zijn nog geen journaalposten in deze periode. Labels en hoogtepunten worden nog steeds hieronder weergegeven als ze bestaan.</string>
+    <string name="review_writing_rhythm">Ritme schrijven</string>
+    <string name="review_best_streak">Beste reeks</string>
+    <string name="review_longest_gap">Langste kloof</string>
+    <string name="review_most_active_days">Meest actieve dagen</string>
+    <string name="review_day_entries_words">%1$d vermeldingen | %2$d woorden</string>
+    <string name="review_top_people">Topmensen</string>
+    <string name="review_top_places">Top plaatsen</string>
+    <string name="review_no_people_mentions">Geen mensen vermeldt</string>
+    <string name="review_no_place_mentions">Geen plaatsvermeldingen</string>
+    <string name="review_favorite_moments">Favoriete momenten</string>
+    <string name="review_starred_day">Dag met ster</string>
+    <string name="review_highlighted_in_period">Uitgelicht in deze periode</string>
+    <string name="review_labels_created">Etiketten gemaakt</string>
+    <string name="review_labeled_day">Gelabelde dag</string>
+    <string name="review_language_split">Taalsplitsing</string>
+    <string name="review_not_enough_text">Niet genoeg tekst in deze periode</string>
+    <string name="lookback_reviews_title">Recensies</string>
+    <string name="lookback_reviews_intro">Bouw een snelle reflectie op rond de door u geselecteerde dagboekdag.</string>
+    <string name="lookback_seven_days">7 dagen</string>
+    <string name="lookback_one_month">1 maand</string>
+    <string name="lookback_weekly_review">Wekelijkse recensie</string>
+    <string name="lookback_weekly_review_subtitle">Deze week in één oogopslag</string>
+    <string name="lookback_monthly_review">Maandelijks overzicht</string>
+    <string name="lookback_monthly_review_subtitle">Deze maand samengevat</string>
+    <string name="lookback_flashbacks_title">Op deze dag in voorgaande jaren</string>
+    <string name="lookback_highlights_title">Jouw hoogtepunten</string>
+    <string name="lookback_empty_title">Nog geen terugblik of hoogtepunten.</string>
+    <string name="lookback_empty_subtitle">Favoriete belangrijke dagen om ze hier te zien!</string>
+    <string name="lookback_cd_random_entry">Ga naar willekeurige invoer</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Periode</string>
+    <string name="statistics_compare_mode_title">Vergelijkmodus</string>
+    <string name="statistics_compare_mode_subtitle">Maand-, jaar- en zoekwoorddelta\'s</string>
+    <string name="statistics_this_year">Dit jaar</string>
+    <string name="statistics_writing_days_delta">Schrijfdagen Delta</string>
+    <string name="statistics_top_person_delta">Toppersoon Delta</string>
+    <string name="statistics_no_people_mentions">Nog geen mensen vermeld</string>
+    <string name="statistics_top_place_delta">Topplaats Delta</string>
+    <string name="statistics_no_place_mentions">Nog geen plaats vermeld</string>
+    <string name="statistics_structured_writing">Gestructureerd schrijven</string>
+    <string name="statistics_template_led_format">Sjabloongestuurd %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Blanco %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Meest gebruikte sjablonen</string>
+    <string name="statistics_template_mix">Sjabloonmix</string>
+    <string name="statistics_follow_up_leaders">Vervolgleiders</string>
+    <string name="statistics_compare_details">Vergelijk details</string>
+    <string name="statistics_label_month">Maand</string>
+    <string name="statistics_label_year">Jaar</string>
+    <string name="statistics_this_month_count_format">Deze maand %1$d</string>
+    <string name="statistics_last_month_count_format">Afgelopen maand %1$d</string>
+    <string name="statistics_longest_streak">Langste reeks</string>
+    <string name="statistics_most_active_day">Meest actieve dag</string>
+    <string name="statistics_writing_consistency">Consistentie bij het schrijven</string>
+    <string name="statistics_days_with_entries">Dagen met vermeldingen</string>
+    <string name="statistics_best_month">Beste maand</string>
+    <string name="statistics_best_month_format">%1$s · %2$d vermeldingen</string>
+    <string name="statistics_avg_writing_days_week">Gem. Schrijfdagen/week</string>
+    <string name="statistics_days_decimal_format">%1$.1f dagen</string>
+    <string name="statistics_based_on_total_words">Gebaseerd op het totale aantal geschreven woorden per dag</string>
+    <string name="statistics_light_words">Licht (&lt; 50 woorden)</string>
+    <string name="statistics_moderate_words">Matig (50-200 woorden)</string>
+    <string name="statistics_heavy_words">Zwaar (200-500 woorden)</string>
+    <string name="statistics_intense_words">Intens (500+ woorden)</string>
+    <string name="statistics_not_enough_text_languages">Niet genoeg tekst om talen te detecteren</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d taal gedetecteerd</item>
+        <item quantity="other">%1$d talen gedetecteerd</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Taaldetectie is nog steeds niet opgelost.</string>
+    <string name="statistics_latin_scripts_as_english">Latijnse schriften worden weergegeven als Engels</string>
+    <string name="statistics_use_more_accurate_detection">Gebruik nauwkeurigere detectie</string>
+    <string name="statistics_write_more_entries_languages">Schrijf meer inzendingen om taalstatistieken te bekijken.</string>
+    <string name="statistics_based_on_entry_time">Gebaseerd op inlooptijd</string>
+    <string name="statistics_morning_time">Ochtend (5.00 - 12.00 uur)</string>
+    <string name="statistics_afternoon_time">Middag (middag - 17.00 uur)</string>
+    <string name="statistics_evening_time">Avond (17.00-21.00 uur)</string>
+    <string name="statistics_night_time">Nacht (21.00 uur - 05.00 uur)</string>
+    <string name="statistics_heatmap_filling">Heatmap wordt nog steeds ingevuld.</string>
+    <string name="statistics_heatmap_less">Minder</string>
+    <string name="statistics_heatmap_more">Meer</string>
+    <string name="action_open">Open</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal-evenementen</string>
+    <string name="tasker_event_desc">Kies welke Yaja-dagboekgebeurtenissen dit Tasker-profiel moeten activeren.</string>
+    <string name="tasker_event_saved">Invoer opgeslagen</string>
+    <string name="tasker_event_edited">Invoer bewerkt</string>
+    <string name="tasker_event_deleted">Invoer verwijderd</string>
+    <string name="tasker_event_default_hint">Als er niets is geselecteerd, wordt Yaja standaard ingesteld op Invoer opgeslagen.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja snelle opname</string>
+    <string name="tasker_action_desc">Configureer wat Tasker snel moet vastleggen in Yaja.</string>
+    <string name="tasker_action_add_entry">Invoer toevoegen</string>
+    <string name="tasker_action_add_event">Evenement toevoegen</string>
+    <string name="tasker_action_add_todo">Todo toevoegen</string>
+    <string name="tasker_action_append">Toevoegen</string>
+    <string name="tasker_action_match_header_label">Overeenkomst / koptekst</string>
+    <string name="tasker_action_match_header_placeholder">Gemiste oproepen</string>
+    <string name="tasker_action_line_to_append_label">Lijn om toe te voegen</string>
+    <string name="tasker_action_text_label">Tekst</string>
+    <string name="tasker_action_placeholder_event">Evenementnotitie van Tasker</string>
+    <string name="tasker_action_placeholder_todo">Koop melk</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Korte opmerking van Tasker</string>
+    <string name="tasker_action_tip_append">Eerste oproep creëert een vermelding die begint met de matchtekst. Bij latere oproepen wordt de regel eronder toegevoegd.</string>
+    <string name="tasker_action_tip_default">Tip: Tasker-variabelen kunnen in het tekstveld worden geplaatst.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Crashlogboek van vorige sessie</string>
+    <string name="crash_log_clear_close">Duidelijk &amp; Sluiten</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Start app</string>
+    <string name="tap_action_quick_capture">Snelle opname</string>
+    <string name="tap_action_do_nothing">Doe niets</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja Schrijven Heatmap</string>
+    <string name="widget_cell_shape">Celvorm</string>
+    <string name="widget_corner_radius">Celvorm</string>
+    <string name="widget_square">Vierkant</string>
+    <string name="widget_round">Ronde</string>
+    <string name="widget_inner_margin">Binnenmarge: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Ruimte tussen de heatmap en de randen van de widget</string>
+    <string name="widget_none">Geen</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Op de tap</string>
+    <string name="widget_on_tap_desc">Actie wanneer op widget wordt getikt</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Vastlegging</string>
+    <string name="widget_qc_shape">Widgetvorm</string>
+    <string name="widget_show_label">Etiket tonen</string>
+    <string name="widget_show_label_desc">Geef \'Capture\'-tekst weer op de widget</string>
+    <string name="widget_show_icon">Pictogram weergeven</string>
+    <string name="widget_show_icon_required">Pictogram vereist wanneer label verborgen is</string>
+    <string name="widget_show_icon_desc">Geef het penpictogram weer op de widget</string>
+    <string name="widget_label_text">Labeltekst</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo-widget</string>
+    <string name="widget_todo_desc">Afgeronde, heatmap-achtige takenlijstwidget.</string>
+    <string name="widget_todo_corner_radius">Hoekradius: %1$ddp</string>
+    <string name="widget_todo_padding">Opvulling: %1$ddp</string>
+    <string name="widget_todo_show_completed">Toon voltooide taken</string>
+    <string name="widget_todo_show_completed_desc">Neem aangevinkte items op in de widgetlijst</string>
+    <string name="widget_todo_include_events">Inclusief evenementen</string>
+    <string name="widget_todo_include_events_desc">Toon evenementitems naast taken in de widget</string>
+    <string name="widget_todo_show_header">Toon Todo-koptekst</string>
+    <string name="widget_todo_show_header_desc">Toon of verberg de titelrij van de widget</string>
+    <string name="widget_todo_auto_hide">Widget automatisch verbergen wanneer alle taken zijn voltooid</string>
+    <string name="widget_todo_auto_hide_unavailable">Niet beschikbaar terwijl voltooide taken worden weergegeven</string>
+    <string name="widget_todo_auto_hide_desc">Maak de widget transparant als er geen openstaande taken zijn</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">klaar</string>
+    <string name="todo_confirm_mark_not_done">niet gedaan</string>
+    <string name="todo_confirm_title">Taak markeren als %1$s?</string>
+    <string name="todo_confirm_reopen">Deze taak is momenteel voltooid. Bevestig voordat u het opnieuw opent.</string>
+    <string name="todo_confirm_complete">Deze todo is nog open. Bevestig dit voordat u het als voltooid markeert.</string>
+    <string name="todo_confirm_accidental_tap">Per ongeluk tikken zal de taak niet veranderen.</string>
+    <string name="todo_confirm_yes_mark">Ja, markeer %1$s</string>
+    <string name="todo_confirm_open_yaja">Open in Jaja</string>
+    <string name="todo_confirm_keep_as_is">Houd zoals het is</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">nog een andere dagboekapp</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">uit de laboratoria van RJ</string>
+    <string name="help_made_in">Gemaakt in 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Importeren annuleren</string>
+    <string name="timeline_show_all_dates">Toon alle data</string>
+    <string name="timeline_show_all_dates_subtitle">Neem alle afgelopen dagen op, zelfs zonder invoer</string>
+    <string name="settings_background_tint_clean">Schoon</string>
+    <string name="settings_background_tint_soft">Zacht</string>
+    <string name="settings_background_tint_rich">Rijk</string>
+    <string name="settings_background_tint_deep">Diep</string>
+    <string name="settings_accent_style_complementary">Complementair</string>
+    <string name="settings_accent_style_analogous">Analoog</string>
+    <string name="settings_accent_style_triadic">Triadisch</string>
+    <string name="settings_accent_style_soft">Zacht</string>
+</resources>

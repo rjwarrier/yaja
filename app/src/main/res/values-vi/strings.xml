@@ -1,0 +1,1329 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Nhật Ký</string>
+    <string name="nav_calendar">Lịch</string>
+    <string name="nav_lookback">Xem Lại</string>
+    <string name="nav_settings">Cài Đặt</string>
+    <string name="nav_shortcodes">Phím Tắt</string>
+    <string name="nav_help">Trợ Giúp &amp; Giới Thiệu</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Lưu</string>
+    <string name="action_cancel">Hủy</string>
+    <string name="action_delete">Xóa</string>
+    <string name="action_edit">Sửa</string>
+    <string name="action_back">Quay Lại</string>
+    <string name="action_undo">Hoàn Tác</string>
+    <string name="action_yes">Có</string>
+    <string name="action_no">Không</string>
+    <string name="action_remove">Gỡ bỏ</string>
+    <string name="action_done">Xong</string>
+    <string name="action_set">Đặt</string>
+    <string name="action_select">Chọn</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Đang xây dựng lại bộ nhớ đệm</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Ghi Nhanh</string>
+    <string name="quick_capture_hint">Có chuyện gì đã xảy ra?</string>
+    <string name="quick_capture_helper_shortcodes">Các phím tắt sẽ tự động mở rộng tại đây, và các dòng việc cần làm sẽ tiếp tục khi nhấn Enter.</string>
+    <string name="quick_capture_save_delayed">Lưu bị trì hoãn. Vui lòng mở lại Yaja để xác minh.</string>
+    <string name="cd_saved">Đã lưu</string>
+    <string name="quick_todo_dialog_title">Thêm Nhanh</string>
+    <string name="quick_todo_save_delayed">Lưu việc cần làm bị trì hoãn. Vui lòng mở lại Yaja để xác minh.</string>
+    <string name="quick_todo_placeholder">Thêm một việc cần làm</string>
+    <string name="quick_event_placeholder">Thêm một sự kiện</string>
+    <string name="quick_todo_task_date">Ngày của Nhiệm Vụ</string>
+    <string name="quick_todo_event_date">Ngày của Sự Kiện</string>
+    <string name="quick_todo_pick_date_cd_format">Chọn %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">Lưu dưới dạng một việc cần làm cho ngày đã chọn.</string>
+    <string name="quick_event_selected_day_hint">Lưu dưới dạng một sự kiện cho ngày đã chọn.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Trước</string>
+    <string name="cd_next">Sau</string>
+    <string name="cd_surprise_me">Điều Bất Ngờ</string>
+    <string name="calendar_cd_go_to_current_month">Đi đến tháng hiện tại</string>
+    <string name="calendar_quick_action_timeline_title">Dòng Thời Gian</string>
+    <string name="calendar_quick_action_timeline_subtitle">Duyệt theo thứ tự thời gian</string>
+    <string name="calendar_quick_action_jump_title">Nhảy Đến Ngày</string>
+    <string name="calendar_quick_action_jump_subtitle">Mở một ngày cụ thể</string>
+    <string name="calendar_jump_placeholder">GG-TT-NN</string>
+    <string name="calendar_jump_invalid_date">Ngày không hợp lệ. Vui lòng sử dụng định dạng GG-TT-NN.</string>
+    <string name="calendar_action_go">Đi</string>
+    <string name="calendar_enable_future_dates_title">Bật Ngày Trong Tương Lai</string>
+    <string name="calendar_enable_future_dates_message">Nhập ngày trong tương lai đang bị tắt. Bạn có muốn bật lên không?</string>
+    <string name="calendar_action_enable">Bật</string>
+    <string name="calendar_future_entry_enabled">Đã bật nhập ngày trong tương lai</string>
+    <string name="calendar_weekday_sun_short">CN</string>
+    <string name="calendar_weekday_mon_short">T2</string>
+    <string name="calendar_weekday_tue_short">T3</string>
+    <string name="calendar_weekday_wed_short">T4</string>
+    <string name="calendar_weekday_thu_short">T5</string>
+    <string name="calendar_weekday_fri_short">T6</string>
+    <string name="calendar_weekday_sat_short">T7</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">CÁC MỤC TRONG THÁNG NÀY</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d ngày</item>
+        <item quantity="other">%1$d / %2$d ngày</item>
+    </plurals>
+    <string name="calendar_days_of_memories">ngày chứa đầy kỷ niệm</string>
+    <string name="calendar_consistency_last_12_months">12 THÁNG QUA</string>
+    <string name="calendar_consistency_title_format">TÍNH NHẤT QUÁN - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% so với \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">so với \'%1$s</string>
+    <string name="calendar_consistency_first_period">giai đoạn đầu tiên</string>
+    <string name="calendar_graph_frequency_month">Tháng</string>
+    <string name="calendar_graph_frequency_year">Năm</string>
+    <string name="calendar_yearly_consistency_title">Tính Nhất Quán (Hàng Năm)</string>
+    <string name="calendar_keywords_title">Ai xuất hiện nhiều nhất</string>
+    <string name="calendar_keywords_syncing">Số liệu thống kê về Mọi Người &amp; Địa Điểm vẫn đang được đồng bộ hóa với chỉ mục từ khóa.</string>
+    <string name="calendar_keywords_empty">Thêm ít nhất 3 người hoặc 3 địa điểm để xem các lượt nhắc đến hàng đầu.</string>
+    <string name="calendar_keywords_people">Mọi Người</string>
+    <string name="calendar_keywords_places">Địa Điểm</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Cài Đặt</string>
+    <string name="settings_appearance">Giao Diện</string>
+    <string name="settings_appearance_subtitle">Chủ đề, màu sắc, phông chữ và phong cách cá nhân</string>
+    <string name="settings_theme">Chủ Đề</string>
+    <string name="settings_font">Phông Chữ</string>
+    <string name="settings_storage">Lưu Trữ</string>
+    <string name="settings_security">Bảo Mật</string>
+    <string name="settings_backup">Sao Lưu</string>
+    <string name="settings_change_storage_title">Thay Đổi Vị Trí Lưu Trữ</string>
+    <string name="settings_backup_never">Không bao giờ</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Tìm kiếm cài đặt</string>
+    <string name="settings_search_clear">Xóa tìm kiếm</string>
+    <string name="settings_search_recent">Tìm kiếm gần đây</string>
+    <string name="settings_search_no_results">Không tìm thấy cài đặt phù hợp</string>
+    <string name="settings_search_close">Đóng</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Trải Nghiệm Nhật Ký</string>
+    <string name="settings_section_navigation_gestures">Điều Hướng &amp; Cử Chỉ</string>
+    <string name="settings_section_review_insights">Xem Lại &amp; Phân Tích</string>
+
+    <!-- Language -->
+    <string name="settings_language">Ngôn Ngữ</string>
+    <string name="settings_language_title">Ngôn Ngữ Ứng Dụng</string>
+    <string name="settings_language_subtitle">Chọn ngôn ngữ được sử dụng trên toàn bộ ứng dụng.</string>
+    <string name="settings_language_system_default">Mặc định hệ thống</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Kiểu Mục Nhật Ký</string>
+    <string name="settings_journal_entry_style_subtitle">Chọn giữa thẻ nổi và chế độ xem nhật ký phẳng hơn.</string>
+    <string name="settings_journal_entry_style_cards">Thẻ</string>
+    <string name="settings_journal_entry_style_flat">Phẳng</string>
+    <string name="settings_journal_render_checkboxes_title">Hiển thị hộp kiểm dưới dạng văn bản</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Hiển thị việc cần làm dưới dạng [ ] và [x] trên toàn bộ ứng dụng thay vì hộp kiểm thông thường.</string>
+    <string name="settings_journal_day_header_counts_title">Hiển thị số lượng ở tiêu đề ngày</string>
+    <string name="settings_journal_day_header_counts_subtitle">Hiển thị số lượng mục, số từ và số ký tự trên tiêu đề ngày nhật ký.</string>
+    <string name="settings_journal_show_timestamps_title">Hiển thị dấu thời gian</string>
+    <string name="settings_journal_show_timestamps_subtitle">Hiển thị thời gian ghi trên dòng thời gian.</string>
+    <string name="settings_journal_allow_future_title">Cho Phép Mục Nhật Ký Tương Lai</string>
+    <string name="settings_journal_allow_future_subtitle">Bật tính năng thêm mục nhật ký cho các ngày trong tương lai.</string>
+    <string name="settings_journal_truncate_title">Cắt Ngắn Các Mục Dài</string>
+    <string name="settings_journal_truncate_subtitle">Rút ngắn các mục dài trên màn hình chính.</string>
+    <string name="settings_journal_char_limit_title">Giới Hạn Ký Tự</string>
+    <string name="settings_journal_char_limit_subtitle">Thiết lập số ký tự được hiển thị trước khi cắt ngắn.</string>
+    <string name="settings_journal_char_limit_min">50 ký tự</string>
+    <string name="settings_journal_char_limit_max">200 ký tự</string>
+    <string name="settings_journal_char_count">%1$d ký tự</string>
+    <string name="settings_journal_first_day_title">Ngày đầu tuần</string>
+    <string name="settings_journal_first_day_subtitle">Bắt đầu lịch vào ngày</string>
+    <string name="settings_journal_day_sun">CN</string>
+    <string name="settings_journal_day_mon">T2</string>
+    <string name="settings_journal_date_recognition">Nhận Diện Ngày</string>
+    <string name="settings_journal_date_order_title">Thứ Tự Ngày</string>
+    <string name="settings_journal_date_order_subtitle">Cách diễn dịch các ngày bằng số dễ gây mơ hồ</string>
+    <string name="settings_journal_date_order_auto">Tự động</string>
+    <string name="settings_journal_date_order_dmy">GG/TT</string>
+    <string name="settings_journal_date_order_mdy">TT/GG</string>
+    <string name="settings_journal_date_keywords_title">Từ Khóa Ngày</string>
+    <string name="settings_journal_date_keywords_subtitle">Các từ trong ngôn ngữ khác mang ý nghĩa ngày tháng (ví dụ: từ địa phương cho từ "hôm qua").</string>
+    <string name="settings_journal_view_keywords">Xem (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Thêm từ khóa</string>
+    <string name="settings_journal_motion">Chuyển Động</string>
+    <string name="settings_journal_animations_title">Hiệu Ứng Động</string>
+    <string name="settings_journal_animations_subtitle">Kiểm soát hiệu ứng động trên toàn bộ ứng dụng. Chế độ giảm thiểu giúp mọi thứ trôi chảy hơn với ít chuyển động hơn.</string>
+    <string name="settings_journal_animations_full">Đầy đủ</string>
+    <string name="settings_journal_animations_reduced">Giảm thiểu</string>
+    <string name="settings_journal_animations_off">Tắt</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Xem Lại Sau Khi Lưu</string>
+    <string name="settings_review_post_write_title">Xem Lại Sau Khi Viết</string>
+    <string name="settings_review_post_write_subtitle">Hiển thị bảng xem lại sau khi nhấn lưu để trích xuất việc cần làm, kiểm tra nhắc đến, gắn dấu sao ngày hoặc đặt nhãn.</string>
+    <string name="settings_review_people_places">Mọi Người &amp; Địa Điểm</string>
+    <string name="settings_review_highlighting_title">Nổi Bật</string>
+    <string name="settings_review_highlighting_subtitle">Làm nổi bật những người và địa điểm được theo dõi trong các thẻ Trang chủ và chế độ Xem mục nhật ký.</string>
+    <string name="settings_review_match_sensitivity_title">Độ Nhạy Khớp</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Độ giống nhau của một từ để được phát hiện cho Mọi Người &amp; Địa Điểm (cao hơn = nghiêm ngặt hơn).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Thêm Phím Tắt</string>
+    <string name="shortcodes_edit_title">Sửa Phím Tắt</string>
+    <string name="shortcodes_code_label">Phím tắt (ví dụ: @yday)</string>
+    <string name="shortcodes_expansion_label">Văn Bản Thay Thế</string>
+    <string name="shortcodes_export_error">Không thể xuất phím tắt</string>
+    <string name="shortcodes_import_error">Không thể nhập phím tắt</string>
+    <string name="todos_expand_section">Mở rộng %1$s</string>
+    <string name="todos_collapse_section">Thu gọn %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Biểu Đồ Nhiệt Viết</string>
+    <string name="heatmap_widget_description">Biểu đồ nhiệt hoạt động viết nhật ký gần đây của bạn.</string>
+    <string name="quick_capture_widget_name">Ghi Nhanh</string>
+    <string name="quick_capture_widget_description">Nút một lần nhấn để thêm nhanh các mục nhật ký.</string>
+    <string name="quick_todo_widget_name">Việc Cần Làm Nhanh</string>
+    <string name="tasker_plugin_action_label">Ghi Nhanh Yaja</string>
+    <string name="tasker_plugin_event_label">Sự Kiện Nhật Ký Yaja</string>
+    <string name="tasker_screen_allow_add_entry_title">Cho phép Tasker thêm mục</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Cho phép Tasker sử dụng các hành động ghi nhanh của Yaja như Thêm Mục Nhật Ký và Thêm Việc Cần Làm.</string>
+    <string name="tasker_screen_allow_events_title">Cho phép Sự kiện Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Cho phép Yaja gửi các sự kiện Đã lưu mục nhật ký, Đã sửa mục nhật ký và Đã xóa mục nhật ký tới Tasker.</string>
+    <string name="tasker_screen_include_text_title">Bao gồm văn bản mục trong Sự kiện</string>
+    <string name="tasker_screen_include_text_subtitle">Bị tắt theo mặc định vì quyền riêng tư. Khi tắt, Tasker chỉ nhận được loại sự kiện, ngày tháng, nhãn và thời gian, chứ không nhận được nội dung nhật ký.</string>
+    <string name="tasker_screen_section_what">Tính năng này làm gì</string>
+    <string name="tasker_screen_body_what">Tasker có thể nhanh chóng thêm các mục nhật ký hoặc việc cần làm vào Yaja, nối thêm các dòng vào các mục được nhóm như Cuộc gọi nhỡ, và Yaja có thể thông báo cho Tasker khi các mục được lưu, chỉnh sửa hoặc xóa.</string>
+    <string name="tasker_screen_section_how">Cách sử dụng</string>
+    <string name="tasker_screen_body_how">Trước tiên hãy bật các nút chuyển đổi bạn cần ở đây. Sau đó, mở Tasker và thêm hành động Ghi Nhanh Yaja hoặc Sự Kiện Nhật Ký Yaja.</string>
+    <string name="tasker_screen_section_notes">Lưu ý</string>
+    <string name="tasker_screen_body_notes">Văn bản mục nhật ký không được chia sẻ with Tasker trừ khi bạn bật tính năng Bao gồm văn bản mục trong Sự kiện. Nếu Tasker không hiển thị các tùy chọn hoặc biến số gần đây, hãy mở lại màn hình cấu hình của Tasker sau khi cập nhật Yaja.</string>
+    <string name="tasker_screen_section_example">Ví dụ</string>
+    <string name="tasker_screen_body_example">Ví dụ hành động: Hành động Tasker &gt; Ghi Nhanh Yaja &gt; Nối Thêm, với Khớp / Tiêu đề được đặt là Cuộc gọi nhỡ và Dòng nối thêm được đặt thành biến Tasker. Ví dụ sự kiện: Sự kiện Tasker &gt; Sự Kiện Nhật Ký Yaja &gt; Đã Sửa Mục Nhật Ký, sau đó sử dụng các biến như %yaja_event_type, %yaja_date, và tùy chọn %yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Trường hợp sử dụng</string>
+    <string name="tasker_screen_use_case_1">1. Sử dụng sự kiện nhật ký Yaja trong Tasker để kích hoạt hành động đồng bộ hóa FolderSync, nhằm đẩy thư mục Yaja của bạn lên bất kỳ nhà cung cấp đám mây nào sau khi các mục thay đổi.</string>
+    <string name="tasker_screen_use_case_2">2. Sử dụng Pushbullet với Tasker để gửi văn bản đến Ghi Nhanh Yaja, để văn bản được đẩy được lưu dưới dạng một mục mới cho ngày hôm nay.</string>
+    <string name="tasker_screen_use_case_3">3. Sử dụng hồ sơ cuộc gọi nhỡ của Tasker để gửi hành động Nối Thêm tới Yaja, để tất cả thông tin cuộc gọi nhỡ nằm dưới một mục Cuộc gọi nhỡ duy nhất thay vì tạo các mục riêng biệt.</string>
+    <string name="quick_todo_widget_description">Nút một lần nhấn để ghi lại việc cần làm làm mục nhật ký mới cho hôm nay.</string>
+    <string name="todo_list_widget_name">Danh Sách Việc Cần Làm</string>
+    <string name="todo_list_widget_description">Danh sách việc cần làm của nhật ký có thể cuộn được. Nhấn vào việc cần làm để đánh dấu là đã hoàn thành hoặc chưa hoàn thành.</string>
+    <string name="todo_cd_add_todo">Thêm việc cần làm</string>
+    <string name="heatmap_widget_status_loading">Đang tải biểu đồ nhiệt…</string>
+    <string name="heatmap_widget_status_empty">Chưa có mục nào</string>
+    <string name="heatmap_widget_status_refresh">Mở Yaja để làm mới biểu đồ nhiệt</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Bộ nhớ đệm đã được xây dựng lại.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Mục Mới</string>
+    <string name="shortcut_new_entry_long">Thêm mục nhật ký</string>
+    <string name="shortcut_add_todo_short">Thêm Việc Cần Làm</string>
+    <string name="shortcut_add_todo_long">Thêm việc cần làm cho hôm nay</string>
+    <string name="shortcut_add_event_short">Thêm Sự Kiện</string>
+    <string name="shortcut_add_event_long">Thêm sự kiện</string>
+    <string name="shortcut_today_short">Hôm Nay</string>
+    <string name="shortcut_today_long">Mở nhật ký hôm nay</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Điều Hướng</string>
+    <string name="settings_bottom_nav_style_label">Kiểu Thanh Điều Hướng Dưới</string>
+    <string name="settings_navigation_mode_title">Chế Độ Điều Hướng</string>
+    <string name="settings_navigation_mode_subtitle">Chọn giữa thanh điều hướng nổi và bảng điều khiển dưới đầy đủ.</string>
+    <string name="settings_nav_mode_floating">Nổi</string>
+    <string name="settings_nav_mode_panel">Bảng điều khiển</string>
+    <string name="settings_navigation_screens_label">Màn Hình Điều Hướng</string>
+    <string name="settings_nav_summary_floating">Nhật ký và Lịch luôn nằm trên thanh nổi. Chọn tối đa 2 màn hình bổ sung. Hiện đã chọn: %1$d trên %2$d.</string>
+    <string name="settings_nav_summary_panel">Nhật ký và Lịch luôn nằm trên bảng dưới. Chọn tối đa 3 màn hình bổ sung. Hiện đã chọn: %1$d trên %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Hiển thị Xem Lại trên thanh nổi hoặc bảng điều khiển đang hoạt động.</string>
+    <string name="settings_nav_people_places_subtitle">Hiển thị Mọi Người &amp; Địa Điểm trên thanh nổi hoặc bảng điều khiển đang hoạt động.</string>
+    <string name="settings_nav_todos_title">Việc Cần Làm</string>
+    <string name="settings_nav_todos_subtitle">Hiển thị Việc Cần Làm trên thanh nổi hoặc bảng điều khiển đang hoạt động.</string>
+    <string name="todos_quick_add_title">Thêm Nhanh</string>
+    <string name="todos_hero_subtitle">Theo dõi công việc và các khoảnh khắc nhật ký</string>
+    <string name="todos_hero_all_activity">Tất cả hoạt động</string>
+    <string name="todos_hero_open_focus">Tiêu điểm hoạt động</string>
+    <string name="todos_hero_completed">Đã hoàn thành</string>
+    <string name="todos_stat_today_open">Hoạt động hôm nay</string>
+    <string name="todos_stat_done_today">Xong hôm nay</string>
+    <string name="todos_stat_events">Sự kiện</string>
+    <string name="todos_stat_still_open">Vẫn còn hoạt động</string>
+    <string name="todos_stat_past_7d">7 ngày qua</string>
+    <string name="todos_stat_days">Ngày</string>
+    <string name="todos_empty_done">Chưa có việc cần làm nào đã hoàn thành</string>
+    <string name="todos_empty_events">Chưa có mục sự kiện nào</string>
+    <string name="todos_section_open">HOẠT ĐỘNG</string>
+    <string name="todos_section_later">ĐỂ SAU</string>
+    <string name="todos_section_upcoming">SẮP TỚI</string>
+    <string name="todos_section_future_events">SỰ KIỆN SẮP TỚI</string>
+    <string name="todos_section_past_events">SỰ KIỆN ĐÃ QUA</string>
+    <string name="todos_cd_open_day">Mở ngày</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d việc cần làm đang mở</item>
+        <item quantity="other">%1$d việc cần làm đang mở</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d việc cần làm đã hoàn thành</item>
+        <item quantity="other">%1$d việc cần làm đã hoàn thành</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d sự kiện sắp tới</item>
+        <item quantity="other">%1$d sự kiện sắp tới</item>
+    </plurals>
+    <string name="todos_filter_all_format">Tất cả %1$d</string>
+    <string name="todos_filter_open_format">Đang mở %1$d</string>
+    <string name="todos_filter_done_format">Đã xong %1$d</string>
+    <string name="todos_filter_events_format">Sự kiện %1$d</string>
+    <string name="todos_cheer_all_clear">Mọi thứ đã gọn gàng. Tuyệt vời.</string>
+    <string name="todos_cheer_done_and_dusted">Đã xong xuôi ổn thỏa.</string>
+    <string name="todos_cheer_nothing_pending">Không có việc gì tồn đọng.</string>
+    <string name="todos_cheer_caught_up">Bạn đã bắt kịp mọi thứ.</string>
+    <string name="todos_cheer_clean_slate">Khởi đầu mới sạch sẽ.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Trong %1$d ngày</item>
+        <item quantity="other">Trong %1$d ngày</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d ngày trước</item>
+        <item quantity="other">%1$d ngày trước</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Trong %1$d tuần</item>
+        <item quantity="other">Trong %1$d tuần</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d tuần trước</item>
+        <item quantity="other">%1$d tuần trước</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Trong 1 tháng</string>
+    <string name="todos_relative_one_month_ago">1 tháng trước</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Trong %1$d tháng</item>
+        <item quantity="other">Trong %1$d tháng</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d tháng trước</item>
+        <item quantity="other">%1$d tháng trước</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Thống Kê</string>
+    <string name="settings_nav_statistics_subtitle_on">Hiển thị Thống Kê trên thanh nổi hoặc bảng điều khiển đang hoạt động.</string>
+    <string name="settings_nav_statistics_subtitle_off">Bật Thống Kê trước để đặt nó trên thanh điều hướng.</string>
+    <string name="settings_show_labels_bottom_panel_title">Hiển thị Nhãn Trong Bảng Dưới</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Hiển thị nhãn văn bản dưới các biểu tượng trong bảng điều khiển dưới.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Cử Chỉ</string>
+    <string name="settings_entry_delete_title">Xóa Mục Nhật Ký</string>
+    <string name="settings_entry_delete_subtitle">Nhấn giữ mục để chọn. Nhấn vào các mục khác để chọn nhiều mục, sau đó sử dụng nút Xóa ở giữa. Nhấn vào vùng trống để xóa lựa chọn.</string>
+    <string name="settings_swipe_navigate_title">Vuốt Để Điều Hướng Ngày</string>
+    <string name="settings_swipe_navigate_subtitle">Vuốt từ phải sang trái để chuyển tiếp một ngày và từ trái sang phải để lùi lại.</string>
+    <string name="settings_drag_reorder_title">Bật Kéo Để Sắp Xếp Lại</string>
+    <string name="settings_drag_reorder_subtitle">Nhấn giữ mục nhật ký để kéo sắp xếp lại</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Dữ Liệu &amp; Khôi Phục</string>
+    <string name="settings_swipe_rebuild_index">Vuốt xuống trên màn hình chính để xây dựng lại chỉ mục</string>
+    <string name="settings_large_journal_safe_mode_title">Chế Độ An Toàn Nhật Ký Lớn</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Khi phát hiện một nhật ký cực kỳ lớn, hãy trì hoãn công việc thống kê khởi động không thiết yếu để ứng dụng mở nhanh hơn và an toàn hơn.</string>
+    <string name="settings_version_history_title">Lịch Sử Phiên Bản</string>
+    <string name="settings_version_history_subtitle">Lưu một bản sao an toàn trước khi chỉnh sửa mục, xóa, gắn nhãn và thay đổi ngày xem lại.</string>
+    <string name="settings_storage_location_label">Vị Trí Lưu Trữ</string>
+    <string name="settings_reset_to_default">Đặt Lại Về Mặc Định</string>
+    <string name="settings_choose_folder">Chọn thư mục</string>
+    <string name="settings_backup_description">Tạo một file zip sao lưu Yaja duy nhất chứa các mục nhật ký, phím tắt, từ khóa ngày và dữ liệu Mọi Người &amp; Địa Điểm. Bạn có thể khôi phục chúng an toàn sau này.</string>
+    <string name="settings_last_backup">Sao lưu cuối: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Thời gian nhắc nhở sao lưu</string>
+    <string name="settings_backup_reminder_disabled">Bị tắt</string>
+    <string name="settings_backup_reminder_desc">Làm nổi bật mục sao lưu ở thanh bên khi nó cũ hơn %1$d ngày.</string>
+    <string name="settings_backup_reminder_days_disabled">0 ngày (tắt)</string>
+    <string name="settings_backup_reminder_days">%1$d ngày</string>
+    <string name="settings_restore_button">Khôi Phục</string>
+    <string name="settings_backup_now_button">Sao Lưu Ngay</string>
+    <string name="settings_db_index_management_label">Quản Lý Chỉ Mục Cơ Sở Dữ Liệu</string>
+    <string name="settings_db_index_management_desc">Mở các công cụ xây dựng lại chuyên biệt cho việc cần làm, Mọi Người &amp; Địa Điểm hoặc xây dựng lại toàn bộ chỉ mục cơ sở dữ liệu.</string>
+    <string name="settings_rebuild_tools_button">Công Cụ Xây Dựng Lại</string>
+    <string name="settings_import_label">Nhập dữ liệu</string>
+    <string name="settings_import_info_cd">Thông tin nhập dữ liệu</string>
+    <string name="settings_import_info_title">Thông Tin Nhập Dữ Liệu</string>
+    <string name="settings_import_day_one_title">Nhập Day One</string>
+    <string name="settings_import_day_one_bullet1">- Xuất từ Day One mà không có hình ảnh</string>
+    <string name="settings_import_day_one_bullet2">- Chỉ dữ liệu văn bản sẽ được nhập</string>
+    <string name="settings_import_day_one_bullet3">- Dấu thời gian và dữ liệu vị trí (nếu có) sẽ được giữ lại</string>
+    <string name="settings_import_perf_warning_title">Cảnh Báo Hiệu Suất</string>
+    <string name="settings_import_perf_warning_desc">Nhập một số lượng lớn các mục (500+) có thể mất vài phút. Bạn có thể rời khỏi màn hình này, quá trình nhập sẽ tiếp tục trong nền.</string>
+    <string name="settings_got_it">Đã hiểu</string>
+    <string name="settings_import_success">%1$d ngày mới, %2$d đã hợp nhất, %3$d đã bỏ qua</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">xuất .zip hoặc .json</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">xuất .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Tìm hiểu cách sử dụng yaja</string>
+    <string name="help_footer_website">Trang Web</string>
+    <string name="help_footer_share">Chia sẻ</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Chia sẻ yaja</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nNhật ký nội bộ không gây xao nhãng lưu trữ các mục dưới dạng file markdown thông thường. Bao gồm dòng thời gian, xem lại, mọi người và địa điểm, chủ đề giao diện, đánh giá, thống kê và widget.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Đã sao chép tên người dùng Discord!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Logo RJ</string>
+    <string name="help_screen_title">Trợ Giúp &amp; Thông Tin</string>
+    <string name="help_welcome_title">Chào mừng bạn đến với yaja</string>
+    <string name="help_welcome_body">Yaja là một nhật ký markdown ngoại tuyến để ghi lại ngày tháng, mọi người, địa điểm, các việc cần theo dõi, xem lại và thói quen mà không làm phiền bạn. Trang này cung cấp một hướng dẫn nhanh về các phần chính của ứng dụng.</string>
+    <string name="help_start_here">Bắt Đầu Từ Đây</string>
+    <string name="help_cd_collapse">Thu gọn</string>
+    <string name="help_cd_expand">Mở rộng</string>
+    <string name="help_group_everyday_title">Hàng Ngày</string>
+    <string name="help_group_everyday_desc">Viết nhật ký, duy trì chuỗi ngày viết và điều hướng hàng ngày.</string>
+    <string name="help_group_reviews_title">Xem Lại &amp; Phân Tích</string>
+    <string name="help_group_reviews_desc">Xem lại, xu hướng, mọi người, địa điểm và phân tích.</string>
+    <string name="help_group_advanced_title">Công Cụ Nâng Cao</string>
+    <string name="help_group_advanced_desc">Widget, lưu trữ, quyền riêng tư, sao lưu và công cụ kỹ thuật.</string>
+    <string name="help_onboard_todos_events_title">Nhiệm vụ, Sự kiện &amp; Lặp lại</string>
+    <string name="help_onboard_todos_events_body">Lưu các nhắc nhở cá nhân, kế hoạch gia đình và lịch lặp lại để tự động tạo nhiệm vụ vào ngày đến hạn ngay trong luồng nhật ký của bạn.</string>
+    <string name="help_onboard_widgets_title">Widget</string>
+    <string name="help_onboard_widgets_body">Thêm các widget Biểu Đồ Nhiệt, Ghi Nhanh, Việc Cần Làm Nhanh hoặc Danh Sách Việc Cần Làm từ trình khởi chạy của bạn.</string>
+    <string name="help_onboard_version_history_title">Lịch Sử Phiên Bản</string>
+    <string name="help_onboard_version_history_body">Bật File Lịch Sử trong Cài đặt &gt; Dữ liệu để lưu các bản chụp an toàn trước các thay đổi rủi ro.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Sử dụng Tasker để thêm nhanh các mục nhật ký hoặc việc cần làm khi có việc cá nhân cần ghi lại ngay.</string>
+    <string name="help_section_writing_editor_title">Viết &amp; Trình Biên Tập</string>
+    <string name="help_section_writing_editor_preview">Bản mẫu, tiêu đề markdown, việc cần làm, sự kiện và chèn taslak linh hoạt.</string>
+    <string name="help_section_writing_editor_content">+ Nhấn vào nút \'+\' nổi để viết vào ngày đã chọn.\n+ Sử dụng các bản mẫu như Ghi chú cuộc họp, Ngày đi du lịch, Nhật ký sức khỏe, Suy ngẫm, Nhật ký công việc và hơn thế nữa.\n+ Bản mẫu có thể được chèn vào một taslak trống, nối tiếp bên dưới, dùng để thay thế taslak hoặc chèn vào vị trí con trỏ.\n+ Các nút biên tập có thể chèn nhanh việc cần làm, sự kiện, danh sách số và danh sách dấu đầu dòng.\n+ Giao diện Xem mục nhật ký và Sửa mục nhật ký hỗ trợ các tiêu đề theo kiểu markdown như ### Tiêu đề.</string>
+    <string name="help_section_post_write_review_title">Xem Lại Sau Khi Viết</string>
+    <string name="help_section_post_write_review_preview">Trích xuất việc cần làm, phát hiện từ khóa, gắn dấu sao, nhãn và thiết lập ngày xem lại.</string>
+    <string name="help_section_post_write_review_content">+ Sau khi viết xong, Yaja có thể mở một màn hình xem lại trước khi lưu.\n+ Màn hình này giúp trích xuất các mục việc cần làm, phát hiện Mọi Người &amp; Địa Điểm, gắn dấu sao cho ngày, thiết lập nhãn ngày và lên lịch ngày xem lại.\n+ Bạn có thể tắt tính năng Xem Lại Sau Khi Viết từ cài đặt nếu bạn muốn lưu trực tiếp.</string>
+    <string name="help_section_revisit_followup_title">Ngày Xem Lại &amp; Theo Dõi</string>
+    <string name="help_section_revisit_followup_preview">Ngày theo dõi được liên kết với nhật ký với các lựa chọn nhanh và tùy chọn tùy chỉnh.</string>
+    <string name="help_section_revisit_followup_content">+ Ngày mai, Tuần tới, Tháng tới hoặc một ngày tùy chỉnh.\n+ Các mục xem lại đến hạn sẽ xuất hiện trên màn hình chính và được đánh dấu trên Lịch cũng như Dòng thời gian.\n+ Tính năng này hoạt động tuyệt vời cho các cuộc hẹn, quyết định, kiểm tra sức khỏe và nhắc nhở gắn liền với bối cảnh nhật ký.</string>
+    <string name="help_section_navigation_gestures_title">Điều Hướng &amp; Cử Chỉ</string>
+    <string name="help_section_navigation_gestures_preview">Chuyển đổi ngày, xóa các lựa chọn, tùy chọn vuốt và hành vi xây dựng lại bộ nhớ đệm.</string>
+    <string name="help_section_navigation_gestures_content">+ Màn hình chính hỗ trợ điều hướng ngày bằng các phím mũi tên và tùy chọn điều hướng bằng cử chỉ vuốt nếu được bật.\n+ Nhấn giữ một mục để chọn nó. Nhấn vào các mục khác để chọn thêm, sau đó sử dụng nút Xóa bên cạnh nút Thêm.\n+ Nhấn bên ngoài các mục đã chọn sẽ xóa lựa chọn. Các mục đã xóa có thể được khôi phục cùng nhau từ thông báo đếm ngược khôi phục.\n+ Bạn có thể xây dựng lại bộ nhớ đệm khi các file nhật ký thay đổi bên ngoài ứng dụng Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Phím Tắt &amp; Ghi Nhanh</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Ghi chép cá nhân nhanh chóng cùng các đoạn văn bản động có thể tái sử dụng.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Tạo phím tắt để chèn nhanh các văn bản lặp đi lặp lại.\n+ Các trình giữ chỗ động như {{today:dd-MMM}} và {{now:HH:mm}} hoạt động trong các phím tắt.\n+ Ghi Nhanh giúp ghi lại một số điều nhanh chóng mà không cần mở trình biên tập đầy đủ.\n+ Thêm nhanh có thể lưu một việc cần làm hoặc sự kiện cho ngày đã chọn từ các widget, màn hình Việc Cần Làm hoặc từ Tasker.</string>
+    <string name="help_section_todos_events_title">Nhiệm vụ, Sự kiện &amp; Lặp lại</string>
+    <string name="help_section_todos_events_preview">Nhắc nhở cá nhân, sự kiện đáng nhớ và lịch lặp lại tự động.</string>
+    <string name="help_section_todos_events_content">+ Nhiệm vụ được viết trực tiếp vào nhật ký dưới dạng dòng [ ] và [x].\n+ Sự kiện là các mục nhật ký bình thường được đánh dấu là Sự kiện, hữu ích cho các kế hoạch gia đình, cuộc hẹn, chuyến đi hoặc bất cứ điều gì bạn muốn nhớ lại sau.\n+ Nhiệm vụ &amp; Sự kiện lặp lại (Lịch trình) tự động viết các nhiệm vụ hoặc tiêu đề sự kiện vào các trang nhật ký hàng ngày của bạn theo lịch trình của chúng (ví dụ: hàng tuần, hàng tháng, hàng năm).\n+ Quản lý lịch trình của bạn bằng cách nhấn vào biểu tượng Lặp lại trên màn hình Nhiệm vụ.\n+ Mỗi ngày khi mở Yaja, hệ thống chạy ngầm sẽ kiểm tra xem có nhiệm vụ nào đến hạn không và chèn chúng vào nhật ký của ngày đó.\n+ Màn hình Nhiệm vụ giúp bạn xem các nhiệm vụ đang mở, đã hoàn thành và các sự kiện mà không biến Yaja thành một bảng điều khiển hiệu suất phức tạp.\n+ Nhấn vào tiêu đề ngày để mở ngày đó trong Nhật ký.\n+ Kéo xuống trên màn hình Nhiệm vụ để dựng lại chỉ mục nhiệm vụ nếu các tệp thay đổi bên ngoài Yaja.\n+ Lựa chọn Hiển thị nhiệm vụ đã hoàn thành được ghi nhớ, giúp giữ chế độ xem ưu tiên của bạn khi quay lại.\n+ Widget nhiệm vụ có thể hiển thị nhiệm vụ đang chờ, xác nhận trước khi chuyển đổi, ẩn nhiệm vụ đã hoàn thành và tùy chọn tự động ẩn khi không còn nhiệm vụ nào.</string>
+    <string name="help_section_people_places_title">Mọi Người &amp; Địa Điểm</string>
+    <string name="help_section_people_places_preview">Từ khóa, takma ad, xu hướng và xem kết nối theo thứ hạng.</string>
+    <string name="help_section_people_places_content">+ Theo dõi mọi người và địa điểm bằng cách sử dụng takma ad và nhãn mối quan hệ.\n+ Tìm kiếm, lọc và sắp xếp danh sách từ khóa.\n+ Trang chi tiết từ khóa hiển thị mức độ gần đây, số lượt nhắc đến theo thời gian, lượt nhắc cùng nhau và Kết nối theo thứ hạng.\n+ Độ Nhạy Khớp có thể được điều chỉnh từ Cài Đặt.</string>
+    <string name="help_section_timeline_lookback_title">Dòng Thời Gian &amp; Xem Lại</string>
+    <string name="help_section_timeline_lookback_preview">Duyệt lại các ngày trước, điểm nhấn nổi bật, Điều Bất Ngờ và các lối vào xem lại.</string>
+    <string name="help_section_timeline_lookback_content">+ Dòng thời gian cho phép bạn duyệt các ngày qua với các bộ lọc, nút chọn năm và tùy chọn hiển thị tất cả các ngày.\n+ Xem Lại hiển thị các mục từ cùng một ngày này trong các năm trước và điểm nhấn nổi bật gắn sao của bạn.\n+ Điều Bất Ngờ mở một mục ngẫu nhiên trong quá khứ từ màn hình Xem Lại.\n+ Xem Lại Tuần và Xem Lại Tháng nằm trong mục Xem Lại.</string>
+    <string name="help_section_statistics_reviews_title">Thống Kê &amp; Xem Lại</string>
+    <string name="help_section_statistics_reviews_preview">Chế độ so sánh, phân tích bản mẫu, các phần hiển thị được tùy chỉnh và tóm tắt.</string>
+    <string name="help_section_statistics_reviews_content">+ Thống kê bao gồm chế độ so sánh, độ lệch từ khóa và Phân Tích Bản Mẫu.\n+ Bạn có thể chọn phần thống kê nào vẫn hiển thị từ trong màn hình Thống Kê.\n+ Chế độ So Sánh khả dụng cho Tất Cả Thời Gian và tóm tắt sự thay đổi của tháng và năm.\n+ Trang xem lại tóm tắt các ngày hoạt động tích cực nhất, mọi người &amp; địa điểm hàng đầu, khoảnh khắc yêu thích, nhãn, phân bổ ngôn ngữ, cũng như các chuỗi ngày viết liên tục hoặc khoảng trống.</string>
+    <string name="help_section_widgets_home_title">Widget &amp; Màn Hình Chính</string>
+    <string name="help_section_widgets_home_preview">Các widget màn hình khởi chạy, từ khóa được nổi bật và thống kê màn hình chính cấp ngày.</string>
+    <string name="help_section_widgets_home_content">+ Biểu Đồ Nhiệt Viết, Ghi Nhanh, Thêm Nhanh và Danh Sách Việc Cần Làm khả dụng trên trình khởi chạy.\n+ Màn hình cấu hình widget cho phép bạn tùy chỉnh các góc, đệm, hình dạng, tiêu đề, khả năng hiển thị của các việc cần làm đã hoàn thành và các tùy chọn widget khác nếu được hỗ trợ.\n+ Widget biểu đồ nhiệt sử dụng nhiều mức cường độ màu sắc hơn để hiển thị lịch sử viết mượt mà hơn.\n+ Màn hình chính có thể làm nổi bật Mọi Người &amp; Địa Điểm bên trong các mục khi cài đặt được bật.\n+ Tiêu đề ngày trên màn hình chính có thể hiển thị hoặc ẩn số lượng mục nhật ký, số từ và số ký tự.</string>
+    <string name="help_section_language_text_analysis_title">Phân Tích Ngôn Ngữ &amp; Văn Bản</string>
+    <string name="help_section_language_text_analysis_preview">Phát hiện ngôn ngữ cục bộ cho thống kê và phân tích xem lại.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja phát hiện hệ chữ viết hoặc ngôn ngữ chính trên các mục để đưa ra phân tích.\n+ Phân bổ ngôn ngữ xuất hiện trong Thống Kê và Xem Lại.\n+ Quá trình phát hiện chạy hoàn toàn cục bộ và không gửi văn bản nhật ký ra khỏi thiết bị của bạn.</string>
+    <string name="help_section_data_privacy_cache_title">Dữ Liệu, Quyền Riêng Tư &amp; Bộ Nhớ Đệm</string>
+    <string name="help_section_data_privacy_cache_preview">Lưu trữ dưới dạng markdown, lịch sử phiên bản, nhật ký ứng dụng, khóa ứng dụng và xây dựng lại bộ nhớ đệm.</string>
+    <string name="help_section_data_privacy_cache_content">+ Quyền Riêng Tư Dữ Liệu: Tất cả dữ liệu nhật ký cá nhân nằm nghiêm ngặt trên thiết bị vật lý của bạn và không bao giờ rời khỏi thiết bị trong bất kỳ tình huống nào. Yaja không chạy các cơ sở dữ liệu đám mây, máy chủ sao lưu từ xa hoặc đo lường từ xa để theo dõi văn bản của bạn.\n+ Các mục nhật ký được lưu trữ dưới dạng các file Markdown tiêu chuẩn được sắp xếp theo năm và tháng.\n+ Lịch Sử Phiên Bản có thể lưu các bản chụp an toàn trước các thay đổi về thêm, sửa, xóa, nhãn, ngôi sao và ngày xem lại.\n+ Bạn có thể chọn số lượng phiên bản được lưu và số ngày lịch sử được giữ lại.\n+ Nhật Ký Ứng Dụng ghi lại các sự kiện kỹ thuật, chi tiết sự cố và hoạt động bộ nhớ đệm mà không lưu trữ văn bản nhật ký.\n+ Xây Dựng Lại Bộ Nhớ Đệm Ứng Dụng cho phép bạn làm mới dữ liệu ứng dụng theo mô-đun, bao gồm việc cần làm và xây dựng lại toàn bộ bộ nhớ đệm.\n+ Khóa ứng dụng hỗ trợ PIN và dấu vân tay.\n+ Yaja trì hoãn các tác vụ thống kê và lập chỉ mục nặng bất cứ khi nào có thể để giữ cho việc khởi chạy và lưu ứng dụng luôn nhanh nhạy.</string>
+    <string name="settings_app_log_title">Nhật Ký Ứng Dụng</string>
+    <string name="settings_app_log_subtitle">Gizlilik açısından güvenli tanılamaları ve geçmiş kilitlenme ayrıntılarını görüntüleyin</string>
+    <string name="app_log_cd_share">Chia sẻ nhật ký ứng dụng</string>
+    <string name="app_log_cd_clear">Xóa nhật ký ứng dụng</string>
+    <string name="app_log_privacy_title">Chẩn đoán an toàn quyền riêng tư</string>
+    <string name="app_log_privacy_description">Nhật ký này ghi lại các sự kiện ứng dụng chính, hoạt động bộ nhớ đệm/lưu trữ, làm mới widget và chi tiết sự cố. Nó không bao gồm các mục nhật ký, văn bản việc cần làm hoặc nội dung ghi chú cá nhân.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Giữ lại %d ngày gần nhất</item>
+        <item quantity="other">Giữ lại %d ngày gần nhất</item>
+    </plurals>
+    <string name="app_log_retention_description">Các sự kiện nhật ký cũ hơn sẽ tự động được lược bớt trong quá trình ghi nhật ký và ngay lập tức khi cài đặt này thay đổi.</string>
+    <string name="app_log_empty">Chưa có nhật ký ứng dụng nào.</string>
+    <string name="app_log_refresh">Làm Mới Nhật Ký</string>
+    <string name="app_log_share_empty">Chưa có mục nhật ký ứng dụng Yaja nào.</string>
+    <string name="app_log_share_subject">Nhật Ký Ứng Dụng Yaja</string>
+    <string name="app_log_share_chooser">Chia sẻ nhật ký ứng dụng Yaja</string>
+    <string name="app_log_local_time_format">%1$s | giờ địa phương\n%2$s</string>
+    <string name="settings_website_title">Trang Web Yaja</string>
+    <string name="settings_website_subtitle">Mở trang web chính thức để biết các cập nhật và chi tiết</string>
+    <string name="settings_advanced_integrations_title">Tích Hợp Nâng Cao</string>
+    <string name="settings_tasker_integration_title">Tích Hợp Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Các hành động ghi nhanh và trình kích hoạt sự kiện nhật ký</string>
+    <string name="settings_shortcodes_subtitle">Quản lý các đoạn văn bản có thể tái sử dụng để tự động mở rộng khi viết hoặc ghi nhanh.</string>
+    <string name="settings_privacy_security_title">Quyền Riêng Tư &amp; Bảo Mật</string>
+    <string name="settings_pin_lock_title">Khóa PIN</string>
+    <string name="settings_app_locked">Ứng dụng đã khóa</string>
+    <string name="settings_app_unlocked">Ứng dụng đã mở khóa</string>
+    <string name="settings_change_pin">Thay Đổi PIN</string>
+    <string name="settings_biometric_unlock_title">Mở Khóa Sinh Trắc Học</string>
+    <string name="settings_biometric_enabled_desc">Đã bật vân tay hoặc Nhận diện khuôn mặt</string>
+    <string name="settings_biometric_disabled_desc">Sử dụng sinh trắc học thay thế cho PIN</string>
+    <string name="settings_autolock_timeout_title">Thời Gian Tự Động Khóa</string>
+    <string name="settings_pin_lock_disclaimer">Khóa PIN ngăn chặn truy cập trái phép vào ứng dụng nhưng không mã hóa dữ liệu nhật ký trên đĩa của bạn. Người có quyền truy cập file trực tiếp vẫn có thể đọc các mục nhật ký của bạn.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d phút</item>
+        <item quantity="other">%1$d phút</item>
+    </plurals>
+    <string name="settings_theme_system">Hệ thống</string>
+    <string name="settings_theme_light">Sáng</string>
+    <string name="settings_theme_dark">Tối</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Màu Sắc</string>
+    <string name="settings_color_intensity_title">Cường độ màu sắc</string>
+    <string name="settings_background_tint_title">Tông màu nền</string>
+    <string name="settings_font_sans">Không chân</string>
+    <string name="settings_font_serif">Có chân</string>
+    <string name="settings_font_mono">Đơn cách</string>
+    <string name="settings_font_custom">Tùy chỉnh</string>
+    <string name="settings_font_size_label">Kích Thước Phông Chữ</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">Xem trước chủ đề</string>
+    <string name="settings_journal_entry_preview">Mục nhật ký</string>
+    <string name="settings_journal_entry_preview_desc">Các thẻ, chip và nút sẽ sử dụng các màu này.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Điểm nhấn</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Cường độ: %1$s</string>
+    <string name="settings_personal_themes_title">Chủ đề cá nhân</string>
+    <string name="settings_theme_name_label">Tên chủ đề</string>
+    <string name="settings_main_color_label">Màu chính</string>
+    <string name="settings_hue_label">Tông màu (Hue)</string>
+    <string name="settings_sat_label">Bão hòa</string>
+    <string name="settings_bright_label">Độ sáng</string>
+    <string name="settings_generated_accents_title">Điểm nhấn được tạo</string>
+    <string name="settings_personal_theme_desc">Chọn một màu sắc. Yaja sẽ tạo các màu điểm nhấn và hỗ trợ phù hợp.</string>
+    <string name="settings_preview_chip_main">Chính</string>
+    <string name="settings_preview_chip_support">Hỗ trợ</string>
+    <string name="settings_no_font_selected">Chưa chọn phông chữ</string>
+    <string name="settings_custom_font_desc">Chọn bất kỳ file unicode .ttf hoặc .otf nào. Các ký tự mà phông chữ không có sẽ sử dụng phông chữ hệ thống.</string>
+    <string name="settings_font_replace">Thay thế</string>
+    <string name="settings_choose_font_file">Chọn file phông chữ</string>
+    <string name="settings_intensity_muted">Dịu</string>
+    <string name="settings_intensity_normal">Bình thường</string>
+    <string name="settings_intensity_vivid">Sống động</string>
+    <string name="settings_intensity_pop">Nổi bật</string>
+    <string name="settings_tint_clean">Sạch sẽ</string>
+    <string name="settings_tint_soft">Mềm mại</string>
+    <string name="settings_tint_rich">Phong phú</string>
+    <string name="settings_tint_deep">Sâu sắc</string>
+    <string name="settings_accent_complementary">Bổ túc</string>
+    <string name="settings_accent_analogous">Tương đồng</string>
+    <string name="settings_accent_triadic">Tam hợp</string>
+    <string name="settings_accent_soft">Mềm mại</string>
+    <string name="settings_mono_weight_thin">Mỏng</string>
+    <string name="settings_mono_weight_extra_light">Cực mảnh</string>
+    <string name="settings_mono_weight_light">Mảnh</string>
+    <string name="settings_mono_weight_regular">Thường</string>
+    <string name="settings_mono_weight_medium">Trung bình</string>
+    <string name="settings_mono_weight_semi_bold">Hơi đậm</string>
+    <string name="settings_mono_weight_bold">Đậm</string>
+    <string name="settings_mono_weight_extra_bold">Cực đậm</string>
+    <string name="settings_mono_weight_title">Độ đậm</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+    <string name="settings_add_date_keyword_title">Thêm Từ Khóa Ngày</string>
+    <string name="settings_keyword_label">Từ Khóa</string>
+    <string name="settings_keyword_placeholder_example">ví dụ: hôm qua</string>
+    <string name="settings_means_label">Ý nghĩa</string>
+    <string name="settings_add_button">Thêm</string>
+    <string name="settings_no_keywords_yet">Chưa có từ khóa nào được thêm.</string>
+    <string name="settings_added_keywords_title">Các từ khóa đã thêm (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Thêm từ khóa</string>
+    <string name="keywords_dialog_add_title">Thêm Từ Khóa</string>
+    <string name="keywords_dialog_edit_title">Sửa Từ Khóa</string>
+    <string name="keywords_cd_import_csv">Nhập CSV</string>
+    <string name="keywords_cd_export_csv">Xuất CSV</string>
+    <string name="keywords_cd_download_template">Tải bản mẫu</string>
+    <string name="rebuild_cache_storage_transparency_title">Sự Minh Bạch Của Lưu Trữ Trên Thiết Bị</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja sử dụng mô hình lưu trữ cục bộ an toàn. Dữ liệu nhật ký cá nhân của bạn được lưu giữ hoàn toàn trong thiết bị và không bao giờ rời khỏi thiết bị trong bất kỳ tình huống nào:</string>
+    <string name="rebuild_cache_source_of_truth_title">Nguồn Gốc Sự Thật (Các file Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Tất cả các mục nhật ký, việc cần làm, sự kiện dòng thời gian, ngôi sao và nhãn được lưu trữ vĩnh viễn trong các file văn bản thuần Markdown (.md) trong thư mục nhật ký cục bộ do bạn chọn. Dữ liệu của bạn thuộc sở hữu 100% của bạn.</string>
+    <string name="rebuild_cache_read_cache_title">Đọc Bộ Nhớ Đệm &amp; Chỉ Mục (Cơ sở dữ liệu Room SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">Để kích hoạt tính năng tải màn hình tức thì, đánh dấu lịch, từ khóa và thống kê mà không cần quét hệ thống file mỗi khi cuộn, Yaja phân tích các file Markdown của bạn và lập chỉ mục cho chúng trong một cơ sở dữ liệu Room SQLite cục bộ trên thiết bị của bạn.</string>
+    <string name="rebuild_cache_local_private_title">100% Cục Bộ &amp; Riêng Tư</string>
+    <string name="rebuild_cache_local_private_desc">Yaja không có cơ sở dữ liệu đám mây, máy chủ sao lưu từ xa hoặc đo lường từ xa để theo dõi văn bản của bạn. Tất cả các mục nhật ký và dữ liệu được phân tích cú pháp đều được giới hạn nghiêm ngặt trong thiết bị vật lý của bạn.</string>
+    <string name="keywords_export_success">Đã xuất từ khóa</string>
+    <string name="keywords_export_failed">Không thể xuất từ khóa</string>
+    <string name="keywords_template_saved">Đã lưu bản mẫu</string>
+    <string name="keywords_template_save_failed">Không thể lưu bản mẫu</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Đã nhập %d từ khóa</item>
+        <item quantity="other">Đã nhập %d từ khóa</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Không tìm thấy từ khóa hợp lệ</string>
+    <string name="keywords_import_failed">Không thể nhập từ khóa</string>
+    <string name="keywords_status_indexing">Đang lập chỉ mục</string>
+    <string name="keywords_status_indexed">Đã lập chỉ mục</string>
+    <string name="keywords_metric_mentions">Nhắc đến</string>
+    <string name="keywords_metric_days">Ngày</string>
+    <string name="keywords_timeline_range_all">Tất cả</string>
+    <string name="keywords_connections_filter_all">Tất cả</string>
+    <string name="keywords_connections_filter_people">Mọi Người</string>
+    <string name="keywords_connections_filter_places">Địa Điểm</string>
+    <string name="keywords_connections_filter_recent">Gần đây</string>
+    <string name="keywords_connections_filter_strongest">Mạnh nhất</string>
+    <string name="keywords_filter_needs_reindex">Cần lập lại chỉ mục</string>
+    <string name="keywords_search_placeholder">Tìm kiếm mọi người, địa điểm, takma ad, mối quan hệ</string>
+    <string name="keywords_refreshing_counters">Đang làm mới các bộ đếm từ khóa…</string>
+    <string name="keywords_empty_title">Chưa có từ khóa nào</string>
+    <string name="keywords_empty_subtitle">Thêm những người và địa điểm bạn muốn ứng dụng theo dõi cục bộ.</string>
+    <string name="keywords_no_results_title">Không tìm thấy kết quả phù hợp</string>
+    <string name="keywords_no_results_subtitle">Hãy thử tìm kiếm, sắp xếp hoặc bộ lọc khác.</string>
+    <string name="keywords_people_title">Mọi Người</string>
+    <string name="keywords_places_title">Địa Điểm</string>
+    <string name="keywords_people_empty">Chưa có người nào được thêm.</string>
+    <string name="keywords_people_filtered_empty">Không có ai khớp với bộ lọc hiện tại.</string>
+    <string name="keywords_places_empty">Chưa có địa điểm nào được thêm.</string>
+    <string name="keywords_places_filtered_empty">Không có địa điểm nào khớp với bộ lọc hiện tại.</string>
+    <string name="keywords_delete_person_title">Xóa Người Này?</string>
+    <string name="keywords_delete_place_title">Xóa Địa Điểm Này?</string>
+    <string name="keywords_delete_message">Xóa "%1$s" khỏi Mọi Người &amp; Địa Điểm? Điều này sẽ xóa từ khóa và các kết quả khớp được lập chỉ mục.</string>
+    <string name="keywords_timeline_title">Số Lượt Nhắc Đến Theo Thời Gian</string>
+    <string name="keywords_timeline_empty_pattern">Chưa có biểu đồ tháng nào</string>
+    <string name="keywords_timeline_total_format">tổng cộng %1$d</string>
+    <string name="keywords_timeline_empty_chart">Các lượt nhắc đến sẽ được vẽ biểu đồ tại đây sau khi quá trình lập chỉ mục tìm thấy các mục nhật ký.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Đỉnh %1$s • %2$d lượt nhắc</item>
+        <item quantity="other">Đỉnh %1$s • %2$d lượt nhắc</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Bahsedilen gün sayısı</string>
+    <string name="keywords_recency_title">Mức Độ Gần Đây</string>
+    <string name="keywords_recency_none">Chưa có kết quả khớp</string>
+    <string name="keywords_recency_today">Được nhắc hôm nay</string>
+    <string name="keywords_recency_yesterday">Được nhắc hôm qua</string>
+    <string name="keywords_recency_days_ago_format">Nhắc lần cuối %1$d ngày trước</string>
+    <string name="keywords_first_seen">Thấy Lần Đầu</string>
+    <string name="keywords_last_seen">Thấy Lần Cuối</string>
+    <string name="keywords_unknown">Không xác định</string>
+    <string name="keywords_co_mentioned_with">Được nhắc đến cùng nhau với</string>
+    <string name="keywords_connections_title">Các Kết Nối</string>
+    <string name="keywords_connections_subtitle">Xếp hạng dựa trên tần suất trùng lặp và mức độ gần đây</string>
+    <string name="keywords_connections_linked_format">%1$d liên kết</string>
+    <string name="keywords_connections_show">Hiển thị các kết nối</string>
+    <string name="keywords_connections_hide">Ẩn các kết nối</string>
+    <string name="keywords_connections_items_in_view">%1$d mục trong chế độ xem này</string>
+    <string name="keywords_connections_tap_to_expand">Nhấn để mở rộng %1$d liên kết được xếp hạng</string>
+    <string name="keywords_connections_empty">Chưa có kết nối nào cho bộ lọc này.</string>
+    <string name="keywords_open_day">Mở Ngày</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Nhắc Đến Nhiều Nhất</string>
+    <string name="keywords_sort_recently_added">Mới Thêm Gần Đây</string>
+    <string name="keywords_peak_mentions_format">Đỉnh %1$s • %2$d lượt nhắc%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d ngày</string>
+    <string name="keywords_connections_meta_days_suffix_plural"></string>
+    <string name="keywords_connections_meta_together"> cùng nhau</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d mục chung</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix"></string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix"></string>
+    <string name="keywords_connections_meta_last_prefix"> | gần nhất %1$s</string>
+    <string name="keywords_connections_score_format">Điểm số %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d ngày</string>
+    <string name="keywords_connections_shared_chip">%1$d chung</string>
+    <string name="keywords_match_type_exact">chính xác</string>
+    <string name="keywords_match_type_fuzzy">gần đúng</string>
+    <string name="keywords_match_type_alias">takma ad</string>
+    <string name="keywords_match_type_relation">mối quan hệ</string>
+    <string name="keywords_action_delete">Xóa</string>
+    <string name="keywords_action_edit">Sửa</string>
+    <string name="keywords_action_view">Xem</string>
+    <string name="keywords_name_label">Tên</string>
+    <string name="keywords_relation_context_label">Mối Quan Hệ / Bối Cảnh</string>
+    <string name="keywords_aliases_label">Các takma ad (cách nhau bằng dấu phẩy)</string>
+    <string name="keywords_aliases_label_short">Các takma ad</string>
+    <string name="keywords_type_person">Người</string>
+    <string name="keywords_type_place">Yer</string>
+    <string name="keywords_save_disabled_hint">Từ khóa được lưu ở trạng thái tắt. Hãy bật chúng từ danh sách khi bạn muốn quá trình lập chỉ mục chạy.</string>
+    <string name="settings_meaning_yesterday">Hôm qua</string>
+    <string name="settings_meaning_today">Hôm nay</string>
+    <string name="lookback_chip_weekly">Hàng tuần</string>
+    <string name="lookback_chip_monthly">Hàng tháng</string>
+    <string name="timeline_screen_title">Dòng Thời Gian</string>
+    <string name="timeline_empty_title">Chưa có gì ở đây</string>
+    <string name="timeline_empty_subtitle">Thử một bộ lọc khác hoặc điều chỉnh tìm kiếm nhãn.</string>
+    <string name="timeline_quick_today">Hôm nay</string>
+    <string name="timeline_quick_month">Tháng</string>
+    <string name="timeline_quick_filters">Bộ lọc</string>
+    <string name="timeline_all_dates">Tất cả các ngày</string>
+    <string name="timeline_label_prefix">Nhãn: %1$s</string>
+    <string name="timeline_label_search_placeholder">Tìm kiếm nhãn ngày</string>
+    <string name="timeline_filters_title">Bộ Lọc &amp; Bố Cục Dòng Thời Gian</string>
+    <string name="settings_meaning_tomorrow">Ngày mai</string>
+    <string name="settings_meaning_day_before_yesterday">Hôm kia</string>
+    <string name="settings_meaning_day_after_tomorrow">Ngày kìa</string>
+    <string name="settings_meaning_last_week">Tuần trước</string>
+    <string name="settings_meaning_next_week">Tuần tới</string>
+    <string name="settings_meaning_monday">Thứ Hai</string>
+    <string name="settings_meaning_tuesday">Thứ Ba</string>
+    <string name="settings_meaning_wednesday">Thứ Tư</string>
+    <string name="settings_meaning_thursday">Thứ Năm</string>
+    <string name="settings_meaning_friday">Thứ Sáu</string>
+    <string name="settings_meaning_saturday">Thứ Bảy</string>
+    <string name="settings_meaning_sunday">Chủ Nhật</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Bộ Nhớ Trong Ứng Dụng</string>
+    <string name="settings_storage_internal_default">Bộ Nhớ Trong Ứng Dụng (Mặc Định)</string>
+    <string name="settings_storage_new_folder_fallback">thư mục mới</string>
+    <string name="settings_storage_current_folder_fallback">thư mục hiện tại</string>
+    <string name="settings_storage_move_confirm">Tất cả các mục hiện có sẽ được di chuyển từ %1$s sang %2$s. Bạn có muốn tiếp tục không?</string>
+    <string name="settings_restore_added_skipped">Đã thêm: %1$d\nĐã bỏ qua trùng lặp: %2$d</string>
+    <string name="settings_storage_custom_folder">Thư Mục Tùy Chỉnh:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Trợ giúp phím tắt</string>
+    <string name="addentry_cd_insert_template">Chèn bản mẫu</string>
+    <string name="addentry_cd_jump_to_today">Nhảy tới hôm nay</string>
+    <string name="addentry_cd_share">Chia sẻ</string>
+    <string name="addentry_cd_bold">Đậm</string>
+    <string name="addentry_cd_italic">Nghiêng</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Đặt giờ</string>
+    <string name="addentry_event_chip">Sự kiện</string>
+    <string name="addentry_pick_time_title">Chọn giờ</string>
+    <string name="addentry_hour_label">Giờ</string>
+    <string name="addentry_minute_label">Phút</string>
+    <string name="addentry_new_event_title">Sự Kiện Mới</string>
+    <string name="addentry_title_label">Tiêu đề</string>
+    <string name="addentry_event_description_label">Mô Tả Sự Kiện</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Tìm thấy việc cần làm</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Chuyển %1$d dòng thành danh sách việc cần làm</item>
+        <item quantity="other">Chuyển %1$d dòng thành danh sách việc cần làm</item>
+    </plurals>
+    <string name="addentry_people_places_title">Mọi Người &amp; Địa Điểm</string>
+    <string name="addentry_no_tracked_mentions">Không tìm thấy người hoặc địa điểm được theo dõi trong mục này.</string>
+    <string name="addentry_day_memory_title">Kỷ Niệm Ngày</string>
+    <string name="addentry_star_day_title">Gắn dấu sao ngày này</string>
+    <string name="addentry_star_day_subtitle">Lưu nó thành điểm nhấn nổi bật để hiển thị lại trong màn hình xem lại.</string>
+    <string name="addentry_day_label_label">Nhãn ngày</string>
+    <string name="addentry_day_label_placeholder">ví dụ: Ngày Nghỉ</string>
+    <string name="addentry_follow_up_title">Theo dõi vào ngày</string>
+    <string name="addentry_next_month">Tháng tới</string>
+    <string name="addentry_custom">Tùy chỉnh</string>
+    <string name="addentry_due_date_format">Đến hạn %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Xóa theo dõi</string>
+    <string name="addentry_follow_up_note_label">Ghi chú theo dõi</string>
+    <string name="addentry_follow_up_note_placeholder">Bạn cần xem lại điều gì?</string>
+    <string name="addentry_review_entry_title">Xem Lại Mục Nhật Ký</string>
+    <string name="addentry_review_entry_subtitle">Xem nhanh trước khi lưu. Trích xuất các việc cần làm, kiểm tra nhắc đến được theo dõi và đánh dấu ngày nếu quan trọng.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d việc cần làm</item>
+        <item quantity="other">%1$d việc cần làm</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d nhắc đến</item>
+        <item quantity="other">%1$d nhắc đến</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Lưu Mục Nhật Ký</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Hủy Bỏ Thay Đổi</string>
+    <string name="addentry_discard_changes_message">Bạn có những thay đổi chưa lưu. Quay lại và hủy bỏ chúng, hoặc ở lại để tiếp tục chỉnh sửa.</string>
+    <string name="addentry_go_back">Quay Lại</string>
+    <string name="addentry_stay">Ở lại</string>
+    <string name="addentry_shortcuts_title">Phím tắt</string>
+    <string name="addentry_help_bold_suffix"> để in đậm văn bản (hoặc chọn văn bản và nhấn Nút In Đậm)</string>
+    <string name="addentry_help_italic_suffix"> để in nghiêng văn bản (hoặc chọn văn bản và nhấn Nút In Nghiêng)</string>
+    <string name="addentry_help_today_suffix">: Mở rộng thành ngày hiện tại (ví dụ: 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: Mở rộng thành giờ hiện tại (ví dụ: 14:30)</string>
+    <string name="addentry_help_week_suffix">: Mở rộng thành tuần hiện tại (ví dụ: Tuần 52)</string>
+    <string name="addentry_help_day_suffix">: Mở rộng thành thứ hiện tại trong tuần (ví dụ: Thứ Hai)</string>
+    <string name="addentry_help_todo_suffix">: Mở rộng thành một hộp kiểm việc cần làm (ví dụ: [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Khi được nhập vào bất kỳ đâu trên dòng chứa hộp kiểm việc cần làm, nó sẽ chuyển đổi trạng thái của hộp đó.</string>
+    <string name="addentry_okey">Đồng ý!</string>
+    <string name="addentry_template_merge_message">Taslak này đã có văn bản. Chọn cách đặt bản mẫu.</string>
+    <string name="addentry_template_merge_subtitle">Chèn Bên Dưới giữ taslak hiện tại. Tại Con Trỏ đặt bản mẫu tại vị trí con trỏ của bạn hiện tại.</string>
+    <string name="addentry_insert_below">Chèn Bên Dưới</string>
+    <string name="addentry_at_cursor">Tại Con Trỏ</string>
+    <string name="addentry_replace_draft">Thay Thế Taslak</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Phổ biến</string>
+    <string name="addentry_new_chip">Mới</string>
+    <string name="addentry_best_for_format">Tốt nhất cho: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Xóa bản mẫu khỏi yêu thích</string>
+    <string name="addentry_cd_favorite_template">Thêm bản mẫu vào yêu thích</string>
+    <string name="addentry_checklist_chip">Danh sách</string>
+    <string name="addentry_followup_chip">Theo dõi</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d phần</item>
+        <item quantity="other">%1$d phần</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Chuyển đổi bản mẫu yêu thích</string>
+    <string name="addentry_template_preview_label">Xem trước bản mẫu</string>
+    <string name="addentry_use_template_button">Sử Dụng Bản Mẫu</string>
+    <string name="addentry_start_blank_title">Bắt Đầu Trống</string>
+    <string name="addentry_start_blank_subtitle">Bỏ qua các bản mẫu và tiếp tục viết từ một taslak trống.</string>
+    <string name="addentry_blank_entry_name">Mục Trống</string>
+    <string name="addentry_blank_entry_description">Mục nhật ký thông thường</string>
+    <string name="addentry_blank_category">Chung</string>
+    <string name="addentry_quick_picks_title">Lựa Chọn Nhanh</string>
+    <string name="addentry_sort_recommended">Khuyên dùng</string>
+    <string name="addentry_sort_recent">Gần đây</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Không tìm thấy bản mẫu nào</string>
+    <string name="addentry_no_templates_subtitle">Hãy thử tìm kiếm hoặc danh mục khác.</string>
+    <string name="addentry_search_templates_label">Tìm kiếm bản mẫu</string>
+    <string name="addentry_search_templates_placeholder">Cuộc họp, sức khỏe, suy ngẫm…</string>
+    <string name="addentry_cd_clear_search">Xóa tìm kiếm</string>
+    <string name="addentry_choose_template_title">Chọn một Bản Mẫu</string>
+    <string name="addentry_templates_ready_format">%1$d trên %2$d bản mẫu sẵn sàng</string>
+    <string name="addentry_category_all">Tất cả</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Có chuyện gì đã xảy ra?</string>
+    <string name="addentry_todo_chip">Việc cần làm</string>
+    <string name="addentry_numbered_list_chip">D/S Số</string>
+    <string name="addentry_bulleted_list_chip">D/S Ký Hiệu</string>
+    <string name="addentry_words_count_format">%1$d TỪ</string>
+    <string name="addentry_chars_count_format">%1$d KÝ TỰ</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Theo dõi đến hạn hôm nay</item>
+        <item quantity="other">Theo dõi đến hạn hôm nay</item>
+    </plurals>
+    <string name="home_followup_subtitle">Nhảy lại vào ngày được liên kết và tiếp tục từ đó.</string>
+    <string name="home_from_date_format">Từ %1$s</string>
+    <string name="home_more_due_today_format">+%1$d đến hạn hôm nay</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Thêm Nhãn</string>
+    <string name="home_edit_label_title">Sửa Nhãn</string>
+    <string name="home_day_label_hint">Thêm một nhãn ngắn cho ngày này (tối đa 30 ký tự).</string>
+    <string name="home_day_label_placeholder">ví dụ: Ngày đầu tiên đi học</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Thêm Nhãn Cho Ngày Này</string>
+    <string name="home_star_label_hint">Đặt cho ngày này một nhãn đáng nhớ (tối đa 30 ký tự)</string>
+    <string name="home_star_label_placeholder">ví dụ: Sinh Nhật Tôi, Đi học</string>
+    <string name="home_star_button">Gắn Sao</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Đã xóa mục nhật ký</item>
+        <item quantity="other">Đã xóa %1$d mục nhật ký</item>
+    </plurals>
+    <string name="home_restore_button">KHÔI PHỤC</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Tìm kiếm mục nhật ký…</string>
+    <string name="home_cd_search">Tìm kiếm</string>
+    <string name="home_cd_clear_search">Xóa Tìm Kiếm</string>
+    <string name="home_cd_favorite">Yêu thích</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Các mục</string>
+    <string name="home_stat_words">Số từ</string>
+    <string name="home_stat_chars">Ký tự</string>
+    <string name="home_stat_versions">Phiên bản</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Thêm nhãn</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">Tìm thấy %1$d kết quả khớp</item>
+        <item quantity="other">Tìm thấy %1$d kết quả khớp</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Chưa tìm thấy kết quả khớp nào cho từ khóa này.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Biểu Tượng Trạng Thái Trống</string>
+    <string name="home_empty_future">Ini là tương lai. Hãy ghi lại một nhắc nhở!</string>
+    <string name="home_empty_past">Bạn đang ở trong Quá Khứ. Hãy ghi lại Kỷ Niệm trước khi nó nhạt phai…</string>
+    <string name="home_empty_today">Chưa có mục nào. Hãy bắt đầu ngày mới của bạn.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Đang lưu</string>
+    <string name="home_cd_add_entry">Thêm Mục Nhật Ký</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Xóa %1$d</string>
+    <string name="home_future_date_title">Nhập Ngày Tương Lai</string>
+    <string name="home_future_date_message_format">Bạn đang thêm một mục cho một ngày trong tương lai (%1$s). Bạn có muốn tiếp tục không?</string>
+    <string name="home_cache_issue_title">Phát Hiện Vấn Đề Bộ Nhớ Đệm Dữ Liệu</string>
+    <string name="home_cache_issue_message">Có vẻ như một số lượng đáng kể các mục nhật ký bị thiếu trong bộ nhớ đệm. Bạn có muốn làm mới bộ nhớ đệm dữ liệu đầy đủ để khôi phục chúng không?</string>
+    <string name="home_refresh_button">Làm Mới</string>
+    <string name="home_ignore_button">Bỏ qua</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Mọi Người &amp; Địa Điểm</string>
+    <string name="nav_statistics">Thống Kê</string>
+    <string name="nav_todos">Việc Cần Làm</string>
+    <string name="nav_rebuild_index">Xây Dựng Lại Chỉ Mục Cơ Sở Dữ Liệu</string>
+    <string name="nav_backup_data">Sao Lưu Dữ Liệu</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Trạng thái</string>
+    <string name="nav_finishing_index_rebuild">Đang hoàn tất việc xây dựng lại chỉ mục…</string>
+    <string name="nav_rebuilding_index">Đang xây dựng lại chỉ mục cơ sở dữ liệu</string>
+    <string name="nav_refreshing_index">Đang làm mới chỉ mục</string>
+    <string name="nav_backup_too_old">bản sao lưu đã quá cũ…</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Đang chạy…</string>
+    <string name="nav_eta_almost_done">gần xong</string>
+    <string name="nav_eta_seconds_left_format">~còn %1$d giây</string>
+    <string name="nav_eta_minutes_left_format">~còn %1$d phút</string>
+    <string name="nav_eta_hours_left_format">~còn %1$d giờ</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">Logo RJ</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Trang Web</string>
+    <string name="nav_cd_share_app">Chia Sẻ Ứng Dụng</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Logo Yaja</string>
+    <string name="nav_easter_quote_part1">"Viết ra một suy nghĩ thoáng qua hoặc những gì bạn ăn trưa; nó không cần phải sâu sắc.\n</string>
+    <string name="nav_easter_quote_part2">Các từ của bạn chỉ cần tồn tại thôi.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">từ phòng thí nghiệm của RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Share yaja</string>
+    <string name="nav_share_text_body">yaja — yet another journaling app\n\nNhật ký hàng ngày không xao nhãng lưu trữ các mục dưới dạng các file markdown thuần túy.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Thay Đổi Vị Trí Lưu Trữ</string>
+    <string name="settings_change_storage_location_message">Tất cả các mục hiện có sẽ được di chuyển từ %1$s sang %2$s. Bạn có muốn tiếp tục không?</string>
+    <string name="settings_yes">Có</string>
+    <string name="settings_no">Không</string>
+    <string name="settings_restore_summary_title">Tóm Tắt Khôi Phục</string>
+    <string name="settings_restore_section_journal">Nhật Ký</string>
+    <string name="settings_restore_section_shortcodes">Phím Tắt</string>
+    <string name="settings_restore_section_date_keywords">Từ Khóa Ngày</string>
+    <string name="settings_restore_section_people_places">Mọi Người &amp; Địa Điểm</string>
+    <string name="settings_restore_journal_summary">Đã thêm vào ngày mới: %1$d\nĐã hợp nhất vào ngày hiện tại: %2$d\nĐã bỏ qua các mục nhật ký trùng lặp: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Đã thêm: %1$d\nĐã bỏ qua trùng lặp: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Đã thêm: %1$d\nĐã bỏ qua trùng lặp: %2$d</string>
+    <string name="settings_restore_people_places_summary">Đã thêm: %1$d\nĐã bỏ qua trùng lặp: %2$d</string>
+    <string name="rebuild_tools_title">Công Cụ Xây Dựng Lại</string>
+    <string name="rebuild_tools_back">Quay Lại</string>
+    <string name="rebuild_tools_intro">Sử dụng tính năng xây dựng lại tập trung trước. Xây dựng lại cơ sở dữ liệu chỉ áp dụng cho việc thay đổi lưu trữ, lỗi hỏng cơ sở dữ liệu hoặc không khớp chỉ mục.</string>
+    <string name="rebuild_todo_index_title">Xây Dựng Lại Chỉ Mục Việc Cần Làm</string>
+    <string name="rebuild_todo_index_subtitle">Làm mới các việc cần làm từ các file nhật ký và cập nhật màn hình/widget Việc Cần Làm. Tốt nhất khi việc cần làm trông có vẻ cũ.</string>
+    <string name="rebuild_todo_index_button">Xây Dựng Lại Việc Cần Làm</string>
+    <string name="rebuild_people_places_title">Xây Dựng Lại Mọi Người &amp; Địa Điểm</string>
+    <string name="rebuild_people_places_subtitle">Làm mới takma ad từ khóa, nhắc chung, xu hướng và dữ liệu mối quan hệ.</string>
+    <string name="rebuild_people_places_button">Xây Dựng Lại Mọi Người &amp; Địa Điểm</string>
+    <string name="rebuild_database_title">Xây Dựng Lại Cơ Sở Dữ Liệu Đầy Đủ</string>
+    <string name="rebuild_database_subtitle">Biên dịch lại bộ nhớ đệm cơ sở dữ liệu từ các file markdown. Lập lại chỉ mục các mục nhật ký, số đếm, việc cần làm, Mọi Người &amp; Địa Điểm và các widget từ đầu.</string>
+    <string name="rebuild_database_button">Xây Dựng Lại Cơ Sở Dữ Liệu</string>
+    <string name="rebuild_database_confirm_title">Xây dựng lại chỉ mục cơ sở dữ liệu</string>
+    <string name="rebuild_database_confirm_message">Thao tác này sẽ xóa và lập lại chỉ mục toàn bộ cơ sở dữ liệu Room SQLite từ các file Markdown của bạn. Đối với nhật ký lớn, quá trình này có thể mất vài phút.</string>
+    <string name="rebuild_database_confirm_start">Bắt Đầu Xây Dựng Lại</string>
+    <string name="rebuild_database_status_title">Trạng Thái Chỉ Mục Cơ Sở Dữ Liệu</string>
+    <string name="rebuild_database_storage_engine">Công Cụ Lưu Trữ</string>
+    <string name="rebuild_database_storage_engine_value">Cơ sở dữ liệu Room SQLite</string>
+    <string name="rebuild_database_indexed_days">Số Ngày Đã Lập Chỉ Mục</string>
+    <string name="rebuild_database_indexed_days_value">Đã lập chỉ mục %1$d ngày</string>
+    <string name="rebuild_database_file_size">Kích Thước File Cơ Sở Dữ Liệu</string>
+    <string name="rebuild_database_last_sync">Đồng Bộ Chỉ Mục Cuối</string>
+    <string name="rebuild_database_age_never">Chưa bao giờ</string>
+    <string name="rebuild_database_age_just_now">Vừa xong</string>
+    <string name="rebuild_database_age_one_minute">1 phút trước</string>
+    <string name="rebuild_database_age_minutes">%1$d phút trước</string>
+    <string name="rebuild_database_age_one_hour">1 giờ trước</string>
+    <string name="rebuild_database_age_hours">%1$d giờ trước</string>
+    <string name="shortcodes_title">Phím Tắt</string>
+    <string name="shortcodes_import_cd">Nhập</string>
+    <string name="shortcodes_export_cd">Xuất</string>
+    <string name="shortcodes_help_cd">Trợ giúp</string>
+    <string name="shortcodes_new">Phím Tắt Mới</string>
+    <string name="shortcodes_empty_title">Chưa có phím tắt tùy chỉnh</string>
+    <string name="shortcodes_empty_subtitle">Thêm một phím tắt để mở rộng các đoạn như @yday thành văn bản động.</string>
+    <string name="shortcodes_dynamic_dates_hint">Sử dụng {{today:format}} cho ngày động.</string>
+    <string name="shortcodes_help_title">Trợ Giúp Phím Tắt</string>
+    <string name="shortcodes_help_built_in">Các Phím Tắt Tích Hợp:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (hộp kiểm), @x (chuyển đổi hộp kiểm)</string>
+    <string name="shortcodes_help_dynamic_patterns">Mẫu Hình Động:</string>
+    <string name="shortcodes_help_dynamic_desc">Sử dụng {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, hoặc {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Ví dụ: @yday -> Hôm qua: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Định dạng phổ biến: dd-MM-yy, HH:mm, EEEE (tên thứ).</string>
+    <string name="action_close">Đóng</string>
+    <string name="keyword_detail_title_fallback">Từ Khóa</string>
+    <string name="keyword_detail_not_found">Không tìm thấy từ khóa</string>
+    <string name="keyword_detail_last_indexed">Lập chỉ mục cuối lúc %1$s</string>
+    <string name="keyword_detail_mentions_section">Các lượt nhắc</string>
+    <string name="pin_biometric_prompt_title">Mở Khóa Bằng Sinh Trắc Học</string>
+    <string name="pin_biometric_prompt_subtitle">Sử dụng vân tay hoặc khuôn mặt để mở khóa</string>
+    <string name="pin_error_no_biometric_enrolled">Chưa đăng ký sinh trắc học. Vui lòng đăng ký vân tay hoặc khuôn mặt trong cài đặt thiết bị.</string>
+    <string name="pin_error_hardware_unavailable">Phần cứng sinh trắc học không khả dụng.</string>
+    <string name="pin_error_no_hardware">Thiết bị này không có phần cứng sinh trắc học.</string>
+    <string name="pin_error_not_available">Xác thực sinh trắc học không khả dụng.</string>
+    <string name="pin_title_confirm">Xác Nhận PIN</string>
+    <string name="pin_title_set_new">Thiết Lập PIN Mới</string>
+    <string name="pin_title_disable">Nhập PIN Hiện Tại Để Tắt</string>
+    <string name="pin_title_enter">Nhập PIN</string>
+    <string name="pin_error_incorrect">PIN không chính xác. Hãy thử lại.</string>
+    <string name="pin_error_mismatch">Mã PIN không khớp. Hãy bắt đầu lại.</string>
+    <string name="pin_cd_use_biometric">Sử dụng sinh trắc học</string>
+    <string name="pin_cd_backspace">Xóa ngược</string>
+    <string name="timeline_preview_empty_labeled">Ngày này được gắn nhãn, nhưng chưa có mục nhật ký.</string>
+    <string name="timeline_preview_loading">Đang tải bản xem trước…</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d mục khác vào ngày này</item>
+        <item quantity="other">+ %1$d mục khác vào ngày này</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Mở Ngày Này</string>
+    <string name="timeline_chip_today">HÔM NAY</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d mục</item>
+        <item quantity="other">%1$d mục</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Theo dõi</string>
+    <string name="timeline_chip_label_only">Chỉ nhãn</string>
+    <string name="timeline_cd_favorite">Favorit</string>
+    <string name="version_history_title">Lịch Sử Phiên Bản</string>
+    <string name="version_history_day_versions_title">Các Phiên Bản Ngày</string>
+    <string name="version_history_keep_copies_title">Giữ các bản sao an toàn</string>
+    <string name="version_history_keep_copies_subtitle">Trước khi Yaja thay đổi file ngày, nó sẽ lưu file hiện tại vào dữ liệu ứng dụng dưới dạng các file lịch sử.</string>
+    <string name="version_history_versions_kept_title">Số phiên bản được giữ mỗi ngày</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja giữ %1$d phiên bản mới nhất cho mỗi ngày.</item>
+        <item quantity="other">Yaja giữ %1$d phiên bản mới nhất cho mỗi ngày.</item>
+    </plurals>
+    <string name="version_history_retention_title">Thời Gian Giữ Lại</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Các bản chụp cũ hơn %1$d ngày sẽ tự động được dọn dẹp.</item>
+        <item quantity="other">Các bản chụp cũ hơn %1$d ngày sẽ tự động được dọn dẹp.</item>
+    </plurals>
+    <string name="version_history_notes">Lưu ý: lịch sử phiên bản bảo vệ các file markdown ngày trước các thay đổi thêm, sửa, xóa, sắp xếp, nhãn, ngôi sao và xem lại. Đây không phải là bản sao lưu đám mây; hãy tiếp tục sử dụng Sao Lưu để có các bản sao di động.</string>
+    <string name="version_history_snapshots_for">Các bản chụp cho %1$s</string>
+    <string name="version_history_snapshots_subtitle">Mở một phiên bản đã lưu, kiểm tra và khôi phục cho ngày này.</string>
+    <string name="version_history_empty">Chưa có phiên bản nào được lưu cho ngày này.</string>
+    <string name="action_view">Xem</string>
+    <string name="version_history_date_intro">Mở một phiên bản đã lưu trước đó của ngày này, kiểm tra và khôi phục khi cần thiết.</string>
+    <string name="action_next">Tiếp theo</string>
+    <string name="action_apply">Áp dụng</string>
+    <string name="action_restore">Khôi Phục</string>
+    <string name="statistics_choose_title">Chọn Số Liệu Thống Kê</string>
+    <string name="statistics_choose_subtitle">Ẩn các phần bạn không muốn. Ít nhất một phần phải được hiển thị.</string>
+    <string name="statistics_visible_count">%1$d trên %2$d hiển thị</string>
+    <string name="statistics_show_all">Hiển Thị Tất Cả</string>
+    <string name="statistics_one_section_visible">Ít nhất một phần phải được giữ hiển thị</string>
+    <string name="statistics_shown">Được hiển thị trong thống kê</string>
+    <string name="statistics_hidden">Được ẩn khỏi thống kê</string>
+    <string name="statistics_select_start_date">Chọn Ngày Bắt Đầu</string>
+    <string name="statistics_select_end_date">Chọn Ngày Kết Thúc</string>
+    <string name="statistics_filter_by_period">Lọc theo giai đoạn</string>
+    <string name="statistics_cd_reorder">Nhấn giữ để sắp xếp lại</string>
+    <string name="statistics_total_entries">Tổng Số Mục</string>
+    <string name="statistics_total_words">Tổng Số Từ</string>
+    <string name="statistics_avg_words_per_entry">Số từ trung bình/Mục</string>
+    <string name="statistics_current_streak">Chuỗi Ngày Hiện Tại</string>
+    <string name="statistics_pages_written">Số Trang Đã Viết</string>
+    <string name="statistics_days_highlighted">Số Ngày Được Nổi Bật</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d ngày</item>
+        <item quantity="other">%1$d ngày</item>
+    </plurals>
+    <string name="statistics_period_all_time">Thống Kê Tất Cả Thời Gian</string>
+    <string name="statistics_period_current_year">Thống Kê Năm Hiện Tại</string>
+    <string name="statistics_period_previous_year">Thống Kê Năm Trước</string>
+    <string name="statistics_period_current_month">Thống Kê Tháng Hiện Tại</string>
+    <string name="statistics_period_previous_month">Thống Kê Tháng Trước</string>
+    <string name="statistics_period_custom">Thống Kê Giai Đoạn Tùy Chỉnh</string>
+    <string name="statistics_period_chip_all_time">Tất Cả Thời Gian</string>
+    <string name="statistics_period_chip_current_year">Năm Nay</string>
+    <string name="statistics_period_chip_previous_year">Năm Ngoái</string>
+    <string name="statistics_period_chip_current_month">Tháng Này</string>
+    <string name="statistics_period_chip_previous_month">Tháng Trước</string>
+    <string name="statistics_period_chip_custom">Tùy Chỉnh</string>
+    <string name="statistics_sections_visible">%1$d trên %2$d phần hiển thị</string>
+    <string name="statistics_loading_stages">Đang tải thống kê theo từng giai đoạn…</string>
+    <string name="review_period_weekly">Xem Lại Hàng Tuần</string>
+    <string name="review_period_monthly">Xem Lại Hàng Tháng</string>
+    <string name="review_anchor_week">Tuần có ngày %1$s</string>
+    <string name="review_anchor_month">Tháng có ngày %1$s</string>
+    <string name="review_chip_entries">Mục %1$d</string>
+    <string name="review_chip_words">Từ %1$d</string>
+    <string name="review_chip_days">Ngày %1$d</string>
+    <string name="review_hint_jump">Nhấn vào chip ngày bên dưới để nhảy lại vào nhật ký.</string>
+    <string name="review_chip_streak">Chuỗi %1$d</string>
+    <string name="review_chip_gap">Khoảng cách %1$d</string>
+    <string name="review_chip_labels">Nhãn %1$d</string>
+    <string name="review_chip_favorites">Yêu thích %1$d</string>
+    <string name="review_empty_period">Chưa có mục nhật ký nào trong giai đoạn này. Nhãn và điểm nổi bật vẫn xuất hiện bên dưới nếu có.</string>
+    <string name="review_writing_rhythm">Nhịp Điệu Viết</string>
+    <string name="review_best_streak">Chuỗi ngày tốt nhất</string>
+    <string name="review_longest_gap">Khoảng trống dài nhất</string>
+    <string name="review_most_active_days">Ngày Hoạt Động Tích Cực Nhất</string>
+    <string name="review_day_entries_words">%1$d mục | %2$d từ</string>
+    <string name="review_top_people">Mọi Người Hàng Đầu</string>
+    <string name="review_top_places">Địa Điểm Hàng Đầu</string>
+    <string name="review_no_people_mentions">Không nhắc đến ai</string>
+    <string name="review_no_place_mentions">Không nhắc đến địa điểm</string>
+    <string name="review_favorite_moments">Khoảnh khắc yêu thích</string>
+    <string name="review_starred_day">Ngày được gắn sao</string>
+    <string name="review_highlighted_in_period">Được nổi bật trong giai đoạn này</string>
+    <string name="review_labels_created">Các Nhãn Đã Tạo</string>
+    <string name="review_labeled_day">Ngày được gắn nhãn</string>
+    <string name="review_language_split">Phân Bổ Ngôn Ngữ</string>
+    <string name="review_not_enough_text">Không đủ văn bản trong giai đoạn này</string>
+    <string name="lookback_reviews_title">Xem Lại</string>
+    <string name="lookback_reviews_intro">Xây dựng một phản ánh nhanh xung quanh ngày nhật ký đã chọn.</string>
+    <string name="lookback_seven_days">7 ngày</string>
+    <string name="lookback_one_month">1 tháng</string>
+    <string name="lookback_weekly_review">Xem Lại Hàng Tuần</string>
+    <string name="lookback_weekly_review_subtitle">Tuần này trong một cái nhìn</string>
+    <string name="lookback_monthly_review">Xem Lại Hàng Tháng</string>
+    <string name="lookback_monthly_review_subtitle">Tóm tắt tháng này</string>
+    <string name="lookback_flashbacks_title">Vào ngày này trong những năm qua</string>
+    <string name="lookback_highlights_title">Điểm Nhấn Nổi Bật Của Bạn</string>
+    <string name="lookback_empty_title">Chưa có mục xem lại hoặc điểm nhấn nổi bật nào.</string>
+    <string name="lookback_empty_subtitle">Thêm các ngày quan trọng vào yêu thích để thấy chúng ở đây!</string>
+    <string name="lookback_cd_random_entry">Đi đến mục ngẫu nhiên</string>
+
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Giai đoạn</string>
+    <string name="statistics_compare_mode_title">Chế Độ So Sánh</string>
+    <string name="statistics_compare_mode_subtitle">Độ lệch của tháng, năm và từ khóa</string>
+    <string name="statistics_this_year">Năm Nay</string>
+    <string name="statistics_writing_days_delta">Độ Lệch Ngày Viết</string>
+    <string name="statistics_top_person_delta">Độ Lệch Người Được Nhắc Nhiều Nhất</string>
+    <string name="statistics_no_people_mentions">Chưa nhắc đến ai</string>
+    <string name="statistics_top_place_delta">Độ Lệch Địa Điểm Được Nhắc Nhiều Nhất</string>
+    <string name="statistics_no_place_mentions">Chưa nhắc đến địa điểm</string>
+    <string name="statistics_structured_writing">Viết Nhật Ký Theo Cấu Trúc</string>
+    <string name="statistics_template_led_format">Dùng bản mẫu %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Trống %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Bản Mẫu Được Dùng Nhiều Nhất</string>
+    <string name="statistics_template_mix">Tỷ Lệ Bản Mẫu</string>
+    <string name="statistics_follow_up_leaders">Những Việc Cần Theo Dõi Hàng Đầu</string>
+    <string name="statistics_compare_details">So Sánh Chi Tiết</string>
+    <string name="statistics_label_month">Tháng</string>
+    <string name="statistics_label_year">Năm</string>
+    <string name="statistics_this_month_count_format">Tháng này %1$d</string>
+    <string name="statistics_last_month_count_format">Tháng trước %1$d</string>
+    <string name="statistics_longest_streak">Chuỗi Ngày Dài Nhất</string>
+    <string name="statistics_most_active_day">Ngày Hoạt Động Nhất</string>
+    <string name="statistics_writing_consistency">Tính Nhất Quán Khi Viết</string>
+    <string name="statistics_days_with_entries">Số Ngày Có Mục Nhật Ký</string>
+    <string name="statistics_best_month">Tháng Tốt Nhất</string>
+    <string name="statistics_best_month_format">%1$s · %2$d mục</string>
+    <string name="statistics_avg_writing_days_week">Số Ngày Viết Trung Bình / Tuần</string>
+    <string name="statistics_days_decimal_format">%1$.1f ngày</string>
+    <string name="statistics_based_on_total_words">Dựa trên tổng số từ được viết mỗi ngày</string>
+    <string name="statistics_light_words">Nhẹ (&lt; 50 từ)</string>
+    <string name="statistics_moderate_words">Vừa phải (50-200 từ)</string>
+    <string name="statistics_heavy_words">Nhiều (200-500 từ)</string>
+    <string name="statistics_intense_words">Rất nhiều (500+ từ)</string>
+    <string name="statistics_not_enough_text_languages">Không đủ văn bản để nhận diện ngôn ngữ</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">Phát hiện %1$d ngôn ngữ</item>
+        <item quantity="other">Phát hiện %1$d ngôn ngữ</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Tính năng phát hiện ngôn ngữ vẫn đang thiết lập.</string>
+    <string name="statistics_latin_scripts_as_english">Các chữ viết Latinh được hiển thị là tiếng Anh</string>
+    <string name="statistics_use_more_accurate_detection">Sử dụng tính năng phát hiện chính xác hơn</string>
+    <string name="statistics_write_more_entries_languages">Viết nhiều mục hơn để xem thống kê ngôn ngữ.</string>
+    <string name="statistics_based_on_entry_time">Dựa trên thời gian mục nhật ký</string>
+    <string name="statistics_morning_time">Buổi sáng (5h sáng - trưa)</string>
+    <string name="statistics_afternoon_time">Buổi chiều (trưa - 5h chiều)</string>
+    <string name="statistics_evening_time">Buổi tối (5h chiều - 9h tối)</string>
+    <string name="statistics_night_time">Ban đêm (9h tối - 5h sáng)</string>
+    <string name="statistics_heatmap_filling">Biểu đồ nhiệt vẫn đang được điền dữ liệu.</string>
+    <string name="statistics_heatmap_less">Ít hơn</string>
+    <string name="statistics_heatmap_more">Nhiều hơn</string>
+    <string name="action_open">Mở</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Sự Kiện Nhật Ký Yaja</string>
+    <string name="tasker_event_desc">Chọn các sự kiện nhật ký Yaja sẽ kích hoạt cấu hình Tasker này.</string>
+    <string name="tasker_event_saved">Đã Lưu Mục Nhật Ký</string>
+    <string name="tasker_event_edited">Đã Sửa Mục Nhật Ký</string>
+    <string name="tasker_event_deleted">Đã Xóa Mục Nhật Ký</string>
+    <string name="tasker_event_default_hint">Nếu không có sự kiện nào được chọn, Yaja sẽ mặc định là Đã Lưu Mục Nhật Ký.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Ghi Nhanh Yaja</string>
+    <string name="tasker_action_desc">Cấu hình những gì Tasker sẽ ghi nhanh trong Yaja.</string>
+    <string name="tasker_action_add_entry">Thêm Mục Nhật Ký</string>
+    <string name="tasker_action_add_event">Thêm Sự Kiện</string>
+    <string name="tasker_action_add_todo">Thêm Việc Cần Làm</string>
+    <string name="tasker_action_append">Nối Thêm</string>
+    <string name="tasker_action_match_header_label">Khớp / Tiêu đề</string>
+    <string name="tasker_action_match_header_placeholder">Cuộc Gọi Nhỡ</string>
+    <string name="tasker_action_line_to_append_label">Dòng nối thêm</string>
+    <string name="tasker_action_text_label">Văn bản</string>
+    <string name="tasker_action_placeholder_event">Ghi chú sự kiện từ Tasker</string>
+    <string name="tasker_action_placeholder_todo">Mua sữa</string>
+    <string name="tasker_action_placeholder_append">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Ghi chú nhanh từ Tasker</string>
+    <string name="tasker_action_tip_append">Cuộc gọi đầu tiên tạo ra một mục bắt đầu bằng văn bản khớp. Các cuộc gọi sau sẽ nối thêm dòng bên dưới nó.</string>
+    <string name="tasker_action_tip_default">Mẹo: Có thể đặt các biến Tasker vào trường văn bản.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Nhật Ký Sự Cố Phiên Trước</string>
+    <string name="crash_log_clear_close">Xóa &amp; Đóng</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Khởi Chạy Ứng Dụng</string>
+    <string name="tap_action_quick_capture">Ghi Nhanh</string>
+    <string name="tap_action_do_nothing">Không Làm Gì</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Biểu Đồ Nhiệt Viết Yaja</string>
+    <string name="widget_cell_shape">Hình Dạng Ô</string>
+    <string name="widget_corner_radius">Bán Kính Góc: %1$ddp</string>
+    <string name="widget_square">Vuông</string>
+    <string name="widget_round">Tròn</string>
+    <string name="widget_inner_margin">Lề Trong: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Khoảng cách giữa biểu đồ nhiệt và các cạnh widget</string>
+    <string name="widget_none">Không</string>
+    <string name="widget_max">Tối đa</string>
+    <string name="widget_on_tap">Khi Nhấn</string>
+    <string name="widget_on_tap_desc">Hành động khi widget được nhấn</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Ghi Nhanh</string>
+    <string name="widget_qc_shape">Hình Dạng Widget</string>
+    <string name="widget_show_label">Hiển Thị Nhãn</string>
+    <string name="widget_show_label_desc">Hiển thị chữ \'Ghi Nhanh\' trên widget</string>
+    <string name="widget_show_icon">Hiển Thị Biểu Tượng</string>
+    <string name="widget_show_icon_required">Yêu cầu biểu tượng khi ẩn nhãn</string>
+    <string name="widget_show_icon_desc">Hiển thị biểu tượng bút trên widget</string>
+    <string name="widget_label_text">Văn Bản Nhãn</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Widget Việc Cần Làm</string>
+    <string name="widget_todo_desc">Widget danh sách việc cần làm bo tròn, kiểu biểu đồ nhiệt.</string>
+    <string name="widget_todo_corner_radius">Bán kính góc: %1$ddp</string>
+    <string name="widget_todo_padding">Khoảng cách đệm: %1$ddp</string>
+    <string name="widget_todo_show_completed">Hiển thị việc đã hoàn thành</string>
+    <string name="widget_todo_show_completed_desc">Bao gồm các mục đã chọn trong danh sách của widget</string>
+    <string name="widget_todo_include_events">Bao gồm cả sự kiện</string>
+    <string name="widget_todo_include_events_desc">Hiển thị sự kiện bên cạnh việc cần làm trong widget</string>
+    <string name="widget_todo_show_header">Hiển thị tiêu đề Việc Cần Làm</string>
+    <string name="widget_todo_show_header_desc">Hiển thị hoặc ẩn dòng tiêu đề của widget</string>
+    <string name="widget_todo_auto_hide">Tự động ẩn widget khi xong tất cả việc cần làm</string>
+    <string name="widget_todo_auto_hide_unavailable">Không khả dụng khi việc đã hoàn thành hiển thị</string>
+    <string name="widget_todo_auto_hide_desc">Làm cho widget trong suốt khi không có việc cần làm đang chờ</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">xong</string>
+    <string name="todo_confirm_mark_not_done">chưa xong</string>
+    <string name="todo_confirm_title">Đánh dấu nhiệm vụ là %1$s?</string>
+    <string name="todo_confirm_reopen">Việc cần làm này đã hoàn thành. Hãy xác nhận trước khi mở lại.</string>
+    <string name="todo_confirm_complete">Việc cần làm này vẫn đang mở. Hãy xác nhận trước khi đánh dấu là đã xong.</string>
+    <string name="todo_confirm_accidental_tap">Các lần nhấn vô tình sẽ không làm thay đổi nhiệm vụ.</string>
+    <string name="todo_confirm_yes_mark">Đúng, đánh dấu %1$s</string>
+    <string name="todo_confirm_open_yaja">Mở trong Yaja</string>
+    <string name="todo_confirm_keep_as_is">Giữ nguyên</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">từ phòng thí nghiệm của RJ</string>
+    <string name="help_made_in">Sản xuất tại 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Hủy nhập dữ liệu</string>
+    <string name="timeline_show_all_dates">Hiển thị tất cả các ngày</string>
+    <string name="timeline_show_all_dates_subtitle">Bao gồm tất cả các ngày trước, ngay cả khi không có mục nhật ký</string>
+    <string name="settings_background_tint_clean">Sạch sẽ</string>
+    <string name="settings_background_tint_soft">Mềm mại</string>
+    <string name="settings_background_tint_rich">Phong phú</string>
+    <string name="settings_background_tint_deep">Sâu sắc</string>
+    <string name="settings_accent_style_complementary">Bổ túc</string>
+    <string name="settings_accent_style_analogous">Tương đồng</string>
+    <string name="settings_accent_style_triadic">Tam hợp</string>
+    <string name="settings_accent_style_soft">Mềm mại</string>
+    <string name="compliance_frequency_annual">Hàng năm</string>
+    <string name="compliance_frequency_biweekly">Hai tuần một lần</string>
+    <string name="compliance_frequency_half_yearly">Nửa năm một lần</string>
+    <string name="compliance_frequency_monthly">Hàng tháng</string>
+    <string name="compliance_frequency_quarterly">Hàng quý</string>
+    <string name="compliance_frequency_weekly">Hàng tuần</string>
+    <string name="compliance_master_add">Thêm công việc định kỳ</string>
+    <string name="compliance_master_boundary_first">ngày đầu tiên</string>
+    <string name="compliance_master_boundary_last">ngày cuối cùng</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" sẽ bị xóa và sẽ không có công việc nào được tạo thêm nữa.</string>
+    <string name="compliance_master_delete_confirm_title">Xóa công việc định kỳ?</string>
+    <string name="compliance_master_details_boundary_help">Chọn số ngày cần viết công việc vào tệp hàng ngày trước thời hạn.</string>
+    <string name="compliance_master_details_date_help">Nhập ngày đến hạn và số ngày cần viết công việc vào tệp hàng ngày trước thời hạn.</string>
+    <string name="compliance_master_details_weekday_help">Chọn thứ trong tuần mà công việc này đến hạn.</string>
+    <string name="compliance_master_due_day_help">Nhập một ngày từ 1 đến 31. Các tháng ngắn hơn sẽ sử dụng ngày hợp lệ cuối cùng.</string>
+    <string name="compliance_master_edit">Sửa công việc định kỳ</string>
+    <string name="compliance_master_editor_task_section">Yaja nên nhắc bạn về điều gì?</string>
+    <string name="compliance_master_empty">Chưa có công việc định kỳ nào. Hãy thêm một công việc để tự động tạo việc cần làm theo lịch đã chọn.</string>
+    <string name="compliance_master_execution_day_of_month">Một công việc được tạo %1$s vào ngày %2$d. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
+    <string name="compliance_master_execution_month_boundary">Một công việc được tạo %1$s vào %2$s của tháng đến hạn. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
+    <string name="compliance_master_execution_monthly_weekday">Một công việc được tạo hàng tháng vào cùng một thứ trong tuần của ngày bắt đầu. Nó được viết vào tệp hàng ngày của bạn trước %2$d ngày.</string>
+    <string name="compliance_master_execution_title">Cách lịch trình hoạt động</string>
+    <string name="compliance_master_execution_weekday">Một công việc được tạo %1$s vào %2$s. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
+    <string name="compliance_master_field_description">Mô tả</string>
+    <string name="compliance_master_field_description_hint">Ví dụ: Nộp tờ khai thuế hàng tháng</string>
+    <string name="compliance_master_field_due_day">Ngày đến hạn</string>
+    <string name="compliance_master_field_due_weekday">Thứ đến hạn</string>
+    <string name="compliance_master_field_frequency">Tần suất?</string>
+    <string name="compliance_master_field_reveal_day">Tạo trước (ngày)</string>
+    <string name="compliance_master_field_schedule_mode">Khi nào đến hạn?</string>
+    <string name="compliance_master_field_title">Tên công việc</string>
+    <string name="compliance_master_field_title_hint">Ví dụ: Thanh toán hóa đơn điện</string>
+    <string name="compliance_master_first_day_selected">Đến hạn vào ngày đầu tiên của mỗi tháng áp dụng.</string>
+    <string name="compliance_master_frequency_help">Chọn tần suất lặp lại của công việc này.</string>
+    <string name="compliance_master_intro_body">Tạo các việc cần làm lặp lại cho công việc hàng tuần, hàng tháng, hàng quý, nửa năm hoặc hàng năm. Yaja chỉ hiển thị từng công việc khi chu kỳ của nó trở nên phù hợp.</string>
+    <string name="compliance_master_intro_title">Công việc định kỳ</string>
+    <string name="compliance_master_last_day_selected">Đến hạn vào ngày cuối cùng của mỗi tháng áp dụng.</string>
+    <string name="compliance_master_meta_format">Đến hạn ngày %1$d • Tạo trước %2$d ngày</string>
+    <string name="compliance_master_next_date">Tiếp theo: %1$s</string>
+    <string name="compliance_master_end_section">Điều kiện kết thúc</string>
+    <string name="compliance_master_end_help">Chọn thời điểm tác vụ này ngừng lặp lại</string>
+    <string name="compliance_master_end_never">Không bao giờ</string>
+    <string name="compliance_master_end_on_date">Vào ngày</string>
+    <string name="compliance_master_end_after">Sau…</string>
+    <string name="compliance_master_end_never_desc">Lặp lại vô thời hạn, không có ngày kết thúc.</string>
+    <string name="compliance_master_end_date_select">Chọn ngày kết thúc</string>
+    <string name="compliance_master_end_date_help">Không tạo tác vụ nào sau ngày này.</string>
+    <string name="compliance_master_end_count_label">Số lần lặp</string>
+    <string name="compliance_master_end_count_help">Dừng sau khi tạo bấy nhiêu tác vụ.</string>
+    <string name="compliance_master_ends_on">Kết thúc: %1$s</string>
+    <string name="compliance_master_ends_remaining">Còn %1$d</string>
+    <string name="compliance_master_ended">Đã kết thúc</string>
+    <string name="compliance_master_type_label">Tạo dưới dạng</string>
+    <string name="compliance_master_type_task">Tác vụ</string>
+    <string name="compliance_master_type_event">Sự kiện</string>
+    <string name="compliance_master_recurrence_annual">mỗi năm</string>
+    <string name="compliance_master_recurrence_biweekly">mỗi hai tuần</string>
+    <string name="compliance_master_recurrence_half_yearly">mỗi sáu tháng</string>
+    <string name="compliance_master_recurrence_monthly">mỗi tháng</string>
+    <string name="compliance_master_recurrence_quarterly">mỗi ba tháng</string>
+    <string name="compliance_master_recurrence_weekly">mỗi tuần</string>
+    <string name="compliance_master_reveal_day_help">Số ngày trước ngày đến hạn để viết công việc vào tệp nhật ký hàng ngày.</string>
+    <string name="compliance_master_schedule_details">Chi tiết lịch trình</string>
+    <string name="compliance_master_schedule_mode_help">Chọn cách Yaja xác định ngày đến hạn.</string>
+    <string name="compliance_master_select_frequency">Chọn tần suất lặp lại</string>
+    <string name="compliance_master_select_schedule_type">Chọn kiểu đến hạn</string>
+    <string name="compliance_master_select_weekday">Chọn thứ trong tuần</string>
+    <string name="compliance_master_status_deactivated">Đã tắt</string>
+    <string name="compliance_master_summary_day_of_month">Ngày %1$d • %2$s • %3$d ngày trước</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Ngày đầu tiên • %1$s • %2$d ngày trước</string>
+    <string name="compliance_master_summary_last_day">Ngày cuối cùng • %1$s • %2$d ngày trước</string>
+    <string name="compliance_master_title">Tác vụ / Sự kiện định kỳ</string>
+    <string name="compliance_master_upcoming">Sắp tới</string>
+    <string name="compliance_mode_day_of_month">Ngày cụ thể</string>
+    <string name="compliance_mode_day_of_month_desc">Đến hạn vào một ngày cố định trong tháng, ví dụ ngày 15.</string>
+    <string name="compliance_mode_day_of_week">Thứ trong tuần</string>
+    <string name="compliance_mode_day_of_week_desc">Đến hạn vào một thứ đã chọn, ví dụ thứ Hai.</string>
+    <string name="compliance_mode_first_day">Đầu tháng</string>
+    <string name="compliance_mode_first_day_desc">Đến hạn vào ngày đầu tiên của mỗi tháng áp dụng.</string>
+    <string name="compliance_mode_last_day">Cuối tháng</string>
+    <string name="compliance_mode_last_day_desc">Đến hạn vào ngày cuối cùng của tháng, kể cả các tháng ngắn hơn.</string>
+    <string name="todo_chip_compliance">Định kỳ</string>
+    <string name="todos_cd_open_compliance_master">Mở công việc định kỳ</string>
+
+    <string name="settings_ui_font_size_label">Kích thước phông chữ giao diện</string>
+    <string name="settings_data_font_size_label">Kích thước phông chữ nội dung</string>
+    <string name="settings_follow_ui_font_scale_label">Đặt phông chữ nội dung bằng phông chữ giao diện</string>
+</resources>

@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">亞賈</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">雜誌</string>
+    <string name="nav_calendar">日曆</string>
+    <string name="nav_lookback">回顧</string>
+    <string name="nav_settings">設定</string>
+    <string name="nav_shortcodes">簡碼</string>
+    <string name="nav_help">幫助和關於</string>
+
+    <!-- Common actions -->
+    <string name="action_save">節省</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_delete">刪除</string>
+    <string name="action_edit">編輯</string>
+    <string name="action_back">後退</string>
+    <string name="action_undo">撤銷</string>
+    <string name="action_yes">是的</string>
+    <string name="action_no">不</string>
+    <string name="action_remove">消除</string>
+    <string name="action_done">完畢</string>
+    <string name="action_set">放</string>
+    <string name="action_select">選擇</string>
+    <string name="action_ok">好的</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">重建緩存</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">快速捕捉</string>
+    <string name="quick_capture_hint">發生了什麼事？</string>
+    <string name="quick_capture_helper_shortcodes">短代碼會在此自動展開，待辦事項行按 Enter 鍵繼續。</string>
+    <string name="quick_capture_save_delayed">保存延遲。請重新開啟 Yaja 進行驗證。</string>
+    <string name="cd_saved">已儲存</string>
+    <string name="quick_todo_dialog_title">快速添加</string>
+    <string name="quick_todo_save_delayed">待辦事項保存延遲。請重新開啟 Yaja 進行驗證。</string>
+    <string name="quick_todo_placeholder">新增待辦事項</string>
+    <string name="quick_event_placeholder">新增事件</string>
+    <string name="quick_todo_task_date">任務日期</string>
+    <string name="quick_todo_event_date">活動日期</string>
+    <string name="quick_todo_pick_date_cd_format">選擇 %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">儲存為所選日期的待辦事項條目。</string>
+    <string name="quick_event_selected_day_hint">儲存為所選日期的事件條目。</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">以前的</string>
+    <string name="cd_next">下一個</string>
+    <string name="cd_surprise_me">給我驚喜</string>
+    <string name="calendar_cd_go_to_current_month">前往當前月份</string>
+    <string name="calendar_quick_action_timeline_title">時間軸</string>
+    <string name="calendar_quick_action_timeline_subtitle">按時間順序瀏覽</string>
+    <string name="calendar_quick_action_jump_title">跳轉至日期</string>
+    <string name="calendar_quick_action_jump_subtitle">特定日期開放</string>
+    <string name="calendar_jump_placeholder">日-月-年</string>
+    <string name="calendar_jump_invalid_date">日期無效。使用 DD-MM-YY 格式。</string>
+    <string name="calendar_action_go">去</string>
+    <string name="calendar_enable_future_dates_title">啟用未來日期</string>
+    <string name="calendar_enable_future_dates_message">停用未來日期輸入。您想啟用它嗎？</string>
+    <string name="calendar_action_enable">使能夠</string>
+    <string name="calendar_future_entry_enabled">已啟用未來日期輸入</string>
+    <string name="calendar_weekday_sun_short">太陽</string>
+    <string name="calendar_weekday_mon_short">週一</string>
+    <string name="calendar_weekday_tue_short">星期二</string>
+    <string name="calendar_weekday_wed_short">週三</string>
+    <string name="calendar_weekday_thu_short">星期四</string>
+    <string name="calendar_weekday_fri_short">週五</string>
+    <string name="calendar_weekday_sat_short">星期六</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">本月參賽作品</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d 天</item>
+        <item quantity="other">%1$d / %2$d 天</item>
+    </plurals>
+    <string name="calendar_days_of_memories">回憶的日子</string>
+    <string name="calendar_consistency_last_12_months">過去 12 個月</string>
+    <string name="calendar_consistency_title_format">一致性 - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% 與 \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">與\'%1$s</string>
+    <string name="calendar_consistency_first_period">第一期</string>
+    <string name="calendar_graph_frequency_month">月</string>
+    <string name="calendar_graph_frequency_year">年</string>
+    <string name="calendar_yearly_consistency_title">一致性（每年）</string>
+    <string name="calendar_keywords_title">誰出現最多</string>
+    <string name="calendar_keywords_syncing">人物和地點統計數據仍然與關鍵字索引同步。</string>
+    <string name="calendar_keywords_empty">增加至少 3 個人或 3 個地點以查看熱門提及。</string>
+    <string name="calendar_keywords_people">人們</string>
+    <string name="calendar_keywords_places">地點</string>
+
+    <!-- Settings -->
+    <string name="settings_title">設定</string>
+    <string name="settings_appearance">外貌</string>
+    <string name="settings_appearance_subtitle">主題、顏色、字體和個人風格</string>
+    <string name="settings_theme">主題</string>
+    <string name="settings_font">字體</string>
+    <string name="settings_storage">貯存</string>
+    <string name="settings_security">安全</string>
+    <string name="settings_backup">備份</string>
+    <string name="settings_change_storage_title">變更儲存位置</string>
+    <string name="settings_backup_never">絕不</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">搜尋設定</string>
+    <string name="settings_search_clear">清除搜尋</string>
+    <string name="settings_search_recent">最近的搜尋</string>
+    <string name="settings_search_no_results">沒有匹配的設置</string>
+    <string name="settings_search_close">關閉</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">期刊經驗</string>
+    <string name="settings_section_navigation_gestures">導航和手勢</string>
+    <string name="settings_section_review_insights">評論與見解</string>
+
+    <!-- Language -->
+    <string name="settings_language">語言</string>
+    <string name="settings_language_title">應用程式語言</string>
+    <string name="settings_language_subtitle">評論與見解</string>
+    <string name="settings_language_system_default">系統預設</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">入門風格</string>
+    <string name="settings_journal_entry_style_subtitle">在高級卡片和扁平日記本外觀之間進行選擇。</string>
+    <string name="settings_journal_entry_style_cards">牌</string>
+    <string name="settings_journal_entry_style_flat">平坦的</string>
+    <string name="settings_journal_render_checkboxes_title">將複選框渲染為文字</string>
+    <string name="settings_journal_render_checkboxes_subtitle">在應用程式中將待辦事項顯示為 [ ] 和 [x]，而不是富有表現力的複選框。</string>
+    <string name="settings_journal_day_header_counts_title">顯示日標題計數</string>
+    <string name="settings_journal_day_header_counts_subtitle">顯示日誌日標題中的條目數、字數和字元數。</string>
+    <string name="settings_journal_show_timestamps_title">顯示時間戳</string>
+    <string name="settings_journal_show_timestamps_subtitle">在時間軸上顯示進入時間。</string>
+    <string name="settings_journal_allow_future_title">允許將來的條目</string>
+    <string name="settings_journal_allow_future_subtitle">啟用將條目新增至未來日期。</string>
+    <string name="settings_journal_truncate_title">截斷長條目</string>
+    <string name="settings_journal_truncate_subtitle">縮短主螢幕上的長條目。</string>
+    <string name="settings_journal_char_limit_title">字元限制</string>
+    <string name="settings_journal_char_limit_subtitle">設定截斷前顯示的字元數。</string>
+    <string name="settings_journal_char_limit_min">50 個字符</string>
+    <string name="settings_journal_char_limit_max">200 個字符</string>
+    <string name="settings_journal_char_count">%1$d 個字符</string>
+    <string name="settings_journal_first_day_title">一週的第一天</string>
+    <string name="settings_journal_first_day_subtitle">開始日曆於</string>
+    <string name="settings_journal_day_sun">太陽</string>
+    <string name="settings_journal_day_mon">週一</string>
+    <string name="settings_journal_date_recognition">日期識別</string>
+    <string name="settings_journal_date_order_title">日期 訂單</string>
+    <string name="settings_journal_date_order_subtitle">如何讀取數字日期</string>
+    <string name="settings_journal_date_order_auto">汽車</string>
+    <string name="settings_journal_date_order_dmy">日/月</string>
+    <string name="settings_journal_date_order_mdy">月/日</string>
+    <string name="settings_journal_date_keywords_title">日期關鍵字</string>
+    <string name="settings_journal_date_keywords_subtitle">其他語言中表示日期的單字（例如表示昨天的本地單字）。</string>
+    <string name="settings_journal_view_keywords">查看 (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">新增關鍵字</string>
+    <string name="settings_journal_motion">運動</string>
+    <string name="settings_journal_animations_title">動畫</string>
+    <string name="settings_journal_animations_subtitle">控制整個應用程式的運動。減少讓事情變得流暢，運動更少。</string>
+    <string name="settings_journal_animations_full">滿的</string>
+    <string name="settings_journal_animations_reduced">減少</string>
+    <string name="settings_journal_animations_off">離開</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">儲存後查看</string>
+    <string name="settings_review_post_write_title">寫後評論</string>
+    <string name="settings_review_post_write_subtitle">點擊儲存後顯示評論表以提取待辦事項、檢查提及、明星日或設定標籤。</string>
+    <string name="settings_review_people_places">人物與地點</string>
+    <string name="settings_review_highlighting_title">突出顯示</string>
+    <string name="settings_review_highlighting_subtitle">在主頁卡和查看條目模式中突出顯示追蹤的人員和地點。</string>
+    <string name="settings_review_match_sensitivity_title">匹配靈敏度</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">單字必須匹配到何種程度才能被人物和地點偵測到（越高=越嚴格）。</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">新增簡碼</string>
+    <string name="shortcodes_edit_title">編輯簡碼</string>
+    <string name="shortcodes_code_label">簡碼（例如@yday）</string>
+    <string name="shortcodes_expansion_label">擴展文字</string>
+    <string name="shortcodes_export_error">匯出簡碼失敗</string>
+    <string name="shortcodes_import_error">導入簡碼失敗</string>
+    <string name="todos_expand_section">展開 %1$s</string>
+    <string name="todos_collapse_section">折疊 %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">寫熱圖</string>
+    <string name="heatmap_widget_description">您的期刊最近的寫作活動熱圖。</string>
+    <string name="quick_capture_widget_name">快速捕捉</string>
+    <string name="quick_capture_widget_description">一鍵式按鈕可快速新增日記條目。</string>
+    <string name="quick_todo_widget_name">快速待辦事項</string>
+    <string name="tasker_plugin_action_label">亞賈快速捕捉</string>
+    <string name="tasker_plugin_event_label">亞賈期刊活動</string>
+    <string name="tasker_screen_allow_add_entry_title">允許 Tasker 新增條目</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">讓 Tasker 使用 Yaja 快速擷取操作，例如新增條目和新增待辦事項。</string>
+    <string name="tasker_screen_allow_events_title">允許任務執行者事件</string>
+    <string name="tasker_screen_allow_events_subtitle">讓 Yaja 向 Tasker 發送條目已儲存、條目已修改和條目已刪除事件。</string>
+    <string name="tasker_screen_include_text_title">在事件中包含條目文本</string>
+    <string name="tasker_screen_include_text_subtitle">為了保護隱私，預設為關閉。關閉時，Tasker 會接收事件類型、日期、標籤和時間，但不會接收日誌文字。</string>
+    <string name="tasker_screen_section_what">這是做什麼的</string>
+    <string name="tasker_screen_body_what">Tasker 可以快速將日記條目或待辦事項新增至 Yaja 中，將行附加到分組條目（例如未接來電）中，並且 Yaja 可以告訴 Tasker 何時儲存、編輯或刪除條目。</string>
+    <string name="tasker_screen_section_how">如何使用</string>
+    <string name="tasker_screen_body_how">首先打開您需要的開關。然後開啟 Tasker 並新增 Yaja 快速擷取操作或 Yaja 日記事件事件。</string>
+    <string name="tasker_screen_section_notes">筆記</string>
+    <string name="tasker_screen_body_notes">除非您啟用“在事件中包含條目文字”，否則條目文字不會與 Tasker 共用。如果 Tasker 未顯示最新選項或變量，請在更新 Yaja 後重新開啟 Tasker 配置畫面。</string>
+    <string name="tasker_screen_section_example">例子</string>
+    <string name="tasker_screen_body_example">操作範例：Tasker 操作 &gt; Yaja 快速捕獲 &gt; 附加，將“匹配/標題”設為“未接來電”，將要附加的行設定為“Tasker”變數。事件範例：Tasker 事件 &gt; Yaja 日誌事件 &gt; 條目修改，然後使用 %%yaja_event_type、%%yaja_date 和可選的 %%yaja_entry_text 等變數。</string>
+    <string name="tasker_screen_section_use_cases">使用案例</string>
+    <string name="tasker_screen_use_case_1">1. 在 Tasker 中使用 Yaja 日誌事件觸發 FolderSync 同步操作，以便在條目變更後將您的 Yaja 資料夾推送到任何雲端提供者。</string>
+    <string name="tasker_screen_use_case_2">2. 使用 Pushbullet 和 Tasker 將文字傳送到 Yaja Quick Capture，這樣推送的文字就會儲存為當天的新條目。</string>
+    <string name="tasker_screen_use_case_3">3. 使用未接來電 Tasker 設定檔將附加操作傳送至 Yaja，以便所有未接來電詳細資料位於一個未接來電條目下，而不是建立單獨的條目。</string>
+    <string name="quick_todo_widget_description">一鍵式按鈕即可擷取待辦事項作為今天的新條目。</string>
+    <string name="todo_list_widget_name">托多斯</string>
+    <string name="todo_list_widget_description">期刊待辦事項的滾動清單。點擊待辦事項將其標記為已完成或已撤銷。</string>
+    <string name="todo_cd_add_todo">新增待辦事項</string>
+    <string name="todos_cd_open_compliance_master">開啟重複任務</string>
+    <string name="compliance_master_title">重複任務/事件</string>
+    <string name="compliance_master_add">新增重複任務</string>
+    <string name="compliance_master_edit">編輯重複任務</string>
+    <string name="compliance_master_intro_title">重複任務</string>
+    <string name="compliance_master_intro_body">為每週、每月、每季、半年或每年的工作建立重複的待辦事項。只有當每個任務的周期變得相關時，Yaja 才會透露該任務。</string>
+    <string name="compliance_master_empty">還沒有重複任務。新增一項以按照其選擇的時間表自動建立待辦事項。</string>
+    <string name="compliance_master_status_deactivated">已停用</string>
+    <string name="compliance_master_meta_format">截止日期 %1$d • %2$d 提前天數</string>
+    <string name="compliance_master_field_title">任務名稱</string>
+    <string name="compliance_master_field_title_hint">範例：提交每月報表</string>
+    <string name="compliance_master_field_description">描述</string>
+    <string name="compliance_master_field_description_hint">範例：檢查銀行入口網站並驗證收據</string>
+    <string name="compliance_master_editor_task_section">Yaja 應該提醒您什麼？</string>
+    <string name="compliance_master_field_due_day">到期日</string>
+    <string name="compliance_master_field_reveal_day">提前創建（天）</string>
+    <string name="compliance_master_field_schedule_mode">什麼時候到期？</string>
+    <string name="compliance_master_schedule_mode_help">選擇 Yaja 如何確定截止日期。</string>
+    <string name="compliance_master_select_schedule_type">選擇適當的模式</string>
+    <string name="compliance_master_field_frequency">多常？</string>
+    <string name="compliance_master_frequency_help">選擇此任務重複的頻率。</string>
+    <string name="compliance_master_select_frequency">選擇重複頻率</string>
+    <string name="compliance_master_schedule_details">日程詳情</string>
+    <string name="compliance_master_details_date_help">輸入截止日期以及應提前多少天將其寫入每日文件。</string>
+    <string name="compliance_master_details_weekday_help">選擇該任務到期的工作日。</string>
+    <string name="compliance_master_details_boundary_help">選擇應提前多少天將其寫入每日文件。</string>
+    <string name="compliance_master_field_due_weekday">工作日到期</string>
+    <string name="compliance_master_select_weekday">選擇工作日</string>
+    <string name="compliance_master_due_day_help">輸入 1 到 31 之間的日期。較短的月份使用其最後有效日期。</string>
+    <string name="compliance_master_reveal_day_help">截止日期前幾天將待辦事項寫入每日日誌檔案。</string>
+    <string name="compliance_master_first_day_selected">到期日為每個適用月份的第一天。</string>
+    <string name="compliance_master_last_day_selected">到期日為每個適用月份的最後一天。</string>
+    <string name="compliance_mode_day_of_month">具體日期</string>
+    <string name="compliance_mode_day_of_month_desc">到期日為指定日期，例如 15 日。</string>
+    <string name="compliance_mode_day_of_week">工作日</string>
+    <string name="compliance_mode_day_of_week_desc">在選定的工作日到期，例如星期一。</string>
+    <string name="compliance_mode_first_day">月初</string>
+    <string name="compliance_mode_first_day_desc">到期日為每個適用月份的第一天。</string>
+    <string name="compliance_mode_last_day">月底</string>
+    <string name="compliance_mode_last_day_desc">截止日期為最後日期，包括較短的月份。</string>
+    <string name="compliance_frequency_weekly">每週</string>
+    <string name="compliance_frequency_biweekly">雙週刊</string>
+    <string name="compliance_frequency_monthly">每月</string>
+    <string name="compliance_frequency_quarterly">季刊</string>
+    <string name="compliance_frequency_half_yearly">半年一次</string>
+    <string name="compliance_frequency_annual">年度的</string>
+    <string name="compliance_master_summary_day_of_month">提前 %1$d 天 • %2$s • %3$d 天</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">第一次約會 • %1$s • 提前 %2$d 天</string>
+    <string name="compliance_master_summary_last_day">最後日期 • %1$s • 提前 %2$d 天</string>
+    <string name="compliance_master_execution_title">這將如何運行</string>
+    <string name="compliance_master_execution_day_of_month">待辦事項於 %2$d 日 %1$s 建立。它會提前 %3$d 天寫入您的日常文件。</string>
+    <string name="compliance_master_execution_weekday">待辦事項於 %2$s 於 %1$s 建立。它會提前 %3$d 天寫入您的日常文件。</string>
+    <string name="compliance_master_execution_monthly_weekday">每月在與開始日期相同的 %1$s 發生處建立待辦事項。它會提前 %2$d 天寫入您的每日文件。</string>
+    <string name="compliance_master_execution_month_boundary">待辦事項於到期月份的 %2$s 於 %1$s 建立。它會提前 %3$d 天寫入您的日常文件。</string>
+    <string name="compliance_master_boundary_first">第一次約會</string>
+    <string name="compliance_master_boundary_last">最後一次約會</string>
+    <string name="compliance_master_recurrence_weekly">每週</string>
+    <string name="compliance_master_recurrence_biweekly">每兩週一次</string>
+    <string name="compliance_master_recurrence_monthly">每個月</string>
+    <string name="compliance_master_recurrence_quarterly">每三個月</string>
+    <string name="compliance_master_recurrence_half_yearly">每六個月</string>
+    <string name="compliance_master_recurrence_annual">每年</string>
+    <string name="todo_chip_compliance">再次發生的</string>
+    <string name="compliance_master_upcoming">即將推出</string>
+    <string name="compliance_master_delete_confirm_title">刪除重複任務？</string>
+    <string name="compliance_master_delete_confirm_body">「%1$s」將被刪除，並且不會建立更多待辦事項。</string>
+    <string name="compliance_master_next_date">下一頁：%1$s</string>
+    <string name="compliance_master_end_section">結束條件</string>
+    <string name="compliance_master_end_help">選擇此任務何時停止重複</string>
+    <string name="compliance_master_end_never">絕不</string>
+    <string name="compliance_master_end_on_date">約會時</string>
+    <string name="compliance_master_end_after">後…</string>
+    <string name="compliance_master_end_never_desc">無限期地重複，沒有結束日期。</string>
+    <string name="compliance_master_end_date_select">選擇結束日期</string>
+    <string name="compliance_master_end_date_help">在此日期之後不會建立任何任務。</string>
+    <string name="compliance_master_end_count_label">出現次數</string>
+    <string name="compliance_master_end_count_help">創建這麼多任務後停止。</string>
+    <string name="compliance_master_ends_on">結束 %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d 左</string>
+    <string name="compliance_master_ended">結束</string>
+    <string name="compliance_master_type_label">創建為</string>
+    <string name="compliance_master_type_task">任務</string>
+    <string name="compliance_master_type_event">事件</string>
+    <string name="heatmap_widget_status_loading">正在加載熱圖...</string>
+    <string name="heatmap_widget_status_empty">還沒有條目</string>
+    <string name="heatmap_widget_status_refresh">開啟 Yaja 刷新熱圖</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">緩存重建。</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">新條目</string>
+    <string name="shortcut_new_entry_long">新增日記條目</string>
+    <string name="shortcut_add_todo_short">新增待辦事項</string>
+    <string name="shortcut_add_todo_long">添加今天的待辦事項</string>
+    <string name="shortcut_add_event_short">新增事件</string>
+    <string name="shortcut_add_event_long">新增事件</string>
+    <string name="shortcut_today_short">今天</string>
+    <string name="shortcut_today_long">打開今天的日記</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">導航</string>
+    <string name="settings_bottom_nav_style_label">底部導航風格</string>
+    <string name="settings_navigation_mode_title">導航模式</string>
+    <string name="settings_navigation_mode_subtitle">在浮動導覽列和完整底部面板之間進行選擇。</string>
+    <string name="settings_nav_mode_floating">漂浮的</string>
+    <string name="settings_nav_mode_panel">控制板</string>
+    <string name="settings_navigation_screens_label">導航螢幕</string>
+    <string name="settings_nav_summary_floating">日記和日曆始終保留在浮動欄中。再选取 2 个屏幕。目前選擇：%1$d（共 %2$d）。</string>
+    <string name="settings_nav_summary_panel">日記和日曆始終位於底部面板中。最多再選擇 3 個螢幕。目前選擇：%1$d（共 %2$d）。</string>
+    <string name="settings_nav_lookback_subtitle">在活動導覽列或面板中顯示回顧。</string>
+    <string name="settings_nav_people_places_subtitle">在活動導覽列或面板中顯示人物和地點。</string>
+    <string name="settings_nav_todos_title">托多斯</string>
+    <string name="settings_nav_todos_subtitle">在活動導覽列或面板中顯示待辦事項。</string>
+    <string name="todos_quick_add_title">快速添加</string>
+    <string name="todos_hero_subtitle">追蹤日記工作和時刻</string>
+    <string name="todos_hero_all_activity">所有活動</string>
+    <string name="todos_hero_open_focus">開放焦點</string>
+    <string name="todos_hero_completed">完全的</string>
+    <string name="todos_stat_today_open">今日開放</string>
+    <string name="todos_stat_done_today">今天完成</string>
+    <string name="todos_stat_events">活動</string>
+    <string name="todos_stat_still_open">仍然開放</string>
+    <string name="todos_stat_past_7d">過去7天</string>
+    <string name="todos_stat_days">天</string>
+    <string name="todos_empty_done">尚未完成待辦事項</string>
+    <string name="todos_empty_events">還沒有活動條目</string>
+    <string name="todos_section_open">打開</string>
+    <string name="todos_section_later">之後</string>
+    <string name="todos_section_upcoming">即將推出</string>
+    <string name="todos_section_future_events">未來活動</string>
+    <string name="todos_section_past_events">往事</string>
+    <string name="todos_cd_open_day">開放日</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d 開放任務</item>
+        <item quantity="other">%1$d 未完成任務</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d 已完成任務</item>
+        <item quantity="other">%1$d 已完成任務</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d 即將舉行的活動</item>
+        <item quantity="other">%1$d 即將舉行的活動</item>
+    </plurals>
+    <string name="todos_filter_all_format">所有%1$d</string>
+    <string name="todos_filter_open_format">開啟%1$d</string>
+    <string name="todos_filter_done_format">完成 %1$d</string>
+    <string name="todos_filter_events_format">活動 %1$d</string>
+    <string name="todos_cheer_all_clear">一切都清楚了。好的。</string>
+    <string name="todos_cheer_done_and_dusted">完成並除塵。</string>
+    <string name="todos_cheer_nothing_pending">沒有什麼懸而未決的。</string>
+    <string name="todos_cheer_caught_up">你追上了。</string>
+    <string name="todos_cheer_clean_slate">乾淨的石板。</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">在 %1$d 天</item>
+        <item quantity="other">%1$d 天后</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d 天前</item>
+        <item quantity="other">%1$d 天前</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">在 %1$d 週內</item>
+        <item quantity="other">在 %1$d 週內</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d 週前</item>
+        <item quantity="other">%1$d 週前</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1個月內</string>
+    <string name="todos_relative_one_month_ago">1個月前</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d 月</item>
+        <item quantity="other">在 %1$d 個月內</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d 個月前</item>
+        <item quantity="other">%1$d 個月前</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">統計數據</string>
+    <string name="settings_nav_statistics_subtitle_on">在活動導覽列或面板中顯示統計資料。</string>
+    <string name="settings_nav_statistics_subtitle_off">首先打開統計資料以將其置於導航中。</string>
+    <string name="settings_show_labels_bottom_panel_title">在底部面板中顯示標籤</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">在底部面板的圖示下顯示文字標籤。</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">手勢</string>
+    <string name="settings_entry_delete_title">條目刪除</string>
+    <string name="settings_entry_delete_subtitle">長按一個條目即可將其選取。點擊更多條目以選擇多個，然後使用居中的刪除按鈕。點擊空白區域以清除選擇。</string>
+    <string name="settings_swipe_navigate_title">滑動即可導航日期</string>
+    <string name="settings_swipe_navigate_subtitle">從右向左滑動可向前移動一個日期，從左向右滑動可向後移動一個日期。</string>
+    <string name="settings_drag_reorder_title">啟用拖曳重新排序</string>
+    <string name="settings_drag_reorder_subtitle">長按條目可重新排列它們</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">資料與恢復</string>
+    <string name="settings_swipe_rebuild_index">在主畫面上向下滑動以重建索引</string>
+    <string name="settings_large_journal_safe_mode_title">大期刊安全模式</string>
+    <string name="settings_large_journal_safe_mode_subtitle">當偵測到非常大的日誌時，推遲不必要的啟動統計工作，以便應用程式開啟更快、更安全。</string>
+    <string name="settings_version_history_title">版本歷史</string>
+    <string name="settings_version_history_subtitle">在條目編輯、刪除、標記和重新存取變更之前保留安全副本。</string>
+    <string name="settings_storage_location_label">存放地點</string>
+    <string name="settings_reset_to_default">重設為預設值</string>
+    <string name="settings_choose_folder">選擇資料夾</string>
+    <string name="settings_backup_description">建立一個包含日記條目、短代碼、日期關鍵字以及人物和地點資料的 Yaja 備份 zip。恢復可以稍後安全地將其合併回來。</string>
+    <string name="settings_last_backup">上次備份：%1$s</string>
+    <string name="settings_backup_reminder_age_label">備份提醒年齡</string>
+    <string name="settings_backup_reminder_disabled">殘障人士</string>
+    <string name="settings_backup_reminder_desc">當早於 %1$d 天時，在側邊欄中反白備份。</string>
+    <string name="settings_backup_reminder_days_disabled">0 天（已停用）</string>
+    <string name="settings_backup_reminder_days">%1$d 天</string>
+    <string name="settings_restore_button">恢復</string>
+    <string name="settings_backup_now_button">立即備份</string>
+    <string name="settings_db_index_management_label">資料庫索引管理</string>
+    <string name="settings_db_index_management_desc">開啟用於待辦事項、人物和地點的重點重建工具或完整資料庫索引重建。</string>
+    <string name="settings_rebuild_tools_button">重建工具</string>
+    <string name="settings_import_label">進口</string>
+    <string name="settings_import_info_cd">進口資訊</string>
+    <string name="settings_import_info_title">進口資訊</string>
+    <string name="settings_import_day_one_title">第一天導入</string>
+    <string name="settings_import_day_one_bullet1">- 從第一天開始匯出，無需圖像</string>
+    <string name="settings_import_day_one_bullet2">- 僅導入文字數據</string>
+    <string name="settings_import_day_one_bullet3">- 時間戳記和位置資料（如果有）將被保留</string>
+    <string name="settings_import_perf_warning_title">性能警告</string>
+    <string name="settings_import_perf_warning_desc">導入大量條目（500+）可能需要幾分鐘的時間。您可以離開，導入將在後台繼續。</string>
+    <string name="settings_got_it">知道了</string>
+    <string name="settings_import_success">%1$d 新日子，%2$d 合併，%3$d 跳過</string>
+    <string name="settings_import_source_day_one">第一天</string>
+    <string name="settings_import_source_day_one_subtitle">.zip 或 .json 導出</string>
+    <string name="settings_import_source_journalistic">新聞報道</string>
+    <string name="settings_import_source_journalistic_subtitle">.json 導出</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">了解如何使用 yaja</string>
+    <string name="help_footer_website">網站</string>
+    <string name="help_footer_share">分享</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">不和諧</string>
+    <string name="help_footer_reddit">紅迪網</string>
+    <string name="help_share_yaja">分享 夜迦</string>
+    <string name="help_share_yaja_text">yaja - 另一個日記應用程式\n\n一個無幹擾的本地日記，將條目儲存為 Markdown 文件。它包括時間軸、回顧、人物和地點、模板、評論、統計資訊和小部件。 \n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">已複製 Discord 用戶名！</string>
+    <string name="help_footer_play_store">Play 商店</string>
+    <string name="help_cd_rj_logo">RJ標誌</string>
+    <string name="help_screen_title">幫助和關於</string>
+    <string name="help_welcome_title">歡迎來到亞賈</string>
+    <string name="help_welcome_body">Yaja 是本地首創的 Markdown 日記，用於記錄日子、人物、地點、後續行動、評論和模式，而不會妨礙您。此頁面提供了應用程式主要部分的快速指南。</string>
+    <string name="help_start_here">從這裡開始</string>
+    <string name="help_cd_collapse">坍塌</string>
+    <string name="help_cd_expand">擴張</string>
+    <string name="help_group_everyday_title">每天</string>
+    <string name="help_group_everyday_desc">日記、寫作流程和日常導航。</string>
+    <string name="help_group_reviews_title">評論與見解</string>
+    <string name="help_group_reviews_desc">回顧、趨勢、人物、地點和分析。</string>
+    <string name="help_group_advanced_title">進階工具</string>
+    <string name="help_group_advanced_desc">小部件、儲存、隱私、備份和技術工具。</string>
+    <string name="help_onboard_todos_events_title">待辦事項、事件和重複事件</string>
+    <string name="help_onboard_todos_events_body">保留個人提醒、家庭計畫和定期安排，以便在截止日期自動產生任務。</string>
+    <string name="help_onboard_widgets_title">小部件</string>
+    <string name="help_onboard_widgets_body">從啟動器新增熱圖、快速擷取、快速待辦事項或待辦事項清單小工具。</string>
+    <string name="help_onboard_version_history_title">版本歷史</string>
+    <string name="help_onboard_version_history_body">在「設定」&gt;「資料」中啟用歷史文件，以在發生危險變更之前儲存安全快照。</string>
+    <string name="help_onboard_tasker_title">塔斯克</string>
+    <string name="help_onboard_tasker_body">當需要立即擷取個人資訊時，使用 Tasker 快速新增條目、待辦事項或事件。</string>
+    <string name="help_section_writing_editor_title">寫作和編輯</string>
+    <string name="help_section_writing_editor_preview">範本、Markdown 標題、待辦事項、事件和靈活的草稿插入。</string>
+    <string name="help_section_writing_editor_content">+ 點選浮動的「+」按鈕為選定的日期進行書寫。 \n+ 使用會議記錄、旅行日、健康日誌、反思、工作日誌等範本。 \n+ 範本可以插入空白草稿、附加在下方、用於取代草稿或插入到遊標處。 \n+ 編輯器晶片可快速插入待辦事項、事件、編號清單和項目符號清單。 \n+ 檢視條目和編輯條目支援 Markdown 樣式標題，例如 ### 部分。</string>
+    <string name="help_section_post_write_review_title">寫後評論</string>
+    <string name="help_section_post_write_review_preview">待辦事項提取、關鍵字檢測、加星標、標籤和重新訪問設定。</string>
+    <string name="help_section_post_write_review_content">+ 寫入後，Yaja 可以在儲存之前開啟審閱表。 \n+ 它可以提取待辦事項、偵測人物和地點、為這一天加註星標、設定日期標籤以及安排重新造訪日期。 \n+ 如果您喜歡直接儲存，可以從「設定」停用「寫後審閱」。</string>
+    <string name="help_section_revisit_followup_title">重訪及跟進日期</string>
+    <string name="help_section_revisit_followup_preview">與期刊相關的後續日期，具有快速選擇和自訂選項。</string>
+    <string name="help_section_revisit_followup_content">+ 新增明天、下週、下個月或自訂日期的重訪日期。 \n+ 到期重訪項目顯示在主頁上，並在日曆和時間軸中標記。 \n+ 這非常適合與日記上下文相關的承諾、決策、運行狀況檢查和提醒。</string>
+    <string name="help_section_navigation_gestures_title">導航和手勢</string>
+    <string name="help_section_navigation_gestures_preview">日期移動、選擇刪除、滑動首選項和重建快取行為。</string>
+    <string name="help_section_navigation_gestures_content">+ 主頁支援帶箭頭的日期導航和可選的滑動導航（啟用後）。 \n+ 長按條目即可選取。點擊更多條目也可以選擇它們，然後使用「新增」按鈕附近的「刪除」藥丸。 \n+ 點選所選條目外部可清除選擇。刪除的條目可以從恢復倒數計時一起恢復。 \n+ 當日誌檔案在 Yaja 外部發生變更時，您可以重建快取。</string>
+    <string name="help_section_shortcodes_quick_capture_title">短代碼和快速捕獲</string>
+    <string name="help_section_shortcodes_quick_capture_preview">快速個人捕捉加上可重複使用的動態文字片段。</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ 建立短代碼以快速插入重複文字。 \n+ 動態佔位符（如 {{today:dd-MMM}} 和 {{now:HH:mm}}）可在短代碼內使用。 \n+ 快速擷取有助於快速記錄內容，而無需開啟完整的編輯器。 \n+ 快速新增可從小元件、待辦事項畫面或 Tasker 儲存選定日期的待辦事項或事件。</string>
+    <string name="help_section_todos_events_title">待辦事項、事件和重複事件</string>
+    <string name="help_section_todos_events_preview">個人提醒、值得注意的事件和自動重複的時間表。</string>
+    <string name="help_section_todos_events_content">+ 待辦事項直接寫在日記條目中，作為 [ ] 和 [x] 行。 \n+ 事件是標記為「事件」的普通日記條目，對於家庭計劃、約會、旅行或您以後想要注意的任何事情很有用。 \n+ 定期任務和活動（計劃）根據計劃（例如每週、每月、每年）自動將待辦事項或活動標題寫入您的每日日記頁面。 \n+ 透過點擊待辦事項上的定期圖示來管理您的計畫畫面。 \n+ 每天，當您打開 Yaja 時，後台管道會運行以檢查是否有任何計劃任務到期，並將它們插入當天的條目中。 \n+ 待辦事項畫面可協助您查看未完成的待辦事項、已完成的待辦事項和事件，而無需將 Yaja 轉變為生產力儀表板。 \n+ 點擊日期標題以在日記中開啟當天。 \n+ 如果檔案在 Yaja 外部發生更改，則下拉待辦事項以重建待辦事項索引。 \n+ 會記住顯示已完成的任務，以便您當您離開和返回時，首選視圖會保留。 \n+ Todo 小工具可以顯示待處理任務、切換前確認、隱藏已完成的任務，以及選擇在沒有待處理任務時自動隱藏。</string>
+    <string name="help_section_people_places_title">人物與地點</string>
+    <string name="help_section_people_places_preview">關鍵字、別名、趨勢和排名連結視圖。</string>
+    <string name="help_section_people_places_content">+ 使用別名和關係標籤追蹤人物和地點。 \n+ 將關鍵字清單搜尋、篩選和排序。 \n+ 關鍵字詳細資料頁面顯示新近度、隨時間推移的提及、共同提及和排名的聯繫。 \n+ 可以從「設定」調整配對敏感度。</string>
+    <string name="help_section_timeline_lookback_title">時間表和回顧</string>
+    <string name="help_section_timeline_lookback_preview">過去一天的瀏覽、突出顯示、驚喜和回顧切入點。</string>
+    <string name="help_section_timeline_lookback_content">+ 時間軸可讓您使用篩選器、年份碎片和可選的全日期模式瀏覽過去的日子。 \n+ 回顧顯示過去幾年同一天的條目以及加星號的亮點。 \n+ Surprise Me 從回顧中開啟隨機的過去條目。 \n+ 回顧中即時顯示每週回顧和每月回顧。</string>
+    <string name="help_section_statistics_reviews_title">統計與評論</string>
+    <string name="help_section_statistics_reviews_preview">比較模式、範本見解、自訂可見部分和摘要。</string>
+    <string name="help_section_statistics_reviews_content">+ 統計資訊包括比較模式、關鍵字增量和模板洞察。 \n+ 您可以選擇哪些統計部分在「統計資料」畫面內保持可見。 \n+ 比較模式適用於所有時間，並彙總月份和年份增量。 \n+ 審核頁面總結最活躍的日子、熱門人物和地點、最喜歡的時刻、標籤、語言劃分以及連續或差距模式。</string>
+    <string name="help_section_widgets_home_title">小部件和家庭表面</string>
+    <string name="help_section_widgets_home_preview">啟動器小部件、突出顯示的關鍵字和每日層級的家庭統計資料。</string>
+    <string name="help_section_widgets_home_content">+ 啟動器上提供了寫入熱圖、快速擷取、快速新增和待辦事項清單小工具。 \n+ 小工具配置畫面可讓您調整角落、填滿、形狀、標題、已完成任務的可見性和其他支援的小工具選項。 \n+ 熱圖小工具使用更多強度陰影以實現更流暢的書寫歷史視圖。 \n+ 當啟用此設定時，主頁可以反白顯示條目內的人物和地點。 \n+ 主頁日期標題可以顯示或隱藏條目計數、字數和字元數。</string>
+    <string name="help_section_language_text_analysis_title">語言和文本分析</string>
+    <string name="help_section_language_text_analysis_preview">本地語言檢測用於統計和評論見解。</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja 偵測條目中的主要腳本或語言以取得見解。 \n+ 統計和評論中顯示語言分割。 \n+ 偵測在本機運行，不會將日誌文字傳送到裝置外。</string>
+    <string name="help_section_data_privacy_cache_title">資料、隱私和快取</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown 儲存、版本歷史記錄、應用程式日誌、應用程式鎖定和重建快取。</string>
+    <string name="help_section_data_privacy_cache_content">+ 資料隱私：所有個人日記資料都嚴格保存在您的實體裝置上，並且永遠不會在任何時候離開。 Yaja 不會運行雲端資料庫、遠端備份伺服器或遙測來追蹤您的文字。 \n+ 日記條目儲存為按年和月排列的標準 Markdown 文件。 \n+ 版本歷史記錄可以在編輯、刪除、標記和重新存取變更之前保留安全快照。 \n+ 您可以選擇保留多少版本以及保留歷史記錄天數。 \n+ 應用程式日誌記錄技術事件、崩潰詳細資訊和快取活動，而不儲存日記文字。 \n+ 重建應用程式快取可讓您刷新應用程式資料模組化，包括待辦事項和完整快取重建。 \n+ 應用程式鎖定支援 PIN 和指紋。 \n+ Yaja 盡可能推遲繁重的索引和統計工作，以便應用程式啟動和保存保持回應。</string>
+    <string name="settings_app_log_title">應用程式日誌</string>
+    <string name="settings_app_log_subtitle">查看隱私安全診斷和先前的崩潰詳細信息</string>
+    <string name="app_log_cd_share">分享應用程式日誌</string>
+    <string name="app_log_cd_clear">清除應用程式日誌</string>
+    <string name="app_log_privacy_title">隱私安全診斷</string>
+    <string name="app_log_privacy_description">此日誌記錄主要應用程式事件、快取/儲存操作、小部件刷新和崩潰詳細資訊。它不包括日記條目、待辦事項文字或私人筆記內容。</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">保留最後 %d 天</item>
+        <item quantity="other">保留最後 %d 天</item>
+    </plurals>
+    <string name="app_log_retention_description">較舊的日誌事件會在記錄期間以及此設定變更時立即自動修剪。</string>
+    <string name="app_log_empty">還沒有應用程式日誌。</string>
+    <string name="app_log_refresh">刷新日誌</string>
+    <string name="app_log_share_empty">尚無 Yaja 應用程式日誌條目。</string>
+    <string name="app_log_share_subject">亞賈應用程式日誌</string>
+    <string name="app_log_share_chooser">分享 Yaja 應用日誌</string>
+    <string name="app_log_local_time_format">%1$s |當地時間\n%2$s</string>
+    <string name="settings_website_title">雅佳網站</string>
+    <string name="settings_website_subtitle">打開官方網站以獲取更新和詳細信息</string>
+    <string name="settings_advanced_integrations_title">高階集成</string>
+    <string name="settings_tasker_integration_title">任務集成</string>
+    <string name="settings_tasker_integration_subtitle">快速擷取操作和日誌事件觸發器</string>
+    <string name="settings_shortcodes_subtitle">管理在書寫或快速捕獲時擴展的可重複使用的片段。</string>
+    <string name="settings_privacy_security_title">隱私與安全</string>
+    <string name="settings_pin_lock_title">密碼鎖</string>
+    <string name="settings_app_locked">應用程式已鎖定</string>
+    <string name="settings_app_unlocked">應用程式已解鎖</string>
+    <string name="settings_change_pin">更改密碼</string>
+    <string name="settings_biometric_unlock_title">生物辨識解鎖</string>
+    <string name="settings_biometric_enabled_desc">啟用指紋或面容 ID</string>
+    <string name="settings_biometric_disabled_desc">使用生物辨識代替 PIN</string>
+    <string name="settings_autolock_timeout_title">自動鎖定逾時</string>
+    <string name="settings_pin_lock_disclaimer">PIN 鎖可防止未經授權存取應用程序，但不會加密磁碟上的日誌資料。具有直接文件存取權限的人仍然可以讀取您的條目。</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d 分鐘</item>
+        <item quantity="other">%1$d 分鐘</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">系統</string>
+    <string name="settings_theme_light">光</string>
+    <string name="settings_theme_dark">黑暗的</string>
+    <string name="settings_theme_amoled">阿莫萊德</string>
+    <string name="settings_colors_label">顏色</string>
+    <string name="settings_color_intensity_title">顏色強度</string>
+    <string name="settings_background_tint_title">背景色調</string>
+    <string name="settings_font_sans">桑斯</string>
+    <string name="settings_font_serif">襯線</string>
+    <string name="settings_font_mono">單核白血球增多症</string>
+    <string name="settings_font_custom">風俗</string>
+    <string name="settings_font_size_label">字體大小</string>
+    <string name="settings_ui_font_size_label">使用者介面字體大小</string>
+    <string name="settings_data_font_size_label">內容字體大小</string>
+    <string name="settings_follow_ui_font_scale_label">讓內容字體大小與 UI 相同</string>
+    <string name="settings_color_source_material_you">物質的你</string>
+    <string name="settings_theme_preview_title">主題預覽</string>
+    <string name="settings_journal_entry_preview">日記條目</string>
+    <string name="settings_journal_entry_preview_desc">卡片、晶片和按鈕將使用這些顏色。</string>
+    <string name="settings_preview_chip_chip">晶片</string>
+    <string name="settings_preview_chip_accent">口音</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">強度：%1$s</string>
+    <string name="settings_personal_themes_title">個人主題</string>
+    <string name="settings_theme_name_label">主題名稱</string>
+    <string name="settings_main_color_label">主色</string>
+    <string name="settings_hue_label">色調</string>
+    <string name="settings_sat_label">星期六</string>
+    <string name="settings_bright_label">明亮的</string>
+    <string name="settings_generated_accents_title">生成的口音</string>
+    <string name="settings_personal_theme_desc">選擇一種顏色。 Yaja 創造出搭配的強調色和支撐色。</string>
+    <string name="settings_preview_chip_main">主要的</string>
+    <string name="settings_preview_chip_support">支援</string>
+    <string name="settings_no_font_selected">未選擇字體</string>
+    <string name="settings_custom_font_desc">選擇任何 unicode .ttf 或 .otf 檔案 - 例如馬拉雅拉姆語字體，如 Manjari。字體缺少的字元使用系統字體。</string>
+    <string name="settings_font_replace">代替</string>
+    <string name="settings_choose_font_file">選擇字型文件</string>
+    <string name="settings_intensity_muted">靜音</string>
+    <string name="settings_intensity_normal">普通的</string>
+    <string name="settings_intensity_vivid">生動</string>
+    <string name="settings_intensity_pop">流行音樂</string>
+    <string name="settings_tint_clean">乾淨的</string>
+    <string name="settings_tint_soft">柔軟的</string>
+    <string name="settings_tint_rich">富有的</string>
+    <string name="settings_tint_deep">深的</string>
+    <string name="settings_accent_complementary">補充</string>
+    <string name="settings_accent_analogous">類似的</string>
+    <string name="settings_accent_triadic">三元組</string>
+    <string name="settings_accent_soft">柔軟的</string>
+    <string name="settings_mono_weight_thin">薄的</string>
+    <string name="settings_mono_weight_extra_light">超輕</string>
+    <string name="settings_mono_weight_light">光</string>
+    <string name="settings_mono_weight_regular">常規的</string>
+    <string name="settings_mono_weight_medium">中等的</string>
+    <string name="settings_mono_weight_semi_bold">半粗體</string>
+    <string name="settings_mono_weight_bold">大膽的</string>
+    <string name="settings_mono_weight_extra_bold">額外大膽</string>
+    <string name="settings_mono_weight_title">重量</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">新增日期關鍵字</string>
+    <string name="settings_keyword_label">關鍵字</string>
+    <string name="settings_keyword_placeholder_example">例如昨天</string>
+    <string name="settings_means_label">方法</string>
+    <string name="settings_add_button">添加</string>
+    <string name="settings_no_keywords_yet">尚未新增關鍵字。</string>
+    <string name="settings_added_keywords_title">新增了關鍵字 (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">新增關鍵字</string>
+    <string name="keywords_dialog_add_title">新增關鍵字</string>
+    <string name="keywords_dialog_edit_title">編輯關鍵字</string>
+    <string name="keywords_cd_import_csv">導入 CSV</string>
+    <string name="keywords_cd_export_csv">匯出 CSV</string>
+    <string name="keywords_cd_download_template">下載模板</string>
+    <string name="rebuild_cache_storage_transparency_title">設備上儲存透明度</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja 使用安全的本機儲存模型。您的個人日記資料始終保留在本地，並且永遠不會離開您的設備：</string>
+    <string name="rebuild_cache_source_of_truth_title">事實來源（Markdown 文件）</string>
+    <string name="rebuild_cache_source_of_truth_desc">所有條目、清單項目 (todos)、時間軸事件、星星和標籤都永久保存在所選本地日記資料夾中的純文字 Markdown (.md) 檔案中。您的資料 100% 歸您所有，並完全駐留在您的裝置上。</string>
+    <string name="rebuild_cache_read_cache_title">讀取快取和索引（SQLite 資料庫）</string>
+    <string name="rebuild_cache_read_cache_desc">為了實現即時螢幕載入、日曆突出顯示、關鍵字和統計數據，而無需在每次滾動時掃描檔案系統，Yaja 會解析您的 Markdown 檔案並在裝置上的本機 Room SQLite 資料庫中對它們進行索引。</string>
+    <string name="rebuild_cache_local_private_title">100% 本地和私人</string>
+    <string name="rebuild_cache_local_private_desc">Yaja 沒有任何雲端資料庫、遠端備份伺服器或遙測追蹤您的文字。所有日記條目和解析的資料都嚴格保留在您的實體設備上，並且任何時候都不會離開。</string>
+    <string name="keywords_export_success">匯出關鍵字</string>
+    <string name="keywords_export_failed">無法匯出關鍵字</string>
+    <string name="keywords_template_saved">模板已儲存</string>
+    <string name="keywords_template_save_failed">無法儲存模板</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">導入的 %d 關鍵字</item>
+        <item quantity="other">導入的 %d 關鍵字</item>
+    </plurals>
+    <string name="keywords_import_none_valid">未找到有效的關鍵字</string>
+    <string name="keywords_import_failed">無法匯入關鍵字</string>
+    <string name="keywords_status_indexing">索引</string>
+    <string name="keywords_status_indexed">索引</string>
+    <string name="keywords_metric_mentions">提及</string>
+    <string name="keywords_metric_days">天</string>
+    <string name="keywords_timeline_range_all">全部</string>
+    <string name="keywords_connections_filter_all">全部</string>
+    <string name="keywords_connections_filter_people">人們</string>
+    <string name="keywords_connections_filter_places">地點</string>
+    <string name="keywords_connections_filter_recent">最近的</string>
+    <string name="keywords_connections_filter_strongest">最強</string>
+    <string name="keywords_filter_needs_reindex">需要重新索引</string>
+    <string name="keywords_search_placeholder">搜尋人物、地點、別名、關係</string>
+    <string name="keywords_refreshing_counters">刷新關鍵字計數器...</string>
+    <string name="keywords_empty_title">還沒有關鍵字</string>
+    <string name="keywords_empty_subtitle">新增您希望應用程式在本地追蹤的人員和地點。</string>
+    <string name="keywords_no_results_title">沒有匹配結果</string>
+    <string name="keywords_no_results_subtitle">嘗試不同的搜尋、排序或過濾。</string>
+    <string name="keywords_people_title">人們</string>
+    <string name="keywords_places_title">地點</string>
+    <string name="keywords_people_empty">尚未添加人員。</string>
+    <string name="keywords_people_filtered_empty">沒有人符合目前的篩選條件。</string>
+    <string name="keywords_places_empty">尚未添加地點。</string>
+    <string name="keywords_places_filtered_empty">沒有地方與當前過濾器匹配。</string>
+    <string name="keywords_delete_person_title">刪除人員？</string>
+    <string name="keywords_delete_place_title">沒有地方與當前過濾器匹配。</string>
+    <string name="keywords_delete_message">從人物與地點中刪除「%1$s」？這將刪除關鍵字及其索引匹配項。</string>
+    <string name="keywords_timeline_title">隨著時間的推移被提及</string>
+    <string name="keywords_timeline_empty_pattern">還沒有每月模式</string>
+    <string name="keywords_timeline_total_format">%1$d 總計</string>
+    <string name="keywords_timeline_empty_chart">索引找到條目後，提及將在此處繪製圖表。</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">峰值 %1$s • %2$d 提及</item>
+        <item quantity="other">峰值 %1$s • %2$d 提及</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">被提及的日子</string>
+    <string name="keywords_recency_title">新近度</string>
+    <string name="keywords_recency_none">還沒有匹配項</string>
+    <string name="keywords_recency_today">今天提到的</string>
+    <string name="keywords_recency_yesterday">昨天提到的</string>
+    <string name="keywords_recency_days_ago_format">最後一次提及 %1$d 天前</string>
+    <string name="keywords_first_seen">第一次看到</string>
+    <string name="keywords_last_seen">最後一次出現</string>
+    <string name="keywords_unknown">未知</string>
+    <string name="keywords_co_mentioned_with">共同提及與</string>
+    <string name="keywords_connections_title">連接</string>
+    <string name="keywords_connections_subtitle">按重複重疊和新近度排名</string>
+    <string name="keywords_connections_linked_format">%1$d 連結</string>
+    <string name="keywords_connections_show">顯示連接</string>
+    <string name="keywords_connections_hide">隱藏連線</string>
+    <string name="keywords_connections_items_in_view">此視圖中有 %1$d 項</string>
+    <string name="keywords_connections_tap_to_expand">點擊展開 %1$d 排名鏈接</string>
+    <string name="keywords_connections_empty">尚無此過濾器的連接。</string>
+    <string name="keywords_open_day">開放日</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">最受提及</string>
+    <string name="keywords_sort_recently_added">最近新增</string>
+    <string name="keywords_peak_mentions_format">峰 %1$s • %2$d 提及%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d 天</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">一起</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d 共用入口</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">是的</string>
+    <string name="keywords_connections_meta_last_prefix">|最後 %1$s</string>
+    <string name="keywords_connections_score_format">分數 %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d 天</string>
+    <string name="keywords_connections_shared_chip">%1$d 共享</string>
+    <string name="keywords_match_type_exact">精確的</string>
+    <string name="keywords_match_type_fuzzy">模糊</string>
+    <string name="keywords_match_type_alias">別名</string>
+    <string name="keywords_match_type_relation">關係</string>
+    <string name="keywords_action_delete">刪除</string>
+    <string name="keywords_action_edit">編輯</string>
+    <string name="keywords_action_view">看法</string>
+    <string name="keywords_name_label">姓名</string>
+    <string name="keywords_relation_context_label">關係/背景</string>
+    <string name="keywords_aliases_label">別名（逗號分隔）</string>
+    <string name="keywords_aliases_label_short">別名</string>
+    <string name="keywords_type_person">人</string>
+    <string name="keywords_type_place">地方</string>
+    <string name="keywords_save_disabled_hint">關鍵字儲存已關閉。當您想要執行索引時，請從清單中啟用它們。</string>
+    <string name="settings_meaning_yesterday">昨天</string>
+    <string name="settings_meaning_today">今天</string>
+    <string name="lookback_chip_weekly">每週</string>
+    <string name="lookback_chip_monthly">每月</string>
+    <string name="timeline_screen_title">時間軸</string>
+    <string name="timeline_empty_title">這裡還什麼都沒有</string>
+    <string name="timeline_empty_subtitle">嘗試不同的篩選器或調整標籤搜尋。</string>
+    <string name="timeline_quick_today">今天</string>
+    <string name="timeline_quick_month">月</string>
+    <string name="timeline_quick_filters">過濾器</string>
+    <string name="timeline_all_dates">所有日期</string>
+    <string name="timeline_label_prefix">標籤：%1$s</string>
+    <string name="timeline_label_search_placeholder">搜尋日標籤</string>
+    <string name="timeline_filters_title">時間軸過濾器和佈局</string>
+    <string name="settings_meaning_tomorrow">明天</string>
+    <string name="settings_meaning_day_before_yesterday">前天</string>
+    <string name="settings_meaning_day_after_tomorrow">後天</string>
+    <string name="settings_meaning_last_week">上個星期</string>
+    <string name="settings_meaning_next_week">下週</string>
+    <string name="settings_meaning_monday">週一</string>
+    <string name="settings_meaning_tuesday">週二</string>
+    <string name="settings_meaning_wednesday">週三</string>
+    <string name="settings_meaning_thursday">週四</string>
+    <string name="settings_meaning_friday">星期五</string>
+    <string name="settings_meaning_saturday">週六</string>
+    <string name="settings_meaning_sunday">星期日</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">應用程式內部存儲</string>
+    <string name="settings_storage_internal_default">應用程式內部儲存（預設）</string>
+    <string name="settings_storage_new_folder_fallback">新資料夾</string>
+    <string name="settings_storage_current_folder_fallback">目前資料夾</string>
+    <string name="settings_storage_move_confirm">所有現有條目將從 %1$s 移至 %2$s。您想繼續嗎？</string>
+    <string name="settings_restore_added_skipped">新增：%1$d\n跳過重複：%2$d</string>
+    <string name="settings_storage_custom_folder">自訂資料夾：\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">快捷方式幫助</string>
+    <string name="addentry_cd_insert_template">插入模板</string>
+    <string name="addentry_cd_jump_to_today">跳到今天</string>
+    <string name="addentry_cd_share">分享</string>
+    <string name="addentry_cd_bold">大膽的</string>
+    <string name="addentry_cd_italic">斜體</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">設定時間</string>
+    <string name="addentry_event_chip">事件</string>
+    <string name="addentry_pick_time_title">挑選時間</string>
+    <string name="addentry_hour_label">小時</string>
+    <string name="addentry_minute_label">分分鐘</string>
+    <string name="addentry_new_event_title">新活動</string>
+    <string name="addentry_title_label">標題</string>
+    <string name="addentry_event_description_label">活動說明</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">已找到待辦事項</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">將 %1$d 行轉換為清單</item>
+        <item quantity="other">將 %1$d 行轉換為清單</item>
+    </plurals>
+    <string name="addentry_people_places_title">人物與地點</string>
+    <string name="addentry_no_tracked_mentions">在此條目中未找到跟蹤的人員或地點。</string>
+    <string name="addentry_day_memory_title">日間記憶</string>
+    <string name="addentry_star_day_title">這一天的明星</string>
+    <string name="addentry_star_day_subtitle">將其儲存為亮點，以便在回顧時返回。</string>
+    <string name="addentry_day_label_label">日標籤</string>
+    <string name="addentry_day_label_placeholder">例如重置日</string>
+    <string name="addentry_follow_up_title">跟進</string>
+    <string name="addentry_next_month">下個月</string>
+    <string name="addentry_custom">風俗</string>
+    <string name="addentry_due_date_format">由於 %1$s</string>
+    <string name="addentry_cd_clear_follow_up">清晰的後續</string>
+    <string name="addentry_follow_up_note_label">後續筆記</string>
+    <string name="addentry_follow_up_note_placeholder">你該重新審視什麼？</string>
+    <string name="addentry_review_entry_title">評論條目</string>
+    <string name="addentry_review_entry_subtitle">保存前快速通過。拉出待辦事項，檢查追蹤的提及，並標記重要的日子。</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d 待辦事項</item>
+        <item quantity="other">%1$d 待辦事項</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d 提及</item>
+        <item quantity="other">%1$d 提及</item>
+    </plurals>
+    <string name="addentry_save_entry_button">儲存條目</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">放棄更改</string>
+    <string name="addentry_discard_changes_message">您有未儲存的變更。返回並丟棄它們，或留下來繼續編輯。</string>
+    <string name="addentry_go_back">回去</string>
+    <string name="addentry_stay">停留</string>
+    <string name="addentry_shortcuts_title">快速方式</string>
+    <string name="addentry_help_bold_suffix">將文字設為​​粗體（或選擇文字並點擊粗體按鈕）</string>
+    <string name="addentry_help_italic_suffix">使文字斜體（或選擇文字並點擊斜體按鈕）</string>
+    <string name="addentry_help_today_suffix">：擴展到目前日期（例如 25-Dec-25）</string>
+    <string name="addentry_help_now_suffix">：擴展到當前時間（例如 14:30）</string>
+    <string name="addentry_help_week_suffix">：擴展到當週（例如第 52 週）</string>
+    <string name="addentry_help_day_suffix">：擴展到當前工作日（例如星期一）</string>
+    <string name="addentry_help_todo_suffix">：擴展為待辦事項複選框（例如 [ ] ）</string>
+    <string name="addentry_help_toggle_suffix">：當在包含待辦事項複選框的行中的任意位置輸入時，它將切換它。</string>
+    <string name="addentry_okey">好吧！</string>
+    <string name="addentry_template_merge_message">該草案已有文本。選擇模板的放置方式。</string>
+    <string name="addentry_template_merge_subtitle">在下方插入保留目前草稿。在遊標處，將模板放置在您的插入符現在所在的位置。</string>
+    <string name="addentry_insert_below">在下面插入</string>
+    <string name="addentry_at_cursor">在遊標處</string>
+    <string name="addentry_replace_draft">替換草稿</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">受歡迎的</string>
+    <string name="addentry_new_chip">新的</string>
+    <string name="addentry_best_for_format">最適合：%1$s</string>
+    <string name="addentry_cd_remove_favorite">刪除模板收藏夾</string>
+    <string name="addentry_cd_favorite_template">最喜歡的模板</string>
+    <string name="addentry_checklist_chip">清單</string>
+    <string name="addentry_followup_chip">跟進</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d 部分</item>
+        <item quantity="other">%1$d 部分</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">切換最喜歡的模板</string>
+    <string name="addentry_template_preview_label">模板預覽</string>
+    <string name="addentry_use_template_button">使用模板</string>
+    <string name="addentry_start_blank_title">開始空白</string>
+    <string name="addentry_start_blank_subtitle">跳過模板並繼續從空草稿開始寫作。</string>
+    <string name="addentry_blank_entry_name">空白條目</string>
+    <string name="addentry_blank_entry_description">普通日記帳分錄</string>
+    <string name="addentry_blank_category">一般的</string>
+    <string name="addentry_quick_picks_title">快速精選</string>
+    <string name="addentry_sort_recommended">受到推崇的</string>
+    <string name="addentry_sort_recent">最近的</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">沒有找到模板</string>
+    <string name="addentry_no_templates_subtitle">嘗試不同的搜尋或類別。</string>
+    <string name="addentry_search_templates_label">搜尋模板</string>
+    <string name="addentry_search_templates_placeholder">會議、健康、反思…</string>
+    <string name="addentry_cd_clear_search">清除搜尋</string>
+    <string name="addentry_choose_template_title">選擇一個模板</string>
+    <string name="addentry_templates_ready_format">%1$d 個範本（共 %2$d 個）已準備就緒</string>
+    <string name="addentry_category_all">全部</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">發生了什麼事？</string>
+    <string name="addentry_todo_chip">托多</string>
+    <string name="addentry_numbered_list_chip">N列表</string>
+    <string name="addentry_bulleted_list_chip">乙名單</string>
+    <string name="addentry_words_count_format">%1$d 字</string>
+    <string name="addentry_chars_count_format">%1$d 字符</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">後續行動今天到期</item>
+        <item quantity="other">今天到期的後續行動</item>
+    </plurals>
+    <string name="home_followup_subtitle">跳回連結的日期並從那裡繼續。</string>
+    <string name="home_from_date_format">來自 %1$s</string>
+    <string name="home_more_due_today_format">+%1$d 今天到期</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">添加標籤</string>
+    <string name="home_edit_label_title">編輯標籤</string>
+    <string name="home_day_label_hint">新增這一天的短標籤（最多 30 個字元）。</string>
+    <string name="home_day_label_placeholder">例如，第一天上學</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">為這一天添加標籤</string>
+    <string name="home_star_label_hint">給這一天一個難忘的標籤（最多 30 個字元）</string>
+    <string name="home_star_label_placeholder">例如，我的生日、在學校</string>
+    <string name="home_star_button">星星</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">條目已刪除</item>
+        <item quantity="other">%1$d 條目已刪除</item>
+    </plurals>
+    <string name="home_restore_button">恢復</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">搜尋條目...</string>
+    <string name="home_cd_search">搜尋</string>
+    <string name="home_cd_clear_search">清除搜尋</string>
+    <string name="home_cd_favorite">最喜歡的</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">參賽作品</string>
+    <string name="home_stat_words">字</string>
+    <string name="home_stat_chars">字元</string>
+    <string name="home_stat_versions">韋爾斯</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">添加標籤</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d 找到匹配項</item>
+        <item quantity="other">%1$d 找到匹配項</item>
+    </plurals>
+    <string name="home_no_keyword_matches">尚未找到該關鍵字的符合項目。</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">空狀態圖示</string>
+    <string name="home_empty_future">這就是未來。記錄提醒！</string>
+    <string name="home_empty_past">你在過去。在記憶消失之前記錄它......</string>
+    <string name="home_empty_today">還沒有條目。開始新的一天。</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">儲存</string>
+    <string name="home_cd_add_entry">新增條目</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">刪除 %1$d</string>
+    <string name="home_future_date_title">未來日期輸入</string>
+    <string name="home_future_date_message_format">您正在新增未來日期 (%1$s) 的條目。您想繼續嗎？</string>
+    <string name="home_cache_issue_title">偵測到資料快取問題</string>
+    <string name="home_cache_issue_message">快取中似乎缺少大量日記條目。您想要執行完整的資料快取刷新以嘗試恢復它們嗎？</string>
+    <string name="home_refresh_button">重新整理</string>
+    <string name="home_ignore_button">忽略</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">人物與地點</string>
+    <string name="nav_statistics">統計數據</string>
+    <string name="nav_todos">托多斯</string>
+    <string name="nav_rebuild_index">重建資料庫索引</string>
+    <string name="nav_backup_data">備份數據</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">地位</string>
+    <string name="nav_finishing_index_rebuild">正在完成索引重建...</string>
+    <string name="nav_rebuilding_index">重建資料庫索引</string>
+    <string name="nav_refreshing_index">清爽指數</string>
+    <string name="nav_backup_too_old">備份太舊了...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">在職的...</string>
+    <string name="nav_eta_almost_done">快完成了</string>
+    <string name="nav_eta_seconds_left_format">剩下 ~%1$d 秒</string>
+    <string name="nav_eta_minutes_left_format">剩下 ~%1$dm</string>
+    <string name="nav_eta_hours_left_format">剩下 ~%1$dh</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">選單</string>
+    <string name="nav_cd_rj_logo">RJ標誌</string>
+    <string name="nav_tagline">另一個日記應用程式</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play 商店</string>
+    <string name="nav_cd_website">網站</string>
+    <string name="nav_cd_share_app">分享應用程式</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">亞賈標誌</string>
+    <string name="nav_easter_quote_part1">「寫下一個短暫的想法或你午餐吃了什麼；它不必很深刻。\n</string>
+    <string name="nav_easter_quote_part2">你的話就可以存在。</string>
+    <string name="nav_easter_quote_part3">」</string>
+    <string name="nav_from_labs">來自 RJ 實驗室</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">分享 夜迦</string>
+    <string name="nav_share_text_body">yaja — 另一本日記應用程式\n\n一本無幹擾的每日日記，將條目儲存為純 Markdown 文件。 \n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">變更儲存位置</string>
+    <string name="settings_change_storage_location_message">所有現有條目將從 %1$s 移至 %2$s。您想繼續嗎？</string>
+    <string name="settings_yes">是的</string>
+    <string name="settings_no">不</string>
+    <string name="settings_restore_summary_title">恢復摘要</string>
+    <string name="settings_restore_section_journal">雜誌</string>
+    <string name="settings_restore_section_shortcodes">簡碼</string>
+    <string name="settings_restore_section_date_keywords">日期關鍵字</string>
+    <string name="settings_restore_section_people_places">人物與地點</string>
+    <string name="settings_restore_journal_summary">新增到新日期：%1$d\n合併到現有日期：%2$d\n跳過重複的日記條目：%3$d</string>
+    <string name="settings_restore_shortcodes_summary">新增：%1$d\n跳過重複：%2$d</string>
+    <string name="settings_restore_date_keywords_summary">新增：%1$d\n跳過重複：%2$d</string>
+    <string name="settings_restore_people_places_summary">新增：%1$d\n跳過重複：%2$d</string>
+    <string name="rebuild_tools_title">重建工具</string>
+    <string name="rebuild_tools_back">後退</string>
+    <string name="rebuild_tools_intro">首先使用集中重建。重建資料庫僅適用於儲存變更、資料庫損壞或索引不符。</string>
+    <string name="rebuild_todo_index_title">重建 Todo 索引</string>
+    <string name="rebuild_todo_index_subtitle">從日誌檔案中刷新待辦事項並更新待辦事項畫面/小工具。當待辦事項看起來陳舊時最好。</string>
+    <string name="rebuild_todo_index_button">重建待辦事項</string>
+    <string name="rebuild_people_places_title">重建人和地方</string>
+    <string name="rebuild_people_places_subtitle">刷新關鍵字別名、共同提及、趨勢和關聯式資料。</string>
+    <string name="rebuild_people_places_button">重建人和地方</string>
+    <string name="rebuild_database_title">完整資料庫重建</string>
+    <string name="rebuild_database_subtitle">從 Markdown 檔案重新編譯資料庫快取。從頭開始重新索引條目、計數、待辦事項、人物和地點以及小部件。</string>
+    <string name="rebuild_database_button">重建資料庫</string>
+    <string name="rebuild_database_confirm_title">重建資料庫索引</string>
+    <string name="rebuild_database_confirm_message">這將從 Markdown 文件中清除整個 Room SQLite 資料庫並重新索引。對於大型期刊，這可能需要幾分鐘。</string>
+    <string name="rebuild_database_confirm_start">開始重建</string>
+    <string name="rebuild_database_status_title">資料庫索引狀態</string>
+    <string name="rebuild_database_storage_engine">儲存引擎</string>
+    <string name="rebuild_database_storage_engine_value">房間 SQLite 資料庫</string>
+    <string name="rebuild_database_indexed_days">索引天數</string>
+    <string name="rebuild_database_indexed_days_value">編入索引的 %1$d 天</string>
+    <string name="rebuild_database_file_size">資料庫檔案大小</string>
+    <string name="rebuild_database_last_sync">上次索引同步</string>
+    <string name="rebuild_database_age_never">絕不</string>
+    <string name="rebuild_database_age_just_now">現在</string>
+    <string name="rebuild_database_age_one_minute">1 分鐘前</string>
+    <string name="rebuild_database_age_minutes">%1$d 分鐘前</string>
+    <string name="rebuild_database_age_one_hour">1 小時前</string>
+    <string name="rebuild_database_age_hours">%1$d 小時前</string>
+    <string name="shortcodes_title">簡碼</string>
+    <string name="shortcodes_import_cd">進口</string>
+    <string name="shortcodes_export_cd">出口</string>
+    <string name="shortcodes_help_cd">幫助</string>
+    <string name="shortcodes_new">新簡碼</string>
+    <string name="shortcodes_empty_title">沒有自訂短代碼</string>
+    <string name="shortcodes_empty_subtitle">添加一個以將 @yday 等片段擴展為動態文本。</string>
+    <string name="shortcodes_dynamic_dates_hint">使用 {{today:format}} 表示動態日期。</string>
+    <string name="shortcodes_help_title">簡碼幫助</string>
+    <string name="shortcodes_help_built_in">內建簡碼：</string>
+    <string name="shortcodes_help_built_in_examples">@today、@now、@week、@day、@t（複選框）、@x（切換複選框）</string>
+    <string name="shortcodes_help_dynamic_patterns">動態模式：</string>
+    <string name="shortcodes_help_dynamic_desc">使用 {{today:FORMAT}}、{{yesterday:FORMAT}}、{{tomorrow:FORMAT}} 或 {{now:FORMAT}}。</string>
+    <string name="shortcodes_help_example">例：@yday -&gt; 昨天：{{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">常見格式：dd-MM-yy、HH:mm、EEEE（日期名稱）。</string>
+    <string name="action_close">關閉</string>
+    <string name="keyword_detail_title_fallback">關鍵字</string>
+    <string name="keyword_detail_not_found">找不到關鍵字</string>
+    <string name="keyword_detail_last_indexed">最後索引 %1$s</string>
+    <string name="keyword_detail_mentions_section">提及</string>
+    <string name="pin_biometric_prompt_title">透過生物辨識解鎖</string>
+    <string name="pin_biometric_prompt_subtitle">使用指紋或臉部解鎖</string>
+    <string name="pin_error_no_biometric_enrolled">沒有註冊生物識別。請在設備設定中註冊指紋或人臉。</string>
+    <string name="pin_error_hardware_unavailable">生物辨識硬體不可用。</string>
+    <string name="pin_error_no_hardware">該設備沒有生物識別硬體。</string>
+    <string name="pin_error_not_available">生物特徵認證不可用。</string>
+    <string name="pin_title_confirm">確認密碼</string>
+    <string name="pin_title_set_new">設定新 PIN 碼</string>
+    <string name="pin_title_disable">輸入目前 PIN 碼以停用</string>
+    <string name="pin_title_enter">輸入密碼</string>
+    <string name="pin_error_incorrect">PIN 碼不正確。再試一次。</string>
+    <string name="pin_error_mismatch">PIN 碼不符。重新開始。</string>
+    <string name="pin_cd_use_biometric">使用生物識別</string>
+    <string name="pin_cd_backspace">退格鍵</string>
+    <string name="timeline_preview_empty_labeled">這一天已被標記，但還沒有日記。</string>
+    <string name="timeline_preview_loading">正在加載預覽...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d 當天還有更多條目</item>
+        <item quantity="other">+ %1$d 這一天還有更多條目</item>
+    </plurals>
+    <string name="timeline_preview_open_day">今日開放</string>
+    <string name="timeline_chip_today">今天</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d 條目</item>
+        <item quantity="other">%1$d 條目</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">跟進</string>
+    <string name="timeline_chip_label_only">僅標籤</string>
+    <string name="timeline_cd_favorite">最喜歡的</string>
+    <string name="version_history_title">版本歷史</string>
+    <string name="version_history_day_versions_title">日間版本</string>
+    <string name="version_history_keep_copies_title">保留安全副本</string>
+    <string name="version_history_keep_copies_subtitle">在 Yaja 更改日期文件之前，它將當前文件保存到歷史文件下的應用程式資料中。</string>
+    <string name="version_history_versions_kept_title">每天保留的版本</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja 保留最新的 %1$d 版本每個日期。</item>
+        <item quantity="other">Yaja 保留每個日期的最新 %1$d 版本。</item>
+    </plurals>
+    <string name="version_history_retention_title">保留</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">早於 %1$d 天的快照將會自動清理。</item>
+        <item quantity="other">早於 %1$d 天的快照將會自動清理。</item>
+    </plurals>
+    <string name="version_history_notes">注意：版本歷史記錄在新增、編輯、刪除、重新排序、標籤、星標和重新存取變更之前保護當天的 Markdown 檔案。它不是雲端備份；而是雲端備份。繼續使用便攜式副本的備份。</string>
+    <string name="version_history_snapshots_for">%1$s 的快照</string>
+    <string name="version_history_snapshots_subtitle">打開已儲存的版本，檢查它，然後在當天恢復它。</string>
+    <string name="version_history_empty">該日期尚未儲存版本。</string>
+    <string name="action_view">看法</string>
+    <string name="version_history_date_intro">打開當天較早保存的版本，檢查它，並在需要時恢復它。</string>
+    <string name="action_next">下一個</string>
+    <string name="action_apply">申請</string>
+    <string name="action_restore">恢復</string>
+    <string name="statistics_choose_title">選擇統計數據</string>
+    <string name="statistics_choose_subtitle">隱藏您不需要的部分。至少有一個部分必須保持可見。</string>
+    <string name="statistics_visible_count">%1$d（共 %2$d）可見</string>
+    <string name="statistics_show_all">顯示全部</string>
+    <string name="statistics_one_section_visible">其中一部分必須保持可見</string>
+    <string name="statistics_shown">統計顯示</string>
+    <string name="statistics_hidden">隱藏在統計數據中</string>
+    <string name="statistics_select_start_date">選擇開始日期</string>
+    <string name="statistics_select_end_date">選擇結束日期</string>
+    <string name="statistics_filter_by_period">按時期濾</string>
+    <string name="statistics_cd_reorder">長按重新排序</string>
+    <string name="statistics_total_entries">參賽作品總數</string>
+    <string name="statistics_total_words">總字數</string>
+    <string name="statistics_avg_words_per_entry">平均。單字/條目</string>
+    <string name="statistics_current_streak">目前連勝</string>
+    <string name="statistics_pages_written">已寫頁數</string>
+    <string name="statistics_days_highlighted">突出顯示的日子</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d 天</item>
+        <item quantity="other">%1$d 天</item>
+    </plurals>
+    <string name="statistics_period_all_time">歷史統計數據</string>
+    <string name="statistics_period_current_year">本年度統計數據</string>
+    <string name="statistics_period_previous_year">上一年統計數據</string>
+    <string name="statistics_period_current_month">當月統計數據</string>
+    <string name="statistics_period_previous_month">上個月統計</string>
+    <string name="statistics_period_custom">自訂期間統計</string>
+    <string name="statistics_period_chip_all_time">所有時間</string>
+    <string name="statistics_period_chip_current_year">本年度</string>
+    <string name="statistics_period_chip_previous_year">前一年</string>
+    <string name="statistics_period_chip_current_month">本月</string>
+    <string name="statistics_period_chip_previous_month">正在分階段載入統計資料...</string>
+    <string name="statistics_period_chip_custom">風俗</string>
+    <string name="statistics_sections_visible">%1$d 可見，共 %2$d 個部分</string>
+    <string name="statistics_loading_stages">正在分階段載入統計資料...</string>
+    <string name="review_period_weekly">每週回顧</string>
+    <string name="review_period_monthly">每月回顧</string>
+    <string name="review_anchor_week">包含 %1$s 的周</string>
+    <string name="review_anchor_month">包含 %1$s 的月份</string>
+    <string name="review_chip_entries">條目 %1$d</string>
+    <string name="review_chip_words">詞 %1$d</string>
+    <string name="review_chip_days">天 %1$d</string>
+    <string name="review_hint_jump">點擊下面的日期晶片即可跳回日記。</string>
+    <string name="review_chip_streak">連勝 %1$d</string>
+    <string name="review_chip_gap">間隙 %1$d</string>
+    <string name="review_chip_labels">標籤 %1$d</string>
+    <string name="review_chip_favorites">收藏夾 %1$d</string>
+    <string name="review_empty_period">此期間還沒有日記條目。標籤和突出顯示仍然顯示在下方（如果存在）。</string>
+    <string name="review_writing_rhythm">寫作節奏</string>
+    <string name="review_best_streak">最佳連勝紀錄</string>
+    <string name="review_longest_gap">最長間隙</string>
+    <string name="review_most_active_days">最活躍的日子</string>
+    <string name="review_day_entries_words">%1$d 條目 | %2$d 字</string>
+    <string name="review_top_people">頂尖人物</string>
+    <string name="review_top_places">熱門地點</string>
+    <string name="review_no_people_mentions">沒有人提及</string>
+    <string name="review_no_place_mentions">沒有提到任何地方</string>
+    <string name="review_favorite_moments">最喜歡的時刻</string>
+    <string name="review_starred_day">明星日</string>
+    <string name="review_highlighted_in_period">這段時期突出</string>
+    <string name="review_labels_created">已建立標籤</string>
+    <string name="review_labeled_day">標記日</string>
+    <string name="review_language_split">語言分裂</string>
+    <string name="review_not_enough_text">這段時間文字不夠</string>
+    <string name="lookback_reviews_title">評論</string>
+    <string name="lookback_reviews_intro">圍繞您選擇的日記日進行快速反思。</string>
+    <string name="lookback_seven_days">7天</string>
+    <string name="lookback_one_month">1個月</string>
+    <string name="lookback_weekly_review">每週回顧</string>
+    <string name="lookback_weekly_review_subtitle">本週一目了然</string>
+    <string name="lookback_monthly_review">每月回顧</string>
+    <string name="lookback_monthly_review_subtitle">本月總結</string>
+    <string name="lookback_flashbacks_title">往年的這一天</string>
+    <string name="lookback_highlights_title">您的亮點</string>
+    <string name="lookback_empty_title">還沒有回顧或亮點。</string>
+    <string name="lookback_empty_subtitle">最喜歡在這裡見到他們的重要日子！</string>
+    <string name="lookback_cd_random_entry">轉到隨機條目</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">時期</string>
+    <string name="statistics_compare_mode_title">比較模式</string>
+    <string name="statistics_compare_mode_subtitle">月、年和關鍵字增量</string>
+    <string name="statistics_this_year">今年</string>
+    <string name="statistics_writing_days_delta">寫作日達美</string>
+    <string name="statistics_top_person_delta">頂尖人物三角洲</string>
+    <string name="statistics_no_people_mentions">還沒有人提及</string>
+    <string name="statistics_top_place_delta">達美頂級廣場</string>
+    <string name="statistics_no_place_mentions">還沒提到任何地方</string>
+    <string name="statistics_structured_writing">結構化寫作</string>
+    <string name="statistics_template_led_format">模板主導的 %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">空白 %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">最常用的模板</string>
+    <string name="statistics_template_mix">模板組合</string>
+    <string name="statistics_follow_up_leaders">後續領導</string>
+    <string name="statistics_compare_details">比較詳情</string>
+    <string name="statistics_label_month">月</string>
+    <string name="statistics_label_year">年</string>
+    <string name="statistics_this_month_count_format">本月%1$d</string>
+    <string name="statistics_last_month_count_format">上個月%1$d</string>
+    <string name="statistics_longest_streak">最長連續紀錄</string>
+    <string name="statistics_most_active_day">最活躍的一天</string>
+    <string name="statistics_writing_consistency">書寫一致性</string>
+    <string name="statistics_days_with_entries">有條目的天數</string>
+    <string name="statistics_best_month">最佳月份</string>
+    <string name="statistics_best_month_format">%1$s · %2$d 條目</string>
+    <string name="statistics_avg_writing_days_week">平均。寫作天數/週</string>
+    <string name="statistics_days_decimal_format">%1$.1f 天</string>
+    <string name="statistics_based_on_total_words">基於每天寫的總字數</string>
+    <string name="statistics_light_words">輕（&lt; 50 字）</string>
+    <string name="statistics_moderate_words">中（50-200字）</string>
+    <string name="statistics_heavy_words">重（200-500字）</string>
+    <string name="statistics_intense_words">激烈（500+字）</string>
+    <string name="statistics_not_enough_text_languages">文字不足，無法偵測語言</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">偵測到 %1$d 語言</item>
+        <item quantity="other">偵測到 %1$d 語言</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">語言檢測仍在解決中。</string>
+    <string name="statistics_latin_scripts_as_english">拉丁文字顯示為英文</string>
+    <string name="statistics_use_more_accurate_detection">使用更準確的檢測</string>
+    <string name="statistics_write_more_entries_languages">編寫更多條目以查看語言統計資料。</string>
+    <string name="statistics_based_on_entry_time">根據入場時間</string>
+    <string name="statistics_morning_time">早上（上午 5 點至中午）</string>
+    <string name="statistics_afternoon_time">下午（中午 - 下午 5 點）</string>
+    <string name="statistics_evening_time">晚上（下午 5 點至晚上 9 點）</string>
+    <string name="statistics_night_time">夜間（晚上 9 點至凌晨 5 點）</string>
+    <string name="statistics_heatmap_filling">熱圖仍在填充中。</string>
+    <string name="statistics_heatmap_less">較少的</string>
+    <string name="statistics_heatmap_more">更多的</string>
+    <string name="action_open">打開</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">亞賈期刊活動</string>
+    <string name="tasker_event_desc">選擇哪些 Yaja 日誌事件應觸發此 Tasker 設定檔。</string>
+    <string name="tasker_event_saved">條目已儲存</string>
+    <string name="tasker_event_edited">條目已編輯</string>
+    <string name="tasker_event_deleted">條目已刪除</string>
+    <string name="tasker_event_default_hint">如果未選擇任何選項，Yaja 將預設為「已儲存條目」。</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">亞賈快速捕捉</string>
+    <string name="tasker_action_desc">配置 Tasker 應在 Yaja 中快速擷取的內容。</string>
+    <string name="tasker_action_add_entry">新增條目</string>
+    <string name="tasker_action_add_event">新增事件</string>
+    <string name="tasker_action_add_todo">新增待辦事項</string>
+    <string name="tasker_action_append">附加</string>
+    <string name="tasker_action_match_header_label">匹配/標題</string>
+    <string name="tasker_action_match_header_placeholder">未接來電</string>
+    <string name="tasker_action_line_to_append_label">要追加的行</string>
+    <string name="tasker_action_text_label">文字</string>
+    <string name="tasker_action_placeholder_event">來自 Tasker 的活動說明</string>
+    <string name="tasker_action_placeholder_todo">買牛奶</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">來自 Tasker 的快速說明</string>
+    <string name="tasker_action_tip_append">第一次呼叫建立一個以匹配文字開頭的條目。稍後的呼叫會在其下方新增該行。</string>
+    <string name="tasker_action_tip_default">提示：Tasker 變數可以放置在文字欄位中。</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">上一個會話崩潰日誌</string>
+    <string name="crash_log_clear_close">清除並關閉</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">啟動應用程式</string>
+    <string name="tap_action_quick_capture">快速捕捉</string>
+    <string name="tap_action_do_nothing">什麼也不做</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja 寫作熱圖</string>
+    <string name="widget_cell_shape">細胞形狀</string>
+    <string name="widget_corner_radius">圓角半徑：%1$ddp</string>
+    <string name="widget_square">方塊</string>
+    <string name="widget_round">圓形的</string>
+    <string name="widget_inner_margin">內邊距：%1$ddp</string>
+    <string name="widget_inner_margin_desc">熱圖和小部件邊緣之間的空間</string>
+    <string name="widget_none">沒有任何</string>
+    <string name="widget_max">最大限度</string>
+    <string name="widget_on_tap">隨時可用</string>
+    <string name="widget_on_tap_desc">點選小工具時的操作</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">捕獲</string>
+    <string name="widget_qc_shape">小部件形狀</string>
+    <string name="widget_show_label">顯示標籤</string>
+    <string name="widget_show_label_desc">在小部件上顯示“捕獲”文本</string>
+    <string name="widget_show_icon">顯示圖示</string>
+    <string name="widget_show_icon_required">隱藏標籤時需要圖標</string>
+    <string name="widget_show_icon_desc">在小工具上顯示筆圖標</string>
+    <string name="widget_label_text">標籤文字</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">待辦事項小工具</string>
+    <string name="widget_todo_desc">圓形、類似熱圖的待辦事項清單小工具。</string>
+    <string name="widget_todo_corner_radius">圓角半徑：%1$ddp</string>
+    <string name="widget_todo_padding">填充：%1$ddp</string>
+    <string name="widget_todo_show_completed">顯示已完成的任務</string>
+    <string name="widget_todo_show_completed_desc">在小部件清單中包含選取的項目</string>
+    <string name="widget_todo_include_events">包括活動</string>
+    <string name="widget_todo_include_events_desc">在小工具中與待辦事項一起顯示事件條目</string>
+    <string name="widget_todo_show_header">顯示待辦事項標題</string>
+    <string name="widget_todo_show_header_desc">顯示或隱藏小部件標題行</string>
+    <string name="widget_todo_auto_hide">所有待辦事項完成後自動隱藏小工具</string>
+    <string name="widget_todo_auto_hide_unavailable">顯示已完成的任務時不可用</string>
+    <string name="widget_todo_auto_hide_desc">當沒有待處理任務時使小部件透明</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">完畢</string>
+    <string name="todo_confirm_mark_not_done">未完成</string>
+    <string name="todo_confirm_title">將任務標記為 %1$s？</string>
+    <string name="todo_confirm_reopen">此待辦事項目前已完成。重新打開之前請確認。</string>
+    <string name="todo_confirm_complete">此待辦事項仍然開放。在將其標記為完成之前進行確認。</string>
+    <string name="todo_confirm_accidental_tap">意外點擊不會改變任務。</string>
+    <string name="todo_confirm_yes_mark">是的，標記 %1$s</string>
+    <string name="todo_confirm_open_yaja">在亞賈開業</string>
+    <string name="todo_confirm_keep_as_is">保持原樣</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">另一個日記應用程式</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">來自 RJ 實驗室</string>
+    <string name="help_made_in">產於🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">取消導入</string>
+    <string name="timeline_show_all_dates">顯示所有日期</string>
+    <string name="timeline_show_all_dates_subtitle">包括過去的所有日子，即使沒有條目</string>
+    <string name="settings_background_tint_clean">乾淨的</string>
+    <string name="settings_background_tint_soft">柔軟的</string>
+    <string name="settings_background_tint_rich">富有的</string>
+    <string name="settings_background_tint_deep">深的</string>
+    <string name="settings_accent_style_complementary">補充</string>
+    <string name="settings_accent_style_analogous">類似的</string>
+    <string name="settings_accent_style_triadic">三元組</string>
+    <string name="settings_accent_style_soft">柔軟的</string>
+</resources>

@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Jarida</string>
+    <string name="nav_calendar">Kalenda</string>
+    <string name="nav_lookback">Angalia nyuma</string>
+    <string name="nav_settings">Mipangilio</string>
+    <string name="nav_shortcodes">Njia fupi</string>
+    <string name="nav_help">Msaada &amp; Kuhusu</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Hifadhi</string>
+    <string name="action_cancel">Ghairi</string>
+    <string name="action_delete">Futa</string>
+    <string name="action_edit">Hariri</string>
+    <string name="action_back">Nyuma</string>
+    <string name="action_undo">Tendua</string>
+    <string name="action_yes">Ndiyo</string>
+    <string name="action_no">Hapana</string>
+    <string name="action_remove">Ondoa</string>
+    <string name="action_done">Imekamilika</string>
+    <string name="action_set">Weka</string>
+    <string name="action_select">Chagua</string>
+    <string name="action_ok">Sawa</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Kuunda upya Cache</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Kukamata Haraka</string>
+    <string name="quick_capture_hint">Nini kilitokea?</string>
+    <string name="quick_capture_helper_shortcodes">Njia fupi hupanuka hapa kiotomatiki, na mistari ya todo inaendelea kwenye Enter.</string>
+    <string name="quick_capture_save_delayed">Imechelewa kuhifadhi. Tafadhali fungua tena Yaja ili uthibitishe.</string>
+    <string name="cd_saved">Imehifadhiwa</string>
+    <string name="quick_todo_dialog_title">Ongeza Haraka</string>
+    <string name="quick_todo_save_delayed">Kuhifadhi kumecheleweshwa. Tafadhali fungua tena Yaja ili uthibitishe.</string>
+    <string name="quick_todo_placeholder">Ongeza cha kufanya</string>
+    <string name="quick_event_placeholder">Ongeza tukio</string>
+    <string name="quick_todo_task_date">Tarehe ya Kazi</string>
+    <string name="quick_todo_event_date">Tarehe ya Tukio</string>
+    <string name="quick_todo_pick_date_cd_format">Chagua %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Huhifadhi kama ingizo la todo kwa siku iliyochaguliwa.</string>
+    <string name="quick_event_selected_day_hint">Huhifadhi kama ingizo la tukio kwa siku iliyochaguliwa.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Iliyotangulia</string>
+    <string name="cd_next">Inayofuata</string>
+    <string name="cd_surprise_me">Nishangaze</string>
+    <string name="calendar_cd_go_to_current_month">Nenda kwa mwezi wa sasa</string>
+    <string name="calendar_quick_action_timeline_title">Rekodi ya matukio</string>
+    <string name="calendar_quick_action_timeline_subtitle">Vinjari kwa mpangilio</string>
+    <string name="calendar_quick_action_jump_title">Rukia Tarehe</string>
+    <string name="calendar_quick_action_jump_subtitle">Fungua siku maalum</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">Tarehe batili. Tumia umbizo la DD-MM-YY.</string>
+    <string name="calendar_action_go">Nenda</string>
+    <string name="calendar_enable_future_dates_title">Washa Tarehe za Baadaye</string>
+    <string name="calendar_enable_future_dates_message">Ingizo la tarehe ya baadaye limezimwa. Je, ungependa kuiwasha?</string>
+    <string name="calendar_action_enable">Wezesha</string>
+    <string name="calendar_future_entry_enabled">Ingizo la tarehe ya baadaye limewezeshwa</string>
+    <string name="calendar_weekday_sun_short">Jua</string>
+    <string name="calendar_weekday_mon_short">Mon</string>
+    <string name="calendar_weekday_tue_short">Jumanne</string>
+    <string name="calendar_weekday_wed_short">Jumatano</string>
+    <string name="calendar_weekday_thu_short">Alhamisi</string>
+    <string name="calendar_weekday_fri_short">Ijumaa</string>
+    <string name="calendar_weekday_sat_short">Sat</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">VIINGILIO MWEZI HUU</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d siku</item>
+        <item quantity="other">%1$d / siku %2$d</item>
+    </plurals>
+    <string name="calendar_days_of_memories">siku za kumbukumbu</string>
+    <string name="calendar_consistency_last_12_months">MIEZI 12 ILIYOPITA</string>
+    <string name="calendar_consistency_title_format">CONSISTENCY - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% dhidi ya \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">dhidi ya \'%1$s</string>
+    <string name="calendar_consistency_first_period">kipindi cha kwanza</string>
+    <string name="calendar_graph_frequency_month">Mwezi</string>
+    <string name="calendar_graph_frequency_year">Mwaka</string>
+    <string name="calendar_yearly_consistency_title">Uthabiti (kila mwaka)</string>
+    <string name="calendar_keywords_title">Ambao hujitokeza zaidi</string>
+    <string name="calendar_keywords_syncing">Takwimu za Watu na Maeneo bado zinasawazisha kwa kuorodhesha maneno muhimu.</string>
+    <string name="calendar_keywords_empty">Ongeza angalau watu 3 au maeneo 3 ili kuona mitajo kuu.</string>
+    <string name="calendar_keywords_people">Watu</string>
+    <string name="calendar_keywords_places">Maeneo</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Mipangilio</string>
+    <string name="settings_appearance">Muonekano</string>
+    <string name="settings_appearance_subtitle">Mandhari, rangi, fonti na mitindo ya kibinafsi</string>
+    <string name="settings_theme">Mandhari</string>
+    <string name="settings_font">Fonti</string>
+    <string name="settings_storage">Hifadhi</string>
+    <string name="settings_security">Usalama</string>
+    <string name="settings_backup">Hifadhi nakala</string>
+    <string name="settings_change_storage_title">Badilisha Mahali pa Kuhifadhi</string>
+    <string name="settings_backup_never">Kamwe</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Mipangilio ya utafutaji</string>
+    <string name="settings_search_clear">Futa utafutaji</string>
+    <string name="settings_search_recent">Utafutaji wa hivi majuzi</string>
+    <string name="settings_search_no_results">Hakuna mipangilio inayolingana</string>
+    <string name="settings_search_close">Funga</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Uzoefu wa Jarida</string>
+    <string name="settings_section_navigation_gestures">Urambazaji na Ishara</string>
+    <string name="settings_section_review_insights">Uhakiki na Maarifa</string>
+
+    <!-- Language -->
+    <string name="settings_language">Lugha</string>
+    <string name="settings_language_title">Lugha ya Programu</string>
+    <string name="settings_language_subtitle">Chagua lugha inayotumika katika programu nzima.</string>
+    <string name="settings_language_system_default">Chaguomsingi ya mfumo</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Mtindo wa Kuingia</string>
+    <string name="settings_journal_entry_style_subtitle">Chagua kati ya kadi zilizoinuliwa na mwonekano wa kupendeza wa jarida.</string>
+    <string name="settings_journal_entry_style_cards">Kadi</string>
+    <string name="settings_journal_entry_style_flat">Gorofa</string>
+    <string name="settings_journal_render_checkboxes_title">Toa visanduku vya kuteua kama Maandishi</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Onyesha todos kama [ ] na [x] kote kwenye programu badala ya visanduku vya kuteua vinavyoeleweka.</string>
+    <string name="settings_journal_day_header_counts_title">Onyesha Hesabu za Vichwa vya Siku</string>
+    <string name="settings_journal_day_header_counts_subtitle">Onyesha hesabu za ingizo, neno na herufi katika kichwa cha siku ya jarida.</string>
+    <string name="settings_journal_show_timestamps_title">Onyesha alama za nyakati</string>
+    <string name="settings_journal_show_timestamps_subtitle">Onyesha muda wa kuingia kwenye kalenda ya matukio.</string>
+    <string name="settings_journal_allow_future_title">Ruhusu Maingizo ya Baadaye</string>
+    <string name="settings_journal_allow_future_subtitle">Washa kuongeza maingizo kwa tarehe zijazo.</string>
+    <string name="settings_journal_truncate_title">Punguza Maingizo Marefu</string>
+    <string name="settings_journal_truncate_subtitle">Fupisha maingizo marefu kwenye skrini ya kwanza.</string>
+    <string name="settings_journal_char_limit_title">Ukomo wa Wahusika</string>
+    <string name="settings_journal_char_limit_subtitle">Weka herufi ngapi za kuonyesha kabla ya kupunguza.</string>
+    <string name="settings_journal_char_limit_min">herufi 50</string>
+    <string name="settings_journal_char_limit_max">herufi 200</string>
+    <string name="settings_journal_char_count">%1$d herufi</string>
+    <string name="settings_journal_first_day_title">Siku ya Kwanza ya Wiki</string>
+    <string name="settings_journal_first_day_subtitle">Washa kalenda</string>
+    <string name="settings_journal_day_sun">Jua</string>
+    <string name="settings_journal_day_mon">Mon</string>
+    <string name="settings_journal_date_recognition">Utambuzi wa Tarehe</string>
+    <string name="settings_journal_date_order_title">Agizo la Tarehe</string>
+    <string name="settings_journal_date_order_subtitle">Jinsi ya kusoma tarehe za nambari</string>
+    <string name="settings_journal_date_order_auto">Otomatiki</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Maneno muhimu ya Tarehe</string>
+    <string name="settings_journal_date_keywords_subtitle">Maneno katika lugha zingine yanayomaanisha tarehe (kwa mfano neno la kawaida la jana).</string>
+    <string name="settings_journal_view_keywords">Tazama (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Ongeza neno kuu</string>
+    <string name="settings_journal_motion">Mwendo</string>
+    <string name="settings_journal_animations_title">Uhuishaji</string>
+    <string name="settings_journal_animations_subtitle">Dhibiti mwendo kwenye programu. Imepunguzwa huweka vitu vikiwa na maji kwa mwendo mdogo.</string>
+    <string name="settings_journal_animations_full">Imejaa</string>
+    <string name="settings_journal_animations_reduced">Imepunguzwa</string>
+    <string name="settings_journal_animations_off">Imezimwa</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Mapitio ya baada ya kuokoa</string>
+    <string name="settings_review_post_write_title">Tathmini ya baada ya kuandika</string>
+    <string name="settings_review_post_write_subtitle">Onyesha laha ya ukaguzi baada ya kugusa hifadhi ili kutoa todos, angalia zilizotajwa, siku ya nyota, au kuweka lebo.</string>
+    <string name="settings_review_people_places">Watu na Maeneo</string>
+    <string name="settings_review_highlighting_title">Kuangazia</string>
+    <string name="settings_review_highlighting_subtitle">Angazia watu na maeneo yanayofuatiliwa katika Kadi za Nyumbani na Modi ya Kuangalia Kuingia.</string>
+    <string name="settings_review_match_sensitivity_title">Unyeti wa Mechi</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Neno lazima lilingane kwa ukaribu kiasi gani ili kutambuliwa na Watu na Maeneo (ya juu = kali zaidi).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Ongeza Msimbo fupi</string>
+    <string name="shortcodes_edit_title">Hariri Shortcode</string>
+    <string name="shortcodes_code_label">Njia fupi (k.m. @yday)</string>
+    <string name="shortcodes_expansion_label">Maandishi ya Upanuzi</string>
+    <string name="shortcodes_export_error">Imeshindwa kuhamisha misimbo fupi</string>
+    <string name="shortcodes_import_error">Imeshindwa kuleta misimbo fupi</string>
+    <string name="todos_expand_section">Panua %1$s</string>
+    <string name="todos_collapse_section">Kunja %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Kuandika Heatmap</string>
+    <string name="heatmap_widget_description">Ramani ya joto ya shughuli ya uandishi ya hivi majuzi kwa jarida lako.</string>
+    <string name="quick_capture_widget_name">Kukamata Haraka</string>
+    <string name="quick_capture_widget_description">Kitufe cha kugusa mara moja ili kuongeza ingizo la jarida haraka.</string>
+    <string name="quick_todo_widget_name">Kufanya Haraka</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Matukio ya Jarida la Yaja</string>
+    <string name="tasker_screen_allow_add_entry_title">Ruhusu Ingizo la Kiongeza Taji</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Huruhusu Tasker itumie vitendo vya Kunasa Haraka vya Yaja kama vile Ongeza Ingizo na Ongeza Todo.</string>
+    <string name="tasker_screen_allow_events_title">Ruhusu Matukio ya Mfanyakazi</string>
+    <string name="tasker_screen_allow_events_subtitle">Huruhusu Yaja kutuma Ingizo Limehifadhiwa, Ingizo Limebadilishwa, na Ingizo Iliyofutwa kwa Tasker.</string>
+    <string name="tasker_screen_include_text_title">Jumuisha Maandishi ya Kuingia kwenye Matukio</string>
+    <string name="tasker_screen_include_text_subtitle">Imezimwa kwa chaguo-msingi kwa faragha. Inapozimwa, Tasker hupokea aina ya tukio, tarehe, lebo na wakati, lakini si maandishi ya jarida.</string>
+    <string name="tasker_screen_section_what">Hii inafanya nini</string>
+    <string name="tasker_screen_body_what">Tasker inaweza kuongeza kwa haraka maingizo ya jarida au todos kwenye Yaja, kuambatanisha mistari katika ingizo la makundi kama vile Simu Zisizojibiwa, na Yaja anaweza kumwambia Tasker wakati ingizo limehifadhiwa, kuhaririwa au kufutwa.</string>
+    <string name="tasker_screen_section_how">Jinsi ya kutumia</string>
+    <string name="tasker_screen_body_how">Washa kigeuzi unachohitaji hapa kwanza. Kisha ufungue Tasker na uongeze Kitendo cha Kukamata Haraka cha Yaja au tukio la Matukio ya Jarida la Yaja.</string>
+    <string name="tasker_screen_section_notes">Vidokezo</string>
+    <string name="tasker_screen_body_notes">Maandishi ya ingizo hayashirikiwi na Tasker isipokuwa uwashe Jumuisha Maandishi ya Ingizo katika Matukio. Ikiwa Tasker haionyeshi chaguo au vigeu vipya zaidi, fungua upya skrini ya usanidi wa Tasker baada ya kusasisha Yaja.</string>
+    <string name="tasker_screen_section_example">Mfano</string>
+    <string name="tasker_screen_body_example">Mfano wa kitendo: Kitendo cha Mfanyakazi &gt; Yaja Capture Haraka &gt; Weka, na Mechi / kichwa kimewekwa kuwa Simu Zilizoporwa na Laini ili kuambatanisha kuweka kwa kibadilishaji cha Tasker. Mfano wa tukio: Tukio la Tasker &gt; Matukio ya Jarida la Yaja &gt; Ingizo Limebadilishwa, kisha utumie vibadala kama vile %%yaja_event_type, %%tarehe_ya_yaja, na kwa hiari %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Tumia kesi</string>
+    <string name="tasker_screen_use_case_1">1. Tumia tukio la jarida la Yaja katika Tasker ili kuanzisha kitendo cha kusawazisha FolderSync, ili folda yako ya Yaja isukumwe hadi kwa mtoa huduma wa wingu baada ya maingizo kubadilika.</string>
+    <string name="tasker_screen_use_case_2">2. Tumia Pushbullet na Tasker kutuma maandishi katika Yaja Quick Capture, ili maandishi yaliyosukumwa yahifadhiwe kama ingizo jipya la siku ya sasa.</string>
+    <string name="tasker_screen_use_case_3">3. Tumia wasifu wa Kipokeaji simu ambazo hukujibu kutuma kitendo cha Kuongeza kwa Yaja, ili maelezo yote ya simu ambayo hukujibu yawe chini ya ingizo moja la Simu Zilizoporwa badala ya kuunda maingizo tofauti.</string>
+    <string name="quick_todo_widget_description">Kitufe cha kugusa mara moja ili kunasa mambo ya kufanya kama ingizo jipya la leo.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Orodha inayoweza kusogezwa ya todo za jarida. Gusa todo ili utie alama kuwa imekamilika au kutendua.</string>
+    <string name="todo_cd_add_todo">Ongeza cha kufanya</string>
+    <string name="todos_cd_open_compliance_master">Fungua kazi zinazorudiwa</string>
+    <string name="compliance_master_title">Kazi / Matukio ya Mara kwa Mara</string>
+    <string name="compliance_master_add">Ongeza kazi inayorudiwa</string>
+    <string name="compliance_master_edit">Badilisha kazi inayojirudia</string>
+    <string name="compliance_master_intro_title">Kazi zinazorudiwa</string>
+    <string name="compliance_master_intro_body">Unda todos zinazojirudia kwa kazi ya kila wiki, mwezi, robo mwaka, nusu mwaka, au kila mwaka. Yaja inaonyesha kila kazi tu wakati mzunguko wake unakuwa muhimu.</string>
+    <string name="compliance_master_empty">Bado hakuna majukumu yanayojirudia. Ongeza moja ili kuunda todo kiotomatiki kwenye ratiba iliyochaguliwa.</string>
+    <string name="compliance_master_status_deactivated">Imezimwa</string>
+    <string name="compliance_master_meta_format">Inadaiwa siku %1$d • %2$d siku za kuongoza</string>
+    <string name="compliance_master_field_title">Jina la kazi</string>
+    <string name="compliance_master_field_title_hint">Mfano: Rejesha malipo ya kila mwezi</string>
+    <string name="compliance_master_field_description">Maelezo</string>
+    <string name="compliance_master_field_description_hint">Mfano: Angalia tovuti ya benki na uthibitishe risiti</string>
+    <string name="compliance_master_editor_task_section">Yaja anapaswa kukukumbusha nini?</string>
+    <string name="compliance_master_field_due_day">Tarehe ya mwisho</string>
+    <string name="compliance_master_field_reveal_day">Unda mapema (siku)</string>
+    <string name="compliance_master_field_schedule_mode">Inatakiwa lini?</string>
+    <string name="compliance_master_schedule_mode_help">Chagua jinsi Yaja huamua tarehe ya kukamilisha.</string>
+    <string name="compliance_master_select_schedule_type">Chagua muundo unaofaa</string>
+    <string name="compliance_master_field_frequency">Mara ngapi?</string>
+    <string name="compliance_master_frequency_help">Chagua ni mara ngapi jukumu hili linajirudia.</string>
+    <string name="compliance_master_select_frequency">Chagua marudio ya kurudia</string>
+    <string name="compliance_master_schedule_details">Ratiba maelezo</string>
+    <string name="compliance_master_details_date_help">Ingiza tarehe ya kukamilisha na siku ngapi mapema inapaswa kuandikwa kwa faili ya kila siku.</string>
+    <string name="compliance_master_details_weekday_help">Chagua siku ya juma ambayo kazi hii itakamilika.</string>
+    <string name="compliance_master_details_boundary_help">Chagua siku ngapi mapema inapaswa kuandikwa kwa faili ya kila siku.</string>
+    <string name="compliance_master_field_due_weekday">Inadaiwa siku ya wiki</string>
+    <string name="compliance_master_select_weekday">Chagua siku ya wiki</string>
+    <string name="compliance_master_due_day_help">Weka tarehe ya kuanzia 1 hadi 31. Miezi mifupi hutumia tarehe yao ya mwisho halali.</string>
+    <string name="compliance_master_reveal_day_help">Siku ngapi kabla ya tarehe ya kukamilisha kuandika todo kwa faili ya jarida la kila siku.</string>
+    <string name="compliance_master_first_day_selected">Inadaiwa katika tarehe ya kwanza ya kila mwezi unaotumika.</string>
+    <string name="compliance_master_last_day_selected">Inadaiwa tarehe ya mwisho ya kila mwezi unaotumika.</string>
+    <string name="compliance_mode_day_of_month">Tarehe mahususi</string>
+    <string name="compliance_mode_day_of_month_desc">Itatozwa kwa tarehe iliyohesabiwa, kama vile tarehe 15.</string>
+    <string name="compliance_mode_day_of_week">Siku ya juma</string>
+    <string name="compliance_mode_day_of_week_desc">Inadaiwa siku ya juma iliyochaguliwa, kama vile Jumatatu.</string>
+    <string name="compliance_mode_first_day">Ya kwanza ya mwezi</string>
+    <string name="compliance_mode_first_day_desc">Inadaiwa katika tarehe ya kwanza ya kila mwezi unaotumika.</string>
+    <string name="compliance_mode_last_day">Mwisho wa mwezi</string>
+    <string name="compliance_mode_last_day_desc">Inadaiwa tarehe ya mwisho, pamoja na miezi mifupi.</string>
+    <string name="compliance_frequency_weekly">Kila wiki</string>
+    <string name="compliance_frequency_biweekly">Kila wiki</string>
+    <string name="compliance_frequency_monthly">Kila mwezi</string>
+    <string name="compliance_frequency_quarterly">Kila robo</string>
+    <string name="compliance_frequency_half_yearly">Nusu ya mwaka</string>
+    <string name="compliance_frequency_annual">Mwaka</string>
+    <string name="compliance_master_summary_day_of_month">Siku %1$d • %2$s • %3$d siku kabla</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Tarehe ya kwanza • %1$s • %2$d siku kabla</string>
+    <string name="compliance_master_summary_last_day">Tarehe ya mwisho • %1$s • %2$d siku kabla</string>
+    <string name="compliance_master_execution_title">Jinsi hii itaendesha</string>
+    <string name="compliance_master_execution_day_of_month">Mambo ya kufanya inaundwa %1$s siku %2$d. Imeandikwa kwa faili yako ya kila siku siku %3$d kabla.</string>
+    <string name="compliance_master_execution_weekday">Mambo ya kufanya inaundwa %1$s kwenye %2$s. Imeandikwa kwa faili yako ya kila siku siku %3$d kabla.</string>
+    <string name="compliance_master_execution_monthly_weekday">Todo huundwa kila mwezi kwa tukio %1$s sawa na tarehe ya kuanza. Imeandikwa kwa faili yako ya kila siku siku %2$d kabla.</string>
+    <string name="compliance_master_execution_month_boundary">Kazi itaundwa %1$s kwenye %2$s ya mwezi unaotakiwa. Imeandikwa kwa faili yako ya kila siku siku %3$d kabla.</string>
+    <string name="compliance_master_boundary_first">tarehe ya kwanza</string>
+    <string name="compliance_master_boundary_last">tarehe ya mwisho</string>
+    <string name="compliance_master_recurrence_weekly">kila wiki</string>
+    <string name="compliance_master_recurrence_biweekly">kila baada ya wiki mbili</string>
+    <string name="compliance_master_recurrence_monthly">kila mwezi</string>
+    <string name="compliance_master_recurrence_quarterly">kila baada ya miezi mitatu</string>
+    <string name="compliance_master_recurrence_half_yearly">kila baada ya miezi sita</string>
+    <string name="compliance_master_recurrence_annual">kila mwaka</string>
+    <string name="todo_chip_compliance">Inarudiwa</string>
+    <string name="compliance_master_upcoming">Ijayo</string>
+    <string name="compliance_master_delete_confirm_title">Ungependa kufuta jukumu linalojirudia?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" itaondolewa na hakuna todos zaidi zitakazoundwa.</string>
+    <string name="compliance_master_next_date">Inayofuata: %1$s</string>
+    <string name="compliance_master_end_section">Hali ya mwisho</string>
+    <string name="compliance_master_end_help">Chagua wakati jukumu hili litaacha kujirudia</string>
+    <string name="compliance_master_end_never">Kamwe</string>
+    <string name="compliance_master_end_on_date">Kwa tarehe</string>
+    <string name="compliance_master_end_after">Baada ya…</string>
+    <string name="compliance_master_end_never_desc">Hurudiwa kwa muda usiojulikana bila tarehe ya mwisho.</string>
+    <string name="compliance_master_end_date_select">Chagua tarehe ya mwisho</string>
+    <string name="compliance_master_end_date_help">Hakuna majukumu yanayoundwa baada ya tarehe hii.</string>
+    <string name="compliance_master_end_count_label">Idadi ya matukio</string>
+    <string name="compliance_master_end_count_help">Inasimama baada ya hii kazi nyingi zinaundwa.</string>
+    <string name="compliance_master_ends_on">Inaisha %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d imesalia</string>
+    <string name="compliance_master_ended">Imeisha</string>
+    <string name="compliance_master_type_label">Unda kama</string>
+    <string name="compliance_master_type_task">Kazi</string>
+    <string name="compliance_master_type_event">Tukio</string>
+    <string name="heatmap_widget_status_loading">Inapakia ramani ya joto...</string>
+    <string name="heatmap_widget_status_empty">Hakuna maingizo bado</string>
+    <string name="heatmap_widget_status_refresh">Fungua Yaja ili kuonyesha upya ramani ya joto</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Akiba imeundwa upya.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Ingizo Mpya</string>
+    <string name="shortcut_new_entry_long">Ongeza ingizo la jarida</string>
+    <string name="shortcut_add_todo_short">Ongeza Todo</string>
+    <string name="shortcut_add_todo_long">Ongeza cha kufanya kwa leo</string>
+    <string name="shortcut_add_event_short">Ongeza Tukio</string>
+    <string name="shortcut_add_event_long">Ongeza tukio</string>
+    <string name="shortcut_today_short">Leo</string>
+    <string name="shortcut_today_long">Fungua jarida la leo</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Urambazaji</string>
+    <string name="settings_bottom_nav_style_label">Mtindo wa Urambazaji wa Chini</string>
+    <string name="settings_navigation_mode_title">Hali ya Urambazaji</string>
+    <string name="settings_navigation_mode_subtitle">Chagua kati ya upau wa nav unaoelea na paneli kamili ya chini.</string>
+    <string name="settings_nav_mode_floating">Inaelea</string>
+    <string name="settings_nav_mode_panel">Paneli</string>
+    <string name="settings_navigation_screens_label">Skrini za Urambazaji</string>
+    <string name="settings_nav_summary_floating">Jarida na Kalenda daima hukaa kwenye upau unaoelea. Chukua hadi skrini 2 zaidi. Imechaguliwa kwa sasa: %1$d ya %2$d.</string>
+    <string name="settings_nav_summary_panel">Onyesha Watu na Maeneo katika upau au paneli inayotumika ya kusogeza.</string>
+    <string name="settings_nav_lookback_subtitle">Onyesha Kuangalia tena katika upau wa kusogeza au paneli inayotumika.</string>
+    <string name="settings_nav_people_places_subtitle">Onyesha Watu na Maeneo katika upau au paneli inayotumika ya kusogeza.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Onyesha Todos katika upau wa kusogeza au paneli inayotumika.</string>
+    <string name="todos_quick_add_title">Ongeza Haraka</string>
+    <string name="todos_hero_subtitle">Fuatilia kazi na matukio katika jarida</string>
+    <string name="todos_hero_all_activity">Shughuli zote</string>
+    <string name="todos_hero_open_focus">Fungua umakini</string>
+    <string name="todos_hero_completed">Imekamilika</string>
+    <string name="todos_stat_today_open">Leo fungua</string>
+    <string name="todos_stat_done_today">Imekamilika leo</string>
+    <string name="todos_stat_events">Matukio</string>
+    <string name="todos_stat_still_open">Bado wazi</string>
+    <string name="todos_stat_past_7d">Siku 7 zilizopita</string>
+    <string name="todos_stat_days">Siku</string>
+    <string name="todos_empty_done">Bado hakuna todos zilizokamilishwa</string>
+    <string name="todos_empty_events">Bado hakuna maingizo ya tukio</string>
+    <string name="todos_section_open">FUNGUA</string>
+    <string name="todos_section_later">BAADAYE</string>
+    <string name="todos_section_upcoming">YAJAYO</string>
+    <string name="todos_section_future_events">MATUKIO YAJAYO</string>
+    <string name="todos_section_past_events">MATUKIO YALIYOPITA</string>
+    <string name="todos_cd_open_day">Siku ya wazi</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d kazi wazi</item>
+        <item quantity="other">%1$d fungua kazi</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d imekamilisha kazi</item>
+        <item quantity="other">%1$d kazi zilizofanywa</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d tukio lijalo</item>
+        <item quantity="other">%1$d matukio yajayo</item>
+    </plurals>
+    <string name="todos_filter_all_format">Zote %1$d</string>
+    <string name="todos_filter_open_format">Fungua %1$d</string>
+    <string name="todos_filter_done_format">Imekamilika %1$d</string>
+    <string name="todos_filter_events_format">Matukio %1$d</string>
+    <string name="todos_cheer_all_clear">Yote wazi. Nzuri.</string>
+    <string name="todos_cheer_done_and_dusted">Imefanywa na iliyotiwa vumbi.</string>
+    <string name="todos_cheer_nothing_pending">Hakuna kinachosubiri.</string>
+    <string name="todos_cheer_caught_up">Umekamata.</string>
+    <string name="todos_cheer_clean_slate">Safi slate.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Katika siku %1$d</item>
+        <item quantity="other">Baada ya siku %1$d</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d siku iliyopita</item>
+        <item quantity="other">%1$d siku zilizopita</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Katika wiki %1$d</item>
+        <item quantity="other">Katika wiki %1$d</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d wiki iliyopita</item>
+        <item quantity="other">%1$d wiki zilizopita</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Katika mwezi 1</string>
+    <string name="todos_relative_one_month_ago">mwezi 1 uliopita</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Ndani ya mwezi %1$d</item>
+        <item quantity="other">Baada ya miezi %1$d</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d mwezi uliopita</item>
+        <item quantity="other">%1$d miezi iliyopita</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Takwimu</string>
+    <string name="settings_nav_statistics_subtitle_on">Onyesha Takwimu katika upau au paneli ya kusogeza inayotumika.</string>
+    <string name="settings_nav_statistics_subtitle_off">Washa Takwimu kwanza ili kuiweka katika urambazaji.</string>
+    <string name="settings_show_labels_bottom_panel_title">Onyesha Lebo kwenye Paneli ya Chini</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Onyesha lebo za maandishi chini ya ikoni kwenye paneli ya chini.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Ishara</string>
+    <string name="settings_entry_delete_title">Ingizo Futa</string>
+    <string name="settings_entry_delete_subtitle">Bonyeza kwa muda ingizo ili kulichagua. Gusa maingizo zaidi ili uchague nyingi, kisha utumie kitufe cha Futa kilicho katikati. Gusa nafasi tupu ili kufuta uteuzi.</string>
+    <string name="settings_swipe_navigate_title">Telezesha kidole ili Kuelekeza Tarehe</string>
+    <string name="settings_swipe_navigate_subtitle">Telezesha kidole kulia kwenda kushoto ili kusonga mbele tarehe moja, na kushoto kwenda kulia ili kurudi nyuma.</string>
+    <string name="settings_drag_reorder_title">Washa Buruta ili Upange Upya</string>
+    <string name="settings_drag_reorder_subtitle">Bonyeza kwa muda maingizo ili kuyapanga upya</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data na Urejeshaji</string>
+    <string name="settings_swipe_rebuild_index">Telezesha kidole chini kwenye skrini ya kwanza ili kuunda upya faharasa</string>
+    <string name="settings_large_journal_safe_mode_title">Hali salama ya Jarida Kubwa</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Jarida kubwa sana inapogunduliwa, ahirisha takwimu za uanzishaji zisizo za lazima kufanya kazi ili programu ifunguke haraka na kwa usalama zaidi.</string>
+    <string name="settings_version_history_title">Historia ya Toleo</string>
+    <string name="settings_version_history_subtitle">Hifadhi nakala salama kabla ya kuhariri, kufuta, lebo na kutembelea tena mabadiliko.</string>
+    <string name="settings_storage_location_label">Mahali pa Kuhifadhi</string>
+    <string name="settings_reset_to_default">Weka upya kwa Chaguomsingi</string>
+    <string name="settings_choose_folder">Chagua Folda</string>
+    <string name="settings_backup_description">Unda zip moja ya chelezo ya Yaja iliyo na maingizo ya jarida, misimbo fupi, manenomsingi ya tarehe, na data ya Watu na Maeneo. Kurejesha kunaweza kuiunganisha tena kwa usalama baadaye.</string>
+    <string name="settings_last_backup">Hifadhi Nakala ya Mwisho: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Umri wa ukumbusho wa chelezo</string>
+    <string name="settings_backup_reminder_disabled">Imezimwa</string>
+    <string name="settings_backup_reminder_desc">Angazia nakala rudufu kwenye utepe ikiwa imezeeka kuliko siku %1$d.</string>
+    <string name="settings_backup_reminder_days_disabled">siku 0 (imezimwa)</string>
+    <string name="settings_backup_reminder_days">%1$d siku</string>
+    <string name="settings_restore_button">Rejesha</string>
+    <string name="settings_backup_now_button">Hifadhi nakala Sasa</string>
+    <string name="settings_db_index_management_label">Usimamizi wa Database Index</string>
+    <string name="settings_db_index_management_desc">Fungua zana zilizolengwa za kujenga upya kwa todos, Watu na Maeneo, au uundaji upya wa faharasa kamili ya hifadhidata.</string>
+    <string name="settings_rebuild_tools_button">Zana za Kujenga upya</string>
+    <string name="settings_import_label">Ingiza</string>
+    <string name="settings_import_info_cd">Siku ya Kwanza Kuagiza</string>
+    <string name="settings_import_info_title">Ingiza Taarifa</string>
+    <string name="settings_import_day_one_title">Siku ya Kwanza Kuagiza</string>
+    <string name="settings_import_day_one_bullet1">- Hamisha kutoka Siku ya Kwanza bila picha</string>
+    <string name="settings_import_day_one_bullet2">- Data ya maandishi pekee ndiyo italetwa</string>
+    <string name="settings_import_day_one_bullet3">- Muhuri wa saa na data ya eneo (ikiwa inapatikana) itahifadhiwa</string>
+    <string name="settings_import_perf_warning_title">Onyo la Utendaji</string>
+    <string name="settings_import_perf_warning_desc">Kuleta idadi kubwa ya maingizo (500+) kunaweza kuchukua dakika kadhaa. Unaweza kuondoka na uletaji utaendelea chinichini.</string>
+    <string name="settings_got_it">Nimeipata</string>
+    <string name="settings_import_success">%1$d siku mpya, %2$d zimeunganishwa, %3$d zimerukwa</string>
+    <string name="settings_import_source_day_one">Siku ya Kwanza</string>
+    <string name="settings_import_source_day_one_subtitle">.zip au .json usafirishaji</string>
+    <string name="settings_import_source_journalistic">Mwanahabari</string>
+    <string name="settings_import_source_journalistic_subtitle">.json usafirishaji</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Jifunze jinsi ya kutumia yaja</string>
+    <string name="help_footer_website">Tovuti</string>
+    <string name="help_footer_share">Shiriki</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Mifarakano</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Shiriki yaja</string>
+    <string name="help_share_yaja_text">yaja - programu nyingine ya uandishi\n\nJarida la ndani lisilo na usumbufu ambalo huhifadhi maingizo kama faili za alama. Inajumuisha rekodi ya matukio, kuangalia nyuma, watu na maeneo, violezo, maoni, takwimu na wijeti.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Jina la mtumiaji la Discord limenakiliwa!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Nembo ya RJ</string>
+    <string name="help_screen_title">Msaada &amp; Kuhusu</string>
+    <string name="help_welcome_title">Karibu kwenye yaja</string>
+    <string name="help_welcome_body">Yaja ni jarida la alama za eneo la kwanza kwa ajili ya kunasa siku, watu, maeneo, ufuatiliaji, maoni na ruwaza bila kukuzuia. Ukurasa huu unatoa mwongozo wa haraka kwa sehemu kuu za programu.</string>
+    <string name="help_start_here">Anzia Hapa</string>
+    <string name="help_cd_collapse">Kunja</string>
+    <string name="help_cd_expand">Panua</string>
+    <string name="help_group_everyday_title">Kila siku</string>
+    <string name="help_group_everyday_desc">Uandishi wa habari, mtiririko wa kuandika, na urambazaji wa kila siku.</string>
+    <string name="help_group_reviews_title">Maoni na Maarifa</string>
+    <string name="help_group_reviews_desc">Muonekano, mienendo, watu, mahali na uchambuzi.</string>
+    <string name="help_group_advanced_title">Zana za Kina</string>
+    <string name="help_group_advanced_desc">Wijeti, hifadhi, faragha, hifadhi rudufu na zana za kiufundi.</string>
+    <string name="help_onboard_todos_events_title">Mambo ya Kufanya, Matukio na Yanayojirudia</string>
+    <string name="help_onboard_todos_events_body">Weka vikumbusho vya kibinafsi, mipango ya familia, na ratiba zinazojirudia ambazo huzalisha kazi kiotomatiki kwa tarehe zinazotakiwa.</string>
+    <string name="help_onboard_widgets_title">Wijeti</string>
+    <string name="help_onboard_widgets_body">Ongeza Wijeti za Heatmap, Nasa Haraka, Todo Haraka, au Orodha ya Todo kutoka kwa kizindua.</string>
+    <string name="help_onboard_version_history_title">Historia ya Toleo</string>
+    <string name="help_onboard_version_history_body">Washa Faili za Historia katika Mipangilio &gt; Data ili kuweka vijipicha salama kabla ya mabadiliko hatari.</string>
+    <string name="help_onboard_tasker_title">Mfanyakazi</string>
+    <string name="help_onboard_tasker_body">Tumia Tasker kuongeza maingizo, mambo ya kufanya au matukio kwa haraka wakati kitu cha kibinafsi kinahitaji kunaswa mara moja.</string>
+    <string name="help_section_writing_editor_title">Kuandika &amp; Mhariri</string>
+    <string name="help_section_writing_editor_preview">Violezo, vichwa vya alama, mambo ya kufanya, matukio na uwekaji rasimu unaonyumbulika.</string>
+    <string name="help_section_writing_editor_content">+ Gusa kitufe cha \'+\' kinachoelea ili uandike kwa siku iliyochaguliwa.\n+ Tumia violezo kama vile Dokezo la Mkutano, Siku ya Kusafiri, Rekodi ya Afya, Tafakari, Rekodi ya Kazi na zaidi.\n+ Violezo vinaweza kuingizwa kwenye rasimu tupu, kuongezwa hapa chini, kutumika kuchukua nafasi ya rasimu, au kuingizwa kwenye kielekezi.\n+ Chipu za Kihariri, matukio ya kutazama+ na kuweka orodha za kufanya kwa haraka. na Kuhariri vichwa vya usaidizi vya kuelekeza chini kama vile Sehemu ya ###.</string>
+    <string name="help_section_post_write_review_title">Mapitio ya Baada ya Kuandika</string>
+    <string name="help_section_post_write_review_preview">Uchimbaji wa Todo, utambuzi wa nenomsingi, kuweka nyota, lebo na utembelee upya usanidi.</string>
+    <string name="help_section_post_write_review_content">+ Baada ya kuandika, Yaja inaweza kufungua laha ya ukaguzi kabla ya kuhifadhi.\n+ Inaweza kutoa vipengee vya kufanya, kutambua Watu na Maeneo, kuweka nyota katika siku, kuweka lebo ya siku, na kuratibu tarehe za kutembelea tena.\n+ Unaweza kuzima Ukaguzi wa Chapisho kutoka kwa Mipangilio ukipendelea kuhifadhi moja kwa moja.</string>
+    <string name="help_section_revisit_followup_title">Tembelea na Tarehe za Ufuatiliaji</string>
+    <string name="help_section_revisit_followup_preview">Tarehe za ufuatiliaji zilizounganishwa na jarida na chaguo za haraka na chaguo maalum.</string>
+    <string name="help_section_revisit_followup_content">+ Ongeza tarehe za kutembelea tena ukitumia Kesho, Wiki Ijayo, Mwezi Ujao au tarehe maalum.\n+ Vipengee vinavyostahili kutembelewa huonekana kwenye Nyumbani na vimewekwa alama kwenye Kalenda na Rekodi ya Maeneo Uliyotembelea.\n+ Hili hutumika vyema kwa ahadi, maamuzi, ukaguzi wa afya na vikumbusho vinavyohusiana na muktadha wa jarida.</string>
+    <string name="help_section_navigation_gestures_title">Urambazaji na Ishara</string>
+    <string name="help_section_navigation_gestures_preview">Usogezaji wa tarehe, futa uteuzi, telezesha mapendeleo, na ujenge upya tabia ya kache.</string>
+    <string name="help_section_navigation_gestures_content">+ Nyumbani hutumia urambazaji wa tarehe kwa vishale na urambazaji wa hiari wa kutelezesha kidole unapowashwa.\n+ Bonyeza kwa muda ingizo ili kuichagua. Gusa maingizo zaidi ili uwachague pia, kisha utumie kidonge cha Futa karibu na kitufe cha Ongeza.\n+ Kugonga maingizo yaliyochaguliwa kutaondoa uteuzi. Maingizo yaliyofutwa yanaweza kurejeshwa pamoja kutoka siku iliyosalia ya kurejesha.\n+ Unaweza kuunda upya akiba faili za majarida zinapobadilika nje ya Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Shortcodes &amp; Quick Capture</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Upigaji picha wa kibinafsi kwa haraka pamoja na vijisehemu vya maandishi vinavyoweza kutumika tena.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Unda misimbo fupi ili uweke maandishi yanayorudiwa kwa haraka.\n+ Vishika nafasi vya nguvu kama vile {{today:dd-MMM}} na {{now:HH:mm}} hufanya kazi ndani ya misimbo fupi.\n+ Quick Capture husaidia kuweka kitu haraka bila kufungua kihariri kamili.\n+ Kuongeza kwa haraka kunaweza kuhifadhi mambo ya kufanya au tukio la tarehe iliyochaguliwa kutoka kwenye wijeti, skrini ya Todos au Tasker.</string>
+    <string name="help_section_todos_events_title">Mambo ya Kufanya, Matukio na Yanayojirudia</string>
+    <string name="help_section_todos_events_preview">Vikumbusho vya kibinafsi, matukio muhimu, na ratiba za kujirudia za kiotomatiki.</string>
+    <string name="help_section_todos_events_content">+ Mambo ya Kufanya huandikwa moja kwa moja katika maingizo ya jarida kama mistari [ ] na [x].\n+ Matukio ni maingizo ya kawaida ya jarida yaliyotiwa alama kuwa Tukio, yanafaa kwa mipango ya familia, miadi, usafiri, au chochote unachotaka kutambua baadaye.\n+ Majukumu na Matukio Yanayorudiwa (Ratiba) huandika kiotomatiki vitu vya kufanya au vichwa vya matukio kwenye kurasa zako za jarida za kila siku kulingana na ratiba ya kila wiki, kila mwaka. kugonga aikoni ya Hurudiwa kwenye skrini ya Todos.\n+ Kila siku unapofungua Yaja, bomba la usuli huendeshwa ili kuangalia kama kazi zozote zilizoratibiwa zinatakiwa na kuziweka kwenye ingizo la siku hiyo.\n+ Skrini ya Todos hukusaidia kuona mambo ya kufanya wazi, yaliyokamilishwa na matukio bila kugeuza Yaja kuwa dashibodi ya tija.\n+ chini kwenye kichwa cha Majarida hadi Gusa+ Siku ya Todos. unda upya faharasa ya todo ikiwa faili zitabadilishwa nje ya Yaja.\n+ Onyesha Kazi Zilizokamilishwa hukumbukwa, kwa hivyo mwonekano wako unaopendelea ushikamane unapoondoka na kurudi.\n+ Wijeti za Todo zinaweza kuonyesha kazi zinazosubiri, kuthibitisha kabla ya kugeuza, kuficha kazi zilizokamilishwa na kwa hiari kujificha kiotomatiki wakati hakuna kitu kinachosubiri.</string>
+    <string name="help_section_people_places_title">Watu na Maeneo</string>
+    <string name="help_section_people_places_preview">Maneno muhimu, lakabu, mitindo na maoni yaliyoorodheshwa ya muunganisho.</string>
+    <string name="help_section_people_places_content">+ Fuatilia watu na maeneo yenye lakabu na lebo za uhusiano.\n+ Tafuta, chuja na upange orodha ya maneno muhimu.\n+ Kurasa za maelezo ya nenomsingi zinaonyesha usanii, kutajwa kwa muda, miunganisho iliyoshirikishwa na Miunganisho iliyoorodheshwa.\n+ Unyeti wa Ulinganifu unaweza kurekebishwa kutoka kwa Mipangilio.</string>
+    <string name="help_section_timeline_lookback_title">Rekodi ya Maeneo Uliyotembelea</string>
+    <string name="help_section_timeline_lookback_preview">Kuvinjari kwa siku iliyopita, vivutio, Nishangaze na kukagua maeneo ya kuingilia.</string>
+    <string name="help_section_timeline_lookback_content">+ Rekodi ya Maeneo Uliyotembelea hukuwezesha kuvinjari siku zilizopita kwa vichujio, chipsi za mwaka na hali ya hiari ya tarehe nzima.\n+ Utazamaji huonyesha maingizo kutoka siku ile ile katika miaka iliyopita na mambo muhimu yako yenye nyota.\n+ Surprise Me hufungua ingizo la awali kutoka kwa Lookback.\n+ Ukaguzi wa Kila Wiki na Ukaguzi wa Kila Mwezi moja kwa moja ndani ya Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Takwimu na Maoni</string>
+    <string name="help_section_statistics_reviews_preview">Linganisha hali, maarifa ya violezo, sehemu zinazoonekana maalum na muhtasari.</string>
+    <string name="help_section_statistics_reviews_content">+ Takwimu ni pamoja na hali ya kulinganisha, maneno muhimu deltas na Maarifa ya Kiolezo.\n+ Unaweza kuchagua ni sehemu zipi za takwimu zitakazosalia kuonekana kutoka ndani ya skrini ya Takwimu.\n+ Hali ya Kulinganisha inapatikana kwa Muda Wote na ni muhtasari wa delta za mwezi na mwaka.\n+ Kurasa za Kagua zinatoa muhtasari wa siku nyingi zinazotumika, watu maarufu na maeneo, matukio ya lugha unayopenda, misururu ya alama na lebo.</string>
+    <string name="help_section_widgets_home_title">Wijeti na Uso wa Nyumbani</string>
+    <string name="help_section_widgets_home_preview">Wijeti za kizindua, maneno muhimu yaliyoangaziwa, na takwimu za nyumbani za kiwango cha siku.</string>
+    <string name="help_section_widgets_home_content">+ Wijeti za Kuandika Heatmap, Capture Haraka, Ongeza Haraka na Orodha ya Todo zinapatikana kwenye kizindua.\n+ Mipangilio ya skrini ya Wijeti hukuruhusu urekebishe pembe, pedi, umbo, vichwa, mwonekano wa kazi iliyokamilika na chaguo zingine za wijeti inapotumika.\n+ Wijeti ya ramani ya joto hutumia vivuli vya nguvu zaidi kwa mpangilio laini wa kuandika-historia ya Watu+ wakati unaweza kuangazia Historia ya Watu na Mahali kwenye ukurasa wa Nyumbani. imewashwa.\n+ Kijajuu cha tarehe ya Mwanzo kinaweza kuonyesha au kuficha idadi ya maingizo, maneno na idadi ya wahusika.</string>
+    <string name="help_section_language_text_analysis_title">Uchambuzi wa Lugha na Maandishi</string>
+    <string name="help_section_language_text_analysis_preview">Utambuzi wa lugha ya eneo lako kwa takwimu na maarifa ya ukaguzi.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja hutambua hati au lugha kuu katika maingizo yote kwa maarifa.\n+ Mgawanyiko wa lugha huonekana katika Takwimu na Maoni.\n+ Ugunduzi hutekelezwa ndani ya nchi na haitumi maandishi ya jarida nje ya kifaa.</string>
+    <string name="help_section_data_privacy_cache_title">Data, Faragha na Akiba</string>
+    <string name="help_section_data_privacy_cache_preview">Hifadhi ya alama chini, historia ya toleo, kumbukumbu ya programu, kufunga programu na kuunda upya akiba.</string>
+    <string name="help_section_data_privacy_cache_content">+ Faragha ya Data: Data zote za jarida la kibinafsi hukaa madhubuti kwenye kifaa chako cha kawaida na kamwe haziachi wakati wowote. Yaja haiendeshi hifadhidata za wingu, seva za chelezo za mbali au telemetry ili kufuatilia maandishi yako.\n+ Maingizo ya majarida yanahifadhiwa kama faili za kawaida za Markdown zinazopangwa kulingana na mwaka na mwezi.\n+ Historia ya Toleo inaweza kuweka vijipicha salama kabla ya kuhaririwa, kufuta, kuweka lebo na kutembelea tena mabadiliko.\n+ Unaweza kuchagua ni matoleo ngapi ya kuhifadhi na ni siku ngapi kumbukumbu za matukio, kumbukumbu za matukio ya programu, kuhifadhi na kuhifadhi maelezo ya kitaalamu ya siku ngapi shughuli bila kuhifadhi maandishi ya jarida.\n+ Kuunda Akiba ya Programu hukuwezesha kuonyesha upya data ya programu kila baada ya muda, ikijumuisha mambo ya kufanya na uundaji upya wa akiba.\n+ Kifungio cha programu kinaweza kutumia PIN na alama za vidole.\n+ Yaja hudumisha uorodheshaji mzito na takwimu hufanya kazi kuahirishwa inapowezekana hivyo basi kuzinduliwa kwa programu na kuokoa utendakazi.</string>
+    <string name="settings_app_log_title">Kumbukumbu ya Programu</string>
+    <string name="settings_app_log_subtitle">Tazama uchunguzi wa usalama wa faragha na maelezo ya awali ya kuacha kufanya kazi</string>
+    <string name="app_log_cd_share">Shiriki kumbukumbu ya programu</string>
+    <string name="app_log_cd_clear">Futa kumbukumbu ya programu</string>
+    <string name="app_log_privacy_title">Uchunguzi wa faragha-salama</string>
+    <string name="app_log_privacy_description">Rekodi hii hurekodi matukio makuu ya programu, shughuli za akiba/hifadhi, uonyeshaji upya wa wijeti, na maelezo ya kuacha kufanya kazi. Haijumuishi maingizo ya jarida, maandishi ya todo, au maudhui ya dokezo la kibinafsi.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Endelea kwa siku %d iliyopita</item>
+        <item quantity="other">Zingatia siku %d zilizopita</item>
+    </plurals>
+    <string name="app_log_retention_description">Matukio ya zamani ya kumbukumbu hukatwa kiotomatiki wakati wa ukataji miti na mara tu mpangilio huu unapobadilika.</string>
+    <string name="app_log_empty">Bado hakuna kumbukumbu ya programu.</string>
+    <string name="app_log_refresh">Pakia upya Kumbukumbu</string>
+    <string name="app_log_share_empty">Bado hakuna maingizo ya kumbukumbu ya programu ya Yaja.</string>
+    <string name="app_log_share_subject">Ingia ya Programu ya Yaja</string>
+    <string name="app_log_share_chooser">Shiriki logi ya programu ya Yaja</string>
+    <string name="app_log_local_time_format">%1$s | saa za ndani\n%2$s</string>
+    <string name="settings_website_title">Tovuti ya Yaja</string>
+    <string name="settings_website_subtitle">Fungua tovuti rasmi kwa sasisho na maelezo</string>
+    <string name="settings_advanced_integrations_title">Ushirikiano wa hali ya juu</string>
+    <string name="settings_tasker_integration_title">Ujumuishaji wa Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Vitendo vya kupiga picha kwa haraka na vichochezi vya tukio la jarida</string>
+    <string name="settings_shortcodes_subtitle">Dhibiti vijisehemu vinavyoweza kutumika tena vinavyopanuka unapoandika au kunasa kwa haraka.</string>
+    <string name="settings_privacy_security_title">Faragha na Usalama</string>
+    <string name="settings_pin_lock_title">Kufuli ya PIN</string>
+    <string name="settings_app_locked">Programu imefungwa</string>
+    <string name="settings_app_unlocked">Programu imefunguliwa</string>
+    <string name="settings_change_pin">Badilisha PIN</string>
+    <string name="settings_biometric_unlock_title">Kufungua kwa Biometriska</string>
+    <string name="settings_biometric_enabled_desc">Alama ya vidole au Kitambulisho cha Uso kimewashwa</string>
+    <string name="settings_biometric_disabled_desc">Tumia kibayometriki badala ya PIN</string>
+    <string name="settings_autolock_timeout_title">Muda wa Kufunga Kiotomatiki</string>
+    <string name="settings_pin_lock_disclaimer">Kufunga PIN huzuia ufikiaji usioidhinishwa kwa programu lakini haisimbaji kwa njia fiche data ya jarida lako kwenye diski. Mtu aliye na ufikiaji wa faili moja kwa moja bado anaweza kusoma maingizo yako.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">Dakika %1$d</item>
+        <item quantity="other">Dakika %1$d</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Mfumo</string>
+    <string name="settings_theme_light">Mwanga</string>
+    <string name="settings_theme_dark">Giza</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Rangi</string>
+    <string name="settings_color_intensity_title">Ukali wa rangi</string>
+    <string name="settings_background_tint_title">Rangi ya mandharinyuma</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Desturi</string>
+    <string name="settings_font_size_label">Ukubwa wa herufi</string>
+    <string name="settings_ui_font_size_label">UI Ukubwa wa herufi</string>
+    <string name="settings_data_font_size_label">Ukubwa wa herufi ya Maudhui</string>
+    <string name="settings_follow_ui_font_scale_label">Fanya Ukubwa wa herufi ya Maudhui sawa na UI</string>
+    <string name="settings_color_source_material_you">Nyenzo Wewe</string>
+    <string name="settings_theme_preview_title">Onyesho la kukagua mandhari</string>
+    <string name="settings_journal_entry_preview">Kuingia kwa jarida</string>
+    <string name="settings_journal_entry_preview_desc">Kadi, chips na vifungo vitatumia rangi hizi.</string>
+    <string name="settings_preview_chip_chip">Chipu</string>
+    <string name="settings_preview_chip_accent">Lafudhi</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Kiwango: %1$s</string>
+    <string name="settings_personal_themes_title">Mandhari ya kibinafsi</string>
+    <string name="settings_theme_name_label">Jina la mandhari</string>
+    <string name="settings_main_color_label">Rangi kuu</string>
+    <string name="settings_hue_label">Hue</string>
+    <string name="settings_sat_label">Sat</string>
+    <string name="settings_bright_label">Mkali</string>
+    <string name="settings_generated_accents_title">Lafudhi zinazozalishwa</string>
+    <string name="settings_personal_theme_desc">Chagua rangi moja. Yaja huunda lafudhi inayolingana na rangi za usaidizi.</string>
+    <string name="settings_preview_chip_main">Kuu</string>
+    <string name="settings_preview_chip_support">Msaada</string>
+    <string name="settings_no_font_selected">Hakuna fonti iliyochaguliwa</string>
+    <string name="settings_custom_font_desc">Chagua faili yoyote ya unicode .ttf au .otf - k.m. fonti ya Kimalayalam kama Manjari. Herufi ambazo fonti haina matumizi ya fonti za mfumo.</string>
+    <string name="settings_font_replace">Badilisha</string>
+    <string name="settings_choose_font_file">Chagua faili ya fonti</string>
+    <string name="settings_intensity_muted">Imenyamazishwa</string>
+    <string name="settings_intensity_normal">Kawaida</string>
+    <string name="settings_intensity_vivid">Wazi</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Safi</string>
+    <string name="settings_tint_soft">Laini</string>
+    <string name="settings_tint_rich">Tajiri</string>
+    <string name="settings_tint_deep">Kina</string>
+    <string name="settings_accent_complementary">Kukamilisha</string>
+    <string name="settings_accent_analogous">Analojia</string>
+    <string name="settings_accent_triadic">Utatu</string>
+    <string name="settings_accent_soft">Laini</string>
+    <string name="settings_mono_weight_thin">Nyembamba</string>
+    <string name="settings_mono_weight_extra_light">Mwanga wa Ziada</string>
+    <string name="settings_mono_weight_light">Mwanga</string>
+    <string name="settings_mono_weight_regular">Kawaida</string>
+    <string name="settings_mono_weight_medium">Kati</string>
+    <string name="settings_mono_weight_semi_bold">Nusu Bold</string>
+    <string name="settings_mono_weight_bold">Ujasiri</string>
+    <string name="settings_mono_weight_extra_bold">Ujasiri wa Ziada</string>
+    <string name="settings_mono_weight_title">Uzito</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Ongeza Neno Kuu la Tarehe</string>
+    <string name="settings_keyword_label">Neno muhimu</string>
+    <string name="settings_keyword_placeholder_example">k.m. jana</string>
+    <string name="settings_means_label">Maana</string>
+    <string name="settings_add_button">Ongeza</string>
+    <string name="settings_no_keywords_yet">Bado hakuna maneno muhimu yaliyoongezwa.</string>
+    <string name="settings_added_keywords_title">Maneno Muhimu Yaliyoongezwa (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Ongeza Nenomsingi</string>
+    <string name="keywords_dialog_add_title">Ongeza Nenomsingi</string>
+    <string name="keywords_dialog_edit_title">Hariri Nenomsingi</string>
+    <string name="keywords_cd_import_csv">Ingiza CSV</string>
+    <string name="keywords_cd_export_csv">Hamisha CSV</string>
+    <string name="keywords_cd_download_template">Pakua kiolezo</string>
+    <string name="rebuild_cache_storage_transparency_title">Uwazi wa Hifadhi ya Kifaa</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja hutumia mfano salama wa uhifadhi wa ndani. Data yako ya shajara ya kibinafsi inasalia kuwa ndani na haitoki kwenye kifaa chako wakati wowote:</string>
+    <string name="rebuild_cache_source_of_truth_title">Chanzo cha Ukweli (Faili za Alama)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Maingizo yote, vipengee vya orodha (ya kufanya), matukio ya kalenda ya matukio, nyota, na lebo huhifadhiwa kabisa katika faili za maandishi ya Markdown (.md) katika folda ya jarida lako la ndani ulilochagua. Data yako inamilikiwa nawe kwa 100% na iko kwenye kifaa chako kabisa.</string>
+    <string name="rebuild_cache_read_cache_title">Soma Cache &amp; Index (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">Ili kuwezesha upakiaji wa skrini papo hapo, vivutio vya kalenda, manenomsingi na takwimu bila kuchanganua mfumo wa faili kwenye kila kusogeza, Yaja huchanganua faili zako za Markdown na kuziweka katika faharasa katika hifadhidata ya karibu ya Room SQLite kwenye kifaa chako.</string>
+    <string name="rebuild_cache_local_private_title">100% Ndani na Faragha</string>
+    <string name="rebuild_cache_local_private_desc">Yaja haina hifadhidata za wingu, seva za chelezo za mbali, au kufuatilia maandishi yako kwa telemetry. Maingizo yote ya majarida na data iliyochanganuliwa husalia kwenye kifaa chako halisi na usiwahi kuiacha wakati wowote.</string>
+    <string name="keywords_export_success">Maneno muhimu yamehamishwa</string>
+    <string name="keywords_export_failed">Haikuweza kuhamisha manenomsingi</string>
+    <string name="keywords_template_saved">Kiolezo kimehifadhiwa</string>
+    <string name="keywords_template_save_failed">Haikuweza kuhifadhi kiolezo</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Imeingiza %d neno muhimu</item>
+        <item quantity="other">Imeingiza %d maneno muhimu</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Hakuna maneno muhimu halali yaliyopatikana</string>
+    <string name="keywords_import_failed">Haikuweza kuleta manenomsingi</string>
+    <string name="keywords_status_indexing">Kuorodhesha</string>
+    <string name="keywords_status_indexed">Imeorodheshwa</string>
+    <string name="keywords_metric_mentions">Inataja</string>
+    <string name="keywords_metric_days">Siku</string>
+    <string name="keywords_timeline_range_all">Wote</string>
+    <string name="keywords_connections_filter_all">Wote</string>
+    <string name="keywords_connections_filter_people">Watu</string>
+    <string name="keywords_connections_filter_places">Maeneo</string>
+    <string name="keywords_connections_filter_recent">Hivi karibuni</string>
+    <string name="keywords_connections_filter_strongest">Nguvu zaidi</string>
+    <string name="keywords_filter_needs_reindex">Inahitaji Reindex</string>
+    <string name="keywords_search_placeholder">Tafuta watu, mahali, lakabu, uhusiano</string>
+    <string name="keywords_refreshing_counters">Inaonyesha upya vihesabio vya maneno muhimu...</string>
+    <string name="keywords_empty_title">Bado hakuna maneno muhimu</string>
+    <string name="keywords_empty_subtitle">Ongeza watu na maeneo ambayo ungependa programu ifuatilie ndani ya nchi.</string>
+    <string name="keywords_no_results_title">Hakuna matokeo yanayolingana</string>
+    <string name="keywords_no_results_subtitle">Jaribu utafutaji tofauti, panga au kichujio.</string>
+    <string name="keywords_people_title">Watu</string>
+    <string name="keywords_places_title">Maeneo</string>
+    <string name="keywords_people_empty">Bado hakuna watu walioongezwa.</string>
+    <string name="keywords_people_filtered_empty">Hakuna watu wanaolingana na vichujio vya sasa.</string>
+    <string name="keywords_places_empty">Bado hakuna maeneo yaliyoongezwa.</string>
+    <string name="keywords_places_filtered_empty">Hakuna maeneo yanayolingana na vichujio vya sasa.</string>
+    <string name="keywords_delete_person_title">Je, ungependa kufuta Mtu?</string>
+    <string name="keywords_delete_place_title">Ungependa kufuta Mahali?</string>
+    <string name="keywords_delete_message">Je, ungependa kufuta \"%1$s\" kutoka kwa Watu na Maeneo? Hii itaondoa neno kuu na ulinganifu wake uliowekwa kwenye faharasa.</string>
+    <string name="keywords_timeline_title">Inataja Baada ya Muda</string>
+    <string name="keywords_timeline_empty_pattern">Bado hakuna muundo wa kila mwezi</string>
+    <string name="keywords_timeline_total_format">%1$d jumla</string>
+    <string name="keywords_timeline_empty_chart">Mitajo itaorodheshwa hapa baada ya kuorodhesha kupata maingizo.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Kilele %1$s • %2$d taja</item>
+        <item quantity="other">Kilele %1$s • %2$d kutaja</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Siku zenye kutajwa</string>
+    <string name="keywords_recency_title">Hivi karibuni</string>
+    <string name="keywords_recency_none">Bado hakuna zinazolingana</string>
+    <string name="keywords_recency_today">Imetajwa leo</string>
+    <string name="keywords_recency_yesterday">Imetajwa jana</string>
+    <string name="keywords_recency_days_ago_format">Iliyotajwa mwisho siku %1$d zilizopita</string>
+    <string name="keywords_first_seen">Imeonekana Kwanza</string>
+    <string name="keywords_last_seen">Mara Ya Mwisho Kuonekana</string>
+    <string name="keywords_unknown">Haijulikani</string>
+    <string name="keywords_co_mentioned_with">Imetajwa Pamoja Na</string>
+    <string name="keywords_connections_title">Viunganishi</string>
+    <string name="keywords_connections_subtitle">Imeorodheshwa kwa mwingiliano unaorudiwa na ufupi</string>
+    <string name="keywords_connections_linked_format">%1$d imeunganishwa</string>
+    <string name="keywords_connections_show">Onyesha miunganisho</string>
+    <string name="keywords_connections_hide">Ficha miunganisho</string>
+    <string name="keywords_connections_items_in_view">%1$d vipengee katika mwonekano huu</string>
+    <string name="keywords_connections_tap_to_expand">Gusa ili kupanua viungo vilivyoorodheshwa %1$d</string>
+    <string name="keywords_connections_empty">Bado hakuna miunganisho ya kichujio hiki.</string>
+    <string name="keywords_open_day">Siku ya wazi</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Zilizotajwa Zaidi</string>
+    <string name="keywords_sort_recently_added">Iliyoongezwa Hivi Karibuni</string>
+    <string name="keywords_peak_mentions_format">Kilele %1$s • %2$d taja%3$s</string>
+    <string name="keywords_co_occurrence_days_format">A-Z</string>
+    <string name="keywords_connections_meta_days_format">%1$d siku</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">pamoja</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d imeshirikiwa</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">yaani</string>
+    <string name="keywords_connections_meta_last_prefix">| mwisho %1$s</string>
+    <string name="keywords_connections_score_format">Alama %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d siku</string>
+    <string name="keywords_connections_shared_chip">%1$d imeshirikiwa</string>
+    <string name="keywords_match_type_exact">halisi</string>
+    <string name="keywords_match_type_fuzzy">fuzzy</string>
+    <string name="keywords_match_type_alias">pak</string>
+    <string name="keywords_match_type_relation">uhusiano</string>
+    <string name="keywords_action_delete">Futa</string>
+    <string name="keywords_action_edit">Hariri</string>
+    <string name="keywords_action_view">Tazama</string>
+    <string name="keywords_name_label">Jina</string>
+    <string name="keywords_relation_context_label">Uhusiano / Muktadha</string>
+    <string name="keywords_aliases_label">Lakabu ( koma imetenganishwa)</string>
+    <string name="keywords_aliases_label_short">Majina ya utani</string>
+    <string name="keywords_type_person">Mtu</string>
+    <string name="keywords_type_place">Mahali</string>
+    <string name="keywords_save_disabled_hint">Maneno muhimu huhifadhiwa yakiwa yamezimwa. Wawezeshe kutoka kwenye orodha unapotaka kuweka faharasa kuendeshwa.</string>
+    <string name="settings_meaning_yesterday">Jana</string>
+    <string name="settings_meaning_today">Leo</string>
+    <string name="lookback_chip_weekly">Kila wiki</string>
+    <string name="lookback_chip_monthly">Kila mwezi</string>
+    <string name="timeline_screen_title">Rekodi ya matukio</string>
+    <string name="timeline_empty_title">Hakuna kitu hapa bado</string>
+    <string name="timeline_empty_subtitle">Jaribu kichujio tofauti au urekebishe utafutaji wa lebo.</string>
+    <string name="timeline_quick_today">Leo</string>
+    <string name="timeline_quick_month">Mwezi</string>
+    <string name="timeline_quick_filters">Vichujio</string>
+    <string name="timeline_all_dates">Tarehe zote</string>
+    <string name="timeline_label_prefix">Lebo: %1$s</string>
+    <string name="timeline_label_search_placeholder">Tafuta lebo za siku</string>
+    <string name="timeline_filters_title">Vichujio na Muundo wa Rekodi ya Maeneo Uliyotembelea</string>
+    <string name="settings_meaning_tomorrow">Kesho</string>
+    <string name="settings_meaning_day_before_yesterday">Siku moja kabla ya jana</string>
+    <string name="settings_meaning_day_after_tomorrow">Siku baada ya kesho</string>
+    <string name="settings_meaning_last_week">Wiki iliyopita</string>
+    <string name="settings_meaning_next_week">Wiki ijayo</string>
+    <string name="settings_meaning_monday">Jumatatu</string>
+    <string name="settings_meaning_tuesday">Jumanne</string>
+    <string name="settings_meaning_wednesday">Jumatano</string>
+    <string name="settings_meaning_thursday">Alhamisi</string>
+    <string name="settings_meaning_friday">Ijumaa</string>
+    <string name="settings_meaning_saturday">Jumamosi</string>
+    <string name="settings_meaning_sunday">Jumapili</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Hifadhi ya Ndani ya Programu</string>
+    <string name="settings_storage_internal_default">Hifadhi ya Ndani ya Programu (Chaguomsingi)</string>
+    <string name="settings_storage_new_folder_fallback">folda mpya</string>
+    <string name="settings_storage_current_folder_fallback">folda ya sasa</string>
+    <string name="settings_storage_move_confirm">Maingizo yote yaliyopo yatahamishwa kutoka %1$s hadi %2$s. Je, ungependa kuendelea?</string>
+    <string name="settings_restore_added_skipped">Imeongezwa: %1$d\nNakala zilizorukwa: %2$d</string>
+    <string name="settings_storage_custom_folder">Folda Maalum:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Msaada wa njia za mkato</string>
+    <string name="addentry_cd_insert_template">Weka kiolezo</string>
+    <string name="addentry_cd_jump_to_today">Ruka hadi leo</string>
+    <string name="addentry_cd_share">Shiriki</string>
+    <string name="addentry_cd_bold">Ujasiri</string>
+    <string name="addentry_cd_italic">Italiki</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Weka wakati</string>
+    <string name="addentry_event_chip">Tukio</string>
+    <string name="addentry_pick_time_title">Chagua wakati</string>
+    <string name="addentry_hour_label">Saa</string>
+    <string name="addentry_minute_label">Dakika</string>
+    <string name="addentry_new_event_title">Tukio Jipya</string>
+    <string name="addentry_title_label">Kichwa</string>
+    <string name="addentry_event_description_label">Maelezo ya Tukio</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Mambo Yanayopatikana</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Badilisha mstari wa %1$d kuwa orodha tiki</item>
+        <item quantity="other">Badilisha %1$d mistari iwe orodha tiki</item>
+    </plurals>
+    <string name="addentry_people_places_title">Watu na Maeneo</string>
+    <string name="addentry_no_tracked_mentions">Hakuna watu wanaofuatiliwa au maeneo yaliyopatikana katika ingizo hili.</string>
+    <string name="addentry_day_memory_title">Kumbukumbu ya Siku</string>
+    <string name="addentry_star_day_title">Nyota siku hii</string>
+    <string name="addentry_star_day_subtitle">Ihifadhi kama kivutio ili irudi katika kuangalia nyuma.</string>
+    <string name="addentry_day_label_label">Lebo ya siku</string>
+    <string name="addentry_day_label_placeholder">k.m. Weka upya Siku</string>
+    <string name="addentry_follow_up_title">Fuatilia</string>
+    <string name="addentry_next_month">Mwezi ujao</string>
+    <string name="addentry_custom">Desturi</string>
+    <string name="addentry_due_date_format">Inatakiwa %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Ufuatiliaji wazi</string>
+    <string name="addentry_follow_up_note_label">Ujumbe wa ufuatiliaji</string>
+    <string name="addentry_follow_up_note_placeholder">Unapaswa kutembelea nini tena?</string>
+    <string name="addentry_review_entry_title">Kagua Ingizo</string>
+    <string name="addentry_review_entry_subtitle">Pasi ya haraka kabla ya kuhifadhi. Toa todos nje, angalia kutaja kufuatiliwa, na alama siku kama ni muhimu.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d cha kufanya</item>
+        <item quantity="other">%1$d mambo ya kufanya</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d taja</item>
+        <item quantity="other">%1$d inataja</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Hifadhi Ingizo</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Tupa Mabadiliko</string>
+    <string name="addentry_discard_changes_message">Una mabadiliko ambayo hayajahifadhiwa. Rudi nyuma na uzitupe, au ubaki ili uendelee kuzihariri.</string>
+    <string name="addentry_go_back">Rudi Nyuma</string>
+    <string name="addentry_stay">Kaa</string>
+    <string name="addentry_shortcuts_title">Njia za mkato</string>
+    <string name="addentry_help_bold_suffix">kufanya maandishi kwa ujasiri (au chagua maandishi na uguse Kitufe cha Bold)</string>
+    <string name="addentry_help_italic_suffix">kutengeneza maandishi ya italiki (au chagua maandishi na uguse Kitufe cha Italiki)</string>
+    <string name="addentry_help_today_suffix">: Huongezwa hadi tarehe ya sasa (k.m., 25-Des-25)</string>
+    <string name="addentry_help_now_suffix">: Hupanuka hadi wakati wa sasa (k.m., 14:30)</string>
+    <string name="addentry_help_week_suffix">: Huongezeka hadi wiki ya sasa (k.m., Wiki ya 52)</string>
+    <string name="addentry_help_day_suffix">: Huongezeka hadi siku ya wiki ya sasa (k.m., Jumatatu)</string>
+    <string name="addentry_help_todo_suffix">: Hupanuka hadi kisanduku tiki cha todo (k.m., [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Inapoingizwa popote kwenye mstari ulio na kisanduku cha kuteua cha todo, itaigeuza.</string>
+    <string name="addentry_okey">Sawa!</string>
+    <string name="addentry_template_merge_message">Rasimu hii tayari ina maandishi. Chagua jinsi kiolezo kinapaswa kuwekwa.</string>
+    <string name="addentry_template_merge_subtitle">Chomeka Hapa chini huhifadhi rasimu ya sasa. Katika Mshale huweka kiolezo mahali ambapo huduma yako iko sasa.</string>
+    <string name="addentry_insert_below">Weka Chini</string>
+    <string name="addentry_at_cursor">Kwenye Mshale</string>
+    <string name="addentry_replace_draft">Badilisha Rasimu</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Maarufu</string>
+    <string name="addentry_new_chip">Mpya</string>
+    <string name="addentry_best_for_format">Bora kwa: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Ondoa kiolezo unachopenda</string>
+    <string name="addentry_cd_favorite_template">Kiolezo unachopenda</string>
+    <string name="addentry_checklist_chip">Orodha ya ukaguzi</string>
+    <string name="addentry_followup_chip">Ufuatiliaji</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d sehemu</item>
+        <item quantity="other">%1$d sehemu</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Geuza kiolezo unachopenda</string>
+    <string name="addentry_template_preview_label">Onyesho la kukagua kiolezo</string>
+    <string name="addentry_use_template_button">Tumia Kiolezo</string>
+    <string name="addentry_start_blank_title">Anza Tupu</string>
+    <string name="addentry_start_blank_subtitle">Ruka violezo na uendelee kuandika kutoka kwa rasimu tupu.</string>
+    <string name="addentry_blank_entry_name">Kuingia Tupu</string>
+    <string name="addentry_blank_entry_description">Uingizaji wa jarida wazi</string>
+    <string name="addentry_blank_category">Mkuu</string>
+    <string name="addentry_quick_picks_title">Chaguo za Haraka</string>
+    <string name="addentry_sort_recommended">Imependekezwa</string>
+    <string name="addentry_sort_recent">Hivi karibuni</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Hakuna violezo vilivyopatikana</string>
+    <string name="addentry_no_templates_subtitle">Jaribu utafutaji au aina tofauti.</string>
+    <string name="addentry_search_templates_label">Tafuta violezo</string>
+    <string name="addentry_search_templates_placeholder">Mkutano, afya, tafakari ...</string>
+    <string name="addentry_cd_clear_search">Futa utafutaji</string>
+    <string name="addentry_choose_template_title">Chagua Kiolezo</string>
+    <string name="addentry_templates_ready_format">%1$d ya %2$d violezo tayari</string>
+    <string name="addentry_category_all">Wote</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Nini kilitokea?</string>
+    <string name="addentry_todo_chip">Kufanya</string>
+    <string name="addentry_numbered_list_chip">N Orodha</string>
+    <string name="addentry_bulleted_list_chip">B Orodha</string>
+    <string name="addentry_words_count_format">%1$d MANENO</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Ufuatiliaji unatarajiwa leo</item>
+        <item quantity="other">Ufuatiliaji unatarajiwa leo</item>
+    </plurals>
+    <string name="home_followup_subtitle">Rudi kwenye siku iliyounganishwa na uendelee kutoka hapo.</string>
+    <string name="home_from_date_format">Kutoka %1$s</string>
+    <string name="home_more_due_today_format">+%1$d zaidi inadaiwa leo</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Ongeza Lebo</string>
+    <string name="home_edit_label_title">Hariri Lebo</string>
+    <string name="home_day_label_hint">Ongeza lebo fupi ya siku hii (isizidi herufi 30).</string>
+    <string name="home_day_label_placeholder">k.m. Siku ya kwanza shuleni</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Ongeza Lebo kwa Siku Hii</string>
+    <string name="home_star_label_hint">Ipe siku hii lebo ya kukumbukwa (isizidi herufi 30)</string>
+    <string name="home_star_label_placeholder">k.m., Siku Yangu ya Kuzaliwa, Shuleni</string>
+    <string name="home_star_button">Nyota</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Ingizo limefutwa</item>
+        <item quantity="other">%1$d maingizo yamefutwa</item>
+    </plurals>
+    <string name="home_restore_button">REJESHA</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Tafuta maingizo...</string>
+    <string name="home_cd_search">Tafuta</string>
+    <string name="home_cd_clear_search">Futa Utafutaji</string>
+    <string name="home_cd_favorite">Kipendwa</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Maingizo</string>
+    <string name="home_stat_words">Maneno</string>
+    <string name="home_stat_chars">Herufi</string>
+    <string name="home_stat_versions">Aya</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Ongeza lebo</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Mechi Imepatikana</item>
+        <item quantity="other">%1$d Zinazolingana Zimepatikana</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Bado hakuna neno muhimu linalolingana lililopatikana.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Aikoni ya Hali Tupu</string>
+    <string name="home_empty_future">Huu ndio wakati ujao. Rekodi kikumbusho!</string>
+    <string name="home_empty_past">Uko Katika Zamani. Rekodi Kumbukumbu kabla haijafifia...</string>
+    <string name="home_empty_today">Hakuna maingizo bado. Anza siku yako.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Kuhifadhi</string>
+    <string name="home_cd_add_entry">Ongeza Ingizo</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Futa %1$d</string>
+    <string name="home_future_date_title">Kuingia kwa Tarehe ya Baadaye</string>
+    <string name="home_future_date_message_format">Unaongeza ingizo la tarehe ya baadaye (%1$s). Je, ungependa kuendelea?</string>
+    <string name="home_cache_issue_title">Tatizo la Akiba ya Data limegunduliwa</string>
+    <string name="home_cache_issue_message">Inaonekana idadi kubwa ya maingizo ya jarida hayapo kwenye kache. Je, ungependa kufanya uonyeshaji upya kamili wa akiba ya data ili kujaribu kuirejesha?</string>
+    <string name="home_refresh_button">Onyesha upya</string>
+    <string name="home_ignore_button">Puuza</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Watu na Maeneo</string>
+    <string name="nav_statistics">Takwimu</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Jenga Upya Database Index</string>
+    <string name="nav_backup_data">Data Backup</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Hali</string>
+    <string name="nav_finishing_index_rebuild">Inamaliza uundaji upya wa faharasa...</string>
+    <string name="nav_rebuilding_index">Kuunda upya faharasa ya hifadhidata</string>
+    <string name="nav_refreshing_index">Inaonyesha upya faharasa</string>
+    <string name="nav_backup_too_old">chelezo ni ya zamani sana...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Inafanya kazi...</string>
+    <string name="nav_eta_almost_done">karibu kufanyika</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds zimesalia</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm zimesalia</string>
+    <string name="nav_eta_hours_left_format">~%1$dsaa imesalia</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menyu</string>
+    <string name="nav_cd_rj_logo">Nembo ya RJ</string>
+    <string name="nav_tagline">programu nyingine ya uandishi wa habari</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Tovuti</string>
+    <string name="nav_cd_share_app">Shiriki Programu</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Nembo ya Yaja</string>
+    <string name="nav_easter_quote_part1">\"Andika wazo la kupita au ulichokuwa nacho kwa chakula cha mchana; si lazima kiwe cha kina.\n</string>
+    <string name="nav_easter_quote_part2">Maneno yako yanaweza kuwepo tu.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">kutoka kwa maabara ya RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Shiriki yaja</string>
+    <string name="nav_share_text_body">yaja — programu nyingine ya uandishi wa habari\n\nJarida la kila siku lisilo na usumbufu ambalo huhifadhi maingizo kama faili za alama.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Badilisha Mahali pa Kuhifadhi</string>
+    <string name="settings_change_storage_location_message">Maingizo yote yaliyopo yatahamishwa kutoka %1$s hadi %2$s. Je, ungependa kuendelea?</string>
+    <string name="settings_yes">Ndiyo</string>
+    <string name="settings_no">Hapana</string>
+    <string name="settings_restore_summary_title">Rejesha Muhtasari</string>
+    <string name="settings_restore_section_journal">Jarida</string>
+    <string name="settings_restore_section_shortcodes">Njia fupi</string>
+    <string name="settings_restore_section_date_keywords">Maneno muhimu ya Tarehe</string>
+    <string name="settings_restore_section_people_places">Watu na Maeneo</string>
+    <string name="settings_restore_journal_summary">Imeongezwa kwa siku mpya: %1$d\nImeunganishwa katika siku zilizopo: %2$d\nNakala za maingizo ya jarida: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Imeongezwa: %1$d\nNakala zilizorukwa: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Imeongezwa: %1$d\nNakala zilizorukwa: %2$d</string>
+    <string name="settings_restore_people_places_summary">Imeongezwa: %1$d\nNakala zilizorukwa: %2$d</string>
+    <string name="rebuild_tools_title">Zana za Kujenga upya</string>
+    <string name="rebuild_tools_back">Nyuma</string>
+    <string name="rebuild_tools_intro">Tumia miundo iliyolengwa kwanza. Kuunda upya hifadhidata ni kwa ajili ya mabadiliko ya hifadhi pekee, ufisadi wa hifadhidata, au kutolingana kwa faharasa.</string>
+    <string name="rebuild_todo_index_title">Jenga Upya Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">Onyesha upya todos kutoka faili za jarida na usasishe skrini ya Todo/wijeti. Bora zaidi wakati todos zinaonekana kuwa za zamani.</string>
+    <string name="rebuild_todo_index_button">Jenga Upya Todos</string>
+    <string name="rebuild_people_places_title">Jenga Upya Watu na Maeneo</string>
+    <string name="rebuild_people_places_subtitle">Onyesha upya lakabu za maneno muhimu, kutaja ushirikiano, mitindo na data ya uhusiano.</string>
+    <string name="rebuild_people_places_button">Jenga Upya Watu na Maeneo</string>
+    <string name="rebuild_database_title">Kujenga upya Hifadhidata Kamili</string>
+    <string name="rebuild_database_subtitle">Rudisha akiba ya hifadhidata kutoka kwa faili za alama. Onyesha upya maingizo, hesabu, todos, Watu na Maeneo, na wijeti kuanzia mwanzo.</string>
+    <string name="rebuild_database_button">Tengeneza Hifadhidata</string>
+    <string name="rebuild_database_confirm_title">Jenga upya faharasa ya hifadhidata</string>
+    <string name="rebuild_database_confirm_message">Hii itafuta na kuorodhesha upya hifadhidata nzima ya SQLite ya Chumba kutoka kwa faili zako za Markdown. Kwa majarida makubwa, hii inaweza kuchukua dakika chache.</string>
+    <string name="rebuild_database_confirm_start">Anza Kujenga Upya</string>
+    <string name="rebuild_database_status_title">Hali ya Kielezo cha Hifadhidata</string>
+    <string name="rebuild_database_storage_engine">Injini ya Uhifadhi</string>
+    <string name="rebuild_database_storage_engine_value">Hifadhidata ya SQLite ya Chumba</string>
+    <string name="rebuild_database_indexed_days">Siku Zilizoorodheshwa</string>
+    <string name="rebuild_database_indexed_days_value">Siku %1$d zimeorodheshwa</string>
+    <string name="rebuild_database_file_size">Ukubwa wa Faili ya Hifadhidata</string>
+    <string name="rebuild_database_last_sync">Usawazishaji wa Mwisho wa Kielezo</string>
+    <string name="rebuild_database_age_never">Kamwe</string>
+    <string name="rebuild_database_age_just_now">Sasa hivi</string>
+    <string name="rebuild_database_age_one_minute">Dakika 1 iliyopita</string>
+    <string name="rebuild_database_age_minutes">dakika %1$d zilizopita</string>
+    <string name="rebuild_database_age_one_hour">Saa 1 iliyopita</string>
+    <string name="rebuild_database_age_hours">saa %1$d zilizopita</string>
+    <string name="shortcodes_title">Njia fupi</string>
+    <string name="shortcodes_import_cd">Ingiza</string>
+    <string name="shortcodes_export_cd">Hamisha</string>
+    <string name="shortcodes_help_cd">Msaada</string>
+    <string name="shortcodes_new">Njia fupi Mpya</string>
+    <string name="shortcodes_empty_title">Hakuna shortcodes maalum</string>
+    <string name="shortcodes_empty_subtitle">Ongeza moja ili kupanua vijisehemu kama vile @yday hadi maandishi yanayobadilika.</string>
+    <string name="shortcodes_dynamic_dates_hint">Tumia {{today:format}} kwa tarehe zinazobadilika.</string>
+    <string name="shortcodes_help_title">Msaada wa Njia fupi</string>
+    <string name="shortcodes_help_built_in">Nambari fupi zilizojumuishwa:</string>
+    <string name="shortcodes_help_built_in_examples">@leo, @sasa, @wiki, @siku, @t (kisanduku cha kuteua), @x (geuza kisanduku cha kuteua)</string>
+    <string name="shortcodes_help_dynamic_patterns">Miundo Inayobadilika:</string>
+    <string name="shortcodes_help_dynamic_desc">Tumia {{leo:FORMAT}}, {{jana:FORMAT}}, {{kesho:FORMAT}}, au {{sasa:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Mfano: @yday -&gt; Jana: {{jana:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Miundo ya kawaida: dd-MM-yy, HH:mm, EEEE (jina la siku).</string>
+    <string name="action_close">Funga</string>
+    <string name="keyword_detail_title_fallback">Neno muhimu</string>
+    <string name="keyword_detail_not_found">Neno kuu halijapatikana</string>
+    <string name="keyword_detail_last_indexed">Iliorodheshwa mwisho %1$s</string>
+    <string name="keyword_detail_mentions_section">Inataja</string>
+    <string name="pin_biometric_prompt_title">Fungua kwa kutumia Biometriska</string>
+    <string name="pin_biometric_prompt_subtitle">Tumia alama ya vidole au uso wako kufungua</string>
+    <string name="pin_error_no_biometric_enrolled">Hakuna biometriska iliyosajiliwa. Tafadhali andikisha alama ya kidole au uso katika mipangilio ya kifaa.</string>
+    <string name="pin_error_hardware_unavailable">Maunzi ya kibayometriki hayapatikani.</string>
+    <string name="pin_error_no_hardware">Kifaa hiki hakina maunzi ya kibayometriki.</string>
+    <string name="pin_error_not_available">Uthibitishaji wa kibayometriki haupatikani.</string>
+    <string name="pin_title_confirm">Thibitisha PIN</string>
+    <string name="pin_title_set_new">Weka PIN Mpya</string>
+    <string name="pin_title_disable">Weka PIN ya Sasa ili Kuzima</string>
+    <string name="pin_title_enter">Weka PIN</string>
+    <string name="pin_error_incorrect">PIN si sahihi. Jaribu tena.</string>
+    <string name="pin_error_mismatch">PIN hazilingani. Anza upya.</string>
+    <string name="pin_cd_use_biometric">Tumia biometriska</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Siku hii imewekewa lebo, lakini bado hakuna ingizo la jarida.</string>
+    <string name="timeline_preview_loading">Inapakia onyesho la kukagua...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d ingizo zaidi siku hii</item>
+        <item quantity="other">+ %1$d maingizo zaidi siku hii</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Fungua Siku Hii</string>
+    <string name="timeline_chip_today">LEO</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d ingizo</item>
+        <item quantity="other">%1$d maingizo</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Ufuatiliaji</string>
+    <string name="timeline_chip_label_only">Lebo pekee</string>
+    <string name="timeline_cd_favorite">Kipendwa</string>
+    <string name="version_history_title">Historia ya Toleo</string>
+    <string name="version_history_day_versions_title">Matoleo ya Siku</string>
+    <string name="version_history_keep_copies_title">Weka nakala za usalama</string>
+    <string name="version_history_keep_copies_subtitle">Kabla ya Yaja kubadilisha faili ya siku, huhifadhi faili ya sasa kwenye data ya programu chini ya Faili za Historia.</string>
+    <string name="version_history_versions_kept_title">Matoleo yaliyohifadhiwa kwa siku</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja huhifadhi toleo jipya zaidi la %1$d kwa kila tarehe.</item>
+        <item quantity="other">Yaja huhifadhi matoleo mapya zaidi ya %1$d kwa kila tarehe.</item>
+    </plurals>
+    <string name="version_history_retention_title">Uhifadhi</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Picha za zamani zaidi ya siku %1$d husafishwa kiotomatiki.</item>
+        <item quantity="other">Picha za zamani zaidi ya siku %1$d husafishwa kiotomatiki.</item>
+    </plurals>
+    <string name="version_history_notes">Vidokezo: historia ya toleo hulinda faili za alama za siku kabla ya kuongeza, kuhariri, kufuta, kupanga upya, kuweka lebo, kuweka nyota na kutembelea upya mabadiliko. Sio chelezo ya wingu; endelea kutumia Hifadhi Nakala kwa nakala zinazobebeka.</string>
+    <string name="version_history_snapshots_for">Picha za %1$s</string>
+    <string name="version_history_snapshots_subtitle">Fungua toleo lililohifadhiwa, likague, na uirejeshe kwa siku hii.</string>
+    <string name="version_history_empty">Bado hakuna matoleo yaliyohifadhiwa kwa tarehe hii.</string>
+    <string name="action_view">Tazama</string>
+    <string name="version_history_date_intro">Fungua toleo lililohifadhiwa mapema la siku hii, likague, na uirejeshe inapohitajika.</string>
+    <string name="action_next">Inayofuata</string>
+    <string name="action_apply">Omba</string>
+    <string name="action_restore">Rejesha</string>
+    <string name="statistics_choose_title">Chagua Takwimu</string>
+    <string name="statistics_choose_subtitle">Ficha sehemu ambazo hutaki. Angalau sehemu moja lazima iendelee kuonekana.</string>
+    <string name="statistics_visible_count">%1$d ya %2$d inaonekana</string>
+    <string name="statistics_show_all">Onyesha Yote</string>
+    <string name="statistics_one_section_visible">Sehemu moja lazima ibaki inayoonekana</string>
+    <string name="statistics_shown">Imeonyeshwa katika takwimu</string>
+    <string name="statistics_hidden">Imefichwa kutoka kwa takwimu</string>
+    <string name="statistics_select_start_date">Chagua Tarehe ya Kuanza</string>
+    <string name="statistics_select_end_date">Chagua Tarehe ya Mwisho</string>
+    <string name="statistics_filter_by_period">Chuja kwa Muda</string>
+    <string name="statistics_cd_reorder">Bonyeza kwa muda mrefu ili kupanga upya</string>
+    <string name="statistics_total_entries">Jumla ya Maingizo</string>
+    <string name="statistics_total_words">Jumla ya Maneno</string>
+    <string name="statistics_avg_words_per_entry">Wastani. Maneno/Ingizo</string>
+    <string name="statistics_current_streak">Mfululizo wa Sasa</string>
+    <string name="statistics_pages_written">Kurasa Zilizoandikwa</string>
+    <string name="statistics_days_highlighted">Siku Zilizoangaziwa</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d siku</item>
+        <item quantity="other">%1$d siku</item>
+    </plurals>
+    <string name="statistics_period_all_time">Takwimu za Muda Wote</string>
+    <string name="statistics_period_current_year">Takwimu za Mwaka wa Sasa</string>
+    <string name="statistics_period_previous_year">Takwimu za Mwaka Uliopita</string>
+    <string name="statistics_period_current_month">Takwimu za Mwezi wa Sasa</string>
+    <string name="statistics_period_previous_month">Takwimu za Mwezi Uliopita</string>
+    <string name="statistics_period_custom">Takwimu za Kipindi Maalum</string>
+    <string name="statistics_period_chip_all_time">Wakati Wote</string>
+    <string name="statistics_period_chip_current_year">Mwaka wa Sasa</string>
+    <string name="statistics_period_chip_previous_year">Mwaka Uliopita</string>
+    <string name="statistics_period_chip_current_month">Mwezi Huu</string>
+    <string name="statistics_period_chip_previous_month">Mwezi Uliopita</string>
+    <string name="statistics_period_chip_custom">Desturi</string>
+    <string name="statistics_sections_visible">%1$d ya %2$d sehemu zinaonekana</string>
+    <string name="statistics_loading_stages">Inapakia takwimu kwa hatua...</string>
+    <string name="review_period_weekly">Uhakiki wa Kila Wiki</string>
+    <string name="review_period_monthly">Mapitio ya Kila Mwezi</string>
+    <string name="review_anchor_week">Wiki iliyo na %1$s</string>
+    <string name="review_anchor_month">Mwezi una %1$s</string>
+    <string name="review_chip_entries">Maingizo %1$d</string>
+    <string name="review_chip_words">Maneno %1$d</string>
+    <string name="review_chip_days">Siku %1$d</string>
+    <string name="review_hint_jump">Gusa chip za tarehe hapa chini ili urudi kwenye jarida.</string>
+    <string name="review_chip_streak">Mfululizo %1$d</string>
+    <string name="review_chip_gap">Pengo %1$d</string>
+    <string name="review_chip_labels">Lebo %1$d</string>
+    <string name="review_chip_favorites">Vipendwa %1$d</string>
+    <string name="review_empty_period">Bado hakuna maingizo ya jarida katika kipindi hiki. Lebo na vivutio bado vinaonekana hapa chini ikiwa vipo.</string>
+    <string name="review_writing_rhythm">Kuandika Rhythm</string>
+    <string name="review_best_streak">Mfululizo bora</string>
+    <string name="review_longest_gap">Pengo refu zaidi</string>
+    <string name="review_most_active_days">Siku Amilifu Zaidi</string>
+    <string name="review_day_entries_words">%1$d maingizo | %2$d maneno</string>
+    <string name="review_top_people">Watu wa Juu</string>
+    <string name="review_top_places">Maeneo ya Juu</string>
+    <string name="review_no_people_mentions">Hakuna watu wanaotajwa</string>
+    <string name="review_no_place_mentions">Hakuna mahali pa kutajwa</string>
+    <string name="review_favorite_moments">Wakati Unaopenda</string>
+    <string name="review_starred_day">Siku yenye nyota</string>
+    <string name="review_highlighted_in_period">Imeangaziwa katika kipindi hiki</string>
+    <string name="review_labels_created">Lebo Zilizoundwa</string>
+    <string name="review_labeled_day">Siku iliyoandikwa</string>
+    <string name="review_language_split">Mgawanyiko wa Lugha</string>
+    <string name="review_not_enough_text">Hakuna maandishi ya kutosha katika kipindi hiki</string>
+    <string name="lookback_reviews_title">Ukaguzi</string>
+    <string name="lookback_reviews_intro">Jenga tafakuri ya haraka kuhusu siku uliyochagua ya jarida.</string>
+    <string name="lookback_seven_days">siku 7</string>
+    <string name="lookback_one_month">mwezi 1</string>
+    <string name="lookback_weekly_review">Uhakiki wa Kila Wiki</string>
+    <string name="lookback_weekly_review_subtitle">Wiki hii kwa mtazamo mmoja</string>
+    <string name="lookback_monthly_review">Mapitio ya Kila Mwezi</string>
+    <string name="lookback_monthly_review_subtitle">Mwezi huu umefupishwa</string>
+    <string name="lookback_flashbacks_title">Katika siku hii katika miaka iliyopita</string>
+    <string name="lookback_highlights_title">Vivutio vyako</string>
+    <string name="lookback_empty_title">Bado hakuna kuangalia nyuma au vivutio.</string>
+    <string name="lookback_empty_subtitle">Siku muhimu unazopenda kuziona hapa!</string>
+    <string name="lookback_cd_random_entry">Nenda kwa ingizo la nasibu</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Kipindi</string>
+    <string name="statistics_compare_mode_title">Linganisha Modi</string>
+    <string name="statistics_compare_mode_subtitle">Mwezi, mwaka, na deltas ya neno kuu</string>
+    <string name="statistics_this_year">Mwaka Huu</string>
+    <string name="statistics_writing_days_delta">Kuandika Siku Delta</string>
+    <string name="statistics_top_person_delta">Mtu wa juu Delta</string>
+    <string name="statistics_no_people_mentions">Bado hakuna watu wanaotajwa</string>
+    <string name="statistics_top_place_delta">Mahali pa juu Delta</string>
+    <string name="statistics_no_place_mentions">Bado hakuna mahali palipotajwa</string>
+    <string name="statistics_structured_writing">Uandishi Uliopangwa</string>
+    <string name="statistics_template_led_format">Inaongozwa na kiolezo %1$d · %2$dFMT_2__</string>
+    <string name="statistics_blank_format">Nafasi %1$d · %2$dFMT_2__</string>
+    <string name="statistics_most_used_templates">Violezo Vinavyotumika Zaidi</string>
+    <string name="statistics_template_mix">Mchanganyiko wa Kiolezo</string>
+    <string name="statistics_follow_up_leaders">Viongozi wa Ufuatiliaji</string>
+    <string name="statistics_compare_details">Linganisha Maelezo</string>
+    <string name="statistics_label_month">Mwezi</string>
+    <string name="statistics_label_year">Mwaka</string>
+    <string name="statistics_this_month_count_format">Mwezi huu %1$d</string>
+    <string name="statistics_last_month_count_format">Mwezi uliopita %1$d</string>
+    <string name="statistics_longest_streak">Msururu mrefu zaidi</string>
+    <string name="statistics_most_active_day">Siku Amilifu Zaidi</string>
+    <string name="statistics_writing_consistency">Uthabiti wa Kuandika</string>
+    <string name="statistics_days_with_entries">Siku Na Maingizo</string>
+    <string name="statistics_best_month">Mwezi Bora</string>
+    <string name="statistics_best_month_format">%1$s · %2$d maingizo</string>
+    <string name="statistics_avg_writing_days_week">Wastani. Siku za Kuandika / Wiki</string>
+    <string name="statistics_days_decimal_format">%1$.1f siku</string>
+    <string name="statistics_based_on_total_words">Kulingana na jumla ya maneno yaliyoandikwa kwa siku</string>
+    <string name="statistics_light_words">Nyepesi (&lt;maneno 50)</string>
+    <string name="statistics_moderate_words">Wastani (maneno 50-200)</string>
+    <string name="statistics_heavy_words">Nzito (maneno 200-500)</string>
+    <string name="statistics_intense_words">Kali (maneno 500+)</string>
+    <string name="statistics_not_enough_text_languages">Maandishi hayatoshi kugundua lugha</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d lugha imetambuliwa</item>
+        <item quantity="other">Lugha %1$d zimetambuliwa</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Ugunduzi wa lugha bado unaendelea.</string>
+    <string name="statistics_latin_scripts_as_english">Maandishi ya Kilatini yanaonyeshwa kama Kiingereza</string>
+    <string name="statistics_use_more_accurate_detection">Tumia utambuzi sahihi zaidi</string>
+    <string name="statistics_write_more_entries_languages">Andika maingizo zaidi ili kuona takwimu za lugha.</string>
+    <string name="statistics_based_on_entry_time">Kulingana na wakati wa kuingia</string>
+    <string name="statistics_morning_time">Asubuhi (saa 5 asubuhi)</string>
+    <string name="statistics_afternoon_time">Alasiri (saa sita mchana-5pm)</string>
+    <string name="statistics_evening_time">Jioni (5pm-9pm)</string>
+    <string name="statistics_night_time">Usiku (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">Heatmap bado inajazwa.</string>
+    <string name="statistics_heatmap_less">Chini</string>
+    <string name="statistics_heatmap_more">Zaidi</string>
+    <string name="action_open">Fungua</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Matukio ya Jarida la Yaja</string>
+    <string name="tasker_event_desc">Chagua ni matukio gani ya jarida la Yaja yanapaswa kuanzisha wasifu huu wa Tasker.</string>
+    <string name="tasker_event_saved">Ingizo Limehifadhiwa</string>
+    <string name="tasker_event_edited">Ingizo Limehaririwa</string>
+    <string name="tasker_event_deleted">Ingizo Limefutwa</string>
+    <string name="tasker_event_default_hint">Ikiwa hakuna iliyochaguliwa, Yaja itabadilika kuwa Ingizo Lililohifadhiwa.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Sanidi ni nini Tasker inapaswa kunasa haraka katika Yaja.</string>
+    <string name="tasker_action_add_entry">Ongeza Ingizo</string>
+    <string name="tasker_action_add_event">Ongeza Tukio</string>
+    <string name="tasker_action_add_todo">Ongeza Todo</string>
+    <string name="tasker_action_append">Ongeza</string>
+    <string name="tasker_action_match_header_label">Mechi / kichwa</string>
+    <string name="tasker_action_match_header_placeholder">Simu Ulizokosa</string>
+    <string name="tasker_action_line_to_append_label">Mstari wa kuongezea</string>
+    <string name="tasker_action_text_label">Maandishi</string>
+    <string name="tasker_action_placeholder_event">Ujumbe wa tukio kutoka kwa Tasker</string>
+    <string name="tasker_action_placeholder_todo">Nunua maziwa</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Ujumbe wa haraka kutoka kwa Tasker</string>
+    <string name="tasker_action_tip_append">Simu ya kwanza huunda ingizo kuanzia na maandishi yanayolingana. Simu za baadaye huongeza mstari chini yake.</string>
+    <string name="tasker_action_tip_default">Kidokezo: Vigezo vya kitendaji vinaweza kuwekwa kwenye sehemu ya maandishi.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Kumbukumbu ya Kuacha Kufanya Kazi ya Kipindi Kilichotangulia</string>
+    <string name="crash_log_clear_close">Futa na Ufunge</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Zindua Programu</string>
+    <string name="tap_action_quick_capture">Kukamata Haraka</string>
+    <string name="tap_action_do_nothing">Usifanye Chochote</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja Kuandika Heatmap</string>
+    <string name="widget_cell_shape">Umbo la Kiini</string>
+    <string name="widget_corner_radius">Upenyo wa Pembe: %1$ddp</string>
+    <string name="widget_square">Mraba</string>
+    <string name="widget_round">Mzunguko</string>
+    <string name="widget_inner_margin">Pambizo la Ndani: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Nafasi kati ya ramani ya joto na kingo za wijeti</string>
+    <string name="widget_none">Hakuna</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Kwenye Gonga</string>
+    <string name="widget_on_tap_desc">Kitendo wakati wijeti inagongwa</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Nasa</string>
+    <string name="widget_qc_shape">Umbo la Wijeti</string>
+    <string name="widget_show_label">Onyesha Lebo</string>
+    <string name="widget_show_label_desc">Onyesha maandishi ya \'Nasa\' kwenye wijeti</string>
+    <string name="widget_show_icon">Onyesha Ikoni</string>
+    <string name="widget_show_icon_required">Aikoni inahitajika wakati lebo imefichwa</string>
+    <string name="widget_show_icon_desc">Onyesha ikoni ya kalamu kwenye wijeti</string>
+    <string name="widget_label_text">Weka Maandishi</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">Wijeti ya orodha ya mambo ya kufanya yenye ramani ya joto inayofanana na ramani.</string>
+    <string name="widget_todo_corner_radius">Kipenyo cha kona: %1$ddp</string>
+    <string name="widget_todo_padding">Ufungaji: %1$ddp</string>
+    <string name="widget_todo_show_completed">Onyesha kazi zilizokamilishwa</string>
+    <string name="widget_todo_show_completed_desc">Jumuisha vipengee vilivyowekwa alama kwenye orodha ya wijeti</string>
+    <string name="widget_todo_include_events">Jumuisha matukio</string>
+    <string name="widget_todo_include_events_desc">Onyesha maingizo ya tukio pamoja na mambo ya kufanya katika wijeti</string>
+    <string name="widget_todo_show_header">Onyesha kichwa cha Todo</string>
+    <string name="widget_todo_show_header_desc">Onyesha au ufiche safu mlalo ya kichwa cha wijeti</string>
+    <string name="widget_todo_auto_hide">Ficha wijeti kiotomatiki wakati mambo yote yamekamilika</string>
+    <string name="widget_todo_auto_hide_unavailable">Haipatikani wakati kazi zilizokamilishwa zinaonyeshwa</string>
+    <string name="widget_todo_auto_hide_desc">Fanya wijeti iwe wazi wakati hakuna kazi zinazosubiri</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">kufanyika</string>
+    <string name="todo_confirm_mark_not_done">haijafanyika</string>
+    <string name="todo_confirm_title">Je, ungependa kutia alama kazi kama %1$s?</string>
+    <string name="todo_confirm_reopen">Kazi hii imekamilika kwa sasa. Thibitisha kabla ya kuifungua tena.</string>
+    <string name="todo_confirm_complete">Kazi hii bado iko wazi. Thibitisha kabla ya kutia alama kuwa imekamilika.</string>
+    <string name="todo_confirm_accidental_tap">Kugonga kwa bahati mbaya hakutabadilisha jukumu.</string>
+    <string name="todo_confirm_yes_mark">Ndiyo, tia alama %1$s</string>
+    <string name="todo_confirm_open_yaja">Fungua katika Yaja</string>
+    <string name="todo_confirm_keep_as_is">Weka kama ilivyo</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">programu nyingine ya uandishi wa habari</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">kutoka kwa maabara ya RJ</string>
+    <string name="help_made_in">Imetengenezwa kwa 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Ghairi uingizaji</string>
+    <string name="timeline_show_all_dates">Onyesha tarehe zote</string>
+    <string name="timeline_show_all_dates_subtitle">Jumuisha siku zote zilizopita, hata bila maingizo</string>
+    <string name="settings_background_tint_clean">Safi</string>
+    <string name="settings_background_tint_soft">Laini</string>
+    <string name="settings_background_tint_rich">Tajiri</string>
+    <string name="settings_background_tint_deep">Kina</string>
+    <string name="settings_accent_style_complementary">Kukamilisha</string>
+    <string name="settings_accent_style_analogous">Analojia</string>
+    <string name="settings_accent_style_triadic">Utatu</string>
+    <string name="settings_accent_style_soft">Laini</string>
+</resources>

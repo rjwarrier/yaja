@@ -2,27 +2,31 @@
 <data-extraction-rules>
     <cloud-backup>
         <!--
-            INCLUDE: app preferences (theme, font, first-day-of-week, PIN hash, etc.)
-            This lets settings migrate when the user gets a new phone.
-            Journal entries themselves are stored in user-selected external storage
-            (SAF URI) and are NOT included here — they live in the user's own folder.
+            Cloud backup: only lightweight settings and People & Places definitions.
+            Journal files, generated backup ZIPs, caches, and version-history snapshots are excluded
+            from silent cloud backup. Use Yaja's explicit Backup action for portable journal copies.
         -->
         <include
             domain="sharedpref"
             path="journal_settings.xml" />
+        <include
+            domain="sharedpref"
+            path="keyword_prefs.xml" />
     </cloud-backup>
 
-    <!--
-        Device-to-device transfers (e.g. cable or local Wi-Fi migration):
-        Include everything so the user's data moves with them.
-    -->
     <device-transfer>
+        <!--
+            Device-to-device transfers: move real internal journal files and core settings,
+            but skip generated caches, exported backup ZIPs, and no-backup version history.
+        -->
         <include
             domain="sharedpref"
             path="journal_settings.xml" />
         <include
+            domain="sharedpref"
+            path="keyword_prefs.xml" />
+        <include
             domain="file"
-            path="journal_cache_v1.json" />
+            path="journals/" />
     </device-transfer>
 </data-extraction-rules>
-

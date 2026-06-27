@@ -1,15 +1,23 @@
 package com.mj.yaja.ui.screens
 
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CalendarMonth
+import androidx.compose.material.icons.rounded.CalendarViewWeek
+import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.Shuffle
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -19,8 +27,22 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.data.NavigationChromeMode
+import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.ui.design.AppEntranceStrength
+import com.mj.yaja.ui.design.AppStaggeredEntrance
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.AppScreenReveal
+import com.mj.yaja.ui.design.enterOrNone
+import com.mj.yaja.ui.design.expressiveFabMotion
+import com.mj.yaja.ui.design.exitOrNone
+import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.floatTween
+import com.mj.yaja.ui.design.scaledDuration
+import com.mj.yaja.ui.design.rememberAppEntrance
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.LocalDate
@@ -32,17 +54,46 @@ fun LookbackScreen(
         viewModel: JournalViewModel,
         onOpenDrawer: () -> Unit,
         onNavigateToDate: (LocalDate) -> Unit,
-        onNavigateToJournal: () -> Unit,
-        onNavigateToCalendar: () -> Unit,
-        onNavigateToLookback: () -> Unit,
-        onNavigateToShortcodes: () -> Unit,
-        onNavigateToSettings: () -> Unit,
-        onNavigateToHelp: () -> Unit
+        onNavigateToReview: (ReviewPeriodType) -> Unit,
+        onSurpriseMeNavigate: (LocalDate) -> Unit
 ) {
-        val uiState by viewModel.uiState.collectAsState()
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val flashbacks = uiState.lookbackEntries
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsState()
+        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
+        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
+        val starredLabels by viewModel.starredLabels.collectAsStateWithLifecycle()
+        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
+        val monthFirst = com.mj.yaja.ui.utils.DateLinkUtils.resolveMonthFirst(dateOrderPreference)
+        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
+        val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
+        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
+        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val entranceTriggered = rememberAppEntrance()
+        val motionPreference = LocalAnimationPreference.current
+        val listState = rememberLazyListState()
+        val showSurpriseFab by remember {
+                derivedStateOf {
+                        listState.firstVisibleItemIndex == 0 || !listState.isScrollInProgress
+                }
+        }
+        val surpriseFabInteraction = remember { MutableInteractionSource() }
+        val fabBottomPadding =
+                if (showBottomBar) {
+                        when (navigationChromeMode) {
+                                NavigationChromeMode.EXPRESSIVE_PANEL -> {
+                                        if (showBottomPanelLabels) 92.dp else 76.dp
+                                }
+                                NavigationChromeMode.FLOATING_BAR -> {
+                                        0.dp
+                                }
+                        }
+                } else {
+                        0.dp
+                }
+
+        LaunchedEffect(uiState.selectedDate) {
+                viewModel.ensureLookbackLoaded(force = true)
+        }
 
         Scaffold(
                 topBar = {
@@ -74,187 +125,78 @@ fun LookbackScreen(
                                         )
                         )
                 },
+                floatingActionButton = {
+                        Box(
+                                modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 16.dp)
+                                        .padding(bottom = fabBottomPadding)
+                        ) {
+                                LookbackSurpriseFab(
+                                        visible = showSurpriseFab,
+                                        motionPreference = motionPreference,
+                                        interactionSource = surpriseFabInteraction,
+                                        onClick = {
+                                                viewModel.surpriseMe()?.let { onSurpriseMeNavigate(it) }
+                                        },
+                                        modifier = Modifier.align(Alignment.BottomEnd)
+                                )
+                        }
+                },
                 containerColor = MaterialTheme.colorScheme.background,
                 contentWindowInsets = WindowInsets.navigationBars.union(WindowInsets.ime)
         ) { paddingValues ->
-                LazyColumn(
-                        modifier = Modifier.fillMaxSize().padding(paddingValues),
-                        contentPadding = PaddingValues(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                        if (flashbacks.isNotEmpty()) {
+                Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+                        AppScreenReveal(
+                                visible = true,
+                                key = uiState.selectedDate,
+                                modifier = Modifier.fillMaxSize()
+                        ) {
+                                LazyColumn(
+                                        state = listState,
+                                        modifier = Modifier.fillMaxSize(),
+                                contentPadding = PaddingValues(
+                                        start = 16.dp,
+                                        top = 16.dp,
+                                        end = 16.dp,
+                                        bottom = 120.dp
+                                ),
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
                                 item {
-                                        SectionHeader(
-                                                title = "On this day in past years",
-                                                icon = Icons.Rounded.History
+                                        LookbackFlashbacksSection(
+                                                flashbacks = flashbacks,
+                                                selectedDate = uiState.selectedDate,
+                                                entranceTriggered = entranceTriggered,
+                                                isPreviewLimitEnabled = isPreviewLimitEnabled,
+                                                previewLimitLength = previewLimitLength,
+                                                onNavigateToDate = onNavigateToDate,
+                                                monthFirst = monthFirst,
+                                                customKeywords = customDateKeywords
                                         )
                                 }
 
-                                flashbacks.entries.forEachIndexed { index, entryMap ->
-                                        val yearsAgo = entryMap.key
-                                        val entries = entryMap.value
-                                        item(key = "flashback_$yearsAgo") {
-                                                var visible by remember { mutableStateOf(false) }
-                                                LaunchedEffect(Unit) { visible = true }
-
-                                                AnimatedVisibility(
-                                                        visible = visible,
-                                                        enter =
-                                                                fadeIn(
-                                                                        tween(
-                                                                                400,
-                                                                                delayMillis =
-                                                                                        index * 100
-                                                                        )
-                                                                ) +
-                                                                        slideInVertically(
-                                                                                tween(
-                                                                                        400,
-                                                                                        delayMillis =
-                                                                                                index *
-                                                                                                        100
-                                                                                )
-                                                                        ) { it / 2 }
-                                                ) {
-                                                        FlashbackCard(
-                                                                yearsAgo = yearsAgo,
-                                                                date =
-                                                                        uiState.selectedDate
-                                                                                .minusYears(
-                                                                                        yearsAgo.toLong()
-                                                                                ),
-                                                                entries = entries,
-                                                                isPreviewLimitEnabled =
-                                                                        isPreviewLimitEnabled,
-                                                                previewLimitLength =
-                                                                        previewLimitLength,
-                                                                onClick = {
-                                                                        onNavigateToDate(
-                                                                                uiState.selectedDate
-                                                                                        .minusYears(
-                                                                                                yearsAgo.toLong()
-                                                                                        )
-                                                                        )
-                                                                }
-                                                        )
-                                                }
-                                        }
-                                }
-                        }
-
-                        if (uiState.favoritedHighlights.isNotEmpty()) {
                                 item {
-                                        SectionHeader(
-                                                title = "Your Highlights",
-                                                icon = Icons.Rounded.Star
+                                        LookbackHighlightsSection(
+                                                favoritedHighlights = uiState.favoritedHighlights,
+                                                starredLabels = starredLabels,
+                                                entranceTriggered = entranceTriggered,
+                                                onNavigateToDate = onNavigateToDate
                                         )
                                 }
 
-                                itemsIndexed(
-                                        uiState.favoritedHighlights,
-                                        key = { _, date -> "highlight_$date" }
-                                ) { index, date ->
-                                        var visible by remember { mutableStateOf(false) }
-                                        LaunchedEffect(Unit) { visible = true }
+                                item {
+                                        LookbackReviewSection(
+                                                onNavigateToReview = onNavigateToReview
+                                        )
+                                }
 
-                                        AnimatedVisibility(
-                                                visible = visible,
-                                                enter =
-                                                        fadeIn(
-                                                                tween(400, delayMillis = index * 80)
-                                                        ) +
-                                                                slideInVertically(
-                                                                        tween(
-                                                                                400,
-                                                                                delayMillis =
-                                                                                        index * 80
-                                                                        )
-                                                                ) { it / 2 }
-                                        ) {
-                                                HighlightCard(
-                                                        date = date,
-                                                        onClick = { onNavigateToDate(date) }
-                                                )
+                                if (flashbacks.isEmpty() && uiState.favoritedHighlights.isEmpty()) {
+                                        item {
+                                                LookbackEmptyState()
                                         }
                                 }
                         }
-
-                        if (flashbacks.isEmpty() && uiState.favoritedHighlights.isEmpty()) {
-                                item {
-                                        Box(
-                                                modifier = Modifier.fillParentMaxSize(),
-                                                contentAlignment = Alignment.Center
-                                        ) {
-                                                val infiniteTransition =
-                                                        rememberInfiniteTransition(
-                                                                label = "EmptyState"
-                                                        )
-                                                val scale by
-                                                        infiniteTransition.animateFloat(
-                                                                initialValue = 1f,
-                                                                targetValue = 1.05f,
-                                                                animationSpec =
-                                                                        infiniteRepeatable(
-                                                                                animation =
-                                                                                        tween(
-                                                                                                2000,
-                                                                                                easing =
-                                                                                                        FastOutSlowInEasing
-                                                                                        ),
-                                                                                repeatMode =
-                                                                                        RepeatMode
-                                                                                                .Reverse
-                                                                        ),
-                                                                label = "IconBreathing"
-                                                        )
-
-                                                Column(
-                                                        horizontalAlignment =
-                                                                Alignment.CenterHorizontally
-                                                ) {
-                                                        Icon(
-                                                                imageVector = Icons.Rounded.History,
-                                                                contentDescription = null,
-                                                                modifier =
-                                                                        Modifier.size(64.dp)
-                                                                                .scale(scale),
-                                                                tint =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                                                .copy(alpha = 0.2f)
-                                                        )
-                                                        Spacer(Modifier.height(16.dp))
-                                                        Text(
-                                                                "No lookbacks or highlights yet.",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .titleMedium.copy(
-                                                                                fontWeight =
-                                                                                        FontWeight
-                                                                                                .Bold
-                                                                        ),
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                                                .copy(alpha = 0.6f)
-                                                        )
-                                                        Text(
-                                                                "Favorite important days to see them here!",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyMedium,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                                                .copy(alpha = 0.4f),
-                                                                textAlign =
-                                                                        androidx.compose.ui.text
-                                                                                .style.TextAlign
-                                                                                .Center
-                                                        )
-                                                }
-                                        }
-                                }
                         }
                 }
         }
@@ -269,7 +211,7 @@ fun SectionHeader(title: String, icon: androidx.compose.ui.graphics.vector.Image
                 animateFloatAsState(
                         targetValue = if (visible) 1f else 0.5f,
                         animationSpec =
-                                spring(
+                                LocalAnimationPreference.current.floatSpring(
                                         dampingRatio = Spring.DampingRatioMediumBouncy,
                                         stiffness = Spring.StiffnessLow
                                 ),
@@ -279,18 +221,18 @@ fun SectionHeader(title: String, icon: androidx.compose.ui.graphics.vector.Image
         val alpha by
                 animateFloatAsState(
                         targetValue = if (visible) 1f else 0f,
-                        animationSpec = tween(600),
+                        animationSpec = LocalAnimationPreference.current.floatTween(600),
                         label = "HeaderAlpha"
                 )
 
         Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(top = 16.dp, bottom = 12.dp).alpha(alpha)
+                modifier = Modifier.padding(top = 18.dp, bottom = 14.dp).alpha(alpha)
         ) {
                 Surface(
-                        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f),
-                        shape = CircleShape,
-                        modifier = Modifier.size(36.dp).scale(scale)
+                        color = MaterialTheme.colorScheme.secondaryContainer,
+                        shape = RoundedCornerShape(18.dp),
+                        modifier = Modifier.size(40.dp).scale(scale)
                 ) {
                         Box(
                                 contentAlignment = Alignment.Center,
@@ -299,18 +241,18 @@ fun SectionHeader(title: String, icon: androidx.compose.ui.graphics.vector.Image
                                 Icon(
                                         imageVector = icon,
                                         contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
+                                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
                                         modifier = Modifier.size(20.dp)
                                 )
                         }
                 }
-                Spacer(Modifier.width(16.dp))
+                Spacer(Modifier.width(14.dp))
                 Text(
                         text = title,
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 0.5.sp
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 0.2.sp
                 )
         }
 }
@@ -322,21 +264,11 @@ fun FlashbackCard(
         entries: List<String>,
         isPreviewLimitEnabled: Boolean,
         previewLimitLength: Int,
-        onClick: () -> Unit
+        onClick: () -> Unit,
+        onDateLinkClick: ((LocalDate) -> Unit)? = null,
+        monthFirst: Boolean = com.mj.yaja.ui.utils.DateLinkUtils.isMonthFirst(),
+        customKeywords: List<com.mj.yaja.data.DateKeywordEntry> = emptyList()
 ) {
-        val infiniteTransition = rememberInfiniteTransition(label = "BadgePulse")
-        val pulseScale by
-                infiniteTransition.animateFloat(
-                        initialValue = 1f,
-                        targetValue = 1.06f,
-                        animationSpec =
-                                infiniteRepeatable(
-                                        animation = tween(1500, easing = FastOutSlowInEasing),
-                                        repeatMode = RepeatMode.Reverse
-                                ),
-                        label = "PulseEffect"
-                )
-
         ElevatedCard(
                 modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
                 colors =
@@ -344,7 +276,7 @@ fun FlashbackCard(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerLow
                         ),
                 shape = MaterialTheme.shapes.large,
-                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.dp)
         ) {
                 Column(modifier = Modifier.padding(20.dp)) {
                         Row(
@@ -352,15 +284,20 @@ fun FlashbackCard(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                         ) {
-                                Text(
-                                        text =
-                                                "$yearsAgo ${if (yearsAgo == 1) "YEAR" else "YEARS"} AGO",
-                                        style = MaterialTheme.typography.labelMedium,
-                                        fontWeight = FontWeight.ExtraBold,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        letterSpacing = 1.sp,
-                                        modifier = Modifier.scale(pulseScale)
-                                )
+                                Surface(
+                                        color = MaterialTheme.colorScheme.secondaryContainer,
+                                        shape = RoundedCornerShape(16.dp)
+                                ) {
+                                        Text(
+                                                text =
+                                                        "$yearsAgo ${if (yearsAgo == 1) "YEAR" else "YEARS"} AGO",
+                                                style = MaterialTheme.typography.labelMedium,
+                                                fontWeight = FontWeight.Bold,
+                                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                                letterSpacing = 0.8.sp,
+                                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
+                                        )
+                                }
                                 Icon(
                                         imageVector = Icons.Rounded.History,
                                         contentDescription = null,
@@ -404,21 +341,29 @@ fun FlashbackCard(
                                                                         )
                                                 )
                                                 Spacer(Modifier.width(12.dp))
+                                                val previewText =
+                                                        if (isPreviewLimitEnabled &&
+                                                                        cleanEntry.length >
+                                                                                previewLimitLength
+                                                        ) {
+                                                                cleanEntry.take(previewLimitLength) + "...."
+                                                        } else {
+                                                                cleanEntry
+                                                        }
+                                                val linkColor = MaterialTheme.colorScheme.primary
                                                 Text(
-                                                        text =
-                                                                MarkdownUtils.parseMarkdown(
-                                                                        if (isPreviewLimitEnabled &&
-                                                                                        cleanEntry
-                                                                                                .length >
-                                                                                                previewLimitLength
-                                                                        ) {
-                                                                                cleanEntry.take(
-                                                                                        previewLimitLength
-                                                                                ) + "...."
-                                                                        } else {
-                                                                                cleanEntry
-                                                                        }
-                                                                ),
+                                                        text = if (onDateLinkClick != null) {
+                                                                MarkdownUtils.parseMarkdownWithDateLinks(
+                                                                        text = previewText,
+                                                                        entryDate = date,
+                                                                        linkColor = linkColor,
+                                                                        monthFirst = monthFirst,
+                                                                        customKeywords = customKeywords,
+                                                                        onDateClick = onDateLinkClick
+                                                                )
+                                                        } else {
+                                                                MarkdownUtils.parseMarkdown(previewText)
+                                                        },
                                                         style = MaterialTheme.typography.bodyLarge,
                                                         maxLines = 2,
                                                         overflow =
@@ -449,19 +394,27 @@ fun FlashbackCard(
 }
 
 @Composable
-fun HighlightCard(date: LocalDate, onClick: () -> Unit) {
-        val infiniteTransition = rememberInfiniteTransition(label = "StarTwinkle")
-        val alpha by
-                infiniteTransition.animateFloat(
-                        initialValue = 0.6f,
-                        targetValue = 1f,
-                        animationSpec =
-                                infiniteRepeatable(
-                                        animation = tween(1000, easing = LinearEasing),
-                                        repeatMode = RepeatMode.Reverse
-                                ),
-                        label = "TwinkleAlpha"
-                )
+fun HighlightCard(date: LocalDate, onClick: () -> Unit, label: String = "") {
+        val animationPreference = LocalAnimationPreference.current
+        val alpha = if (animationPreference == AnimationPreference.OFF) {
+                1f
+        } else {
+                val infiniteTransition = rememberInfiniteTransition(label = "StarTwinkle")
+                val startAlpha = if (animationPreference == AnimationPreference.REDUCED) 0.85f else 0.6f
+                val duration = if (animationPreference == AnimationPreference.REDUCED) 2000 else 1000
+                val alphaState by
+                        infiniteTransition.animateFloat(
+                                initialValue = startAlpha,
+                                targetValue = 1f,
+                                animationSpec =
+                                        infiniteRepeatable(
+                                                animation = tween(duration, easing = LinearEasing),
+                                                repeatMode = RepeatMode.Reverse
+                                        ),
+                                label = "TwinkleAlpha"
+                        )
+                alphaState
+        }
 
         ElevatedCard(
                 modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
@@ -477,9 +430,9 @@ fun HighlightCard(date: LocalDate, onClick: () -> Unit) {
                         verticalAlignment = Alignment.CenterVertically
                 ) {
                         Surface(
-                                color = Color(0xFFFFD700).copy(alpha = 0.15f),
-                                shape = CircleShape,
-                                modifier = Modifier.size(40.dp)
+                                color = MaterialTheme.colorScheme.tertiaryContainer,
+                                shape = RoundedCornerShape(18.dp),
+                                modifier = Modifier.size(42.dp)
                         ) {
                                 Box(
                                         contentAlignment = Alignment.Center,
@@ -488,13 +441,13 @@ fun HighlightCard(date: LocalDate, onClick: () -> Unit) {
                                         Icon(
                                                 imageVector = Icons.Rounded.Star,
                                                 contentDescription = null,
-                                                tint = Color(0xFFFFD700).copy(alpha = alpha),
+                                                tint = MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = alpha),
                                                 modifier = Modifier.size(24.dp)
                                         )
                                 }
                         }
                         Spacer(Modifier.width(16.dp))
-                        Column {
+                        Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                         text =
                                                 date.format(
@@ -504,6 +457,15 @@ fun HighlightCard(date: LocalDate, onClick: () -> Unit) {
                                         fontWeight = FontWeight.Bold,
                                         color = MaterialTheme.colorScheme.onSurface
                                 )
+                                if (label.isNotEmpty()) {
+                                        Text(
+                                                text = label,
+                                                style = MaterialTheme.typography.labelMedium,
+                                                fontWeight = FontWeight.SemiBold,
+                                                color = MaterialTheme.colorScheme.primary,
+                                                maxLines = 1
+                                        )
+                                }
                                 Text(
                                         text = date.year.toString(),
                                         style = MaterialTheme.typography.labelLarge,
@@ -517,10 +479,3 @@ fun HighlightCard(date: LocalDate, onClick: () -> Unit) {
                 }
         }
 }
-
-data class MonthlyStatsData(
-        val entriesCount: Int,
-        val wordCount: Int,
-        val mostActiveDay: String?,
-        val longestStreak: Int
-)

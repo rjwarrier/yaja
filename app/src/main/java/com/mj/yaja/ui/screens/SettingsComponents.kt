@@ -35,6 +35,9 @@ import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.ui.theme.GoogleSansFamily
 import com.mj.yaja.ui.theme.JetBrainsMono
 import com.mj.yaja.ui.theme.LibreBaskervilleFamily
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.remember
+import com.mj.yaja.ui.design.expressivePressMotion
 
 @Composable
 fun FontSelectionCard(
@@ -42,19 +45,25 @@ fun FontSelectionCard(
         isSelected: Boolean,
         onClick: () -> Unit,
         fontFamily: AppFontFamily,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
+        customFamily: androidx.compose.ui.text.font.FontFamily? = null
 ) {
         val targetFontFamily =
                 when (fontFamily) {
                         AppFontFamily.SANS_SERIF -> GoogleSansFamily
                         AppFontFamily.SERIF -> LibreBaskervilleFamily
                         AppFontFamily.MONO -> JetBrainsMono
+                        // Falls back to the system default until a font is uploaded.
+                        AppFontFamily.CUSTOM -> customFamily
                 }
+
+        val interactionSource = remember { MutableInteractionSource() }
 
         Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
                 ElevatedCard(
                         onClick = onClick,
-                        modifier = Modifier.fillMaxWidth().height(80.dp),
+                        interactionSource = interactionSource,
+                        modifier = Modifier.fillMaxWidth().height(80.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                         shape = MaterialTheme.shapes.medium,
                         colors =
                                 CardDefaults.elevatedCardColors(
@@ -132,9 +141,11 @@ fun ThemeSelectionCard(
         preference: ThemePreference,
         modifier: Modifier = Modifier
 ) {
+        val interactionSource = remember { MutableInteractionSource() }
         ElevatedCard(
                 onClick = onClick,
-                modifier = modifier.height(100.dp),
+                interactionSource = interactionSource,
+                modifier = modifier.height(100.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                 shape = MaterialTheme.shapes.medium,
                 colors =
                         CardDefaults.elevatedCardColors(

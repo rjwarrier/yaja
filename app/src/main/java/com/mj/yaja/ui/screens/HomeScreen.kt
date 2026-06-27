@@ -1,6 +1,5 @@
 package com.mj.yaja.ui.screens
 
-import android.widget.Toast
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.*
@@ -16,14 +15,29 @@ import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.*
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import com.mj.yaja.R
+import com.mj.yaja.data.countCharsIgnoringChecklistMarkers
+import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mj.yaja.data.SwipeDirection
+import com.mj.yaja.data.KeywordDefinition
+import com.mj.yaja.data.KeywordMatch
+import com.mj.yaja.data.NavigationChromeMode
+import com.mj.yaja.data.DueRevisitItem
+import com.mj.yaja.data.EntryStyle
+import com.mj.yaja.ui.components.AnimatedMenuButton
+import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.LocalDate
@@ -32,27 +46,50 @@ import kotlinx.coroutines.*
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
+internal data class HomeEntryListItem(
+        val id: Long,
+        val text: String
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
         viewModel: JournalViewModel,
         onOpenDrawer: () -> Unit,
-        onNavigateToJournal: () -> Unit,
-        onNavigateToCalendar: () -> Unit,
+        isDrawerOpen: Boolean,
         onNavigateToAddEntry: () -> Unit,
-        onNavigateToSettings: () -> Unit,
-        onNavigateToHelp: () -> Unit,
-        onNavigateToLookback: () -> Unit,
-        onNavigateToShortcodes: () -> Unit
+        onNavigateToVersionSnapshots: () -> Unit,
 ) {
-        val uiState by viewModel.uiState.collectAsState()
-        val showTimestamps by viewModel.showTimestamps.collectAsState()
-        val swipeToDeleteEnabled by viewModel.swipeToDeleteEnabled.collectAsState()
-        val swipeDeleteDirection by viewModel.swipeDeleteDirection.collectAsState()
-        val favoritedDates by viewModel.favoritedDates.collectAsState()
-        val isFavorited = favoritedDates.contains(uiState.selectedDate.toString())
-        val lastDeleted by viewModel.lastDeleted.collectAsState()
-        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
+        val showDayHeaderStats by viewModel.showDayHeaderStats.collectAsStateWithLifecycle()
+        val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
+        val swipeToNavigateDatesEnabled by
+                viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
+        val starredDates by viewModel.starredDates.collectAsStateWithLifecycle()
+        val starredLabels by viewModel.starredLabels.collectAsStateWithLifecycle()
+        val isFavorited by remember(uiState.selectedDate, starredDates) {
+                derivedStateOf { starredDates.contains(uiState.selectedDate) }
+        }
+        val lastDeleted by viewModel.lastDeleted.collectAsStateWithLifecycle()
+        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
+        val entryDeleteSelectionEnabled by
+                viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
+        val currentDayLabel by viewModel.currentDayLabel.collectAsStateWithLifecycle()
+        val dueRevisits by viewModel.dueRevisits.collectAsStateWithLifecycle()
+        val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
+        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
+        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
+        val versionSnapshots by viewModel.versionHistorySnapshots.collectAsStateWithLifecycle()
+        // Day label dialog state (for all days)
+        var showDayLabelDialog by remember { mutableStateOf(false) }
+        var dayLabelInput by remember { mutableStateOf("") }
+
+        // Star label dialog state (for starring days without an existing label)
+        var showLabelDialog by remember { mutableStateOf(false) }
+        var labelInput by remember { mutableStateOf("") }
+        var selectedEntryItemIds by remember(uiState.selectedDate) { mutableStateOf<Set<Long>>(emptySet()) }
 
         // Countdown state for undo bar (5 seconds)
         val undoCountdown = remember { Animatable(1f) }
@@ -63,47 +100,84 @@ fun HomeScreen(
                                 targetValue = 0f,
                                 animationSpec = tween(durationMillis = 5000, easing = LinearEasing)
                         )
-                        viewModel.clearLastDeleted()
+                        viewModel.finalizeDeleteCountdown()
                 }
         }
 
-        val context = androidx.compose.ui.platform.LocalContext.current
+        val allowFutureEntries by viewModel.allowFutureEntries.collectAsStateWithLifecycle()
+        val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsStateWithLifecycle()
+        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
+        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
+        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
+        val monthFirst by remember(dateOrderPreference) {
+                derivedStateOf {
+                        com.mj.yaja.ui.utils.DateLinkUtils.resolveMonthFirst(dateOrderPreference)
+                }
+        }
+        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
+        val keywords by viewModel.keywords.collectAsStateWithLifecycle()
+        val keywordHighlightingEnabled by
+                viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
+
+        LaunchedEffect(uiState.selectedDate) {
+                viewModel.loadVersionHistorySnapshots(uiState.selectedDate)
+        }
+
         LaunchedEffect(Unit) {
-                viewModel.toastEvents.collect { message ->
-                        android.widget.Toast.makeText(
-                                        context,
-                                        message,
-                                        android.widget.Toast.LENGTH_SHORT
-                                )
-                                .show()
-                }
+                viewModel.refreshSelectedDateEntries(
+                        showLoading = false,
+                        reason = "home_screen_visible"
+                )
         }
-
-        val allowFutureEntries by viewModel.allowFutureEntries.collectAsState()
-        val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsState()
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsState()
 
         Box(modifier = Modifier.fillMaxSize()) {
                 HomeScreenContent(
                         selectedDate = uiState.selectedDate,
                         isLoading = uiState.isLoading,
                         entries = uiState.entries,
+                        activeKeywordFilter = uiState.activeKeywordFilter,
+                        keywordFilteredEntries = uiState.keywordFilteredEntries,
                         onDeleteEntry = { index -> viewModel.deleteEntry(index) },
-                        onReorderEntries = { reorderedEntries -> viewModel.reorderEntries(reorderedEntries) },
-                        onOpenDrawer = onOpenDrawer,
-                        onNavigateToCalendar = onNavigateToCalendar,
-                        onNavigateToAddEntry = onNavigateToAddEntry,
-                        onNavigateToSettings = onNavigateToSettings,
-                        onNavigateToHelp = onNavigateToHelp,
-                        onNavigateToLookback = onNavigateToLookback,
-                        onNavigateToShortcodes = onNavigateToShortcodes,
-                        onNavigateToJournal = onNavigateToJournal,
-                        onPreviousDate = {
-                                viewModel.selectDate(uiState.selectedDate.minusDays(1))
+                        selectedEntryItemIds = selectedEntryItemIds,
+                        onClearEntrySelection = { selectedEntryItemIds = emptySet() },
+                        onToggleEntrySelection = { itemId ->
+                                selectedEntryItemIds =
+                                        if (itemId in selectedEntryItemIds) {
+                                                selectedEntryItemIds - itemId
+                                        } else {
+                                                selectedEntryItemIds + itemId
+                                        }
                         },
-                        onNextDate = { viewModel.selectDate(uiState.selectedDate.plusDays(1)) },
-                        onJumpToToday = { viewModel.selectDate(LocalDate.now()) },
+                        onStartEntrySelection = { itemId ->
+                                selectedEntryItemIds = selectedEntryItemIds + itemId
+                        },
+                        onDeleteSelectedEntries = { indices ->
+                                selectedEntryItemIds = emptySet()
+                                viewModel.deleteEntries(indices)
+                        },
+                        onReorderEntries = { reorderedEntries -> viewModel.reorderEntries(reorderedEntries) },
+                        onClearKeywordFilter = { viewModel.clearKeywordFilter() },
+                        onOpenDrawer = onOpenDrawer,
+                        onNavigateToAddEntry = onNavigateToAddEntry,
+                        onPreviousDate = {
+                                viewModel.selectDate(
+                                        uiState.selectedDate.minusDays(1),
+                                        source = "home_previous_date"
+                                )
+                        },
+                        onNextDate = {
+                                viewModel.selectDate(
+                                        uiState.selectedDate.plusDays(1),
+                                        source = "home_next_date"
+                                )
+                        },
+                        onSelectDate = { viewModel.selectDate(it, source = "home_date_select") },
+                        onJumpToToday = {
+                                viewModel.selectDate(
+                                        LocalDate.now(),
+                                        source = "home_jump_to_today"
+                                )
+                        },
                         onStartEditing = { entry, index -> viewModel.startEditing(entry, index) },
                         onClearEditing = { viewModel.clearEditing() },
                         searchQuery = uiState.searchQuery,
@@ -111,128 +185,103 @@ fun HomeScreen(
                         onSearchQueryChanged = { viewModel.updateSearchQuery(it) },
                         onClearSearch = { viewModel.clearSearch() },
                         showTimestamps = showTimestamps,
+                        showDayHeaderStats = showDayHeaderStats,
+                        renderCheckboxesAsText = renderCheckboxesAsText,
                         isFavorited = isFavorited,
-                        onToggleFavorite = { viewModel.toggleFavorite(uiState.selectedDate) },
                         allowFutureEntries = allowFutureEntries,
-                        swipeToDeleteEnabled = swipeToDeleteEnabled,
-                        swipeDeleteDirection = swipeDeleteDirection,
+                        swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled,
                         swipeToSyncEnabled = swipeToSyncEnabled,
                         onRefreshCache = { viewModel.refreshCache() },
                         onResultClicked = { date ->
                                 viewModel.clearSearch()
-                                viewModel.selectDate(date)
+                                viewModel.selectDate(date, source = "home_revisit_jump")
                         },
                         onDismissAnomalyDialog = { viewModel.dismissCacheAnomalyDialog() },
                         onAcceptAnomalyRefresh = { viewModel.acceptCacheAnomalyRefresh() },
                         showCacheAnomalyDialog = uiState.showCacheAnomalyDialog,
                         isPreviewLimitEnabled = isPreviewLimitEnabled,
                         previewLimitLength = previewLimitLength,
-                        enableDragAndDrop = enableDragAndDrop
+                        enableDragAndDrop = enableDragAndDrop,
+                        dayLabel = currentDayLabel,
+                        starredLabels = starredLabels,
+                        dueRevisits = dueRevisits,
+                        entryStyle = entryStyle,
+                        onOpenDueRevisit = { sourceDate ->
+                                viewModel.selectDate(sourceDate, source = "home_due_revisit")
+                        },
+                        onOpenVersionSnapshots = onNavigateToVersionSnapshots,
+                        showVersionSnapshotsButton = versionSnapshots.isNotEmpty(),
+                        versionSnapshotsCount = versionSnapshots.size,
+                        onEditDayLabel = {
+                            dayLabelInput = currentDayLabel  // pre-fill with existing label
+                            showDayLabelDialog = true
+                        },
+                        onToggleStar = {
+                                if (!isFavorited) {
+                                        // Starring — skip the label dialog if the day already has a label
+                                        if (currentDayLabel.isNotEmpty()) {
+                                                // Use existing day label as the star label too
+                                                viewModel.setStarredWithLabel(uiState.selectedDate, currentDayLabel)
+                                        } else {
+                                                labelInput = ""
+                                                showLabelDialog = true
+                                        }
+                                } else {
+                                        // Unstarring - just toggle off
+                                        viewModel.unStarDate(uiState.selectedDate)
+                                }
+                        },
+                        onDateLinkClick = { date ->
+                                viewModel.selectDate(date, source = "home_date_link")
+                        },
+                        keywords = if (keywordHighlightingEnabled) keywords else emptyList(),
+                        monthFirst = monthFirst,
+                        customDateKeywords = customDateKeywords,
+                        isDrawerOpen = isDrawerOpen,
+                        entryDeleteSelectionEnabled = entryDeleteSelectionEnabled,
+                        fabBottomPadding =
+                                if (showBottomBar) {
+                                        when (navigationChromeMode) {
+                                                NavigationChromeMode.EXPRESSIVE_PANEL -> {
+                                                        if (showBottomPanelLabels) 92.dp else 76.dp
+                                                }
+                                                NavigationChromeMode.FLOATING_BAR -> {
+                                                        0.dp
+                                                }
+                                        }
+                                } else {
+                                        0.dp
+                                }
                 )
 
-                // UNDO bar — full-width rectangle at the bottom with countdown + UNDO button
-                AnimatedVisibility(
-                        visible = lastDeleted != null,
-                        enter =
-                                slideInVertically(
-                                        spring(
-                                                dampingRatio = 0.7f,
-                                                stiffness = Spring.StiffnessMediumLow
-                                        )
-                                ) { it } + fadeIn(tween(200)),
-                        exit =
-                                slideOutVertically(spring(stiffness = Spring.StiffnessMediumLow)) {
-                                        it
-                                } + fadeOut(tween(150)),
-                        modifier =
-                                Modifier.align(Alignment.BottomCenter)
-                                        .fillMaxWidth()
-                                        .navigationBarsPadding()
-                                        .padding(bottom = 80.dp)
-                ) {
-                        Surface(
-                                modifier =
-                                        Modifier.fillMaxWidth()
-                                                .padding(horizontal = 16.dp, vertical = 12.dp),
-                                shape = MaterialTheme.shapes.large,
-                                color = MaterialTheme.colorScheme.inverseSurface,
-                                tonalElevation = 6.dp,
-                                shadowElevation = 8.dp
-                        ) {
-                                Row(
-                                        modifier =
-                                                Modifier.fillMaxWidth()
-                                                        .padding(
-                                                                horizontal = 16.dp,
-                                                                vertical = 10.dp
-                                                        ),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                        // Left: circular countdown timer
-                                        Box(
-                                                contentAlignment = Alignment.Center,
-                                                modifier = Modifier.size(36.dp)
-                                        ) {
-                                                CircularProgressIndicator(
-                                                        progress = { undoCountdown.value },
-                                                        modifier = Modifier.size(36.dp),
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .inverseOnSurface,
-                                                        trackColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .inverseOnSurface.copy(
-                                                                        alpha = 0.2f
-                                                                ),
-                                                        strokeWidth = 3.dp
-                                                )
-                                                Text(
-                                                        text =
-                                                                "${kotlin.math.ceil((undoCountdown.value * 5).toDouble()).toInt()}",
-                                                        style =
-                                                                MaterialTheme.typography
-                                                                        .labelMedium,
-                                                        fontWeight = FontWeight.Bold,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .inverseOnSurface
-                                                )
-                                        }
-
-                                        Spacer(modifier = Modifier.width(12.dp))
-
-                                        // Center: deleted label
-                                        Text(
-                                                text = "Entry deleted",
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                color =
-                                                        MaterialTheme.colorScheme.inverseOnSurface
-                                                                .copy(alpha = 0.8f),
-                                                modifier = Modifier.weight(1f)
-                                        )
-
-                                        // Right: UNDO button
-                                        TextButton(
-                                                onClick = { viewModel.undoDelete() },
-                                                colors =
-                                                        ButtonDefaults.textButtonColors(
-                                                                contentColor =
-                                                                        MaterialTheme.colorScheme
-                                                                                .inversePrimary
-                                                        )
-                                        ) {
-                                                Text(
-                                                        text = "UNDO",
-                                                        style = MaterialTheme.typography.labelLarge,
-                                                        fontWeight = FontWeight.ExtraBold,
-                                                        letterSpacing = 1.sp
-                                                )
-                                        }
-                                }
-                        }
-                }
-        }
+                HomeScreenOverlays(
+                        showDayLabelDialog = showDayLabelDialog,
+                        currentDayLabel = currentDayLabel,
+                        dayLabelInput = dayLabelInput,
+                        onDayLabelInputChange = { dayLabelInput = it },
+                        onDismissDayLabelDialog = { showDayLabelDialog = false },
+                        onSaveDayLabel = {
+                                viewModel.setDayLabel(uiState.selectedDate, dayLabelInput)
+                                showDayLabelDialog = false
+                        },
+                        onRemoveDayLabel = {
+                                viewModel.setDayLabel(uiState.selectedDate, "")
+                                showDayLabelDialog = false
+                        },
+                        showLabelDialog = showLabelDialog,
+                        labelInput = labelInput,
+                        onLabelInputChange = { labelInput = it },
+                        onDismissLabelDialog = { showLabelDialog = false },
+                        onConfirmLabelDialog = {
+                                viewModel.setStarredWithLabel(uiState.selectedDate, labelInput)
+                                showLabelDialog = false
+                        },
+                        showUndoDeleteBar = lastDeleted != null,
+                        deletedEntryCount = lastDeleted?.entries?.size ?: 0,
+                        undoCountdownValue = undoCountdown.value,
+                        onUndoDelete = { viewModel.undoDelete() }
+                )
+}
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -241,19 +290,29 @@ fun HomeScreenContent(
         selectedDate: LocalDate,
         isLoading: Boolean,
         entries: List<String>,
+        activeKeywordFilter: KeywordDefinition? = null,
+        keywordFilteredEntries: List<Pair<LocalDate, List<KeywordMatch>>>? = null,
         onDeleteEntry: (Int) -> Unit,
+        selectedEntryItemIds: Set<Long> = emptySet(),
+        onClearEntrySelection: () -> Unit = {},
+        onToggleEntrySelection: (Long) -> Unit = {},
+        onStartEntrySelection: (Long) -> Unit = {},
+        onDeleteSelectedEntries: (Set<Int>) -> Unit = {},
         onReorderEntries: (List<String>) -> Unit = {},
+        onClearKeywordFilter: () -> Unit = {},
         onOpenDrawer: () -> Unit,
-        onNavigateToCalendar: () -> Unit,
         onNavigateToAddEntry: () -> Unit,
-        onNavigateToSettings: () -> Unit,
-        onNavigateToHelp: () -> Unit,
-        onNavigateToLookback: () -> Unit,
-        onNavigateToShortcodes: () -> Unit,
-        onNavigateToJournal: () -> Unit,
         onPreviousDate: () -> Unit,
         onNextDate: () -> Unit,
+        onSelectDate: (LocalDate) -> Unit = {},
+        swipeToNavigateDatesEnabled: Boolean = false,
         onJumpToToday: () -> Unit,
+        dueRevisits: List<DueRevisitItem> = emptyList(),
+        entryStyle: EntryStyle = EntryStyle.CARDS,
+        onOpenDueRevisit: (LocalDate) -> Unit = {},
+        onOpenVersionSnapshots: () -> Unit = {},
+        showVersionSnapshotsButton: Boolean = false,
+        versionSnapshotsCount: Int = 0,
         onStartEditing: (String, Int) -> Unit,
         onClearEditing: () -> Unit,
         searchQuery: String = "",
@@ -261,11 +320,12 @@ fun HomeScreenContent(
         onSearchQueryChanged: (String) -> Unit = {},
         onClearSearch: () -> Unit = {},
         showTimestamps: Boolean = true,
+        showDayHeaderStats: Boolean = true,
+        renderCheckboxesAsText: Boolean = false,
         isFavorited: Boolean = false,
         onToggleFavorite: () -> Unit = {},
+        onToggleStar: () -> Unit = {},
         allowFutureEntries: Boolean = false,
-        swipeToDeleteEnabled: Boolean = true,
-        swipeDeleteDirection: SwipeDirection = SwipeDirection.END_TO_START,
         swipeToSyncEnabled: Boolean = true,
         onRefreshCache: () -> Unit = {},
         onResultClicked: (LocalDate) -> Unit = {},
@@ -274,18 +334,44 @@ fun HomeScreenContent(
         onAcceptAnomalyRefresh: () -> Unit = {},
         isPreviewLimitEnabled: Boolean = true,
         previewLimitLength: Int = 200,
-        enableDragAndDrop: Boolean = true
+        enableDragAndDrop: Boolean = true,
+        entryDeleteSelectionEnabled: Boolean = true,
+        dayLabel: String = "",
+        starredLabels: Map<LocalDate, String> = emptyMap(),
+        onEditDayLabel: () -> Unit = {},
+        onDateLinkClick: (LocalDate) -> Unit = {},
+        keywords: List<com.mj.yaja.data.KeywordDefinition> = emptyList(),
+        monthFirst: Boolean = com.mj.yaja.ui.utils.DateLinkUtils.isMonthFirst(),
+        customDateKeywords: List<com.mj.yaja.data.DateKeywordEntry> = emptyList(),
+        isDrawerOpen: Boolean = false,
+        fabBottomPadding: Dp = 0.dp
 ) {
-        val dayFormatter = DateTimeFormatter.ofPattern("dd")
-        val monthYearFormatter = DateTimeFormatter.ofPattern("MMMM - yyyy")
-        val weekdayFormatter = DateTimeFormatter.ofPattern("EEEE")
+        val dayFormatter = remember { DateTimeFormatter.ofPattern("dd") }
+        val monthYearFormatter = remember { DateTimeFormatter.ofPattern("MMMM, yyyy") }
+        val weekdayFormatter = remember { DateTimeFormatter.ofPattern("EEEE") }
+        val cleanedEntries = remember(entries) {
+                entries.map(MarkdownUtils::stripMetadata)
+        }
+        val totalWords = remember(cleanedEntries) {
+                countWordsIgnoringChecklistMarkers(cleanedEntries)
+        }
+        val totalChars = remember(cleanedEntries) {
+                countCharsIgnoringChecklistMarkers(cleanedEntries)
+        }
         var showFutureDateDialog by remember { mutableStateOf(false) }
-        var reorderedEntries by remember { mutableStateOf(entries) }
+        var nextEntryItemId by rememberSaveable { mutableLongStateOf(0L) }
+        var reorderedEntryItems by remember { mutableStateOf(entries.map { HomeEntryListItem(nextEntryItemId++, it) }) }
+        val isKeywordFilterActive = keywordFilteredEntries != null
 
-        // Update reorderedEntries when date changes OR entry count changes (add/delete)
-        // but NOT on every content refresh (to preserve reorder state)
-        LaunchedEffect(selectedDate, entries.size) {
-                reorderedEntries = entries
+        // Update reorderedEntries when entries change (add/edit/delete)
+        LaunchedEffect(selectedDate, entries) {
+                val existingByText = reorderedEntryItems.groupBy { it.text }.mapValues { (_, value) ->
+                        ArrayDeque(value)
+                }
+                reorderedEntryItems = entries.map { entry ->
+                        existingByText[entry]?.removeFirstOrNull()
+                                ?: HomeEntryListItem(nextEntryItemId++, entry)
+                }
         }
 
         // Reorderable list state
@@ -293,1214 +379,191 @@ fun HomeScreenContent(
         val reorderState = rememberReorderableLazyListState(
                 lazyListState = listState,
                 onMove = { from, to ->
-                        reorderedEntries = reorderedEntries.toMutableList().apply {
+                        reorderedEntryItems = reorderedEntryItems.toMutableList().apply {
                                 add(to.index, removeAt(from.index))
                         }
-                        onReorderEntries(reorderedEntries)
+                        onReorderEntries(reorderedEntryItems.map { it.text })
                 }
         )
-
-        // Morphing Shape logic: Cycle through 4 expressive forms based on day % 4
-        val shapeStep = selectedDate.dayOfMonth % 4
-        val tlRadius by
-                animateDpAsState(
-                        targetValue =
-                                when (shapeStep) {
-                                        1 -> 24.dp
-                                        2 -> 8.dp
-                                        3 -> 20.dp
-                                        else -> 16.dp
-                                },
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "TL"
-                )
-        val trRadius by
-                animateDpAsState(
-                        targetValue =
-                                when (shapeStep) {
-                                        1 -> 8.dp
-                                        2 -> 24.dp
-                                        3 -> 20.dp
-                                        else -> 16.dp
-                                },
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "TR"
-                )
-        val brRadius by
-                animateDpAsState(
-                        targetValue =
-                                when (shapeStep) {
-                                        1 -> 24.dp
-                                        2 -> 8.dp
-                                        3 -> 4.dp
-                                        else -> 16.dp
-                                },
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "BR"
-                )
-        val blRadius by
-                animateDpAsState(
-                        targetValue =
-                                when (shapeStep) {
-                                        1 -> 8.dp
-                                        2 -> 24.dp
-                                        3 -> 20.dp
-                                        else -> 16.dp
-                                },
-                        animationSpec = spring(stiffness = Spring.StiffnessLow),
-                        label = "BL"
-                )
-
-        val expressiveShape =
-                RoundedCornerShape(
-                        topStart = tlRadius,
-                        topEnd = trRadius,
-                        bottomEnd = brRadius,
-                        bottomStart = blRadius
-                )
 
         val isTodayOrFuture = !selectedDate.isBefore(LocalDate.now())
 
         Scaffold(
                 topBar = {
-                        Surface(
-                                color = MaterialTheme.colorScheme.background,
-                                modifier = Modifier.fillMaxWidth()
-                        ) {
-                                Column(
-                                        modifier =
-                                                Modifier.fillMaxWidth()
-                                                        .windowInsetsPadding(
-                                                                WindowInsets.statusBars
-                                                        )
-                                ) {
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                        ) {
-                                                com.mj.yaja.ui.components.AnimatedMenuButton(
-                                                        onClick = onOpenDrawer
-                                                )
-
-                                                OutlinedTextField(
-                                                        value = searchQuery,
-                                                        onValueChange = onSearchQueryChanged,
-                                                        placeholder = {
-                                                                Text(
-                                                                        "Search entries...",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                                        .copy(
-                                                                                                alpha =
-                                                                                                        0.6f
-                                                                                        )
-                                                                )
-                                                        },
-                                                        modifier = Modifier.weight(1f),
-                                                        leadingIcon = {
-                                                                Icon(
-                                                                        Icons.Rounded.Search,
-                                                                        contentDescription =
-                                                                                "Search",
-                                                                        modifier =
-                                                                                Modifier.size(
-                                                                                        24.dp
-                                                                                ),
-                                                                        tint =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .primary
-                                                                )
-                                                        },
-                                                        trailingIcon = {
-                                                                if (searchQuery.isNotEmpty()) {
-                                                                        IconButton(
-                                                                                onClick =
-                                                                                        onClearSearch
-                                                                        ) {
-                                                                                Icon(
-                                                                                        Icons.Rounded
-                                                                                                .Close,
-                                                                                        contentDescription =
-                                                                                                "Clear Search",
-                                                                                        modifier =
-                                                                                                Modifier.size(
-                                                                                                        20.dp
-                                                                                                )
-                                                                                )
-                                                                        }
-                                                                }
-                                                        },
-                                                        shape = CircleShape,
-                                                        colors =
-                                                                OutlinedTextFieldDefaults.colors(
-                                                                        focusedBorderColor =
-                                                                                Color.Transparent,
-                                                                        unfocusedBorderColor =
-                                                                                Color.Transparent,
-                                                                        focusedContainerColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .surfaceContainerHigh,
-                                                                        unfocusedContainerColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .surfaceContainerHigh
-                                                                                        .copy(
-                                                                                                alpha =
-                                                                                                        0.7f
-                                                                                        )
-                                                                ),
-                                                        singleLine = true
-                                                )
-
-                                                // Animate scale on each toggle: 1 → 1.45 →
-                                                // 0.85 →
-                                                // 1.15 → 1
-                                                val starScale = remember { Animatable(1f) }
-                                                LaunchedEffect(isFavorited) {
-                                                        starScale.animateTo(
-                                                                targetValue = 1f,
-                                                                animationSpec =
-                                                                        keyframes {
-                                                                                durationMillis = 400
-                                                                                1.45f at 80
-                                                                                0.85f at 180
-                                                                                1.15f at 270
-                                                                                1f at 400
-                                                                        }
-                                                        )
-                                                }
-
-                                                Surface(
-                                                        color =
-                                                                if (isFavorited)
-                                                                        Color(0xFFFFD700)
-                                                                                .copy(alpha = 0.15f)
-                                                                else
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceContainerHigh,
-                                                        shape = CircleShape,
-                                                        modifier = Modifier.size(48.dp),
-                                                        onClick = onToggleFavorite
-                                                ) {
-                                                        Box(contentAlignment = Alignment.Center) {
-                                                                AnimatedContent(
-                                                                        targetState = isFavorited,
-                                                                        transitionSpec = {
-                                                                                (scaleIn(
-                                                                                        spring(
-                                                                                                dampingRatio =
-                                                                                                        0.5f,
-                                                                                                stiffness =
-                                                                                                        Spring.StiffnessMedium
-                                                                                        )
-                                                                                ) +
-                                                                                        fadeIn(
-                                                                                                tween(
-                                                                                                        150
-                                                                                                )
-                                                                                        )) togetherWith
-                                                                                        (scaleOut(
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessMedium
-                                                                                                )
-                                                                                        ) +
-                                                                                                fadeOut(
-                                                                                                        tween(
-                                                                                                                100
-                                                                                                        )
-                                                                                                ))
-                                                                        },
-                                                                        contentAlignment =
-                                                                                Alignment.Center,
-                                                                        label = "StarIconMorph"
-                                                                ) { starred ->
-                                                                        Icon(
-                                                                                imageVector =
-                                                                                        if (starred)
-                                                                                                Icons.Rounded
-                                                                                                        .Star
-                                                                                        else
-                                                                                                Icons.Rounded
-                                                                                                        .StarOutline,
-                                                                                contentDescription =
-                                                                                        "Favorite",
-                                                                                tint =
-                                                                                        if (starred)
-                                                                                                Color(
-                                                                                                        0xFFFFD700
-                                                                                                )
-                                                                                        else
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .onSurfaceVariant,
-                                                                                modifier =
-                                                                                        Modifier
-                                                                                                .graphicsLayer {
-                                                                                                        scaleX =
-                                                                                                                starScale
-                                                                                                                        .value
-                                                                                                        scaleY =
-                                                                                                                starScale
-                                                                                                                        .value
-                                                                                                }
-                                                                        )
-                                                                }
-                                                        }
-                                                }
-                                        }
-
-                                        AnimatedVisibility(
-                                                visible = searchQuery.isEmpty(),
-                                                enter =
-                                                        fadeIn(
-                                                                spring(
-                                                                        stiffness =
-                                                                                Spring.StiffnessMediumLow
-                                                                )
-                                                        ) +
-                                                                slideInVertically(
-                                                                        spring(
-                                                                                stiffness =
-                                                                                        Spring.StiffnessMediumLow
-                                                                        )
-                                                                ) { -it / 3 },
-                                                exit =
-                                                        fadeOut(
-                                                                spring(
-                                                                        stiffness =
-                                                                                Spring.StiffnessMediumLow
-                                                                )
-                                                        ) +
-                                                                slideOutVertically(
-                                                                        spring(
-                                                                                stiffness =
-                                                                                        Spring.StiffnessMediumLow
-                                                                        )
-                                                                ) { -it / 3 }
-                                        ) {
-                                                Row(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(
-                                                                                start = 12.dp,
-                                                                                end = 12.dp,
-                                                                                bottom = 12.dp,
-                                                                                top = 8.dp
-                                                                        ),
-                                                        verticalAlignment =
-                                                                Alignment.CenterVertically
-                                                ) {
-                                                        val prevInteractionSource = remember {
-                                                                MutableInteractionSource()
-                                                        }
-                                                        val isPrevPressed by
-                                                                prevInteractionSource
-                                                                        .collectIsPressedAsState()
-                                                        val prevScale by
-                                                                animateFloatAsState(
-                                                                        targetValue =
-                                                                                if (isPrevPressed)
-                                                                                        0.85f
-                                                                                else 1f,
-                                                                        animationSpec =
-                                                                                spring(
-                                                                                        dampingRatio =
-                                                                                                0.5f,
-                                                                                        stiffness =
-                                                                                                Spring.StiffnessMedium
-                                                                                ),
-                                                                        label = "PrevScale"
-                                                                )
-
-                                                        Surface(
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceContainerLow,
-                                                                shape = CircleShape,
-                                                                modifier =
-                                                                        Modifier.size(40.dp)
-                                                                                .graphicsLayer {
-                                                                                        scaleX =
-                                                                                                prevScale
-                                                                                        scaleY =
-                                                                                                prevScale
-                                                                                },
-                                                                interactionSource =
-                                                                        prevInteractionSource,
-                                                                onClick = onPreviousDate
-                                                        ) {
-                                                                Box(
-                                                                        contentAlignment =
-                                                                                Alignment.Center
-                                                                ) {
-                                                                        Icon(
-                                                                                Icons.Rounded
-                                                                                        .ChevronLeft,
-                                                                                contentDescription =
-                                                                                        "Previous Date",
-                                                                                tint =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                        )
-                                                                }
-                                                        }
-
-                                                        var totalDrag by remember {
-                                                                mutableStateOf(0f)
-                                                        }
-                                                        Row(
-                                                                modifier =
-                                                                        Modifier.weight(1f)
-                                                                                .padding(
-                                                                                        horizontal =
-                                                                                                4.dp
-                                                                                )
-                                                                                .draggable(
-                                                                                        state =
-                                                                                                rememberDraggableState {
-                                                                                                        delta
-                                                                                                        ->
-                                                                                                        totalDrag +=
-                                                                                                                delta
-                                                                                                },
-                                                                                        orientation =
-                                                                                                Orientation
-                                                                                                        .Horizontal,
-                                                                                        onDragStopped = {
-                                                                                                if (totalDrag <
-                                                                                                                -50
-                                                                                                ) {
-                                                                                                        onNextDate()
-                                                                                                } else if (totalDrag >
-                                                                                                                50
-                                                                                                ) {
-                                                                                                        onPreviousDate()
-                                                                                                }
-                                                                                                totalDrag =
-                                                                                                        0f
-                                                                                        }
-                                                                                ),
-                                                                verticalAlignment =
-                                                                        Alignment.CenterVertically,
-                                                                horizontalArrangement =
-                                                                        Arrangement.Center
-                                                        ) {
-                                                                Box(
-                                                                        modifier =
-                                                                                Modifier.size(56.dp)
-                                                                                        .background(
-                                                                                                color =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .primaryContainer
-                                                                                                                .copy(
-                                                                                                                        alpha =
-                                                                                                                                0.4f
-                                                                                                                ),
-                                                                                                shape =
-                                                                                                        expressiveShape
-                                                                                        ),
-                                                                        contentAlignment =
-                                                                                Alignment.Center
-                                                                ) {
-                                                                        Text(
-                                                                                text =
-                                                                                        selectedDate
-                                                                                                .format(
-                                                                                                        dayFormatter
-                                                                                                ),
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .headlineLarge,
-                                                                                fontWeight =
-                                                                                        FontWeight
-                                                                                                .ExtraBold,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .primary
-                                                                        )
-                                                                }
-                                                                Spacer(
-                                                                        modifier =
-                                                                                Modifier.width(
-                                                                                        16.dp
-                                                                                )
-                                                                )
-                                                                AnimatedContent(
-                                                                        targetState = selectedDate,
-                                                                        transitionSpec = {
-                                                                                val goingForward =
-                                                                                        targetState >
-                                                                                                initialState
-                                                                                (slideInHorizontally(
-                                                                                        tween(280)
-                                                                                ) {
-                                                                                        if (goingForward
-                                                                                        )
-                                                                                                it
-                                                                                        else -it
-                                                                                } +
-                                                                                        fadeIn(
-                                                                                                tween(
-                                                                                                        200
-                                                                                                )
-                                                                                        )) togetherWith
-                                                                                        (slideOutHorizontally(
-                                                                                                tween(
-                                                                                                        280
-                                                                                                )
-                                                                                        ) {
-                                                                                                if (goingForward
-                                                                                                )
-                                                                                                        -it
-                                                                                                else
-                                                                                                        it
-                                                                                        } +
-                                                                                                fadeOut(
-                                                                                                        tween(
-                                                                                                                160
-                                                                                                        )
-                                                                                                ))
-                                                                        },
-                                                                        contentAlignment =
-                                                                                Alignment
-                                                                                        .CenterStart,
-                                                                        label =
-                                                                                "DateHeaderCrossfade"
-                                                                ) { date ->
-                                                                        Column {
-                                                                                Text(
-                                                                                        text =
-                                                                                                date.format(
-                                                                                                        weekdayFormatter
-                                                                                                ),
-                                                                                        style =
-                                                                                                MaterialTheme
-                                                                                                        .typography
-                                                                                                        .labelMedium,
-                                                                                        color =
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .primary
-                                                                                                        .copy(
-                                                                                                                alpha =
-                                                                                                                        0.7f
-                                                                                                        ),
-                                                                                        fontWeight =
-                                                                                                FontWeight
-                                                                                                        .Bold,
-                                                                                        letterSpacing =
-                                                                                                0.5.sp
-                                                                                )
-                                                                                Text(
-                                                                                        text =
-                                                                                                date.format(
-                                                                                                        monthYearFormatter
-                                                                                                ),
-                                                                                        style =
-                                                                                                MaterialTheme
-                                                                                                        .typography
-                                                                                                        .titleMedium,
-                                                                                        color =
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .onSurface,
-                                                                                        fontWeight =
-                                                                                                FontWeight
-                                                                                                        .Medium
-                                                                                )
-                                                                        }
-                                                                }
-                                                        }
-                                                        val nextInteractionSource = remember {
-                                                                MutableInteractionSource()
-                                                        }
-                                                        val isNextPressed by
-                                                                nextInteractionSource
-                                                                        .collectIsPressedAsState()
-                                                        val nextScale by
-                                                                animateFloatAsState(
-                                                                        targetValue =
-                                                                                if (isNextPressed)
-                                                                                        0.85f
-                                                                                else 1f,
-                                                                        animationSpec =
-                                                                                spring(
-                                                                                        dampingRatio =
-                                                                                                0.5f,
-                                                                                        stiffness =
-                                                                                                Spring.StiffnessMedium
-                                                                                ),
-                                                                        label = "NextScale"
-                                                                )
-
-                                                        Surface(
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceContainerLow,
-                                                                shape = CircleShape,
-                                                                modifier =
-                                                                        Modifier.size(40.dp)
-                                                                                .graphicsLayer {
-                                                                                        scaleX =
-                                                                                                nextScale
-                                                                                        scaleY =
-                                                                                                nextScale
-                                                                                },
-                                                                interactionSource =
-                                                                        nextInteractionSource,
-                                                                onClick = onNextDate
-                                                        ) {
-                                                                Box(
-                                                                        contentAlignment =
-                                                                                Alignment.Center
-                                                                ) {
-                                                                        Icon(
-                                                                                Icons.Rounded
-                                                                                        .ChevronRight,
-                                                                                contentDescription =
-                                                                                        "Next Date",
-                                                                                tint =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                        )
-                                                                }
-                                                        }
-                                                }
-                                        }
-                                }
-                        }
+                        HomeTopBar(
+                                selectedDate = selectedDate,
+                                searchQuery = searchQuery,
+                                onSearchQueryChanged = onSearchQueryChanged,
+                                onClearSearch = onClearSearch,
+                                onOpenDrawer = onOpenDrawer,
+                                isFavorited = isFavorited,
+                                onToggleStar = onToggleStar,
+                                entryCount = entries.size,
+                                totalWords = totalWords,
+                                totalChars = totalChars,
+                                showDayHeaderStats = showDayHeaderStats,
+                                onPreviousDate = onPreviousDate,
+                                onNextDate = onNextDate,
+                                onSelectDate = onSelectDate,
+                                swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled,
+                                onEditDayLabel = onEditDayLabel,
+                                dayLabel = dayLabel,
+                                starredLabels = starredLabels,
+                                onOpenVersionSnapshots = onOpenVersionSnapshots,
+                                showVersionSnapshotsButton = showVersionSnapshotsButton,
+                                versionSnapshotsCount = versionSnapshotsCount
+                        )
                 },
                 floatingActionButton = {
-                        // Track whether the + FAB has been tapped — triggers icon morph
-                        var fabPressed by remember { mutableStateOf(false) }
-
-                        // Navigate after the morph animation plays out (~380ms)
-                        LaunchedEffect(fabPressed) {
-                                if (fabPressed) {
-                                        delay(380)
-                                        onClearEditing()
-                                        onNavigateToAddEntry()
-                                        fabPressed = false
-                                }
-                        }
-
-                        Column(
-                                horizontalAlignment = Alignment.End,
-                                verticalArrangement = Arrangement.spacedBy(16.dp),
-                                modifier = Modifier.animateContentSize(
-                                        animationSpec = spring(
-                                                dampingRatio = 0.7f,
-                                                stiffness = Spring.StiffnessMediumLow
-                                        )
-                                )
+                        Box(
+                                modifier =
+                                        Modifier.fillMaxWidth()
+                                                .padding(horizontal = 16.dp)
+                                                .padding(bottom = fabBottomPadding)
                         ) {
-                                AnimatedVisibility(
-                                        visible =
-                                                !selectedDate.isAfter(LocalDate.now()) ||
-                                                        allowFutureEntries,
-                                        enter =
-                                                scaleIn(
-                                                        spring(
-                                                                dampingRatio = 0.6f,
-                                                                stiffness = Spring.StiffnessMedium
-                                                        )
-                                                ) + fadeIn(),
-                                        exit =
-                                                scaleOut(
-                                                        spring(stiffness = Spring.StiffnessMedium)
-                                                ) + fadeOut()
-                                ) {
-                                        FloatingActionButton(
-                                                onClick = {
-                                                        if (!fabPressed) {
-                                                                if (selectedDate.isAfter(
-                                                                                LocalDate.now()
-                                                                        )
-                                                                ) {
-                                                                        showFutureDateDialog = true
-                                                                } else {
-                                                                        fabPressed = true
-                                                                }
-                                                        }
-                                                },
-                                                containerColor =
-                                                        MaterialTheme.colorScheme.primaryContainer,
-                                                contentColor =
-                                                        MaterialTheme.colorScheme.onPrimaryContainer
-                                        ) {
-                                                AnimatedContent(
-                                                        targetState = fabPressed,
-                                                        transitionSpec = {
-                                                                (scaleIn(
-                                                                        spring(
-                                                                                dampingRatio = 0.5f,
-                                                                                stiffness =
-                                                                                        Spring.StiffnessMedium
-                                                                        )
-                                                                ) + fadeIn(tween(180))) togetherWith
-                                                                        (scaleOut(
-                                                                                spring(
-                                                                                        stiffness =
-                                                                                                Spring.StiffnessMedium
-                                                                                )
-                                                                        ) + fadeOut(tween(120)))
-                                                        },
-                                                        contentAlignment = Alignment.Center,
-                                                        label = "FabIconMorph"
-                                                ) { isPressed ->
-                                                        if (isPressed) {
-                                                                Icon(
-                                                                        Icons.Rounded.Check,
-                                                                        contentDescription =
-                                                                                "Saving"
-                                                                )
-                                                        } else {
-                                                                Icon(
-                                                                        Icons.Rounded.Add,
-                                                                        contentDescription =
-                                                                                "Add Entry"
-                                                                )
-                                                        }
+                                DeleteSelectedEntriesPill(
+                                        selectedEntryCount = selectedEntryItemIds.size,
+                                        onDeleteSelectedEntries = {
+                                                val selectedIndices =
+                                                        reorderedEntryItems.mapIndexedNotNull { index, item ->
+                                                                index.takeIf { item.id in selectedEntryItemIds }
+                                                        }.toSet()
+                                                if (selectedIndices.isNotEmpty()) {
+                                                        onClearEntrySelection()
+                                                        onDeleteSelectedEntries(selectedIndices)
                                                 }
-                                        }
-                                }
-
-                                AnimatedVisibility(
-                                        visible = selectedDate != LocalDate.now(),
-                                        enter =
-                                                scaleIn(
-                                                        spring(
-                                                                dampingRatio = 0.6f,
-                                                                stiffness = Spring.StiffnessMedium
-                                                        )
-                                                ) + fadeIn(),
-                                        exit =
-                                                scaleOut(
-                                                        spring(stiffness = Spring.StiffnessMedium)
-                                                ) + fadeOut()
-                                ) {
-                                        FloatingActionButton(
-                                                onClick = onJumpToToday,
-                                                containerColor =
-                                                        MaterialTheme.colorScheme.primaryContainer,
-                                                contentColor =
-                                                        MaterialTheme.colorScheme.onPrimaryContainer
-                                        ) {
-                                                Icon(
-                                                        Icons.Rounded.Today,
-                                                        contentDescription = "Jump to Today"
-                                                )
-                                        }
-                                }
+                                        },
+                                        modifier = Modifier.align(Alignment.BottomCenter)
+                                )
+                                HomeFabCluster(
+                                        selectedDate = selectedDate,
+                                        drawerOpen = isDrawerOpen,
+                                        allowFutureEntries = allowFutureEntries,
+                                        onJumpToToday = onJumpToToday,
+                                        onConfirmAddEntry = {
+                                                onClearEditing()
+                                                onNavigateToAddEntry()
+                                        },
+                                        onFutureDateAttempt = { showFutureDateDialog = true },
+                                        modifier = Modifier.align(Alignment.BottomEnd)
+                                )
                         }
                 },
                 containerColor = MaterialTheme.colorScheme.background,
                 contentWindowInsets = WindowInsets.navigationBars.union(WindowInsets.ime)
         ) { paddingValues ->
-                var totalDrag by remember { mutableStateOf(0f) }
-
-                val contentColumn =
-                        @Composable
-                        {
-                                Column(
-                                        modifier =
-                                                Modifier.fillMaxSize().pointerInput(Unit) {
-                                                        detectHorizontalDragGestures(
-                                                                onDragStart = { totalDrag = 0f },
-                                                                onHorizontalDrag = {
-                                                                        change,
-                                                                        dragAmount ->
-                                                                        change.consume()
-                                                                        totalDrag += dragAmount
-                                                                },
-                                                                onDragEnd = {
-                                                                        if (totalDrag < -50) {
-                                                                                // Swiped
-                                                                                // left ->
-                                                                                // move date
-                                                                                // forward
-                                                                                onNextDate()
-                                                                        } else if (totalDrag > 50) {
-                                                                                // Swiped
-                                                                                // right ->
-                                                                                // move date
-                                                                                // backward
-                                                                                onPreviousDate()
-                                                                        }
-                                                                        totalDrag = 0f
-                                                                }
-                                                        )
-                                                }
-                                ) {
-                                        if (searchQuery.isNotEmpty()) {
-                                                Text(
-                                                        text =
-                                                                "${searchResults.size} Matches Found",
-                                                        style = MaterialTheme.typography.titleSmall,
-                                                        color = MaterialTheme.colorScheme.primary,
-                                                        modifier =
-                                                                Modifier.padding(
-                                                                        horizontal = 24.dp,
-                                                                        vertical = 8.dp
-                                                                )
-                                                )
-
-                                                LazyColumn(
-                                                        modifier = Modifier.fillMaxSize(),
-                                                        verticalArrangement =
-                                                                Arrangement.spacedBy(12.dp),
-                                                        contentPadding =
-                                                                WindowInsets.navigationBars
-                                                                        .asPaddingValues()
-                                                ) {
-                                                        itemsIndexed(
-                                                                items = searchResults,
-                                                                key = { _, it ->
-                                                                        "${it.date}_${it.entryPreview.hashCode()}"
-                                                                }
-                                                        ) { index, result ->
-                                                                var appeared by remember {
-                                                                        mutableStateOf(false)
-                                                                }
-                                                                LaunchedEffect(Unit) {
-                                                                        delay(
-                                                                                (index * 40L)
-                                                                                        .coerceAtMost(
-                                                                                                200L
-                                                                                        )
-                                                                        )
-                                                                        appeared = true
-                                                                }
-                                                                AnimatedVisibility(
-                                                                        visible = appeared,
-                                                                        enter =
-                                                                                slideInVertically(
-                                                                                        tween(
-                                                                                                280,
-                                                                                                easing =
-                                                                                                        FastOutSlowInEasing
-                                                                                        )
-                                                                                ) { it / 3 } +
-                                                                                        fadeIn(
-                                                                                                tween(
-                                                                                                        280
-                                                                                                )
-                                                                                        ),
-                                                                        modifier =
-                                                                                Modifier.animateItem(
-                                                                                        fadeInSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        fadeOutSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        placementSpec =
-                                                                                                spring(
-                                                                                                        dampingRatio =
-                                                                                                                Spring.DampingRatioLowBouncy,
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessMediumLow
-                                                                                                )
-                                                                                )
-                                                                ) {
-                                                                        ElevatedCard(
-                                                                                modifier =
-                                                                                        Modifier.fillMaxWidth()
-                                                                                                .padding(
-                                                                                                        horizontal =
-                                                                                                                24.dp
-                                                                                                )
-                                                                                                .clickable {
-                                                                                                        onResultClicked(
-                                                                                                                result.date
-                                                                                                        )
-                                                                                                },
-                                                                                colors =
-                                                                                        CardDefaults
-                                                                                                .elevatedCardColors(
-                                                                                                        containerColor =
-                                                                                                                MaterialTheme
-                                                                                                                        .colorScheme
-                                                                                                                        .surfaceContainerLow
-                                                                                                ),
-                                                                                elevation =
-                                                                                        CardDefaults
-                                                                                                .elevatedCardElevation(
-                                                                                                        defaultElevation =
-                                                                                                                2.dp
-                                                                                                ),
-                                                                                shape =
-                                                                                        MaterialTheme
-                                                                                                .shapes
-                                                                                                .medium
-                                                                        ) {
-                                                                                Column(
-                                                                                        modifier =
-                                                                                                Modifier.fillMaxWidth()
-                                                                                                        .padding(
-                                                                                                                16.dp
-                                                                                                        )
-                                                                                ) {
-                                                                                        val resultFormatter =
-                                                                                                DateTimeFormatter
-                                                                                                        .ofPattern(
-                                                                                                                "dd-MMM-yyyy"
-                                                                                                        )
-                                                                                        Text(
-                                                                                                text =
-                                                                                                        result.date
-                                                                                                                .format(
-                                                                                                                        resultFormatter
-                                                                                                                ),
-                                                                                                style =
-                                                                                                        MaterialTheme
-                                                                                                                .typography
-                                                                                                                .labelMedium,
-                                                                                                color =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .primary,
-                                                                                                modifier =
-                                                                                                        Modifier.padding(
-                                                                                                                bottom =
-                                                                                                                        8.dp
-                                                                                                        )
-                                                                                        )
-                                                                                        Text(
-                                                                                                text =
-                                                                                                        MarkdownUtils
-                                                                                                                .parseMarkdown(
-                                                                                                                        result.entryPreview
-                                                                                                                ),
-                                                                                                style =
-                                                                                                        MaterialTheme
-                                                                                                                .typography
-                                                                                                                .bodyMedium,
-                                                                                                color =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .onSurfaceVariant,
-                                                                                                maxLines =
-                                                                                                        2,
-                                                                                                overflow =
-                                                                                                        TextOverflow
-                                                                                                                .Ellipsis
-                                                                                        )
+                val contentColumn: @Composable () -> Unit = {
+                        AppScreenReveal(
+                                visible = true,
+                                key = Triple(selectedDate, searchQuery, activeKeywordFilter?.name),
+                                modifier =
+                                        Modifier.fillMaxSize().then(
+                                                if (swipeToNavigateDatesEnabled) {
+                                                        val isRtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
+                                                        Modifier.pointerInput(
+                                                                selectedDate,
+                                                                swipeToNavigateDatesEnabled
+                                                        ) {
+                                                                var totalDrag = 0f
+                                                                detectHorizontalDragGestures(
+                                                                        onDragStart = { totalDrag = 0f },
+                                                                        onHorizontalDrag = { change, dragAmount ->
+                                                                                change.consume()
+                                                                                totalDrag += dragAmount
+                                                                        },
+                                                                        onDragEnd = {
+                                                                                if (totalDrag < -50f) {
+                                                                                        if (isRtl) onPreviousDate() else onNextDate()
+                                                                                } else if (totalDrag > 50f) {
+                                                                                        if (isRtl) onNextDate() else onPreviousDate()
                                                                                 }
-                                                                        }
-                                                                }
-                                                        }
-                                                        item {
-                                                                Spacer(
-                                                                        modifier =
-                                                                                Modifier.height(
-                                                                                        80.dp
-                                                                                )
+                                                                                totalDrag = 0f
+                                                                        },
+                                                                        onDragCancel = { totalDrag = 0f }
                                                                 )
                                                         }
+                                                } else {
+                                                        Modifier
                                                 }
+                                        )
+                        ) {
+                                Column(modifier = Modifier.fillMaxSize()) {
+                                        if (searchQuery.isNotEmpty()) {
+                                                SearchResultsContent(
+                                                        searchResults = searchResults,
+                                                        onResultClicked = onResultClicked
+                                                )
                                         } else if (isLoading) {
                                                 // Ignore empty loading state flash
+                                        } else if (isKeywordFilterActive) {
+                                                KeywordFilterResultsContent(
+                                                        keywordFilteredEntries = keywordFilteredEntries.orEmpty(),
+                                                        onDateLinkClick = onDateLinkClick
+                                                )
                                         } else if (entries.isEmpty()) {
-                                                var appeared by remember { mutableStateOf(false) }
-                                                LaunchedEffect(Unit) { appeared = true }
-
-                                                val infiniteTransition =
-                                                        rememberInfiniteTransition(
-                                                                label = "EmptyBreathing"
-                                                        )
-                                                val iconScale by
-                                                        infiniteTransition.animateFloat(
-                                                                initialValue = 0.95f,
-                                                                targetValue = 1.05f,
-                                                                animationSpec =
-                                                                        infiniteRepeatable(
-                                                                                animation =
-                                                                                        tween(
-                                                                                                1500,
-                                                                                                easing =
-                                                                                                        FastOutSlowInEasing
-                                                                                        ),
-                                                                                repeatMode =
-                                                                                        RepeatMode
-                                                                                                .Reverse
-                                                                        ),
-                                                                label = "IconScale"
-                                                        )
-
-                                                AnimatedVisibility(
-                                                        visible = appeared,
-                                                        enter =
-                                                                fadeIn(tween(500)) +
-                                                                        slideInVertically(
-                                                                                tween(500)
-                                                                        ) { it / 6 },
-                                                        modifier = Modifier.fillMaxSize()
-                                                ) {
-                                                        Box(
-                                                                modifier = Modifier.fillMaxSize(),
-                                                                contentAlignment = Alignment.Center
-                                                        ) {
-                                                                Column(
-                                                                        horizontalAlignment =
-                                                                                Alignment
-                                                                                        .CenterHorizontally,
-                                                                        modifier =
-                                                                                Modifier.padding(
-                                                                                        horizontal =
-                                                                                                48.dp
-                                                                                )
-                                                                ) {
-                                                                        androidx.compose.material3
-                                                                                .Surface(
-                                                                                        shape =
-                                                                                                androidx.compose
-                                                                                                        .foundation
-                                                                                                        .shape
-                                                                                                        .RoundedCornerShape(
-                                                                                                                32.dp
-                                                                                                        ),
-                                                                                        color =
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .secondaryContainer,
-                                                                                        modifier =
-                                                                                                Modifier.size(
-                                                                                                                100.dp
-                                                                                                        )
-                                                                                                        .graphicsLayer {
-                                                                                                                scaleX =
-                                                                                                                        iconScale
-                                                                                                                scaleY =
-                                                                                                                        iconScale
-                                                                                                        }
-                                                                                ) {
-                                                                                        Box(
-                                                                                                contentAlignment =
-                                                                                                        Alignment
-                                                                                                                .Center
-                                                                                        ) {
-                                                                                                Icon(
-                                                                                                        imageVector =
-                                                                                                                if (selectedDate
-                                                                                                                                .isAfter(
-                                                                                                                                        LocalDate
-                                                                                                                                                .now()
-                                                                                                                                )
-                                                                                                                )
-                                                                                                                        Icons.Rounded
-                                                                                                                                .EditCalendar
-                                                                                                                else if (selectedDate
-                                                                                                                                .isBefore(
-                                                                                                                                        LocalDate
-                                                                                                                                                .now()
-                                                                                                                                )
-                                                                                                                )
-                                                                                                                        Icons.Rounded
-                                                                                                                                .HistoryEdu
-                                                                                                                else
-                                                                                                                        Icons.Rounded
-                                                                                                                                .AutoStories,
-                                                                                                        contentDescription =
-                                                                                                                "Empty Status Icon",
-                                                                                                        modifier =
-                                                                                                                Modifier.size(
-                                                                                                                        52.dp
-                                                                                                                ),
-                                                                                                        tint =
-                                                                                                                MaterialTheme
-                                                                                                                        .colorScheme
-                                                                                                                        .onSecondaryContainer
-                                                                                                )
-                                                                                        }
-                                                                                }
-                                                                        Spacer(
-                                                                                modifier =
-                                                                                        Modifier.height(
-                                                                                                16.dp
-                                                                                        )
-                                                                        )
-                                                                        Text(
-                                                                                text =
-                                                                                        if (selectedDate
-                                                                                                        .isAfter(
-                                                                                                                LocalDate
-                                                                                                                        .now()
-                                                                                                        )
-                                                                                        )
-                                                                                                "This is the future. Record a reminder!"
-                                                                                        else if (selectedDate
-                                                                                                        .isBefore(
-                                                                                                                LocalDate
-                                                                                                                        .now()
-                                                                                                        )
-                                                                                        )
-                                                                                                "You are in the Past. Record a Memory before it fades..."
-                                                                                        else
-                                                                                                "No entries yet. Start your day.",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .bodyLarge,
-                                                                                textAlign =
-                                                                                        androidx.compose
-                                                                                                .ui
-                                                                                                .text
-                                                                                                .style
-                                                                                                .TextAlign
-                                                                                                .Center,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onBackground
-                                                                                                .copy(
-                                                                                                        alpha =
-                                                                                                                0.5f
-                                                                                                )
-                                                                        )
-                                                                }
-                                                        }
-                                                }
-                                        } else {
-                                                LazyColumn(
-                                                        modifier = Modifier.fillMaxSize(),
-                                                        state = listState,
-                                                        verticalArrangement =
-                                                                Arrangement.spacedBy(12.dp),
-                                                        contentPadding =
+                                                HomeEmptyStateSection(
+                                                        selectedDate = selectedDate,
+                                                        dayLabel = dayLabel,
+                                                        dueRevisits = dueRevisits,
+                                                        allowFutureEntries = allowFutureEntries,
+                                                        bottomPadding =
                                                                 WindowInsets.navigationBars
                                                                         .asPaddingValues()
-                                                ) {
-                                                        itemsIndexed(
-                                                                items = reorderedEntries,
-                                                                key = { _, entry -> entry }
-                                                        ) { index, entry ->
-                                                                ReorderableItem(
-                                                                        state = reorderState,
-                                                                        key = entry
-                                                                ) { isDragging ->
-                                                                        val scale = if (isDragging && enableDragAndDrop) 0.95f else 1f
-                                                                        var appeared by remember {
-                                                                                mutableStateOf(false)
-                                                                        }
-                                                                        LaunchedEffect(Unit) {
-                                                                                delay(
-                                                                                        (index * 40L)
-                                                                                                .coerceAtMost(
-                                                                                                        200L
-                                                                                                )
-                                                                                )
-                                                                                appeared = true
-                                                                        }
-                                                                        val baseModifier =
-                                                                                Modifier.animateItem(
-                                                                                        fadeInSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        fadeOutSpec =
-                                                                                                spring(
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessLow
-                                                                                                ),
-                                                                                        placementSpec =
-                                                                                                spring(
-                                                                                                        dampingRatio =
-                                                                                                                Spring.DampingRatioLowBouncy,
-                                                                                                        stiffness =
-                                                                                                                Spring.StiffnessMediumLow
-                                                                                                )
-                                                                                ).graphicsLayer {
-                                                                                        scaleX = scale
-                                                                                        scaleY = scale
-                                                                                }
-                                                                        val itemModifier =
-                                                                                if (enableDragAndDrop) baseModifier.draggableHandle()
-                                                                                else baseModifier
-                                                                                AnimatedVisibility(
-                                                                                        visible = appeared,
-                                                                                        enter =
-                                                                                                slideInVertically(
-                                                                                                        tween(
-                                                                                                                280,
-                                                                                                                easing =
-                                                                                                                        FastOutSlowInEasing
-                                                                                                        )
-                                                                                                ) { it / 3 } +
-                                                                                                fadeIn(
-                                                                                                        tween(
-                                                                                                                280
-                                                                                                        )
-                                                                                                ),
-                                                                                        modifier = itemModifier
-                                                                                ) {
-                                                                        JournalEntryItem(
-                                                                                entry = entry,
-                                                                                showTimestamps =
-                                                                                        showTimestamps,
-                                                                                swipeToDeleteEnabled =
-                                                                                        swipeToDeleteEnabled,
-                                                                                swipeDeleteDirection =
-                                                                                        swipeDeleteDirection,
-                                                                                isPreviewLimitEnabled =
-                                                                                        isPreviewLimitEnabled,
-                                                                                previewLimitLength =
-                                                                                        previewLimitLength,
-                                                                                onDelete = {
-                                                                                        onDeleteEntry(
-                                                                                                index
-                                                                                        )
-                                                                                },
-                                                                                onEdit = {
-                                                                                        onStartEditing(
-                                                                                                entry,
-                                                                                                index
-                                                                                        )
-                                                                                        onNavigateToAddEntry()
-                                                                                }
-                                                                        )
-                                                                }
+                                                                        .calculateBottomPadding(),
+                                                        onOpenDueRevisit = onOpenDueRevisit,
+                                                        onFutureDateBlocked = {
+                                                                showFutureDateDialog = true
+                                                        },
+                                                        onAddEntry = {
+                                                                onClearEditing()
+                                                                onNavigateToAddEntry()
                                                         }
-                                                }
-                                                item {
-                                                                Spacer(
-                                                                        modifier =
-                                                                                Modifier.height(
-                                                                                        80.dp
-                                                                                )
-                                                                )
-                                                        } // FAB padding
-                                                }
+                                                )
+                                        } else {
+                                                HomeLoadedEntriesSection(
+                                                        listState = listState,
+                                                        reorderState = reorderState,
+                                                        reorderedEntryItems = reorderedEntryItems,
+                                                        contentPadding =
+                                                                WindowInsets.navigationBars
+                                                                        .asPaddingValues(),
+                                                        dueRevisits = dueRevisits,
+                                                        onOpenDueRevisit = onOpenDueRevisit,
+                                                        enableDragAndDrop = enableDragAndDrop,
+                                                        entryDeleteSelectionEnabled =
+                                                                entryDeleteSelectionEnabled,
+                                                        showTimestamps = showTimestamps,
+                                                        renderCheckboxesAsText = renderCheckboxesAsText,
+                                                        isPreviewLimitEnabled =
+                                                                isPreviewLimitEnabled,
+                                                        previewLimitLength =
+                                                                previewLimitLength,
+                                                        onDeleteEntry = onDeleteEntry,
+                                                        onStartEditingEntry = onStartEditing,
+                                                        selectedEntryItemIds =
+                                                                selectedEntryItemIds,
+                                                        onClearEntrySelection =
+                                                                onClearEntrySelection,
+                                                        onToggleEntrySelection =
+                                                                onToggleEntrySelection,
+                                                        onStartEntrySelection =
+                                                                onStartEntrySelection,
+                                                        onNavigateToAddEntry =
+                                                                onNavigateToAddEntry,
+                                                        selectedDate = selectedDate,
+                                                        onDateLinkClick = onDateLinkClick,
+                                                        keywords = keywords,
+                                                        monthFirst = monthFirst,
+                                                        customDateKeywords =
+                                                                customDateKeywords,
+                                                        entryStyle = entryStyle
+                                                )
                                         }
                                 }
                         }
+                }
 
-                if (swipeToSyncEnabled) {
+        if (swipeToSyncEnabled) {
                         PullToRefreshBox(
                                 isRefreshing = isLoading,
                                 onRefresh = onRefreshCache,
@@ -1512,52 +575,156 @@ fun HomeScreenContent(
                         }
                 }
 
-                if (showFutureDateDialog) {
-                        AlertDialog(
-                                onDismissRequest = { showFutureDateDialog = false },
-                                title = { Text("Future Date Entry") },
-                                text = {
-                                        Text(
-                                                "You are adding an entry for a future date (${selectedDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))}). Do you want to continue?"
-                                        )
-                                },
-                                confirmButton = {
-                                        TextButton(
-                                                onClick = {
-                                                        showFutureDateDialog = false
-                                                        onClearEditing()
-                                                        onNavigateToAddEntry()
-                                                }
-                                        ) { Text("Yes") }
-                                },
-                                dismissButton = {
-                                        TextButton(onClick = { showFutureDateDialog = false }) {
-                                                Text("No")
-                                        }
-                                }
-                        )
-                }
+                HomeScreenDialogs(
+                        showFutureDateDialog = showFutureDateDialog,
+                        selectedDate = selectedDate,
+                        onDismissFutureDateDialog = { showFutureDateDialog = false },
+                        onConfirmFutureDateDialog = {
+                                showFutureDateDialog = false
+                                onClearEditing()
+                                onNavigateToAddEntry()
+                        },
+                        showCacheAnomalyDialog = showCacheAnomalyDialog,
+                        onDismissCacheAnomalyDialog = onDismissAnomalyDialog,
+                        onAcceptCacheAnomalyRefresh = onAcceptAnomalyRefresh
+                )
+        }
+}
 
-                if (showCacheAnomalyDialog) {
-                        AlertDialog(
-                                onDismissRequest = onDismissAnomalyDialog,
-                                title = { Text("Data Cache Issue Detected") },
-                                text = {
-                                        Text(
-                                                "It appears a substantial number of journal entries are missing from the cache. Would you like to perform a full data cache refresh to attempt to restore them?"
-                                        )
-                                },
-                                confirmButton = {
-                                        TextButton(onClick = onAcceptAnomalyRefresh) {
-                                                Text("Refresh")
-                                        }
-                                },
-                                dismissButton = {
-                                        TextButton(onClick = onDismissAnomalyDialog) {
-                                                Text("Ignore")
+@Composable
+internal fun DueRevisitCard(
+        items: List<DueRevisitItem>,
+        onOpenDate: (LocalDate) -> Unit
+) {
+        val dateFormatter = remember { DateTimeFormatter.ofPattern("dd MMM yyyy") }
+        val visibleItems = remember(items) { items.take(2) }
+        val remainingCount = (items.size - visibleItems.size).coerceAtLeast(0)
+        ElevatedCard(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                colors =
+                        CardDefaults.elevatedCardColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                        ),
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+        ) {
+                Column(
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                        Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                                Surface(
+                                        shape = CircleShape,
+                                        color = MaterialTheme.colorScheme.primaryContainer,
+                                        modifier = Modifier.size(36.dp)
+                                ) {
+                                        Box(contentAlignment = Alignment.Center) {
+                                                Icon(
+                                                        imageVector = Icons.Rounded.Today,
+                                                        contentDescription = null,
+                                                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                                                        modifier = Modifier.size(18.dp)
+                                                )
                                         }
                                 }
-                        )
+                                Column(modifier = Modifier.weight(1f)) {
+                                        Text(
+                                                text =
+                                                        pluralStringResource(
+                                                                R.plurals.home_followup_due_today,
+                                                                items.size,
+                                                        ),
+                                                style = MaterialTheme.typography.titleSmall,
+                                                fontWeight = FontWeight.SemiBold
+                                        )
+                                        Text(
+                                                text = stringResource(R.string.home_followup_subtitle),
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                }
+                                AssistChip(
+                                        onClick = {},
+                                        label = { Text(items.size.toString()) },
+                                        leadingIcon = {
+                                                Icon(
+                                                        imageVector = Icons.Rounded.HistoryEdu,
+                                                        contentDescription = null,
+                                                        modifier = Modifier.size(16.dp)
+                                                )
+                                        }
+                                )
+                        }
+                        visibleItems.forEach { item ->
+                                Surface(
+                                        onClick = { onOpenDate(item.sourceDate) },
+                                        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                        shape = MaterialTheme.shapes.medium
+                                ) {
+                                        Row(
+                                                modifier = Modifier.fillMaxWidth().padding(12.dp),
+                                                verticalAlignment = Alignment.CenterVertically,
+                                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                        ) {
+                                                Column(
+                                                        modifier = Modifier.weight(1f),
+                                                        verticalArrangement = Arrangement.spacedBy(6.dp)
+                                                ) {
+                                                        Text(
+                                                                text =
+                                                                        item.label.ifBlank {
+                                                                                stringResource(R.string.home_from_date_format, item.sourceDate.format(dateFormatter))
+                                                                        },
+                                                                style = MaterialTheme.typography.bodyMedium,
+                                                                fontWeight = FontWeight.Medium,
+                                                                maxLines = 1,
+                                                                overflow = TextOverflow.Ellipsis
+                                                        )
+                                                        if (item.note.isNotBlank()) {
+                                                                Text(
+                                                                        text = item.note,
+                                                                        style = MaterialTheme.typography.bodySmall,
+                                                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                                        maxLines = 2,
+                                                                        overflow = TextOverflow.Ellipsis
+                                                                )
+                                                        }
+                                                        AssistChip(
+                                                                onClick = { onOpenDate(item.sourceDate) },
+                                                                label = {
+                                                                        Text(
+                                                                                stringResource(R.string.home_from_date_format, item.sourceDate.format(dateFormatter))
+                                                                        )
+                                                                },
+                                                                leadingIcon = {
+                                                                        Icon(
+                                                                                imageVector = Icons.Rounded.EditCalendar,
+                                                                                contentDescription = null,
+                                                                                modifier = Modifier.size(16.dp)
+                                                                        )
+                                                                }
+                                                        )
+                                                }
+                                                Icon(
+                                                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                                                        contentDescription = null,
+                                                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                        modifier = Modifier.size(18.dp)
+                                                )
+                                        }
+                                }
+                        }
+                        if (remainingCount > 0) {
+                                Text(
+                                        text = stringResource(R.string.home_more_due_today_format, remainingCount),
+                                        style = MaterialTheme.typography.labelMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                        }
                 }
         }
 }
+

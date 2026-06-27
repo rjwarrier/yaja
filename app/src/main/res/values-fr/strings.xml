@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Journal</string>
+    <string name="nav_calendar">Calendrier</string>
+    <string name="nav_lookback">Rétrospective</string>
+    <string name="nav_settings">Paramètres</string>
+    <string name="nav_shortcodes">Raccourcis</string>
+    <string name="nav_help">Aide et à propos</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Enregistrer</string>
+    <string name="action_cancel">Annuler</string>
+    <string name="action_delete">Supprimer</string>
+    <string name="action_edit">Modifier</string>
+    <string name="action_back">Retour</string>
+    <string name="action_undo">Annuler</string>
+    <string name="action_yes">Oui</string>
+    <string name="action_no">Non</string>
+    <string name="action_remove">Retirer</string>
+    <string name="action_done">Terminé</string>
+    <string name="action_set">Définir</string>
+    <string name="action_select">Sélectionner</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Reconstruction du cache</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Capture rapide</string>
+    <string name="quick_capture_hint">Que s\'est-il passé ?</string>
+    <string name="quick_capture_helper_shortcodes">Les raccourcis s\'y développent automatiquement, et les lignes de tâches continuent quand vous appuyez sur Entrée.</string>
+    <string name="quick_capture_save_delayed">Enregistrement retardé. Rouvrez Yaja pour vérifier.</string>
+    <string name="cd_saved">Enregistré</string>
+    <string name="quick_todo_dialog_title">Ajout rapide</string>
+    <string name="quick_todo_save_delayed">Enregistrement du todo retardé. Rouvrez Yaja pour vérifier.</string>
+    <string name="quick_todo_placeholder">Ajouter un todo</string>
+    <string name="quick_event_placeholder">Ajouter un événement</string>
+    <string name="quick_todo_task_date">Date de tâche</string>
+    <string name="quick_todo_event_date">Date d\'événement</string>
+    <string name="quick_todo_pick_date_cd_format">Choisir %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">Enregistre comme entrée de tâche pour le jour sélectionné.</string>
+    <string name="quick_event_selected_day_hint">Enregistre comme entrée d\'événement pour le jour sélectionné.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Précédent</string>
+    <string name="cd_next">Suivant</string>
+    <string name="cd_surprise_me">Surprends-moi</string>
+    <string name="calendar_cd_go_to_current_month">Aller au mois en cours</string>
+    <string name="calendar_quick_action_timeline_title">Chronologie</string>
+    <string name="calendar_quick_action_timeline_subtitle">Parcourir chronologiquement</string>
+    <string name="calendar_quick_action_jump_title">Aller à la date</string>
+    <string name="calendar_quick_action_jump_subtitle">Ouvrir un jour précis</string>
+    <string name="calendar_jump_placeholder">JJ-MM-AA</string>
+    <string name="calendar_jump_invalid_date">Date invalide. Utilisez le format JJ-MM-AA.</string>
+    <string name="calendar_action_go">Aller</string>
+    <string name="calendar_enable_future_dates_title">Activer les dates futures</string>
+    <string name="calendar_enable_future_dates_message">La saisie à une date future est désactivée. Voulez-vous l\'activer ?</string>
+    <string name="calendar_action_enable">Activer</string>
+    <string name="calendar_future_entry_enabled">La saisie à une date future a été activée</string>
+    <string name="calendar_weekday_sun_short">Dim</string>
+    <string name="calendar_weekday_mon_short">Lun</string>
+    <string name="calendar_weekday_tue_short">Mar</string>
+    <string name="calendar_weekday_wed_short">Mer</string>
+    <string name="calendar_weekday_thu_short">Jeu</string>
+    <string name="calendar_weekday_fri_short">Ven</string>
+    <string name="calendar_weekday_sat_short">Sam</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ENTRÉES CE MOIS-CI</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d jour</item>
+        <item quantity="other">%1$d / %2$d jours</item>
+    </plurals>
+    <string name="calendar_days_of_memories">jours de souvenirs</string>
+    <string name="calendar_consistency_last_12_months">12 DERNIERS MOIS</string>
+    <string name="calendar_consistency_title_format">RÉGULARITÉ - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">première période</string>
+    <string name="calendar_graph_frequency_month">Mois</string>
+    <string name="calendar_graph_frequency_year">An</string>
+    <string name="calendar_yearly_consistency_title">Régularité (annuelle)</string>
+    <string name="calendar_keywords_title">Qui apparaît le plus</string>
+    <string name="calendar_keywords_syncing">Les statistiques Personnes et lieux sont encore en cours de synchronisation avec l\'indexation des mots-clés.</string>
+    <string name="calendar_keywords_empty">Ajoutez au moins 3 personnes ou 3 lieux pour voir les mentions principales.</string>
+    <string name="calendar_keywords_people">Personnes</string>
+    <string name="calendar_keywords_places">Lieux</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_appearance">Apparence</string>
+    <string name="settings_appearance_subtitle">Thème, couleurs, polices et styles personnels</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_font">Police</string>
+    <string name="settings_storage">Stockage</string>
+    <string name="settings_security">Sécurité</string>
+    <string name="settings_backup">Sauvegarde</string>
+    <string name="settings_change_storage_title">Changer l\'emplacement de stockage</string>
+    <string name="settings_backup_never">Jamais</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Rechercher dans les paramètres</string>
+    <string name="settings_search_clear">Effacer la recherche</string>
+    <string name="settings_search_recent">Recherches récentes</string>
+    <string name="settings_search_no_results">Aucun paramètre correspondant</string>
+    <string name="settings_search_close">Fermer</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Expérience du journal</string>
+    <string name="settings_section_navigation_gestures">Navigation et gestes</string>
+    <string name="settings_section_review_insights">Révision et statistiques</string>
+
+    <!-- Language -->
+    <string name="settings_language">Langue</string>
+    <string name="settings_language_title">Langue de l\'application</string>
+    <string name="settings_language_subtitle">Choisissez la langue utilisée dans toute l\'application.</string>
+    <string name="settings_language_system_default">Langue du système</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Style d\'entrée</string>
+    <string name="settings_journal_entry_style_subtitle">Choisissez entre des cartes en relief et une apparence de journal plus plate.</string>
+    <string name="settings_journal_entry_style_cards">Cartes</string>
+    <string name="settings_journal_entry_style_flat">Plat</string>
+    <string name="settings_journal_render_checkboxes_title">Afficher les cases à cocher en texte</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Affiche les tâches sous forme de [ ] et [x] dans toute l\'application au lieu de cases à cocher expressives.</string>
+    <string name="settings_journal_day_header_counts_title">Afficher les compteurs d\'en-tête de jour</string>
+    <string name="settings_journal_day_header_counts_subtitle">Affiche le nombre d\'entrées, de mots et de caractères dans l\'en-tête du jour du journal.</string>
+    <string name="settings_journal_show_timestamps_title">Afficher les horodatages</string>
+    <string name="settings_journal_show_timestamps_subtitle">Affiche l\'heure de l\'entrée sur la chronologie.</string>
+    <string name="settings_journal_allow_future_title">Autoriser les entrées futures</string>
+    <string name="settings_journal_allow_future_subtitle">Active l\'ajout d\'entrées à des dates futures.</string>
+    <string name="settings_journal_truncate_title">Tronquer les entrées longues</string>
+    <string name="settings_journal_truncate_subtitle">Raccourcit les entrées longues sur l\'écran d\'accueil.</string>
+    <string name="settings_journal_char_limit_title">Limite de caractères</string>
+    <string name="settings_journal_char_limit_subtitle">Définissez le nombre de caractères à afficher avant troncature.</string>
+    <string name="settings_journal_char_limit_min">50 car.</string>
+    <string name="settings_journal_char_limit_max">200 car.</string>
+    <string name="settings_journal_char_count">%1$d caractères</string>
+    <string name="settings_journal_first_day_title">Premier jour de la semaine</string>
+    <string name="settings_journal_first_day_subtitle">Démarrer le calendrier le</string>
+    <string name="settings_journal_day_sun">Dim</string>
+    <string name="settings_journal_day_mon">Lun</string>
+    <string name="settings_journal_date_recognition">Reconnaissance des dates</string>
+    <string name="settings_journal_date_order_title">Ordre de la date</string>
+    <string name="settings_journal_date_order_subtitle">Comment lire les dates numériques</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">JJ/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/JJ</string>
+    <string name="settings_journal_date_keywords_title">Mots-clés de date</string>
+    <string name="settings_journal_date_keywords_subtitle">Mots dans d\'autres langues qui signifient une date (par exemple, un mot local pour « hier »).</string>
+    <string name="settings_journal_view_keywords">Afficher (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Ajouter un mot-clé</string>
+    <string name="settings_journal_motion">Mouvement</string>
+    <string name="settings_journal_animations_title">Animations</string>
+    <string name="settings_journal_animations_subtitle">Contrôle le mouvement dans toute l\'application. Réduit conserve la fluidité avec moins de mouvement.</string>
+    <string name="settings_journal_animations_full">Complet</string>
+    <string name="settings_journal_animations_reduced">Réduit</string>
+    <string name="settings_journal_animations_off">Désactivé</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Révision après enregistrement</string>
+    <string name="settings_review_post_write_title">Révision après écriture</string>
+    <string name="settings_review_post_write_subtitle">Affiche une fiche de révision après avoir appuyé sur enregistrer pour extraire des tâches, vérifier les mentions, marquer le jour ou définir une étiquette.</string>
+    <string name="settings_review_people_places">Personnes et lieux</string>
+    <string name="settings_review_highlighting_title">Surlignage</string>
+    <string name="settings_review_highlighting_subtitle">Met en surbrillance les personnes et lieux suivis dans les cartes de l\'accueil et le mode Voir l\'entrée.</string>
+    <string name="settings_review_match_sensitivity_title">Sensibilité de correspondance</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">À quel point un mot doit correspondre pour être détecté par Personnes et lieux (plus élevé = plus strict).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Ajouter un shortcode</string>
+    <string name="shortcodes_edit_title">Modifier le shortcode</string>
+    <string name="shortcodes_code_label">Shortcode (p. ex. @yday)</string>
+    <string name="shortcodes_expansion_label">Texte d\'extension</string>
+    <string name="shortcodes_export_error">Échec de l\'exportation des raccourcis</string>
+    <string name="shortcodes_import_error">Échec de l\'importation des raccourcis</string>
+    <string name="todos_expand_section">Développer %1$s</string>
+    <string name="todos_collapse_section">Réduire %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Carte de chaleur d\'écriture</string>
+    <string name="heatmap_widget_description">Carte de chaleur de l\'activité d\'écriture récente de votre journal.</string>
+    <string name="quick_capture_widget_name">Capture rapide</string>
+    <string name="quick_capture_widget_description">Bouton à un appui pour ajouter rapidement une entrée de journal.</string>
+    <string name="quick_todo_widget_name">Tâche rapide</string>
+    <string name="tasker_plugin_action_label">Capture rapide Yaja</string>
+    <string name="tasker_plugin_event_label">Événements du journal Yaja</string>
+    <string name="tasker_screen_allow_add_entry_title">Autoriser Tasker à ajouter des entrées</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Permet à Tasker d\'utiliser les actions de Capture rapide Yaja comme Ajouter une entrée et Ajouter un todo.</string>
+    <string name="tasker_screen_allow_events_title">Autoriser les événements Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Permet à Yaja d\'envoyer à Tasker les événements Entrée enregistrée, Entrée modifiée et Entrée supprimée.</string>
+    <string name="tasker_screen_include_text_title">Inclure le texte de l\'entrée dans les événements</string>
+    <string name="tasker_screen_include_text_subtitle">Désactivé par défaut pour la confidentialité. Quand c\'est désactivé, Tasker reçoit le type d\'événement, la date, le libellé et l\'heure, mais pas le texte du journal.</string>
+    <string name="tasker_screen_section_what">Ce que cela fait</string>
+    <string name="tasker_screen_body_what">Tasker peut ajouter rapidement des entrées de journal ou des todos dans Yaja, ajouter des lignes à une entrée groupée comme Appels manqués, et Yaja peut prévenir Tasker quand une entrée est enregistrée, modifiée ou supprimée.</string>
+    <string name="tasker_screen_section_how">Comment l\'utiliser</string>
+    <string name="tasker_screen_body_how">Activez d\'abord ici l\'interrupteur dont vous avez besoin. Ensuite, ouvrez Tasker et ajoutez soit une action Capture rapide Yaja, soit un événement Événements du journal Yaja.</string>
+    <string name="tasker_screen_section_notes">Notes</string>
+    <string name="tasker_screen_body_notes">Le texte de l\'entrée n\'est pas partagé avec Tasker sauf si vous activez Inclure le texte de l\'entrée dans les événements. Si Tasker n\'affiche pas les dernières options ou variables, rouvrez l\'écran de configuration de Tasker après avoir mis Yaja à jour.</string>
+    <string name="tasker_screen_section_example">Exemple</string>
+    <string name="tasker_screen_body_example">Exemple d\'action : action Tasker &gt; Capture rapide Yaja &gt; Ajouter, avec Correspondance / en-tête défini sur Appels manqués et Ligne à ajouter définie sur une variable Tasker. Exemple d\'événement : événement Tasker &gt; Événements du journal Yaja &gt; Entrée modifiée, puis utilisez des variables comme %%yaja_event_type, %%yaja_date et, si besoin, %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Cas d\'usage</string>
+    <string name="tasker_screen_use_case_1">1. Utilisez un événement de journal Yaja dans Tasker pour déclencher une synchronisation FolderSync, afin que votre dossier Yaja soit envoyé vers n\'importe quel fournisseur cloud après modification des entrées.</string>
+    <string name="tasker_screen_use_case_2">2. Utilisez Pushbullet avec Tasker pour envoyer du texte dans Capture rapide Yaja, afin que le texte envoyé soit enregistré comme nouvelle entrée pour le jour en cours.</string>
+    <string name="tasker_screen_use_case_3">3. Utilisez un profil Tasker d\'appel manqué pour envoyer une action Ajouter à Yaja, afin que tous les détails d\'appels manqués arrivent sous une seule entrée Appels manqués au lieu de créer des entrées séparées.</string>
+    <string name="quick_todo_widget_description">Bouton à un appui pour enregistrer une tâche comme nouvelle entrée d\'aujourd\'hui.</string>
+    <string name="todo_list_widget_name">Tâches</string>
+    <string name="todo_list_widget_description">Liste déroulante des tâches du journal. Touchez une tâche pour la marquer comme faite ou non faite.</string>
+    <string name="todo_cd_add_todo">Ajouter une tâche</string>
+    <string name="todos_cd_open_compliance_master">Ouvrir les tâches récurrentes</string>
+    <string name="compliance_master_title">Tâches / Événements récurrents</string>
+    <string name="compliance_master_add">Ajouter une tâche récurrente</string>
+    <string name="compliance_master_edit">Modifier la tâche récurrente</string>
+    <string name="compliance_master_intro_title">Tâches récurrentes</string>
+    <string name="compliance_master_intro_body">Créez des tâches répétées pour les rythmes hebdomadaires, mensuels, trimestriels, semestriels ou annuels. Yaja affiche chaque tâche seulement quand son cycle devient pertinent.</string>
+    <string name="compliance_master_empty">Aucune tâche récurrente pour le moment. Ajoutez-en une pour créer automatiquement des tâches selon son planning.</string>
+    <string name="compliance_master_status_deactivated">Désactivée</string>
+    <string name="compliance_master_meta_format">À faire le jour %1$d • Afficher depuis le jour %2$d</string>
+    <string name="compliance_master_field_title">Nom de la tâche</string>
+    <string name="compliance_master_field_title_hint">Exemple : envoyer la déclaration mensuelle</string>
+    <string name="compliance_master_field_description">Description</string>
+    <string name="compliance_master_field_description_hint">Exemple : Consulter le portail bancaire et vérifier le reçu</string>
+    <string name="compliance_master_editor_task_section">De quoi Yaja doit-il vous souvenir ?</string>
+    <string name="compliance_master_field_due_day">Date d\'échéance</string>
+    <string name="compliance_master_field_reveal_day">Afficher la tâche depuis</string>
+    <string name="compliance_master_field_schedule_mode">Quand est-elle due ?</string>
+    <string name="compliance_master_schedule_mode_help">Choisissez comment Yaja détermine la date d\'échéance.</string>
+    <string name="compliance_master_select_schedule_type">Sélectionner le rythme d\'échéance</string>
+    <string name="compliance_master_field_frequency">À quelle fréquence ?</string>
+    <string name="compliance_master_frequency_help">Choisissez la fréquence de répétition de cette tâche.</string>
+    <string name="compliance_master_select_frequency">Sélectionner la fréquence de répétition</string>
+    <string name="compliance_master_schedule_details">Détails du planning</string>
+    <string name="compliance_master_details_date_help">Indiquez la date d\'échéance et quand la tâche doit devenir visible.</string>
+    <string name="compliance_master_details_weekday_help">Choisissez le jour de la semaine où cette tâche est due.</string>
+    <string name="compliance_master_details_boundary_help">Choisissez quand la tâche doit devenir visible dans chaque mois concerné.</string>
+    <string name="compliance_master_field_due_weekday">Jour d\'échéance</string>
+    <string name="compliance_master_select_weekday">Sélectionner le jour de la semaine</string>
+    <string name="compliance_master_due_day_help">Saisissez une date de 1 à 31. Les mois plus courts utilisent leur dernière date valide.</string>
+    <string name="compliance_master_reveal_day_help">La tâche reste masquée avant cette date dans chaque mois concerné.</string>
+    <string name="compliance_master_first_day_selected">Due le premier jour de chaque mois applicable.</string>
+    <string name="compliance_master_last_day_selected">Due le dernier jour de chaque mois applicable.</string>
+    <string name="compliance_mode_day_of_month">Date précise</string>
+    <string name="compliance_mode_day_of_month_desc">Due à une date numérotée, par exemple le 15.</string>
+    <string name="compliance_mode_day_of_week">Jour de semaine</string>
+    <string name="compliance_mode_day_of_week_desc">Due un jour choisi, par exemple lundi.</string>
+    <string name="compliance_mode_first_day">Premier du mois</string>
+    <string name="compliance_mode_first_day_desc">Due le premier jour de chaque mois applicable.</string>
+    <string name="compliance_mode_last_day">Fin du mois</string>
+    <string name="compliance_mode_last_day_desc">Due à la dernière date, y compris pour les mois plus courts.</string>
+    <string name="compliance_frequency_weekly">Hebdomadaire</string>
+    <string name="compliance_frequency_biweekly">Toutes les deux semaines</string>
+    <string name="compliance_frequency_monthly">Mensuelle</string>
+    <string name="compliance_frequency_quarterly">Trimestrielle</string>
+    <string name="compliance_frequency_half_yearly">Semestrielle</string>
+    <string name="compliance_frequency_annual">Annuelle</string>
+    <string name="compliance_master_summary_day_of_month">Jour %1$d • %2$s • afficher depuis le jour %3$d</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Premier jour • %1$s • afficher depuis le jour %2$d</string>
+    <string name="compliance_master_summary_last_day">Dernier jour • %1$s • afficher depuis le jour %2$d</string>
+    <string name="compliance_master_execution_title">Comment cela fonctionnera</string>
+    <string name="compliance_master_execution_day_of_month">Une tâche est créée %1$s le jour %2$d. Elle apparaît dans Tâches depuis le jour %3$d de chaque mois concerné.</string>
+    <string name="compliance_master_execution_weekday">Une tâche est créée %1$s le %2$s. Seules les occurrences dues aujourd\'hui ou avant sont affichées.</string>
+    <string name="compliance_master_execution_monthly_weekday">Une tâche est créée chaque mois à la même occurrence de %1$s que la date de départ. Seules les occurrences dues aujourd\'hui ou avant sont affichées.</string>
+    <string name="compliance_master_execution_month_boundary">Une tâche est créée %1$s le %2$s du mois concerné. Elle apparaît dans Tâches depuis le jour %3$d de ce mois.</string>
+    <string name="compliance_master_boundary_first">premier jour</string>
+    <string name="compliance_master_boundary_last">dernier jour</string>
+    <string name="compliance_master_recurrence_weekly">chaque semaine</string>
+    <string name="compliance_master_recurrence_biweekly">toutes les deux semaines</string>
+    <string name="compliance_master_recurrence_monthly">chaque mois</string>
+    <string name="compliance_master_recurrence_quarterly">tous les trois mois</string>
+    <string name="compliance_master_recurrence_half_yearly">tous les six mois</string>
+    <string name="compliance_master_recurrence_annual">chaque année</string>
+    <string name="todo_chip_compliance">Récurrente</string>
+    <string name="compliance_master_upcoming">Prochaines dates</string>
+    <string name="compliance_master_delete_confirm_title">Supprimer la tâche récurrente ?</string>
+    <string name="compliance_master_delete_confirm_body">"%1$s" sera supprimée et aucune autre tâche ne sera créée.</string>
+    <string name="compliance_master_next_date">Prochaine : %1$s</string>
+    <string name="compliance_master_end_section">Condition de fin</string>
+    <string name="compliance_master_end_help">Choisissez quand cette tâche cesse de se répéter</string>
+    <string name="compliance_master_end_never">Jamais</string>
+    <string name="compliance_master_end_on_date">À une date</string>
+    <string name="compliance_master_end_after">Après…</string>
+    <string name="compliance_master_end_never_desc">Se répète indéfiniment, sans date de fin.</string>
+    <string name="compliance_master_end_date_select">Choisir la date de fin</string>
+    <string name="compliance_master_end_date_help">Aucune tâche n\'est créée après cette date.</string>
+    <string name="compliance_master_end_count_label">Nombre d\'occurrences</string>
+    <string name="compliance_master_end_count_help">S\'arrête après ce nombre de tâches créées.</string>
+    <string name="compliance_master_ends_on">Fin le %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d restantes</string>
+    <string name="compliance_master_ended">Terminé</string>
+    <string name="compliance_master_type_label">Créer comme</string>
+    <string name="compliance_master_type_task">Tâche</string>
+    <string name="compliance_master_type_event">Événement</string>
+    <string name="heatmap_widget_status_loading">Chargement de la carte de chaleur…</string>
+    <string name="heatmap_widget_status_empty">Pas encore d\'entrées</string>
+    <string name="heatmap_widget_status_refresh">Ouvrez Yaja pour actualiser la carte de chaleur</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cache reconstruit.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Nouvelle entrée</string>
+    <string name="shortcut_new_entry_long">Ajouter une entrée de journal</string>
+    <string name="shortcut_add_todo_short">Ajouter une tâche</string>
+    <string name="shortcut_add_todo_long">Ajouter une tâche pour aujourd\'hui</string>
+    <string name="shortcut_add_event_short">Ajouter un événement</string>
+    <string name="shortcut_add_event_long">Ajouter un événement</string>
+    <string name="shortcut_today_short">Aujourd\'hui</string>
+    <string name="shortcut_today_long">Ouvrir le journal d\'aujourd\'hui</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigation</string>
+    <string name="settings_bottom_nav_style_label">Style de navigation inférieure</string>
+    <string name="settings_navigation_mode_title">Mode de navigation</string>
+    <string name="settings_navigation_mode_subtitle">Choisissez entre la barre de navigation flottante et le panneau inférieur complet.</string>
+    <string name="settings_nav_mode_floating">Flottant</string>
+    <string name="settings_nav_mode_panel">Panneau</string>
+    <string name="settings_navigation_screens_label">Écrans de navigation</string>
+    <string name="settings_nav_summary_floating">Journal et Calendrier restent toujours dans la barre flottante. Choisissez jusqu\'à 2 écrans supplémentaires. Sélectionnés actuellement : %1$d sur %2$d.</string>
+    <string name="settings_nav_summary_panel">Journal et Calendrier restent toujours dans le panneau inférieur. Choisissez jusqu\'à 3 écrans supplémentaires. Sélectionnés actuellement : %1$d sur %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Affiche Rétrospective dans la barre ou le panneau de navigation actif.</string>
+    <string name="settings_nav_people_places_subtitle">Affiche Personnes et lieux dans la barre ou le panneau de navigation actif.</string>
+    <string name="settings_nav_todos_title">Tâches</string>
+    <string name="settings_nav_todos_subtitle">Affiche Tâches dans la barre ou le panneau de navigation actif.</string>
+    <string name="todos_quick_add_title">Ajout rapide</string>
+    <string name="todos_hero_subtitle">Suivez tâches et moments du journal</string>
+    <string name="todos_hero_all_activity">Toute l’activité</string>
+    <string name="todos_hero_open_focus">À faire</string>
+    <string name="todos_hero_completed">Terminées</string>
+    <string name="todos_stat_today_open">Ouvertes aujourd’hui</string>
+    <string name="todos_stat_done_today">Faites aujourd’hui</string>
+    <string name="todos_stat_events">Événements</string>
+    <string name="todos_stat_still_open">Encore ouvertes</string>
+    <string name="todos_stat_past_7d">7 j passés</string>
+    <string name="todos_stat_days">Jours</string>
+    <string name="todos_empty_done">Aucune tâche terminée pour le moment</string>
+    <string name="todos_empty_events">Aucune entrée d’événement pour le moment</string>
+    <string name="todos_section_open">OUVERTES</string>
+    <string name="todos_section_later">PLUS TARD</string>
+    <string name="todos_section_upcoming">À VENIR</string>
+    <string name="todos_section_future_events">ÉVÉNEMENTS FUTURS</string>
+    <string name="todos_section_past_events">ÉVÉNEMENTS PASSÉS</string>
+    <string name="todos_cd_open_day">Ouvrir le jour</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d tâche ouverte</item>
+        <item quantity="other">%1$d tâches ouvertes</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d tâche terminée</item>
+        <item quantity="other">%1$d tâches terminées</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d événement à venir</item>
+        <item quantity="other">%1$d événements à venir</item>
+    </plurals>
+    <string name="todos_filter_all_format">Tout %1$d</string>
+    <string name="todos_filter_open_format">Ouvert %1$d</string>
+    <string name="todos_filter_done_format">Fait %1$d</string>
+    <string name="todos_filter_events_format">Évén. %1$d</string>
+    <string name="todos_cheer_all_clear">Tout est clair. Bien.</string>
+    <string name="todos_cheer_done_and_dusted">C’est bouclé.</string>
+    <string name="todos_cheer_nothing_pending">Rien en attente.</string>
+    <string name="todos_cheer_caught_up">Vous êtes à jour.</string>
+    <string name="todos_cheer_clean_slate">Page blanche.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Dans %1$d jour</item>
+        <item quantity="other">Dans %1$d jours</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">Il y a %1$d jour</item>
+        <item quantity="other">Il y a %1$d jours</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Dans %1$d semaine</item>
+        <item quantity="other">Dans %1$d semaines</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">Il y a %1$d semaine</item>
+        <item quantity="other">Il y a %1$d semaines</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Dans 1 mois</string>
+    <string name="todos_relative_one_month_ago">Il y a 1 mois</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Dans %1$d mois</item>
+        <item quantity="other">Dans %1$d mois</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">Il y a %1$d mois</item>
+        <item quantity="other">Il y a %1$d mois</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistiques</string>
+    <string name="settings_nav_statistics_subtitle_on">Affiche Statistiques dans la barre ou le panneau de navigation actif.</string>
+    <string name="settings_nav_statistics_subtitle_off">Activez d\'abord Statistiques pour la placer dans la navigation.</string>
+    <string name="settings_show_labels_bottom_panel_title">Afficher les libellés dans le panneau inférieur</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Affiche des libellés sous les icônes dans le panneau inférieur.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gestes</string>
+    <string name="settings_entry_delete_title">Suppression d\'entrées</string>
+    <string name="settings_entry_delete_subtitle">Appuyez longuement sur une entrée pour la sélectionner. Touchez d\'autres entrées pour en sélectionner plusieurs, puis utilisez le bouton Supprimer centré. Touchez un espace vide pour effacer la sélection.</string>
+    <string name="settings_swipe_navigate_title">Glisser pour naviguer entre les dates</string>
+    <string name="settings_swipe_navigate_subtitle">Glissez de droite à gauche pour avancer d\'une date, et de gauche à droite pour revenir en arrière.</string>
+    <string name="settings_drag_reorder_title">Activer le glisser-déposer pour réorganiser</string>
+    <string name="settings_drag_reorder_subtitle">Appuyez longuement sur les entrées pour les réorganiser</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Données et récupération</string>
+    <string name="settings_swipe_rebuild_index">Glissez vers le bas sur l\'écran d\'accueil pour reconstruire l\'index</string>
+    <string name="settings_large_journal_safe_mode_title">Mode sécurisé pour grand journal</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Lorsqu\'un journal très volumineux est détecté, reporte les calculs de statistiques non essentiels au démarrage pour que l\'application s\'ouvre plus vite et plus sûrement.</string>
+    <string name="settings_version_history_title">Historique des versions</string>
+    <string name="settings_version_history_subtitle">Conserve des copies de sécurité avant les modifications, suppressions, étiquettes et révisions d\'entrées.</string>
+    <string name="settings_storage_location_label">Emplacement de stockage</string>
+    <string name="settings_reset_to_default">Réinitialiser par défaut</string>
+    <string name="settings_choose_folder">Choisir un dossier</string>
+    <string name="settings_backup_description">Crée une archive zip de sauvegarde Yaja contenant les entrées du journal, les raccourcis, les mots-clés de date et les données Personnes et lieux. La restauration peut la fusionner en toute sécurité plus tard.</string>
+    <string name="settings_last_backup">Dernière sauvegarde : %1$s</string>
+    <string name="settings_backup_reminder_age_label">Ancienneté du rappel de sauvegarde</string>
+    <string name="settings_backup_reminder_disabled">Désactivé</string>
+    <string name="settings_backup_reminder_desc">Met en évidence la sauvegarde dans la barre latérale lorsqu\'elle a plus de %1$d jours.</string>
+    <string name="settings_backup_reminder_days_disabled">0 jour (désactivé)</string>
+    <string name="settings_backup_reminder_days">%1$d jours</string>
+    <string name="settings_restore_button">Restaurer</string>
+    <string name="settings_backup_now_button">Sauvegarder maintenant</string>
+    <string name="settings_db_index_management_label">Gestion de l\'index de la base de données</string>
+    <string name="settings_db_index_management_desc">Ouvre des outils ciblés pour reconstruire les tâches, Personnes et lieux, ou reconstruire entièrement l\'index de la base de données.</string>
+    <string name="settings_rebuild_tools_button">Outils de reconstruction</string>
+    <string name="settings_import_label">Importer</string>
+    <string name="settings_import_info_cd">Informations sur l\'importation</string>
+    <string name="settings_import_info_title">Informations sur l\'importation</string>
+    <string name="settings_import_day_one_title">Importation Day One</string>
+    <string name="settings_import_day_one_bullet1">- Exportez depuis Day One sans images</string>
+    <string name="settings_import_day_one_bullet2">- Seules les données texte seront importées</string>
+    <string name="settings_import_day_one_bullet3">- L\'horodatage et la localisation (si disponibles) seront conservés</string>
+    <string name="settings_import_perf_warning_title">Avertissement de performance</string>
+    <string name="settings_import_perf_warning_desc">L\'importation d\'un grand nombre d\'entrées (500 et plus) peut prendre plusieurs minutes. Vous pouvez quitter l\'écran, l\'importation se poursuivra en arrière-plan.</string>
+    <string name="settings_got_it">Compris</string>
+    <string name="settings_import_success">%1$d nouveaux jours, %2$d fusionnés, %3$d ignorés</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">Export .zip ou .json</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">Export .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Apprenez à utiliser yaja</string>
+    <string name="help_footer_website">Site web</string>
+    <string name="help_footer_share">Partager</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Partager yaja</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nUn journal local sans distraction qui enregistre les entrées sous forme de fichiers markdown. Il inclut la chronologie, les souvenirs, les personnes et lieux, les modèles, les révisions, les statistiques et les widgets.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Nom d\'utilisateur Discord copié !</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Logo RJ</string>
+    <string name="help_screen_title">Aide et À propos</string>
+    <string name="help_welcome_title">Bienvenue sur yaja</string>
+    <string name="help_welcome_body">Yaja est un journal markdown local pour capturer vos journées, les personnes, les lieux, les suivis, les bilans et les tendances sans vous gêner. Cette page propose un guide rapide des principales parties de l\'application.</string>
+    <string name="help_start_here">Pour commencer</string>
+    <string name="help_cd_collapse">Réduire</string>
+    <string name="help_cd_expand">Développer</string>
+    <string name="help_group_everyday_title">Quotidien</string>
+    <string name="help_group_everyday_desc">Écriture, flux de rédaction et navigation au quotidien.</string>
+    <string name="help_group_reviews_title">Bilans et Analyses</string>
+    <string name="help_group_reviews_desc">Rétrospectives, tendances, personnes, lieux et analyses.</string>
+    <string name="help_group_advanced_title">Outils Avancés</string>
+    <string name="help_group_advanced_desc">Widgets, stockage, confidentialité, sauvegardes et outils techniques.</string>
+    <string name="help_onboard_todos_events_title">Tâches, Événements &amp; Récurrences</string>
+    <string name="help_onboard_todos_events_body">Conservez vos rappels personnels, plans de famille et tâches récurrentes programmées qui se génèrent automatiquement à leur échéance dans le même flux de journal.</string>
+    <string name="help_onboard_widgets_title">Widgets</string>
+    <string name="help_onboard_widgets_body">Ajoutez les widgets Carte de chaleur, Capture rapide, Tâche rapide ou Liste de tâches depuis le lanceur.</string>
+    <string name="help_onboard_version_history_title">Historique des Versions</string>
+    <string name="help_onboard_version_history_body">Activez les Fichiers d\'historique dans Paramètres &gt; Données pour conserver des instantanés avant des modifications risquées.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Utilisez Tasker pour ajouter rapidement des entrées, tâches ou événements lorsque quelque chose de personnel doit être capturé immédiatement.</string>
+    <string name="help_section_writing_editor_title">Écriture et Éditeur</string>
+    <string name="help_section_writing_editor_preview">Modèles, titres markdown, tâches, événements et insertion flexible de brouillons.</string>
+    <string name="help_section_writing_editor_content">+ Appuyez sur le bouton flottant \'+\' pour écrire pour le jour sélectionné.\n+ Utilisez des modèles comme Note de réunion, Jour de voyage, Journal de santé, Réflexion, Journal de travail, et plus.\n+ Les modèles peuvent être insérés dans un brouillon vide, ajoutés en dessous, utilisés pour remplacer un brouillon ou insérés au curseur.\n+ Les puces de l\'éditeur permettent d\'insérer rapidement des tâches, événements, listes numérotées et listes à puces.\n+ Voir l\'entrée et Modifier l\'entrée prennent en charge les titres de style markdown comme ### Section.</string>
+    <string name="help_section_post_write_review_title">Bilan Après Écriture</string>
+    <string name="help_section_post_write_review_preview">Extraction de tâches, détection de mots-clés, mise en avant, étiquettes et configuration des suivis.</string>
+    <string name="help_section_post_write_review_content">+ Après l\'écriture, Yaja peut ouvrir une feuille de bilan avant l\'enregistrement.\n+ Elle peut extraire des tâches, détecter Personnes et Lieux, mettre en avant la journée, définir une étiquette du jour et planifier des dates de suivi.\n+ Vous pouvez désactiver le Bilan après écriture depuis les Paramètres si vous préférez un enregistrement direct.</string>
+    <string name="help_section_revisit_followup_title">Dates de Suivi et de Révision</string>
+    <string name="help_section_revisit_followup_preview">Dates de suivi liées au journal avec sélections rapides et une option personnalisée.</string>
+    <string name="help_section_revisit_followup_content">+ Ajoutez des dates de suivi avec Demain, La semaine prochaine, Le mois prochain, ou une date personnalisée.\n+ Les éléments de suivi en attente apparaissent sur l\'accueil et sont signalés dans le Calendrier et la Chronologie.\n+ Cela fonctionne bien pour les promesses, décisions, contrôles de santé et rappels liés au contexte du journal.</string>
+    <string name="help_section_navigation_gestures_title">Navigation et Gestes</string>
+    <string name="help_section_navigation_gestures_preview">Déplacement entre les dates, suppression de sélection, préférences de balayage et comportement de reconstruction du cache.</string>
+    <string name="help_section_navigation_gestures_content">+ L\'accueil prend en charge la navigation par date avec des flèches et une navigation par balayage facultative lorsqu\'elle est activée.\n+ Appuyez longuement sur une entrée pour la sélectionner. Touchez d\'autres entrées pour les sélectionner aussi, puis utilisez le bouton Supprimer près du bouton Ajouter.\n+ Toucher hors des entrées sélectionnées efface la sélection. Les entrées supprimées peuvent être restaurées ensemble depuis le compte à rebours de restauration.\n+ Vous pouvez reconstruire le cache lorsque les fichiers du journal changent en dehors de Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Raccourcis et Capture Rapide</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Capture personnelle rapide et extraits de texte dynamiques réutilisables.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Créez des raccourcis pour insérer rapidement du texte répété.\n+ Les espaces réservés dynamiques comme {{today:dd-MMM}} et {{now:HH:mm}} fonctionnent dans les raccourcis.\n+ La Capture rapide permet de noter quelque chose vite sans ouvrir l\'éditeur complet.\n+ L\'ajout rapide peut enregistrer une tâche ou un événement pour une date choisie depuis le widget, l\'écran Tâches ou Tasker.</string>
+    <string name="help_section_todos_events_title">Tâches, Événements &amp; Récurrences</string>
+    <string name="help_section_todos_events_preview">Rappels personnels, événements notables et tâches récurrentes automatisées.</string>
+    <string name="help_section_todos_events_content">+ Les tâches sont écrites directement dans les entrées du journal sous forme de lignes [ ] et [x].\n+ Les événements sont des entrées normales marquées comme Événement, utiles pour les plans de famille, rendez-vous, voyages ou tout ce dont vous voulez vous souvenir.\n+ Les tâches et événements récurrents écrivent automatiquement des éléments de tâche ou des titres d\'événement sur vos pages de journal selon leur calendrier (par ex. hebdomadaire, mensuel, annuel).\n+ Gérez vos calendriers en appuyant sur l\'icône Récurrence sur l\'écran des Tâches.\n+ Chaque jour à l\'ouverture de Yaja, le système en arrière-plan vérifie si des tâches planifiées sont dues et les insère dans l\'entrée du jour.\n+ L\'écran des Tâches vous permet de voir les tâches en cours, terminées et les événements sans faire de Yaja un tableau de bord de productivité.\n+ Appuyez sur l\'en-tête d\'une date pour ouvrir ce jour dans le Journal.\n+ Tirez vers le bas sur les Tâches pour reconstruire l\'index si des fichiers ont changé en dehors de Yaja.\n+ L\'affichage des tâches terminées est mémorisé afin de conserver votre vue préférée.\n+ Les widgets de tâches peuvent afficher les tâches en attente, demander confirmation avant de basculer, masquer les tâches terminées et éventuellement s\'auto-masquer en l\'absence de tâche en attente.</string>
+    <string name="help_section_people_places_title">Personnes et Lieux</string>
+    <string name="help_section_people_places_preview">Mots-clés, alias, tendances et vues de connexions classées.</string>
+    <string name="help_section_people_places_content">+ Suivez les personnes et lieux avec des alias et des étiquettes de relation.\n+ Recherchez, filtrez et triez la liste de mots-clés.\n+ Les pages de détail des mots-clés montrent la récence, les mentions au fil du temps, les co-mentions et les Connexions classées.\n+ La Sensibilité de correspondance peut être ajustée depuis les Paramètres.</string>
+    <string name="help_section_timeline_lookback_title">Chronologie et Rétrospective</string>
+    <string name="help_section_timeline_lookback_preview">Navigation dans les jours passés, points forts, Surprends-moi et accès aux bilans.</string>
+    <string name="help_section_timeline_lookback_content">+ La Chronologie permet de parcourir les jours passés avec des filtres, des puces d\'année et un mode optionnel toutes dates.\n+ La Rétrospective montre les entrées du même jour des années précédentes et vos moments mis en avant.\n+ Surprends-moi ouvre une entrée passée aléatoire depuis la Rétrospective.\n+ Le Bilan hebdomadaire et le Bilan mensuel se trouvent dans la Rétrospective.</string>
+    <string name="help_section_statistics_reviews_title">Statistiques et Bilans</string>
+    <string name="help_section_statistics_reviews_preview">Mode comparaison, analyses de modèles, sections visibles personnalisées et résumés.</string>
+    <string name="help_section_statistics_reviews_content">+ Les Statistiques incluent le mode comparaison, les écarts de mots-clés et les Analyses de modèles.\n+ Vous pouvez choisir quelles sections de statistiques restent visibles depuis l\'écran Statistiques.\n+ Le Mode comparaison est disponible pour Tout le temps et résume les écarts mensuels et annuels.\n+ Les pages de bilan résument les jours les plus actifs, les principales personnes et lieux, les moments favoris, les étiquettes, la répartition des langues et les tendances de séries ou d\'absences.</string>
+    <string name="help_section_widgets_home_title">Widgets et Écran d\'Accueil</string>
+    <string name="help_section_widgets_home_preview">Widgets du lanceur, mots-clés mis en avant et statistiques quotidiennes sur l\'accueil.</string>
+    <string name="help_section_widgets_home_content">+ Les widgets Carte de chaleur d\'écriture, Capture rapide, Ajout rapide et Liste de tâches sont disponibles sur le lanceur.\n+ Les écrans de configuration des widgets permettent d\'ajuster les coins, le padding, la forme, les en-têtes, la visibilité des tâches terminées et d\'autres options lorsqu\'elles sont prises en charge.\n+ Le widget carte de chaleur utilise plus de nuances d\'intensité pour une vue plus fluide de l\'historique d\'écriture.\n+ L\'accueil peut mettre en avant Personnes et Lieux dans les entrées lorsque le réglage est activé.\n+ L\'en-tête de date de l\'accueil peut afficher ou masquer le nombre d\'entrées, de mots et de caractères.</string>
+    <string name="help_section_language_text_analysis_title">Langue et Analyse de Texte</string>
+    <string name="help_section_language_text_analysis_preview">Détection locale de la langue pour les statistiques et les bilans.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja détecte le script ou la langue dominante des entrées pour générer des analyses.\n+ La répartition des langues apparaît dans Statistiques et Bilans.\n+ La détection s\'exécute localement et n\'envoie pas le texte du journal hors de l\'appareil.</string>
+    <string name="help_section_data_privacy_cache_title">Données, Confidentialité et Cache</string>
+    <string name="help_section_data_privacy_cache_preview">Stockage markdown, historique des versions, journal de l\'app, verrouillage de l\'app et reconstruction du cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Confidentialité des données : toutes les données personnelles du journal résident strictement sur votre appareil physique et ne le quittent jamais, à aucun moment. Yaja n\'exploite aucune base de données cloud, serveur de sauvegarde distant ni télémétrie pour suivre votre texte.\n+ Les entrées du journal sont stockées en fichiers Markdown standard organisés par année et par mois.\n+ L\'historique des versions peut conserver des instantanés sécurisés avant les modifications, suppressions, étiquettes et changements de suivi.\n+ Vous pouvez choisir combien de versions conserver et pendant combien de jours l\'historique est conservé.\n+ Le journal de l\'app enregistre les événements techniques, les détails des plantages et l\'activité du cache sans stocker le texte du journal.\n+ Reconstruire le cache de l\'app permet de rafraîchir les données de l\'app de façon modulaire, y compris les tâches et les reconstructions complètes du cache.\n+ Le verrouillage de l\'app prend en charge le code PIN et l\'empreinte digitale.\n+ Yaja garde les tâches lourdes d\'indexation et de statistiques différées lorsque possible afin que le démarrage de l\'app et les enregistrements restent réactifs.</string>
+    <string name="settings_app_log_title">Journal de l\'application</string>
+    <string name="settings_app_log_subtitle">Consultez des diagnostics respectueux de la confidentialité et les détails des incidents précédents</string>
+    <string name="app_log_cd_share">Partager le journal de l\'application</string>
+    <string name="app_log_cd_clear">Effacer le journal de l\'application</string>
+    <string name="app_log_privacy_title">Diagnostics respectueux de la confidentialité</string>
+    <string name="app_log_privacy_description">Ce journal enregistre les événements importants de l\'application, les opérations de cache/stockage, les actualisations des widgets et les détails des incidents. Il n\'inclut pas les entrées du journal, le texte des tâches ni le contenu privé des notes.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Conserver le dernier %d jour</item>
+        <item quantity="other">Conserver les %d derniers jours</item>
+    </plurals>
+    <string name="app_log_retention_description">Les anciens événements du journal sont supprimés automatiquement pendant l\'enregistrement et immédiatement lorsque ce réglage change.</string>
+    <string name="app_log_empty">Aucun journal de l\'application pour le moment.</string>
+    <string name="app_log_refresh">Actualiser le journal</string>
+    <string name="app_log_share_empty">Aucune entrée dans le journal de l\'application Yaja pour le moment.</string>
+    <string name="app_log_share_subject">Journal de l\'application Yaja</string>
+    <string name="app_log_share_chooser">Partager le journal de l\'application Yaja</string>
+    <string name="app_log_local_time_format">%1$s | heure locale\n%2$s</string>
+    <string name="settings_website_title">Site Web de Yaja</string>
+    <string name="settings_website_subtitle">Ouvre le site officiel pour les actualités et détails</string>
+    <string name="settings_advanced_integrations_title">Intégrations avancées</string>
+    <string name="settings_tasker_integration_title">Intégration Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Actions de capture rapide et déclencheurs d\'événements du journal</string>
+    <string name="settings_shortcodes_subtitle">Gérez les extraits réutilisables qui s\'étendent lors de l\'écriture ou de la capture rapide.</string>
+    <string name="settings_privacy_security_title">Confidentialité et sécurité</string>
+    <string name="settings_pin_lock_title">Verrouillage par code PIN</string>
+    <string name="settings_app_locked">L\'application est verrouillée</string>
+    <string name="settings_app_unlocked">L\'application est déverrouillée</string>
+    <string name="settings_change_pin">Changer le code PIN</string>
+    <string name="settings_biometric_unlock_title">Déverrouillage biométrique</string>
+    <string name="settings_biometric_enabled_desc">Empreinte digitale ou Face ID activé</string>
+    <string name="settings_biometric_disabled_desc">Utiliser la biométrie au lieu du code PIN</string>
+    <string name="settings_autolock_timeout_title">Délai de verrouillage automatique</string>
+    <string name="settings_pin_lock_disclaimer">Le verrouillage par code PIN empêche l\'accès non autorisé à l\'application mais ne chiffre pas les données du journal sur le disque. Une personne ayant un accès direct aux fichiers pourrait toujours lire vos entrées.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Système</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_dark">Sombre</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Couleurs</string>
+    <string name="settings_color_intensity_title">Intensité des couleurs</string>
+    <string name="settings_background_tint_title">Teinte de fond</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Personnalisée</string>
+    <string name="settings_font_size_label">Taille de police</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">Aperçu du thème</string>
+    <string name="settings_journal_entry_preview">Entrée de journal</string>
+    <string name="settings_journal_entry_preview_desc">Les cartes, puces et boutons utiliseront ces couleurs.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Accent</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensité : %1$s</string>
+    <string name="settings_personal_themes_title">Thèmes personnels</string>
+    <string name="settings_theme_name_label">Nom du thème</string>
+    <string name="settings_main_color_label">Couleur principale</string>
+    <string name="settings_hue_label">Teinte</string>
+    <string name="settings_sat_label">Sat</string>
+    <string name="settings_bright_label">Luminosité</string>
+    <string name="settings_generated_accents_title">Accents générés</string>
+    <string name="settings_personal_theme_desc">Choisissez une couleur. Yaja crée des couleurs d\'accent et de support assorties.</string>
+    <string name="settings_preview_chip_main">Principal</string>
+    <string name="settings_preview_chip_support">Support</string>
+    <string name="settings_no_font_selected">Aucune police sélectionnée</string>
+    <string name="settings_custom_font_desc">Choisissez un fichier .ttf ou .otf unicode — par exemple une police malayalam comme Manjari. Les caractères absents de la police utiliseront les polices système.</string>
+    <string name="settings_font_replace">Remplacer</string>
+    <string name="settings_choose_font_file">Choisir un fichier de police</string>
+    <string name="settings_intensity_muted">Atténué</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Vif</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Net</string>
+    <string name="settings_tint_soft">Doux</string>
+    <string name="settings_tint_rich">Riche</string>
+    <string name="settings_tint_deep">Profond</string>
+    <string name="settings_accent_complementary">Complémentaire</string>
+    <string name="settings_accent_analogous">Analogue</string>
+    <string name="settings_accent_triadic">Triadique</string>
+    <string name="settings_accent_soft">Doux</string>
+    <string name="settings_mono_weight_thin">Fin</string>
+    <string name="settings_mono_weight_extra_light">Extra léger</string>
+    <string name="settings_mono_weight_light">Léger</string>
+    <string name="settings_mono_weight_regular">Normal</string>
+    <string name="settings_mono_weight_medium">Moyen</string>
+    <string name="settings_mono_weight_semi_bold">Semi-gras</string>
+    <string name="settings_mono_weight_bold">Gras</string>
+    <string name="settings_mono_weight_extra_bold">Extra gras</string>
+    <string name="settings_mono_weight_title">Graisse</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Ajouter un mot-clé de date</string>
+    <string name="settings_keyword_label">Mot-clé</string>
+    <string name="settings_keyword_placeholder_example">p. ex. hier</string>
+    <string name="settings_means_label">Signifie</string>
+    <string name="settings_add_button">Ajouter</string>
+    <string name="settings_no_keywords_yet">Aucun mot-clé ajouté pour le moment.</string>
+    <string name="settings_added_keywords_title">Mots-clés ajoutés (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Ajouter un mot-clé</string>
+    <string name="keywords_dialog_add_title">Ajouter un mot-clé</string>
+    <string name="keywords_dialog_edit_title">Modifier le mot-clé</string>
+    <string name="keywords_cd_import_csv">Importer un CSV</string>
+    <string name="keywords_cd_export_csv">Exporter en CSV</string>
+    <string name="keywords_cd_download_template">Télécharger le modèle</string>
+    <string name="rebuild_cache_storage_transparency_title">Transparence du stockage sur l\'appareil</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja utilise un modèle de stockage local sécurisé. Les données de votre journal personnel restent locales et ne quittent jamais votre appareil, à aucun moment :</string>
+    <string name="rebuild_cache_source_of_truth_title">Source de vérité (fichiers Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Toutes les entrées, éléments de listes de tâches, événements de la chronologie, favoris et étiquettes sont enregistrés de façon permanente dans des fichiers Markdown (.md) en texte brut dans le dossier local de votre journal. Vos données vous appartiennent à 100 % et résident entièrement sur votre appareil.</string>
+    <string name="rebuild_cache_read_cache_title">Cache de lecture et index (base de données SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">Pour permettre un chargement instantané des écrans, les surlignages du calendrier, les mots-clés et les statistiques sans analyser le système de fichiers à chaque défilement, Yaja analyse vos fichiers Markdown et les indexe dans une base de données SQLite locale Room sur votre appareil.</string>
+    <string name="rebuild_cache_local_private_title">100 % local et privé</string>
+    <string name="rebuild_cache_local_private_desc">Yaja ne dispose d\'aucune base de données dans le cloud, ni de serveurs de sauvegarde distants, ni de télémétrie suivant votre texte. Toutes les entrées du journal et les données analysées restent strictement sur votre appareil physique et n\'en sortent jamais.</string>
+    <string name="keywords_export_success">Mots-clés exportés</string>
+    <string name="keywords_export_failed">Impossible d\'exporter les mots-clés</string>
+    <string name="keywords_template_saved">Modèle enregistré</string>
+    <string name="keywords_template_save_failed">Impossible d\'enregistrer le modèle</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d mot-clé importé</item>
+        <item quantity="other">%d mots-clés importés</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Aucun mot-clé valide trouvé</string>
+    <string name="keywords_import_failed">Impossible d\'importer les mots-clés</string>
+    <string name="keywords_status_indexing">Indexation</string>
+    <string name="keywords_status_indexed">Indexé</string>
+    <string name="keywords_metric_mentions">Mentions</string>
+    <string name="keywords_metric_days">Jours</string>
+    <string name="keywords_timeline_range_all">Tout</string>
+    <string name="keywords_connections_filter_all">Tout</string>
+    <string name="keywords_connections_filter_people">Personnes</string>
+    <string name="keywords_connections_filter_places">Lieux</string>
+    <string name="keywords_connections_filter_recent">Récent</string>
+    <string name="keywords_connections_filter_strongest">Plus fort</string>
+    <string name="keywords_filter_needs_reindex">Nécessite une réindexation</string>
+    <string name="keywords_search_placeholder">Rechercher personnes, lieux, alias, relation</string>
+    <string name="keywords_refreshing_counters">Actualisation des compteurs de mots-clés…</string>
+    <string name="keywords_empty_title">Aucun mot-clé pour l’instant</string>
+    <string name="keywords_empty_subtitle">Ajoutez les personnes et lieux que vous voulez que l’app suive localement.</string>
+    <string name="keywords_no_results_title">Aucun résultat correspondant</string>
+    <string name="keywords_no_results_subtitle">Essayez une autre recherche, un autre tri ou filtre.</string>
+    <string name="keywords_people_title">Personnes</string>
+    <string name="keywords_places_title">Lieux</string>
+    <string name="keywords_people_empty">Aucune personne ajoutée pour l’instant.</string>
+    <string name="keywords_people_filtered_empty">Aucune personne ne correspond aux filtres actuels.</string>
+    <string name="keywords_places_empty">Aucun lieu ajouté pour l’instant.</string>
+    <string name="keywords_places_filtered_empty">Aucun lieu ne correspond aux filtres actuels.</string>
+    <string name="keywords_delete_person_title">Supprimer la personne ?</string>
+    <string name="keywords_delete_place_title">Supprimer le lieu ?</string>
+    <string name="keywords_delete_message">Supprimer "%1$s" de Personnes &amp; Lieux ? Cela supprimera le mot-clé et ses correspondances indexées.</string>
+    <string name="keywords_timeline_title">Mentions au fil du temps</string>
+    <string name="keywords_timeline_empty_pattern">Pas encore de tendance mensuelle</string>
+    <string name="keywords_timeline_total_format">%1$d au total</string>
+    <string name="keywords_timeline_empty_chart">Les mentions apparaîtront ici une fois que l\'indexation aura trouvé des entrées.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Pic %1$s • %2$d mention</item>
+        <item quantity="other">Pic %1$s • %2$d mentions</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Jours avec mentions</string>
+    <string name="keywords_recency_title">Récence</string>
+    <string name="keywords_recency_none">Aucune correspondance pour le moment</string>
+    <string name="keywords_recency_today">Mentionné aujourd\'hui</string>
+    <string name="keywords_recency_yesterday">Mentionné hier</string>
+    <string name="keywords_recency_days_ago_format">Dernière mention il y a %1$d jours</string>
+    <string name="keywords_first_seen">Vu en premier</string>
+    <string name="keywords_last_seen">Vu en dernier</string>
+    <string name="keywords_unknown">Inconnu</string>
+    <string name="keywords_co_mentioned_with">Co-mentionné avec</string>
+    <string name="keywords_connections_title">Connexions</string>
+    <string name="keywords_connections_subtitle">Classées par chevauchement répété et récence</string>
+    <string name="keywords_connections_linked_format">%1$d liés</string>
+    <string name="keywords_connections_show">Afficher les connexions</string>
+    <string name="keywords_connections_hide">Masquer les connexions</string>
+    <string name="keywords_connections_items_in_view">%1$d éléments dans cette vue</string>
+    <string name="keywords_connections_tap_to_expand">Touchez pour développer %1$d liens classés</string>
+    <string name="keywords_connections_empty">Aucune connexion pour ce filtre pour le moment.</string>
+    <string name="keywords_open_day">Ouvrir le jour</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Les plus mentionnés</string>
+    <string name="keywords_sort_recently_added">Ajoutés récemment</string>
+    <string name="keywords_peak_mentions_format">Pic %1$s • %2$d mention%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d jour</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together"> ensemble</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d entr</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">ée partagée</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ées partagées</string>
+    <string name="keywords_connections_meta_last_prefix"> | dernier %1$s</string>
+    <string name="keywords_connections_score_format">Score %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d jours</string>
+    <string name="keywords_connections_shared_chip">%1$d partagées</string>
+    <string name="keywords_match_type_exact">exacte</string>
+    <string name="keywords_match_type_fuzzy">approchée</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">relation</string>
+    <string name="keywords_action_delete">Supprimer</string>
+    <string name="keywords_action_edit">Modifier</string>
+    <string name="keywords_action_view">Voir</string>
+    <string name="keywords_name_label">Nom</string>
+    <string name="keywords_relation_context_label">Relation / contexte</string>
+    <string name="keywords_aliases_label">Alias (séparés par des virgules)</string>
+    <string name="keywords_aliases_label_short">Alias</string>
+    <string name="keywords_type_person">Personne</string>
+    <string name="keywords_type_place">Lieu</string>
+    <string name="keywords_save_disabled_hint">Les mots-clés sont enregistrés désactivés. Activez-les depuis la liste lorsque vous voulez lancer l’indexation.</string>
+    <string name="settings_meaning_yesterday">Hier</string>
+    <string name="settings_meaning_today">Aujourd\'hui</string>
+    <string name="lookback_chip_weekly">Hebdo</string>
+    <string name="lookback_chip_monthly">Mensuel</string>
+    <string name="timeline_screen_title">Chronologie</string>
+    <string name="timeline_empty_title">Rien ici pour le moment</string>
+    <string name="timeline_empty_subtitle">Essayez un autre filtre ou ajustez la recherche d\'étiquettes.</string>
+    <string name="timeline_quick_today">Aujourd\'hui</string>
+    <string name="timeline_quick_month">Mois</string>
+    <string name="timeline_quick_filters">Filtres</string>
+    <string name="timeline_all_dates">Toutes les dates</string>
+    <string name="timeline_label_prefix">Libellé : %1$s</string>
+    <string name="timeline_label_search_placeholder">Rechercher des libellés de jour</string>
+    <string name="timeline_filters_title">Filtres et mise en page de la chronologie</string>
+    <string name="settings_meaning_tomorrow">Demain</string>
+    <string name="settings_meaning_day_before_yesterday">Avant-hier</string>
+    <string name="settings_meaning_day_after_tomorrow">Après-demain</string>
+    <string name="settings_meaning_last_week">La semaine dernière</string>
+    <string name="settings_meaning_next_week">La semaine prochaine</string>
+    <string name="settings_meaning_monday">Lundi</string>
+    <string name="settings_meaning_tuesday">Mardi</string>
+    <string name="settings_meaning_wednesday">Mercredi</string>
+    <string name="settings_meaning_thursday">Jeudi</string>
+    <string name="settings_meaning_friday">Vendredi</string>
+    <string name="settings_meaning_saturday">Samedi</string>
+    <string name="settings_meaning_sunday">Dimanche</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Stockage interne de l\'application</string>
+    <string name="settings_storage_internal_default">Stockage interne de l\'application (par défaut)</string>
+    <string name="settings_storage_new_folder_fallback">le nouveau dossier</string>
+    <string name="settings_storage_current_folder_fallback">le dossier actuel</string>
+    <string name="settings_storage_move_confirm">Toutes les entrées existantes seront déplacées de %1$s vers %2$s. Voulez-vous continuer ?</string>    <string name="settings_restore_added_skipped">Ajoutées : %1$d\nDoublons ignorés : %2$d</string>
+    <string name="settings_storage_custom_folder">Dossier personnalisé :\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Aide des raccourcis</string>
+    <string name="addentry_cd_insert_template">Insérer un modèle</string>
+    <string name="addentry_cd_jump_to_today">Aller à aujourd\'hui</string>
+    <string name="addentry_cd_share">Partager</string>
+    <string name="addentry_cd_bold">Gras</string>
+    <string name="addentry_cd_italic">Italique</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Définir l\'heure</string>
+    <string name="addentry_event_chip">Événement</string>
+    <string name="addentry_pick_time_title">Choisir l\'heure</string>
+    <string name="addentry_hour_label">Heure</string>
+    <string name="addentry_minute_label">Minute</string>
+    <string name="addentry_new_event_title">Nouvel événement</string>
+    <string name="addentry_title_label">Titre</string>
+    <string name="addentry_event_description_label">Description de l\'événement</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Tâches trouvées</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Convertir %1$d ligne en liste de tâches</item>
+        <item quantity="other">Convertir %1$d lignes en liste de tâches</item>
+    </plurals>
+    <string name="addentry_people_places_title">Personnes et lieux</string>
+    <string name="addentry_no_tracked_mentions">Aucune personne ou lieu suivi trouvé dans cette entrée.</string>
+    <string name="addentry_day_memory_title">Souvenir du jour</string>
+    <string name="addentry_star_day_title">Marquer ce jour</string>
+    <string name="addentry_star_day_subtitle">Enregistrez-le comme un moment fort pour qu\'il revienne dans la rétrospective.</string>
+    <string name="addentry_day_label_label">Étiquette du jour</string>
+    <string name="addentry_day_label_placeholder">ex. Jour de redémarrage</string>
+    <string name="addentry_follow_up_title">À suivre</string>
+    <string name="addentry_next_month">Mois prochain</string>
+    <string name="addentry_custom">Personnalisé</string>
+    <string name="addentry_due_date_format">Échéance %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Supprimer le suivi</string>
+    <string name="addentry_follow_up_note_label">Note de suivi</string>
+    <string name="addentry_follow_up_note_placeholder">Que devriez-vous revoir ?</string>
+    <string name="addentry_review_entry_title">Revoir l\'entrée</string>
+    <string name="addentry_review_entry_subtitle">Vérification rapide avant l\'enregistrement. Extrayez les tâches, vérifiez les mentions suivies et marquez le jour si nécessaire.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d tâche</item>
+        <item quantity="other">%1$d tâches</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d mention</item>
+        <item quantity="other">%1$d mentions</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Enregistrer l\'entrée</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Annuler les modifications</string>
+    <string name="addentry_discard_changes_message">Vous avez des modifications non enregistrées. Revenez pour les annuler, ou restez pour continuer à modifier.</string>
+    <string name="addentry_go_back">Retour</string>
+    <string name="addentry_stay">Rester</string>
+    <string name="addentry_shortcuts_title">Raccourcis</string>
+    <string name="addentry_help_bold_suffix"> pour mettre le texte en gras (ou sélectionnez le texte et appuyez sur le bouton Gras)</string>
+    <string name="addentry_help_italic_suffix"> pour mettre le texte en italique (ou sélectionnez le texte et appuyez sur le bouton Italique)</string>
+    <string name="addentry_help_today_suffix"> : se développe en date actuelle (ex. 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix"> : se développe en heure actuelle (ex. 14:30)</string>
+    <string name="addentry_help_week_suffix"> : se développe en semaine actuelle (ex. Semaine 52)</string>
+    <string name="addentry_help_day_suffix"> : se développe en jour de la semaine actuel (ex. lundi)</string>
+    <string name="addentry_help_todo_suffix"> : se développe en case à cocher (ex. [ ] )</string>
+    <string name="addentry_help_toggle_suffix"> : lorsqu\'il est saisi n\'importe où sur la ligne contenant une case à cocher, il la bascule.</string>
+    <string name="addentry_okey">Ok !</string>
+    <string name="addentry_template_merge_message">Ce brouillon contient déjà du texte. Choisissez comment placer le modèle.</string>
+    <string name="addentry_template_merge_subtitle">Insérer en dessous conserve le brouillon actuel. Au curseur place le modèle là où se trouve votre curseur.</string>
+    <string name="addentry_insert_below">Insérer en dessous</string>
+    <string name="addentry_at_cursor">Au curseur</string>
+    <string name="addentry_replace_draft">Remplacer le brouillon</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populaire</string>
+    <string name="addentry_new_chip">Nouveau</string>
+    <string name="addentry_best_for_format">Idéal pour : %1$s</string>
+    <string name="addentry_cd_remove_favorite">Retirer le modèle favori</string>
+    <string name="addentry_cd_favorite_template">Modèle favori</string>
+    <string name="addentry_checklist_chip">Liste de tâches</string>
+    <string name="addentry_followup_chip">Suivi</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d section</item>
+        <item quantity="other">%1$d sections</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Basculer le modèle favori</string>
+    <string name="addentry_template_preview_label">Aperçu du modèle</string>
+    <string name="addentry_use_template_button">Utiliser le modèle</string>
+    <string name="addentry_start_blank_title">Commencer à vide</string>
+    <string name="addentry_start_blank_subtitle">Ignorez les modèles et continuez à écrire à partir d\'un brouillon vide.</string>
+    <string name="addentry_blank_entry_name">Entrée vide</string>
+    <string name="addentry_blank_entry_description">Entrée de journal simple</string>
+    <string name="addentry_blank_category">Général</string>
+    <string name="addentry_quick_picks_title">Accès rapides</string>
+    <string name="addentry_sort_recommended">Recommandé</string>
+    <string name="addentry_sort_recent">Récent</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Aucun modèle trouvé</string>
+    <string name="addentry_no_templates_subtitle">Essayez une autre recherche ou catégorie.</string>
+    <string name="addentry_search_templates_label">Rechercher des modèles</string>
+    <string name="addentry_search_templates_placeholder">Réunion, santé, réflexion...</string>
+    <string name="addentry_cd_clear_search">Effacer la recherche</string>
+    <string name="addentry_choose_template_title">Choisir un modèle</string>
+    <string name="addentry_templates_ready_format">%1$d sur %2$d modèles prêts</string>
+    <string name="addentry_category_all">Tous</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Que s\'est-il passé ?</string>
+    <string name="addentry_todo_chip">Tâche</string>
+    <string name="addentry_numbered_list_chip">Liste N</string>
+    <string name="addentry_bulleted_list_chip">Liste B</string>
+    <string name="addentry_words_count_format">%1$d MOTS</string>
+    <string name="addentry_chars_count_format">%1$d CARACTÈRES</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Suivi à faire aujourd\'hui</item>
+        <item quantity="other">Suivis à faire aujourd\'hui</item>
+    </plurals>
+    <string name="home_followup_subtitle">Revenez au jour lié et continuez à partir de là.</string>
+    <string name="home_from_date_format">Du %1$s</string>
+    <string name="home_more_due_today_format">+%1$d de plus à faire aujourd\'hui</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Ajouter une étiquette</string>
+    <string name="home_edit_label_title">Modifier l\'étiquette</string>
+    <string name="home_day_label_hint">Ajoutez une courte étiquette pour ce jour (30 caractères max).</string>
+    <string name="home_day_label_placeholder">ex. : Premier jour d\'école</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Ajouter une étiquette pour ce jour</string>
+    <string name="home_star_label_hint">Donnez à ce jour une étiquette mémorable (30 caractères max)</string>
+    <string name="home_star_label_placeholder">ex. : Mon anniversaire, À l\'école</string>
+    <string name="home_star_button">Marquer</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Entrée supprimée</item>
+        <item quantity="other">%1$d entrées supprimées</item>
+    </plurals>
+    <string name="home_restore_button">RESTAURER</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Rechercher des entrées...</string>
+    <string name="home_cd_search">Rechercher</string>
+    <string name="home_cd_clear_search">Effacer la recherche</string>
+    <string name="home_cd_favorite">Favori</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Entrées</string>
+    <string name="home_stat_words">Mots</string>
+    <string name="home_stat_chars">Caractères</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Ajouter une étiquette</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d résultat trouvé</item>
+        <item quantity="other">%1$d résultats trouvés</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Aucun résultat trouvé pour ce mot-clé pour l\'instant.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Icône d\'état vide</string>
+    <string name="home_empty_future">C\'est le futur. Notez un rappel !</string>
+    <string name="home_empty_past">Vous êtes dans le passé. Enregistrez un souvenir avant qu\'il ne s\'efface...</string>
+    <string name="home_empty_today">Aucune entrée pour l\'instant. Commencez votre journée.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Enregistrement</string>
+    <string name="home_cd_add_entry">Ajouter une entrée</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Supprimer %1$d</string>
+    <string name="home_future_date_title">Entrée à date future</string>
+    <string name="home_future_date_message_format">Vous ajoutez une entrée pour une date future (%1$s). Voulez-vous continuer ?</string>
+    <string name="home_cache_issue_title">Problème de cache de données détecté</string>
+    <string name="home_cache_issue_message">Il semble qu\'un grand nombre d\'entrées du journal soient manquantes dans le cache. Souhaitez-vous effectuer une actualisation complète du cache de données pour tenter de les restaurer ?</string>
+    <string name="home_refresh_button">Actualiser</string>
+    <string name="home_ignore_button">Ignorer</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Personnes et lieux</string>
+    <string name="nav_statistics">Statistiques</string>
+    <string name="nav_todos">Tâches</string>
+    <string name="nav_rebuild_index">Reconstruire l\'index de la base de données</string>
+    <string name="nav_backup_data">Sauvegarder les données</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">État</string>
+    <string name="nav_finishing_index_rebuild">Finalisation de la reconstruction de l\'index...</string>
+    <string name="nav_rebuilding_index">Reconstruction de l\'index de la base de données</string>
+    <string name="nav_refreshing_index">Actualisation de l\'index</string>
+    <string name="nav_backup_too_old">la sauvegarde est trop ancienne...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">En cours...</string>
+    <string name="nav_eta_almost_done">presque terminé</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds restantes</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm restantes</string>
+    <string name="nav_eta_hours_left_format">~%1$dh restantes</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">Logo RJ</string>
+    <string name="nav_tagline">encore une app de journal</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Site web</string>
+    <string name="nav_cd_share_app">Partager l\'app</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Logo Yaja</string>
+    <string name="nav_easter_quote_part1">"Notez une pensée passagère ou ce que vous avez mangé au déjeuner ; ça n\'a pas besoin d\'être profond.\n</string>
+    <string name="nav_easter_quote_part2">Vos mots peuvent simplement exister.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">des laboratoires de RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Partager yaja</string>
+    <string name="nav_share_text_body">yaja — encore une app de journal\n\nUn journal quotidien sans distraction qui enregistre les entrées en fichiers markdown simples.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Changer l’emplacement de stockage</string>
+    <string name="settings_change_storage_location_message">Toutes les entrées existantes seront déplacées de %1$s vers %2$s. Voulez-vous continuer ?</string>
+    <string name="settings_yes">Oui</string>
+    <string name="settings_no">Non</string>
+        <string name="settings_restore_summary_title">Résumé de restauration</string>
+    <string name="settings_restore_section_journal">Journal</string>
+    <string name="settings_restore_section_shortcodes">Shortcodes</string>
+    <string name="settings_restore_section_date_keywords">Mots-clés de date</string>
+    <string name="settings_restore_section_people_places">Personnes et lieux</string>
+    <string name="settings_restore_journal_summary">Ajoutés à de nouveaux jours : %1$d\nFusionnés dans des jours existants : %2$d\nEntrées du journal en double ignorées : %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Ajoutés : %1$d\nDoublons ignorés : %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Ajoutés : %1$d\nDoublons ignorés : %2$d</string>
+    <string name="settings_restore_people_places_summary">Ajoutés : %1$d\nDoublons ignorés : %2$d</string>
+    <string name="rebuild_tools_title">Outils de reconstruction</string>
+    <string name="rebuild_tools_back">Retour</string>
+    <string name="rebuild_tools_intro">Utilisez d’abord des reconstructions ciblées. Reconstruire la base n’est utile qu’en cas de changement de stockage, corruption ou désalignement d’index.</string>
+    <string name="rebuild_todo_index_title">Reconstruire l’index des tâches</string>
+    <string name="rebuild_todo_index_subtitle">Actualise les tâches à partir des fichiers du journal et met à jour l’écran/widget Tâches. Idéal si les tâches semblent obsolètes.</string>
+    <string name="rebuild_todo_index_button">Reconstruire les tâches</string>
+    <string name="rebuild_people_places_title">Reconstruire Personnes et lieux</string>
+    <string name="rebuild_people_places_subtitle">Actualise les alias, co-mentions, tendances et relations.</string>
+    <string name="rebuild_people_places_button">Reconstruire Personnes et lieux</string>
+    <string name="rebuild_database_title">Reconstruction complète de la base</string>
+    <string name="rebuild_database_subtitle">Recompile le cache à partir des fichiers markdown. Réindexe entrées, comptes, tâches, Personnes et lieux et widgets depuis zéro.</string>
+    <string name="rebuild_database_button">Reconstruire la base</string>
+    <string name="rebuild_database_confirm_title">Reconstruire l’index de base</string>
+    <string name="rebuild_database_confirm_message">Cela va vider et réindexer toute la base Room SQLite à partir de vos fichiers Markdown. Pour de grands journaux, cela peut prendre quelques minutes.</string>
+    <string name="rebuild_database_confirm_start">Lancer la reconstruction</string>
+    <string name="rebuild_database_status_title">État de l’index</string>
+    <string name="rebuild_database_storage_engine">Moteur de stockage</string>
+    <string name="rebuild_database_storage_engine_value">Base Room SQLite</string>
+    <string name="rebuild_database_indexed_days">Jours indexés</string>
+    <string name="rebuild_database_indexed_days_value">%1$d jours indexés</string>
+    <string name="rebuild_database_file_size">Taille du fichier</string>
+    <string name="rebuild_database_last_sync">Dernière synchronisation</string>
+    <string name="rebuild_database_age_never">Jamais</string>
+    <string name="rebuild_database_age_just_now">À l’instant</string>
+    <string name="rebuild_database_age_one_minute">Il y a 1 minute</string>
+    <string name="rebuild_database_age_minutes">Il y a %1$d minutes</string>
+    <string name="rebuild_database_age_one_hour">Il y a 1 heure</string>
+    <string name="rebuild_database_age_hours">Il y a %1$d heures</string>
+    <string name="shortcodes_title">Shortcodes</string>
+    <string name="shortcodes_import_cd">Importer</string>
+    <string name="shortcodes_export_cd">Exporter</string>
+    <string name="shortcodes_help_cd">Aide</string>
+    <string name="shortcodes_new">Nouveau shortcode</string>
+    <string name="shortcodes_empty_title">Aucun shortcode personnalisé</string>
+    <string name="shortcodes_empty_subtitle">Ajoutez-en un pour développer des extraits comme @yday en texte dynamique.</string>
+    <string name="shortcodes_dynamic_dates_hint">Utilisez {{today:format}} pour des dates dynamiques.</string>
+    <string name="shortcodes_help_title">Aide des shortcodes</string>
+    <string name="shortcodes_help_built_in">Shortcodes intégrés :</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (case), @x (basculer la case)</string>
+    <string name="shortcodes_help_dynamic_patterns">Motifs dynamiques :</string>
+    <string name="shortcodes_help_dynamic_desc">Utilisez {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} ou {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Exemple : @yday -> Hier : {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Formats courants : dd-MM-yy, HH:mm, EEEE (nom du jour).</string>
+    <string name="action_close">Fermer</string>
+    <string name="keyword_detail_title_fallback">Mot-clé</string>
+    <string name="keyword_detail_not_found">Mot-clé introuvable</string>
+    <string name="keyword_detail_last_indexed">Dernière indexation %1$s</string>
+    <string name="keyword_detail_mentions_section">Mentions</string>
+    <string name="pin_biometric_prompt_title">Déverrouiller avec la biométrie</string>
+    <string name="pin_biometric_prompt_subtitle">Utilisez votre empreinte ou votre visage pour déverrouiller</string>
+    <string name="pin_error_no_biometric_enrolled">Aucune biométrie enregistrée. Ajoutez une empreinte ou un visage dans les réglages de l’appareil.</string>
+    <string name="pin_error_hardware_unavailable">Le matériel biométrique n’est pas disponible.</string>
+    <string name="pin_error_no_hardware">Cet appareil ne dispose pas de matériel biométrique.</string>
+    <string name="pin_error_not_available">L’authentification biométrique n’est pas disponible.</string>
+    <string name="pin_title_confirm">Confirmer le PIN</string>
+    <string name="pin_title_set_new">Définir un nouveau PIN</string>
+    <string name="pin_title_disable">Saisissez le PIN actuel pour désactiver</string>
+    <string name="pin_title_enter">Saisir le PIN</string>
+    <string name="pin_error_incorrect">PIN incorrect. Réessayez.</string>
+    <string name="pin_error_mismatch">Les PIN ne correspondent pas. Recommencez.</string>
+    <string name="pin_cd_use_biometric">Utiliser la biométrie</string>
+    <string name="pin_cd_backspace">Retour arrière</string>
+    <string name="timeline_preview_empty_labeled">Cette journée a une étiquette, mais il n’y a pas encore d’entrée de journal.</string>
+    <string name="timeline_preview_loading">Chargement de l’aperçu...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d entrée supplémentaire ce jour-là</item>
+        <item quantity="other">+ %1$d entrées supplémentaires ce jour-là</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Ouvrir ce jour</string>
+    <string name="timeline_chip_today">AUJ.</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d entrée</item>
+        <item quantity="other">%1$d entrées</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Suivi</string>
+    <string name="timeline_chip_label_only">Étiquette seule</string>
+    <string name="timeline_cd_favorite">Favori</string>
+    <string name="version_history_title">Historique des versions</string>
+    <string name="version_history_day_versions_title">Versions du jour</string>
+    <string name="version_history_keep_copies_title">Conserver des copies de sécurité</string>
+    <string name="version_history_keep_copies_subtitle">Avant que Yaja modifie un fichier du jour, il enregistre le fichier actuel dans les données de l’app sous Fichiers d’historique.</string>
+    <string name="version_history_versions_kept_title">Versions conservées par jour</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja conserve la %1$d version la plus récente pour chaque date.</item>
+        <item quantity="other">Yaja conserve les %1$d versions les plus récentes pour chaque date.</item>
+    </plurals>
+    <string name="version_history_retention_title">Rétention</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Les instantanés de plus de %1$d jour sont nettoyés automatiquement.</item>
+        <item quantity="other">Les instantanés de plus de %1$d jours sont nettoyés automatiquement.</item>
+    </plurals>
+    <string name="version_history_notes">Remarques : l’historique des versions protège les fichiers markdown du jour avant les ajouts, modifications, suppressions, réorganisations, étiquettes, favoris et revisites. Ce n’est pas une sauvegarde cloud ; continuez à utiliser Sauvegarde pour des copies portables.</string>
+    <string name="version_history_snapshots_for">Instantanés du %1$s</string>
+    <string name="version_history_snapshots_subtitle">Ouvrez une version enregistrée, inspectez-la et restaurez-la pour cette journée.</string>
+    <string name="version_history_empty">Aucune version enregistrée pour cette date pour le moment.</string>
+    <string name="action_view">Voir</string>
+    <string name="version_history_date_intro">Ouvrez une version antérieure enregistrée pour cette journée, inspectez-la et restaurez-la si besoin.</string>
+    <string name="action_next">Suivant</string>
+    <string name="action_apply">Appliquer</string>
+    <string name="action_restore">Restaurer</string>
+    <string name="statistics_choose_title">Choisir les statistiques</string>
+    <string name="statistics_choose_subtitle">Masquez les sections dont vous n’avez pas besoin. Au moins une section doit rester visible.</string>
+    <string name="statistics_visible_count">%1$d sur %2$d visibles</string>
+    <string name="statistics_show_all">Tout afficher</string>
+    <string name="statistics_one_section_visible">Au moins une section doit rester visible</string>
+    <string name="statistics_shown">Affichée dans les statistiques</string>
+    <string name="statistics_hidden">Masquée des statistiques</string>
+    <string name="statistics_select_start_date">Sélectionner la date de début</string>
+    <string name="statistics_select_end_date">Sélectionner la date de fin</string>
+    <string name="statistics_filter_by_period">Filtrer par période</string>
+    <string name="statistics_cd_reorder">Appui long pour réorganiser</string>
+    <string name="statistics_total_entries">Entrées totales</string>
+    <string name="statistics_total_words">Mots totaux</string>
+    <string name="statistics_avg_words_per_entry">Moy. mots/entrée</string>
+    <string name="statistics_current_streak">Série actuelle</string>
+    <string name="statistics_pages_written">Pages écrites</string>
+    <string name="statistics_days_highlighted">Jours mis en avant</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d jour</item>
+        <item quantity="other">%1$d jours</item>
+    </plurals>
+    <string name="statistics_period_all_time">Statistiques globales</string>
+    <string name="statistics_period_current_year">Statistiques de l’année en cours</string>
+    <string name="statistics_period_previous_year">Statistiques de l’année précédente</string>
+    <string name="statistics_period_current_month">Statistiques du mois en cours</string>
+    <string name="statistics_period_previous_month">Statistiques du mois précédent</string>
+    <string name="statistics_period_custom">Statistiques de la période personnalisée</string>
+    <string name="statistics_period_chip_all_time">Tout temps</string>
+    <string name="statistics_period_chip_current_year">Année en cours</string>
+    <string name="statistics_period_chip_previous_year">Année préc.</string>
+    <string name="statistics_period_chip_current_month">Ce mois-ci</string>
+    <string name="statistics_period_chip_previous_month">Mois préc.</string>
+    <string name="statistics_period_chip_custom">Personnalisé</string>
+    <string name="statistics_sections_visible">%1$d sur %2$d sections visibles</string>
+    <string name="statistics_loading_stages">Chargement des statistiques par étapes...</string>
+    <string name="review_period_weekly">Revue hebdomadaire</string>
+    <string name="review_period_monthly">Revue mensuelle</string>
+    <string name="review_anchor_week">Semaine contenant %1$s</string>
+    <string name="review_anchor_month">Mois contenant %1$s</string>
+    <string name="review_chip_entries">Entrées %1$d</string>
+    <string name="review_chip_words">Mots %1$d</string>
+    <string name="review_chip_days">Jours %1$d</string>
+    <string name="review_hint_jump">Touchez les puces de date ci-dessous pour revenir au journal.</string>
+    <string name="review_chip_streak">Série %1$d</string>
+    <string name="review_chip_gap">Écart %1$d</string>
+    <string name="review_chip_labels">Étiquettes %1$d</string>
+    <string name="review_chip_favorites">Favoris %1$d</string>
+    <string name="review_empty_period">Aucune entrée de journal dans cette période pour le moment. Les étiquettes et mises en avant apparaissent quand même ci-dessous si elles existent.</string>
+    <string name="review_writing_rhythm">Rythme d’écriture</string>
+    <string name="review_best_streak">Meilleure série</string>
+    <string name="review_longest_gap">Plus long écart</string>
+    <string name="review_most_active_days">Jours les plus actifs</string>
+    <string name="review_day_entries_words">%1$d entrées | %2$d mots</string>
+    <string name="review_top_people">Personnes principales</string>
+    <string name="review_top_places">Lieux principaux</string>
+    <string name="review_no_people_mentions">Aucune mention de personne</string>
+    <string name="review_no_place_mentions">Aucune mention de lieu</string>
+    <string name="review_favorite_moments">Moments favoris</string>
+    <string name="review_starred_day">Jour favori</string>
+    <string name="review_highlighted_in_period">Mis en avant pendant cette période</string>
+    <string name="review_labels_created">Étiquettes créées</string>
+    <string name="review_labeled_day">Jour étiqueté</string>
+    <string name="review_language_split">Répartition des langues</string>
+    <string name="review_not_enough_text">Pas assez de texte sur cette période</string>
+    <string name="lookback_reviews_title">Revues</string>
+    <string name="lookback_reviews_intro">Construisez une réflexion rapide autour du jour de journal sélectionné.</string>
+    <string name="lookback_seven_days">7 jours</string>
+    <string name="lookback_one_month">1 mois</string>
+    <string name="lookback_weekly_review">Revue hebdomadaire</string>
+    <string name="lookback_weekly_review_subtitle">Cette semaine en un coup d’œil</string>
+    <string name="lookback_monthly_review">Revue mensuelle</string>
+    <string name="lookback_monthly_review_subtitle">Ce mois résumé</string>
+    <string name="lookback_flashbacks_title">En ce jour des années passées</string>
+    <string name="lookback_highlights_title">Vos moments forts</string>
+    <string name="lookback_empty_title">Aucun souvenir ni moment fort pour le moment.</string>
+    <string name="lookback_empty_subtitle">Mettez en favori les jours importants pour les revoir ici.</string>
+    <string name="lookback_cd_random_entry">Aller à une entrée aléatoire</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Période</string>
+    <string name="statistics_compare_mode_title">Mode Comparaison</string>
+    <string name="statistics_compare_mode_subtitle">Écarts mensuels, annuels et de mots-clés</string>
+    <string name="statistics_this_year">Cette Année</string>
+    <string name="statistics_writing_days_delta">Écart Jours d\'Écriture</string>
+    <string name="statistics_top_person_delta">Écart Personne Principale</string>
+    <string name="statistics_no_people_mentions">Aucune mention de personne pour le moment</string>
+    <string name="statistics_top_place_delta">Écart Lieu Principal</string>
+    <string name="statistics_no_place_mentions">Aucune mention de lieu pour le moment</string>
+    <string name="statistics_structured_writing">Écriture Structurée</string>
+    <string name="statistics_template_led_format">Avec modèle %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Vide %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Modèles Les Plus Utilisés</string>
+    <string name="statistics_template_mix">Répartition des Modèles</string>
+    <string name="statistics_follow_up_leaders">Leaders de Suivi</string>
+    <string name="statistics_compare_details">Détails de Comparaison</string>
+    <string name="statistics_label_month">Mois</string>
+    <string name="statistics_label_year">Année</string>
+    <string name="statistics_this_month_count_format">Ce mois %1$d</string>
+    <string name="statistics_last_month_count_format">Mois dernier %1$d</string>
+    <string name="statistics_longest_streak">Plus Longue Série</string>
+    <string name="statistics_most_active_day">Jour Le Plus Actif</string>
+    <string name="statistics_writing_consistency">Régularité d\'Écriture</string>
+    <string name="statistics_days_with_entries">Jours Avec Entrées</string>
+    <string name="statistics_best_month">Meilleur Mois</string>
+    <string name="statistics_best_month_format">%1$s · %2$d entrées</string>
+    <string name="statistics_avg_writing_days_week">Moy. Jours d\'Écriture / Semaine</string>
+    <string name="statistics_days_decimal_format">%1$.1f jours</string>
+    <string name="statistics_based_on_total_words">Basé sur le total de mots écrits par jour</string>
+    <string name="statistics_light_words">Léger (&lt; 50 mots)</string>
+    <string name="statistics_moderate_words">Modéré (50-200 mots)</string>
+    <string name="statistics_heavy_words">Intense (200-500 mots)</string>
+    <string name="statistics_intense_words">Très Intense (500+ mots)</string>
+    <string name="statistics_not_enough_text_languages">Texte insuffisant pour détecter les langues</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d langue détectée</item>
+        <item quantity="other">%1$d langues détectées</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">La détection de langue est encore en cours d\'ajustement.</string>
+    <string name="statistics_latin_scripts_as_english">Les écritures latines sont affichées comme anglais</string>
+    <string name="statistics_use_more_accurate_detection">Utiliser une détection plus précise</string>
+    <string name="statistics_write_more_entries_languages">Écrivez plus d\'entrées pour voir les statistiques de langues.</string>
+    <string name="statistics_based_on_entry_time">Basé sur l\'heure de l\'entrée</string>
+    <string name="statistics_morning_time">Matin (5h-midi)</string>
+    <string name="statistics_afternoon_time">Après-midi (midi-17h)</string>
+    <string name="statistics_evening_time">Soir (17h-21h)</string>
+    <string name="statistics_night_time">Nuit (21h-5h)</string>
+    <string name="statistics_heatmap_filling">La carte de chaleur est encore en cours de remplissage.</string>
+    <string name="statistics_heatmap_less">Moins</string>
+    <string name="statistics_heatmap_more">Plus</string>
+    <string name="action_open">Ouvrir</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Événements du journal Yaja</string>
+    <string name="tasker_event_desc">Choisissez les événements du journal Yaja qui doivent déclencher ce profil Tasker.</string>
+    <string name="tasker_event_saved">Entrée enregistrée</string>
+    <string name="tasker_event_edited">Entrée modifiée</string>
+    <string name="tasker_event_deleted">Entrée supprimée</string>
+    <string name="tasker_event_default_hint">Si aucun n\'est sélectionné, Yaja utilisera par défaut Entrée enregistrée.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Capture rapide Yaja</string>
+    <string name="tasker_action_desc">Configurez ce que Tasker doit capturer rapidement dans Yaja.</string>
+    <string name="tasker_action_add_entry">Ajouter une entrée</string>
+    <string name="tasker_action_add_event">Ajouter un événement</string>
+    <string name="tasker_action_add_todo">Ajouter une tâche</string>
+    <string name="tasker_action_append">Ajouter à la fin</string>
+    <string name="tasker_action_match_header_label">Correspondance / en-tête</string>
+    <string name="tasker_action_match_header_placeholder">Appels manqués</string>
+    <string name="tasker_action_line_to_append_label">Ligne à ajouter</string>
+    <string name="tasker_action_text_label">Texte</string>
+    <string name="tasker_action_placeholder_event">Note d\'événement depuis Tasker</string>
+    <string name="tasker_action_placeholder_todo">Acheter du lait</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Note rapide depuis Tasker</string>
+    <string name="tasker_action_tip_append">Le premier appel crée une entrée commençant par le texte de correspondance. Les appels suivants ajoutent la ligne en dessous.</string>
+    <string name="tasker_action_tip_default">Astuce : les variables Tasker peuvent être placées dans le champ de texte.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Journal de plantage de la session précédente</string>
+    <string name="crash_log_clear_close">Effacer et fermer</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Ouvrir l\'app</string>
+    <string name="tap_action_quick_capture">Capture rapide</string>
+    <string name="tap_action_do_nothing">Ne rien faire</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Carte de chaleur d\'écriture Yaja</string>
+    <string name="widget_cell_shape">Forme des cellules</string>
+    <string name="widget_corner_radius">Rayon des coins : %1$ddp</string>
+    <string name="widget_square">Carré</string>
+    <string name="widget_round">Rond</string>
+    <string name="widget_inner_margin">Marge interne : %1$ddp</string>
+    <string name="widget_inner_margin_desc">Espace entre la carte de chaleur et les bords du widget</string>
+    <string name="widget_none">Aucune</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Au toucher</string>
+    <string name="widget_on_tap_desc">Action lors du toucher du widget</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Capture</string>
+    <string name="widget_qc_shape">Forme du widget</string>
+    <string name="widget_show_label">Afficher le libellé</string>
+    <string name="widget_show_label_desc">Afficher le texte \'Capture\' sur le widget</string>
+    <string name="widget_show_icon">Afficher l\'icône</string>
+    <string name="widget_show_icon_required">Icône requise lorsque le libellé est masqué</string>
+    <string name="widget_show_icon_desc">Afficher l\'icône de stylo sur le widget</string>
+    <string name="widget_label_text">Texte du libellé</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Widget de tâches</string>
+    <string name="widget_todo_desc">Widget de liste de tâches arrondi, façon carte de chaleur.</string>
+    <string name="widget_todo_corner_radius">Rayon des coins : %1$ddp</string>
+    <string name="widget_todo_padding">Marge intérieure : %1$ddp</string>
+    <string name="widget_todo_show_completed">Afficher les tâches terminées</string>
+    <string name="widget_todo_show_completed_desc">Inclure les éléments cochés dans la liste du widget</string>
+    <string name="widget_todo_include_events">Inclure les événements</string>
+    <string name="widget_todo_include_events_desc">Afficher les entrées d\'événements avec les tâches dans le widget</string>
+    <string name="widget_todo_show_header">Afficher l\'en-tête des tâches</string>
+    <string name="widget_todo_show_header_desc">Afficher ou masquer la ligne de titre du widget</string>
+    <string name="widget_todo_auto_hide">Masquer automatiquement le widget une fois toutes les tâches terminées</string>
+    <string name="widget_todo_auto_hide_unavailable">Indisponible lorsque les tâches terminées sont affichées</string>
+    <string name="widget_todo_auto_hide_desc">Rendre le widget transparent lorsqu\'il n\'y a aucune tâche en attente</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">terminée</string>
+    <string name="todo_confirm_mark_not_done">non terminée</string>
+    <string name="todo_confirm_title">Marquer la tâche comme %1$s ?</string>
+    <string name="todo_confirm_reopen">Cette tâche est actuellement terminée. Confirmez avant de la rouvrir.</string>
+    <string name="todo_confirm_complete">Cette tâche est encore ouverte. Confirmez avant de la marquer comme terminée.</string>
+    <string name="todo_confirm_accidental_tap">Les appuis accidentels ne modifieront pas la tâche.</string>
+    <string name="todo_confirm_yes_mark">Oui, marquer comme %1$s</string>
+    <string name="todo_confirm_open_yaja">Ouvrir dans Yaja</string>
+    <string name="todo_confirm_keep_as_is">Laisser tel quel</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">encore une autre app de journal</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">des laboratoires de RJ</string>
+    <string name="help_made_in">Fabriqué en 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Annuler l\'importation</string>
+    <string name="timeline_show_all_dates">Afficher toutes les dates</string>
+    <string name="timeline_show_all_dates_subtitle">Inclure tous les jours passés, même sans entrées</string>
+    <string name="settings_background_tint_clean">Épuré</string>
+    <string name="settings_background_tint_soft">Doux</string>
+    <string name="settings_background_tint_rich">Riche</string>
+    <string name="settings_background_tint_deep">Profond</string>
+    <string name="settings_accent_style_complementary">Complémentaire</string>
+    <string name="settings_accent_style_analogous">Analogue</string>
+    <string name="settings_accent_style_triadic">Triadique</string>
+    <string name="settings_accent_style_soft">Doux</string>
+
+    <string name="settings_ui_font_size_label">Taille de police de l\'UI</string>
+    <string name="settings_data_font_size_label">Taille de police du contenu</string>
+    <string name="settings_follow_ui_font_scale_label">Harmoniser la taille de police du contenu avec l\'UI</string>
+</resources>

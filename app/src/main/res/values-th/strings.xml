@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">เย้</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">วารสาร</string>
+    <string name="nav_calendar">ปฏิทิน</string>
+    <string name="nav_lookback">มองย้อนกลับไป</string>
+    <string name="nav_settings">การตั้งค่า</string>
+    <string name="nav_shortcodes">รหัสย่อ</string>
+    <string name="nav_help">ความช่วยเหลือ &amp; เกี่ยวกับ</string>
+
+    <!-- Common actions -->
+    <string name="action_save">บันทึก</string>
+    <string name="action_cancel">ยกเลิก</string>
+    <string name="action_delete">ลบ</string>
+    <string name="action_edit">แก้ไข</string>
+    <string name="action_back">กลับ</string>
+    <string name="action_undo">เลิกทำ</string>
+    <string name="action_yes">ใช่</string>
+    <string name="action_no">เลขที่</string>
+    <string name="action_remove">ลบ</string>
+    <string name="action_done">เสร็จแล้ว</string>
+    <string name="action_set">ชุด</string>
+    <string name="action_select">เลือก</string>
+    <string name="action_ok">ตกลง</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">สร้างแคชใหม่</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">จับภาพด่วน</string>
+    <string name="quick_capture_hint">เกิดอะไรขึ้น</string>
+    <string name="quick_capture_helper_shortcodes">รหัสย่อจะขยายที่นี่โดยอัตโนมัติ และบรรทัดสิ่งที่ต้องทำจะดำเนินต่อไปที่ Enter</string>
+    <string name="quick_capture_save_delayed">บันทึกล่าช้า โปรดเปิด Yaja อีกครั้งเพื่อตรวจสอบ</string>
+    <string name="cd_saved">บันทึกแล้ว</string>
+    <string name="quick_todo_dialog_title">เพิ่มด่วน</string>
+    <string name="quick_todo_save_delayed">การบันทึกสิ่งที่ต้องทำล่าช้า โปรดเปิด Yaja อีกครั้งเพื่อตรวจสอบ</string>
+    <string name="quick_todo_placeholder">เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="quick_event_placeholder">เพิ่มกิจกรรม</string>
+    <string name="quick_todo_task_date">วันที่งาน</string>
+    <string name="quick_todo_event_date">วันที่จัดงาน</string>
+    <string name="quick_todo_pick_date_cd_format">เลือก %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">บันทึกเป็นรายการสิ่งที่ต้องทำสำหรับวันที่เลือก</string>
+    <string name="quick_event_selected_day_hint">บันทึกเป็นรายการกิจกรรมสำหรับวันที่เลือก</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">ก่อนหน้า</string>
+    <string name="cd_next">ต่อไป</string>
+    <string name="cd_surprise_me">เซอร์ไพรส์ฉัน</string>
+    <string name="calendar_cd_go_to_current_month">ไปที่เดือนปัจจุบัน</string>
+    <string name="calendar_quick_action_timeline_title">ไทม์ไลน์</string>
+    <string name="calendar_quick_action_timeline_subtitle">เรียกดูตามลำดับเวลา</string>
+    <string name="calendar_quick_action_jump_title">ข้ามไปยังวันที่</string>
+    <string name="calendar_quick_action_jump_subtitle">เปิดวันที่ระบุ</string>
+    <string name="calendar_jump_placeholder">วว-ดด-ปป</string>
+    <string name="calendar_jump_invalid_date">วันที่ไม่ถูกต้อง ใช้รูปแบบ วว-ดด-ปป</string>
+    <string name="calendar_action_go">ไป</string>
+    <string name="calendar_enable_future_dates_title">เปิดใช้งานวันที่ในอนาคต</string>
+    <string name="calendar_enable_future_dates_message">การป้อนวันที่ในอนาคตถูกปิดใช้งาน คุณต้องการเปิดใช้งานหรือไม่?</string>
+    <string name="calendar_action_enable">เปิดใช้งาน</string>
+    <string name="calendar_future_entry_enabled">เปิดใช้งานการป้อนวันที่ในอนาคตแล้ว</string>
+    <string name="calendar_weekday_sun_short">ดวงอาทิตย์</string>
+    <string name="calendar_weekday_mon_short">จันทร์</string>
+    <string name="calendar_weekday_tue_short">อ</string>
+    <string name="calendar_weekday_wed_short">พ</string>
+    <string name="calendar_weekday_thu_short">พฤ</string>
+    <string name="calendar_weekday_fri_short">ศุกร์</string>
+    <string name="calendar_weekday_sat_short">นั่ง</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">รายการในเดือนนี้</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d วัน</item>
+        <item quantity="other">%1$d / %2$d วัน</item>
+    </plurals>
+    <string name="calendar_days_of_memories">วันแห่งความทรงจำ</string>
+    <string name="calendar_consistency_last_12_months">12 เดือนที่ผ่านมา</string>
+    <string name="calendar_consistency_title_format">ความสม่ำเสมอ - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% กับ \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">กับ \'%1$s</string>
+    <string name="calendar_consistency_first_period">ช่วงแรก</string>
+    <string name="calendar_graph_frequency_month">เดือน</string>
+    <string name="calendar_graph_frequency_year">ปี</string>
+    <string name="calendar_yearly_consistency_title">ความสม่ำเสมอ (รายปี)</string>
+    <string name="calendar_keywords_title">ใครปรากฏตัวมากที่สุด</string>
+    <string name="calendar_keywords_syncing">สถิติผู้คนและสถานที่ยังคงซิงค์กับการจัดทำดัชนีคำหลัก</string>
+    <string name="calendar_keywords_empty">เพิ่มอย่างน้อย 3 คนหรือ 3 สถานที่เพื่อดูการกล่าวถึงสูงสุด</string>
+    <string name="calendar_keywords_people">ประชากร</string>
+    <string name="calendar_keywords_places">สถานที่</string>
+
+    <!-- Settings -->
+    <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_appearance">รูปร่าง</string>
+    <string name="settings_appearance_subtitle">ธีม สี แบบอักษร และสไตล์ส่วนตัว</string>
+    <string name="settings_theme">ธีม</string>
+    <string name="settings_font">แบบอักษร</string>
+    <string name="settings_storage">พื้นที่จัดเก็บ</string>
+    <string name="settings_security">ความปลอดภัย</string>
+    <string name="settings_backup">สำรองข้อมูล</string>
+    <string name="settings_change_storage_title">เปลี่ยนสถานที่จัดเก็บ</string>
+    <string name="settings_backup_never">ไม่เคย</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">การตั้งค่าการค้นหา</string>
+    <string name="settings_search_clear">ล้างการค้นหา</string>
+    <string name="settings_search_recent">การค้นหาล่าสุด</string>
+    <string name="settings_search_no_results">ไม่มีการตั้งค่าที่ตรงกัน</string>
+    <string name="settings_search_close">ปิด</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">ประสบการณ์วารสาร</string>
+    <string name="settings_section_navigation_gestures">การนำทางและท่าทาง</string>
+    <string name="settings_section_review_insights">ทบทวนและข้อมูลเชิงลึก</string>
+
+    <!-- Language -->
+    <string name="settings_language">ภาษา</string>
+    <string name="settings_language_title">ภาษาของแอป</string>
+    <string name="settings_language_subtitle">เลือกภาษาที่ใช้ทั่วทั้งแอป</string>
+    <string name="settings_language_system_default">ค่าเริ่มต้นของระบบ</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">สไตล์รายการ</string>
+    <string name="settings_journal_entry_style_subtitle">เลือกระหว่างการ์ดที่ยกระดับและลุคบันทึกประจำวันที่เรียบหรู</string>
+    <string name="settings_journal_entry_style_cards">การ์ด</string>
+    <string name="settings_journal_entry_style_flat">แบน</string>
+    <string name="settings_journal_render_checkboxes_title">แสดงช่องทำเครื่องหมายเป็นข้อความ</string>
+    <string name="settings_journal_render_checkboxes_subtitle">แสดงสิ่งที่ต้องทำเป็น [ ] และ [x] ทั่วทั้งแอป แทนที่จะแสดงช่องทำเครื่องหมาย</string>
+    <string name="settings_journal_day_header_counts_title">แสดงจำนวนส่วนหัวของวัน</string>
+    <string name="settings_journal_day_header_counts_subtitle">แสดงรายการ จำนวนคำ และอักขระในส่วนหัวของวันบันทึกประจำวัน</string>
+    <string name="settings_journal_show_timestamps_title">แสดงการประทับเวลา</string>
+    <string name="settings_journal_show_timestamps_subtitle">แสดงเวลาเข้าบนไทม์ไลน์</string>
+    <string name="settings_journal_allow_future_title">อนุญาตรายการในอนาคต</string>
+    <string name="settings_journal_allow_future_subtitle">เปิดใช้งานการเพิ่มรายการในวันที่ในอนาคต</string>
+    <string name="settings_journal_truncate_title">ตัดทอนรายการยาว</string>
+    <string name="settings_journal_truncate_subtitle">ย่อรายการยาว ๆ บนหน้าจอหลักให้สั้นลง</string>
+    <string name="settings_journal_char_limit_title">ขีดจำกัดอักขระ</string>
+    <string name="settings_journal_char_limit_subtitle">กำหนดจำนวนอักขระที่จะแสดงก่อนตัดทอน</string>
+    <string name="settings_journal_char_limit_min">50 ตัวอักษร</string>
+    <string name="settings_journal_char_limit_max">200 ตัวอักษร</string>
+    <string name="settings_journal_char_count">%1$d อักขระ</string>
+    <string name="settings_journal_first_day_title">วันแรกของสัปดาห์</string>
+    <string name="settings_journal_first_day_subtitle">เริ่มเปิดปฏิทิน</string>
+    <string name="settings_journal_day_sun">ดวงอาทิตย์</string>
+    <string name="settings_journal_day_mon">จันทร์</string>
+    <string name="settings_journal_date_recognition">การรับรู้วันที่</string>
+    <string name="settings_journal_date_order_title">วันที่สั่ง</string>
+    <string name="settings_journal_date_order_subtitle">วิธีอ่านวันที่เป็นตัวเลข</string>
+    <string name="settings_journal_date_order_auto">อัตโนมัติ</string>
+    <string name="settings_journal_date_order_dmy">วว/ดด</string>
+    <string name="settings_journal_date_order_mdy">ดด/วว</string>
+    <string name="settings_journal_date_keywords_title">คำสำคัญวันที่</string>
+    <string name="settings_journal_date_keywords_subtitle">คำในภาษาอื่นที่หมายถึงวันที่ (เช่น คำท้องถิ่นของเมื่อวาน)</string>
+    <string name="settings_journal_view_keywords">ดู (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">เพิ่มคำหลัก</string>
+    <string name="settings_journal_motion">การเคลื่อนไหว</string>
+    <string name="settings_journal_animations_title">ภาพเคลื่อนไหว</string>
+    <string name="settings_journal_animations_subtitle">ควบคุมการเคลื่อนไหวทั่วทั้งแอป การลดลงทำให้สิ่งต่างๆ ลื่นไหลและมีการเคลื่อนไหวน้อยลง</string>
+    <string name="settings_journal_animations_full">เต็ม</string>
+    <string name="settings_journal_animations_reduced">ลดลง</string>
+    <string name="settings_journal_animations_off">ปิด</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">รีวิวหลังบันทึก</string>
+    <string name="settings_review_post_write_title">รีวิวหลังเขียน</string>
+    <string name="settings_review_post_write_subtitle">แสดงแผ่นรีวิวหลังจากแตะบันทึกเพื่อแยกสิ่งที่ต้องทำ ตรวจสอบการกล่าวถึง วันติดดาว หรือตั้งค่าป้ายกำกับ</string>
+    <string name="settings_review_people_places">ผู้คนและสถานที่</string>
+    <string name="settings_review_highlighting_title">เน้น</string>
+    <string name="settings_review_highlighting_subtitle">ไฮไลต์ผู้คนและสถานที่ที่ติดตามในการ์ดบ้านและโหมดดูรายการ</string>
+    <string name="settings_review_match_sensitivity_title">จับคู่ความไว</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">คำจะต้องตรงกันมากเพียงใดจึงจะตรวจพบโดยผู้คนและสถานที่ (สูงกว่า = เข้มงวดกว่า)</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">เพิ่มรหัสย่อ</string>
+    <string name="shortcodes_edit_title">แก้ไขรหัสย่อ</string>
+    <string name="shortcodes_code_label">รหัสย่อ (เช่น @yday)</string>
+    <string name="shortcodes_expansion_label">ข้อความส่วนขยาย</string>
+    <string name="shortcodes_export_error">ส่งออกรหัสย่อไม่สำเร็จ</string>
+    <string name="shortcodes_import_error">ไม่สามารถนำเข้ารหัสย่อ</string>
+    <string name="todos_expand_section">ขยาย %1$s</string>
+    <string name="todos_collapse_section">ยุบ %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">กำลังเขียนแผนที่ความร้อน</string>
+    <string name="heatmap_widget_description">แผนที่ความร้อนของกิจกรรมการเขียนล่าสุดสำหรับบันทึกประจำวันของคุณ</string>
+    <string name="quick_capture_widget_name">จับภาพด่วน</string>
+    <string name="quick_capture_widget_description">ปุ่มแตะเพียงครั้งเดียวเพื่อเพิ่มรายการบันทึกประจำวันอย่างรวดเร็ว</string>
+    <string name="quick_todo_widget_name">สิ่งที่ต้องทำด่วน</string>
+    <string name="tasker_plugin_action_label">Yaja จับภาพด่วน</string>
+    <string name="tasker_plugin_event_label">กิจกรรมวารสารยาจา</string>
+    <string name="tasker_screen_allow_add_entry_title">อนุญาตให้ทาซเคอร์เพิ่มรายการ</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">ให้ Tasker ใช้การดำเนินการ Yaja Quick Capture เช่น เพิ่มรายการ และ เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="tasker_screen_allow_events_title">อนุญาตเหตุการณ์ทาซเคอร์</string>
+    <string name="tasker_screen_allow_events_subtitle">ให้ Yaja ส่งเหตุการณ์ที่บันทึกรายการ แก้ไขรายการ และรายการที่ถูกลบไปยังทาซเคอร์</string>
+    <string name="tasker_screen_include_text_title">รวมข้อความเข้าในกิจกรรม</string>
+    <string name="tasker_screen_include_text_subtitle">ปิดโดยค่าเริ่มต้นเพื่อความเป็นส่วนตัว เมื่อปิด Tasker จะได้รับประเภทเหตุการณ์ วันที่ ป้ายกำกับ และเวลา แต่จะไม่ได้รับข้อความบันทึกประจำวัน</string>
+    <string name="tasker_screen_section_what">นี่มันทำอะไร.</string>
+    <string name="tasker_screen_body_what">ทาซเคอร์สามารถเพิ่มรายการบันทึกประจำวันหรือสิ่งที่ต้องทำลงใน Yaja ได้อย่างรวดเร็ว ต่อท้ายบรรทัดในรายการที่จัดกลุ่ม เช่น สายที่ไม่ได้รับ และ Yaja สามารถบอกทาซเคอร์ได้เมื่อรายการถูกบันทึก แก้ไข หรือลบ</string>
+    <string name="tasker_screen_section_how">วิธีใช้</string>
+    <string name="tasker_screen_body_how">เปิดสวิตช์ที่คุณต้องการที่นี่ก่อน จากนั้นเปิด Tasker และเพิ่มการดำเนินการ Yaja Quick Capture หรือเหตุการณ์ Yaja Journal Events</string>
+    <string name="tasker_screen_section_notes">หมายเหตุ</string>
+    <string name="tasker_screen_body_notes">ข้อความรายการจะไม่แชร์กับ Tasker เว้นแต่คุณจะเปิดใช้งานรวมข้อความรายการในกิจกรรม หาก Tasker ไม่แสดงตัวเลือกหรือตัวแปรล่าสุด ให้เปิดหน้าจอการกำหนดค่า Tasker อีกครั้งหลังจากอัปเดต Yaja</string>
+    <string name="tasker_screen_section_example">ตัวอย่าง</string>
+    <string name="tasker_screen_body_example">ตัวอย่างการดำเนินการ: การกระทำของทาซเคอร์ &gt; Yaja Quick Capture &gt; ผนวก โดยที่การจับคู่ / ส่วนหัวตั้งค่าเป็นสายที่ไม่ได้รับและสายเพื่อต่อท้ายการตั้งค่าให้กับตัวแปรทาซเคอร์ ตัวอย่างเหตุการณ์: เหตุการณ์ Tasker &gt; กิจกรรม Yaja Journal &gt; รายการแก้ไข จากนั้นใช้ตัวแปร เช่น %%yaja_event_type, %%yaja_date และอาจเป็นทางเลือก %%yaja_entry_text</string>
+    <string name="tasker_screen_section_use_cases">กรณีการใช้งาน</string>
+    <string name="tasker_screen_use_case_1">1. ใช้เหตุการณ์บันทึก Yaja ใน Tasker เพื่อทริกเกอร์การดำเนินการซิงค์ FolderSync ดังนั้นโฟลเดอร์ Yaja ของคุณจะถูกพุชไปยังผู้ให้บริการคลาวด์ใดๆ หลังจากที่รายการเปลี่ยนแปลง</string>
+    <string name="tasker_screen_use_case_2">2. ใช้ Pushbullet กับ Tasker เพื่อส่งข้อความไปยัง Yaja Quick Capture ดังนั้นข้อความที่พุชจะถูกบันทึกเป็นรายการใหม่สำหรับวันปัจจุบัน</string>
+    <string name="tasker_screen_use_case_3">3. ใช้โปรไฟล์ Tasker สายที่ไม่ได้รับเพื่อส่งการดำเนินการผนวกเข้ากับ Yaja ดังนั้นรายละเอียดสายที่ไม่ได้รับทั้งหมดจึงไปอยู่ภายใต้รายการสายที่ไม่ได้รับรายการเดียว แทนที่จะสร้างรายการแยกกัน</string>
+    <string name="quick_todo_widget_description">แตะปุ่มเดียวเพื่อบันทึกสิ่งที่ต้องทำเป็นรายการใหม่สำหรับวันนี้</string>
+    <string name="todo_list_widget_name">สิ่งที่ต้องทำ</string>
+    <string name="todo_list_widget_description">รายการสิ่งที่ต้องทำของบันทึกประจำวันแบบเลื่อนได้ แตะสิ่งที่ต้องทำเพื่อทำเครื่องหมายว่าเสร็จสิ้นหรือเลิกทำ</string>
+    <string name="todo_cd_add_todo">เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="todos_cd_open_compliance_master">เปิดงานที่เกิดซ้ำ</string>
+    <string name="compliance_master_title">งาน / กิจกรรมที่เกิดซ้ำ</string>
+    <string name="compliance_master_add">เพิ่มงานที่เกิดซ้ำ</string>
+    <string name="compliance_master_edit">แก้ไขงานที่เกิดซ้ำ</string>
+    <string name="compliance_master_intro_title">งานที่เกิดซ้ำ</string>
+    <string name="compliance_master_intro_body">สร้างสิ่งที่ต้องทำซ้ำสำหรับงานรายสัปดาห์ รายเดือน รายไตรมาส ครึ่งปี หรือประจำปี Yaja เปิดเผยแต่ละงานเฉพาะเมื่อวงจรของมันเกี่ยวข้องเท่านั้น</string>
+    <string name="compliance_master_empty">ยังไม่มีงานที่เกิดซ้ำ เพิ่มหนึ่งรายการเพื่อสร้างสิ่งที่ต้องทำโดยอัตโนมัติตามกำหนดเวลาที่เลือก</string>
+    <string name="compliance_master_status_deactivated">ปิดการใช้งาน</string>
+    <string name="compliance_master_meta_format">ครบกำหนดในวันที่ %1$d • %2$d วันนำ</string>
+    <string name="compliance_master_field_title">ชื่องาน</string>
+    <string name="compliance_master_field_title_hint">ตัวอย่าง: ยื่นแบบแสดงรายการรายเดือน</string>
+    <string name="compliance_master_field_description">คำอธิบาย</string>
+    <string name="compliance_master_field_description_hint">ตัวอย่าง: ตรวจสอบพอร์ทัลธนาคารและตรวจสอบการรับ</string>
+    <string name="compliance_master_editor_task_section">Yaja ควรเตือนคุณเกี่ยวกับอะไร?</string>
+    <string name="compliance_master_field_due_day">วันครบกำหนด</string>
+    <string name="compliance_master_field_reveal_day">สร้างล่วงหน้า (วัน)</string>
+    <string name="compliance_master_field_schedule_mode">ครบกำหนดเมื่อไหร่?</string>
+    <string name="compliance_master_schedule_mode_help">เลือกวิธีที่ Yaja กำหนดวันครบกำหนด</string>
+    <string name="compliance_master_select_schedule_type">เลือกรูปแบบเนื่องจาก</string>
+    <string name="compliance_master_field_frequency">บ่อยแค่ไหน?</string>
+    <string name="compliance_master_frequency_help">เลือกความถี่ที่จะทำซ้ำงานนี้</string>
+    <string name="compliance_master_select_frequency">เลือกความถี่ซ้ำ</string>
+    <string name="compliance_master_schedule_details">รายละเอียดกำหนดการ</string>
+    <string name="compliance_master_details_date_help">ป้อนวันที่ครบกำหนดและควรเขียนล่วงหน้ากี่วันลงในไฟล์รายวัน</string>
+    <string name="compliance_master_details_weekday_help">เลือกวันทำงานที่จะครบกำหนดงานนี้</string>
+    <string name="compliance_master_details_boundary_help">เลือกว่าจะเขียนลงในไฟล์รายวันล่วงหน้ากี่วัน</string>
+    <string name="compliance_master_field_due_weekday">ครบกำหนดวันธรรมดา</string>
+    <string name="compliance_master_select_weekday">เลือกวันธรรมดา</string>
+    <string name="compliance_master_due_day_help">ป้อนวันที่ตั้งแต่ 1 ถึง 31 เดือนที่สั้นกว่าจะใช้วันที่ที่ถูกต้องล่าสุด</string>
+    <string name="compliance_master_reveal_day_help">กี่วันก่อนถึงวันครบกำหนดในการเขียนสิ่งที่ต้องทำลงในไฟล์บันทึกประจำวัน</string>
+    <string name="compliance_master_first_day_selected">ครบกำหนดในวันแรกของแต่ละเดือนที่เกี่ยวข้อง</string>
+    <string name="compliance_master_last_day_selected">ครบกำหนด ณ วันสุดท้ายของแต่ละเดือนที่เกี่ยวข้อง</string>
+    <string name="compliance_mode_day_of_month">วันที่เจาะจง</string>
+    <string name="compliance_mode_day_of_month_desc">ครบกำหนดชำระตามวันที่เลข เช่น วันที่ 15</string>
+    <string name="compliance_mode_day_of_week">วันธรรมดา</string>
+    <string name="compliance_mode_day_of_week_desc">ครบกำหนดในวันธรรมดาที่เลือก เช่น วันจันทร์</string>
+    <string name="compliance_mode_first_day">แรกของเดือน</string>
+    <string name="compliance_mode_first_day_desc">ครบกำหนดในวันแรกของแต่ละเดือนที่เกี่ยวข้อง</string>
+    <string name="compliance_mode_last_day">สิ้นเดือน</string>
+    <string name="compliance_mode_last_day_desc">ครบกำหนดในวันสุดท้ายรวมทั้งเดือนที่สั้นกว่าด้วย</string>
+    <string name="compliance_frequency_weekly">รายสัปดาห์</string>
+    <string name="compliance_frequency_biweekly">รายปักษ์</string>
+    <string name="compliance_frequency_monthly">รายเดือน</string>
+    <string name="compliance_frequency_quarterly">รายไตรมาส</string>
+    <string name="compliance_frequency_half_yearly">ครึ่งปี</string>
+    <string name="compliance_frequency_annual">ประจำปี</string>
+    <string name="compliance_master_summary_day_of_month">วัน %1$d • %2$s • %3$d วันล่วงหน้า</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">วันแรก • %1$s • %2$d วันล่วงหน้า</string>
+    <string name="compliance_master_summary_last_day">วันสุดท้าย • %1$s • %2$d วันล่วงหน้า</string>
+    <string name="compliance_master_execution_title">เรื่องนี้จะดำเนินไปอย่างไร.</string>
+    <string name="compliance_master_execution_day_of_month">สิ่งที่ต้องทำถูกสร้างขึ้น %1$s ในวันที่ %2$d มีการเขียนลงในไฟล์รายวันของคุณล่วงหน้า %3$d วัน</string>
+    <string name="compliance_master_execution_weekday">มีการสร้างสิ่งที่ต้องทำ %1$s บน %2$s มีการเขียนลงในไฟล์รายวันของคุณล่วงหน้า %3$d วัน</string>
+    <string name="compliance_master_execution_monthly_weekday">สิ่งที่ต้องทำจะถูกสร้างขึ้นทุกเดือนโดยเกิดเหตุการณ์ %1$s เดียวกันกับวันที่เริ่มต้น มีการเขียนลงในไฟล์รายวันของคุณล่วงหน้า %2$d วัน</string>
+    <string name="compliance_master_execution_month_boundary">สิ่งที่ต้องทำจะถูกสร้างขึ้น %1$s ในวันที่ %2$s ของเดือนที่ครบกำหนด มีการเขียนลงในไฟล์รายวันของคุณล่วงหน้า %3$d วัน</string>
+    <string name="compliance_master_boundary_first">เดทแรก</string>
+    <string name="compliance_master_boundary_last">วันสุดท้าย</string>
+    <string name="compliance_master_recurrence_weekly">ทุกสัปดาห์</string>
+    <string name="compliance_master_recurrence_biweekly">ทุกสองสัปดาห์</string>
+    <string name="compliance_master_recurrence_monthly">ทุกเดือน</string>
+    <string name="compliance_master_recurrence_quarterly">ทุกสามเดือน</string>
+    <string name="compliance_master_recurrence_half_yearly">ทุกหกเดือน</string>
+    <string name="compliance_master_recurrence_annual">ทุกปี</string>
+    <string name="todo_chip_compliance">เกิดซ้ำ</string>
+    <string name="compliance_master_upcoming">ที่กำลังจะมีขึ้น</string>
+    <string name="compliance_master_delete_confirm_title">ลบงานที่เกิดซ้ำใช่ไหม</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" จะถูกนำออกและไม่มีการสร้างสิ่งที่ต้องทำเพิ่มเติม</string>
+    <string name="compliance_master_next_date">ถัดไป: %1$s</string>
+    <string name="compliance_master_end_section">เงื่อนไขจบ</string>
+    <string name="compliance_master_end_help">เลือกเวลาที่งานนี้หยุดทำซ้ำ</string>
+    <string name="compliance_master_end_never">ไม่เคย</string>
+    <string name="compliance_master_end_on_date">เมื่อวันที่</string>
+    <string name="compliance_master_end_after">หลังจาก…</string>
+    <string name="compliance_master_end_never_desc">ซ้ำไปซ้ำมาอย่างไม่มีวันสิ้นสุด</string>
+    <string name="compliance_master_end_date_select">เลือกวันที่สิ้นสุด</string>
+    <string name="compliance_master_end_date_help">ไม่มีการสร้างงานหลังจากวันที่นี้</string>
+    <string name="compliance_master_end_count_label">จำนวนครั้งที่เกิดขึ้น</string>
+    <string name="compliance_master_end_count_help">หยุดหลังจากสร้างงานจำนวนมากนี้</string>
+    <string name="compliance_master_ends_on">สิ้นสุด %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d ออกไปแล้ว</string>
+    <string name="compliance_master_ended">สิ้นสุดแล้ว</string>
+    <string name="compliance_master_type_label">สร้างเป็น</string>
+    <string name="compliance_master_type_task">งาน</string>
+    <string name="compliance_master_type_event">เหตุการณ์</string>
+    <string name="heatmap_widget_status_loading">กำลังโหลดแผนที่ความร้อน...</string>
+    <string name="heatmap_widget_status_empty">ยังไม่มีรายการ</string>
+    <string name="heatmap_widget_status_refresh">เปิด Yaja เพื่อรีเฟรชแผนที่ความร้อน</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">แคชสร้างขึ้นใหม่</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">รายการใหม่</string>
+    <string name="shortcut_new_entry_long">เพิ่มรายการบันทึกประจำวัน</string>
+    <string name="shortcut_add_todo_short">เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="shortcut_add_todo_long">เพิ่มสิ่งที่ต้องทำสำหรับวันนี้</string>
+    <string name="shortcut_add_event_short">เพิ่มเหตุการณ์</string>
+    <string name="shortcut_add_event_long">เพิ่มกิจกรรม</string>
+    <string name="shortcut_today_short">วันนี้</string>
+    <string name="shortcut_today_long">เปิดวารสารวันนี้</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">การนำทาง</string>
+    <string name="settings_bottom_nav_style_label">รูปแบบการนำทางด้านล่าง</string>
+    <string name="settings_navigation_mode_title">โหมดการนำทาง</string>
+    <string name="settings_navigation_mode_subtitle">เลือกระหว่างแถบนำทางแบบลอยและแผงด้านล่างแบบเต็ม</string>
+    <string name="settings_nav_mode_floating">ลอยตัว</string>
+    <string name="settings_nav_mode_panel">แผง</string>
+    <string name="settings_navigation_screens_label">หน้าจอการนำทาง</string>
+    <string name="settings_nav_summary_floating">บันทึกและปฏิทินจะอยู่ในแถบลอยเสมอ รับเพิ่มอีก 2 จอ เลือกอยู่ในปัจจุบัน: %1$d จาก %2$d</string>
+    <string name="settings_nav_summary_panel">บันทึกประจำวันและปฏิทินจะอยู่ที่แผงด้านล่างเสมอ รับเพิ่มอีก 3 จอ เลือกอยู่ในปัจจุบัน: %1$d จาก %2$d</string>
+    <string name="settings_nav_lookback_subtitle">แสดง Lookback ในแถบนำทางหรือแผงนำทางที่ใช้งานอยู่</string>
+    <string name="settings_nav_people_places_subtitle">แสดงผู้คนและสถานที่ในแถบนำทางหรือแผงนำทางที่ใช้งานอยู่</string>
+    <string name="settings_nav_todos_title">สิ่งที่ต้องทำ</string>
+    <string name="settings_nav_todos_subtitle">แสดงสิ่งที่ต้องทำในแถบนำทางหรือแผงนำทางที่ใช้งานอยู่</string>
+    <string name="todos_quick_add_title">เพิ่มด่วน</string>
+    <string name="todos_hero_subtitle">ติดตามงานบันทึกประจำวันและช่วงเวลาต่างๆ</string>
+    <string name="todos_hero_all_activity">ทุกกิจกรรม</string>
+    <string name="todos_hero_open_focus">เปิดโฟกัส</string>
+    <string name="todos_hero_completed">สมบูรณ์</string>
+    <string name="todos_stat_today_open">วันนี้เปิด</string>
+    <string name="todos_stat_done_today">เสร็จวันนี้</string>
+    <string name="todos_stat_events">กิจกรรม</string>
+    <string name="todos_stat_still_open">ยังเปิดอยู่ครับ</string>
+    <string name="todos_stat_past_7d">ผ่านมา 7 วัน</string>
+    <string name="todos_stat_days">วัน</string>
+    <string name="todos_empty_done">ยังไม่มีสิ่งที่ต้องทำที่เสร็จสมบูรณ์</string>
+    <string name="todos_empty_events">ยังไม่มีรายการกิจกรรม</string>
+    <string name="todos_section_open">เปิด</string>
+    <string name="todos_section_later">ภายหลัง</string>
+    <string name="todos_section_upcoming">ที่กำลังจะมาถึง</string>
+    <string name="todos_section_future_events">เหตุการณ์ในอนาคต</string>
+    <string name="todos_section_past_events">เหตุการณ์ที่ผ่านมา</string>
+    <string name="todos_cd_open_day">วันเปิดเทอม</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d งานเปิด</item>
+        <item quantity="other">%1$d งานที่เปิดอยู่</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d ทำงานเสร็จแล้ว</item>
+        <item quantity="other">%1$d ทำงานเสร็จแล้ว</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d กิจกรรมที่กำลังจะเกิดขึ้น</item>
+        <item quantity="other">%1$d กิจกรรมที่กำลังจะเกิดขึ้น</item>
+    </plurals>
+    <string name="todos_filter_all_format">ทั้งหมด %1$d</string>
+    <string name="todos_filter_open_format">เปิด %1$d</string>
+    <string name="todos_filter_done_format">เสร็จแล้ว %1$d</string>
+    <string name="todos_filter_events_format">กิจกรรม %1$d</string>
+    <string name="todos_cheer_all_clear">ชัดเจนทั้งหมด ดี.</string>
+    <string name="todos_cheer_done_and_dusted">เสร็จแล้วก็ปัดฝุ่น</string>
+    <string name="todos_cheer_nothing_pending">ไม่มีอะไรค้างอยู่</string>
+    <string name="todos_cheer_caught_up">คุณตามทัน</string>
+    <string name="todos_cheer_clean_slate">กระดานชนวนที่สะอาด</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">ใน %1$d วัน</item>
+        <item quantity="other">ในอีก %1$d วัน</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d วันที่ผ่านมา</item>
+        <item quantity="other">%1$d วันที่ผ่านมา</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">ใน %1$d สัปดาห์</item>
+        <item quantity="other">ใน %1$d สัปดาห์</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d สัปดาห์ที่แล้ว</item>
+        <item quantity="other">%1$d สัปดาห์ที่ผ่านมา</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">ในอีก 1 เดือน</string>
+    <string name="todos_relative_one_month_ago">1 เดือนที่แล้ว</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">ใน %1$d เดือน</item>
+        <item quantity="other">ใน %1$d เดือน</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d เดือนที่แล้ว</item>
+        <item quantity="other">%1$d เดือนที่แล้ว</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">สถิติ</string>
+    <string name="settings_nav_statistics_subtitle_on">แสดงสถิติในแถบนำทางหรือแผงนำทางที่ใช้งานอยู่</string>
+    <string name="settings_nav_statistics_subtitle_off">เปิดสถิติก่อนเพื่อวางไว้ในการนำทาง</string>
+    <string name="settings_show_labels_bottom_panel_title">แสดงป้ายกำกับในแผงด้านล่าง</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">แสดงป้ายกำกับข้อความใต้ไอคอนในแผงด้านล่าง</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">ท่าทาง</string>
+    <string name="settings_entry_delete_title">รายการ ลบ</string>
+    <string name="settings_entry_delete_subtitle">กดรายการค้างไว้เพื่อเลือก แตะรายการเพิ่มเติมเพื่อเลือกหลายรายการ จากนั้นใช้ปุ่ม Delete ที่อยู่ตรงกลาง แตะพื้นที่ว่างเพื่อล้างการเลือก</string>
+    <string name="settings_swipe_navigate_title">ปัดเพื่อนำทางวันที่</string>
+    <string name="settings_swipe_navigate_subtitle">ปัดจากขวาไปซ้ายเพื่อเลื่อนไปข้างหน้าหนึ่งวัน และปัดจากซ้ายไปขวาเพื่อย้อนกลับ</string>
+    <string name="settings_drag_reorder_title">เปิดใช้งานการลากเพื่อจัดลำดับใหม่</string>
+    <string name="settings_drag_reorder_subtitle">รายการกดแบบยาวเพื่อจัดเรียงใหม่</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">ข้อมูลและการกู้คืน</string>
+    <string name="settings_swipe_rebuild_index">ปัดลงบนหน้าจอหลักเพื่อสร้างดัชนีใหม่</string>
+    <string name="settings_large_journal_safe_mode_title">เซฟโหมดวารสารขนาดใหญ่</string>
+    <string name="settings_large_journal_safe_mode_subtitle">เมื่อตรวจพบเจอร์นัลที่มีขนาดใหญ่มาก ให้เลื่อนสถิติการเริ่มต้นที่ไม่จำเป็นออกไปเพื่อให้แอปเปิดได้เร็วและปลอดภัยยิ่งขึ้น</string>
+    <string name="settings_version_history_title">ประวัติเวอร์ชัน</string>
+    <string name="settings_version_history_subtitle">เก็บสำเนาไว้อย่างปลอดภัยก่อนที่จะแก้ไข ลบ ติดป้ายกำกับ และตรวจดูการเปลี่ยนแปลงอีกครั้ง</string>
+    <string name="settings_storage_location_label">สถานที่จัดเก็บ</string>
+    <string name="settings_reset_to_default">รีเซ็ตเป็นค่าเริ่มต้น</string>
+    <string name="settings_choose_folder">เลือกโฟลเดอร์</string>
+    <string name="settings_backup_description">สร้างไฟล์สำรอง Yaja หนึ่งไฟล์ที่มีรายการบันทึกประจำวัน รหัสย่อ คำสำคัญวันที่ และข้อมูลผู้คนและสถานที่ การคืนค่าสามารถรวมกลับได้อย่างปลอดภัยในภายหลัง</string>
+    <string name="settings_last_backup">การสำรองข้อมูลครั้งล่าสุด: %1$s</string>
+    <string name="settings_backup_reminder_age_label">อายุการเตือนความจำสำรอง</string>
+    <string name="settings_backup_reminder_disabled">พิการ</string>
+    <string name="settings_backup_reminder_desc">ไฮไลต์การสำรองข้อมูลในแถบด้านข้างเมื่อเก่ากว่า %1$d วัน</string>
+    <string name="settings_backup_reminder_days_disabled">0 วัน (ปิดใช้งาน)</string>
+    <string name="settings_backup_reminder_days">%1$d วัน</string>
+    <string name="settings_restore_button">คืนค่า</string>
+    <string name="settings_backup_now_button">สำรองข้อมูลทันที</string>
+    <string name="settings_db_index_management_label">การจัดการดัชนีฐานข้อมูล</string>
+    <string name="settings_db_index_management_desc">เปิดเครื่องมือสร้างใหม่ที่มุ่งเน้นสำหรับสิ่งที่ต้องทำ ผู้คนและสถานที่ หรือการสร้างดัชนีฐานข้อมูลแบบเต็ม</string>
+    <string name="settings_rebuild_tools_button">สร้างเครื่องมือใหม่</string>
+    <string name="settings_import_label">นำเข้า</string>
+    <string name="settings_import_info_cd">นำเข้าข้อมูล</string>
+    <string name="settings_import_info_title">ข้อมูลการนำเข้า</string>
+    <string name="settings_import_day_one_title">วันแรกของการนำเข้า</string>
+    <string name="settings_import_day_one_bullet1">- ส่งออกตั้งแต่วันแรกโดยไม่มีภาพ</string>
+    <string name="settings_import_day_one_bullet2">- นำเข้าเฉพาะข้อมูลข้อความเท่านั้น</string>
+    <string name="settings_import_day_one_bullet3">- การประทับเวลาและข้อมูลตำแหน่ง (ถ้ามี) จะถูกเก็บรักษาไว้</string>
+    <string name="settings_import_perf_warning_title">คำเตือนประสิทธิภาพ</string>
+    <string name="settings_import_perf_warning_desc">การนำเข้ารายการจำนวนมาก (500+) อาจใช้เวลาหลายนาที คุณสามารถนำทางออกไปได้ และการนำเข้าจะดำเนินต่อไปในเบื้องหลัง</string>
+    <string name="settings_got_it">เข้าใจแล้ว</string>
+    <string name="settings_import_success">%1$d วันใหม่ %2$d รวมแล้ว %3$d ข้าม</string>
+    <string name="settings_import_source_day_one">วันแรก</string>
+    <string name="settings_import_source_day_one_subtitle">ส่งออก .zip หรือ .json</string>
+    <string name="settings_import_source_journalistic">วารสารศาสตร์</string>
+    <string name="settings_import_source_journalistic_subtitle">การส่งออก .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">เรียนรู้วิธีใช้ yaja</string>
+    <string name="help_footer_website">เว็บไซต์</string>
+    <string name="help_footer_share">แบ่งปัน</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">ความไม่ลงรอยกัน</string>
+    <string name="help_footer_reddit">เรดดิต</string>
+    <string name="help_share_yaja">แชร์จ้าาา</string>
+    <string name="help_share_yaja_text">yaja - อีกหนึ่งแอปบันทึกประจำวัน\n\nวารสารท้องถิ่นที่ปราศจากสิ่งรบกวน ซึ่งจัดเก็บรายการเป็นไฟล์มาร์กดาวน์ ประกอบด้วยไทม์ไลน์ การมองย้อนกลับไป ผู้คนและสถานที่ เทมเพลต รีวิว สถิติ และวิดเจ็ต\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">คัดลอกชื่อผู้ใช้ Discord แล้ว!</string>
+    <string name="help_footer_play_store">เพลย์สโตร์</string>
+    <string name="help_cd_rj_logo">โลโก้อาร์เจ</string>
+    <string name="help_screen_title">ความช่วยเหลือ &amp; เกี่ยวกับ</string>
+    <string name="help_welcome_title">ยินดีด้วยจ้าาา</string>
+    <string name="help_welcome_body">Yaja เป็นวารสารท้องถิ่นฉบับแรกที่มีการลดราคาสำหรับบันทึกวัน ผู้คน สถานที่ การติดตามผล บทวิจารณ์ และรูปแบบต่างๆ โดยไม่ขัดขวางคุณ หน้านี้ให้คำแนะนำโดยย่อเกี่ยวกับส่วนหลักของแอป</string>
+    <string name="help_start_here">เริ่มที่นี่</string>
+    <string name="help_cd_collapse">ทรุด</string>
+    <string name="help_cd_expand">ขยาย</string>
+    <string name="help_group_everyday_title">ทุกวัน</string>
+    <string name="help_group_everyday_desc">การจดบันทึก ขั้นตอนการเขียน และการนำทางรายวัน</string>
+    <string name="help_group_reviews_title">บทวิจารณ์และข้อมูลเชิงลึก</string>
+    <string name="help_group_reviews_desc">การมองย้อนกลับไป แนวโน้ม ผู้คน สถานที่ และการวิเคราะห์</string>
+    <string name="help_group_advanced_title">เครื่องมือขั้นสูง</string>
+    <string name="help_group_advanced_desc">วิดเจ็ต พื้นที่เก็บข้อมูล ความเป็นส่วนตัว การสำรองข้อมูล และเครื่องมือทางเทคนิค</string>
+    <string name="help_onboard_todos_events_title">สิ่งที่ต้องทำ กิจกรรม และการเกิดซ้ำ</string>
+    <string name="help_onboard_todos_events_body">เก็บการช่วยเตือนส่วนตัว แผนครอบครัว และกำหนดการที่เกิดซ้ำซึ่งจะสร้างงานโดยอัตโนมัติตามวันครบกำหนด</string>
+    <string name="help_onboard_widgets_title">วิดเจ็ต</string>
+    <string name="help_onboard_widgets_body">เพิ่มวิดเจ็ต Heatmap, Quick Capture, Quick Todo หรือ Todo List จาก Launcher</string>
+    <string name="help_onboard_version_history_title">ประวัติเวอร์ชัน</string>
+    <string name="help_onboard_version_history_body">เปิดใช้งานไฟล์ประวัติในการตั้งค่า &gt; ข้อมูล เพื่อเก็บสแนปชอตที่ปลอดภัยก่อนการเปลี่ยนแปลงที่มีความเสี่ยง</string>
+    <string name="help_onboard_tasker_title">ทาซเคอร์</string>
+    <string name="help_onboard_tasker_body">ใช้ Tasker เพื่อเพิ่มรายการ สิ่งที่ต้องทำ หรือเหตุการณ์อย่างรวดเร็วเมื่อจำเป็นต้องบันทึกสิ่งส่วนตัวทันที</string>
+    <string name="help_section_writing_editor_title">การเขียนและบรรณาธิการ</string>
+    <string name="help_section_writing_editor_preview">เทมเพลต ส่วนหัวของมาร์กดาวน์ สิ่งที่ต้องทำ กิจกรรม และการแทรกแบบร่างที่ยืดหยุ่น</string>
+    <string name="help_section_writing_editor_content">+ แตะปุ่ม \'+\' ที่ลอยอยู่เพื่อเขียนสำหรับวันที่เลือก\n+ ใช้เทมเพลต เช่น บันทึกการประชุม วันเดินทาง บันทึกสุขภาพ การสะท้อน บันทึกการทำงาน และอื่นๆ\n+ สามารถแทรกเทมเพลตลงในฉบับร่างเปล่า ต่อท้ายด้านล่าง ใช้แทนฉบับร่าง หรือแทรกที่เคอร์เซอร์\n+ ชิปตัวแก้ไขสามารถแทรกสิ่งที่ต้องทำ กิจกรรม รายการลำดับเลข และรายการหัวข้อย่อยได้อย่างรวดเร็ว\n+ ดูรายการและแก้ไขรายการสนับสนุนส่วนหัวแบบมาร์กดาวน์ เช่น ### มาตรา.</string>
+    <string name="help_section_post_write_review_title">โพสต์เขียนรีวิว</string>
+    <string name="help_section_post_write_review_preview">การแยกสิ่งที่ต้องทำ การตรวจจับคำหลัก การติดดาว ป้ายกำกับ และการตั้งค่าการกลับมาเยี่ยมชมอีกครั้ง</string>
+    <string name="help_section_post_write_review_content">+ หลังจากเขียนแล้ว Yaja จะสามารถเปิดแผ่นตรวจสอบก่อนบันทึกได้\n+ สามารถแยกรายการสิ่งที่ต้องทำ ตรวจจับผู้คนและสถานที่ ติดดาววัน ตั้งป้ายกำกับวัน และกำหนดเวลาวันที่กลับมาเยี่ยมชมอีกครั้ง\n+ คุณสามารถปิดใช้งานการตรวจสอบหลังเขียนได้จากการตั้งค่า หากคุณต้องการบันทึกโดยตรง</string>
+    <string name="help_section_revisit_followup_title">วันที่ทบทวนและติดตามผล</string>
+    <string name="help_section_revisit_followup_preview">วันที่ติดตามผลที่เชื่อมโยงกับวารสารพร้อมการเลือกอย่างรวดเร็วและตัวเลือกที่กำหนดเอง</string>
+    <string name="help_section_revisit_followup_content">+ เพิ่มวันที่กลับมาเป็นวันพรุ่งนี้ สัปดาห์หน้า เดือนหน้า หรือวันที่ที่กำหนดเอง\n+ รายการการกลับมาเยี่ยมอีกครั้งจะปรากฏในหน้าแรกและทำเครื่องหมายไว้ในปฏิทินและไทม์ไลน์\n+ วิธีนี้ใช้ได้ดีกับคำสัญญา การตัดสินใจ การตรวจสุขภาพ และการเตือนความจำที่เชื่อมโยงกับบริบทของบันทึก</string>
+    <string name="help_section_navigation_gestures_title">การนำทางและท่าทาง</string>
+    <string name="help_section_navigation_gestures_preview">การเคลื่อนไหววันที่ ลบการเลือก ปัดการตั้งค่า และสร้างพฤติกรรมแคชใหม่</string>
+    <string name="help_section_navigation_gestures_content">+ หน้าแรกรองรับการนำทางตามวันที่ด้วยลูกศรและการนำทางแบบปัดตัวเลือกเมื่อเปิดใช้งาน\n+ กดรายการค้างไว้เพื่อเลือก แตะรายการเพิ่มเติมเพื่อเลือกรายการเหล่านั้นด้วย จากนั้นใช้ยาลบใกล้กับปุ่มเพิ่ม\n+ การแตะนอกรายการที่เลือกจะล้างการเลือก รายการที่ลบสามารถกู้คืนพร้อมกันได้จากการนับถอยหลังการกู้คืน\n+ คุณสามารถสร้างแคชใหม่ได้เมื่อไฟล์บันทึกการเปลี่ยนแปลงภายนอก Yaja</string>
+    <string name="help_section_shortcodes_quick_capture_title">รหัสย่อและการจับภาพด่วน</string>
+    <string name="help_section_shortcodes_quick_capture_preview">การจับภาพส่วนบุคคลที่รวดเร็วพร้อมตัวอย่างข้อความไดนามิกที่นำมาใช้ซ้ำได้</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ สร้างรหัสย่อเพื่อแทรกข้อความซ้ำอย่างรวดเร็ว\n+ ตัวยึดตำแหน่งแบบไดนามิก เช่น {{today:dd-MMM}} และ {{now:HH:mm}} ทำงานในรหัสย่อได้\n+ Quick Capture ช่วยบันทึกบางสิ่งอย่างรวดเร็วโดยไม่ต้องเปิดโปรแกรมแก้ไขแบบเต็ม\n+ การเพิ่มด่วนสามารถบันทึกสิ่งที่ต้องทำหรือเหตุการณ์สำหรับวันที่เลือกจากวิดเจ็ต หน้าจอ Todos หรือ Tasker</string>
+    <string name="help_section_todos_events_title">สิ่งที่ต้องทำ กิจกรรม และการเกิดซ้ำ</string>
+    <string name="help_section_todos_events_preview">การเตือนความจำส่วนตัว กิจกรรมสำคัญ และกำหนดการที่เกิดซ้ำอัตโนมัติ</string>
+    <string name="help_section_todos_events_content">+ สิ่งที่ต้องทำจะถูกเขียนโดยตรงในรายการบันทึกเป็นบรรทัด [ ] และ [x]\n+ กิจกรรมคือรายการบันทึกประจำวันปกติที่ทำเครื่องหมายว่าเป็นกิจกรรม ซึ่งมีประโยชน์สำหรับแผนครอบครัว การนัดหมาย การเดินทาง หรือสิ่งอื่นใดที่คุณต้องการแจ้งให้ทราบในภายหลัง\n+ งานและกิจกรรมที่เกิดซ้ำ (กำหนดการ) จะเขียนรายการสิ่งที่ต้องทำหรือส่วนหัวของกิจกรรมลงในหน้าบันทึกรายวันของคุณโดยอัตโนมัติตามกำหนดการ (เช่น รายสัปดาห์ รายเดือน รายปี)\n+ จัดการกำหนดการของคุณโดยแตะไอคอนการเกิดซ้ำบนสิ่งที่ต้องทำ หน้าจอ\n+ ทุกวันเมื่อคุณเปิด Yaja ไปป์ไลน์ในเบื้องหลังจะทำงานเพื่อตรวจสอบว่างานที่กำหนดเวลาไว้ใดๆ ครบกำหนดหรือไม่ และแทรกงานเหล่านั้นลงในรายการของวันนั้นๆ\n+ หน้าจอ Todos ช่วยให้คุณดูสิ่งที่ต้องทำที่เปิดอยู่ สิ่งที่ต้องทำที่เสร็จสมบูรณ์ และกิจกรรมต่างๆ โดยไม่ต้องเปลี่ยน Yaja ให้เป็นแดชบอร์ดประสิทธิภาพการทำงาน\n+ แตะส่วนหัวของวันที่เพื่อเปิดวันนั้นในบันทึก\n+ ลากลงมาที่สิ่งที่ต้องทำเพื่อสร้างดัชนีสิ่งที่ต้องทำใหม่หากไฟล์มีการเปลี่ยนแปลงภายนอก Yaja\n+ แสดงงานที่เสร็จสมบูรณ์แล้วจะถูกจดจำ ดังนั้นมุมมองที่คุณต้องการจะคงอยู่เมื่อคุณออกและกลับมา\n+ วิดเจ็ต Todo สามารถแสดงงานที่ค้างอยู่ ยืนยันก่อนที่จะสลับ ซ่อนงานที่เสร็จแล้ว และเลือกซ่อนอัตโนมัติเมื่อไม่มีอะไรค้างอยู่</string>
+    <string name="help_section_people_places_title">ผู้คนและสถานที่</string>
+    <string name="help_section_people_places_preview">คำสำคัญ นามแฝง แนวโน้ม และมุมมองการเชื่อมต่ออันดับ</string>
+    <string name="help_section_people_places_content">+ ติดตามผู้คนและสถานที่ด้วยนามแฝงและป้ายกำกับความสัมพันธ์\n+ ค้นหา กรอง และจัดเรียงรายการคำหลัก\n+ หน้ารายละเอียดคำหลักแสดงความใหม่ การกล่าวถึงในช่วงเวลาหนึ่ง การกล่าวถึงร่วมกัน และการเชื่อมต่อที่ได้รับการจัดอันดับ\n+ ความไวในการจับคู่สามารถปรับได้จากการตั้งค่า</string>
+    <string name="help_section_timeline_lookback_title">ไทม์ไลน์และการมองย้อนกลับ</string>
+    <string name="help_section_timeline_lookback_preview">การเรียกดูวันที่ผ่านมา ไฮไลท์ เซอร์ไพรส์ฉัน และตรวจสอบจุดเริ่มต้น</string>
+    <string name="help_section_timeline_lookback_content">+ ไทม์ไลน์ช่วยให้คุณเรียกดูวันที่ผ่านมาด้วยตัวกรอง ชิปปี และโหมดวันที่ทั้งหมดซึ่งเป็นทางเลือก\n+ Lookback แสดงรายการจากวันเดียวกันในปีที่ผ่านมาและไฮไลท์ที่ติดดาวของคุณ\n+ Surprise Me จะเปิดรายการที่ผ่านมาแบบสุ่มจาก Lookback\n+ รีวิวรายสัปดาห์และรีวิวรายเดือนแบบถ่ายทอดสดภายใน Lookback</string>
+    <string name="help_section_statistics_reviews_title">สถิติและบทวิจารณ์</string>
+    <string name="help_section_statistics_reviews_preview">โหมดเปรียบเทียบ ข้อมูลเชิงลึกของเทมเพลต ส่วนที่มองเห็นได้แบบกำหนดเอง และข้อมูลสรุป</string>
+    <string name="help_section_statistics_reviews_content">+ สถิติประกอบด้วยโหมดการเปรียบเทียบ ส่วนต่างของคำหลัก และข้อมูลเชิงลึกของเทมเพลต\n+ คุณสามารถเลือกได้ว่าส่วนสถิติใดที่จะมองเห็นได้จากภายในหน้าจอสถิติ\n+ โหมดเปรียบเทียบใช้งานได้ตลอดเวลาและสรุปส่วนต่างของเดือนและปี\n+ หน้าตรวจสอบจะสรุปวันที่ใช้งานมากที่สุด ผู้คนและสถานที่ยอดนิยม ช่วงเวลาที่ชื่นชอบ ป้ายชื่อ การแยกภาษา และรูปแบบการต่อเนื่องหรือช่องว่าง</string>
+    <string name="help_section_widgets_home_title">วิดเจ็ตและพื้นผิวหน้าแรก</string>
+    <string name="help_section_widgets_home_preview">การวิเคราะห์ภาษาและข้อความ</string>
+    <string name="help_section_widgets_home_content">+ วิดเจ็ตการเขียนแผนที่ความร้อน, จับภาพด่วน, เพิ่มด่วน และรายการสิ่งที่ต้องทำมีอยู่ในตัวเรียกใช้งาน\n+ หน้าจอกำหนดค่าวิดเจ็ตช่วยให้คุณปรับมุม ช่องว่างภายใน รูปร่าง ส่วนหัว การเปิดเผยงานที่เสร็จสมบูรณ์ และตัวเลือกวิดเจ็ตอื่นๆ ที่รองรับ\n+ วิดเจ็ตแผนที่ความร้อนใช้เฉดสีที่เข้มข้นมากขึ้นเพื่อการดูประวัติการเขียนที่ราบรื่นยิ่งขึ้น\n+ หน้าแรกสามารถไฮไลต์ผู้คนและสถานที่ภายในรายการเมื่อเปิดใช้งานการตั้งค่า\n+ ส่วนหัววันที่หลักสามารถแสดงหรือซ่อนจำนวนรายการ คำ และอักขระ นับ</string>
+    <string name="help_section_language_text_analysis_title">การวิเคราะห์ภาษาและข้อความ</string>
+    <string name="help_section_language_text_analysis_preview">การตรวจจับภาษาท้องถิ่นสำหรับสถิติและตรวจสอบข้อมูลเชิงลึก</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja ตรวจจับสคริปต์หรือภาษาที่โดดเด่นในรายการต่างๆ เพื่อข้อมูลเชิงลึก\n+ การแยกภาษาจะปรากฏในสถิติและบทวิจารณ์\n+ การตรวจจับทำงานภายในเครื่องและไม่ส่งข้อความบันทึกประจำวันออกจากอุปกรณ์</string>
+    <string name="help_section_data_privacy_cache_title">ข้อมูล ความเป็นส่วนตัว และแคช</string>
+    <string name="help_section_data_privacy_cache_preview">ที่เก็บข้อมูล Markdown ประวัติเวอร์ชัน บันทึกแอป การล็อคแอป และสร้างแคชใหม่</string>
+    <string name="help_section_data_privacy_cache_content">+ ความเป็นส่วนตัวของข้อมูล: ข้อมูลบันทึกส่วนตัวทั้งหมดอยู่ในอุปกรณ์ทางกายภาพของคุณอย่างเคร่งครัดและจะไม่มีวันทิ้งมันไว้ตลอดเวลา Yaja ไม่ได้เรียกใช้ฐานข้อมูลบนคลาวด์ เซิร์ฟเวอร์สำรองข้อมูลระยะไกล หรือการวัดและส่งข้อมูลทางไกลเพื่อติดตามข้อความของคุณ\n+ รายการบันทึกจะถูกจัดเก็บเป็นไฟล์ Markdown มาตรฐานที่จัดเรียงตามปีและเดือน\n+ ประวัติเวอร์ชันสามารถเก็บสแนปชอตที่ปลอดภัยก่อนที่จะแก้ไข ลบ ติดป้ายกำกับ และกลับมาแก้ไขอีกครั้ง\n+ คุณสามารถเลือกจำนวนเวอร์ชันที่จะเก็บและจำนวนวันที่จะเก็บรักษาประวัติได้\n+ บันทึกแอปจะบันทึกเหตุการณ์ทางเทคนิค รายละเอียดข้อขัดข้อง และกิจกรรมแคชโดยไม่ต้องจัดเก็บข้อความบันทึก\n+ สร้างแคชของแอปขึ้นมาใหม่เพื่อให้คุณรีเฟรชข้อมูลแอปได้ แบบโมดูลาร์ รวมถึงสิ่งที่ต้องทำและการสร้างแคชใหม่ทั้งหมด\n+ การล็อคแอปรองรับ PIN และลายนิ้วมือ\n+ Yaja คอยเลื่อนการจัดทำดัชนีและสถิติจำนวนมากออกไปหากเป็นไปได้ เพื่อให้การเปิดแอปและบันทึกยังคงตอบสนองอยู่เสมอ</string>
+    <string name="settings_app_log_title">บันทึกแอป</string>
+    <string name="settings_app_log_subtitle">บันทึกแอป</string>
+    <string name="app_log_cd_share">แชร์บันทึกแอป</string>
+    <string name="app_log_cd_clear">ล้างบันทึกแอป</string>
+    <string name="app_log_privacy_title">การวินิจฉัยที่ปลอดภัยต่อความเป็นส่วนตัว</string>
+    <string name="app_log_privacy_description">บันทึกนี้จะบันทึกเหตุการณ์สำคัญของแอป การดำเนินการแคช/พื้นที่จัดเก็บ การรีเฟรชวิดเจ็ต และรายละเอียดข้อขัดข้อง โดยจะไม่รวมรายการบันทึกประจำวัน ข้อความสิ่งที่ต้องทำ หรือเนื้อหาบันทึกส่วนตัว</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">เก็บ %d วันที่ผ่านมา</item>
+        <item quantity="other">เก็บ %d วันที่ผ่านมา</item>
+    </plurals>
+    <string name="app_log_retention_description">กิจกรรมบันทึกที่เก่ากว่าจะถูกตัดโดยอัตโนมัติระหว่างการบันทึกและทันทีที่การตั้งค่านี้เปลี่ยนแปลง</string>
+    <string name="app_log_empty">ยังไม่มีบันทึกแอป</string>
+    <string name="app_log_refresh">รีเฟรชบันทึก</string>
+    <string name="app_log_share_empty">ยังไม่มีรายการบันทึกแอป Yaja</string>
+    <string name="app_log_share_subject">บันทึกแอป Yaja</string>
+    <string name="app_log_share_chooser">แชร์บันทึกแอป Yaja</string>
+    <string name="app_log_local_time_format">%1$s | เวลาท้องถิ่น\n%2$s</string>
+    <string name="settings_website_title">เว็บไซต์ยาจา</string>
+    <string name="settings_website_subtitle">เปิดเว็บไซต์อย่างเป็นทางการเพื่อดูข้อมูลอัปเดตและรายละเอียด</string>
+    <string name="settings_advanced_integrations_title">บูรณาการขั้นสูง</string>
+    <string name="settings_tasker_integration_title">บูรณาการทาซเคอร์</string>
+    <string name="settings_tasker_integration_subtitle">การดำเนินการจับภาพอย่างรวดเร็วและทริกเกอร์เหตุการณ์บันทึก</string>
+    <string name="settings_shortcodes_subtitle">จัดการตัวอย่างข้อมูลที่ใช้ซ้ำได้ซึ่งจะขยายขณะเขียนหรือบันทึกอย่างรวดเร็ว</string>
+    <string name="settings_privacy_security_title">ความเป็นส่วนตัวและความปลอดภัย</string>
+    <string name="settings_pin_lock_title">ล็อค PIN</string>
+    <string name="settings_app_locked">แอพถูกล็อค</string>
+    <string name="settings_app_unlocked">ปลดล็อคแอพแล้ว</string>
+    <string name="settings_change_pin">เปลี่ยนรหัส PIN</string>
+    <string name="settings_biometric_unlock_title">ปลดล็อคไบโอเมตริกซ์</string>
+    <string name="settings_biometric_enabled_desc">เปิดใช้งานลายนิ้วมือหรือ Face ID</string>
+    <string name="settings_biometric_disabled_desc">ใช้ไบโอเมตริกซ์แทน PIN</string>
+    <string name="settings_autolock_timeout_title">หมดเวลาล็อคอัตโนมัติ</string>
+    <string name="settings_pin_lock_disclaimer">การล็อค PIN ช่วยป้องกันการเข้าถึงแอปโดยไม่ได้รับอนุญาต แต่ไม่ได้เข้ารหัสข้อมูลบันทึกประจำวันของคุณบนดิสก์ คนที่มีสิทธิ์เข้าถึงไฟล์โดยตรงยังสามารถอ่านรายการของคุณได้</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d นาที</item>
+        <item quantity="other">%1$d นาที</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">ระบบ</string>
+    <string name="settings_theme_light">แสงสว่าง</string>
+    <string name="settings_theme_dark">มืด</string>
+    <string name="settings_theme_amoled">ดีขึ้น</string>
+    <string name="settings_colors_label">สี</string>
+    <string name="settings_color_intensity_title">ความเข้มของสี</string>
+    <string name="settings_background_tint_title">โทนสีพื้นหลัง</string>
+    <string name="settings_font_sans">แซนส์</string>
+    <string name="settings_font_serif">เซริฟ</string>
+    <string name="settings_font_mono">โมโน</string>
+    <string name="settings_font_custom">กำหนดเอง</string>
+    <string name="settings_font_size_label">ขนาดตัวอักษร</string>
+    <string name="settings_ui_font_size_label">ขนาดตัวอักษร UI</string>
+    <string name="settings_data_font_size_label">ขนาดตัวอักษรของเนื้อหา</string>
+    <string name="settings_follow_ui_font_scale_label">ทำให้ขนาดแบบอักษรของเนื้อหาเหมือนกับ UI</string>
+    <string name="settings_color_source_material_you">วัสดุคุณ</string>
+    <string name="settings_theme_preview_title">ดูตัวอย่างธีม</string>
+    <string name="settings_journal_entry_preview">รายการบันทึกประจำวัน</string>
+    <string name="settings_journal_entry_preview_desc">การ์ด ชิป และปุ่มจะใช้สีเหล่านี้</string>
+    <string name="settings_preview_chip_chip">ชิป</string>
+    <string name="settings_preview_chip_accent">สำเนียง</string>
+    <string name="settings_preview_chip_fab">เยี่ยม</string>
+    <string name="settings_intensity_label">ความเข้ม: %1$s</string>
+    <string name="settings_personal_themes_title">ธีมส่วนตัว</string>
+    <string name="settings_theme_name_label">ชื่อธีม</string>
+    <string name="settings_main_color_label">สีหลัก</string>
+    <string name="settings_hue_label">เว้</string>
+    <string name="settings_sat_label">นั่ง</string>
+    <string name="settings_bright_label">สว่าง</string>
+    <string name="settings_generated_accents_title">สำเนียงที่สร้างขึ้น</string>
+    <string name="settings_personal_theme_desc">เลือกหนึ่งสี Yaja สร้างสำเนียงที่ตรงกันและสีสนับสนุน</string>
+    <string name="settings_preview_chip_main">หลัก</string>
+    <string name="settings_preview_chip_support">สนับสนุน</string>
+    <string name="settings_no_font_selected">ไม่ได้เลือกแบบอักษร</string>
+    <string name="settings_custom_font_desc">เลือกไฟล์ Unicode .ttf หรือ .otf — เช่น แบบอักษรมาลายาลัมเช่น Manjari อักขระที่แบบอักษรขาดใช้แบบอักษรของระบบ</string>
+    <string name="settings_font_replace">แทนที่</string>
+    <string name="settings_choose_font_file">เลือกไฟล์ฟอนต์</string>
+    <string name="settings_intensity_muted">ปิดเสียง</string>
+    <string name="settings_intensity_normal">ปกติ</string>
+    <string name="settings_intensity_vivid">สดใส</string>
+    <string name="settings_intensity_pop">โผล่</string>
+    <string name="settings_tint_clean">ทำความสะอาด</string>
+    <string name="settings_tint_soft">อ่อนนุ่ม</string>
+    <string name="settings_tint_rich">รวย</string>
+    <string name="settings_tint_deep">ลึก</string>
+    <string name="settings_accent_complementary">เสริม</string>
+    <string name="settings_accent_analogous">คล้ายคลึงกัน</string>
+    <string name="settings_accent_triadic">ไตรเอดิก</string>
+    <string name="settings_accent_soft">อ่อนนุ่ม</string>
+    <string name="settings_mono_weight_thin">บาง</string>
+    <string name="settings_mono_weight_extra_light">แสงพิเศษ</string>
+    <string name="settings_mono_weight_light">แสงสว่าง</string>
+    <string name="settings_mono_weight_regular">ปกติ</string>
+    <string name="settings_mono_weight_medium">ปานกลาง</string>
+    <string name="settings_mono_weight_semi_bold">กึ่งหนา</string>
+    <string name="settings_mono_weight_bold">ตัวหนา</string>
+    <string name="settings_mono_weight_extra_bold">ตัวหนาเป็นพิเศษ</string>
+    <string name="settings_mono_weight_title">น้ำหนัก</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">เพิ่มคำหลักวันที่</string>
+    <string name="settings_keyword_label">คำสำคัญ</string>
+    <string name="settings_keyword_placeholder_example">เช่น เมื่อวาน</string>
+    <string name="settings_means_label">วิธี</string>
+    <string name="settings_add_button">เพิ่ม</string>
+    <string name="settings_no_keywords_yet">ยังไม่มีการเพิ่มคำหลัก</string>
+    <string name="settings_added_keywords_title">เพิ่มคำหลัก (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">เพิ่มคำหลัก</string>
+    <string name="keywords_dialog_add_title">เพิ่มคำหลัก</string>
+    <string name="keywords_dialog_edit_title">แก้ไขคำสำคัญ</string>
+    <string name="keywords_cd_import_csv">นำเข้า CSV</string>
+    <string name="keywords_cd_export_csv">ส่งออก CSV</string>
+    <string name="keywords_cd_download_template">ดาวน์โหลดเทมเพลต</string>
+    <string name="rebuild_cache_storage_transparency_title">ความโปร่งใสในการจัดเก็บข้อมูลบนอุปกรณ์</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja ใช้โมเดลพื้นที่จัดเก็บในเครื่องที่ปลอดภัย ข้อมูลบันทึกส่วนตัวของคุณยังคงอยู่ในเครื่องและไม่เคยออกจากอุปกรณ์ของคุณตลอดเวลา:</string>
+    <string name="rebuild_cache_source_of_truth_title">แหล่งที่มาของความจริง (ไฟล์ Markdown)</string>
+    <string name="rebuild_cache_source_of_truth_desc">รายการ รายการตรวจสอบ (สิ่งที่ต้องทำ) เหตุการณ์ไทม์ไลน์ ดาว และแท็กทั้งหมดจะถูกบันทึกอย่างถาวรในไฟล์ Markdown แบบข้อความธรรมดา (.md) ในโฟลเดอร์บันทึกประจำวันในเครื่องที่คุณเลือก ข้อมูลของคุณเป็นของคุณ 100% และอยู่ในอุปกรณ์ของคุณทั้งหมด</string>
+    <string name="rebuild_cache_read_cache_title">อ่านแคชและดัชนี (ฐานข้อมูล SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">เพื่อเปิดใช้งานการโหลดหน้าจอทันที ไฮไลต์ปฏิทิน คำสำคัญ และสถิติโดยไม่ต้องสแกนระบบไฟล์ในทุกการเลื่อน Yaja จะแยกวิเคราะห์ไฟล์ Markdown ของคุณและจัดทำดัชนีในฐานข้อมูล Room SQLite ภายในเครื่องบนอุปกรณ์ของคุณ</string>
+    <string name="rebuild_cache_local_private_title">ท้องถิ่นและส่วนตัว 100%</string>
+    <string name="rebuild_cache_local_private_desc">Yaja ไม่มีฐานข้อมูลบนคลาวด์ เซิร์ฟเวอร์สำรองข้อมูลระยะไกล หรือการวัดและส่งข้อมูลทางไกลที่ติดตามข้อความของคุณ รายการบันทึกประจำวันและข้อมูลการแยกวิเคราะห์ทั้งหมดจะยังคงอยู่ในอุปกรณ์ทางกายภาพของคุณอย่างเคร่งครัดและจะไม่มีวันทิ้งมันไว้ตลอดเวลา</string>
+    <string name="keywords_export_success">ส่งออกคำหลักแล้ว</string>
+    <string name="keywords_export_failed">ไม่สามารถส่งออกคำหลักได้</string>
+    <string name="keywords_template_saved">บันทึกเทมเพลตแล้ว</string>
+    <string name="keywords_template_save_failed">ไม่สามารถบันทึกเทมเพลต</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">นำเข้าคำหลัก %d แล้ว</item>
+        <item quantity="other">นำเข้าคำหลัก %d แล้ว</item>
+    </plurals>
+    <string name="keywords_import_none_valid">ไม่พบคำหลักที่ถูกต้อง</string>
+    <string name="keywords_import_failed">ไม่สามารถนำเข้าคำหลักได้</string>
+    <string name="keywords_status_indexing">การจัดทำดัชนี</string>
+    <string name="keywords_status_indexed">จัดทำดัชนีแล้ว</string>
+    <string name="keywords_metric_mentions">กล่าวถึง</string>
+    <string name="keywords_metric_days">วัน</string>
+    <string name="keywords_timeline_range_all">ทั้งหมด</string>
+    <string name="keywords_connections_filter_all">ทั้งหมด</string>
+    <string name="keywords_connections_filter_people">ประชากร</string>
+    <string name="keywords_connections_filter_places">สถานที่</string>
+    <string name="keywords_connections_filter_recent">ล่าสุด</string>
+    <string name="keywords_connections_filter_strongest">แข็งแกร่งที่สุด</string>
+    <string name="keywords_filter_needs_reindex">ต้องการทำดัชนีใหม่</string>
+    <string name="keywords_search_placeholder">ค้นหาบุคคล สถานที่ นามแฝง ความสัมพันธ์</string>
+    <string name="keywords_refreshing_counters">กำลังรีเฟรชตัวนับคำหลัก...</string>
+    <string name="keywords_empty_title">ยังไม่มีคำหลัก</string>
+    <string name="keywords_empty_subtitle">เพิ่มผู้คนและสถานที่ที่คุณต้องการให้แอปติดตามในเครื่อง</string>
+    <string name="keywords_no_results_title">ไม่มีผลลัพธ์ที่ตรงกัน</string>
+    <string name="keywords_no_results_subtitle">ลองค้นหา จัดเรียง หรือกรองอื่น</string>
+    <string name="keywords_people_title">ประชากร</string>
+    <string name="keywords_places_title">สถานที่</string>
+    <string name="keywords_people_empty">ยังไม่มีคนเพิ่มเลย</string>
+    <string name="keywords_people_filtered_empty">ไม่มีบุคคลที่ตรงกับตัวกรองปัจจุบัน</string>
+    <string name="keywords_places_empty">ยังไม่มีสถานที่เพิ่ม</string>
+    <string name="keywords_places_filtered_empty">ไม่มีสถานที่ที่ตรงกับตัวกรองปัจจุบัน</string>
+    <string name="keywords_delete_person_title">ลบบุคคลใช่ไหม</string>
+    <string name="keywords_delete_place_title">ลบสถานที่ใช่ไหม</string>
+    <string name="keywords_delete_message">ลบ \"%1$s\" ออกจากผู้คนและสถานที่ใช่ไหม การดำเนินการนี้จะลบคำหลักและการจับคู่ที่จัดทำดัชนีไว้</string>
+    <string name="keywords_timeline_title">กล่าวถึงเมื่อเวลาผ่านไป</string>
+    <string name="keywords_timeline_empty_pattern">ยังไม่มีรูปแบบรายเดือน</string>
+    <string name="keywords_timeline_total_format">%1$d รวม</string>
+    <string name="keywords_timeline_empty_chart">การกล่าวถึงจะแสดงแผนภูมิที่นี่หลังจากการจัดทำดัชนีค้นหารายการแล้ว</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">%1$s สูงสุด • %2$d พูดถึง</item>
+        <item quantity="other">%1$s สูงสุด • %2$d กล่าวถึง</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">วันที่มีการกล่าวถึง</string>
+    <string name="keywords_recency_title">ความใหม่</string>
+    <string name="keywords_recency_none">ยังไม่มีการแข่งขัน</string>
+    <string name="keywords_recency_today">กล่าวถึงวันนี้</string>
+    <string name="keywords_recency_yesterday">กล่าวถึงเมื่อวาน</string>
+    <string name="keywords_recency_days_ago_format">พูดถึงล่าสุด %1$d วันที่ผ่านมา</string>
+    <string name="keywords_first_seen">เห็นครั้งแรก</string>
+    <string name="keywords_last_seen">เห็นครั้งสุดท้าย</string>
+    <string name="keywords_unknown">ไม่ทราบ</string>
+    <string name="keywords_co_mentioned_with">ร่วมกับ</string>
+    <string name="keywords_connections_title">การเชื่อมต่อ</string>
+    <string name="keywords_connections_subtitle">จัดอันดับโดยการทับซ้อนกันและความใหม่ซ้ำๆ</string>
+    <string name="keywords_connections_linked_format">%1$d เชื่อมโยงแล้ว</string>
+    <string name="keywords_connections_show">แสดงการเชื่อมต่อ</string>
+    <string name="keywords_connections_hide">ซ่อนการเชื่อมต่อ</string>
+    <string name="keywords_connections_items_in_view">%1$d รายการในมุมมองนี้</string>
+    <string name="keywords_connections_tap_to_expand">แตะเพื่อขยายลิงก์จัดอันดับ %1$d</string>
+    <string name="keywords_connections_empty">ยังไม่มีการเชื่อมต่อสำหรับตัวกรองนี้</string>
+    <string name="keywords_open_day">วันเปิดเทอม</string>
+    <string name="keywords_sort_alphabetical">ก-ฮ</string>
+    <string name="keywords_sort_most_mentioned">ได้รับการกล่าวถึงมากที่สุด</string>
+    <string name="keywords_sort_recently_added">เพิ่มล่าสุด</string>
+    <string name="keywords_peak_mentions_format">จุดสูงสุด %1$s • %2$d กล่าวถึง%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d วัน</string>
+    <string name="keywords_connections_meta_days_suffix_plural">ส</string>
+    <string name="keywords_connections_meta_together">ด้วยกัน</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d รายการที่แชร์</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">ย</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">คือ</string>
+    <string name="keywords_connections_meta_last_prefix">| %1$s สุดท้าย</string>
+    <string name="keywords_connections_score_format">คะแนน %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d วัน</string>
+    <string name="keywords_connections_shared_chip">%1$d แบ่งปันแล้ว</string>
+    <string name="keywords_match_type_exact">ที่แน่นอน</string>
+    <string name="keywords_match_type_fuzzy">คลุมเครือ</string>
+    <string name="keywords_match_type_alias">นามแฝง</string>
+    <string name="keywords_match_type_relation">ความสัมพันธ์</string>
+    <string name="keywords_action_delete">ลบ</string>
+    <string name="keywords_action_edit">แก้ไข</string>
+    <string name="keywords_action_view">ดู</string>
+    <string name="keywords_name_label">ชื่อ</string>
+    <string name="keywords_relation_context_label">ความสัมพันธ์/บริบท</string>
+    <string name="keywords_aliases_label">นามแฝง (คั่นด้วยเครื่องหมายจุลภาค)</string>
+    <string name="keywords_aliases_label_short">นามแฝง</string>
+    <string name="keywords_type_person">บุคคล</string>
+    <string name="keywords_type_place">สถานที่</string>
+    <string name="keywords_save_disabled_hint">บันทึกคำหลักถูกปิด เปิดใช้งานจากรายการเมื่อคุณต้องการให้การจัดทำดัชนีทำงาน</string>
+    <string name="settings_meaning_yesterday">เมื่อวาน</string>
+    <string name="settings_meaning_today">วันนี้</string>
+    <string name="lookback_chip_weekly">รายสัปดาห์</string>
+    <string name="lookback_chip_monthly">รายเดือน</string>
+    <string name="timeline_screen_title">ไทม์ไลน์</string>
+    <string name="timeline_empty_title">ยังไม่มีอะไรที่นี่</string>
+    <string name="timeline_empty_subtitle">ลองใช้ตัวกรองอื่นหรือปรับการค้นหาป้ายกำกับ</string>
+    <string name="timeline_quick_today">วันนี้</string>
+    <string name="timeline_quick_month">เดือน</string>
+    <string name="timeline_quick_filters">ตัวกรอง</string>
+    <string name="timeline_all_dates">วันที่ทั้งหมด</string>
+    <string name="timeline_label_prefix">ป้ายกำกับ: %1$s</string>
+    <string name="timeline_label_search_placeholder">ค้นหาป้ายกำกับวัน</string>
+    <string name="timeline_filters_title">ตัวกรองไทม์ไลน์และเค้าโครง</string>
+    <string name="settings_meaning_tomorrow">พรุ่งนี้</string>
+    <string name="settings_meaning_day_before_yesterday">วันก่อนเมื่อวาน</string>
+    <string name="settings_meaning_day_after_tomorrow">วันมะรืนนี้</string>
+    <string name="settings_meaning_last_week">สัปดาห์ที่แล้ว</string>
+    <string name="settings_meaning_next_week">สัปดาห์หน้า</string>
+    <string name="settings_meaning_monday">วันจันทร์</string>
+    <string name="settings_meaning_tuesday">วันอังคาร</string>
+    <string name="settings_meaning_wednesday">วันพุธ</string>
+    <string name="settings_meaning_thursday">วันพฤหัสบดี</string>
+    <string name="settings_meaning_friday">วันศุกร์</string>
+    <string name="settings_meaning_saturday">วันเสาร์</string>
+    <string name="settings_meaning_sunday">วันอาทิตย์</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">ที่เก็บข้อมูลภายในแอป</string>
+    <string name="settings_storage_internal_default">ที่เก็บข้อมูลภายในแอป (ค่าเริ่มต้น)</string>
+    <string name="settings_storage_new_folder_fallback">โฟลเดอร์ใหม่</string>
+    <string name="settings_storage_current_folder_fallback">โฟลเดอร์ปัจจุบัน</string>
+    <string name="settings_storage_move_confirm">รายการที่มีอยู่ทั้งหมดจะถูกย้ายจาก %1$s ไปยัง %2$s คุณต้องการดำเนินการต่อหรือไม่?</string>
+    <string name="settings_restore_added_skipped">เพิ่ม: %1$d\nข้ามรายการที่ซ้ำกัน: %2$d</string>
+    <string name="settings_storage_custom_folder">โฟลเดอร์ที่กำหนดเอง:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">ทางลัดช่วยได้</string>
+    <string name="addentry_cd_insert_template">แทรกเทมเพลต</string>
+    <string name="addentry_cd_jump_to_today">ข้ามไปที่วันนี้</string>
+    <string name="addentry_cd_share">แบ่งปัน</string>
+    <string name="addentry_cd_bold">ตัวหนา</string>
+    <string name="addentry_cd_italic">ตัวเอียง</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">ตั้งเวลา</string>
+    <string name="addentry_event_chip">เหตุการณ์</string>
+    <string name="addentry_pick_time_title">เลือกเวลา</string>
+    <string name="addentry_hour_label">ชั่วโมง</string>
+    <string name="addentry_minute_label">นาที</string>
+    <string name="addentry_new_event_title">กิจกรรมใหม่</string>
+    <string name="addentry_title_label">ชื่อ</string>
+    <string name="addentry_event_description_label">คำอธิบายเหตุการณ์</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">พบสิ่งที่ต้องทำ</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">แปลง %1$d บรรทัดเป็นรายการตรวจสอบ</item>
+        <item quantity="other">แปลง %1$d บรรทัดเป็นรายการตรวจสอบ</item>
+    </plurals>
+    <string name="addentry_people_places_title">ผู้คนและสถานที่</string>
+    <string name="addentry_no_tracked_mentions">ไม่พบบุคคลหรือสถานที่ที่ติดตามในรายการนี้</string>
+    <string name="addentry_day_memory_title">ความทรงจำวัน</string>
+    <string name="addentry_star_day_title">ติดดาววันนี้</string>
+    <string name="addentry_star_day_subtitle">บันทึกเป็นไฮไลต์เพื่อให้กลับมาดูย้อนหลัง</string>
+    <string name="addentry_day_label_label">ป้ายวัน</string>
+    <string name="addentry_day_label_placeholder">เช่น รีเซ็ตวัน</string>
+    <string name="addentry_follow_up_title">ติดตามต่อครับ</string>
+    <string name="addentry_next_month">เดือนหน้า</string>
+    <string name="addentry_custom">กำหนดเอง</string>
+    <string name="addentry_due_date_format">ครบกำหนด %1$s</string>
+    <string name="addentry_cd_clear_follow_up">การติดตามผลที่ชัดเจน</string>
+    <string name="addentry_follow_up_note_label">บันทึกการติดตามผล</string>
+    <string name="addentry_follow_up_note_placeholder">คุณควรทบทวนอะไรอีกครั้ง?</string>
+    <string name="addentry_review_entry_title">บันทึกการติดตามผล</string>
+    <string name="addentry_review_entry_subtitle">ผ่านด่วนก่อนบันทึก ดึงสิ่งที่ต้องทำออก ตรวจสอบการกล่าวถึงที่ติดตาม และทำเครื่องหมายวันหากมีความสำคัญ</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d สิ่งที่ต้องทำ</item>
+        <item quantity="other">%1$d สิ่งที่ต้องทำ</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d พูดถึง</item>
+        <item quantity="other">%1$d พูดถึง</item>
+    </plurals>
+    <string name="addentry_save_entry_button">บันทึกรายการ</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">ยกเลิกการเปลี่ยนแปลง</string>
+    <string name="addentry_discard_changes_message">คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก ย้อนกลับและละทิ้งหรืออยู่เพื่อแก้ไขต่อ</string>
+    <string name="addentry_go_back">กลับไป</string>
+    <string name="addentry_stay">อยู่</string>
+    <string name="addentry_shortcuts_title">ทางลัด</string>
+    <string name="addentry_help_bold_suffix">เพื่อทำให้ข้อความเป็นตัวหนา (หรือเลือกข้อความแล้วแตะปุ่มตัวหนา)</string>
+    <string name="addentry_help_italic_suffix">เพื่อทำให้ข้อความเป็นตัวเอียง (หรือเลือกข้อความแล้วแตะปุ่มตัวเอียง)</string>
+    <string name="addentry_help_today_suffix">: ขยายเป็นวันที่ปัจจุบัน (เช่น 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: ขยายเป็นเวลาปัจจุบัน (เช่น 14:30 น.)</string>
+    <string name="addentry_help_week_suffix">: ขยายเป็นสัปดาห์ปัจจุบัน (เช่น สัปดาห์ที่ 52)</string>
+    <string name="addentry_help_day_suffix">: ขยายเป็นวันทำงานปัจจุบัน (เช่น วันจันทร์)</string>
+    <string name="addentry_help_todo_suffix">: ขยายเป็นช่องทำเครื่องหมายสิ่งที่ต้องทำ (เช่น [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: เมื่อป้อนที่ใดก็ได้ในบรรทัดที่มีช่องทำเครื่องหมายสิ่งที่ต้องทำ ระบบจะสลับช่องทำเครื่องหมาย</string>
+    <string name="addentry_okey">โอเค!</string>
+    <string name="addentry_template_merge_message">ฉบับร่างนี้มีข้อความอยู่แล้ว เลือกวิธีการวางเทมเพลต</string>
+    <string name="addentry_template_merge_subtitle">แทรกด้านล่างเก็บแบบร่างปัจจุบัน ที่ Cursor จะวางเทมเพลตในตำแหน่งที่เครื่องหมายคาเร็ตของคุณอยู่</string>
+    <string name="addentry_insert_below">แทรกด้านล่างเก็บแบบร่างปัจจุบัน ที่ Cursor จะวางเทมเพลตในตำแหน่งที่เครื่องหมายคาเร็ตของคุณอยู่</string>
+    <string name="addentry_at_cursor">ที่เคอร์เซอร์</string>
+    <string name="addentry_replace_draft">แทนที่ร่าง</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">เป็นที่นิยม</string>
+    <string name="addentry_new_chip">ใหม่</string>
+    <string name="addentry_best_for_format">เหมาะสำหรับ: %1$s</string>
+    <string name="addentry_cd_remove_favorite">ลบเทมเพลตรายการโปรด</string>
+    <string name="addentry_cd_favorite_template">เทมเพลตที่ชื่นชอบ</string>
+    <string name="addentry_checklist_chip">รายการตรวจสอบ</string>
+    <string name="addentry_followup_chip">การติดตามผล</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d ส่วน</item>
+        <item quantity="other">%1$d ส่วน</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">สลับเทมเพลตที่ชื่นชอบ</string>
+    <string name="addentry_template_preview_label">การแสดงตัวอย่างเทมเพลต</string>
+    <string name="addentry_use_template_button">ใช้เทมเพลต</string>
+    <string name="addentry_start_blank_title">เริ่มว่างเปล่า</string>
+    <string name="addentry_start_blank_subtitle">ข้ามเทมเพลตและเขียนต่อจากร่างเปล่า</string>
+    <string name="addentry_blank_entry_name">รายการว่างเปล่า</string>
+    <string name="addentry_blank_entry_description">รายการบันทึกประจำวันธรรมดา</string>
+    <string name="addentry_blank_category">ทั่วไป</string>
+    <string name="addentry_quick_picks_title">คัดสรรด่วน</string>
+    <string name="addentry_sort_recommended">ที่แนะนำ</string>
+    <string name="addentry_sort_recent">ล่าสุด</string>
+    <string name="addentry_sort_az">ก-ฮ</string>
+    <string name="addentry_no_templates_title">ไม่พบเทมเพลต</string>
+    <string name="addentry_no_templates_subtitle">ลองค้นหาหรือหมวดหมู่อื่น</string>
+    <string name="addentry_search_templates_label">เทมเพลตการค้นหา</string>
+    <string name="addentry_search_templates_placeholder">ประชุม สุขภาพ สะท้อน...</string>
+    <string name="addentry_cd_clear_search">ล้างการค้นหา</string>
+    <string name="addentry_choose_template_title">เลือกเทมเพลต</string>
+    <string name="addentry_templates_ready_format">%1$d จาก %2$d เทมเพลตพร้อมแล้ว</string>
+    <string name="addentry_category_all">ทั้งหมด</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">เกิดอะไรขึ้น</string>
+    <string name="addentry_todo_chip">สิ่งที่ต้องทำ</string>
+    <string name="addentry_numbered_list_chip">เอ็น ลิสต์</string>
+    <string name="addentry_bulleted_list_chip">รายชื่อบี</string>
+    <string name="addentry_words_count_format">%1$d คำ</string>
+    <string name="addentry_chars_count_format">%1$d ตัวอักษร</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">ติดตามผลวันนี้ครับ</item>
+        <item quantity="other">ติดตามผลได้ตั้งแต่วันนี้</item>
+    </plurals>
+    <string name="home_followup_subtitle">กระโดดกลับไปสู่วันที่เชื่อมโยงและดำเนินการต่อจากที่นั่น</string>
+    <string name="home_from_date_format">จาก %1$s</string>
+    <string name="home_more_due_today_format">+%1$d ครบกำหนดชำระวันนี้</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">เพิ่มป้ายกำกับ</string>
+    <string name="home_edit_label_title">แก้ไขป้ายกำกับ</string>
+    <string name="home_day_label_hint">เพิ่มป้ายกำกับแบบสั้นสำหรับวันนี้ (สูงสุด 30 อักขระ)</string>
+    <string name="home_day_label_placeholder">เช่น วันแรกที่โรงเรียน</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">เพิ่มป้ายกำกับสำหรับวันนี้</string>
+    <string name="home_star_label_hint">มอบป้ายกำกับที่น่าจดจำให้กับวันนี้ (สูงสุด 30 อักขระ)</string>
+    <string name="home_star_label_placeholder">เช่น วันเกิดของฉัน ที่โรงเรียน</string>
+    <string name="home_star_button">ดาว</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">ลบรายการแล้ว</item>
+        <item quantity="other">ลบ %1$d รายการแล้ว</item>
+    </plurals>
+    <string name="home_restore_button">คืนค่า</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">ค้นหารายการ...</string>
+    <string name="home_cd_search">ค้นหา</string>
+    <string name="home_cd_clear_search">ล้างการค้นหา</string>
+    <string name="home_cd_favorite">ที่ชื่นชอบ</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">รายการ</string>
+    <string name="home_stat_words">คำ</string>
+    <string name="home_stat_chars">ตัวอักษร</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">เพิ่มป้ายกำกับ</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d พบการแข่งขัน</item>
+        <item quantity="other">%1$d พบการแข่งขัน</item>
+    </plurals>
+    <string name="home_no_keyword_matches">ยังไม่พบรายการที่ตรงกันสำหรับคำหลักนี้</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">ไอคอนสถานะว่างเปล่า</string>
+    <string name="home_empty_future">นี่คืออนาคต บันทึกเตือนใจ!</string>
+    <string name="home_empty_past">คุณอยู่ในอดีต บันทึกความทรงจำก่อนที่มันจะจางหายไป...</string>
+    <string name="home_empty_today">ยังไม่มีรายการ เริ่มต้นวันใหม่ของคุณ</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">ประหยัด</string>
+    <string name="home_cd_add_entry">เพิ่มรายการ</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">ลบ %1$d</string>
+    <string name="home_future_date_title">รายการวันที่ในอนาคต</string>
+    <string name="home_future_date_message_format">คุณกำลังเพิ่มรายการสำหรับวันที่ในอนาคต (%1$s) คุณต้องการดำเนินการต่อหรือไม่?</string>
+    <string name="home_cache_issue_title">ตรวจพบปัญหาแคชข้อมูล</string>
+    <string name="home_cache_issue_message">ดูเหมือนว่ารายการบันทึกประจำวันจำนวนมากหายไปจากแคช คุณต้องการดำเนินการรีเฟรชแคชข้อมูลทั้งหมดเพื่อพยายามกู้คืนหรือไม่</string>
+    <string name="home_refresh_button">รีเฟรช</string>
+    <string name="home_ignore_button">ไม่สนใจ</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">ผู้คนและสถานที่</string>
+    <string name="nav_statistics">สถิติ</string>
+    <string name="nav_todos">สิ่งที่ต้องทำ</string>
+    <string name="nav_rebuild_index">สร้างดัชนีฐานข้อมูลใหม่</string>
+    <string name="nav_backup_data">ข้อมูลสำรอง</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">สถานะ</string>
+    <string name="nav_finishing_index_rebuild">กำลังสร้างดัชนีใหม่ให้เสร็จสิ้น...</string>
+    <string name="nav_rebuilding_index">การสร้างดัชนีฐานข้อมูลใหม่</string>
+    <string name="nav_refreshing_index">ดัชนีการรีเฟรช</string>
+    <string name="nav_backup_too_old">การสำรองข้อมูลเก่าเกินไป...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">การทำงาน...</string>
+    <string name="nav_eta_almost_done">เกือบเสร็จแล้ว</string>
+    <string name="nav_eta_seconds_left_format">~%1$dเหลืออีก</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm เหลืออีก</string>
+    <string name="nav_eta_hours_left_format">~%1$dh เหลืออยู่</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">เมนู</string>
+    <string name="nav_cd_rj_logo">โลโก้อาร์เจ</string>
+    <string name="nav_tagline">อีกหนึ่งแอปบันทึกประจำวัน</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">เพลย์สโตร์</string>
+    <string name="nav_cd_website">เว็บไซต์</string>
+    <string name="nav_cd_share_app">แชร์แอป</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">โลโก้ยาจา</string>
+    <string name="nav_easter_quote_part1">\"เขียนความคิดที่ผ่านมาหรือสิ่งที่คุณทานเป็นอาหารกลางวัน ไม่จำเป็นต้องลึกซึ้ง\n</string>
+    <string name="nav_easter_quote_part2">คำพูดของคุณก็สามารถมีอยู่ได้</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">จากห้องทดลองของอาร์เจ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">แชร์จ้าาา</string>
+    <string name="nav_share_text_body">yaja — อีกหนึ่งแอปบันทึกประจำวัน\n\nบันทึกรายวันที่ไม่รบกวนสมาธิซึ่งจัดเก็บรายการต่างๆ เป็นไฟล์มาร์กดาวน์ธรรมดา\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">เปลี่ยนสถานที่จัดเก็บ</string>
+    <string name="settings_change_storage_location_message">รายการที่มีอยู่ทั้งหมดจะถูกย้ายจาก %1$s ไปยัง %2$s คุณต้องการดำเนินการต่อหรือไม่?</string>
+    <string name="settings_yes">ใช่</string>
+    <string name="settings_no">เลขที่</string>
+    <string name="settings_restore_summary_title">คืนค่าข้อมูลสรุป</string>
+    <string name="settings_restore_section_journal">วารสาร</string>
+    <string name="settings_restore_section_shortcodes">รหัสย่อ</string>
+    <string name="settings_restore_section_date_keywords">คำสำคัญวันที่</string>
+    <string name="settings_restore_section_people_places">ผู้คนและสถานที่</string>
+    <string name="settings_restore_journal_summary">เพิ่มในวันใหม่: %1$d\nผสานเข้ากับวันที่มีอยู่: %2$d\nรายการบันทึกประจำวันที่ซ้ำกันถูกข้าม: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">เพิ่ม: %1$d\nข้ามรายการที่ซ้ำกัน: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">เพิ่ม: %1$d\nข้ามรายการที่ซ้ำกัน: %2$d</string>
+    <string name="settings_restore_people_places_summary">เพิ่ม: %1$d\nข้ามรายการที่ซ้ำกัน: %2$d</string>
+    <string name="rebuild_tools_title">สร้างเครื่องมือใหม่</string>
+    <string name="rebuild_tools_back">กลับ</string>
+    <string name="rebuild_tools_intro">ใช้การสร้างใหม่ที่มุ่งเน้นก่อน การสร้างฐานข้อมูลใหม่มีไว้สำหรับการเปลี่ยนแปลงพื้นที่เก็บข้อมูล ความเสียหายของฐานข้อมูล หรือดัชนีไม่ตรงกันเท่านั้น</string>
+    <string name="rebuild_todo_index_title">สร้างดัชนีสิ่งที่ต้องทำใหม่</string>
+    <string name="rebuild_todo_index_subtitle">รีเฟรชสิ่งที่ต้องทำจากไฟล์บันทึกประจำวัน และอัปเดตหน้าจอ/วิดเจ็ตสิ่งที่ต้องทำ ดีที่สุดเมื่อ todos ดูเก่า</string>
+    <string name="rebuild_todo_index_button">สร้างสิ่งที่ต้องทำใหม่</string>
+    <string name="rebuild_people_places_title">สร้างผู้คนและสถานที่ขึ้นมาใหม่</string>
+    <string name="rebuild_people_places_subtitle">รีเฟรชนามแฝงของคำหลัก การกล่าวถึงร่วมกัน แนวโน้ม และข้อมูลความสัมพันธ์</string>
+    <string name="rebuild_people_places_button">สร้างผู้คนและสถานที่ขึ้นมาใหม่</string>
+    <string name="rebuild_database_title">สร้างฐานข้อมูลใหม่ทั้งหมด</string>
+    <string name="rebuild_database_subtitle">คอมไพล์แคชฐานข้อมูลใหม่จากไฟล์มาร์กดาวน์ จัดทำดัชนีรายการ จำนวน สิ่งที่ต้องทำ ผู้คนและสถานที่ และวิดเจ็ตใหม่ตั้งแต่ต้น</string>
+    <string name="rebuild_database_button">สร้างฐานข้อมูลใหม่</string>
+    <string name="rebuild_database_confirm_title">สร้างดัชนีฐานข้อมูลใหม่</string>
+    <string name="rebuild_database_confirm_message">วิธีนี้จะล้างและจัดทำดัชนีฐานข้อมูล Room SQLite ทั้งหมดจากไฟล์ Markdown ของคุณ สำหรับวารสารขนาดใหญ่ อาจใช้เวลาสักครู่</string>
+    <string name="rebuild_database_confirm_start">เริ่มสร้างใหม่</string>
+    <string name="rebuild_database_status_title">สถานะดัชนีฐานข้อมูล</string>
+    <string name="rebuild_database_storage_engine">เครื่องยนต์จัดเก็บข้อมูล</string>
+    <string name="rebuild_database_storage_engine_value">ฐานข้อมูลห้อง SQLite</string>
+    <string name="rebuild_database_indexed_days">วันที่จัดทำดัชนี</string>
+    <string name="rebuild_database_indexed_days_value">%1$d วันจัดทำดัชนีแล้ว</string>
+    <string name="rebuild_database_file_size">ขนาดไฟล์ฐานข้อมูล</string>
+    <string name="rebuild_database_last_sync">การซิงค์ดัชนีล่าสุด</string>
+    <string name="rebuild_database_age_never">ไม่เคย</string>
+    <string name="rebuild_database_age_just_now">แค่ตอนนี้</string>
+    <string name="rebuild_database_age_one_minute">1 นาทีที่แล้ว</string>
+    <string name="rebuild_database_age_minutes">%1$d นาทีที่แล้ว</string>
+    <string name="rebuild_database_age_one_hour">1 ชั่วโมงที่แล้ว</string>
+    <string name="rebuild_database_age_hours">%1$d ชั่วโมงที่แล้ว</string>
+    <string name="shortcodes_title">รหัสย่อ</string>
+    <string name="shortcodes_import_cd">นำเข้า</string>
+    <string name="shortcodes_export_cd">ส่งออก</string>
+    <string name="shortcodes_help_cd">ช่วย</string>
+    <string name="shortcodes_new">รหัสย่อใหม่</string>
+    <string name="shortcodes_empty_title">ไม่มีรหัสย่อที่กำหนดเอง</string>
+    <string name="shortcodes_empty_subtitle">เพิ่มหนึ่งรายการเพื่อขยายตัวอย่างข้อมูล เช่น @yday ให้เป็นข้อความแบบไดนามิก</string>
+    <string name="shortcodes_dynamic_dates_hint">ใช้ {{today:format}} สำหรับวันที่แบบไดนามิก</string>
+    <string name="shortcodes_help_title">ความช่วยเหลือเกี่ยวกับรหัสย่อ</string>
+    <string name="shortcodes_help_built_in">รหัสย่อในตัว:</string>
+    <string name="shortcodes_help_built_in_examples">@วันนี้, @ตอนนี้, @สัปดาห์, @วัน, @t (ช่องทำเครื่องหมาย), @x (สลับช่องทำเครื่องหมาย)</string>
+    <string name="shortcodes_help_dynamic_patterns">รูปแบบไดนามิก:</string>
+    <string name="shortcodes_help_dynamic_desc">ใช้ {{today:FORMAT}}, {{yesterday:FORMAT}}, {{today:FORMAT}} หรือ {{now:FORMAT}}</string>
+    <string name="shortcodes_help_example">ตัวอย่าง: @yday -&gt; เมื่อวาน: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">รูปแบบทั่วไป: dd-MM-yy, HH:mm, EEEE (ชื่อวัน)</string>
+    <string name="action_close">ปิด</string>
+    <string name="keyword_detail_title_fallback">คำสำคัญ</string>
+    <string name="keyword_detail_not_found">ไม่พบคำสำคัญ</string>
+    <string name="keyword_detail_last_indexed">จัดทำดัชนีล่าสุด %1$s</string>
+    <string name="keyword_detail_mentions_section">กล่าวถึง</string>
+    <string name="pin_biometric_prompt_title">ปลดล็อคด้วยไบโอเมตริกซ์</string>
+    <string name="pin_biometric_prompt_subtitle">ใช้ลายนิ้วมือหรือใบหน้าของคุณเพื่อปลดล็อค</string>
+    <string name="pin_error_no_biometric_enrolled">ไม่มีการลงทะเบียนไบโอเมตริกซ์ โปรดลงทะเบียนลายนิ้วมือหรือใบหน้าในการตั้งค่าอุปกรณ์</string>
+    <string name="pin_error_hardware_unavailable">ฮาร์ดแวร์ไบโอเมตริกซ์ไม่พร้อมใช้งาน</string>
+    <string name="pin_error_no_hardware">อุปกรณ์นี้ไม่มีฮาร์ดแวร์ไบโอเมตริกซ์</string>
+    <string name="pin_error_not_available">การรับรองความถูกต้องด้วยไบโอเมตริกซ์ไม่พร้อมใช้งาน</string>
+    <string name="pin_title_confirm">ยืนยันรหัส PIN</string>
+    <string name="pin_title_set_new">ตั้งค่า PIN ใหม่</string>
+    <string name="pin_title_disable">ป้อน PIN ปัจจุบันเพื่อปิดใช้งาน</string>
+    <string name="pin_title_enter">ป้อนรหัส PIN</string>
+    <string name="pin_error_incorrect">PIN ไม่ถูกต้อง ลองอีกครั้ง</string>
+    <string name="pin_error_mismatch">PIN ไม่ตรงกัน เริ่มต้นใหม่</string>
+    <string name="pin_cd_use_biometric">ใช้ไบโอเมตริกซ์</string>
+    <string name="pin_cd_backspace">แบ็คสเปซ</string>
+    <string name="timeline_preview_empty_labeled">วันนี้มีป้ายกำกับ แต่ยังไม่มีรายการบันทึกประจำวัน</string>
+    <string name="timeline_preview_loading">กำลังโหลดตัวอย่าง...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d รายการเพิ่มเติมในวันนี้</item>
+        <item quantity="other">+ %1$d รายการเพิ่มเติมในวันนี้</item>
+    </plurals>
+    <string name="timeline_preview_open_day">เปิดวันนี้</string>
+    <string name="timeline_chip_today">วันนี้</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d รายการ</item>
+        <item quantity="other">%1$d รายการ</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">การติดตามผล</string>
+    <string name="timeline_chip_label_only">ป้ายกำกับเท่านั้น</string>
+    <string name="timeline_cd_favorite">ที่ชื่นชอบ</string>
+    <string name="version_history_title">ประวัติเวอร์ชัน</string>
+    <string name="version_history_day_versions_title">เวอร์ชันวัน</string>
+    <string name="version_history_keep_copies_title">เก็บสำเนาความปลอดภัยไว้</string>
+    <string name="version_history_keep_copies_subtitle">ก่อนที่ Yaja จะเปลี่ยนไฟล์ในแต่ละวัน ระบบจะบันทึกไฟล์ปัจจุบันลงในข้อมูลแอปภายใต้ไฟล์ประวัติ</string>
+    <string name="version_history_versions_kept_title">เวอร์ชันที่เก็บไว้ต่อวัน</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja เก็บ %1$d เวอร์ชันใหม่ล่าสุดไว้ในแต่ละวัน</item>
+        <item quantity="other">Yaja เก็บ %1$d เวอร์ชันใหม่ล่าสุดไว้ในแต่ละวัน</item>
+    </plurals>
+    <string name="version_history_retention_title">การเก็บรักษา</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">สแนปชอตที่เก่ากว่า %1$d วันจะถูกล้างโดยอัตโนมัติ</item>
+        <item quantity="other">สแนปชอตที่เก่ากว่า %1$d วันจะถูกล้างโดยอัตโนมัติ</item>
+    </plurals>
+    <string name="version_history_notes">หมายเหตุ: ประวัติเวอร์ชันจะปกป้องไฟล์มาร์กดาวน์ของวันก่อนที่จะเพิ่ม แก้ไข ลบ เรียงลำดับใหม่ ติดป้ายกำกับ ติดดาว และเยี่ยมชมการเปลี่ยนแปลงอีกครั้ง ไม่ใช่การสำรองข้อมูลบนคลาวด์ ใช้การสำรองข้อมูลต่อไปสำหรับสำเนาแบบพกพา</string>
+    <string name="version_history_snapshots_for">ภาพรวมสำหรับ %1$s</string>
+    <string name="version_history_snapshots_subtitle">เปิดเวอร์ชันที่บันทึกไว้ ตรวจสอบ และกู้คืนสำหรับวันนี้</string>
+    <string name="version_history_empty">ยังไม่มีเวอร์ชันที่บันทึกไว้สำหรับวันนี้</string>
+    <string name="action_view">ดู</string>
+    <string name="version_history_date_intro">เปิดเวอร์ชันที่บันทึกไว้ก่อนหน้าสำหรับวันนี้ ตรวจสอบ และกู้คืนเมื่อจำเป็น</string>
+    <string name="action_next">ต่อไป</string>
+    <string name="action_apply">นำมาใช้</string>
+    <string name="action_restore">คืนค่า</string>
+    <string name="statistics_choose_title">เลือกสถิติ</string>
+    <string name="statistics_choose_subtitle">ซ่อนส่วนที่คุณไม่ต้องการ อย่างน้อยหนึ่งส่วนจะต้องมองเห็นได้</string>
+    <string name="statistics_visible_count">มองเห็น %1$d จาก %2$d แล้ว</string>
+    <string name="statistics_show_all">แสดงทั้งหมด</string>
+    <string name="statistics_one_section_visible">ส่วนหนึ่งจะต้องยังคงมองเห็นได้</string>
+    <string name="statistics_shown">แสดงในสถิติ</string>
+    <string name="statistics_hidden">ซ่อนเร้นจากสถิติ</string>
+    <string name="statistics_select_start_date">เลือกวันที่เริ่มต้น</string>
+    <string name="statistics_select_end_date">เลือกวันที่สิ้นสุด</string>
+    <string name="statistics_filter_by_period">กรองตามช่วงเวลา</string>
+    <string name="statistics_cd_reorder">กดค้างเพื่อเรียงลำดับใหม่</string>
+    <string name="statistics_total_entries">รายการทั้งหมด</string>
+    <string name="statistics_total_words">รวมคำ</string>
+    <string name="statistics_avg_words_per_entry">เฉลี่ย คำ/รายการ</string>
+    <string name="statistics_current_streak">สตรีคปัจจุบัน</string>
+    <string name="statistics_pages_written">หน้าที่เขียน</string>
+    <string name="statistics_days_highlighted">วันที่เน้น</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d วัน</item>
+        <item quantity="other">%1$d วัน</item>
+    </plurals>
+    <string name="statistics_period_all_time">สถิติตลอดกาล</string>
+    <string name="statistics_period_current_year">สถิติปีปัจจุบัน</string>
+    <string name="statistics_period_previous_year">สถิติปีที่แล้ว</string>
+    <string name="statistics_period_current_month">สถิติเดือนปัจจุบัน</string>
+    <string name="statistics_period_previous_month">สถิติเดือนก่อนหน้า</string>
+    <string name="statistics_period_custom">สถิติช่วงเวลาที่กำหนดเอง</string>
+    <string name="statistics_period_chip_all_time">ตลอดเวลา</string>
+    <string name="statistics_period_chip_current_year">ปีปัจจุบัน</string>
+    <string name="statistics_period_chip_previous_year">ปีที่แล้ว</string>
+    <string name="statistics_period_chip_current_month">เดือนนี้</string>
+    <string name="statistics_period_chip_previous_month">เดือนที่แล้ว</string>
+    <string name="statistics_period_chip_custom">กำหนดเอง</string>
+    <string name="statistics_sections_visible">มองเห็น %1$d จาก %2$d ส่วน</string>
+    <string name="statistics_loading_stages">กำลังโหลดสถิติเป็นระยะ...</string>
+    <string name="review_period_weekly">รีวิวประจำสัปดาห์</string>
+    <string name="review_period_monthly">รีวิวรายเดือน</string>
+    <string name="review_anchor_week">สัปดาห์ที่มี %1$s</string>
+    <string name="review_anchor_month">เดือนที่มี %1$s</string>
+    <string name="review_chip_entries">รายการ %1$d</string>
+    <string name="review_chip_words">คำ %1$d</string>
+    <string name="review_chip_days">วัน %1$d</string>
+    <string name="review_hint_jump">แตะชิปวันที่ด้านล่างเพื่อกลับเข้าสู่บันทึกประจำวัน</string>
+    <string name="review_chip_streak">สตรีค %1$d</string>
+    <string name="review_chip_gap">ช่องว่าง %1$d</string>
+    <string name="review_chip_labels">ป้ายกำกับ %1$d</string>
+    <string name="review_chip_favorites">รายการโปรด %1$d</string>
+    <string name="review_empty_period">ยังไม่มีรายการบันทึกประจำวันในช่วงเวลานี้ ป้ายกำกับและไฮไลต์ยังคงปรากฏด้านล่างหากมีอยู่</string>
+    <string name="review_writing_rhythm">จังหวะการเขียน</string>
+    <string name="review_best_streak">แนวที่ดีที่สุด</string>
+    <string name="review_longest_gap">ช่องว่างที่ยาวที่สุด</string>
+    <string name="review_most_active_days">วันที่ใช้งานมากที่สุด</string>
+    <string name="review_day_entries_words">%1$d รายการ | %2$d คำ</string>
+    <string name="review_top_people">ยอดคน</string>
+    <string name="review_top_places">สถานที่ยอดนิยม</string>
+    <string name="review_no_people_mentions">ไม่มีคนพูดถึง</string>
+    <string name="review_no_place_mentions">ไม่มีการกล่าวถึงสถานที่</string>
+    <string name="review_favorite_moments">ช่วงเวลาที่โปรดปราน</string>
+    <string name="review_starred_day">วันที่ติดดาว</string>
+    <string name="review_highlighted_in_period">ไฮไลท์ในช่วงนี้</string>
+    <string name="review_labels_created">สร้างป้ายกำกับแล้ว</string>
+    <string name="review_labeled_day">วันที่ติดป้ายกำกับ</string>
+    <string name="review_language_split">แยกภาษา</string>
+    <string name="review_not_enough_text">ข้อความไม่เพียงพอในช่วงนี้</string>
+    <string name="lookback_reviews_title">รีวิว</string>
+    <string name="lookback_reviews_intro">สร้างการไตร่ตรองสั้นๆ เกี่ยวกับวันบันทึกประจำวันที่คุณเลือก</string>
+    <string name="lookback_seven_days">7 วัน</string>
+    <string name="lookback_one_month">1 เดือน</string>
+    <string name="lookback_weekly_review">รีวิวประจำสัปดาห์</string>
+    <string name="lookback_weekly_review_subtitle">สัปดาห์นี้ในภาพรวม</string>
+    <string name="lookback_monthly_review">รีวิวรายเดือน</string>
+    <string name="lookback_monthly_review_subtitle">สรุปเดือนนี้.</string>
+    <string name="lookback_flashbacks_title">ในวันนี้ในปีที่ผ่านมา</string>
+    <string name="lookback_highlights_title">จุดเด่นของคุณ</string>
+    <string name="lookback_empty_title">ยังไม่มีการมองย้อนกลับไปหรือไฮไลท์</string>
+    <string name="lookback_empty_subtitle">วันสำคัญที่ชื่นชอบที่จะพบได้ที่นี่!</string>
+    <string name="lookback_cd_random_entry">ไปที่รายการสุ่ม</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">ระยะเวลา</string>
+    <string name="statistics_compare_mode_title">เปรียบเทียบโหมด</string>
+    <string name="statistics_compare_mode_subtitle">ส่วนต่างของเดือน ปี และคำสำคัญ</string>
+    <string name="statistics_this_year">ปีนี้</string>
+    <string name="statistics_writing_days_delta">การเขียนเดลต้าวัน</string>
+    <string name="statistics_top_person_delta">เดลต้าบุคคลชั้นนำ</string>
+    <string name="statistics_no_people_mentions">การเขียนเดลต้าวัน</string>
+    <string name="statistics_top_place_delta">ท็อปเพลสเดลต้า</string>
+    <string name="statistics_no_place_mentions">ยังไม่มีการกล่าวถึงสถานที่</string>
+    <string name="statistics_structured_writing">การเขียนแบบมีโครงสร้าง</string>
+    <string name="statistics_template_led_format">%1$d ที่นำโดยเทมเพลต · %2$d%%</string>
+    <string name="statistics_blank_format">ว่างเปล่า %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">เทมเพลตที่ใช้มากที่สุด</string>
+    <string name="statistics_template_mix">เทมเพลตมิกซ์</string>
+    <string name="statistics_follow_up_leaders">ผู้นำติดตามผล</string>
+    <string name="statistics_compare_details">เปรียบเทียบรายละเอียด</string>
+    <string name="statistics_label_month">เดือน</string>
+    <string name="statistics_label_year">ปี</string>
+    <string name="statistics_this_month_count_format">เดือนนี้ %1$d</string>
+    <string name="statistics_last_month_count_format">เดือนที่แล้ว %1$d</string>
+    <string name="statistics_longest_streak">สตรีคที่ยาวที่สุด</string>
+    <string name="statistics_most_active_day">วันที่ใช้งานมากที่สุด</string>
+    <string name="statistics_writing_consistency">ความสม่ำเสมอในการเขียน</string>
+    <string name="statistics_days_with_entries">วันที่มีรายการ</string>
+    <string name="statistics_best_month">เดือนที่ดีที่สุด</string>
+    <string name="statistics_best_month_format">%1$s · %2$d รายการ</string>
+    <string name="statistics_avg_writing_days_week">เฉลี่ย การเขียนวัน/สัปดาห์</string>
+    <string name="statistics_days_decimal_format">%1$.1f วัน</string>
+    <string name="statistics_based_on_total_words">ขึ้นอยู่กับจำนวนคำที่เขียนต่อวัน</string>
+    <string name="statistics_light_words">เบา (&lt; 50 คำ)</string>
+    <string name="statistics_moderate_words">ปานกลาง (50-200 คำ)</string>
+    <string name="statistics_heavy_words">หนัก (200-500 คำ)</string>
+    <string name="statistics_intense_words">เข้มข้น (มากกว่า 500 คำ)</string>
+    <string name="statistics_not_enough_text_languages">ข้อความไม่เพียงพอที่จะตรวจจับภาษา</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">ตรวจพบภาษา %1$d</item>
+        <item quantity="other">ตรวจพบภาษา %1$d</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">การตรวจจับภาษายังคงดำเนินการอยู่</string>
+    <string name="statistics_latin_scripts_as_english">อักษรละตินจะแสดงเป็นภาษาอังกฤษ</string>
+    <string name="statistics_use_more_accurate_detection">ใช้การตรวจจับที่แม่นยำยิ่งขึ้น</string>
+    <string name="statistics_write_more_entries_languages">เขียนรายการเพิ่มเติมเพื่อดูสถิติภาษา</string>
+    <string name="statistics_based_on_entry_time">ตามเวลาเข้า</string>
+    <string name="statistics_morning_time">เช้า (ตี 5-เที่ยง)</string>
+    <string name="statistics_afternoon_time">ช่วงบ่าย (เที่ยงวัน-17.00 น.)</string>
+    <string name="statistics_evening_time">ช่วงเย็น (17.00-21.00 น.)</string>
+    <string name="statistics_night_time">กลางคืน (21.00-05.00 น.)</string>
+    <string name="statistics_heatmap_filling">แผนที่ความร้อนยังคงเติมเต็มอยู่</string>
+    <string name="statistics_heatmap_less">น้อย</string>
+    <string name="statistics_heatmap_more">มากกว่า</string>
+    <string name="action_open">เปิด</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">กิจกรรมวารสารยาจา</string>
+    <string name="tasker_event_desc">เลือกเหตุการณ์บันทึกของ Yaja ที่ควรทริกเกอร์โปรไฟล์ Tasker นี้</string>
+    <string name="tasker_event_saved">บันทึกรายการแล้ว</string>
+    <string name="tasker_event_edited">แก้ไขรายการแล้ว</string>
+    <string name="tasker_event_deleted">ลบรายการแล้ว</string>
+    <string name="tasker_event_default_hint">หากไม่มีการเลือก Yaja จะใช้ค่าเริ่มต้นเป็นรายการที่บันทึกไว้</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja จับภาพด่วน</string>
+    <string name="tasker_action_desc">กำหนดค่าสิ่งที่ Tasker ควรจับภาพอย่างรวดเร็วใน Yaja</string>
+    <string name="tasker_action_add_entry">เพิ่มรายการ</string>
+    <string name="tasker_action_add_event">เพิ่มเหตุการณ์</string>
+    <string name="tasker_action_add_todo">เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="tasker_action_append">ผนวก</string>
+    <string name="tasker_action_match_header_label">ตรงกัน / ส่วนหัว</string>
+    <string name="tasker_action_match_header_placeholder">สายที่ไม่ได้รับ</string>
+    <string name="tasker_action_line_to_append_label">บรรทัดที่จะต่อท้าย</string>
+    <string name="tasker_action_text_label">ข้อความ</string>
+    <string name="tasker_action_placeholder_event">บันทึกเหตุการณ์จากทาซเคอร์</string>
+    <string name="tasker_action_placeholder_todo">ซื้อนม</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">บันทึกย่อจากทาซเคอร์</string>
+    <string name="tasker_action_tip_append">การโทรครั้งแรกจะสร้างรายการที่เริ่มต้นด้วยข้อความที่ตรงกัน การโทรในภายหลังจะต่อท้ายบรรทัดข้างใต้</string>
+    <string name="tasker_action_tip_default">เคล็ดลับ: ตัวแปร Tasker สามารถวางในช่องข้อความได้</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">บันทึกข้อขัดข้องของเซสชันก่อนหน้า</string>
+    <string name="crash_log_clear_close">ล้างและปิด</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">เปิดแอป</string>
+    <string name="tap_action_quick_capture">จับภาพด่วน</string>
+    <string name="tap_action_do_nothing">ไม่ต้องทำอะไรเลย</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja กำลังเขียน Heatmap</string>
+    <string name="widget_cell_shape">รูปร่างของเซลล์</string>
+    <string name="widget_corner_radius">รัศมีมุม: %1$ddp</string>
+    <string name="widget_square">สี่เหลี่ยม</string>
+    <string name="widget_round">กลม</string>
+    <string name="widget_inner_margin">ระยะขอบภายใน: %1$ddp</string>
+    <string name="widget_inner_margin_desc">ช่องว่างระหว่างแผนที่ความร้อนและขอบวิดเจ็ต</string>
+    <string name="widget_none">ไม่มี</string>
+    <string name="widget_max">สูงสุด</string>
+    <string name="widget_on_tap">เมื่อแตะ</string>
+    <string name="widget_on_tap_desc">การดำเนินการเมื่อมีการแตะวิดเจ็ต</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">การจับกุม</string>
+    <string name="widget_qc_shape">รูปร่างวิดเจ็ต</string>
+    <string name="widget_show_label">แสดงป้ายกำกับ</string>
+    <string name="widget_show_label_desc">แสดงข้อความ \'จับภาพ\' บนวิดเจ็ต</string>
+    <string name="widget_show_icon">แสดงไอคอน</string>
+    <string name="widget_show_icon_required">ต้องมีไอคอนเมื่อซ่อนป้ายกำกับ</string>
+    <string name="widget_show_icon_desc">แสดงไอคอนปากกาบนวิดเจ็ต</string>
+    <string name="widget_label_text">ข้อความป้ายกำกับ</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">วิดเจ็ตสิ่งที่ต้องทำ</string>
+    <string name="widget_todo_desc">วิดเจ็ตรายการสิ่งที่ต้องทำที่มีลักษณะโค้งมนคล้ายแผนที่ความร้อน</string>
+    <string name="widget_todo_corner_radius">รัศมีมุม: %1$ddp</string>
+    <string name="widget_todo_padding">การขยาย: %1$ddp</string>
+    <string name="widget_todo_show_completed">แสดงงานที่เสร็จสมบูรณ์</string>
+    <string name="widget_todo_show_completed_desc">รวมรายการที่เลือกไว้ในรายการวิดเจ็ต</string>
+    <string name="widget_todo_include_events">รวมเหตุการณ์ต่างๆ</string>
+    <string name="widget_todo_include_events_desc">แสดงรายการเหตุการณ์ควบคู่ไปกับสิ่งที่ต้องทำในวิดเจ็ต</string>
+    <string name="widget_todo_show_header">แสดงส่วนหัวของสิ่งที่ต้องทำ</string>
+    <string name="widget_todo_show_header_desc">แสดงหรือซ่อนแถวชื่อวิดเจ็ต</string>
+    <string name="widget_todo_auto_hide">ซ่อนวิดเจ็ตอัตโนมัติเมื่อสิ่งที่ต้องทำทั้งหมดเสร็จสิ้น</string>
+    <string name="widget_todo_auto_hide_unavailable">ไม่พร้อมใช้งานในขณะที่แสดงงานที่เสร็จสมบูรณ์แล้ว</string>
+    <string name="widget_todo_auto_hide_desc">ทำให้วิดเจ็ตโปร่งใสเมื่อไม่มีงานที่ค้างอยู่</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">เสร็จแล้ว</string>
+    <string name="todo_confirm_mark_not_done">ไม่ได้ทำ</string>
+    <string name="todo_confirm_title">ทำเครื่องหมายงานเป็น %1$s?</string>
+    <string name="todo_confirm_reopen">สิ่งที่ต้องทำนี้เสร็จสมบูรณ์แล้ว ยืนยันก่อนที่จะเปิดอีกครั้ง</string>
+    <string name="todo_confirm_complete">สิ่งที่ต้องทำนี้ยังคงเปิดอยู่ ยืนยันก่อนที่จะทำเครื่องหมายว่าเสร็จสิ้น</string>
+    <string name="todo_confirm_accidental_tap">การแตะโดยไม่ได้ตั้งใจจะไม่เปลี่ยนงาน</string>
+    <string name="todo_confirm_yes_mark">ใช่ ทำเครื่องหมาย %1$s</string>
+    <string name="todo_confirm_open_yaja">เปิดที่ยาจา</string>
+    <string name="todo_confirm_keep_as_is">ให้เหมือนเดิม</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">อีกหนึ่งแอปบันทึกประจำวัน</string>
+    <string name="help_version_prefix">วี %1$s</string>
+    <string name="help_from_labs">จากห้องทดลองของอาร์เจ</string>
+    <string name="help_made_in">ผลิตใน 🇮🇹</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">ยกเลิกการนำเข้า</string>
+    <string name="timeline_show_all_dates">แสดงวันที่ทั้งหมด</string>
+    <string name="timeline_show_all_dates_subtitle">รวมวันที่ผ่านมาทั้งหมด แม้ว่าจะไม่มีรายการก็ตาม</string>
+    <string name="settings_background_tint_clean">ทำความสะอาด</string>
+    <string name="settings_background_tint_soft">อ่อนนุ่ม</string>
+    <string name="settings_background_tint_rich">รวย</string>
+    <string name="settings_background_tint_deep">ลึก</string>
+    <string name="settings_accent_style_complementary">เสริม</string>
+    <string name="settings_accent_style_analogous">คล้ายคลึงกัน</string>
+    <string name="settings_accent_style_triadic">ไตรเอดิก</string>
+    <string name="settings_accent_style_soft">อ่อนนุ่ม</string>
+</resources>

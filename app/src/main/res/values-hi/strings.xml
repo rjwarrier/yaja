@@ -1,0 +1,1336 @@
+<resources>
+    <string name="app_name">यजा</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">जर्नल</string>
+    <string name="nav_calendar">कैलेंडर</string>
+    <string name="nav_lookback">लुकबैक</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="nav_shortcodes">शॉर्टकोड्स</string>
+    <string name="nav_help">सहायता और विवरण</string>
+
+    <!-- Common actions -->
+    <string name="action_save">सहेजें</string>
+    <string name="action_cancel">रद्द करें</string>
+    <string name="action_delete">हटाएं</string>
+    <string name="action_edit">संपादित करें</string>
+    <string name="action_back">वापस</string>
+    <string name="action_undo">पूर्ववत करें</string>
+    <string name="action_yes">हाँ</string>
+    <string name="action_no">नहीं</string>
+    <string name="action_remove">हटाएं</string>
+    <string name="action_done">हो गया</string>
+    <string name="action_set">सेट करें</string>
+    <string name="action_select">चुनें</string>
+    <string name="action_ok">ठीक है</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">कैश का पुनर्निर्माण किया जा रहा है</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">त्वरित कैप्चर</string>
+    <string name="quick_capture_hint">क्या हुआ?</string>
+    <string name="quick_capture_helper_shortcodes">शॉर्टकोड्स यहाँ अपने आप विस्तृत होते हैं, और Enter दबाने पर टूडू पंक्तियाँ जारी रहती हैं।</string>
+    <string name="quick_capture_save_delayed">सहेजना विलंबित हुआ। कृपया सत्यापित करने के लिए यजा को फिर से खोलें।</string>
+    <string name="cd_saved">सहेजा गया</string>
+    <string name="quick_todo_dialog_title">त्वरित जोड़ें</string>
+    <string name="quick_todo_save_delayed">टूडू सहेजना विलंबित हुआ। कृपया सत्यापित करने के लिए यजा को फिर से खोलें।</string>
+    <string name="quick_todo_placeholder">टूडू जोड़ें</string>
+    <string name="quick_event_placeholder">इवेंट जोड़ें</string>
+    <string name="quick_todo_task_date">कार्य तिथि</string>
+    <string name="quick_todo_event_date">इवेंट तिथि</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s चुनें</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">चयनित दिन के लिए एक टूडू प्रविष्टि के रूप में सहेजता है।</string>
+    <string name="quick_event_selected_day_hint">चयनित दिन के लिए एक इवेंट प्रविष्टि के रूप में सहेजता है。</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">पिछला</string>
+    <string name="cd_next">अगला</string>
+    <string name="cd_surprise_me">मुझे विस्मित करें</string>
+    <string name="calendar_cd_go_to_current_month">वर्तमान महीने पर जाएं</string>
+    <string name="calendar_quick_action_timeline_title">टाइमलाइन</string>
+    <string name="calendar_quick_action_timeline_subtitle">कालक्रमानुसार ब्राउज़ करें</string>
+    <string name="calendar_quick_action_jump_title">तिथि पर जाएं</string>
+    <string name="calendar_quick_action_jump_subtitle">किसी विशेष दिन को खोलें</string>
+    <string name="calendar_jump_placeholder">दिन-महीना-वर्ष</string>
+    <string name="calendar_jump_invalid_date">अमान्य तिथि। दिन-महीना-वर्ष (DD-MM-YY) प्रारूप का उपयोग करें।</string>
+    <string name="calendar_action_go">जाएं</string>
+    <string name="calendar_enable_future_dates_title">भविष्य की तिथियां सक्षम करें</string>
+    <string name="calendar_enable_future_dates_message">भविष्य की तिथि प्रविष्टि अक्षम है। क्या आप इसे सक्षम करना चाहते हैं?</string>
+    <string name="calendar_action_enable">सक्षम करें</string>
+    <string name="calendar_future_entry_enabled">भविष्य की तिथि प्रविष्टि सक्षम कर दी गई है</string>
+    <string name="calendar_weekday_sun_short">रवि</string>
+    <string name="calendar_weekday_mon_short">सोम</string>
+    <string name="calendar_weekday_tue_short">मंगल</string>
+    <string name="calendar_weekday_wed_short">बुध</string>
+    <string name="calendar_weekday_thu_short">गुरु</string>
+    <string name="calendar_weekday_fri_short">शुक्र</string>
+    <string name="calendar_weekday_sat_short">शनि</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">इस महीने की प्रविष्टियां</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d दिन</item>
+        <item quantity="other">%1$d / %2$d दिन</item>
+    </plurals>
+    <string name="calendar_days_of_memories">यादों के दिन</string>
+    <string name="calendar_consistency_last_12_months">पिछले 12 महीने</string>
+    <string name="calendar_consistency_title_format">निरंतरता - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% बनाम \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">बनाम \'%1$s</string>
+    <string name="calendar_consistency_first_period">पहली अवधि</string>
+    <string name="calendar_graph_frequency_month">महीना</string>
+    <string name="calendar_graph_frequency_year">वर्ष</string>
+    <string name="calendar_yearly_consistency_title">निरंतरता (वार्षिक)</string>
+    <string name="calendar_keywords_title">कौन सबसे अधिक दिखाई देता है</string>
+    <string name="calendar_keywords_syncing">लोग और स्थान आँकड़े अभी भी कीवर्ड अनुक्रमण के साथ सिंक हो रहे हैं।</string>
+    <string name="calendar_keywords_empty">शीर्ष उल्लेख देखने के लिए कम से कम 3 लोगों या 3 स्थानों को जोड़ें।</string>
+    <string name="calendar_keywords_people">लोग</string>
+    <string name="calendar_keywords_places">स्थान</string>
+
+    <!-- Settings -->
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_appearance">रूप-रंग</string>
+    <string name="settings_appearance_subtitle">थीम, रंग, फ़ॉन्ट और व्यक्तिगत शैलियाँ</string>
+    <string name="settings_theme">थीम</string>
+    <string name="settings_font">फ़ॉन्ट</string>
+    <string name="settings_storage">स्टोरेज</string>
+    <string name="settings_security">सुरक्षा</string>
+    <string name="settings_backup">बैकअप</string>
+    <string name="settings_change_storage_title">स्टोरेज स्थान बदलें</string>
+    <string name="settings_backup_never">कभी नहीं</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">सेटिंग्स खोजें</string>
+    <string name="settings_search_clear">खोज साफ़ करें</string>
+    <string name="settings_search_recent">हाल की खोजें</string>
+    <string name="settings_search_no_results">कोई मेल खाती सेटिंग्स नहीं</string>
+    <string name="settings_search_close">बंद करें</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">जर्नल अनुभव</string>
+    <string name="settings_section_navigation_gestures">नेविगेशन और जेस्चर</string>
+    <string name="settings_section_review_insights">समीक्षा और अंतर्दृष्टि</string>
+
+    <!-- Language -->
+    <string name="settings_language">भाषा</string>
+    <string name="settings_language_title">ऐप की भाषा</string>
+    <string name="settings_language_subtitle">पूरे ऐप में उपयोग की जाने वाली भाषा चुनें।</string>
+    <string name="settings_language_system_default">सिस्टम डिफ़ॉल्ट</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">प्रविष्टि शैली</string>
+    <string name="settings_journal_entry_style_subtitle">उभरे हुए कार्ड और सपाट जर्नल लुक के बीच चयन करें。</string>
+    <string name="settings_journal_entry_style_cards">कार्ड</string>
+    <string name="settings_journal_entry_style_flat">सपाट</string>
+    <string name="settings_journal_render_checkboxes_title">चेकबॉक्स को टेक्स्ट के रूप में रेंडर करें</string>
+    <string name="settings_journal_render_checkboxes_subtitle">एक्सप्रेसिव चेकबॉक्स के बजाय पूरे ऐप में टूडू को [ ] और [x] के रूप में दिखाएं。</string>
+    <string name="settings_journal_day_header_counts_title">दिन के हेडर में संख्याएं दिखाएं</string>
+    <string name="settings_journal_day_header_counts_subtitle">जर्नल दिन के हेडर में प्रविष्टि, शब्द और वर्णों की संख्या दिखाएं。</string>
+    <string name="settings_journal_show_timestamps_title">टाइमस्टैम्प दिखाएं</string>
+    <string name="settings_journal_show_timestamps_subtitle">टाइमलाइन पर प्रविष्टि का समय प्रदर्शित करें。</string>
+    <string name="settings_journal_allow_future_title">भविष्य की प्रविष्टियों की अनुमति दें</string>
+    <string name="settings_journal_allow_future_subtitle">भविष्य की तिथियों में प्रविष्टियां जोड़ने की सुविधा सक्षम करें。</string>
+    <string name="settings_journal_truncate_title">लंबी प्रविष्टियों को छोटा करें</string>
+    <string name="settings_journal_truncate_subtitle">होम स्क्रीन पर लंबी प्रविष्टियों को छोटा करके दिखाएं。</string>
+    <string name="settings_journal_char_limit_title">वर्ण सीमा</string>
+    <string name="settings_journal_char_limit_subtitle">छोटा करने से पहले प्रदर्शित किए जाने वाले वर्णों की संख्या निर्धारित करें。</string>
+    <string name="settings_journal_char_limit_min">50 वर्ण</string>
+    <string name="settings_journal_char_limit_max">200 वर्ण</string>
+    <string name="settings_journal_char_count">%1$d वर्ण</string>
+    <string name="settings_journal_first_day_title">सप्ताह का पहला दिन</string>
+    <string name="settings_journal_first_day_subtitle">कैंडलर शुरू करें</string>
+    <string name="settings_journal_day_sun">रवि</string>
+    <string name="settings_journal_day_mon">सोम</string>
+    <string name="settings_journal_date_recognition">तिथि पहचान</string>
+    <string name="settings_journal_date_order_title">तिथि क्रम</string>
+    <string name="settings_journal_date_order_subtitle">संख्यात्मक तिथियों को कैसे पढ़ें</string>
+    <string name="settings_journal_date_order_auto">ऑटो</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">तिथि कीवर्ड</string>
+    <string name="settings_journal_date_keywords_subtitle">अन्य भाषाओं के शब्द जिनका अर्थ कोई तिथि है (जैसे कि \'कल\' के लिए एक स्थानीय शब्द)।</string>
+    <string name="settings_journal_view_keywords">देखें (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">कीवर्ड जोड़ें</string>
+    <string name="settings_journal_motion">मोशन</string>
+    <string name="settings_journal_animations_title">एनिमेशन</string>
+    <string name="settings_journal_animations_subtitle">पूरे ऐप में मोशन को नियंत्रित करें। \'कम\' विकल्प कम मूवमेंट के साथ चीजों को सुचारू रखता है。</string>
+    <string name="settings_journal_animations_full">पूर्ण</string>
+    <string name="settings_journal_animations_reduced">कम</string>
+    <string name="settings_journal_animations_off">बंद</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">सहेजने के बाद समीक्षा</string>
+    <string name="settings_review_post_write_title">लिखने के बाद समीक्षा</string>
+    <string name="settings_review_post_write_subtitle">टूडू निकालने, उल्लेखों की जांच करने, दिन को स्टार करने या लेबल सेट करने के लिए सहेजें पर टैप करने के बाद समीक्षा शीट दिखाएं。</string>
+    <string name="settings_review_people_places">लोग और स्थान</string>
+    <string name="settings_review_highlighting_title">हाईलाइट करना</string>
+    <string name="settings_review_highlighting_subtitle">होम कार्ड और व्यू एंट्री मोड में ट्रैक किए गए लोगों और स्थानों को हाइलाइट करें。</string>
+    <string name="settings_review_match_sensitivity_title">मिलान संवेदनशीलता</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">लोग और स्थान द्वारा पता लगाए जाने के लिए किसी शब्द का मिलान कितना करीबी होना चाहिए (उच्च = अधिक सख्त)。</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">शॉर्टकोड जोड़ें</string>
+    <string name="shortcodes_edit_title">शॉर्टकोड संपादित करें</string>
+    <string name="shortcodes_code_label">शॉर्टकोड (जैसे @yday)</string>
+    <string name="shortcodes_expansion_label">विस्तार पाठ</string>
+    <string name="shortcodes_export_error">शॉर्टकोड निर्यात करने में विफल</string>
+    <string name="shortcodes_import_error">शॉर्टकोड आयात करने में विफल</string>
+    <string name="todos_expand_section">%1$s का विस्तार करें</string>
+    <string name="todos_collapse_section">%1$s को संकुचित करें</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">लेखन हीटमैप</string>
+    <string name="heatmap_widget_description">आपके जर्नल के लिए हालिया लेखन गतिविधि का हीटमैप。</string>
+    <string name="quick_capture_widget_name">त्वरित कैप्चर</string>
+    <string name="quick_capture_widget_description">तेजी से जर्नल प्रविष्टि जोड़ने के लिए एक-टैप बटन。</string>
+    <string name="quick_todo_widget_name">त्वरित टूडू</string>
+    <string name="tasker_plugin_action_label">यजा त्वरित कैप्चर</string>
+    <string name="tasker_plugin_event_label">यजा जर्नल इवेंट्स</string>
+    <string name="tasker_screen_allow_add_entry_title">Tasker को प्रविष्टि जोड़ने की अनुमति दें</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Tasker को यजा त्वरित कैप्चर क्रियाओं जैसे \'प्रविष्टि जोड़ें\' और \'टूडू जोड़ें\' का उपयोग करने देता है।</string>
+    <string name="tasker_screen_allow_events_title">Tasker इवेंट्स की अनुमति दें</string>
+    <string name="tasker_screen_allow_events_subtitle">यजा को Tasker को \'प्रविष्टि सहेजी गई\', \'प्रविष्टि संशोधित की गई\', और \'प्रविष्टि हटाई गई\' इवेंट भेजने देता है।</string>
+    <string name="tasker_screen_include_text_title">इवेंट्स में प्रविष्टि पाठ शामिल करें</string>
+    <string name="tasker_screen_include_text_subtitle">गोपनीयता के लिए डिफ़ॉल्ट रूप से बंद। बंद होने पर, Tasker इवेंट प्रकार, तिथि, लेबल और समय प्राप्त करता है, लेकिन जर्नल पाठ नहीं。</string>
+    <string name="tasker_screen_section_what">यह क्या करता है</string>
+    <string name="tasker_screen_body_what">Tasker तेजी से Yaja में जर्नल प्रविष्टियां या टूडू जोड़ सकता है, किसी समूहीकृत प्रविष्टि जैसे कि \'मिस्ड कॉल\' में पंक्तियाँ जोड़ सकता है, और Yaja, Tasker को बता सकता है जब कोई प्रविष्टि सहेजी, संपादित या हटाई जाती है。</string>
+    <string name="tasker_screen_section_how"> उपयोग कैसे करें</string>
+    <string name="tasker_screen_body_how">पहले यहाँ अपनी आवश्यकता वाले टॉगल को चालू करें। फिर Tasker खोलें और या तो Yaja त्वरित कैप्चर क्रिया या Yaja जर्नल इवेंट्स इवेंट जोड़ें。</string>
+    <string name="tasker_screen_section_notes">नोट्स</string>
+    <string name="tasker_screen_body_notes">प्रविष्टि पाठ Tasker के साथ तब तक साझा नहीं किया जाता जब तक आप \'इवेंट्स में प्रविष्टि पाठ शामिल करें\' को सक्षम नहीं करते। यदि Tasker नवीनतम विकल्प या चर नहीं दिखाता है, तो Yaja को अपडेट करने के बाद Tasker कॉन्फ़िगरेशन स्क्रीन को फिर से खोलें。</string>
+    <string name="tasker_screen_section_example">उदाहरण</string>
+    <string name="tasker_screen_body_example">क्रिया का उदाहरण: Tasker क्रिया &gt; Yaja त्वरित कैप्चर &gt; परिशिष्ट, जिसमें मिलान / हेडर \'मिस्ड कॉल\' पर सेट हो और जोड़ने वाली पंक्ति Tasker चर पर सेट हो। इवेंट का उदाहरण: Tasker इवेंट &gt; Yaja जर्नल इवेंट्स &gt; प्रविष्टि संशोधित, फिर %%yaja_event_type, %%yaja_date, और वैकल्पिक रूप से %%yaja_entry_text जैसे चरों का उपयोग करें。</string>
+    <string name="tasker_screen_section_use_cases">उपयोग के मामले</string>
+    <string name="tasker_screen_use_case_1">1. Tasker में Yaja जर्नल इवेंट का उपयोग FolderSync सिंक क्रिया को ट्रिगर करने के लिए करें, ताकि प्रविष्टियां बदलने के बाद आपका Yaja फ़ोल्डर किसी भी क्लाउड प्रदाता को भेज दिया जाए。</string>
+    <string name="tasker_screen_use_case_2">2. Yaja त्वरित कैप्चर में पाठ भेजने के लिए Tasker के साथ Pushbullet का उपयोग करें, ताकि भेजा गया पाठ वर्तमान दिन के लिए एक नई प्रविष्टि के रूप में सहेज लिया जाए。</string>
+    <string name="tasker_screen_use_case_3">3. Yaja में एक परिशिष्ट क्रिया भेजने के लिए मिस्ड-कॉल Tasker प्रोफ़ाइल का उपयोग करें, ताकि मिस्ड-कॉल विवरण अलग प्रविष्टियाँ बनाने के बजाय एक \'मिस्ड कॉल\' प्रविष्टि के तहत आएं。</string>
+    <string name="quick_todo_widget_description">आज के लिए एक नई प्रविष्टि के रूप में टूडू कैप्चर करने के लिए एक-टैप बटन。</string>
+    <string name="todo_list_widget_name">टू-डू सूची</string>
+    <string name="todo_list_widget_description">जर्नल टूडू की स्क्रॉल करने योग्य सूची। किसी टूडू को पूर्ण या अपूर्ण चिह्नित करने के लिए उस पर टैप करें。</string>
+    <string name="todo_cd_add_todo">टू-डू जोड़ें</string>
+    <string name="heatmap_widget_status_loading">हीटमैप लोड हो रहा है…</string>
+    <string name="heatmap_widget_status_empty">अभी तक कोई प्रविष्टि नहीं</string>
+    <string name="heatmap_widget_status_refresh">हीटमैप रीफ़्रेश करने के लिए Yaja खोलें</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">कैश पुनर्निर्मित।</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">नई प्रविष्टि</string>
+    <string name="shortcut_new_entry_long">एक जर्नल प्रविष्टि जोड़ें</string>
+    <string name="shortcut_add_todo_short">टूडू जोड़ें</string>
+    <string name="shortcut_add_todo_long">आज के लिए एक टूडू जोड़ें</string>
+    <string name="shortcut_add_event_short">इवेंट जोड़ें</string>
+    <string name="shortcut_add_event_long">एक इवेंट जोड़ें</string>
+    <string name="shortcut_today_short">आज</string>
+    <string name="shortcut_today_long">आज का जर्नल खोलें</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">नेविगेशन</string>
+    <string name="settings_bottom_nav_style_label">निचली नेविगेशन शैली</string>
+    <string name="settings_navigation_mode_title">नेविगेशन मोड</string>
+    <string name="settings_navigation_mode_subtitle">फ्लोटिंग नेविगेशन बार और पूर्ण निचले पैनल के बीच चयन करें。</string>
+    <string name="settings_nav_mode_floating">फ्लोटिंग</string>
+    <string name="settings_nav_mode_panel">पैनल</string>
+    <string name="settings_navigation_screens_label">नेविगेशन स्क्रीन</string>
+    <string name="settings_nav_summary_floating">जर्नल और कैलेंडर हमेशा फ्लोटिंग बार में रहते हैं। अधिकतम 2 और स्क्रीन चुनें। वर्तमान में चयनित: %2$d में से %1$d。</string>
+    <string name="settings_nav_summary_panel">जर्नल और कैलेंडर हमेशा निचले पैनल में रहते हैं。 अधिकतम 3 और स्क्रीन चुनें। वर्तमान में चयनित: %2$d में से %1$d。</string>
+    <string name="settings_nav_lookback_subtitle">सक्रिय नेविगेशन बार या पैनल में लुकबैक दिखाएं。</string>
+    <string name="settings_nav_people_places_subtitle">सक्रिय नेविगेशन बार या पैनल में लोग और स्थान दिखाएं。</string>
+    <string name="settings_nav_todos_title">टूडू</string>
+    <string name="settings_nav_todos_subtitle">सक्रिय नेविगेशन बार या पैनल में टूडू दिखाएं。</string>
+    <string name="todos_quick_add_title">त्वरित जोड़ें</string>
+    <string name="todos_hero_subtitle">जर्नल के कार्यों और क्षणों को ट्रैक करें</string>
+    <string name="todos_hero_all_activity">सभी गतिविधि</string>
+    <string name="todos_hero_open_focus">खुले कार्य</string>
+    <string name="todos_hero_completed">पूर्ण</string>
+    <string name="todos_stat_today_open">आज खुले</string>
+    <string name="todos_stat_done_today">आज पूरे किए गए</string>
+    <string name="todos_stat_events">इवेंट्स</string>
+    <string name="todos_stat_still_open">अभी भी खुले</string>
+    <string name="todos_stat_past_7d">पिछले 7 दिन</string>
+    <string name="todos_stat_days">दिन</string>
+    <string name="todos_empty_done">अभी तक कोई पूर्ण टूडू नहीं</string>
+    <string name="todos_empty_events">अभी तक कोई इवेंट प्रविष्टि नहीं</string>
+    <string name="todos_section_open">खुला</string>
+    <string name="todos_section_later">बाद में</string>
+    <string name="todos_section_upcoming">आगामी</string>
+    <string name="todos_section_future_events">भविष्य के इवेंट्स</string>
+    <string name="todos_section_past_events">अतीत के इवेंट्स</string>
+    <string name="todos_cd_open_day">दिन खोलें</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d खुला कार्य</item>
+        <item quantity="other">%1$d खुले कार्य</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d पूरा किया गया कार्य</item>
+        <item quantity="other">%1$d पूरे किए गए कार्य</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d आगामी इवेंट</item>
+        <item quantity="other">%1$d आगामी इवेंट</item>
+    </plurals>
+    <string name="todos_filter_all_format">सभी %1$d</string>
+    <string name="todos_filter_open_format">खुले %1$d</string>
+    <string name="todos_filter_done_format">पूर्ण %1$d</string>
+    <string name="todos_filter_events_format">इवेंट्स %1$d</string>
+    <string name="todos_cheer_all_clear">सब साफ़। बढ़िया।</string>
+    <string name="todos_cheer_done_and_dusted">पूरा और समाप्त。</string>
+    <string name="todos_cheer_nothing_pending">कुछ भी लंबित नहीं है。</string>
+    <string name="todos_cheer_caught_up">आप काम में आगे निकल गए。</string>
+    <string name="todos_cheer_clean_slate">खाली स्लेट。</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d दिन में</item>
+        <item quantity="other">%1$d दिन में</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d दिन पहले</item>
+        <item quantity="other">%1$d दिन पहले</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d सप्ताह में</item>
+        <item quantity="other">%1$d सप्ताह में</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d सप्ताह पहले</item>
+        <item quantity="other">%1$d सप्ताह पहले</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 महीने में</string>
+    <string name="todos_relative_one_month_ago">1 महीने पहले</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d महीने में</item>
+        <item quantity="other">%1$d महीने में</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d महीने पहले</item>
+        <item quantity="other">%1$d महीने पहले</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">आँकड़े</string>
+    <string name="settings_nav_statistics_subtitle_on">सक्रिय नेविगेशन बार या पैनल में आँकड़े दिखाएं。</string>
+    <string name="settings_nav_statistics_subtitle_off">नेविगेशन में रखने के लिए पहले आँकड़े चालू करें。</string>
+    <string name="settings_show_labels_bottom_panel_title">निचले पैनल में लेबल दिखाएं</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">निचले पैनल में आइकन के नीचे पाठ लेबल प्रदर्शित करें。</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">जेस्चर</string>
+    <string name="settings_entry_delete_title">प्रविष्टि हटाना</string>
+    <string name="settings_entry_delete_subtitle">किसी प्रविष्टि को चुनने के लिए उसे देर तक दबाएं। एकाधिक प्रविष्टियां चुनने के लिए और प्रविष्टियों पर टैप करें, फिर हटाएँ बटन का उपयोग करें。 चयन साफ़ करने के लिए खाली स्थान पर टैप करें。</string>
+    <string name="settings_swipe_navigate_title">तिथियों पर नेविगेट करने के लिए स्वाइप करें</string>
+    <string name="settings_swipe_navigate_subtitle">एक तिथि आगे जाने के लिए दाएं से बाएं स्वाइप करें, और एक तिथि पीछे जाने के लिए बाएं से दाएं स्वाइप करें。</string>
+    <string name="settings_drag_reorder_title">ड्रैग-टू-रीऑर्डर सक्षम करें</string>
+    <string name="settings_drag_reorder_subtitle">प्रविष्टियों को पुनर्व्यवस्थित करने के लिए उन्हें देर तक दबाएं</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">डेटा और रिकवरी</string>
+    <string name="settings_swipe_rebuild_index">इंडेक्स पुनर्निर्माण के लिए होम स्क्रीन पर नीचे स्वाइप करें</string>
+    <string name="settings_large_journal_safe_mode_title">बड़ा जर्नल सेफ मोड</string>
+    <string name="settings_large_journal_safe_mode_subtitle">जब बहुत बड़ा जर्नल पाया जाता है, तो अनावश्यक स्टार्टअप आँकड़े कार्य टाल दिए जाते हैं ताकि ऐप अधिक तेज़ी से और सुरक्षित रूप से खुले。</string>
+    <string name="settings_version_history_title">संस्करण इतिहास</string>
+    <string name="settings_version_history_subtitle">प्रविष्टि संपादन, विलोपन, लेबल और पुनरावलोकन परिवर्तनों से पहले सुरक्षित प्रतियां रखें。</string>
+    <string name="settings_storage_location_label">स्टोरेज स्थान</string>
+    <string name="settings_reset_to_default">डिफ़ॉल्ट पर रीसेट करें</string>
+    <string name="settings_choose_folder">फ़ोल्डर चुनें</string>
+    <string name="settings_backup_description">एक Yaja बैकअप ज़िप बनाएं जिसमें जर्नल प्रविष्टियां, शॉर्टकोड्स, तिथि कीवर्ड और लोग व स्थान डेटा शामिल हों। बाद में इसे सुरक्षित रूप से वापस मर्ज किया जा सकता है。</string>
+    <string name="settings_last_backup">पिछला बैकअप: %1$s</string>
+    <string name="settings_backup_reminder_age_label">बैकअप अनुस्मारक अवधि</string>
+    <string name="settings_backup_reminder_disabled">अक्षम</string>
+    <string name="settings_backup_reminder_desc">%1$d दिनों से अधिक पुराना होने पर साइडबार में बैकअप को हाइलाइट करें。</string>
+    <string name="settings_backup_reminder_days_disabled">0 दिन (अक्षम)</string>
+    <string name="settings_backup_reminder_days">%1$d दिन</string>
+    <string name="settings_restore_button">पुनर्स्थापित करें</string>
+    <string name="settings_backup_now_button">अभी बैकअप लें</string>
+    <string name="settings_db_index_management_label">डेटाबेस इंडेक्स प्रबंधन</string>
+    <string name="settings_db_index_management_desc">टू-डू, लोग व स्थान, या पूर्ण डेटाबेस इंडेक्स पुनर्निर्माण के लिए पुनर्निर्माण उपकरण खोलें。</string>
+    <string name="settings_rebuild_tools_button">पुनर्निर्माण उपकरण</string>
+    <string name="settings_import_label">आयात</string>
+    <string name="settings_import_info_cd">आयात की जानकारी</string>
+    <string name="settings_import_info_title">आयात की जानकारी</string>
+    <string name="settings_import_day_one_title">Day One आयात</string>
+    <string name="settings_import_day_one_bullet1">- छवियों के बिना Day One से निर्यात करें</string>
+    <string name="settings_import_day_one_bullet2">- केवल पाठ डेटा आयात किया जाएगा</string>
+    <string name="settings_import_day_one_bullet3">- टाइमस्टैम्प और स्थान डेटा (यदि उपलब्ध हो) संरक्षित रहेगा</string>
+    <string name="settings_import_perf_warning_title">प्रदर्शन चेतावनी</string>
+    <string name="settings_import_perf_warning_desc">बड़ी संख्या में प्रविष्टियों (%1$d+) को आयात करने में कई मिनट लग सकते हैं। आप ऐप में कहीं और जा सकते हैं और आयात पृष्ठभूमि में जारी रहेगा。</string>
+    <string name="settings_got_it">समझ गए</string>
+    <string name="settings_import_success">%1$d नए दिन, %2$d मर्ज किए गए, %3$d छोड़े गए</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip या .json निर्यात</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json निर्यात</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">यजा का उपयोग करना सीखें</string>
+    <string name="help_footer_website">वेबसाइट</string>
+    <string name="help_footer_share">साझा करें</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">यजा साझा करें</string>
+    <string name="help_share_yaja_text">यजा - yet another journaling app\n\nएक ध्यान भटकाए बिना लिखने वाला स्थानीय जर्नल जो प्रविष्टियों को मार्कडाउन फ़ाइलों के रूप में सहेजता है। इसमें टाइमलाइन, लुकबैक, लोग और स्थान, टेम्पलेट्स, समीक्षाएं, आँकड़े और विगेट्स शामिल हैं।\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord उपयोगकर्ता नाम कॉपी किया गया!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">RJ लोगो</string>
+    <string name="help_screen_title">सहायता और विवरण</string>
+    <string name="help_welcome_title">Yaja में आपका स्वागत है</string>
+    <string name="help_welcome_body">Yaja आपके दिन, लोगों, स्थानों, अनुवर्ती कार्यों, समीक्षाओं और पैटर्नों को दर्ज करने के लिए एक स्थानीय-प्रथम मार्कडाउन जर्नल है। यह पृष्ठ ऐप के मुख्य भागों के बारे में एक त्वरित मार्गदर्शिका देता है。</string>
+    <string name="help_start_here">यहाँ से शुरू करें</string>
+    <string name="help_cd_collapse">संकुचित करें</string>
+    <string name="help_cd_expand">विस्तार करें</string>
+    <string name="help_group_everyday_title">दैनिक अनुभव</string>
+    <string name="help_group_everyday_desc">जर्नल लिखना, लेखन प्रवाह और दैनिक नेविगेशन。</string>
+    <string name="help_group_reviews_title">समीक्षा और अंतर्दृष्टि</string>
+    <string name="help_group_reviews_desc">लुकबैक, रुझान, लोग, स्थान और विश्लेषण。</string>
+    <string name="help_group_advanced_title">उन्नत उपकरण</string>
+    <string name="help_group_advanced_desc">विजेट, स्टोरेज, गोपनीयता, बैकअप और तकनीकी उपकरण。</string>
+    <string name="help_onboard_todos_events_title">कार्य, इवेंट और आवर्ती कार्य</string>
+    <string name="help_onboard_todos_events_body">अपने जर्नल प्रवाह के भीतर व्यक्तिगत अनुस्मारक, पारिवारिक योजनाएँ और आवर्ती कार्यक्रम रखें जो नियत तारीखों पर स्वतः ही कार्य उत्पन्न कर दें।</string>
+    <string name="help_onboard_widgets_title">विजेट्स</string>
+    <string name="help_onboard_widgets_body">लांचर से हीटमैप, त्वरित कैप्चर, त्वरित टूडू, या टूडू सूची विजेट जोड़ें。</string>
+    <string name="help_onboard_version_history_title">संस्करण इतिहास</string>
+    <string name="help_onboard_version_history_body">जोखिम भरे परिवर्तनों से पहले सुरक्षित स्नैपशॉट रखने के लिए सेटिंग्स &gt; डेटा में इतिहास फ़ाइलें सक्षम करें。</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">जब किसी व्यक्तिगत चीज़ को तुरंत कैप्चर करने की आवश्यकता हो, तो प्रविष्टियां, टूडू या इवेंट जोड़ने के लिए Tasker का उपयोग करें。</string>
+    <string name="help_section_writing_editor_title">लेखन और संपादक</string>
+    <string name="help_section_writing_editor_preview">टेम्पलेट्स, मार्कडाउन हेडिंग, टूडू, इवेंट्स और लचीला ड्राफ्ट प्रविष्टि。</string>
+    <string name="help_section_writing_editor_content">+ चयनित दिन के लिए लिखने के लिए फ्लोटिंग \'+\' बटन पर टैप करें。\n+ मीटिंग नोट, यात्रा दिवस, स्वास्थ्य लॉग, आत्म-चिंतन, कार्य लॉग आदि टेम्पलेट्स का उपयोग करें。\n+ टेम्पलेट्स को खाली ड्राफ्ट में डाला जा सकता है, नीचे जोड़ा जा सकता है, ड्राफ्ट को बदलने के लिए इस्तेमाल किया जा सकता है, या कर्सर पर डाला जा सकता है。\n+ संपादक चिप्स तुरंत टूडू, इवेंट्स, क्रमांकित सूचियां और बुलेट सूचियां डाल सकते हैं。\n+ प्रविष्टि देखने और संपादित करने में \'### हेडिंग\' जैसी मार्कडाउन शैली की हेडिंग समर्थित हैं。</string>
+    <string name="help_section_post_write_review_title">लिखने के बाद समीक्षा</string>
+    <string name="help_section_post_write_review_preview">टूडू निष्कर्षण, कीवर्ड पहचान, स्टार करना, लेबल और पुनरावलोकन सेटअप。</string>
+    <string name="help_section_post_write_review_content">+ लिखने के बाद, Yaja सहेजने से पहले एक समीक्षा शीट खोल सकता है。\n+ यह टूडू निकाल सकता है, लोग और स्थान ढूंढ सकता है, दिन को स्टार कर सकता है, दिन का लेबल सेट कर सकता है, और पुनरावलोकन तिथियां निर्धारित कर सकता है。\n+ यदि आप सीधे सहेजना पसंद करते हैं तो आप सेटिंग्स से समीक्षा अक्षम कर सकते हैं。</string>
+    <string name="help_section_revisit_followup_title">पुनरावलोकन और अनुवर्ती तिथियां</string>
+    <string name="help_section_revisit_followup_preview">त्वरित चयन और एक कस्टम विकल्प के साथ जर्नल-लिंक्ड अनुवर्ती तिथियां。</string>
+    <string name="help_section_revisit_followup_content">+ कल, अगले सप्ताह, अगले महीने या कस्टम तिथि के साथ पुनरावलोकन तिथियां जोड़ें。\n+ नियत पुनरावलोकन आइटम होम पर दिखाई देते हैं और कैलेंडर व टाइमलाइन में चिह्नित होते हैं。\n+ यह जर्नल संदर्भ से जुड़े वादों, निर्णयों, स्वास्थ्य जांचों और अनुस्मारकों के लिए अच्छा काम करता है。</string>
+    <string name="help_section_navigation_gestures_title">नेविगेशन और जेस्चर</string>
+    <string name="help_section_navigation_gestures_preview">तिथि संचालन, चयन विलोपन, स्वाइप प्राथमिकताएं और पुनर्निर्माण कैश व्यवहार。</string>
+    <string name="help_section_navigation_gestures_content">+ होम तीर और वैकल्पिक स्वाइप नेविगेशन के साथ तिथि नेविगेशन का समर्थन करता है。\n+ किसी प्रविष्टि को चुनने के लिए उसे देर तक दबाएं। अन्य प्रविष्टियों को भी चुनने के लिए उन पर टैप करें, फिर डिलीट बटन का उपयोग करें。\n+ चुनी गई प्रविष्टियों के बाहर टैप करने से चयन साफ़ हो जाता है। डिलीट की गई प्रविष्टियों को रिस्टोर काउंटडाउन से वापस पाया जा सकता है。\n+ जब जर्नल फ़ाइलें Yaja के बाहर बदलती हैं तो आप कैश को पुनर्निमित कर सकते हैं。</string>
+    <string name="help_section_shortcodes_quick_capture_title">शॉर्टकोड्स और त्वरित कैप्चर</string>
+    <string name="help_section_shortcodes_quick_capture_preview">तेज़ व्यक्तिगत कैप्चर और पुन: प्रयोज्य गतिशील पाठ स्निपेट。</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ बार-बार उपयोग होने वाले पाठ को जल्दी से डालने के लिए शॉर्टकोड्स बनाएं。\n+ शॉर्टकोड्स के अंदर {{today:format}} और {{now:format}} जैसे गतिशील प्लेसहोल्डर्स काम करते हैं。\n+ क्विक कैप्चर पूर्ण संपादक खोले बिना जल्दी से कुछ लॉग करने में मदद करता है。\n+ त्वरित जोड़ें विजेट, टूडू स्क्रीन, या Tasker से चुनी गई तिथि के लिए टूडू या इवेंट को सहेज सकता है。</string>
+    <string name="help_section_todos_events_title">कार्य, इवेंट और आवर्ती कार्य</string>
+    <string name="help_section_todos_events_preview">व्यक्तिगत अनुस्मारक, उल्लेखनीय इवेंट और स्वचालित आवर्ती कार्यक्रम।</string>
+    <string name="help_section_todos_events_content">+ कार्यों को सीधे जर्नल प्रविष्टियों में [ ] और [x] पंक्तियों के रूप में लिखा जाता है।\n+ इवेंट सामान्य प्रविष्टियां हैं जिन्हें इवेंट के रूप में चिह्नित किया जाता है, जो पारिवारिक योजनाओं, नियुक्तियों, यात्रा या किसी भी ऐसी चीज़ के लिए उपयोगी हैं जिसे आप बाद में याद रखना चाहते हैं।\n+ आवर्ती कार्य और इवेंट (शेड्यूल) स्वचालित रूप से आपके दैनिक जर्नल पृष्ठों पर उनके शेड्यूल (जैसे साप्ताहिक, मासिक, वार्षिक) के अनुसार कार्य आइटम या इवेंट हेडिंग लिखते हैं।\n+ कार्य स्क्रीन पर आवर्ती आइकन पर टैप करके अपने शेड्यूल प्रबंधित करें।\n+ हर दिन जब आप याजा (Yaja) खोलते हैं, तो बैकग्राउंड सिस्टम यह जांचने के लिए चलता है कि कोई निर्धारित कार्य देय है या नहीं और उन्हें उस दिन की प्रविष्टि में जोड़ता है।\n+ कार्य स्क्रीन आपको याजा को उत्पादकता डैशबोर्ड में बदले बिना खुले कार्यों, पूर्ण किए गए कार्यों और इवेंट्स को देखने में मदद करती है।\n+ जर्नल में उस दिन को खोलने के लिए दिनांक हेडर पर टैप करें।\n+ यदि फ़ाइलें याजा के बाहर बदली गई हैं तो कार्य सूचकांक को पुनर्गठित करने के लिए नीचे खींचें।\n+ पूर्ण किए गए कार्यों को दिखाएं विकल्प याद रखा जाता है, इसलिए जब आप वापस आते हैं तो आपका पसंदीदा दृश्य बना रहता है।\n+ कार्य विजेट लंबित कार्यों को दिखा सकते हैं, टॉगल करने से पहले पुष्टि कर सकते हैं, पूर्ण किए गए कार्यों को छिपा सकते हैं और यदि कोई लंबित कार्य नहीं है तो वैकल्पिक रूप से स्वतः छिप सकते हैं।</string>
+    <string name="help_section_people_places_title">लोग और स्थान</string>
+    <string name="help_section_people_places_preview">कीवर्ड, उपनाम, रुझान और श्रेणीबद्ध कनेक्शन विचार。</string>
+    <string name="help_section_people_places_content">+ उपनाम और संबंध लेबल के साथ लोगों और स्थानों को ट्रैक करें。\n+ कीवर्ड सूची को खोजें, फ़िल्टर करें और सॉर्ट करें。\n+ कीवर्ड विवरण पृष्ठ हालिया स्थिति, समय के साथ उल्लेख, सह-उल्लेख और रैंक किए गए कनेक्शन दिखाते हैं。\n+ मिलान संवेदनशीलता को सेटिंग्स से समायोजित किया जा सकता है。</string>
+    <string name="help_section_timeline_lookback_title">टाइमलाइन और लुकबैक</string>
+    <string name="help_section_timeline_lookback_preview">अतीत के दिनों की ब्राउज़िंग, मुख्य बिंदु, मुझे विस्मित करें और समीक्षा प्रविष्टि बिंदु。</string>
+    <string name="help_section_timeline_lookback_content">+ टाइमलाइन आपको फ़िल्टर, वर्ष चिप्स और सभी-तिथि मोड के साथ अतीत के दिनों को ब्राउज़ करने देती है。\n+ लुकबैक पिछले वर्षों में इसी दिन की प्रविष्टियां और आपके तारांकित मुख्य बिंदु दिखाता है。\n+ \'मुझे विस्मित करें\' लुकबैक से एक यादृच्छिक अतीत की प्रविष्टि खोलता है。\n+ साप्ताहिक समीक्षा और मासिक समीक्षा लुकबैक के अंदर होती है。</string>
+    <string name="help_section_statistics_reviews_title">आँकड़े और समीक्षाएं</string>
+    <string name="help_section_statistics_reviews_preview">तुलना मोड, टेम्पलेट अंतर्दृष्टि, कस्टम दृश्य अनुभाग और सारांश。</string>
+    <string name="help_section_statistics_reviews_content">+ आँकड़ों में तुलना मोड, कीवर्ड परिवर्तन और टेम्पलेट अंतर्दृष्टि शामिल हैं。\n+ आप चुन सकते हैं कि कौन से आँकड़े अनुभाग आँकड़े स्क्रीन के अंदर दिखाई दें。\n+ तुलना मोड \'ऑल टाइम\' के लिए उपलब्ध है और महीने व वर्ष के परिवर्तनों को सारांशित करता है。\n+ समीक्षा पृष्ठ सबसे सक्रिय दिनों, शीर्ष लोगों और स्थानों, पसंदीदा क्षणों, लेबल, भाषा विभाजन और स्ट्रीक या अंतर पैटर्न को सारांशित करते हैं。</string>
+    <string name="help_section_widgets_home_title">विजेट्स और होम सतह</string>
+    <string name="help_section_widgets_home_preview">लांचर विजेट्स, हाइलाइट किए गए कीवर्ड और दिन-स्तरीय होम आँकड़े。</string>
+    <string name="help_section_widgets_home_content">+ लेखन हीटमैप, त्वरित कैप्चर, त्वरित जोड़ें और टूडू सूची विजेट लॉन्चर पर उपलब्ध हैं。\n+ विजेट कॉन्फ़िगर स्क्रीन कोनों, पैडिंग, आकार, हेडर, पूर्ण कार्य दृश्यता और अन्य विकल्पों को समायोजित करने देती है。\n+ हीटमैप विजेट अधिक रंगीन शेड्स का उपयोग करके सुचारू लेखन-इतिहास व्यू प्रदान करता है。\n+ सक्षम होने पर होम प्रविष्टियों के अंदर लोग और स्थान हाइलाइट कर सकता है。\n+ होम तिथि हेडर प्रविष्टि संख्या, शब्द और वर्ण गणना दिखा या छिपा सकता है。</string>
+    <string name="help_section_language_text_analysis_title">भाषा और पाठ विश्लेषण</string>
+    <string name="help_section_language_text_analysis_preview">आँकड़े और समीक्षा अंतर्दृष्टि के लिए स्थानीय भाषा पहचान。</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja अंतर्दृष्टि के लिए प्रविष्टियों में प्रमुख लिपि या भाषा का पता लगाता है。\n+ भाषा विभाजन आँकड़े और समीक्षाओं में दिखाई देता है。\n+ पहचान स्थानीय रूप से चलती है और जर्नल पाठ को डिवाइस से बाहर नहीं भेजती है。</string>
+    <string name="help_section_data_privacy_cache_title">डेटा, गोपनीयता और कैश</string>
+    <string name="help_section_data_privacy_cache_preview">मार्कडाउन स्टोरेज, संस्करण इतिहास, ऐप लॉग, ऐप लॉक और कैश रीबिल्ड。</string>
+    <string name="help_section_data_privacy_cache_content">+ डेटा गोपनीयता: सभी व्यक्तिगत जर्नल डेटा आपके भौतिक डिवाइस पर रहता है और कभी भी इससे बाहर नहीं जाता है। यजा आपके पाठ को ट्रैक करने के लिए क्लाउड डेटाबेस, रिमोट बैकअप सर्वर या टेलीमेट्री नहीं चलाता है。\n+ जर्नल प्रविष्टियां वर्ष और महीने के अनुसार व्यवस्थित मानक मार्कडाउन फाइलों के रूप में संग्रहीत होती हैं。\n+ संस्करण इतिहास संपादित करने, हटाने, लेबल लगाने और पुनरावलोकन परिवर्तनों से पहले स्नैपशॉट सुरक्षित रख सकता है。\n+ आप चुन सकते हैं कि कितने संस्करण रखने हैं और कितने दिनों तक इतिहास बरकरार रखना है。\n+ ऐप लॉग जर्नल पाठ को संग्रहीत किए बिना तकनीकी घटनाओं, क्रैश विवरण और कैश गतिविधि को रिकॉर्ड करता है。\n+ ऐप कैश रीबिल्ड आपको डेटा को मॉड्यूल के अनुसार रीफ़्रेश करने देता है, जिसमें टूडू और पूर्ण कैश रीबिल्ड शामिल हैं。\n+ ऐप लॉक पिन और फिंगरप्रिंट का समर्थन करता है。\n+ Yaja भारी अनुक्रमण और आँकड़े काम को स्थगित रखता है ताकि ऐप लॉन्च और सेव हमेशा चुस्त रहें。</string>
+
+    <string name="settings_app_log_title">ऐप लॉग</string>
+    <string name="settings_app_log_subtitle">गोपनीयता-सुरक्षित निदान और पिछले क्रैश विवरण देखें</string>
+    <string name="app_log_cd_share">ऐप लॉग साझा करें</string>
+    <string name="app_log_cd_clear">ऐप लॉग साफ़ करें</string>
+    <string name="app_log_privacy_title">गोपनीयता-सुरक्षित निदान</string>
+    <string name="app_log_privacy_description">यह लॉग प्रमुख ऐप घटनाओं, कैश/स्टोरेज संचालन, विजेट रीफ़्रेश और क्रैश विवरण रिकॉर्ड करता है। इसमें जर्नल प्रविष्टियां, टूडू पाठ या निजी नोट सामग्री शामिल नहीं है。</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">पिछले %d दिन रखें</item>
+        <item quantity="other">पिछले %d दिन रखें</item>
+    </plurals>
+    <string name="app_log_retention_description">पुरानी लॉग घटनाएं लॉगिंग के दौरान और इस सेटिंग के बदलते ही स्वतः हटा दी जाती हैं。</string>
+    <string name="app_log_empty">अभी तक कोई ऐप लॉग नहीं है।</string>
+    <string name="app_log_refresh">लॉग रीफ़्रेश करें</string>
+    <string name="app_log_share_empty">अभी तक कोई यजा ऐप लॉग प्रविष्टि नहीं है।</string>
+    <string name="app_log_share_subject">यजा ऐप लॉग</string>
+    <string name="app_log_share_chooser">यजा ऐप लॉग साझा करें</string>
+    <string name="app_log_local_time_format">%1$s | स्थानीय समय\n%2$s</string>
+    <string name="settings_website_title">यजा वेबसाइट</string>
+    <string name="settings_website_subtitle">अपडेट और विवरण के लिए आधिकारिक वेबसाइट खोलें</string>
+    <string name="settings_advanced_integrations_title">उन्नत एकीकरण</string>
+    <string name="settings_tasker_integration_title">Tasker एकीकरण</string>
+    <string name="settings_tasker_integration_subtitle">त्वरित कैप्चर क्रियाएं और जर्नल इवेंट ट्रिगर</string>
+    <string name="settings_shortcodes_subtitle">उन पुन: प्रयोज्य स्निपेट को प्रबंधित करें जो लिखते या त्वरित-कैप्चर करते समय विस्तारित होते हैं。</string>
+    <string name="settings_privacy_security_title">गोपनीयता और सुरक्षा</string>
+    <string name="settings_pin_lock_title">PIN लॉक</string>
+    <string name="settings_app_locked">ऐप लॉक है</string>
+    <string name="settings_app_unlocked">ऐप अनलॉक है</string>
+    <string name="settings_change_pin">PIN बदलें</string>
+    <string name="settings_biometric_unlock_title">बायोमेट्रिक अनलॉक</string>
+    <string name="settings_biometric_enabled_desc">फिंगरप्रिंट या फेस आईडी सक्षम</string>
+    <string name="settings_biometric_disabled_desc">PIN के बजाय बायोमेट्रिक का उपयोग करें</string>
+    <string name="settings_autolock_timeout_title">ऑटो-लॉक टाइमआउट</string>
+    <string name="settings_pin_lock_disclaimer">PIN लॉक ऐप तक अनधिकृत पहुंच को रोकता है लेकिन डिस्क पर आपके जर्नल डेटा को एन्क्रिप्ट नहीं करता है। सीधी फ़ाइल एक्सेस वाला कोई व्यक्ति अभी भी आपकी प्रविष्टियों को पढ़ सकता है。</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d मिनट</item>
+        <item quantity="other">%1$d मिनट</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">सिस्टम</string>
+    <string name="settings_theme_light">लाइट</string>
+    <string name="settings_theme_dark">डार्क</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">रंग</string>
+    <string name="settings_color_intensity_title">रंग तीव्रता</string>
+    <string name="settings_background_tint_title">पृष्ठभूमि रंग</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">कस्टम</string>
+    <string name="settings_font_size_label">फ़ॉन्ट आकार</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">थीम पूर्वावलोकन</string>
+    <string name="settings_journal_entry_preview">जर्नल प्रविष्टि</string>
+    <string name="settings_journal_entry_preview_desc">कार्ड, चिप्स और बटन इन रंगों का उपयोग करेंगे。</string>
+    <string name="settings_preview_chip_chip">चिप</string>
+    <string name="settings_preview_chip_accent">एक्सेंट</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">तीव्रता: %1$s</string>
+    <string name="settings_personal_themes_title">व्यक्तिगत थीम</string>
+    <string name="settings_theme_name_label">थीम नाम</string>
+    <string name="settings_main_color_label">मुख्य रंग</string>
+    <string name="settings_hue_label">ह्यू</string>
+    <string name="settings_sat_label">संतृप्ति</string>
+    <string name="settings_bright_label">चमक</string>
+    <string name="settings_generated_accents_title">उत्पन्न एक्सेंट</string>
+    <string name="settings_personal_theme_desc">एक रंग चुनें। Yaja मेल खाने वाले एक्सेंट और सहायक रंग बनाता है。</string>
+    <string name="settings_preview_chip_main">मुख्य</string>
+    <string name="settings_preview_chip_support">सहायक</string>
+    <string name="settings_no_font_selected">कोई फ़ॉन्ट चयनित नहीं</string>
+    <string name="settings_custom_font_desc">कोई भी यूनिकोड .ttf या .otf फ़ाइल चुनें - जैसे देवनागरी फ़ॉन्ट। फ़ॉन्ट की कमी वाले वर्णों के लिए सिस्टम फ़ॉन्ट का उपयोग किया जाएगा。</string>
+    <string name="settings_font_replace">बदलें</string>
+    <string name="settings_choose_font_file">फ़ॉन्ट फ़ाइल चुनें</string>
+    <string name="settings_intensity_muted">म्यूट</string>
+    <string name="settings_intensity_normal">सामान्य</string>
+    <string name="settings_intensity_vivid">ज्वलंत</string>
+    <string name="settings_intensity_pop">पॉप</string>
+    <string name="settings_tint_clean">क्लीन</string>
+    <string name="settings_tint_soft">सॉफ्ट</string>
+    <string name="settings_tint_rich">रिच</string>
+    <string name="settings_tint_deep">डीप</string>
+    <string name="settings_accent_complementary">पूरक</string>
+    <string name="settings_accent_analogous">समान</string>
+    <string name="settings_accent_triadic">त्रिकोणीय</string>
+    <string name="settings_accent_soft">सॉफ्ट</string>
+    <string name="settings_mono_weight_thin">पतला</string>
+    <string name="settings_mono_weight_extra_light">अतिरिक्त हल्का</string>
+    <string name="settings_mono_weight_light">हल्का</string>
+    <string name="settings_mono_weight_regular">नियमित</string>
+    <string name="settings_mono_weight_medium">मध्यम</string>
+    <string name="settings_mono_weight_semi_bold">अर्ध बोल्ड</string>
+    <string name="settings_mono_weight_bold">बोल्ड</string>
+    <string name="settings_mono_weight_extra_bold">अतिरिक्त बोल्ड</string>
+    <string name="settings_mono_weight_title">वजन</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">तिथि कीवर्ड जोड़ें</string>
+    <string name="settings_keyword_label">कीवर्ड</string>
+    <string name="settings_keyword_placeholder_example">जैसे: कल</string>
+    <string name="settings_means_label">अर्थ</string>
+    <string name="settings_add_button">जोड़ें</string>
+    <string name="settings_no_keywords_yet">अभी तक कोई कीवर्ड नहीं जोड़ा गया है।</string>
+    <string name="settings_added_keywords_title">जोड़े गए कीवर्ड (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">कीवर्ड जोड़ें</string>
+    <string name="keywords_dialog_add_title">कीवर्ड जोड़ें</string>
+    <string name="keywords_dialog_edit_title">कीवर्ड संपादित करें</string>
+    <string name="keywords_cd_import_csv">CSV आयात करें</string>
+    <string name="keywords_cd_export_csv">CSV निर्यात करें</string>
+    <string name="keywords_cd_download_template">टेम्पलेट डाउनलोड करें</string>
+    <string name="rebuild_cache_storage_transparency_title">ऑन-डिवाइस स्टोरेज पारदर्शिता</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja एक सुरक्षित स्थानीय स्टोरेज मॉडल का उपयोग करता है। आपका व्यक्तिगत जर्नल डेटा स्थानीय रहता है और कभी भी आपके डिवाइस से बाहर नहीं जाता है:</string>
+    <string name="rebuild_cache_source_of_truth_title">सत्य का स्रोत (मार्कडाउन फ़ाइलें)</string>
+    <string name="rebuild_cache_source_of_truth_desc">सभी प्रविष्टियाँ, चेकलिस्ट आइटम (टूडू), टाइमलाइन इवेंट, स्टार और टैग स्थायी रूप से आपके चयनित स्थानीय जर्नल फ़ोल्डर में सादे पाठ मार्कडाउन (.md) फ़ाइलों में सहेजे जाते हैं। आपका डेटा पूरी तरह से आपके स्वामित्व में है और पूरी तरह से आपके डिवाइस पर रहता है。</string>
+    <string name="rebuild_cache_read_cache_title">रीड कैश और इंडेक्स (SQLite डेटाबेस)</string>
+    <string name="rebuild_cache_read_cache_desc">हर स्क्रॉल पर फ़ाइल सिस्टम को स्कैन किए बिना त्वरित स्क्रीन लोडिंग, कैलेंडर हाइलाइट्स, कीवर्ड और आँकड़े सक्षम करने के लिए, Yaja आपकी मार्कडाउन फ़ाइलों को पार्स करता है और उन्हें आपके डिवाइस पर एक स्थानीय Room SQLite डेटाबेस में अनुक्रमित करता है。</string>
+    <string name="rebuild_cache_local_private_title">100% स्थानीय और निजी</string>
+    <string name="rebuild_cache_local_private_desc">Yaja के पास कोई क्लाउड डेटाबेस, रिमोट बैकअप सर्वर या आपके पाठ को ट्रैक करने वाली टेलीमेट्री नहीं है। सभी जर्नल प्रविष्टियाँ और पार्स किया गया डेटा आपके भौतिक डिवाइस पर ही रहता है और कभी इससे बाहर नहीं जाता है。</string>
+    <string name="keywords_export_success">कीवर्ड निर्यात किए गए</string>
+    <string name="keywords_export_failed">कीवर्ड निर्यात नहीं किए जा सके</string>
+    <string name="keywords_template_saved">टेम्पलेट सहेजा गया</string>
+    <string name="keywords_template_save_failed">टेम्पलेट सहेजा नहीं जा सका</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d कीवर्ड आयात किया गया</item>
+        <item quantity="other">%d कीवर्ड आयात किए गए</item>
+    </plurals>
+    <string name="keywords_import_none_valid">कोई मान्य कीवर्ड नहीं मिला</string>
+    <string name="keywords_import_failed">कीवर्ड आयात नहीं किए जा सके</string>
+    <string name="keywords_status_indexing">अनुक्रमण जारी है</string>
+    <string name="keywords_status_indexed">अनुक्रमित</string>
+    <string name="keywords_metric_mentions">उल्लेख</string>
+    <string name="keywords_metric_days">दिन</string>
+    <string name="keywords_timeline_range_all">सभी</string>
+    <string name="keywords_connections_filter_all">सभी</string>
+    <string name="keywords_connections_filter_people">लोग</string>
+    <string name="keywords_connections_filter_places">स्थान</string>
+    <string name="keywords_connections_filter_recent">हाल के</string>
+    <string name="keywords_connections_filter_strongest">सबसे मजबूत</string>
+    <string name="keywords_filter_needs_reindex">पुनः अनुक्रमण आवश्यक</string>
+    <string name="keywords_search_placeholder">लोग, स्थान, उपनाम, संबंध खोजें</string>
+    <string name="keywords_refreshing_counters">कीवर्ड गणना ताज़ा की जा रही है…</string>
+    <string name="keywords_empty_title">अभी तक कोई कीवर्ड नहीं</string>
+    <string name="keywords_empty_subtitle">उन लोगों और स्थानों को जोड़ें जिन्हें ऐप स्थानीय रूप से ट्रैक करे।</string>
+    <string name="keywords_no_results_title">कोई मेल खाता परिणाम नहीं</string>
+    <string name="keywords_no_results_subtitle">कोई अलग खोज, क्रम या फ़िल्टर आज़माएं।</string>
+    <string name="keywords_people_title">लोग</string>
+    <string name="keywords_places_title">स्थान</string>
+    <string name="keywords_people_empty">अभी तक कोई व्यक्ति नहीं जोड़ा गया।</string>
+    <string name="keywords_people_filtered_empty">मौजूदा फ़िल्टर से मेल खाता कोई व्यक्ति नहीं।</string>
+    <string name="keywords_places_empty">अभी तक कोई स्थान नहीं जोड़ा गया।</string>
+    <string name="keywords_places_filtered_empty">मौजूदा फ़िल्टर से मेल खाता कोई स्थान नहीं।</string>
+    <string name="keywords_delete_person_title">व्यक्ति को हटाएं?</string>
+    <string name="keywords_delete_place_title">स्थान को हटाएं?</string>
+    <string name="keywords_delete_message">"%1$s" को लोग और स्थान से हटाएं? इससे यह कीवर्ड और इसके अनुक्रमित मेल हटा दिए जाएंगे।</string>
+    <string name="keywords_timeline_title">समय के साथ उल्लेख</string>
+    <string name="keywords_timeline_empty_pattern">अभी तक कोई मासिक पैटर्न नहीं</string>
+    <string name="keywords_timeline_total_format">कुल %1$d</string>
+    <string name="keywords_timeline_empty_chart">अनुक्रमण में प्रविष्टियां मिलने के बाद उल्लेख यहां चार्ट के रूप में दिखाई देंगे।</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">पीक %1$s • %2$d उल्लेख</item>
+        <item quantity="other">पीक %1$s • %2$d उल्लेख</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">उल्लेखों वाले दिन</string>
+    <string name="keywords_recency_title">हालिया स्थिति</string>
+    <string name="keywords_recency_none">अभी तक कोई मिलान नहीं</string>
+    <string name="keywords_recency_today">आज उल्लेख किया गया</string>
+    <string name="keywords_recency_yesterday">कल उल्लेख किया गया</string>
+    <string name="keywords_recency_days_ago_format">पिछला उल्लेख %1$d दिन पहले</string>
+    <string name="keywords_first_seen">पहली बार देखा गया</string>
+    <string name="keywords_last_seen">आखरी बार देखा गया</string>
+    <string name="keywords_unknown">अज्ञात</string>
+    <string name="keywords_co_mentioned_with">सह-उल्लेख किया गया</string>
+    <string name="keywords_connections_title">कनेक्शन</string>
+    <string name="keywords_connections_subtitle">बार-बार ओवरलैप और हालिया स्थिति के आधार पर रैंक किया गया</string>
+    <string name="keywords_connections_linked_format">%1$d जुड़े हुए</string>
+    <string name="keywords_connections_show">कनेक्शन दिखाएं</string>
+    <string name="keywords_connections_hide">कनेक्शन छिपाएं</string>
+    <string name="keywords_connections_items_in_view">इस व्यू में %1$d आइटम</string>
+    <string name="keywords_connections_tap_to_expand">रैंक किए गए %1$d लिंक का विस्तार करने के लिए टैप करें</string>
+    <string name="keywords_connections_empty">इस फ़िल्टर के लिए अभी तक कोई कनेक्शन नहीं है।</string>
+    <string name="keywords_open_day">दिन खोलें</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">सबसे अधिक उल्लेखित</string>
+    <string name="keywords_sort_recently_added">हाल ही में जोड़े गए</string>
+    <string name="keywords_peak_mentions_format">पीक %1$s • %2$d उल्लेख %3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d दिन</string>
+    <string name="keywords_connections_meta_days_suffix_plural">दिन</string>
+    <string name="keywords_connections_meta_together"> एक साथ</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d साझा प्रविष्टि</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">यां</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">यां</string>
+    <string name="keywords_connections_meta_last_prefix"> | आखरी %1$s</string>
+    <string name="keywords_connections_score_format">स्कोर %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d दिन</string>
+    <string name="keywords_connections_shared_chip">साझा %1$d</string>
+    <string name="keywords_match_type_exact">सटीक</string>
+    <string name="keywords_match_type_fuzzy">फजी</string>
+    <string name="keywords_match_type_alias">उपनाम</string>
+    <string name="keywords_match_type_relation">संबंध</string>
+    <string name="keywords_action_delete">हटाएं</string>
+    <string name="keywords_action_edit">संपादित करें</string>
+    <string name="keywords_action_view">देखें</string>
+    <string name="keywords_name_label">नाम</string>
+    <string name="keywords_relation_context_label">संबंध / संदर्भ</string>
+    <string name="keywords_aliases_label">उपनाम (अल्पविराम से अलग करें)</string>
+    <string name="keywords_aliases_label_short">उपनाम</string>
+    <string name="keywords_type_person">व्यक्ति</string>
+    <string name="keywords_type_place">स्थान</string>
+    <string name="keywords_save_disabled_hint">कीवर्ड बंद स्थिति में सहेजे जाते हैं। जब आप अनुक्रमण चलाना चाहते हैं तो उन्हें सूची से सक्षम करें।</string>
+    <string name="settings_meaning_yesterday">कल</string>
+    <string name="settings_meaning_today">आज</string>
+    <string name="lookback_chip_weekly">साप्ताहिक</string>
+    <string name="lookback_chip_monthly">मासिक</string>
+    <string name="timeline_screen_title">टाइमलाइन</string>
+    <string name="timeline_empty_title">अभी यहाँ कुछ भी नहीं है</string>
+    <string name="timeline_empty_subtitle">एक अलग फ़िल्टर आज़माएं या लेबल खोज को समायोजित करें।</string>
+    <string name="timeline_quick_today">आज</string>
+    <string name="timeline_quick_month">महीना</string>
+
+    <string name="timeline_quick_filters">फ़िल्टर</string>
+    <string name="timeline_all_dates">सभी तिथियां</string>
+    <string name="timeline_label_prefix">लेबल: %1$s</string>
+    <string name="timeline_label_search_placeholder">दिन के लेबल खोजें</string>
+    <string name="timeline_filters_title">टाइमलाइन फ़िल्टर और लेआउट</string>
+    <string name="settings_meaning_tomorrow">कल (आने वाला)</string>
+    <string name="settings_meaning_day_before_yesterday">परसों (बीता हुआ)</string>
+    <string name="settings_meaning_day_after_tomorrow">परसों (आने वाला)</string>
+    <string name="settings_meaning_last_week">पिछला सप्ताह</string>
+    <string name="settings_meaning_next_week">अगला सप्ताह</string>
+    <string name="settings_meaning_monday">सोमवार</string>
+    <string name="settings_meaning_tuesday">मंगलवार</string>
+    <string name="settings_meaning_wednesday">बुधवार</string>
+    <string name="settings_meaning_thursday">गुरुवार</string>
+    <string name="settings_meaning_friday">शुक्रवार</string>
+    <string name="settings_meaning_saturday">शनिवार</string>
+    <string name="settings_meaning_sunday">रविवार</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">ऐप आंतरिक स्टोरेज</string>
+    <string name="settings_storage_internal_default">ऐप आंतरिक स्टोरेज (डिफ़ॉल्ट)</string>
+    <string name="settings_storage_new_folder_fallback">नया फ़ोल्डर</string>
+    <string name="settings_storage_current_folder_fallback">वर्तमान फ़ोल्डर</string>
+    <string name="settings_storage_move_confirm">सभी मौजूदा प्रविष्टियों को %1$s से %2$s में स्थानांतरित कर दिया जाएगा। क्या आप जारी रखना चाहते हैं?</string>
+    <string name="settings_restore_added_skipped">जोड़े गए: %1$d\nछोड़े गए डुप्लिकेट: %2$d</string>
+    <string name="settings_storage_custom_folder">कस्टम फ़ोल्डर:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">शॉर्टकट सहायता</string>
+    <string name="addentry_cd_insert_template">टेम्पलेट डालें</string>
+    <string name="addentry_cd_jump_to_today">आज पर जाएं</string>
+    <string name="addentry_cd_share">साझा करें</string>
+    <string name="addentry_cd_bold">बोल्ड</string>
+    <string name="addentry_cd_italic">इटैलिक</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">समय सेट करें</string>
+    <string name="addentry_event_chip">इवेंट</string>
+    <string name="addentry_pick_time_title">समय चुनें</string>
+    <string name="addentry_hour_label">घंटा</string>
+    <string name="addentry_minute_label">मिनट</string>
+    <string name="addentry_new_event_title">नया इवेंट</string>
+    <string name="addentry_title_label">शीर्षक</string>
+    <string name="addentry_event_description_label">इवेंट विवरण</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">टूडू मिले</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d पंक्ति को चेकलिस्ट में बदलें</item>
+        <item quantity="other">%1$d पंक्तियों को चेकलिस्ट में बदलें</item>
+    </plurals>
+    <string name="addentry_people_places_title">लोग और स्थान</string>
+    <string name="addentry_no_tracked_mentions">इस प्रविष्टि में कोई ट्रैक किए गए लोग या स्थान नहीं मिले।</string>
+    <string name="addentry_day_memory_title">दिन की यादें</string>
+    <string name="addentry_star_day_title">इस दिन को स्टार करें</string>
+    <string name="addentry_star_day_subtitle">इसे एक मुख्य बिंदु के रूप में सहेजें ताकि यह लुकबैक में दिखाई दे।</string>
+    <string name="addentry_day_label_label">दिन का लेबल</string>
+    <string name="addentry_day_label_placeholder">जैसे: रीसेट दिन</string>
+    <string name="addentry_follow_up_title">अनुवर्ती तिथि</string>
+    <string name="addentry_next_month">अगला महीना</string>
+    <string name="addentry_custom">कस्टम</string>
+    <string name="addentry_due_date_format">नियत %1$s</string>
+    <string name="addentry_cd_clear_follow_up">अनुवर्ती साफ़ करें</string>
+    <string name="addentry_follow_up_note_label">अनुवर्ती नोट</string>
+    <string name="addentry_follow_up_note_placeholder">आपको किस चीज़ पर पुनः विचार करना चाहिए?</string>
+    <string name="addentry_review_entry_title">प्रविष्टि की समीक्षा करें</string>
+    <string name="addentry_review_entry_subtitle">सहेजने से पहले त्वरित जाँच। टूडू निकालें, ट्रैक किए गए उल्लेखों की जांच करें, और महत्वपूर्ण होने पर दिन को चिह्नित करें।</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d टूडू</item>
+        <item quantity="other">%1$d टूडू</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d उल्लेख</item>
+        <item quantity="other">%1$d उल्लेख</item>
+    </plurals>
+    <string name="addentry_save_entry_button">प्रविष्टि सहेजें</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">बलावों को खारिज करें</string>
+    <string name="addentry_discard_changes_message">आपके पास अनसहेजे गए बदलाव हैं। वापस जाएं और उन्हें खारिज करें, या संपादन जारी रखने के लिए यहीं रहें।</string>
+    <string name="addentry_go_back">वापस जाएं</string>
+    <string name="addentry_stay">यहीं रहें</string>
+    <string name="addentry_shortcuts_title">शॉर्टकट</string>
+    <string name="addentry_help_bold_suffix"> पाठ को बोल्ड बनाने के लिए (या पाठ का चयन करें और बोल्ड बटन पर टैप करें)</string>
+    <string name="addentry_help_italic_suffix"> पाठ को इटैलिक बनाने के लिए (या पाठ का चयन करें और इटैलिक बटन पर टैप करें)</string>
+    <string name="addentry_help_today_suffix">: वर्तमान तिथि में विस्तारित होता है (जैसे, 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: वर्तमान समय में विस्तारित होता है (जैसे, 14:30)</string>
+    <string name="addentry_help_week_suffix">: वर्तमान सप्ताह में विस्तारित होता है (जैसे, सप्ताह 52)</string>
+    <string name="addentry_help_day_suffix">: वर्तमान दिन में विस्तारित होता है (जैसे, सोमवार)</string>
+    <string name="addentry_help_todo_suffix">: एक टूडू चेकबॉक्स में विस्तारित होता है (जैसे, [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: जब टूडू चेकबॉक्स वाली लाइन में कहीं भी दर्ज किया जाता है, तो यह इसे टॉगल कर देगा।</string>
+    <string name="addentry_okey">ठीक है!</string>
+    <string name="addentry_template_merge_message">इस ड्राफ्ट में पहले से ही पाठ है। चुनें कि टेम्पलेट को कैसे रखा जाना चाहिए।</string>
+    <string name="addentry_template_merge_subtitle">\'नीचे डालें\' से वर्तमान ड्राफ्ट बना रहता है। \'कर्सर पर\' से टेम्पलेट आपके वर्तमान कर्सर स्थान पर आ जाता है।</string>
+    <string name="addentry_insert_below">नीचे डालें</string>
+    <string name="addentry_at_cursor">कर्सर पर</string>
+    <string name="addentry_replace_draft">ड्राफ्ट बदलें</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">लोकप्रिय</string>
+    <string name="addentry_new_chip">नया</string>
+    <string name="addentry_best_for_format">इसके लिए सर्वोत्तम: %1$s</string>
+    <string name="addentry_cd_remove_favorite">टेम्पलेट पसंदीदा से हटाएं</string>
+    <string name="addentry_cd_favorite_template">पसंदीदा टेम्पलेट</string>
+    <string name="addentry_checklist_chip">चेकलिस्ट</string>
+    <string name="addentry_followup_chip">अनुवर्ती</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d अनुभाग</item>
+        <item quantity="other">%1$d अनुभाग</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">पसंदीदा टेम्पलेट टॉगल करें</string>
+    <string name="addentry_template_preview_label">टेम्पलेट पूर्वावलोकन</string>
+    <string name="addentry_use_template_button">टेम्पलेट का उपयोग करें</string>
+    <string name="addentry_start_blank_title">खाली शुरू करें</string>
+    <string name="addentry_start_blank_subtitle">टेम्पलेट्स को छोड़ें और एक खाली ड्राफ्ट से लिखना शुरू करें।</string>
+    <string name="addentry_blank_entry_name">खाली प्रविष्टि</string>
+    <string name="addentry_blank_entry_description">साधारण जर्नल प्रविष्टि</string>
+    <string name="addentry_blank_category">सामान्य</string>
+    <string name="addentry_quick_picks_title">त्वरित चयन</string>
+    <string name="addentry_sort_recommended">अनुशंसित</string>
+    <string name="addentry_sort_recent">हालिया</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">कोई टेम्पलेट नहीं मिला</string>
+    <string name="addentry_no_templates_subtitle">कोई अलग खोज या श्रेणी आज़माएं।</string>
+    <string name="addentry_search_templates_label">टेम्पलेट खोजें</string>
+    <string name="addentry_search_templates_placeholder">मीटिंग, स्वास्थ्य, चिंतन...</string>
+    <string name="addentry_cd_clear_search">खोज साफ़ करें</string>
+    <string name="addentry_choose_template_title">एक टेम्पलेट चुनें</string>
+    <string name="addentry_templates_ready_format">%2$d में से %1$d टेम्पलेट तैयार</string>
+    <string name="addentry_category_all">सभी</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">क्या हुआ?</string>
+    <string name="addentry_todo_chip">टू-डू</string>
+    <string name="addentry_numbered_list_chip">N सूची</string>
+    <string name="addentry_bulleted_list_chip">B सूची</string>
+    <string name="addentry_words_count_format">%1$d शब्द</string>
+    <string name="addentry_chars_count_format">%1$d वर्ण</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">आज अनुवर्ती नियत है</item>
+        <item quantity="other">आज अनुवर्ती नियत हैं</item>
+    </plurals>
+    <string name="home_followup_subtitle">जुड़े हुए दिन पर वापस जाएं और वहां से जारी रखें।</string>
+    <string name="home_from_date_format">%1$s से</string>
+    <string name="home_more_due_today_format">आज +%1$d और नियत हैं</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">लेबल जोड़ें</string>
+    <string name="home_edit_label_title">लेबल संपादित करें</string>
+    <string name="home_day_label_hint">इस दिन के लिए एक छोटा लेबल जोड़ें (अधिकतम 30 वर्ण)।</string>
+    <string name="home_day_label_placeholder">जैसे: स्कूल का पहला दिन</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">इस दिन के लिए एक लेबल जोड़ें</string>
+    <string name="home_star_label_hint">इस दिन को एक यादगार लेबल दें (अधिकतम 30 वर्ण)</string>
+    <string name="home_star_label_placeholder">जैसे: मेरा जन्मदिन, स्कूल में</string>
+    <string name="home_star_button">स्टार</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">प्रविष्टि हटाई गई</item>
+        <item quantity="other">%1$d प्रविष्टियाँ हटाई गईं</item>
+    </plurals>
+    <string name="home_restore_button">पुनर्स्थापित करें</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">प्रविष्टियां खोजें...</string>
+    <string name="home_cd_search">खोजें</string>
+    <string name="home_cd_clear_search">खोज साफ़ करें</string>
+    <string name="home_cd_favorite">पसंदीदा</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">प्रविष्टियां</string>
+    <string name="home_stat_words">शब्द</string>
+    <string name="home_stat_chars">वर्ण</string>
+    <string name="home_stat_versions">संस्करण</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">लेबल जोड़ें</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d मिलान मिला</item>
+        <item quantity="other">%1$d मिलान मिले</item>
+    </plurals>
+    <string name="home_no_keyword_matches">इस कीवर्ड के लिए अभी तक कोई मिलान नहीं मिला है।</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">खाली स्थिति आइकन</string>
+    <string name="home_empty_future">यह भविष्य है। एक अनुस्मारक रिकॉर्ड करें!</string>
+    <string name="home_empty_past">आप अतीत में हैं। यादों के धुंधला होने से पहले उन्हें रिकॉर्ड करें...</string>
+    <string name="home_empty_today">अभी कोई प्रविष्टि नहीं है। अपना दिन शुरू करें।</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">सहेजा जा रहा है</string>
+    <string name="home_cd_add_entry">प्रविष्टि जोड़ें</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d हटाएं</string>
+    <string name="home_future_date_title">भविष्य की तिथि प्रविष्टि</string>
+    <string name="home_future_date_message_format">आप भविष्य की तिथि (%1$s) के लिए प्रविष्टि जोड़ रहे हैं। क्या आप जारी रखना चाहते हैं?</string>
+    <string name="home_cache_issue_title">डेटा कैश समस्या का पता चला</string>
+    <string name="home_cache_issue_message">ऐसा लगता है कि कैश से काफी संख्या में जर्नल प्रविष्टियां गायब हैं। क्या आप उन्हें पुनर्स्थापित करने के लिए पूर्ण डेटा कैश रीफ़्रेश करना चाहेंगे?</string>
+    <string name="home_refresh_button">रीफ़्रेश करें</string>
+    <string name="home_ignore_button">अनदेखा करें</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">लोग और स्थान</string>
+    <string name="nav_statistics">आँकड़े</string>
+    <string name="nav_todos">टूडू</string>
+    <string name="nav_rebuild_index">डेटाबेस इंडेक्स पुनर्निर्मित करें</string>
+    <string name="nav_backup_data">डेटा बैकअप लें</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">स्थिति</string>
+    <string name="nav_finishing_index_rebuild">इंडेक्स पुनर्निर्माण पूरा किया जा रहा है...</string>
+    <string name="nav_rebuilding_index">डेटाबेस इंडेक्स का पुनर्निर्माण किया जा रहा है</string>
+    <string name="nav_refreshing_index">इंडेक्स रीफ़्रेश किया जा रहा है</string>
+    <string name="nav_backup_too_old">बैकअप बहुत पुराना है...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">कार्य प्रगति पर है...</string>
+    <string name="nav_eta_almost_done">लगभग पूरा हो गया</string>
+    <string name="nav_eta_seconds_left_format">~%1$d सेकंड शेष</string>
+    <string name="nav_eta_minutes_left_format">~%1$d मिनट शेष</string>
+    <string name="nav_eta_hours_left_format">~%1$d घंटे शेष</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">मेनू</string>
+    <string name="nav_cd_rj_logo">RJ लोगो</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">वेबसाइट</string>
+    <string name="nav_cd_share_app">ऐप साझा करें</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">यजा लोगो</string>
+    <string name="nav_easter_quote_part1">\"एक गुजरता हुआ विचार या दोपहर के भोजन में क्या खाया, इसे लिख लें; इसका गंभीर होना आवश्यक नहीं है।\n</string>
+    <string name="nav_easter_quote_part2">आपके शब्द बस अस्तित्व में हो सकते हैं।</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">RJ की प्रयोगशालाओं से</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">यजा साझा करें</string>
+    <string name="nav_share_text_body">यजा — yet another journaling app\n\nएक ध्यान भटकाए बिना लिखने वाला दैनिक जर्नल जो प्रविष्टियों को सादे मार्कडाउन फ़ाइलों के रूप में सहेजता है।\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">स्टोरेज स्थान बदलें</string>
+    <string name="settings_change_storage_location_message">सभी मौजूदा प्रविष्टियों को %1$s से %2$s में स्थानांतरित कर दिया जाएगा। क्या आप जारी रखना चाहते हैं?</string>
+    <string name="settings_yes">हाँ</string>
+    <string name="settings_no">नहीं</string>
+    <string name="settings_restore_summary_title">पुनर्प्राप्ति सारांश</string>
+    <string name="settings_restore_section_journal">जर्नल</string>
+    <string name="settings_restore_section_shortcodes">शॉर्टकोड</string>
+    <string name="settings_restore_section_date_keywords">तिथि कीवर्ड</string>
+    <string name="settings_restore_section_people_places">लोग और स्थान</string>
+    <string name="settings_restore_journal_summary">नए दिनों में जोड़े गए: %1$d\nमौजूदा दिनों में मर्ज किए गए: %2$d\nछोड़े गए डुप्लिकेट जर्नल प्रविष्टियां: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">जोड़े गए: %1$d\nछोड़े गए डुप्लिकेट: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">जोड़े गए: %1$d\nछोड़े गए डुप्लिकेट: %2$d</string>
+    <string name="settings_restore_people_places_summary">जोड़े गए: %1$d\nछोड़े गए डुप्लिकेट: %2$d</string>
+
+    <string name="rebuild_tools_title">पुनर्निर्माण उपकरण</string>
+    <string name="rebuild_tools_back">वापस</string>
+    <string name="rebuild_tools_intro">पहले लक्षित पुनर्निर्माणों का उपयोग करें। डेटाबेस का पुनर्निर्माण केवल स्टोरेज परिवर्तन, डेटाबेस करप्शन या इंडेक्स बेमेल होने की स्थिति में ही किया जाता है।</string>
+    <string name="rebuild_todo_index_title">टूडू इंडेक्स पुनर्निर्मित करें</string>
+    <string name="rebuild_todo_index_subtitle">जर्नल फ़ाइलों से टूडू को रीफ़्रेश करें और टूडू स्क्रीन/विजेट को अपडेट करें। जब टूडू पुराने लगें तो यह सबसे अच्छा काम करता है।</string>
+    <string name="rebuild_todo_index_button">टूडू पुनर्निर्मित करें</string>
+    <string name="rebuild_people_places_title">लोग और स्थान पुनर्निर्मित करें</string>
+    <string name="rebuild_people_places_subtitle">कीवर्ड उपनाम, सह-उल्लेख, रुझान और संबंध डेटा को रीफ़्रेश करें।</string>
+    <string name="rebuild_people_places_button">लोग और स्थान पुनर्निर्मित करें</string>
+    <string name="rebuild_database_title">पूर्ण डेटाबेस पुनर्निर्माण</string>
+    <string name="rebuild_database_subtitle">मार्कडाउन फ़ाइलों से डेटाबेस कैश को फिर से संकलित करें। यह शुरुआत से प्रविष्टियों, गणनाओं, टूडू, लोग और स्थान और विजेट्स को फिर से इंडेक्स करता है।</string>
+    <string name="rebuild_database_button">डेटाबेस पुनर्निर्मित करें</string>
+    <string name="rebuild_database_confirm_title">डेटाबेस इंडेक्स पुनर्निर्मित करें</string>
+    <string name="rebuild_database_confirm_message">यह आपके मार्कडाउन फ़ाइलों से संपूर्ण Room SQLite डेटाबेस को साफ़ करेगा और फिर से अनुक्रमित करेगा। बड़े जर्नल्स के लिए, इसमें कुछ मिनट लग सकते हैं।</string>
+    <string name="rebuild_database_confirm_start">पुनर्निर्माण शुरू करें</string>
+    <string name="rebuild_database_status_title">डेटाबेस इंडेक्स की स्थिति</string>
+    <string name="rebuild_database_storage_engine">स्टोरेज इंजन</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite डेटाबेस</string>
+    <string name="rebuild_database_indexed_days">अनुक्रमित दिन</string>
+    <string name="rebuild_database_indexed_days_value">%1$d दिन अनुक्रमित</string>
+    <string name="rebuild_database_file_size">डेटाबेस फ़ाइल का आकार</string>
+    <string name="rebuild_database_last_sync">अंतिम इंडेक्स सिंक</string>
+    <string name="rebuild_database_age_never">कभी नहीं</string>
+    <string name="rebuild_database_age_just_now">अभी</string>
+    <string name="rebuild_database_age_one_minute">1 मिनट पहले</string>
+    <string name="rebuild_database_age_minutes">%1$d मिनट पहले</string>
+    <string name="rebuild_database_age_one_hour">1 घंटा पहले</string>
+    <string name="rebuild_database_age_hours">%1$d घंटे पहले</string>
+    <string name="shortcodes_title">शॉर्टकोड</string>
+    <string name="shortcodes_import_cd">आयात</string>
+    <string name="shortcodes_export_cd">निर्यात</string>
+    <string name="shortcodes_help_cd">सहायता</string>
+    <string name="shortcodes_new">नया शॉर्टकोड</string>
+    <string name="shortcodes_empty_title">कोई कस्टम शॉर्टकोड नहीं</string>
+    <string name="shortcodes_empty_subtitle">@yday जैसे स्निपेट को डायनेमिक टेक्स्ट में विस्तृत करने के लिए एक जोड़ें।</string>
+    <string name="shortcodes_dynamic_dates_hint">डायनेमिक तारीखों के लिए {{today:format}} का उपयोग करें।</string>
+    <string name="shortcodes_help_title">शॉर्टकोड सहायता</string>
+    <string name="shortcodes_help_built_in">अंतर्निहित शॉर्टकोड:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (चेकबॉक्स), @x (चेकबॉक्स टॉगल करें)</string>
+    <string name="shortcodes_help_dynamic_patterns">डायनेमिक पैटर्न:</string>
+
+    <string name="shortcodes_help_dynamic_desc">Use {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, या {{now:FORMAT}} का उपयोग करें।</string>
+    <string name="shortcodes_help_example">उदाहरण: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">सामान्य प्रारूप: dd-MM-yy, HH:mm, EEEE (दिन का नाम)।</string>
+    <string name="action_close">बंद करें</string>
+    <string name="keyword_detail_title_fallback">कीवर्ड</string>
+    <string name="keyword_detail_not_found">कीवर्ड नहीं मिला</string>
+    <string name="keyword_detail_last_indexed">अंतिम बार अनुक्रमित %1$s</string>
+    <string name="keyword_detail_mentions_section">उल्लेख</string>
+    <string name="pin_biometric_prompt_title">बायोमेट्रिक से अनलॉक करें</string>
+    <string name="pin_biometric_prompt_subtitle">अनलॉक करने के लिए अपने फ़िंगरप्रिंट या चेहरे का उपयोग करें</string>
+    <string name="pin_error_no_biometric_enrolled">कोई बायोमेट्रिक नामांकित नहीं है। कृपया डिवाइस सेटिंग्स में फ़िंगरप्रिंट या चेहरा नामांकित करें।</string>
+    <string name="pin_error_hardware_unavailable">बायोमेट्रिक हार्डवेयर अनुपलब्ध है।</string>
+    <string name="pin_error_no_hardware">इस डिवाइस में बायोमेट्रिक हार्डवेयर नहीं है।</string>
+    <string name="pin_error_not_available">बायोमेट्रिक प्रमाणीकरण उपलब्ध नहीं है।</string>
+    <string name="pin_title_confirm">PIN की पुष्टि करें</string>
+    <string name="pin_title_set_new">नया PIN सेट करें</string>
+    <string name="pin_title_disable">अक्षम करने के लिए वर्तमान PIN दर्ज करें</string>
+    <string name="pin_title_enter">PIN दर्ज करें</string>
+    <string name="pin_error_incorrect">गलत PIN। पुनः प्रयास करें।</string>
+    <string name="pin_error_mismatch">PIN मेल नहीं खाते। फिर से शुरू करें।</string>
+    <string name="pin_cd_use_biometric">बायोमेट्रिक का उपयोग करें</string>
+    <string name="pin_cd_backspace">बैकस्पेस</string>
+    <string name="timeline_preview_empty_labeled">इस दिन को लेबल किया गया है, लेकिन अभी तक कोई जर्नल प्रविष्टि नहीं है।</string>
+    <string name="timeline_preview_loading">पूर्वावलोकन लोड हो रहा है...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d और प्रविष्टि इस दिन</item>
+        <item quantity="other">+ %1$d और प्रविष्टियाँ इस दिन</item>
+    </plurals>
+    <string name="timeline_preview_open_day">यह दिन खोलें</string>
+    <string name="timeline_chip_today">आज</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d प्रविष्टि</item>
+        <item quantity="other">%1$d प्रविष्टियाँ</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">अनुवर्ती</string>
+    <string name="timeline_chip_label_only">केवल लेबल</string>
+    <string name="timeline_cd_favorite">पसंदीदा</string>
+    <string name="version_history_title">संस्करण इतिहास</string>
+    <string name="version_history_day_versions_title">दिन के संस्करण</string>
+    <string name="version_history_keep_copies_title">सुरक्षित प्रतियां रखें</string>
+    <string name="version_history_keep_copies_subtitle">यजा द्वारा दिन की फ़ाइल में बदलाव करने से पहले, यह वर्तमान फ़ाइल को इतिहास फ़ाइलों के अंतर्गत ऐप डेटा में सहेजता है।</string>
+    <string name="version_history_versions_kept_title">प्रति दिन रखे जाने वाले संस्करण</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja प्रत्येक तिथि के लिए नवीनतम %1$d संस्करण रखता है।</item>
+        <item quantity="other">Yaja प्रत्येक तिथि के लिए नवीनतम %1$d संस्करण रखता है।</item>
+    </plurals>
+    <string name="version_history_retention_title">प्रतिधारण (Retention)</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">%1$d दिन से पुराने स्नैपशॉट स्वचालित रूप से साफ़ हो जाते हैं।</item>
+        <item quantity="other">%1$d दिनों से पुराने स्नैपशॉट स्वचालित रूप से साफ़ हो जाते हैं।</item>
+    </plurals>
+    <string name="version_history_notes">नोट: संस्करण इतिहास दिन की मार्कडाउन फ़ाइलों को जोड़ने, संपादित करने, हटाने, पुनर्व्यवस्थित करने, लेबल लगाने, स्टार करने और पुनरावलोकन परिवर्तनों से पहले सुरक्षित रखता है। यह क्लाउड बैकअप नहीं है; पोर्टेबल प्रतियों के लिए बैकअप का उपयोग जारी रखें।</string>
+    <string name="version_history_snapshots_for">%1$s के लिए स्नैपशॉट</string>
+    <string name="version_history_snapshots_subtitle">सहेजे गए संस्करण को खोलें, उसकी जांच करें और इस दिन के लिए इसे पुनर्स्थापित करें।</string>
+    <string name="version_history_empty">इस तिथि के लिए अभी तक कोई सहेजा गया संस्करण नहीं है।</string>
+    <string name="action_view">देखें</string>
+    <string name="version_history_date_intro">इस दिन के लिए पहले सहेजे गए संस्करण को खोलें, उसकी जांच करें और आवश्यकतानुसार इसे पुनर्स्थापित करें।</string>
+    <string name="action_next">अगला</string>
+    <string name="action_apply">लागू करें</string>
+    <string name="action_restore">पुनर्स्थापित करें</string>
+    <string name="statistics_choose_title">आँकड़े चुनें</string>
+    <string name="statistics_choose_subtitle">वे अनुभाग छिपाएं जिन्हें आप नहीं चाहते। कम से कम एक अनुभाग दृश्यमान रहना चाहिए।</string>
+    <string name="statistics_visible_count">%1$d of %2$d visible</string>
+    <string name="statistics_show_all">सभी दिखाएं</string>
+    <string name="statistics_one_section_visible">कम से कम एक अनुभाग दृश्यमान रहना चाहिए</string>
+    <string name="statistics_shown">आँकड़ों में दिखाया गया</string>
+    <string name="statistics_hidden">आँकड़ों से छिपाया गया</string>
+    <string name="statistics_select_start_date">प्रारंभ तिथि चुनें</string>
+    <string name="statistics_select_end_date">अंतिम तिथि चुनें</string>
+    <string name="statistics_filter_by_period">अवधि के अनुसार फ़िल्टर करें</string>
+    <string name="statistics_cd_reorder">पुनर्व्यवस्थित करने के लिए देर तक दबाएं</string>
+    <string name="statistics_total_entries">कुल प्रविष्टियां</string>
+    <string name="statistics_total_words">कुल शब्द</string>
+    <string name="statistics_avg_words_per_entry">औसत शब्द/प्रविष्टि</string>
+    <string name="statistics_current_streak">वर्तमान स्ट्रीक</string>
+    <string name="statistics_pages_written">लिखे गए पृष्ठ</string>
+    <string name="statistics_days_highlighted">हाइलाइट किए गए दिन</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d दिन</item>
+        <item quantity="other">%1$d दिन</item>
+    </plurals>
+    <string name="statistics_period_all_time">सर्वकालिक आँकड़े</string>
+    <string name="statistics_period_current_year">चालू वर्ष के आँकड़े</string>
+    <string name="statistics_period_previous_year">पिछले वर्ष के आँकड़े</string>
+    <string name="statistics_period_current_month">चालू माह के आँकड़े</string>
+    <string name="statistics_period_previous_month">पिछले माह के आँकड़े</string>
+    <string name="statistics_period_custom">कस्टम अवधि के आँकड़े</string>
+    <string name="statistics_period_chip_all_time">सर्वकालिक</string>
+    <string name="statistics_period_chip_current_year">चालू वर्ष</string>
+    <string name="statistics_period_chip_previous_year">पिछला वर्ष</string>
+    <string name="statistics_period_chip_current_month">इस महीने</string>
+    <string name="statistics_period_chip_previous_month">पिछला महीना</string>
+    <string name="statistics_period_chip_custom">कस्टम</string>
+    <string name="statistics_sections_visible">%1$d of %2$d sections visible</string>
+    <string name="statistics_loading_stages">चरणों में आँकड़े लोड हो रहे हैं...</string>
+    <string name="review_period_weekly">साप्ताहिक समीक्षा</string>
+    <string name="review_period_monthly">मासिक समीक्षा</string>
+    <string name="review_anchor_week">%1$s वाला सप्ताह</string>
+    <string name="review_anchor_month">%1$s वाला महीना</string>
+    <string name="review_chip_entries">प्रविष्टियां %1$d</string>
+    <string name="review_chip_words">शब्द %1$d</string>
+    <string name="review_chip_days">दिन %1$d</string>
+    <string name="review_hint_jump">जर्नल में वापस जाने के लिए नीचे दिए गए तिथि चिप्स पर टैप करें।</string>
+    <string name="review_chip_streak">स्ट्रीक %1$d</string>
+    <string name="review_chip_gap">अंतराल %1$d</string>
+    <string name="review_chip_labels">लेबल %1$d</string>
+    <string name="review_chip_favorites">पसंदीदा %1$d</string>
+    <string name="review_empty_period">इस अवधि में अभी तक कोई जर्नल प्रविष्टि नहीं है। लेबल और हाइलाइट्स यदि मौजूद हैं तो अभी भी नीचे दिखाई देंगे।</string>
+    <string name="review_writing_rhythm">लेखन लय</string>
+    <string name="review_best_streak">सर्वश्रेष्ठ स्ट्रीक</string>
+    <string name="review_longest_gap">सबसे लंबा अंतराल</string>
+    <string name="review_most_active_days">सबसे सक्रिय दिन</string>
+    <string name="review_day_entries_words">%1$d प्रविष्टियां | %2$d शब्द</string>
+    <string name="review_top_people">शीर्ष लोग</string>
+    <string name="review_top_places">शीर्ष स्थान</string>
+    <string name="review_no_people_mentions">कोई उल्लेख नहीं</string>
+    <string name="review_no_place_mentions">कोई उल्लेख नहीं</string>
+    <string name="review_favorite_moments">पसंदीदा पल</string>
+    <string name="review_starred_day">तारांकित दिन</string>
+    <string name="review_highlighted_in_period">इस अवधि में हाइलाइट किया गया</string>
+    <string name="review_labels_created">बनाए गए लेबल</string>
+    <string name="review_labeled_day">लेबल किया गया दिन</string>
+    <string name="review_language_split">भाषा विभाजन</string>
+    <string name="review_not_enough_text">इस अवधि में पर्याप्त पाठ नहीं है</string>
+    <string name="lookback_reviews_title">समीक्षाएं</string>
+    <string name="lookback_reviews_intro">अपने चयनित जर्नल दिन के इर्द-गिर्द एक त्वरित प्रतिबिंब बनाएं।</string>
+    <string name="lookback_seven_days">7 दिन</string>
+    <string name="lookback_one_month">1 महीना</string>
+    <string name="lookback_weekly_review">साप्ताहिक समीक्षा</string>
+    <string name="lookback_weekly_review_subtitle">इस सप्ताह पर एक नज़र</string>
+    <string name="lookback_monthly_review">मासिक समीक्षा</string>
+    <string name="lookback_monthly_review_subtitle">इस महीने का सारांश</string>
+    <string name="lookback_flashbacks_title">पिछले वर्षों में इस दिन</string>
+    <string name="lookback_highlights_title">आपके मुख्य बिंदु</string>
+    <string name="lookback_empty_title">अभी तक कोई लुकबैक या मुख्य बिंदु नहीं हैं।</string>
+    <string name="lookback_empty_subtitle">इन्हें यहाँ देखने के लिए महत्वपूर्ण दिनों को पसंदीदा बनाएं!</string>
+    <string name="lookback_cd_random_entry">यादृच्छिक प्रविष्टि पर जाएं</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">अवधि</string>
+    <string name="statistics_compare_mode_title">तुलना मोड</string>
+    <string name="statistics_compare_mode_subtitle">महीने, वर्ष और कीवर्ड अंतर</string>
+    <string name="statistics_this_year">इस वर्ष</string>
+    <string name="statistics_writing_days_delta">लेखन दिनों में अंतर</string>
+    <string name="statistics_top_person_delta">शीर्ष व्यक्ति उल्लेख में अंतर</string>
+    <string name="statistics_no_people_mentions">अभी तक कोई उल्लेख नहीं</string>
+    <string name="statistics_top_place_delta">शीर्ष स्थान उल्लेख में अंतर</string>
+    <string name="statistics_no_place_mentions">अभी तक कोई उल्लेख नहीं</string>
+    <string name="statistics_structured_writing">संरचित लेखन</string>
+    <string name="statistics_template_led_format">टेम्पलेट-आधारित %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">खाली %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">सर्वाधिक उपयोग किए गए टेम्पलेट</string>
+    <string name="statistics_template_mix">टेम्पलेट मिश्रण</string>
+    <string name="statistics_follow_up_leaders">प्रमुख अनुवर्ती आइटम</string>
+    <string name="statistics_compare_details">विवरणों की तुलना करें</string>
+    <string name="statistics_label_month">महीना</string>
+    <string name="statistics_label_year">वर्ष</string>
+    <string name="statistics_this_month_count_format">इस महीने %1$d</string>
+    <string name="statistics_last_month_count_format">पिछले महीने %1$d</string>
+    <string name="statistics_longest_streak">सबसे लंबी स्ट्रीक</string>
+    <string name="statistics_most_active_day">सबसे सक्रिय दिन</string>
+    <string name="statistics_writing_consistency">लेखन निरंतरता</string>
+    <string name="statistics_days_with_entries">प्रविष्टियों वाले दिन</string>
+    <string name="statistics_best_month">सर्वश्रेष्ठ महीना</string>
+    <string name="statistics_best_month_format">%1$s · %2$d प्रविष्टियां</string>
+    <string name="statistics_avg_writing_days_week">औसत लेखन दिन / सप्ताह</string>
+    <string name="statistics_days_decimal_format">%1$.1f दिन</string>
+    <string name="statistics_based_on_total_words">प्रतिदिन लिखे गए कुल शब्दों के आधार पर</string>
+    <string name="statistics_light_words">हल्का (&lt; 50 शब्द)</string>
+    <string name="statistics_moderate_words">मध्यम (50-200 शब्द)</string>
+    <string name="statistics_heavy_words">भारी (200-500 शब्द)</string>
+    <string name="statistics_intense_words">गहन (500+ शब्द)</string>
+    <string name="statistics_not_enough_text_languages">भाषाओं का पता लगाने के लिए पर्याप्त पाठ नहीं है</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d भाषा का पता चला</item>
+        <item quantity="other">%1$d भाषाओं का पता चला</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">भाषा पहचान अभी भी व्यवस्थित हो रही है।</string>
+    <string name="statistics_latin_scripts_as_english">लैटिन लिपियों को अंग्रेजी के रूप में दिखाया गया है</string>
+    <string name="statistics_use_more_accurate_detection">अधिक सटीक पहचान का उपयोग करें</string>
+    <string name="statistics_write_more_entries_languages">भाषा के आँकड़े देखने के लिए और अधिक प्रविष्टियाँ लिखें।</string>
+    <string name="statistics_based_on_entry_time">प्रविष्टि के समय के आधार पर</string>
+    <string name="statistics_morning_time">सुबह (5 बजे - दोपहर)</string>
+    <string name="statistics_afternoon_time">दोपहर (दोपहर - 5 बजे)</string>
+    <string name="statistics_evening_time">शाम (5 बजे - 9 बजे)</string>
+    <string name="statistics_night_time">रात (9 बजे - 5 बजे)</string>
+    <string name="statistics_heatmap_filling">हीटमैप अभी भी भर रहा है।</string>
+    <string name="statistics_heatmap_less">कम</string>
+    <string name="statistics_heatmap_more">अधिक</string>
+    <string name="action_open">खोलें</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja जर्नल इवेंट्स</string>
+    <string name="tasker_event_desc">चुनें कि कौन से यजा जर्नल इवेंट्स को इस Tasker प्रोफाइल को ट्रिगर करना चाहिए।</string>
+    <string name="tasker_event_saved">प्रविष्टि सहेजी गई</string>
+    <string name="tasker_event_edited">प्रविष्टि संपादित की गई</string>
+    <string name="tasker_event_deleted">प्रविष्टि हटाई गई</string>
+    <string name="tasker_event_default_hint">यदि कोई भी चयनित नहीं है, तो यजा डिफ़ॉल्ट रूप से \'प्रविष्टि सहेजी गई\' पर सेट हो जाएगा।</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">यजा त्वरित कैप्चर</string>
+    <string name="tasker_action_desc">कॉन्फ़िगर करें कि Tasker को Yaja में क्या त्वरित रूप से कैप्चर करना चाहिए।</string>
+    <string name="tasker_action_add_entry">प्रविष्टि जोड़ें</string>
+    <string name="tasker_action_add_event">इवेंट जोड़ें</string>
+    <string name="tasker_action_add_todo">टूडू जोड़ें</string>
+    <string name="tasker_action_append">अंत में जोड़ें</string>
+    <string name="tasker_action_match_header_label">मिलान / हेडर</string>
+    <string name="tasker_action_match_header_placeholder">मिस्ड कॉल</string>
+    <string name="tasker_action_line_to_append_label">जोड़ी जाने वाली लाइन</string>
+    <string name="tasker_action_text_label">पाठ</string>
+    <string name="tasker_action_placeholder_event">Tasker से इवेंट नोट</string>
+    <string name="tasker_action_placeholder_todo">दूध खरीदना</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Tasker से त्वरित नोट</string>
+    <string name="tasker_action_tip_append">पहला कॉल मिलान पाठ के साथ शुरू होने वाली एक प्रविष्टि बनाता है। बाद के कॉल इसके नीचे लाइन जोड़ते हैं।</string>
+    <string name="tasker_action_tip_default">टिप: Tasker चर को पाठ फ़ील्ड में रखा जा सकता है।</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">पिछले सत्र का क्रैश लॉग</string>
+    <string name="crash_log_clear_close">साफ़ करें और बंद करें</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">ऐप लॉन्च करें</string>
+    <string name="tap_action_quick_capture">त्वरित कैप्चर</string>
+    <string name="tap_action_do_nothing">कुछ न करें</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">यजा लेखन हीटमैप</string>
+    <string name="widget_cell_shape">सेल का आकार</string>
+    <string name="widget_corner_radius">कोना त्रिज्या (Corner Radius): %1$ddp</string>
+    <string name="widget_square">वर्गाकार</string>
+    <string name="widget_round">गोल</string>
+    <string name="widget_inner_margin">आंतरिक मार्जिन (Inner Margin): %1$ddp</string>
+    <string name="widget_inner_margin_desc">हीटमैप और विजेट किनारों के बीच का अंतर</string>
+    <string name="widget_none">कोई नहीं</string>
+    <string name="widget_max">अधिकतम</string>
+    <string name="widget_on_tap">टैप करने पर</string>
+    <string name="widget_on_tap_desc">विजेट पर टैप करने पर होने वाली क्रिया</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">कैप्चर</string>
+    <string name="widget_qc_shape">विजेट का आकार</string>
+    <string name="widget_show_label">लेबल दिखाएं</string>
+    <string name="widget_show_label_desc">विजेट पर \'कैप्चर\' पाठ प्रदर्शित करें</string>
+    <string name="widget_show_icon">आइकन दिखाएं</string>
+    <string name="widget_show_icon_required">लेबल छिपा होने पर आइकन आवश्यक है</string>
+    <string name="widget_show_icon_desc">विजेट पर पेन आइकन प्रदर्शित करें</string>
+    <string name="widget_label_text">लेबल पाठ</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">टूडू विजेट</string>
+    <string name="widget_todo_desc">गोल, हीटमैप जैसा टूडू सूची विजेट।</string>
+    <string name="widget_todo_corner_radius">कोना त्रिज्या: %1$ddp</string>
+    <string name="widget_todo_padding">पैडिंग: %1$ddp</string>
+    <string name="widget_todo_show_completed">पूर्ण कार्य दिखाएं</string>
+    <string name="widget_todo_show_completed_desc">विजेट सूची में चेक किए गए आइटम शामिल करें</string>
+    <string name="widget_todo_include_events">इवेंट्स शामिल करें</string>
+    <string name="widget_todo_include_events_desc">विजेट में टूडू के साथ इवेंट प्रविष्टियां दिखाएं</string>
+    <string name="widget_todo_show_header">टूडू हेडर दिखाएं</string>
+    <string name="widget_todo_show_header_desc">विजेट शीर्षक पंक्ति दिखाएं या छिपाएं</string>
+    <string name="widget_todo_auto_hide">सभी टूडू पूर्ण होने पर विजेट स्वतः छिपाएं</string>
+    <string name="widget_todo_auto_hide_unavailable">पूर्ण कार्य दिखाए जाने के दौरान अनुपलब्ध</string>
+    <string name="widget_todo_auto_hide_desc">कोई लंबित कार्य न होने पर विजेट को पारदर्शी बनाएं</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">पूर्ण</string>
+    <string name="todo_confirm_mark_not_done">अपूर्ण</string>
+    <string name="todo_confirm_title">कार्य को %1$s के रूप में चिह्नित करें?</string>
+    <string name="todo_confirm_reopen">यह टूडू वर्तमान में पूर्ण है। इसे पुनः खोलने से पहले पुष्टि करें।</string>
+    <string name="todo_confirm_complete">यह टूडू अभी भी खुला है। इसे पूर्ण चिह्नित करने से पहले पुष्टि करें।</string>
+    <string name="todo_confirm_accidental_tap">गलती से होने वाले टैप से कार्य नहीं बदलेगा।</string>
+    <string name="todo_confirm_yes_mark">हाँ, %1$s चिह्नित करें</string>
+    <string name="todo_confirm_open_yaja">Yaja में खोलें</string>
+    <string name="todo_confirm_keep_as_is">वैसा ही रखें</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">RJ की प्रयोगशालाओं से</string>
+    <string name="help_made_in">🇮🇳 में निर्मित</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">आयात रद्द करें</string>
+    <string name="timeline_show_all_dates">सभी तिथियां दिखाएं</string>
+    <string name="timeline_show_all_dates_subtitle">सभी पिछले दिन शामिल करें, भले ही उनमें कोई प्रविष्टि न हो</string>
+    <string name="settings_background_tint_clean">क्लीन (Clean)</string>
+    <string name="settings_background_tint_soft">सॉफ्ट (Soft)</string>
+    <string name="settings_background_tint_rich">रिच (Rich)</string>
+    <string name="settings_background_tint_deep">डीप (Deep)</string>
+    <string name="settings_accent_style_complementary">पूरक (Complementary)</string>
+    <string name="settings_accent_style_analogous">समान (Analogous)</string>
+    <string name="settings_accent_style_triadic">त्रिकोणीय (Triadic)</string>
+    <string name="settings_accent_style_soft">सॉफ्ट (Soft)</string>
+    <string name="compliance_frequency_annual">वार्षिक</string>
+    <string name="compliance_frequency_biweekly">द्विसाप्ताहिक</string>
+    <string name="compliance_frequency_half_yearly">अर्धवार्षिक</string>
+    <string name="compliance_frequency_monthly">मासिक</string>
+    <string name="compliance_frequency_quarterly">त्रैमासिक</string>
+    <string name="compliance_frequency_weekly">साप्ताहिक</string>
+    <string name="compliance_master_add">पुनरावर्ती कार्य जोड़ें</string>
+    <string name="compliance_master_boundary_first">पहली तारीख</string>
+    <string name="compliance_master_boundary_last">अंतिम तारीख</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" को हटा दिया जाएगा और आगे कोई कार्य नहीं बनाया जाएगा।</string>
+    <string name="compliance_master_delete_confirm_title">पुनरावर्ती कार्य हटाएं?</string>
+    <string name="compliance_master_details_boundary_help">चुनें कि कार्य को दैनिक फ़ाइल में कितने दिन पहले लिखा जाना चाहिए।</string>
+    <string name="compliance_master_details_date_help">कार्य के पूरा होने की तारीख और इसे कितने दिन पहले दैनिक फ़ाइल में लिखना है, वह संख्या दर्ज करें।</string>
+    <string name="compliance_master_details_weekday_help">सप्ताह का वह दिन चुनें जब यह कार्य पूरा किया जाना हो।</string>
+    <string name="compliance_master_due_day_help">1 से 31 के बीच की तारीख दर्ज करें। छोटे महीनों के लिए अंतिम मान्य तारीख का उपयोग किया जाएगा।</string>
+    <string name="compliance_master_edit">पुनरावर्ती कार्य संपादित करें</string>
+    <string name="compliance_master_editor_task_section">Yaja आपको किस बारे में याद दिलाए?</string>
+    <string name="compliance_master_empty">अभी तक कोई पुनरावर्ती कार्य नहीं है। चुने गए शेड्यूल पर स्वचालित रूप से कार्य बनाने के लिए एक जोड़ें।</string>
+    <string name="compliance_master_execution_day_of_month">एक कार्य %1$s तारीख %2$d को बनाया जाता है। इसे %3$d दिन पहले आपकी दैनिक फ़ाइल में लिखा जाता है।</string>
+    <string name="compliance_master_execution_month_boundary">एक कार्य %1$s देय महीने की %2$s को बनाया जाता है। इसे %3$d दिन पहले आपकी दैनिक फ़ाइल में लिखा जाता है।</string>
+    <string name="compliance_master_execution_monthly_weekday">एक कार्य मासिक रूप से उसी दिन बनाया जाता है जिस दिन की शुरुआत की तारीख थी। इसे %2$d दिन पहले आपकी दैनिक फ़ाइल में लिखा जाता है।</string>
+    <string name="compliance_master_execution_title">यह कैसे काम करेगा</string>
+    <string name="compliance_master_execution_weekday">एक कार्य %1$s %2$s को बनाया जाता है। इसे %3$d दिन पहले आपकी दैनिक फ़ाइल में लिखा जाता है।</string>
+    <string name="compliance_master_field_description">विवरण</string>
+    <string name="compliance_master_field_description_hint">उदाहरण: मासिक रिटर्न फाइल करें</string>
+    <string name="compliance_master_field_due_day">देय तिथि</string>
+    <string name="compliance_master_field_due_weekday">देय दिन</string>
+    <string name="compliance_master_field_frequency">कितनी बार?</string>
+    <string name="compliance_master_field_reveal_day">पहले से बनाएं (दिन)</string>
+    <string name="compliance_master_field_schedule_mode">यह कब देय है?</string>
+    <string name="compliance_master_field_title">कार्य का नाम</string>
+    <string name="compliance_master_field_title_hint">उदाहरण: बिजली का बिल भरें</string>
+    <string name="compliance_master_first_day_selected">प्रत्येक लागू महीने की पहली तारीख को देय।</string>
+    <string name="compliance_master_frequency_help">चुनें कि यह कार्य कितनी बार दोहराया जाना चाहिए।</string>
+    <string name="compliance_master_intro_body">साप्ताहिक, मासिक, त्रैमासिक, अर्धवार्षिक या वार्षिक कार्यों के लिए दोहराए जाने वाले कार्य बनाएं। Yaja प्रत्येक कार्य को केवल तभी दिखाता है जब उसका चक्र प्रासंगिक हो जाता है।</string>
+    <string name="compliance_master_intro_title">पुनरावर्ती कार्य</string>
+    <string name="compliance_master_last_day_selected">प्रत्येक लागू महीने की अंतिम तारीख को देय।</string>
+    <string name="compliance_master_meta_format">तारीख %1$d को देय • %2$d दिन पहले बनाएं</string>
+    <string name="compliance_master_next_date">अगला: %1$s</string>
+    <string name="compliance_master_end_section">समाप्ति शर्त</string>
+    <string name="compliance_master_end_help">चुनें कि यह कार्य कब दोहराना बंद करे</string>
+    <string name="compliance_master_end_never">कभी नहीं</string>
+    <string name="compliance_master_end_on_date">तारीख पर</string>
+    <string name="compliance_master_end_after">इसके बाद…</string>
+    <string name="compliance_master_end_never_desc">बिना समाप्ति तारीख के अनिश्चित काल तक दोहराता है।</string>
+    <string name="compliance_master_end_date_select">समाप्ति तारीख चुनें</string>
+    <string name="compliance_master_end_date_help">इस तारीख के बाद कोई कार्य नहीं बनाया जाता।</string>
+    <string name="compliance_master_end_count_label">घटनाओं की संख्या</string>
+    <string name="compliance_master_end_count_help">इतने कार्य बनने के बाद रुक जाता है।</string>
+    <string name="compliance_master_ends_on">समाप्ति: %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d शेष</string>
+    <string name="compliance_master_ended">समाप्त</string>
+    <string name="compliance_master_type_label">इस रूप में बनाएँ</string>
+    <string name="compliance_master_type_task">कार्य</string>
+    <string name="compliance_master_type_event">इवेंट</string>
+    <string name="compliance_master_recurrence_annual">हर साल</string>
+    <string name="compliance_master_recurrence_biweekly">हर दो सप्ताह में</string>
+    <string name="compliance_master_recurrence_half_yearly">हर छह महीने में</string>
+    <string name="compliance_master_recurrence_monthly">हर महीने</string>
+    <string name="compliance_master_recurrence_quarterly">हर तीन महीने में</string>
+    <string name="compliance_master_recurrence_weekly">हर सप्ताह</string>
+    <string name="compliance_master_reveal_day_help">देय तिथि से कितने दिन पहले कार्य को दैनिक जर्नल फ़ाइल में लिखना है।</string>
+    <string name="compliance_master_schedule_details">शेड्यूल विवरण</string>
+    <string name="compliance_master_schedule_mode_help">चुनें कि Yaja देय तिथि कैसे निर्धारित करे।</string>
+    <string name="compliance_master_select_frequency">दौहराने की आवृत्ति चुनें</string>
+    <string name="compliance_master_select_schedule_type">देय का प्रकार चुनें</string>
+    <string name="compliance_master_select_weekday">सप्ताह का दिन चुनें</string>
+    <string name="compliance_master_status_deactivated">निष्क्रिय</string>
+    <string name="compliance_master_summary_day_of_month">दिन %1$d • %2$s • %3$d दिन पहले</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">पहली तारीख • %1$s • %2$d दिन पहले</string>
+    <string name="compliance_master_summary_last_day">अंतिम तारीख • %1$s • %2$d दिन पहले</string>
+    <string name="compliance_master_title">आवर्ती कार्य / इवेंट</string>
+    <string name="compliance_master_upcoming">आने वाले</string>
+    <string name="compliance_mode_day_of_month">विशेष तिथि</string>
+    <string name="compliance_mode_day_of_month_desc">एक निश्चित तारीख पर देय, जैसे कि 15 तारीख।</string>
+    <string name="compliance_mode_day_of_week">सप्ताह का दिन</string>
+    <string name="compliance_mode_day_of_week_desc">चुने हुए दिन पर देय, जैसे कि सोमवार।</string>
+    <string name="compliance_mode_first_day">महीने की पहली तारीख</string>
+    <string name="compliance_mode_first_day_desc">प्रत्येक लागू महीने की पहली तारीख को देय।</string>
+    <string name="compliance_mode_last_day">महीने का अंत</string>
+    <string name="compliance_mode_last_day_desc">महीने की अंतिम तारीख को देय, जिसमें छोटे महीने भी शामिल हैं।</string>
+    <string name="todo_chip_compliance">पुनरावर्ती</string>
+    <string name="todos_cd_open_compliance_master">पुनरावर्ती कार्य खोलें</string>
+
+    <string name="settings_ui_font_size_label">यूआई फ़ॉन्ट आकार</string>
+    <string name="settings_data_font_size_label">सामग्री फ़ॉन्ट आकार</string>
+    <string name="settings_follow_ui_font_scale_label">सामग्री फ़ॉन्ट आकार यूआई के समान रखें</string>
+</resources>

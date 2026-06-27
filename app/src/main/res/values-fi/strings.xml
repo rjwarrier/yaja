@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Journal</string>
+    <string name="nav_calendar">Kalenteri</string>
+    <string name="nav_lookback">Katsaus taaksepäin</string>
+    <string name="nav_settings">Asetukset</string>
+    <string name="nav_shortcodes">Lyhytkoodit</string>
+    <string name="nav_help">Ohje ja Tietoja</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Tallentaa</string>
+    <string name="action_cancel">Peruuttaa</string>
+    <string name="action_delete">Poistaa</string>
+    <string name="action_edit">Muokata</string>
+    <string name="action_back">Takaisin</string>
+    <string name="action_undo">Kumoa</string>
+    <string name="action_yes">Kyllä</string>
+    <string name="action_no">Ei</string>
+    <string name="action_remove">Poistaa</string>
+    <string name="action_done">Tehty</string>
+    <string name="action_set">Sarja</string>
+    <string name="action_select">Valitse</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Välimuistin uudelleenrakentaminen</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Pikakaappaus</string>
+    <string name="quick_capture_hint">Mitä tapahtui?</string>
+    <string name="quick_capture_helper_shortcodes">Lyhytkoodit laajenevat täällä automaattisesti, ja tehtävärivit jatkuvat Enterillä.</string>
+    <string name="quick_capture_save_delayed">Tallennus viivästyy. Avaa Yaja uudelleen vahvistaaksesi.</string>
+    <string name="cd_saved">Tallennettu</string>
+    <string name="quick_todo_dialog_title">Pikalisäys</string>
+    <string name="quick_todo_save_delayed">Tehtävän tallennus viivästyy. Avaa Yaja uudelleen vahvistaaksesi.</string>
+    <string name="quick_todo_placeholder">Lisää tehtävä</string>
+    <string name="quick_event_placeholder">Lisää tapahtuma</string>
+    <string name="quick_todo_task_date">Tehtävän päivämäärä</string>
+    <string name="quick_todo_event_date">Tapahtuman päivämäärä</string>
+    <string name="quick_todo_pick_date_cd_format">Valitse %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Tallentaa valitun päivän tehtävämerkinnäksi.</string>
+    <string name="quick_event_selected_day_hint">Tallentaa valitun päivän tapahtumamerkinnäksi.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Edellinen</string>
+    <string name="cd_next">Seuraavaksi</string>
+    <string name="cd_surprise_me">Yllätä minut</string>
+    <string name="calendar_cd_go_to_current_month">Siirry kuluvaan kuukauteen</string>
+    <string name="calendar_quick_action_timeline_title">Aikajana</string>
+    <string name="calendar_quick_action_timeline_subtitle">Selaa kronologisesti</string>
+    <string name="calendar_quick_action_jump_title">Siirry päivämäärään</string>
+    <string name="calendar_quick_action_jump_subtitle">Avaa tietty päivä</string>
+    <string name="calendar_jump_placeholder">PP-KK-VV</string>
+    <string name="calendar_jump_invalid_date">Virheellinen päivämäärä. Käytä muotoa PP-KK-VV.</string>
+    <string name="calendar_action_go">Mennä</string>
+    <string name="calendar_enable_future_dates_title">Ota käyttöön tulevat päivämäärät</string>
+    <string name="calendar_enable_future_dates_message">Tulevan päivämäärän syöttö on poistettu käytöstä. Haluatko ottaa sen käyttöön?</string>
+    <string name="calendar_action_enable">Ota käyttöön</string>
+    <string name="calendar_future_entry_enabled">Tulevan päivämäärän syöttö on otettu käyttöön</string>
+    <string name="calendar_weekday_sun_short">Aurinko</string>
+    <string name="calendar_weekday_mon_short">ma</string>
+    <string name="calendar_weekday_tue_short">ti</string>
+    <string name="calendar_weekday_wed_short">ke</string>
+    <string name="calendar_weekday_thu_short">to</string>
+    <string name="calendar_weekday_fri_short">pe</string>
+    <string name="calendar_weekday_sat_short">la</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ILMOITUKSET TÄSSÄ KUUSESSA</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d päivä</item>
+        <item quantity="other">%1$d / %2$d päivää</item>
+    </plurals>
+    <string name="calendar_days_of_memories">muistojen päiviä</string>
+    <string name="calendar_consistency_last_12_months">VIIMEISET 12 KUUKAUDTA</string>
+    <string name="calendar_consistency_title_format">JOHDONMUKAISUUS - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">ensimmäinen jakso</string>
+    <string name="calendar_graph_frequency_month">Kuukausi</string>
+    <string name="calendar_graph_frequency_year">vuosi</string>
+    <string name="calendar_yearly_consistency_title">Johdonmukaisuus (vuosittain)</string>
+    <string name="calendar_keywords_title">Kuka näkyy eniten</string>
+    <string name="calendar_keywords_syncing">Ihmiset ja paikat -tilastot synkronoidaan edelleen avainsanojen indeksoinnin kanssa.</string>
+    <string name="calendar_keywords_empty">Lisää vähintään 3 henkilöä tai 3 paikkaa nähdäksesi suosituimmat maininnat.</string>
+    <string name="calendar_keywords_people">Ihmiset</string>
+    <string name="calendar_keywords_places">Paikat</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Asetukset</string>
+    <string name="settings_appearance">Ulkonäkö</string>
+    <string name="settings_appearance_subtitle">Teema, värit, fontit ja henkilökohtaiset tyylit</string>
+    <string name="settings_theme">Teema</string>
+    <string name="settings_font">Fontti</string>
+    <string name="settings_storage">Varastointi</string>
+    <string name="settings_security">Turvallisuus</string>
+    <string name="settings_backup">Varmuuskopio</string>
+    <string name="settings_change_storage_title">Muuta tallennuspaikkaa</string>
+    <string name="settings_backup_never">Ei koskaan</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Hakuasetukset</string>
+    <string name="settings_search_clear">Tyhjennä haku</string>
+    <string name="settings_search_recent">Viimeaikaiset haut</string>
+    <string name="settings_search_no_results">Ei vastaavia asetuksia</string>
+    <string name="settings_search_close">Lähellä</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Kokemus päiväkirjasta</string>
+    <string name="settings_section_navigation_gestures">Navigointi ja eleet</string>
+    <string name="settings_section_review_insights">Arvostelut ja näkemykset</string>
+
+    <!-- Language -->
+    <string name="settings_language">Kieli</string>
+    <string name="settings_language_title">Sovelluksen kieli</string>
+    <string name="settings_language_subtitle">Valitse koko sovelluksessa käytettävä kieli.</string>
+    <string name="settings_language_system_default">Järjestelmän oletus</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Sisääntulotyyli</string>
+    <string name="settings_journal_entry_style_subtitle">Valitse korotettujen korttien ja tasaisemman päiväkirjailmeen välillä.</string>
+    <string name="settings_journal_entry_style_cards">Kortit</string>
+    <string name="settings_journal_entry_style_flat">Tasainen</string>
+    <string name="settings_journal_render_checkboxes_title">Piirrä valintaruudut tekstinä</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Näytä tehtävät muodossa [ ] ja [x] sovelluksessa ilmeikkäiden valintaruutujen sijaan.</string>
+    <string name="settings_journal_day_header_counts_title">Näytä päivän otsikkomäärät</string>
+    <string name="settings_journal_day_header_counts_subtitle">Näytä merkinnät, sanat ja merkkimäärät päiväkirjan päivän otsikossa.</string>
+    <string name="settings_journal_show_timestamps_title">Näytä aikaleimat</string>
+    <string name="settings_journal_show_timestamps_subtitle">Näytä sisääntuloaika aikajanalla.</string>
+    <string name="settings_journal_allow_future_title">Salli tulevat merkinnät</string>
+    <string name="settings_journal_allow_future_subtitle">Salli merkintöjen lisääminen tuleviin päivämääriin.</string>
+    <string name="settings_journal_truncate_title">Katkaise pitkät merkinnät</string>
+    <string name="settings_journal_truncate_subtitle">Lyhennä pitkiä merkintöjä aloitusnäytössä.</string>
+    <string name="settings_journal_char_limit_title">Merkkirajoitus</string>
+    <string name="settings_journal_char_limit_subtitle">Aseta, kuinka monta merkkiä näytetään ennen katkaisua.</string>
+    <string name="settings_journal_char_limit_min">50 merkkiä</string>
+    <string name="settings_journal_char_limit_max">200 merkkiä</string>
+    <string name="settings_journal_char_count">%1$d merkkiä</string>
+    <string name="settings_journal_first_day_title">Viikon ensimmäinen päivä</string>
+    <string name="settings_journal_first_day_subtitle">Käynnistä kalenteri</string>
+    <string name="settings_journal_day_sun">Aurinko</string>
+    <string name="settings_journal_day_mon">ma</string>
+    <string name="settings_journal_date_recognition">Päivämäärän tunnistus</string>
+    <string name="settings_journal_date_order_title">Päivämäärä tilaus</string>
+    <string name="settings_journal_date_order_subtitle">Kuinka lukea numeerisia päivämääriä</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">PP/MM</string>
+    <string name="settings_journal_date_order_mdy">KK/PP</string>
+    <string name="settings_journal_date_keywords_title">Päivämäärä Avainsanat</string>
+    <string name="settings_journal_date_keywords_subtitle">Muiden kielten sanat, jotka tarkoittavat päivämäärää (esimerkiksi paikallinen sana eilen).</string>
+    <string name="settings_journal_view_keywords">Näytä (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Lisää avainsana</string>
+    <string name="settings_journal_motion">Liike</string>
+    <string name="settings_journal_animations_title">Animaatiot</string>
+    <string name="settings_journal_animations_subtitle">Hallitse liikettä sovelluksessa. Vähentynyt pitää asiat juoksevana vähemmällä liikkeellä.</string>
+    <string name="settings_journal_animations_full">Koko</string>
+    <string name="settings_journal_animations_reduced">Vähennetty</string>
+    <string name="settings_journal_animations_off">Pois</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Tallennuksen jälkeinen tarkistus</string>
+    <string name="settings_review_post_write_title">Kirjoita arvostelu</string>
+    <string name="settings_review_post_write_subtitle">Näytä arvostelusivu napauttamalla Tallenna poimiaksesi tehtäviä, tarkistaaksesi maininnan, tähtipäivän tai asettaaksesi tunnisteen.</string>
+    <string name="settings_review_people_places">Ihmiset ja paikat</string>
+    <string name="settings_review_highlighting_title">Korostaminen</string>
+    <string name="settings_review_highlighting_subtitle">Korosta seurattuja ihmisiä ja paikkoja Koti-korteissa ja Näytä merkintä -tilassa.</string>
+    <string name="settings_review_match_sensitivity_title">Vastaa herkkyyttä</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Kuinka tarkasti sanan on vastattava, jotta ihmiset ja paikat havaitsivat sen (korkeampi = tiukempi).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Lisää lyhytkoodi</string>
+    <string name="shortcodes_edit_title">Muokkaa lyhytkoodia</string>
+    <string name="shortcodes_code_label">Lyhytkoodi (esim. @yday)</string>
+    <string name="shortcodes_expansion_label">Laajennusteksti</string>
+    <string name="shortcodes_export_error">Lyhytkoodien vienti epäonnistui</string>
+    <string name="shortcodes_import_error">Lyhytkoodien tuonti epäonnistui</string>
+    <string name="todos_expand_section">Laajenna %1$s</string>
+    <string name="todos_collapse_section">Tiivistä %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Lämpökartan kirjoittaminen</string>
+    <string name="heatmap_widget_description">Viimeaikainen kirjoitustoiminnan lämpökartta päiväkirjaasi varten.</string>
+    <string name="quick_capture_widget_name">Pikakaappaus</string>
+    <string name="quick_capture_widget_description">Lisää päiväkirjakirjaus nopeasti yhdellä napautuksella.</string>
+    <string name="quick_todo_widget_name">Nopea tehtävä</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal -tapahtumat</string>
+    <string name="tasker_screen_allow_add_entry_title">Salli Taskerin lisäys</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Antaa Taskerin käyttää Yaja Quick Capture -toimintoja, kuten Lisää merkintä ja Lisää tehtävä.</string>
+    <string name="tasker_screen_allow_events_title">Salli Tasker-tapahtumat</string>
+    <string name="tasker_screen_allow_events_subtitle">Antaa Yajan lähettää Tallennetut, Muokattu- ja Poistetut merkinnät -tapahtumat Taskerille.</string>
+    <string name="tasker_screen_include_text_title">Sisällytä merkintäteksti tapahtumiin</string>
+    <string name="tasker_screen_include_text_subtitle">Oletuksena pois päältä yksityisyyden vuoksi. Kun se ei ole käytössä, Tasker vastaanottaa tapahtumatyypin, päivämäärän, tunnisteen ja kellonajan, mutta ei päiväkirjan tekstiä.</string>
+    <string name="tasker_screen_section_what">Mitä tämä tekee</string>
+    <string name="tasker_screen_body_what">Tasker voi nopeasti lisätä päiväkirjamerkintöjä tai tehtäviä Yajaan, liittää rivejä ryhmiteltyyn merkintään, kuten vastaamatta jääneisiin puheluihin, ja Yaja voi kertoa Taskerille, kun merkintä on tallennettu, muokattu tai poistettu.</string>
+    <string name="tasker_screen_section_how">Kuinka käyttää</string>
+    <string name="tasker_screen_body_how">Kytke tässä ensin tarvitsemasi kytkin päälle. Avaa sitten Tasker ja lisää joko Yaja Quick Capture -toiminto tai Yaja Journal Events -tapahtuma.</string>
+    <string name="tasker_screen_section_notes">Huomautuksia</string>
+    <string name="tasker_screen_body_notes">Syöttötekstiä ei jaeta Taskerin kanssa, ellet ota käyttöön Sisällytä merkintäteksti tapahtumissa. Jos Tasker ei näytä uusimpia vaihtoehtoja tai muuttujia, avaa Tasker-määritysnäyttö uudelleen Yajan päivityksen jälkeen.</string>
+    <string name="tasker_screen_section_example">Esimerkki</string>
+    <string name="tasker_screen_body_example">Toimintoesimerkki: Tasker-toiminto &gt; Yaja Quick Capture &gt; Liitä, jossa Vastaamattomat puhelut / otsikko on asetettu Tasker-muuttujaan Line to append. Esimerkki tapahtumasta: Tasker-tapahtuma &gt; Yaja Journal -tapahtumat &gt; Merkintä muokattu, käytä sitten muuttujia, kuten %%yaja_event_type, %%yaja_date ja valinnaisesti %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Käyttötapaukset</string>
+    <string name="tasker_screen_use_case_1">1. Käytä Yaja-päiväkirjatapahtumaa Taskerissa käynnistääksesi FolderSync-synkronointitoiminnon, jotta Yaja-kansiosi siirretään mille tahansa pilvipalveluntarjoajalle merkintöjen muuttumisen jälkeen.</string>
+    <string name="tasker_screen_use_case_2">2. Käytä Pushbulletia Taskerin kanssa lähettääksesi tekstiä Yaja Quick Captureen, jolloin työnnetty teksti tallennetaan uutena merkinnänä kuluvalle päivälle.</string>
+    <string name="tasker_screen_use_case_3">3. Käytä vastaamatta jääneiden puhelujen Tasker-profiilia lähettääksesi Liitä-toiminnon Yajaan, jotta kaikki vastaamattomien puhelujen tiedot laskeutuvat yhteen Vastaamattomat puhelut -merkinnän alle sen sijaan, että luot erillisiä merkintöjä.</string>
+    <string name="quick_todo_widget_description">Yhdellä napautuksella voit tallentaa tehtävän uudeksi päiväksi.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Vieritettävä luettelo lehtitehtävästä. Merkitse tehtävä valmiiksi tai kumottu napauttamalla sitä.</string>
+    <string name="todo_cd_add_todo">Lisää tehtävä</string>
+    <string name="todos_cd_open_compliance_master">Avaa toistuvat tehtävät</string>
+    <string name="compliance_master_title">Toistuvat tehtävät / tapahtumat</string>
+    <string name="compliance_master_add">Lisää toistuva tehtävä</string>
+    <string name="compliance_master_edit">Muokkaa toistuvaa tehtävää</string>
+    <string name="compliance_master_intro_title">Toistuvat tehtävät</string>
+    <string name="compliance_master_intro_body">Luo toistuvia tehtäviä viikoittain, kuukausittain, neljännesvuosittain, puolivuosittain tai vuosittain. Yaja paljastaa jokaisen tehtävän vasta, kun sen sykli tulee merkitykselliseksi.</string>
+    <string name="compliance_master_empty">Ei toistuvia tehtäviä vielä. Lisää yksi luodaksesi automaattisesti tehtäviä valitun aikataulun mukaan.</string>
+    <string name="compliance_master_status_deactivated">Ei käytössä</string>
+    <string name="compliance_master_meta_format">Eräpäivä %1$d • %2$d toimituspäivää</string>
+    <string name="compliance_master_field_title">Tehtävän nimi</string>
+    <string name="compliance_master_field_title_hint">Esimerkki: Tee kuukausittainen palautus</string>
+    <string name="compliance_master_field_description">Kuvaus</string>
+    <string name="compliance_master_field_description_hint">Esimerkki: Tarkista pankkiportaali ja vahvista kuitti</string>
+    <string name="compliance_master_editor_task_section">Mistä Yajan pitäisi muistuttaa sinua?</string>
+    <string name="compliance_master_field_due_day">Eräpäivä</string>
+    <string name="compliance_master_field_reveal_day">Luo etukäteen (päivää)</string>
+    <string name="compliance_master_field_schedule_mode">Milloin se erääntyy?</string>
+    <string name="compliance_master_schedule_mode_help">Valitse, kuinka Yaja määrittää eräpäivän.</string>
+    <string name="compliance_master_select_schedule_type">Valitse sopiva kuvio</string>
+    <string name="compliance_master_field_frequency">Kuinka usein?</string>
+    <string name="compliance_master_frequency_help">Valitse, kuinka usein tämä tehtävä toistetaan.</string>
+    <string name="compliance_master_select_frequency">Valitse toistotaajuus</string>
+    <string name="compliance_master_schedule_details">Aikataulun tiedot</string>
+    <string name="compliance_master_details_date_help">Syötä eräpäivä ja kuinka monta päivää etukäteen se tulee kirjoittaa päivittäiseen tiedostoon.</string>
+    <string name="compliance_master_details_weekday_help">Valitse arkipäivä, jolloin tämä tehtävä erääntyy.</string>
+    <string name="compliance_master_details_boundary_help">Valitse kuinka monta päivää etukäteen se kirjoitetaan päivittäiseen tiedostoon.</string>
+    <string name="compliance_master_field_due_weekday">Eräpäivä arkipäivänä</string>
+    <string name="compliance_master_select_weekday">Valitse viikonpäivä</string>
+    <string name="compliance_master_due_day_help">Anna päivämäärä väliltä 1–31. Lyhyemmät kuukaudet käyttävät viimeistä voimassa olevaa päivämäärää.</string>
+    <string name="compliance_master_reveal_day_help">Kuinka monta päivää ennen eräpäivää tehtävä kirjoittaa päivittäiseen päiväkirjatiedostoon.</string>
+    <string name="compliance_master_first_day_selected">Erääntyy kunkin sovellettavan kuukauden ensimmäisenä päivänä.</string>
+    <string name="compliance_master_last_day_selected">Erääntyy kunkin sovellettavan kuukauden viimeisenä päivänä.</string>
+    <string name="compliance_mode_day_of_month">Tietty päivämäärä</string>
+    <string name="compliance_mode_day_of_month_desc">Eräpäivä numeroituna päivänä, kuten 15.</string>
+    <string name="compliance_mode_day_of_week">Viikonpäivä</string>
+    <string name="compliance_mode_day_of_week_desc">Eräpäivä valittuna arkipäivänä, kuten maanantaina.</string>
+    <string name="compliance_mode_first_day">Kuukauden ensimmäinen</string>
+    <string name="compliance_mode_first_day_desc">Erääntyy kunkin sovellettavan kuukauden ensimmäisenä päivänä.</string>
+    <string name="compliance_mode_last_day">Kuukauden loppu</string>
+    <string name="compliance_mode_last_day_desc">Erääntyy viimeisenä päivänä, mukaan lukien lyhyemmät kuukaudet.</string>
+    <string name="compliance_frequency_weekly">Viikoittain</string>
+    <string name="compliance_frequency_biweekly">Joka toinen viikko</string>
+    <string name="compliance_frequency_monthly">Kuukausittain</string>
+    <string name="compliance_frequency_quarterly">Neljännesvuosittain</string>
+    <string name="compliance_frequency_half_yearly">Puolen vuoden välein</string>
+    <string name="compliance_frequency_annual">Vuosittainen</string>
+    <string name="compliance_master_summary_day_of_month">Päivä %1$d • %2$s • %3$d päivää etukäteen</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Ensimmäinen päivämäärä • %1$s • %2$d päivää etukäteen</string>
+    <string name="compliance_master_summary_last_day">Viimeinen päivämäärä • %1$s • %2$d päivää etukäteen</string>
+    <string name="compliance_master_execution_title">Miten tämä tulee toimimaan</string>
+    <string name="compliance_master_execution_day_of_month">Tehtävä luodaan %1$s päivänä %2$d. Se kirjoitetaan päivittäiseen tiedostoosi %3$d päivää etukäteen.</string>
+    <string name="compliance_master_execution_weekday">Tehtävä luodaan %1$s %2$s. Se kirjoitetaan päivittäiseen tiedostoosi %3$d päivää etukäteen.</string>
+    <string name="compliance_master_execution_monthly_weekday">Tehtävä luodaan kuukausittain samana %1$s-tapahtumana kuin aloituspäivä. Se kirjoitetaan päivittäiseen tiedostoosi %2$d päivää etukäteen.</string>
+    <string name="compliance_master_execution_month_boundary">Tehtävä luodaan %1$s eräkuukauden %2$s. Se kirjoitetaan päivittäiseen tiedostoosi %3$d päivää etukäteen.</string>
+    <string name="compliance_master_boundary_first">joka viikko</string>
+    <string name="compliance_master_boundary_last">viimeinen päivämäärä</string>
+    <string name="compliance_master_recurrence_weekly">joka viikko</string>
+    <string name="compliance_master_recurrence_biweekly">kahden viikon välein</string>
+    <string name="compliance_master_recurrence_monthly">joka kuukausi</string>
+    <string name="compliance_master_recurrence_quarterly">kolmen kuukauden välein</string>
+    <string name="compliance_master_recurrence_half_yearly">kuuden kuukauden välein</string>
+    <string name="compliance_master_recurrence_annual">joka vuosi</string>
+    <string name="todo_chip_compliance">Toistuva</string>
+    <string name="compliance_master_upcoming">Tuleva</string>
+    <string name="compliance_master_delete_confirm_title">Poistetaanko toistuva tehtävä?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" poistetaan, eikä muita tehtäviä luoda.</string>
+    <string name="compliance_master_next_date">Seuraava: %1$s</string>
+    <string name="compliance_master_end_section">Lopputila</string>
+    <string name="compliance_master_end_help">Valitse, milloin tämä tehtävä lopettaa toistumisen</string>
+    <string name="compliance_master_end_never">Ei koskaan</string>
+    <string name="compliance_master_end_on_date">Päivällä</string>
+    <string name="compliance_master_end_after">Jälkeen…</string>
+    <string name="compliance_master_end_never_desc">Toistuu loputtomasti ilman lopetuspäivää.</string>
+    <string name="compliance_master_end_date_select">Valitse lopetuspäivä</string>
+    <string name="compliance_master_end_date_help">Tehtäviä ei luoda tämän päivämäärän jälkeen.</string>
+    <string name="compliance_master_end_count_label">Tapahtumien määrä</string>
+    <string name="compliance_master_end_count_help">Pysähtyy tämän jälkeen, kun monia tehtäviä on luotu.</string>
+    <string name="compliance_master_ends_on">Päättyy %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d jäljellä</string>
+    <string name="compliance_master_ended">Päättyi</string>
+    <string name="compliance_master_type_label">Luo nimellä</string>
+    <string name="compliance_master_type_task">Tehtävä</string>
+    <string name="compliance_master_type_event">Tapahtuma</string>
+    <string name="heatmap_widget_status_loading">Ladataan lämpökarttaa…</string>
+    <string name="heatmap_widget_status_empty">Ei vielä merkintöjä</string>
+    <string name="heatmap_widget_status_refresh">Avaa Yaja päivittääksesi lämpökartan</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Välimuisti uusittu.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Uusi merkintä</string>
+    <string name="shortcut_new_entry_long">Lisää päiväkirjamerkintä</string>
+    <string name="shortcut_add_todo_short">Lisää Todo</string>
+    <string name="shortcut_add_todo_long">Lisää tehtävä tälle päivälle</string>
+    <string name="shortcut_add_event_short">Lisää tapahtuma</string>
+    <string name="shortcut_add_event_long">Lisää tapahtuma</string>
+    <string name="shortcut_today_short">Tänään</string>
+    <string name="shortcut_today_long">Avaa tämän päivän päiväkirja</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigointi</string>
+    <string name="settings_bottom_nav_style_label">Alanavigointityyli</string>
+    <string name="settings_navigation_mode_title">Navigointitila</string>
+    <string name="settings_navigation_mode_subtitle">Valitse kelluvan navigointipalkin tai koko alapaneelin välillä.</string>
+    <string name="settings_nav_mode_floating">Kelluva</string>
+    <string name="settings_nav_mode_panel">Paneeli</string>
+    <string name="settings_navigation_screens_label">Navigointinäytöt</string>
+    <string name="settings_nav_summary_floating">Päiväkirja ja kalenteri pysyvät aina kelluvassa palkissa. Valitse vielä 2 näyttöä. Tällä hetkellä valittu: %1$d/%2$d.</string>
+    <string name="settings_nav_summary_panel">Päiväkirja ja kalenteri pysyvät aina alapaneelissa. Valitse vielä 3 näyttöä. Tällä hetkellä valittu: %1$d/%2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Näytä Lookback aktiivisessa navigointipalkissa tai paneelissa.</string>
+    <string name="settings_nav_people_places_subtitle">Näytä ihmiset ja paikat aktiivisessa navigointipalkissa tai paneelissa.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Näytä tehtävät aktiivisessa navigointipalkissa tai paneelissa.</string>
+    <string name="todos_quick_add_title">Pikalisäys</string>
+    <string name="todos_hero_subtitle">Seuraa päiväkirjatyötä ja hetkiä</string>
+    <string name="todos_hero_all_activity">Kaikki toiminta</string>
+    <string name="todos_hero_open_focus">Avaa tarkennus</string>
+    <string name="todos_hero_completed">Valmis</string>
+    <string name="todos_stat_today_open">Tänään auki</string>
+    <string name="todos_stat_done_today">Tehty tänään</string>
+    <string name="todos_stat_events">Tapahtumat</string>
+    <string name="todos_stat_still_open">Vielä auki</string>
+    <string name="todos_stat_past_7d">Mennyt 7p</string>
+    <string name="todos_stat_days">päivää</string>
+    <string name="todos_empty_done">Ei vielä valmiita tehtäviä</string>
+    <string name="todos_empty_events">Ei vielä tapahtumamerkintöjä</string>
+    <string name="todos_section_open">AVATA</string>
+    <string name="todos_section_later">MYÖHEMMIN</string>
+    <string name="todos_section_upcoming">TULEVAAN</string>
+    <string name="todos_section_future_events">TULEVAISUUDEN TAPAHTUMAT</string>
+    <string name="todos_section_past_events">MENEISTÄ TAPAHTUMAT</string>
+    <string name="todos_cd_open_day">Avointen ovien päivä</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d avoin tehtävä</item>
+        <item quantity="other">%1$d avoimet tehtävät</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d tehty tehtävä</item>
+        <item quantity="other">%1$d tehtyjä tehtäviä</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d tuleva tapahtuma</item>
+        <item quantity="other">%1$d tulevia tapahtumia</item>
+    </plurals>
+    <string name="todos_filter_all_format">Kaikki %1$d</string>
+    <string name="todos_filter_open_format">Avaa %1$d</string>
+    <string name="todos_filter_done_format">Valmis %1$d</string>
+    <string name="todos_filter_events_format">Tapahtumat %1$d</string>
+    <string name="todos_cheer_all_clear">Kaikki selvä. Mukava.</string>
+    <string name="todos_cheer_done_and_dusted">Valmis ja pölytty.</string>
+    <string name="todos_cheer_nothing_pending">Ei mitään vireillä.</string>
+    <string name="todos_cheer_caught_up">Sait kiinni.</string>
+    <string name="todos_cheer_clean_slate">Puhdasta liuskekiveä.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d päivässä</item>
+        <item quantity="other">%1$d päivässä</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d päivä sitten</item>
+        <item quantity="other">%1$d päivää sitten</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d viikon kuluttua</item>
+        <item quantity="other">%1$d viikon kuluttua</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d viikko sitten</item>
+        <item quantity="other">%1$d viikkoa sitten</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 kuukaudessa</string>
+    <string name="todos_relative_one_month_ago">1 kuukausi sitten</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d kuukaudessa</item>
+        <item quantity="other">%1$d kuukauden kuluttua</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d kuukausi sitten</item>
+        <item quantity="other">%1$d kuukautta sitten</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Tilastot</string>
+    <string name="settings_nav_statistics_subtitle_on">Näytä tilastot aktiivisessa navigointipalkissa tai paneelissa.</string>
+    <string name="settings_nav_statistics_subtitle_off">Ota Tilastot käyttöön ensin, jotta se sijoitetaan navigointiin.</string>
+    <string name="settings_show_labels_bottom_panel_title">Näytä tarrat alapaneelissa</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Näytä tekstitunnisteet alapaneelin kuvakkeiden alla.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Eleet</string>
+    <string name="settings_entry_delete_title">Merkintä Poista</string>
+    <string name="settings_entry_delete_subtitle">Valitse kohde painamalla pitkään. Napauta lisää merkintöjä valitaksesi useita ja käytä sitten keskellä olevaa Poista-painiketta. Tyhjennä valinta napauttamalla tyhjää tilaa.</string>
+    <string name="settings_swipe_navigate_title">Pyyhkäise kohtaan Navigoi päivämäärät</string>
+    <string name="settings_swipe_navigate_subtitle">Pyyhkäise oikealta vasemmalle siirtyäksesi päivämäärän eteenpäin ja vasemmalta oikealle siirtyäksesi taaksepäin.</string>
+    <string name="settings_drag_reorder_title">Ota käyttöön Vedä järjestele</string>
+    <string name="settings_drag_reorder_subtitle">Järjestä ne uudelleen painamalla merkintöjä pitkään</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data ja palautus</string>
+    <string name="settings_swipe_rebuild_index">Pyyhkäise alas aloitusnäytössä rakentaaksesi hakemiston uudelleen</string>
+    <string name="settings_large_journal_safe_mode_title">Suuren päiväkirjan vikasietotila</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Kun havaitaan erittäin suuri päiväkirja, lykkää tarpeettomat käynnistystilastot, jotta sovellus avautuu nopeammin ja turvallisemmin.</string>
+    <string name="settings_version_history_title">Versiohistoria</string>
+    <string name="settings_version_history_subtitle">Säilytä turvalliset kopiot ennen merkintöjen muokkaamista, poistamista, tarroja ja muutosten tarkistamista.</string>
+    <string name="settings_storage_location_label">Säilytyspaikka</string>
+    <string name="settings_reset_to_default">Palauta oletusarvo</string>
+    <string name="settings_choose_folder">Valitse Kansio</string>
+    <string name="settings_backup_description">Luo yksi Yaja-varmuuskopio, joka sisältää päiväkirjamerkintöjä, lyhytkoodeja, päivämäärän avainsanoja ja People &amp; Places -tietoja. Restore voi yhdistää sen takaisin turvallisesti myöhemmin.</string>
+    <string name="settings_last_backup">Viimeisin varmuuskopio: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Varmuuskopiomuistutuksen ikä</string>
+    <string name="settings_backup_reminder_disabled">Ei käytössä</string>
+    <string name="settings_backup_reminder_desc">Korosta varmuuskopio sivupalkissa, kun se on vanhempi kuin %1$d päivää.</string>
+    <string name="settings_backup_reminder_days_disabled">0 päivää (pois käytöstä)</string>
+    <string name="settings_backup_reminder_days">%1$d päivää</string>
+    <string name="settings_restore_button">Palauttaa</string>
+    <string name="settings_backup_now_button">Varmuuskopioi nyt</string>
+    <string name="settings_db_index_management_label">Tietokannan indeksihallinta</string>
+    <string name="settings_db_index_management_desc">Avaa kohdennettuja uudelleenrakennustyökaluja tehtäviä, ihmisiä ja paikkoja tai täyden tietokannan hakemiston uudelleenmuodostukseen.</string>
+    <string name="settings_rebuild_tools_button">Uudelleenrakennustyökalut</string>
+    <string name="settings_import_label">Tuoda</string>
+    <string name="settings_import_info_cd">Tuo tiedot</string>
+    <string name="settings_import_info_title">Tuo tiedot</string>
+    <string name="settings_import_day_one_title">Päivän ensimmäinen tuonti</string>
+    <string name="settings_import_day_one_bullet1">- Vienti ensimmäisestä päivästä ilman kuvia</string>
+    <string name="settings_import_day_one_bullet2">- Vain tekstidata tuodaan</string>
+    <string name="settings_import_day_one_bullet3">- Aikaleima ja sijaintitiedot (jos saatavilla) säilytetään</string>
+    <string name="settings_import_perf_warning_title">Suorituskyvyn varoitus</string>
+    <string name="settings_import_perf_warning_desc">Suuren määrän (500+) tuominen voi kestää useita minuutteja. Voit siirtyä pois ja tuonti jatkuu taustalla.</string>
+    <string name="settings_got_it">Selvä</string>
+    <string name="settings_import_success">.json-vienti</string>
+    <string name="settings_import_source_day_one">Päivä yksi</string>
+    <string name="settings_import_source_day_one_subtitle">.zip- tai .json-vienti</string>
+    <string name="settings_import_source_journalistic">Journalistinen</string>
+    <string name="settings_import_source_journalistic_subtitle">.json-vienti</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Opi käyttämään yajaa</string>
+    <string name="help_footer_website">Verkkosivusto</string>
+    <string name="help_footer_share">Jakaa</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Ristiriita</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Jaa yaja</string>
+    <string name="help_share_yaja_text">yaja - jälleen yksi päiväkirjasovellus\n\nHairaamaton paikallinen päiväkirja, joka tallentaa merkinnät merkintätiedostoina. Se sisältää aikajanan, lookbackin, ihmisiä ja paikkoja, malleja, arvosteluja, tilastoja ja widgetejä.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord-käyttäjätunnus kopioitu!</string>
+    <string name="help_footer_play_store">Play Kauppa</string>
+    <string name="help_cd_rj_logo">RJ logo</string>
+    <string name="help_screen_title">Ohje ja Tietoja</string>
+    <string name="help_welcome_title">Tervetuloa Yajaan</string>
+    <string name="help_welcome_body">Yaja on paikallinen ensimmäinen merkintäpäiväkirja, joka tallentaa päiviä, ihmisiä, paikkoja, seurantatoimia, arvosteluja ja malleja ilman, että se häiritsee sinua. Tällä sivulla on nopea opas sovelluksen pääosiin.</string>
+    <string name="help_start_here">Aloita tästä</string>
+    <string name="help_cd_collapse">Romahdus</string>
+    <string name="help_cd_expand">Laajentaa</string>
+    <string name="help_group_everyday_title">Joka päivä</string>
+    <string name="help_group_everyday_desc">Päiväkirja, kirjoituskulku ja päivittäinen navigointi.</string>
+    <string name="help_group_reviews_title">Arvostelut ja näkemykset</string>
+    <string name="help_group_reviews_desc">Katsaukset, trendit, ihmiset, paikat ja analyysi.</string>
+    <string name="help_group_advanced_title">Lisätyökalut</string>
+    <string name="help_group_advanced_desc">Widgetit, tallennustila, yksityisyys, varmuuskopiot ja tekniset työkalut.</string>
+    <string name="help_onboard_todos_events_title">Todos, tapahtumat ja toistuvat</string>
+    <string name="help_onboard_todos_events_body">Pidä henkilökohtaiset muistutukset, perhesuunnitelmat ja toistuvat aikataulut, jotka luovat tehtäviä automaattisesti määräpäivinä.</string>
+    <string name="help_onboard_widgets_title">Widgetit</string>
+    <string name="help_onboard_widgets_body">Lisää lämpökartta-, Quick Capture-, Quick Todo- tai Todo List -widgetit käynnistysohjelmasta.</string>
+    <string name="help_onboard_version_history_title">Versiohistoria</string>
+    <string name="help_onboard_version_history_body">Ota historiatiedostot käyttöön kohdassa Asetukset &gt; Tiedot, jotta voit säilyttää turvallisia tilannekuvia ennen vaarallisia muutoksia.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Käytä Taskeria lisätäksesi nopeasti merkintöjä, tehtäviä tai tapahtumia, kun jotain henkilökohtaista on tallennettava heti.</string>
+    <string name="help_section_writing_editor_title">Kirjoittaja &amp; Toimittaja</string>
+    <string name="help_section_writing_editor_preview">Mallit, merkintäotsikot, tehtävät, tapahtumat ja joustava luonnosten lisäys.</string>
+    <string name="help_section_writing_editor_content">+ Kirjoita valitulle päivälle napauttamalla kelluvaa +-painiketta.\n+ Käytä malleja, kuten kokousmuistiinpano, matkapäivä, terveysloki, pohdiskelu, työloki ja paljon muuta.\n+ Malleja voidaan lisätä tyhjään luonnokseen, liittää alla, käyttää luonnoksen korvaamiseen tai lisätä kohdistimen kohdalle.\n+ Editor-sirut voivat lisätä nopeasti tehtäviä, tapahtumia ja numeroita. Syöttäminen tukee markdown-tyylisiä otsikoita, kuten ### Section.</string>
+    <string name="help_section_post_write_review_title">Kirjoita arvostelu</string>
+    <string name="help_section_post_write_review_preview">Tehtävien poimiminen, avainsanojen tunnistus, tähdellä merkitseminen, tunnisteet ja uudelleenkäynnin asetukset.</string>
+    <string name="help_section_post_write_review_content">+ Kirjoittamisen jälkeen Yaja voi avata arvostelulomakkeen ennen tallentamista.\n+ Se voi poimia tehtäväkohteita, havaita ihmisiä ja paikkoja, merkitä päivän tähdellä, asettaa päivätunnisteen ja ajoittaa uudelleenkäyntipäivämäärät.\n+ Voit poistaa kirjoituksen jälkeisen tarkastelun käytöstä asetuksista, jos haluat tallentaa suoraan.</string>
+    <string name="help_section_revisit_followup_title">Uudelleenkäynti- ja seurantapäivät</string>
+    <string name="help_section_revisit_followup_preview">Päiväkirjaan linkitetyt seurantapäivät pikavalinnoilla ja mukautetulla vaihtoehdolla.</string>
+    <string name="help_section_revisit_followup_content">+ Lisää uudelleenkäyntipäivät Huomisen, Ensi viikon, Ensi kuukauden tai muokatun päivämäärän avulla.\n+ Palautuspäivämäärät näkyvät etusivulla ja ne on merkitty kalenteriin ja aikajanalle.\n+ Tämä toimii hyvin lupauksissa, päätöksissä, terveystarkastuksissa ja muistutuksissa, jotka on sidottu päiväkirjakontekstiin.</string>
+    <string name="help_section_navigation_gestures_title">Navigointi ja eleet</string>
+    <string name="help_section_navigation_gestures_preview">Päivämäärän siirto, valinnan poistaminen, pyyhkäisyasetukset ja välimuistin toiminnan uudelleenrakentaminen.</string>
+    <string name="help_section_navigation_gestures_content">+ Etusivu tukee päivämäärän navigointia nuolilla ja valinnaista pyyhkäisevää navigointia, kun se on käytössä.\n+ Paina merkintää pitkään valitaksesi sen. Valitse myös ne napauttamalla lisää merkintöjä ja käytä sitten Lisää-painikkeen lähellä olevaa Poista pilleriä.\n+ Valittujen merkintöjen ulkopuolella napauttaminen tyhjentää valinnan. Poistetut merkinnät voidaan palauttaa yhdessä palautuslaskennan perusteella.\n+ Voit rakentaa välimuistin uudelleen, kun päiväkirjatiedostot muuttuvat Yajan ulkopuolella.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Lyhytkoodit ja pikakaappaus</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Nopea henkilökohtainen kaappaus ja uudelleenkäytettävät dynaamiset tekstikatkelmat.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Luo lyhytkoodeja lisätäksesi toistuvaa tekstiä nopeasti.\n+ Dynaamiset paikkamerkit, kuten {{today:dd-MMM}} ja {{now:HH:mm}}, toimivat lyhytkoodien sisällä.\n+ Quick Capture auttaa kirjaamaan jotain nopeasti avaamatta koko editoria.\n+ Pikalisäys voi tallentaa joko tehtävän tai tapahtuman valitulle päivämäärälle widgetistä, Todos-näytöstä tai Taskerista.</string>
+    <string name="help_section_todos_events_title">Todos, tapahtumat ja toistuvat</string>
+    <string name="help_section_todos_events_preview">Henkilökohtaiset muistutukset, huomionarvoiset tapahtumat ja automaattiset toistuvat aikataulut.</string>
+    <string name="help_section_todos_events_content">+ Tehtävät kirjoitetaan suoraan päiväkirjamerkintöihin rivillä [ ] ja [x].\n+ Tapahtumat ovat normaaleja päiväkirjamerkintöjä, jotka on merkitty tapahtumaksi. Niistä on hyötyä perhesuunnitelmissa, tapaamisissa, matkoissa tai muussa, jonka haluat huomata myöhemmin.\n+ Toistuvat tehtävät ja tapahtumat (aikataulut) kirjoittavat automaattisesti tehtäväkohtia tai tapahtumien otsikoita päivittäisille päiväkirjasivuillesi vuosittaisen aikataulun mukaan, vuosittain, kuukausittain. aikataulut napauttamalla Todos-kuvaketta Todos-näytössä.\n+ Joka päivä, kun avaat Yajan, taustaliukuhihna suoritetaan tarkistaakseen, onko ajoitettuja tehtäviä suoritettu, ja lisää ne kyseisen päivän merkintään.\n+ Todos-näytön avulla voit tarkastella avoimia tehtäviä, suoritettuja tehtäviä ja tapahtumia muuttamatta Yajaa tuottavuuden hallintapaneeliksi.\n+ Napauta päiväkirjan otsikkoa avataksesi päiväkirjan uudelleen. todo-hakemisto, jos tiedostoja on muutettu Yajan ulkopuolella.\n+ Näytä valmiit tehtävät muistetaan, joten haluamasi näkymä pysyy, kun lähdet ja palaat.\n+ Todo-widgetit voivat näyttää odottavia tehtäviä, vahvistaa ennen vaihtamista, piilottaa valmiit tehtävät ja valinnaisesti piilottaa automaattisesti, kun mitään ei ole odottamassa.</string>
+    <string name="help_section_people_places_title">Ihmiset ja paikat</string>
+    <string name="help_section_people_places_preview">Avainsanat, aliakset, trendit ja paremmuusjärjestetty yhteysnäkymät.</string>
+    <string name="help_section_people_places_content">+ Seuraa ihmisiä ja paikkoja aliasten ja suhdetunnisteiden avulla.\n+ Hae, suodata ja lajittele avainsanaluettelo.\n+ Avainsanojen tietosivut näyttävät viimeaikaiset maininnat, maininnat ajan mittaan, yhteismaininnat ja sijoitetut yhteydet.\n+ Osumaherkkyyttä voidaan säätää asetuksista.</string>
+    <string name="help_section_timeline_lookback_title">Aikajana ja katsaus</string>
+    <string name="help_section_timeline_lookback_preview">Viimeisen päivän selaus, kohokohdat, Yllätä minut ja arvostelujen aloituskohdat.</string>
+    <string name="help_section_timeline_lookback_content">+ Aikajanalla voit selata menneitä päiviä suodattimien, vuosipalojen ja valinnaisen koko päivämäärätilan avulla.\n+ Lookback näyttää saman päivän merkinnät menneiltä vuosilta ja tähdellä merkityt kohokohdat.\n+ Surprise Me avaa satunnaisen menneen merkinnän Lookbackista.\n+ Viikkokatsaus ja kuukausikatsaus livenä Lookbackissa.</string>
+    <string name="help_section_statistics_reviews_title">Tilastot ja arvostelut</string>
+    <string name="help_section_statistics_reviews_preview">Vertaa tilaa, mallitietoja, mukautettuja näkyviä osioita ja yhteenvetoja.</string>
+    <string name="help_section_statistics_reviews_content">+ Tilastot sisältävät vertailutilan, avainsanojen deltat ja mallitilastot.\n+ Voit valita, mitkä tilastoosiossa pysyvät näkyvissä Tilastot-näytön sisällä.\n+ Vertailutila on käytettävissä kaikkien aikojen ajalle ja se tekee yhteenvedon kuukausien ja vuosien eristä.\n+ Arvostelusivuilla on yhteenveto aktiivisimmista päivistä, suosituimmista ihmisistä ja paikoista, suosikkihetkistä, tunnisteista, kielen jaottelusta ja putki- tai välikuvioista.</string>
+    <string name="help_section_widgets_home_title">Widgetit ja kodin pinta</string>
+    <string name="help_section_widgets_home_preview">Käynnistyswidgetit, korostetut avainsanat ja päivätason kotitilastot.</string>
+    <string name="help_section_widgets_home_content">+ Writing Heatmap-, Quick Capture-, Quick Add- ja Todo List -widgetit ovat käytettävissä käynnistysohjelmassa.\n+ Widgetin määritysnäytöillä voit säätää kulmia, pehmusteita, muotoa, otsikoita, suoritettujen tehtävien näkyvyyttä ja muita widget-vaihtoehtoja, jos niitä tuetaan.\n+ Lämpökartta-widget käyttää enemmän intensiteetin sävyjä, kun ihmiset kirjoittavat paikan ja kotihistorian tasaisemmin. asetus on käytössä.\n+ Kotipäivämäärän otsikko voi näyttää tai piilottaa merkintöjen, sanojen ja merkkien määrän.</string>
+    <string name="help_section_language_text_analysis_title">Kieli- ja tekstianalyysi</string>
+    <string name="help_section_language_text_analysis_preview">Paikallisen kielen tunnistus tilastoja ja arvostelutietoja varten.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja havaitsee hallitsevan kirjoituksen tai kielen näkemyksiä varten.\n+ Kielijako näkyy Tilastoissa ja arvosteluissa.\n+ Havainto suoritetaan paikallisesti eikä lähetä päiväkirjatekstiä laitteesta.</string>
+    <string name="help_section_data_privacy_cache_title">Tiedot, yksityisyys ja välimuisti</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown-tallennustila, versiohistoria, sovellusloki, sovellusten lukitus ja välimuistin uusiminen.</string>
+    <string name="help_section_data_privacy_cache_content">+ Tietosuoja: Kaikki henkilökohtaiset päiväkirjatiedot sijaitsevat tiukasti fyysisellä laitteellasi eivätkä koskaan poistu siitä milloinkaan. Yaja ei käytä pilvitietokantoja, etävarmuuskopiopalvelimia tai telemetriaa tekstisi seuraamiseksi.\n+ Päiväkirjamerkinnät tallennetaan vakiomuotoisina Markdown-tiedostoina, jotka on järjestetty vuoden ja kuukauden mukaan.\n+ Versiohistoria voi säilyttää turvallisia tilannekuvia ennen muokkauksia, poistoja, nimiöjä ja muutosten tarkistamista.\n+ Voit valita, kuinka monta versiota säilytetään ja kuinka monta päivää välimuistiin tallennetaan sovelluksen tapahtumat ja kaatumistiedot. tallentamatta päiväkirjatekstiä.\n+ Rebuild App Cache -sovelluksen avulla voit päivittää sovellustietoja modulaarisesti, mukaan lukien tehtävät ja välimuistin täydelliset uudelleenmuodostukset.\n+ Sovelluksen lukitus tukee PIN-koodia ja sormenjälkeä.\n+ Yaja pitää raskaan indeksoinnin ja tilastotyön viivästyneen mahdollisuuksien mukaan, jotta sovelluksen käynnistys ja tallentaminen pysyvät responsiivisina.</string>
+    <string name="settings_app_log_title">Sovellusloki</string>
+    <string name="settings_app_log_subtitle">Tarkastele yksityisyyttä suojaavia diagnostiikkatietoja ja aikaisempia kaatumistietoja</string>
+    <string name="app_log_cd_share">Jaa sovellusloki</string>
+    <string name="app_log_cd_clear">Tyhjennä sovellusloki</string>
+    <string name="app_log_privacy_title">Yksityisyyttä suojaava diagnostiikka</string>
+    <string name="app_log_privacy_description">Tämä loki tallentaa tärkeimmät sovellustapahtumat, välimuisti-/tallennustoiminnot, widgetien päivitykset ja kaatumistiedot. Se ei sisällä päiväkirjamerkintöjä, tehtävätekstiä tai yksityisten muistiinpanojen sisältöä.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Säilytä viimeinen %d päivä</item>
+        <item quantity="other">Säilytä viimeiset %d päivää</item>
+    </plurals>
+    <string name="app_log_retention_description">Vanhemmat lokitapahtumat karsitaan automaattisesti kirjaamisen aikana ja heti, kun tämä asetus muuttuu.</string>
+    <string name="app_log_empty">Ei vielä sovelluslokia.</string>
+    <string name="app_log_refresh">Päivitä loki</string>
+    <string name="app_log_share_empty">Ei vielä Yaja-sovelluksen lokimerkintöjä.</string>
+    <string name="app_log_share_subject">Yaja-sovellusloki</string>
+    <string name="app_log_share_chooser">Jaa Yaja-sovelluksen loki</string>
+    <string name="app_log_local_time_format">%1$s | paikallinen aika\n%2$s</string>
+    <string name="settings_website_title">Yajan verkkosivusto</string>
+    <string name="settings_website_subtitle">Avaa virallinen verkkosivusto päivityksiä ja tietoja varten</string>
+    <string name="settings_advanced_integrations_title">Edistyneet integraatiot</string>
+    <string name="settings_tasker_integration_title">Tasker-integrointi</string>
+    <string name="settings_tasker_integration_subtitle">Nopeat taltiointitoiminnot ja päiväkirjatapahtuman laukaisimet</string>
+    <string name="settings_shortcodes_subtitle">Hallinnoi uudelleenkäytettäviä katkelmia, jotka laajenevat kirjoittamisen tai pikakaappauksen aikana.</string>
+    <string name="settings_privacy_security_title">Yksityisyys ja turvallisuus</string>
+    <string name="settings_pin_lock_title">PIN-lukitus</string>
+    <string name="settings_app_locked">Sovellus on lukittu</string>
+    <string name="settings_app_unlocked">Sovellus on avattu</string>
+    <string name="settings_change_pin">Vaihda PIN</string>
+    <string name="settings_biometric_unlock_title">Biometrinen lukituksen avaus</string>
+    <string name="settings_biometric_enabled_desc">Sormenjälki tai Face ID käytössä</string>
+    <string name="settings_biometric_disabled_desc">Käytä biometrisiä tietoja PIN-koodin sijaan</string>
+    <string name="settings_autolock_timeout_title">Automaattisen lukituksen aikakatkaisu</string>
+    <string name="settings_pin_lock_disclaimer">PIN-lukitus estää luvattoman pääsyn sovellukseen, mutta ei salaa päiväkirjatietojasi levyllä. Joku, jolla on suora pääsy tiedostoihin, voi silti lukea merkintösi.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minuutti</item>
+        <item quantity="other">%1$d minuuttia</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Järjestelmä</string>
+    <string name="settings_theme_light">Kevyt</string>
+    <string name="settings_theme_dark">Tumma</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">värit</string>
+    <string name="settings_color_intensity_title">Värin intensiteetti</string>
+    <string name="settings_background_tint_title">Taustan sävy</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Mukautettu</string>
+    <string name="settings_font_size_label">Fontin koko</string>
+    <string name="settings_ui_font_size_label">Käyttöliittymän kirjasinkoko</string>
+    <string name="settings_data_font_size_label">Sisällön kirjasinkoko</string>
+    <string name="settings_follow_ui_font_scale_label">Tee sisällön kirjasinkoosta sama kuin käyttöliittymä</string>
+    <string name="settings_color_source_material_you">Materiaali sinä</string>
+    <string name="settings_theme_preview_title">Teeman esikatselu</string>
+    <string name="settings_journal_entry_preview">Päiväkirjamerkintä</string>
+    <string name="settings_journal_entry_preview_desc">Kortit, pelimerkit ja painikkeet käyttävät näitä värejä.</string>
+    <string name="settings_preview_chip_chip">Siru</string>
+    <string name="settings_preview_chip_accent">Aksentti</string>
+    <string name="settings_preview_chip_fab">IHANA</string>
+    <string name="settings_intensity_label">Intensiteetti: %1$s</string>
+    <string name="settings_personal_themes_title">Henkilökohtaisia ​​teemoja</string>
+    <string name="settings_theme_name_label">Teeman nimi</string>
+    <string name="settings_main_color_label">Pääväri</string>
+    <string name="settings_hue_label">Värisävy</string>
+    <string name="settings_sat_label">la</string>
+    <string name="settings_bright_label">Kirkas</string>
+    <string name="settings_generated_accents_title">Syntyi aksentteja</string>
+    <string name="settings_personal_theme_desc">Valitse yksi väri. Yaja luo yhteensopivia korostus- ja tukivärejä.</string>
+    <string name="settings_preview_chip_main">Main</string>
+    <string name="settings_preview_chip_support">Tukea</string>
+    <string name="settings_no_font_selected">Fonttia ei ole valittu</string>
+    <string name="settings_custom_font_desc">Valitse mikä tahansa unicode-muotoinen .ttf- tai .otf-tiedosto – esim. Malayalam-fontti, kuten Manjari. Kirjasimesta puuttuvat merkit käyttävät järjestelmäfontteja.</string>
+    <string name="settings_font_replace">Korvata</string>
+    <string name="settings_choose_font_file">Valitse fonttitiedosto</string>
+    <string name="settings_intensity_muted">Mykistetty</string>
+    <string name="settings_intensity_normal">Normaali</string>
+    <string name="settings_intensity_vivid">Eloisa</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Puhdas</string>
+    <string name="settings_tint_soft">Pehmeä</string>
+    <string name="settings_tint_rich">Rikas</string>
+    <string name="settings_tint_deep">Syvä</string>
+    <string name="settings_accent_complementary">Täydentävä</string>
+    <string name="settings_accent_analogous">Analoginen</string>
+    <string name="settings_accent_triadic">Triadinen</string>
+    <string name="settings_accent_soft">Pehmeä</string>
+    <string name="settings_mono_weight_thin">Ohut</string>
+    <string name="settings_mono_weight_extra_light">Extra Light</string>
+    <string name="settings_mono_weight_light">Kevyt</string>
+    <string name="settings_mono_weight_regular">Säännöllinen</string>
+    <string name="settings_mono_weight_medium">Keskikokoinen</string>
+    <string name="settings_mono_weight_semi_bold">Puoli lihavoitu</string>
+    <string name="settings_mono_weight_bold">Lihavoitu</string>
+    <string name="settings_mono_weight_extra_bold">Erittäin lihavoitu</string>
+    <string name="settings_mono_weight_title">Paino</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Lisää päivämäärä-avainsana</string>
+    <string name="settings_keyword_label">avainsana</string>
+    <string name="settings_keyword_placeholder_example">esim. eilen</string>
+    <string name="settings_means_label">Keinot</string>
+    <string name="settings_add_button">Lisätä</string>
+    <string name="settings_no_keywords_yet">Avainsanoja ei ole vielä lisätty.</string>
+    <string name="settings_added_keywords_title">Lisätyt avainsanat (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Lisää avainsana</string>
+    <string name="keywords_dialog_add_title">Lisää avainsana</string>
+    <string name="keywords_dialog_edit_title">Muokkaa avainsanaa</string>
+    <string name="keywords_cd_import_csv">Tuo CSV</string>
+    <string name="keywords_cd_export_csv">Vie CSV</string>
+    <string name="keywords_cd_download_template">Lataa malli</string>
+    <string name="rebuild_cache_storage_transparency_title">Laitteen tallennustilan läpinäkyvyys</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja käyttää suojattua paikallista tallennusmallia. Henkilökohtaiset päiväkirjatietosi pysyvät paikallisina eivätkä koskaan poistu laitteeltasi milloin tahansa:</string>
+    <string name="rebuild_cache_source_of_truth_title">Totuuden lähde (Markdown-tiedostot)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Kaikki merkinnät, tarkistuslistan kohteet (tehtävät), aikajanan tapahtumat, tähdet ja tunnisteet tallennetaan pysyvästi plaintext Markdown (.md) -tiedostoihin valitsemaasi paikalliseen päiväkirjakansioon. Tietosi ovat 100-prosenttisesti sinun omistuksessasi, ja ne sijaitsevat kokonaan laitteessasi.</string>
+    <string name="rebuild_cache_read_cache_title">Lue välimuisti ja hakemisto (SQLite-tietokanta)</string>
+    <string name="rebuild_cache_read_cache_desc">Yaja jäsentää Markdown-tiedostosi ja indeksoi ne laitteesi paikalliseen Room SQLite -tietokantaan salliakseen välittömän näytön latauksen, kalenterin korostukset, avainsanat ja tilastot skannaamatta tiedostojärjestelmää jokaisella rullauksella.</string>
+    <string name="rebuild_cache_local_private_title">100% paikallinen ja yksityinen</string>
+    <string name="rebuild_cache_local_private_desc">Yajalla ei ole pilvitietokantoja, etävarmuuskopiopalvelimia tai telemetriaa, joka seuraa tekstiäsi. Kaikki päiväkirjamerkinnät ja jäsennetyt tiedot pysyvät tiukasti fyysisellä laitteellasi eivätkä koskaan jätä sitä milloinkaan.</string>
+    <string name="keywords_export_success">Avainsanat viety</string>
+    <string name="keywords_export_failed">Avainsanoja ei voitu viedä</string>
+    <string name="keywords_template_saved">Malli tallennettu</string>
+    <string name="keywords_template_save_failed">Mallia ei voitu tallentaa</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Tuotu %d avainsana</item>
+        <item quantity="other">Tuotu %d avainsanaa</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Kelvollisia avainsanoja ei löytynyt</string>
+    <string name="keywords_import_failed">Avainsanoja ei voitu tuoda</string>
+    <string name="keywords_status_indexing">Indeksointi</string>
+    <string name="keywords_status_indexed">Indeksoitu</string>
+    <string name="keywords_metric_mentions">Mainitsee</string>
+    <string name="keywords_metric_days">päivää</string>
+    <string name="keywords_timeline_range_all">Kaikki</string>
+    <string name="keywords_connections_filter_all">Kaikki</string>
+    <string name="keywords_connections_filter_people">Ihmiset</string>
+    <string name="keywords_connections_filter_places">Paikat</string>
+    <string name="keywords_connections_filter_recent">Viimeaikaiset</string>
+    <string name="keywords_connections_filter_strongest">Vahvin</string>
+    <string name="keywords_filter_needs_reindex">Vaatii Reindexin</string>
+    <string name="keywords_search_placeholder">Etsi ihmisiä, paikkoja, aliaksia, suhdetta</string>
+    <string name="keywords_refreshing_counters">Päivitetään avainsanalaskuria…</string>
+    <string name="keywords_empty_title">Ei vielä avainsanoja</string>
+    <string name="keywords_empty_subtitle">Lisää ihmiset ja paikat, joita haluat sovelluksen seurattavan paikallisesti.</string>
+    <string name="keywords_no_results_title">Ei vastaavia tuloksia</string>
+    <string name="keywords_no_results_subtitle">Kokeile toista hakua, lajittelua tai suodatinta.</string>
+    <string name="keywords_people_title">Ihmiset</string>
+    <string name="keywords_places_title">Paikat</string>
+    <string name="keywords_people_empty">Henkilöitä ei ole vielä lisätty.</string>
+    <string name="keywords_people_filtered_empty">Yksikään henkilö ei vastaa nykyisiä suodattimia.</string>
+    <string name="keywords_places_empty">Paikkoja ei ole vielä lisätty.</string>
+    <string name="keywords_places_filtered_empty">Yksikään paikka ei vastaa nykyisiä suodattimia.</string>
+    <string name="keywords_delete_person_title">Poistetaanko henkilö?</string>
+    <string name="keywords_delete_place_title">Poistetaanko paikka?</string>
+    <string name="keywords_delete_message">Poistetaanko \"%1$s\" ihmisistä ja paikoista? Tämä poistaa avainsanan ja sen indeksoidut osumat.</string>
+    <string name="keywords_timeline_title">Mainitsee ajan myötä</string>
+    <string name="keywords_timeline_empty_pattern">Ei vielä kuukausittaista mallia</string>
+    <string name="keywords_timeline_total_format">%1$d yhteensä</string>
+    <string name="keywords_timeline_empty_chart">Maininnat näkyvät tässä kaaviossa, kun löytömerkinnät on indeksoitu.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Huippu %1$s • %2$d maininta</item>
+        <item quantity="other">Huippu %1$s • %2$d mainitsee</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Päiviä maininnoilla</string>
+    <string name="keywords_recency_title">Viimeaikaisuus</string>
+    <string name="keywords_recency_none">Ei otteluita vielä</string>
+    <string name="keywords_recency_today">Mainittu tänään</string>
+    <string name="keywords_recency_yesterday">Mainittu eilen</string>
+    <string name="keywords_recency_days_ago_format">Viimeisin maininta %1$d päivää sitten</string>
+    <string name="keywords_first_seen">Ensin nähty</string>
+    <string name="keywords_last_seen">Viimeksi nähty</string>
+    <string name="keywords_unknown">Tuntematon</string>
+    <string name="keywords_co_mentioned_with">Mainittu yhdessä kanssa</string>
+    <string name="keywords_connections_title">Liitännät</string>
+    <string name="keywords_connections_subtitle">Järjestetään toistuvan päällekkäisyyden ja äskettäisyyden mukaan</string>
+    <string name="keywords_connections_linked_format">%1$d linkitetty</string>
+    <string name="keywords_connections_show">Näytä yhteydet</string>
+    <string name="keywords_connections_hide">Piilota liitännät</string>
+    <string name="keywords_connections_items_in_view">%1$d kohdetta tässä näkymässä</string>
+    <string name="keywords_connections_tap_to_expand">Napauta laajentaaksesi %1$d luokiteltua linkkiä</string>
+    <string name="keywords_connections_empty">Ei liitäntöjä tälle suodattimelle.</string>
+    <string name="keywords_open_day">Avointen ovien päivä</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Eniten mainittu</string>
+    <string name="keywords_sort_recently_added">Äskettäin lisätty</string>
+    <string name="keywords_peak_mentions_format">Huippu %1$s • %2$d mainitse%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d päivä</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">yhdessä</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d jaettu merkintä</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| viimeinen %1$s</string>
+    <string name="keywords_connections_score_format">Pisteet %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d päivää</string>
+    <string name="keywords_connections_shared_chip">%1$d jaettu</string>
+    <string name="keywords_match_type_exact">tarkka</string>
+    <string name="keywords_match_type_fuzzy">sumea</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">suhde</string>
+    <string name="keywords_action_delete">Poistaa</string>
+    <string name="keywords_action_edit">Muokata</string>
+    <string name="keywords_action_view">Näytä</string>
+    <string name="keywords_name_label">Nimi</string>
+    <string name="keywords_relation_context_label">Suhde / konteksti</string>
+    <string name="keywords_aliases_label">Alias ​​(pilkuilla erotettuna)</string>
+    <string name="keywords_aliases_label_short">Aliakset</string>
+    <string name="keywords_type_person">Henkilö</string>
+    <string name="keywords_type_place">Paikka</string>
+    <string name="keywords_save_disabled_hint">Avainsanat tallennetaan pois päältä. Ota ne käyttöön luettelosta, kun haluat indeksoinnin ajavan.</string>
+    <string name="settings_meaning_yesterday">Eilen</string>
+    <string name="settings_meaning_today">Tänään</string>
+    <string name="lookback_chip_weekly">Viikoittain</string>
+    <string name="lookback_chip_monthly">Kuukausittain</string>
+    <string name="timeline_screen_title">Aikajana</string>
+    <string name="timeline_empty_title">Ei täällä vielä mitään</string>
+    <string name="timeline_empty_subtitle">Kokeile toista suodatinta tai säädä tarrahakua.</string>
+    <string name="timeline_quick_today">Tänään</string>
+    <string name="timeline_quick_month">Kuukausi</string>
+    <string name="timeline_quick_filters">Suodattimet</string>
+    <string name="timeline_all_dates">Kaikki päivämäärät</string>
+    <string name="timeline_label_prefix">Tunniste: %1$s</string>
+    <string name="timeline_label_search_placeholder">Hae päivätunnisteita</string>
+    <string name="timeline_filters_title">Aikajanan suodattimet ja asettelu</string>
+    <string name="settings_meaning_tomorrow">Huomenna</string>
+    <string name="settings_meaning_day_before_yesterday">Toissapäivänä</string>
+    <string name="settings_meaning_day_after_tomorrow">Ylihuomenna</string>
+    <string name="settings_meaning_last_week">Viime viikolla</string>
+    <string name="settings_meaning_next_week">Ensi viikolla</string>
+    <string name="settings_meaning_monday">maanantai</string>
+    <string name="settings_meaning_tuesday">tiistai</string>
+    <string name="settings_meaning_wednesday">keskiviikko</string>
+    <string name="settings_meaning_thursday">torstai</string>
+    <string name="settings_meaning_friday">perjantai</string>
+    <string name="settings_meaning_saturday">lauantai</string>
+    <string name="settings_meaning_sunday">sunnuntai</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Sovelluksen sisäinen tallennustila</string>
+    <string name="settings_storage_internal_default">Sovelluksen sisäinen tallennustila (oletus)</string>
+    <string name="settings_storage_new_folder_fallback">uusi kansio</string>
+    <string name="settings_storage_current_folder_fallback">nykyinen kansio</string>
+    <string name="settings_storage_move_confirm">Kaikki olemassa olevat merkinnät siirretään osoitteesta %1$s kansioon %2$s. Haluatko jatkaa?</string>
+    <string name="settings_restore_added_skipped">Lisätty: %1$d\nOhitetut kaksoiskappaleet: %2$d</string>
+    <string name="settings_storage_custom_folder">Mukautettu kansio:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Pikanäppäimet auttavat</string>
+    <string name="addentry_cd_insert_template">Lisää malli</string>
+    <string name="addentry_cd_jump_to_today">Hyppää tähän päivään</string>
+    <string name="addentry_cd_share">Jakaa</string>
+    <string name="addentry_cd_bold">Lihavoitu</string>
+    <string name="addentry_cd_italic">Kursiivi</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Aseta aika</string>
+    <string name="addentry_event_chip">Tapahtuma</string>
+    <string name="addentry_pick_time_title">Valitse aika</string>
+    <string name="addentry_hour_label">Tunnin</string>
+    <string name="addentry_minute_label">Minuutti</string>
+    <string name="addentry_new_event_title">Uusi Tapahtuma</string>
+    <string name="addentry_title_label">Otsikko</string>
+    <string name="addentry_event_description_label">Tapahtuman kuvaus</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos löydetty</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Muunna %1$d rivi tarkistuslistaksi</item>
+        <item quantity="other">Muunna %1$d riviä tarkistuslistaksi</item>
+    </plurals>
+    <string name="addentry_people_places_title">Ihmiset ja paikat</string>
+    <string name="addentry_no_tracked_mentions">Tästä merkinnästä ei löytynyt seurattuja ihmisiä tai paikkoja.</string>
+    <string name="addentry_day_memory_title">Päivän muisto</string>
+    <string name="addentry_star_day_title">Tähti tälle päivälle</string>
+    <string name="addentry_star_day_subtitle">Tallenna se kohokohtana, jotta se palaa takaisin.</string>
+    <string name="addentry_day_label_label">Päivän etiketti</string>
+    <string name="addentry_day_label_placeholder">esim. Nollaa päivä</string>
+    <string name="addentry_follow_up_title">Seuraa</string>
+    <string name="addentry_next_month">Ensi kuussa</string>
+    <string name="addentry_custom">Mukautettu</string>
+    <string name="addentry_due_date_format">Eräpäivä %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Selkeä seuranta</string>
+    <string name="addentry_follow_up_note_label">Jatkohuomautus</string>
+    <string name="addentry_follow_up_note_placeholder">Mihin kannattaa tutustua uudelleen?</string>
+    <string name="addentry_review_entry_title">Tarkista merkintä</string>
+    <string name="addentry_review_entry_subtitle">Nopea passi ennen tallentamista. Vedä tehtävät esiin, tarkista seuratut maininnat ja merkitse päivä, jos sillä on merkitystä.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d tehtävä</item>
+        <item quantity="other">%1$d tehtävät</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d maininta</item>
+        <item quantity="other">%1$d mainitsee</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Tallenna merkintä</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Hylkää muutokset</string>
+    <string name="addentry_discard_changes_message">Sinulla on tallentamattomia muutoksia. Palaa takaisin ja hylkää ne tai jatka muokkaamista.</string>
+    <string name="addentry_go_back">Mene takaisin</string>
+    <string name="addentry_stay">Pysyä</string>
+    <string name="addentry_shortcuts_title">Pikanäppäimet</string>
+    <string name="addentry_help_bold_suffix">lihavoita teksti (tai valitse teksti ja napauta Lihavoitu painiketta)</string>
+    <string name="addentry_help_italic_suffix">kursivoitu teksti (tai valitse teksti ja napauta Kursivoitu-painiketta)</string>
+    <string name="addentry_help_today_suffix">: Laajenee nykyiseen päivämäärään (esim. 25-12-25)</string>
+    <string name="addentry_help_now_suffix">: Laajenee nykyiseen aikaan (esim. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Laajenee kuluvaan viikkoon (esim. viikko 52)</string>
+    <string name="addentry_help_day_suffix">: Laajenee nykyiseen arkipäivään (esim. maanantaihin)</string>
+    <string name="addentry_help_todo_suffix">: Laajentuu tehtävävalintaruutuun (esim. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Kun syötetään mihin tahansa riville, joka sisältää tehtävävalintaruudun, se vaihtaa sen.</string>
+    <string name="addentry_okey">Okei!</string>
+    <string name="addentry_template_merge_message">Tässä luonnoksessa on jo tekstiä. Valitse, miten malli sijoitetaan.</string>
+    <string name="addentry_template_merge_subtitle">Lisää alle säilyttää nykyisen luonnoksen. Kohdistin asettaa mallin siihen, missä caret on nyt.</string>
+    <string name="addentry_insert_below">Lisää alle</string>
+    <string name="addentry_at_cursor">Kohdistimessa</string>
+    <string name="addentry_replace_draft">Korvaa luonnos</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Suosittu</string>
+    <string name="addentry_new_chip">Uusi</string>
+    <string name="addentry_best_for_format">Paras: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Poista mallisuosikki</string>
+    <string name="addentry_cd_favorite_template">Suosikkimalli</string>
+    <string name="addentry_checklist_chip">Tarkistuslista</string>
+    <string name="addentry_followup_chip">Seuranta</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d</item>
+        <item quantity="other">%1$d osiot</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Vaihda suosikkimallia</string>
+    <string name="addentry_template_preview_label">Mallin esikatselu</string>
+    <string name="addentry_use_template_button">Käytä mallia</string>
+    <string name="addentry_start_blank_title">Aloita tyhjänä</string>
+    <string name="addentry_start_blank_subtitle">Ohita mallit ja jatka kirjoittamista tyhjästä luonnoksesta.</string>
+    <string name="addentry_blank_entry_name">Tyhjä merkintä</string>
+    <string name="addentry_blank_entry_description">Tavallinen päiväkirjamerkintä</string>
+    <string name="addentry_blank_category">Kenraali</string>
+    <string name="addentry_quick_picks_title">Pikavalinnat</string>
+    <string name="addentry_sort_recommended">Suositeltava</string>
+    <string name="addentry_sort_recent">Viimeaikaiset</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Malleja ei löytynyt</string>
+    <string name="addentry_no_templates_subtitle">Kokeile toista hakua tai luokkaa.</string>
+    <string name="addentry_search_templates_label">Hakumallit</string>
+    <string name="addentry_search_templates_placeholder">Tapaaminen, terveys, pohdiskelu...</string>
+    <string name="addentry_cd_clear_search">Tyhjennä haku</string>
+    <string name="addentry_choose_template_title">Valitse malli</string>
+    <string name="addentry_templates_ready_format">%1$d/%2$d mallista valmiina</string>
+    <string name="addentry_category_all">Kaikki</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Mitä tapahtui?</string>
+    <string name="addentry_todo_chip">Tehtävä</string>
+    <string name="addentry_numbered_list_chip">N Lista</string>
+    <string name="addentry_bulleted_list_chip">B-lista</string>
+    <string name="addentry_words_count_format">%1$d SANAT</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Seuranta tänään</item>
+        <item quantity="other">Jatkotoimet tänään</item>
+    </plurals>
+    <string name="home_followup_subtitle">Hyppää takaisin linkitettyyn päivään ja jatka sieltä.</string>
+    <string name="home_from_date_format">Alkaen %1$s</string>
+    <string name="home_more_due_today_format">+%1$d lisää erääntyy tänään</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Lisää etiketti</string>
+    <string name="home_edit_label_title">Muokkaa etikettiä</string>
+    <string name="home_day_label_hint">Lisää lyhyt tunniste tälle päivälle (enintään 30 merkkiä).</string>
+    <string name="home_day_label_placeholder">esim. ensimmäinen päivä koulussa</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Lisää tarra tälle päivälle</string>
+    <string name="home_star_label_hint">Anna tälle päivälle ikimuistoinen tarra (enintään 30 merkkiä)</string>
+    <string name="home_star_label_placeholder">esim. Syntymäpäiväni, Koulussa</string>
+    <string name="home_star_button">Tähti</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Merkintä poistettu</item>
+        <item quantity="other">%1$d merkintää poistettu</item>
+    </plurals>
+    <string name="home_restore_button">PALAUTTAA</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Hae merkintöjä...</string>
+    <string name="home_cd_search">Haku</string>
+    <string name="home_cd_clear_search">Tyhjennä haku</string>
+    <string name="home_cd_favorite">Suosikki</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">merkinnät</string>
+    <string name="home_stat_words">Sanat</string>
+    <string name="home_stat_chars">Merkit</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Lisää tunniste</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Osuma löytyi</item>
+        <item quantity="other">%1$d Osumia löytyi</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Tälle avainsanalle ei vielä löytynyt osumia.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Tyhjä tilakuvake</string>
+    <string name="home_empty_future">Tämä on tulevaisuus. Nauhoita muistutus!</string>
+    <string name="home_empty_past">Olet menneisyydessä. Tallenna muisti ennen kuin se haalistuu...</string>
+    <string name="home_empty_today">Ei vielä merkintöjä. Aloita päiväsi.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Tallennetaan</string>
+    <string name="home_cd_add_entry">Lisää merkintä</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Poista %1$d</string>
+    <string name="home_future_date_title">Tuleva päivämäärän merkintä</string>
+    <string name="home_future_date_message_format">Olet lisäämässä merkintää tulevaa päivämäärää varten (%1$s). Haluatko jatkaa?</string>
+    <string name="home_cache_issue_title">Tietovälimuistin ongelma havaittu</string>
+    <string name="home_cache_issue_message">Näyttää siltä, ​​että välimuistista puuttuu huomattava määrä päiväkirjamerkintöjä. Haluatko suorittaa tietojen välimuistin täyden päivityksen yrittääksesi palauttaa ne?</string>
+    <string name="home_refresh_button">Päivitä</string>
+    <string name="home_ignore_button">Sivuuttaa</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Ihmiset ja paikat</string>
+    <string name="nav_statistics">Tilastot</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Rakenna tietokantahakemisto uudelleen</string>
+    <string name="nav_backup_data">Varmuuskopioi tiedot</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Viimeistellään indeksin uudelleenmuodostusta...</string>
+    <string name="nav_rebuilding_index">Tietokantahakemiston uudelleenrakentaminen</string>
+    <string name="nav_refreshing_index">Virkistävä indeksi</string>
+    <string name="nav_backup_too_old">varmuuskopio on liian vanha...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Työskentelee...</string>
+    <string name="nav_eta_almost_done">melkein valmis</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds jäljellä</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm jäljellä</string>
+    <string name="nav_eta_hours_left_format">~%1$dh jäljellä</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Valikko</string>
+    <string name="nav_cd_rj_logo">RJ logo</string>
+    <string name="nav_tagline">vielä yksi päiväkirjasovellus</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Kauppa</string>
+    <string name="nav_cd_website">Verkkosivusto</string>
+    <string name="nav_cd_share_app">Jaa sovellus</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja logo</string>
+    <string name="nav_easter_quote_part1">\"Kirjoita muistiin ohimenevä ajatus tai mitä söit lounaaksi; sen ei tarvitse olla syvällistä.\n</string>
+    <string name="nav_easter_quote_part2">Sanasi voivat vain olla olemassa.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">RJ:n laboratorioista</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Jaa yaja</string>
+    <string name="nav_share_text_body">yaja – jälleen yksi päiväkirjasovellus\n\nHäiriötön päiväkirja, joka tallentaa merkinnät tavallisina merkintätiedostoina.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Muuta tallennuspaikkaa</string>
+    <string name="settings_change_storage_location_message">Kaikki olemassa olevat merkinnät siirretään osoitteesta %1$s kansioon %2$s. Haluatko jatkaa?</string>
+    <string name="settings_yes">Kyllä</string>
+    <string name="settings_no">Ei</string>
+    <string name="settings_restore_summary_title">Palauta yhteenveto</string>
+    <string name="settings_restore_section_journal">Journal</string>
+    <string name="settings_restore_section_shortcodes">Lyhytkoodit</string>
+    <string name="settings_restore_section_date_keywords">Päivämäärä Avainsanat</string>
+    <string name="settings_restore_section_people_places">Ihmiset ja paikat</string>
+    <string name="settings_restore_journal_summary">Lisätty uusiin päiviin: %1$d\nYhdistetty olemassa oleviin päiviin: %2$d\nPäällekkäiset päiväkirjamerkinnät ohitettu: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Lisätty: %1$d\nOhitetut kaksoiskappaleet: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Lisätty: %1$d\nOhitetut kaksoiskappaleet: %2$d</string>
+    <string name="settings_restore_people_places_summary">Lisätty: %1$d\nOhitetut kaksoiskappaleet: %2$d</string>
+    <string name="rebuild_tools_title">Uudelleenrakennustyökalut</string>
+    <string name="rebuild_tools_back">Takaisin</string>
+    <string name="rebuild_tools_intro">Käytä ensin kohdennettuja uudistuksia. Tietokannan uudelleenrakentaminen koskee vain tallennusmuutoksia, tietokannan vioittumista tai indeksivirheitä.</string>
+    <string name="rebuild_todo_index_title">Rakenna Todo-indeksi uudelleen</string>
+    <string name="rebuild_todo_index_subtitle">Päivitä tehtävät päiväkirjatiedostoista ja päivitä Todo-näyttö/widget. Parasta, kun todot näyttävät vanhentuneilta.</string>
+    <string name="rebuild_todo_index_button">Rakenna Todos uudelleen</string>
+    <string name="rebuild_people_places_title">Rakenna ihmisiä ja paikkoja uudelleen</string>
+    <string name="rebuild_people_places_subtitle">Päivitä avainsanojen aliakset, maininnat, trendit ja suhdetiedot.</string>
+    <string name="rebuild_people_places_button">Rakenna ihmisiä ja paikkoja uudelleen</string>
+    <string name="rebuild_database_title">Täysi tietokannan uudelleenrakentaminen</string>
+    <string name="rebuild_database_subtitle">Käännä tietokannan välimuisti uudelleen markdown-tiedostoista. Indeksoi uudelleen merkinnät, laskut, tehtävät, ihmiset ja paikat sekä widgetit tyhjästä.</string>
+    <string name="rebuild_database_button">Rakenna tietokanta uudelleen</string>
+    <string name="rebuild_database_confirm_title">Rakenna tietokantahakemisto uudelleen</string>
+    <string name="rebuild_database_confirm_message">Tämä tyhjentää ja indeksoi uudelleen koko Room SQLite -tietokannan Markdown-tiedostoistasi. Suurien lehtien kohdalla tämä voi kestää muutaman minuutin.</string>
+    <string name="rebuild_database_confirm_start">Aloita uudelleenrakentaminen</string>
+    <string name="rebuild_database_status_title">Tietokannan indeksin tila</string>
+    <string name="rebuild_database_storage_engine">Varastointi Moottori</string>
+    <string name="rebuild_database_storage_engine_value">Huoneen SQLite-tietokanta</string>
+    <string name="rebuild_database_indexed_days">Indeksoidut päivät</string>
+    <string name="rebuild_database_indexed_days_value">%1$d päivää indeksoitu</string>
+    <string name="rebuild_database_file_size">Tietokannan tiedostokoko</string>
+    <string name="rebuild_database_last_sync">Viimeisin hakemiston synkronointi</string>
+    <string name="rebuild_database_age_never">Ei koskaan</string>
+    <string name="rebuild_database_age_just_now">Juuri nyt</string>
+    <string name="rebuild_database_age_one_minute">1 minuutti sitten</string>
+    <string name="rebuild_database_age_minutes">%1$d minuuttia sitten</string>
+    <string name="rebuild_database_age_one_hour">1 tunti sitten</string>
+    <string name="rebuild_database_age_hours">%1$d tuntia sitten</string>
+    <string name="shortcodes_title">Lyhytkoodit</string>
+    <string name="shortcodes_import_cd">Tuoda</string>
+    <string name="shortcodes_export_cd">Viedä</string>
+    <string name="shortcodes_help_cd">Auttaa</string>
+    <string name="shortcodes_new">Uusi lyhytkoodi</string>
+    <string name="shortcodes_empty_title">Ei mukautettuja lyhytkoodeja</string>
+    <string name="shortcodes_empty_subtitle">Lisää yksi, jos haluat laajentaa katkelmia, kuten @yday, dynaamiseksi tekstiksi.</string>
+    <string name="shortcodes_dynamic_dates_hint">Käytä {{today:format}} dynaamisille päivämäärille.</string>
+    <string name="shortcodes_help_title">Pikakoodin ohje</string>
+    <string name="shortcodes_help_built_in">Sisäänrakennetut lyhytkoodit:</string>
+    <string name="shortcodes_help_built_in_examples">@tänään, @nyt, @viikko, @päivä, @t (valintaruutu), @x (vaihda valintaruutu)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynaamiset kuviot:</string>
+    <string name="shortcodes_help_dynamic_desc">Käytä {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} tai {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Esimerkki: @yday -&gt; Eilen: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Yleiset muodot: pp-KK-vv, HH:mm, EEEE (päivän nimi).</string>
+    <string name="action_close">Lähellä</string>
+    <string name="keyword_detail_title_fallback">avainsana</string>
+    <string name="keyword_detail_not_found">Avainsanaa ei löydy</string>
+    <string name="keyword_detail_last_indexed">Viimeksi indeksoitu %1$s</string>
+    <string name="keyword_detail_mentions_section">Mainitsee</string>
+    <string name="pin_biometric_prompt_title">Avaa lukitus biometrisellä</string>
+    <string name="pin_biometric_prompt_subtitle">Käytä sormenjälkeäsi tai kasvojasi lukituksen avaamiseen</string>
+    <string name="pin_error_no_biometric_enrolled">Biometrisiä tietoja ei ole rekisteröity. Rekisteröi sormenjälki tai kasvot laitteen asetuksissa.</string>
+    <string name="pin_error_hardware_unavailable">Biometrinen laitteisto ei ole saatavilla.</string>
+    <string name="pin_error_no_hardware">Tässä laitteessa ei ole biometristä laitteistoa.</string>
+    <string name="pin_error_not_available">Biometrinen todennus ei ole käytettävissä.</string>
+    <string name="pin_title_confirm">Vahvista PIN</string>
+    <string name="pin_title_set_new">Aseta uusi PIN-koodi</string>
+    <string name="pin_title_disable">Poista käytöstä antamalla nykyinen PIN-koodi</string>
+    <string name="pin_title_enter">Anna PIN-koodi</string>
+    <string name="pin_error_incorrect">Väärä PIN-koodi. Yritä uudelleen.</string>
+    <string name="pin_error_mismatch">PIN-koodit eivät täsmää. Aloita alusta.</string>
+    <string name="pin_cd_use_biometric">Käytä biometrisiä tietoja</string>
+    <string name="pin_cd_backspace">Askelpalautin</string>
+    <string name="timeline_preview_empty_labeled">Tämä päivä on merkitty, mutta päiväkirjamerkintää ei vielä ole.</string>
+    <string name="timeline_preview_loading">Ladataan esikatselua...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d lisää merkintää tänä päivänä</item>
+        <item quantity="other">+ %1$d muuta merkintää tänä päivänä</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Avoinna tänä päivänä</string>
+    <string name="timeline_chip_today">TÄNÄÄN</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d -merkintä</item>
+        <item quantity="other">%1$d merkintöjä</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Seuranta</string>
+    <string name="timeline_chip_label_only">Vain etiketti</string>
+    <string name="timeline_cd_favorite">Suosikki</string>
+    <string name="version_history_title">Versiohistoria</string>
+    <string name="version_history_day_versions_title">Päivän versiot</string>
+    <string name="version_history_keep_copies_title">Säilytä turvakopiot</string>
+    <string name="version_history_keep_copies_subtitle">Ennen kuin Yaja muuttaa päivätiedostoa, se tallentaa nykyisen tiedoston sovellustietoihin Historiatiedostot-kohdassa.</string>
+    <string name="version_history_versions_kept_title">Päivittäin säilytettävät versiot</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja säilyttää uusimman version %1$d joka päivä.</item>
+        <item quantity="other">Yaja säilyttää uusimmat %1$d-versiot jokaiselta päivämäärältä.</item>
+    </plurals>
+    <string name="version_history_retention_title">Säilytys</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Yli %1$d päivää vanhemmat tilannekuvat siivotaan automaattisesti.</item>
+        <item quantity="other">Yli %1$d päivää vanhat tilannekuvat siivotaan automaattisesti.</item>
+    </plurals>
+    <string name="version_history_notes">Huomautuksia: versiohistoria suojaa päiväkohtaisia ​​merkintätiedostoja ennen muutosten lisäämistä, muokkaamista, poistamista, järjestämistä uudelleen, merkitsemistä, tähdellä ja tarkistamista. Se ei ole pilvivarmuuskopio; käytä varmuuskopiointia kannettaville kopioille.</string>
+    <string name="version_history_snapshots_for">Tilannekuvat kohteelle %1$s</string>
+    <string name="version_history_snapshots_subtitle">Avaa tallennettu versio, tarkista se ja palauta se tälle päivälle.</string>
+    <string name="version_history_empty">Ei vielä tallennettuja versioita tälle päivälle.</string>
+    <string name="action_view">Näytä</string>
+    <string name="version_history_date_intro">Avaa aikaisempi tallennettu versio tälle päivälle, tarkista se ja palauta se tarvittaessa.</string>
+    <string name="action_next">Seuraavaksi</string>
+    <string name="action_apply">Käytä</string>
+    <string name="action_restore">Palauttaa</string>
+    <string name="statistics_choose_title">Valitse Tilastot</string>
+    <string name="statistics_choose_subtitle">Piilota osat, joita et halua. Vähintään yhden osion on pysyttävä näkyvissä.</string>
+    <string name="statistics_visible_count">%1$d / %2$d näkyvissä</string>
+    <string name="statistics_show_all">Näytä kaikki</string>
+    <string name="statistics_one_section_visible">Yhden osan on oltava näkyvissä</string>
+    <string name="statistics_shown">Näkyy tilastoissa</string>
+    <string name="statistics_hidden">Piilossa tilastoista</string>
+    <string name="statistics_select_start_date">Valitse aloituspäivämäärä</string>
+    <string name="statistics_select_end_date">Valitse lopetuspäivämäärä</string>
+    <string name="statistics_filter_by_period">Suodata kauden mukaan</string>
+    <string name="statistics_cd_reorder">Paina pitkään tilataksesi uudelleen</string>
+    <string name="statistics_total_entries">Tuloksia yhteensä</string>
+    <string name="statistics_total_words">Sanoja yhteensä</string>
+    <string name="statistics_avg_words_per_entry">Keskim. Sanat/Syöttö</string>
+    <string name="statistics_current_streak">Nykyinen putki</string>
+    <string name="statistics_pages_written">Sivut kirjoitettu</string>
+    <string name="statistics_days_highlighted">Päivät korostettuina</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d päivä</item>
+        <item quantity="other">%1$d päivää</item>
+    </plurals>
+    <string name="statistics_period_all_time">Kaikkien aikojen tilastot</string>
+    <string name="statistics_period_current_year">Kuluvan vuoden tilastot</string>
+    <string name="statistics_period_previous_year">Edellisen vuoden tilastot</string>
+    <string name="statistics_period_current_month">Kuluvan kuukauden tilastot</string>
+    <string name="statistics_period_previous_month">Edellisen kuukauden tilastot</string>
+    <string name="statistics_period_custom">Mukautetun ajanjakson tilastot</string>
+    <string name="statistics_period_chip_all_time">Kaikki aika</string>
+    <string name="statistics_period_chip_current_year">Nykyinen vuosi</string>
+    <string name="statistics_period_chip_previous_year">Edellinen vuosi</string>
+    <string name="statistics_period_chip_current_month">Tässä kuussa</string>
+    <string name="statistics_period_chip_previous_month">Edellinen kuukausi</string>
+    <string name="statistics_period_chip_custom">Mukautettu</string>
+    <string name="statistics_sections_visible">%1$d / %2$d osiota näkyvissä</string>
+    <string name="statistics_loading_stages">Ladataan tilastoja vaiheittain...</string>
+    <string name="review_period_weekly">Viikkokatsaus</string>
+    <string name="review_period_monthly">Kuukausikatsaus</string>
+    <string name="review_anchor_week">Viikko, joka sisältää %1$s</string>
+    <string name="review_anchor_month">Kuukausi, joka sisältää %1$s</string>
+    <string name="review_chip_entries">Merkinnät %1$d</string>
+    <string name="review_chip_words">Sanat %1$d</string>
+    <string name="review_chip_days">Päivää %1$d</string>
+    <string name="review_hint_jump">Napauta alla olevia päivämäärämerkkejä hypätäksesi takaisin päiväkirjaan.</string>
+    <string name="review_chip_streak">Putki %1$d</string>
+    <string name="review_chip_gap">Väli %1$d</string>
+    <string name="review_chip_labels">Tunnisteet %1$d</string>
+    <string name="review_chip_favorites">Suosikit %1$d</string>
+    <string name="review_empty_period">Ei vielä päiväkirjamerkintöjä tällä ajanjaksolla. Tarrat ja korostukset näkyvät edelleen alla, jos sellaisia ​​on.</string>
+    <string name="review_writing_rhythm">Kirjoitusrytmi</string>
+    <string name="review_best_streak">Paras putki</string>
+    <string name="review_longest_gap">Pisin väli</string>
+    <string name="review_most_active_days">Aktiivisimmat päivät</string>
+    <string name="review_day_entries_words">%1$d merkintää | %2$d sanaa</string>
+    <string name="review_top_people">Huippu ihmiset</string>
+    <string name="review_top_places">Parhaat paikat</string>
+    <string name="review_no_people_mentions">Ihmiset eivät mainitse</string>
+    <string name="review_no_place_mentions">Ei mainintaa paikasta</string>
+    <string name="review_favorite_moments">Suosikkihetkiä</string>
+    <string name="review_starred_day">Tähtipäivä</string>
+    <string name="review_highlighted_in_period">Korostettu tällä ajanjaksolla</string>
+    <string name="review_labels_created">Tunnisteet luotu</string>
+    <string name="review_labeled_day">Merkitty päivä</string>
+    <string name="review_language_split">Kieli jaettu</string>
+    <string name="review_not_enough_text">Ei tarpeeksi tekstiä tänä aikana</string>
+    <string name="lookback_reviews_title">Arvostelut</string>
+    <string name="lookback_reviews_intro">Rakenna nopea pohdiskelu valitsemasi päiväkirjapäivän ympärille.</string>
+    <string name="lookback_seven_days">7 päivää</string>
+    <string name="lookback_one_month">1 kuukausi</string>
+    <string name="lookback_weekly_review">Viikkokatsaus</string>
+    <string name="lookback_weekly_review_subtitle">Tämä viikko yhdellä silmäyksellä</string>
+    <string name="lookback_monthly_review">Kuukausikatsaus</string>
+    <string name="lookback_monthly_review_subtitle">Tämä kuukausi tiivistettynä</string>
+    <string name="lookback_flashbacks_title">Tänä päivänä viime vuosina</string>
+    <string name="lookback_highlights_title">Omat kohokohdat</string>
+    <string name="lookback_empty_title">Ei vielä katsauksia tai kohokohtia.</string>
+    <string name="lookback_empty_subtitle">Suosikki tärkeitä päiviä nähdä ne täällä!</string>
+    <string name="lookback_cd_random_entry">Siirry satunnaiseen syöttöön</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Kausi</string>
+    <string name="statistics_compare_mode_title">Vertaa tila</string>
+    <string name="statistics_compare_mode_subtitle">Kuukausi, vuosi ja avainsanadeltat</string>
+    <string name="statistics_this_year">Tänä vuonna</string>
+    <string name="statistics_writing_days_delta">Kirjoituspäivät Delta</string>
+    <string name="statistics_top_person_delta">Huippuhenkilö Delta</string>
+    <string name="statistics_no_people_mentions">Kukaan ei vielä mainitse</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Ei vielä mainintaa paikasta</string>
+    <string name="statistics_structured_writing">Strukturoitu kirjoittaminen</string>
+    <string name="statistics_template_led_format">Mallipohjainen %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Tyhjä %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Eniten käytetyt mallit</string>
+    <string name="statistics_template_mix">Mallisekoitus</string>
+    <string name="statistics_follow_up_leaders">Seurantajohtajat</string>
+    <string name="statistics_compare_details">Vertaile yksityiskohtia</string>
+    <string name="statistics_label_month">Kuukausi</string>
+    <string name="statistics_label_year">vuosi</string>
+    <string name="statistics_this_month_count_format">Tässä kuussa %1$d</string>
+    <string name="statistics_last_month_count_format">Viime kuukausi %1$d</string>
+    <string name="statistics_longest_streak">Pisin putki</string>
+    <string name="statistics_most_active_day">Aktiivisin päivä</string>
+    <string name="statistics_writing_consistency">Kirjoituksen johdonmukaisuus</string>
+    <string name="statistics_days_with_entries">Päivät sisäänkirjoituksineen</string>
+    <string name="statistics_best_month">Paras kuukausi</string>
+    <string name="statistics_best_month_format">%1$s · %2$d merkintää</string>
+    <string name="statistics_avg_writing_days_week">Keskim. Kirjoituspäivät / viikko</string>
+    <string name="statistics_days_decimal_format">%1$.1f päivää</string>
+    <string name="statistics_based_on_total_words">Perustuu päivässä kirjoitettujen sanojen kokonaismäärään</string>
+    <string name="statistics_light_words">Kevyt (&lt; 50 sanaa)</string>
+    <string name="statistics_moderate_words">Keskitaso (50-200 sanaa)</string>
+    <string name="statistics_heavy_words">Raskas (200-500 sanaa)</string>
+    <string name="statistics_intense_words">Intensiivinen (500+ sanaa)</string>
+    <string name="statistics_not_enough_text_languages">Ei tarpeeksi tekstiä kielten tunnistamiseen</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d kieli havaittu</item>
+        <item quantity="other">%1$d kieliä havaittu</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Kielen tunnistus on vielä ratkeamassa.</string>
+    <string name="statistics_latin_scripts_as_english">Latinalaiset kirjaimet näytetään englanninkielisinä</string>
+    <string name="statistics_use_more_accurate_detection">Käytä tarkempaa tunnistusta</string>
+    <string name="statistics_write_more_entries_languages">Kirjoita lisää merkintöjä nähdäksesi kielitilastot.</string>
+    <string name="statistics_based_on_entry_time">Perustuu sisääntuloaikaan</string>
+    <string name="statistics_morning_time">Aamu (5.00-12.00)</string>
+    <string name="statistics_afternoon_time">Iltapäivä (11-17)</string>
+    <string name="statistics_evening_time">Ilta (17-21)</string>
+    <string name="statistics_night_time">Yö (21-05)</string>
+    <string name="statistics_heatmap_filling">Lämpökartta on vielä täyttymässä.</string>
+    <string name="statistics_heatmap_less">Vähemmän</string>
+    <string name="statistics_heatmap_more">Lisää</string>
+    <string name="action_open">Avata</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal -tapahtumat</string>
+    <string name="tasker_event_desc">Valitse, mitkä Yaja-päiväkirjatapahtumat käynnistävät tämän Tasker-profiilin.</string>
+    <string name="tasker_event_saved">Merkintä tallennettu</string>
+    <string name="tasker_event_edited">Merkintä muokattu</string>
+    <string name="tasker_event_deleted">Merkintä poistettu</string>
+    <string name="tasker_event_default_hint">Jos mitään ei ole valittu, Yaja valitsee oletuksena merkintä tallennettu.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Määritä, mitä Taskerin tulee nopeasti kaapata Yajassa.</string>
+    <string name="tasker_action_add_entry">Lisää merkintä</string>
+    <string name="tasker_action_add_event">Lisää tapahtuma</string>
+    <string name="tasker_action_add_todo">Lisää Todo</string>
+    <string name="tasker_action_append">Liitä</string>
+    <string name="tasker_action_match_header_label">Ottelu / otsikko</string>
+    <string name="tasker_action_match_header_placeholder">Vastaamattomat puhelut</string>
+    <string name="tasker_action_line_to_append_label">Liitättävä rivi</string>
+    <string name="tasker_action_text_label">Teksti</string>
+    <string name="tasker_action_placeholder_event">Tapahtumamuistio Taskerilta</string>
+    <string name="tasker_action_placeholder_todo">Osta maitoa</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Pikaviesti Taskerilta</string>
+    <string name="tasker_action_tip_append">Ensimmäinen kutsu luo merkinnän, joka alkaa hakutekstillä. Myöhemmät puhelut lisäävät rivin sen alle.</string>
+    <string name="tasker_action_tip_default">Vihje: Tasker-muuttujat voidaan sijoittaa tekstikenttään.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Edellisen istunnon kaatumisloki</string>
+    <string name="crash_log_clear_close">Tyhjennä &amp; Sulje</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Käynnistä sovellus</string>
+    <string name="tap_action_quick_capture">Pikakaappaus</string>
+    <string name="tap_action_do_nothing">Älä tee mitään</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja kirjoittava lämpökartta</string>
+    <string name="widget_cell_shape">Solun muoto</string>
+    <string name="widget_corner_radius">Kulman säde: %1$ddp</string>
+    <string name="widget_square">Neliö</string>
+    <string name="widget_round">Pyöristää</string>
+    <string name="widget_inner_margin">Sisämarginaali: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Lämpökartan ja widgetin reunojen välinen tila</string>
+    <string name="widget_none">Ei mitään</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Napauta</string>
+    <string name="widget_on_tap_desc">Toimi, kun widgetiä napautetaan</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Kaapata</string>
+    <string name="widget_qc_shape">Widgetin muoto</string>
+    <string name="widget_show_label">Näytä etiketti</string>
+    <string name="widget_show_label_desc">Näytä \'Capture\'-teksti widgetissä</string>
+    <string name="widget_show_icon">Näytä kuvake</string>
+    <string name="widget_show_icon_required">Kuvake vaaditaan, kun tunniste on piilotettu</string>
+    <string name="widget_show_icon_desc">Näytä kynäkuvake widgetissä</string>
+    <string name="widget_label_text">Tunnisteen teksti</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo-widget</string>
+    <string name="widget_todo_desc">Pyöristetty, lämpökartan kaltainen tehtäväluettelo-widget.</string>
+    <string name="widget_todo_corner_radius">Kulman säde: %1$ddp</string>
+    <string name="widget_todo_padding">Täyte: %1$ddp</string>
+    <string name="widget_todo_show_completed">Näytä valmiit tehtävät</string>
+    <string name="widget_todo_show_completed_desc">Sisällytä valitut kohteet widget-luetteloon</string>
+    <string name="widget_todo_include_events">Sisällytä tapahtumia</string>
+    <string name="widget_todo_include_events_desc">Näytä tapahtumamerkinnät widgetissä todojen rinnalla</string>
+    <string name="widget_todo_show_header">Näytä Todo-otsikko</string>
+    <string name="widget_todo_show_header_desc">Näytä tai piilota widgetin otsikkorivi</string>
+    <string name="widget_todo_auto_hide">Piilota widget automaattisesti, kun kaikki tehtävät on suoritettu</string>
+    <string name="widget_todo_auto_hide_unavailable">Ei käytettävissä, kun valmiit tehtävät näkyvät</string>
+    <string name="widget_todo_auto_hide_desc">Tee widgetistä läpinäkyvä, kun odottavia tehtäviä ei ole</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">tehty</string>
+    <string name="todo_confirm_mark_not_done">ei tehty</string>
+    <string name="todo_confirm_title">Merkitäänkö tehtäväksi %1$s?</string>
+    <string name="todo_confirm_reopen">Tämä tehtävä on tällä hetkellä valmis. Vahvista ennen kuin avaat sen uudelleen.</string>
+    <string name="todo_confirm_complete">Tämä todo on vielä auki. Vahvista ennen kuin merkitset sen valmiiksi.</string>
+    <string name="todo_confirm_accidental_tap">Vahingossa tapahtuvat napautukset eivät muuta tehtävää.</string>
+    <string name="todo_confirm_yes_mark">Kyllä, merkitse %1$s</string>
+    <string name="todo_confirm_open_yaja">Avoinna Yajassa</string>
+    <string name="todo_confirm_keep_as_is">Pidä sellaisenaan</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">vielä yksi päiväkirjasovellus</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">RJ:n laboratorioista</string>
+    <string name="help_made_in">Valmistettu 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Peruuta tuonti</string>
+    <string name="timeline_show_all_dates">Näytä kaikki päivämäärät</string>
+    <string name="timeline_show_all_dates_subtitle">Sisällytä kaikki menneet päivät, myös ilman merkintöjä</string>
+    <string name="settings_background_tint_clean">Puhdas</string>
+    <string name="settings_background_tint_soft">Pehmeä</string>
+    <string name="settings_background_tint_rich">Rikas</string>
+    <string name="settings_background_tint_deep">Syvä</string>
+    <string name="settings_accent_style_complementary">Täydentävä</string>
+    <string name="settings_accent_style_analogous">Analoginen</string>
+    <string name="settings_accent_style_triadic">Triadinen</string>
+    <string name="settings_accent_style_soft">Pehmeä</string>
+</resources>

@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Časopis</string>
+    <string name="nav_calendar">Kalendář</string>
+    <string name="nav_lookback">Pohled zpět</string>
+    <string name="nav_settings">Nastavení</string>
+    <string name="nav_shortcodes">Krátké kódy</string>
+    <string name="nav_help">Nápověda a informace</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Uložit</string>
+    <string name="action_cancel">Zrušit</string>
+    <string name="action_delete">Vymazat</string>
+    <string name="action_edit">Upravit</string>
+    <string name="action_back">Zadní</string>
+    <string name="action_undo">Vrátit zpět</string>
+    <string name="action_yes">Ano</string>
+    <string name="action_no">Žádný</string>
+    <string name="action_remove">Odstranit</string>
+    <string name="action_done">Hotovo</string>
+    <string name="action_set">Soubor</string>
+    <string name="action_select">Vybrat</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Obnova mezipaměti</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Rychlé zachycení</string>
+    <string name="quick_capture_hint">Co se stalo?</string>
+    <string name="quick_capture_helper_shortcodes">Krátké kódy se zde automaticky rozbalí a řádky úkolů pokračují klávesou Enter.</string>
+    <string name="quick_capture_save_delayed">Ukládání zpožděno. Pro ověření znovu otevřete Yaja.</string>
+    <string name="cd_saved">Uloženo</string>
+    <string name="quick_todo_dialog_title">Rychlé přidání</string>
+    <string name="quick_todo_save_delayed">Uložení úkolů bylo zpožděno. Pro ověření znovu otevřete Yaja.</string>
+    <string name="quick_todo_placeholder">Přidat úkol</string>
+    <string name="quick_event_placeholder">Přidat událost</string>
+    <string name="quick_todo_task_date">Datum úkolu</string>
+    <string name="quick_todo_event_date">Datum události</string>
+    <string name="quick_todo_pick_date_cd_format">Vyberte %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Uloží jako úkol pro vybraný den.</string>
+    <string name="quick_event_selected_day_hint">Uloží jako záznam události pro vybraný den.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Předchozí</string>
+    <string name="cd_next">Další</string>
+    <string name="cd_surprise_me">Překvap mě</string>
+    <string name="calendar_cd_go_to_current_month">Přejít na aktuální měsíc</string>
+    <string name="calendar_quick_action_timeline_title">Časová osa</string>
+    <string name="calendar_quick_action_timeline_subtitle">Procházejte chronologicky</string>
+    <string name="calendar_quick_action_jump_title">Přejít na datum</string>
+    <string name="calendar_quick_action_jump_subtitle">Otevřít konkrétní den</string>
+    <string name="calendar_jump_placeholder">DD-MM-RR</string>
+    <string name="calendar_jump_invalid_date">Neplatné datum. Použijte formát DD-MM-RR.</string>
+    <string name="calendar_action_go">Jít</string>
+    <string name="calendar_enable_future_dates_title">Povolit budoucí data</string>
+    <string name="calendar_enable_future_dates_message">Zadávání budoucího data je zakázáno. Chcete to povolit?</string>
+    <string name="calendar_action_enable">Umožnit</string>
+    <string name="calendar_future_entry_enabled">Zadání budoucího data bylo povoleno</string>
+    <string name="calendar_weekday_sun_short">Slunce</string>
+    <string name="calendar_weekday_mon_short">Po</string>
+    <string name="calendar_weekday_tue_short">út</string>
+    <string name="calendar_weekday_wed_short">St</string>
+    <string name="calendar_weekday_thu_short">Čt</string>
+    <string name="calendar_weekday_fri_short">pá</string>
+    <string name="calendar_weekday_sat_short">So</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">PŘIHLÁŠKY TENTO MĚSÍC</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d den</item>
+        <item quantity="other">%1$d / %2$d dní</item>
+    </plurals>
+    <string name="calendar_days_of_memories">dny vzpomínek</string>
+    <string name="calendar_consistency_last_12_months">POSLEDNÍCH 12 MĚSÍCŮ</string>
+    <string name="calendar_consistency_title_format">KONZISTENCE – %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">první období</string>
+    <string name="calendar_graph_frequency_month">Měsíc</string>
+    <string name="calendar_graph_frequency_year">Rok</string>
+    <string name="calendar_yearly_consistency_title">Konzistence (roční)</string>
+    <string name="calendar_keywords_title">Kdo se nejvíce objevuje</string>
+    <string name="calendar_keywords_syncing">Rok</string>
+    <string name="calendar_keywords_empty">Chcete-li zobrazit nejlepší zmínky, přidejte alespoň 3 lidi nebo 3 místa.</string>
+    <string name="calendar_keywords_people">Lidé</string>
+    <string name="calendar_keywords_places">Místa</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Nastavení</string>
+    <string name="settings_appearance">Vzhled</string>
+    <string name="settings_appearance_subtitle">Téma, barvy, fonty a osobní styly</string>
+    <string name="settings_theme">Téma</string>
+    <string name="settings_font">Písmo</string>
+    <string name="settings_storage">Skladování</string>
+    <string name="settings_security">Zabezpečení</string>
+    <string name="settings_backup">Zálohování</string>
+    <string name="settings_change_storage_title">Změnit umístění úložiště</string>
+    <string name="settings_backup_never">Nikdy</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Nastavení vyhledávání</string>
+    <string name="settings_search_clear">Vymazat vyhledávání</string>
+    <string name="settings_search_recent">Nedávná vyhledávání</string>
+    <string name="settings_search_no_results">Žádná odpovídající nastavení</string>
+    <string name="settings_search_close">Blízko</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Deník Zkušenosti</string>
+    <string name="settings_section_navigation_gestures">Navigace a gesta</string>
+    <string name="settings_section_review_insights">Recenze a statistiky</string>
+
+    <!-- Language -->
+    <string name="settings_language">Jazyk</string>
+    <string name="settings_language_title">Jazyk aplikace</string>
+    <string name="settings_language_subtitle">Vyberte jazyk používaný v celé aplikaci.</string>
+    <string name="settings_language_system_default">Výchozí nastavení systému</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Styl vstupu</string>
+    <string name="settings_journal_entry_style_subtitle">Vyberte si mezi vyvýšenými kartami a plošším vzhledem deníku.</string>
+    <string name="settings_journal_entry_style_cards">Karty</string>
+    <string name="settings_journal_entry_style_flat">Byt</string>
+    <string name="settings_journal_render_checkboxes_title">Vykreslit zaškrtávací políčka jako text</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Zobrazovat úkoly jako [ ] a [x] v celé aplikaci namísto výrazných zaškrtávacích políček.</string>
+    <string name="settings_journal_day_header_counts_title">Zobrazit počty záhlaví dne</string>
+    <string name="settings_journal_day_header_counts_subtitle">Zobrazit počet položek, slov a znaků v záhlaví dne deníku.</string>
+    <string name="settings_journal_show_timestamps_title">Zobrazit časová razítka</string>
+    <string name="settings_journal_show_timestamps_subtitle">Zobrazení času vstupu na časové ose.</string>
+    <string name="settings_journal_allow_future_title">Povolit budoucí záznamy</string>
+    <string name="settings_journal_allow_future_subtitle">Povolit přidávání položek k budoucím datům.</string>
+    <string name="settings_journal_truncate_title">Zkrátit dlouhé záznamy</string>
+    <string name="settings_journal_truncate_subtitle">Zkraťte dlouhé záznamy na domovské obrazovce.</string>
+    <string name="settings_journal_char_limit_title">Omezení počtu znaků</string>
+    <string name="settings_journal_char_limit_subtitle">Nastavte, kolik znaků se má zobrazit před oříznutím.</string>
+    <string name="settings_journal_char_limit_min">50 znaků</string>
+    <string name="settings_journal_char_limit_max">200 znaků</string>
+    <string name="settings_journal_char_count">%1$d znaků</string>
+    <string name="settings_journal_first_day_title">První den v týdnu</string>
+    <string name="settings_journal_first_day_subtitle">Spusťte kalendář</string>
+    <string name="settings_journal_day_sun">Slunce</string>
+    <string name="settings_journal_day_mon">Po</string>
+    <string name="settings_journal_date_recognition">Rozpoznávání data</string>
+    <string name="settings_journal_date_order_title">Datum objednávky</string>
+    <string name="settings_journal_date_order_subtitle">Jak číst číselná data</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Datum Klíčová slova</string>
+    <string name="settings_journal_date_keywords_subtitle">Slova v jiných jazycích, která znamenají datum (například místní slovo pro včerejšek).</string>
+    <string name="settings_journal_view_keywords">Zobrazit (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Přidat klíčové slovo</string>
+    <string name="settings_journal_motion">Pohyb</string>
+    <string name="settings_journal_animations_title">Animace</string>
+    <string name="settings_journal_animations_subtitle">Ovládejte pohyb v aplikaci. Snížené udržuje věci plynulé s menším pohybem.</string>
+    <string name="settings_journal_animations_full">Plný</string>
+    <string name="settings_journal_animations_reduced">Snížená</string>
+    <string name="settings_journal_animations_off">Vypnuto</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Kontrola po uložení</string>
+    <string name="settings_review_post_write_title">Recenze po napsání</string>
+    <string name="settings_review_post_write_subtitle">Zobrazte kontrolní list po klepnutí na Uložit, abyste mohli extrahovat úkoly, zkontrolovat zmínky, hvězdný den nebo nastavit štítek.</string>
+    <string name="settings_review_people_places">Lidé a místa</string>
+    <string name="settings_review_highlighting_title">Zvýraznění</string>
+    <string name="settings_review_highlighting_subtitle">Zvýrazněte sledované osoby a místa na kartách Domů a v režimu Zobrazit položku.</string>
+    <string name="settings_review_match_sensitivity_title">Citlivost zápasu</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Jak blízko se musí slovo shodovat, aby ho lidé a místa detekovali (vyšší = přísnější).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Přidat krátký kód</string>
+    <string name="shortcodes_edit_title">Upravit krátký kód</string>
+    <string name="shortcodes_code_label">Krátký kód (např. @yday)</string>
+    <string name="shortcodes_expansion_label">Text rozšíření</string>
+    <string name="shortcodes_export_error">Export krátkých kódů se nezdařil</string>
+    <string name="shortcodes_import_error">Import krátkých kódů se nezdařil</string>
+    <string name="todos_expand_section">Rozbalit %1$s</string>
+    <string name="todos_collapse_section">Sbalit %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Psaní teplotní mapy</string>
+    <string name="heatmap_widget_description">Teplotní mapa nedávného psaní pro váš deník.</string>
+    <string name="quick_capture_widget_name">Rychlé zachycení</string>
+    <string name="quick_capture_widget_description">Jedním klepnutím na tlačítko přidáte záznam deníku rychle.</string>
+    <string name="quick_todo_widget_name">Rychlý úkol</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Události Yaja Journal</string>
+    <string name="tasker_screen_allow_add_entry_title">Povolit Tasker Přidat položku</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Umožňuje Taskeru používat akce Yaja Quick Capture, jako je Přidat záznam a Přidat úkol.</string>
+    <string name="tasker_screen_allow_events_title">Povolit události Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Umožňuje Yaja odeslat události Entry Saved, Entry Modified a Entry Deleted do Taskeru.</string>
+    <string name="tasker_screen_include_text_title">Zahrnout vstupní text do událostí</string>
+    <string name="tasker_screen_include_text_subtitle">Ve výchozím nastavení vypnuto kvůli ochraně soukromí. Když je vypnutý, Tasker přijímá typ události, datum, štítek a čas, ale ne text deníku.</string>
+    <string name="tasker_screen_section_what">Co to dělá</string>
+    <string name="tasker_screen_body_what">Tasker může rychle přidávat záznamy do deníku nebo úkoly do Yaja, přidávat řádky do seskupených záznamů, jako jsou Zmeškané hovory, a Yaja může Taskeru sdělit, kdy je záznam uložen, upraven nebo odstraněn.</string>
+    <string name="tasker_screen_section_how">Jak používat</string>
+    <string name="tasker_screen_body_how">Nejprve zapněte přepínač, který potřebujete. Poté otevřete Tasker a přidejte buď akci Yaja Quick Capture, nebo událost Yaja Journal Events.</string>
+    <string name="tasker_screen_section_notes">Poznámky</string>
+    <string name="tasker_screen_body_notes">Text položky není sdílen s Taskerem, pokud nepovolíte Zahrnout text položky do událostí. Pokud Tasker nezobrazuje nejnovější možnosti nebo proměnné, po aktualizaci Yaja znovu otevřete konfigurační obrazovku Tasker.</string>
+    <string name="tasker_screen_section_example">Příklad</string>
+    <string name="tasker_screen_body_example">Příklad akce: Tasker action &gt; Yaja Quick Capture &gt; Append, s Match / header nastaveným na Missed Calls a Line to append nastaveným na proměnnou Tasker. Příklad události: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, pak použijte proměnné jako %%yaja_event_type, %%yaja_date a volitelně %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Případy použití</string>
+    <string name="tasker_screen_use_case_1">1. Pomocí události deníku Yaja v Taskeru spusťte akci synchronizace FolderSync, takže vaše složka Yaja bude po změně položek odeslána jakémukoli poskytovateli cloudu.</string>
+    <string name="tasker_screen_use_case_2">2. Pomocí Pushbullet s Taskerem odešlete text do Yaja Quick Capture, takže vložený text bude uložen jako nový záznam pro aktuální den.</string>
+    <string name="tasker_screen_use_case_3">3. Použijte profil Tasker pro zmeškané hovory k odeslání akce Append do Yaja, takže všechny podrobnosti o zmeškaných hovorech přijdou pod jeden záznam zmeškaných hovorů namísto vytváření samostatných záznamů.</string>
+    <string name="quick_todo_widget_description">Jedním klepnutím zachytíte úkol jako nový záznam pro dnešek.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Posouvací seznam úkolů v časopise. Klepnutím na úkol jej označíte jako dokončený nebo nedokončený.</string>
+    <string name="todo_cd_add_todo">Přidat úkol</string>
+    <string name="todos_cd_open_compliance_master">Otevřete opakující se úkoly</string>
+    <string name="compliance_master_title">Opakující se úkoly / události</string>
+    <string name="compliance_master_add">Přidat opakující se úkol</string>
+    <string name="compliance_master_edit">Upravit opakující se úkol</string>
+    <string name="compliance_master_intro_title">Opakující se úkoly</string>
+    <string name="compliance_master_intro_body">Vytvářejte opakující se úkoly pro týdenní, měsíční, čtvrtletní, pololetní nebo roční práci. Yaja odhalí každý úkol pouze tehdy, když se jeho cyklus stane relevantním.</string>
+    <string name="compliance_master_empty">Zatím žádné opakující se úkoly. Přidejte jeden, chcete-li automaticky vytvářet úkoly podle zvoleného plánu.</string>
+    <string name="compliance_master_status_deactivated">Deaktivováno</string>
+    <string name="compliance_master_meta_format">Splatné v den %1$d • %2$d dodacích dnů</string>
+    <string name="compliance_master_field_title">Název úkolu</string>
+    <string name="compliance_master_field_title_hint">Příklad: Podejte měsíční výkaz</string>
+    <string name="compliance_master_field_description">Popis</string>
+    <string name="compliance_master_field_description_hint">Příklad: Zkontrolujte bankovní portál a ověřte účtenku</string>
+    <string name="compliance_master_editor_task_section">Co by vám měla Yaja připomínat?</string>
+    <string name="compliance_master_field_due_day">Datum splatnosti</string>
+    <string name="compliance_master_field_reveal_day">Vytvořit předem (dny)</string>
+    <string name="compliance_master_field_schedule_mode">Kdy je to splatné?</string>
+    <string name="compliance_master_schedule_mode_help">Vyberte, jak Yaja určí datum splatnosti.</string>
+    <string name="compliance_master_select_schedule_type">Vyberte požadovaný vzor</string>
+    <string name="compliance_master_field_frequency">jak často?</string>
+    <string name="compliance_master_frequency_help">Zvolte, jak často se bude tento úkol opakovat.</string>
+    <string name="compliance_master_select_frequency">Vyberte frekvenci opakování</string>
+    <string name="compliance_master_schedule_details">Podrobnosti rozvrhu</string>
+    <string name="compliance_master_details_date_help">Zadejte datum splatnosti a kolik dní předem se má zapsat do denního souboru.</string>
+    <string name="compliance_master_details_weekday_help">Vyberte den v týdnu, kdy se tento úkol stane splatným.</string>
+    <string name="compliance_master_details_boundary_help">Zvolte, kolik dní předem má být zapsáno do denního souboru.</string>
+    <string name="compliance_master_field_due_weekday">Splatný všední den</string>
+    <string name="compliance_master_select_weekday">Vyberte den v týdnu</string>
+    <string name="compliance_master_due_day_help">Zadejte datum od 1 do 31. Kratší měsíce použijí poslední platné datum.</string>
+    <string name="compliance_master_reveal_day_help">Kolik dní před datem splatnosti zapsat úkol do souboru denního deníku.</string>
+    <string name="compliance_master_first_day_selected">Splatnost k prvnímu datu každého příslušného měsíce.</string>
+    <string name="compliance_master_last_day_selected">Splatné k poslednímu datu každého příslušného měsíce.</string>
+    <string name="compliance_mode_day_of_month">Konkrétní datum</string>
+    <string name="compliance_mode_day_of_month_desc">Splatnost k očíslovanému datu, například 15.</string>
+    <string name="compliance_mode_day_of_week">Všední den</string>
+    <string name="compliance_mode_day_of_week_desc">Splatné ve vybraný pracovní den, například pondělí.</string>
+    <string name="compliance_mode_first_day">První měsíc</string>
+    <string name="compliance_mode_first_day_desc">Splatnost k prvnímu datu každého příslušného měsíce.</string>
+    <string name="compliance_mode_last_day">Konec měsíce</string>
+    <string name="compliance_mode_last_day_desc">Splatné v konečném datu, včetně kratších měsíců.</string>
+    <string name="compliance_frequency_weekly">Týdně</string>
+    <string name="compliance_frequency_biweekly">Dvoutýdenní</string>
+    <string name="compliance_frequency_monthly">Měsíční</string>
+    <string name="compliance_frequency_quarterly">Čtvrtletní</string>
+    <string name="compliance_frequency_half_yearly">Půl roku</string>
+    <string name="compliance_frequency_annual">Výroční</string>
+    <string name="compliance_master_summary_day_of_month">Den %1$d • %2$s • %3$d dní předem</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">První rande • %1$s • %2$d dní předem</string>
+    <string name="compliance_master_summary_last_day">Poslední datum • %1$s • %2$d dní předem</string>
+    <string name="compliance_master_execution_title">Jak to bude probíhat</string>
+    <string name="compliance_master_execution_day_of_month">Úkol je vytvořen %1$s v den %2$d. Zapisuje se do vašeho denního souboru %3$d dní předem.</string>
+    <string name="compliance_master_execution_weekday">Úkol je vytvořen %1$s na %2$s. Zapisuje se do vašeho denního souboru %3$d dní předem.</string>
+    <string name="compliance_master_execution_monthly_weekday">Úkol se vytváří měsíčně ve stejný %1$s výskyt jako počáteční datum. Zapisuje se do vašeho denního souboru %2$d dní předem.</string>
+    <string name="compliance_master_execution_month_boundary">Úkol je vytvořen %1$s %2$s měsíce splatnosti. Zapisuje se do vašeho denního souboru %3$d dní předem.</string>
+    <string name="compliance_master_boundary_first">první rande</string>
+    <string name="compliance_master_boundary_last">poslední rande</string>
+    <string name="compliance_master_recurrence_weekly">každý týden</string>
+    <string name="compliance_master_recurrence_biweekly">každé dva týdny</string>
+    <string name="compliance_master_recurrence_monthly">každý měsíc</string>
+    <string name="compliance_master_recurrence_quarterly">každé tři měsíce</string>
+    <string name="compliance_master_recurrence_half_yearly">každých šest měsíců</string>
+    <string name="compliance_master_recurrence_annual">každý rok</string>
+    <string name="todo_chip_compliance">Opakující se</string>
+    <string name="compliance_master_upcoming">Nadcházející</string>
+    <string name="compliance_master_delete_confirm_title">Smazat opakující se úkol?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" bude odstraněn a nebudou vytvořeny žádné další úkoly.</string>
+    <string name="compliance_master_next_date">Další: %1$s</string>
+    <string name="compliance_master_end_section">Koncová podmínka</string>
+    <string name="compliance_master_end_help">Vyberte, kdy se tento úkol přestane opakovat</string>
+    <string name="compliance_master_end_never">Nikdy</string>
+    <string name="compliance_master_end_on_date">Na rande</string>
+    <string name="compliance_master_end_after">Po…</string>
+    <string name="compliance_master_end_never_desc">Opakuje se donekonečna bez data ukončení.</string>
+    <string name="compliance_master_end_date_select">Vyberte datum ukončení</string>
+    <string name="compliance_master_end_date_help">Po tomto datu nejsou vytvořeny žádné úkoly.</string>
+    <string name="compliance_master_end_count_label">Počet výskytů</string>
+    <string name="compliance_master_end_count_help">Po vytvoření tolika úkolů se zastaví.</string>
+    <string name="compliance_master_ends_on">Končí %1$s</string>
+    <string name="compliance_master_ends_remaining">Zbývá %1$d</string>
+    <string name="compliance_master_ended">Skončilo</string>
+    <string name="compliance_master_type_label">Vytvořit jako</string>
+    <string name="compliance_master_type_task">Úkol</string>
+    <string name="compliance_master_type_event">Událost</string>
+    <string name="heatmap_widget_status_loading">Načítání teplotní mapy…</string>
+    <string name="heatmap_widget_status_empty">Zatím žádné záznamy</string>
+    <string name="heatmap_widget_status_refresh">Otevřete Yaja a obnovte teplotní mapu</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cache přestavěna.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Nový záznam</string>
+    <string name="shortcut_new_entry_long">Cache přestavěna.</string>
+    <string name="shortcut_add_todo_short">Přidat úkol</string>
+    <string name="shortcut_add_todo_long">Přidejte úkol pro dnešek</string>
+    <string name="shortcut_add_event_short">Přidat událost</string>
+    <string name="shortcut_add_event_long">Přidat událost</string>
+    <string name="shortcut_today_short">Dnes</string>
+    <string name="shortcut_today_long">Otevřete dnešní deník</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigace</string>
+    <string name="settings_bottom_nav_style_label">Styl spodní navigace</string>
+    <string name="settings_navigation_mode_title">Režim navigace</string>
+    <string name="settings_navigation_mode_subtitle">Vyberte si mezi plovoucí navigační lištou a úplným spodním panelem.</string>
+    <string name="settings_nav_mode_floating">Plovoucí</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Navigační obrazovky</string>
+    <string name="settings_nav_summary_floating">Deník a kalendář vždy zůstávají v plovoucí liště. Vyzvedněte si až 2 další obrazovky. Aktuálně vybráno: %1$d z %2$d.</string>
+    <string name="settings_nav_summary_panel">Journal and Calendar always stay in the bottom panel. Vyberte si až 3 další obrazovky. Aktuálně vybráno: %1$d z %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Zobrazit pohled v aktivním navigačním panelu nebo panelu.</string>
+    <string name="settings_nav_people_places_subtitle">Zobrazit osoby a místa na aktivním navigačním panelu nebo panelu.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Zobrazit úkoly na aktivním navigačním panelu nebo panelu.</string>
+    <string name="todos_quick_add_title">Rychlé přidání</string>
+    <string name="todos_hero_subtitle">Sledujte práci v deníku a okamžiky</string>
+    <string name="todos_hero_all_activity">Veškerá činnost</string>
+    <string name="todos_hero_open_focus">Otevřete zaměření</string>
+    <string name="todos_hero_completed">Dokončeno</string>
+    <string name="todos_stat_today_open">Dnes otevřeno</string>
+    <string name="todos_stat_done_today">Dnes hotovo</string>
+    <string name="todos_stat_events">Události</string>
+    <string name="todos_stat_still_open">Stále otevřeno</string>
+    <string name="todos_stat_past_7d">Posledních 7d</string>
+    <string name="todos_stat_days">Dny</string>
+    <string name="todos_empty_done">Zatím žádné dokončené úkoly</string>
+    <string name="todos_empty_events">Zatím žádné záznamy událostí</string>
+    <string name="todos_section_open">OTEVŘENO</string>
+    <string name="todos_section_later">POZDĚJI</string>
+    <string name="todos_section_upcoming">NADCHÁZEJÍCÍ</string>
+    <string name="todos_section_future_events">BUDOUCÍ UDÁLOSTI</string>
+    <string name="todos_section_past_events">MINULÉ UDÁLOSTI</string>
+    <string name="todos_cd_open_day">Den otevřených dveří</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d otevřená úloha</item>
+        <item quantity="other">%1$d otevřených úkolů</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d hotový úkol</item>
+        <item quantity="other">%1$d hotových úkolů</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d nadcházející událost</item>
+        <item quantity="other">%1$d nadcházející události</item>
+    </plurals>
+    <string name="todos_filter_all_format">Vše %1$d</string>
+    <string name="todos_filter_open_format">Otevřít %1$d</string>
+    <string name="todos_filter_done_format">Hotovo %1$d</string>
+    <string name="todos_filter_events_format">Události %1$d</string>
+    <string name="todos_cheer_all_clear">Vše jasné. Pěkný.</string>
+    <string name="todos_cheer_done_and_dusted">Hotovo a oprášeno.</string>
+    <string name="todos_cheer_nothing_pending">Nic nevyřízeného.</string>
+    <string name="todos_cheer_caught_up">Dohnal jsi to.</string>
+    <string name="todos_cheer_clean_slate">Čistá břidlice.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Za %1$d den</item>
+        <item quantity="other">Za %1$d dní</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">před %1$d dnem</item>
+        <item quantity="other">před %1$d dny</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Za %1$d týden</item>
+        <item quantity="other">Za %1$d týdnů</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">před %1$d týdnem</item>
+        <item quantity="other">před %1$d týdny</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Za 1 měsíc</string>
+    <string name="todos_relative_one_month_ago">před 1 měsícem</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Za %1$d měsíc</item>
+        <item quantity="other">Za %1$d měsíců</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">před %1$d měsícem</item>
+        <item quantity="other">před %1$d měsíci</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistika</string>
+    <string name="settings_nav_statistics_subtitle_on">Zobrazit statistiky na aktivním navigačním panelu nebo panelu.</string>
+    <string name="settings_nav_statistics_subtitle_off">Chcete-li ji umístit do navigace, nejprve zapněte Statistiku.</string>
+    <string name="settings_show_labels_bottom_panel_title">Zobrazit štítky ve spodním panelu</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Zobrazte textové štítky pod ikonami ve spodním panelu.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gesta</string>
+    <string name="settings_entry_delete_title">Záznam Smazat</string>
+    <string name="settings_entry_delete_subtitle">Vyberte položku dlouhým stisknutím. Klepnutím na více položek vyberete více položek a poté použijte středové tlačítko Odstranit. Klepnutím na prázdné místo výběr vymažete.</string>
+    <string name="settings_swipe_navigate_title">Přejetím prstem můžete procházet data</string>
+    <string name="settings_swipe_navigate_subtitle">Přejetím zprava doleva se posunete o jedno datum dopředu a zleva doprava se posunete zpět.</string>
+    <string name="settings_drag_reorder_title">Povolit přetažení do změny pořadí</string>
+    <string name="settings_drag_reorder_subtitle">Dlouhým stisknutím položky přeuspořádejte</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data a obnova</string>
+    <string name="settings_swipe_rebuild_index">Chcete-li index znovu vytvořit, přejeďte po domovské obrazovce dolů</string>
+    <string name="settings_large_journal_safe_mode_title">Nouzový režim velkého deníku</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Když je detekován velmi velký deník, odloží práci nepodstatných spouštěcích statistik, aby se aplikace otevřela rychleji a bezpečněji.</string>
+    <string name="settings_version_history_title">Historie verzí</string>
+    <string name="settings_version_history_subtitle">Uschovejte si bezpečné kopie před úpravami, mazáním, štítky a změnou položky.</string>
+    <string name="settings_storage_location_label">Umístění úložiště</string>
+    <string name="settings_reset_to_default">Obnovit výchozí</string>
+    <string name="settings_choose_folder">Vyberte složku</string>
+    <string name="settings_backup_description">Vytvořte jeden záložní zip Yaja obsahující záznamy v deníku, krátké kódy, klíčová slova pro datum a data o osobách a místech. Obnovení jej může později bezpečně sloučit.</string>
+    <string name="settings_last_backup">Poslední záloha: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Věk připomenutí zálohy</string>
+    <string name="settings_backup_reminder_disabled">Zakázáno</string>
+    <string name="settings_backup_reminder_desc">Zvýrazněte zálohu na postranním panelu, když je starší než %1$d dnů.</string>
+    <string name="settings_backup_reminder_days_disabled">0 dní (vypnuto)</string>
+    <string name="settings_backup_reminder_days">%1$d dnů</string>
+    <string name="settings_restore_button">Obnovit</string>
+    <string name="settings_backup_now_button">Zálohujte nyní</string>
+    <string name="settings_db_index_management_label">Správa indexu databáze</string>
+    <string name="settings_db_index_management_desc">Otevřete nástroje zaměřené na přestavbu pro úkoly, osoby a místa nebo kompletní přestavbu indexu databáze.</string>
+    <string name="settings_rebuild_tools_button">Nástroje pro obnovu</string>
+    <string name="settings_import_label">Importovat</string>
+    <string name="settings_import_info_cd">Importovat informace</string>
+    <string name="settings_import_info_title">Informace o importu</string>
+    <string name="settings_import_day_one_title">První den import</string>
+    <string name="settings_import_day_one_bullet1">- Export z prvního dne bez obrázků</string>
+    <string name="settings_import_day_one_bullet2">- Budou importována pouze textová data</string>
+    <string name="settings_import_day_one_bullet3">- Časové razítko a údaje o poloze (pokud jsou k dispozici) budou zachovány</string>
+    <string name="settings_import_perf_warning_title">Upozornění na výkon</string>
+    <string name="settings_import_perf_warning_desc">Import velkého počtu záznamů (500+) může trvat několik minut. Můžete odejít a import bude pokračovat na pozadí.</string>
+    <string name="settings_got_it">Rozumím</string>
+    <string name="settings_import_success">%1$d nové dny, %2$d sloučeno, %3$d přeskočeno</string>
+    <string name="settings_import_source_day_one">První den</string>
+    <string name="settings_import_source_day_one_subtitle">export do .zip nebo .json</string>
+    <string name="settings_import_source_journalistic">Novinářský</string>
+    <string name="settings_import_source_journalistic_subtitle">export .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Naučte se používat yaja</string>
+    <string name="help_footer_website">webové stránky</string>
+    <string name="help_footer_share">Podíl</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Svár</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Sdílejte yaja</string>
+    <string name="help_share_yaja_text">yaja - další žurnálovací aplikace\n\nMístní žurnál bez rozptylování, který ukládá záznamy jako soubory se značkami. Zahrnuje časovou osu, pohled, lidi a místa, šablony, recenze, statistiky a widgety.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Uživatelské jméno Discord zkopírováno!</string>
+    <string name="help_footer_play_store">Obchod Play</string>
+    <string name="help_cd_rj_logo">Logo RJ</string>
+    <string name="help_screen_title">Nápověda a informace</string>
+    <string name="help_welcome_title">Vítejte v yaja</string>
+    <string name="help_welcome_body">Yaja je první místní deník, který zaznamenává dny, lidi, místa, sledování, recenze a vzory, aniž by vám překážel. Tato stránka poskytuje rychlý průvodce hlavními částmi aplikace.</string>
+    <string name="help_start_here">Začněte zde</string>
+    <string name="help_cd_collapse">Kolaps</string>
+    <string name="help_cd_expand">Rozšířit</string>
+    <string name="help_group_everyday_title">Každodenní</string>
+    <string name="help_group_everyday_desc">Zapisování do deníku, tok psaní a každodenní navigace.</string>
+    <string name="help_group_reviews_title">Recenze a statistiky</string>
+    <string name="help_group_reviews_desc">Pohledy, trendy, lidé, místa a analýzy.</string>
+    <string name="help_group_advanced_title">Pokročilé nástroje</string>
+    <string name="help_group_advanced_desc">Widgety, úložiště, soukromí, zálohy a technické nástroje.</string>
+    <string name="help_onboard_todos_events_title">Úkoly, události a opakující se</string>
+    <string name="help_onboard_todos_events_body">Uchovávejte osobní připomenutí, rodinné plány a opakující se plány, které automaticky generují úkoly v termínech jejich dokončení.</string>
+    <string name="help_onboard_widgets_title">Widgety</string>
+    <string name="help_onboard_widgets_body">Přidejte widgety Heatmap, Quick Capture, Quick Todo nebo Todo List ze spouštěče.</string>
+    <string name="help_onboard_version_history_title">Historie verzí</string>
+    <string name="help_onboard_version_history_body">Povolte soubory historie v Nastavení &gt; Data, abyste si uchovali bezpečné snímky před rizikovými změnami.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Použijte Tasker k rychlému přidávání záznamů, úkolů nebo událostí, když je třeba okamžitě zachytit něco osobního.</string>
+    <string name="help_section_writing_editor_title">Psaní a editor</string>
+    <string name="help_section_writing_editor_preview">Šablony, záhlaví, úkoly, události a flexibilní vkládání konceptů.</string>
+    <string name="help_section_writing_editor_content">+ Klepnutím na plovoucí tlačítko „+“ můžete psát pro vybraný den.\n+ Používejte šablony, jako je Poznámka o schůzce, Den cesty, Záznam zdraví, Úvaha, Záznam práce a další.\n+ Šablony lze vložit do prázdného konceptu, připojit níže, použít k nahrazení konceptu nebo vložit na kurzor.\n+ Editorové čipy mohou rychle vkládat úkoly, události, číslované seznamy a odrážky Upravit\n+ Entry Upravit jako je sekce ###.</string>
+    <string name="help_section_post_write_review_title">Post-Write recenze</string>
+    <string name="help_section_post_write_review_preview">Extrakce úkolů, detekce klíčových slov, označování hvězdičkami, štítky a nastavení opětovné návštěvy.</string>
+    <string name="help_section_post_write_review_content">+ Po napsání může Yaja před uložením otevřít revizní list.\n+ Dokáže extrahovat položky úkolů, detekovat lidi a místa, označit den hvězdičkou, nastavit štítek dne a naplánovat data opětovné návštěvy.\n+ Pokud dáváte přednost přímému ukládání, můžete recenzi po napsání zakázat v Nastavení.</string>
+    <string name="help_section_revisit_followup_title">Termíny opětovné návštěvy a sledování</string>
+    <string name="help_section_revisit_followup_preview">Následná data spojená s deníkem s rychlým výběrem a vlastní možností.</string>
+    <string name="help_section_revisit_followup_content">+ Přidejte data opětovné návštěvy pomocí možnosti Zítra, Příští týden, Příští měsíc nebo vlastního data.\n+ Položky s termínem opětovné návštěvy se zobrazí na domovské stránce a jsou označeny v Kalendáři a na časové ose.\n+ To funguje dobře pro sliby, rozhodnutí, zdravotní kontroly a upomínky spojené s kontextem deníku.</string>
+    <string name="help_section_navigation_gestures_title">Navigace a gesta</string>
+    <string name="help_section_navigation_gestures_preview">Přesun data, odstranění výběru, předvolby přejetí prstem a znovu sestavení mezipaměti.</string>
+    <string name="help_section_navigation_gestures_content">+ Domovská stránka podporuje navigaci podle data pomocí šipek a volitelnou navigaci přejetím, pokud je tato funkce povolena.\n+ Dlouhým stisknutím položky ji vyberete. Klepnutím na další položky je také vyberte a poté použijte pilulku Odstranit poblíž tlačítka Přidat.\n+ Klepnutím mimo vybrané položky výběr zrušíte. Smazané položky lze obnovit společně z odpočítávání obnovy.\n+ Když se soubory žurnálu změní mimo Yaja, můžete znovu vytvořit mezipaměť.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Krátké kódy a rychlé zachycení</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Rychlé osobní zachycení plus opakovaně použitelné dynamické textové úryvky.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Vytvářejte krátké kódy pro rychlé vkládání opakovaného textu.\n+ Dynamické zástupné symboly jako {{today:dd-MMM}} a {{now:HH:mm}} fungují uvnitř krátkých kódů.\n+ Quick Capture pomáhá něco rychle zaznamenat, aniž byste museli otevírat celý editor.\n+ Rychlé přidání může uložit úkol nebo událost pro vybrané datum z widgetu, obrazovky Úkoly nebo Taskeru.</string>
+    <string name="help_section_todos_events_title">Úkoly, události a opakující se</string>
+    <string name="help_section_todos_events_preview">Osobní připomenutí, významné události a automatické opakující se plány.</string>
+    <string name="help_section_todos_events_content">+ Úkoly se zapisují přímo do záznamů deníku jako řádky [ ] a [x].\n+ Události jsou normální záznamy deníku označené jako Událost, užitečné pro rodinné plány, schůzky, cestování nebo cokoli, čeho si chcete všimnout později.\n+ Opakující se úkoly a události (plány) automaticky zapisují položky úkolů nebo záhlaví událostí na stránky vašeho denního deníku podle jejich plánu (např. klepnutím na ikonu každý týden\n měsíčně). na obrazovce Úkoly.\n+ Každý den, když otevřete Yaja, se spustí kanál na pozadí, aby zkontroloval, zda jsou nějaké naplánované úkoly splatné, a vloží je do záznamu pro daný den.\n+ Obrazovka Úkoly vám pomůže zobrazit otevřené úkoly, dokončené úkoly a události, aniž byste Yaja změnili na řídicí panel produktivity.\n+ Klepnutím na záhlaví data otevřete daný den v deníku při změně Úkoly a soubory znovu stáhněte dolů.\n+ Yaja.\n+ Zobrazit dokončené úkoly je zapamatováno, takže vaše preferované zobrazení zůstane, když odejdete a vrátíte se.\n+ Widgety Todo mohou zobrazit čekající úkoly, potvrdit před přepnutím, skrýt dokončené úkoly a volitelně automaticky skrýt, když nic nečeká.</string>
+    <string name="help_section_people_places_title">Lidé a místa</string>
+    <string name="help_section_people_places_preview">Klíčová slova, aliasy, trendy a hodnocení připojení.</string>
+    <string name="help_section_people_places_content">+ Sledujte lidi a místa pomocí aliasů a štítků vztahů.\n+ Hledejte, filtrujte a seřaďte seznam klíčových slov.\n+ Stránky s podrobnostmi o klíčových slovech zobrazují aktuálnost, zmínky v průběhu času, společné zmínky a hodnocená spojení.\n+ Citlivost shody lze upravit v Nastavení.</string>
+    <string name="help_section_timeline_lookback_title">Časová osa a pohled</string>
+    <string name="help_section_timeline_lookback_preview">Procházení za poslední den, zvýraznění, Surprise Me a recenze vstupních bodů.</string>
+    <string name="help_section_timeline_lookback_content">+ Časová osa vám umožňuje procházet minulé dny pomocí filtrů, žetonů roku a volitelného režimu celého data.\n+ Lookback zobrazuje záznamy ze stejného dne v minulých letech a vaše nejlepší momenty označené hvězdičkou.\n+ Surprise Me otevře náhodný minulý záznam z pohledu Lookback.\n+ Týdenní přehled a měsíční přehled živě v rámci Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistiky a recenze</string>
+    <string name="help_section_statistics_reviews_preview">Režim porovnání, přehled šablon, vlastní viditelné sekce a souhrny.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistiky zahrnují režim porovnávání, rozdíly klíčových slov a statistiky šablon.\n+ Můžete si vybrat, které sekce statistik zůstanou viditelné z obrazovky Statistiky.\n+ Režim porovnávání je k dispozici pro celou dobu a shrnuje rozdíl měsíce a roku.\n+ Stránky recenzí shrnují nejaktivnější dny, nejlepší lidi a místa, oblíbené okamžiky, štítky, jazykové rozdělení a vzory pruhů nebo mezer.</string>
+    <string name="help_section_widgets_home_title">Widgety a domácí povrch</string>
+    <string name="help_section_widgets_home_preview">Spouštěcí widgety, zvýrazněná klíčová slova a domácí statistiky na úrovni dne.</string>
+    <string name="help_section_widgets_home_content">+ Widgety Writing Heatmap, Quick Capture, Quick Add a Todo List jsou k dispozici ve spouštěči.\n+ Obrazovky pro konfiguraci widgetů umožňují upravit rohy, odsazení, tvar, záhlaví, viditelnost dokončeného úkolu a další možnosti widgetu, pokud jsou podporovány.\n+ Widget teplotní mapa používá více odstínů intenzity pro plynulejší zobrazení historie psaní.\n+ Domov může zvýraznit nastavení Lidé a Místa, když je povolen počet položek v záhlaví\n skrýt. počet slov a znaků.</string>
+    <string name="help_section_language_text_analysis_title">Jazyková a textová analýza</string>
+    <string name="help_section_language_text_analysis_preview">Detekce místního jazyka pro statistiky a přehledy recenzí.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja detekuje dominantní písmo nebo jazyk mezi položkami pro získání přehledů.\n+ Rozdělení jazyka se zobrazuje ve Statistikách a recenzích.\n+ Detekce běží lokálně a neodesílá text deníku ze zařízení.</string>
+    <string name="help_section_data_privacy_cache_title">Data, soukromí a mezipaměť</string>
+    <string name="help_section_data_privacy_cache_preview">Úložiště markdown, historie verzí, protokol aplikací, zámek aplikací a obnova mezipaměti.</string>
+    <string name="help_section_data_privacy_cache_content">+ Soukromí dat: Všechna data osobního deníku jsou přísně uložena na vašem fyzickém zařízení a nikdy je neopustí. Yaja nespouští cloudové databáze, vzdálené zálohovací servery ani telemetrii ke sledování vašeho textu.\n+ Záznamy deníku jsou uloženy jako standardní soubory Markdown uspořádané podle roku a měsíce.\n+ Historie verzí může uchovávat bezpečné snímky před úpravami, odstraněním, štítky a opětovnými změnami.\n+ Můžete si vybrat, kolik verzí se má uchovávat a kolik dní se bude uchovávat historie.\n+ Záznamy o technických událostech v mezipaměti aplikace a znovu ukládat podrobnosti o selhání aplikace. Mezipaměť umožňuje modulárně obnovovat data aplikací, včetně úkolů a úplného obnovení mezipaměti.\n+ Zámek aplikace podporuje kód PIN a otisk prstu.\n+ Yaja odkládá náročné indexování a práci se statistikami, kde je to možné, takže spouštění a ukládání aplikací zůstává pohotové.</string>
+    <string name="settings_app_log_title">Protokol aplikace</string>
+    <string name="settings_app_log_subtitle">Zobrazení diagnostiky bezpečné pro ochranu soukromí a podrobností o předchozích selháních</string>
+    <string name="app_log_cd_share">Sdílejte protokol aplikace</string>
+    <string name="app_log_cd_clear">Vymazat protokol aplikace</string>
+    <string name="app_log_privacy_title">Diagnostika bezpečná pro soukromí</string>
+    <string name="app_log_privacy_description">Tento protokol zaznamenává hlavní události aplikace, operace mezipaměti/úložiště, aktualizace widgetů a podrobnosti o selhání. Nezahrnuje záznamy v deníku, text úkolů ani obsah soukromých poznámek.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Ponechat poslední %d den</item>
+        <item quantity="other">Ponechat posledních %d dnů</item>
+    </plurals>
+    <string name="app_log_retention_description">Starší události protokolu jsou ořezávány automaticky během protokolování a okamžitě, když se toto nastavení změní.</string>
+    <string name="app_log_empty">Zatím žádný protokol aplikace.</string>
+    <string name="app_log_refresh">Obnovit protokol</string>
+    <string name="app_log_share_empty">Zatím žádné záznamy protokolu aplikace Yaja.</string>
+    <string name="app_log_share_subject">Protokol aplikace Yaja</string>
+    <string name="app_log_share_chooser">Sdílejte protokol aplikace Yaja</string>
+    <string name="app_log_local_time_format">%1$s | místní čas\n%2$s</string>
+    <string name="settings_website_title">Web Yaja</string>
+    <string name="settings_website_subtitle">Otevřete oficiální web pro aktualizace a podrobnosti</string>
+    <string name="settings_advanced_integrations_title">Pokročilé integrace</string>
+    <string name="settings_tasker_integration_title">Integrace úloh</string>
+    <string name="settings_tasker_integration_subtitle">Rychlé akce zachycení a spouštění událostí deníku</string>
+    <string name="settings_shortcodes_subtitle">Spravujte opakovaně použitelné úryvky, které se rozbalí při psaní nebo rychlém pořizování.</string>
+    <string name="settings_privacy_security_title">Ochrana osobních údajů a zabezpečení</string>
+    <string name="settings_pin_lock_title">Zámek PIN</string>
+    <string name="settings_app_locked">Aplikace je uzamčena</string>
+    <string name="settings_app_unlocked">Aplikace je odemčená</string>
+    <string name="settings_change_pin">Změňte PIN</string>
+    <string name="settings_biometric_unlock_title">Biometrické odemknutí</string>
+    <string name="settings_biometric_enabled_desc">Aktivován otisk prstu nebo Face ID</string>
+    <string name="settings_biometric_disabled_desc">Místo PIN použijte biometrické údaje</string>
+    <string name="settings_autolock_timeout_title">Časový limit automatického zámku</string>
+    <string name="settings_pin_lock_disclaimer">Zámek PIN zabraňuje neoprávněnému přístupu k aplikaci, ale nešifruje data deníku na disku. Někdo s přímým přístupem k souboru může stále číst vaše záznamy.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minuta</item>
+        <item quantity="other">%1$d minut</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">Systém</string>
+    <string name="settings_theme_light">Světlo</string>
+    <string name="settings_theme_dark">Tmavý</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Barvy</string>
+    <string name="settings_color_intensity_title">Intenzita barvy</string>
+    <string name="settings_background_tint_title">Odstín pozadí</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Zvyk</string>
+    <string name="settings_font_size_label">Velikost písma</string>
+    <string name="settings_ui_font_size_label">Velikost písma uživatelského rozhraní</string>
+    <string name="settings_data_font_size_label">Velikost písma obsahu</string>
+    <string name="settings_follow_ui_font_scale_label">Nastavte velikost písma obsahu stejnou jako UI</string>
+    <string name="settings_color_source_material_you">Materiál vás</string>
+    <string name="settings_theme_preview_title">Náhled motivu</string>
+    <string name="settings_journal_entry_preview">Záznam do deníku</string>
+    <string name="settings_journal_entry_preview_desc">Karty, žetony a knoflíky budou používat tyto barvy.</string>
+    <string name="settings_preview_chip_chip">Čip</string>
+    <string name="settings_preview_chip_accent">Přízvuk</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intenzita: %1$s</string>
+    <string name="settings_personal_themes_title">Osobní témata</string>
+    <string name="settings_theme_name_label">Název motivu</string>
+    <string name="settings_main_color_label">Hlavní barva</string>
+    <string name="settings_hue_label">Odstín</string>
+    <string name="settings_sat_label">So</string>
+    <string name="settings_bright_label">Jasný</string>
+    <string name="settings_generated_accents_title">Generované akcenty</string>
+    <string name="settings_personal_theme_desc">Vyberte jednu barvu. Yaja vytváří odpovídající akcenty a podpůrné barvy.</string>
+    <string name="settings_preview_chip_main">Hlavní</string>
+    <string name="settings_preview_chip_support">Podpora</string>
+    <string name="settings_no_font_selected">Není vybráno žádné písmo</string>
+    <string name="settings_custom_font_desc">Vyberte libovolný soubor Unicode .ttf nebo .otf — např. malajálamské písmo jako Manjari. Znaky, které písmo postrádá, používají systémová písma.</string>
+    <string name="settings_font_replace">Nahradit</string>
+    <string name="settings_choose_font_file">Vyberte soubor písma</string>
+    <string name="settings_intensity_muted">Ztlumeno</string>
+    <string name="settings_intensity_normal">Normální</string>
+    <string name="settings_intensity_vivid">Živý</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Čistý</string>
+    <string name="settings_tint_soft">Měkký</string>
+    <string name="settings_tint_rich">Bohatý</string>
+    <string name="settings_tint_deep">Hluboký</string>
+    <string name="settings_accent_complementary">Komplementární</string>
+    <string name="settings_accent_analogous">Analogický</string>
+    <string name="settings_accent_triadic">Triadický</string>
+    <string name="settings_accent_soft">Měkký</string>
+    <string name="settings_mono_weight_thin">Tenký</string>
+    <string name="settings_mono_weight_extra_light">Extra lehké</string>
+    <string name="settings_mono_weight_light">Světlo</string>
+    <string name="settings_mono_weight_regular">Pravidelný</string>
+    <string name="settings_mono_weight_medium">Střední</string>
+    <string name="settings_mono_weight_semi_bold">Polotučné</string>
+    <string name="settings_mono_weight_bold">Tučné</string>
+    <string name="settings_mono_weight_extra_bold">Extra tučné</string>
+    <string name="settings_mono_weight_title">Hmotnost</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Přidat klíčové slovo pro datum</string>
+    <string name="settings_keyword_label">Klíčové slovo</string>
+    <string name="settings_keyword_placeholder_example">např. včera</string>
+    <string name="settings_means_label">Prostředek</string>
+    <string name="settings_add_button">Přidat</string>
+    <string name="settings_no_keywords_yet">Dosud nebyla přidána žádná klíčová slova.</string>
+    <string name="settings_added_keywords_title">Přidaná klíčová slova (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Přidat klíčové slovo</string>
+    <string name="keywords_dialog_add_title">Přidat klíčové slovo</string>
+    <string name="keywords_dialog_edit_title">Upravit klíčové slovo</string>
+    <string name="keywords_cd_import_csv">Importovat CSV</string>
+    <string name="keywords_cd_export_csv">Export CSV</string>
+    <string name="keywords_cd_download_template">Stáhnout šablonu</string>
+    <string name="rebuild_cache_storage_transparency_title">Průhlednost úložiště na zařízení</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja používá model bezpečného místního úložiště. Data vašeho osobního deníku zůstávají místní a nikdy neopustí vaše zařízení:</string>
+    <string name="rebuild_cache_source_of_truth_title">Zdroj pravdy (Markdown Files)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Všechny položky, položky kontrolního seznamu (todos), události na časové ose, hvězdičky a značky jsou trvale uloženy v souborech Markdown (.md) ve vybraném místním deníku. Vaše data jsou 100% vlastnictvím vás a jsou zcela uložena ve vašem zařízení.</string>
+    <string name="rebuild_cache_read_cache_title">Číst mezipaměť a index (databáze SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">Chcete-li umožnit okamžité načítání obrazovky, zvýraznění kalendáře, klíčová slova a statistiky bez skenování souborového systému při každém rolování, Yaja analyzuje vaše soubory Markdown a indexuje je v místní databázi SQLite ve vašem zařízení.</string>
+    <string name="rebuild_cache_local_private_title">100% místní a soukromé</string>
+    <string name="rebuild_cache_local_private_desc">Yaja nemá žádné cloudové databáze, vzdálené zálohovací servery ani telemetrické sledování vašeho textu. Všechny záznamy deníku a analyzovaná data zůstávají přísně na vašem fyzickém zařízení a nikdy je neopouštějí.</string>
+    <string name="keywords_export_success">Klíčová slova exportována</string>
+    <string name="keywords_export_failed">Klíčová slova se nepodařilo exportovat</string>
+    <string name="keywords_template_saved">Šablona uložena</string>
+    <string name="keywords_template_save_failed">Šablonu se nepodařilo uložit</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Importované klíčové slovo %d</item>
+        <item quantity="other">Importováno %d klíčových slov</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Nebyla nalezena žádná platná klíčová slova</string>
+    <string name="keywords_import_failed">Klíčová slova se nepodařilo importovat</string>
+    <string name="keywords_status_indexing">Indexování</string>
+    <string name="keywords_status_indexed">Indexováno</string>
+    <string name="keywords_metric_mentions">Zmínky</string>
+    <string name="keywords_metric_days">Dny</string>
+    <string name="keywords_timeline_range_all">Vše</string>
+    <string name="keywords_connections_filter_all">Vše</string>
+    <string name="keywords_connections_filter_people">Lidé</string>
+    <string name="keywords_connections_filter_places">Místa</string>
+    <string name="keywords_connections_filter_recent">Nedávné</string>
+    <string name="keywords_connections_filter_strongest">Nejsilnější</string>
+    <string name="keywords_filter_needs_reindex">Potřebuje reindexovat</string>
+    <string name="keywords_search_placeholder">Hledejte lidi, místa, aliasy, vztahy</string>
+    <string name="keywords_refreshing_counters">Obnovování počítadel klíčových slov…</string>
+    <string name="keywords_empty_title">Zatím žádná klíčová slova</string>
+    <string name="keywords_empty_subtitle">Přidejte lidi a místa, které má aplikace lokálně sledovat.</string>
+    <string name="keywords_no_results_title">Žádné odpovídající výsledky</string>
+    <string name="keywords_no_results_subtitle">Zkuste jiné vyhledávání, řazení nebo filtr.</string>
+    <string name="keywords_people_title">Lidé</string>
+    <string name="keywords_places_title">Místa</string>
+    <string name="keywords_people_empty">Zatím nebyli přidáni žádní lidé.</string>
+    <string name="keywords_people_filtered_empty">Aktuálním filtrům neodpovídají žádní lidé.</string>
+    <string name="keywords_places_empty">Zatím nebyla přidána žádná místa.</string>
+    <string name="keywords_places_filtered_empty">Aktuálním filtrům neodpovídá žádná místa.</string>
+    <string name="keywords_delete_person_title">Smazat osobu?</string>
+    <string name="keywords_delete_place_title">Smazat místo?</string>
+    <string name="keywords_delete_message">Smazat „%1$s“ z Lidé a místa? Tím se odstraní klíčové slovo a jeho indexované shody.</string>
+    <string name="keywords_timeline_title">Zmínky v průběhu času</string>
+    <string name="keywords_timeline_empty_pattern">Zatím žádný měsíční vzor</string>
+    <string name="keywords_timeline_total_format">%1$d celkem</string>
+    <string name="keywords_timeline_empty_chart">Zmínky se zde zobrazí po indexování nalezených záznamů.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Vrchol %1$s • %2$d zmínka</item>
+        <item quantity="other">Vrchol %1$s • %2$d zmiňuje</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Dny se zmínkami</string>
+    <string name="keywords_recency_title">Aktuálnost</string>
+    <string name="keywords_recency_none">Zatím žádné zápasy</string>
+    <string name="keywords_recency_today">Dnes zmíněno</string>
+    <string name="keywords_recency_yesterday">Zmíněno včera</string>
+    <string name="keywords_recency_days_ago_format">Poslední zmínka před %1$d dny</string>
+    <string name="keywords_first_seen">Poprvé viděn</string>
+    <string name="keywords_last_seen">Naposledy viděno</string>
+    <string name="keywords_unknown">Neznámý</string>
+    <string name="keywords_co_mentioned_with">Společně zmíněný With</string>
+    <string name="keywords_connections_title">Spojení</string>
+    <string name="keywords_connections_subtitle">Seřazeno podle opakovaného překrývání a aktuálnosti</string>
+    <string name="keywords_connections_linked_format">%1$d propojeno</string>
+    <string name="keywords_connections_show">Zobrazit spojení</string>
+    <string name="keywords_connections_hide">Skrýt spojení</string>
+    <string name="keywords_connections_items_in_view">%1$d položek v tomto zobrazení</string>
+    <string name="keywords_connections_tap_to_expand">Klepnutím rozbalíte %1$d hodnocených odkazů</string>
+    <string name="keywords_connections_empty">Pro tento filtr zatím žádná připojení.</string>
+    <string name="keywords_open_day">Den otevřených dveří</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Nejvíce zmiňované</string>
+    <string name="keywords_sort_recently_added">Nedávno přidané</string>
+    <string name="keywords_peak_mentions_format">Vrchol %1$s • %2$d zmínka%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d den</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">spolu</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d sdílený záznam</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ie</string>
+    <string name="keywords_connections_meta_last_prefix">| poslední %1$s</string>
+    <string name="keywords_connections_score_format">| %1$d sdílený záznam</string>
+    <string name="keywords_connections_days_chip">%1$d dnů</string>
+    <string name="keywords_connections_shared_chip">%1$d sdíleno</string>
+    <string name="keywords_match_type_exact">přesný</string>
+    <string name="keywords_match_type_fuzzy">neostrý</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">vztah</string>
+    <string name="keywords_action_delete">Vymazat</string>
+    <string name="keywords_action_edit">Upravit</string>
+    <string name="keywords_action_view">Pohled</string>
+    <string name="keywords_name_label">Jméno</string>
+    <string name="keywords_relation_context_label">Vztah / kontext</string>
+    <string name="keywords_aliases_label">Aliasy (oddělené čárkou)</string>
+    <string name="keywords_aliases_label_short">Přezdívky</string>
+    <string name="keywords_type_person">Osoba</string>
+    <string name="keywords_type_place">Místo</string>
+    <string name="keywords_save_disabled_hint">Ukládání klíčových slov je vypnuto. Povolte je ze seznamu, když chcete indexování spustit.</string>
+    <string name="settings_meaning_yesterday">Včera</string>
+    <string name="settings_meaning_today">Dnes</string>
+    <string name="lookback_chip_weekly">Týdně</string>
+    <string name="lookback_chip_monthly">Měsíční</string>
+    <string name="timeline_screen_title">Časová osa</string>
+    <string name="timeline_empty_title">Tady zatím nic</string>
+    <string name="timeline_empty_subtitle">Zkuste jiný filtr nebo upravte vyhledávání štítků.</string>
+    <string name="timeline_quick_today">Dnes</string>
+    <string name="timeline_quick_month">Měsíc</string>
+    <string name="timeline_quick_filters">Filtry</string>
+    <string name="timeline_all_dates">Všechna data</string>
+    <string name="timeline_label_prefix">Štítek: %1$s</string>
+    <string name="timeline_label_search_placeholder">Vyhledejte štítky dnů</string>
+    <string name="timeline_filters_title">Filtry a rozložení časové osy</string>
+    <string name="settings_meaning_tomorrow">Zítra</string>
+    <string name="settings_meaning_day_before_yesterday">Předevčírem</string>
+    <string name="settings_meaning_day_after_tomorrow">Pozítří</string>
+    <string name="settings_meaning_last_week">Minulý týden</string>
+    <string name="settings_meaning_next_week">Příští týden</string>
+    <string name="settings_meaning_monday">pondělí</string>
+    <string name="settings_meaning_tuesday">úterý</string>
+    <string name="settings_meaning_wednesday">středa</string>
+    <string name="settings_meaning_thursday">čtvrtek</string>
+    <string name="settings_meaning_friday">pátek</string>
+    <string name="settings_meaning_saturday">sobota</string>
+    <string name="settings_meaning_sunday">neděle</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Interní úložiště aplikace</string>
+    <string name="settings_storage_internal_default">Interní úložiště aplikace (výchozí)</string>
+    <string name="settings_storage_new_folder_fallback">novou složku</string>
+    <string name="settings_storage_current_folder_fallback">aktuální složku</string>
+    <string name="settings_storage_move_confirm">Všechny existující záznamy budou přesunuty z %1$s do %2$s. Chcete pokračovat?</string>
+    <string name="settings_restore_added_skipped">Přidáno: %1$d\nPřeskočené duplikáty: %2$d</string>
+    <string name="settings_storage_custom_folder">Vlastní složka:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Zkratky pomáhají</string>
+    <string name="addentry_cd_insert_template">Vložte šablonu</string>
+    <string name="addentry_cd_jump_to_today">Přejít na dnešek</string>
+    <string name="addentry_cd_share">Podíl</string>
+    <string name="addentry_cd_bold">Tučné</string>
+    <string name="addentry_cd_italic">kurzíva</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Nastavte čas</string>
+    <string name="addentry_event_chip">Událost</string>
+    <string name="addentry_pick_time_title">Vyberte čas</string>
+    <string name="addentry_hour_label">Hodina</string>
+    <string name="addentry_minute_label">Minuta</string>
+    <string name="addentry_new_event_title">Nová událost</string>
+    <string name="addentry_title_label">Titul</string>
+    <string name="addentry_event_description_label">Popis události</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos nalezeno</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Převeďte řádek %1$d na kontrolní seznam</item>
+        <item quantity="other">Převeďte %1$d řádky na kontrolní seznam</item>
+    </plurals>
+    <string name="addentry_people_places_title">Lidé a místa</string>
+    <string name="addentry_no_tracked_mentions">V tomto záznamu nebyly nalezeny žádné sledované osoby ani místa.</string>
+    <string name="addentry_day_memory_title">Denní paměť</string>
+    <string name="addentry_star_day_title">Hvězda tohoto dne</string>
+    <string name="addentry_star_day_subtitle">Uložte si to jako zvýraznění, aby se vrátilo ve zpětném pohledu.</string>
+    <string name="addentry_day_label_label">Denní štítek</string>
+    <string name="addentry_day_label_placeholder">např. Resetovat den</string>
+    <string name="addentry_follow_up_title">Pokračujte dál</string>
+    <string name="addentry_next_month">Příští měsíc</string>
+    <string name="addentry_custom">Zvyk</string>
+    <string name="addentry_due_date_format">Splatnost %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Jasné pokračování</string>
+    <string name="addentry_follow_up_note_label">Následná poznámka</string>
+    <string name="addentry_follow_up_note_placeholder">Co byste měli znovu navštívit?</string>
+    <string name="addentry_review_entry_title">Zkontrolujte položku</string>
+    <string name="addentry_review_entry_subtitle">Rychlý průchod před uložením. Vytáhněte úkoly, zkontrolujte sledované zmínky a označte den, pokud na tom záleží.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d úkol</item>
+        <item quantity="other">%1$d úkolů</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d zmínka</item>
+        <item quantity="other">%1$d zmiňuje</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Uložit položku</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Zahodit změny</string>
+    <string name="addentry_discard_changes_message">Máte neuložené změny. Vraťte se a zahoďte je, nebo zůstaňte a pokračujte v úpravách.</string>
+    <string name="addentry_go_back">Vraťte se zpět</string>
+    <string name="addentry_stay">Pobyt</string>
+    <string name="addentry_shortcuts_title">Zkratky</string>
+    <string name="addentry_help_bold_suffix">aby byl text tučný (nebo vyberte text a klepněte na tlačítko Tučné)</string>
+    <string name="addentry_help_italic_suffix">aby byl text kurzívou (nebo vyberte text a klepněte na tlačítko Kurzíva)</string>
+    <string name="addentry_help_today_suffix">: Rozbalí se na aktuální datum (např. 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: Rozbalí se na aktuální čas (např. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Rozbalí se na aktuální týden (např. týden 52)</string>
+    <string name="addentry_help_day_suffix">: Rozbalí se na aktuální den v týdnu (např. pondělí)</string>
+    <string name="addentry_help_todo_suffix">: Rozbalí se na zaškrtávací políčko úkolu (např. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Když zadáte kamkoli do řádku obsahujícího zaškrtávací políčko úkolu, přepne se.</string>
+    <string name="addentry_okey">Fajn!</string>
+    <string name="addentry_template_merge_message">Tento koncept již obsahuje text. Vyberte, jak má být šablona umístěna.</string>
+    <string name="addentry_template_merge_subtitle">Vložit pod zachová aktuální koncept. Na Cursor umístí šablonu tam, kde se nyní nachází vaše stříška.</string>
+    <string name="addentry_insert_below">Vložit níže</string>
+    <string name="addentry_at_cursor">U kurzoru</string>
+    <string name="addentry_replace_draft">Nahradit koncept</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populární</string>
+    <string name="addentry_new_chip">Nový</string>
+    <string name="addentry_best_for_format">Nejlepší pro: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Odebrat oblíbenou šablonu</string>
+    <string name="addentry_cd_favorite_template">Oblíbená šablona</string>
+    <string name="addentry_checklist_chip">Kontrolní seznam</string>
+    <string name="addentry_followup_chip">Sledování</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d sekce</item>
+        <item quantity="other">%1$d sekcí</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Přepnout oblíbenou šablonu</string>
+    <string name="addentry_template_preview_label">Náhled šablony</string>
+    <string name="addentry_use_template_button">Použijte šablonu</string>
+    <string name="addentry_start_blank_title">Start Blank</string>
+    <string name="addentry_start_blank_subtitle">Přeskočte šablony a pokračujte v psaní z prázdného konceptu.</string>
+    <string name="addentry_blank_entry_name">Prázdný záznam</string>
+    <string name="addentry_blank_entry_description">Prostý zápis do deníku</string>
+    <string name="addentry_blank_category">Generál</string>
+    <string name="addentry_quick_picks_title">Rychlý výběr</string>
+    <string name="addentry_sort_recommended">Doporučeno</string>
+    <string name="addentry_sort_recent">Nedávné</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">Nebyly nalezeny žádné šablony</string>
+    <string name="addentry_no_templates_subtitle">Zkuste jiné vyhledávání nebo kategorii.</string>
+    <string name="addentry_search_templates_label">Hledat šablony</string>
+    <string name="addentry_search_templates_placeholder">Setkání, zdraví, reflexe...</string>
+    <string name="addentry_cd_clear_search">Vymazat vyhledávání</string>
+    <string name="addentry_choose_template_title">Vyberte šablonu</string>
+    <string name="addentry_templates_ready_format">Připraveno %1$d z %2$d šablon</string>
+    <string name="addentry_category_all">Vše</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Co se stalo?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">Seznam N</string>
+    <string name="addentry_bulleted_list_chip">Seznam B</string>
+    <string name="addentry_words_count_format">%1$d SLOVA</string>
+    <string name="addentry_chars_count_format">%1$d ZNAKY</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Následná kontrola bude dnes</item>
+        <item quantity="other">Následné kontroly mají být dnes</item>
+    </plurals>
+    <string name="home_followup_subtitle">Skočte zpět do propojeného dne a pokračujte odtud.</string>
+    <string name="home_from_date_format">Od %1$s</string>
+    <string name="home_more_due_today_format">+%1$d další splatné dnes</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Přidat štítek</string>
+    <string name="home_edit_label_title">Upravit štítek</string>
+    <string name="home_day_label_hint">Přidejte krátký štítek pro tento den (max. 30 znaků).</string>
+    <string name="home_day_label_placeholder">např. První den ve škole</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Přidejte štítek pro tento den</string>
+    <string name="home_star_label_hint">Dejte tomuto dni nezapomenutelný štítek (max. 30 znaků)</string>
+    <string name="home_star_label_placeholder">např. Moje narozeniny, Ve škole</string>
+    <string name="home_star_button">Hvězda</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Záznam smazán</item>
+        <item quantity="other">%1$d záznamů smazáno</item>
+    </plurals>
+    <string name="home_restore_button">OBNOVIT</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Hledat záznamy...</string>
+    <string name="home_cd_search">Vyhledávání</string>
+    <string name="home_cd_clear_search">Vymazat vyhledávání</string>
+    <string name="home_cd_favorite">Oblíbený</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Příspěvky</string>
+    <string name="home_stat_words">Slova</string>
+    <string name="home_stat_chars">Znaky</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Přidat štítek</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Shoda nalezena</item>
+        <item quantity="other">%1$d nalezené shody</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Pro toto klíčové slovo zatím nebyly nalezeny žádné shody.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Prázdná ikona stavu</string>
+    <string name="home_empty_future">Tohle je budoucnost. Zaznamenejte připomínku!</string>
+    <string name="home_empty_past">Jste v minulosti. Nahrajte vzpomínku, než zmizí...</string>
+    <string name="home_empty_today">Zatím žádné záznamy. Začněte svůj den.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Ukládání</string>
+    <string name="home_cd_add_entry">Přidat položku</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Smazat %1$d</string>
+    <string name="home_future_date_title">Budoucí datum vstupu</string>
+    <string name="home_future_date_message_format">Přidáváte záznam pro budoucí datum (%1$s). Chcete pokračovat?</string>
+    <string name="home_cache_issue_title">Zjištěn problém s mezipamětí dat</string>
+    <string name="home_cache_issue_message">Zdá se, že v mezipaměti chybí značný počet záznamů v deníku. Chcete provést úplnou aktualizaci mezipaměti dat a pokusit se je obnovit?</string>
+    <string name="home_refresh_button">Obnovit</string>
+    <string name="home_ignore_button">Ignorovat</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Lidé a místa</string>
+    <string name="nav_statistics">Statistika</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Znovu vytvořit index databáze</string>
+    <string name="nav_backup_data">Zálohování dat</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Postavení</string>
+    <string name="nav_finishing_index_rebuild">Dokončování přestavby indexu...</string>
+    <string name="nav_rebuilding_index">Obnovení indexu databáze</string>
+    <string name="nav_refreshing_index">Osvěžující index</string>
+    <string name="nav_backup_too_old">záloha je příliš stará...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Pracovní...</string>
+    <string name="nav_eta_almost_done">téměř hotovo</string>
+    <string name="nav_eta_seconds_left_format">Zbývá ~%1$ds</string>
+    <string name="nav_eta_minutes_left_format">Zbývá ~%1$dm</string>
+    <string name="nav_eta_hours_left_format">Zbývá ~%1$dh</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">Logo RJ</string>
+    <string name="nav_tagline">další žurnálovací aplikace</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Obchod Play</string>
+    <string name="nav_cd_website">webové stránky</string>
+    <string name="nav_cd_share_app">Sdílet aplikaci</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Logo Yaja</string>
+    <string name="nav_easter_quote_part1">\"Zapište si krátkou myšlenku nebo to, co jste měli k obědu; nemusí to být hluboké.\"\n</string>
+    <string name="nav_easter_quote_part2">Vaše slova mohou prostě existovat.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">z laboratoří RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Sdílejte yaja</string>
+    <string name="nav_share_text_body">yaja — další žurnálovací aplikace\n\nDenní deník bez rozptylování, který ukládá záznamy jako prosté soubory s poznámkami.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Změnit umístění úložiště</string>
+    <string name="settings_change_storage_location_message">Všechny existující záznamy budou přesunuty z %1$s do %2$s. Chcete pokračovat?</string>
+    <string name="settings_yes">Ano</string>
+    <string name="settings_no">Žádný</string>
+    <string name="settings_restore_summary_title">Obnovit souhrn</string>
+    <string name="settings_restore_section_journal">Časopis</string>
+    <string name="settings_restore_section_shortcodes">Krátké kódy</string>
+    <string name="settings_restore_section_date_keywords">Datum Klíčová slova</string>
+    <string name="settings_restore_section_people_places">Lidé a místa</string>
+    <string name="settings_restore_journal_summary">Přidáno k novým dnům: %1$d\nSloučeno do stávajících dnů: %2$d\nDuplicitní záznamy v deníku přeskočeny: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Přidáno: %1$d\nPřeskočené duplikáty: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Přidáno: %1$d\nPřeskočené duplikáty: %2$d</string>
+    <string name="settings_restore_people_places_summary">Přidáno: %1$d\nPřeskočené duplikáty: %2$d</string>
+    <string name="rebuild_tools_title">Nástroje pro obnovu</string>
+    <string name="rebuild_tools_back">Zadní</string>
+    <string name="rebuild_tools_intro">Nejprve použijte cílené přestavby. Opětovné sestavení databáze se týká pouze změn úložiště, poškození databáze nebo nesouladu indexů.</string>
+    <string name="rebuild_todo_index_title">Znovu vytvořit index úkolů</string>
+    <string name="rebuild_todo_index_subtitle">Obnovte úkoly ze souborů deníku a aktualizujte obrazovku úkolů/widget. Nejlepší, když todos vypadá zastarale.</string>
+    <string name="rebuild_todo_index_button">Přestavte Todos</string>
+    <string name="rebuild_people_places_title">Obnovte lidi a místa</string>
+    <string name="rebuild_people_places_subtitle">Aktualizujte aliasy klíčových slov, společné zmínky, trendy a údaje o vztazích.</string>
+    <string name="rebuild_people_places_button">Obnovte lidi a místa</string>
+    <string name="rebuild_database_title">Úplná obnova databáze</string>
+    <string name="rebuild_database_subtitle">Znovu zkompilujte mezipaměť databáze ze souborů markdown. Znovu indexuje položky, počty, úkoly, osoby a místa a widgety od začátku.</string>
+    <string name="rebuild_database_button">Znovu sestavit databázi</string>
+    <string name="rebuild_database_confirm_title">Znovu sestavit index databáze</string>
+    <string name="rebuild_database_confirm_message">Tím se vymaže a přeindexuje celá databáze Room SQLite z vašich souborů Markdown. U velkých deníků to může trvat několik minut.</string>
+    <string name="rebuild_database_confirm_start">Spusťte znovu sestavení</string>
+    <string name="rebuild_database_status_title">Stav indexu databáze</string>
+    <string name="rebuild_database_storage_engine">Storage Engine</string>
+    <string name="rebuild_database_storage_engine_value">Místnost SQLite databáze</string>
+    <string name="rebuild_database_indexed_days">Indexované dny</string>
+    <string name="rebuild_database_indexed_days_value">%1$d dnů indexováno</string>
+    <string name="rebuild_database_file_size">Velikost souboru databáze</string>
+    <string name="rebuild_database_last_sync">Poslední synchronizace indexu</string>
+    <string name="rebuild_database_age_never">Nikdy</string>
+    <string name="rebuild_database_age_just_now">Právě teď</string>
+    <string name="rebuild_database_age_one_minute">před 1 minutou</string>
+    <string name="rebuild_database_age_minutes">před %1$d minutami</string>
+    <string name="rebuild_database_age_one_hour">před 1 hodinou</string>
+    <string name="rebuild_database_age_hours">před %1$d hodinami</string>
+    <string name="shortcodes_title">Krátké kódy</string>
+    <string name="shortcodes_import_cd">Importovat</string>
+    <string name="shortcodes_export_cd">Vývozní</string>
+    <string name="shortcodes_help_cd">Pomoc</string>
+    <string name="shortcodes_new">Nový krátký kód</string>
+    <string name="shortcodes_empty_title">Žádné vlastní krátké kódy</string>
+    <string name="shortcodes_empty_subtitle">Přidejte jeden a rozbalte úryvky, jako je @yday, na dynamický text.</string>
+    <string name="shortcodes_dynamic_dates_hint">Pro dynamická data použijte {{today:format}}.</string>
+    <string name="shortcodes_help_title">Nápověda pro krátký kód</string>
+    <string name="shortcodes_help_built_in">Vestavěné krátké kódy:</string>
+    <string name="shortcodes_help_built_in_examples">@dnes, @teď, @týden, @den, @t (zaškrtávací políčko), @x (zaškrtávací políčko)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynamické vzory:</string>
+    <string name="shortcodes_help_dynamic_desc">Použijte {{today:FORMAT}}, {{včera:FORMAT}}, {{tomorrow:FORMAT}} nebo {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Příklad: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Běžné formáty: dd-MM-rr, HH:mm, EEEE (název dne).</string>
+    <string name="action_close">Blízko</string>
+    <string name="keyword_detail_title_fallback">Klíčové slovo</string>
+    <string name="keyword_detail_not_found">Klíčové slovo nenalezeno</string>
+    <string name="keyword_detail_last_indexed">Naposledy indexováno %1$s</string>
+    <string name="keyword_detail_mentions_section">Zmínky</string>
+    <string name="pin_biometric_prompt_title">Odemkněte pomocí biometrie</string>
+    <string name="pin_biometric_prompt_subtitle">K odemknutí použijte otisk prstu nebo obličej</string>
+    <string name="pin_error_no_biometric_enrolled">Není zaregistrován žádný biometrický údaj. Zaregistrujte si otisk prstu nebo obličej v nastavení zařízení.</string>
+    <string name="pin_error_hardware_unavailable">Biometrický hardware není k dispozici.</string>
+    <string name="pin_error_no_hardware">Toto zařízení nemá biometrický hardware.</string>
+    <string name="pin_error_not_available">Biometrická autentizace není k dispozici.</string>
+    <string name="pin_title_confirm">Potvrďte PIN</string>
+    <string name="pin_title_set_new">Nastavte nový PIN</string>
+    <string name="pin_title_disable">Pro deaktivaci zadejte aktuální PIN</string>
+    <string name="pin_title_enter">Zadejte PIN</string>
+    <string name="pin_error_incorrect">Nesprávný PIN. Zkuste to znovu.</string>
+    <string name="pin_error_mismatch">Kódy PIN se neshodují. Začněte znovu.</string>
+    <string name="pin_cd_use_biometric">Použijte biometrické údaje</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Tento den je označen, ale v deníku zatím není žádný záznam.</string>
+    <string name="timeline_preview_loading">Načítání náhledu...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d další záznam v tento den</item>
+        <item quantity="other">+ %1$d další položky v tento den</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Tento den otevřeno</string>
+    <string name="timeline_chip_today">DNES</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d záznam</item>
+        <item quantity="other">%1$d záznamů</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Sledování</string>
+    <string name="timeline_chip_label_only">Pouze štítek</string>
+    <string name="timeline_cd_favorite">Oblíbený</string>
+    <string name="version_history_title">Historie verzí</string>
+    <string name="version_history_day_versions_title">Denní verze</string>
+    <string name="version_history_keep_copies_title">Uschovejte si bezpečnostní kopie</string>
+    <string name="version_history_keep_copies_subtitle">Než Yaja změní soubor dne, uloží aktuální soubor do dat aplikace v části Soubory historie.</string>
+    <string name="version_history_versions_kept_title">Verze uchovávané za den</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja uchovává nejnovější verzi %1$d pro každé datum.</item>
+        <item quantity="other">Yaja uchovává nejnovější verze %1$d pro každé datum.</item>
+    </plurals>
+    <string name="version_history_retention_title">Udržení</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Snímky starší než %1$d den jsou vyčištěny automaticky.</item>
+        <item quantity="other">Snímky starší než %1$d dnů jsou vyčištěny automaticky.</item>
+    </plurals>
+    <string name="version_history_notes">Poznámky: Historie verzí chrání soubory denních značek před přidáním, úpravou, odstraněním, změnou pořadí, štítkem, hvězdičkou a změnou. Nejedná se o cloudovou zálohu; nadále používat zálohování pro přenosné kopie.</string>
+    <string name="version_history_snapshots_for">Snímky pro %1$s</string>
+    <string name="version_history_snapshots_subtitle">Otevřete uloženou verzi, zkontrolujte ji a obnovte ji pro tento den.</string>
+    <string name="version_history_empty">Pro toto datum zatím nejsou žádné uložené verze.</string>
+    <string name="action_view">Pohled</string>
+    <string name="version_history_date_intro">Otevřete dřívější uloženou verzi pro tento den, zkontrolujte ji a v případě potřeby ji obnovte.</string>
+    <string name="action_next">Další</string>
+    <string name="action_apply">Použít</string>
+    <string name="action_restore">Obnovit</string>
+    <string name="statistics_choose_title">Vyberte Statistiky</string>
+    <string name="statistics_choose_subtitle">Skryjte sekce, které nechcete. Alespoň jedna sekce musí zůstat viditelná.</string>
+    <string name="statistics_visible_count">%1$d z %2$d viditelné</string>
+    <string name="statistics_show_all">Zobrazit vše</string>
+    <string name="statistics_one_section_visible">Jedna část musí zůstat viditelná</string>
+    <string name="statistics_shown">Zobrazeno ve statistikách</string>
+    <string name="statistics_hidden">Skryto před statistikami</string>
+    <string name="statistics_select_start_date">Vyberte Datum zahájení</string>
+    <string name="statistics_select_end_date">Vyberte Datum ukončení</string>
+    <string name="statistics_filter_by_period">Filtrovat podle období</string>
+    <string name="statistics_cd_reorder">Dlouhým stisknutím změníte objednávku</string>
+    <string name="statistics_total_entries">Celkový počet záznamů</string>
+    <string name="statistics_total_words">Celkem slov</string>
+    <string name="statistics_avg_words_per_entry">Prům. Slova/Vstup</string>
+    <string name="statistics_current_streak">Aktuální pruh</string>
+    <string name="statistics_pages_written">Stránky napsané</string>
+    <string name="statistics_days_highlighted">Zvýrazněné dny</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d den</item>
+        <item quantity="other">%1$d dnů</item>
+    </plurals>
+    <string name="statistics_period_all_time">Statistiky všech dob</string>
+    <string name="statistics_period_current_year">Statistika aktuálního roku</string>
+    <string name="statistics_period_previous_year">Statistika předchozího roku</string>
+    <string name="statistics_period_current_month">Statistika aktuálního měsíce</string>
+    <string name="statistics_period_previous_month">Statistiky za předchozí měsíc</string>
+    <string name="statistics_period_custom">Vlastní statistika období</string>
+    <string name="statistics_period_chip_all_time">Celou dobu</string>
+    <string name="statistics_period_chip_current_year">Aktuální rok</string>
+    <string name="statistics_period_chip_previous_year">Předchozí rok</string>
+    <string name="statistics_period_chip_current_month">Tento měsíc</string>
+    <string name="statistics_period_chip_previous_month">Předchozí měsíc</string>
+    <string name="statistics_period_chip_custom">Zvyk</string>
+    <string name="statistics_sections_visible">Viditelných %1$d z %2$d sekcí</string>
+    <string name="statistics_loading_stages">Načítání statistik po etapách...</string>
+    <string name="review_period_weekly">Týdenní přehled</string>
+    <string name="review_period_monthly">Měsíční přehled</string>
+    <string name="review_anchor_week">Týden obsahující %1$s</string>
+    <string name="review_anchor_month">Měsíc obsahující %1$s</string>
+    <string name="review_chip_entries">Záznamy %1$d</string>
+    <string name="review_chip_words">Slova %1$d</string>
+    <string name="review_chip_days">Dny %1$d</string>
+    <string name="review_hint_jump">Klepnutím na datové žetony níže se vrátíte zpět do deníku.</string>
+    <string name="review_chip_streak">Pruh %1$d</string>
+    <string name="review_chip_gap">Mezera %1$d</string>
+    <string name="review_chip_labels">Štítky %1$d</string>
+    <string name="review_chip_favorites">Oblíbené %1$d</string>
+    <string name="review_empty_period">V tomto období zatím žádné deníkové záznamy. Štítky a zvýraznění se stále zobrazují níže, pokud existují.</string>
+    <string name="review_writing_rhythm">Rytmus psaní</string>
+    <string name="review_best_streak">Nejlepší série</string>
+    <string name="review_longest_gap">Nejdelší mezera</string>
+    <string name="review_most_active_days">Nejaktivnější dny</string>
+    <string name="review_day_entries_words">%1$d záznamů | %2$d slov</string>
+    <string name="review_top_people">Nejlepší lidé</string>
+    <string name="review_top_places">Nejlepší místa</string>
+    <string name="review_no_people_mentions">Žádní lidé se nezmiňují</string>
+    <string name="review_no_place_mentions">Žádná zmínka o místě</string>
+    <string name="review_favorite_moments">Oblíbené momenty</string>
+    <string name="review_starred_day">Den s hvězdičkou</string>
+    <string name="review_highlighted_in_period">Zvýrazněno v tomto období</string>
+    <string name="review_labels_created">Štítky vytvořeny</string>
+    <string name="review_labeled_day">Označený den</string>
+    <string name="review_language_split">Jazykové rozdělení</string>
+    <string name="review_not_enough_text">V tomto období není dostatek textu</string>
+    <string name="lookback_reviews_title">Recenze</string>
+    <string name="lookback_reviews_intro">Vytvořte si rychlé zamyšlení nad vybraným dnem deníku.</string>
+    <string name="lookback_seven_days">7 dní</string>
+    <string name="lookback_one_month">1 měsíc</string>
+    <string name="lookback_weekly_review">Týdenní přehled</string>
+    <string name="lookback_weekly_review_subtitle">Tento týden jedním pohledem</string>
+    <string name="lookback_monthly_review">Měsíční přehled</string>
+    <string name="lookback_monthly_review_subtitle">Tento měsíc shrnuto</string>
+    <string name="lookback_flashbacks_title">V tento den v minulých letech</string>
+    <string name="lookback_highlights_title">Váš výběr</string>
+    <string name="lookback_empty_title">Zatím žádné ohlédnutí ani zvýraznění.</string>
+    <string name="lookback_empty_subtitle">Oblíbené důležité dny k vidění zde!</string>
+    <string name="lookback_cd_random_entry">Přejít na náhodný vstup</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Období</string>
+    <string name="statistics_compare_mode_title">Režim porovnání</string>
+    <string name="statistics_compare_mode_subtitle">Delty měsíce, roku a klíčových slov</string>
+    <string name="statistics_this_year">Letos</string>
+    <string name="statistics_writing_days_delta">Psací dny Delta</string>
+    <string name="statistics_top_person_delta">Nejlepší osoba Delta</string>
+    <string name="statistics_no_people_mentions">Nikdo se zatím nezmínil</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Zatím žádné místo</string>
+    <string name="statistics_structured_writing">Strukturované psaní</string>
+    <string name="statistics_template_led_format">Šablona vedená %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Prázdné %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Nejpoužívanější šablony</string>
+    <string name="statistics_template_mix">Mix šablon</string>
+    <string name="statistics_follow_up_leaders">Následní vedoucí</string>
+    <string name="statistics_compare_details">Porovnat podrobnosti</string>
+    <string name="statistics_label_month">Měsíc</string>
+    <string name="statistics_label_year">Rok</string>
+    <string name="statistics_this_month_count_format">Tento měsíc %1$d</string>
+    <string name="statistics_last_month_count_format">Minulý měsíc %1$d</string>
+    <string name="statistics_longest_streak">Nejdelší série</string>
+    <string name="statistics_most_active_day">Nejaktivnější den</string>
+    <string name="statistics_writing_consistency">Konzistence psaní</string>
+    <string name="statistics_days_with_entries">Dny se záznamy</string>
+    <string name="statistics_best_month">Nejlepší měsíc</string>
+    <string name="statistics_best_month_format">%1$s · %2$d záznamů</string>
+    <string name="statistics_avg_writing_days_week">Prům. Psací dny / týden</string>
+    <string name="statistics_days_decimal_format">%1$.1f dnů</string>
+    <string name="statistics_based_on_total_words">Na základě celkového počtu slov napsaných za den</string>
+    <string name="statistics_light_words">Světlo (&lt; 50 slov)</string>
+    <string name="statistics_moderate_words">Střední (50–200 slov)</string>
+    <string name="statistics_heavy_words">Těžký (200–500 slov)</string>
+    <string name="statistics_intense_words">Intenzivní (500+ slov)</string>
+    <string name="statistics_not_enough_text_languages">Nedostatek textu k rozpoznání jazyků</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">Zjištěn jazyk %1$d</item>
+        <item quantity="other">Bylo zjištěno %1$d jazyků</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Detekce jazyka se stále řeší.</string>
+    <string name="statistics_latin_scripts_as_english">Latinská písma jsou zobrazena jako angličtina</string>
+    <string name="statistics_use_more_accurate_detection">Použijte přesnější detekci</string>
+    <string name="statistics_write_more_entries_languages">Chcete-li zobrazit jazykové statistiky, napište více záznamů.</string>
+    <string name="statistics_based_on_entry_time">Na základě času vstupu</string>
+    <string name="statistics_morning_time">Ráno (5:00 - poledne)</string>
+    <string name="statistics_afternoon_time">Odpoledne (poledne–17:00)</string>
+    <string name="statistics_evening_time">Večer (17:00–21:00)</string>
+    <string name="statistics_night_time">Noc (21:00–5:00)</string>
+    <string name="statistics_heatmap_filling">Heatmap se stále doplňuje.</string>
+    <string name="statistics_heatmap_less">Méně</string>
+    <string name="statistics_heatmap_more">Více</string>
+    <string name="action_open">OTEVŘENO</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Události Yaja Journal</string>
+    <string name="tasker_event_desc">Vyberte, které události deníku Yaja by měly spouštět tento profil Taskeru.</string>
+    <string name="tasker_event_saved">Záznam uložen</string>
+    <string name="tasker_event_edited">Záznam upraven</string>
+    <string name="tasker_event_deleted">Záznam smazán</string>
+    <string name="tasker_event_default_hint">Pokud není vybrána žádná, Yaja bude výchozím nastavením Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Nakonfigurujte, co by měl Tasker rychle zachytit v Yaja.</string>
+    <string name="tasker_action_add_entry">Přidat položku</string>
+    <string name="tasker_action_add_event">Přidat událost</string>
+    <string name="tasker_action_add_todo">Přidat úkol</string>
+    <string name="tasker_action_append">Připojit</string>
+    <string name="tasker_action_match_header_label">Shoda / hlavička</string>
+    <string name="tasker_action_match_header_placeholder">Zmeškané hovory</string>
+    <string name="tasker_action_line_to_append_label">Řádek k připojení</string>
+    <string name="tasker_action_text_label">Text</string>
+    <string name="tasker_action_placeholder_event">Poznámka k události z Taskeru</string>
+    <string name="tasker_action_placeholder_todo">Koupit mléko</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Rychlá poznámka od Taskeru</string>
+    <string name="tasker_action_tip_append">První volání vytvoří záznam začínající odpovídajícím textem. Pozdější hovory připojí řádek pod něj.</string>
+    <string name="tasker_action_tip_default">Tip: Proměnné Tasker lze umístit do textového pole.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Protokol o selhání předchozí relace</string>
+    <string name="crash_log_clear_close">Clear &amp; Close</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Spusťte aplikaci</string>
+    <string name="tap_action_quick_capture">Rychlé zachycení</string>
+    <string name="tap_action_do_nothing">Nedělat nic</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja Psaní Heatmap</string>
+    <string name="widget_cell_shape">Tvar buňky</string>
+    <string name="widget_corner_radius">Poloměr rohu: %1$ddp</string>
+    <string name="widget_square">Náměstí</string>
+    <string name="widget_round">Kolo</string>
+    <string name="widget_inner_margin">Vnitřní okraj: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Prostor mezi teplotní mapou a okraji widgetu</string>
+    <string name="widget_none">Žádný</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">Na klepnutí</string>
+    <string name="widget_on_tap_desc">Akce při klepnutí na widget</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Zachyťte</string>
+    <string name="widget_qc_shape">Tvar widgetu</string>
+    <string name="widget_show_label">Zobrazit štítek</string>
+    <string name="widget_show_label_desc">Zobrazte na widgetu text „Zachytit“.</string>
+    <string name="widget_show_icon">Zobrazit ikonu</string>
+    <string name="widget_show_icon_required">Je-li štítek skrytý, je vyžadována ikona</string>
+    <string name="widget_show_icon_desc">Zobrazte ikonu pera na widgetu</string>
+    <string name="widget_label_text">Text štítku</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Widget Todo</string>
+    <string name="widget_todo_desc">Zaoblený widget se seznamem úkolů podobný teplotní mapě.</string>
+    <string name="widget_todo_corner_radius">Poloměr rohu: %1$ddp</string>
+    <string name="widget_todo_padding">Výplň: %1$ddp</string>
+    <string name="widget_todo_show_completed">Zobrazit dokončené úkoly</string>
+    <string name="widget_todo_show_completed_desc">Zahrnout zaškrtnuté položky do seznamu widgetů</string>
+    <string name="widget_todo_include_events">Zahrnout události</string>
+    <string name="widget_todo_include_events_desc">Zobrazovat položky událostí vedle úkolů ve widgetu</string>
+    <string name="widget_todo_show_header">Zobrazit hlavičku úkolu</string>
+    <string name="widget_todo_show_header_desc">Zobrazit nebo skrýt řádek názvu widgetu</string>
+    <string name="widget_todo_auto_hide">Automaticky skrýt widget po dokončení všech úkolů</string>
+    <string name="widget_todo_auto_hide_unavailable">Není k dispozici, dokud jsou zobrazeny dokončené úkoly</string>
+    <string name="widget_todo_auto_hide_desc">Udělejte widget průhledným, když nejsou žádné čekající úkoly</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">hotovo</string>
+    <string name="todo_confirm_mark_not_done">neprovedeno</string>
+    <string name="todo_confirm_title">Označit úkol jako %1$s?</string>
+    <string name="todo_confirm_reopen">Tento úkol je aktuálně dokončen. Před opětovným otevřením potvrďte.</string>
+    <string name="todo_confirm_complete">Tento úkol je stále otevřený. Než to označíte za hotové, potvrďte.</string>
+    <string name="todo_confirm_accidental_tap">Náhodné klepnutí nezmění úkol.</string>
+    <string name="todo_confirm_yes_mark">Ano, označit %1$s</string>
+    <string name="todo_confirm_open_yaja">Otevřít v Yaja</string>
+    <string name="todo_confirm_keep_as_is">Zachovat tak, jak je</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">další žurnálovací aplikace</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">z laboratoří RJ</string>
+    <string name="help_made_in">Vyrobeno v 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Zrušit import</string>
+    <string name="timeline_show_all_dates">Zobrazit všechna data</string>
+    <string name="timeline_show_all_dates_subtitle">Zahrnout všechny minulé dny, i bez záznamů</string>
+    <string name="settings_background_tint_clean">Čistý</string>
+    <string name="settings_background_tint_soft">Měkký</string>
+    <string name="settings_background_tint_rich">Bohatý</string>
+    <string name="settings_background_tint_deep">Hluboký</string>
+    <string name="settings_accent_style_complementary">Komplementární</string>
+    <string name="settings_accent_style_analogous">Analogický</string>
+    <string name="settings_accent_style_triadic">Triadický</string>
+    <string name="settings_accent_style_soft">Měkký</string>
+</resources>

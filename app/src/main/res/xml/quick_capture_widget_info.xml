@@ -4,8 +4,12 @@
     android:minHeight="60dp"
     android:targetCellWidth="1"
     android:targetCellHeight="1"
-    android:updatePeriodMillis="0"
+    android:updatePeriodMillis="1800000"
     android:initialLayout="@layout/widget_quick_capture"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
+    android:label="@string/quick_capture_widget_name"
+    android:description="@string/quick_capture_widget_description"
+    android:previewImage="@drawable/ic_launcher_foreground"
+    android:configure="com.mj.yaja.ui.widget.QuickCaptureWidgetConfigActivity"
     android:widgetFeatures="reconfigurable|configuration_optional" />

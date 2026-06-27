@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">яджа</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Журнал</string>
+    <string name="nav_calendar">Календар</string>
+    <string name="nav_lookback">огляд назад</string>
+    <string name="nav_settings">Налаштування</string>
+    <string name="nav_shortcodes">Шорткоди</string>
+    <string name="nav_help">Довідка та про</string>
+
+    <!-- Common actions -->
+    <string name="action_save">зберегти</string>
+    <string name="action_cancel">Скасувати</string>
+    <string name="action_delete">Видалити</string>
+    <string name="action_edit">Редагувати</string>
+    <string name="action_back">Назад</string>
+    <string name="action_undo">Скасувати</string>
+    <string name="action_yes">так</string>
+    <string name="action_no">немає</string>
+    <string name="action_remove">видалити</string>
+    <string name="action_done">Готово</string>
+    <string name="action_set">встановити</string>
+    <string name="action_select">Виберіть</string>
+    <string name="action_ok">добре</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Відновлення кешу</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Швидке захоплення</string>
+    <string name="quick_capture_hint">що сталося</string>
+    <string name="quick_capture_helper_shortcodes">Шорткоди розгортаються тут автоматично, а рядки завдань продовжуються на Enter.</string>
+    <string name="quick_capture_save_delayed">Збереження відкладено. Будь ласка, повторно відкрийте Yaja, щоб перевірити.</string>
+    <string name="cd_saved">Збережено</string>
+    <string name="quick_todo_dialog_title">Швидке додавання</string>
+    <string name="quick_todo_save_delayed">Збереження Todo відкладено. Будь ласка, повторно відкрийте Yaja, щоб перевірити.</string>
+    <string name="quick_todo_placeholder">Додайте завдання</string>
+    <string name="quick_event_placeholder">Додайте подію</string>
+    <string name="quick_todo_task_date">Дата завдання</string>
+    <string name="quick_todo_event_date">Дата події</string>
+    <string name="quick_todo_pick_date_cd_format">Виберіть %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Зберігає як запис справ для вибраного дня.</string>
+    <string name="quick_event_selected_day_hint">Зберігає як запис події для вибраного дня.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Попередній</string>
+    <string name="cd_next">Далі</string>
+    <string name="cd_surprise_me">Здивуй мене</string>
+    <string name="calendar_cd_go_to_current_month">Перейти до поточного місяця</string>
+    <string name="calendar_quick_action_timeline_title">Хронологія</string>
+    <string name="calendar_quick_action_timeline_subtitle">Переглядайте в хронологічному порядку</string>
+    <string name="calendar_quick_action_jump_title">Перейти до дати</string>
+    <string name="calendar_quick_action_jump_subtitle">Відкрити в певний день</string>
+    <string name="calendar_jump_placeholder">ДД-ММ-РР</string>
+    <string name="calendar_jump_invalid_date">Недійсна дата. Використовуйте формат ДД-ММ-РР.</string>
+    <string name="calendar_action_go">Іди</string>
+    <string name="calendar_enable_future_dates_title">Увімкнути майбутні дати</string>
+    <string name="calendar_enable_future_dates_message">Введення майбутньої дати вимкнено. Ви хочете ввімкнути це?</string>
+    <string name="calendar_action_enable">Увімкнути</string>
+    <string name="calendar_future_entry_enabled">Увімкнено введення майбутньої дати</string>
+    <string name="calendar_weekday_sun_short">сонце</string>
+    <string name="calendar_weekday_mon_short">Пн</string>
+    <string name="calendar_weekday_tue_short">Вт</string>
+    <string name="calendar_weekday_wed_short">ср</string>
+    <string name="calendar_weekday_thu_short">чт</string>
+    <string name="calendar_weekday_fri_short">пт</string>
+    <string name="calendar_weekday_sat_short">сб</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ЗАПИСИ ЦЬОГО МІСЯЦЯ</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d день</item>
+        <item quantity="other">%1$d / %2$d днів</item>
+    </plurals>
+    <string name="calendar_days_of_memories">дні спогадів</string>
+    <string name="calendar_consistency_last_12_months">ОСТАННІ 12 МІСЯЦІВ</string>
+    <string name="calendar_consistency_title_format">КОНСИСТЕНЦІЯ - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% проти \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">проти \'%1$s</string>
+    <string name="calendar_consistency_first_period">перший період</string>
+    <string name="calendar_graph_frequency_month">місяць</string>
+    <string name="calendar_graph_frequency_year">рік</string>
+    <string name="calendar_yearly_consistency_title">Постійність (щороку)</string>
+    <string name="calendar_keywords_title">Хто найбільше з’являється</string>
+    <string name="calendar_keywords_syncing">Статистика людей і місць все ще синхронізується з індексацією ключових слів.</string>
+    <string name="calendar_keywords_empty">Додайте принаймні 3 людей або 3 місця, щоб побачити найпопулярніші згадки.</string>
+    <string name="calendar_keywords_people">люди</string>
+    <string name="calendar_keywords_places">Місця</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Налаштування</string>
+    <string name="settings_appearance">Зовнішній вигляд</string>
+    <string name="settings_appearance_subtitle">Тема, кольори, шрифти та персональні стилі</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_font">Шрифт</string>
+    <string name="settings_storage">Зберігання</string>
+    <string name="settings_security">Безпека</string>
+    <string name="settings_backup">Резервне копіювання</string>
+    <string name="settings_change_storage_title">Змінити місце зберігання</string>
+    <string name="settings_backup_never">Ніколи</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Налаштування пошуку</string>
+    <string name="settings_search_clear">Очистити пошук</string>
+    <string name="settings_search_recent">Останні пошуки</string>
+    <string name="settings_search_no_results">Немає відповідних налаштувань</string>
+    <string name="settings_search_close">Закрити</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Журнал Досвід</string>
+    <string name="settings_section_navigation_gestures">Навігація та жести</string>
+    <string name="settings_section_review_insights">Огляд і аналіз</string>
+
+    <!-- Language -->
+    <string name="settings_language">Мова</string>
+    <string name="settings_language_title">Мова програми</string>
+    <string name="settings_language_subtitle">Виберіть мову, яка використовуватиметься в додатку.</string>
+    <string name="settings_language_system_default">Система за умовчанням</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Стиль запису</string>
+    <string name="settings_journal_entry_style_subtitle">Вибирайте між високими картками та більш плоским виглядом журналу.</string>
+    <string name="settings_journal_entry_style_cards">картки</string>
+    <string name="settings_journal_entry_style_flat">Плоский</string>
+    <string name="settings_journal_render_checkboxes_title">Відобразити прапорці як текст</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Показуйте завдання як [ ] і [x] у програмі замість яскравих прапорців.</string>
+    <string name="settings_journal_day_header_counts_title">Показати кількість заголовків днів</string>
+    <string name="settings_journal_day_header_counts_subtitle">Показувати кількість записів, слів і символів у заголовку дня журналу.</string>
+    <string name="settings_journal_show_timestamps_title">Показати позначки часу</string>
+    <string name="settings_journal_show_timestamps_subtitle">Відображення часу введення на шкалі часу.</string>
+    <string name="settings_journal_allow_future_title">Дозволити майбутні записи</string>
+    <string name="settings_journal_allow_future_subtitle">Увімкнути додавання записів до майбутніх дат.</string>
+    <string name="settings_journal_truncate_title">Обрізати довгі записи</string>
+    <string name="settings_journal_truncate_subtitle">Скоротіть довгі записи на головному екрані.</string>
+    <string name="settings_journal_char_limit_title">Обмеження символів</string>
+    <string name="settings_journal_char_limit_subtitle">Встановіть кількість символів для відображення перед скороченням.</string>
+    <string name="settings_journal_char_limit_min">50 символів</string>
+    <string name="settings_journal_char_limit_max">200 символів</string>
+    <string name="settings_journal_char_count">%1$d символів</string>
+    <string name="settings_journal_first_day_title">Перший день тижня</string>
+    <string name="settings_journal_first_day_subtitle">Почати календар</string>
+    <string name="settings_journal_day_sun">сонце</string>
+    <string name="settings_journal_day_mon">Пн</string>
+    <string name="settings_journal_date_recognition">Розпізнавання дати</string>
+    <string name="settings_journal_date_order_title">Порядок дати</string>
+    <string name="settings_journal_date_order_subtitle">Як читати числові дати</string>
+    <string name="settings_journal_date_order_auto">Авто</string>
+    <string name="settings_journal_date_order_dmy">ДД/ММ</string>
+    <string name="settings_journal_date_order_mdy">ДД/ММ</string>
+    <string name="settings_journal_date_keywords_title">Дата Ключові слова</string>
+    <string name="settings_journal_date_keywords_subtitle">Слова в інших мовах, що означають дату (наприклад, місцеве слово для вчора).</string>
+    <string name="settings_journal_view_keywords">Переглянути (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Додайте ключове слово</string>
+    <string name="settings_journal_motion">Рух</string>
+    <string name="settings_journal_animations_title">анімації</string>
+    <string name="settings_journal_animations_subtitle">Керуйте рухами в додатку. Зменшена зберігає речі гладкими з меншою кількістю рухів.</string>
+    <string name="settings_journal_animations_full">Повний</string>
+    <string name="settings_journal_animations_reduced">Зменшений</string>
+    <string name="settings_journal_animations_off">Вимкнено</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Перегляд після збереження</string>
+    <string name="settings_review_post_write_title">Огляд після написання</string>
+    <string name="settings_review_post_write_subtitle">Показати аркуш огляду після натискання «Зберегти», щоб вилучити завдання, перевірити згадки, день зірок або встановити мітку.</string>
+    <string name="settings_review_people_places">Люди та місця</string>
+    <string name="settings_review_highlighting_title">Мелірування</string>
+    <string name="settings_review_highlighting_subtitle">Виділіть відстежуваних людей і місця в головних картках і в режимі перегляду записів.</string>
+    <string name="settings_review_match_sensitivity_title">Чутливість відповідності</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Наскільки точно слово має збігатися, щоб люди та місця його розпізнали (вище = суворіше).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Додати короткий код</string>
+    <string name="shortcodes_edit_title">Редагувати короткий код</string>
+    <string name="shortcodes_code_label">Короткий код (наприклад, @yday)</string>
+    <string name="shortcodes_expansion_label">Текст розширення</string>
+    <string name="shortcodes_export_error">Не вдалося експортувати короткі коди</string>
+    <string name="shortcodes_import_error">Не вдалося імпортувати короткі коди</string>
+    <string name="todos_expand_section">Розгорнути %1$s</string>
+    <string name="todos_collapse_section">Згорнути %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Написання теплової карти</string>
+    <string name="heatmap_widget_description">Теплова карта нещодавньої писемної діяльності для вашого щоденника.</string>
+    <string name="quick_capture_widget_name">Швидке захоплення</string>
+    <string name="quick_capture_widget_description">Кнопка одним натисканням для швидкого додавання запису в журнал.</string>
+    <string name="quick_todo_widget_name">Швидке завдання</string>
+    <string name="tasker_plugin_action_label">Швидке захоплення Yaja</string>
+    <string name="tasker_plugin_event_label">Події журналу Yaja</string>
+    <string name="tasker_screen_allow_add_entry_title">Дозволити Tasker додати запис</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Дозволяє Tasker використовувати такі дії Yaja Quick Capture, як «Додати запис» і «Додати завдання».</string>
+    <string name="tasker_screen_allow_events_title">Дозволити події Tasker</string>
+    <string name="tasker_screen_allow_events_subtitle">Дозволяє Yaja надсилати події Entry Saved, Entry Modified і Entry Deleted до Tasker.</string>
+    <string name="tasker_screen_include_text_title">Додайте текст запису до подій</string>
+    <string name="tasker_screen_include_text_subtitle">За умовчанням вимкнено для конфіденційності. Якщо вимкнено, Tasker отримує тип події, дату, мітку та час, але не текст журналу.</string>
+    <string name="tasker_screen_section_what">Що це робить</string>
+    <string name="tasker_screen_body_what">Tasker може швидко додавати записи журналу або завдання до Yaja, додавати рядки до згрупованого запису, наприклад пропущені дзвінки, і Yaja може повідомляти Tasker, коли запис збережено, відредаговано чи видалено.</string>
+    <string name="tasker_screen_section_how">Як використовувати</string>
+    <string name="tasker_screen_body_how">Спочатку увімкніть потрібний тумблер. Потім відкрийте Tasker і додайте дію Yaja Quick Capture або подію Yaja Journal Events.</string>
+    <string name="tasker_screen_section_notes">Примітки</string>
+    <string name="tasker_screen_body_notes">Текст запису не надається Tasker, якщо ви не ввімкнете «Включати текст запису в події». Якщо Tasker не показує останні параметри або змінні, повторно відкрийте екран конфігурації Tasker після оновлення Yaja.</string>
+    <string name="tasker_screen_section_example">приклад</string>
+    <string name="tasker_screen_body_example">Приклад дії: дія Tasker &gt; Yaja Quick Capture &gt; Append, із параметром «Збіг/заголовок», установленим на «Пропущені виклики», а «Line to append» — змінною Tasker. Приклад події: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, потім використовуйте такі змінні, як %%yaja_event_type, %%yaja_date і, за бажанням, %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Випадки використання</string>
+    <string name="tasker_screen_use_case_1">1. Використовуйте подію журналу Yaja в Tasker, щоб ініціювати дію синхронізації FolderSync, щоб ваша папка Yaja надсилалася до будь-якого хмарного постачальника після зміни записів.</string>
+    <string name="tasker_screen_use_case_2">2. Використовуйте Pushbullet із Tasker, щоб надіслати текст у Yaja Quick Capture, щоб надісланий текст зберігався як новий запис для поточного дня.</string>
+    <string name="tasker_screen_use_case_3">3. Використовуйте профіль Tasker для пропущених викликів, щоб надіслати дію Append у Yaja, щоб усі відомості про пропущені виклики потрапляли в один запис про пропущені виклики, а не створювали окремі записи.</string>
+    <string name="quick_todo_widget_description">Кнопка одним дотиком, щоб зберегти завдання як новий запис на сьогодні.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Список завдань журналу, який можна прокручувати. Торкніться завдання, щоб позначити його як виконане або скасоване.</string>
+    <string name="todo_cd_add_todo">Додати завдання</string>
+    <string name="todos_cd_open_compliance_master">Відкрийте повторювані завдання</string>
+    <string name="compliance_master_title">Повторювані завдання / події</string>
+    <string name="compliance_master_add">Додати повторюване завдання</string>
+    <string name="compliance_master_edit">Редагувати повторюване завдання</string>
+    <string name="compliance_master_intro_title">Повторювані завдання</string>
+    <string name="compliance_master_intro_body">Створюйте повторювані завдання для роботи на тиждень, місяць, квартал, півріччя або рік. Яджа розкриває кожне завдання лише тоді, коли його цикл стає актуальним.</string>
+    <string name="compliance_master_empty">Поки немає повторюваних завдань. Додайте один, щоб автоматично створювати завдання за вибраним розкладом.</string>
+    <string name="compliance_master_status_deactivated">Деактивовано</string>
+    <string name="compliance_master_meta_format">Дата погашення: %1$d • %2$d робочих днів</string>
+    <string name="compliance_master_field_title">Назва завдання</string>
+    <string name="compliance_master_field_title_hint">Приклад: подайте місячний звіт</string>
+    <string name="compliance_master_field_description">опис</string>
+    <string name="compliance_master_field_description_hint">Приклад: перевірте банківський портал і підтвердьте квитанцію</string>
+    <string name="compliance_master_editor_task_section">Про що вам має нагадати Яджа?</string>
+    <string name="compliance_master_field_due_day">Термін виконання</string>
+    <string name="compliance_master_field_reveal_day">Створити заздалегідь (днів)</string>
+    <string name="compliance_master_field_schedule_mode">Коли це потрібно?</string>
+    <string name="compliance_master_schedule_mode_help">Виберіть, як Яджа визначає дату пологів.</string>
+    <string name="compliance_master_select_schedule_type">Виберіть потрібний шаблон</string>
+    <string name="compliance_master_field_frequency">як часто</string>
+    <string name="compliance_master_frequency_help">Виберіть, як часто це завдання повторюється.</string>
+    <string name="compliance_master_select_frequency">Виберіть частоту повторення</string>
+    <string name="compliance_master_schedule_details">Деталі розкладу</string>
+    <string name="compliance_master_details_date_help">Введіть дату пологів і за скільки днів її слід записати в щоденний файл.</string>
+    <string name="compliance_master_details_weekday_help">Виберіть день тижня, до якого це завдання має бути виконано.</string>
+    <string name="compliance_master_details_boundary_help">Виберіть, на скільки днів наперед це має бути записано в щоденний файл.</string>
+    <string name="compliance_master_field_due_weekday">Прийнятий будній день</string>
+    <string name="compliance_master_select_weekday">Виберіть день тижня</string>
+    <string name="compliance_master_due_day_help">Введіть дату від 1 до 31. Для коротших місяців використовується остання дійсна дата.</string>
+    <string name="compliance_master_reveal_day_help">За скільки днів до терміну записати завдання до файлу щоденного журналу.</string>
+    <string name="compliance_master_first_day_selected">Сплачується в перше число кожного відповідного місяця.</string>
+    <string name="compliance_master_last_day_selected">Сплачується в останній день кожного відповідного місяця.</string>
+    <string name="compliance_mode_day_of_month">Конкретна дата</string>
+    <string name="compliance_mode_day_of_month_desc">Сплачується в пронумеровану дату, наприклад 15 число.</string>
+    <string name="compliance_mode_day_of_week">будній день</string>
+    <string name="compliance_mode_day_of_week_desc">Оплачується у вибраний день тижня, наприклад у понеділок.</string>
+    <string name="compliance_mode_first_day">Перше число місяця</string>
+    <string name="compliance_mode_first_day_desc">Сплачується в перше число кожного відповідного місяця.</string>
+    <string name="compliance_mode_last_day">Кінець місяця</string>
+    <string name="compliance_mode_last_day_desc">Оплачується до кінцевої дати, включаючи коротші місяці.</string>
+    <string name="compliance_frequency_weekly">Щотижня</string>
+    <string name="compliance_frequency_biweekly">Двотижневий</string>
+    <string name="compliance_frequency_monthly">Щомісяця</string>
+    <string name="compliance_frequency_quarterly">Щоквартально</string>
+    <string name="compliance_frequency_half_yearly">Піврічна</string>
+    <string name="compliance_frequency_annual">Річний</string>
+    <string name="compliance_master_summary_day_of_month">День %1$d • %2$s • %3$d днів наперед</string>
+    <string name="compliance_master_summary_day_of_week">Остання дата • %1$s • %2$s днів</string>
+    <string name="compliance_master_summary_first_day">Перша дата • %1$s • %2$d днів</string>
+    <string name="compliance_master_summary_last_day">Остання дата • %1$s • %2$d днів</string>
+    <string name="compliance_master_execution_title">Як це відбуватиметься</string>
+    <string name="compliance_master_execution_day_of_month">Todo створюється %1$s дня %2$d. Він записується у ваш щоденний файл за %3$d днів наперед.</string>
+    <string name="compliance_master_execution_weekday">Завдання створено %1$s %2$s. Він записується у ваш щоденний файл за %3$d днів наперед.</string>
+    <string name="compliance_master_execution_monthly_weekday">Todo створюється щомісяця в той самий %1$s момент, що й дата початку. Він записується у ваш щоденний файл за %2$d днів наперед.</string>
+    <string name="compliance_master_execution_month_boundary">Завдання створюється %1$s %2$s місяця. Він записується у ваш щоденний файл за %3$d днів наперед.</string>
+    <string name="compliance_master_boundary_first">перше побачення</string>
+    <string name="compliance_master_boundary_last">остання дата</string>
+    <string name="compliance_master_recurrence_weekly">щотижня</string>
+    <string name="compliance_master_recurrence_biweekly">кожні два тижні</string>
+    <string name="compliance_master_recurrence_monthly">кожного місяця</string>
+    <string name="compliance_master_recurrence_quarterly">кожні три місяці</string>
+    <string name="compliance_master_recurrence_half_yearly">кожні півроку</string>
+    <string name="compliance_master_recurrence_annual">кожного року</string>
+    <string name="todo_chip_compliance">Повторювані</string>
+    <string name="compliance_master_upcoming">Майбутні</string>
+    <string name="compliance_master_delete_confirm_title">Видалити повторюване завдання?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" буде видалено, і подальші завдання не створюватимуться.</string>
+    <string name="compliance_master_next_date">Далі: %1$s</string>
+    <string name="compliance_master_end_section">Кінцева умова</string>
+    <string name="compliance_master_end_help">Виберіть, коли це завдання припинить повторюватися</string>
+    <string name="compliance_master_end_never">Ніколи</string>
+    <string name="compliance_master_end_on_date">На дату</string>
+    <string name="compliance_master_end_after">Після…</string>
+    <string name="compliance_master_end_never_desc">Повторюється нескінченно без кінцевої дати.</string>
+    <string name="compliance_master_end_date_select">Виберіть кінцеву дату</string>
+    <string name="compliance_master_end_date_help">Після цієї дати завдання не створюються.</string>
+    <string name="compliance_master_end_count_label">Кількість повторень</string>
+    <string name="compliance_master_end_count_help">Зупиняється після створення багатьох завдань.</string>
+    <string name="compliance_master_ends_on">Закінчується %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d залишилося</string>
+    <string name="compliance_master_ended">Завершено</string>
+    <string name="compliance_master_type_label">Створити як</string>
+    <string name="compliance_master_type_task">завдання</string>
+    <string name="compliance_master_type_event">Подія</string>
+    <string name="heatmap_widget_status_loading">Завантаження теплової карти…</string>
+    <string name="heatmap_widget_status_empty">Записів ще немає</string>
+    <string name="heatmap_widget_status_refresh">Відкрийте Yaja, щоб оновити теплову карту</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Кеш відновлено.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Новий запис</string>
+    <string name="shortcut_new_entry_long">Додайте запис у журналі</string>
+    <string name="shortcut_add_todo_short">Додати Todo</string>
+    <string name="shortcut_add_todo_long">Додайте завдання на сьогодні</string>
+    <string name="shortcut_add_event_short">Додати подію</string>
+    <string name="shortcut_add_event_long">Додайте подію</string>
+    <string name="shortcut_today_short">Сьогодні</string>
+    <string name="shortcut_today_long">Відкрийте сьогоднішній щоденник</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Навігація</string>
+    <string name="settings_bottom_nav_style_label">Нижній стиль навігації</string>
+    <string name="settings_navigation_mode_title">Режим навігації</string>
+    <string name="settings_navigation_mode_subtitle">Виберіть між плаваючою панеллю навігації та повною нижньою панеллю.</string>
+    <string name="settings_nav_mode_floating">Плаваючий</string>
+    <string name="settings_nav_mode_panel">Панель</string>
+    <string name="settings_navigation_screens_label">Екрани навігації</string>
+    <string name="settings_nav_summary_floating">Журнал і календар завжди залишаються на плаваючій панелі. Виберіть ще 2 екрани. Наразі вибрано: %1$d з %2$d.</string>
+    <string name="settings_nav_summary_panel">Журнал і календар завжди залишаються на нижній панелі. Виберіть ще 3 екрани. Наразі вибрано: %1$d з %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Показати ретроспективу на активній навігаційній панелі чи панелі.</string>
+    <string name="settings_nav_people_places_subtitle">Показати людей і місця на активній панелі або панелі навігації.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Показати завдання на активній навігаційній панелі або панелі.</string>
+    <string name="todos_quick_add_title">Швидке додавання</string>
+    <string name="todos_hero_subtitle">Відстежуйте роботу журналу та моменти</string>
+    <string name="todos_hero_all_activity">Вся діяльність</string>
+    <string name="todos_hero_open_focus">Відкритий фокус</string>
+    <string name="todos_hero_completed">Виконано</string>
+    <string name="todos_stat_today_open">Сьогодні відкрито</string>
+    <string name="todos_stat_done_today">Готово сьогодні</string>
+    <string name="todos_stat_events">Події</string>
+    <string name="todos_stat_still_open">Все ще відкрито</string>
+    <string name="todos_stat_past_7d">За 7 дн</string>
+    <string name="todos_stat_days">днів</string>
+    <string name="todos_empty_done">Ще немає виконаних завдань</string>
+    <string name="todos_empty_events">Ще немає записів про події</string>
+    <string name="todos_section_open">ВІДЧИНЕНО</string>
+    <string name="todos_section_later">ПІЗНІШЕ</string>
+    <string name="todos_section_upcoming">МАЙБУТНІЙ</string>
+    <string name="todos_section_future_events">МАЙБУТНІ ПОДІЇ</string>
+    <string name="todos_section_past_events">МИНУЛІ ПОДІЇ</string>
+    <string name="todos_cd_open_day">День відкритих дверей</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d відкрите завдання</item>
+        <item quantity="other">%1$d відкритих завдань</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d виконане завдання</item>
+        <item quantity="other">%1$d виконаних завдань</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d майбутня подія</item>
+        <item quantity="other">%1$d майбутні події</item>
+    </plurals>
+    <string name="todos_filter_all_format">Усі %1$d</string>
+    <string name="todos_filter_open_format">Відкрити %1$d</string>
+    <string name="todos_filter_done_format">Виконано %1$d</string>
+    <string name="todos_filter_events_format">Події %1$d</string>
+    <string name="todos_cheer_all_clear">Все ясно. приємно</string>
+    <string name="todos_cheer_done_and_dusted">Готово та витерто пил.</string>
+    <string name="todos_cheer_nothing_pending">Нічого не очікує.</string>
+    <string name="todos_cheer_caught_up">Ви наздогнали.</string>
+    <string name="todos_cheer_clean_slate">Чистий аркуш.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">Через %1$d день</item>
+        <item quantity="other">Через %1$d днів</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d день тому</item>
+        <item quantity="other">%1$d днів тому</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">За %1$d тиждень</item>
+        <item quantity="other">Через %1$d тижнів</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d тиждень тому</item>
+        <item quantity="other">%1$d тижнів тому</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Через 1 місяць</string>
+    <string name="todos_relative_one_month_ago">1 місяць тому</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">У %1$d місяць</item>
+        <item quantity="other">Через %1$d місяців</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d місяць тому</item>
+        <item quantity="other">%1$d місяців тому</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Статистика</string>
+    <string name="settings_nav_statistics_subtitle_on">Показати статистику на активній панелі або панелі навігації.</string>
+    <string name="settings_nav_statistics_subtitle_off">Спочатку увімкніть статистику, щоб розмістити її в навігації.</string>
+    <string name="settings_show_labels_bottom_panel_title">Показати мітки на нижній панелі</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Відображати текстові мітки під значками на нижній панелі.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Жести</string>
+    <string name="settings_entry_delete_title">Видалити запис</string>
+    <string name="settings_entry_delete_subtitle">Утримуйте запис, щоб вибрати його. Торкніться інших записів, щоб вибрати кілька, а потім скористайтеся центральною кнопкою «Видалити». Торкніться порожнього місця, щоб очистити вибір.</string>
+    <string name="settings_swipe_navigate_title">Проведіть пальцем, щоб перейти до дат</string>
+    <string name="settings_swipe_navigate_subtitle">Проведіть пальцем справа наліво, щоб перейти на одну дату вперед, і зліва направо, щоб перейти назад.</string>
+    <string name="settings_drag_reorder_title">Увімкніть перетягування для зміни порядку</string>
+    <string name="settings_drag_reorder_subtitle">Утримуйте записи, щоб змінити їх порядок</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Дані та відновлення</string>
+    <string name="settings_swipe_rebuild_index">Проведіть пальцем вниз на головному екрані, щоб відновити індекс</string>
+    <string name="settings_large_journal_safe_mode_title">Безпечний режим великого журналу</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Якщо виявлено дуже великий журнал, відкладіть роботу несуттєвої статистики запуску, щоб програма відкривалася швидше та безпечніше.</string>
+    <string name="settings_version_history_title">Історія версій</string>
+    <string name="settings_version_history_subtitle">Зберігайте надійні копії перед редагуванням, видаленням, позначенням міток і повторним переглядом змін.</string>
+    <string name="settings_storage_location_label">Місце зберігання</string>
+    <string name="settings_reset_to_default">Скинути до замовчування</string>
+    <string name="settings_choose_folder">Виберіть папку</string>
+    <string name="settings_backup_description">Створіть одну резервну копію архіву Yaja, що містить записи в журналі, короткі коди, ключові слова дати та дані про людей і місця. Відновлення може безпечно об’єднати його пізніше.</string>
+    <string name="settings_last_backup">Останнє резервне копіювання: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Вік резервного нагадування</string>
+    <string name="settings_backup_reminder_disabled">Вимкнено</string>
+    <string name="settings_backup_reminder_desc">Виділіть резервну копію на бічній панелі, якщо вона старше %1$d днів.</string>
+    <string name="settings_backup_reminder_days_disabled">0 днів (вимкнено)</string>
+    <string name="settings_backup_reminder_days">%1$d днів</string>
+    <string name="settings_restore_button">Відновити</string>
+    <string name="settings_backup_now_button">Резервне копіювання зараз</string>
+    <string name="settings_db_index_management_label">Управління індексом бази даних</string>
+    <string name="settings_db_index_management_desc">Відкрийте цілеспрямовані інструменти відновлення для завдань, людей і місць або повного відновлення індексу бази даних.</string>
+    <string name="settings_rebuild_tools_button">Інструменти перебудови</string>
+    <string name="settings_import_label">Імпорт</string>
+    <string name="settings_import_info_cd">Імпорт інформації</string>
+    <string name="settings_import_info_title">Імпорт інформації</string>
+    <string name="settings_import_day_one_title">Імпорт першого дня</string>
+    <string name="settings_import_day_one_bullet1">- Експорт з першого дня без зображень</string>
+    <string name="settings_import_day_one_bullet2">- Імпортуватимуться лише текстові дані</string>
+    <string name="settings_import_day_one_bullet3">- Мітка часу та дані про місцезнаходження (якщо доступні) будуть збережені</string>
+    <string name="settings_import_perf_warning_title">Попередження про продуктивність</string>
+    <string name="settings_import_perf_warning_desc">Імпорт великої кількості записів (500+) може зайняти кілька хвилин. Ви можете перейти, і імпорт продовжиться у фоновому режимі.</string>
+    <string name="settings_got_it">зрозумів</string>
+    <string name="settings_import_success">%1$d нових днів, %2$d об’єднано, %3$d пропущено</string>
+    <string name="settings_import_source_day_one">День перший</string>
+    <string name="settings_import_source_day_one_subtitle">Експорт у .zip або .json</string>
+    <string name="settings_import_source_journalistic">Публіцистичний</string>
+    <string name="settings_import_source_journalistic_subtitle">Експорт .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Дізнайтеся, як використовувати яджа</string>
+    <string name="help_footer_website">Веб-сайт</string>
+    <string name="help_footer_share">Поділіться</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Розбрат</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Поділіться яджа</string>
+    <string name="help_share_yaja_text">yaja — ще одна програма для ведення журналів\n\nЛокальний журнал, який не відволікається, і зберігає записи як файли розцінок. Він містить хронологію, ретроспективу, людей і місця, шаблони, відгуки, статистику та віджети.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Ім’я користувача Discord скопійовано!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">Логотип RJ</string>
+    <string name="help_screen_title">Довідка та про</string>
+    <string name="help_welcome_title">Ласкаво просимо до yaja</string>
+    <string name="help_welcome_body">Yaja — це локальний щоденник уцінок, який фіксує дні, людей, місця, подальші дії, огляди та шаблони, не заважаючи вам. Ця сторінка містить короткий посібник із основних частин програми.</string>
+    <string name="help_start_here">Почніть тут</string>
+    <string name="help_cd_collapse">Згорнути</string>
+    <string name="help_cd_expand">Розгорнути</string>
+    <string name="help_group_everyday_title">Щодня</string>
+    <string name="help_group_everyday_desc">Ведення журналу, процес написання та щоденна навігація.</string>
+    <string name="help_group_reviews_title">Огляди та аналіз</string>
+    <string name="help_group_reviews_desc">Ретроспектива, тенденції, люди, місця та аналіз.</string>
+    <string name="help_group_advanced_title">Розширені інструменти</string>
+    <string name="help_group_advanced_desc">Віджети, сховище, конфіденційність, резервне копіювання та технічні інструменти.</string>
+    <string name="help_onboard_todos_events_title">Справи, події та повторювані</string>
+    <string name="help_onboard_todos_events_body">Зберігайте особисті нагадування, сімейні плани та повторювані розклади, які автоматично генерують завдання у встановлений термін.</string>
+    <string name="help_onboard_widgets_title">Віджети</string>
+    <string name="help_onboard_widgets_body">Додайте віджети Heatmap, Quick Capture, Quick Todo або Todo List із панелі запуску.</string>
+    <string name="help_onboard_version_history_title">Історія версій</string>
+    <string name="help_onboard_version_history_body">Увімкніть файли історії в меню Налаштування &gt; Дані, щоб зберегти безпечні знімки перед ризикованими змінами.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Використовуйте Tasker, щоб швидко додавати записи, завдання або події, коли щось особисте потрібно зафіксувати негайно.</string>
+    <string name="help_section_writing_editor_title">Написання та редактор</string>
+    <string name="help_section_writing_editor_preview">Шаблони, заголовки розмітки, завдання, події та гнучка вставка чернеток.</string>
+    <string name="help_section_writing_editor_content">+ Торкніться плаваючої кнопки «+», щоб написати для вибраного дня.\n+ Використовуйте шаблони, як-от «Записка про нараду», «День подорожі», «Журнал здоров’я», «Роздуми», «Журнал роботи» тощо.\n+ Шаблони можна вставляти в порожню чернетку, додавати нижче, використовувати для заміни чернетки або вставляти під курсором.\n+ Мікросхеми редактора можуть швидко вставляти завдання, події, нумеровані списки та марковані списки.\n+ Переглянути запис. і Edit Entry підтримують заголовки у стилі розмітки, наприклад ### Розділ.</string>
+    <string name="help_section_post_write_review_title">Рецензія після написання</string>
+    <string name="help_section_post_write_review_preview">Видалення завдань, визначення ключових слів, позначення зірочками, мітки та повторне налаштування.</string>
+    <string name="help_section_post_write_review_content">+ Після написання Yaja може відкрити аркуш огляду перед збереженням.\n+ Він може витягувати елементи завдань, виявляти людей і місця, позначати день зірочкою, установлювати мітку дня та планувати дати повторного перегляду.\n+ Ви можете вимкнути «Рецензування після запису» в налаштуваннях, якщо ви віддаєте перевагу прямому збереженню.</string>
+    <string name="help_section_revisit_followup_title">Дати повторного огляду та повторного огляду</string>
+    <string name="help_section_revisit_followup_preview">Пов’язані з журналом подальші дати з швидким вибором і спеціальними параметрами.</string>
+    <string name="help_section_revisit_followup_content">+ Додайте дати повторного відвідування за допомогою «Завтра», «Наступного тижня», «Наступного місяця» або спеціальної дати.\n+ Елементи, які необхідно відвідати, з’являються на головній сторінці та позначаються в календарі та на часовій шкалі.\n+ Це добре працює для обіцянок, рішень, перевірок стану та нагадувань, пов’язаних із контекстом журналу.</string>
+    <string name="help_section_navigation_gestures_title">Навігація та жести</string>
+    <string name="help_section_navigation_gestures_preview">Переміщення дати, видалення виділення, налаштування пальця та перебудова поведінки кешу.</string>
+    <string name="help_section_navigation_gestures_content">+ Home підтримує навігацію за датою за допомогою стрілок і додаткову навігацію пальцем, якщо ввімкнено.\n+ Утримуйте запис, щоб вибрати його. Торкніться інших записів, щоб вибрати їх, а потім скористайтеся піктограмою «Видалити» біля кнопки «Додати».\n+ Торкання поза вибраними записами очищає вибір. Видалені записи можна відновити разом із зворотним відліком відновлення.\n+ Ви можете відновити кеш, коли файли журналу змінюються поза Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Шорткоди та швидке захоплення</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Швидке персональне захоплення та багаторазові фрагменти динамічного тексту.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Створюйте короткі коди, щоб швидко вставляти повторюваний текст.\n+ Динамічні заповнювачі, як-от {{today:dd-MMM}} і {{now:HH:mm}}, працюють у коротких кодах.\n+ Швидке захоплення допомагає швидко реєструвати щось, не відкриваючи повний редактор.\n+ Швидке додавання може зберегти завдання або подію на вибрану дату з віджета, екрана Todos або Tasker.</string>
+    <string name="help_section_todos_events_title">Справи, події та повторювані</string>
+    <string name="help_section_todos_events_preview">Особисті нагадування, важливі події та автоматизовані повторювані розклади.</string>
+    <string name="help_section_todos_events_content">+ Завдання записуються безпосередньо в записах журналу у вигляді рядків [ ] і [x].\n+ Події — це звичайні записи журналу, позначені як Подія, корисні для сімейних планів, зустрічей, подорожей або будь-чого, що ви хочете помітити пізніше.\n+ Повторювані завдання та події (розклади) автоматично записують елементи справ або заголовки подій на сторінки щоденного журналу відповідно до їх розкладу (наприклад, щотижня, щомісяця, щороку).\n+ Керуйте своїми розкладами, торкаючись піктограми «Повторювані» на екрані Todos.\n+ Щодня, коли ви відкриваєте Yaja, фоновий конвеєр запускається, щоб перевірити, чи є якісь заплановані завдання, і вставляє їх у запис цього дня.\n+ Екран Todos допомагає переглядати відкриті Todos, виконані Todos і події, не перетворюючи Yaja на панель продуктивності.\n+ Торкніться заголовка дати, щоб відкрити цей день у Журнал.\n+ Потягніть униз Todos, щоб відновити індекс Todo, якщо файли змінено поза межами Yaja.\n+ Show Completed Tasks запам’ятовується, тому ваш бажаний перегляд зберігається, коли ви залишаєте та повертаєтеся.\n+ Віджети Todo можуть показувати незавершені завдання, підтверджувати їх перед перемиканням, приховувати виконані завдання та, за бажанням, автоматично ховати, коли нічого не очікується.</string>
+    <string name="help_section_people_places_title">Люди та місця</string>
+    <string name="help_section_people_places_preview">Ключові слова, псевдоніми, тенденції та ранжовані перегляди з’єднань.</string>
+    <string name="help_section_people_places_content">+ Відстежуйте людей і місця за допомогою псевдонімів і міток зв’язків.\n+ Шукайте, фільтруйте та сортуйте список ключових слів.\n+ Сторінки з деталями ключових слів показують давність, згадки за час, спільні згадки та рейтингові зв’язки.\n+ Чутливість відповідності можна налаштувати в налаштуваннях.</string>
+    <string name="help_section_timeline_lookback_title">Хронологія та огляд</string>
+    <string name="help_section_timeline_lookback_preview">Перегляд минулого дня, основні моменти, «Здивуй мене» та точки входу для перегляду.</string>
+    <string name="help_section_timeline_lookback_content">+ Хронологічна шкала дозволяє переглядати минулі дні за допомогою фільтрів, фішок років і додаткового режиму з усіма датами.\n+ Огляд показує записи за той самий день за минулі роки та ваші виділені зірочки.\n+ Здивуй мене відкриває випадковий минулий запис із Огляду.\n+ Тижневий огляд і місячний огляд живуть у Огляді.</string>
+    <string name="help_section_statistics_reviews_title">Статистика та огляди</string>
+    <string name="help_section_statistics_reviews_preview">Режим порівняння, статистичні дані шаблонів, спеціальні видимі розділи та підсумки.</string>
+    <string name="help_section_statistics_reviews_content">+ Статистика включає режим порівняння, дельти ключових слів і статистику шаблонів.\n+ Ви можете вибрати, які розділи статистики залишатимуться видимими всередині екрана статистики.\n+ Режим порівняння доступний для всього часу та підсумовує дельти за місяць і рік.\n+ Сторінки огляду підсумовують найактивніші дні, найпопулярніших людей і місця, улюблені моменти, мітки, мовний поділ, а також шаблони смуг і розривів.</string>
+    <string name="help_section_widgets_home_title">Віджети та домашня поверхня</string>
+    <string name="help_section_widgets_home_preview">Віджети запуску, виділені ключові слова та домашня статистика на рівні дня.</string>
+    <string name="help_section_widgets_home_content">+ Віджети «Теплова карта запису», «Швидке захоплення», «Швидке додавання» та «Список завдань» доступні на панелі запуску.\n+ Екрани налаштування віджетів дозволяють регулювати кути, відступи, форму, заголовки, видимість виконаних завдань та інші параметри віджетів, де це підтримується.\n+ Віджет «Теплова карта» використовує більш інтенсивні відтінки для більш плавного перегляду історії написання.\n+ На головному екрані можна виділяти людей і місця в записах, коли налаштування ввімкнено.\n+ Заголовок дати «Домашня сторінка» може показувати або приховувати кількість записів, кількість слів і символів.</string>
+    <string name="help_section_language_text_analysis_title">Аналіз мови та тексту</string>
+    <string name="help_section_language_text_analysis_preview">Виявлення місцевої мови для статистики та оглядів.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja виявляє домінуюче письмо або мову в записах для аналізу.\n+ Розділення мови відображається в статистиці та оглядах.\n+ Виявлення виконується локально й не надсилає текст журналу з пристрою.</string>
+    <string name="help_section_data_privacy_cache_title">Дані, конфіденційність і кеш</string>
+    <string name="help_section_data_privacy_cache_preview">Пам’ять Markdown, історія версій, журнал програми, блокування програми та кеш відновлення.</string>
+    <string name="help_section_data_privacy_cache_content">+ Конфіденційність даних: усі дані особистого журналу зберігаються виключно на вашому фізичному пристрої й ніколи не залишають його. Yaja не запускає хмарні бази даних, віддалені сервери резервного копіювання чи телеметрію для відстеження вашого тексту.\n+ Записи журналу зберігаються як стандартні файли Markdown, упорядковані за роками та місяцями.\n+ Історія версій може зберігати безпечні знімки перед редагуванням, видаленням, мітками та повторним переглядом змін.\n+ Ви можете вибрати, скільки версій зберігати та скільки днів зберігатиметься історія.\n+ Журнал додатків записує технічні події, деталі збоїв і кеш. активності, не зберігаючи текст журналу.\n+ Rebuild App Cache дає змогу модульно оновлювати дані програми, включаючи завдання та повне відновлення кешу.\n+ Блокування програми підтримує PIN-код і відбиток пальця.\n+ Yaja зберігає інтенсивне індексування та статистику, де це можливо, тому запуск програми та збереження залишаються чуйними.</string>
+    <string name="settings_app_log_title">Журнал програми</string>
+    <string name="settings_app_log_subtitle">Перегляньте безпечну діагностику та попередні відомості про збої</string>
+    <string name="app_log_cd_share">Поділитися журналом програми</string>
+    <string name="app_log_cd_clear">Очистити журнал програми</string>
+    <string name="app_log_privacy_title">Безпечна діагностика</string>
+    <string name="app_log_privacy_description">У цьому журналі записуються основні події програми, операції кешу/сховища, оновлення віджетів і подробиці про збої. Він не містить журнальних записів, тексту завдань або вмісту приватних нотаток.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Зберігати останні %d день</item>
+        <item quantity="other">Зберігати останні %d днів</item>
+    </plurals>
+    <string name="app_log_retention_description">Події старішого журналу видаляються автоматично під час реєстрації та відразу після зміни цього параметра.</string>
+    <string name="app_log_empty">Журналу програми ще немає.</string>
+    <string name="app_log_refresh">Оновити журнал</string>
+    <string name="app_log_share_empty">Записів у журналі програми Yaja ще немає.</string>
+    <string name="app_log_share_subject">Журнал програми Yaja</string>
+    <string name="app_log_share_chooser">Поділіться журналом програми Yaja</string>
+    <string name="app_log_local_time_format">%1$s | місцевий час\n%2$s</string>
+    <string name="settings_website_title">Веб-сайт Yaja</string>
+    <string name="settings_website_subtitle">Відкрийте офіційний веб-сайт для оновлення та деталей</string>
+    <string name="settings_advanced_integrations_title">Розширені інтеграції</string>
+    <string name="settings_tasker_integration_title">Інтеграція Tasker</string>
+    <string name="settings_tasker_integration_subtitle">Дії швидкого захоплення та тригери подій журналу</string>
+    <string name="settings_shortcodes_subtitle">Керуйте багаторазовими фрагментами, які розширюються під час написання або швидкого захоплення.</string>
+    <string name="settings_privacy_security_title">Конфіденційність і безпека</string>
+    <string name="settings_pin_lock_title">Блокування PIN-кодом</string>
+    <string name="settings_app_locked">Додаток заблоковано</string>
+    <string name="settings_app_unlocked">Додаток розблоковано</string>
+    <string name="settings_change_pin">Змінити PIN-код</string>
+    <string name="settings_biometric_unlock_title">Біометричне розблокування</string>
+    <string name="settings_biometric_enabled_desc">Відбиток пальця або Face ID увімкнено</string>
+    <string name="settings_biometric_disabled_desc">Використовуйте біометричні дані замість PIN-коду</string>
+    <string name="settings_autolock_timeout_title">Час очікування автоматичного блокування</string>
+    <string name="settings_pin_lock_disclaimer">Блокування PIN-кодом запобігає несанкціонованому доступу до програми, але не шифрує дані журналу на диску. Хтось із прямим доступом до файлу може прочитати ваші записи.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d хвилина</item>
+        <item quantity="other">%1$d хвилин</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">система</string>
+    <string name="settings_theme_light">світло</string>
+    <string name="settings_theme_dark">Темний</string>
+    <string name="settings_theme_amoled">Амолед</string>
+    <string name="settings_colors_label">Кольори</string>
+    <string name="settings_color_intensity_title">Інтенсивність кольору</string>
+    <string name="settings_background_tint_title">Відтінок фону</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Засічки</string>
+    <string name="settings_font_mono">Мононуклеоз</string>
+    <string name="settings_font_custom">Custom</string>
+    <string name="settings_font_size_label">Розмір шрифту</string>
+    <string name="settings_ui_font_size_label">Розмір шрифту інтерфейсу</string>
+    <string name="settings_data_font_size_label">Розмір шрифту вмісту</string>
+    <string name="settings_follow_ui_font_scale_label">Зробіть розмір шрифту вмісту таким же, як інтерфейс користувача</string>
+    <string name="settings_color_source_material_you">Матеріал Ви</string>
+    <string name="settings_theme_preview_title">Попередній перегляд теми</string>
+    <string name="settings_journal_entry_preview">Запис у журналі</string>
+    <string name="settings_journal_entry_preview_desc">Картки, фішки та кнопки будуть використовувати ці кольори.</string>
+    <string name="settings_preview_chip_chip">Чіп</string>
+    <string name="settings_preview_chip_accent">Акцент</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Інтенсивність: %1$s</string>
+    <string name="settings_personal_themes_title">Особисті теми</string>
+    <string name="settings_theme_name_label">Назва теми</string>
+    <string name="settings_main_color_label">Основний колір</string>
+    <string name="settings_hue_label">Відтінок</string>
+    <string name="settings_sat_label">сб</string>
+    <string name="settings_bright_label">Яскравий</string>
+    <string name="settings_generated_accents_title">Сформовані акценти</string>
+    <string name="settings_personal_theme_desc">Виберіть один колір. Yaja створює відповідні акцентні та допоміжні кольори.</string>
+    <string name="settings_preview_chip_main">головний</string>
+    <string name="settings_preview_chip_support">Підтримка</string>
+    <string name="settings_no_font_selected">Шрифт не вибрано</string>
+    <string name="settings_custom_font_desc">Виберіть будь-який файл Юнікод .ttf або .otf — напр. малаяламський шрифт, як Manjari. Символи, яких бракує шрифту, використовують системні шрифти.</string>
+    <string name="settings_font_replace">Замінити</string>
+    <string name="settings_choose_font_file">Виберіть файл шрифту</string>
+    <string name="settings_intensity_muted">Вимкнено</string>
+    <string name="settings_intensity_normal">нормальний</string>
+    <string name="settings_intensity_vivid">Яскравий</string>
+    <string name="settings_intensity_pop">Поп</string>
+    <string name="settings_tint_clean">чистий</string>
+    <string name="settings_tint_soft">М\'який</string>
+    <string name="settings_tint_rich">Багатий</string>
+    <string name="settings_tint_deep">Глибокий</string>
+    <string name="settings_accent_complementary">Доповнюють</string>
+    <string name="settings_accent_analogous">аналогічний</string>
+    <string name="settings_accent_triadic">Триадичні</string>
+    <string name="settings_accent_soft">М\'який</string>
+    <string name="settings_mono_weight_thin">Тонкий</string>
+    <string name="settings_mono_weight_extra_light">Додаткове світло</string>
+    <string name="settings_mono_weight_light">світло</string>
+    <string name="settings_mono_weight_regular">Регулярний</string>
+    <string name="settings_mono_weight_medium">Середній</string>
+    <string name="settings_mono_weight_semi_bold">Напівжирний</string>
+    <string name="settings_mono_weight_bold">Жирний</string>
+    <string name="settings_mono_weight_extra_bold">Дуже жирний</string>
+    <string name="settings_mono_weight_title">вага</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Додати ключове слово дати</string>
+    <string name="settings_keyword_label">Ключове слово</string>
+    <string name="settings_keyword_placeholder_example">напр. вчора</string>
+    <string name="settings_means_label">засоби</string>
+    <string name="settings_add_button">додати</string>
+    <string name="settings_no_keywords_yet">Ключові слова ще не додано.</string>
+    <string name="settings_added_keywords_title">Додані ключові слова (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Додати ключове слово</string>
+    <string name="keywords_dialog_add_title">Додати ключове слово</string>
+    <string name="keywords_dialog_edit_title">Редагувати ключове слово</string>
+    <string name="keywords_cd_import_csv">Імпорт CSV</string>
+    <string name="keywords_cd_export_csv">Експорт CSV</string>
+    <string name="keywords_cd_download_template">Завантажити шаблон</string>
+    <string name="rebuild_cache_storage_transparency_title">Прозорість зберігання на пристрої</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja використовує безпечну модель локального зберігання. Дані вашого особистого журналу залишаються локальними та ніколи не залишають ваш пристрій:</string>
+    <string name="rebuild_cache_source_of_truth_title">Джерело правди (файли уцінки)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Усі записи, елементи контрольного списку (todos), події на часовій шкалі, зірочки та теги постійно зберігаються у файлах Markdown (.md) у відкритому тексті у вибраній папці локального журналу. Ваші дані на 100% належать вам і повністю зберігаються на вашому пристрої.</string>
+    <string name="rebuild_cache_read_cache_title">Читання кешу та індексу (база даних SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">Щоб увімкнути миттєве завантаження екрана, основні моменти календаря, ключові слова та статистику без сканування файлової системи під час кожного прокручування, Yaja аналізує ваші файли Markdown та індексує їх у локальній базі даних Room SQLite на вашому пристрої.</string>
+    <string name="rebuild_cache_local_private_title">100% локальний і приватний</string>
+    <string name="rebuild_cache_local_private_desc">Yaja не має хмарних баз даних, віддалених серверів резервного копіювання чи телеметрії, яка відстежує ваш текст. Усі записи в журналі та проаналізовані дані зберігаються виключно на вашому фізичному пристрої й ніколи не залишають його в будь-який час.</string>
+    <string name="keywords_export_success">Експортовані ключові слова</string>
+    <string name="keywords_export_failed">Не вдалося експортувати ключові слова</string>
+    <string name="keywords_template_saved">Шаблон збережено</string>
+    <string name="keywords_template_save_failed">Не вдалося зберегти шаблон</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Імпортовано ключове слово %d</item>
+        <item quantity="other">Імпортовано %d ключових слів</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Не знайдено дійсних ключових слів</string>
+    <string name="keywords_import_failed">Не вдалося імпортувати ключові слова</string>
+    <string name="keywords_status_indexing">Індексація</string>
+    <string name="keywords_status_indexed">Індексовано</string>
+    <string name="keywords_metric_mentions">Згадки</string>
+    <string name="keywords_metric_days">днів</string>
+    <string name="keywords_timeline_range_all">всі</string>
+    <string name="keywords_connections_filter_all">всі</string>
+    <string name="keywords_connections_filter_people">люди</string>
+    <string name="keywords_connections_filter_places">Місця</string>
+    <string name="keywords_connections_filter_recent">Останні</string>
+    <string name="keywords_connections_filter_strongest">Найсильніший</string>
+    <string name="keywords_filter_needs_reindex">Потрібна переіндексація</string>
+    <string name="keywords_search_placeholder">Пошук людей, місць, псевдонімів, родичів</string>
+    <string name="keywords_refreshing_counters">Оновлення лічильників ключових слів…</string>
+    <string name="keywords_empty_title">Ключових слів ще немає</string>
+    <string name="keywords_empty_subtitle">Додайте людей і місця, які програма має відстежувати локально.</string>
+    <string name="keywords_no_results_title">Немає відповідних результатів</string>
+    <string name="keywords_no_results_subtitle">Спробуйте інший пошук, сортування або фільтр.</string>
+    <string name="keywords_people_title">люди</string>
+    <string name="keywords_places_title">Місця</string>
+    <string name="keywords_people_empty">Людей ще не додано.</string>
+    <string name="keywords_people_filtered_empty">Жодна людина не відповідає поточним фільтрам.</string>
+    <string name="keywords_places_empty">Місця ще не додано.</string>
+    <string name="keywords_places_filtered_empty">Жодне місце не відповідає поточним фільтрам.</string>
+    <string name="keywords_delete_person_title">Видалити особу?</string>
+    <string name="keywords_delete_place_title">Видалити місце?</string>
+    <string name="keywords_delete_message">Видалити \"%1$s\" з людей і місць? Це призведе до видалення ключового слова та його проіндексованих збігів.</string>
+    <string name="keywords_timeline_title">Згадки з часом</string>
+    <string name="keywords_timeline_empty_pattern">Ще немає місячних</string>
+    <string name="keywords_timeline_total_format">%1$d всього</string>
+    <string name="keywords_timeline_empty_chart">Згадки з’являться тут у діаграмі після індексації знайдених записів.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Пік %1$s • %2$d згадка</item>
+        <item quantity="other">Пік %1$s • %2$d згадок</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Дні зі згадками</string>
+    <string name="keywords_recency_title">Нещодавність</string>
+    <string name="keywords_recency_none">Збігів ще немає</string>
+    <string name="keywords_recency_today">Згадується сьогодні</string>
+    <string name="keywords_recency_yesterday">Згадано вчора</string>
+    <string name="keywords_recency_days_ago_format">Остання згадка %1$d днів тому</string>
+    <string name="keywords_first_seen">Вперше побачено</string>
+    <string name="keywords_last_seen">Останній раз</string>
+    <string name="keywords_unknown">Невідомий</string>
+    <string name="keywords_co_mentioned_with">Співзгадується С</string>
+    <string name="keywords_connections_title">Зв\'язки</string>
+    <string name="keywords_connections_subtitle">Розташовано за повторним збігом і нещодавністю</string>
+    <string name="keywords_connections_linked_format">%1$d пов’язано</string>
+    <string name="keywords_connections_show">__FMT_0__ елементів у цьому перегляді</string>
+    <string name="keywords_connections_hide">Приховати підключення</string>
+    <string name="keywords_connections_items_in_view">%1$d елементів у цьому перегляді</string>
+    <string name="keywords_connections_tap_to_expand">Торкніться, щоб розгорнути рейтингові посилання %1$d</string>
+    <string name="keywords_connections_empty">Ще немає підключень для цього фільтра.</string>
+    <string name="keywords_open_day">День відкритих дверей</string>
+    <string name="keywords_sort_alphabetical">А-Я</string>
+    <string name="keywords_sort_most_mentioned">Найбільш згадуваний</string>
+    <string name="keywords_sort_recently_added">Нещодавно додані</string>
+    <string name="keywords_peak_mentions_format">Пік %1$s • %2$d згадка%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d день</string>
+    <string name="keywords_connections_meta_days_suffix_plural">с</string>
+    <string name="keywords_connections_meta_together">разом</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d спільний вхід</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">р</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">х років</string>
+    <string name="keywords_connections_meta_last_prefix">| останній %1$s</string>
+    <string name="keywords_connections_score_format">Оцінка %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d днів</string>
+    <string name="keywords_connections_shared_chip">%1$d поділився</string>
+    <string name="keywords_match_type_exact">точний</string>
+    <string name="keywords_match_type_fuzzy">нечіткий</string>
+    <string name="keywords_match_type_alias">псевдонім</string>
+    <string name="keywords_match_type_relation">відношення</string>
+    <string name="keywords_action_delete">Видалити</string>
+    <string name="keywords_action_edit">Редагувати</string>
+    <string name="keywords_action_view">Переглянути</string>
+    <string name="keywords_name_label">Ім\'я</string>
+    <string name="keywords_relation_context_label">Відношення / Контекст</string>
+    <string name="keywords_aliases_label">Псевдоніми (розділені комами)</string>
+    <string name="keywords_aliases_label_short">Псевдоніми</string>
+    <string name="keywords_type_person">особа</string>
+    <string name="keywords_type_place">Місце</string>
+    <string name="keywords_save_disabled_hint">Ключові слова зберігаються вимкнено. Увімкніть їх зі списку, якщо потрібно запустити індексування.</string>
+    <string name="settings_meaning_yesterday">вчора</string>
+    <string name="settings_meaning_today">Сьогодні</string>
+    <string name="lookback_chip_weekly">Щотижня</string>
+    <string name="lookback_chip_monthly">Щомісяця</string>
+    <string name="timeline_screen_title">Хронологія</string>
+    <string name="timeline_empty_title">Тут ще нічого немає</string>
+    <string name="timeline_empty_subtitle">Спробуйте інший фільтр або налаштуйте пошук по мітці.</string>
+    <string name="timeline_quick_today">Сьогодні</string>
+    <string name="timeline_quick_month">місяць</string>
+    <string name="timeline_quick_filters">Фільтри</string>
+    <string name="timeline_all_dates">Всі дати</string>
+    <string name="timeline_label_prefix">Мітка: %1$s</string>
+    <string name="timeline_label_search_placeholder">Пошук по днях</string>
+    <string name="timeline_filters_title">Фільтри та макет часової шкали</string>
+    <string name="settings_meaning_tomorrow">завтра</string>
+    <string name="settings_meaning_day_before_yesterday">Позавчора</string>
+    <string name="settings_meaning_day_after_tomorrow">Післязавтра</string>
+    <string name="settings_meaning_last_week">Минулого тижня</string>
+    <string name="settings_meaning_next_week">Наступного тижня</string>
+    <string name="settings_meaning_monday">понеділок</string>
+    <string name="settings_meaning_tuesday">вівторок</string>
+    <string name="settings_meaning_wednesday">Середа</string>
+    <string name="settings_meaning_thursday">четвер</string>
+    <string name="settings_meaning_friday">П\'ятниця</string>
+    <string name="settings_meaning_saturday">Субота</string>
+    <string name="settings_meaning_sunday">неділя</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">Внутрішня пам\'ять програми</string>
+    <string name="settings_storage_internal_default">Внутрішня пам’ять програми (за умовчанням)</string>
+    <string name="settings_storage_new_folder_fallback">нову папку</string>
+    <string name="settings_storage_current_folder_fallback">поточну папку</string>
+    <string name="settings_storage_move_confirm">Усі наявні записи буде переміщено з %1$s до %2$s. Ви хочете продовжити?</string>
+    <string name="settings_restore_added_skipped">Додано: %1$d\nПропущені дублікати: %2$d</string>
+    <string name="settings_storage_custom_folder">Спеціальна папка:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Ярлики допомагають</string>
+    <string name="addentry_cd_insert_template">Вставити шаблон</string>
+    <string name="addentry_cd_jump_to_today">Перейти до сьогоднішнього дня</string>
+    <string name="addentry_cd_share">Поділіться</string>
+    <string name="addentry_cd_bold">Жирний</string>
+    <string name="addentry_cd_italic">Курсив</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Встановити час</string>
+    <string name="addentry_event_chip">Подія</string>
+    <string name="addentry_pick_time_title">Виберіть час</string>
+    <string name="addentry_hour_label">годину</string>
+    <string name="addentry_minute_label">хвилина</string>
+    <string name="addentry_new_event_title">Нова подія</string>
+    <string name="addentry_title_label">Назва</string>
+    <string name="addentry_event_description_label">Опис події</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos Знайдено</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Перетворіть рядок %1$d на контрольний список</item>
+        <item quantity="other">Перетворіть %1$d рядків на контрольний список</item>
+    </plurals>
+    <string name="addentry_people_places_title">Люди та місця</string>
+    <string name="addentry_no_tracked_mentions">У цьому записі не знайдено відстежених людей або місць.</string>
+    <string name="addentry_day_memory_title">День пам\'яті</string>
+    <string name="addentry_star_day_title">Зорка цього дня</string>
+    <string name="addentry_star_day_subtitle">Збережіть його як виділення, щоб він повертався під час перегляду.</string>
+    <string name="addentry_day_label_label">День етикетки</string>
+    <string name="addentry_day_label_placeholder">напр. День скидання</string>
+    <string name="addentry_follow_up_title">Слідкуйте за</string>
+    <string name="addentry_next_month">Наступного місяця</string>
+    <string name="addentry_custom">Custom</string>
+    <string name="addentry_due_date_format">Термін %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Чітке подальше спостереження</string>
+    <string name="addentry_follow_up_note_label">Подальша записка</string>
+    <string name="addentry_follow_up_note_placeholder">Що варто переглянути?</string>
+    <string name="addentry_review_entry_title">Огляд запису</string>
+    <string name="addentry_review_entry_subtitle">Швидкий проход перед збереженням. Витягніть завдання, перевірте відстежені згадки та позначте день, якщо це має значення.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d завдання</item>
+        <item quantity="other">%1$d завдань</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d згадка</item>
+        <item quantity="other">%1$d згадок</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Зберегти запис</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Скасувати зміни</string>
+    <string name="addentry_discard_changes_message">У вас є незбережені зміни. Поверніться та відхиліть їх або залиштеся, щоб продовжити редагування.</string>
+    <string name="addentry_go_back">Повернутися назад</string>
+    <string name="addentry_stay">Залишся</string>
+    <string name="addentry_shortcuts_title">Ярлики</string>
+    <string name="addentry_help_bold_suffix">щоб зробити текст жирним (або виділіть текст і торкніться жирної кнопки)</string>
+    <string name="addentry_help_italic_suffix">щоб зробити текст курсивом (або виділіть текст і натисніть кнопку «Курсив»)</string>
+    <string name="addentry_help_today_suffix">: Розширюється до поточної дати (наприклад, 25-грудня-25)</string>
+    <string name="addentry_help_now_suffix">: Розширюється до поточного часу (наприклад, 14:30)</string>
+    <string name="addentry_help_week_suffix">: Розширюється до поточного тижня (наприклад, тиждень 52)</string>
+    <string name="addentry_help_day_suffix">: Розширюється до поточного дня тижня (наприклад, понеділок)</string>
+    <string name="addentry_help_todo_suffix">: розширюється до прапорця Todo (наприклад, [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: якщо ввести будь-де в рядку, що містить прапорець Todo, він перемикає його.</string>
+    <string name="addentry_okey">Окей!</string>
+    <string name="addentry_template_merge_message">У цій чернетці вже є текст. Виберіть, як розмістити шаблон.</string>
+    <string name="addentry_template_merge_subtitle">Вставити нижче зберігає поточну чернетку. Курсор розміщує шаблон там, де зараз знаходиться ваша каретка.</string>
+    <string name="addentry_insert_below">Вставте нижче</string>
+    <string name="addentry_at_cursor">На курсорі</string>
+    <string name="addentry_replace_draft">Замінити чернетку</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Популярний</string>
+    <string name="addentry_new_chip">новий</string>
+    <string name="addentry_best_for_format">Найкраще для: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Видалити улюблений шаблон</string>
+    <string name="addentry_cd_favorite_template">Улюблений шаблон</string>
+    <string name="addentry_checklist_chip">Контрольний список</string>
+    <string name="addentry_followup_chip">Подальші дії</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">розділ %1$d</item>
+        <item quantity="other">%1$d розділів</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Перемкнути улюблений шаблон</string>
+    <string name="addentry_template_preview_label">Попередній перегляд шаблону</string>
+    <string name="addentry_use_template_button">Використовуйте шаблон</string>
+    <string name="addentry_start_blank_title">Почніть пусто</string>
+    <string name="addentry_start_blank_subtitle">Пропускайте шаблони та продовжуйте писати з порожньої чернетки.</string>
+    <string name="addentry_blank_entry_name">Пустий запис</string>
+    <string name="addentry_blank_entry_description">Звичайний запис у журналі</string>
+    <string name="addentry_blank_category">Загальний</string>
+    <string name="addentry_quick_picks_title">Швидкий вибір</string>
+    <string name="addentry_sort_recommended">Рекомендовано</string>
+    <string name="addentry_sort_recent">Останні</string>
+    <string name="addentry_sort_az">А-Я</string>
+    <string name="addentry_no_templates_title">Шаблони не знайдено</string>
+    <string name="addentry_no_templates_subtitle">Спробуйте інший пошук або категорію.</string>
+    <string name="addentry_search_templates_label">Пошукові шаблони</string>
+    <string name="addentry_search_templates_placeholder">Зустріч, здоров\'я, роздуми...</string>
+    <string name="addentry_cd_clear_search">Очистити пошук</string>
+    <string name="addentry_choose_template_title">Виберіть шаблон</string>
+    <string name="addentry_templates_ready_format">Готові %1$d з %2$d шаблонів</string>
+    <string name="addentry_category_all">всі</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">що сталося</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N Список</string>
+    <string name="addentry_bulleted_list_chip">Б Список</string>
+    <string name="addentry_words_count_format">%1$d СЛІВ</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Подальше обстеження має бути сьогодні</item>
+        <item quantity="other">Подальші перевірки мають бути сьогодні</item>
+    </plurals>
+    <string name="home_followup_subtitle">Поверніться до пов’язаного дня та продовжте звідти.</string>
+    <string name="home_from_date_format">Від %1$s</string>
+    <string name="home_more_due_today_format">+%1$d більше сьогодні</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Додати мітку</string>
+    <string name="home_edit_label_title">Редагувати мітку</string>
+    <string name="home_day_label_hint">Додайте коротку мітку для цього дня (максимум 30 символів).</string>
+    <string name="home_day_label_placeholder">наприклад, перший день у школі</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Додайте мітку для цього дня</string>
+    <string name="home_star_label_hint">Позначте цей день пам’ятною міткою (максимум 30 символів)</string>
+    <string name="home_star_label_placeholder">наприклад, Мій день народження, У школі</string>
+    <string name="home_star_button">зірка</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Запис видалено</item>
+        <item quantity="other">%1$d записів видалено</item>
+    </plurals>
+    <string name="home_restore_button">ВІДНОВИТИ</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Пошук записів...</string>
+    <string name="home_cd_search">Пошук</string>
+    <string name="home_cd_clear_search">Очистити пошук</string>
+    <string name="home_cd_favorite">улюблений</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Записи</string>
+    <string name="home_stat_words">Слова</string>
+    <string name="home_stat_chars">Символи</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Додати мітку</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Збіг знайдено</item>
+        <item quantity="other">%1$d Збігів знайдено</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Для цього ключового слова ще не знайдено збігів.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Порожній значок статусу</string>
+    <string name="home_empty_future">Це майбутнє. Запишіть нагадування!</string>
+    <string name="home_empty_past">Ви в минулому. Запишіть спогад, поки він не зникне...</string>
+    <string name="home_empty_today">Записів ще немає. Розпочніть свій день.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Збереження</string>
+    <string name="home_cd_add_entry">Додати запис</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Видалити %1$d</string>
+    <string name="home_future_date_title">Запис майбутньої дати</string>
+    <string name="home_future_date_message_format">Ви додаєте запис для майбутньої дати (%1$s). Ви хочете продовжити?</string>
+    <string name="home_cache_issue_title">Виявлено проблему кешу даних</string>
+    <string name="home_cache_issue_message">Схоже, що в кеші зникла значна кількість записів журналу. Бажаєте виконати повне оновлення кешу даних, щоб спробувати їх відновити?</string>
+    <string name="home_refresh_button">Оновити</string>
+    <string name="home_ignore_button">Ігнорувати</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Люди та місця</string>
+    <string name="nav_statistics">Статистика</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Перебудувати індекс бази даних</string>
+    <string name="nav_backup_data">Резервне копіювання даних</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Статус</string>
+    <string name="nav_finishing_index_rebuild">Завершення перебудови індексу...</string>
+    <string name="nav_rebuilding_index">Перебудова індексу бази даних</string>
+    <string name="nav_refreshing_index">Оновлення індексу</string>
+    <string name="nav_backup_too_old">резервна копія занадто стара...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Працює...</string>
+    <string name="nav_eta_almost_done">майже зроблено</string>
+    <string name="nav_eta_seconds_left_format">Залишилося ~%1$dс</string>
+    <string name="nav_eta_minutes_left_format">Залишилося ~%1$dхв</string>
+    <string name="nav_eta_hours_left_format">Залишилося ~%1$dгод</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Меню</string>
+    <string name="nav_cd_rj_logo">Логотип RJ</string>
+    <string name="nav_tagline">ще один додаток для ведення журналу</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Веб-сайт</string>
+    <string name="nav_cd_share_app">Поділитися додатком</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Логотип Yaja</string>
+    <string name="nav_easter_quote_part1">«Запишіть мимохідну думку або те, що ви їли на обід; це не повинно бути глибоким.\n</string>
+    <string name="nav_easter_quote_part2">Ваші слова можуть просто існувати.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">з лабораторій RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Поділіться яджа</string>
+    <string name="nav_share_text_body">yaja — ще одна програма для ведення журналів\n\nЩоденний щоденник, який не відволікається, у якому записи зберігаються як звичайні файли розмітки.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Змінити місце зберігання</string>
+    <string name="settings_change_storage_location_message">Усі наявні записи буде переміщено з %1$s до %2$s. Ви хочете продовжити?</string>
+    <string name="settings_yes">так</string>
+    <string name="settings_no">немає</string>
+    <string name="settings_restore_summary_title">Відновити резюме</string>
+    <string name="settings_restore_section_journal">Журнал</string>
+    <string name="settings_restore_section_shortcodes">Шорткоди</string>
+    <string name="settings_restore_section_date_keywords">Дата Ключові слова</string>
+    <string name="settings_restore_section_people_places">Люди та місця</string>
+    <string name="settings_restore_journal_summary">Додано до нових днів: %1$d\nОб’єднано до існуючих днів: %2$d\nДублікати журнальних записів пропущено: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Додано: %1$d\nПропущені дублікати: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Додано: %1$d\nПропущені дублікати: %2$d</string>
+    <string name="settings_restore_people_places_summary">Додано: %1$d\nПропущені дублікати: %2$d</string>
+    <string name="rebuild_tools_title">Інструменти перебудови</string>
+    <string name="rebuild_tools_back">Назад</string>
+    <string name="rebuild_tools_intro">Спочатку використовуйте цілеспрямовані перебудови. Перебудова бази даних лише для змін пам’яті, пошкодження бази даних або невідповідності індексів.</string>
+    <string name="rebuild_todo_index_title">Відновити індекс Todo</string>
+    <string name="rebuild_todo_index_subtitle">Оновіть завдання з файлів журналу та оновіть екран/віджет Todo. Найкраще, коли завдання виглядають несвіжими.</string>
+    <string name="rebuild_todo_index_button">Перебудуйте Todos</string>
+    <string name="rebuild_people_places_title">Відновіть людей і місця</string>
+    <string name="rebuild_people_places_subtitle">Оновити псевдоніми ключових слів, спільні згадки, тенденції та дані про зв’язки.</string>
+    <string name="rebuild_people_places_button">Відновіть людей і місця</string>
+    <string name="rebuild_database_title">Повне відновлення бази даних</string>
+    <string name="rebuild_database_subtitle">Перекомпілюйте кеш бази даних із файлів розмітки. Повторно індексує записи, підрахунки, завдання, людей і місця та віджети з нуля.</string>
+    <string name="rebuild_database_button">Перебудувати базу даних</string>
+    <string name="rebuild_database_confirm_title">Перебудувати індекс бази даних</string>
+    <string name="rebuild_database_confirm_message">Це очистить та повторно проіндексує всю базу даних Room SQLite з ваших файлів Markdown. Для великих журналів це може зайняти кілька хвилин.</string>
+    <string name="rebuild_database_confirm_start">Розпочати перебудову</string>
+    <string name="rebuild_database_status_title">Статус індексу бази даних</string>
+    <string name="rebuild_database_storage_engine">Система зберігання</string>
+    <string name="rebuild_database_storage_engine_value">База даних кімнати SQLite</string>
+    <string name="rebuild_database_indexed_days">Індексовані дні</string>
+    <string name="rebuild_database_indexed_days_value">%1$d днів проіндексовано</string>
+    <string name="rebuild_database_file_size">Розмір файлу бази даних</string>
+    <string name="rebuild_database_last_sync">Синхронізація останнього індексу</string>
+    <string name="rebuild_database_age_never">Ніколи</string>
+    <string name="rebuild_database_age_just_now">Просто зараз</string>
+    <string name="rebuild_database_age_one_minute">1 хвилину тому</string>
+    <string name="rebuild_database_age_minutes">%1$d хвилин тому</string>
+    <string name="rebuild_database_age_one_hour">1 годину тому</string>
+    <string name="rebuild_database_age_hours">%1$d годин тому</string>
+    <string name="shortcodes_title">Шорткоди</string>
+    <string name="shortcodes_import_cd">Імпорт</string>
+    <string name="shortcodes_export_cd">Експорт</string>
+    <string name="shortcodes_help_cd">Довідка</string>
+    <string name="shortcodes_new">Новий шорткод</string>
+    <string name="shortcodes_empty_title">Немає спеціальних шорткодів</string>
+    <string name="shortcodes_empty_subtitle">Додайте один, щоб розгорнути фрагменти, як-от @yday, у динамічний текст.</string>
+    <string name="shortcodes_dynamic_dates_hint">Використовуйте {{today:format}} для динамічних дат.</string>
+    <string name="shortcodes_help_title">Довідка щодо короткого коду</string>
+    <string name="shortcodes_help_built_in">Вбудовані шорткоди:</string>
+    <string name="shortcodes_help_built_in_examples">@сьогодні, @зараз, @тиждень, @день, @t (прапорець), @x (перемикач прапорця)</string>
+    <string name="shortcodes_help_dynamic_patterns">Динамічні візерунки:</string>
+    <string name="shortcodes_help_dynamic_desc">Використовуйте {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} або {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Приклад: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Загальні формати: дд-мм-рр, ГГ:хх, EEEE (назва дня).</string>
+    <string name="action_close">Закрити</string>
+    <string name="keyword_detail_title_fallback">Ключове слово</string>
+    <string name="keyword_detail_not_found">Ключове слово не знайдено</string>
+    <string name="keyword_detail_last_indexed">Востаннє проіндексовано %1$s</string>
+    <string name="keyword_detail_mentions_section">Згадки</string>
+    <string name="pin_biometric_prompt_title">Розблокуйте за допомогою біометрії</string>
+    <string name="pin_biometric_prompt_subtitle">Для розблокування використовуйте відбиток пальця або обличчя</string>
+    <string name="pin_error_no_biometric_enrolled">Немає біометричних даних. Зареєструйте відбиток пальця або обличчя в налаштуваннях пристрою.</string>
+    <string name="pin_error_hardware_unavailable">Біометричне обладнання недоступне.</string>
+    <string name="pin_error_no_hardware">Цей пристрій не має біометричного обладнання.</string>
+    <string name="pin_error_not_available">Біометрична автентифікація недоступна.</string>
+    <string name="pin_title_confirm">Підтвердьте PIN-код</string>
+    <string name="pin_title_set_new">Встановити новий PIN-код</string>
+    <string name="pin_title_disable">Введіть поточний PIN-код, щоб вимкнути</string>
+    <string name="pin_title_enter">Введіть PIN-код</string>
+    <string name="pin_error_incorrect">Неправильний PIN-код. Спробуйте знову.</string>
+    <string name="pin_error_mismatch">PIN-коди не збігаються. Почніть спочатку.</string>
+    <string name="pin_cd_use_biometric">Використовуйте біометрію</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">Цей день позначено, але запису в журналі ще немає.</string>
+    <string name="timeline_preview_loading">Завантаження попереднього перегляду...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ ще %1$d запис цього дня</item>
+        <item quantity="other">+ ще %1$d записів цього дня</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Відкрити цього дня</string>
+    <string name="timeline_chip_today">СЬОГОДНІ</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d запис</item>
+        <item quantity="other">%1$d записів</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Подальші дії</string>
+    <string name="timeline_chip_label_only">Лише етикетка</string>
+    <string name="timeline_cd_favorite">улюблений</string>
+    <string name="version_history_title">Історія версій</string>
+    <string name="version_history_day_versions_title">Денні версії</string>
+    <string name="version_history_keep_copies_title">Зберігайте безпечні копії</string>
+    <string name="version_history_keep_copies_subtitle">Перед тим, як Yaja змінить файл дня, він зберігає поточний файл у даних програми в розділі Файли історії.</string>
+    <string name="version_history_versions_kept_title">Версії зберігаються на день</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja зберігає найновішу версію %1$d для кожної дати.</item>
+        <item quantity="other">Yaja зберігає найновіші версії %1$d для кожної дати.</item>
+    </plurals>
+    <string name="version_history_retention_title">Збереження</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Миттєві знімки, старші %1$d дня, очищаються автоматично.</item>
+        <item quantity="other">Знімки старше %1$d днів очищаються автоматично.</item>
+    </plurals>
+    <string name="version_history_notes">Примітки: історія версій захищає файли розмітки за день перед додаванням, редагуванням, видаленням, зміною порядку, позначенням, зірочкою та повторним переглядом змін. Це не хмарне резервне копіювання; продовжуйте використовувати резервне копіювання для переносних копій.</string>
+    <string name="version_history_snapshots_for">Знімки для %1$s</string>
+    <string name="version_history_snapshots_subtitle">Відкрийте збережену версію, перевірте її та відновіть на цей день.</string>
+    <string name="version_history_empty">На цю дату ще немає збережених версій.</string>
+    <string name="action_view">Переглянути</string>
+    <string name="version_history_date_intro">Відкрийте раніше збережену версію за цей день, перевірте її та відновіть за потреби.</string>
+    <string name="action_next">Далі</string>
+    <string name="action_apply">Застосувати</string>
+    <string name="action_restore">Відновити</string>
+    <string name="statistics_choose_title">Виберіть Статистика</string>
+    <string name="statistics_choose_subtitle">Приховайте непотрібні розділи. Принаймні один розділ має залишатися видимим.</string>
+    <string name="statistics_visible_count">Видно %1$d з %2$d</string>
+    <string name="statistics_show_all">Показати все</string>
+    <string name="statistics_one_section_visible">Один розділ повинен залишатися видимим</string>
+    <string name="statistics_shown">Показано в статистиці</string>
+    <string name="statistics_hidden">Приховано від статистики</string>
+    <string name="statistics_select_start_date">Виберіть Дата початку</string>
+    <string name="statistics_select_end_date">Виберіть Кінцева дата</string>
+    <string name="statistics_filter_by_period">Фільтрувати за періодом</string>
+    <string name="statistics_cd_reorder">Утримуйте, щоб змінити порядок</string>
+    <string name="statistics_total_entries">Всього записів</string>
+    <string name="statistics_total_words">Всього слів</string>
+    <string name="statistics_avg_words_per_entry">Середнє Слова/Вступ</string>
+    <string name="statistics_current_streak">Поточна серія</string>
+    <string name="statistics_pages_written">Написані сторінки</string>
+    <string name="statistics_days_highlighted">Виділені дні</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d день</item>
+        <item quantity="other">%1$d днів</item>
+    </plurals>
+    <string name="statistics_period_all_time">Статистика за весь час</string>
+    <string name="statistics_period_current_year">Статистика поточного року</string>
+    <string name="statistics_period_previous_year">Статистика минулого року</string>
+    <string name="statistics_period_current_month">Статистика поточного місяця</string>
+    <string name="statistics_period_previous_month">Статистика за попередній місяць</string>
+    <string name="statistics_period_custom">Статистика спеціального періоду</string>
+    <string name="statistics_period_chip_all_time">Весь час</string>
+    <string name="statistics_period_chip_current_year">Поточний рік</string>
+    <string name="statistics_period_chip_previous_year">Попередній рік</string>
+    <string name="statistics_period_chip_current_month">Цей місяць</string>
+    <string name="statistics_period_chip_previous_month">Попередній місяць</string>
+    <string name="statistics_period_chip_custom">Custom</string>
+    <string name="statistics_sections_visible">Видно %1$d з %2$d розділів</string>
+    <string name="statistics_loading_stages">Завантаження статистики поетапно...</string>
+    <string name="review_period_weekly">Тижневий огляд</string>
+    <string name="review_period_monthly">Місячний огляд</string>
+    <string name="review_anchor_week">Тиждень, що містить %1$s</string>
+    <string name="review_anchor_month">Місяць, що містить %1$s</string>
+    <string name="review_chip_entries">Записи %1$d</string>
+    <string name="review_chip_words">Слова %1$d</string>
+    <string name="review_chip_days">Днів %1$d</string>
+    <string name="review_hint_jump">Торкніться фішок дат нижче, щоб повернутися до журналу.</string>
+    <string name="review_chip_streak">Серія %1$d</string>
+    <string name="review_chip_gap">Розрив %1$d</string>
+    <string name="review_chip_labels">Мітки %1$d</string>
+    <string name="review_chip_favorites">Вибране %1$d</string>
+    <string name="review_empty_period">Записів у журналі за цей період ще немає. Мітки та виділення все ще відображаються нижче, якщо вони є.</string>
+    <string name="review_writing_rhythm">Ритм письма</string>
+    <string name="review_best_streak">Найкраща серія</string>
+    <string name="review_longest_gap">Найдовший розрив</string>
+    <string name="review_most_active_days">Найактивніші дні</string>
+    <string name="review_day_entries_words">%1$d записів | %2$d слів</string>
+    <string name="review_top_people">Найкращі люди</string>
+    <string name="review_top_places">Найкращі місця</string>
+    <string name="review_no_people_mentions">Ніхто не згадує людей</string>
+    <string name="review_no_place_mentions">Місце не згадується</string>
+    <string name="review_favorite_moments">Улюблені моменти</string>
+    <string name="review_starred_day">Зоряний день</string>
+    <string name="review_highlighted_in_period">Виділено в цей період</string>
+    <string name="review_labels_created">Мітки створені</string>
+    <string name="review_labeled_day">Позначений день</string>
+    <string name="review_language_split">Мовний розкол</string>
+    <string name="review_not_enough_text">Недостатньо тексту в цей період</string>
+    <string name="lookback_reviews_title">Відгуки</string>
+    <string name="lookback_reviews_intro">Створіть швидку рефлексію навколо вибраного дня щоденника.</string>
+    <string name="lookback_seven_days">7 днів</string>
+    <string name="lookback_one_month">1 місяць</string>
+    <string name="lookback_weekly_review">Тижневий огляд</string>
+    <string name="lookback_weekly_review_subtitle">Цей тиждень одним поглядом</string>
+    <string name="lookback_monthly_review">Місячний огляд</string>
+    <string name="lookback_monthly_review_subtitle">Підведені підсумки цього місяця</string>
+    <string name="lookback_flashbacks_title">Цього дня в минулі роки</string>
+    <string name="lookback_highlights_title">Ваші основні моменти</string>
+    <string name="lookback_empty_title">Поки немає ретроспективних оглядів чи виділень.</string>
+    <string name="lookback_empty_subtitle">Улюблені важливі дні, щоб побачити їх тут!</string>
+    <string name="lookback_cd_random_entry">Перейти до випадкового запису</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Крапка</string>
+    <string name="statistics_compare_mode_title">Режим порівняння</string>
+    <string name="statistics_compare_mode_subtitle">Місяць, рік і дельта ключових слів</string>
+    <string name="statistics_this_year">Цього року</string>
+    <string name="statistics_writing_days_delta">Дні письма Дельта</string>
+    <string name="statistics_top_person_delta">Верхня особа Дельта</string>
+    <string name="statistics_no_people_mentions">Ще ніхто не згадує</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Місце ще не згадується</string>
+    <string name="statistics_structured_writing">Структуроване письмо</string>
+    <string name="statistics_template_led_format">На основі шаблону %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Порожнє %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Найчастіше використовувані шаблони</string>
+    <string name="statistics_template_mix">Суміш шаблонів</string>
+    <string name="statistics_follow_up_leaders">Наступні лідери</string>
+    <string name="statistics_compare_details">Порівняти деталі</string>
+    <string name="statistics_label_month">місяць</string>
+    <string name="statistics_label_year">рік</string>
+    <string name="statistics_this_month_count_format">Цей місяць %1$d</string>
+    <string name="statistics_last_month_count_format">Минулий місяць %1$d</string>
+    <string name="statistics_longest_streak">Найдовша серія</string>
+    <string name="statistics_most_active_day">Найактивніший день</string>
+    <string name="statistics_writing_consistency">Послідовність письма</string>
+    <string name="statistics_days_with_entries">Дні з записами</string>
+    <string name="statistics_best_month">Найкращий місяць</string>
+    <string name="statistics_best_month_format">%1$s · %2$d записів</string>
+    <string name="statistics_avg_writing_days_week">Середнє Письменницькі дні / тиждень</string>
+    <string name="statistics_days_decimal_format">%1$.1f днів</string>
+    <string name="statistics_based_on_total_words">На основі загальної кількості слів, написаних за день</string>
+    <string name="statistics_light_words">Light (&lt; 50 слів)</string>
+    <string name="statistics_moderate_words">Помірний (50-200 слів)</string>
+    <string name="statistics_heavy_words">Важкий (200-500 слів)</string>
+    <string name="statistics_intense_words">Інтенсивний (500+ слів)</string>
+    <string name="statistics_not_enough_text_languages">Недостатньо тексту для визначення мов</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">Виявлено мову %1$d</item>
+        <item quantity="other">Виявлено %1$d мов</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Виявлення мови все ще налагоджується.</string>
+    <string name="statistics_latin_scripts_as_english">Латинські шрифти відображаються як англійські</string>
+    <string name="statistics_use_more_accurate_detection">Використовуйте більш точне виявлення</string>
+    <string name="statistics_write_more_entries_languages">Напишіть більше записів, щоб побачити статистику мови.</string>
+    <string name="statistics_based_on_entry_time">Залежно від часу входу</string>
+    <string name="statistics_morning_time">Ранок (5 ранку-полудень)</string>
+    <string name="statistics_afternoon_time">Після обіду (полудень-17:00)</string>
+    <string name="statistics_evening_time">Вечір (17:00-21:00)</string>
+    <string name="statistics_night_time">Ніч (21:00-5:00)</string>
+    <string name="statistics_heatmap_filling">Теплова карта ще заповнюється.</string>
+    <string name="statistics_heatmap_less">менше</string>
+    <string name="statistics_heatmap_more">більше</string>
+    <string name="action_open">ВІДЧИНЕНО</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Події журналу Yaja</string>
+    <string name="tasker_event_desc">Виберіть, які події журналу Yaja мають активувати цей профіль Tasker.</string>
+    <string name="tasker_event_saved">Запис збережено</string>
+    <string name="tasker_event_edited">Запис відредаговано</string>
+    <string name="tasker_event_deleted">Запис видалено</string>
+    <string name="tasker_event_default_hint">Якщо нічого не вибрано, Yaja за замовчуванням матиме значення Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Швидке захоплення Yaja</string>
+    <string name="tasker_action_desc">Налаштуйте те, що Tasker має швидко захопити в Yaja.</string>
+    <string name="tasker_action_add_entry">Додати запис</string>
+    <string name="tasker_action_add_event">Додати подію</string>
+    <string name="tasker_action_add_todo">Додати Todo</string>
+    <string name="tasker_action_append">Додайте</string>
+    <string name="tasker_action_match_header_label">Збіг / заголовок</string>
+    <string name="tasker_action_match_header_placeholder">Пропущені дзвінки</string>
+    <string name="tasker_action_line_to_append_label">Рядок для додавання</string>
+    <string name="tasker_action_text_label">текст</string>
+    <string name="tasker_action_placeholder_event">Записка про подію від Tasker</string>
+    <string name="tasker_action_placeholder_todo">Купити молоко</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Коротка замітка від Tasker</string>
+    <string name="tasker_action_tip_append">Перший виклик створює запис, який починається з відповідного тексту. Пізніші виклики додають рядок під ним.</string>
+    <string name="tasker_action_tip_default">Порада: змінні Tasker можна розмістити в текстовому полі.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Журнал збоїв попереднього сеансу</string>
+    <string name="crash_log_clear_close">Очистити та закрити</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Запустіть програму</string>
+    <string name="tap_action_quick_capture">Швидке захоплення</string>
+    <string name="tap_action_do_nothing">Нічого не робити</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Теплова карта написання Яджа</string>
+    <string name="widget_cell_shape">Форма клітини</string>
+    <string name="widget_corner_radius">Радіус кута: %1$ddp</string>
+    <string name="widget_square">Квадратний</string>
+    <string name="widget_round">Круглий</string>
+    <string name="widget_inner_margin">Внутрішнє поле: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Простір між контурами теплової карти та краями віджета</string>
+    <string name="widget_none">Жодного</string>
+    <string name="widget_max">Макс</string>
+    <string name="widget_on_tap">On Tap</string>
+    <string name="widget_on_tap_desc">Дія при торканні віджета</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">захоплення</string>
+    <string name="widget_qc_shape">Форма віджета</string>
+    <string name="widget_show_label">Показати мітку</string>
+    <string name="widget_show_label_desc">Відобразити текст «Захопити» на віджеті</string>
+    <string name="widget_show_icon">Показати значок</string>
+    <string name="widget_show_icon_required">Значок потрібен, якщо мітка прихована</string>
+    <string name="widget_show_icon_desc">Відобразити значок пера на віджеті</string>
+    <string name="widget_label_text">Текст мітки</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Віджет Todo</string>
+    <string name="widget_todo_desc">Округлий віджет списку завдань, схожий на теплову карту.</string>
+    <string name="widget_todo_corner_radius">Радіус кута: %1$ddp</string>
+    <string name="widget_todo_padding">Відступ: %1$ddp</string>
+    <string name="widget_todo_show_completed">Показати виконані завдання</string>
+    <string name="widget_todo_show_completed_desc">Включити відмічені елементи до списку віджетів</string>
+    <string name="widget_todo_include_events">Включати події</string>
+    <string name="widget_todo_include_events_desc">Показувати записи подій поруч із завданнями у віджеті</string>
+    <string name="widget_todo_show_header">Показати заголовок Todo</string>
+    <string name="widget_todo_show_header_desc">Показати або приховати рядок заголовка віджета</string>
+    <string name="widget_todo_auto_hide">Автоматично приховувати віджет, коли всі завдання виконані</string>
+    <string name="widget_todo_auto_hide_unavailable">Недоступний, поки відображаються виконані завдання</string>
+    <string name="widget_todo_auto_hide_desc">Зробіть віджет прозорим, коли немає незавершених завдань</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">зроблено</string>
+    <string name="todo_confirm_mark_not_done">не зроблено</string>
+    <string name="todo_confirm_title">Позначити завдання як %1$s?</string>
+    <string name="todo_confirm_reopen">Це завдання наразі завершено. Підтвердьте перед повторним відкриттям.</string>
+    <string name="todo_confirm_complete">Це завдання все ще відкрито. Підтвердьте, перш ніж позначити це як виконане.</string>
+    <string name="todo_confirm_accidental_tap">Випадкові натискання не змінять завдання.</string>
+    <string name="todo_confirm_yes_mark">Так, позначка %1$s</string>
+    <string name="todo_confirm_open_yaja">Відкрито в Yaja</string>
+    <string name="todo_confirm_keep_as_is">Залишити як є</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">ще один додаток для ведення журналу</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">з лабораторій RJ</string>
+    <string name="help_made_in">Зроблено в 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Скасувати імпорт</string>
+    <string name="timeline_show_all_dates">Показати всі дати</string>
+    <string name="timeline_show_all_dates_subtitle">Включити всі минулі дні, навіть без записів</string>
+    <string name="settings_background_tint_clean">чистий</string>
+    <string name="settings_background_tint_soft">М\'який</string>
+    <string name="settings_background_tint_rich">Багатий</string>
+    <string name="settings_background_tint_deep">Глибокий</string>
+    <string name="settings_accent_style_complementary">Доповнюють</string>
+    <string name="settings_accent_style_analogous">аналогічний</string>
+    <string name="settings_accent_style_triadic">Триадичні</string>
+    <string name="settings_accent_style_soft">М\'який</string>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Quick capture dialog for a free-text entry on today. -->
+    <shortcut
+        android:shortcutId="new_entry"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_new_entry"
+        android:shortcutShortLabel="@string/shortcut_new_entry_short"
+        android:shortcutLongLabel="@string/shortcut_new_entry_long">
+        <intent
+            android:action="com.mj.yaja.action.QUICK_CAPTURE"
+            android:targetPackage="com.mj.yaja"
+            android:targetClass="com.mj.yaja.ui.screens.QuickCaptureActivity" />
+    </shortcut>
+
+    <!-- Quick add dialog preselected to Todo. -->
+    <shortcut
+        android:shortcutId="add_todo"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add_todo"
+        android:shortcutShortLabel="@string/shortcut_add_todo_short"
+        android:shortcutLongLabel="@string/shortcut_add_todo_long">
+        <intent
+            android:action="com.mj.yaja.action.QUICK_ADD_TODO"
+            android:targetPackage="com.mj.yaja"
+            android:targetClass="com.mj.yaja.ui.screens.QuickTodoActivity" />
+    </shortcut>
+
+    <!-- Quick add dialog preselected to Event. -->
+    <shortcut
+        android:shortcutId="add_event"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add_event"
+        android:shortcutShortLabel="@string/shortcut_add_event_short"
+        android:shortcutLongLabel="@string/shortcut_add_event_long">
+        <intent
+            android:action="com.mj.yaja.action.QUICK_ADD_EVENT"
+            android:targetPackage="com.mj.yaja"
+            android:targetClass="com.mj.yaja.ui.screens.QuickTodoActivity" />
+    </shortcut>
+
+    <!-- Open the app directly on today's page. -->
+    <shortcut
+        android:shortcutId="today"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_today"
+        android:shortcutShortLabel="@string/shortcut_today_short"
+        android:shortcutLongLabel="@string/shortcut_today_long">
+        <intent
+            android:action="com.mj.yaja.action.OPEN_TODAY"
+            android:targetPackage="com.mj.yaja"
+            android:targetClass="com.mj.yaja.MainActivity" />
+    </shortcut>
+
+</shortcuts>

@@ -1,0 +1,1334 @@
+<resources>
+    <string name="app_name">yaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">குறிப்பேடு</string>
+    <string name="nav_calendar">நாட்காட்டி</string>
+    <string name="nav_lookback">பின்னோட்டம்</string>
+    <string name="nav_settings">அமைப்புகள்</string>
+    <string name="nav_shortcodes">குறுக்குக் குறியீடுகள்</string>
+    <string name="nav_help">உதவி &amp; அறிமுகம்</string>
+
+    <!-- Common actions -->
+    <string name="action_save">சேமி</string>
+    <string name="action_cancel">ரத்துசெய்</string>
+    <string name="action_delete">நீக்கு</string>
+    <string name="action_edit">திருத்து</string>
+    <string name="action_back">பின்னே</string>
+    <string name="action_undo">செயல்தவிர்</string>
+    <string name="action_yes">ஆம்</string>
+    <string name="action_no">இல்லை</string>
+    <string name="action_remove">அகற்று</string>
+    <string name="action_done">முடிந்தது</string>
+    <string name="action_set">அமை</string>
+    <string name="action_select">தேர்ந்தெடு</string>
+    <string name="action_ok">சரி</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">தற்காலிக சேமிப்பை மீண்டும் உருவாக்குகிறது</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">விரைவுப் பதிவு</string>
+    <string name="quick_capture_hint">என்ன நடந்தது?</string>
+    <string name="quick_capture_helper_shortcodes">குறுக்குக் குறியீடுகள் இங்கே தானாகவே விரிவடையும், மேலும் Enter அழுத்தும்போது செய்ய வேண்டியவை வரிகள் தொடரும்.</string>
+    <string name="quick_capture_save_delayed">சேமிப்பது தாமதமானது. உறுதிப்படுத்த மீண்டும் yaja-வைத் திறக்கவும்.</string>
+    <string name="cd_saved">சேமிக்கப்பட்டது</string>
+    <string name="quick_todo_dialog_title">விரைவுச் சேர்ப்பு</string>
+    <string name="quick_todo_save_delayed">செய்ய வேண்டியவை சேமிப்பது தாமதமானது. உறுதிப்படுத்த மீண்டும் yaja-வைத் திறக்கவும்.</string>
+    <string name="quick_todo_placeholder">செய்ய வேண்டியதைச் சேர்க்கவும்</string>
+    <string name="quick_event_placeholder">நிகழ்வைச் சேர்க்கவும்</string>
+    <string name="quick_todo_task_date">பணித் தேதி</string>
+    <string name="quick_todo_event_date">நிகழ்வுத் தேதி</string>
+    <string name="quick_todo_pick_date_cd_format">%1$s தேர்ந்தெடு</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">தேர்ந்தெடுத்த நாளுக்கான செய்ய வேண்டியவையாகச் சேமிக்கும்.</string>
+    <string name="quick_event_selected_day_hint">தேர்ந்தெடுத்த நாளுக்கான நிகழ்வாகச் சேமிக்கும்.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">முந்தைய</string>
+    <string name="cd_next">அடுத்த</string>
+    <string name="cd_surprise_me">ஆச்சரியப்படுத்து</string>
+    <string name="calendar_cd_go_to_current_month">தற்போதைய மாதத்திற்குச் செல்</string>
+    <string name="calendar_quick_action_timeline_title">காலவரிசை</string>
+    <string name="calendar_quick_action_timeline_subtitle">காலவரிசைப்படி உலாவுக</string>
+    <string name="calendar_quick_action_jump_title">தேதிக்குச் செல்</string>
+    <string name="calendar_quick_action_jump_subtitle">ஒரு குறிப்பிட்ட நாளைத் திறக்கவும்</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">தவறான தேதி. DD-MM-YY வடிவத்தைப் பயன்படுத்தவும்.</string>
+    <string name="calendar_action_go">செல்</string>
+    <string name="calendar_enable_future_dates_title">எதிர்காலத் தேதிகளை அனுமதி</string>
+    <string name="calendar_enable_future_dates_message">எதிர்காலத் தேதிப் பதிவு முடக்கப்பட்டுள்ளது. அதை அனுமதிக்க விரும்புகிறீர்களா?</string>
+    <string name="calendar_action_enable">அனுமதி</string>
+    <string name="calendar_future_entry_enabled">எதிர்காலத் தேதிப் பதிவு அனுமதிக்கப்பட்டது</string>
+    <string name="calendar_weekday_sun_short">ஞாயி</string>
+    <string name="calendar_weekday_mon_short">திங்</string>
+    <string name="calendar_weekday_tue_short">செவ்</string>
+    <string name="calendar_weekday_wed_short">புத</string>
+    <string name="calendar_weekday_thu_short">வியா</string>
+    <string name="calendar_weekday_fri_short">வெள்</string>
+    <string name="calendar_weekday_sat_short">சனி</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">இந்த மாதப் பதிவுகள்</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d நாள்</item>
+        <item quantity="other">%1$d / %2$d நாட்கள்</item>
+    </plurals>
+    <string name="calendar_days_of_memories">நினைவுகளின் நாட்கள்</string>
+    <string name="calendar_consistency_last_12_months">கடந்த 12 மாதங்கள்</string>
+    <string name="calendar_consistency_title_format">நிலைத்தன்மை - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% ஒப்பிடுகையில் \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">ஒப்பிடுகையில் \'%1$s</string>
+    <string name="calendar_consistency_first_period">முதல் காலம்</string>
+    <string name="calendar_graph_frequency_month">மாதம்</string>
+    <string name="calendar_graph_frequency_year">ஆண்டு</string>
+    <string name="calendar_yearly_consistency_title">நிலைத்தன்மை (ஆண்டுவாரி)</string>
+    <string name="calendar_keywords_title">யார் அதிகம் தோன்றுபவர்</string>
+    <string name="calendar_keywords_syncing">நபர்கள் &amp; இடங்கள் புள்ளிவிவரங்கள் இன்னும் முக்கியச் சொல்லுடன் ஒத்திசைக்கப்படுகின்றன.</string>
+    <string name="calendar_keywords_empty">முக்கியப் பதிவுகளைக் காண குறைந்தது 3 நபர்களை அல்லது 3 இடங்களைச் சேர்க்கவும்.</string>
+    <string name="calendar_keywords_people">நபர்கள்</string>
+    <string name="calendar_keywords_places">இடங்கள்</string>
+
+    <!-- Settings -->
+    <string name="settings_title">அமைப்புகள்</string>
+    <string name="settings_appearance">தோற்றம்</string>
+    <string name="settings_appearance_subtitle">தீம், நிறங்கள், எழுத்துருக்கள் மற்றும் தனிப்பட்ட பாணிகள்</string>
+    <string name="settings_theme">தீம்</string>
+    <string name="settings_font">எழுத்துரு</string>
+    <string name="settings_storage">சேமிப்பிடம்</string>
+    <string name="settings_security">பாதுகாப்பு</string>
+    <string name="settings_backup">காப்புப்பிரதி</string>
+    <string name="settings_change_storage_title">சேமிப்பிட இருப்பிடத்தை மாற்று</string>
+    <string name="settings_backup_never">ஒருபோதும் இல்லை</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">அமைப்புகளைத் தேடு</string>
+    <string name="settings_search_clear">தேடலை அழி</string>
+    <string name="settings_search_recent">சமீபத்திய தேடல்கள்</string>
+    <string name="settings_search_no_results">பொருந்தும் அமைப்புகள் எதுவும் இல்லை</string>
+    <string name="settings_search_close">மூடு</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">குறிப்பேடு அனுபவம்</string>
+    <string name="settings_section_navigation_gestures">வழிசெலுத்தல் &amp; சைகைகள்</string>
+    <string name="settings_section_review_insights">மதிப்பாய்வு &amp; நுண்ணறிவு</string>
+
+    <!-- Language -->
+    <string name="settings_language">மொழி</string>
+    <string name="settings_language_title">செயலி மொழி</string>
+    <string name="settings_language_subtitle">செயலி முழுவதும் பயன்படுத்தப்படும் மொழியைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="settings_language_system_default">கணினி இயல்புநிலை</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">பதிவு நடை</string>
+    <string name="settings_journal_entry_style_subtitle">உயர்ந்த கார்டுகள் மற்றும் தட்டையான குறிப்பேடு தோற்றத்திற்கு இடையே தேர்வு செய்யவும்.</string>
+    <string name="settings_journal_entry_style_cards">கார்டுகள்</string>
+    <string name="settings_journal_entry_style_flat">தட்டையானது</string>
+    <string name="settings_journal_render_checkboxes_title">செக்பாக்ஸ்களை உரையாகக் காட்டு</string>
+    <string name="settings_journal_render_checkboxes_subtitle">குறியீட்டு செக்பாக்ஸ்களுக்குப் பதிலாக செயலி முழுவதும் செய்ய வேண்டியவைகளை [ ] மற்றும் [x] எனக் காட்டு.</string>
+    <string name="settings_journal_day_header_counts_title">நாளின் தலைப்பில் எண்ணிக்கையைக் காட்டு</string>
+    <string name="settings_journal_day_header_counts_subtitle">குறிப்பேட்டின் நாளின் தலைப்பில் பதிவு, வார்த்தை மற்றும் எழுத்து எண்ணிக்கையைக் காட்டு.</string>
+    <string name="settings_journal_show_timestamps_title">நேரமுத்திரைகளைக் காட்டு</string>
+    <string name="settings_journal_show_timestamps_subtitle">காலவரிசையில் பதிவின் நேரத்தைக் காட்டு.</string>
+    <string name="settings_journal_allow_future_title">எதிர்காலப் பதிவுகளை அனுமதி</string>
+    <string name="settings_journal_allow_future_subtitle">எதிர்காலத் தேதிகளில் பதிவுகளைச் சேர்ப்பதை அனுமதி.</string>
+    <string name="settings_journal_truncate_title">நீண்ட பதிவுகளைச் சுருக்கு</string>
+    <string name="settings_journal_truncate_subtitle">முகப்புத் திரையில் நீண்ட பதிவுகளைச் சுருக்கிக் காட்டு.</string>
+    <string name="settings_journal_char_limit_title">எழுத்து வரம்பு</string>
+    <string name="settings_journal_char_limit_subtitle">சுருக்குவதற்கு முன் எத்தனை எழுத்துகளைக் காட்ட வேண்டும் என்பதை அமைத்திடுங்கள்.</string>
+    <string name="settings_journal_char_limit_min">50 எழுத்துகள்</string>
+    <string name="settings_journal_char_limit_max">200 எழுத்துகள்</string>
+    <string name="settings_journal_char_count">%1$d எழுத்துகள்</string>
+    <string name="settings_journal_first_day_title">வாரத்தின் முதல் நாள்</string>
+    <string name="settings_journal_first_day_subtitle">நாட்காட்டியைத் தொடங்கும் நாள்:</string>
+    <string name="settings_journal_day_sun">ஞாயிறு</string>
+    <string name="settings_journal_day_mon">திங்கள்</string>
+    <string name="settings_journal_date_recognition">தேதி கண்டறிதல்</string>
+    <string name="settings_journal_date_order_title">தேதி வரிசை</string>
+    <string name="settings_journal_date_order_subtitle">எண் வடிவ தேதிகளை எவ்வாறு வாசிப்பது</string>
+    <string name="settings_journal_date_order_auto">தானியங்கி</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">தேதி முக்கிய வார்த்தைகள்</string>
+    <string name="settings_journal_date_keywords_subtitle">தேதியைக் குறிக்கும் பிற மொழிகளில் உள்ள சொற்கள் (உதாரணமாக நேற்று என்பதற்கான உள்ளூர் சொல்).</string>
+    <string name="settings_journal_view_keywords">காண்க (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">முக்கிய வார்த்தையைச் சேர்</string>
+    <string name="settings_journal_motion">இயக்கம்</string>
+    <string name="settings_journal_animations_title">அசைவூட்டங்கள்</string>
+    <string name="settings_journal_animations_subtitle">செயலி முழுவதும் அசைவுகளைக் கட்டுப்படுத்தவும். \'குறைக்கப்பட்டது\' என்பது குறைந்த அசைவுகளுடன் மென்மையாக வைத்திருக்கும்.</string>
+    <string name="settings_journal_animations_full">முழுமையானது</string>
+    <string name="settings_journal_animations_reduced">குறைக்கப்பட்டது</string>
+    <string name="settings_journal_animations_off">முடக்கு</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">சேமித்த பின் மதிப்பாய்வு</string>
+    <string name="settings_review_post_write_title">எழுதிய பின் மதிப்பாய்வு</string>
+    <string name="settings_review_post_write_subtitle">செய்ய வேண்டியவைகளை எடுக்க, குறிப்புகளைச் சரிபார்க்க, நாளுக்கு நட்சத்திரமிட அல்லது லேபிளை அமைக்க சேமித்த பின் மதிப்பாய்வுத் தாளைக் காட்டு.</string>
+    <string name="settings_review_people_places">நபர்கள் &amp; இடங்கள்</string>
+    <string name="settings_review_highlighting_title">சிறப்பித்துக் காட்டுதல்</string>
+    <string name="settings_review_highlighting_subtitle">முகப்பு அட்டைகளிலும் பதிவு பார்க்கும் பயன்முறையிலும் கண்காணிக்கப்படும் நபர்களையும் இடங்களையும் சிறப்பித்துக் காட்டுங்கள்.</string>
+    <string name="settings_review_match_sensitivity_title">பொருத்தம் உணர்திறன்</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">நபர்கள் &amp; இடங்களால் கண்டறியப்பட ஒரு வார்த்தை எவ்வளவு நெருக்கமாகப் பொருந்த வேண்டும் (அதிகம் = கடுமையானது).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">குறுக்குக் குறியீட்டைச் சேர்</string>
+    <string name="shortcodes_edit_title">குறுக்குக் குறியீட்டைத் திருத்து</string>
+    <string name="shortcodes_code_label">குறுக்குக் குறியீடு (எ.கா. @yday)</string>
+    <string name="shortcodes_expansion_label">விரிவாக்க உரை</string>
+    <string name="shortcodes_export_error">குறுக்குக் குறியீடுகளை ஏற்றுமதி செய்ய முடியவில்லை</string>
+    <string name="shortcodes_import_error">குறுக்குக் குறியீடுகளை இறக்குமதி செய்ய முடியவில்லை</string>
+    <string name="todos_expand_section">%1$s விரிவாக்கு</string>
+    <string name="todos_collapse_section">%1$s சுருக்கு</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">எழுத்து வெப்ப வரைபடம்</string>
+    <string name="heatmap_widget_description">உங்கள் குறிப்பேட்டிற்கான சமீபத்திய எழுத்து செயல்பாட்டின் வெப்ப வரைபடம்.</string>
+    <string name="quick_capture_widget_name">விரைவுப் பதிவு</string>
+    <string name="quick_capture_widget_description">குறிப்பேட்டுப் பதிவை விரைவாகச் சேர்க்க ஒரே ஒரு தட்டல் பொத்தான்.</string>
+    <string name="quick_todo_widget_name">விரைவுப் பணி</string>
+    <string name="tasker_plugin_action_label">Yaja விரைவுப் பதிவு</string>
+    <string name="tasker_plugin_event_label">Yaja குறிப்பேடு நிகழ்வுகள்</string>
+    <string name="tasker_screen_allow_add_entry_title">டாஸ்கர் மூலம் பதிவு சேர்க்க அனுமதி</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">பதிவு சேர்ப்பது மற்றும் செய்ய வேண்டியவைகளைச் சேர்ப்பது போன்ற Yaja விரைவுப் பதிவு செயல்பாடுகளைப் பயன்படுத்த டாஸ்கரை அனுமதிக்கிறது.</string>
+    <string name="tasker_screen_allow_events_title">டாஸ்கர் நிகழ்வுகளை அனுமதி</string>
+    <string name="tasker_screen_allow_events_subtitle">Yaja-விலிருந்து பதிவு சேமிக்கப்பட்டது, திருத்தப்பட்டது மற்றும் நீக்கப்பட்டது போன்ற நிகழ்வுகளை டாஸ்கருக்கு அனுப்ப அனுமதிக்கிறது.</string>
+    <string name="tasker_screen_include_text_title">நிகழ்வுகளில் பதிவு உரையைச் சேர்</string>
+    <string name="tasker_screen_include_text_subtitle">தனியுரிமைக்காக இது இயல்பாக முடக்கப்பட்டுள்ளது. இது முடக்கப்பட்டிருக்கும்போது, டாஸ்கர் நிகழ்வு வகை, தேதி, லேபல் மற்றும் நேரத்தைப் பெறும் ஆனால் குறிப்பேட்டின் உரையைப் பெறாது.</string>
+    <string name="tasker_screen_section_what">இது என்ன செய்கிறது</string>
+    <string name="tasker_screen_body_what">டாஸ்கர் Yaja-வில் குறிப்பேட்டுப் பதிவுகள் அல்லது செய்ய வேண்டியவைகளை விரைவாகச் சேர்க்கலாம், மிஸ்டு கால்கள் போன்ற குழுப் பதிவில் வரிகளைச் சேர்க்கலாம், மற்றும் ஒரு பதிவு சேமிக்கப்படும்போது, திருத்தப்படும்போது அல்லது நீக்கப்படும்போது Yaja டாஸ்கருக்குத் தெரிவிக்கலாம்.</string>
+    <string name="tasker_screen_section_how">பயன்படுத்துவது எப்படி</string>
+    <string name="tasker_screen_body_how">முதலில் உங்களுக்குத் தேவையான மாற்றத்தை இங்கே இயக்கவும். பின்னர் டாஸ்கரைத் திறந்து Yaja விரைவுப் பதிவு செயல்பாடு அல்லது Yaja குறிப்பேடு நிகழ்வைச் சேர்க்கவும்.</string>
+    <string name="tasker_screen_section_notes">குறிப்புகள்</string>
+    <string name="tasker_screen_body_notes">நிகழ்வுகளில் பதிவு உரையைச் சேர் என்பதை நீங்கள் இயக்காதவரை பதிவு உரை டாஸ்கருடன் பகிரப்படாது. புதுப்பித்தலுக்குப் பிறகு டாஸ்கர் சமீபத்திய விருப்பங்கள் அல்லது மாறிகளைக் காட்டவில்லை என்றால், டாஸ்கர் உள்ளமைவுத் திரையை மீண்டும் திறக்கவும்.</string>
+    <string name="tasker_screen_section_example">உதாரணம்</string>
+    <string name="tasker_screen_body_example">செயல்பாடு உதாரணம்: டாஸ்கர் செயல்பாடு &gt; Yaja விரைவுப் பதிவு &gt; சேர், இதில் Match / header என்பது Missed Calls ஆகவும் Line to append என்பது டாஸ்கர் மாறியாகவும் அமைக்கப்பட்டுள்ளது. நிகழ்வு உதாரணம்: டாஸ்கர் நிகழ்வு &gt; Yaja குறிப்பேடு நிகழ்வுகள் &gt; பதிவு திருத்தப்பட்டது, பின்னர் %%yaja_event_type, %%yaja_date, மற்றும் விருப்பமாக %%yaja_entry_text போன்ற மாறிகளைப் பயன்படுத்தலாம்.</string>
+    <string name="tasker_screen_section_use_cases">பயன்பாட்டு வழக்குகள்</string>
+    <string name="tasker_screen_use_case_1">1. பதிவுகள் மாறிய பிறகு உங்கள் Yaja கோப்பு எந்தவொரு கிளவுட் வழங்குநருக்கும் தள்ளப்படும் வகையில், FolderSync ஒத்திசைவு செயல்பாட்டைத் தூண்ட டாஸ்கரில் Yaja குறிப்பேடு நிகழ்வைப் பயன்படுத்தவும்.</string>
+    <string name="tasker_screen_use_case_2">2. Yaja விரைவுப் பதிவிற்கு உரையை அனுப்ப டாஸ்கருடன் Pushbullet-ஐப் பயன்படுத்தவும், இதனால் அனுப்பப்பட்ட உரை தற்போதைய நாளுக்கான புதிய பதிவாகச் சேமிக்கப்படும்.</string>
+    <string name="tasker_screen_use_case_3">3. Yaja-விற்கு ஒரு சேர் செயல்பாட்டை அனுப்ப மிஸ்டு-கால் டாஸ்கர் சுயவிவரத்தைப் பயன்படுத்தவும், இதனால் அனைத்து மிஸ்டு-கால் விவரங்களும் தனித்தனி பதிவுகளை உருவாக்குவதற்குப் பதிலாக ஒரே ஒரு மிஸ்டு கால்கள் பதிவின் கீழ் வரும்.</string>
+    <string name="quick_todo_widget_description">இன்றைய புதிய பதிவாக ஒரு செய்ய வேண்டியவையைப் பதிவு செய்ய ஒரே தட்டல் பொத்தான்.</string>
+    <string name="todo_list_widget_name">செய்ய வேண்டியவை</string>
+    <string name="todo_list_widget_description">குறிப்பேட்டின் செய்ய வேண்டியவைகளின் உருளக்கூடிய பட்டியல். ஒரு செய்ய வேண்டியவையை முடிந்தது அல்லது முடிக்கப்படாதது எனக் குறிக்க அதைத் தட்டவும்.</string>
+    <string name="todo_cd_add_todo">செய்ய வேண்டியவைச் சேர்</string>
+    <string name="heatmap_widget_status_loading">வெப்ப வரைபடம் ஏற்றப்படுகிறது…</string>
+    <string name="heatmap_widget_status_empty">பதிவுகள் எதுவும் இல்லை</string>
+    <string name="heatmap_widget_status_refresh">வெப்ப வரைபடத்தைப் புதுப்பிக்க Yaja-வைத் திறக்கவும்</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">தற்காலிக சேமிப்பு மீண்டும் உருவாக்கப்பட்டது.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">புதிய பதிவு</string>
+    <string name="shortcut_new_entry_long">குறிப்பேட்டுப் பதிவைச் சேர்</string>
+    <string name="shortcut_add_todo_short">செய்ய வேண்டியவைச் சேர்</string>
+    <string name="shortcut_add_todo_long">இன்றைய செய்ய வேண்டியவைகளைச் சேர்</string>
+    <string name="shortcut_add_event_short">நிகழ்வைச் சேர்</string>
+    <string name="shortcut_add_event_long">நிகழ்வைச் சேர்</string>
+    <string name="shortcut_today_short">இன்று</string>
+    <string name="shortcut_today_long">இன்றைய குறிப்பேட்டைத் திறக்கவும்</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">வழிசெலுத்தல்</string>
+    <string name="settings_bottom_nav_style_label">கீழ் வழிசெலுத்தல் நடை</string>
+    <string name="settings_navigation_mode_title">வழிசெலுத்தல் பயன்முறை</string>
+    <string name="settings_navigation_mode_subtitle">மிதக்கும் வழிசெலுத்தல் பட்டி மற்றும் முழு கீழ் பேனலுக்கு இடையே தேர்வு செய்யவும்.</string>
+    <string name="settings_nav_mode_floating">மிதப்பது</string>
+    <string name="settings_nav_mode_panel">பேனல்</string>
+    <string name="settings_navigation_screens_label">வழிசெலுத்தல் திரைகள்</string>
+    <string name="settings_nav_summary_floating">மிதக்கும் பட்டியில் குறிப்பேடும் நாட்காட்டியும் எப்போதும் இருக்கும். மேலும் 2 திரைகள் வரை தேர்ந்தெடுக்கவும். தற்போது தேர்ந்தெடுக்கப்பட்டது: %2$d-இல் %1$d.</string>
+    <string name="settings_nav_summary_panel">கீழ் பேனலில் குறிப்பேடும் நாட்காட்டியும் எப்போதும் இருக்கும். மேலும் 3 திரைகள் வரை தேர்ந்தெடுக்கவும். தற்போது தேர்ந்தெடுக்கப்பட்டது: %2$d-இல் %1$d.</string>
+    <string name="settings_nav_lookback_subtitle">செயலில் உள்ள வழிசெலுத்தல் பட்டி அல்லது பேனலில் பின்னோட்டத்தைக் காட்டு.</string>
+    <string name="settings_nav_people_places_subtitle">செயலில் உள்ள வழிசெலுத்தல் பட்டி அல்லது பேனலில் நபர்கள் &amp; இடங்களைக் காட்டு.</string>
+    <string name="settings_nav_todos_title">செய்ய வேண்டியவை</string>
+    <string name="settings_nav_todos_subtitle">செயலில் உள்ள வழிசெலுத்தல் பட்டி அல்லது பேனலில் செய்ய வேண்டியவைகளைக் காட்டு.</string>
+    <string name="todos_quick_add_title">விரைவுச் சேர்ப்பு</string>
+    <string name="todos_hero_subtitle">குறிப்பேட்டுப் பணிகள் மற்றும் தருணங்களைக் கண்காணிக்கவும்</string>
+    <string name="todos_hero_all_activity">அனைத்துச் செயல்பாடுகள்</string>
+    <string name="todos_hero_open_focus">செயலில் உள்ள கவனம்</string>
+    <string name="todos_hero_completed">முடிந்தது</string>
+    <string name="todos_stat_today_open">இன்று செய்ய வேண்டியவை</string>
+    <string name="todos_stat_done_today">இன்று முடித்தவை</string>
+    <string name="todos_stat_events">நிகழ்வுகள்</string>
+    <string name="todos_stat_still_open">இன்னும் செய்ய வேண்டியவை</string>
+    <string name="todos_stat_past_7d">கடந்த 7 நாட்கள்</string>
+    <string name="todos_stat_days">நாட்கள்</string>
+    <string name="todos_empty_done">முடிக்கப்பட்ட பணிகள் எதுவும் இல்லை</string>
+    <string name="todos_empty_events">நிகழ்வுப் பதிவுகள் எதுவும் இல்லை</string>
+    <string name="todos_section_open">செய்ய வேண்டியவை</string>
+    <string name="todos_section_later">பின்னர் செய்ய வேண்டியவை</string>
+    <string name="todos_section_upcoming">வரவிருப்பவை</string>
+    <string name="todos_section_future_events">எதிர்கால நிகழ்வுகள்</string>
+    <string name="todos_section_past_events">கடந்தகால நிகழ்வுகள்</string>
+    <string name="todos_cd_open_day">நாளைத் திறக்கவும்</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d செய்ய வேண்டிய பணி</item>
+        <item quantity="other">%1$d செய்ய வேண்டிய பணிகள்</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d முடித்த பணி</item>
+        <item quantity="other">%1$d முடித்த பணிகள்</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d வரவிருக்கும் நிகழ்வு</item>
+        <item quantity="other">%1$d வரவிருக்கும் நிகழ்வுகள்</item>
+    </plurals>
+    <string name="todos_filter_all_format">அனைத்தும் %1$d</string>
+    <string name="todos_filter_open_format">செய்ய வேண்டியவை %1$d</string>
+    <string name="todos_filter_done_format">முடித்தவை %1$d</string>
+    <string name="todos_filter_events_format">நிகழ்வுகள் %1$d</string>
+    <string name="todos_cheer_all_clear">எல்லாம் தெளிவு. நன்று.</string>
+    <string name="todos_cheer_done_and_dusted">எல்லாம் முடிந்தது.</string>
+    <string name="todos_cheer_nothing_pending">நிலுவையில் எதுவும் இல்லை.</string>
+    <string name="todos_cheer_caught_up">நீங்கள் எல்லாவற்றையும் முடித்துவிட்டீர்கள்.</string>
+    <string name="todos_cheer_clean_slate">புதிய தொடக்கம்.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d நாளில்</item>
+        <item quantity="other">%1$d நாட்களில்</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d நாளுக்கு முன்</item>
+        <item quantity="other">%1$d நாட்களுக்கு முன்</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">%1$d வாரத்தில்</item>
+        <item quantity="other">%1$d வாரங்களில்</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d வாரத்திற்கு முன்</item>
+        <item quantity="other">%1$d வாரங்களுக்கு முன்</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">1 மாதத்தில்</string>
+
+    <string name="todos_relative_one_month_ago">1 மாதத்திற்கு முன்</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">%1$d மாதத்தில்</item>
+        <item quantity="other">%1$d மாதங்களில்</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d மாதத்திற்கு முன்</item>
+        <item quantity="other">%1$d மாதங்களுக்கு முன்</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">புள்ளிவிவரம்</string>
+    <string name="settings_nav_statistics_subtitle_on">செயலில் உள்ள வழிசெலுத்தல் பட்டி அல்லது பேனலில் புள்ளிவிவரங்களைக் காட்டு.</string>
+    <string name="settings_nav_statistics_subtitle_off">வழிசெலுத்தலில் வைக்க முதலில் புள்ளிவிவரங்களை இயக்கவும்.</string>
+    <string name="settings_show_labels_bottom_panel_title">கீழ் பேனலில் லேபல்களைக் காட்டு</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">கீழ் பேனலில் உள்ள ஐகான்களின் கீழ் உரை லேபல்களைக் காட்டு.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">சைகைகள்</string>
+    <string name="settings_entry_delete_title">பதிவை நீக்குதல்</string>
+    <string name="settings_entry_delete_subtitle">ஒரு பதிவைத் தேர்ந்தெடுக்க அதை நீண்ட நேரம் அழுத்தவும். பல பதிவுகளைத் தேர்ந்தெடுக்க மேலும் பதிவுகளைத் தட்டவும், பின்னர் மையத்தில் உள்ள நீக்கு பொத்தானைப் பயன்படுத்தவும். தேர்வை நீக்க வெற்று இடத்தில் தட்டவும்.</string>
+    <string name="settings_swipe_navigate_title">தேதிகளை வழிசெலுத்த ஸ்வைப் செய்யவும்</string>
+    <string name="settings_swipe_navigate_subtitle">ஒரு தேதி முன்னோக்கிச் செல்ல வலமிருந்து இடமாகவும், பின்னோக்கிச் செல்ல இடமிருந்து வலமாகவும் ஸ்வைப் செய்யவும்.</string>
+    <string name="settings_drag_reorder_title">இழுத்து வரிசைப்படுத்துதலை இயக்கு</string>
+    <string name="settings_drag_reorder_subtitle">பதிவுகளை மறுசீரமைக்க அவற்றை நீண்ட நேரம் அழுத்தவும்</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">தரவு &amp; மீட்பு</string>
+    <string name="settings_swipe_rebuild_index">முன்னோட்டக் குறியீட்டை மீண்டும் உருவாக்க முகப்புத் திரையில் கீழே ஸ்வைப் செய்யவும்</string>
+    <string name="settings_large_journal_safe_mode_title">பெரிய குறிப்பேடு பாதுகாப்பான பயன்முறை</string>
+    <string name="settings_large_journal_safe_mode_subtitle">மிகப் பெரிய குறிப்பேடு கண்டறியப்படும்போது, செயலி வேகமாகவும் பாதுகாப்பாகவும் திறக்க அத்தியாவசியமற்ற தொடக்க புள்ளிவிவர பணிகளை ஒத்திவைக்கவும்.</string>
+    <string name="settings_version_history_title">பதிப்பு வரலாறு</string>
+    <string name="settings_version_history_subtitle">பதிவைத் திருத்துதல், நீக்குதல், லேபல்கள் மற்றும் மறுபார்வை மாற்றங்களுக்கு முன் பாதுகாப்பான நகல்களை வைத்திருங்கள்.</string>
+    <string name="settings_storage_location_label">சேமிப்பிட இருப்பிடம்</string>
+    <string name="settings_reset_to_default">இயல்புநிலைக்கு மீட்டமை</string>
+    <string name="settings_choose_folder">கோப்புறையைத் தேர்ந்தெடு</string>
+    <string name="settings_backup_description">குறிப்பேட்டுப் பதிவுகள், குறுக்குக் குறியீடுகள், தேதி முக்கிய வார்த்தைகள் மற்றும் நபர்கள் &amp; இடங்கள் தரவுகளை உள்ளடக்கிய ஒரு Yaja காப்புப்பிரதி ஜிப் கோப்பை உருவாக்கவும். பின்னர் அதை பாதுகாப்பாக மீண்டும் இணைக்க முடியும்.</string>
+    <string name="settings_last_backup">கடைசி காப்புப்பிரதி: %1$s</string>
+    <string name="settings_backup_reminder_age_label">காப்புப்பிரதி நினைவூட்டல் காலம்</string>
+    <string name="settings_backup_reminder_disabled">முடக்கப்பட்டது</string>
+    <string name="settings_backup_reminder_desc">காப்புப்பிரதி %1$d நாட்களுக்கு மேல் பழமையானதாக இருக்கும்போது பக்கப்பட்டியில் சிறப்பித்துக் காட்டவும்.</string>
+    <string name="settings_backup_reminder_days_disabled">0 நாட்கள் (முடக்கப்பட்டது)</string>
+    <string name="settings_backup_reminder_days">%1$d நாட்கள்</string>
+    <string name="settings_restore_button">மீட்டமை</string>
+    <string name="settings_backup_now_button">இப்போது காப்புப்பிரதி எடு</string>
+    <string name="settings_db_index_management_label">தரவுத்தள குறியீட்டு மேலாண்மை</string>
+    <string name="settings_db_index_management_desc">செய்ய வேண்டியவை, நபர்கள் &amp; இடங்கள் அல்லது முழு தரவுத்தள குறியீட்டு மறுசீரமைப்பிற்கான குறிப்பிட்ட மறுசீரமைப்பு கருவிகளைத் திறக்கவும்.</string>
+    <string name="settings_rebuild_tools_button">கருவிகளை மீண்டும் உருவாக்கு</string>
+    <string name="settings_import_label">இறக்குமதி</string>
+    <string name="settings_import_info_cd">இறக்குமதி தகவல்</string>
+    <string name="settings_import_info_title">இறக்குமதி தகவல்</string>
+    <string name="settings_import_day_one_title">Day One இறக்குமதி</string>
+    <string name="settings_import_day_one_bullet1">- படங்கள் இல்லாமல் Day One-லிருந்து ஏற்றுமதி செய்யவும்</string>
+    <string name="settings_import_day_one_bullet2">- உரை தரவு மட்டுமே இறக்குமதி செய்யப்படும்</string>
+    <string name="settings_import_day_one_bullet3">- நேரமுத்திரை மற்றும் இருப்பிடத் தரவு (இருந்தால்) பாதுகாக்கப்படும்</string>
+    <string name="settings_import_perf_warning_title">செயல்திறன் எச்சரிக்கை</string>
+    <string name="settings_import_perf_warning_desc">அதிக எண்ணிக்கையிலான பதிவுகளை (500+) இறக்குமதி செய்ய சில நிமிடங்கள் ஆகலாம். நீங்கள் செயலியை விட்டு வெளியேறலாம், இறக்குமதி பின்னணியில் தொடரும்.</string>
+    <string name="settings_got_it">புரிந்து கொண்டேன்</string>
+    <string name="settings_import_success">%1$d புதிய நாட்கள், %2$d இணைக்கப்பட்டது, %3$d தவிர்க்கப்பட்டது</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip அல்லது .json ஏற்றுமதி</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json ஏற்றுமதி</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">yaja-வைப் பயன்படுத்துவது எப்படி என்று கற்றுக்கொள்ளுங்கள்</string>
+    <string name="help_footer_website">இணையதளம்</string>
+    <string name="help_footer_share">பகிர்</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">yaja-வைப் பகிர்</string>
+    <string name="help_share_yaja_text">yaja - இன்னும் ஒரு குறிப்பேட்டுச் செயலி\n\nபதிவுகளை மார்க்டவுன் கோப்புகளாகச் சேமிக்கும் கவனச்சிதறல் இல்லாத உள்ளூர் குறிப்பேடு. இதில் காலவரிசை, பின்னோட்டம், நபர்கள் மற்றும் இடங்கள், வார்ப்புருக்கள், மதிப்பாய்வுகள், புள்ளிவிவரங்கள் மற்றும் விட்ஜெட்டுகள் உள்ளன.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord பயனர் பெயர் நகலெடுக்கப்பட்டது!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">RJ லோகோ</string>
+    <string name="help_screen_title">உதவி &amp; அறிமுகம்</string>
+    <string name="help_welcome_title">yaja-விற்கு வரவேற்கிறோம்</string>
+    <string name="help_welcome_body">Yaja என்பது உங்கள் வழியில் குறுக்கிடாமல் நாட்கள், நபர்கள், இடங்கள், பின்தொடர்தல்கள், மதிப்பாய்வுகள் மற்றும் வடிவங்களைப் பதிவு செய்வதற்கான உள்ளூர்-முதல் மார்க்டவுன் குறிப்பேடு ஆகும். இந்தப் பக்கம் செயலியின் முக்கியப் பகுதிக்கான விரைவான வழிகாட்டியை வழங்குகிறது.</string>
+    <string name="help_start_here">இங்கே தொடங்குங்கள்</string>
+    <string name="help_cd_collapse">சுருக்கு</string>
+    <string name="help_cd_expand">விரிவுபடுத்து</string>
+    <string name="help_group_everyday_title">அன்றாடம்</string>
+    <string name="help_group_everyday_desc">குறிப்பேடு எழுதுதல், எழுதும் ஓட்டம் மற்றும் தினசரி வழிசெலுத்தல்.</string>
+    <string name="help_group_reviews_title">மதிப்பாய்வுகள் &amp; நுண்ணறிவுகள்</string>
+    <string name="help_group_reviews_desc">பின்னோட்டங்கள், போக்குகள், நபர்கள், இடங்கள் மற்றும் பகுப்பாய்வு.</string>
+    <string name="help_group_advanced_title">மேம்பட்ட கருவிகள்</string>
+    <string name="help_group_advanced_desc">விட்ஜெட்டுகள், சேமிப்பிடம், தனியுரிமை, காப்புப்பிரதிகள் மற்றும் தொழில்நுட்ப கருவிகள்.</string>
+    <string name="help_onboard_todos_events_title">செய்ய வேண்டியவை, நிகழ்வுகள் &amp; திரும்பத் திரும்ப நடப்பவை</string>
+    <string name="help_onboard_todos_events_body">வழக்கமான டைரி பதிவுகளுக்குள்ளேயே தனிப்பட்ட நினைவூட்டல்கள், குடும்பத் திட்டங்கள் এবং குறிப்பிட்ட தேதிகளில் தானாகவே பணிகளை உருவாக்கும் திரும்பத் திரும்ப நிகழும் திட்டங்களை அமைத்துக் கொள்ளுங்கள்.</string>
+    <string name="help_onboard_widgets_title">விட்ஜெட்டுகள்</string>
+    <string name="help_onboard_widgets_body">Add Heatmap, Quick Capture, Quick Todo, or Todo List widgets from launcher.</string>
+    <string name="help_onboard_version_history_title">Version History</string>
+    <string name="help_onboard_version_history_body">Enable History Files in Settings &gt; Data to keep safe snapshots before risky changes.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Use Tasker to quickly add entries, todos, or events when something personal needs to be captured right away.</string>
+    <string name="help_section_writing_editor_title">Writing &amp; Editor</string>
+    <string name="help_section_writing_editor_preview">Templates, markdown headings, todos, events, and flexible draft insertion.</string>
+    <string name="help_section_writing_editor_content">+ Tap the floating \'+\' button to write for the selected day.\n+ Use templates like Meeting Note, Travel Day, Health Log, Reflection, Work Log, and more.\n+ Templates can be inserted into a blank draft, appended below, used to replace a draft, or inserted at the cursor.\n+ Editor chips can quickly insert todos, events, numbered lists, and bullet lists.\n+ View Entry and Edit Entry support markdown-style headings such as ### Section.</string>
+    <string name="help_section_post_write_review_title">Post-Write Review</string>
+    <string name="help_section_post_write_review_preview">Todo extraction, keyword detection, starring, labels, and revisit setup.</string>
+    <string name="help_section_post_write_review_content">+ After writing, Yaja can open a review sheet before save.\n+ It can extract todo items, detect People &amp; Places, star the day, set a day label, and schedule revisit dates.\n+ You can disable Post-write Review from Settings if you prefer direct save.</string>
+    <string name="help_section_revisit_followup_title">Revisit &amp; Follow-up Dates</string>
+    <string name="help_section_revisit_followup_preview">Journal-linked follow-up dates with quick picks and a custom option.</string>
+    <string name="help_section_revisit_followup_content">+ Add revisit dates with Tomorrow, Next week, Next month, or a custom date.\n+ Due revisit items surface on Home and are marked in Calendar and Timeline.\n+ This works well for promises, decisions, health checks, and reminders tied to journal context.</string>
+    <string name="help_section_navigation_gestures_title">Navigation &amp; Gestures</string>
+    <string name="help_section_navigation_gestures_preview">Date movement, selection delete, swipe preferences, and rebuild cache behavior.</string>
+    <string name="help_section_navigation_gestures_content">+ Home supports date navigation with arrows and optional swipe navigation when enabled.\n+ Long-press an entry to select it. Tap more entries to select them too, then use the Delete pill near the Add button.\n+ Tapping outside selected entries clears selection. Deleted entries can be restored together from the restore countdown.\n+ You can rebuild cache when journal files change outside Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Shortcodes &amp; Quick Capture</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Fast personal capture plus reusable dynamic text snippets.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Create shortcodes to insert repeated text quickly.\n+ Dynamic placeholders like {{today:dd-MMM}} and {{now:HH:mm}} work inside shortcodes.\n+ Quick Capture helps log something fast without opening the full editor.\n+ Quick add can save either a todo or an event for a chosen date from the widget, Todos screen, or Tasker.</string>
+    <string name="help_section_todos_events_title">செய்ய வேண்டியவை, நிகழ்வுகள் &amp; திரும்பத் திரும்ப நடப்பவை</string>
+    <string name="help_section_todos_events_preview">தனிப்பட்ட நினைவூட்டல்கள், முக்கிய நிகழ்வுகள் மற்றும் தானியங்கி திரும்பத் திரும்ப நிகழும் அட்டவணைகள்.</string>
+    <string name="help_section_todos_events_content">+ செய்ய வேண்டிய பணிகள் டைரி பதிவுகளில் [ ] மற்றும் [x] வரிகளாக நேரடியாக எழுதப்படுகின்றன.\n+ நிகழ்வுகள் என்பது நிகழ்வு என குறிக்கப்பட்ட சாதாரண டைரி பதிவுகளாகும், இவை குடும்பத் திட்டங்கள், சந்திப்புகள், பயணங்கள் அல்லது பின்னர் கவனிக்க வேண்டியவைக்கு பயनुள்ளதாக இருக்கும்.\n+ திரும்பத் திரும்ப நிகழும் பணிகள் மற்றும் நிகழ்வுகள் (அட்டவணைகள்) அவற்றின் திட்டத்திற்கு ஏற்ப (उदा. வாரமொருமுறை, மாதமொருமுறை, வருடமொருமுறை) உங்கள் தினசரி டைரி பக்கங்களுக்கு செய்ய வேண்டிய பணிகள் அல்லது நிகழ்வு தலைப்புகளை தானாகவே எழுதுகின்றன.\n+ பணிகள் திரையில் திரும்பத் திரும்ப நிகழும் ஐகானைத் தட்டி உங்கள் அட்டவணைகளை நிர்வகிக்கவும்.\n+ ஒவ்வொரு நாளும் நீங்கள் யாஜாவை (Yaja) திறக்கும் போது, பின்னணி அமைப்பு திட்டமிடப்பட்ட பணிகள் ஏதேனும் பாக்கி உள்ளதா என்று சரிபார்த்து, அவற்றை அன்றைய பதிவில் சேர்க்கிறது.\n+ பணிகள் திரை யாஜாவை ஒரு உற்பத்தித்திறன் டேஷ்போர்டாக மாற்றாமல் திறந்த பணிகள், முடிந்த பணிகள் এবং நிகழ்வுகளைக் காண உதவுகிறது.\n+ டைரியில் அன்றைய நாளைத் திறக்க தேதியின் தலைப்பில் தட்டவும்.\n+ யாஜாவிற்கு வெளியே கோப்புகள் மாறினால் பணிகள் குறியீட்டை மீண்டும் உருவாக்க கீழே இழுக்கவும்.\n+ முடிந்த பணிகளைக் காட்டு என்ற விருப்பம் நினைவில் வைக்கப்படுகிறது, எனவே நீங்கள் திரும்பும்போது உங்கள் முன்னுரிமைக்காட்சி அப்படியே இருக்கும்.\n+ பணிகளின் விட்ஜெட்டுகள் நிலுவையிலுள்ள பணிகளைக் காட்டலாம், மாற்றுவதற்கு முன் உறுதிப்படுத்தலாம், முடிந்த பணிகளை மறைக்கலாம் மற்றும் பணிகள் ஏதும் இல்லாத போது தானாகவே மறையலாம்.</string>
+    <string name="help_section_people_places_title">People &amp; Places</string>
+    <string name="help_section_people_places_preview">Keywords, aliases, trends, and ranked connection views.</string>
+    <string name="help_section_people_places_content">+ Track people and places with aliases and relation labels.\n+ Search, filter, and sort the keyword list.\n+ Keyword detail pages show recency, mentions over time, co-mentions, and ranked Connections.\n+ Match Sensitivity can be adjusted from Settings.</string>
+    <string name="help_section_timeline_lookback_title">Timeline &amp; Lookback</string>
+    <string name="help_section_timeline_lookback_preview">Past-day browsing, highlights, Surprise Me, and review entry points.</string>
+    <string name="help_section_timeline_lookback_content">+ Timeline lets you browse past days with filters, year chips, and optional all-date mode.\n+ Lookback shows entries from the same day in past years and your starred highlights.\n+ Surprise Me opens a random past entry from Lookback.\n+ Weekly Review and Monthly Review live inside Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistics &amp; Reviews</string>
+    <string name="help_section_statistics_reviews_preview">Compare mode, template insights, custom visible sections, and summaries.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistics include compare mode, keyword deltas, and Template Insights.\n+ You can choose which statistics sections stay visible from inside the Statistics screen.\n+ Compare Mode is available for All Time and summarizes month and year deltas.\n+ Review pages summarize most active days, top people and places, favorite moments, labels, language split, and streak or gap patterns.</string>
+    <string name="help_section_widgets_home_title">Widgets &amp; Home Surface</string>
+    <string name="help_section_widgets_home_preview">Launcher widgets, highlighted keywords, and day-level home stats.</string>
+    <string name="help_section_widgets_home_content">+ Writing Heatmap, Quick Capture, Quick Add, and Todo List widgets are available on the launcher.\n+ Widget configure screens let you adjust corners, padding, shape, headers, completed-task visibility, and other widget options where supported.\n+ The heatmap widget uses more intensity shades for a smoother writing-history view.\n+ Home can highlight People &amp; Places inside entries when the setting is enabled.\n+ The Home date header can show or hide entry count, words, and character count.</string>
+    <string name="help_section_language_text_analysis_title">Language &amp; Text Analysis</string>
+    <string name="help_section_language_text_analysis_preview">Local language detection for statistics and review insights.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja detects dominant script or language across entries for insights.\n+ Language split appears in Statistics and Reviews.\n+ Detection runs locally and does not send journal text out of the device.</string>
+    <string name="help_section_data_privacy_cache_title">Data, Privacy &amp; Cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown storage, version history, app log, app lock, and rebuild cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Data Privacy: All personal journal data resides strictly on your physical device and never leaves it at any time. Yaja does not run cloud databases, remote backup servers, or telemetry to track your text.\n+ Journal entries are stored as standard Markdown files arranged by year and month.\n+ Version History can keep safe snapshots before edits, deletes, labels, and revisit changes.\n+ You can choose how many versions to keep and how many days history is retained.\n+ App Log records technical events, crash details, and cache activity without storing journal text.\n+ Rebuild App Cache lets you refresh app data modularly, including todos and full cache rebuilds.\n+ App lock supports PIN and fingerprint.\n+ Yaja keeps heavy indexing and stats work deferred where possible so app launch and saves stay responsive.</string>
+    <string name="settings_app_log_title">செயலி பதிவு</string>
+    <string name="settings_app_log_subtitle">தனியுரிமை-பாதுகாப்பான கண்டறிதல்கள் மற்றும் முந்தைய செயலிழப்பு விவரங்களைக் காண்க</string>
+    <string name="app_log_cd_share">செயலி பதிவைப் பகிர்</string>
+    <string name="app_log_cd_clear">செயலி பதிவை அழி</string>
+    <string name="app_log_privacy_title">தனியுரிமை-பாதுகாப்பான கண்டறிதல்</string>
+    <string name="app_log_privacy_description">இந்த பதிவு முக்கியச் செயலி நிகழ்வுகள், தற்காலிக சேமிப்பு/சேமிப்பக செயல்பாடுகள், விட்ஜெட் புதுப்பிப்புகள் மற்றும் செயலிழப்பு விவரங்களைப் பதிவு செய்கிறது. இதில் குறிப்பேட்டுப் பதிவுகள், செய்ய வேண்டியவை உரை அல்லது தனிப்பட்ட குறிப்பு உள்ளடக்கம் இல்லை.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">கடைசி %d நாளை வைத்திரு</item>
+        <item quantity="other">கடைசி %d நாட்களை வைத்திரு</item>
+    </plurals>
+    <string name="app_log_retention_description">பழைய பதிவு நிகழ்வுகள் தானாகவே கத்தரிக்கப்படும் மற்றும் இந்த அமைப்பு மாறும்போது உடனடியாக கத்தரிக்கப்படும்.</string>
+    <string name="app_log_empty">செயலி பதிவு இன்னும் இல்லை.</string>
+    <string name="app_log_refresh">பதிவைப் புதுப்பி</string>
+    <string name="app_log_share_empty">Yaja செயலி பதிவுகள் இன்னும் இல்லை.</string>
+    <string name="app_log_share_subject">Yaja செயலி பதிவு</string>
+    <string name="app_log_share_chooser">Yaja செயலி பதிவைப் பகிர்</string>
+    <string name="app_log_local_time_format">%1$s | உள்ளூர் நேரம்\n%2$s</string>
+    <string name="settings_website_title">Yaja இணையதளம்</string>
+    <string name="settings_website_subtitle">புதுப்பிப்புகள் மற்றும் விவரங்களுக்கு அதிகாரப்பூர்வ இணையதளத்தைத் திறக்கவும்</string>
+    <string name="settings_advanced_integrations_title">மேம்பட்ட ஒருங்கிணைப்புகள்</string>
+    <string name="settings_tasker_integration_title">டாஸ்கர் ஒருங்கிணைப்பு</string>
+    <string name="settings_tasker_integration_subtitle">விரைவுப் பதிவு செயல்பாடுகள் மற்றும் குறிப்பேடு நிகழ்வு triggers</string>
+    <string name="settings_shortcodes_subtitle">எழுதும்போது அல்லது விரைவாகப் பதிவு செய்யும்போது விரிவடையும் மீண்டும் பயன்படுத்தக்கூடிய துணுக்குகளை நிர்வகிக்கவும்.</string>
+    <string name="settings_privacy_security_title">தனியுரிமை &amp; பாதுகாப்பு</string>
+    <string name="settings_pin_lock_title">பின் பூட்டு</string>
+    <string name="settings_app_locked">செயலி பூட்டப்பட்டுள்ளது</string>
+    <string name="settings_app_unlocked">செயலி திறக்கப்பட்டுள்ளது</string>
+    <string name="settings_change_pin">பின்னை மாற்று</string>
+    <string name="settings_biometric_unlock_title">பயோமெட்ரிக் திறப்பு</string>
+    <string name="settings_biometric_enabled_desc">கைரேகை அல்லது முக அங்கீகாரம் இயக்கப்பட்டது</string>
+    <string name="settings_biometric_disabled_desc">பின்னுக்குப் பதிலாக பயோமெட்ரிக்கைப்பயன்படுத்தவும்</string>
+    <string name="settings_autolock_timeout_title">தானியங்கி பூட்டுதல் காலக்கெடு</string>
+    <string name="settings_pin_lock_disclaimer">பின் பூட்டு செயலிக்கு அங்கீகரிக்கப்படாத அணுகலைத் தடுக்கிறது ஆனால் வட்டில் உள்ள உங்கள் குறிப்பேட்டுத் தரவை குறியாக்கம் செய்யாது. நேரடி கோப்பு அணுகல் உள்ள ஒருவர் உங்கள் பதிவுகளை இன்னும் படிக்க முடியும்.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d நிமிடம்</item>
+        <item quantity="other">%1$d நிமிடங்கள்</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">கணினி</string>
+    <string name="settings_theme_light">ஒளி</string>
+    <string name="settings_theme_dark">இருள்</string>
+    <string name="settings_theme_amoled">அமோலெட்</string>
+    <string name="settings_colors_label">நிறங்கள்</string>
+    <string name="settings_color_intensity_title">வண்ண தீவிரம்</string>
+    <string name="settings_background_tint_title">பின்னணி நிறம்</string>
+    <string name="settings_font_sans">சான்ஸ்</string>
+    <string name="settings_font_serif">செரிஃப்</string>
+    <string name="settings_font_mono">மோனோ</string>
+    <string name="settings_font_custom">تனிப்பயன்</string>
+    <string name="settings_font_size_label">எழுத்து அளவு</string>
+    <string name="settings_color_source_material_you">மெட்டீரியல் யூ</string>
+    <string name="settings_theme_preview_title">தீம் மாதிரிக்காட்சி</string>
+    <string name="settings_journal_entry_preview">குறிப்பேடுப் பதிவு</string>
+    <string name="settings_journal_entry_preview_desc">கார்டுகள், சில்லுகள் மற்றும் பொத்தான்கள் இந்த வண்ணங்களைப் பயன்படுத்தும்.</string>
+    <string name="settings_preview_chip_chip">சில்லு</string>
+    <string name="settings_preview_chip_accent">முக்கிய நிறம்</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">தீவிரம்: %1$s</string>
+    <string name="settings_personal_themes_title">தனிப்பட்ட தீம்கள்</string>
+    <string name="settings_theme_name_label">தீம் பெயர்</string>
+    <string name="settings_main_color_label">முதன்மை நிறம்</string>
+    <string name="settings_hue_label">சாயல்</string>
+    <string name="settings_sat_label">செறிவு</string>
+    <string name="settings_bright_label">ஒளிர்வு</string>
+    <string name="settings_generated_accents_title">உருவாக்கப்பட்ட முக்கிய நிறங்கள்</string>
+    <string name="settings_personal_theme_desc">ஒரு நிறத்தைத் தேர்ந்தெடுக்கவும். Yaja பொருந்தும் முக்கிய மற்றும் ஆதரவு நிறங்களை உருவாக்குகிறது.</string>
+    <string name="settings_preview_chip_main">முதன்மை</string>
+    <string name="settings_preview_chip_support">ஆதரவு</string>
+    <string name="settings_no_font_selected">எழுத்துரு எதுவும் தேர்ந்தெடுக்கப்படவில்லை</string>
+    <string name="settings_custom_font_desc">எந்தவொரு யுனிகோட் .ttf அல்லது .otf கோப்பையும் தேர்ந்தெடுக்கவும் — எ.கா. ஒரு தமிழ் எழுத்துரு. எழுத்துருவில் இல்லாத எழுத்துகள் கணினி எழுத்துருக்களைப் பயன்படுத்தும்.</string>
+    <string name="settings_font_replace">மாற்று</string>
+    <string name="settings_choose_font_file">எழுத்துரு கோப்பைத் தேர்ந்தெடு</string>
+    <string name="settings_intensity_muted">மங்கலானது</string>
+    <string name="settings_intensity_normal">இயல்பானது</string>
+    <string name="settings_intensity_vivid">தெளிவானது</string>
+    <string name="settings_intensity_pop">பாப்</string>
+    <string name="settings_tint_clean">சுத்தமான</string>
+    <string name="settings_tint_soft">மென்மையான</string>
+    <string name="settings_tint_rich">செறிவான</string>
+    <string name="settings_tint_deep">ஆழமான</string>
+    <string name="settings_accent_complementary">நிரப்பு</string>
+    <string name="settings_accent_analogous">ஒத்த</string>
+    <string name="settings_accent_triadic">முக்கோண</string>
+    <string name="settings_accent_soft">மென்மையான</string>
+    <string name="settings_mono_weight_thin">மெல்லிய</string>
+    <string name="settings_mono_weight_extra_light">கூடுதல் மெல்லிய</string>
+    <string name="settings_mono_weight_light">மெலிதான</string>
+    <string name="settings_mono_weight_regular">சாதாரண</string>
+    <string name="settings_mono_weight_medium">நடுத்தர</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">தடித்த</string>
+    <string name="settings_mono_weight_extra_bold">கூடுதல் தடித்த</string>
+    <string name="settings_mono_weight_title">தடிமன்</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">தேதி முக்கிய வார்த்தையைச் சேர்</string>
+    <string name="settings_keyword_label">முக்கிய வார்த்தை</string>
+    <string name="settings_keyword_placeholder_example">எ.கா. நேற்று</string>
+    <string name="settings_means_label">பொருள்</string>
+    <string name="settings_add_button">சேர்</string>
+    <string name="settings_no_keywords_yet">முக்கிய வார்த்தைகள் எதுவும் இன்னும் சேர்க்கப்படவில்லை.</string>
+    <string name="settings_added_keywords_title">சேர்க்கப்பட்ட முக்கிய வார்த்தைகள் (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">முக்கிய வார்த்தையைச் சேர்</string>
+    <string name="keywords_dialog_add_title">முக்கிய வார்த்தையைச் சேர்</string>
+    <string name="keywords_dialog_edit_title">முக்கிய வார்த்தையைத் திருத்து</string>
+    <string name="keywords_cd_import_csv">CSV-ஐ இறக்குமதி செய்</string>
+    <string name="keywords_cd_export_csv">CSV-ஐக் கொண்டுசெலுத்து</string>
+    <string name="keywords_cd_download_template">டெம்ப்ளேட்டைப் பதிவிறக்கு</string>
+    <string name="rebuild_cache_storage_transparency_title">சாதனத்தில் சேமிப்பக வெளிப்படைத்தன்மை</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja பாதுகாப்பான உள்ளூர் சேமிப்பக மாதிரியைப் பயன்படுத்துகிறது. உங்கள் தனிப்பட்ட குறிப்பேட்டுத் தரவு உள்ளூரிலேயே உள்ளது மற்றும் எந்த நேரத்திலும் உங்கள் சாதனத்தை விட்டு வெளியேறாது:</string>
+    <string name="rebuild_cache_source_of_truth_title">உண்மைக்கான மூலம் (மார்க்டவுன் கோப்புகள்)</string>
+    <string name="rebuild_cache_source_of_truth_desc">அனைத்துப் பதிவுகள், சரிபார்ப்புப் பட்டியல் உருப்படிகள் (செய்ய வேண்டியவை), காலவரிசை நிகழ்வுகள், நட்சத்திரங்கள் மற்றும் குறிச்சொற்கள் நீங்கள் தேர்ந்தெடுத்த உள்ளூர் குறிப்பேட்டுக் கோப்புறையில் எளிய உரை மார்க்டவுன் (.md) கோப்புகளாக நிரந்தரமாகச் சேமிக்கப்படும். உங்கள் தரவு 100% உங்களுக்கே சொந்தமானது மற்றும் முழுமையாக உங்கள் சாதனத்தில் உள்ளது.</string>
+    <string name="rebuild_cache_read_cache_title">வாசிப்புத் தற்காலிக சேமிப்பு &amp; குறியீடு (SQLite தரவுத்தளம்)</string>
+    <string name="rebuild_cache_read_cache_desc">ஒவ்வொரு உருட்டலிலும் கோப்பு முறைமையை ஸ்கேன் செய்யாமல் உடனடித் திரை ஏற்றுதல், நாட்காட்டி சிறப்பம்சங்கள், முக்கிய வார்த்தைகள் மற்றும் புள்ளிவிவரங்களை இயக்க, Yaja உங்கள் மார்க்டவுன் கோப்புகளைப் பகுப்பாய்வு செய்து உங்கள் சாதனத்தில் உள்ள உள்ளூர் Room SQLite தரவுத்தளத்தில் குறியிடுகிறது.</string>
+    <string name="rebuild_cache_local_private_title">100% உள்ளூர் &amp; தனிப்பட்டது</string>
+    <string name="rebuild_cache_local_private_desc">Yaja-வில் எந்த கிளவுட் தரவுத்தளங்களும், தொலைநிலைக் காப்புப்பிரதி சேவையகங்களும் அல்லது உங்கள் உரையைத் தனிப்பயனாக்கும் டெலிமெட்ரியும் இல்லை. அனைத்துக் குறிப்பேட்டுப் பதிவுகளும் பகுப்பாய்வு செய்யப்பட்ட தரவுகளும் உங்கள் சாதனத்திலேயே உள்ளன, அவை சாதனத்தை விட்டு வெளியேறாது.</string>
+    <string name="keywords_export_success">முக்கிய வார்த்தைகள் கொண்டுசெலுத்தப்பட்டன</string>
+    <string name="keywords_export_failed">முக்கிய வார்த்தைகளைக் கொண்டுசெலுத்த முடியவில்லை</string>
+    <string name="keywords_template_saved">டெம்ப்ளேட் சேமிக்கப்பட்டது</string>
+    <string name="keywords_template_save_failed">டெம்ப்ளேட்டைச் சேமிக்க முடியவில்லை</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">%d முக்கிய வார்த்தை இறக்குமதி செய்யப்பட்டது</item>
+        <item quantity="other">%d முக்கிய வார்த்தைகள் இறக்குமதி செய்யப்பட்டன</item>
+    </plurals>
+    <string name="keywords_import_none_valid">செல்லுபடியாகும் முக்கிய வார்த்தைகள் எதுவும் இல்லை</string>
+    <string name="keywords_import_failed">முக்கிய வார்த்தைகளை இறக்குமதி செய்ய முடியவில்லை</string>
+    <string name="keywords_status_indexing">குறியிடப்படுகிறது</string>
+    <string name="keywords_status_indexed">குறியிடப்பட்டது</string>
+    <string name="keywords_metric_mentions">குறிப்புகள்</string>
+    <string name="keywords_metric_days">நாட்கள்</string>
+    <string name="keywords_timeline_range_all">அனைத்தும்</string>
+    <string name="keywords_connections_filter_all">அனைத்தும்</string>
+    <string name="keywords_connections_filter_people">நபர்கள்</string>
+    <string name="keywords_connections_filter_places">இடங்கள்</string>
+    <string name="keywords_connections_filter_recent">சமீபத்திய</string>
+    <string name="keywords_connections_filter_strongest">வலுவானது</string>
+    <string name="keywords_filter_needs_reindex">மீண்டும் குறியிட வேண்டும்</string>
+    <string name="keywords_search_placeholder">நபர், இடம், மாற்றுப்பெயர்கள் அல்லது உறவைத் தேடு</string>
+    <string name="keywords_refreshing_counters">முக்கிய வார்த்தை எண்ணிகள் புதுப்பிக்கப்படுகின்றன…</string>
+    <string name="keywords_empty_title">முக்கிய வார்த்தைகள் இன்னும் இல்லை</string>
+    <string name="keywords_empty_subtitle">செயலி உள்ளூரிலேயே கண்காணிக்க விரும்பும் நபர்களையும் இடங்களையும் சேர்க்கவும்.</string>
+    <string name="keywords_no_results_title">பொருந்தும் முடிவுகள் எதுவும் இல்லை</string>
+    <string name="keywords_no_results_subtitle">வேறு தேடல், வரிசைப்படுத்தல் அல்லது வடிகட்டியை முயற்சிக்கவும்.</string>
+    <string name="keywords_people_title">நபர்கள்</string>
+    <string name="keywords_places_title">இடங்கள்</string>
+    <string name="keywords_people_empty">நபர்கள் இன்னும் சேர்க்கப்படவில்லை.</string>
+    <string name="keywords_people_filtered_empty">தற்போதைய வடிகட்டிகளுடன் எந்த நபர்களும் பொருந்தவில்லை.</string>
+    <string name="keywords_places_empty">இடங்கள் இன்னும் சேர்க்கப்படவில்லை.</string>
+    <string name="keywords_places_filtered_empty">தற்போதைய வடிகட்டிகளுடன் எந்த இடங்களும் பொருந்தவில்லை.</string>
+    <string name="keywords_delete_person_title">நபரை நீக்கவா?</string>
+    <string name="keywords_delete_place_title">இடத்தை நீக்கவா?</string>
+    <string name="keywords_delete_message">நபர்கள் &amp; இடங்களிலிருந்து "%1$s" ஐ நீக்கவா? இது முக்கிய வார்த்தையையும் அதன் குறியிடப்பட்ட பொருத்தங்களையும் நீக்கிவிடும்.</string>
+    <string name="keywords_timeline_title">காலப்போக்கில் குறிப்புகள்</string>
+    <string name="keywords_timeline_empty_pattern">மாதாந்திர வடிவம் இன்னும் இல்லை</string>
+    <string name="keywords_timeline_total_format">மொத்தம் %1$d</string>
+    <string name="keywords_timeline_empty_chart">குறியீட்டு முறையில் பதிவுகளைக் கண்டறிந்த பிறகு குறிப்புகள் இங்கே விளக்கப்படமாகத் தோன்றும்.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">உச்சநிலை %1$s • %2$d குறிப்பு</item>
+        <item quantity="other">உச்சநிலை %1$s • %2$d குறிப்புகள்</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">குறிப்புகளைக் கொண்ட நாட்கள்</string>
+    <string name="keywords_recency_title">அண்மைக்காலம்</string>
+    <string name="keywords_recency_none">இன்னும் பொருத்தங்கள் இல்லை</string>
+    <string name="keywords_recency_today">இன்று குறிப்பிடப்பட்டது</string>
+    <string name="keywords_recency_yesterday">நேற்று குறிப்பிடப்பட்டது</string>
+    <string name="keywords_recency_days_ago_format">கடைசி குறிப்பு %1$d நாட்களுக்கு முன்</string>
+    <string name="keywords_first_seen">முதலில் காணப்பட்டது</string>
+
+    <string name="keywords_last_seen">கடைசியாகக் காணப்பட்டது</string>
+    <string name="keywords_unknown">தெரியாதது</string>
+    <string name="keywords_co_mentioned_with">இவருடன் இணைந்து குறிப்பிடப்பட்டவர்</string>
+    <string name="keywords_connections_title">இணைப்புகள்</string>
+    <string name="keywords_connections_subtitle">மீண்டும் மீண்டும் இணைதல் மற்றும் அண்மைக்காலத்தின் அடிப்படையில் தரவரிசைப்படுத்தப்பட்டது</string>
+    <string name="keywords_connections_linked_format">%1$d இணைக்கப்பட்டுள்ளது</string>
+    <string name="keywords_connections_show">இணைப்புகளைக் காட்டு</string>
+    <string name="keywords_connections_hide">இணைப்புகளை மறை</string>
+    <string name="keywords_connections_items_in_view">%1$d உருப்படிகள் உள்ளன</string>
+    <string name="keywords_connections_tap_to_expand">தரவரிசைப்படுத்தப்பட்ட %1$d இணைப்புகளை விரிவாக்கத் தட்டவும்</string>
+    <string name="keywords_connections_empty">இந்த வடிகட்டிக்கு இன்னும் இணைப்புகள் எதுவும் இல்லை.</string>
+    <string name="keywords_open_day">நாளைத் திறக்கவும்</string>
+    <string name="keywords_sort_alphabetical">அகரவரிசை</string>
+    <string name="keywords_sort_most_mentioned">அதிகம் குறிப்பிடப்பட்டவை</string>
+    <string name="keywords_sort_recently_added">சமீபத்தில் சேர்க்கப்பட்டவை</string>
+    <string name="keywords_peak_mentions_format">உச்சநிலை %1$s • %2$d குறிப்பு%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d நாள்</string>
+    <string name="keywords_connections_meta_days_suffix_plural">கள்</string>
+    <string name="keywords_connections_meta_together"> ஒன்றாக</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d பகிரப்பட்ட பதிவ</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">ு</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ுகள்</string>
+    <string name="keywords_connections_meta_last_prefix"> | கடைசி %1$s</string>
+    <string name="keywords_connections_score_format">மதிப்பு %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d நாட்கள்</string>
+    <string name="keywords_connections_shared_chip">%1$d பகிரப்பட்டது</string>
+    <string name="keywords_match_type_exact">துல்லியமான</string>
+    <string name="keywords_match_type_fuzzy">தோராயமான</string>
+    <string name="keywords_match_type_alias">மாற்றுப்பெயர்</string>
+    <string name="keywords_match_type_relation">உறவுமுறை</string>
+    <string name="keywords_action_delete">நீக்கு</string>
+    <string name="keywords_action_edit">திருத்து</string>
+    <string name="keywords_action_view">காண்</string>
+    <string name="keywords_name_label">பெயர்</string>
+    <string name="keywords_relation_context_label">உறவுமுறை / சூழல்</string>
+    <string name="keywords_aliases_label">மாற்றுப்பெயர்கள் (காற்புள்ளியால் பிரிக்கப்பட்டவை)</string>
+    <string name="keywords_aliases_label_short">மாற்றுப்பெயர்கள்</string>
+    <string name="keywords_type_person">நபர்</string>
+    <string name="keywords_type_place">இடம்</string>
+    <string name="keywords_save_disabled_hint">முக்கிய வார்த்தைகள் முடக்கப்பட்ட நிலையில் சேமிக்கப்பட்டுள்ளன. குறியிடல் இயங்க விரும்பும்போது பட்டியலில் இருந்து அவற்றை இயக்கவும்.</string>
+    <string name="settings_meaning_yesterday">நேற்று</string>
+    <string name="settings_meaning_today">இன்று</string>
+    <string name="lookback_chip_weekly">வாரம்</string>
+    <string name="lookback_chip_monthly">மாதம்</string>
+    <string name="timeline_screen_title">காலவரிசை</string>
+    <string name="timeline_empty_title">இங்கு இன்னும் எதுவும் இல்லை</string>
+    <string name="timeline_empty_subtitle">வேறு வடிகட்டியை முயற்சிக்கவும் அல்லது லேபல் தேடலைச் சரிசெய்யவும்.</string>
+    <string name="timeline_quick_today">இன்று</string>
+    <string name="timeline_quick_month">இந்த மாதம்</string>
+    <string name="timeline_quick_filters">வடிகட்டிகள்</string>
+    <string name="timeline_all_dates">அனைத்துத் தேதிகளும்</string>
+    <string name="timeline_label_prefix">லேபல்: %1$s</string>
+    <string name="timeline_label_search_placeholder">நாள் லேபல்களைத் தேடு</string>
+    <string name="timeline_filters_title">காலவரிசை வடிகட்டிகள் &amp; தளவமைப்பு</string>
+    <string name="settings_meaning_tomorrow">நாளை</string>
+    <string name="settings_meaning_day_before_yesterday">நேற்று முன்தினம்</string>
+    <string name="settings_meaning_day_after_tomorrow">நாளை மறுதினம்</string>
+    <string name="settings_meaning_last_week">கடந்த வாரம்</string>
+    <string name="settings_meaning_next_week">அடுத்த வாரம்</string>
+    <string name="settings_meaning_monday">திங்கள்</string>
+    <string name="settings_meaning_tuesday">செவ்வாய்</string>
+    <string name="settings_meaning_wednesday">புதன்</string>
+    <string name="settings_meaning_thursday">வியாழன்</string>
+    <string name="settings_meaning_friday">வெள்ளி</string>
+    <string name="settings_meaning_saturday">சனி</string>
+    <string name="settings_meaning_sunday">ஞாயிறு</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">செயலி உள் சேமிப்பிடம்</string>
+    <string name="settings_storage_internal_default">செயலி உள் சேமிப்பிடம் (இயல்புநிலை)</string>
+    <string name="settings_storage_new_folder_fallback">புதிய கோப்புறை</string>
+    <string name="settings_storage_current_folder_fallback">தற்போதைய கோப்புறை</string>
+    <string name="settings_storage_move_confirm">தற்போதுள்ள அனைத்துப் பதிவுகளும் %1$s-லிருந்து %2$s-க்கு மாற்றப்படும். தொடர விரும்புகிறீர்களா?</string>
+    <string name="settings_restore_added_skipped">சேர்க்கப்பட்டது: %1$d\nதவிர்க்கப்பட்ட நகல்கள்: %2$d</string>
+    <string name="settings_storage_custom_folder">தனிப்பயன் கோப்புறை:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">குறுக்குவழிகள் உதவி</string>
+    <string name="addentry_cd_insert_template">வார்ப்புருவைச் செருகு</string>
+    <string name="addentry_cd_jump_to_today">இன்றைய நாளுக்குச் செல்</string>
+    <string name="addentry_cd_share">பகிர்</string>
+    <string name="addentry_cd_bold">தடித்த</string>
+    <string name="addentry_cd_italic">சாய்ந்த</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">நேரத்தை அமை</string>
+    <string name="addentry_event_chip">நிகழ்வு</string>
+    <string name="addentry_pick_time_title">நேரத்தைத் தேர்ந்தெடு</string>
+    <string name="addentry_hour_label">மணி</string>
+    <string name="addentry_minute_label">நிமிடம்</string>
+    <string name="addentry_new_event_title">புதிய நிகழ்வு</string>
+    <string name="addentry_title_label">தலைப்பு</string>
+    <string name="addentry_event_description_label">நிகழ்வு விளக்கம்</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">செய்ய வேண்டியவை கண்டறியப்பட்டன</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">%1$d வரியைச் சரிபார்ப்புப் பட்டியலாக மாற்று</item>
+        <item quantity="other">%1$d வரிகளைச் சரிபார்ப்புப் பட்டியலாக மாற்று</item>
+    </plurals>
+    <string name="addentry_people_places_title">நபர்கள் &amp; இடங்கள்</string>
+    <string name="addentry_no_tracked_mentions">இந்தப்பதிவில் கண்காணிக்கப்படும் நபர்களோ இடங்களோ கண்டறியப்படவில்லை.</string>
+    <string name="addentry_day_memory_title">நாளின் நினைவு</string>
+    <string name="addentry_star_day_title">இந்த நாளுக்கு நட்சத்திரமிடு</string>
+    <string name="addentry_star_day_subtitle">பின்னோட்டத்தில் திரும்புவதற்காக இதை ஒரு சிறப்பம்சமாகச் சேமிக்கவும்.</string>
+    <string name="addentry_day_label_label">நாளின் லேபல்</string>
+    <string name="addentry_day_label_placeholder">எ.கா. புத்துணர்ச்சி நாள்</string>
+    <string name="addentry_follow_up_title">பின்தொடர்வதற்கான நாள்:</string>
+    <string name="addentry_next_month">அடுத்த மாதம்</string>
+    <string name="addentry_custom">தனிப்பயன்</string>
+    <string name="addentry_due_date_format">பின்தொடர் காலம் %1$s</string>
+    <string name="addentry_cd_clear_follow_up">பின்தொடர்வை அழி</string>
+    <string name="addentry_follow_up_note_label">பின்தொடர்வு குறிப்பு</string>
+    <string name="addentry_follow_up_note_placeholder">நீங்கள் எதை மறுபரிசீலனை செய்ய வேண்டும்?</string>
+    <string name="addentry_review_entry_title">பதிவை மதிப்பாய்வு செய்</string>
+    <string name="addentry_review_entry_subtitle">சேமிப்பதற்கு முன் விரைவான சரிபார்ப்பு. செய்ய வேண்டியவைகளை எடுக்கவும், கண்காணிக்கப்படும் குறிப்புகளைச் சரிபார்க்கவும், முக்கியமான நாள் என்றால் அதைக் குறிக்கவும்.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d செய்ய வேண்டியவை</item>
+        <item quantity="other">%1$d செய்ய வேண்டியவை</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d குறிப்பு</item>
+        <item quantity="other">%1$d குறிப்புகள்</item>
+    </plurals>
+    <string name="addentry_save_entry_button">பதிவைச் சேமி</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">மாற்றங்களைக் கைவிடு</string>
+    <string name="addentry_discard_changes_message">உங்களிடம் சேமிக்கப்படாத மாற்றங்கள் உள்ளன. பின்னே சென்று அவற்றை கைவிடவும், அல்லது தொடர்ந்து திருத்த இங்கேயே இருக்கவும்.</string>
+    <string name="addentry_go_back">பின்னே செல்</string>
+    <string name="addentry_stay">இங்கேயே இரு</string>
+    <string name="addentry_shortcuts_title">குறுக்குவழிகள்</string>
+    <string name="addentry_help_bold_suffix"> உரையைத் தடிமனாக்க (அல்லது உரையைத் தேர்ந்தெடுத்து தடித்த பொத்தானைத் தட்டவும்)</string>
+    <string name="addentry_help_italic_suffix"> உரையைச் சாய்வாக்க (அல்லது உரையைத் தேர்ந்தெடுத்து சாய்ந்த பொத்தானைத் தட்டவும்)</string>
+    <string name="addentry_help_today_suffix">: தற்போதைய தேதியாக விரிவடையும் (எ.கா., 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: தற்போதைய நேரமாக விரிவடையும் (எ.கா., 14:30)</string>
+    <string name="addentry_help_week_suffix">: தற்போதைய வாரமாக விரிவடையும் (எ.கா., வாரம் 52)</string>
+    <string name="addentry_help_day_suffix">: தற்போதைய வார நாளாக விரிவடையும் (எ.கா., திங்கள்)</string>
+    <string name="addentry_help_todo_suffix">: செய்ய வேண்டியவைகளின் செக்பாக்ஸாக விரிவடையும் (எ.கா., [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: செய்ய வேண்டியவைகளின் செக்பாக்ஸைக் கொண்ட வரியில் எங்கு தட்டினாலும், அது அதை மாற்றும் (toggle).</string>
+    <string name="addentry_okey">சரி!</string>
+    <string name="addentry_template_merge_message">இந்த வரைவில் ஏற்கனவே உரை உள்ளது. வார்ப்புருவை எவ்வாறு வைக்க வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="addentry_template_merge_subtitle">Insert Below என்பது தற்போதைய வரைவை வைத்திருக்கும். At Cursor என்பது உங்கள் கர்சர் இப்போது இருக்கும் இடத்தில் வார்ப்புருவை வைக்கும்.</string>
+    <string name="addentry_insert_below">கீழே செருகு</string>
+    <string name="addentry_at_cursor">கர்சரில்</string>
+    <string name="addentry_replace_draft">வரைவை மாற்று</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">பிரபலமானது</string>
+    <string name="addentry_new_chip">புதியது</string>
+    <string name="addentry_best_for_format">சிறந்த பயன்பாடு: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Remove template favorite</string>
+    <string name="addentry_cd_favorite_template">Favorite template</string>
+    <string name="addentry_checklist_chip">சரிபார்ப்புப் பட்டியல்</string>
+    <string name="addentry_followup_chip">பின்தொடர்வு</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d பிரிவு</item>
+        <item quantity="other">%1$d பிரிவுகள்</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Toggle favorite template</string>
+    <string name="addentry_template_preview_label">வார்ப்புரு மாதிரிக்காட்சி</string>
+    <string name="addentry_use_template_button">வார்ப்புருவைப் பயன்படுத்து</string>
+    <string name="addentry_start_blank_title">வெற்றாகத் தொடங்கு</string>
+    <string name="addentry_start_blank_subtitle">வார்ப்புருக்களைத் தவிர்த்து, வெற்று வரைவிலிருந்து எழுதத் தொடங்குங்கள்.</string>
+    <string name="addentry_blank_entry_name">வெற்றுப் பதிவு</string>
+    <string name="addentry_blank_entry_description">சாதாரண குறிப்பேடுப் பதிவு</string>
+    <string name="addentry_blank_category">பொதுவானவை</string>
+    <string name="addentry_quick_picks_title">விரைவுத் தேர்வுகள்</string>
+    <string name="addentry_sort_recommended">பரிந்துரைக்கப்பட்டவை</string>
+    <string name="addentry_sort_recent">சமீபத்திய</string>
+    <string name="addentry_sort_az">அகரவரிசை</string>
+    <string name="addentry_no_templates_title">வார்ப்புருக்கள் எதுவும் காணப்படவில்லை</string>
+    <string name="addentry_no_templates_subtitle">வேறு தேடல் அல்லது வகையை முயற்சிக்கவும்.</string>
+    <string name="addentry_search_templates_label">வார்ப்புருக்களைத் தேடு</string>
+    <string name="addentry_search_templates_placeholder">கூட்டம், ஆரோக்கியம், பிரதிபலிப்பு...</string>
+    <string name="addentry_cd_clear_search">தேடலை அழி</string>
+    <string name="addentry_choose_template_title">வார்ப்புருவைத் தேர்ந்தெடு</string>
+    <string name="addentry_templates_ready_format">%2$d வார்ப்புருக்களில் %1$d தயாராக உள்ளன</string>
+    <string name="addentry_category_all">அனைத்தும்</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">என்ன நடந்தது?</string>
+    <string name="addentry_todo_chip">செய்ய வேண்டியவை</string>
+    <string name="addentry_numbered_list_chip">எண் பட்டியல்</string>
+    <string name="addentry_bulleted_list_chip">புல்லட் பட்டியல்</string>
+    <string name="addentry_words_count_format">%1$d வார்த்தைகள்</string>
+    <string name="addentry_chars_count_format">%1$d எழுத்துகள்</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">இன்று செய்ய வேண்டிய பின்தொடர்வு</item>
+        <item quantity="other">இன்று செய்ய வேண்டிய பின்தொடர்வுகள்</item>
+    </plurals>
+    <string name="home_followup_subtitle">இணைக்கப்பட்ட நாளுக்குச் சென்று அங்கிருந்து தொடரவும்.</string>
+    <string name="home_from_date_format">%1$s இலிருந்து</string>
+    <string name="home_more_due_today_format">+%1$d இன்று கூடுதலாகப் பின்தொடர வேண்டும்</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">லேபலைச் சேர்</string>
+    <string name="home_edit_label_title">லேபிளைத் திருத்து</string>
+    <string name="home_day_label_hint">இந்த நாளுக்கு ஒரு சிறிய லேபிளைச் சேர்க்கவும் (அதிகபட்சம் 30 எழுத்துகள்).</string>
+    <string name="home_day_label_placeholder">எ.கா., பள்ளியின் முதல் நாள்</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">இந்த நாளுக்கு ஒரு லேபிளைச் சேர்க்கவும்</string>
+    <string name="home_star_label_hint">இந்த நாளுக்கு மறக்கமுடியாத லேபிளை வழங்கவும் (அதிகபட்சம் 30 எழுத்துகள்)</string>
+    <string name="home_star_label_placeholder">எ.கா., எனது பிறந்தநாள், பள்ளியில்</string>
+    <string name="home_star_button">நட்சத்திரக் குறியிடு</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">பதிவு நீக்கப்பட்டது</item>
+        <item quantity="other">%1$d பதிவுகள் நீக்கப்பட்டன</item>
+    </plurals>
+    <string name="home_restore_button">மீட்டமை</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">பதிவுகளைத் தேடு...</string>
+    <string name="home_cd_search">தேடு</string>
+    <string name="home_cd_clear_search">தேடலை அழி</string>
+    <string name="home_cd_favorite">விரும்பியவை</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">பதிவுகள்</string>
+    <string name="home_stat_words">சொற்கள்</string>
+    <string name="home_stat_chars">எழுத்துகள்</string>
+    <string name="home_stat_versions">பதிப்புகள்</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">லேபிளைச் சேர்</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d பொருத்தம் கண்டறியப்பட்டது</item>
+        <item quantity="other">%1$d பொருத்தங்கள் கண்டறியப்பட்டன</item>
+    </plurals>
+    <string name="home_no_keyword_matches">இந்த முக்கிய சொல்லுக்கு இன்னும் பொருத்தங்கள் எதுவும் காணப்படவில்லை.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">வெற்று நிலை ஐகான்</string>
+    <string name="home_empty_future">இது எதிர்காலம். நினைவூட்டலைப் பதிவு செய்யுங்கள்!</string>
+    <string name="home_empty_past">நீங்கள் கடந்த காலத்தில் இருக்கிறீர்கள். ஒரு நினைவை அது மறைவதற்குள் பதிவு செய்யுங்கள்...</string>
+    <string name="home_empty_today">இன்னும் பதிவுகள் இல்லை. உங்கள் நாளைத் தொடங்குங்கள்.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">சேமிக்கிறது</string>
+    <string name="home_cd_add_entry">பதிவைச் சேர்</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">%1$d-ஐ நீக்கு</string>
+    <string name="home_future_date_title">எதிர்காலத் தேதிப் பதிவு</string>
+    <string name="home_future_date_message_format">எதிர்காலத் தேதிக்கான (%1$s) பதிவைச் சேர்க்கிறீர்கள். தொடர வேண்டுமா?</string>
+    <string name="home_cache_issue_title">தரவு தற்காலிக சேமிப்பு சிக்கல் கண்டறியப்பட்டது</string>
+    <string name="home_cache_issue_message">தற்காலிக சேமிப்பில் இருந்து கணிசமான எண்ணிக்கையிலான குறிப்பேடு பதிவுகள் விடுபட்டதாகத் தெரிகிறது. அவற்றை மீட்டெடுக்க முழு தரவு தற்காலிக சேமிப்பைப் புதுப்பிக்க விரும்புகிறீர்களா?</string>
+    <string name="home_refresh_button">புதுப்பி</string>
+    <string name="home_ignore_button">புறக்கணி</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">நபர்கள் &amp; இடங்கள்</string>
+    <string name="nav_statistics">புள்ளிவிவரங்கள்</string>
+    <string name="nav_todos">செய்ய வேண்டியவை</string>
+    <string name="nav_rebuild_index">தரவுத்தள குறியீட்டை மீண்டும் உருவாக்கு</string>
+    <string name="nav_backup_data">தரவை காப்புப்பிரதி எடு</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">நிலை</string>
+    <string name="nav_finishing_index_rebuild">குறியீட்டு மறுஉருவாக்கத்தை முடிக்கிறது...</string>
+    <string name="nav_rebuilding_index">தரவுத்தள குறியீட்டை மீண்டும் உருவாக்குகிறது</string>
+    <string name="nav_refreshing_index">குறியீட்டைப் புதுப்பிக்கிறது</string>
+    <string name="nav_backup_too_old">காப்புப்பிரதி மிகவும் பழமையானது...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">செயல்படுகிறது...</string>
+    <string name="nav_eta_almost_done">கிட்டத்தட்ட முடிந்தது</string>
+    <string name="nav_eta_seconds_left_format">~%1$dவி மீதமுள்ளது</string>
+    <string name="nav_eta_minutes_left_format">~%1$dநி மீதமுள்ளது</string>
+    <string name="nav_eta_hours_left_format">~%1$dம மீதமுள்ளது</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">பட்டி</string>
+    <string name="nav_cd_rj_logo">RJ லோகோ</string>
+    <string name="nav_tagline">இன்னொரு குறிப்பேடு செயலி</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">ப்ளே ஸ்டோர்</string>
+    <string name="nav_cd_website">இணையதளம்</string>
+    <string name="nav_cd_share_app">செயலியைப் பகிர்</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja லோகோ</string>
+    <string name="nav_easter_quote_part1">"கடந்து செல்லும் ஒரு எண்ணத்தையோ அல்லது மதிய உணவிற்கு நீங்கள் சாப்பிட்டதையோ எழுதுங்கள்; அது ஆழமானதாக இருக்க வேண்டிய அவசியமில்லை.\n</string>
+    <string name="nav_easter_quote_part2">உங்கள் வார்த்தைகள் சும்மா இருந்தாலே போதும்.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">RJ-இன் ஆய்வகங்களிலிருந்து</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Yaja-வை பகிர்</string>
+    <string name="nav_share_text_body">yaja — இன்னொரு குறிப்பேடு செயலி\n\nபதிவுகளை எளிய மார்க்கடவுன் கோப்புகளாக சேமிக்கும் கவனச்சிதறல் இல்லாத தினசரி குறிப்பேடு.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">சேமிப்பக இருப்பிடத்தை மாற்று</string>
+    <string name="settings_change_storage_location_message">இருக்கும் அனைத்துப் பதிவுகளும் %1$s இலிருந்து %2$s இக்கு நகர்த்தப்படும். தொடர வேண்டுமா?</string>
+    <string name="settings_yes">ஆம்</string>
+    <string name="settings_no">இல்லை</string>
+    <string name="settings_restore_summary_title">மீட்டெடுப்புச் சுருக்கம்</string>
+    <string name="settings_restore_section_journal">குறிப்பேடு</string>
+    <string name="settings_restore_section_shortcodes">குறுக்குக் குறியீடுகள்</string>
+    <string name="settings_restore_section_date_keywords">தேதி முக்கிய வார்த்தைகள்</string>
+    <string name="settings_restore_section_people_places">நபர்கள் &amp; இடங்கள்</string>
+    <string name="settings_restore_journal_summary">புதிய நாட்களில் சேர்க்கப்பட்டது: %1$d\nதற்போதுள்ள நாட்களில் இணைக்கப்பட்டது: %2$d\nதவிர்க்கப்பட்ட நகல் பதிவுகள்: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">சேர்க்கப்பட்டது: %1$d\nதவிர்க்கப்பட்ட நகல்கள்: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">சேர்க்கப்பட்டது: %1$d\nதவிர்க்கப்பட்ட நகல்கள்: %2$d</string>
+    <string name="settings_restore_people_places_summary">சேர்க்கப்பட்டது: %1$d\nதவிர்க்கப்பட்ட நகல்கள்: %2$d</string>
+    <string name="rebuild_tools_title">மீண்டும் உருவாக்கும் கருவிகள்</string>
+    <string name="rebuild_tools_back">பின்னே</string>
+    <string name="rebuild_tools_intro">முதலில் குறிப்பிட்ட மறுசீரமைப்புகளைப் பயன்படுத்தவும். தரவுத்தளத்தை மீண்டும் உருவாக்குவது சேமிப்பக மாற்றங்கள், தரவுத்தள சிதைவு அல்லது குறியீட்டு பொருத்தமின்மைக்கு மட்டுமே.</string>
+    <string name="rebuild_todo_index_title">செய்ய வேண்டியவை குறியீட்டை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_todo_index_subtitle">குறிப்பேட்டுக் கோப்புகளிலிருந்து செய்ய வேண்டியவைகளைப் புதுப்பித்து, செய்ய வேண்டியவை திரை/விட்ஜெட்டைப் புதுப்பிக்கவும். செய்ய வேண்டியவை காலாவதியானதாகத் தோன்றும்போது சிறந்தது.</string>
+    <string name="rebuild_todo_index_button">செய்ய வேண்டியவைகளை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_people_places_title">நபர்கள் &amp; இடங்களை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_people_places_subtitle">முக்கிய வார்த்தை மாற்றுப்பெயர்கள், இணை-குறிப்புகள், போக்குகள் மற்றும் உறவுமுறை தரவுகளைப் புதுப்பிக்கவும்.</string>
+    <string name="rebuild_people_places_button">நபர்கள் &amp; இடங்களை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_database_title">முழு தரவுத்தள மறுசீரமைப்பு</string>
+    <string name="rebuild_database_subtitle">மார்க்டவுன் கோப்புகளிலிருந்து தரவுத்தள தற்காலிக சேமிப்பை மீண்டும் தொகுக்கவும். பதிவுகள், எண்ணிக்கைகள், செய்ய வேண்டியவை, நபர்கள் &amp; இடங்கள் மற்றும் விட்ஜெட்டுகளை புதிதாக மீண்டும் குறியிடுகிறது.</string>
+    <string name="rebuild_database_button">தரவுத்தளத்தை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_database_confirm_title">தரவுத்தள குறியீட்டை மீண்டும் உருவாக்கு</string>
+    <string name="rebuild_database_confirm_message">இது உங்கள் மார்க்டவுன் கோப்புகளிலிருந்து முழு Room SQLite தரவுத்தளத்தையும் அழித்து மீண்டும் குறியிடும். பெரிய குறிப்பேடுகளுக்கு, இதற்கு சில நிமிடங்கள் ஆகலாம்.</string>
+    <string name="rebuild_database_confirm_start">மறுசீரமைப்பைத் தொடங்கு</string>
+    <string name="rebuild_database_status_title">தரவுத்தள குறியீட்டு நிலை</string>
+    <string name="rebuild_database_storage_engine">சேமிப்பக எஞ்சின்</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite தரவுத்தளம்</string>
+    <string name="rebuild_database_indexed_days">குறியிடப்பட்ட நாட்கள்</string>
+    <string name="rebuild_database_indexed_days_value">%1$d நாட்கள் குறியிடப்பட்டன</string>
+    <string name="rebuild_database_file_size">தரவுத்தள கோப்பு அளவு</string>
+    <string name="rebuild_database_last_sync">கடைசி குறியீட்டு ஒத்திசைவு</string>
+    <string name="rebuild_database_age_never">ஒருபோதும் இல்லை</string>
+    <string name="rebuild_database_age_just_now">இப்போதே</string>
+    <string name="rebuild_database_age_one_minute">1 நிமிடத்திற்கு முன்</string>
+    <string name="rebuild_database_age_minutes">%1$d நிமிடங்களுக்கு முன்</string>
+    <string name="rebuild_database_age_one_hour">1 மணிநேரத்திற்கு முன்</string>
+    <string name="rebuild_database_age_hours">%1$d மணிநேரங்களுக்கு முன்</string>
+    <string name="shortcodes_title">குறுக்குக் குறியீடுகள்</string>
+    <string name="shortcodes_import_cd">இறக்குமதி செய்</string>
+    <string name="shortcodes_export_cd">ஏற்றுமதி செய்</string>
+    <string name="shortcodes_help_cd">உதவி</string>
+    <string name="shortcodes_new">புதிய குறுக்குக் குறியீடு</string>
+    <string name="shortcodes_empty_title">தனிப்பயன் குறுக்குக் குறியீடுகள் எதுவும் இல்லை</string>
+    <string name="shortcodes_empty_subtitle">@yday போன்ற துணுக்குகளை மாறும் உரையாக விரிவாக்க ஒன்றைச் சேர்க்கவும்.</string>
+    <string name="shortcodes_dynamic_dates_hint">மாறும் தேதிகளுக்கு {{today:format}} என்பதைப் பயன்படுத்தவும்.</string>
+    <string name="shortcodes_help_title">குறுக்குக் குறியீடு உதவி</string>
+    <string name="shortcodes_help_built_in">உள்ளமைக்கப்பட்ட குறுக்குக் குறியீடுகள்:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (செக்பாக்ஸ்), @x (மாற்று செக்பாக்ஸ்)</string>
+    <string name="shortcodes_help_dynamic_patterns">மாறும் வடிவங்கள்:</string>
+    <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, அல்லது {{now:FORMAT}} ஆகியவற்றைப் பயன்படுத்தவும்.</string>
+    <string name="shortcodes_help_example">உதாரணம்: @yday -> நேற்று: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">பொதுவான வடிவங்கள்: dd-MM-yy, HH:mm, EEEE (நாளின் பெயர்).</string>
+    <string name="action_close">மூடு</string>
+    <string name="keyword_detail_title_fallback">முக்கிய வார்த்தை</string>
+    <string name="keyword_detail_not_found">முக்கிய வார்த்தை கண்டறியப்படவில்லை</string>
+    <string name="keyword_detail_last_indexed">கடைசியாகக் குறியிடப்பட்டது %1$s</string>
+    <string name="keyword_detail_mentions_section">குறிப்புகள்</string>
+    <string name="pin_biometric_prompt_title">பயோமெட்ரிக் மூலம் திறக்கவும்</string>
+    <string name="pin_biometric_prompt_subtitle">திறக்க உங்கள் கைரேகை அல்லது முகத்தைப் பயன்படுத்தவும்</string>
+    <string name="pin_error_no_biometric_enrolled">பயோமெட்ரிக் எதுவும் பதிவு செய்யப்படவில்லை. சாதன அமைப்புகளில் கைரேகை அல்லது முகத்தை பதிவு செய்யவும்.</string>
+    <string name="pin_error_hardware_unavailable">பயோமெட்ரிக் வன்பொருள் கிடைக்கவில்லை.</string>
+    <string name="pin_error_no_hardware">இந்தச் சாதனத்தில் பயோமெட்ரிக் வன்பொருள் இல்லை.</string>
+    <string name="pin_error_not_available">பயோமெட்ரிக் அங்கீகாரம் கிடைக்கவில்லை.</string>
+    <string name="pin_title_confirm">பின்னை உறுதிப்படுத்து</string>
+    <string name="pin_title_set_new">புதிய பின்னை அமை</string>
+    <string name="pin_title_disable">முடக்க தற்போதைய பின்னை உள்ளிடவும்</string>
+    <string name="pin_title_enter">பின்னை உள்ளிடவும்</string>
+    <string name="pin_error_incorrect">தவறான பின். மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="pin_error_mismatch">பின் பொருந்தவில்லை. முதலில் இருந்து தொடங்கவும்.</string>
+    <string name="pin_cd_use_biometric">பயோமெட்ரிக்கைப்பயன்படுத்து</string>
+    <string name="pin_cd_backspace">பேக்ஸ்பேஸ்</string>
+    <string name="timeline_preview_empty_labeled">இந்த நாள் லேபல் செய்யப்பட்டுள்ளது, ஆனால் இன்னும் குறிப்பேட்டுப் பதிவு எதுவும் இல்லை.</string>
+    <string name="timeline_preview_loading">மாதிரிக்காட்சி ஏற்றப்படுகிறது...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ இந்த நாளில் %1$d கூடுதல் பதிவு</item>
+        <item quantity="other">+ இந்த நாளில் %1$d கூடுதல் பதிவுகள்</item>
+    </plurals>
+    <string name="timeline_preview_open_day">இந்த நாளைத் திறக்கவும்</string>
+    <string name="timeline_chip_today">இன்று</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d பதிவு</item>
+        <item quantity="other">%1$d பதிவுகள்</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">பின்தொடர்வு</string>
+    <string name="timeline_chip_label_only">லேபல் மட்டும்</string>
+    <string name="timeline_cd_favorite">பிரியமானது</string>
+    <string name="version_history_title">பதிப்பு வரலாறு</string>
+    <string name="version_history_day_versions_title">நாளின் பதிப்புகள்</string>
+    <string name="version_history_keep_copies_title">பாதுகாப்பு நகல்களை வைத்திரு</string>
+    <string name="version_history_keep_copies_subtitle">Yaja ஒரு நாள் கோப்பை மாற்றுவதற்கு முன், அது தற்போதைய கோப்பை வரலாற்று கோப்புகளின் கீழ் செயலி தரவில் சேமிக்கிறது.</string>
+    <string name="version_history_versions_kept_title">ஒரு நாளைக்கு வைக்கப்படும் பதிப்புகள்</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">ஒவ்வொரு தேதிக்கும் புதிய %1$d பதிப்பை Yaja வைத்திருக்கிறது.</item>
+        <item quantity="other">ஒவ்வொரு தேதிக்கும் புதிய %1$d பதிப்புகளை Yaja வைத்திருக்கிறது.</item>
+    </plurals>
+    <string name="version_history_retention_title">தக்கவைப்பு</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">%1$d நாளுக்கு முந்தைய ஸ்னாப்ஷாட்கள் தானாகவே சுத்தம் செய்யப்படும்.</item>
+        <item quantity="other">%1$d நாட்களுக்கு முந்தைய ஸ்னாப்ஷாட்கள் தானாகவே சுத்தம் செய்யப்படும்.</item>
+    </plurals>
+    <string name="version_history_notes">குறிப்புகள்: சேர்க்க, திருத்த, நீக்க, மறுசீரமைக்க, லேபல் செய்ய, நட்சத்திரமிட மற்றும் மறுபார்வை மாற்றங்களுக்கு முன் பதிப்பு வரலாறு நாள் மார்க்டவுன் கோப்புகளைப் பாதுகாக்கிறது. இது கிளவுட் காப்புப்பிரதி அல்ல; கொண்டு செல்லக்கூடிய நகல்களுக்கு காப்புப்பிரதியைப் பயன்படுத்துவதைத் தொடரவும்.</string>
+    <string name="version_history_snapshots_for">%1$s க்கான ஸ்னாப்ஷாட்கள்</string>
+    <string name="version_history_snapshots_subtitle">சேமிக்கப்பட்ட பதிப்பைத் திறந்து, அதை ஆய்வு செய்து, இந்த நாளுக்காக அதை மீட்டமைக்கவும்.</string>
+    <string name="version_history_empty">இந்தத் தேதிக்கு இன்னும் சேமிக்கப்பட்ட பதிப்புகள் எதுவும் இல்லை.</string>
+    <string name="action_view">காண்</string>
+    <string name="version_history_date_intro">இந்த நாளுக்கான முந்தைய சேமிக்கப்பட்ட பதிப்பைத் திறந்து, அதை ஆய்வு செய்து, தேவைப்படும்போது அதை மீட்டமைக்கவும்.</string>
+    <string name="action_next">அடுத்து</string>
+    <string name="action_apply">பயன்படுத்து</string>
+    <string name="action_restore">மீட்டமை</string>
+    <string name="statistics_choose_title">புள்ளிவிவரங்களைத் தேர்ந்தெடு</string>
+    <string name="statistics_choose_subtitle">உங்களுக்கு வேண்டாத பிரிவுகளை மறைக்கவும். குறைந்தபட்சம் ஒரு பிரிவாவது புலப்பட வேண்டும்.</string>
+    <string name="statistics_visible_count">%2$d இல் %1$d புலப்படுகிறது</string>
+    <string name="statistics_show_all">எல்லாவற்றையும் காட்டு</string>
+    <string name="statistics_one_section_visible">ஒரு பிரிவாவது புலப்பட வேண்டும்</string>
+    <string name="statistics_shown">புள்ளிவிவரங்களில் காட்டப்பட்டுள்ளது</string>
+    <string name="statistics_hidden">புள்ளிவிவரங்களிலிருந்து மறைக்கப்பட்டுள்ளது</string>
+    <string name="statistics_select_start_date">தொடக்கத் தேதியைத் தேர்ந்தெடு</string>
+    <string name="statistics_select_end_date">முடிவுத் தேதியைத் தேர்ந்தெடு</string>
+    <string name="statistics_filter_by_period">காலத்தின் அடிப்படையில் வடிகட்டு</string>
+    <string name="statistics_cd_reorder">மறுசீரமைக்க நீண்ட நேரம் அழுத்தவும்</string>
+    <string name="statistics_total_entries">மொத்தப் பதிவுகள்</string>
+    <string name="statistics_total_words">மொத்த வார்த்தைகள்</string>
+    <string name="statistics_avg_words_per_entry">சராசரி வார்த்தைகள்/பதிவு</string>
+    <string name="statistics_current_streak">தற்போதைய சங்கிலி</string>
+    <string name="statistics_pages_written">எழுதப்பட்ட பக்கங்கள்</string>
+    <string name="statistics_days_highlighted">சிறப்பிக்கப்பட்ட நாட்கள்</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d நாள்</item>
+        <item quantity="other">%1$d நாட்கள்</item>
+    </plurals>
+    <string name="statistics_period_all_time">எப்போதுமுள்ள புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_current_year">நடப்பு ஆண்டின் புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_previous_year">முந்தைய ஆண்டின் புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_current_month">நடப்பு மாதத்தின் புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_previous_month">முந்தைய மாதத்தின் புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_custom">தனிப்பயன் கால புள்ளிவிவரங்கள்</string>
+    <string name="statistics_period_chip_all_time">எப்போதும்</string>
+    <string name="statistics_period_chip_current_year">நடப்பு ஆண்டு</string>
+    <string name="statistics_period_chip_previous_year">முந்தைய ஆண்டு</string>
+    <string name="statistics_period_chip_current_month">இந்த மாதம்</string>
+    <string name="statistics_period_chip_previous_month">முந்தைய மாதம்</string>
+    <string name="statistics_period_chip_custom">தனிப்பயன்</string>
+    <string name="statistics_sections_visible">%2$d பிரிவுகளில் %1$d புலப்படுகிறது</string>
+    <string name="statistics_loading_stages">புள்ளிவிவரங்கள் கட்டங்களாக ஏற்றப்படுகின்றன...</string>
+    <string name="review_period_weekly">வாராந்திர மதிப்பாய்வு</string>
+    <string name="review_period_monthly">மாதாந்திர மதிப்பாய்வு</string>
+    <string name="review_anchor_week">%1$s ஐக் கொண்ட வாரம்</string>
+    <string name="review_anchor_month">%1$s ஐக் கொண்ட மாதம்</string>
+    <string name="review_chip_entries">பதிவுகள் %1$d</string>
+    <string name="review_chip_words">வார்த்தைகள் %1$d</string>
+    <string name="review_chip_days">நாட்கள் %1$d</string>
+    <string name="review_hint_jump">குறிப்பேட்டிற்குத் திரும்ப கீழே உள்ள தேதி சில்லுகளைத் தட்டவும்.</string>
+    <string name="review_chip_streak">சங்கிலி %1$d</string>
+    <string name="review_chip_gap">இடைவெளி %1$d</string>
+    <string name="review_chip_labels">லேபல்கள் %1$d</string>
+    <string name="review_chip_favorites">பிரியமானவை %1$d</string>
+    <string name="review_empty_period">இந்த காலத்தில் இன்னும் குறிப்பேடு பதிவுகள் எதுவும் இல்லை. லேபல்களும் சிறப்பம்சங்களும் இருந்தால் அவை கீழே தோன்றும்.</string>
+    <string name="review_writing_rhythm">எழுதும் தாளம்</string>
+    <string name="review_best_streak">சிறந்த சங்கிலி</string>
+    <string name="review_longest_gap">மிக நீண்ட இடைவெளி</string>
+    <string name="review_most_active_days">மிகவும் செயலில் உள்ள நாட்கள்</string>
+    <string name="review_day_entries_words">%1$d பதிவுகள் | %2$d வார்த்தைகள்</string>
+    <string name="review_top_people">சிறந்த நபர்கள்</string>
+    <string name="review_top_places">சிறந்த இடங்கள்</string>
+    <string name="review_no_people_mentions">நபர்களின் குறிப்புகள் இல்லை</string>
+    <string name="review_no_place_mentions">இடங்களின் குறிப்புகள் இல்லை</string>
+    <string name="review_favorite_moments">பிரியமான தருணங்கள்</string>
+    <string name="review_starred_day">நட்சத்திரமிட்ட நாள்</string>
+    <string name="review_highlighted_in_period">இந்த காலத்தில் சிறப்பிக்கப்பட்டது</string>
+    <string name="review_labels_created">உருவாக்கப்பட்ட லேபல்கள்</string>
+    <string name="review_labeled_day">லேபல் செய்யப்பட்ட நாள்</string>
+    <string name="review_language_split">மொழிப் பகிர்வு</string>
+    <string name="review_not_enough_text">இந்த காலத்தில் போதுமான உரை இல்லை</string>
+    <string name="lookback_reviews_title">மதிப்பாய்வுகள்</string>
+    <string name="lookback_reviews_intro">நீங்கள் தேர்ந்தெடுத்த குறிப்பேட்டு நாளைச் சுற்றி விரைவான பிரதிபலிப்பை உருவாக்குங்கள்.</string>
+    <string name="lookback_seven_days">7 நாட்கள்</string>
+    <string name="lookback_one_month">1 மாதம்</string>
+    <string name="lookback_weekly_review">வாராந்திர மதிப்பாய்வு</string>
+    <string name="lookback_weekly_review_subtitle">இந்த வாரம் ஒரே பார்வையில்</string>
+    <string name="lookback_monthly_review">மாதாந்திர மதிப்பாய்வு</string>
+    <string name="lookback_monthly_review_subtitle">இந்த மாதத்தின் சுருக்கம்</string>
+    <string name="lookback_flashbacks_title">கடந்த ஆண்டுகளில் இந்த நாளில்</string>
+    <string name="lookback_highlights_title">உங்கள் சிறப்பம்சங்கள்</string>
+    <string name="lookback_empty_title">இன்னும் பின்னோட்டங்களோ சிறப்பம்சங்களோ இல்லை.</string>
+    <string name="lookback_empty_subtitle">அவற்றை இங்கே காண முக்கியமான நாட்களைப் பிரியமானதாகக் குறிக்கவும்!</string>
+    <string name="lookback_cd_random_entry">சீரற்ற பதிவிற்குச் செல்</string>
+    <string name="statistics_period_label">காலம்</string>
+    <string name="statistics_compare_mode_title">ஒப்பீட்டு பயன்முறை</string>
+    <string name="statistics_compare_mode_subtitle">மாதம், ஆண்டு மற்றும் முக்கிய வார்த்தை வேறுபாடுகள்</string>
+    <string name="statistics_this_year">இந்த ஆண்டு</string>
+    <string name="statistics_writing_days_delta">எழுதும் நாட்களின் வேறுபாடு</string>
+    <string name="statistics_top_person_delta">சிறந்த நபரின் வேறுபாடு</string>
+    <string name="statistics_no_people_mentions">இன்னும் நபர்களின் குறிப்புகள் இல்லை</string>
+    <string name="statistics_top_place_delta">சிறந்த இடத்தின் வேறுபாடு</string>
+    <string name="statistics_no_place_mentions">இன்னும் இடங்களின் குறிப்புகள் இல்லை</string>
+    <string name="statistics_structured_writing">கட்டமைக்கப்பட்ட எழுத்து</string>
+    <string name="statistics_template_led_format">வார்ப்புரு சார்ந்த %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">வெற்று %1$d · %2$d%%</string>
+
+    <string name="statistics_most_used_templates">அதிகம் பயன்படுத்தப்பட்ட வார்ப்புருக்கள்</string>
+    <string name="statistics_template_mix">வார்ப்புரு கலவை</string>
+    <string name="statistics_follow_up_leaders">பின்தொடர்வதில் முன்னணியில் இருப்பவை</string>
+    <string name="statistics_compare_details">ஒப்பீட்டு விவரங்கள்</string>
+    <string name="statistics_label_month">மாதம்</string>
+    <string name="statistics_label_year">ஆண்டு</string>
+    <string name="statistics_this_month_count_format">இந்த மாதம் %1$d</string>
+    <string name="statistics_last_month_count_format">கடந்த மாதம் %1$d</string>
+    <string name="statistics_longest_streak">மிக நீண்ட சங்கிலி</string>
+    <string name="statistics_most_active_day">மிகவும் செயலில் இருந்த நாள்</string>
+    <string name="statistics_writing_consistency">எழுதும் நிலைத்தன்மை</string>
+    <string name="statistics_days_with_entries">பதிவுகள் கொண்ட நாட்கள்</string>
+    <string name="statistics_best_month">சிறந்த மாதம்</string>
+    <string name="statistics_best_month_format">%1$s · %2$d பதிவுகள்</string>
+    <string name="statistics_avg_writing_days_week">வாரத்திற்கு சராசரியாக எழுதிய நாட்கள்</string>
+    <string name="statistics_days_decimal_format">%1$.1f நாட்கள்</string>
+    <string name="statistics_based_on_total_words">ஒரு நாளைக்கு எழுதப்பட்ட மொத்த வார்த்தைகளின் அடிப்படையில்</string>
+    <string name="statistics_light_words">குறைவான (&lt; 50 வார்த்தைகள்)</string>
+    <string name="statistics_moderate_words">நடுத்தரமான (50-200 வார்த்தைகள்)</string>
+    <string name="statistics_heavy_words">அதிகமான (200-500 வார்த்தைகள்)</string>
+    <string name="statistics_intense_words">மிக அதிகமான (500+ வார்த்தைகள்)</string>
+    <string name="statistics_not_enough_text_languages">மொழிகளைக் கண்டறியப் போதுமான உரை இல்லை</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d மொழி கண்டறியப்பட்டது</item>
+        <item quantity="other">%1$d மொழிகள் கண்டறியப்பட்டன</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">மொழி கண்டறிதல் இன்னும் சீரமைக்கப்பட்டு வருகிறது.</string>
+    <string name="statistics_latin_scripts_as_english">லத்தீன் எழுத்துகள் ஆங்கிலமாகக் காட்டப்படுகின்றன</string>
+    <string name="statistics_use_more_accurate_detection">இன்னும் துல்லியமான கண்டறிதலைப் பயன்படுத்தவும்</string>
+    <string name="statistics_write_more_entries_languages">மொழி புள்ளிவிவரங்களைக் காண மேலும் பதிவுகளை எழுதுங்கள்.</string>
+    <string name="statistics_based_on_entry_time">பதிவு நேரத்தின் அடிப்படையில்</string>
+    <string name="statistics_morning_time">காலை (5am-நண்பகல்)</string>
+    <string name="statistics_afternoon_time">மதியம் (நண்பகல்-5pm)</string>
+    <string name="statistics_evening_time">மாலை (5pm-9pm)</string>
+    <string name="statistics_night_time">இரவு (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">வெப்ப வரைபடம் இன்னும் நிரப்பப்பட்டு வருகிறது.</string>
+    <string name="statistics_heatmap_less">குறைவு</string>
+    <string name="statistics_heatmap_more">அதிகம்</string>
+    <string name="action_open">திறக்கவும்</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja குறிப்பேடு நிகழ்வுகள்</string>
+    <string name="tasker_event_desc">இந்தத் டாஸ்கர் சுயவிவரத்தை எந்த Yaja குறிப்பேடு நிகழ்வுகள் தூண்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="tasker_event_saved">பதிவு சேமிக்கப்பட்டது</string>
+    <string name="tasker_event_edited">பதிவு திருத்தப்பட்டது</string>
+    <string name="tasker_event_deleted">பதிவு நீக்கப்பட்டது</string>
+    <string name="tasker_event_default_hint">எதுவும் தேர்ந்தெடுக்கப்படவில்லை எனில், Yaja இயல்பாக \'பதிவு சேமிக்கப்பட்டது\' என்பதைத் தூண்டும்.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja விரைவுப் பதிவு</string>
+    <string name="tasker_action_desc">Yaja-வில் டாஸ்கர் விரைவாகப் பதிவு செய்ய வேண்டியவற்றை உள்ளமைக்கவும்.</string>
+    <string name="tasker_action_add_entry">பதிவைச் சேர்</string>
+    <string name="tasker_action_add_event">நிகழ்வைச் சேர்</string>
+    <string name="tasker_action_add_todo">செய்ய வேண்டியவைச் சேர்</string>
+    <string name="tasker_action_append">பின்னே சேர்</string>
+    <string name="tasker_action_match_header_label">பொருத்தம் / தலைப்பு</string>
+    <string name="tasker_action_match_header_placeholder">மிஸ்டு கால்கள்</string>
+    <string name="tasker_action_line_to_append_label">பின்னே சேர்க்க வேண்டிய வரி</string>
+    <string name="tasker_action_text_label">உரை</string>
+    <string name="tasker_action_placeholder_event">டாஸ்கரிலிருந்து நிகழ்வுக் குறிப்பு</string>
+    <string name="tasker_action_placeholder_todo">பால் வாங்கவும்</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">டாஸ்கரிலிருந்து விரைவுக் குறிப்பு</string>
+    <string name="tasker_action_tip_append">முதல் அழைப்பு பொருந்தும் உரையுடன் தொடங்கும் ஒரு பதிவை உருவாக்குகிறது. பிந்தைய அழைப்புகள் அதன் கீழ் வரியைச் சேர்க்கும்.</string>
+    <string name="tasker_action_tip_default">குறிப்பு: டாஸ்கர் மாறிகளை உரை புலத்தில் வைக்கலாம்.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">முந்தைய அமர்வின் செயலிழப்புப் பதிவு</string>
+    <string name="crash_log_clear_close">அழித்து மூடு</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">செயலியைத் திறக்கவும்</string>
+    <string name="tap_action_quick_capture">விரைவுப் பதிவு</string>
+    <string name="tap_action_do_nothing">எதுவும் செய்ய வேண்டாம்</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja எழுத்து வெப்ப வரைபடம்</string>
+    <string name="widget_cell_shape">கலத்தின் வடிவம்</string>
+    <string name="widget_corner_radius">மூலை ஆரம்: %1$ddp</string>
+    <string name="widget_square">சதுரம்</string>
+    <string name="widget_round">வளைந்த</string>
+    <string name="widget_inner_margin">உள் விளிம்பு: %1$ddp</string>
+    <string name="widget_inner_margin_desc">வெப்ப வரைபடத்திற்கும் விட்ஜெட் விளிம்புகளுக்கும் இடையே உள்ள இடம்</string>
+    <string name="widget_none">எதுவும் இல்லை</string>
+    <string name="widget_max">அதிகபட்சம்</string>
+    <string name="widget_on_tap">தட்டும்போது</string>
+    <string name="widget_on_tap_desc">விட்ஜெட் தட்டப்படும்போது செய்யும் செயல்பாடு</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">பதிவு செய்</string>
+    <string name="widget_qc_shape">விட்ஜெட் வடிவம்</string>
+    <string name="widget_show_label">லேபலைக் காட்டு</string>
+    <string name="widget_show_label_desc">விட்ஜெட்டில் \'பதிவு செய்\' என்ற உரையைத் திரையிடு</string>
+    <string name="widget_show_icon">ஐகானைக் காட்டு</string>
+    <string name="widget_show_icon_required">லேபல் மறைக்கப்பட்டிருக்கும் போது ஐகான் தேவைப்படுகிறது</string>
+    <string name="widget_show_icon_desc">விட்ஜெட்டில் பேனா ஐகானைக் காட்டு</string>
+    <string name="widget_label_text">லேபல் உரை</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">செய்ய வேண்டியவை விட்ஜெட்</string>
+    <string name="widget_todo_desc">வளைந்த மூலைகள் கொண்ட, வெப்ப வரைபடம் போன்ற செய்ய வேண்டியவை பட்டியல் விட்ஜெட்.</string>
+    <string name="widget_todo_corner_radius">மூலை ஆரம்: %1$ddp</string>
+    <string name="widget_todo_padding">திணிப்பு: %1$ddp</string>
+    <string name="widget_todo_show_completed">முடிக்கப்பட்ட பணிகளைக் காட்டு</string>
+    <string name="widget_todo_show_completed_desc">விட்ஜெட் பட்டியலில் சரிபார்க்கப்பட்ட உருப்படிகளைச் சேர்க்கவும்</string>
+    <string name="widget_todo_include_events">நிகழ்வுகளைச் சேர்</string>
+    <string name="widget_todo_include_events_desc">விட்ஜெட்டில் செய்ய வேண்டியவைகளுடன் நிகழ்வுப் பதிவுகளையும் காட்டு</string>
+    <string name="widget_todo_show_header">செய்ய வேண்டியவை தலைப்பைக் காட்டு</string>
+    <string name="widget_todo_show_header_desc">விட்ஜெட் தலைப்பு வரியைக் காட்டு அல்லது மறை</string>
+    <string name="widget_todo_auto_hide">அனைத்து செய்ய வேண்டியவைகளும் முடிந்ததும் விட்ஜெட்டைத் தானாகவே மறை</string>
+    <string name="widget_todo_auto_hide_unavailable">முடிக்கப்பட்ட பணிகள் காட்டப்படும்போது இது கிடைக்காது</string>
+    <string name="widget_todo_auto_hide_desc">நிலுவையில் உள்ள பணிகள் எதுவும் இல்லாதபோது விட்ஜெட்டை ஒளிஊடுருவக்கூடியதாக மாற்றவும்</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">முடிந்தது</string>
+    <string name="todo_confirm_mark_not_done">இன்னும் முடியவில்லை</string>
+    <string name="todo_confirm_title">பணியை %1$s என குறிக்கவா?</string>
+    <string name="todo_confirm_reopen">இந்த செய்ய வேண்டியவை தற்போது முடிக்கப்பட்டுள்ளது. மீண்டும் திறக்கும் முன் உறுதிப்படுத்தவும்.</string>
+    <string name="todo_confirm_complete">இந்த செய்ய வேண்டியவை இன்னும் திறந்திருக்கிறது. முடித்ததாகக் குறிக்கும் முன் உறுதிப்படுத்தவும்.</string>
+    <string name="todo_confirm_accidental_tap">தற்செயலான தட்டல்கள் பணியை மாற்றாது.</string>
+    <string name="todo_confirm_yes_mark">ஆம், %1$s எனக் குறிக்கவும்</string>
+    <string name="todo_confirm_open_yaja">Yaja-வில் திறக்கவும்</string>
+    <string name="todo_confirm_keep_as_is">உள்ளவாறே வைத்திரு</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">RJ-இன் ஆய்வகங்களிலிருந்து</string>
+    <string name="help_made_in">Made in 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">இறக்குமதியை ரத்துசெய்</string>
+    <string name="timeline_show_all_dates">அனைத்துத் தேதிகளையும் காட்டு</string>
+    <string name="timeline_show_all_dates_subtitle">பதிவுகள் இல்லாவிட்டாலும் கடந்த கால நாட்கள் அனைத்தையும் சேர்க்கவும்</string>
+    <string name="settings_background_tint_clean">சுத்தமான</string>
+    <string name="settings_background_tint_soft">மென்மையான</string>
+    <string name="settings_background_tint_rich">செறிவான</string>
+    <string name="settings_background_tint_deep">ஆழமான</string>
+    <string name="settings_accent_style_complementary">நிரப்பு</string>
+    <string name="settings_accent_style_analogous">ஒத்த</string>
+    <string name="settings_accent_style_triadic">முக்கோண</string>
+    <string name="settings_accent_style_soft">மென்மையான</string>
+    <string name="compliance_frequency_annual">வருடாந்திர</string>
+    <string name="compliance_frequency_biweekly">இரண்டு வாரங்களுக்கு ஒருமுறை</string>
+    <string name="compliance_frequency_half_yearly">அரை ஆண்டிற்கு ஒருமுறை</string>
+    <string name="compliance_frequency_monthly">மாதந்தோறும்</string>
+    <string name="compliance_frequency_quarterly">மூன்று மாதங்களுக்கு ஒருமுறை</string>
+    <string name="compliance_frequency_weekly">வாரந்தோறும்</string>
+    <string name="compliance_master_add">தொடர் பணியைச் சேர்</string>
+    <string name="compliance_master_boundary_first">முதல் தேதி</string>
+    <string name="compliance_master_boundary_last">கடைசி தேதி</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" நீக்கப்படும், மேலும் இனி எந்தவொரு புதிய பணியும் உருவாக்கப்படாது.</string>
+    <string name="compliance_master_delete_confirm_title">தொடர் பணியை நீக்கவா?</string>
+    <string name="compliance_master_details_boundary_help">பணியை தினசரி கோப்பில் எத்தனை நாட்களுக்கு முன்னால் எழுத வேண்டும் என்பதைத் தேர்வு செய்யவும்.</string>
+    <string name="compliance_master_details_date_help">கடைசி தேதியையும், பணிக்கு எத்தனை நாட்களுக்கு முன்னால் தினசரி கோப்பில் எழுத வேண்டும் என்பதையும் உள்ளிடவும்.</string>
+    <string name="compliance_master_details_weekday_help">இந்தப் பணி முடியும் வாரத்தின் நாளைத் தேர்வு செய்யவும்.</string>
+    <string name="compliance_master_due_day_help">1 முதல் 31 வரையிலான தேதியை உள்ளிடவும். நாட்கள் குறைவான மாதங்கள் அவற்றின் கடைசி செல்லுபடியாகும் தேதியைப் பயன்படுத்தும்.</string>
+    <string name="compliance_master_edit">தொடர் பணியைத் திருத்து</string>
+    <string name="compliance_master_editor_task_section">Yaja உங்களுக்கு எதை நினைவூட்ட வேண்டும்?</string>
+    <string name="compliance_master_empty">தொடர் பணிகள் ஏதுமில்லை. குறிப்பிட்ட கால அட்டவணையில் தானாகவே பணிகளை உருவாக்க ஒன்றைக் கூட்டவும்.</string>
+    <string name="compliance_master_execution_day_of_month">ஒரு பணி %1$s சுழற்சியில் %2$d-ஆம் தேதியில் உருவாக்கப்படும். இது உங்கள் தினசரி கோப்பில் %3$d நாட்களுக்கு முன்னால் எழுதப்படும்.</string>
+    <string name="compliance_master_execution_month_boundary">ஒரு பணி %1$s சுழற்சியில் கடைசி மாதத்தின் %2$s-ல் உருவாக்கப்படும். இது உங்கள் தினசரி கோப்பில் %3$d நாட்களுக்கு முன்னால் எழுதப்படும்.</string>
+    <string name="compliance_master_execution_monthly_weekday">ஒரு பணி மாதந்தோறும் தொடக்க தேதியின் அதே வார நாளில் உருவாக்கப்படும். இது உங்கள் தினசரி கோப்பில் %2$d நாட்களுக்கு முன்னால் எழுதப்படும்.</string>
+    <string name="compliance_master_execution_title">இது எவ்வாறு இயங்கும்</string>
+    <string name="compliance_master_execution_weekday">ஒரு பணி %1$s சுழற்சியில் %2$s-ல் உருவாக்கப்படும். இது உங்கள் தினசரி கோப்பில் %3$d நாட்களுக்கு முன்னால் எழுதப்படும்.</string>
+    <string name="compliance_master_field_description">விளக்கம்</string>
+    <string name="compliance_master_field_description_hint">உதாரணம்: மாதாந்திர வரி தாக்கல் செய்யவும்</string>
+    <string name="compliance_master_field_due_day">கடைசி தேதி</string>
+    <string name="compliance_master_field_due_weekday">கடைசி நாள்</string>
+    <string name="compliance_master_field_frequency">எவ்வளவு அடிக்கடி?</string>
+    <string name="compliance_master_field_reveal_day">முன்கூட்டியே உருவாக்கு (நாட்கள்)</string>
+    <string name="compliance_master_field_schedule_mode">இது எப்போது முடிவடைய வேண்டும்?</string>
+    <string name="compliance_master_field_title">பணியின் பெயர்</string>
+    <string name="compliance_master_field_title_hint">உதாரணம்: மின்சார கட்டணம் செலுத்தவும்</string>
+    <string name="compliance_master_first_day_selected">ஒவ்வொரு பொருந்தக்கூடிய மாதத்தின் முதல் தேதியன்று முடிவடையும்.</string>
+    <string name="compliance_master_frequency_help">இந்தப் பணி எவ்வளவு அடிக்கடி மீண்டும் வர வேண்டும் என்பதைத் தேர்வு செய்யவும்.</string>
+    <string name="compliance_master_intro_body">வாரம், மாதம், மூன்று மாதங்கள், அரை ஆண்டு அல்லது வருடத்திற்கு ஒருமுறை மீண்டும் மீண்டும் வரும் பணிகளை உருவாக்கவும். Yaja அந்தந்த காலம் வரும்போது மட்டுமே பணிகளைக் காட்டும்.</string>
+    <string name="compliance_master_intro_title">தொடர் பணிகள்</string>
+    <string name="compliance_master_last_day_selected">ஒவ்வொரு பொருந்தக்கூடிய மாதத்தின் கடைசி தேதியன்று முடிவடையும்.</string>
+    <string name="compliance_master_meta_format">தேதி %1$d அன்று முடிவடையும் • %2$d நாட்களுக்கு முன் உருவாக்கவும்</string>
+    <string name="compliance_master_next_date">அடுத்தது: %1$s</string>
+    <string name="compliance_master_end_section">முடிவு நிபந்தனை</string>
+    <string name="compliance_master_end_help">இந்தப் பணி எப்போது மீண்டும் நிகழ்வதை நிறுத்த வேண்டும் என்பதைத் தேர்வுசெய்க</string>
+    <string name="compliance_master_end_never">ஒருபோதும் இல்லை</string>
+    <string name="compliance_master_end_on_date">தேதியில்</string>
+    <string name="compliance_master_end_after">இதற்குப் பிறகு…</string>
+    <string name="compliance_master_end_never_desc">முடிவுத் தேதி இல்லாமல் வரம்பின்றி மீண்டும் நிகழும்.</string>
+    <string name="compliance_master_end_date_select">முடிவுத் தேதியைத் தேர்வுசெய்க</string>
+    <string name="compliance_master_end_date_help">இந்தத் தேதிக்குப் பிறகு பணிகள் உருவாக்கப்படாது.</string>
+    <string name="compliance_master_end_count_label">நிகழ்வுகளின் எண்ணிக்கை</string>
+    <string name="compliance_master_end_count_help">இத்தனை பணிகள் உருவாக்கப்பட்ட பிறகு நிறுத்தப்படும்.</string>
+    <string name="compliance_master_ends_on">முடிவு: %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d மீதம்</string>
+    <string name="compliance_master_ended">முடிந்தது</string>
+    <string name="compliance_master_type_label">இவ்வாறு உருவாக்கு</string>
+    <string name="compliance_master_type_task">பணி</string>
+    <string name="compliance_master_type_event">நிகழ்வு</string>
+    <string name="compliance_master_recurrence_annual">ஒவ்வொரு வருடமும்</string>
+    <string name="compliance_master_recurrence_biweekly">ஒவ்வொரு இரண்டு வாரமும்</string>
+    <string name="compliance_master_recurrence_half_yearly">ஒவ்வொரு ஆறு மாதமும்</string>
+    <string name="compliance_master_recurrence_monthly">ஒவ்வொரு மாதமும்</string>
+    <string name="compliance_master_recurrence_quarterly">ஒவ்வொரு மூன்று மாதமும்</string>
+    <string name="compliance_master_recurrence_weekly">ஒவ்வொரு வாரமும்</string>
+    <string name="compliance_master_reveal_day_help">கடைசி தேதிக்கு எத்தனை நாட்களுக்கு முன்பு பணியை தினசரி நாட்குறிப்புக் கோப்பில் எழுத வேண்டும்.</string>
+    <string name="compliance_master_schedule_details">கால அட்டவணை விவரங்கள்</string>
+    <string name="compliance_master_schedule_mode_help">Yaja கடைசி தேதியை எவ்வாறு தீர்மானிக்க வேண்டும் என்பதைத் தேர்வு செய்யவும்.</string>
+    <string name="compliance_master_select_frequency">மீண்டும் வரும் அதிர்வெண்ணைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="compliance_master_select_schedule_type">முடிவடையும் வகையைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="compliance_master_select_weekday">நாளைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="compliance_master_status_deactivated">செயலிழக்கப்பட்டது</string>
+    <string name="compliance_master_summary_day_of_month">தேதி %1$d • %2$s • %3$d நாட்களுக்கு முன்</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">முதல் தேதி • %1$s • %2$d நாட்களுக்கு முன்</string>
+    <string name="compliance_master_summary_last_day">கடைசி தேதி • %1$s • %2$d நாட்களுக்கு முன்</string>
+    <string name="compliance_master_title">தொடர் பணிகள் / நிகழ்வுகள்</string>
+    <string name="compliance_master_upcoming">வரவிருப்பவை</string>
+    <string name="compliance_mode_day_of_month">குறிப்பிட்ட தேதி</string>
+    <string name="compliance_mode_day_of_month_desc">மாதத்தின் ஒரு குறிப்பிட்ட தேதியில் முடிவடையும், உதாரணமாக 15-ஆம் தேதி.</string>
+    <string name="compliance_mode_day_of_week">வாரத்தின் நாள்</string>
+    <string name="compliance_mode_day_of_week_desc">வாரத்தின் ஒரு குறிப்பிட்ட நாளில் முடிவடையும், உதாரணமாக திங்கள் கிழமை.</string>
+    <string name="compliance_mode_first_day">மாதத்தின் முதல் தேதி</string>
+    <string name="compliance_mode_first_day_desc">ஒவ்வொரு பொருந்தக்கூடிய மாதத்தின் முதல் தேதியன்று முடிவடையும்.</string>
+    <string name="compliance_mode_last_day">மாதத்தின் கடைசி நாள்</string>
+    <string name="compliance_mode_last_day_desc">நாட்கள் குறைவான மாதங்கள் உட்பட மாதத்தின் கடைசி தேதியன்று முடிவடையும்.</string>
+    <string name="todo_chip_compliance">தொடர் பணி</string>
+    <string name="todos_cd_open_compliance_master">தொடர் பணிகளைத் திறக்கவும்</string>
+
+    <string name="settings_ui_font_size_label">UI எழுத்துரு அளவு</string>
+    <string name="settings_data_font_size_label">உள்ளடக்க எழுத்துரு அளவு</string>
+    <string name="settings_follow_ui_font_scale_label">உள்ளடக்க எழுத்துரு அளவை UI அளவிற்கு சமமாக்குக</string>
+</resources>

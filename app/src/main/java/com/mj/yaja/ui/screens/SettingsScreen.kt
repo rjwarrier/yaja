@@ -4,23 +4,32 @@ import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.HelpOutline
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.FileOpen
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Fingerprint
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Storage
+import androidx.compose.material.icons.rounded.Swipe
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ElevatedCard
@@ -34,33 +43,60 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
-import com.mj.yaja.data.AppFontFamily
-import com.mj.yaja.data.FontScalePreference
-import com.mj.yaja.data.SwipeDirection
-import com.mj.yaja.data.ThemePreference
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import com.mj.yaja.ui.design.AppScreenReveal
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.enterOrNone
+import com.mj.yaja.ui.design.exitOrNone
+import com.mj.yaja.ui.design.floatTween
+import com.mj.yaja.ui.design.tweenSpec
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.core.tween
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.MenuAnchorType
+import com.mj.yaja.R
+import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.DateKeywordEntry
+import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import kotlinx.coroutines.launch
 import java.time.DayOfWeek
+import kotlin.math.roundToInt
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
         viewModel: JournalViewModel,
@@ -68,37 +104,63 @@ fun SettingsScreen(
         onNavigateBack: () -> Unit,
         onNavigateToPinSetup: () -> Unit = {},
         onNavigateToPinDisable: () -> Unit,
+        onNavigateToTaskerIntegration: () -> Unit,
+        onNavigateToRebuildCache: () -> Unit,
+        onNavigateToVersionHistory: () -> Unit,
+        onNavigateToAppearance: () -> Unit,
         onNavigateToHelp: () -> Unit,
+        onNavigateToAppLog: () -> Unit,
         onNavigateToShortcodes: () -> Unit,
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit,
         onNavigateToLookback: () -> Unit
 ) {
-        val themePreference by viewModel.themePreference.collectAsState()
-        val fontScalePreference by viewModel.fontScalePreference.collectAsState()
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsState()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsState()
-        val storageUriString by viewModel.storageUri.collectAsState()
-        val showTimestamps by viewModel.showTimestamps.collectAsState()
-        val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsState()
-        val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsState()
-        val isPinEnabled by viewModel.isPinEnabled.collectAsState()
-        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsState()
-        val showStatistics by viewModel.showStatistics.collectAsState()
-        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsState()
+        val scope = rememberCoroutineScope()
+        val languageRequester = remember { BringIntoViewRequester() }
+        val journalRequester = remember { BringIntoViewRequester() }
+        val navigationRequester = remember { BringIntoViewRequester() }
+        val reviewRequester = remember { BringIntoViewRequester() }
+        val securityRequester = remember { BringIntoViewRequester() }
+        val dataRequester = remember { BringIntoViewRequester() }
+        val integrationsRequester = remember { BringIntoViewRequester() }
+        val helpRequester = remember { BringIntoViewRequester() }
+        val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
+        val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
+        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
+        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
+        val storageUriString by viewModel.storageUri.collectAsStateWithLifecycle()
+        val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
+        val allowFutureEntries by viewModel.allowFutureEntries.collectAsStateWithLifecycle()
+        val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
+        val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
+        val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsStateWithLifecycle()
+        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
+        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
+        val entryReviewEnabled by viewModel.entryReviewEnabled.collectAsStateWithLifecycle()
+        val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
+        val showDayHeaderStats by viewModel.showDayHeaderStats.collectAsStateWithLifecycle()
+        val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
+        val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
+        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
+        val autoLockTimeoutMinutes by viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
+        val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
+        val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsStateWithLifecycle()
+        val showKeywordsInNavBar by viewModel.showKeywordsInNavBar.collectAsStateWithLifecycle()
+        val showTodosInNavBar by viewModel.showTodosInNavBar.collectAsStateWithLifecycle()
+        val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
+        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
+        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val swipeToNavigateDatesEnabled by viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
+        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
+        val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
+        val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
+        val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
+        val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsStateWithLifecycle()
+        val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsStateWithLifecycle()
+        val versionHistoryEnabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
+        val importState by viewModel.importState.collectAsStateWithLifecycle()
+        val restoreSummary by viewModel.restoreSummary.collectAsStateWithLifecycle()
         val context = LocalContext.current
-
-        LaunchedEffect(Unit) {
-                viewModel.toastEvents.collect { message ->
-                        android.widget.Toast.makeText(
-                                        context,
-                                        message,
-                                        android.widget.Toast.LENGTH_SHORT
-                                )
-                                .show()
-                }
-        }
-
         val formattedBackupDate =
                 remember(lastBackupTimestamp) {
                         if (lastBackupTimestamp == 0L) {
@@ -120,6 +182,79 @@ fun SettingsScreen(
 
         var pendingUriString by remember { mutableStateOf<String?>(null) }
         var showDialog by remember { mutableStateOf(false) }
+        var settingsSearchQuery by rememberSaveable { mutableStateOf("") }
+        var settingsSearchHistory by rememberSaveable { mutableStateOf(listOf<String>()) }
+        var showSettingsSuggestions by remember { mutableStateOf(false) }
+
+        val settingsSearchTargets =
+                remember {
+                        listOf(
+                                SettingsSearchTarget("Theme", "Appearance", listOf("light", "dark", "amoled", "system"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Colors", "Appearance", listOf("material you", "custom", "palette"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Personal Themes", "Appearance", listOf("personal", "theme slots", "generated accents"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Font", "Appearance", listOf("sans", "serif", "mono"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Font Size", "Appearance", listOf("text size", "scale"), onSelect = onNavigateToAppearance),
+                                SettingsSearchTarget("Language", "Language", listOf("español", "português", "français", "translate", "locale"), languageRequester),
+                                SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), journalRequester),
+                                SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), journalRequester),
+                                SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), journalRequester),
+                                SettingsSearchTarget("Render Checkboxes as Text", "Journal Experience", listOf("todo checkbox", "text checkbox"), journalRequester),
+                                SettingsSearchTarget("Truncate Long Entries", "Journal Experience", listOf("preview", "character limit"), journalRequester),
+                                SettingsSearchTarget("First Day of Week", "Journal Experience", listOf("calendar", "sunday", "monday"), journalRequester),
+                                SettingsSearchTarget("Date Order", "Journal Experience", listOf("dd/mm", "mm/dd"), journalRequester),
+                                SettingsSearchTarget("Entry Style", "Journal Experience", listOf("cards", "flat"), journalRequester),
+                                SettingsSearchTarget("Animations", "Journal Experience", listOf("motion", "reduced"), journalRequester),
+                                SettingsSearchTarget("Date Keywords", "Journal Experience", listOf("keywords", "today", "tomorrow"), journalRequester),
+                                SettingsSearchTarget("Navigation Mode", "Navigation & Gestures", listOf("floating", "panel", "bottom panel"), navigationRequester),
+                                SettingsSearchTarget("Lookback", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
+                                SettingsSearchTarget("People & Places", "Navigation & Gestures", listOf("keywords", "nav bar"), navigationRequester),
+                                SettingsSearchTarget("Todos", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
+                                SettingsSearchTarget("Statistics", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
+                                SettingsSearchTarget("Swipe to Navigate Dates", "Navigation & Gestures", listOf("gestures", "swipe"), navigationRequester),
+                                SettingsSearchTarget("Enable Drag-to-Reorder", "Navigation & Gestures", listOf("drag", "reorder"), navigationRequester),
+                                SettingsSearchTarget("Entry Delete", "Navigation & Gestures", listOf("selection", "delete"), navigationRequester),
+                                SettingsSearchTarget("Post-write Review", "Review & Insights", listOf("save sheet", "review"), reviewRequester),
+                                SettingsSearchTarget("People & Places Highlighting", "Review & Insights", listOf("highlighting", "people places"), reviewRequester),
+                                SettingsSearchTarget("Match Sensitivity", "Review & Insights", listOf("keyword matching", "fuzzy"), reviewRequester),
+                                SettingsSearchTarget("Privacy & Security", "Privacy & Security", listOf("pin", "biometric", "lock"), securityRequester),
+                                SettingsSearchTarget("PIN", "Privacy & Security", listOf("password", "lock"), securityRequester),
+                                SettingsSearchTarget("Biometric", "Privacy & Security", listOf("fingerprint", "face unlock"), securityRequester),
+                                SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), securityRequester),
+                                SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), dataRequester),
+                                SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), dataRequester),
+                                SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), dataRequester),
+                                SettingsSearchTarget("Restore Backup", "Data & Recovery", listOf("restore zip"), dataRequester),
+                                SettingsSearchTarget("Import", "Data & Recovery", listOf("day one", "journalistic"), dataRequester),
+                                SettingsSearchTarget("Rebuild Cache", "Data & Recovery", listOf("refresh cache", "rebuild"), dataRequester),
+                                SettingsSearchTarget("Version History", "Data & Recovery", listOf("snapshots", "history"), dataRequester),
+                                SettingsSearchTarget("Tasker", "Advanced Integrations", listOf("tasker integration", "automation"), integrationsRequester),
+                                SettingsSearchTarget("Shortcodes", "Advanced Integrations", listOf("snippets", "text expansion"), integrationsRequester),
+                                SettingsSearchTarget("Help & About", "Help & About", listOf("help", "about", "faq"), helpRequester),
+                                SettingsSearchTarget("App Log", "Help & About", listOf("logs", "crash"), helpRequester)
+                        )
+                }
+        val filteredSettingsTargets =
+                remember(settingsSearchQuery, settingsSearchTargets) {
+                        val query = settingsSearchQuery.trim().lowercase()
+                        if (query.isBlank()) {
+                                emptyList()
+                        } else {
+                                settingsSearchTargets.filter { target ->
+                                        target.title.lowercase().contains(query) ||
+                                                target.section.lowercase().contains(query) ||
+                                                target.keywords.any { it.contains(query) }
+                                }
+                        }
+                }
+
+        fun jumpToSettingsTarget(target: SettingsSearchTarget) {
+                settingsSearchQuery = target.title
+                settingsSearchHistory =
+                        listOf(target.title) + settingsSearchHistory.filterNot { it == target.title }.take(4)
+                showSettingsSuggestions = false
+                target.onSelect?.invoke()
+                target.requester?.let { requester -> scope.launch { requester.bringIntoView() } }
+        }
 
         val confirmLocationChange = { uriString: String? ->
                 pendingUriString = uriString
@@ -143,6 +278,16 @@ fun SettingsScreen(
                         }
                 }
 
+        val dayOneLauncher = rememberLauncherForActivityResult(
+                ActivityResultContracts.OpenDocument()
+        ) { uri -> if (uri != null) viewModel.importDayOneFile(uri, context) }
+        val journalisticLauncher = rememberLauncherForActivityResult(
+                ActivityResultContracts.OpenDocument()
+        ) { uri -> if (uri != null) viewModel.importJournalisticFile(uri, context) }
+        val backupRestoreLauncher = rememberLauncherForActivityResult(
+                ActivityResultContracts.OpenDocument()
+        ) { uri -> if (uri != null) viewModel.restoreBackupZip(uri, context) }
+
         if (showDialog) {
                 val destName =
                         if (pendingUriString == null) "App Internal Storage"
@@ -157,10 +302,10 @@ fun SettingsScreen(
 
                 AlertDialog(
                         onDismissRequest = { showDialog = false },
-                        title = { Text("Change Storage Location") },
+                        title = { Text(stringResource(R.string.settings_change_storage_location_title)) },
                         text = {
                                 Text(
-                                        "All existing entries will be moved from $currentName to $destName. Do you want to continue?"
+                                        stringResource(R.string.settings_change_storage_location_message, currentName, destName)
                                 )
                         },
                         confirmButton = {
@@ -169,10 +314,62 @@ fun SettingsScreen(
                                                 viewModel.setStorageUri(pendingUriString)
                                                 showDialog = false
                                         }
-                                ) { Text("Yes") }
+                                ) { Text(stringResource(R.string.settings_yes)) }
                         },
                         dismissButton = {
-                                TextButton(onClick = { showDialog = false }) { Text("No") }
+                                TextButton(onClick = { showDialog = false }) { Text(stringResource(R.string.settings_no)) }
+                        }
+                )
+        }
+
+        restoreSummary?.let { summary ->
+                AlertDialog(
+                        onDismissRequest = { viewModel.dismissRestoreSummary() },
+                        title = { Text(stringResource(R.string.settings_restore_summary_title)) },
+                        text = {
+                                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                                        Text(
+                                                stringResource(R.string.settings_restore_section_journal),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                fontWeight = FontWeight.SemiBold
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_journal_summary, summary.newDays, summary.mergedDays, summary.skippedJournalEntries),
+                                                style = MaterialTheme.typography.bodySmall
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_section_shortcodes),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                fontWeight = FontWeight.SemiBold
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_shortcodes_summary, summary.shortcodesAdded, summary.shortcodesSkipped),
+                                                style = MaterialTheme.typography.bodySmall
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_section_date_keywords),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                fontWeight = FontWeight.SemiBold
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_date_keywords_summary, summary.dateKeywordsAdded, summary.dateKeywordsSkipped),
+                                                style = MaterialTheme.typography.bodySmall
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_section_people_places),
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                fontWeight = FontWeight.SemiBold
+                                        )
+                                        Text(
+                                                stringResource(R.string.settings_restore_people_places_summary, summary.peoplePlacesAdded, summary.peoplePlacesSkipped),
+                                                style = MaterialTheme.typography.bodySmall
+                                        )
+                                }
+                        },
+                        confirmButton = {
+                                TextButton(onClick = { viewModel.dismissRestoreSummary() }) {
+                                        Text(stringResource(R.string.action_done))
+                                }
                         }
                 )
         }
@@ -182,21 +379,17 @@ fun SettingsScreen(
                         CenterAlignedTopAppBar(
                                 title = {
                                         Text(
-                                                "Settings",
+                                                stringResource(R.string.settings_title),
                                                 style = MaterialTheme.typography.headlineSmall,
                                                 fontWeight = FontWeight.Bold,
                                                 color = MaterialTheme.colorScheme.primary
                                         )
                                 },
                                 navigationIcon = {
-                                        IconButton(onClick = onNavigateBack) {
-                                                Icon(
-                                                        imageVector =
-                                                                Icons.AutoMirrored.Rounded
-                                                                        .ArrowBack,
-                                                        contentDescription = "Back"
-                                                )
-                                        }
+                                        com.mj.yaja.ui.components.AnimatedMenuButton(
+                                                onClick = onOpenDrawer,
+                                                modifier = Modifier.padding(start = 8.dp)
+                                        )
                                 },
                                 colors =
                                         TopAppBarDefaults.topAppBarColors(
@@ -215,1680 +408,429 @@ fun SettingsScreen(
                 contentWindowInsets = WindowInsets.navigationBars.union(WindowInsets.ime)
         ) { paddingValues ->
                 Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
-                        Column(
-                                modifier =
-                                        Modifier.fillMaxSize()
-                                                .padding(horizontal = 20.dp)
-                                                .verticalScroll(rememberScrollState())
+                        AppScreenReveal(
+                                visible = true,
+                                modifier = Modifier.fillMaxSize()
                         ) {
-                                Spacer(modifier = Modifier.height(16.dp))
-
-                                // ── Appearance Section ──
-                                SettingsSectionHeader(
-                                        icon = Icons.Rounded.Palette,
-                                        title = "Appearance"
-                                )
-
-                                Spacer(modifier = Modifier.height(12.dp))
-
-                                Text(
-                                        text = "Theme",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
-
-                                Spacer(modifier = Modifier.height(2.dp))
-
-                                val options =
-                                        listOf(
-                                                ThemePreference.SYSTEM to "System Default",
-                                                ThemePreference.LIGHT to "Light",
-                                                ThemePreference.DARK to "Dark",
-                                                ThemePreference.AMOLED to "Amoled Black"
-                                        )
-
-                                Row(
-                                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                Column(
+                                        modifier =
+                                                Modifier.fillMaxSize()
+                                                        .padding(horizontal = 20.dp)
+                                                        .verticalScroll(rememberScrollState())
                                 ) {
-                                        options.forEach { (preference, label) ->
-                                                ThemeSelectionCard(
-                                                        modifier = Modifier.weight(1f),
-                                                        label = label,
-                                                        isSelected = themePreference == preference,
-                                                        onClick = {
-                                                                viewModel.setThemePreference(
-                                                                        preference
-                                                                )
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        SettingsSearchCard(
+                                                query = settingsSearchQuery,
+                                                onQueryChange = {
+                                                        settingsSearchQuery = it
+                                                        showSettingsSuggestions = true
+                                                },
+                                                history = settingsSearchHistory,
+                                                filteredTargets = filteredSettingsTargets,
+                                                showSuggestions = showSettingsSuggestions,
+                                                onHistoryTap = { title ->
+                                                        val target =
+                                                                settingsSearchTargets.firstOrNull {
+                                                                        it.title == title
+                                                                }
+                                                        if (target != null) {
+                                                                jumpToSettingsTarget(target)
+                                                        } else {
+                                                                settingsSearchQuery = title
+                                                                showSettingsSuggestions = false
+                                                        }
+                                                },
+                                                onTargetTap = { jumpToSettingsTarget(it) },
+                                                onClearQuery = {
+                                                        settingsSearchQuery = ""
+                                                        showSettingsSuggestions = false
+                                                },
+                                                onDismissSuggestions = {
+                                                        showSettingsSuggestions = false
+                                                }
+                                        )
+                                        Spacer(modifier = Modifier.height(20.dp))
+
+                                        AppearanceEntrySection(onNavigateToAppearance = onNavigateToAppearance)
+
+                                        Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
+                                                LanguageSection(
+                                                        appLanguage = appLanguage,
+                                                        onLanguageSelected = { viewModel.setAppLanguage(it) }
+                                                )
+                                        }
+
+                                        // ── Preferences Section ──
+                                        Column(modifier = Modifier.bringIntoViewRequester(journalRequester)) {
+                                                SettingsSectionHeader(
+                                                        icon = Icons.Rounded.Settings,
+                                                        title = stringResource(R.string.settings_section_journal_experience)
+                                                )
+
+                                                Spacer(modifier = Modifier.height(12.dp))
+
+                                                JournalExperienceSection(
+                                                        renderCheckboxesAsText = renderCheckboxesAsText,
+                                                        onRenderCheckboxesAsTextChange = {
+                                                                viewModel.setRenderCheckboxesAsText(it)
                                                         },
-                                                        preference = preference
-                                                )
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(20.dp))
-
-                                Text(
-                                        text = "Font",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
-
-                                val appFontFamily by viewModel.appFontFamily.collectAsState()
-                                val fontOptions =
-                                        listOf(
-                                                AppFontFamily.SANS_SERIF to "Sans-Serif",
-                                                AppFontFamily.SERIF to "Serif",
-                                                AppFontFamily.MONO to "Mono"
-                                        )
-
-                                Row(
-                                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                ) {
-                                        fontOptions.forEach { (font, label) ->
-                                                FontSelectionCard(
-                                                        modifier = Modifier.weight(1f),
-                                                        label = label,
-                                                        isSelected = appFontFamily == font,
-                                                        onClick = {
-                                                                viewModel.setAppFontFamily(font)
+                                                        showDayHeaderStats = showDayHeaderStats,
+                                                        onShowDayHeaderStatsChange = {
+                                                                viewModel.setShowDayHeaderStats(it)
                                                         },
-                                                        fontFamily = font
-                                                )
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(20.dp))
-
-                                Text(
-                                        text = "Font Size",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
-
-                                Spacer(modifier = Modifier.height(2.dp))
-
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Column(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 20.dp,
-                                                                        vertical = 16.dp
-                                                                ),
-                                                horizontalAlignment = Alignment.CenterHorizontally
-                                        ) {
-                                                val sliderValue =
-                                                        when (fontScalePreference) {
-                                                                FontScalePreference.SMALLER -> 0f
-                                                                FontScalePreference.NORMAL -> 1f
-                                                                FontScalePreference.LARGER -> 2f
-                                                        }
-
-                                                Slider(
-                                                        value = sliderValue,
-                                                        onValueChange = { value ->
-                                                                val preference =
-                                                                        when (value.toInt()) {
-                                                                                0 ->
-                                                                                        FontScalePreference
-                                                                                                .SMALLER
-                                                                                1 ->
-                                                                                        FontScalePreference
-                                                                                                .NORMAL
-                                                                                else ->
-                                                                                        FontScalePreference
-                                                                                                .LARGER
-                                                                        }
-                                                                viewModel.setFontScalePreference(
-                                                                        preference
-                                                                )
+                                                        entryStyle = entryStyle,
+                                                        onEntryStyleSelected = {
+                                                                viewModel.setEntryStyle(it)
                                                         },
-                                                        valueRange = 0f..2f,
-                                                        steps = 1,
-                                                        colors =
-                                                                SliderDefaults.colors(
-                                                                        thumbColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .primary,
-                                                                        activeTrackColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .primary,
-                                                                        inactiveTrackColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .surfaceVariant,
-                                                                        activeTickColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onPrimary
-                                                                                        .copy(
-                                                                                                alpha =
-                                                                                                        0.4f
-                                                                                        ),
-                                                                        inactiveTickColor =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                                        .copy(
-                                                                                                alpha =
-                                                                                                        0.4f
-                                                                                        )
-                                                                )
-                                                )
-
-                                                Row(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(horizontal = 4.dp),
-                                                        horizontalArrangement =
-                                                                Arrangement.SpaceBetween
-                                                ) {
-                                                        Text(
-                                                                "A",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                        Text(
-                                                                "Normal",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .labelMedium,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                        Text(
-                                                                "A",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .titleLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                // ── Preferences Section ──
-                                SettingsSectionHeader(
-                                        icon = Icons.Rounded.Settings,
-                                        title = "Preferences"
-                                )
-
-                                Spacer(modifier = Modifier.height(12.dp))
-
-                                Spacer(modifier = Modifier.height(4.dp))
-
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column {
-                                                        Text(
-                                                                text = "Show Timestamps",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Display entry time on the timeline",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = showTimestamps,
-                                                        onCheckedChange = {
-                                                                viewModel.setShowTimestamps(it)
-                                                        }
+                                                        dateOrderPreference = dateOrderPreference,
+                                                        onDateOrderChange = { viewModel.setDateOrderPreference(it) },
+                                                        animationPreference = animationPreference,
+                                                        onAnimationPreferenceChange = {
+                                                                viewModel.setAnimationPreference(it)
+                                                        },
+                                                        customDateKeywords = customDateKeywords,
+                                                        onSetCustomDateKeywords = { viewModel.setCustomDateKeywords(it) },
+                                                        fuzzyThreshold = fuzzyThreshold,
+                                                        onFuzzyThresholdChange = { viewModel.setKeywordFuzzyThreshold(it) },
+                                                        showTimestamps = showTimestamps,
+                                                        onShowTimestampsChange = { viewModel.setShowTimestamps(it) },
+                                                        allowFutureEntries = allowFutureEntries,
+                                                        onAllowFutureEntriesChange = { viewModel.setAllowFutureEntries(it) },
+                                                        isPreviewLimitEnabled = isPreviewLimitEnabled,
+                                                        onIsPreviewLimitEnabledChange = { viewModel.setPreviewLimitEnabled(it) },
+                                                        previewLimitLength = previewLimitLength,
+                                                        onPreviewLimitLengthChange = { viewModel.setPreviewLimitLength(it) },
+                                                        firstDayOfWeek = firstDayOfWeek,
+                                                        onFirstDayOfWeekChange = { viewModel.setFirstDayOfWeek(it) }
                                                 )
                                         }
+                                        Spacer(modifier = Modifier.height(32.dp))
 
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        val allowFutureEntries by
-                                                viewModel.allowFutureEntries.collectAsState()
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Allow Future Entries",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Enable adding entries to future dates",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = allowFutureEntries,
-                                                        onCheckedChange = {
-                                                                viewModel.setAllowFutureEntries(it)
-                                                        }
+                                        Column(modifier = Modifier.bringIntoViewRequester(navigationRequester)) {
+                                                SettingsSectionHeader(
+                                                        icon = Icons.Rounded.Swipe,
+                                                        title = stringResource(R.string.settings_section_navigation_gestures)
                                                 )
-                                        }
+                                                Spacer(modifier = Modifier.height(12.dp))
 
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        val swipeToDeleteEnabled by
-                                                viewModel.swipeToDeleteEnabled.collectAsState()
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Swipe to Delete",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Enable delete gesture on entries",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = swipeToDeleteEnabled,
-                                                        onCheckedChange = {
-                                                                viewModel.setSwipeToDeleteEnabled(
-                                                                        it
-                                                                )
-                                                        }
-                                                )
-                                        }
-
-                                        // Swipe direction sub-option — slides in when enabled
-                                        val swipeDeleteDirection by
-                                                viewModel.swipeDeleteDirection.collectAsState()
-                                        androidx.compose.animation.AnimatedVisibility(
-                                                visible = swipeToDeleteEnabled
-                                        ) {
-                                                Column {
-                                                        HorizontalDivider(
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceVariant
-                                                        )
-                                                        Row(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .padding(
-                                                                                        horizontal =
-                                                                                                12.dp,
-                                                                                        vertical =
-                                                                                                8.dp
-                                                                                ),
-                                                                verticalAlignment =
-                                                                        Alignment.CenterVertically,
-                                                                horizontalArrangement =
-                                                                        Arrangement.SpaceBetween
-                                                        ) {
-                                                                Column(Modifier.weight(1f)) {
-                                                                        Text(
-                                                                                text =
-                                                                                        "Swipe Direction",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .bodyLarge,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurface
-                                                                        )
-                                                                        Text(
-                                                                                text =
-                                                                                        "Which side triggers delete",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .bodySmall,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                        )
-                                                                }
-                                                                Row(
-                                                                        modifier =
-                                                                                Modifier.background(
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .surfaceVariant,
-                                                                                                MaterialTheme
-                                                                                                        .shapes
-                                                                                                        .small
-                                                                                        )
-                                                                                        .padding(
-                                                                                                2.dp
-                                                                                        ),
-                                                                        verticalAlignment =
-                                                                                Alignment
-                                                                                        .CenterVertically
-                                                                ) {
-                                                                        listOf(
-                                                                                        SwipeDirection
-                                                                                                .END_TO_START to
-                                                                                                "\u2190 Left",
-                                                                                        SwipeDirection
-                                                                                                .START_TO_END to
-                                                                                                "Right \u2192"
-                                                                                )
-                                                                                .forEach {
-                                                                                        (dir, label)
-                                                                                        ->
-                                                                                        val isSelected =
-                                                                                                swipeDeleteDirection ==
-                                                                                                        dir
-                                                                                        Box(
-                                                                                                modifier =
-                                                                                                        Modifier.background(
-                                                                                                                        if (isSelected
-                                                                                                                        )
-                                                                                                                                MaterialTheme
-                                                                                                                                        .colorScheme
-                                                                                                                                        .primaryContainer
-                                                                                                                        else
-                                                                                                                                androidx.compose
-                                                                                                                                        .ui
-                                                                                                                                        .graphics
-                                                                                                                                        .Color
-                                                                                                                                        .Transparent,
-                                                                                                                        shape =
-                                                                                                                                MaterialTheme
-                                                                                                                                        .shapes
-                                                                                                                                        .small
-                                                                                                                )
-                                                                                                                .clickable {
-                                                                                                                        viewModel
-                                                                                                                                .setSwipeDeleteDirection(
-                                                                                                                                        dir
-                                                                                                                                )
-                                                                                                                }
-                                                                                                                .padding(
-                                                                                                                        horizontal =
-                                                                                                                                12.dp,
-                                                                                                                        vertical =
-                                                                                                                                6.dp
-                                                                                                                )
-                                                                                        ) {
-                                                                                                Text(
-                                                                                                        text =
-                                                                                                                label,
-                                                                                                        style =
-                                                                                                                MaterialTheme
-                                                                                                                        .typography
-                                                                                                                        .labelLarge,
-                                                                                                        color =
-                                                                                                                if (isSelected
-                                                                                                                )
-                                                                                                                        MaterialTheme
-                                                                                                                                .colorScheme
-                                                                                                                                .onPrimaryContainer
-                                                                                                                else
-                                                                                                                        MaterialTheme
-                                                                                                                                .colorScheme
-                                                                                                                                .onSurfaceVariant
-                                                                                                )
-                                                                                        }
-                                                                                }
-                                                                }
-                                                        }
-                                                }
-                                        }
-
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Truncate Long Entries",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Shorten long entries on the home screen",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = isPreviewLimitEnabled,
-                                                        onCheckedChange = {
-                                                                viewModel.setPreviewLimitEnabled(it)
-                                                        }
-                                                )
-                                        }
-
-                                        androidx.compose.animation.AnimatedVisibility(
-                                                visible = isPreviewLimitEnabled
-                                        ) {
-                                                Column {
-                                                        HorizontalDivider(
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceVariant
-                                                        )
-                                                        Column(modifier = Modifier.padding(12.dp)) {
-                                                                Text(
-                                                                        text = "Character Limit",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurface
-                                                                )
-                                                                Text(
-                                                                        text =
-                                                                                "Set how many characters to display before truncating",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .bodySmall,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-
-                                                                Spacer(
-                                                                        modifier =
-                                                                                Modifier.height(
-                                                                                        8.dp
-                                                                                )
-                                                                )
-
-                                                                var _sliderValue by
-                                                                        remember(
-                                                                                previewLimitLength
-                                                                        ) {
-                                                                                mutableStateOf(
-                                                                                        previewLimitLength
-                                                                                                .toFloat()
-                                                                                )
-                                                                        }
-
-                                                                Slider(
-                                                                        value = _sliderValue,
-                                                                        onValueChange = {
-                                                                                _sliderValue = it
-                                                                        },
-                                                                        onValueChangeFinished = {
-                                                                                viewModel
-                                                                                        .setPreviewLimitLength(
-                                                                                                _sliderValue
-                                                                                                        .toInt()
-                                                                                        )
-                                                                        },
-                                                                        valueRange = 50f..200f,
-                                                                        steps = 14,
-                                                                        modifier =
-                                                                                Modifier.fillMaxWidth(),
-                                                                        colors =
-                                                                                SliderDefaults
-                                                                                        .colors(
-                                                                                                thumbColor =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .primary,
-                                                                                                activeTrackColor =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .primary,
-                                                                                                inactiveTrackColor =
-                                                                                                        MaterialTheme
-                                                                                                                .colorScheme
-                                                                                                                .surfaceVariant
-                                                                                        )
-                                                                )
-
-                                                                Row(
-                                                                        modifier =
-                                                                                Modifier.fillMaxWidth(),
-                                                                        horizontalArrangement =
-                                                                                Arrangement
-                                                                                        .SpaceBetween
-                                                                ) {
-                                                                        Text(
-                                                                                "50 chars",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .labelSmall,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                        )
-                                                                        Text(
-                                                                                "${_sliderValue.toInt()} characters",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .labelMedium,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .primary,
-                                                                                fontWeight =
-                                                                                        FontWeight
-                                                                                                .Bold
-                                                                        )
-                                                                        Text(
-                                                                                "200 chars",
-                                                                                style =
-                                                                                        MaterialTheme
-                                                                                                .typography
-                                                                                                .labelSmall,
-                                                                                color =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                        )
-                                                                }
-                                                        }
-                                                }
-                                        }
-
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "First Day of Week",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text = "Start calendar on",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-
-                                                // A simple Segmented-Control-like layout using Row
-                                                // and OutlinedButton or
-                                                // basic TextButtons
-                                                Row(
-                                                        modifier =
-                                                                Modifier.background(
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .surfaceVariant,
-                                                                                MaterialTheme.shapes
-                                                                                        .small
-                                                                        )
-                                                                        .padding(2.dp),
-                                                        verticalAlignment =
-                                                                Alignment.CenterVertically
-                                                ) {
-                                                        Box(
-                                                                modifier =
-                                                                        Modifier.background(
-                                                                                        if (firstDayOfWeek ==
-                                                                                                        DayOfWeek
-                                                                                                                .SUNDAY
-                                                                                        )
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .primaryContainer
-                                                                                        else
-                                                                                                androidx.compose
-                                                                                                        .ui
-                                                                                                        .graphics
-                                                                                                        .Color
-                                                                                                        .Transparent,
-                                                                                        shape =
-                                                                                                MaterialTheme
-                                                                                                        .shapes
-                                                                                                        .small
-                                                                                )
-                                                                                .clickable {
-                                                                                        viewModel
-                                                                                                .setFirstDayOfWeek(
-                                                                                                        DayOfWeek
-                                                                                                                .SUNDAY
-                                                                                                )
-                                                                                }
-                                                                                .padding(
-                                                                                        horizontal =
-                                                                                                12.dp,
-                                                                                        vertical =
-                                                                                                6.dp
-                                                                                )
-                                                        ) {
-                                                                Text(
-                                                                        "Sun",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .labelLarge,
-                                                                        color =
-                                                                                if (firstDayOfWeek ==
-                                                                                                DayOfWeek
-                                                                                                        .SUNDAY
-                                                                                )
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onPrimaryContainer
-                                                                                else
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                )
-                                                        }
-
-                                                        Box(
-                                                                modifier =
-                                                                        Modifier.background(
-                                                                                        if (firstDayOfWeek ==
-                                                                                                        DayOfWeek
-                                                                                                                .MONDAY
-                                                                                        )
-                                                                                                MaterialTheme
-                                                                                                        .colorScheme
-                                                                                                        .primaryContainer
-                                                                                        else
-                                                                                                androidx.compose
-                                                                                                        .ui
-                                                                                                        .graphics
-                                                                                                        .Color
-                                                                                                        .Transparent,
-                                                                                        shape =
-                                                                                                MaterialTheme
-                                                                                                        .shapes
-                                                                                                        .small
-                                                                                )
-                                                                                .clickable {
-                                                                                        viewModel
-                                                                                                .setFirstDayOfWeek(
-                                                                                                        DayOfWeek
-                                                                                                                .MONDAY
-                                                                                                )
-                                                                                }
-                                                                                .padding(
-                                                                                        horizontal =
-                                                                                                12.dp,
-                                                                                        vertical =
-                                                                                                6.dp
-                                                                                )
-                                                        ) {
-                                                                Text(
-                                                                        "Mon",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .labelLarge,
-                                                                        color =
-                                                                                if (firstDayOfWeek ==
-                                                                                                DayOfWeek
-                                                                                                        .MONDAY
-                                                                                )
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onPrimaryContainer
-                                                                                else
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .onSurfaceVariant
-                                                                )
-                                                        }
-                                                }
-                                        }
-
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Show Statistics",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Display statistics button in menu",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = showStatistics,
-                                                        onCheckedChange = {
-                                                                viewModel.setShowStatistics(it)
-                                                        }
-                                                )
-                                        }
-
-                                        HorizontalDivider(
-                                                color = MaterialTheme.colorScheme.surfaceVariant
-                                        )
-
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Enable Drag-to-Reorder",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        "Long-press entries to rearrange them",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = enableDragAndDrop,
-                                                        onCheckedChange = {
-                                                                viewModel.setEnableDragAndDrop(it)
-                                                        }
-                                                )
-                                        }
-                                }
-
-                                // ── Widget Preferences Section ──
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                val context = androidx.compose.ui.platform.LocalContext.current
-                                val widgetCornerRadius by
-                                        viewModel.widgetCornerRadius.collectAsState()
-                                val showWidgetLabel by viewModel.showWidgetLabel.collectAsState()
-
-                                val triggerWidgetUpdate: () -> Unit = {
-                                        val intent =
-                                                android.content.Intent(
-                                                                context,
-                                                                com.mj.yaja.ui.widget
-                                                                                .QuickCaptureWidgetProvider::class
-                                                                        .java
-                                                        )
-                                                        .apply {
-                                                                action =
-                                                                        android.appwidget
-                                                                                .AppWidgetManager
-                                                                                .ACTION_APPWIDGET_UPDATE
-                                                        }
-                                        val ids =
-                                                android.appwidget.AppWidgetManager.getInstance(
-                                                                context
-                                                        )
-                                                        .getAppWidgetIds(
-                                                                android.content.ComponentName(
-                                                                        context,
-                                                                        com.mj.yaja.ui.widget
-                                                                                        .QuickCaptureWidgetProvider::class
-                                                                                .java
-                                                                )
-                                                        )
-                                        intent.putExtra(
-                                                android.appwidget.AppWidgetManager
-                                                        .EXTRA_APPWIDGET_IDS,
-                                                ids
-                                        )
-                                        context.sendBroadcast(intent)
-                                }
-
-                                SettingsSectionHeader(
-                                        icon = Icons.Rounded.Settings,
-                                        title = "Widget Preferences"
-                                )
-
-                                Spacer(modifier = Modifier.height(12.dp))
-
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Column {
-                                                Row(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(
-                                                                                horizontal = 12.dp,
-                                                                                vertical = 8.dp
-                                                                        ),
-                                                        verticalAlignment =
-                                                                Alignment.CenterVertically,
-                                                        horizontalArrangement =
-                                                                Arrangement.SpaceBetween
-                                                ) {
-                                                        Column(Modifier.weight(1f)) {
-                                                                Text(
-                                                                        "Show Label",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .bodyLarge,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurface
-                                                                )
-                                                                Text(
-                                                                        "Display 'Capture' text on the widget",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .bodySmall,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-                                                        }
-                                                        Switch(
-                                                                checked = showWidgetLabel,
-                                                                onCheckedChange = {
-                                                                        viewModel
-                                                                                .setShowWidgetLabel(
-                                                                                        it
-                                                                                )
-                                                                        triggerWidgetUpdate()
-                                                                }
-                                                        )
-                                                }
-
-                                                HorizontalDivider(
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceVariant
-                                                )
-
-                                                Column(modifier = Modifier.padding(12.dp)) {
-                                                        Text(
-                                                                "Corner Radius",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                "Adjust the rounded corners of the widget",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                        Spacer(modifier = Modifier.height(8.dp))
-                                                        Slider(
-                                                                value =
-                                                                        widgetCornerRadius
-                                                                                .toFloat(),
-                                                                onValueChange = {
-                                                                        viewModel
-                                                                                .setWidgetCornerRadius(
-                                                                                        it.toInt()
-                                                                                )
-                                                                        triggerWidgetUpdate()
+                                                NavigationSection(
+                                                                navigationChromeMode = navigationChromeMode,
+                                                                onNavigationChromeModeChange = {
+                                                                        viewModel.setNavigationChromeMode(it)
                                                                 },
-                                                                valueRange = 0f..100f,
-                                                                steps = 19,
-                                                                modifier = Modifier.fillMaxWidth(),
-                                                                colors =
-                                                                        SliderDefaults.colors(
-                                                                                thumbColor =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .primary,
-                                                                                activeTrackColor =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .primary,
-                                                                                inactiveTrackColor =
-                                                                                        MaterialTheme
-                                                                                                .colorScheme
-                                                                                                .surfaceVariant
-                                                                        )
+                                                                showBottomPanelLabels = showBottomPanelLabels,
+                                                                onShowBottomPanelLabelsChange = {
+                                                                        viewModel.setShowBottomPanelLabels(it)
+                                                                },
+                                                                showLookbackInNavBar = showLookbackInNavBar,
+                                                                onShowLookbackChange = { viewModel.setShowLookbackInNavBar(it) },
+                                                                showKeywordsInNavBar = showKeywordsInNavBar,
+                                                                onShowKeywordsChange = { viewModel.setShowKeywordsInNavBar(it) },
+                                                                showTodosInNavBar = showTodosInNavBar,
+                                                                onShowTodosChange = { viewModel.setShowTodosInNavBar(it) },
+                                                                showStatistics = showStatistics,
+                                                                showStatisticsInNavBar = showStatisticsInNavBar,
+                                                                onShowStatisticsInNavBarChange = {
+                                                                        viewModel.setShowStatisticsInNavBar(it)
+                                                                }
                                                         )
-                                                        Row(
-                                                                modifier = Modifier.fillMaxWidth(),
-                                                                horizontalArrangement =
-                                                                        Arrangement.SpaceBetween
-                                                        ) {
-                                                                Text(
-                                                                        "Square",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .labelSmall,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-                                                                Text(
-                                                                        "${widgetCornerRadius.toInt()}dp",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .labelMedium,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .primary,
-                                                                        fontWeight =
-                                                                                androidx.compose.ui
-                                                                                        .text.font
-                                                                                        .FontWeight
-                                                                                        .Bold
-                                                                )
-                                                                Text(
-                                                                        "Circle",
-                                                                        style =
-                                                                                MaterialTheme
-                                                                                        .typography
-                                                                                        .labelSmall,
-                                                                        color =
-                                                                                MaterialTheme
-                                                                                        .colorScheme
-                                                                                        .onSurfaceVariant
-                                                                )
-                                                        }
-                                                }
-                                        }
-                                }
+                                                        Spacer(modifier = Modifier.height(32.dp))
 
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                // ── Data & Storage Section ──
-                                SettingsSectionHeader(
-                                        icon = Icons.Rounded.Storage,
-                                        title = "Data & Storage"
-                                )
-
-                                Spacer(modifier = Modifier.height(12.dp))
-
-                                Text(
-                                        text = "Data Cache Sync",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
-
-                                Spacer(modifier = Modifier.height(4.dp))
-
-                                val swipeToSyncEnabled by
-                                        viewModel.swipeToSyncEnabled.collectAsState()
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 12.dp,
-                                                                        vertical = 8.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically,
-                                                horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                                Column(Modifier.weight(1f)) {
-                                                        Text(
-                                                                text =
-                                                                        "Swipe down on home screen to sync",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = swipeToSyncEnabled,
-                                                        onCheckedChange = {
-                                                                viewModel.setSwipeToSyncEnabled(it)
-                                                        }
+                                                // ── Gestures Section ──
+                                                GesturesSection(
+                                                        entryDeleteSelectionEnabled = entryDeleteSelectionEnabled,
+                                                        onEntryDeleteSelectionEnabledChange = {
+                                                                viewModel.setEntryDeleteSelectionEnabled(it)
+                                                        },
+                                                        swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled,
+                                                        onSwipeToNavigateDatesEnabledChange = {
+                                                                viewModel.setSwipeToNavigateDatesEnabled(it)
+                                                        },
+                                                        enableDragAndDrop = enableDragAndDrop,
+                                                        onEnableDragAndDropChange = { viewModel.setEnableDragAndDrop(it) }
                                                 )
                                         }
-                                }
+                                        Spacer(modifier = Modifier.height(32.dp))
 
-                                Spacer(modifier = Modifier.height(20.dp))
+                                        Column(modifier = Modifier.bringIntoViewRequester(reviewRequester)) {
+                                                SettingsSectionHeader(
+                                                        icon = Icons.Rounded.Info,
+                                                        title = stringResource(R.string.settings_section_review_insights)
+                                                )
+                                                Spacer(modifier = Modifier.height(12.dp))
 
-                                Text(
-                                        text = "Storage Location",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
+                                                ReviewAndInsightsSection(
+                                                        entryReviewEnabled = entryReviewEnabled,
+                                                        onEntryReviewEnabledChange = {
+                                                                viewModel.setEntryReviewEnabled(it)
+                                                        },
+                                                        keywordHighlightingEnabled = keywordHighlightingEnabled,
+                                                        onKeywordHighlightingEnabledChange = {
+                                                                viewModel.setKeywordHighlightingEnabled(it)
+                                                        },
+                                                        fuzzyThreshold = fuzzyThreshold,
+                                                        onFuzzyThresholdChange = { viewModel.setKeywordFuzzyThreshold(it) }
+                                                )
+                                        }
 
-                                Spacer(modifier = Modifier.height(4.dp))
+                                        Column(modifier = Modifier.bringIntoViewRequester(securityRequester)) {
+                                                SecuritySection(
+                                                        isPinEnabled = isPinEnabled,
+                                                        onEnablePin = onNavigateToPinSetup,
+                                                        onDisablePin = onNavigateToPinDisable,
+                                                        onChangePin = onNavigateToPinSetup,
+                                                        isBiometricEnabled = isBiometricEnabled,
+                                                        onEnableBiometric = { viewModel.enableBiometric() },
+                                                        onDisableBiometric = { viewModel.disableBiometric() },
+                                                        autoLockTimeoutMinutes = autoLockTimeoutMinutes,
+                                                        onAutoLockTimeoutChange = { viewModel.setAutoLockTimeout(it) }
+                                                )
+                                        }
 
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Column(modifier = Modifier.padding(12.dp)) {
-                                                val locationText =
-                                                        if (storageUriString == null) {
+                                        Column(modifier = Modifier.bringIntoViewRequester(dataRequester)) {
+                                                DataAndStorageSection(
+                                                        storageLocationText = if (storageUriString == null) {
                                                                 "App Internal Storage (Default)"
                                                         } else {
-                                                                "Custom Folder:\n" +
-                                                                        storageUriString
-                                                                                ?.toUri()
-                                                                                ?.path
-                                                                                ?.substringAfterLast(
-                                                                                        ":"
-                                                                                )
-                                                        }
-
-                                                Text(
-                                                        text = locationText,
-                                                        style = MaterialTheme.typography.bodyMedium,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant
+                                                                "Custom Folder:\n" + (storageUriString?.toUri()?.path?.substringAfterLast(":") ?: "")
+                                                        },
+                                                        hasCustomStorage = storageUriString != null,
+                                                        onResetStorage = { confirmLocationChange(null) },
+                                                        onChooseFolder = { launcher.launch(null) },
+                                                        formattedBackupDate = formattedBackupDate,
+                                                        backupReminderDays = backupReminderDays,
+                                                        onBackupNow = { viewModel.backupData(context) },
+                                                        onBackupReminderDaysChange = { viewModel.setBackupReminderDays(it) },
+                                                        onRestoreBackup = {
+                                                                backupRestoreLauncher.launch(arrayOf("application/zip", "*/*"))
+                                                        },
+                                                        onRefreshCache = onNavigateToRebuildCache,
+                                                        swipeToSyncEnabled = swipeToSyncEnabled,
+                                                        onSwipeToSyncEnabledChange = { viewModel.setSwipeToSyncEnabled(it) },
+                                                        largeJournalSafeMode = largeJournalSafeMode,
+                                                        onLargeJournalSafeModeChange = { viewModel.setLargeJournalSafeMode(it) },
+                                                        versionHistoryEnabled = versionHistoryEnabled,
+                                                        onVersionHistoryEnabledChange = {
+                                                                viewModel.setVersionHistoryEnabled(it)
+                                                        },
+                                                        onNavigateToVersionHistory = onNavigateToVersionHistory,
+                                                        importState = importState,
+                                                        onLaunchDayOneImport = {
+                                                                dayOneLauncher.launch(arrayOf("application/zip", "application/json", "*/*"))
+                                                        },
+                                                        onLaunchJournalisticImport = {
+                                                                journalisticLauncher.launch(arrayOf("application/json", "*/*"))
+                                                        },
+                                                        onCancelImport = { viewModel.cancelImport() },
+                                                        onResetImportState = { viewModel.resetImportState() }
                                                 )
-
-                                                Spacer(modifier = Modifier.height(8.dp))
-
-                                                Row(
-                                                        modifier = Modifier.fillMaxWidth(),
-                                                        horizontalArrangement = Arrangement.End
-                                                ) {
-                                                        if (storageUriString != null) {
-                                                                TextButton(
-                                                                        onClick = {
-                                                                                confirmLocationChange(
-                                                                                        null
-                                                                                )
-                                                                        }
-                                                                ) { Text("Reset to Default") }
-                                                        }
-                                                        TextButton(
-                                                                onClick = { launcher.launch(null) }
-                                                        ) { Text("Choose Folder") }
-                                                }
                                         }
+
+                                        Column(modifier = Modifier.bringIntoViewRequester(integrationsRequester)) {
+                                                TaskerIntegrationSection(
+                                                        onNavigateToTaskerIntegration = onNavigateToTaskerIntegration,
+                                                        onNavigateToShortcodes = onNavigateToShortcodes
+                                                )
+                                        }
+                                        Column(modifier = Modifier.bringIntoViewRequester(helpRequester)) {
+                                                AboutSection(
+                                                        onNavigateToHelp = onNavigateToHelp,
+                                                        onNavigateToAppLog = onNavigateToAppLog
+                                                 )
+                                        }
+
+                                        Spacer(modifier = Modifier.height(32.dp))
                                 }
+                        }
+                }
+        }
+}
 
-                                Spacer(modifier = Modifier.height(20.dp))
+@OptIn(ExperimentalFoundationApi::class)
+private data class SettingsSearchTarget(
+        val title: String,
+        val section: String,
+        val keywords: List<String>,
+        val requester: BringIntoViewRequester? = null,
+        val onSelect: (() -> Unit)? = null
+)
 
-                                Text(
-                                        text = "Backup",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun SettingsSearchCard(
+        query: String,
+        onQueryChange: (String) -> Unit,
+        history: List<String>,
+        filteredTargets: List<SettingsSearchTarget>,
+        showSuggestions: Boolean,
+        onHistoryTap: (String) -> Unit,
+        onTargetTap: (SettingsSearchTarget) -> Unit,
+        onClearQuery: () -> Unit,
+        onDismissSuggestions: () -> Unit
+) {
+        val showHistory = query.isBlank() && history.isNotEmpty() && showSuggestions
+        val visibleTargets = filteredTargets.take(8)
+        val showResults = visibleTargets.isNotEmpty() && showSuggestions
+
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                TextField(
+                        value = query,
+                        onValueChange = onQueryChange,
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true,
+                        shape = androidx.compose.foundation.shape.RoundedCornerShape(28.dp),
+                        leadingIcon = {
+                                Icon(
+                                        imageVector = Icons.Rounded.Search,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
-
-                                Spacer(modifier = Modifier.height(4.dp))
-
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Column(modifier = Modifier.padding(12.dp)) {
-                                                Text(
-                                                        text =
-                                                                "Create a compressed zip file containing all your journal entries to share or save elsewhere.",
-                                                        style = MaterialTheme.typography.bodyMedium,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant
-                                                )
-
-                                                Spacer(modifier = Modifier.height(8.dp))
-
-                                                Row(
-                                                        modifier = Modifier.fillMaxWidth(),
-                                                        horizontalArrangement =
-                                                                Arrangement.SpaceBetween,
-                                                        verticalAlignment =
-                                                                Alignment.CenterVertically
-                                                ) {
-                                                        Text(
-                                                                text =
-                                                                        "Last Backup: $formattedBackupDate",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .labelMedium,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .primary,
-                                                                fontWeight = FontWeight.SemiBold
-                                                        )
-                                                        TextButton(
-                                                                onClick = {
-                                                                        viewModel.backupData(
-                                                                                context
-                                                                        )
-                                                                }
-                                                        ) { Text("Backup Now") }
-                                                }
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(20.dp))
-
-                                Text(
-                                        text = "Cache Management",
-                                        style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
-                                )
-
-                                Spacer(modifier = Modifier.height(4.dp))
-
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Column(modifier = Modifier.padding(12.dp)) {
-                                                Text(
-                                                        text =
-                                                                "Reload all entries from storage to refresh the in-memory cache. Useful if filesystem changes aren't appearing.",
-                                                        style = MaterialTheme.typography.bodyMedium,
-                                                        color =
-                                                                MaterialTheme.colorScheme
-                                                                        .onSurfaceVariant
-                                                )
-
-                                                Spacer(modifier = Modifier.height(8.dp))
-
-                                                Row(
-                                                        modifier = Modifier.fillMaxWidth(),
-                                                        horizontalArrangement = Arrangement.End,
-                                                        verticalAlignment =
-                                                                Alignment.CenterVertically
-                                                ) {
-                                                        TextButton(
-                                                                onClick = {
-                                                                        viewModel.refreshCache()
-                                                                },
-                                                                contentPadding =
-                                                                        PaddingValues(
-                                                                                horizontal = 16.dp
-                                                                        )
-                                                        ) {
-                                                                Icon(
-                                                                        imageVector =
-                                                                                Icons.Rounded
-                                                                                        .Refresh,
-                                                                        contentDescription = null,
-                                                                        modifier =
-                                                                                Modifier.size(18.dp)
-                                                                )
-                                                                Spacer(
-                                                                        modifier =
-                                                                                Modifier.width(8.dp)
-                                                                )
-                                                                Text("Sync Data Cache")
-                                                        }
-                                                }
-                                        }
-                                }
-
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                // ── Security Section ──
-                                SettingsSectionHeader(icon = Icons.Rounded.Lock, title = "Security")
-
-                                Spacer(modifier = Modifier.height(12.dp))
-                                Spacer(modifier = Modifier.height(2.dp))
-                                ElevatedCard(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
-                                                ),
-                                        shape = MaterialTheme.shapes.medium
-                                ) {
-                                        Row(
-                                                modifier =
-                                                        Modifier.fillMaxWidth()
-                                                                .padding(
-                                                                        horizontal = 16.dp,
-                                                                        vertical = 12.dp
-                                                                ),
-                                                verticalAlignment = Alignment.CenterVertically
-                                        ) {
+                        },
+                        trailingIcon = {
+                                if (query.isNotBlank()) {
+                                        IconButton(onClick = onClearQuery) {
                                                 Icon(
-                                                        imageVector = Icons.Rounded.Lock,
-                                                        contentDescription = null,
-                                                        tint = MaterialTheme.colorScheme.primary,
-                                                        modifier = Modifier.size(22.dp)
+                                                        imageVector = Icons.Rounded.Close,
+                                                        contentDescription = stringResource(R.string.settings_search_clear),
+                                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
                                                 )
-                                                Spacer(modifier = Modifier.width(12.dp))
-                                                Column(modifier = Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "PIN Lock",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text =
-                                                                        if (isPinEnabled)
-                                                                                "App is locked"
-                                                                        else "App is unlocked",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
-                                                        )
-                                                }
-                                                Switch(
-                                                        checked = isPinEnabled,
-                                                        onCheckedChange = { enabled ->
-                                                                if (enabled) onNavigateToPinSetup()
-                                                                else onNavigateToPinDisable()
-                                                        }
-                                                )
-                                        }
-                                        if (isPinEnabled) {
-                                                HorizontalDivider(
-                                                        modifier =
-                                                                Modifier.padding(horizontal = 16.dp)
-                                                )
-                                                TextButton(
-                                                        onClick = onNavigateToPinSetup,
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .padding(horizontal = 8.dp)
-                                                ) { Text("Change PIN") }
                                         }
                                 }
+                        },
+                        placeholder = {
+                                Text(
+                                        text = stringResource(R.string.settings_search_placeholder),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                        },
+                        colors =
+                                TextFieldDefaults.colors(
+                                        focusedContainerColor =
+                                                MaterialTheme.colorScheme.surfaceContainerHigh,
+                                        unfocusedContainerColor =
+                                                MaterialTheme.colorScheme.surfaceContainerHigh,
+                                        disabledContainerColor =
+                                                MaterialTheme.colorScheme.surfaceContainerHigh,
+                                        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                                        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                                        cursorColor = MaterialTheme.colorScheme.primary,
+                                        focusedLeadingIconColor =
+                                                MaterialTheme.colorScheme.onSurfaceVariant,
+                                        unfocusedLeadingIconColor =
+                                                MaterialTheme.colorScheme.onSurfaceVariant,
+                                        focusedTrailingIconColor =
+                                                MaterialTheme.colorScheme.onSurfaceVariant,
+                                        unfocusedTrailingIconColor =
+                                                MaterialTheme.colorScheme.onSurfaceVariant,
+                                        focusedIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        disabledIndicatorColor = Color.Transparent
+                                )
+                )
 
-                                // Biometric unlock option (only shown if PIN is enabled)
-                                if (isPinEnabled) {
-                                        Spacer(modifier = Modifier.height(16.dp))
-                                        ElevatedCard(
-                                                modifier = Modifier.fillMaxWidth(),
-                                                colors =
-                                                        CardDefaults.elevatedCardColors(
-                                                                containerColor =
-                                                                        MaterialTheme.colorScheme
-                                                                                .surfaceContainerLow
-                                                        ),
-                                                elevation =
-                                                        CardDefaults.elevatedCardElevation(
-                                                                defaultElevation = 0.dp
-                                                        ),
-                                                shape = MaterialTheme.shapes.medium
+                if (showHistory) {
+                        ElevatedCard(
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = CardDefaults.elevatedCardColors(
+                                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                                ),
+                                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+                        ) {
+                                Column(
+                                        modifier = Modifier.fillMaxWidth().padding(14.dp),
+                                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                        Text(
+                                                text = stringResource(R.string.settings_search_recent),
+                                                style = MaterialTheme.typography.titleSmall,
+                                                color = MaterialTheme.colorScheme.primary
+                                        )
+                                        FlowRow(
+                                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                                verticalArrangement = Arrangement.spacedBy(8.dp)
                                         ) {
-                                                Column(
-                                                        modifier = Modifier.fillMaxWidth()
-                                                                .padding(horizontal = 16.dp, vertical = 16.dp)
-                                                ) {
-                                                        Row(
-                                                                modifier = Modifier.fillMaxWidth(),
-                                                                horizontalArrangement = Arrangement.SpaceBetween,
-                                                                verticalAlignment = Alignment.CenterVertically
-                                                        ) {
-                                                                Row(
-                                                                        verticalAlignment = Alignment.CenterVertically,
-                                                                        modifier = Modifier.weight(1f)
-                                                                ) {
-                                                                        Icon(
-                                                                                imageVector = Icons.Rounded.Fingerprint,
-                                                                                contentDescription = null,
-                                                                                tint = MaterialTheme.colorScheme.primary,
-                                                                                modifier = Modifier.size(24.dp)
+                                                history.forEach { item ->
+                                                        Box(
+                                                                modifier =
+                                                                        Modifier.border(
+                                                                                BorderStroke(
+                                                                                        1.dp,
+                                                                                        MaterialTheme.colorScheme.outlineVariant
+                                                                                ),
+                                                                                CircleShape
                                                                         )
-                                                                        Spacer(modifier = Modifier.width(12.dp))
-                                                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                                                                Text(
-                                                                                        text = "Biometric Unlock",
-                                                                                        style =
-                                                                                                MaterialTheme.typography
-                                                                                                        .bodyLarge,
-                                                                                        color =
-                                                                                                MaterialTheme.colorScheme
-                                                                                                        .onSurface
+                                                                                .clickable { onHistoryTap(item) }
+                                                                                .padding(
+                                                                                        horizontal = 12.dp,
+                                                                                        vertical = 8.dp
                                                                                 )
-                                                                                Text(
-                                                                                        text =
-                                                                                                if (isBiometricEnabled)
-                                                                                                        "Fingerprint or Face ID enabled"
-                                                                                                else "Use biometric instead of PIN",
-                                                                                        style =
-                                                                                                MaterialTheme.typography
-                                                                                                        .bodySmall,
-                                                                                        color =
-                                                                                                MaterialTheme.colorScheme
-                                                                                                        .onSurfaceVariant
-                                                                                )
-                                                                        }
-                                                                }
-                                                                Switch(
-                                                                        checked = isBiometricEnabled,
-                                                                        onCheckedChange = { enabled ->
-                                                                                try {
-                                                                                        if (enabled) viewModel.enableBiometric()
-                                                                                        else viewModel.disableBiometric()
-                                                                                } catch (e: Exception) {
-                                                                                        Log.e("SettingsScreen", "Failed to toggle biometric", e)
-                                                                                }
-                                                                        }
-                                                                )
-                                                        }
-
-                                                        Spacer(modifier = Modifier.height(12.dp))
-                                                        HorizontalDivider()
-
-                                                        Spacer(modifier = Modifier.height(12.dp))
-                                                        Row(
-                                                                modifier = Modifier.fillMaxWidth(),
-                                                                verticalAlignment = Alignment.Top
                                                         ) {
-                                                                Icon(
-                                                                        imageVector = Icons.Rounded.Info,
-                                                                        contentDescription = null,
-                                                                        tint =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurfaceVariant,
-                                                                        modifier = Modifier.size(14.dp).padding(top = 1.dp)
-                                                                )
-                                                                Spacer(modifier = Modifier.width(8.dp))
                                                                 Text(
-                                                                        text =
-                                                                                "PIN lock prevents unauthorized access to the app but does not encrypt your journal data on disk. Someone with direct file access could still read your entries.",
-                                                                        style =
-                                                                                MaterialTheme.typography.bodySmall,
-                                                                        color =
-                                                                                MaterialTheme.colorScheme
-                                                                                        .onSurfaceVariant
+                                                                        text = item,
+                                                                        style = MaterialTheme.typography.labelLarge,
+                                                                        color = MaterialTheme.colorScheme.onSurface
                                                                 )
                                                         }
                                                 }
                                         }
                                 }
+                        }
+                }
 
-                                Spacer(modifier = Modifier.height(32.dp))
-
-                                SettingsSectionHeader(icon = Icons.Rounded.Info, title = "About")
-                                Spacer(modifier = Modifier.height(12.dp))
-                                ElevatedCard(
-                                        onClick = onNavigateToHelp,
-                                        modifier = Modifier.fillMaxWidth(),
-                                        shape = MaterialTheme.shapes.medium,
-                                        colors =
-                                                CardDefaults.elevatedCardColors(
-                                                        containerColor =
-                                                                MaterialTheme.colorScheme
-                                                                        .surfaceContainerLow
-                                                ),
-                                        elevation =
-                                                CardDefaults.elevatedCardElevation(
-                                                        defaultElevation = 0.dp
+                if (showResults) {
+                        ElevatedCard(
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = CardDefaults.elevatedCardColors(
+                                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                                ),
+                                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+                        ) {
+                                Column {
+                                        visibleTargets.forEachIndexed { index, target ->
+                                                DropdownMenuItem(
+                                                        text = {
+                                                                Column {
+                                                                        Text(target.title)
+                                                                        Text(
+                                                                                target.section,
+                                                                                style = MaterialTheme.typography.labelSmall,
+                                                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                                        )
+                                                                }
+                                                        },
+                                                        onClick = { onTargetTap(target) }
                                                 )
-                                ) {
-                                        Row(
-                                                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                                                verticalAlignment = Alignment.CenterVertically
-                                        ) {
-                                                Icon(
-                                                        imageVector =
-                                                                Icons.AutoMirrored.Rounded
-                                                                        .HelpOutline,
-                                                        contentDescription = "Help And About",
-                                                        tint = MaterialTheme.colorScheme.primary,
-                                                        modifier = Modifier.size(24.dp)
-                                                )
-                                                Spacer(modifier = Modifier.width(16.dp))
-                                                Column(modifier = Modifier.weight(1f)) {
-                                                        Text(
-                                                                text = "Help And About",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodyLarge,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurface
-                                                        )
-                                                        Text(
-                                                                text = "Learn how to use yaja",
-                                                                style =
-                                                                        MaterialTheme.typography
-                                                                                .bodySmall,
-                                                                color =
-                                                                        MaterialTheme.colorScheme
-                                                                                .onSurfaceVariant
+                                                if (index != visibleTargets.lastIndex) {
+                                                        HorizontalDivider(
+                                                                color = MaterialTheme.colorScheme.surfaceVariant
                                                         )
                                                 }
                                         }
                                 }
+                        }
+                }
 
-                                Spacer(modifier = Modifier.height(32.dp))
+                if (!showHistory && !showResults && query.isNotBlank() && showSuggestions) {
+                        ElevatedCard(
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = CardDefaults.elevatedCardColors(
+                                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                                ),
+                                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+                        ) {
+                                Row(
+                                        modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                        Text(
+                                                text = stringResource(R.string.settings_search_no_results),
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                        TextButton(onClick = onDismissSuggestions) {
+                                                Text(stringResource(R.string.settings_search_close))
+                                        }
+                                }
                         }
                 }
         }

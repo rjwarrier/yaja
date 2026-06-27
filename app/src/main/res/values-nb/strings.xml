@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">jaja</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">Tidsskrift</string>
+    <string name="nav_calendar">Kalender</string>
+    <string name="nav_lookback">Tilbakeblikk</string>
+    <string name="nav_settings">Innstillinger</string>
+    <string name="nav_shortcodes">Kortkoder</string>
+    <string name="nav_help">Hjelp og om</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Spare</string>
+    <string name="action_cancel">Kansellere</string>
+    <string name="action_delete">Slett</string>
+    <string name="action_edit">Redigere</string>
+    <string name="action_back">Tilbake</string>
+    <string name="action_undo">Angre</string>
+    <string name="action_yes">Ja</string>
+    <string name="action_no">Ingen</string>
+    <string name="action_remove">Fjerne</string>
+    <string name="action_done">Ferdig</string>
+    <string name="action_set">Sett</string>
+    <string name="action_select">Velge</string>
+    <string name="action_ok">OK</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">Gjenoppbygging av cache</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">Rask fangst</string>
+    <string name="quick_capture_hint">Hva skjedde?</string>
+    <string name="quick_capture_helper_shortcodes">Kortkoder utvides her automatisk, og gjøremålslinjer fortsetter på Enter.</string>
+    <string name="quick_capture_save_delayed">Lagring forsinket. Åpne Yaja på nytt for å bekrefte.</string>
+    <string name="cd_saved">Lagret</string>
+    <string name="quick_todo_dialog_title">Rask Legg til</string>
+    <string name="quick_todo_save_delayed">Å gjøre lagring forsinket. Åpne Yaja på nytt for å bekrefte.</string>
+    <string name="quick_todo_placeholder">Legg til en gjøremål</string>
+    <string name="quick_event_placeholder">Legg til en hendelse</string>
+    <string name="quick_todo_task_date">Oppgavedato</string>
+    <string name="quick_todo_event_date">Hendelsesdato</string>
+    <string name="quick_todo_pick_date_cd_format">Velg %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">Lagres som en gjøremålsoppføring for den valgte dagen.</string>
+    <string name="quick_event_selected_day_hint">Lagres som en hendelsesoppføring for den valgte dagen.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">Tidligere</string>
+    <string name="cd_next">Neste</string>
+    <string name="cd_surprise_me">Overrask meg</string>
+    <string name="calendar_cd_go_to_current_month">Gå til gjeldende måned</string>
+    <string name="calendar_quick_action_timeline_title">Tidslinje</string>
+    <string name="calendar_quick_action_timeline_subtitle">Bla gjennom kronologisk</string>
+    <string name="calendar_quick_action_jump_title">Gå til dato</string>
+    <string name="calendar_quick_action_jump_subtitle">Åpne en bestemt dag</string>
+    <string name="calendar_jump_placeholder">DD-MM-ÅÅ</string>
+    <string name="calendar_jump_invalid_date">Ugyldig dato. Bruk formatet DD-MM-ÅÅ.</string>
+    <string name="calendar_action_go">Gå</string>
+    <string name="calendar_enable_future_dates_title">Aktiver fremtidige datoer</string>
+    <string name="calendar_enable_future_dates_message">Fremtidig datooppføring er deaktivert. Vil du aktivere det?</string>
+    <string name="calendar_action_enable">Aktiver</string>
+    <string name="calendar_future_entry_enabled">Fremtidig datooppføring er aktivert</string>
+    <string name="calendar_weekday_sun_short">Sol</string>
+    <string name="calendar_weekday_mon_short">man</string>
+    <string name="calendar_weekday_tue_short">tirs</string>
+    <string name="calendar_weekday_wed_short">ons</string>
+    <string name="calendar_weekday_thu_short">tor</string>
+    <string name="calendar_weekday_fri_short">fre</string>
+    <string name="calendar_weekday_sat_short">Lør</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">PÅLEGG DENNE MÅNEDEN</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d dag</item>
+        <item quantity="other">%1$d / %2$d dager</item>
+    </plurals>
+    <string name="calendar_days_of_memories">dager med minner</string>
+    <string name="calendar_consistency_last_12_months">SISTE 12 MÅNEDER</string>
+    <string name="calendar_consistency_title_format">KONSISTENS – %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">første periode</string>
+    <string name="calendar_graph_frequency_month">Måned</string>
+    <string name="calendar_graph_frequency_year">År</string>
+    <string name="calendar_yearly_consistency_title">Konsistens (årlig)</string>
+    <string name="calendar_keywords_title">Hvem dukker opp mest</string>
+    <string name="calendar_keywords_syncing">Personer og steder-statistikk synkroniseres fortsatt med søkeordindeksering.</string>
+    <string name="calendar_keywords_empty">Legg til minst 3 personer eller 3 steder for å se toppomtaler.</string>
+    <string name="calendar_keywords_people">Mennesker</string>
+    <string name="calendar_keywords_places">Steder</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Innstillinger</string>
+    <string name="settings_appearance">Utseende</string>
+    <string name="settings_appearance_subtitle">Tema, farger, fonter og personlige stiler</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_font">Font</string>
+    <string name="settings_storage">Lagring</string>
+    <string name="settings_security">Sikkerhet</string>
+    <string name="settings_backup">Sikkerhetskopiering</string>
+    <string name="settings_change_storage_title">Endre lagringssted</string>
+    <string name="settings_backup_never">Aldri</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Søkeinnstillinger</string>
+    <string name="settings_search_clear">Tøm søk</string>
+    <string name="settings_search_recent">Nylige søk</string>
+    <string name="settings_search_no_results">Ingen samsvarende innstillinger</string>
+    <string name="settings_search_close">Lukke</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Journal Experience</string>
+    <string name="settings_section_navigation_gestures">Navigasjon og bevegelser</string>
+    <string name="settings_section_review_insights">Gjennomgang og innsikt</string>
+
+    <!-- Language -->
+    <string name="settings_language">Språk</string>
+    <string name="settings_language_title">App-språk</string>
+    <string name="settings_language_subtitle">Velg språket som brukes i hele appen.</string>
+    <string name="settings_language_system_default">Systemstandard</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Inngangsstil</string>
+    <string name="settings_journal_entry_style_subtitle">Velg mellom forhøyede kort og et flatere journalutseende.</string>
+    <string name="settings_journal_entry_style_cards">Kort</string>
+    <string name="settings_journal_entry_style_flat">Flat</string>
+    <string name="settings_journal_render_checkboxes_title">Gjengi avmerkingsbokser som tekst</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Vis gjøremål som [ ] og [x] på tvers av appen i stedet for uttrykksfulle avmerkingsbokser.</string>
+    <string name="settings_journal_day_header_counts_title">Vis antall overskrifter for dag</string>
+    <string name="settings_journal_day_header_counts_subtitle">Vis oppføringer, ord og tegnteller i dagbokens overskrift.</string>
+    <string name="settings_journal_show_timestamps_title">Vis tidsstempler</string>
+    <string name="settings_journal_show_timestamps_subtitle">Vis inngangstid på tidslinjen.</string>
+    <string name="settings_journal_allow_future_title">Tillat fremtidige oppføringer</string>
+    <string name="settings_journal_allow_future_subtitle">Aktiver å legge til oppføringer til fremtidige datoer.</string>
+    <string name="settings_journal_truncate_title">Avkort lange oppføringer</string>
+    <string name="settings_journal_truncate_subtitle">Forkort lange oppføringer på startskjermen.</string>
+    <string name="settings_journal_char_limit_title">Karaktergrense</string>
+    <string name="settings_journal_char_limit_subtitle">Angi hvor mange tegn som skal vises før avkorting.</string>
+    <string name="settings_journal_char_limit_min">50 tegn</string>
+    <string name="settings_journal_char_limit_max">200 tegn</string>
+    <string name="settings_journal_char_count">%1$d tegn</string>
+    <string name="settings_journal_first_day_title">Første dag i uken</string>
+    <string name="settings_journal_first_day_subtitle">Start kalender på</string>
+    <string name="settings_journal_day_sun">Sol</string>
+    <string name="settings_journal_day_mon">man</string>
+    <string name="settings_journal_date_recognition">Datogjenkjenning</string>
+    <string name="settings_journal_date_order_title">Datobestilling</string>
+    <string name="settings_journal_date_order_subtitle">Hvordan lese numeriske datoer</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Dato nøkkelord</string>
+    <string name="settings_journal_date_keywords_subtitle">Ord på andre språk som betyr en dato (for eksempel et lokalt ord for i går).</string>
+    <string name="settings_journal_view_keywords">Vis (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Legg til søkeord</string>
+    <string name="settings_journal_motion">Bevegelse</string>
+    <string name="settings_journal_animations_title">Animasjoner</string>
+    <string name="settings_journal_animations_subtitle">Kontroller bevegelse på tvers av appen. Redusert holder ting flytende med mindre bevegelse.</string>
+    <string name="settings_journal_animations_full">Full</string>
+    <string name="settings_journal_animations_reduced">Redusert</string>
+    <string name="settings_journal_animations_off">Av</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Gjennomgang etter lagring</string>
+    <string name="settings_review_post_write_title">Anmeldelse etter skriving</string>
+    <string name="settings_review_post_write_subtitle">Vis anmeldelsesarket etter å ha trykket på lagre for å trekke ut gjøremål, sjekke omtaler, stjernedag eller angi etikett.</string>
+    <string name="settings_review_people_places">Mennesker og steder</string>
+    <string name="settings_review_highlighting_title">Utheving</string>
+    <string name="settings_review_highlighting_subtitle">Fremhev sporede personer og steder i Hjem-kort og Vis oppføringsmodus.</string>
+    <string name="settings_review_match_sensitivity_title">Matchsensitivitet</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">Hvor nært et ord må samsvare for å bli oppdaget av People &amp; Places (høyere = strengere).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Legg til kortkode</string>
+    <string name="shortcodes_edit_title">Rediger kortkode</string>
+    <string name="shortcodes_code_label">Kortkode (f.eks. @yday)</string>
+    <string name="shortcodes_expansion_label">Utvidelsestekst</string>
+    <string name="shortcodes_export_error">Kunne ikke eksportere kortkoder</string>
+    <string name="shortcodes_import_error">Kunne ikke importere kortkoder</string>
+    <string name="todos_expand_section">Utvid %1$s</string>
+    <string name="todos_collapse_section">Skjul %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Skrive varmekart</string>
+    <string name="heatmap_widget_description">Nylig skriveaktivitet varmekart for journalen din.</string>
+    <string name="quick_capture_widget_name">Rask fangst</string>
+    <string name="quick_capture_widget_description">Ett-trykksknapp for å legge til en journalpost raskt.</string>
+    <string name="quick_todo_widget_name">Rask gjøremål</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal-arrangementer</string>
+    <string name="tasker_screen_allow_add_entry_title">Tillat Tasker Legg til oppføring</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Lar Tasker bruke Yaja Quick Capture-handlinger som Add Entry og Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Tillat Tasker-hendelser</string>
+    <string name="tasker_screen_allow_events_subtitle">Lar Yaja sende oppføring lagret, oppføring endret og oppføring slettet hendelser til Tasker.</string>
+    <string name="tasker_screen_include_text_title">Inkluder oppføringstekst i hendelser</string>
+    <string name="tasker_screen_include_text_subtitle">Av som standard for personvern. Når den er av, mottar Tasker hendelsestype, dato, etikett og klokkeslett, men ikke journaltekst.</string>
+    <string name="tasker_screen_section_what">Hva dette gjør</string>
+    <string name="tasker_screen_body_what">Tasker kan raskt legge til journaloppføringer eller gjøremål i Yaja, legge til linjer i en gruppert oppføring, for eksempel Tapte anrop, og Yaja kan fortelle Tasker når en oppføring er lagret, redigert eller slettet.</string>
+    <string name="tasker_screen_section_how">Hvordan bruke</string>
+    <string name="tasker_screen_body_how">Slå på bryteren du trenger her først. Åpne deretter Tasker og legg til enten en Yaja Quick Capture-handling eller en Yaja Journal Events-hendelse.</string>
+    <string name="tasker_screen_section_notes">Notater</string>
+    <string name="tasker_screen_body_notes">Oppføringstekst deles ikke med Tasker med mindre du aktiverer Inkluder oppføringstekst i hendelser. Hvis Tasker ikke viser de nyeste alternativene eller variablene, åpner du Tasker-konfigurasjonsskjermen igjen etter oppdatering av Yaja.</string>
+    <string name="tasker_screen_section_example">Eksempel</string>
+    <string name="tasker_screen_body_example">Handlingseksempel: Tasker-handling &gt; Yaja Quick Capture &gt; Legg til, med Match / header satt til Tapte anrop og Linje for å legge til satt til en Tasker-variabel. Hendelseseksempel: Tasker-hendelse &gt; Yaja Journal-hendelser &gt; Entry Modified, bruk deretter variabler som %%yaja_event_type, %%yaja_date, og eventuelt %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Brukssaker</string>
+    <string name="tasker_screen_use_case_1">1. Bruk en Yaja-journalhendelse i Tasker for å utløse en FolderSync-synkroniseringshandling, slik at Yaja-mappen din blir sendt til en hvilken som helst skyleverandør etter at oppføringene endres.</string>
+    <string name="tasker_screen_use_case_2">2. Bruk Pushbullet med Tasker for å sende tekst til Yaja Quick Capture, slik at den pushede teksten blir lagret som en ny oppføring for gjeldende dag.</string>
+    <string name="tasker_screen_use_case_3">3. Bruk en Tasker-profil for tapte anrop til å sende en Legg til-handling til Yaja, slik at alle detaljer om tapt anrop havner under én oppføring for tapte anrop i stedet for å opprette separate oppføringer.</string>
+    <string name="quick_todo_widget_description">Ett-trykksknapp for å fange en gjøremål som en ny oppføring for i dag.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Rullbar liste over journaloppgaver. Trykk på en gjøremål for å merke den som ferdig eller angret.</string>
+    <string name="todo_cd_add_todo">Legg til gjøremål</string>
+    <string name="todos_cd_open_compliance_master">Åpne gjentakende oppgaver</string>
+    <string name="compliance_master_title">Gjentakende oppgaver/arrangementer</string>
+    <string name="compliance_master_add">Legg til gjentakende oppgave</string>
+    <string name="compliance_master_edit">Rediger gjentakende oppgave</string>
+    <string name="compliance_master_intro_title">Tilbakevendende oppgaver</string>
+    <string name="compliance_master_intro_body">Lag gjentatte gjøremål for ukentlig, månedlig, kvartalsvis, halvårlig eller årlig arbeid. Yaja avslører hver oppgave bare når syklusen blir relevant.</string>
+    <string name="compliance_master_empty">Ingen gjentakende oppgaver ennå. Legg til en for automatisk å lage gjøremål på den valgte tidsplanen.</string>
+    <string name="compliance_master_status_deactivated">Deaktivert</string>
+    <string name="compliance_master_meta_format">Forfaller på dag %1$d • %2$d leveringsdager</string>
+    <string name="compliance_master_field_title">Oppgavenavn</string>
+    <string name="compliance_master_field_title_hint">Eksempel: Fil månedlig avkastning</string>
+    <string name="compliance_master_field_description">Beskrivelse</string>
+    <string name="compliance_master_field_description_hint">Eksempel: Sjekk bankportalen og bekreft kvitteringen</string>
+    <string name="compliance_master_editor_task_section">Hva bør Yaja minne deg om?</string>
+    <string name="compliance_master_field_due_day">Forfallsdato</string>
+    <string name="compliance_master_field_reveal_day">Opprett på forhånd (dager)</string>
+    <string name="compliance_master_field_schedule_mode">Når er det termin?</string>
+    <string name="compliance_master_schedule_mode_help">Velg hvordan Yaja bestemmer forfallsdatoen.</string>
+    <string name="compliance_master_select_schedule_type">Velg forfallsmønsteret</string>
+    <string name="compliance_master_field_frequency">Hvor ofte?</string>
+    <string name="compliance_master_frequency_help">Velg hvor ofte denne oppgaven skal gjentas.</string>
+    <string name="compliance_master_select_frequency">Velg gjentakelsesfrekvens</string>
+    <string name="compliance_master_schedule_details">Tidsplandetaljer</string>
+    <string name="compliance_master_details_date_help">Skriv inn forfallsdato og hvor mange dager i forveien det skal skrives til dagsfilen.</string>
+    <string name="compliance_master_details_weekday_help">Velg ukedagen da denne oppgaven skal forfalle.</string>
+    <string name="compliance_master_details_boundary_help">Velg hvor mange dager i forveien det skal skrives til dagsfilen.</string>
+    <string name="compliance_master_field_due_weekday">Forfall ukedag</string>
+    <string name="compliance_master_select_weekday">Velg ukedag</string>
+    <string name="compliance_master_due_day_help">Angi en dato fra 1 til 31. Kortere måneder bruker sin siste gyldige dato.</string>
+    <string name="compliance_master_reveal_day_help">Hvor mange dager før forfallsdatoen for å skrive todo til den daglige journalfilen.</string>
+    <string name="compliance_master_first_day_selected">Forfaller den første datoen i hver gjeldende måned.</string>
+    <string name="compliance_master_last_day_selected">Forfaller på siste dato i hver gjeldende måned.</string>
+    <string name="compliance_mode_day_of_month">Spesifikk dato</string>
+    <string name="compliance_mode_day_of_month_desc">Forfaller på en nummerert dato, for eksempel den 15.</string>
+    <string name="compliance_mode_day_of_week">Ukedag</string>
+    <string name="compliance_mode_day_of_week_desc">Forfaller på en valgt ukedag, for eksempel mandag.</string>
+    <string name="compliance_mode_first_day">Første i måneden</string>
+    <string name="compliance_mode_first_day_desc">Forfaller den første datoen i hver gjeldende måned.</string>
+    <string name="compliance_mode_last_day">Slutten av måneden</string>
+    <string name="compliance_mode_last_day_desc">Forfaller på siste dato, inkludert kortere måneder.</string>
+    <string name="compliance_frequency_weekly">Ukentlig</string>
+    <string name="compliance_frequency_biweekly">Annen uke</string>
+    <string name="compliance_frequency_monthly">Månedlig</string>
+    <string name="compliance_frequency_quarterly">Kvartalsvis</string>
+    <string name="compliance_frequency_half_yearly">Halvårlig</string>
+    <string name="compliance_frequency_annual">Årlig</string>
+    <string name="compliance_master_summary_day_of_month">Dag %1$d • %2$s • %3$d dager i forveien</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">Første date • %1$s • %2$d dager i forveien</string>
+    <string name="compliance_master_summary_last_day">Siste dato • %1$s • %2$d dager i forveien</string>
+    <string name="compliance_master_execution_title">Hvordan dette vil gå</string>
+    <string name="compliance_master_execution_day_of_month">En gjøremål opprettes %1$s på dag %2$d. Den skrives til din daglige fil %3$d dager i forveien.</string>
+    <string name="compliance_master_execution_weekday">En gjøremål opprettes %1$s på %2$s. Den skrives til din daglige fil %3$d dager i forveien.</string>
+    <string name="compliance_master_execution_monthly_weekday">En gjøremål opprettes månedlig på samme %1$s-forekomst som startdatoen. Den skrives til din daglige fil %2$d dager i forveien.</string>
+    <string name="compliance_master_execution_month_boundary">En gjøremål opprettes %1$s på %2$s i forfallsmåneden. Den skrives til din daglige fil %3$d dager i forveien.</string>
+    <string name="compliance_master_boundary_first">første date</string>
+    <string name="compliance_master_boundary_last">siste dato</string>
+    <string name="compliance_master_recurrence_weekly">hver uke</string>
+    <string name="compliance_master_recurrence_biweekly">annenhver uke</string>
+    <string name="compliance_master_recurrence_monthly">hver måned</string>
+    <string name="compliance_master_recurrence_quarterly">hver tredje måned</string>
+    <string name="compliance_master_recurrence_half_yearly">hver sjette måned</string>
+    <string name="compliance_master_recurrence_annual">hvert år</string>
+    <string name="todo_chip_compliance">Tilbakevendende</string>
+    <string name="compliance_master_upcoming">Kommende</string>
+    <string name="compliance_master_delete_confirm_title">Vil du slette gjentakende oppgave?</string>
+    <string name="compliance_master_delete_confirm_body">\"%1$s\" vil bli fjernet og ingen flere gjøremål vil bli opprettet.</string>
+    <string name="compliance_master_next_date">Neste: %1$s</string>
+    <string name="compliance_master_end_section">Slutttilstand</string>
+    <string name="compliance_master_end_help">Velg når denne oppgaven slutter å gjentas</string>
+    <string name="compliance_master_end_never">Aldri</string>
+    <string name="compliance_master_end_on_date">På dato</string>
+    <string name="compliance_master_end_after">Etter…</string>
+    <string name="compliance_master_end_never_desc">Gjentas på ubestemt tid uten sluttdato.</string>
+    <string name="compliance_master_end_date_select">Velg sluttdato</string>
+    <string name="compliance_master_end_date_help">Ingen oppgaver opprettes etter denne datoen.</string>
+    <string name="compliance_master_end_count_label">Antall forekomster</string>
+    <string name="compliance_master_end_count_help">Stopper etter at mange oppgaver er opprettet.</string>
+    <string name="compliance_master_ends_on">Slutter %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d igjen</string>
+    <string name="compliance_master_ended">Avsluttet</string>
+    <string name="compliance_master_type_label">Opprett som</string>
+    <string name="compliance_master_type_task">Oppgave</string>
+    <string name="compliance_master_type_event">Hendelse</string>
+    <string name="heatmap_widget_status_loading">Laster inn varmekart …</string>
+    <string name="heatmap_widget_status_empty">Ingen oppføringer ennå</string>
+    <string name="heatmap_widget_status_refresh">Åpne Yaja for å oppdatere varmekartet</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">Cachen gjenoppbygd.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">Ny oppføring</string>
+    <string name="shortcut_new_entry_long">Legg til en journalpost</string>
+    <string name="shortcut_add_todo_short">Legg til Todo</string>
+    <string name="shortcut_add_todo_long">Legg til en gjøremål for i dag</string>
+    <string name="shortcut_add_event_short">Legg til hendelse</string>
+    <string name="shortcut_add_event_long">Legg til en hendelse</string>
+    <string name="shortcut_today_short">I dag</string>
+    <string name="shortcut_today_long">Åpne dagens journal</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigasjon</string>
+    <string name="settings_bottom_nav_style_label">Bunnnavigasjonsstil</string>
+    <string name="settings_navigation_mode_title">Navigasjonsmodus</string>
+    <string name="settings_navigation_mode_subtitle">Velg mellom den flytende navigasjonslinjen og hele bunnpanelet.</string>
+    <string name="settings_nav_mode_floating">Flytende</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Navigasjonsskjermer</string>
+    <string name="settings_nav_summary_floating">Journal og kalender forblir alltid i den flytende linjen. Velg opptil 2 skjermer til. Foreløpig valgt: %1$d av %2$d.</string>
+    <string name="settings_nav_summary_panel">Journal og Kalender forblir alltid i bunnpanelet. Velg opptil 3 skjermer til. Foreløpig valgt: %1$d av %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Vis tilbakeblikk i den aktive navigasjonslinjen eller panelet.</string>
+    <string name="settings_nav_people_places_subtitle">Vis personer og steder i den aktive navigasjonslinjen eller panelet.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Vis gjøremål i den aktive navigasjonslinjen eller panelet.</string>
+    <string name="todos_quick_add_title">Rask Legg til</string>
+    <string name="todos_hero_subtitle">Spor journalarbeid og øyeblikk</string>
+    <string name="todos_hero_all_activity">All aktivitet</string>
+    <string name="todos_hero_open_focus">Åpent fokus</string>
+    <string name="todos_hero_completed">Fullført</string>
+    <string name="todos_stat_today_open">Åpent i dag</string>
+    <string name="todos_stat_done_today">Ferdig i dag</string>
+    <string name="todos_stat_events">Hendelser</string>
+    <string name="todos_stat_still_open">Fortsatt åpen</string>
+    <string name="todos_stat_past_7d">Siste 7d</string>
+    <string name="todos_stat_days">Dager</string>
+    <string name="todos_empty_done">Ingen fullførte gjøremål ennå</string>
+    <string name="todos_empty_events">Ingen arrangementsoppføringer ennå</string>
+    <string name="todos_section_open">ÅPNE</string>
+    <string name="todos_section_later">SEINERE</string>
+    <string name="todos_section_upcoming">KOMMENDE</string>
+    <string name="todos_section_future_events">FREMTIDIGE HENDELSER</string>
+    <string name="todos_section_past_events">TIDLIGERE HENDELSER</string>
+    <string name="todos_cd_open_day">Åpen dag</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d åpne oppgaver</item>
+        <item quantity="other">%1$d åpne oppgaver</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d utført oppgave</item>
+        <item quantity="other">%1$d utførte oppgaver</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d kommende arrangement</item>
+        <item quantity="other">%1$d kommende arrangementer</item>
+    </plurals>
+    <string name="todos_filter_all_format">Alle %1$d</string>
+    <string name="todos_filter_open_format">Åpne %1$d</string>
+    <string name="todos_filter_done_format">Ferdig %1$d</string>
+    <string name="todos_filter_events_format">Hendelser %1$d</string>
+    <string name="todos_cheer_all_clear">Alt klart. Hyggelig.</string>
+    <string name="todos_cheer_done_and_dusted">Ferdig og støvet ned.</string>
+    <string name="todos_cheer_nothing_pending">Ingenting venter.</string>
+    <string name="todos_cheer_caught_up">Du tok igjen.</string>
+    <string name="todos_cheer_clean_slate">Ren skifer.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">%1$d dag siden</item>
+        <item quantity="other">Om %1$d dager</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d dag siden</item>
+        <item quantity="other">%1$d dager siden</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">Om %1$d uke</item>
+        <item quantity="other">Om %1$d uker</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d uke siden</item>
+        <item quantity="other">%1$d uker siden</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">Om 1 måned</string>
+    <string name="todos_relative_one_month_ago">1 måned siden</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">Om %1$d måned</item>
+        <item quantity="other">Om %1$d måneder</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d måned siden</item>
+        <item quantity="other">%1$d måneder siden</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistikk</string>
+    <string name="settings_nav_statistics_subtitle_on">Vis statistikk i den aktive navigasjonslinjen eller panelet.</string>
+    <string name="settings_nav_statistics_subtitle_off">Slå på statistikk først for å plassere den i navigasjonen.</string>
+    <string name="settings_show_labels_bottom_panel_title">Vis etiketter i bunnpanelet</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Vis tekstetiketter under ikoner i bunnpanelet.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gester</string>
+    <string name="settings_entry_delete_title">Oppføring Slett</string>
+    <string name="settings_entry_delete_subtitle">Trykk lenge på en oppføring for å velge den. Trykk på flere oppføringer for å velge flere, og bruk deretter den midtstilte Slett-knappen. Trykk på tom plass for å fjerne valget.</string>
+    <string name="settings_swipe_navigate_title">Sveip for å navigere i datoer</string>
+    <string name="settings_swipe_navigate_subtitle">Sveip fra høyre til venstre for å gå én dato fremover, og fra venstre til høyre for å gå bakover.</string>
+    <string name="settings_drag_reorder_title">Aktiver Dra for å endre rekkefølge</string>
+    <string name="settings_drag_reorder_subtitle">Langt trykk på oppføringer for å omorganisere dem</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data og gjenoppretting</string>
+    <string name="settings_swipe_rebuild_index">Sveip ned på startskjermen for å gjenoppbygge indeksen</string>
+    <string name="settings_large_journal_safe_mode_title">Stor journal sikker modus</string>
+    <string name="settings_large_journal_safe_mode_subtitle">Når en veldig stor journal oppdages, utsett ikke-essensiell oppstartsstatistikk slik at appen åpnes raskere og sikrere.</string>
+    <string name="settings_version_history_title">Versjonshistorikk</string>
+    <string name="settings_version_history_subtitle">Oppbevar trygge kopier før oppføringsredigeringer, slettinger, etiketter og endringer på nytt.</string>
+    <string name="settings_storage_location_label">Lagringssted</string>
+    <string name="settings_reset_to_default">Tilbakestill til standard</string>
+    <string name="settings_choose_folder">Velg Mappe</string>
+    <string name="settings_backup_description">Opprett en Yaja backup zip som inneholder journaloppføringer, kortkoder, datonøkkelord og person- og stedsdata. Gjenoppretting kan slå den sammen trygt tilbake senere.</string>
+    <string name="settings_last_backup">Siste sikkerhetskopi: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Alder for sikkerhetskopiering</string>
+    <string name="settings_backup_reminder_disabled">Funksjonshemmet</string>
+    <string name="settings_backup_reminder_desc">Marker sikkerhetskopiering i sidefeltet når den er eldre enn %1$d dager.</string>
+    <string name="settings_backup_reminder_days_disabled">0 dager (deaktivert)</string>
+    <string name="settings_backup_reminder_days">%1$d dager</string>
+    <string name="settings_restore_button">Restaurere</string>
+    <string name="settings_backup_now_button">Sikkerhetskopier nå</string>
+    <string name="settings_db_index_management_label">Databaseindeksstyring</string>
+    <string name="settings_db_index_management_desc">Åpne fokuserte gjenoppbyggingsverktøy for gjøremål, mennesker og steder, eller en fullstendig gjenoppbygging av databaseindeks.</string>
+    <string name="settings_rebuild_tools_button">Gjenoppbygg verktøy</string>
+    <string name="settings_import_label">Import</string>
+    <string name="settings_import_info_cd">Importer informasjon</string>
+    <string name="settings_import_info_title">Importer informasjon</string>
+    <string name="settings_import_day_one_title">Dag én import</string>
+    <string name="settings_import_day_one_bullet1">- Eksporter fra dag én uten bilder</string>
+    <string name="settings_import_day_one_bullet2">- Kun tekstdata vil bli importert</string>
+    <string name="settings_import_day_one_bullet3">- Tidsstempel og stedsdata (hvis tilgjengelig) vil bli bevart</string>
+    <string name="settings_import_perf_warning_title">Ytelsesadvarsel</string>
+    <string name="settings_import_perf_warning_desc">Import av et stort antall oppføringer (500+) kan ta flere minutter. Du kan navigere bort og importen fortsetter i bakgrunnen.</string>
+    <string name="settings_got_it">Skjønner det</string>
+    <string name="settings_import_success">%1$d nye dager, %2$d slått sammen, %3$d hoppet over</string>
+    <string name="settings_import_source_day_one">Dag én</string>
+    <string name="settings_import_source_day_one_subtitle">.zip eller .json eksport</string>
+    <string name="settings_import_source_journalistic">Journalistisk</string>
+    <string name="settings_import_source_journalistic_subtitle">.json eksport</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Lær hvordan du bruker yaja</string>
+    <string name="help_footer_website">Nettsted</string>
+    <string name="help_footer_share">Dele</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Uenighet</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Del yaja</string>
+    <string name="help_share_yaja_text">yaja - enda en journalføringsapp\n\nEn lokal journal uten distraksjon som lagrer oppføringer som markdown-filer. Den inkluderer tidslinje, tilbakeblikk, personer og steder, maler, anmeldelser, statistikk og widgets.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord brukernavn kopiert!</string>
+    <string name="help_footer_play_store">Play Butikk</string>
+    <string name="help_cd_rj_logo">RJ-logo</string>
+    <string name="help_screen_title">Hjelp og om</string>
+    <string name="help_welcome_title">Velkommen til yaja</string>
+    <string name="help_welcome_body">Yaja er en lokal-første markdown-dagbok for å fange dager, personer, steder, oppfølginger, anmeldelser og mønstre uten å komme i veien for deg. Denne siden gir en rask guide til hoveddelene av appen.</string>
+    <string name="help_start_here">Start her</string>
+    <string name="help_cd_collapse">Kollapse</string>
+    <string name="help_cd_expand">Utvide</string>
+    <string name="help_group_everyday_title">Hver dag</string>
+    <string name="help_group_everyday_desc">Journalføring, skriveflyt og daglig navigering.</string>
+    <string name="help_group_reviews_title">Anmeldelser og innsikt</string>
+    <string name="help_group_reviews_desc">Tilbakeblikk, trender, mennesker, steder og analyser.</string>
+    <string name="help_group_advanced_title">Avanserte verktøy</string>
+    <string name="help_group_advanced_desc">Widgets, lagring, personvern, sikkerhetskopier og tekniske verktøy.</string>
+    <string name="help_onboard_todos_events_title">Gjøremål, begivenheter og tilbakevendende</string>
+    <string name="help_onboard_todos_events_body">Hold personlige påminnelser, familieplaner og gjentakende tidsplaner som automatisk genererer oppgaver på forfallsdatoene.</string>
+    <string name="help_onboard_widgets_title">Widgets</string>
+    <string name="help_onboard_widgets_body">Legg til widgeter for varmekart, hurtigfangst, rask gjøremål eller gjøremålsliste fra startprogrammet.</string>
+    <string name="help_onboard_version_history_title">Versjonshistorikk</string>
+    <string name="help_onboard_version_history_body">Aktiver historikkfiler i Innstillinger &gt; Data for å holde trygge øyeblikksbilder før risikable endringer.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Bruk Tasker for raskt å legge til oppføringer, gjøremål eller hendelser når noe personlig må fanges opp med en gang.</string>
+    <string name="help_section_writing_editor_title">Skriving og redaktør</string>
+    <string name="help_section_writing_editor_preview">Maler, markdown-overskrifter, gjøremål, hendelser og fleksibel utkastinnsetting.</string>
+    <string name="help_section_writing_editor_content">+ Trykk på den flytende \'+\'-knappen for å skrive for den valgte dagen.\n+ Bruk maler som Møtenotat, Reisedag, Helselogg, Refleksjon, Arbeidslogg og mer.\n+ Maler kan settes inn i et tomt utkast, legges til nedenfor, brukes til å erstatte et utkast, eller settes inn ved markøren.\n+ Editor-brikker kan raskt sette inn todoss, bullet-lister og begivenheter. og Rediger oppføring støtter markdown-stil overskrifter som ### Seksjon.</string>
+    <string name="help_section_post_write_review_title">Anmeldelse etter skriving</string>
+    <string name="help_section_post_write_review_preview">Gjøremålsutvinning, søkeordgjenkjenning, stjernemerking, etiketter og gjenoppsett oppsett.</string>
+    <string name="help_section_post_write_review_content">+ Etter å ha skrevet, kan Yaja åpne et anmeldelsesark før lagring.\n+ Det kan trekke ut gjøremål, oppdage personer og steder, stjernemerke dagen, angi en dagsetikett og planlegge gjenbesøksdatoer.\n+ Du kan deaktivere Post-write Review fra Innstillinger hvis du foretrekker direkte lagring.</string>
+    <string name="help_section_revisit_followup_title">Datoer for gjenbesøk og oppfølging</string>
+    <string name="help_section_revisit_followup_preview">Journaltilknyttede oppfølgingsdatoer med raske valg og et tilpasset alternativ.</string>
+    <string name="help_section_revisit_followup_content">+ Legg til gjenbesøksdatoer med i morgen, neste uke, neste måned eller en egendefinert dato.\n+ Elementer for gjenbesøk vises på Hjem og er merket i kalender og tidslinje.\n+ Dette fungerer bra for løfter, beslutninger, helsesjekker og påminnelser knyttet til journalkontekst.</string>
+    <string name="help_section_navigation_gestures_title">Navigasjon og bevegelser</string>
+    <string name="help_section_navigation_gestures_preview">Datoflytting, sletting av valg, sveippreferanser og gjenoppbygg cache-atferd.</string>
+    <string name="help_section_navigation_gestures_content">+ Hjem støtter datonavigering med piler og valgfri sveipenavigasjon når aktivert.\n+ Trykk lenge på en oppføring for å velge den. Trykk på flere oppføringer for å velge dem også, og bruk deretter Slett-pillen nær Legg til-knappen.\n+ Hvis du trykker utenfor de valgte oppføringene, slettes utvalget. Slettede oppføringer kan gjenopprettes sammen fra gjenopprettingsnedtellingen.\n+ Du kan gjenoppbygge hurtigbufferen når journalfiler endres utenfor Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Kortkoder og hurtigopptak</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Rask personlig fangst pluss gjenbrukbare dynamiske tekstutdrag.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Lag kortkoder for å sette inn gjentatt tekst raskt.\n+ Dynamiske plassholdere som {{today:dd-MMM}} og {{now:HH:mm}} fungerer inne i kortkoder.\n+ Quick Capture hjelper deg med å logge noe raskt uten å åpne hele redigeringsprogrammet.\n+ Hurtigtillegg kan lagre enten en gjøremål eller en hendelse for en valgt dato fra skjermbildet, eller Tasker.</string>
+    <string name="help_section_todos_events_title">Gjøremål, begivenheter og tilbakevendende</string>
+    <string name="help_section_todos_events_preview">Personlige påminnelser, bemerkelsesverdige hendelser og automatiserte gjentakende tidsplaner.</string>
+    <string name="help_section_todos_events_content">+ Todos skrives direkte i journaloppføringer som [ ] og [x] linjer.\n+ Hendelser er vanlige journaloppføringer merket som begivenhet, nyttige for familieplaner, avtaler, reiser eller alt du vil legge merke til senere.\n+ Gjentakende oppgaver og hendelser (tidsplaner) skriver automatisk gjøremål eller hendelsesoverskrifter til den daglige journalsidene dine (f. timeplanene dine ved å trykke på det gjentakende ikonet på Todos-skjermen.\n+ Hver dag når du åpner Yaja, kjører bakgrunnspipelinen for å sjekke om noen planlagte oppgaver skal utføres, og setter dem inn i dagens oppføring.\n+ Todos-skjermen hjelper deg med å se åpne gjøremål, fullførte gjøremål og hendelser uten å gjøre Yaja om til en produktivitetsoversikt for å åpne den dagen\n+. på Todos for å gjenoppbygge gjøremålsindeksen hvis filer endres utenfor Yaja.\n+ Vis fullførte oppgaver huskes, så din foretrukne visning fester seg når du drar og returnerer.\n+ Todo-moduler kan vise ventende oppgaver, bekrefte før du bytter, skjule fullførte oppgaver og eventuelt automatisk skjule når ingenting venter.</string>
+    <string name="help_section_people_places_title">Mennesker og steder</string>
+    <string name="help_section_people_places_preview">Nøkkelord, aliaser, trender og rangerte tilkoblingsvisninger.</string>
+    <string name="help_section_people_places_content">+ Spor personer og steder med aliaser og relasjonsetiketter.\n+ Søk, filtrer og sorter søkeordlisten.\n+ Søkeorddetaljsider viser nylig, omtaler over tid, samtidige omtaler og rangerte forbindelser.\n+ Samsvarssensitivitet kan justeres fra Innstillinger.</string>
+    <string name="help_section_timeline_lookback_title">Tidslinje og tilbakeblikk</string>
+    <string name="help_section_timeline_lookback_preview">Siste dag surfing, høydepunkter, overrask meg og gjennomgå inngangspunkter.</string>
+    <string name="help_section_timeline_lookback_content">+ Tidslinjen lar deg bla gjennom siste dager med filtre, årsbrikker og valgfri modus for hele datoen.\n+ Tilbakeblikk viser oppføringer fra samme dag de siste årene og dine stjernemerkede høydepunkter.\n+ Overrask meg åpner en tilfeldig tidligere oppføring fra Tilbakeblikk.\n+ Ukentlig gjennomgang og månedlig gjennomgang direkte i Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistikk og anmeldelser</string>
+    <string name="help_section_statistics_reviews_preview">Sammenligningsmodus, malinnsikt, egendefinerte synlige deler og sammendrag.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistikk inkluderer sammenligningsmodus, nøkkelorddeltaer og malinnsikt.\n+ Du kan velge hvilke statistikkseksjoner som forblir synlige fra statistikkskjermen.\n+ Sammenligningsmodus er tilgjengelig for alle tider og oppsummerer måneds- og årsdeltaer.\n+ Gjennomgangssider oppsummerer de fleste aktive dagene, de beste personene og stedene, favorittøyeblikk, etiketter, språkfordeling og strek- eller gap.</string>
+    <string name="help_section_widgets_home_title">Widgeter og hjemmeoverflate</string>
+    <string name="help_section_widgets_home_preview">Launcher-widgets, uthevede søkeord og hjemmestatistikk på dagnivå.</string>
+    <string name="help_section_widgets_home_content">+ Writing Heatmap, Quick Capture, Quick Add og Todo List-widgeter er tilgjengelige på startprogrammet.\n+ Widget-konfigurasjonsskjermer lar deg justere hjørner, polstring, form, overskrifter, fullført oppgavesynlighet og andre widget-alternativer der det støttes.\n+ Varmekart-widgeten bruker flere intensitetsnyanser for en jevnere skrive- og historikkvisningsinnstilling for personer\n+innstillingen. aktivert.\n+ Overskriften for startdato kan vise eller skjule antall oppføringer, ord og antall tegn.</string>
+    <string name="help_section_language_text_analysis_title">Språk- og tekstanalyse</string>
+    <string name="help_section_language_text_analysis_preview">Lokal språkgjenkjenning for statistikk og vurderingsinnsikt.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja oppdager dominerende skript eller språk på tvers av oppføringer for innsikt.\n+ Språkdeling vises i statistikk og anmeldelser.\n+ Deteksjon kjører lokalt og sender ikke journaltekst ut av enheten.</string>
+    <string name="help_section_data_privacy_cache_title">Data, personvern og cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown-lagring, versjonslogg, applogg, applås og gjenoppbygging av cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Personvern: Alle personlige journaldata ligger utelukkende på din fysiske enhet og forlater den aldri når som helst. Yaja kjører ikke skydatabaser, eksterne sikkerhetskopieringsservere eller telemetri for å spore teksten din.\n+ Journaloppføringer lagres som standard Markdown-filer ordnet etter år og måned.\n+ Versjonshistorikk kan oppbevare trygge øyeblikksbilder før redigeringer, slettinger, etiketter og gå tilbake til endringer.\n+ Du kan velge hvor mange versjoner som skal beholdes og hvor mange dager historikk, logg-aktivitet og lagring av applogger og tekniske data lagres. journaltekst.\n+ Gjenoppbygg appbuffer lar deg oppdatere appdata modulært, inkludert gjøremål og gjenoppbygging av full cache.\n+ Applås støtter PIN-kode og fingeravtrykk.\n+ Yaja holder tung indeksering og statistikkarbeid utsatt der det er mulig, slik at appstart og lagring forblir responsive.</string>
+    <string name="settings_app_log_title">Applogg</string>
+    <string name="settings_app_log_subtitle">Se personvernsikker diagnostikk og tidligere krasjdetaljer</string>
+    <string name="app_log_cd_share">Del applogg</string>
+    <string name="app_log_cd_clear">Tøm applogg</string>
+    <string name="app_log_privacy_title">Personvernsikker diagnostikk</string>
+    <string name="app_log_privacy_description">Denne loggen registrerer store apphendelser, hurtigbuffer-/lagringsoperasjoner, widgetoppdateringer og krasjdetaljer. Det inkluderer ikke journaloppføringer, gjøremålstekst eller privat notatinnhold.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Behold siste %d dag</item>
+        <item quantity="other">Behold de siste %d dagene</item>
+    </plurals>
+    <string name="app_log_retention_description">Eldre logghendelser beskjæres automatisk under logging og umiddelbart når denne innstillingen endres.</string>
+    <string name="app_log_empty">Ingen applogg ennå.</string>
+    <string name="app_log_refresh">Oppdater logg</string>
+    <string name="app_log_share_empty">Ingen Yaja-apploggoppføringer ennå.</string>
+    <string name="app_log_share_subject">Yaja applogg</string>
+    <string name="app_log_share_chooser">Del Yaja-apploggen</string>
+    <string name="app_log_local_time_format">%1$s | lokal tid\n%2$s</string>
+    <string name="settings_website_title">Yaja nettsted</string>
+    <string name="settings_website_subtitle">Åpne den offisielle nettsiden for oppdateringer og detaljer</string>
+    <string name="settings_advanced_integrations_title">Avanserte integrasjoner</string>
+    <string name="settings_tasker_integration_title">Tasker-integrasjon</string>
+    <string name="settings_tasker_integration_subtitle">Raske fangsthandlinger og journalhendelsesutløsere</string>
+    <string name="settings_shortcodes_subtitle">Administrer gjenbrukbare tekstutdrag som utvides mens du skriver eller hurtigfanger.</string>
+    <string name="settings_privacy_security_title">Personvern og sikkerhet</string>
+    <string name="settings_pin_lock_title">PIN-lås</string>
+    <string name="settings_app_locked">Appen er låst</string>
+    <string name="settings_app_unlocked">Appen er låst opp</string>
+    <string name="settings_change_pin">Endre PIN</string>
+    <string name="settings_biometric_unlock_title">Biometrisk opplåsing</string>
+    <string name="settings_biometric_enabled_desc">Fingeravtrykk eller Face ID aktivert</string>
+    <string name="settings_biometric_disabled_desc">Bruk biometrisk i stedet for PIN-kode</string>
+    <string name="settings_autolock_timeout_title">Tidsavbrudd for automatisk låsing</string>
+    <string name="settings_pin_lock_disclaimer">System</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minutt</item>
+        <item quantity="other">%1$d minutter</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Lys</string>
+    <string name="settings_theme_dark">Mørk</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Farger</string>
+    <string name="settings_color_intensity_title">Fargeintensitet</string>
+    <string name="settings_background_tint_title">Bakgrunnsfarge</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Skikk</string>
+    <string name="settings_font_size_label">Skriftstørrelse</string>
+    <string name="settings_ui_font_size_label">UI-skriftstørrelse</string>
+    <string name="settings_data_font_size_label">Innhold Skriftstørrelse</string>
+    <string name="settings_follow_ui_font_scale_label">Gjør innholdsskriftstørrelse til samme som UI</string>
+    <string name="settings_color_source_material_you">Materiale deg</string>
+    <string name="settings_theme_preview_title">Forhåndsvisning av tema</string>
+    <string name="settings_journal_entry_preview">Journalpost</string>
+    <string name="settings_journal_entry_preview_desc">Kort, sjetonger og knapper vil bruke disse fargene.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Aksent</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensitet: %1$s</string>
+    <string name="settings_personal_themes_title">Personlige temaer</string>
+    <string name="settings_theme_name_label">Temanavn</string>
+    <string name="settings_main_color_label">Hovedfarge</string>
+    <string name="settings_hue_label">Hue</string>
+    <string name="settings_sat_label">Lør</string>
+    <string name="settings_bright_label">Lys</string>
+    <string name="settings_generated_accents_title">Genererte aksenter</string>
+    <string name="settings_personal_theme_desc">Velg én farge. Yaja lager matchende aksent- og støttefarger.</string>
+    <string name="settings_preview_chip_main">Hoved</string>
+    <string name="settings_preview_chip_support">Støtte</string>
+    <string name="settings_no_font_selected">Ingen skrift er valgt</string>
+    <string name="settings_custom_font_desc">Velg en hvilken som helst unicode .ttf- eller .otf-fil – f.eks. en malayalam-font som Manjari. Tegn skriften mangler bruker systemfonter.</string>
+    <string name="settings_font_replace">Bytt ut</string>
+    <string name="settings_choose_font_file">Velg fontfil</string>
+    <string name="settings_intensity_muted">Dempet</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Levende</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Rengjøre</string>
+    <string name="settings_tint_soft">Myk</string>
+    <string name="settings_tint_rich">Rik</string>
+    <string name="settings_tint_deep">Dyp</string>
+    <string name="settings_accent_complementary">Utfyllende</string>
+    <string name="settings_accent_analogous">Analog</string>
+    <string name="settings_accent_triadic">Triadisk</string>
+    <string name="settings_accent_soft">Myk</string>
+    <string name="settings_mono_weight_thin">Tynn</string>
+    <string name="settings_mono_weight_extra_light">Ekstra lys</string>
+    <string name="settings_mono_weight_light">Lys</string>
+    <string name="settings_mono_weight_regular">Regelmessig</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Halvfet</string>
+    <string name="settings_mono_weight_bold">Fet</string>
+    <string name="settings_mono_weight_extra_bold">Ekstra fet</string>
+    <string name="settings_mono_weight_title">Vekt</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Legg til nøkkelord for dato</string>
+    <string name="settings_keyword_label">Nøkkelord</string>
+    <string name="settings_keyword_placeholder_example">f.eks. i går</string>
+    <string name="settings_means_label">Betyr</string>
+    <string name="settings_add_button">Legge til</string>
+    <string name="settings_no_keywords_yet">Ingen søkeord lagt til ennå.</string>
+    <string name="settings_added_keywords_title">Lagt til søkeord (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Legg til søkeord</string>
+    <string name="keywords_dialog_add_title">Legg til søkeord</string>
+    <string name="keywords_dialog_edit_title">Rediger søkeord</string>
+    <string name="keywords_cd_import_csv">Importer CSV</string>
+    <string name="keywords_cd_export_csv">Eksporter CSV</string>
+    <string name="keywords_cd_download_template">Last ned mal</string>
+    <string name="rebuild_cache_storage_transparency_title">Gjennomsiktighet for lagring på enheten</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja bruker en sikker lokal lagringsmodell. Dine personlige journaldata forblir lokale og forlater aldri enheten din når som helst:</string>
+    <string name="rebuild_cache_source_of_truth_title">Sannhetens kilde (Markdown-filer)</string>
+    <string name="rebuild_cache_source_of_truth_desc">Alle oppføringer, sjekklisteelementer (todos), tidslinjehendelser, stjerner og koder lagres permanent i Markdown-filer (.md) i ren tekst i den valgte lokale journalmappen. Dataene dine eies 100 % av deg og ligger utelukkende på enheten din.</string>
+    <string name="rebuild_cache_read_cache_title">Les cache og indeks (SQLite-database)</string>
+    <string name="rebuild_cache_read_cache_desc">For å aktivere umiddelbar skjermlasting, kalenderhøydepunkter, nøkkelord og statistikk uten å skanne filsystemet på hver rulling, analyserer Yaja Markdown-filene dine og indekserer dem i en lokal Room SQLite-database på enheten din.</string>
+    <string name="rebuild_cache_local_private_title">100 % lokalt og privat</string>
+    <string name="rebuild_cache_local_private_desc">Yaja har ingen skydatabaser, eksterne backupservere eller telemetri som sporer teksten din. Alle journaloppføringer og analyserte data forblir strengt tatt på din fysiske enhet og forlater den aldri når som helst.</string>
+    <string name="keywords_export_success">Søkeord eksportert</string>
+    <string name="keywords_export_failed">Kunne ikke eksportere søkeord</string>
+    <string name="keywords_template_saved">Malen er lagret</string>
+    <string name="keywords_template_save_failed">Kunne ikke lagre malen</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Importert %d søkeord</item>
+        <item quantity="other">Importerte %d søkeord</item>
+    </plurals>
+    <string name="keywords_import_none_valid">Ingen gyldige søkeord funnet</string>
+    <string name="keywords_import_failed">Kunne ikke importere søkeord</string>
+    <string name="keywords_status_indexing">Indeksering</string>
+    <string name="keywords_status_indexed">Indeksert</string>
+    <string name="keywords_metric_mentions">Omtaler</string>
+    <string name="keywords_metric_days">Dager</string>
+    <string name="keywords_timeline_range_all">Alle</string>
+    <string name="keywords_connections_filter_all">Alle</string>
+    <string name="keywords_connections_filter_people">Mennesker</string>
+    <string name="keywords_connections_filter_places">Steder</string>
+    <string name="keywords_connections_filter_recent">Nylig</string>
+    <string name="keywords_connections_filter_strongest">Sterkest</string>
+    <string name="keywords_filter_needs_reindex">Trenger Reindex</string>
+    <string name="keywords_search_placeholder">Søk etter personer, steder, aliaser, relasjoner</string>
+    <string name="keywords_refreshing_counters">Oppdaterer søkeordtellere …</string>
+    <string name="keywords_empty_title">Ingen søkeord ennå</string>
+    <string name="keywords_empty_subtitle">Legg til personene og stedene du vil at appen skal spore lokalt.</string>
+    <string name="keywords_no_results_title">Ingen samsvarende resultater</string>
+    <string name="keywords_no_results_subtitle">Prøv et annet søk, sortering eller filter.</string>
+    <string name="keywords_people_title">Mennesker</string>
+    <string name="keywords_places_title">Steder</string>
+    <string name="keywords_people_empty">Ingen personer er lagt til ennå.</string>
+    <string name="keywords_people_filtered_empty">Ingen personer samsvarer med gjeldende filtre.</string>
+    <string name="keywords_places_empty">Ingen steder lagt til ennå.</string>
+    <string name="keywords_places_filtered_empty">Ingen steder samsvarer med gjeldende filtre.</string>
+    <string name="keywords_delete_person_title">Vil du slette person?</string>
+    <string name="keywords_delete_place_title">Vil du slette sted?</string>
+    <string name="keywords_delete_message">Vil du slette «%1$s» fra People &amp; Places? Dette vil fjerne søkeordet og dets indekserte samsvar.</string>
+    <string name="keywords_timeline_title">Omtaler over tid</string>
+    <string name="keywords_timeline_empty_pattern">Ingen månedlig mønster ennå</string>
+    <string name="keywords_timeline_total_format">%1$d totalt</string>
+    <string name="keywords_timeline_empty_chart">Omtaler vil kartlegges her etter indeksering av funnoppføringer.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Topp %1$s • %2$d omtale</item>
+        <item quantity="other">Topp %1$s • %2$d omtaler</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Dager med omtaler</string>
+    <string name="keywords_recency_title">Nylighet</string>
+    <string name="keywords_recency_none">Ingen treff ennå</string>
+    <string name="keywords_recency_today">Nevnt i dag</string>
+    <string name="keywords_recency_yesterday">Nevnt i går</string>
+    <string name="keywords_recency_days_ago_format">Siste omtale for %1$d dager siden</string>
+    <string name="keywords_first_seen">Først sett</string>
+    <string name="keywords_last_seen">Sist sett</string>
+    <string name="keywords_unknown">Ukjent</string>
+    <string name="keywords_co_mentioned_with">Samnevnt med</string>
+    <string name="keywords_connections_title">Tilkoblinger</string>
+    <string name="keywords_connections_subtitle">Rangert etter gjentatt overlapping og nylig</string>
+    <string name="keywords_connections_linked_format">%1$d koblet</string>
+    <string name="keywords_connections_show">Vis forbindelser</string>
+    <string name="keywords_connections_hide">Skjul forbindelser</string>
+    <string name="keywords_connections_items_in_view">%1$d elementer i denne visningen</string>
+    <string name="keywords_connections_tap_to_expand">Trykk for å utvide %1$d rangerte lenker</string>
+    <string name="keywords_connections_empty">Ingen tilkoblinger for dette filteret ennå.</string>
+    <string name="keywords_open_day">Åpen dag</string>
+    <string name="keywords_sort_alphabetical">A-Å</string>
+    <string name="keywords_sort_most_mentioned">Mest nevnt</string>
+    <string name="keywords_sort_recently_added">Nylig lagt til</string>
+    <string name="keywords_peak_mentions_format">Topp %1$s • %2$d omtale%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d dag</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together">sammen</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d delt inngang</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| siste %1$s</string>
+    <string name="keywords_connections_score_format">Poeng %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d dager</string>
+    <string name="keywords_connections_shared_chip">%1$d delt</string>
+    <string name="keywords_match_type_exact">nøyaktig</string>
+    <string name="keywords_match_type_fuzzy">uklar</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">forhold</string>
+    <string name="keywords_action_delete">Slett</string>
+    <string name="keywords_action_edit">Redigere</string>
+    <string name="keywords_action_view">Utsikt</string>
+    <string name="keywords_name_label">Navn</string>
+    <string name="keywords_relation_context_label">Relasjon / kontekst</string>
+    <string name="keywords_aliases_label">Aliaser (kommaseparert)</string>
+    <string name="keywords_aliases_label_short">Aliaser</string>
+    <string name="keywords_type_person">Person</string>
+    <string name="keywords_type_place">Sted</string>
+    <string name="keywords_save_disabled_hint">Nøkkelord lagres slått av. Aktiver dem fra listen når du vil at indeksering skal kjøre.</string>
+    <string name="settings_meaning_yesterday">I går</string>
+    <string name="settings_meaning_today">I dag</string>
+    <string name="lookback_chip_weekly">Ukentlig</string>
+    <string name="lookback_chip_monthly">Månedlig</string>
+    <string name="timeline_screen_title">Tidslinje</string>
+    <string name="timeline_empty_title">Ingenting her ennå</string>
+    <string name="timeline_empty_subtitle">Prøv et annet filter eller juster etikettsøket.</string>
+    <string name="timeline_quick_today">I dag</string>
+    <string name="timeline_quick_month">Måned</string>
+    <string name="timeline_quick_filters">Filtre</string>
+    <string name="timeline_all_dates">Alle datoer</string>
+    <string name="timeline_label_prefix">Etikett: %1$s</string>
+    <string name="timeline_label_search_placeholder">Søk dagsetiketter</string>
+    <string name="timeline_filters_title">Tidslinjefiltre og layout</string>
+    <string name="settings_meaning_tomorrow">I morgen</string>
+    <string name="settings_meaning_day_before_yesterday">I forgårs</string>
+    <string name="settings_meaning_day_after_tomorrow">I overmorgen</string>
+    <string name="settings_meaning_last_week">Forrige uke</string>
+    <string name="settings_meaning_next_week">Neste uke</string>
+    <string name="settings_meaning_monday">mandag</string>
+    <string name="settings_meaning_tuesday">tirsdag</string>
+    <string name="settings_meaning_wednesday">onsdag</string>
+    <string name="settings_meaning_thursday">torsdag</string>
+    <string name="settings_meaning_friday">fredag</string>
+    <string name="settings_meaning_saturday">lørdag</string>
+    <string name="settings_meaning_sunday">søndag</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">App intern lagring</string>
+    <string name="settings_storage_internal_default">App intern lagring (standard)</string>
+    <string name="settings_storage_new_folder_fallback">den nye mappen</string>
+    <string name="settings_storage_current_folder_fallback">gjeldende mappe</string>
+    <string name="settings_storage_move_confirm">Alle eksisterende oppføringer vil bli flyttet fra %1$s til %2$s. Vil du fortsette?</string>
+    <string name="settings_restore_added_skipped">Lagt til: %1$d\nHoppet over duplikater: %2$d</string>
+    <string name="settings_storage_custom_folder">Egendefinert mappe:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Snarveier hjelper</string>
+    <string name="addentry_cd_insert_template">Sett inn mal</string>
+    <string name="addentry_cd_jump_to_today">Hopp til i dag</string>
+    <string name="addentry_cd_share">Dele</string>
+    <string name="addentry_cd_bold">Fet</string>
+    <string name="addentry_cd_italic">Kursiv</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Still inn tid</string>
+    <string name="addentry_event_chip">Hendelse</string>
+    <string name="addentry_pick_time_title">Velg tid</string>
+    <string name="addentry_hour_label">Time</string>
+    <string name="addentry_minute_label">Minutt</string>
+    <string name="addentry_new_event_title">Ny begivenhet</string>
+    <string name="addentry_title_label">Tittel</string>
+    <string name="addentry_event_description_label">Begivenhetsbeskrivelse</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos funnet</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Konverter %1$d linje til sjekkliste</item>
+        <item quantity="other">Konverter %1$d linjer til sjekkliste</item>
+    </plurals>
+    <string name="addentry_people_places_title">Mennesker og steder</string>
+    <string name="addentry_no_tracked_mentions">Ingen sporede personer eller steder funnet i denne oppføringen.</string>
+    <string name="addentry_day_memory_title">Dagsminne</string>
+    <string name="addentry_star_day_title">Stjerne denne dagen</string>
+    <string name="addentry_star_day_subtitle">Lagre det som et høydepunkt slik at det kommer tilbake i tilbakeblikk.</string>
+    <string name="addentry_day_label_label">Dagetikett</string>
+    <string name="addentry_day_label_placeholder">f.eks. Tilbakestill dag</string>
+    <string name="addentry_follow_up_title">Følge opp</string>
+    <string name="addentry_next_month">Neste måned</string>
+    <string name="addentry_custom">Skikk</string>
+    <string name="addentry_due_date_format">Frist %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Tydelig oppfølging</string>
+    <string name="addentry_follow_up_note_label">Oppfølgingsnotat</string>
+    <string name="addentry_follow_up_note_placeholder">Hva bør du se igjen?</string>
+    <string name="addentry_review_entry_title">Gjennomgå oppføring</string>
+    <string name="addentry_review_entry_subtitle">Rask pasning før redning. Trekk todos ut, sjekk sporede omtaler, og merk dagen hvis det betyr noe.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d gjøremål</item>
+        <item quantity="other">%1$d gjøremål</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d omtale</item>
+        <item quantity="other">%1$d nevner</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Lagre oppføring</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Forkast endringer</string>
+    <string name="addentry_discard_changes_message">Du har ulagrede endringer. Gå tilbake og forkast dem, eller bli værende for å fortsette å redigere.</string>
+    <string name="addentry_go_back">Gå tilbake</string>
+    <string name="addentry_stay">Opphold</string>
+    <string name="addentry_shortcuts_title">Snarveier</string>
+    <string name="addentry_help_bold_suffix">for å gjøre tekst fet (eller velg tekst og trykk på fet skrift)</string>
+    <string name="addentry_help_italic_suffix">for å gjøre tekst kursiv (eller velg tekst og trykk kursiv-knappen)</string>
+    <string name="addentry_help_today_suffix">: Utvides til gjeldende dato (f.eks. 25. desember-25)</string>
+    <string name="addentry_help_now_suffix">: Utvides til gjeldende tid (f.eks. 14:30)</string>
+    <string name="addentry_help_week_suffix">: Utvides til gjeldende uke (f.eks. uke 52)</string>
+    <string name="addentry_help_day_suffix">: Utvides til gjeldende ukedag (f.eks. mandag)</string>
+    <string name="addentry_help_todo_suffix">: Utvides til en gjøremålsavmerkingsboks (f.eks. [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: Når den legges inn hvor som helst på linjen som inneholder en gjøremålsboks, vil den veksle mellom den.</string>
+    <string name="addentry_okey">Ok!</string>
+    <string name="addentry_template_merge_message">Dette utkastet har allerede tekst. Velg hvordan malen skal plasseres.</string>
+    <string name="addentry_template_merge_subtitle">Sett inn nedenfor beholder gjeldende utkast. Ved markør plasserer malen der feltet ditt er nå.</string>
+    <string name="addentry_insert_below">Sett inn under</string>
+    <string name="addentry_at_cursor">På markøren</string>
+    <string name="addentry_replace_draft">Erstatt utkast</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Populær</string>
+    <string name="addentry_new_chip">Ny</string>
+    <string name="addentry_best_for_format">Best for: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Fjern malfavoritt</string>
+    <string name="addentry_cd_favorite_template">Favoritt mal</string>
+    <string name="addentry_checklist_chip">Sjekkliste</string>
+    <string name="addentry_followup_chip">Oppfølging</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d delen</item>
+        <item quantity="other">%1$d seksjoner</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Bytt favorittmal</string>
+    <string name="addentry_template_preview_label">Forhåndsvisning av mal</string>
+    <string name="addentry_use_template_button">Bruk mal</string>
+    <string name="addentry_start_blank_title">Start Blank</string>
+    <string name="addentry_start_blank_subtitle">Hopp over maler og fortsett å skrive fra et tomt utkast.</string>
+    <string name="addentry_blank_entry_name">Blank oppføring</string>
+    <string name="addentry_blank_entry_description">Vanlig journalpost</string>
+    <string name="addentry_blank_category">General</string>
+    <string name="addentry_quick_picks_title">Raske valg</string>
+    <string name="addentry_sort_recommended">Anbefalt</string>
+    <string name="addentry_sort_recent">Nylig</string>
+    <string name="addentry_sort_az">A-Å</string>
+    <string name="addentry_no_templates_title">Ingen maler funnet</string>
+    <string name="addentry_no_templates_subtitle">Prøv et annet søk eller en annen kategori.</string>
+    <string name="addentry_search_templates_label">Søk maler</string>
+    <string name="addentry_search_templates_placeholder">Møte, helse, refleksjon...</string>
+    <string name="addentry_cd_clear_search">Tøm søk</string>
+    <string name="addentry_choose_template_title">Velg en mal</string>
+    <string name="addentry_templates_ready_format">%1$d av %2$d maler klare</string>
+    <string name="addentry_category_all">Alle</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">Hva skjedde?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N Liste</string>
+    <string name="addentry_bulleted_list_chip">B-liste</string>
+    <string name="addentry_words_count_format">%1$d ORD</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Oppfølging i dag</item>
+        <item quantity="other">Oppfølging i dag</item>
+    </plurals>
+    <string name="home_followup_subtitle">Hopp tilbake til den koblede dagen og fortsett derfra.</string>
+    <string name="home_from_date_format">Fra %1$s</string>
+    <string name="home_more_due_today_format">+%1$d forfaller i dag</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Legg til etikett</string>
+    <string name="home_edit_label_title">Rediger etikett</string>
+    <string name="home_day_label_hint">Legg til en kort etikett for denne dagen (maks. 30 tegn).</string>
+    <string name="home_day_label_placeholder">f.eks. første dag på skolen</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Legg til en etikett for denne dagen</string>
+    <string name="home_star_label_hint">Gi denne dagen en minneverdig etikett (maks 30 tegn)</string>
+    <string name="home_star_label_placeholder">f.eks. bursdagen min, på skolen</string>
+    <string name="home_star_button">Stjerne</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Oppføring slettet</item>
+        <item quantity="other">%1$d oppføringer slettet</item>
+    </plurals>
+    <string name="home_restore_button">RESTAURERE</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Søk i oppføringer...</string>
+    <string name="home_cd_search">Søk</string>
+    <string name="home_cd_clear_search">Fjern søk</string>
+    <string name="home_cd_favorite">Favoritt</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Oppføringer</string>
+    <string name="home_stat_words">Ord</string>
+    <string name="home_stat_chars">Tegn</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Legg til etikett</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Match funnet</item>
+        <item quantity="other">%1$d treff funnet</item>
+    </plurals>
+    <string name="home_no_keyword_matches">Finner ingen treff for dette søkeordet ennå.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Tomt statusikon</string>
+    <string name="home_empty_future">Dette er fremtiden. Ta opp en påminnelse!</string>
+    <string name="home_empty_past">Du er i fortiden. Ta opp et minne før det blekner...</string>
+    <string name="home_empty_today">Ingen oppføringer ennå. Start dagen.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Lagrer</string>
+    <string name="home_cd_add_entry">Legg til oppføring</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Slett %1$d</string>
+    <string name="home_future_date_title">Fremtidig datooppføring</string>
+    <string name="home_future_date_message_format">Du legger til en oppføring for en fremtidig dato (%1$s). Vil du fortsette?</string>
+    <string name="home_cache_issue_title">Databufferproblem oppdaget</string>
+    <string name="home_cache_issue_message">Det ser ut til at et betydelig antall journaloppføringer mangler i hurtigbufferen. Vil du utføre en fullstendig databufferoppdatering for å forsøke å gjenopprette dem?</string>
+    <string name="home_refresh_button">Forfriske</string>
+    <string name="home_ignore_button">Overse</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">Mennesker og steder</string>
+    <string name="nav_statistics">Statistikk</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Gjenoppbygg databaseindeks</string>
+    <string name="nav_backup_data">Sikkerhetskopier data</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Fullfører gjenoppbygging av indeksen...</string>
+    <string name="nav_rebuilding_index">Gjenoppbygging av databaseindeks</string>
+    <string name="nav_refreshing_index">Forfriskende indeks</string>
+    <string name="nav_backup_too_old">sikkerhetskopien er for gammel...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Jobber...</string>
+    <string name="nav_eta_almost_done">nesten ferdig</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds igjen</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm igjen</string>
+    <string name="nav_eta_hours_left_format">~%1$dt igjen</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Meny</string>
+    <string name="nav_cd_rj_logo">RJ-logo</string>
+    <string name="nav_tagline">nok en journal-app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Butikk</string>
+    <string name="nav_cd_website">Nettsted</string>
+    <string name="nav_cd_share_app">Del appen</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">v__FMT_0__</string>
+    <string name="nav_easter_quote_part1">\"Skriv ned en forbigående tanke eller hva du hadde til lunsj; det trenger ikke å være dyptgående.\n</string>
+    <string name="nav_easter_quote_part2">Ordene dine kan bare eksistere.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">fra laboratoriene til RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Del yaja</string>
+    <string name="nav_share_text_body">yaja — nok en journalapp\n\nEn daglig journal uten distraksjon som lagrer oppføringer som vanlige nedskrivningsfiler.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Endre lagringssted</string>
+    <string name="settings_change_storage_location_message">Alle eksisterende oppføringer vil bli flyttet fra %1$s til %2$s. Vil du fortsette?</string>
+    <string name="settings_yes">Ja</string>
+    <string name="settings_no">Ingen</string>
+    <string name="settings_restore_summary_title">Gjenopprett sammendrag</string>
+    <string name="settings_restore_section_journal">Tidsskrift</string>
+    <string name="settings_restore_section_shortcodes">Kortkoder</string>
+    <string name="settings_restore_section_date_keywords">Dato nøkkelord</string>
+    <string name="settings_restore_section_people_places">Mennesker og steder</string>
+    <string name="settings_restore_journal_summary">Lagt til nye dager: %1$d\nSlå sammen til eksisterende dager: %2$d\nDupliserte journaloppføringer hoppet over: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Lagt til: %1$d\nHoppet over duplikater: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Lagt til: %1$d\nHoppet over duplikater: %2$d</string>
+    <string name="settings_restore_people_places_summary">Lagt til: %1$d\nHoppet over duplikater: %2$d</string>
+    <string name="rebuild_tools_title">Gjenoppbygg verktøy</string>
+    <string name="rebuild_tools_back">Tilbake</string>
+    <string name="rebuild_tools_intro">Bruk fokuserte ombygginger først. Gjenoppbygging av databasen er kun for lagringsendringer, databasekorrupsjon eller indeksfeil.</string>
+    <string name="rebuild_todo_index_title">Gjenoppbygg Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">Oppdater gjøremål fra journalfiler og oppdater Todo-skjerm/widget. Best når todos ser foreldet ut.</string>
+    <string name="rebuild_todo_index_button">Gjenoppbygg Todos</string>
+    <string name="rebuild_people_places_title">Gjenoppbygg mennesker og steder</string>
+    <string name="rebuild_people_places_subtitle">Oppdater søkeordaliaser, samomtaler, trender og relasjonsdata.</string>
+    <string name="rebuild_people_places_button">Gjenoppbygg mennesker og steder</string>
+    <string name="rebuild_database_title">Full Database Rebuild</string>
+    <string name="rebuild_database_subtitle">Rekompiler databasebuffer fra markdown-filer. Re-indekserer oppføringer, tellinger, gjøremål, mennesker og steder og widgets fra bunnen av.</string>
+    <string name="rebuild_database_button">Gjenoppbygg database</string>
+    <string name="rebuild_database_confirm_title">Gjenoppbygg databaseindeks</string>
+    <string name="rebuild_database_confirm_message">Dette vil tømme og re-indeksere hele Room SQLite-databasen fra Markdown-filene dine. For store journaler kan dette ta noen minutter.</string>
+    <string name="rebuild_database_confirm_start">Start gjenoppbygging</string>
+    <string name="rebuild_database_status_title">Databaseindeksstatus</string>
+    <string name="rebuild_database_storage_engine">Lagringsmotor</string>
+    <string name="rebuild_database_storage_engine_value">Rom SQLite-database</string>
+    <string name="rebuild_database_indexed_days">Indekserte dager</string>
+    <string name="rebuild_database_indexed_days_value">%1$d dager indeksert</string>
+    <string name="rebuild_database_file_size">Databasefilstørrelse</string>
+    <string name="rebuild_database_last_sync">Siste indekssynkronisering</string>
+    <string name="rebuild_database_age_never">Aldri</string>
+    <string name="rebuild_database_age_just_now">Akkurat nå</string>
+    <string name="rebuild_database_age_one_minute">1 minutt siden</string>
+    <string name="rebuild_database_age_minutes">%1$d minutter siden</string>
+    <string name="rebuild_database_age_one_hour">1 time siden</string>
+    <string name="rebuild_database_age_hours">%1$d timer siden</string>
+    <string name="shortcodes_title">Kortkoder</string>
+    <string name="shortcodes_import_cd">Import</string>
+    <string name="shortcodes_export_cd">Eksport</string>
+    <string name="shortcodes_help_cd">Hjelp</string>
+    <string name="shortcodes_new">Ny kortkode</string>
+    <string name="shortcodes_empty_title">Ingen egendefinerte kortkoder</string>
+    <string name="shortcodes_empty_subtitle">Legg til en for å utvide utdrag som @yday til dynamisk tekst.</string>
+    <string name="shortcodes_dynamic_dates_hint">Bruk {{today:format}} for dynamiske datoer.</string>
+    <string name="shortcodes_help_title">Kortkodehjelp</string>
+    <string name="shortcodes_help_built_in">Innebygde kortkoder:</string>
+    <string name="shortcodes_help_built_in_examples">@i dag, @nå, @uke, @dag, @t (avmerkingsboks), @x (skift avmerkingsboks)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynamiske mønstre:</string>
+    <string name="shortcodes_help_dynamic_desc">Bruk {{today:FORMAT}}, {{yesterday:FORMAT}}, {{morgen:FORMAT}} eller {{nå:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Eksempel: @yday -&gt; I går: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Vanlige formater: dd-MM-åå, TT:mm, EEEE (dagsnavn).</string>
+    <string name="action_close">Lukke</string>
+    <string name="keyword_detail_title_fallback">Nøkkelord</string>
+    <string name="keyword_detail_not_found">Finner ikke søkeord</string>
+    <string name="keyword_detail_last_indexed">Sist indeksert %1$s</string>
+    <string name="keyword_detail_mentions_section">Omtaler</string>
+    <string name="pin_biometric_prompt_title">Lås opp med Biometric</string>
+    <string name="pin_biometric_prompt_subtitle">Bruk fingeravtrykket eller ansiktet ditt for å låse opp</string>
+    <string name="pin_error_no_biometric_enrolled">Ingen biometrisk påmeldt. Registrer et fingeravtrykk eller ansikt i enhetsinnstillingene.</string>
+    <string name="pin_error_hardware_unavailable">Biometrisk maskinvare er utilgjengelig.</string>
+    <string name="pin_error_no_hardware">Denne enheten har ikke biometrisk maskinvare.</string>
+    <string name="pin_error_not_available">Biometrisk autentisering er ikke tilgjengelig.</string>
+    <string name="pin_title_confirm">Bekreft PIN</string>
+    <string name="pin_title_set_new">Angi ny PIN-kode</string>
+    <string name="pin_title_disable">Skriv inn gjeldende PIN-kode for å deaktivere</string>
+    <string name="pin_title_enter">Skriv inn PIN</string>
+    <string name="pin_error_incorrect">Feil PIN-kode. Prøv igjen.</string>
+    <string name="pin_error_mismatch">PIN-kodene stemmer ikke overens. Start på nytt.</string>
+    <string name="pin_cd_use_biometric">Bruk biometrisk</string>
+    <string name="pin_cd_backspace">Tilbake</string>
+    <string name="timeline_preview_empty_labeled">Denne dagen er merket, men det er ingen journalpost ennå.</string>
+    <string name="timeline_preview_loading">Laster forhåndsvisning ...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d mer påmelding denne dagen</item>
+        <item quantity="other">+ %1$d flere oppføringer denne dagen</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Åpent denne dagen</string>
+    <string name="timeline_chip_today">I DAG</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d oppføring</item>
+        <item quantity="other">%1$d oppføringer</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Oppfølging</string>
+    <string name="timeline_chip_label_only">Bare etikett</string>
+    <string name="timeline_cd_favorite">Favoritt</string>
+    <string name="version_history_title">Versjonshistorikk</string>
+    <string name="version_history_day_versions_title">Før Yaja endrer en dagsfil, lagrer den gjeldende fil i appdata under Historiefiler.</string>
+    <string name="version_history_keep_copies_title">Ta vare på sikkerhetskopier</string>
+    <string name="version_history_keep_copies_subtitle">Før Yaja endrer en dagsfil, lagrer den gjeldende fil i appdata under Historiefiler.</string>
+    <string name="version_history_versions_kept_title">Versjoner beholdt per dag</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja beholder den nyeste %1$d-versjonen for hver dato.</item>
+        <item quantity="other">Yaja beholder de nyeste %1$d-versjonene for hver dato.</item>
+    </plurals>
+    <string name="version_history_retention_title">Bevaring</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Øyeblikksbilder eldre enn %1$d dag ryddes opp automatisk.</item>
+        <item quantity="other">Øyeblikksbilder eldre enn %1$d dager ryddes opp automatisk.</item>
+    </plurals>
+    <string name="version_history_notes">Merknader: Versjonshistorikk beskytter dagsmarkeringsfiler før du legger til, rediger, sletter, omorganiserer, merker, stjernemerker og går tilbake til endringer. Det er ikke en sky-backup; fortsett å bruke Backup for bærbare kopier.</string>
+    <string name="version_history_snapshots_for">Øyeblikksbilder for %1$s</string>
+    <string name="version_history_snapshots_subtitle">Åpne en lagret versjon, inspiser den og gjenopprett den for denne dagen.</string>
+    <string name="version_history_empty">Ingen lagrede versjoner ennå for denne datoen.</string>
+    <string name="action_view">Utsikt</string>
+    <string name="version_history_date_intro">Åpne en tidligere lagret versjon for denne dagen, inspiser den og gjenopprett den ved behov.</string>
+    <string name="action_next">Neste</string>
+    <string name="action_apply">Søke</string>
+    <string name="action_restore">Restaurere</string>
+    <string name="statistics_choose_title">Velg Statistikk</string>
+    <string name="statistics_choose_subtitle">Skjul deler du ikke vil ha. Minst én seksjon må være synlig.</string>
+    <string name="statistics_visible_count">%1$d av %2$d synlig</string>
+    <string name="statistics_show_all">Vis alle</string>
+    <string name="statistics_one_section_visible">En seksjon må forbli synlig</string>
+    <string name="statistics_shown">Vist i statistikk</string>
+    <string name="statistics_hidden">Skjult fra statistikk</string>
+    <string name="statistics_select_start_date">Velg Startdato</string>
+    <string name="statistics_select_end_date">Velg Sluttdato</string>
+    <string name="statistics_filter_by_period">Filtrer etter periode</string>
+    <string name="statistics_cd_reorder">Langt trykk for å endre rekkefølge</string>
+    <string name="statistics_total_entries">Totalt antall oppføringer</string>
+    <string name="statistics_total_words">Totale ord</string>
+    <string name="statistics_avg_words_per_entry">Gj.sn. Ord/oppføring</string>
+    <string name="statistics_current_streak">Nåværende strek</string>
+    <string name="statistics_pages_written">Sider skrevet</string>
+    <string name="statistics_days_highlighted">Dager uthevet</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dager</item>
+    </plurals>
+    <string name="statistics_period_all_time">Alle tiders statistikk</string>
+    <string name="statistics_period_current_year">Aktuell årsstatistikk</string>
+    <string name="statistics_period_previous_year">Tidligere års statistikk</string>
+    <string name="statistics_period_current_month">Gjeldende månedsstatistikk</string>
+    <string name="statistics_period_previous_month">Forrige måned Statistikk</string>
+    <string name="statistics_period_custom">Egendefinert periodestatistikk</string>
+    <string name="statistics_period_chip_all_time">Hele tiden</string>
+    <string name="statistics_period_chip_current_year">Inneværende år</string>
+    <string name="statistics_period_chip_previous_year">Forrige år</string>
+    <string name="statistics_period_chip_current_month">Denne måneden</string>
+    <string name="statistics_period_chip_previous_month">Forrige måned</string>
+    <string name="statistics_period_chip_custom">Skikk</string>
+    <string name="statistics_sections_visible">%1$d av %2$d deler synlige</string>
+    <string name="statistics_loading_stages">Laster inn statistikk trinnvis...</string>
+    <string name="review_period_weekly">Ukentlig gjennomgang</string>
+    <string name="review_period_monthly">Månedlig gjennomgang</string>
+    <string name="review_anchor_week">Uke som inneholder %1$s</string>
+    <string name="review_anchor_month">Måned som inneholder %1$s</string>
+    <string name="review_chip_entries">Oppføringer %1$d</string>
+    <string name="review_chip_words">Ord %1$d</string>
+    <string name="review_chip_days">Dager %1$d</string>
+    <string name="review_hint_jump">Trykk på datobrikker nedenfor for å hoppe tilbake til journalen.</string>
+    <string name="review_chip_streak">Streke %1$d</string>
+    <string name="review_chip_gap">Gap %1$d</string>
+    <string name="review_chip_labels">Etiketter %1$d</string>
+    <string name="review_chip_favorites">Favoritter %1$d</string>
+    <string name="review_empty_period">Ingen journalposter i denne perioden ennå. Etiketter og høydepunkter vises fortsatt nedenfor hvis de finnes.</string>
+    <string name="review_writing_rhythm">Skriverytme</string>
+    <string name="review_best_streak">Beste rekke</string>
+    <string name="review_longest_gap">Lengste gap</string>
+    <string name="review_most_active_days">Mest aktive dager</string>
+    <string name="review_day_entries_words">%1$d oppføringer | %2$d ord</string>
+    <string name="review_top_people">Topp folk</string>
+    <string name="review_top_places">Toppplasser</string>
+    <string name="review_no_people_mentions">Ingen personer nevner</string>
+    <string name="review_no_place_mentions">Ingen plass nevnes</string>
+    <string name="review_favorite_moments">Favorittøyeblikk</string>
+    <string name="review_starred_day">Stjernemerket dag</string>
+    <string name="review_highlighted_in_period">Fremhevet i denne perioden</string>
+    <string name="review_labels_created">Etiketter opprettet</string>
+    <string name="review_labeled_day">Merket dag</string>
+    <string name="review_language_split">Språkdeling</string>
+    <string name="review_not_enough_text">Ikke nok tekst i denne perioden</string>
+    <string name="lookback_reviews_title">Anmeldelser</string>
+    <string name="lookback_reviews_intro">Bygg en rask refleksjon rundt den valgte dagbokdagen.</string>
+    <string name="lookback_seven_days">7 dager</string>
+    <string name="lookback_one_month">1 måned</string>
+    <string name="lookback_weekly_review">Ukentlig gjennomgang</string>
+    <string name="lookback_weekly_review_subtitle">Denne uken i ett blikk</string>
+    <string name="lookback_monthly_review">Månedlig gjennomgang</string>
+    <string name="lookback_monthly_review_subtitle">Denne måneden oppsummert</string>
+    <string name="lookback_flashbacks_title">På denne dagen i tidligere år</string>
+    <string name="lookback_highlights_title">Høydepunktene dine</string>
+    <string name="lookback_empty_title">Ingen tilbakeblikk eller høydepunkter ennå.</string>
+    <string name="lookback_empty_subtitle">Favoritt viktige dager å se dem her!</string>
+    <string name="lookback_cd_random_entry">Gå til tilfeldig oppføring</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Periode</string>
+    <string name="statistics_compare_mode_title">Sammenligningsmodus</string>
+    <string name="statistics_compare_mode_subtitle">Måned, år og søkeorddeltaer</string>
+    <string name="statistics_this_year">I år</string>
+    <string name="statistics_writing_days_delta">Skrivedagers delta</string>
+    <string name="statistics_top_person_delta">Toppperson Delta</string>
+    <string name="statistics_no_people_mentions">Ingen personer nevner ennå</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">Ingen steder er nevnt ennå</string>
+    <string name="statistics_structured_writing">Strukturert skriving</string>
+    <string name="statistics_template_led_format">Mal-ledet %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Blank %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Mest brukte maler</string>
+    <string name="statistics_template_mix">Malblanding</string>
+    <string name="statistics_follow_up_leaders">Oppfølgingsledere</string>
+    <string name="statistics_compare_details">Sammenlign detaljer</string>
+    <string name="statistics_label_month">Måned</string>
+    <string name="statistics_label_year">År</string>
+    <string name="statistics_this_month_count_format">Denne måneden %1$d</string>
+    <string name="statistics_last_month_count_format">Forrige måned %1$d</string>
+    <string name="statistics_longest_streak">Lengste rekke</string>
+    <string name="statistics_most_active_day">Mest aktive dagen</string>
+    <string name="statistics_writing_consistency">Skrivekonsistens</string>
+    <string name="statistics_days_with_entries">Dager med oppføringer</string>
+    <string name="statistics_best_month">Beste måned</string>
+    <string name="statistics_best_month_format">%1$s · %2$d oppføringer</string>
+    <string name="statistics_avg_writing_days_week">Gj.sn. Skrivedager / uke</string>
+    <string name="statistics_days_decimal_format">%1$.1f dager</string>
+    <string name="statistics_based_on_total_words">Basert på totalt antall ord skrevet per dag</string>
+    <string name="statistics_light_words">Lys (&lt; 50 ord)</string>
+    <string name="statistics_moderate_words">Moderat (50–200 ord)</string>
+    <string name="statistics_heavy_words">Tung (200–500 ord)</string>
+    <string name="statistics_intense_words">Intens (500+ ord)</string>
+    <string name="statistics_not_enough_text_languages">Ikke nok tekst til å oppdage språk</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d språk oppdaget</item>
+        <item quantity="other">%1$d språk oppdaget</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Språkgjenkjenning holder seg fortsatt.</string>
+    <string name="statistics_latin_scripts_as_english">Latinske skrifter vises som engelske</string>
+    <string name="statistics_use_more_accurate_detection">Bruk mer nøyaktig deteksjon</string>
+    <string name="statistics_write_more_entries_languages">Skriv flere oppføringer for å se språkstatistikk.</string>
+    <string name="statistics_based_on_entry_time">Basert på inngangstid</string>
+    <string name="statistics_morning_time">Morgen (05.00–12.00)</string>
+    <string name="statistics_afternoon_time">Ettermiddag (12.00-17.00)</string>
+    <string name="statistics_evening_time">Kveld (17.00-21.00)</string>
+    <string name="statistics_night_time">Natt (21.00–17.00)</string>
+    <string name="statistics_heatmap_filling">Heatmap fyller fortsatt ut.</string>
+    <string name="statistics_heatmap_less">Mindre</string>
+    <string name="statistics_heatmap_more">Flere</string>
+    <string name="action_open">Åpne</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal-arrangementer</string>
+    <string name="tasker_event_desc">Velg hvilke Yaja-journalhendelser som skal utløse denne Tasker-profilen.</string>
+    <string name="tasker_event_saved">Oppføring lagret</string>
+    <string name="tasker_event_edited">Oppføring redigert</string>
+    <string name="tasker_event_deleted">Oppføring slettet</string>
+    <string name="tasker_event_default_hint">Hvis ingen er valgt, vil Yaja som standard være Oppføring lagret.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Konfigurer hva Tasker raskt skal fange opp i Yaja.</string>
+    <string name="tasker_action_add_entry">Legg til oppføring</string>
+    <string name="tasker_action_add_event">Legg til hendelse</string>
+    <string name="tasker_action_add_todo">Legg til Todo</string>
+    <string name="tasker_action_append">Legg til</string>
+    <string name="tasker_action_match_header_label">Kamp / header</string>
+    <string name="tasker_action_match_header_placeholder">Tapte anrop</string>
+    <string name="tasker_action_line_to_append_label">Linje for å legge til</string>
+    <string name="tasker_action_text_label">Tekst</string>
+    <string name="tasker_action_placeholder_event">Arrangementsnotat fra Tasker</string>
+    <string name="tasker_action_placeholder_todo">Kjøp melk</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Rask notat fra Tasker</string>
+    <string name="tasker_action_tip_append">Første samtale oppretter en oppføring som starter med matchteksten. Senere anrop legger til linjen under den.</string>
+    <string name="tasker_action_tip_default">Tips: Taskervariabler kan plasseres i tekstfeltet.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Krasjlogg fra forrige økt</string>
+    <string name="crash_log_clear_close">Fjern og lukk</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Start appen</string>
+    <string name="tap_action_quick_capture">Rask fangst</string>
+    <string name="tap_action_do_nothing">Gjør ingenting</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja skriver varmekart</string>
+    <string name="widget_cell_shape">Celleform</string>
+    <string name="widget_corner_radius">Hjørneradius: %1$ddp</string>
+    <string name="widget_square">Kvadrat</string>
+    <string name="widget_round">Rund</string>
+    <string name="widget_inner_margin">Innvendig margin: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Avstand mellom varmekartet og widgetkantene</string>
+    <string name="widget_none">Ingen</string>
+    <string name="widget_max">Maks</string>
+    <string name="widget_on_tap">På trykk</string>
+    <string name="widget_on_tap_desc">Handling når widgeten trykkes</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Fangst</string>
+    <string name="widget_qc_shape">Widget-form</string>
+    <string name="widget_show_label">Vis etikett</string>
+    <string name="widget_show_label_desc">Vis \"Capture\"-tekst på widgeten</string>
+    <string name="widget_show_icon">Vis ikon</string>
+    <string name="widget_show_icon_required">Ikon kreves når etiketten er skjult</string>
+    <string name="widget_show_icon_desc">Vis pennikonet på widgeten</string>
+    <string name="widget_label_text">Etiketttekst</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo-widget</string>
+    <string name="widget_todo_desc">Avrundet, varmekartlignende gjøremålsliste-widget.</string>
+    <string name="widget_todo_corner_radius">Hjørneradius: %1$ddp</string>
+    <string name="widget_todo_padding">Polstring: %1$ddp</string>
+    <string name="widget_todo_show_completed">Vis fullførte oppgaver</string>
+    <string name="widget_todo_show_completed_desc">Ta med avmerkede elementer i widgetlisten</string>
+    <string name="widget_todo_include_events">Inkluder hendelser</string>
+    <string name="widget_todo_include_events_desc">Vis hendelsesoppføringer ved siden av gjøremål i widgeten</string>
+    <string name="widget_todo_show_header">Vis Todo-overskriften</string>
+    <string name="widget_todo_show_header_desc">Vis eller skjul widgettittelrad</string>
+    <string name="widget_todo_auto_hide">Skjul widget automatisk når alle gjøremål er fullført</string>
+    <string name="widget_todo_auto_hide_unavailable">Utilgjengelig mens fullførte oppgaver vises</string>
+    <string name="widget_todo_auto_hide_desc">Gjør widgeten gjennomsiktig når det ikke er noen ventende oppgaver</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">ferdig</string>
+    <string name="todo_confirm_mark_not_done">ikke gjort</string>
+    <string name="todo_confirm_title">Vil du merke oppgaven som %1$s?</string>
+    <string name="todo_confirm_reopen">Denne gjøremålet er for øyeblikket fullført. Bekreft før du åpner den igjen.</string>
+    <string name="todo_confirm_complete">Denne todo er fortsatt åpen. Bekreft før du merker det ferdig.</string>
+    <string name="todo_confirm_accidental_tap">Utilsiktet trykk vil ikke endre oppgaven.</string>
+    <string name="todo_confirm_yes_mark">Ja, merk %1$s</string>
+    <string name="todo_confirm_open_yaja">Åpent i Yaja</string>
+    <string name="todo_confirm_keep_as_is">Behold som den er</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">Ja, merk __FMT_0__</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">fra laboratoriene til RJ</string>
+    <string name="help_made_in">Laget i 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Avbryt import</string>
+    <string name="timeline_show_all_dates">Vis alle datoer</string>
+    <string name="timeline_show_all_dates_subtitle">Inkluder alle siste dager, selv uten oppføringer</string>
+    <string name="settings_background_tint_clean">Rengjøre</string>
+    <string name="settings_background_tint_soft">Myk</string>
+    <string name="settings_background_tint_rich">Rik</string>
+    <string name="settings_background_tint_deep">Dyp</string>
+    <string name="settings_accent_style_complementary">Utfyllende</string>
+    <string name="settings_accent_style_analogous">Analog</string>
+    <string name="settings_accent_style_triadic">Triadisk</string>
+    <string name="settings_accent_style_soft">Myk</string>
+</resources>

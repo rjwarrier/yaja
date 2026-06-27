@@ -1,0 +1,1331 @@
+<resources>
+    <string name="app_name">ياجا</string>
+
+    <!-- Navigation -->
+    <string name="nav_journal">مجلة</string>
+    <string name="nav_calendar">تقويم</string>
+    <string name="nav_lookback">مراجعة</string>
+    <string name="nav_settings">إعدادات</string>
+    <string name="nav_shortcodes">الرموز المختصرة</string>
+    <string name="nav_help">المساعدة والمعلومات</string>
+
+    <!-- Common actions -->
+    <string name="action_save">يحفظ</string>
+    <string name="action_cancel">يلغي</string>
+    <string name="action_delete">يمسح</string>
+    <string name="action_edit">يحرر</string>
+    <string name="action_back">خلف</string>
+    <string name="action_undo">تراجع</string>
+    <string name="action_yes">نعم</string>
+    <string name="action_no">لا</string>
+    <string name="action_remove">يزيل</string>
+    <string name="action_done">منتهي</string>
+    <string name="action_set">تعيين</string>
+    <string name="action_select">يختار</string>
+    <string name="action_ok">نعم</string>
+
+    <!-- Sync pill -->
+    <string name="syncing_data">إعادة بناء ذاكرة التخزين المؤقت</string>
+
+    <!-- Quick Capture -->
+    <string name="quick_capture_title">التقاط سريع</string>
+    <string name="quick_capture_hint">ماذا حدث؟</string>
+    <string name="quick_capture_helper_shortcodes">يتم توسيع الرموز المختصرة هنا تلقائيًا، وتستمر سطور المهام عند Enter.</string>
+    <string name="quick_capture_save_delayed">حفظ تأخر. يرجى إعادة فتح Yaja للتحقق.</string>
+    <string name="cd_saved">أنقذ</string>
+    <string name="quick_todo_dialog_title">إضافة سريعة</string>
+    <string name="quick_todo_save_delayed">تأخر حفظ المهام. يرجى إعادة فتح Yaja للتحقق.</string>
+    <string name="quick_todo_placeholder">إضافة ما يجب القيام به</string>
+    <string name="quick_event_placeholder">أضف حدثًا</string>
+    <string name="quick_todo_task_date">تاريخ المهمة</string>
+    <string name="quick_todo_event_date">تاريخ الحدث</string>
+    <string name="quick_todo_pick_date_cd_format">اختر %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s %2$s</string>
+    <string name="quick_todo_selected_day_hint">يحفظ كإدخال ما يجب عمله لليوم المحدد.</string>
+    <string name="quick_event_selected_day_hint">يحفظ كإدخال حدث لليوم المحدد.</string>
+
+    <!-- Calendar -->
+    <string name="cd_previous">سابق</string>
+    <string name="cd_next">التالي</string>
+    <string name="cd_surprise_me">فاجئني</string>
+    <string name="calendar_cd_go_to_current_month">انتقل إلى الشهر الحالي</string>
+    <string name="calendar_quick_action_timeline_title">الجدول الزمني</string>
+    <string name="calendar_quick_action_timeline_subtitle">تصفح بترتيب زمني</string>
+    <string name="calendar_quick_action_jump_title">انتقل إلى التاريخ</string>
+    <string name="calendar_quick_action_jump_subtitle">فتح يوم محدد</string>
+    <string name="calendar_jump_placeholder">يوم-شهر-سنة</string>
+    <string name="calendar_jump_invalid_date">تاريخ غير صالح. استخدم تنسيق DD-MM-YY.</string>
+    <string name="calendar_action_go">يذهب</string>
+    <string name="calendar_enable_future_dates_title">تمكين التواريخ المستقبلية</string>
+    <string name="calendar_enable_future_dates_message">تم تعطيل إدخال التاريخ المستقبلي. هل تريد تمكينه؟</string>
+    <string name="calendar_action_enable">يُمكَِن</string>
+    <string name="calendar_future_entry_enabled">تم تمكين إدخال التاريخ المستقبلي</string>
+    <string name="calendar_weekday_sun_short">شمس</string>
+    <string name="calendar_weekday_mon_short">الاثنين</string>
+    <string name="calendar_weekday_tue_short">الثلاثاء</string>
+    <string name="calendar_weekday_wed_short">تزوج</string>
+    <string name="calendar_weekday_thu_short">الخميس</string>
+    <string name="calendar_weekday_fri_short">الجمعة</string>
+    <string name="calendar_weekday_sat_short">قعد</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">الإدخالات هذا الشهر</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d يوم</item>
+        <item quantity="other">%1$d / %2$d يومًا</item>
+    </plurals>
+    <string name="calendar_days_of_memories">الاتساق - __FMT_0__</string>
+    <string name="calendar_consistency_last_12_months">آخر 12 شهرًا</string>
+    <string name="calendar_consistency_title_format">الاتساق - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% مقابل \"%2$s\"</string>
+    <string name="calendar_consistency_previous_period_format">مقابل \'%1$s</string>
+    <string name="calendar_consistency_first_period">الفترة الأولى</string>
+    <string name="calendar_graph_frequency_month">شهر</string>
+    <string name="calendar_graph_frequency_year">سنة</string>
+    <string name="calendar_yearly_consistency_title">الاتساق (سنويا)</string>
+    <string name="calendar_keywords_title">من يظهر أكثر</string>
+    <string name="calendar_keywords_syncing">لا تزال إحصاءات الأشخاص والأماكن تتم مزامنتها مع فهرسة الكلمات الرئيسية.</string>
+    <string name="calendar_keywords_empty">أضف ما لا يقل عن 3 أشخاص أو 3 أماكن لرؤية أهم الإشارات.</string>
+    <string name="calendar_keywords_people">الناس</string>
+    <string name="calendar_keywords_places">الأماكن</string>
+
+    <!-- Settings -->
+    <string name="settings_title">إعدادات</string>
+    <string name="settings_appearance">مظهر</string>
+    <string name="settings_appearance_subtitle">الموضوع والألوان والخطوط والأنماط الشخصية</string>
+    <string name="settings_theme">سمة</string>
+    <string name="settings_font">الخط</string>
+    <string name="settings_storage">تخزين</string>
+    <string name="settings_security">حماية</string>
+    <string name="settings_backup">النسخ الاحتياطي</string>
+    <string name="settings_change_storage_title">تغيير موقع التخزين</string>
+    <string name="settings_backup_never">أبداً</string>
+
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">إعدادات البحث</string>
+    <string name="settings_search_clear">مسح البحث</string>
+    <string name="settings_search_recent">عمليات البحث الأخيرة</string>
+    <string name="settings_search_no_results">لا توجد إعدادات مطابقة</string>
+    <string name="settings_search_close">يغلق</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">تجربة المجلة</string>
+    <string name="settings_section_navigation_gestures">التنقل والإيماءات</string>
+    <string name="settings_section_review_insights">المراجعة والرؤى</string>
+
+    <!-- Language -->
+    <string name="settings_language">لغة</string>
+    <string name="settings_language_title">لغة التطبيق</string>
+    <string name="settings_language_subtitle">اختر اللغة المستخدمة في جميع أنحاء التطبيق.</string>
+    <string name="settings_language_system_default">الافتراضي للنظام</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">نمط الدخول</string>
+    <string name="settings_journal_entry_style_subtitle">اختر بين البطاقات المرتفعة ومظهر المجلة المسطح.</string>
+    <string name="settings_journal_entry_style_cards">بطاقات</string>
+    <string name="settings_journal_entry_style_flat">مستوي</string>
+    <string name="settings_journal_render_checkboxes_title">عرض مربعات الاختيار كنص</string>
+    <string name="settings_journal_render_checkboxes_subtitle">قم بعرض المهام على شكل [ ] و [x] عبر التطبيق بدلاً من مربعات الاختيار التعبيرية.</string>
+    <string name="settings_journal_day_header_counts_title">إظهار عدد رؤوس اليوم</string>
+    <string name="settings_journal_day_header_counts_subtitle">إظهار عدد الإدخالات والكلمات والأحرف في رأس يوم المجلة.</string>
+    <string name="settings_journal_show_timestamps_title">عرض الطوابع الزمنية</string>
+    <string name="settings_journal_show_timestamps_subtitle">عرض وقت الدخول على المخطط الزمني.</string>
+    <string name="settings_journal_allow_future_title">السماح بالإدخالات المستقبلية</string>
+    <string name="settings_journal_allow_future_subtitle">تمكين إضافة إدخالات إلى التواريخ المستقبلية.</string>
+    <string name="settings_journal_truncate_title">اقتطاع الإدخالات الطويلة</string>
+    <string name="settings_journal_truncate_subtitle">تقصير الإدخالات الطويلة على الشاشة الرئيسية.</string>
+    <string name="settings_journal_char_limit_title">حد الأحرف</string>
+    <string name="settings_journal_char_limit_subtitle">قم بتعيين عدد الأحرف التي سيتم عرضها قبل اقتطاعها.</string>
+    <string name="settings_journal_char_limit_min">50 حرفا</string>
+    <string name="settings_journal_char_limit_max">200 حرف</string>
+    <string name="settings_journal_char_count">%1$d حرفًا</string>
+    <string name="settings_journal_first_day_title">اليوم الأول من الأسبوع</string>
+    <string name="settings_journal_first_day_subtitle">بدء التقويم على</string>
+    <string name="settings_journal_day_sun">شمس</string>
+    <string name="settings_journal_day_mon">الاثنين</string>
+    <string name="settings_journal_date_recognition">التعرف على التاريخ</string>
+    <string name="settings_journal_date_order_title">ترتيب التاريخ</string>
+    <string name="settings_journal_date_order_subtitle">كيفية قراءة التواريخ الرقمية</string>
+    <string name="settings_journal_date_order_auto">آلي</string>
+    <string name="settings_journal_date_order_dmy">د/مم</string>
+    <string name="settings_journal_date_order_mdy">مم/د</string>
+    <string name="settings_journal_date_keywords_title">الكلمات الرئيسية للتاريخ</string>
+    <string name="settings_journal_date_keywords_subtitle">كلمات في اللغات الأخرى تعني تاريخًا (على سبيل المثال، كلمة محلية تخص الأمس).</string>
+    <string name="settings_journal_view_keywords">عرض (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">أضف كلمة رئيسية</string>
+    <string name="settings_journal_motion">حركة</string>
+    <string name="settings_journal_animations_title">الرسوم المتحركة</string>
+    <string name="settings_journal_animations_subtitle">التحكم في الحركة عبر التطبيق. المخفض يبقي الأشياء سائلة مع حركة أقل.</string>
+    <string name="settings_journal_animations_full">ممتلىء</string>
+    <string name="settings_journal_animations_reduced">مخفض</string>
+    <string name="settings_journal_animations_off">عن</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">مراجعة ما بعد الحفظ</string>
+    <string name="settings_review_post_write_title">مراجعة ما بعد الكتابة</string>
+    <string name="settings_review_post_write_subtitle">اعرض ورقة المراجعة بعد النقر على \"حفظ\" لاستخراج المهام أو التحقق من الإشارات أو يوم النجمة أو تعيين التسمية.</string>
+    <string name="settings_review_people_places">الناس والأماكن</string>
+    <string name="settings_review_highlighting_title">تسليط الضوء</string>
+    <string name="settings_review_highlighting_subtitle">قم بتمييز الأشخاص والأماكن التي تم تعقبها في بطاقات الصفحة الرئيسية ووضع عرض الإدخال.</string>
+    <string name="settings_review_match_sensitivity_title">حساسية المباراة</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">مدى التطابق الذي يجب أن تتطابق فيه الكلمة حتى يتمكن الأشخاص والأماكن من اكتشافها (أعلى = أكثر صرامة).</string>
+
+    <!-- Shortcodes -->
+    <string name="shortcodes_add_title">أضف رمزًا قصيرًا</string>
+    <string name="shortcodes_edit_title">تحرير الرمز القصير</string>
+    <string name="shortcodes_code_label">الرمز القصير (على سبيل المثال @yday)</string>
+    <string name="shortcodes_expansion_label">نص التوسع</string>
+    <string name="shortcodes_export_error">فشل تصدير الرموز القصيرة</string>
+    <string name="shortcodes_import_error">فشل استيراد الرموز القصيرة</string>
+    <string name="todos_expand_section">توسيع %1$s</string>
+    <string name="todos_collapse_section">طي %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">كتابة الخريطة الحرارية</string>
+    <string name="heatmap_widget_description">خريطة حرارية لنشاط الكتابة الأخيرة لمجلتك.</string>
+    <string name="quick_capture_widget_name">التقاط سريع</string>
+    <string name="quick_capture_widget_description">زر بنقرة واحدة لإضافة إدخال دفتر اليومية بسرعة.</string>
+    <string name="quick_todo_widget_name">المهام السريعة</string>
+    <string name="tasker_plugin_action_label">ياجا التقاط سريع</string>
+    <string name="tasker_plugin_event_label">أحداث مجلة ياجا</string>
+    <string name="tasker_screen_allow_add_entry_title">السماح تاسكر بإضافة إدخال</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">يتيح لـ Tasker استخدام إجراءات Yaja Quick Capture مثل Add Entry وAdd Todo.</string>
+    <string name="tasker_screen_allow_events_title">السماح بأحداث تاسكر</string>
+    <string name="tasker_screen_allow_events_subtitle">يتيح لـ Yaja إرسال الأحداث المحفوظة والإدخال المعدل والإدخال المحذوف إلى تاسكر.</string>
+    <string name="tasker_screen_include_text_title">تضمين نص الإدخال في الأحداث</string>
+    <string name="tasker_screen_include_text_subtitle">معطل بشكل افتراضي للخصوصية. عند إيقاف التشغيل، يتلقى تاسكر نوع الحدث والتاريخ والتسمية والوقت، ولكن ليس نص دفتر اليومية.</string>
+    <string name="tasker_screen_section_what">ماذا يفعل هذا</string>
+    <string name="tasker_screen_body_what">يمكن لـ Tasker إضافة إدخالات دفتر اليومية أو المهام إلى Yaja بسرعة، وإلحاق الأسطر في إدخال مجمع مثل المكالمات الفائتة، ويمكن لـ Yaja إخبار Tasker عندما يتم حفظ الإدخال أو تحريره أو حذفه.</string>
+    <string name="tasker_screen_section_how">كيفية الاستخدام</string>
+    <string name="tasker_screen_body_how">قم بتشغيل التبديل الذي تحتاجه هنا أولاً. ثم افتح Tasker وأضف إما إجراء Yaja Quick Capture أو حدث Yaja Journal Events.</string>
+    <string name="tasker_screen_section_notes">ملحوظات</string>
+    <string name="tasker_screen_body_notes">لا تتم مشاركة نص الإدخال مع تاسكر إلا إذا قمت بتمكين تضمين نص الإدخال في الأحداث. إذا لم يُظهر تاسكر أحدث الخيارات أو المتغيرات، فأعد فتح شاشة تكوين تاسكر بعد تحديث Yaja.</string>
+    <string name="tasker_screen_section_example">مثال</string>
+    <string name="tasker_screen_body_example">مثال الإجراء: إجراء تاسكر &gt; Yaja Quick Capture &gt; إلحاق، مع تعيين المطابقة / الرأس على المكالمات الفائتة وتعيين الخط للإلحاق بمتغير تاسكر. مثال على الحدث: حدث تاسكر &gt; أحداث مجلة Yaja &gt; تعديل الإدخال، ثم استخدم المتغيرات مثل %%yaja_event_type، و%%yaja_date، واختياريًا %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">حالات الاستخدام</string>
+    <string name="tasker_screen_use_case_1">1. استخدم حدث مجلة Yaja في تاسكر لتشغيل إجراء مزامنة FolderSync، بحيث يتم دفع مجلد Yaja الخاص بك إلى أي مزود سحابي بعد تغيير الإدخالات.</string>
+    <string name="tasker_screen_use_case_2">2. استخدم Pushbullet مع تاسكر لإرسال نص إلى Yaja Quick Capture، بحيث يتم حفظ النص المدفوع كإدخال جديد لليوم الحالي.</string>
+    <string name="tasker_screen_use_case_3">3. استخدم ملف تعريف تاسكر للمكالمات الفائتة لإرسال إجراء إلحاق إلى Yaja، بحيث تقع جميع تفاصيل المكالمات الفائتة ضمن إدخال واحد للمكالمات الفائتة بدلاً من إنشاء إدخالات منفصلة.</string>
+    <string name="quick_todo_widget_description">زر بنقرة واحدة لالتقاط ما يجب عمله كإدخال جديد لهذا اليوم.</string>
+    <string name="todo_list_widget_name">كل شيء</string>
+    <string name="todo_list_widget_description">قائمة قابلة للتمرير من مجلة todos. اضغط على مهمة لوضع علامة \"تم\" عليها أو التراجع عنها.</string>
+    <string name="todo_cd_add_todo">إضافة ما يجب القيام به</string>
+    <string name="todos_cd_open_compliance_master">فتح المهام المتكررة</string>
+    <string name="compliance_master_title">المهام / الأحداث المتكررة</string>
+    <string name="compliance_master_add">إضافة مهمة متكررة</string>
+    <string name="compliance_master_edit">تحرير المهمة المتكررة</string>
+    <string name="compliance_master_intro_title">المهام المتكررة</string>
+    <string name="compliance_master_intro_body">قم بإنشاء مهام متكررة للعمل الأسبوعي أو الشهري أو ربع السنوي أو نصف السنوي أو السنوي. يكشف Yaja عن كل مهمة فقط عندما تصبح دورتها ذات صلة.</string>
+    <string name="compliance_master_empty">لا توجد مهام متكررة حتى الآن. قم بإضافة واحد لإنشاء المهام تلقائيًا وفقًا للجدول الزمني الذي تم اختياره.</string>
+    <string name="compliance_master_status_deactivated">معطل</string>
+    <string name="compliance_master_meta_format">مستحق في اليوم %1$d • %2$d أيام التسليم</string>
+    <string name="compliance_master_field_title">اسم المهمة</string>
+    <string name="compliance_master_field_title_hint">مثال: ملف العائد الشهري</string>
+    <string name="compliance_master_field_description">وصف</string>
+    <string name="compliance_master_field_description_hint">مثال: التحقق من البوابة المصرفية والتحقق من الاستلام</string>
+    <string name="compliance_master_editor_task_section">ما الذي يجب أن يذكرك به ياجا؟</string>
+    <string name="compliance_master_field_due_day">تاريخ الاستحقاق</string>
+    <string name="compliance_master_field_reveal_day">الإنشاء مقدمًا (أيام)</string>
+    <string name="compliance_master_field_schedule_mode">متى يحين موعده؟</string>
+    <string name="compliance_master_schedule_mode_help">اختر كيفية تحديد Yaja لتاريخ الاستحقاق.</string>
+    <string name="compliance_master_select_schedule_type">حدد النمط المستحق</string>
+    <string name="compliance_master_field_frequency">عدد المرات؟</string>
+    <string name="compliance_master_frequency_help">اختر عدد مرات تكرار هذه المهمة.</string>
+    <string name="compliance_master_select_frequency">حدد تردد التكرار</string>
+    <string name="compliance_master_schedule_details">تفاصيل الجدول الزمني</string>
+    <string name="compliance_master_details_date_help">أدخل تاريخ الاستحقاق وعدد الأيام التي يجب كتابتها مسبقًا في الملف اليومي.</string>
+    <string name="compliance_master_details_weekday_help">اختر يوم الأسبوع الذي تصبح فيه هذه المهمة مستحقة.</string>
+    <string name="compliance_master_details_boundary_help">اختر عدد الأيام التي يجب كتابتها في الملف اليومي مقدمًا.</string>
+    <string name="compliance_master_field_due_weekday">مستحق خلال أيام الأسبوع</string>
+    <string name="compliance_master_select_weekday">حدد أيام الأسبوع</string>
+    <string name="compliance_master_due_day_help">أدخل تاريخًا من 1 إلى 31. تستخدم الأشهر الأقصر آخر تاريخ صالح لها.</string>
+    <string name="compliance_master_reveal_day_help">كم عدد الأيام قبل الموعد المحدد لكتابة المهام في ملف دفتر اليومية اليومي.</string>
+    <string name="compliance_master_first_day_selected">يستحق في التاريخ الأول من كل شهر معمول به.</string>
+    <string name="compliance_master_last_day_selected">مستحق في التاريخ الأخير من كل شهر معمول به.</string>
+    <string name="compliance_mode_day_of_month">تاريخ محدد</string>
+    <string name="compliance_mode_day_of_month_desc">مستحق في تاريخ مرقم، مثل اليوم الخامس عشر.</string>
+    <string name="compliance_mode_day_of_week">أيام الأسبوع</string>
+    <string name="compliance_mode_day_of_week_desc">مستحق في أحد أيام الأسبوع المختارة، مثل يوم الاثنين.</string>
+    <string name="compliance_mode_first_day">أول الشهر</string>
+    <string name="compliance_mode_first_day_desc">يستحق في التاريخ الأول من كل شهر معمول به.</string>
+    <string name="compliance_mode_last_day">نهاية الشهر</string>
+    <string name="compliance_mode_last_day_desc">يستحق في الموعد النهائي، بما في ذلك الأشهر الأقصر.</string>
+    <string name="compliance_frequency_weekly">أسبوعي</string>
+    <string name="compliance_frequency_biweekly">كل أسبوعين</string>
+    <string name="compliance_frequency_monthly">شهريا</string>
+    <string name="compliance_frequency_quarterly">ربع سنوية</string>
+    <string name="compliance_frequency_half_yearly">نصف سنوي</string>
+    <string name="compliance_frequency_annual">سنوي</string>
+    <string name="compliance_master_summary_day_of_month">اليوم %1$d • %2$s • %3$d يومًا مقدمًا</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">التاريخ الأول • %1$s • %2$d يومًا مقدمًا</string>
+    <string name="compliance_master_summary_last_day">آخر موعد • %1$s • %2$d يومًا مقدمًا</string>
+    <string name="compliance_master_execution_title">كيف سيتم تشغيل هذا</string>
+    <string name="compliance_master_execution_day_of_month">يتم إنشاء المهمة %1$s في اليوم %2$d. يتم كتابته في ملفك اليومي قبل %3$d يومًا.</string>
+    <string name="compliance_master_execution_weekday">يتم إنشاء المهمة %1$s على %2$s. يتم كتابته في ملفك اليومي قبل %3$d يومًا.</string>
+    <string name="compliance_master_execution_monthly_weekday">يتم إنشاء المهام شهريًا في نفس حدث %1$s كتاريخ البدء. يتم كتابته في ملفك اليومي قبل %2$d يومًا.</string>
+    <string name="compliance_master_execution_month_boundary">يتم إنشاء المهام %1$s في %2$s من الشهر المستحق. يتم كتابته في ملفك اليومي قبل %3$d يومًا.</string>
+    <string name="compliance_master_boundary_first">التاريخ الأول</string>
+    <string name="compliance_master_boundary_last">الموعد الأخير</string>
+    <string name="compliance_master_recurrence_weekly">كل أسبوع</string>
+    <string name="compliance_master_recurrence_biweekly">كل أسبوعين</string>
+    <string name="compliance_master_recurrence_monthly">كل شهر</string>
+    <string name="compliance_master_recurrence_quarterly">كل ثلاثة أشهر</string>
+    <string name="compliance_master_recurrence_half_yearly">كل ستة أشهر</string>
+    <string name="compliance_master_recurrence_annual">كل عام</string>
+    <string name="todo_chip_compliance">يتكرر</string>
+    <string name="compliance_master_upcoming">القادمة</string>
+    <string name="compliance_master_delete_confirm_title">هل تريد حذف المهمة المتكررة؟</string>
+    <string name="compliance_master_delete_confirm_body">ستتم إزالة \"%1$s\" ولن يتم إنشاء أي مهام أخرى.</string>
+    <string name="compliance_master_next_date">التالي: %1$s</string>
+    <string name="compliance_master_end_section">حالة النهاية</string>
+    <string name="compliance_master_end_help">اختر متى تتوقف هذه المهمة عن التكرار</string>
+    <string name="compliance_master_end_never">أبداً</string>
+    <string name="compliance_master_end_on_date">في موعد</string>
+    <string name="compliance_master_end_after">بعد…</string>
+    <string name="compliance_master_end_never_desc">يتكرر إلى أجل غير مسمى مع عدم وجود تاريخ انتهاء.</string>
+    <string name="compliance_master_end_date_select">حدد تاريخ الانتهاء</string>
+    <string name="compliance_master_end_date_help">لا يتم إنشاء أي مهام بعد هذا التاريخ.</string>
+    <string name="compliance_master_end_count_label">عدد مرات الظهور</string>
+    <string name="compliance_master_end_count_help">يتوقف بعد إنشاء العديد من المهام.</string>
+    <string name="compliance_master_ends_on">ينتهي %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d اليسار</string>
+    <string name="compliance_master_ended">انتهى</string>
+    <string name="compliance_master_type_label">إنشاء باسم</string>
+    <string name="compliance_master_type_task">مهمة</string>
+    <string name="compliance_master_type_event">حدث</string>
+    <string name="heatmap_widget_status_loading">جارٍ تحميل الخريطة الحرارية…</string>
+    <string name="heatmap_widget_status_empty">لا توجد إدخالات حتى الآن</string>
+    <string name="heatmap_widget_status_refresh">إضافة إدخال دفتر اليومية</string>
+
+    <!-- Entry states -->
+    <string name="toast_cache_synced">إعادة بناء ذاكرة التخزين المؤقت.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">دخول جديد</string>
+    <string name="shortcut_new_entry_long">إضافة إدخال دفتر اليومية</string>
+    <string name="shortcut_add_todo_short">أضف تودو</string>
+    <string name="shortcut_add_todo_long">إضافة ما يجب عمله لهذا اليوم</string>
+    <string name="shortcut_add_event_short">أضف حدثًا</string>
+    <string name="shortcut_add_event_long">أضف حدثًا</string>
+    <string name="shortcut_today_short">اليوم</string>
+    <string name="shortcut_today_long">افتح مجلة اليوم</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">ملاحة</string>
+    <string name="settings_bottom_nav_style_label">نمط التنقل السفلي</string>
+    <string name="settings_navigation_mode_title">وضع التنقل</string>
+    <string name="settings_navigation_mode_subtitle">اختر بين شريط التنقل العائم واللوحة السفلية الكاملة.</string>
+    <string name="settings_nav_mode_floating">عائم</string>
+    <string name="settings_nav_mode_panel">لوحة</string>
+    <string name="settings_navigation_screens_label">شاشات الملاحة</string>
+    <string name="settings_nav_summary_floating">تظل اليومية والتقويم دائمًا في الشريط العائم. التقط ما يصل إلى شاشتين إضافيتين. المحدد حاليًا: %1$d من %2$d.</string>
+    <string name="settings_nav_summary_panel">تظل اليومية والتقويم دائمًا في اللوحة السفلية. التقط ما يصل إلى 3 شاشات أخرى. المحدد حاليًا: %1$d من %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">إظهار Lookback في شريط أو لوحة التنقل النشطة.</string>
+    <string name="settings_nav_people_places_subtitle">إظهار الأشخاص والأماكن في شريط أو لوحة التنقل النشطة.</string>
+    <string name="settings_nav_todos_title">كل شيء</string>
+    <string name="settings_nav_todos_subtitle">اعرض المهام في شريط أو لوحة التنقل النشطة.</string>
+    <string name="todos_quick_add_title">إضافة سريعة</string>
+    <string name="todos_hero_subtitle">تتبع عمل اليومية واللحظات</string>
+    <string name="todos_hero_all_activity">كل النشاط</string>
+    <string name="todos_hero_open_focus">فتح التركيز</string>
+    <string name="todos_hero_completed">مكتمل</string>
+    <string name="todos_stat_today_open">اليوم مفتوح</string>
+    <string name="todos_stat_done_today">تم اليوم</string>
+    <string name="todos_stat_events">الأحداث</string>
+    <string name="todos_stat_still_open">لا تزال مفتوحة</string>
+    <string name="todos_stat_past_7d">الماضي 7 د</string>
+    <string name="todos_stat_days">أيام</string>
+    <string name="todos_empty_done">لم يتم إكمال المهام بعد</string>
+    <string name="todos_empty_events">لا توجد إدخالات الحدث حتى الآن</string>
+    <string name="todos_section_open">يفتح</string>
+    <string name="todos_section_later">لاحقاً</string>
+    <string name="todos_section_upcoming">القادمة</string>
+    <string name="todos_section_future_events">الأحداث المستقبلية</string>
+    <string name="todos_section_past_events">الأحداث الماضية</string>
+    <string name="todos_cd_open_day">يوم مفتوح</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d مهمة مفتوحة</item>
+        <item quantity="other">%1$d المهام المفتوحة</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d تم إنجاز المهمة</item>
+        <item quantity="other">%1$d المهام المنجزة</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d الحدث القادم</item>
+        <item quantity="other">%1$d الأحداث القادمة</item>
+    </plurals>
+    <string name="todos_filter_all_format">الكل %1$d</string>
+    <string name="todos_filter_open_format">فتح %1$d</string>
+    <string name="todos_filter_done_format">تم %1$d</string>
+    <string name="todos_filter_events_format">الأحداث %1$d</string>
+    <string name="todos_cheer_all_clear">كل شيء واضح. لطيف - جيد.</string>
+    <string name="todos_cheer_done_and_dusted">تم والغبار.</string>
+    <string name="todos_cheer_nothing_pending">لا شيء معلق.</string>
+    <string name="todos_cheer_caught_up">لقد اشتعلت.</string>
+    <string name="todos_cheer_clean_slate">لائحة نظيفة.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">في %1$d يوم</item>
+        <item quantity="other">خلال %1$d من الأيام</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d قبل يوم واحد</item>
+        <item quantity="other">%1$d قبل أيام</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">خلال %1$d أسبوع</item>
+        <item quantity="other">خلال %1$d من الأسابيع</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d قبل أسبوع</item>
+        <item quantity="other">%1$d منذ أسابيع</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">في شهر واحد</string>
+    <string name="todos_relative_one_month_ago">منذ شهر واحد</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">خلال %1$d شهر</item>
+        <item quantity="other">خلال %1$d شهرًا</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d قبل شهر</item>
+        <item quantity="other">%1$d قبل أشهر</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">إحصائيات</string>
+    <string name="settings_nav_statistics_subtitle_on">عرض الإحصائيات في شريط أو لوحة التنقل النشطة.</string>
+    <string name="settings_nav_statistics_subtitle_off">قم بتشغيل الإحصائيات أولاً لوضعها في التنقل.</string>
+    <string name="settings_show_labels_bottom_panel_title">إظهار التسميات في اللوحة السفلية</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">عرض تسميات النص تحت الرموز في اللوحة السفلية.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">الإيماءات</string>
+    <string name="settings_entry_delete_title">حذف الإدخال</string>
+    <string name="settings_entry_delete_subtitle">اضغط لفترة طويلة على الإدخال لتحديده. اضغط على المزيد من الإدخالات لتحديد عدة إدخالات، ثم استخدم زر الحذف المركزي. اضغط على المساحة الفارغة لمسح التحديد.</string>
+    <string name="settings_swipe_navigate_title">اسحب للتنقل في التواريخ</string>
+    <string name="settings_swipe_navigate_subtitle">اسحب من اليمين إلى اليسار للمضي قدمًا بتاريخ واحد، ومن اليسار إلى اليمين للتحرك للخلف.</string>
+    <string name="settings_drag_reorder_title">تمكين السحب لإعادة الترتيب</string>
+    <string name="settings_drag_reorder_subtitle">اضغط لفترة طويلة على الإدخالات لإعادة ترتيبها</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">البيانات والاسترداد</string>
+    <string name="settings_swipe_rebuild_index">اسحب لأسفل على الشاشة الرئيسية لإعادة بناء الفهرس</string>
+    <string name="settings_large_journal_safe_mode_title">الوضع الآمن للمجلة الكبيرة</string>
+    <string name="settings_large_journal_safe_mode_subtitle">عندما يتم اكتشاف مجلة كبيرة جدًا، قم بتأجيل عمل إحصائيات بدء التشغيل غير الأساسية حتى يتم فتح التطبيق بشكل أسرع وأكثر أمانًا.</string>
+    <string name="settings_version_history_title">تاريخ الإصدار</string>
+    <string name="settings_version_history_subtitle">احتفظ بنسخ آمنة قبل إدخال التعديلات والحذف والتسميات وإعادة النظر في التغييرات.</string>
+    <string name="settings_storage_location_label">موقع التخزين</string>
+    <string name="settings_reset_to_default">إعادة التعيين إلى الافتراضي</string>
+    <string name="settings_choose_folder">اختر المجلد</string>
+    <string name="settings_backup_description">قم بإنشاء ملف مضغوط احتياطي لـ Yaja يحتوي على إدخالات دفتر اليومية والأكواد القصيرة والكلمات الرئيسية للتاريخ وبيانات الأشخاص والأماكن. يمكن للاستعادة دمجها مرة أخرى بأمان لاحقًا.</string>
+    <string name="settings_last_backup">آخر نسخة احتياطية: %1$s</string>
+    <string name="settings_backup_reminder_age_label">عمر التذكير الاحتياطي</string>
+    <string name="settings_backup_reminder_disabled">عاجز</string>
+    <string name="settings_backup_reminder_desc">قم بتمييز النسخ الاحتياطي في الشريط الجانبي عندما يكون أقدم من %1$d يومًا.</string>
+    <string name="settings_backup_reminder_days_disabled">0 أيام (معطل)</string>
+    <string name="settings_backup_reminder_days">%1$d يوم</string>
+    <string name="settings_restore_button">يعيد</string>
+    <string name="settings_backup_now_button">النسخ الاحتياطي الآن</string>
+    <string name="settings_db_index_management_label">إدارة فهرس قاعدة البيانات</string>
+    <string name="settings_db_index_management_desc">افتح أدوات إعادة البناء المركزة للمهام والأشخاص والأماكن أو إعادة بناء فهرس قاعدة البيانات بالكامل.</string>
+    <string name="settings_rebuild_tools_button">أدوات إعادة البناء</string>
+    <string name="settings_import_label">يستورد</string>
+    <string name="settings_import_info_cd">استيراد المعلومات</string>
+    <string name="settings_import_info_title">معلومات الاستيراد</string>
+    <string name="settings_import_day_one_title">أدوات إعادة البناء</string>
+    <string name="settings_import_day_one_bullet1">- تصدير من اليوم الأول بدون صور</string>
+    <string name="settings_import_day_one_bullet2">- سيتم استيراد البيانات النصية فقط</string>
+    <string name="settings_import_day_one_bullet3">- سيتم الحفاظ على الطابع الزمني وبيانات الموقع (إن وجدت).</string>
+    <string name="settings_import_perf_warning_title">تحذير الأداء</string>
+    <string name="settings_import_perf_warning_desc">قد يستغرق استيراد عدد كبير من الإدخالات (500+) عدة دقائق. يمكنك التنقل بعيدًا وسيستمر الاستيراد في الخلفية.</string>
+    <string name="settings_got_it">فهمتها</string>
+    <string name="settings_import_success">%1$d أيام جديدة، %2$d تم دمجها، %3$d تم تخطيها</string>
+    <string name="settings_import_source_day_one">اليوم الأول</string>
+    <string name="settings_import_source_day_one_subtitle">تصدير .zip أو .json</string>
+    <string name="settings_import_source_journalistic">صحفي</string>
+    <string name="settings_import_source_journalistic_subtitle">تصدير .json</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">تعلم كيفية استخدام ياجا</string>
+    <string name="help_footer_website">موقع إلكتروني</string>
+    <string name="help_footer_share">يشارك</string>
+    <string name="help_footer_github">جيثب</string>
+    <string name="help_footer_discord">الفتنة</string>
+    <string name="help_footer_reddit">رديت</string>
+    <string name="help_share_yaja">شارك ياجا</string>
+    <string name="help_share_yaja_text">yaja - تطبيق يومية آخر\n\nمجلة محلية خالية من التشتيت تقوم بتخزين الإدخالات كملفات تخفيض السعر. ويتضمن المخطط الزمني والاستعراض والأشخاص والأماكن والنماذج والمراجعات والإحصاءات والأدوات.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">تم نسخ اسم مستخدم Discord!</string>
+    <string name="help_footer_play_store">متجر اللعب</string>
+    <string name="help_cd_rj_logo">شعار آر جيه</string>
+    <string name="help_screen_title">المساعدة والمعلومات</string>
+    <string name="help_welcome_title">مرحبا بكم في ياجا</string>
+    <string name="help_welcome_body">Yaja هي مجلة تخفيض السعر المحلية الأولى لالتقاط الأيام والأشخاص والأماكن والمتابعات والمراجعات والأنماط دون أن تعترض طريقك. توفر هذه الصفحة دليلاً سريعًا للأجزاء الرئيسية للتطبيق.</string>
+    <string name="help_start_here">ابدأ هنا</string>
+    <string name="help_cd_collapse">ينهار</string>
+    <string name="help_cd_expand">يوسع</string>
+    <string name="help_group_everyday_title">كل يوم</string>
+    <string name="help_group_everyday_desc">اليومية، وتدفق الكتابة، والتنقل اليومي.</string>
+    <string name="help_group_reviews_title">التعليقات والرؤى</string>
+    <string name="help_group_reviews_desc">الاسترجاعات والاتجاهات والأشخاص والأماكن والتحليل.</string>
+    <string name="help_group_advanced_title">أدوات متقدمة</string>
+    <string name="help_group_advanced_desc">الأدوات والتخزين والخصوصية والنسخ الاحتياطية والأدوات التقنية.</string>
+    <string name="help_onboard_todos_events_title">تودوس، الأحداث والمتكررة</string>
+    <string name="help_onboard_todos_events_body">احتفظ بالتذكيرات الشخصية والخطط العائلية والجداول الزمنية المتكررة التي تنشئ المهام تلقائيًا في تواريخ استحقاقها.</string>
+    <string name="help_onboard_widgets_title">الحاجيات</string>
+    <string name="help_onboard_widgets_body">قم بإضافة عناصر واجهة المستخدم Heatmap أو Quick Capture أو Quick Todo أو Todo List من المشغل.</string>
+    <string name="help_onboard_version_history_title">تاريخ الإصدار</string>
+    <string name="help_onboard_version_history_body">قم بتمكين ملفات المحفوظات في الإعدادات &gt; البيانات للاحتفاظ بلقطات آمنة قبل إجراء تغييرات محفوفة بالمخاطر.</string>
+    <string name="help_onboard_tasker_title">تاسكر</string>
+    <string name="help_onboard_tasker_body">استخدم Tasker لإضافة الإدخالات أو المهام أو الأحداث بسرعة عندما يلزم التقاط شيء شخصي على الفور.</string>
+    <string name="help_section_writing_editor_title">الكتابة والتحرير</string>
+    <string name="help_section_writing_editor_preview">القوالب، وعناوين تخفيض السعر، والمهام، والأحداث، وإدراج المسودة المرنة.</string>
+    <string name="help_section_writing_editor_content">+ اضغط على الزر العائم \'+\' للكتابة في اليوم المحدد.\n+ استخدم قوالب مثل مذكرة الاجتماع، ويوم السفر، وسجل الصحة، والانعكاس، وسجل العمل، والمزيد.\n+ يمكن إدراج القوالب في مسودة فارغة، أو إلحاقها أدناه، أو استخدامها لاستبدال مسودة، أو إدراجها عند المؤشر.\n+ يمكن لرقائق المحرر إدراج المهام والأحداث والقوائم المرقمة والقوائم النقطية بسرعة.\n+ دعم عرض الإدخال وتحرير الإدخال للعناوين ذات النمط المحدد مثل ### القسم.</string>
+    <string name="help_section_post_write_review_title">مراجعة ما بعد الكتابة</string>
+    <string name="help_section_post_write_review_preview">استخراج المهام واكتشاف الكلمات الرئيسية والنجمة والعلامات وإعادة النظر في الإعداد.</string>
+    <string name="help_section_post_write_review_content">+ بعد الكتابة، يستطيع Yaja فتح ورقة مراجعة قبل الحفظ.\n+ يمكنه استخراج عناصر المهام، واكتشاف الأشخاص والأماكن، وتمييز اليوم بنجمة، وتعيين تسمية يوم، وجدولة تواريخ إعادة الزيارة.\n+ يمكنك تعطيل مراجعة ما بعد الكتابة من الإعدادات إذا كنت تفضل الحفظ المباشر.</string>
+    <string name="help_section_revisit_followup_title">إعادة النظر ومتابعة التواريخ</string>
+    <string name="help_section_revisit_followup_preview">تواريخ متابعة مرتبطة بالمجلة مع اختيارات سريعة وخيار مخصص.</string>
+    <string name="help_section_revisit_followup_content">+ أضف تواريخ إعادة الزيارة غدًا، أو الأسبوع التالي، أو الشهر التالي، أو تاريخ مخصص.\n+ تظهر عناصر إعادة الزيارة المستحقة على الصفحة الرئيسية ويتم وضع علامة عليها في التقويم والمخطط الزمني.\n+ يعمل هذا بشكل جيد مع الوعود، والقرارات، وفحوصات السلامة، والتذكيرات المرتبطة بسياق المجلة.</string>
+    <string name="help_section_navigation_gestures_title">التنقل والإيماءات</string>
+    <string name="help_section_navigation_gestures_preview">حركة التاريخ، وحذف التحديد، وتفضيلات التمرير، وإعادة بناء سلوك ذاكرة التخزين المؤقت.</string>
+    <string name="help_section_navigation_gestures_content">+ يدعم الصفحة الرئيسية التنقل عبر التاريخ باستخدام الأسهم والتنقل الاختياري بالتمرير عند التمكين.\n+ الضغط لفترة طويلة على الإدخال لتحديده. انقر على المزيد من الإدخالات لتحديدها أيضًا، ثم استخدم قرص الحذف بالقرب من الزر \"إضافة\".\n+ يؤدي النقر خارج الإدخالات المحددة إلى مسح التحديد. يمكن استعادة الإدخالات المحذوفة معًا من خلال العد التنازلي للاستعادة.\n+ يمكنك إعادة إنشاء ذاكرة التخزين المؤقت عندما تتغير ملفات دفتر اليومية خارج Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">الرموز المختصرة والتقاط سريع</string>
+    <string name="help_section_shortcodes_quick_capture_preview">التقاط شخصي سريع بالإضافة إلى مقتطفات نصية ديناميكية قابلة لإعادة الاستخدام.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ أنشئ رموزًا قصيرة لإدراج نص متكرر بسرعة.\n+ تعمل العناصر النائبة الديناميكية مثل {{today:dd-MMM}} و{{now:HH:mm}} داخل الرموز القصيرة.\n+ يساعد الالتقاط السريع على تسجيل شيء ما بسرعة دون فتح المحرر الكامل.\n+ يمكن للإضافة السريعة حفظ مهمة ما أو حدث لتاريخ محدد من الأداة أو شاشة المهام أو تاسكر.</string>
+    <string name="help_section_todos_events_title">تودوس، الأحداث والمتكررة</string>
+    <string name="help_section_todos_events_preview">تذكيرات شخصية، وأحداث جديرة بالملاحظة، وجداول زمنية متكررة تلقائية.</string>
+    <string name="help_section_todos_events_content">+ تتم كتابة المهام مباشرة في إدخالات دفتر اليومية كسطر [ ] و[x].\n+ الأحداث هي إدخالات دفتر يومية عادية تم وضع علامة عليها كحدث، ومفيدة للخطط العائلية، أو المواعيد، أو السفر، أو أي شيء تريد ملاحظته لاحقًا.\n+ كتابة المهام والأحداث المتكررة (الجداول) تلقائيًا عناصر المهام أو عناوين الأحداث في صفحات يومياتك اليومية وفقًا لجدولها الزمني (على سبيل المثال، أسبوعيًا، شهريًا، سنويًا).\n+ إدارة جداولك من خلال النقر على أيقونة المهام المتكررة في قائمة المهام الشاشة.\n+ كل يوم عند فتح Yaja، يتم تشغيل مسار الخلفية للتحقق مما إذا كانت هناك أي مهام مجدولة مستحقة وإدراجها في إدخال ذلك اليوم.\n+ تساعدك شاشة المهام في عرض المهام المفتوحة والمهام المكتملة والأحداث دون تحويل Yaja إلى لوحة معلومات إنتاجية.\n+ اضغط على رأس التاريخ لفتح ذلك اليوم في دفتر اليومية.\n+ اسحب إلى الأسفل على Todos لإعادة إنشاء فهرس المهام إذا تغيرت الملفات خارج Yaja.\n+ يتم تذكر عرض المهام المكتملة، لذلك يظل العرض المفضل لديك ثابتًا عند المغادرة والعودة.\n+ يمكن لأدوات المهام أن تعرض المهام المعلقة، والتأكيد قبل التبديل، وإخفاء المهام المكتملة، واختياريًا الإخفاء التلقائي عندما لا يوجد شيء معلق.</string>
+    <string name="help_section_people_places_title">الناس والأماكن</string>
+    <string name="help_section_people_places_preview">الكلمات الرئيسية والأسماء المستعارة والاتجاهات وطرق عرض الاتصال المرتبة.</string>
+    <string name="help_section_people_places_content">+ تعقب الأشخاص والأماكن باستخدام الأسماء المستعارة وتسميات العلاقات.\n+ البحث في قائمة الكلمات الرئيسية وتصفيتها وفرزها.\n+ تعرض صفحات تفاصيل الكلمات الرئيسية مدى الحداثة والإشارات على مدار الوقت والإشارات المشتركة والاتصالات المرتبة.\n+ يمكن ضبط حساسية المطابقة من الإعدادات.</string>
+    <string name="help_section_timeline_lookback_title">الجدول الزمني والرجوع</string>
+    <string name="help_section_timeline_lookback_preview">تصفح اليوم الماضي، والميزات، ومفاجأة لي، ومراجعة نقاط الدخول.</string>
+    <string name="help_section_timeline_lookback_content">+ يتيح لك المخطط الزمني تصفح الأيام الماضية باستخدام الفلاتر وشرائح السنة ووضع التاريخ الكامل الاختياري.\n+ يعرض Lookback الإدخالات من نفس اليوم في السنوات الماضية والميزات المميزة المميزة بنجمة.\n+ يفتح Surprise Me إدخالاً عشوائيًا سابقًا من Lookback.\n+ المراجعة الأسبوعية والمراجعة الشهرية مباشرة داخل Lookback.</string>
+    <string name="help_section_statistics_reviews_title">إحصائيات ومراجعات</string>
+    <string name="help_section_statistics_reviews_preview">وضع المقارنة ورؤى القالب والأقسام المرئية المخصصة والملخصات.</string>
+    <string name="help_section_statistics_reviews_content">+ تتضمن الإحصائيات وضع المقارنة، ودلتا الكلمات الرئيسية، ورؤى النماذج.\n+ يمكنك اختيار أقسام الإحصائيات التي تظل مرئية من داخل شاشة الإحصائيات.\n+ يتوفر وضع المقارنة لجميع الأوقات ويلخص دلتا الأشهر والسنوات.\n+ تلخص صفحات المراجعة الأيام الأكثر نشاطًا، وأهم الأشخاص والأماكن، واللحظات المفضلة، والتسميات، وتقسيم اللغة، وأنماط المتتالية أو الفجوة.</string>
+    <string name="help_section_widgets_home_title">الحاجيات وسطح المنزل</string>
+    <string name="help_section_widgets_home_preview">أدوات التشغيل، والكلمات الرئيسية المميزة، وإحصائيات المنزل على مستوى اليوم.</string>
+    <string name="help_section_widgets_home_content">+ تتوفر أدوات كتابة خريطة التمثيل اللوني، والالتقاط السريع، والإضافة السريعة، وقائمة المهام على المشغل.\n+ تتيح لك شاشات تكوين الأدوات ضبط الزوايا والمساحة والشكل والرؤوس ورؤية المهمة المكتملة وخيارات عناصر واجهة المستخدم الأخرى عندما تكون مدعومة.\n+ تستخدم أداة الخريطة الحرارية ظلالاً أكثر كثافة لعرض محفوظات الكتابة بشكل أكثر سلاسة.\n+ يمكن للصفحة الرئيسية تمييز الأشخاص والأماكن داخل الإدخالات عند تمكين الإعداد.\n+ يمكن أن يظهر رأس تاريخ الصفحة الرئيسية أو إخفاء عدد الإدخالات والكلمات وعدد الأحرف.</string>
+    <string name="help_section_language_text_analysis_title">تحليل اللغة والنص</string>
+    <string name="help_section_language_text_analysis_preview">اكتشاف اللغة المحلية للإحصائيات ورؤى المراجعة.</string>
+    <string name="help_section_language_text_analysis_content">+ يكشف Yaja عن النص أو اللغة السائدة عبر إدخالات الرؤى.\n+ يظهر تقسيم اللغة في الإحصائيات والمراجعات.\n+ يتم تشغيل الاكتشاف محليًا ولا يرسل نص دفتر اليومية خارج الجهاز.</string>
+    <string name="help_section_data_privacy_cache_title">البيانات والخصوصية وذاكرة التخزين المؤقت</string>
+    <string name="help_section_data_privacy_cache_preview">تخزين تخفيض السعر، وسجل الإصدارات، وسجل التطبيق، وقفل التطبيق، وإعادة بناء ذاكرة التخزين المؤقت.</string>
+    <string name="help_section_data_privacy_cache_content">+ خصوصية البيانات: جميع بيانات دفتر اليومية الشخصية موجودة بشكل صارم على جهازك الفعلي ولا تتركها أبدًا في أي وقت. لا يقوم Yaja بتشغيل قواعد البيانات السحابية أو خوادم النسخ الاحتياطي عن بعد أو القياس عن بعد لتتبع النص.\n+ يتم تخزين إدخالات دفتر اليومية كملفات Markdown قياسية مرتبة حسب السنة والشهر.\n+ يمكن لمحفوظات الإصدارات الاحتفاظ بلقطات آمنة قبل التعديلات والحذف والتسميات وإعادة النظر في التغييرات.\n+ يمكنك اختيار عدد الإصدارات التي تريد الاحتفاظ بها وعدد الأيام التي يتم الاحتفاظ بالمحفوظات فيها.\n+ يسجل سجل التطبيقات الأحداث الفنية وتفاصيل الأعطال ونشاط ذاكرة التخزين المؤقت دون تخزين نص دفتر اليومية.\n+ إعادة إنشاء التطبيق تتيح لك ذاكرة التخزين المؤقت تحديث بيانات التطبيق بشكل نمطي، بما في ذلك المهام وإعادة إنشاء ذاكرة التخزين المؤقت بالكامل.\n+ يدعم قفل التطبيق رقم التعريف الشخصي وبصمة الإصبع.\n+ يحتفظ Yaja بالفهرسة المكثفة وتأجيل عمل الإحصائيات حيثما أمكن، لذا يظل تشغيل التطبيق وحفظه مستجيبًا.</string>
+    <string name="settings_app_log_title">سجل التطبيق</string>
+    <string name="settings_app_log_subtitle">عرض التشخيصات الآمنة للخصوصية وتفاصيل الأعطال السابقة</string>
+    <string name="app_log_cd_share">مشاركة سجل التطبيق</string>
+    <string name="app_log_cd_clear">مسح سجل التطبيق</string>
+    <string name="app_log_privacy_title">تشخيصات آمنة للخصوصية</string>
+    <string name="app_log_privacy_description">يسجل هذا السجل أحداث التطبيق الرئيسية وعمليات ذاكرة التخزين المؤقت/التخزين وتحديثات عناصر واجهة المستخدم وتفاصيل الأعطال. ولا يتضمن إدخالات دفتر اليومية أو نص المهام أو محتوى الملاحظة الخاصة.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">احتفظ بآخر %d يوم</item>
+        <item quantity="other">احتفظ بآخر %d من الأيام</item>
+    </plurals>
+    <string name="app_log_retention_description">يتم تقليم أحداث السجل الأقدم تلقائيًا أثناء التسجيل وعلى الفور عندما يتغير هذا الإعداد.</string>
+    <string name="app_log_empty">لا يوجد سجل التطبيق حتى الآن.</string>
+    <string name="app_log_refresh">تحديث السجل</string>
+    <string name="app_log_share_empty">لا توجد إدخالات سجل تطبيق Yaja حتى الآن.</string>
+    <string name="app_log_share_subject">سجل تطبيق ياجا</string>
+    <string name="app_log_share_chooser">مشاركة سجل تطبيق Yaja</string>
+    <string name="app_log_local_time_format">%1$s | التوقيت المحلي\n%2$s</string>
+    <string name="settings_website_title">موقع ياجا</string>
+    <string name="settings_website_subtitle">افتح الموقع الرسمي للحصول على التحديثات والتفاصيل</string>
+    <string name="settings_advanced_integrations_title">التكاملات المتقدمة</string>
+    <string name="settings_tasker_integration_title">التكامل تاسكر</string>
+    <string name="settings_tasker_integration_subtitle">إجراءات الالتقاط السريع ومشغلات أحداث اليومية</string>
+    <string name="settings_shortcodes_subtitle">إدارة المقتطفات القابلة لإعادة الاستخدام والتي تتوسع أثناء الكتابة أو الالتقاط السريع.</string>
+    <string name="settings_privacy_security_title">الخصوصية والأمن</string>
+    <string name="settings_pin_lock_title">قفل رقم التعريف الشخصي</string>
+    <string name="settings_app_locked">التطبيق مقفل</string>
+    <string name="settings_app_unlocked">تم إلغاء قفل التطبيق</string>
+    <string name="settings_change_pin">تغيير رقم التعريف الشخصي</string>
+    <string name="settings_biometric_unlock_title">فتح البيومترية</string>
+    <string name="settings_biometric_enabled_desc">تمكين بصمة الإصبع أو Face ID</string>
+    <string name="settings_biometric_disabled_desc">استخدم القياسات الحيوية بدلاً من رقم التعريف الشخصي</string>
+    <string name="settings_autolock_timeout_title">مهلة القفل التلقائي</string>
+    <string name="settings_pin_lock_disclaimer">يمنع قفل PIN الوصول غير المصرح به إلى التطبيق ولكنه لا يقوم بتشفير بيانات دفتر اليومية الخاصة بك على القرص. لا يزال بإمكان أي شخص لديه حق الوصول المباشر إلى الملف قراءة إدخالاتك.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d دقيقة</item>
+        <item quantity="other">%1$d دقيقة</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">نظام</string>
+    <string name="settings_theme_light">ضوء</string>
+    <string name="settings_theme_dark">مظلم</string>
+    <string name="settings_theme_amoled">أموليد</string>
+    <string name="settings_colors_label">الألوان</string>
+    <string name="settings_color_intensity_title">كثافة اللون</string>
+    <string name="settings_background_tint_title">لون الخلفية</string>
+    <string name="settings_font_sans">بلا</string>
+    <string name="settings_font_serif">شريف</string>
+    <string name="settings_font_mono">كثرة الوحيدات</string>
+    <string name="settings_font_custom">مخصص</string>
+    <string name="settings_font_size_label">حجم الخط</string>
+    <string name="settings_ui_font_size_label">حجم خط واجهة المستخدم</string>
+    <string name="settings_data_font_size_label">حجم خط المحتوى</string>
+    <string name="settings_follow_ui_font_scale_label">اجعل حجم خط المحتوى هو نفس حجم واجهة المستخدم</string>
+    <string name="settings_color_source_material_you">المادة أنت</string>
+    <string name="settings_theme_preview_title">معاينة الموضوع</string>
+    <string name="settings_journal_entry_preview">إدخال دفتر اليومية</string>
+    <string name="settings_journal_entry_preview_desc">ستستخدم البطاقات والرقائق والأزرار هذه الألوان.</string>
+    <string name="settings_preview_chip_chip">رقاقة</string>
+    <string name="settings_preview_chip_accent">لهجة</string>
+    <string name="settings_preview_chip_fab">القوات المسلحة البوروندية</string>
+    <string name="settings_intensity_label">الشدة: %1$s</string>
+    <string name="settings_personal_themes_title">المواضيع الشخصية</string>
+    <string name="settings_theme_name_label">اسم الموضوع</string>
+    <string name="settings_main_color_label">اللون الرئيسي</string>
+    <string name="settings_hue_label">هوى</string>
+    <string name="settings_sat_label">قعد</string>
+    <string name="settings_bright_label">ساطع</string>
+    <string name="settings_generated_accents_title">اللهجات المولدة</string>
+    <string name="settings_personal_theme_desc">اختر لونًا واحدًا. يقوم Yaja بإنشاء ألوان متطابقة ودعم الألوان.</string>
+    <string name="settings_preview_chip_main">رئيسي</string>
+    <string name="settings_preview_chip_support">يدعم</string>
+    <string name="settings_no_font_selected">لم يتم تحديد الخط</string>
+    <string name="settings_custom_font_desc">اختر أي ملف Unicode .ttf أو .otf - على سبيل المثال. خط المالايالامية مثل المنجاري. الأحرف التي يفتقر إليها الخط تستخدم خطوط النظام.</string>
+    <string name="settings_font_replace">يستبدل</string>
+    <string name="settings_choose_font_file">اختر ملف الخط</string>
+    <string name="settings_intensity_muted">كتم الصوت</string>
+    <string name="settings_intensity_normal">طبيعي</string>
+    <string name="settings_intensity_vivid">واضح</string>
+    <string name="settings_intensity_pop">البوب</string>
+    <string name="settings_tint_clean">ينظف</string>
+    <string name="settings_tint_soft">ناعم</string>
+    <string name="settings_tint_rich">ثري</string>
+    <string name="settings_tint_deep">عميق</string>
+    <string name="settings_accent_complementary">تكميلية</string>
+    <string name="settings_accent_analogous">مماثل</string>
+    <string name="settings_accent_triadic">ثلاثي</string>
+    <string name="settings_accent_soft">ناعم</string>
+    <string name="settings_mono_weight_thin">رفيع</string>
+    <string name="settings_mono_weight_extra_light">ضوء إضافي</string>
+    <string name="settings_mono_weight_light">ضوء</string>
+    <string name="settings_mono_weight_regular">عادي</string>
+    <string name="settings_mono_weight_medium">واسطة</string>
+    <string name="settings_mono_weight_semi_bold">شبه جريئة</string>
+    <string name="settings_mono_weight_bold">عريض</string>
+    <string name="settings_mono_weight_extra_bold">جريئة اضافية</string>
+    <string name="settings_mono_weight_title">وزن</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">إضافة كلمة التاريخ</string>
+    <string name="settings_keyword_label">الكلمة الرئيسية</string>
+    <string name="settings_keyword_placeholder_example">على سبيل المثال أمس</string>
+    <string name="settings_means_label">وسائل</string>
+    <string name="settings_add_button">يضيف</string>
+    <string name="settings_no_keywords_yet">لم تتم إضافة أي كلمات رئيسية حتى الآن.</string>
+    <string name="settings_added_keywords_title">الكلمات الرئيسية المضافة (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">أضف كلمة رئيسية</string>
+    <string name="keywords_dialog_add_title">أضف كلمة رئيسية</string>
+    <string name="keywords_dialog_edit_title">تحرير الكلمة الرئيسية</string>
+    <string name="keywords_cd_import_csv">استيراد ملف CSV</string>
+    <string name="keywords_cd_export_csv">تصدير CSV</string>
+    <string name="keywords_cd_download_template">تحميل القالب</string>
+    <string name="rebuild_cache_storage_transparency_title">شفافية التخزين على الجهاز</string>
+    <string name="rebuild_cache_storage_transparency_desc">يستخدم Yaja نموذج تخزين محلي آمن. تظل بيانات دفتر يومياتك الشخصية محلية ولا تترك جهازك مطلقًا في أي وقت:</string>
+    <string name="rebuild_cache_source_of_truth_title">مصدر الحقيقة (ملفات تخفيض السعر)</string>
+    <string name="rebuild_cache_source_of_truth_desc">يتم حفظ جميع الإدخالات وعناصر قائمة التحقق (todos) وأحداث المخطط الزمني والنجوم والعلامات بشكل دائم في ملفات Markdown (.md) ذات النص العادي في مجلد دفتر اليومية المحلي المحدد. بياناتك مملوكة لك بنسبة 100% وموجودة بالكامل على جهازك.</string>
+    <string name="rebuild_cache_read_cache_title">قراءة ذاكرة التخزين المؤقت والفهرس (قاعدة بيانات SQLite)</string>
+    <string name="rebuild_cache_read_cache_desc">لتمكين التحميل الفوري للشاشة، وإبرازات التقويم، والكلمات الرئيسية، والإحصائيات دون فحص نظام الملفات في كل تمريرة، يقوم Yaja بتحليل ملفات Markdown وفهرستها في قاعدة بيانات Room SQLite المحلية على جهازك.</string>
+    <string name="rebuild_cache_local_private_title">100٪ محلي وخاص</string>
+    <string name="rebuild_cache_local_private_desc">ليس لدى Yaja أي قواعد بيانات سحابية، أو خوادم نسخ احتياطي عن بعد، أو قياس عن بعد لتتبع النص الخاص بك. تظل جميع إدخالات دفتر اليومية والبيانات التي تم تحليلها بشكل صارم على جهازك الفعلي ولا تتركها أبدًا في أي وقت.</string>
+    <string name="keywords_export_success">الكلمات الرئيسية التي تم تصديرها</string>
+    <string name="keywords_export_failed">تعذر تصدير الكلمات الرئيسية</string>
+    <string name="keywords_template_saved">تم حفظ القالب</string>
+    <string name="keywords_template_save_failed">تعذر حفظ النموذج</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">تم استيراد الكلمة الرئيسية %d</item>
+        <item quantity="other">تم استيراد %d من الكلمات الرئيسية</item>
+    </plurals>
+    <string name="keywords_import_none_valid">لم يتم العثور على كلمات رئيسية صالحة</string>
+    <string name="keywords_import_failed">تعذر استيراد الكلمات الرئيسية</string>
+    <string name="keywords_status_indexing">الفهرسة</string>
+    <string name="keywords_status_indexed">مفهرسة</string>
+    <string name="keywords_metric_mentions">يذكر</string>
+    <string name="keywords_metric_days">أيام</string>
+    <string name="keywords_timeline_range_all">الجميع</string>
+    <string name="keywords_connections_filter_all">الجميع</string>
+    <string name="keywords_connections_filter_people">الناس</string>
+    <string name="keywords_connections_filter_places">الأماكن</string>
+    <string name="keywords_connections_filter_recent">مؤخرًا</string>
+    <string name="keywords_connections_filter_strongest">الأقوى</string>
+    <string name="keywords_filter_needs_reindex">يحتاج إلى إعادة الفهرسة</string>
+    <string name="keywords_search_placeholder">البحث عن الأشخاص والأماكن والأسماء المستعارة والعلاقة</string>
+    <string name="keywords_refreshing_counters">جارٍ تحديث عدادات الكلمات الرئيسية...</string>
+    <string name="keywords_empty_title">لا توجد كلمات رئيسية حتى الآن</string>
+    <string name="keywords_empty_subtitle">أضف الأشخاص والأماكن التي تريد أن يتتبعها التطبيق محليًا.</string>
+    <string name="keywords_no_results_title">لا توجد نتائج مطابقة</string>
+    <string name="keywords_no_results_subtitle">حاول إجراء بحث أو فرز أو تصفية مختلفة.</string>
+    <string name="keywords_people_title">الناس</string>
+    <string name="keywords_places_title">الأماكن</string>
+    <string name="keywords_people_empty">لم تتم إضافة أي أشخاص حتى الآن.</string>
+    <string name="keywords_people_filtered_empty">لا يوجد أشخاص يتطابقون مع عوامل التصفية الحالية.</string>
+    <string name="keywords_places_empty">لم تتم إضافة أي أماكن حتى الآن.</string>
+    <string name="keywords_places_filtered_empty">لا توجد أماكن تتطابق مع عوامل التصفية الحالية.</string>
+    <string name="keywords_delete_person_title">هل تريد حذف الشخص؟</string>
+    <string name="keywords_delete_place_title">هل تريد حذف المكان؟</string>
+    <string name="keywords_delete_message">هل تريد حذف \"%1$s\" من الأشخاص والأماكن؟ سيؤدي هذا إلى إزالة الكلمة الأساسية ومطابقاتها المفهرسة.</string>
+    <string name="keywords_timeline_title">يذكر على مر الزمن</string>
+    <string name="keywords_timeline_empty_pattern">لا يوجد نمط شهري بعد</string>
+    <string name="keywords_timeline_total_format">%1$d الإجمالي</string>
+    <string name="keywords_timeline_empty_chart">سيتم رسم الإشارات هنا بعد فهرسة العثور على الإدخالات.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">الذروة %1$s • %2$d إشارة</item>
+        <item quantity="other">ذروة %1$s • %2$d الإشارات</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">أيام مع الإشارات</string>
+    <string name="keywords_recency_title">حداثة</string>
+    <string name="keywords_recency_none">لا توجد مباريات حتى الآن</string>
+    <string name="keywords_recency_today">ذكره اليوم</string>
+    <string name="keywords_recency_yesterday">ذكره بالأمس</string>
+    <string name="keywords_recency_days_ago_format">آخر إشارة قبل %1$d من الأيام</string>
+    <string name="keywords_first_seen">شوهد لأول مرة</string>
+    <string name="keywords_last_seen">شوهد آخر مرة</string>
+    <string name="keywords_unknown">مجهول</string>
+    <string name="keywords_co_mentioned_with">شارك في ذكرها مع</string>
+    <string name="keywords_connections_title">اتصالات</string>
+    <string name="keywords_connections_subtitle">مرتبة حسب التداخل المتكرر والحداثة</string>
+    <string name="keywords_connections_linked_format">%1$d مرتبط</string>
+    <string name="keywords_connections_show">إظهار الاتصالات</string>
+    <string name="keywords_connections_hide">إخفاء الاتصالات</string>
+    <string name="keywords_connections_items_in_view">%1$d العناصر في طريقة العرض هذه</string>
+    <string name="keywords_connections_tap_to_expand">انقر لتوسيع %1$d الروابط المصنفة</string>
+    <string name="keywords_connections_empty">لا توجد اتصالات لهذا الفلتر حتى الآن.</string>
+    <string name="keywords_open_day">يوم مفتوح</string>
+    <string name="keywords_sort_alphabetical">من الألف إلى الياء</string>
+    <string name="keywords_sort_most_mentioned">الأكثر ذكرا</string>
+    <string name="keywords_sort_recently_added">أضيفت مؤخرا</string>
+    <string name="keywords_peak_mentions_format">الذروة %1$s • %2$d إشارة%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d يوم</string>
+    <string name="keywords_connections_meta_days_suffix_plural">ق</string>
+    <string name="keywords_connections_meta_together">معاً</string>
+    <string name="keywords_connections_meta_shared_entry_prefix">| %1$d مدخل مشترك</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">ذ</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix">| آخر %1$s</string>
+    <string name="keywords_connections_score_format">النتيجة %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d يوم</string>
+    <string name="keywords_connections_shared_chip">تمت المشاركة %1$d</string>
+    <string name="keywords_match_type_exact">بالضبط</string>
+    <string name="keywords_match_type_fuzzy">غامض</string>
+    <string name="keywords_match_type_alias">الاسم المستعار</string>
+    <string name="keywords_match_type_relation">علاقة</string>
+    <string name="keywords_action_delete">يمسح</string>
+    <string name="keywords_action_edit">يحرر</string>
+    <string name="keywords_action_view">منظر</string>
+    <string name="keywords_name_label">اسم</string>
+    <string name="keywords_relation_context_label">العلاقة / السياق</string>
+    <string name="keywords_aliases_label">الأسماء المستعارة (مفصولة بفواصل)</string>
+    <string name="keywords_aliases_label_short">الأسماء المستعارة</string>
+    <string name="keywords_type_person">شخص</string>
+    <string name="keywords_type_place">مكان</string>
+    <string name="keywords_save_disabled_hint">يتم حفظ الكلمات الرئيسية معطلة. قم بتمكينها من القائمة عندما تريد تشغيل الفهرسة.</string>
+    <string name="settings_meaning_yesterday">أمس</string>
+    <string name="settings_meaning_today">اليوم</string>
+    <string name="lookback_chip_weekly">أسبوعي</string>
+    <string name="lookback_chip_monthly">شهريا</string>
+    <string name="timeline_screen_title">الجدول الزمني</string>
+    <string name="timeline_empty_title">لا شيء هنا بعد</string>
+    <string name="timeline_empty_subtitle">جرب مرشحًا مختلفًا أو اضبط بحث التصنيف.</string>
+    <string name="timeline_quick_today">اليوم</string>
+    <string name="timeline_quick_month">شهر</string>
+    <string name="timeline_quick_filters">المرشحات</string>
+    <string name="timeline_all_dates">جميع التواريخ</string>
+    <string name="timeline_label_prefix">التسمية: %1$s</string>
+    <string name="timeline_label_search_placeholder">البحث عن تسميات اليوم</string>
+    <string name="timeline_filters_title">مرشحات الجدول الزمني والتخطيط</string>
+    <string name="settings_meaning_tomorrow">غداً</string>
+    <string name="settings_meaning_day_before_yesterday">أول من أمس</string>
+    <string name="settings_meaning_day_after_tomorrow">بعد غد</string>
+    <string name="settings_meaning_last_week">الأسبوع الماضي</string>
+    <string name="settings_meaning_next_week">الأسبوع المقبل</string>
+    <string name="settings_meaning_monday">الاثنين</string>
+    <string name="settings_meaning_tuesday">يوم الثلاثاء</string>
+    <string name="settings_meaning_wednesday">الأربعاء</string>
+    <string name="settings_meaning_thursday">يوم الخميس</string>
+    <string name="settings_meaning_friday">جمعة</string>
+    <string name="settings_meaning_saturday">السبت</string>
+    <string name="settings_meaning_sunday">الأحد</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">مساحة التخزين الداخلية للتطبيق</string>
+    <string name="settings_storage_internal_default">وحدة التخزين الداخلية للتطبيق (افتراضي)</string>
+    <string name="settings_storage_new_folder_fallback">المجلد الجديد</string>
+    <string name="settings_storage_current_folder_fallback">المجلد الحالي</string>
+    <string name="settings_storage_move_confirm">سيتم نقل كافة الإدخالات الموجودة من %1$s إلى %2$s. هل تريد الاستمرار؟</string>
+    <string name="settings_restore_added_skipped">تمت الإضافة: %1$d\nالتكرارات التي تم تخطيها: %2$d</string>
+    <string name="settings_storage_custom_folder">المجلد المخصص:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">تساعد الاختصارات</string>
+    <string name="addentry_cd_insert_template">إدراج القالب</string>
+    <string name="addentry_cd_jump_to_today">انتقل إلى اليوم</string>
+    <string name="addentry_cd_share">يشارك</string>
+    <string name="addentry_cd_bold">عريض</string>
+    <string name="addentry_cd_italic">مائل</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">ضبط الوقت</string>
+    <string name="addentry_event_chip">حدث</string>
+    <string name="addentry_pick_time_title">اختر الوقت</string>
+    <string name="addentry_hour_label">ساعة</string>
+    <string name="addentry_minute_label">دقيقة</string>
+    <string name="addentry_new_event_title">حدث جديد</string>
+    <string name="addentry_title_label">عنوان</string>
+    <string name="addentry_event_description_label">وصف الحدث</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">تم العثور على تودوس</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">تحويل سطر %1$d إلى قائمة مرجعية</item>
+        <item quantity="other">تحويل %1$d خطوط إلى قائمة مرجعية</item>
+    </plurals>
+    <string name="addentry_people_places_title">الناس والأماكن</string>
+    <string name="addentry_no_tracked_mentions">لم يتم العثور على أشخاص أو أماكن تم تعقبها في هذا الإدخال.</string>
+    <string name="addentry_day_memory_title">ذاكرة اليوم</string>
+    <string name="addentry_star_day_title">نجمة هذا اليوم</string>
+    <string name="addentry_star_day_subtitle">احفظه كتمييز حتى يعود في المراجعة.</string>
+    <string name="addentry_day_label_label">تسمية اليوم</string>
+    <string name="addentry_day_label_placeholder">على سبيل المثال إعادة تعيين اليوم</string>
+    <string name="addentry_follow_up_title">متابعة</string>
+    <string name="addentry_next_month">الشهر المقبل</string>
+    <string name="addentry_custom">مخصص</string>
+    <string name="addentry_due_date_format">مستحق %1$s</string>
+    <string name="addentry_cd_clear_follow_up">متابعة واضحة</string>
+    <string name="addentry_follow_up_note_label">مذكرة المتابعة</string>
+    <string name="addentry_follow_up_note_placeholder">ما الذي يجب عليك إعادة النظر فيه؟</string>
+    <string name="addentry_review_entry_title">مراجعة الإدخال</string>
+    <string name="addentry_review_entry_subtitle">تمريرة سريعة قبل الحفظ. اسحب جميع المهام، وتحقق من الإشارات المتعقبة، وحدد اليوم إذا كان الأمر مهمًا.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d ما يجب القيام به</item>
+        <item quantity="other">%1$d جميع المهام</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d إشارة</item>
+        <item quantity="other">%1$d الإشارات</item>
+    </plurals>
+    <string name="addentry_save_entry_button">حفظ الإدخال</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">تجاهل التغييرات</string>
+    <string name="addentry_discard_changes_message">لديك تغييرات غير محفوظة. ارجع وتجاهلها، أو ابقَ لمواصلة التحرير.</string>
+    <string name="addentry_go_back">عُد</string>
+    <string name="addentry_stay">يقضي</string>
+    <string name="addentry_shortcuts_title">الاختصارات</string>
+    <string name="addentry_help_bold_suffix">لجعل النص غامقًا (أو حدد النص واضغط على زر غامق)</string>
+    <string name="addentry_help_italic_suffix">: يمتد إلى الأسبوع الحالي (على سبيل المثال، الأسبوع 52)</string>
+    <string name="addentry_help_today_suffix">: يمتد إلى التاريخ الحالي (على سبيل المثال، 25 ديسمبر 25)</string>
+    <string name="addentry_help_now_suffix">: يمتد إلى الوقت الحالي (على سبيل المثال، 14:30)</string>
+    <string name="addentry_help_week_suffix">: يمتد إلى الأسبوع الحالي (على سبيل المثال، الأسبوع 52)</string>
+    <string name="addentry_help_day_suffix">: يمتد إلى أيام الأسبوع الحالية (على سبيل المثال، الاثنين)</string>
+    <string name="addentry_help_todo_suffix">: يتم التوسيع إلى خانة اختيار المهام (على سبيل المثال، [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: عند الدخول في أي مكان في السطر الذي يحتوي على مربع اختيار المهام، سيتم تبديله.</string>
+    <string name="addentry_okey">حسنا!</string>
+    <string name="addentry_template_merge_message">تحتوي هذه المسودة على نص بالفعل. اختر كيفية وضع القالب.</string>
+    <string name="addentry_template_merge_subtitle">إدراج أدناه يحتفظ بالمسودة الحالية. في المؤشر يضع القالب حيث توجد علامة الإقحام الخاصة بك الآن.</string>
+    <string name="addentry_insert_below">أدخل أدناه</string>
+    <string name="addentry_at_cursor">في المؤشر</string>
+    <string name="addentry_replace_draft">استبدال المسودة</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">شائع</string>
+    <string name="addentry_new_chip">جديد</string>
+    <string name="addentry_best_for_format">الأفضل لـ: %1$s</string>
+    <string name="addentry_cd_remove_favorite">إزالة القالب المفضل</string>
+    <string name="addentry_cd_favorite_template">القالب المفضل</string>
+    <string name="addentry_checklist_chip">قائمة التحقق</string>
+    <string name="addentry_followup_chip">المتابعة</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">قسم %1$d</item>
+        <item quantity="other">%1$d أقسام</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">تبديل القالب المفضل</string>
+    <string name="addentry_template_preview_label">معاينة القالب</string>
+    <string name="addentry_use_template_button">استخدم القالب</string>
+    <string name="addentry_start_blank_title">ابدأ فارغًا</string>
+    <string name="addentry_start_blank_subtitle">تخطي القوالب واستمر في الكتابة من مسودة فارغة.</string>
+    <string name="addentry_blank_entry_name">إدخال فارغ</string>
+    <string name="addentry_blank_entry_description">إدخال مجلة عادي</string>
+    <string name="addentry_blank_category">عام</string>
+    <string name="addentry_quick_picks_title">اختيارات سريعة</string>
+    <string name="addentry_sort_recommended">مُستَحسَن</string>
+    <string name="addentry_sort_recent">مؤخرًا</string>
+    <string name="addentry_sort_az">من الألف إلى الياء</string>
+    <string name="addentry_no_templates_title">لم يتم العثور على قوالب</string>
+    <string name="addentry_no_templates_subtitle">جرّب بحثًا أو فئة مختلفة.</string>
+    <string name="addentry_search_templates_label">قوالب البحث</string>
+    <string name="addentry_search_templates_placeholder">لقاء، صحة، تأمل..</string>
+    <string name="addentry_cd_clear_search">مسح البحث</string>
+    <string name="addentry_choose_template_title">اختر قالبًا</string>
+    <string name="addentry_templates_ready_format">%1$d من %2$d من النماذج جاهزة</string>
+    <string name="addentry_category_all">الجميع</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">ماذا حدث؟</string>
+    <string name="addentry_todo_chip">ما يجب القيام به</string>
+    <string name="addentry_numbered_list_chip">قائمة ن</string>
+    <string name="addentry_bulleted_list_chip">قائمة ب</string>
+    <string name="addentry_words_count_format">%1$d كلمات</string>
+    <string name="addentry_chars_count_format">%1$d الأحرف</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">المتابعة مستحقة اليوم</item>
+        <item quantity="other">المتابعات مستحقة اليوم</item>
+    </plurals>
+    <string name="home_followup_subtitle">انتقل مرة أخرى إلى اليوم المرتبط واستمر من هناك.</string>
+    <string name="home_from_date_format">من %1$s</string>
+    <string name="home_more_due_today_format">+%1$d المزيد من المقرر اليوم</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">إضافة تسمية</string>
+    <string name="home_edit_label_title">تحرير التسمية</string>
+    <string name="home_day_label_hint">أضف تسمية قصيرة لهذا اليوم (بحد أقصى 30 حرفًا).</string>
+    <string name="home_day_label_placeholder">على سبيل المثال، اليوم الأول في المدرسة</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">أضف تسمية لهذا اليوم</string>
+    <string name="home_star_label_hint">امنح هذا اليوم تصنيفًا لا يُنسى (30 حرفًا كحد أقصى)</string>
+    <string name="home_star_label_placeholder">على سبيل المثال، عيد ميلادي، في المدرسة</string>
+    <string name="home_star_button">نجم</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">تم حذف الإدخال</item>
+        <item quantity="other">تم حذف %1$d من الإدخالات</item>
+    </plurals>
+    <string name="home_restore_button">يعيد</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">إدخالات البحث...</string>
+    <string name="home_cd_search">يبحث</string>
+    <string name="home_cd_clear_search">مسح البحث</string>
+    <string name="home_cd_favorite">مفضل</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">إدخالات</string>
+    <string name="home_stat_words">كلمات</string>
+    <string name="home_stat_chars">حرف</string>
+    <string name="home_stat_versions">الآيات</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">إضافة تسمية</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d تم العثور على التطابق</item>
+        <item quantity="other">%1$d تم العثور على التطابقات</item>
+    </plurals>
+    <string name="home_no_keyword_matches">لم يتم العثور على تطابقات لهذه الكلمة الرئيسية حتى الآن.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">أيقونة الحالة الفارغة</string>
+    <string name="home_empty_future">هذا هو المستقبل. تسجيل تذكير!</string>
+    <string name="home_empty_past">أنت في الماضي. سجل ذكرى قبل أن تتلاشى..</string>
+    <string name="home_empty_today">لا توجد إدخالات حتى الآن. ابدأ يومك.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">توفير</string>
+    <string name="home_cd_add_entry">إضافة إدخال</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">حذف %1$d</string>
+    <string name="home_future_date_title">إدخال التاريخ المستقبلي</string>
+    <string name="home_future_date_message_format">أنت تقوم بإضافة إدخال لتاريخ مستقبلي (%1$s). هل تريد الاستمرار؟</string>
+    <string name="home_cache_issue_title">تم اكتشاف مشكلة في ذاكرة التخزين المؤقت للبيانات</string>
+    <string name="home_cache_issue_message">يبدو أن عددًا كبيرًا من إدخالات دفتر اليومية مفقودة من ذاكرة التخزين المؤقت. هل ترغب في إجراء تحديث كامل لذاكرة التخزين المؤقت للبيانات لمحاولة استعادتها؟</string>
+    <string name="home_refresh_button">ينعش</string>
+    <string name="home_ignore_button">يتجاهل</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">الناس والأماكن</string>
+    <string name="nav_statistics">إحصائيات</string>
+    <string name="nav_todos">كل شيء</string>
+    <string name="nav_rebuild_index">إعادة بناء فهرس قاعدة البيانات</string>
+    <string name="nav_backup_data">بيانات النسخ الاحتياطي</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">حالة</string>
+    <string name="nav_finishing_index_rebuild">جارٍ الانتهاء من إعادة بناء الفهرس...</string>
+    <string name="nav_rebuilding_index">إعادة بناء فهرس قاعدة البيانات</string>
+    <string name="nav_refreshing_index">مؤشر منعش</string>
+    <string name="nav_backup_too_old">النسخ الاحتياطي قديم جدًا ...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">عمل...</string>
+    <string name="nav_eta_almost_done">تم الانتهاء تقريبا</string>
+    <string name="nav_eta_seconds_left_format">~%1$d متبقية</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm متبقي</string>
+    <string name="nav_eta_hours_left_format">~%1$dh متبقي</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">قائمة طعام</string>
+    <string name="nav_cd_rj_logo">شعار آر جيه</string>
+    <string name="nav_tagline">تطبيق يومية آخر</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">متجر اللعب</string>
+    <string name="nav_cd_website">موقع إلكتروني</string>
+    <string name="nav_cd_share_app">مشاركة التطبيق</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">شعار ياجا</string>
+    <string name="nav_easter_quote_part1">\"اكتب فكرة عابرة أو ما تناولته على الغداء؛ ليس من الضروري أن يكون عميقًا.\n</string>
+    <string name="nav_easter_quote_part2">كلماتك يمكن أن تكون موجودة فقط.</string>
+    <string name="nav_easter_quote_part3">\"</string>
+    <string name="nav_from_labs">من مختبرات RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">شارك ياجا</string>
+    <string name="nav_share_text_body">yaja — تطبيق يومية آخر\n\nمجلة يومية خالية من التشتيت تقوم بتخزين الإدخالات كملفات تخفيض بسيطة.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">تغيير موقع التخزين</string>
+    <string name="settings_change_storage_location_message">سيتم نقل كافة الإدخالات الموجودة من %1$s إلى %2$s. هل تريد الاستمرار؟</string>
+    <string name="settings_yes">نعم</string>
+    <string name="settings_no">لا</string>
+    <string name="settings_restore_summary_title">استعادة الملخص</string>
+    <string name="settings_restore_section_journal">مجلة</string>
+    <string name="settings_restore_section_shortcodes">الرموز المختصرة</string>
+    <string name="settings_restore_section_date_keywords">الكلمات الرئيسية للتاريخ</string>
+    <string name="settings_restore_section_people_places">الناس والأماكن</string>
+    <string name="settings_restore_journal_summary">تمت الإضافة إلى الأيام الجديدة: %1$d\nتم الدمج في الأيام الموجودة: %2$d\nتم تخطي إدخالات دفتر اليومية المكررة: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">تمت الإضافة: %1$d\nالتكرارات التي تم تخطيها: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">تمت الإضافة: %1$d\nالتكرارات التي تم تخطيها: %2$d</string>
+    <string name="settings_restore_people_places_summary">تمت الإضافة: %1$d\nالتكرارات التي تم تخطيها: %2$d</string>
+    <string name="rebuild_tools_title">أدوات إعادة البناء</string>
+    <string name="rebuild_tools_back">خلف</string>
+    <string name="rebuild_tools_intro">استخدم عمليات إعادة البناء المركزة أولاً. إعادة بناء قاعدة البيانات مخصصة فقط لتغييرات التخزين أو تلف قاعدة البيانات أو عدم تطابق الفهرس.</string>
+    <string name="rebuild_todo_index_title">إعادة بناء مؤشر تودو</string>
+    <string name="rebuild_todo_index_subtitle">قم بتحديث المهام من ملفات دفتر اليومية وقم بتحديث شاشة/عنصر واجهة المستخدم. أفضل عندما تبدو جميع الأشياء قديمة.</string>
+    <string name="rebuild_todo_index_button">إعادة بناء تودوس</string>
+    <string name="rebuild_people_places_title">إعادة بناء الأشخاص والأماكن</string>
+    <string name="rebuild_people_places_subtitle">قم بتحديث الأسماء المستعارة للكلمات الرئيسية والإشارات المشتركة والاتجاهات وبيانات العلاقات.</string>
+    <string name="rebuild_people_places_button">إعادة بناء الأشخاص والأماكن</string>
+    <string name="rebuild_database_title">إعادة بناء قاعدة البيانات بالكامل</string>
+    <string name="rebuild_database_subtitle">إعادة ترجمة ذاكرة التخزين المؤقت لقاعدة البيانات من ملفات تخفيض السعر. إعادة فهرسة الإدخالات، والأعداد، والمهام، والأشخاص والأماكن، والأدوات من البداية.</string>
+    <string name="rebuild_database_button">إعادة بناء قاعدة البيانات</string>
+    <string name="rebuild_database_confirm_title">إعادة بناء فهرس قاعدة البيانات</string>
+    <string name="rebuild_database_confirm_message">سيؤدي هذا إلى مسح وإعادة فهرسة قاعدة بيانات Room SQLite بالكامل من ملفات Markdown الخاصة بك. بالنسبة للمجلات الكبيرة، قد يستغرق ذلك بضع دقائق.</string>
+    <string name="rebuild_database_confirm_start">ابدأ إعادة البناء</string>
+    <string name="rebuild_database_status_title">حالة فهرس قاعدة البيانات</string>
+    <string name="rebuild_database_storage_engine">محرك التخزين</string>
+    <string name="rebuild_database_storage_engine_value">قاعدة بيانات الغرفة SQLite</string>
+    <string name="rebuild_database_indexed_days">الأيام المفهرسة</string>
+    <string name="rebuild_database_indexed_days_value">تمت فهرسة %1$d من الأيام</string>
+    <string name="rebuild_database_file_size">حجم ملف قاعدة البيانات</string>
+    <string name="rebuild_database_last_sync">مزامنة الفهرس الأخيرة</string>
+    <string name="rebuild_database_age_never">أبداً</string>
+    <string name="rebuild_database_age_just_now">الآن</string>
+    <string name="rebuild_database_age_one_minute">منذ دقيقة واحدة</string>
+    <string name="rebuild_database_age_minutes">%1$d قبل دقائق</string>
+    <string name="rebuild_database_age_one_hour">منذ ساعة واحدة</string>
+    <string name="rebuild_database_age_hours">%1$d قبل ساعات</string>
+    <string name="shortcodes_title">الرموز المختصرة</string>
+    <string name="shortcodes_import_cd">يستورد</string>
+    <string name="shortcodes_export_cd">يصدّر</string>
+    <string name="shortcodes_help_cd">يساعد</string>
+    <string name="shortcodes_new">رمز قصير جديد</string>
+    <string name="shortcodes_empty_title">لا توجد رموز قصيرة مخصصة</string>
+    <string name="shortcodes_empty_subtitle">أضف واحدًا لتوسيع المقتطفات مثل@yday إلى نص ديناميكي.</string>
+    <string name="shortcodes_dynamic_dates_hint">استخدم {{today:format}} للتواريخ الديناميكية.</string>
+    <string name="shortcodes_help_title">مساعدة الرمز القصير</string>
+    <string name="shortcodes_help_built_in">الرموز القصيرة المضمنة:</string>
+    <string name="shortcodes_help_built_in_examples">@today، @now، @week، @day، @t (خانة اختيار)، @x (تبديل خانة الاختيار)</string>
+    <string name="shortcodes_help_dynamic_patterns">الأنماط الديناميكية:</string>
+    <string name="shortcodes_help_dynamic_desc">استخدم {{today:FORMAT}} أو {{yesterday:FORMAT}} أو {{tomorrow:FORMAT}} أو {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">مثال: @yday -&gt; أمس: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">التنسيقات الشائعة: dd-MM-yy، HH:mm، EEEE (اسم اليوم).</string>
+    <string name="action_close">يغلق</string>
+    <string name="keyword_detail_title_fallback">الكلمة الرئيسية</string>
+    <string name="keyword_detail_not_found">لم يتم العثور على الكلمة الرئيسية</string>
+    <string name="keyword_detail_last_indexed">آخر فهرسة %1$s</string>
+    <string name="keyword_detail_mentions_section">يذكر</string>
+    <string name="pin_biometric_prompt_title">استخدم بصمة إصبعك أو وجهك لفتح القفل</string>
+    <string name="pin_biometric_prompt_subtitle">استخدم بصمة إصبعك أو وجهك لفتح القفل</string>
+    <string name="pin_error_no_biometric_enrolled">لم يتم تسجيل القياسات الحيوية. يرجى تسجيل بصمة الإصبع أو الوجه في إعدادات الجهاز.</string>
+    <string name="pin_error_hardware_unavailable">الأجهزة البيومترية غير متوفرة.</string>
+    <string name="pin_error_no_hardware">لا يحتوي هذا الجهاز على أجهزة القياسات الحيوية.</string>
+    <string name="pin_error_not_available">المصادقة البيومترية غير متوفرة.</string>
+    <string name="pin_title_confirm">تأكيد رقم التعريف الشخصي</string>
+    <string name="pin_title_set_new">قم بتعيين رقم تعريف شخصي جديد</string>
+    <string name="pin_title_disable">أدخل رقم التعريف الشخصي الحالي للتعطيل</string>
+    <string name="pin_title_enter">أدخل رقم التعريف الشخصي</string>
+    <string name="pin_error_incorrect">رقم التعريف الشخصي غير صحيح. حاول ثانية.</string>
+    <string name="pin_error_mismatch">أرقام التعريف الشخصية غير متطابقة. ابدأ من جديد.</string>
+    <string name="pin_cd_use_biometric">استخدم القياسات الحيوية</string>
+    <string name="pin_cd_backspace">مسافة للخلف</string>
+    <string name="timeline_preview_empty_labeled">تم تسمية هذا اليوم، ولكن لا يوجد إدخال في دفتر اليومية حتى الآن.</string>
+    <string name="timeline_preview_loading">جارٍ تحميل المعاينة...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d المزيد من الإدخالات في هذا اليوم</item>
+        <item quantity="other">+ %1$d المزيد من الإدخالات في هذا اليوم</item>
+    </plurals>
+    <string name="timeline_preview_open_day">افتح هذا اليوم</string>
+    <string name="timeline_chip_today">اليوم</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d إدخال</item>
+        <item quantity="other">%1$d إدخالات</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">المتابعة</string>
+    <string name="timeline_chip_label_only">التسمية فقط</string>
+    <string name="timeline_cd_favorite">مفضل</string>
+    <string name="version_history_title">تاريخ الإصدار</string>
+    <string name="version_history_day_versions_title">إصدارات اليوم</string>
+    <string name="version_history_keep_copies_title">احتفظ بنسخ السلامة</string>
+    <string name="version_history_keep_copies_subtitle">قبل أن يقوم Yaja بتغيير ملف يوم، فإنه يحفظ الملف الحالي في بيانات التطبيق ضمن ملفات المحفوظات.</string>
+    <string name="version_history_versions_kept_title">يتم الاحتفاظ بالإصدارات يوميًا</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">يحتفظ Yaja بأحدث إصدار من %1$d لكل تاريخ.</item>
+        <item quantity="other">يحتفظ Yaja بأحدث إصدارات %1$d لكل تاريخ.</item>
+    </plurals>
+    <string name="version_history_retention_title">حفظ</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">يتم تنظيف اللقطات الأقدم من %1$d يومًا تلقائيًا.</item>
+        <item quantity="other">يتم تنظيف اللقطات الأقدم من %1$d يومًا تلقائيًا.</item>
+    </plurals>
+    <string name="version_history_notes">ملاحظات: يحمي سجل الإصدارات ملفات تخفيض السعر اليومي قبل إضافة التغييرات وتعديلها وحذفها وإعادة ترتيبها وتسميتها وتمييزها بنجمة وإعادة زيارتها. إنها ليست نسخة احتياطية سحابية؛ استمر في استخدام النسخ الاحتياطي للنسخ المحمولة.</string>
+    <string name="version_history_snapshots_for">لقطات لـ %1$s</string>
+    <string name="version_history_snapshots_subtitle">افتح النسخة المحفوظة، وافحصها، واستعادتها لهذا اليوم.</string>
+    <string name="version_history_empty">لا توجد إصدارات محفوظة حتى الآن لهذا التاريخ.</string>
+    <string name="action_view">منظر</string>
+    <string name="version_history_date_intro">افتح نسخة محفوظة سابقة لهذا اليوم، وتفقدها، واستعادتها عند الحاجة.</string>
+    <string name="action_next">التالي</string>
+    <string name="action_apply">يتقدم</string>
+    <string name="action_restore">يعيد</string>
+    <string name="statistics_choose_title">اختر الإحصائيات</string>
+    <string name="statistics_choose_subtitle">إخفاء الأقسام التي لا تريدها. يجب أن يظل قسم واحد على الأقل مرئيًا.</string>
+    <string name="statistics_visible_count">%1$d من %2$d مرئية</string>
+    <string name="statistics_show_all">إظهار الكل</string>
+    <string name="statistics_one_section_visible">يجب أن يظل قسم واحد مرئيًا</string>
+    <string name="statistics_shown">يظهر في الإحصائيات</string>
+    <string name="statistics_hidden">مخفي من الإحصائيات</string>
+    <string name="statistics_select_start_date">حدد تاريخ البدء</string>
+    <string name="statistics_select_end_date">حدد تاريخ الانتهاء</string>
+    <string name="statistics_filter_by_period">تصفية حسب الفترة</string>
+    <string name="statistics_cd_reorder">اضغط لفترة طويلة لإعادة الطلب</string>
+    <string name="statistics_total_entries">إجمالي الإدخالات</string>
+    <string name="statistics_total_words">مجموع الكلمات</string>
+    <string name="statistics_avg_words_per_entry">متوسط الكلمات / الدخول</string>
+    <string name="statistics_current_streak">الخط الحالي</string>
+    <string name="statistics_pages_written">الصفحات المكتوبة</string>
+    <string name="statistics_days_highlighted">الأيام المميزة</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d يوم</item>
+        <item quantity="other">%1$d يوم</item>
+    </plurals>
+    <string name="statistics_period_all_time">إحصائيات في كل الأوقات</string>
+    <string name="statistics_period_current_year">إحصائيات العام الحالي</string>
+    <string name="statistics_period_previous_year">إحصائيات العام السابق</string>
+    <string name="statistics_period_current_month">إحصائيات الشهر الحالي</string>
+    <string name="statistics_period_previous_month">إحصائيات الشهر السابق</string>
+    <string name="statistics_period_custom">إحصائيات الفترة المخصصة</string>
+    <string name="statistics_period_chip_all_time">كل الوقت</string>
+    <string name="statistics_period_chip_current_year">العام الحالي</string>
+    <string name="statistics_period_chip_previous_year">السنة السابقة</string>
+    <string name="statistics_period_chip_current_month">هذا الشهر</string>
+    <string name="statistics_period_chip_previous_month">الشهر السابق</string>
+    <string name="statistics_period_chip_custom">مخصص</string>
+    <string name="statistics_sections_visible">%1$d من %2$d أقسام مرئية</string>
+    <string name="statistics_loading_stages">تحميل الإحصائيات على مراحل...</string>
+    <string name="review_period_weekly">المراجعة الأسبوعية</string>
+    <string name="review_period_monthly">المراجعة الشهرية</string>
+    <string name="review_anchor_week">الأسبوع الذي يحتوي على %1$s</string>
+    <string name="review_anchor_month">الشهر الذي يحتوي على %1$s</string>
+    <string name="review_chip_entries">الإدخالات %1$d</string>
+    <string name="review_chip_words">الكلمات %1$d</string>
+    <string name="review_chip_days">أيام %1$d</string>
+    <string name="review_hint_jump">اضغط على شرائح التاريخ أدناه للانتقال مرة أخرى إلى المجلة.</string>
+    <string name="review_chip_streak">خط %1$d</string>
+    <string name="review_chip_gap">الفجوة %1$d</string>
+    <string name="review_chip_labels">التصنيفات %1$d</string>
+    <string name="review_chip_favorites">المفضلة %1$d</string>
+    <string name="review_empty_period">لا توجد إدخالات دفتر اليومية في هذه الفترة حتى الآن. لا تزال التسميات والإبرازات تظهر أدناه إذا كانت موجودة.</string>
+    <string name="review_writing_rhythm">إيقاع الكتابة</string>
+    <string name="review_best_streak">أطول فجوة</string>
+    <string name="review_longest_gap">أطول فجوة</string>
+    <string name="review_most_active_days">الأيام الأكثر نشاطا</string>
+    <string name="review_day_entries_words">%1$d إدخالات | %2$d كلمة</string>
+    <string name="review_top_people">كبار الناس</string>
+    <string name="review_top_places">أفضل الأماكن</string>
+    <string name="review_no_people_mentions">لا يذكر الناس</string>
+    <string name="review_no_place_mentions">لا يوجد مكان يذكر</string>
+    <string name="review_favorite_moments">اللحظات المفضلة</string>
+    <string name="review_starred_day">يوم مميز بنجمة</string>
+    <string name="review_highlighted_in_period">أبرزها في هذه الفترة</string>
+    <string name="review_labels_created">تم إنشاء التصنيفات</string>
+    <string name="review_labeled_day">اليوم المسمى</string>
+    <string name="review_language_split">تقسيم اللغة</string>
+    <string name="review_not_enough_text">لا يوجد نص كاف في هذه الفترة</string>
+    <string name="lookback_reviews_title">التعليقات</string>
+    <string name="lookback_reviews_intro">قم ببناء تفكير سريع حول يوم يومياتك المحدد.</string>
+    <string name="lookback_seven_days">7 أيام</string>
+    <string name="lookback_one_month">شهر واحد</string>
+    <string name="lookback_weekly_review">المراجعة الأسبوعية</string>
+    <string name="lookback_weekly_review_subtitle">هذا الأسبوع في لمحة واحدة</string>
+    <string name="lookback_monthly_review">المراجعة الشهرية</string>
+    <string name="lookback_monthly_review_subtitle">ملخص هذا الشهر</string>
+    <string name="lookback_flashbacks_title">في مثل هذا اليوم من السنوات الماضية</string>
+    <string name="lookback_highlights_title">أبرز ما لديك</string>
+    <string name="lookback_empty_title">لا توجد استرجاعات أو أبرز حتى الآن.</string>
+    <string name="lookback_empty_subtitle">الأيام المهمة المفضلة لرؤيتهم هنا!</string>
+    <string name="lookback_cd_random_entry">انتقل إلى الإدخال العشوائي</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">فترة</string>
+    <string name="statistics_compare_mode_title">وضع المقارنة</string>
+    <string name="statistics_compare_mode_subtitle">دلتا الشهر والسنة والكلمات الرئيسية</string>
+    <string name="statistics_this_year">هذا العام</string>
+    <string name="statistics_writing_days_delta">كتابة أيام دلتا</string>
+    <string name="statistics_top_person_delta">أعلى دلتا الشخص</string>
+    <string name="statistics_no_people_mentions">لم يذكر أي شخص حتى الآن</string>
+    <string name="statistics_top_place_delta">توب بليس دلتا</string>
+    <string name="statistics_no_place_mentions">لا يوجد مكان يذكر بعد</string>
+    <string name="statistics_structured_writing">الكتابة المنظمة</string>
+    <string name="statistics_template_led_format">يقودها النموذج %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">فارغ %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">القوالب الأكثر استخداما</string>
+    <string name="statistics_template_mix">مزيج القالب</string>
+    <string name="statistics_follow_up_leaders">قادة المتابعة</string>
+    <string name="statistics_compare_details">مقارنة التفاصيل</string>
+    <string name="statistics_label_month">شهر</string>
+    <string name="statistics_label_year">سنة</string>
+    <string name="statistics_this_month_count_format">هذا الشهر %1$d</string>
+    <string name="statistics_last_month_count_format">الشهر الماضي %1$d</string>
+    <string name="statistics_longest_streak">أطول خط</string>
+    <string name="statistics_most_active_day">اليوم الأكثر نشاطا</string>
+    <string name="statistics_writing_consistency">اتساق الكتابة</string>
+    <string name="statistics_days_with_entries">أيام مع الإدخالات</string>
+    <string name="statistics_best_month">أفضل شهر</string>
+    <string name="statistics_best_month_format">%1$s · %2$d إدخالات</string>
+    <string name="statistics_avg_writing_days_week">متوسط أيام الكتابة / الأسبوع</string>
+    <string name="statistics_days_decimal_format">%1$.1f يوم</string>
+    <string name="statistics_based_on_total_words">بناءً على إجمالي الكلمات المكتوبة يوميًا</string>
+    <string name="statistics_light_words">خفيف (&lt;50 كلمة)</string>
+    <string name="statistics_moderate_words">معتدل (50-200 كلمة)</string>
+    <string name="statistics_heavy_words">ثقيلة (200-500 كلمة)</string>
+    <string name="statistics_intense_words">مكثفة (500+ كلمة)</string>
+    <string name="statistics_not_enough_text_languages">لا يوجد نص كافٍ لاكتشاف اللغات</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">تم اكتشاف لغة %1$d</item>
+        <item quantity="other">تم اكتشاف %1$d من اللغات</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">لا يزال اكتشاف اللغة مستقرًا.</string>
+    <string name="statistics_latin_scripts_as_english">يتم عرض النصوص اللاتينية باللغة الإنجليزية</string>
+    <string name="statistics_use_more_accurate_detection">استخدام كشف أكثر دقة</string>
+    <string name="statistics_write_more_entries_languages">اكتب المزيد من الإدخالات لرؤية إحصائيات اللغة.</string>
+    <string name="statistics_based_on_entry_time">على أساس وقت الدخول</string>
+    <string name="statistics_morning_time">صباحًا (5 صباحًا - ظهرًا)</string>
+    <string name="statistics_afternoon_time">بعد الظهر (ظهرًا - 5 مساءً)</string>
+    <string name="statistics_evening_time">الفترة المسائية (5 مساءً - 9 مساءً)</string>
+    <string name="statistics_night_time">ليلاً (9 مساءً - 5 صباحًا)</string>
+    <string name="statistics_heatmap_filling">لا تزال الخريطة الحرارية تمتلئ.</string>
+    <string name="statistics_heatmap_less">أقل</string>
+    <string name="statistics_heatmap_more">أكثر</string>
+    <string name="action_open">يفتح</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">أحداث مجلة ياجا</string>
+    <string name="tasker_event_desc">اختر أحداث مجلة Yaja التي يجب أن تؤدي إلى تشغيل ملف تعريف تاسكر هذا.</string>
+    <string name="tasker_event_saved">تم حفظ الإدخال</string>
+    <string name="tasker_event_edited">تم تحرير الإدخال</string>
+    <string name="tasker_event_deleted">تم حذف الإدخال</string>
+    <string name="tasker_event_default_hint">إذا لم يتم تحديد أي شيء، فسيتم تعيين Yaja افتراضيًا على الإدخال المحفوظ.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">ياجا التقاط سريع</string>
+    <string name="tasker_action_desc">قم بتكوين ما يجب على تاسكر التقاطه بسرعة في Yaja.</string>
+    <string name="tasker_action_add_entry">إضافة إدخال</string>
+    <string name="tasker_action_add_event">أضف حدثًا</string>
+    <string name="tasker_action_add_todo">أضف تودو</string>
+    <string name="tasker_action_append">إلحاق</string>
+    <string name="tasker_action_match_header_label">المباراة / الرأس</string>
+    <string name="tasker_action_match_header_placeholder">المكالمات الفائتة</string>
+    <string name="tasker_action_line_to_append_label">خط للإلحاق</string>
+    <string name="tasker_action_text_label">نص</string>
+    <string name="tasker_action_placeholder_event">مذكرة الحدث من تاسكر</string>
+    <string name="tasker_action_placeholder_todo">شراء الحليب</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">ملاحظة سريعة من تاسكر</string>
+    <string name="tasker_action_tip_append">يقوم الاستدعاء الأول بإنشاء إدخال يبدأ بنص المطابقة. تقوم المكالمات اللاحقة بإلحاق السطر الموجود تحتها.</string>
+    <string name="tasker_action_tip_default">نصيحة: يمكن وضع متغيرات تاسكر في حقل النص.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">سجل أعطال الجلسة السابقة</string>
+    <string name="crash_log_clear_close">مسح وإغلاق</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">إطلاق التطبيق</string>
+    <string name="tap_action_quick_capture">التقاط سريع</string>
+    <string name="tap_action_do_nothing">لا تفعل شيئا</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">ياجا كتابة خريطة الحرارة</string>
+    <string name="widget_cell_shape">شكل الخلية</string>
+    <string name="widget_corner_radius">نصف قطر الزاوية: %1$ddp</string>
+    <string name="widget_square">مربع</string>
+    <string name="widget_round">دائري</string>
+    <string name="widget_inner_margin">الهامش الداخلي: %1$ddp</string>
+    <string name="widget_inner_margin_desc">مسافة بين الخريطة الحرارية وحواف عنصر واجهة المستخدم</string>
+    <string name="widget_none">لا أحد</string>
+    <string name="widget_max">الأعلى</string>
+    <string name="widget_on_tap">على الصنبور</string>
+    <string name="widget_on_tap_desc">الإجراء عند النقر على القطعة</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">يأسر</string>
+    <string name="widget_qc_shape">شكل القطعة</string>
+    <string name="widget_show_label">إظهار التسمية</string>
+    <string name="widget_show_label_desc">عرض نص \"التقاط\" على القطعة</string>
+    <string name="widget_show_icon">إظهار الأيقونة</string>
+    <string name="widget_show_icon_required">الرمز مطلوب عندما تكون التسمية مخفية</string>
+    <string name="widget_show_icon_desc">عرض رمز القلم على القطعة</string>
+    <string name="widget_label_text">نص التسمية</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">تودو القطعة</string>
+    <string name="widget_todo_desc">أداة قائمة المهام المستديرة التي تشبه الخريطة الحرارية.</string>
+    <string name="widget_todo_corner_radius">نصف قطر الزاوية: %1$ddp</string>
+    <string name="widget_todo_padding">الحشو: %1$ddp</string>
+    <string name="widget_todo_show_completed">إظهار المهام المكتملة</string>
+    <string name="widget_todo_show_completed_desc">تضمين العناصر المحددة في قائمة القطعة</string>
+    <string name="widget_todo_include_events">تضمين الأحداث</string>
+    <string name="widget_todo_include_events_desc">إظهار إدخالات الأحداث إلى جانب المهام في الأداة</string>
+    <string name="widget_todo_show_header">إظهار رأس المهام</string>
+    <string name="widget_todo_show_header_desc">إظهار أو إخفاء صف عنوان الأداة</string>
+    <string name="widget_todo_auto_hide">إخفاء القطعة تلقائيًا عند اكتمال جميع المهام</string>
+    <string name="widget_todo_auto_hide_unavailable">غير متاح أثناء عرض المهام المكتملة</string>
+    <string name="widget_todo_auto_hide_desc">اجعل الأداة شفافة عندما لا تكون هناك مهام معلقة</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">منتهي</string>
+    <string name="todo_confirm_mark_not_done">لم يتم</string>
+    <string name="todo_confirm_title">هل تريد وضع علامة على المهمة كـ %1$s؟</string>
+    <string name="todo_confirm_reopen">تم الانتهاء من هذا ما يجب عمله حاليا. قم بالتأكيد قبل إعادة فتحه.</string>
+    <string name="todo_confirm_complete">هذا ما يجب عمله لا يزال مفتوحا. قم بالتأكيد قبل وضع علامة على أنه تم.</string>
+    <string name="todo_confirm_accidental_tap">الصنابير غير المقصودة لن تغير المهمة.</string>
+    <string name="todo_confirm_yes_mark">نعم، ضع علامة %1$s</string>
+    <string name="todo_confirm_open_yaja">فتح في ياجا</string>
+    <string name="todo_confirm_keep_as_is">إبقاء كما هو</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">تطبيق يومية آخر</string>
+    <string name="help_version_prefix">ضد %1$s</string>
+    <string name="help_from_labs">من مختبرات RJ</string>
+    <string name="help_made_in">صنع في 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">إلغاء الاستيراد</string>
+    <string name="timeline_show_all_dates">عرض كافة التواريخ</string>
+    <string name="timeline_show_all_dates_subtitle">قم بتضمين جميع الأيام الماضية، حتى بدون إدخالات</string>
+    <string name="settings_background_tint_clean">ينظف</string>
+    <string name="settings_background_tint_soft">ناعم</string>
+    <string name="settings_background_tint_rich">ثري</string>
+    <string name="settings_background_tint_deep">عميق</string>
+    <string name="settings_accent_style_complementary">تكميلية</string>
+    <string name="settings_accent_style_analogous">مماثل</string>
+    <string name="settings_accent_style_triadic">ثلاثي</string>
+    <string name="settings_accent_style_soft">ناعم</string>
+</resources>

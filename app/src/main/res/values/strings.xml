@@ -18,23 +18,80 @@
     <string name="action_undo">Undo</string>
     <string name="action_yes">Yes</string>
     <string name="action_no">No</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_done">Done</string>
+    <string name="action_set">Set</string>
+    <string name="action_select">Select</string>
+    <string name="action_ok">OK</string>
 
     <!-- Sync pill -->
-    <string name="syncing_data">Syncing Data</string>
+    <string name="syncing_data">Rebuilding Cache</string>
 
     <!-- Quick Capture -->
     <string name="quick_capture_title">Quick Capture</string>
     <string name="quick_capture_hint">What happened?</string>
+    <string name="quick_capture_helper_shortcodes">Shortcodes expand here automatically, and todo lines continue on Enter.</string>
+    <string name="quick_capture_save_delayed">Save delayed. Please reopen Yaja to verify.</string>
     <string name="cd_saved">Saved</string>
+    <string name="quick_todo_dialog_title">Quick Add</string>
+    <string name="quick_todo_save_delayed">Todo save delayed. Please reopen Yaja to verify.</string>
+    <string name="quick_todo_placeholder">Add a todo</string>
+    <string name="quick_event_placeholder">Add an event</string>
+    <string name="quick_todo_task_date">Task Date</string>
+    <string name="quick_todo_event_date">Event Date</string>
+    <string name="quick_todo_pick_date_cd_format">Pick %1$s</string>
+    <string name="quick_todo_date_button_format">%1$s   %2$s</string>
+    <string name="quick_todo_selected_day_hint">Saves as a todo entry for the selected day.</string>
+    <string name="quick_event_selected_day_hint">Saves as an event entry for the selected day.</string>
 
     <!-- Calendar -->
     <string name="cd_previous">Previous</string>
     <string name="cd_next">Next</string>
     <string name="cd_surprise_me">Surprise Me</string>
+    <string name="calendar_cd_go_to_current_month">Go to current month</string>
+    <string name="calendar_quick_action_timeline_title">Timeline</string>
+    <string name="calendar_quick_action_timeline_subtitle">Browse chronologically</string>
+    <string name="calendar_quick_action_jump_title">Jump to Date</string>
+    <string name="calendar_quick_action_jump_subtitle">Open a specific day</string>
+    <string name="calendar_jump_placeholder">DD-MM-YY</string>
+    <string name="calendar_jump_invalid_date">Invalid date. Use DD-MM-YY format.</string>
+    <string name="calendar_action_go">Go</string>
+    <string name="calendar_enable_future_dates_title">Enable Future Dates</string>
+    <string name="calendar_enable_future_dates_message">Future date entry is disabled. Do you want to enable it?</string>
+    <string name="calendar_action_enable">Enable</string>
+    <string name="calendar_future_entry_enabled">Future date entry has been enabled</string>
+    <string name="calendar_weekday_sun_short">Sun</string>
+    <string name="calendar_weekday_mon_short">Mon</string>
+    <string name="calendar_weekday_tue_short">Tue</string>
+    <string name="calendar_weekday_wed_short">Wed</string>
+    <string name="calendar_weekday_thu_short">Thu</string>
+    <string name="calendar_weekday_fri_short">Fri</string>
+    <string name="calendar_weekday_sat_short">Sat</string>
+    <string name="calendar_percent_format">%1$d%%</string>
+    <string name="calendar_entries_this_month">ENTRIES THIS MONTH</string>
+    <plurals name="calendar_entries_this_month_days">
+        <item quantity="one">%1$d / %2$d day</item>
+        <item quantity="other">%1$d / %2$d days</item>
+    </plurals>
+    <string name="calendar_days_of_memories">days of memories</string>
+    <string name="calendar_consistency_last_12_months">LAST 12 MONTHS</string>
+    <string name="calendar_consistency_title_format">CONSISTENCY - %1$s</string>
+    <string name="calendar_consistency_delta_format">%1$+d%% vs \'%2$s</string>
+    <string name="calendar_consistency_previous_period_format">vs \'%1$s</string>
+    <string name="calendar_consistency_first_period">first period</string>
+    <string name="calendar_graph_frequency_month">Month</string>
+    <string name="calendar_graph_frequency_year">Year</string>
+    <string name="calendar_yearly_consistency_title">Consistency (Yearly)</string>
+    <string name="calendar_keywords_title">Who shows up most</string>
+    <string name="calendar_keywords_syncing">People &amp; Places stats are still syncing with keyword indexing.</string>
+    <string name="calendar_keywords_empty">Add at least 3 people or 3 places to see top mentions.</string>
+    <string name="calendar_keywords_people">People</string>
+    <string name="calendar_keywords_places">Places</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
     <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_subtitle">Theme, colors, fonts and personal styles</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_font">Font</string>
     <string name="settings_storage">Storage</string>
@@ -43,10 +100,1248 @@
     <string name="settings_change_storage_title">Change Storage Location</string>
     <string name="settings_backup_never">Never</string>
 
+    <!-- Settings search -->
+    <string name="settings_search_placeholder">Search settings</string>
+    <string name="settings_search_clear">Clear search</string>
+    <string name="settings_search_recent">Recent searches</string>
+    <string name="settings_search_no_results">No matching settings</string>
+    <string name="settings_search_close">Close</string>
+
+    <!-- Settings section headers -->
+    <string name="settings_section_journal_experience">Journal Experience</string>
+    <string name="settings_section_navigation_gestures">Navigation &amp; Gestures</string>
+    <string name="settings_section_review_insights">Review &amp; Insights</string>
+
+    <!-- Language -->
+    <string name="settings_language">Language</string>
+    <string name="settings_language_title">App Language</string>
+    <string name="settings_language_subtitle">Choose the language used throughout the app.</string>
+    <string name="settings_language_system_default">System default</string>
+
+    <!-- Settings: Journal Experience -->
+    <string name="settings_journal_entry_style_title">Entry Style</string>
+    <string name="settings_journal_entry_style_subtitle">Choose between elevated cards and a flatter journal look.</string>
+    <string name="settings_journal_entry_style_cards">Cards</string>
+    <string name="settings_journal_entry_style_flat">Flat</string>
+    <string name="settings_journal_render_checkboxes_title">Render Checkboxes as Text</string>
+    <string name="settings_journal_render_checkboxes_subtitle">Show todos as [ ] and [x] across the app instead of expressive checkboxes.</string>
+    <string name="settings_journal_day_header_counts_title">Show Day Header Counts</string>
+    <string name="settings_journal_day_header_counts_subtitle">Show entry, word, and character counts in the journal day header.</string>
+    <string name="settings_journal_show_timestamps_title">Show Timestamps</string>
+    <string name="settings_journal_show_timestamps_subtitle">Display entry time on the timeline.</string>
+    <string name="settings_journal_allow_future_title">Allow Future Entries</string>
+    <string name="settings_journal_allow_future_subtitle">Enable adding entries to future dates.</string>
+    <string name="settings_journal_truncate_title">Truncate Long Entries</string>
+    <string name="settings_journal_truncate_subtitle">Shorten long entries on the home screen.</string>
+    <string name="settings_journal_char_limit_title">Character Limit</string>
+    <string name="settings_journal_char_limit_subtitle">Set how many characters to display before truncating.</string>
+    <string name="settings_journal_char_limit_min">50 chars</string>
+    <string name="settings_journal_char_limit_max">200 chars</string>
+    <string name="settings_journal_char_count">%1$d characters</string>
+    <string name="settings_journal_first_day_title">First Day of Week</string>
+    <string name="settings_journal_first_day_subtitle">Start calendar on</string>
+    <string name="settings_journal_day_sun">Sun</string>
+    <string name="settings_journal_day_mon">Mon</string>
+    <string name="settings_journal_date_recognition">Date Recognition</string>
+    <string name="settings_journal_date_order_title">Date Order</string>
+    <string name="settings_journal_date_order_subtitle">How to read numeric dates</string>
+    <string name="settings_journal_date_order_auto">Auto</string>
+    <string name="settings_journal_date_order_dmy">DD/MM</string>
+    <string name="settings_journal_date_order_mdy">MM/DD</string>
+    <string name="settings_journal_date_keywords_title">Date Keywords</string>
+    <string name="settings_journal_date_keywords_subtitle">Words in other languages that mean a date (for example a local word for yesterday).</string>
+    <string name="settings_journal_view_keywords">View (%1$d)</string>
+    <string name="settings_journal_add_keyword_cd">Add keyword</string>
+    <string name="settings_journal_motion">Motion</string>
+    <string name="settings_journal_animations_title">Animations</string>
+    <string name="settings_journal_animations_subtitle">Control motion across the app. Reduced keeps things fluid with less movement.</string>
+    <string name="settings_journal_animations_full">Full</string>
+    <string name="settings_journal_animations_reduced">Reduced</string>
+    <string name="settings_journal_animations_off">Off</string>
+
+    <!-- Settings: Review & Insights -->
+    <string name="settings_review_post_save">Post-save Review</string>
+    <string name="settings_review_post_write_title">Post-write Review</string>
+    <string name="settings_review_post_write_subtitle">Show review sheet after tapping save to extract todos, check mentions, star day, or set label.</string>
+    <string name="settings_review_people_places">People &amp; Places</string>
+    <string name="settings_review_highlighting_title">Highlighting</string>
+    <string name="settings_review_highlighting_subtitle">Highlight tracked people and places in Home cards and View Entry mode.</string>
+    <string name="settings_review_match_sensitivity_title">Match Sensitivity</string>
+    <string name="settings_review_match_sensitivity_percent">%1$d%%</string>
+    <string name="settings_review_match_sensitivity_subtitle">How closely a word must match to be detected by People &amp; Places (higher = stricter).</string>
+
     <!-- Shortcodes -->
+    <string name="shortcodes_add_title">Add Shortcode</string>
+    <string name="shortcodes_edit_title">Edit Shortcode</string>
+    <string name="shortcodes_code_label">Shortcode (e.g. @yday)</string>
+    <string name="shortcodes_expansion_label">Expansion Text</string>
     <string name="shortcodes_export_error">Failed to export shortcodes</string>
     <string name="shortcodes_import_error">Failed to import shortcodes</string>
+    <string name="todos_expand_section">Expand %1$s</string>
+    <string name="todos_collapse_section">Collapse %1$s</string>
+
+    <!-- Widgets -->
+    <string name="heatmap_widget_name">Writing Heatmap</string>
+    <string name="heatmap_widget_description">Recent writing activity heatmap for your journal.</string>
+    <string name="quick_capture_widget_name">Quick Capture</string>
+    <string name="quick_capture_widget_description">One-tap button to add a journal entry fast.</string>
+    <string name="quick_todo_widget_name">Quick Todo</string>
+    <string name="tasker_plugin_action_label">Yaja Quick Capture</string>
+    <string name="tasker_plugin_event_label">Yaja Journal Events</string>
+    <string name="tasker_screen_allow_add_entry_title">Allow Tasker Add Entry</string>
+    <string name="tasker_screen_allow_add_entry_subtitle">Lets Tasker use Yaja Quick Capture actions like Add Entry and Add Todo.</string>
+    <string name="tasker_screen_allow_events_title">Allow Tasker Events</string>
+    <string name="tasker_screen_allow_events_subtitle">Lets Yaja send Entry Saved, Entry Modified, and Entry Deleted events to Tasker.</string>
+    <string name="tasker_screen_include_text_title">Include Entry Text in Events</string>
+    <string name="tasker_screen_include_text_subtitle">Off by default for privacy. When off, Tasker receives event type, date, label, and time, but not journal text.</string>
+    <string name="tasker_screen_section_what">What this does</string>
+    <string name="tasker_screen_body_what">Tasker can quickly add journal entries or todos into Yaja, append lines into a grouped entry such as Missed Calls, and Yaja can tell Tasker when an entry is saved, edited, or deleted.</string>
+    <string name="tasker_screen_section_how">How to use</string>
+    <string name="tasker_screen_body_how">Turn on the toggle you need here first. Then open Tasker and add either a Yaja Quick Capture action or a Yaja Journal Events event.</string>
+    <string name="tasker_screen_section_notes">Notes</string>
+    <string name="tasker_screen_body_notes">Entry text is not shared with Tasker unless you enable Include Entry Text in Events. If Tasker does not show the latest options or variables, reopen the Tasker configuration screen after updating Yaja.</string>
+    <string name="tasker_screen_section_example">Example</string>
+    <string name="tasker_screen_body_example">Action example: Tasker action &gt; Yaja Quick Capture &gt; Append, with Match / header set to Missed Calls and Line to append set to a Tasker variable. Event example: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, then use variables like %%yaja_event_type, %%yaja_date, and optionally %%yaja_entry_text.</string>
+    <string name="tasker_screen_section_use_cases">Use cases</string>
+    <string name="tasker_screen_use_case_1">1. Use a Yaja journal event in Tasker to trigger a FolderSync sync action, so your Yaja folder gets pushed to any cloud provider after entries change.</string>
+    <string name="tasker_screen_use_case_2">2. Use Pushbullet with Tasker to send text into Yaja Quick Capture, so the pushed text gets saved as a new entry for the current day.</string>
+    <string name="tasker_screen_use_case_3">3. Use a missed-call Tasker profile to send an Append action into Yaja, so all missed-call details land under one Missed Calls entry instead of creating separate entries.</string>
+    <string name="quick_todo_widget_description">One-tap button to capture a todo as a new entry for today.</string>
+    <string name="todo_list_widget_name">Todos</string>
+    <string name="todo_list_widget_description">Scrollable list of journal todos. Tap a todo to mark it done or undone.</string>
+    <string name="todo_cd_add_todo">Add todo</string>
+    <string name="todos_cd_open_compliance_master">Open recurring tasks</string>
+    <string name="compliance_master_title">Recurring Tasks / Events</string>
+    <string name="compliance_master_add">Add recurring task</string>
+    <string name="compliance_master_edit">Edit recurring task</string>
+    <string name="compliance_master_intro_title">Recurring tasks</string>
+    <string name="compliance_master_intro_body">Create repeating todos for weekly, monthly, quarterly, half-yearly, or annual work. Yaja reveals each task only when its cycle becomes relevant.</string>
+    <string name="compliance_master_empty">No recurring tasks yet. Add one to automatically create todos on its chosen schedule.</string>
+    <string name="compliance_master_status_deactivated">Deactivated</string>
+    <string name="compliance_master_meta_format">Due on day %1$d • %2$d lead days</string>
+    <string name="compliance_master_field_title">Task name</string>
+    <string name="compliance_master_field_title_hint">Example: File monthly return</string>
+    <string name="compliance_master_field_description">Description</string>
+    <string name="compliance_master_field_description_hint">Example: Check banking portal and verify receipt</string>
+    <string name="compliance_master_editor_task_section">What should Yaja remind you about?</string>
+    <string name="compliance_master_field_due_day">Due date</string>
+    <string name="compliance_master_field_reveal_day">Create in advance (days)</string>
+    <string name="compliance_master_field_schedule_mode">When is it due?</string>
+    <string name="compliance_master_schedule_mode_help">Choose how Yaja determines the due date.</string>
+    <string name="compliance_master_select_schedule_type">Select the due pattern</string>
+    <string name="compliance_master_field_frequency">How often?</string>
+    <string name="compliance_master_frequency_help">Choose how often this task repeats.</string>
+    <string name="compliance_master_select_frequency">Select repeat frequency</string>
+    <string name="compliance_master_schedule_details">Schedule details</string>
+    <string name="compliance_master_details_date_help">Enter the due date and how many days in advance it should be written to the daily file.</string>
+    <string name="compliance_master_details_weekday_help">Choose the weekday on which this task becomes due.</string>
+    <string name="compliance_master_details_boundary_help">Choose how many days in advance it should be written to the daily file.</string>
+    <string name="compliance_master_field_due_weekday">Due weekday</string>
+    <string name="compliance_master_select_weekday">Select the weekday</string>
+    <string name="compliance_master_due_day_help">Enter a date from 1 to 31. Shorter months use their last valid date.</string>
+    <string name="compliance_master_reveal_day_help">How many days before the due date to write the todo to the daily journal file.</string>
+    <string name="compliance_master_first_day_selected">Due on the first date of each applicable month.</string>
+    <string name="compliance_master_last_day_selected">Due on the last date of each applicable month.</string>
+    <string name="compliance_mode_day_of_month">Specific date</string>
+    <string name="compliance_mode_day_of_month_desc">Due on a numbered date, such as the 15th.</string>
+    <string name="compliance_mode_day_of_week">Weekday</string>
+    <string name="compliance_mode_day_of_week_desc">Due on a chosen weekday, such as Monday.</string>
+    <string name="compliance_mode_first_day">First of month</string>
+    <string name="compliance_mode_first_day_desc">Due on the first date of each applicable month.</string>
+    <string name="compliance_mode_last_day">End of month</string>
+    <string name="compliance_mode_last_day_desc">Due on the final date, including shorter months.</string>
+    <string name="compliance_frequency_weekly">Weekly</string>
+    <string name="compliance_frequency_biweekly">Biweekly</string>
+    <string name="compliance_frequency_monthly">Monthly</string>
+    <string name="compliance_frequency_quarterly">Quarterly</string>
+    <string name="compliance_frequency_half_yearly">Half yearly</string>
+    <string name="compliance_frequency_annual">Annual</string>
+    <string name="compliance_master_summary_day_of_month">Day %1$d • %2$s • %3$d days in advance</string>
+    <string name="compliance_master_summary_day_of_week">%1$s • %2$s</string>
+    <string name="compliance_master_summary_first_day">First date • %1$s • %2$d days in advance</string>
+    <string name="compliance_master_summary_last_day">Last date • %1$s • %2$d days in advance</string>
+    <string name="compliance_master_execution_title">How this will run</string>
+    <string name="compliance_master_execution_day_of_month">A todo is created %1$s on day %2$d. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_execution_weekday">A todo is created %1$s on %2$s. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_execution_monthly_weekday">A todo is created monthly on the same %1$s occurrence as the starting date. It is written to your daily file %2$d days in advance.</string>
+    <string name="compliance_master_execution_month_boundary">A todo is created %1$s on the %2$s of the due month. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_execution_day_of_month_event">An event is created %1$s on day %2$d. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_execution_weekday_event">An event is created %1$s on %2$s. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_execution_monthly_weekday_event">An event is created monthly on the same %1$s occurrence as the starting date. It is written to your daily file %2$d days in advance.</string>
+    <string name="compliance_master_execution_month_boundary_event">An event is created %1$s on the %2$s of the due month. It is written to your daily file %3$d days in advance.</string>
+    <string name="compliance_master_boundary_first">first date</string>
+    <string name="compliance_master_boundary_last">last date</string>
+    <string name="compliance_master_recurrence_weekly">every week</string>
+    <string name="compliance_master_recurrence_biweekly">every two weeks</string>
+    <string name="compliance_master_recurrence_monthly">every month</string>
+    <string name="compliance_master_recurrence_quarterly">every three months</string>
+    <string name="compliance_master_recurrence_half_yearly">every six months</string>
+    <string name="compliance_master_recurrence_annual">every year</string>
+    <string name="todo_chip_compliance">Recurring</string>
+    <string name="compliance_master_upcoming">Upcoming</string>
+    <string name="compliance_master_delete_confirm_title">Delete recurring task?</string>
+    <string name="compliance_master_delete_confirm_body">"%1$s" will be removed and no further todos will be created.</string>
+    <string name="compliance_master_next_date">Next: %1$s</string>
+    <string name="compliance_master_end_section">End condition</string>
+    <string name="compliance_master_end_help">Choose when this task stops repeating</string>
+    <string name="compliance_master_end_never">Never</string>
+    <string name="compliance_master_end_on_date">On date</string>
+    <string name="compliance_master_end_after">After…</string>
+    <string name="compliance_master_end_never_desc">Repeats indefinitely with no end date.</string>
+    <string name="compliance_master_end_date_select">Select end date</string>
+    <string name="compliance_master_end_date_help">No tasks are created after this date.</string>
+    <string name="compliance_master_end_count_label">Number of occurrences</string>
+    <string name="compliance_master_end_count_help">Stops after this many tasks are created.</string>
+    <string name="compliance_master_ends_on">Ends %1$s</string>
+    <string name="compliance_master_ends_remaining">%1$d left</string>
+    <string name="compliance_master_ended">Ended</string>
+    <string name="compliance_master_type_label">Create as</string>
+    <string name="compliance_master_type_task">Task</string>
+    <string name="compliance_master_type_event">Event</string>
+    <string name="compliance_master_add_event">Add recurring event</string>
+    <string name="compliance_master_edit_event">Edit recurring event</string>
+    <string name="compliance_master_field_title_event">Event name</string>
+    <string name="compliance_master_field_title_event_hint">Example: Weekly sync meeting</string>
+    <string name="compliance_master_frequency_help_event">Choose how often this event repeats.</string>
+    <string name="compliance_master_details_weekday_help_event">Choose the weekday on which this event becomes due.</string>
+    <string name="compliance_master_delete_confirm_title_event">Delete recurring event?</string>
+    <string name="compliance_master_end_help_event">Choose when this event stops repeating</string>
+    <string name="compliance_master_end_count_help_event">Stops after this many events are created.</string>
+    <string name="heatmap_widget_status_loading">Loading heatmap…</string>
+    <string name="heatmap_widget_status_empty">No entries yet</string>
+    <string name="heatmap_widget_status_refresh">Open Yaja to refresh heatmap</string>
 
     <!-- Entry states -->
-    <string name="toast_cache_synced">Data cache synced!</string>
+    <string name="toast_cache_synced">Cache rebuilt.</string>
+
+    <!-- App shortcuts (launcher long-press) -->
+    <string name="shortcut_new_entry_short">New Entry</string>
+    <string name="shortcut_new_entry_long">Add a journal entry</string>
+    <string name="shortcut_add_todo_short">Add Todo</string>
+    <string name="shortcut_add_todo_long">Add a todo for today</string>
+    <string name="shortcut_add_event_short">Add Event</string>
+    <string name="shortcut_add_event_long">Add an event</string>
+    <string name="shortcut_today_short">Today</string>
+    <string name="shortcut_today_long">Open today\'s journal</string>
+
+    <!-- Settings: Navigation -->
+    <string name="settings_navigation_title">Navigation</string>
+    <string name="settings_bottom_nav_style_label">Bottom Navigation Style</string>
+    <string name="settings_navigation_mode_title">Navigation Mode</string>
+    <string name="settings_navigation_mode_subtitle">Choose between the floating nav bar and the full bottom panel.</string>
+    <string name="settings_nav_mode_floating">Floating</string>
+    <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_navigation_screens_label">Navigation Screens</string>
+    <string name="settings_nav_summary_floating">Journal and Calendar always stay in the floating bar. Pick up to 2 more screens. Currently selected: %1$d of %2$d.</string>
+    <string name="settings_nav_summary_panel">Journal and Calendar always stay in the bottom panel. Pick up to 3 more screens. Currently selected: %1$d of %2$d.</string>
+    <string name="settings_nav_lookback_subtitle">Show Lookback in the active navigation bar or panel.</string>
+    <string name="settings_nav_people_places_subtitle">Show People &amp; Places in the active navigation bar or panel.</string>
+    <string name="settings_nav_todos_title">Todos</string>
+    <string name="settings_nav_todos_subtitle">Show Todos in the active navigation bar or panel.</string>
+    <string name="todos_quick_add_title">Quick Add</string>
+    <string name="todos_hero_subtitle">Track journal work and moments</string>
+    <string name="todos_hero_all_activity">All activity</string>
+    <string name="todos_hero_open_focus">Open focus</string>
+    <string name="todos_hero_completed">Completed</string>
+    <string name="todos_stat_today_open">Today open</string>
+    <string name="todos_stat_done_today">Done today</string>
+    <string name="todos_stat_events">Events</string>
+    <string name="todos_stat_still_open">Still open</string>
+    <string name="todos_stat_past_7d">Past 7d</string>
+    <string name="todos_stat_days">Days</string>
+    <string name="todos_empty_done">No completed todos yet</string>
+    <string name="todos_empty_events">No event entries yet</string>
+    <string name="todos_section_open">OPEN</string>
+    <string name="todos_section_later">LATER</string>
+    <string name="todos_section_upcoming">UPCOMING</string>
+    <string name="todos_section_future_events">FUTURE EVENTS</string>
+    <string name="todos_section_past_events">PAST EVENTS</string>
+    <string name="todos_cd_open_day">Open day</string>
+    <plurals name="todos_main_open_tasks">
+        <item quantity="one">%1$d open task</item>
+        <item quantity="other">%1$d open tasks</item>
+    </plurals>
+    <plurals name="todos_main_done_tasks">
+        <item quantity="one">%1$d done task</item>
+        <item quantity="other">%1$d done tasks</item>
+    </plurals>
+    <plurals name="todos_main_upcoming_events">
+        <item quantity="one">%1$d upcoming event</item>
+        <item quantity="other">%1$d upcoming events</item>
+    </plurals>
+    <string name="todos_filter_all_format">All %1$d</string>
+    <string name="todos_filter_open_format">Open %1$d</string>
+    <string name="todos_filter_done_format">Done %1$d</string>
+    <string name="todos_filter_events_format">Events %1$d</string>
+    <string name="todos_cheer_all_clear">All clear. Nice.</string>
+    <string name="todos_cheer_done_and_dusted">Done and dusted.</string>
+    <string name="todos_cheer_nothing_pending">Nothing pending.</string>
+    <string name="todos_cheer_caught_up">You caught up.</string>
+    <string name="todos_cheer_clean_slate">Clean slate.</string>
+    <plurals name="todos_relative_in_days">
+        <item quantity="one">In %1$d day</item>
+        <item quantity="other">In %1$d days</item>
+    </plurals>
+    <plurals name="todos_relative_days_ago">
+        <item quantity="one">%1$d day ago</item>
+        <item quantity="other">%1$d days ago</item>
+    </plurals>
+    <plurals name="todos_relative_in_weeks">
+        <item quantity="one">In %1$d week</item>
+        <item quantity="other">In %1$d weeks</item>
+    </plurals>
+    <plurals name="todos_relative_weeks_ago">
+        <item quantity="one">%1$d week ago</item>
+        <item quantity="other">%1$d weeks ago</item>
+    </plurals>
+    <string name="todos_relative_in_one_month">In 1 month</string>
+    <string name="todos_relative_one_month_ago">1 month ago</string>
+    <plurals name="todos_relative_in_months">
+        <item quantity="one">In %1$d month</item>
+        <item quantity="other">In %1$d months</item>
+    </plurals>
+    <plurals name="todos_relative_months_ago">
+        <item quantity="one">%1$d month ago</item>
+        <item quantity="other">%1$d months ago</item>
+    </plurals>
+    <string name="settings_nav_statistics_title">Statistics</string>
+    <string name="settings_nav_statistics_subtitle_on">Show Statistics in the active navigation bar or panel.</string>
+    <string name="settings_nav_statistics_subtitle_off">Turn Statistics on first to place it in navigation.</string>
+    <string name="settings_show_labels_bottom_panel_title">Show Labels In Bottom Panel</string>
+    <string name="settings_show_labels_bottom_panel_subtitle">Display text labels under icons in the bottom panel.</string>
+
+    <!-- Settings: Gestures -->
+    <string name="settings_gestures_title">Gestures</string>
+    <string name="settings_entry_delete_title">Entry Delete</string>
+    <string name="settings_entry_delete_subtitle">Long-press an entry to select it. Tap more entries to select multiple, then use the centered Delete button. Tap empty space to clear selection.</string>
+    <string name="settings_swipe_navigate_title">Swipe to Navigate Dates</string>
+    <string name="settings_swipe_navigate_subtitle">Swipe right-to-left to move forward one date, and left-to-right to move backward.</string>
+    <string name="settings_drag_reorder_title">Enable Drag-to-Reorder</string>
+    <string name="settings_drag_reorder_subtitle">Long-press entries to rearrange them</string>
+
+    <!-- Settings: Data & Recovery -->
+    <string name="settings_data_recovery_title">Data &amp; Recovery</string>
+    <string name="settings_swipe_rebuild_index">Swipe down on home screen to rebuild index</string>
+    <string name="settings_large_journal_safe_mode_title">Large Journal Safe Mode</string>
+    <string name="settings_large_journal_safe_mode_subtitle">When a very large journal is detected, defer nonessential startup stats work so the app opens faster and more safely.</string>
+    <string name="settings_version_history_title">Version History</string>
+    <string name="settings_version_history_subtitle">Keep safe copies before entry edits, deletes, labels, and revisit changes.</string>
+    <string name="settings_storage_location_label">Storage Location</string>
+    <string name="settings_reset_to_default">Reset to Default</string>
+    <string name="settings_choose_folder">Choose Folder</string>
+    <string name="settings_backup_description">Create one Yaja backup zip containing journal entries, shortcodes, date keywords, and People &amp; Places data. Restore can merge it back safely later.</string>
+    <string name="settings_last_backup">Last Backup: %1$s</string>
+    <string name="settings_backup_reminder_age_label">Backup reminder age</string>
+    <string name="settings_backup_reminder_disabled">Disabled</string>
+    <string name="settings_backup_reminder_desc">Highlight backup in sidebar when older than %1$d days.</string>
+    <string name="settings_backup_reminder_days_disabled">0 days (disabled)</string>
+    <string name="settings_backup_reminder_days">%1$d days</string>
+    <string name="settings_restore_button">Restore</string>
+    <string name="settings_backup_now_button">Backup Now</string>
+    <string name="settings_db_index_management_label">Database Index Management</string>
+    <string name="settings_db_index_management_desc">Open focused rebuild tools for todos, People &amp; Places, or a full database index rebuild.</string>
+    <string name="settings_rebuild_tools_button">Rebuild Tools</string>
+    <string name="settings_import_label">Import</string>
+    <string name="settings_import_info_cd">Import information</string>
+    <string name="settings_import_info_title">Import Information</string>
+    <string name="settings_import_day_one_title">Day One Import</string>
+    <string name="settings_import_day_one_bullet1">- Export from Day One without images</string>
+    <string name="settings_import_day_one_bullet2">- Only text data will be imported</string>
+    <string name="settings_import_day_one_bullet3">- Timestamp and location data (if available) will be preserved</string>
+    <string name="settings_import_perf_warning_title">Performance Warning</string>
+    <string name="settings_import_perf_warning_desc">Importing a large number of entries (500+) may take several minutes. You can navigate away and the import will continue in the background.</string>
+    <string name="settings_got_it">Got it</string>
+    <string name="settings_import_success">%1$d new days, %2$d merged, %3$d skipped</string>
+    <string name="settings_import_source_day_one">Day One</string>
+    <string name="settings_import_source_day_one_subtitle">.zip or .json export</string>
+    <string name="settings_import_source_journalistic">Journalistic</string>
+    <string name="settings_import_source_journalistic_subtitle">.json export</string>
+
+    <!-- Settings: About / Tasker / Security -->
+    <string name="settings_help_subtitle">Learn how to use yaja</string>
+    <string name="help_footer_website">Website</string>
+    <string name="help_footer_share">Share</string>
+    <string name="help_footer_github">GitHub</string>
+    <string name="help_footer_discord">Discord</string>
+    <string name="help_footer_reddit">Reddit</string>
+    <string name="help_share_yaja">Share yaja</string>
+    <string name="help_share_yaja_text">yaja - yet another journaling app\n\nA distraction-free local journal that stores entries as markdown files. It includes timeline, lookback, people and places, templates, reviews, statistics, and widgets.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="help_discord_copied">Discord username copied!</string>
+    <string name="help_footer_play_store">Play Store</string>
+    <string name="help_cd_rj_logo">RJ Logo</string>
+    <string name="help_screen_title">Help &amp; About</string>
+    <string name="help_welcome_title">Welcome to yaja</string>
+    <string name="help_welcome_body">Yaja is a local-first markdown journal for capturing days, people, places, follow-ups, reviews, and patterns without getting in your way. This page gives a quick guide to the main parts of the app.</string>
+    <string name="help_start_here">Start Here</string>
+    <string name="help_cd_collapse">Collapse</string>
+    <string name="help_cd_expand">Expand</string>
+    <string name="help_group_everyday_title">Everyday</string>
+    <string name="help_group_everyday_desc">Journaling, writing flow, and daily navigation.</string>
+    <string name="help_group_reviews_title">Reviews &amp; Insights</string>
+    <string name="help_group_reviews_desc">Lookbacks, trends, people, places, and analysis.</string>
+    <string name="help_group_advanced_title">Advanced Tools</string>
+    <string name="help_group_advanced_desc">Widgets, storage, privacy, backups, and technical tools.</string>
+    <string name="help_onboard_todos_events_title">Todos, Events &amp; Recurring</string>
+    <string name="help_onboard_todos_events_body">Keep personal reminders, family plans, and recurring schedules that automatically generate tasks on their due dates.</string>
+    <string name="help_onboard_widgets_title">Widgets</string>
+    <string name="help_onboard_widgets_body">Add Heatmap, Quick Capture, Quick Todo, or Todo List widgets from launcher.</string>
+    <string name="help_onboard_version_history_title">Version History</string>
+    <string name="help_onboard_version_history_body">Enable History Files in Settings &gt; Data to keep safe snapshots before risky changes.</string>
+    <string name="help_onboard_tasker_title">Tasker</string>
+    <string name="help_onboard_tasker_body">Use Tasker to quickly add entries, todos, or events when something personal needs to be captured right away.</string>
+    <string name="help_section_writing_editor_title">Writing &amp; Editor</string>
+    <string name="help_section_writing_editor_preview">Templates, markdown headings, todos, events, and flexible draft insertion.</string>
+    <string name="help_section_writing_editor_content">+ Tap the floating \'+\' button to write for the selected day.\n+ Use templates like Meeting Note, Travel Day, Health Log, Reflection, Work Log, and more.\n+ Templates can be inserted into a blank draft, appended below, used to replace a draft, or inserted at the cursor.\n+ Editor chips can quickly insert todos, events, numbered lists, and bullet lists.\n+ View Entry and Edit Entry support markdown-style headings such as ### Section.</string>
+    <string name="help_section_post_write_review_title">Post-Write Review</string>
+    <string name="help_section_post_write_review_preview">Todo extraction, keyword detection, starring, labels, and revisit setup.</string>
+    <string name="help_section_post_write_review_content">+ After writing, Yaja can open a review sheet before save.\n+ It can extract todo items, detect People &amp; Places, star the day, set a day label, and schedule revisit dates.\n+ You can disable Post-write Review from Settings if you prefer direct save.</string>
+    <string name="help_section_revisit_followup_title">Revisit &amp; Follow-up Dates</string>
+    <string name="help_section_revisit_followup_preview">Journal-linked follow-up dates with quick picks and a custom option.</string>
+    <string name="help_section_revisit_followup_content">+ Add revisit dates with Tomorrow, Next week, Next month, or a custom date.\n+ Due revisit items surface on Home and are marked in Calendar and Timeline.\n+ This works well for promises, decisions, health checks, and reminders tied to journal context.</string>
+    <string name="help_section_navigation_gestures_title">Navigation &amp; Gestures</string>
+    <string name="help_section_navigation_gestures_preview">Date movement, selection delete, swipe preferences, and rebuild cache behavior.</string>
+    <string name="help_section_navigation_gestures_content">+ Home supports date navigation with arrows and optional swipe navigation when enabled.\n+ Long-press an entry to select it. Tap more entries to select them too, then use the Delete pill near the Add button.\n+ Tapping outside selected entries clears selection. Deleted entries can be restored together from the restore countdown.\n+ You can rebuild cache when journal files change outside Yaja.</string>
+    <string name="help_section_shortcodes_quick_capture_title">Shortcodes &amp; Quick Capture</string>
+    <string name="help_section_shortcodes_quick_capture_preview">Fast personal capture plus reusable dynamic text snippets.</string>
+    <string name="help_section_shortcodes_quick_capture_content">+ Create shortcodes to insert repeated text quickly.\n+ Dynamic placeholders like {{today:dd-MMM}} and {{now:HH:mm}} work inside shortcodes.\n+ Quick Capture helps log something fast without opening the full editor.\n+ Quick add can save either a todo or an event for a chosen date from the widget, Todos screen, or Tasker.</string>
+    <string name="help_section_todos_events_title">Todos, Events &amp; Recurring</string>
+    <string name="help_section_todos_events_preview">Personal reminders, noteworthy events, and automated recurring schedules.</string>
+    <string name="help_section_todos_events_content">+ Todos are written directly in journal entries as [ ] and [x] lines.\n+ Events are normal journal entries marked as Event, useful for family plans, appointments, travel, or anything you want to notice later.\n+ Recurring Tasks &amp; Events (Schedules) automatically write todo items or event headings to your daily journal pages according to their schedule (e.g. weekly, monthly, annually).\n+ Manage your schedules by tapping the Recurring icon on the Todos screen.\n+ Every day when you open Yaja, the background pipeline runs to check if any scheduled tasks are due and inserts them into that day\'s entry.\n+ The Todos screen helps you view open todos, completed todos, and events without turning Yaja into a productivity dashboard.\n+ Tap a date header to open that day in Journal.\n+ Pull down on Todos to rebuild the todo index if files changed outside Yaja.\n+ Show Completed Tasks is remembered, so your preferred view sticks when you leave and return.\n+ Todo widgets can show pending tasks, confirm before toggling, hide completed tasks, and optionally auto-hide when nothing is pending.</string>
+    <string name="help_section_people_places_title">People &amp; Places</string>
+    <string name="help_section_people_places_preview">Keywords, aliases, trends, and ranked connection views.</string>
+    <string name="help_section_people_places_content">+ Track people and places with aliases and relation labels.\n+ Search, filter, and sort the keyword list.\n+ Keyword detail pages show recency, mentions over time, co-mentions, and ranked Connections.\n+ Match Sensitivity can be adjusted from Settings.</string>
+    <string name="help_section_timeline_lookback_title">Timeline &amp; Lookback</string>
+    <string name="help_section_timeline_lookback_preview">Past-day browsing, highlights, Surprise Me, and review entry points.</string>
+    <string name="help_section_timeline_lookback_content">+ Timeline lets you browse past days with filters, year chips, and optional all-date mode.\n+ Lookback shows entries from the same day in past years and your starred highlights.\n+ Surprise Me opens a random past entry from Lookback.\n+ Weekly Review and Monthly Review live inside Lookback.</string>
+    <string name="help_section_statistics_reviews_title">Statistics &amp; Reviews</string>
+    <string name="help_section_statistics_reviews_preview">Compare mode, template insights, custom visible sections, and summaries.</string>
+    <string name="help_section_statistics_reviews_content">+ Statistics include compare mode, keyword deltas, and Template Insights.\n+ You can choose which statistics sections stay visible from inside the Statistics screen.\n+ Compare Mode is available for All Time and summarizes month and year deltas.\n+ Review pages summarize most active days, top people and places, favorite moments, labels, language split, and streak or gap patterns.</string>
+    <string name="help_section_widgets_home_title">Widgets &amp; Home Surface</string>
+    <string name="help_section_widgets_home_preview">Launcher widgets, highlighted keywords, and day-level home stats.</string>
+    <string name="help_section_widgets_home_content">+ Writing Heatmap, Quick Capture, Quick Add, and Todo List widgets are available on the launcher.\n+ Widget configure screens let you adjust corners, padding, shape, headers, completed-task visibility, and other widget options where supported.\n+ The heatmap widget uses more intensity shades for a smoother writing-history view.\n+ Home can highlight People &amp; Places inside entries when the setting is enabled.\n+ The Home date header can show or hide entry count, words, and character count.</string>
+    <string name="help_section_language_text_analysis_title">Language &amp; Text Analysis</string>
+    <string name="help_section_language_text_analysis_preview">Local language detection for statistics and review insights.</string>
+    <string name="help_section_language_text_analysis_content">+ Yaja detects dominant script or language across entries for insights.\n+ Language split appears in Statistics and Reviews.\n+ Detection runs locally and does not send journal text out of the device.</string>
+    <string name="help_section_data_privacy_cache_title">Data, Privacy &amp; Cache</string>
+    <string name="help_section_data_privacy_cache_preview">Markdown storage, version history, app log, app lock, and rebuild cache.</string>
+    <string name="help_section_data_privacy_cache_content">+ Data Privacy: All personal journal data resides strictly on your physical device and never leaves it at any time. Yaja does not run cloud databases, remote backup servers, or telemetry to track your text.\n+ Journal entries are stored as standard Markdown files arranged by year and month.\n+ Version History can keep safe snapshots before edits, deletes, labels, and revisit changes.\n+ You can choose how many versions to keep and how many days history is retained.\n+ App Log records technical events, crash details, and cache activity without storing journal text.\n+ Rebuild App Cache lets you refresh app data modularly, including todos and full cache rebuilds.\n+ App lock supports PIN and fingerprint.\n+ Yaja keeps heavy indexing and stats work deferred where possible so app launch and saves stay responsive.</string>
+    <string name="settings_app_log_title">App Log</string>
+    <string name="settings_app_log_subtitle">View privacy-safe diagnostics and previous crash details</string>
+    <string name="app_log_cd_share">Share app log</string>
+    <string name="app_log_cd_clear">Clear app log</string>
+    <string name="app_log_privacy_title">Privacy-safe diagnostics</string>
+    <string name="app_log_privacy_description">This log records major app events, cache/storage operations, widget refreshes, and crash details. It does not include journal entries, todo text, or private note content.</string>
+    <plurals name="app_log_retention_days">
+        <item quantity="one">Keep last %d day</item>
+        <item quantity="other">Keep last %d days</item>
+    </plurals>
+    <string name="app_log_retention_description">Older log events are pruned automatically during logging and immediately when this setting changes.</string>
+    <string name="app_log_empty">No app log yet.</string>
+    <string name="app_log_refresh">Refresh Log</string>
+    <string name="app_log_share_empty">No Yaja app log entries yet.</string>
+    <string name="app_log_share_subject">Yaja App Log</string>
+    <string name="app_log_share_chooser">Share Yaja app log</string>
+    <string name="app_log_local_time_format">%1$s | local time\n%2$s</string>
+    <string name="settings_website_title">Yaja Website</string>
+    <string name="settings_website_subtitle">Open the official website for updates and details</string>
+    <string name="settings_advanced_integrations_title">Advanced Integrations</string>
+    <string name="settings_tasker_integration_title">Tasker Integration</string>
+    <string name="settings_tasker_integration_subtitle">Quick capture actions and journal event triggers</string>
+    <string name="settings_shortcodes_subtitle">Manage reusable snippets that expand while writing or quick-capturing.</string>
+    <string name="settings_privacy_security_title">Privacy &amp; Security</string>
+    <string name="settings_pin_lock_title">PIN Lock</string>
+    <string name="settings_app_locked">App is locked</string>
+    <string name="settings_app_unlocked">App is unlocked</string>
+    <string name="settings_change_pin">Change PIN</string>
+    <string name="settings_biometric_unlock_title">Biometric Unlock</string>
+    <string name="settings_biometric_enabled_desc">Fingerprint or Face ID enabled</string>
+    <string name="settings_biometric_disabled_desc">Use biometric instead of PIN</string>
+    <string name="settings_autolock_timeout_title">Auto-lock Timeout</string>
+    <string name="settings_pin_lock_disclaimer">PIN lock prevents unauthorized access to the app but does not encrypt your journal data on disk. Someone with direct file access could still read your entries.</string>
+    <plurals name="settings_autolock_minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+
+    <!-- Settings: Appearance -->
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_amoled">Amoled</string>
+    <string name="settings_colors_label">Colors</string>
+    <string name="settings_color_intensity_title">Color intensity</string>
+    <string name="settings_background_tint_title">Background tint</string>
+    <string name="settings_font_sans">Sans</string>
+    <string name="settings_font_serif">Serif</string>
+    <string name="settings_font_mono">Mono</string>
+    <string name="settings_font_custom">Custom</string>
+    <string name="settings_font_size_label">Font Size</string>
+    <string name="settings_ui_font_size_label">UI Font Size</string>
+    <string name="settings_data_font_size_label">Content Font Size</string>
+    <string name="settings_follow_ui_font_scale_label">Make Content Font Size same as UI</string>
+    <string name="settings_color_source_material_you">Material You</string>
+    <string name="settings_theme_preview_title">Theme preview</string>
+    <string name="settings_journal_entry_preview">Journal entry</string>
+    <string name="settings_journal_entry_preview_desc">Cards, chips and buttons will use these colors.</string>
+    <string name="settings_preview_chip_chip">Chip</string>
+    <string name="settings_preview_chip_accent">Accent</string>
+    <string name="settings_preview_chip_fab">FAB</string>
+    <string name="settings_intensity_label">Intensity: %1$s</string>
+    <string name="settings_personal_themes_title">Personal themes</string>
+    <string name="settings_theme_name_label">Theme name</string>
+    <string name="settings_main_color_label">Main color</string>
+    <string name="settings_hue_label">Hue</string>
+    <string name="settings_sat_label">Sat</string>
+    <string name="settings_bright_label">Bright</string>
+    <string name="settings_generated_accents_title">Generated accents</string>
+    <string name="settings_personal_theme_desc">Pick one color. Yaja creates matching accent and support colors.</string>
+    <string name="settings_preview_chip_main">Main</string>
+    <string name="settings_preview_chip_support">Support</string>
+    <string name="settings_no_font_selected">No font selected</string>
+    <string name="settings_custom_font_desc">Pick any unicode .ttf or .otf file — e.g. a Malayalam font like Manjari. Characters the font lacks use system fonts.</string>
+    <string name="settings_font_replace">Replace</string>
+    <string name="settings_choose_font_file">Choose font file</string>
+    <string name="settings_intensity_muted">Muted</string>
+    <string name="settings_intensity_normal">Normal</string>
+    <string name="settings_intensity_vivid">Vivid</string>
+    <string name="settings_intensity_pop">Pop</string>
+    <string name="settings_tint_clean">Clean</string>
+    <string name="settings_tint_soft">Soft</string>
+    <string name="settings_tint_rich">Rich</string>
+    <string name="settings_tint_deep">Deep</string>
+    <string name="settings_accent_complementary">Complementary</string>
+    <string name="settings_accent_analogous">Analogous</string>
+    <string name="settings_accent_triadic">Triadic</string>
+    <string name="settings_accent_soft">Soft</string>
+    <string name="settings_mono_weight_thin">Thin</string>
+    <string name="settings_mono_weight_extra_light">Extra Light</string>
+    <string name="settings_mono_weight_light">Light</string>
+    <string name="settings_mono_weight_regular">Regular</string>
+    <string name="settings_mono_weight_medium">Medium</string>
+    <string name="settings_mono_weight_semi_bold">Semi Bold</string>
+    <string name="settings_mono_weight_bold">Bold</string>
+    <string name="settings_mono_weight_extra_bold">Extra Bold</string>
+    <string name="settings_mono_weight_title">Weight</string>
+    <string name="settings_mono_weight_value">%1$s · %2$d</string>
+
+    <!-- Settings: Dialogs -->
+    <string name="settings_add_date_keyword_title">Add Date Keyword</string>
+    <string name="settings_keyword_label">Keyword</string>
+    <string name="settings_keyword_placeholder_example">e.g. yesterday</string>
+    <string name="settings_means_label">Means</string>
+    <string name="settings_add_button">Add</string>
+    <string name="settings_no_keywords_yet">No keywords added yet.</string>
+    <string name="settings_added_keywords_title">Added Keywords (%1$d)</string>
+    <string name="settings_keyword_meaning_format">-&gt; %1$s</string>
+    <string name="keywords_cd_add">Add Keyword</string>
+    <string name="keywords_dialog_add_title">Add Keyword</string>
+    <string name="keywords_dialog_edit_title">Edit Keyword</string>
+    <string name="keywords_cd_import_csv">Import CSV</string>
+    <string name="keywords_cd_export_csv">Export CSV</string>
+    <string name="keywords_cd_download_template">Download template</string>
+    <string name="rebuild_cache_storage_transparency_title">On-Device Storage Transparency</string>
+    <string name="rebuild_cache_storage_transparency_desc">Yaja uses a secure local storage model. Your personal journal data remains local and never leaves your device at any time:</string>
+    <string name="rebuild_cache_source_of_truth_title">Source of Truth (Markdown Files)</string>
+    <string name="rebuild_cache_source_of_truth_desc">All entries, checklist items (todos), timeline events, stars, and tags are permanently saved in plaintext Markdown (.md) files in your selected local journal folder. Your data is 100% owned by you and resides entirely on your device.</string>
+    <string name="rebuild_cache_read_cache_title">Read Cache &amp; Index (SQLite Database)</string>
+    <string name="rebuild_cache_read_cache_desc">To enable instant screen loading, calendar highlights, keywords, and statistics without scanning the filesystem on every scroll, Yaja parses your Markdown files and indexes them in a local Room SQLite database on your device.</string>
+    <string name="rebuild_cache_local_private_title">100% Local &amp; Private</string>
+    <string name="rebuild_cache_local_private_desc">Yaja does not have any cloud databases, remote backup servers, or telemetry tracking your text. All journal entries and parsed data remain strictly on your physical device and never leave it at any time.</string>
+    <string name="keywords_export_success">Keywords exported</string>
+    <string name="keywords_export_failed">Couldn\'t export keywords</string>
+    <string name="keywords_template_saved">Template saved</string>
+    <string name="keywords_template_save_failed">Couldn\'t save template</string>
+    <plurals name="keywords_imported_count">
+        <item quantity="one">Imported %d keyword</item>
+        <item quantity="other">Imported %d keywords</item>
+    </plurals>
+    <string name="keywords_import_none_valid">No valid keywords found</string>
+    <string name="keywords_import_failed">Couldn\'t import keywords</string>
+    <string name="keywords_status_indexing">Indexing</string>
+    <string name="keywords_status_indexed">Indexed</string>
+    <string name="keywords_metric_mentions">Mentions</string>
+    <string name="keywords_metric_days">Days</string>
+    <string name="keywords_timeline_range_all">All</string>
+    <string name="keywords_connections_filter_all">All</string>
+    <string name="keywords_connections_filter_people">People</string>
+    <string name="keywords_connections_filter_places">Places</string>
+    <string name="keywords_connections_filter_recent">Recent</string>
+    <string name="keywords_connections_filter_strongest">Strongest</string>
+    <string name="keywords_filter_needs_reindex">Needs Reindex</string>
+    <string name="keywords_search_placeholder">Search people, places, aliases, relation</string>
+    <string name="keywords_refreshing_counters">Refreshing keyword counters…</string>
+    <string name="keywords_empty_title">No keywords yet</string>
+    <string name="keywords_empty_subtitle">Add the people and places you want the app to track locally.</string>
+    <string name="keywords_no_results_title">No matching results</string>
+    <string name="keywords_no_results_subtitle">Try a different search, sort, or filter.</string>
+    <string name="keywords_people_title">People</string>
+    <string name="keywords_places_title">Places</string>
+    <string name="keywords_people_empty">No people added yet.</string>
+    <string name="keywords_people_filtered_empty">No people match the current filters.</string>
+    <string name="keywords_places_empty">No places added yet.</string>
+    <string name="keywords_places_filtered_empty">No places match the current filters.</string>
+    <string name="keywords_delete_person_title">Delete Person?</string>
+    <string name="keywords_delete_place_title">Delete Place?</string>
+    <string name="keywords_delete_message">Delete "%1$s" from People &amp; Places? This will remove the keyword and its indexed matches.</string>
+    <string name="keywords_timeline_title">Mentions Over Time</string>
+    <string name="keywords_timeline_empty_pattern">No monthly pattern yet</string>
+    <string name="keywords_timeline_total_format">%1$d total</string>
+    <string name="keywords_timeline_empty_chart">Mentions will chart here after indexing finds entries.</string>
+    <plurals name="keywords_timeline_peak_mentions">
+        <item quantity="one">Peak %1$s • %2$d mention</item>
+        <item quantity="other">Peak %1$s • %2$d mentions</item>
+    </plurals>
+    <string name="keywords_days_with_mentions">Days with mentions</string>
+    <string name="keywords_recency_title">Recency</string>
+    <string name="keywords_recency_none">No matches yet</string>
+    <string name="keywords_recency_today">Mentioned today</string>
+    <string name="keywords_recency_yesterday">Mentioned yesterday</string>
+    <string name="keywords_recency_days_ago_format">Last mention %1$d days ago</string>
+    <string name="keywords_first_seen">First Seen</string>
+    <string name="keywords_last_seen">Last Seen</string>
+    <string name="keywords_unknown">Unknown</string>
+    <string name="keywords_co_mentioned_with">Co-mentioned With</string>
+    <string name="keywords_connections_title">Connections</string>
+    <string name="keywords_connections_subtitle">Ranked by repeated overlap and recency</string>
+    <string name="keywords_connections_linked_format">%1$d linked</string>
+    <string name="keywords_connections_show">Show connections</string>
+    <string name="keywords_connections_hide">Hide connections</string>
+    <string name="keywords_connections_items_in_view">%1$d items in this view</string>
+    <string name="keywords_connections_tap_to_expand">Tap to expand %1$d ranked links</string>
+    <string name="keywords_connections_empty">No connections for this filter yet.</string>
+    <string name="keywords_open_day">Open Day</string>
+    <string name="keywords_sort_alphabetical">A-Z</string>
+    <string name="keywords_sort_most_mentioned">Most Mentioned</string>
+    <string name="keywords_sort_recently_added">Recently Added</string>
+    <string name="keywords_peak_mentions_format">Peak %1$s • %2$d mention%3$s</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
+    <string name="keywords_connections_meta_days_format">%1$d day</string>
+    <string name="keywords_connections_meta_days_suffix_plural">s</string>
+    <string name="keywords_connections_meta_together"> together</string>
+    <string name="keywords_connections_meta_shared_entry_prefix"> | %1$d shared entr</string>
+    <string name="keywords_connections_meta_shared_entry_singular_suffix">y</string>
+    <string name="keywords_connections_meta_shared_entry_plural_suffix">ies</string>
+    <string name="keywords_connections_meta_last_prefix"> | last %1$s</string>
+    <string name="keywords_connections_score_format">Score %1$d</string>
+    <string name="keywords_connections_days_chip">%1$d days</string>
+    <string name="keywords_connections_shared_chip">%1$d shared</string>
+    <string name="keywords_match_type_exact">exact</string>
+    <string name="keywords_match_type_fuzzy">fuzzy</string>
+    <string name="keywords_match_type_alias">alias</string>
+    <string name="keywords_match_type_relation">relation</string>
+    <string name="keywords_action_delete">Delete</string>
+    <string name="keywords_action_edit">Edit</string>
+    <string name="keywords_action_view">View</string>
+    <string name="keywords_name_label">Name</string>
+    <string name="keywords_relation_context_label">Relation / Context</string>
+    <string name="keywords_aliases_label">Aliases (comma separated)</string>
+    <string name="keywords_aliases_label_short">Aliases</string>
+    <string name="keywords_type_person">Person</string>
+    <string name="keywords_type_place">Place</string>
+    <string name="keywords_save_disabled_hint">Keywords are saved turned off. Enable them from the list when you want indexing to run.</string>
+    <string name="settings_meaning_yesterday">Yesterday</string>
+    <string name="settings_meaning_today">Today</string>
+    <string name="lookback_chip_weekly">Weekly</string>
+    <string name="lookback_chip_monthly">Monthly</string>
+    <string name="timeline_screen_title">Timeline</string>
+    <string name="timeline_empty_title">Nothing here yet</string>
+    <string name="timeline_empty_subtitle">Try a different filter or adjust the label search.</string>
+    <string name="timeline_quick_today">Today</string>
+    <string name="timeline_quick_month">Month</string>
+    <string name="timeline_quick_filters">Filters</string>
+    <string name="timeline_all_dates">All dates</string>
+    <string name="timeline_label_prefix">Label: %1$s</string>
+    <string name="timeline_label_search_placeholder">Search day labels</string>
+    <string name="timeline_filters_title">Timeline Filters &amp; Layout</string>
+    <string name="settings_meaning_tomorrow">Tomorrow</string>
+    <string name="settings_meaning_day_before_yesterday">Day before yesterday</string>
+    <string name="settings_meaning_day_after_tomorrow">Day after tomorrow</string>
+    <string name="settings_meaning_last_week">Last week</string>
+    <string name="settings_meaning_next_week">Next week</string>
+    <string name="settings_meaning_monday">Monday</string>
+    <string name="settings_meaning_tuesday">Tuesday</string>
+    <string name="settings_meaning_wednesday">Wednesday</string>
+    <string name="settings_meaning_thursday">Thursday</string>
+    <string name="settings_meaning_friday">Friday</string>
+    <string name="settings_meaning_saturday">Saturday</string>
+    <string name="settings_meaning_sunday">Sunday</string>
+
+    <!-- Settings: Storage & Restore dialogs -->
+    <string name="settings_storage_internal">App Internal Storage</string>
+    <string name="settings_storage_internal_default">App Internal Storage (Default)</string>
+    <string name="settings_storage_new_folder_fallback">the new folder</string>
+    <string name="settings_storage_current_folder_fallback">the current folder</string>
+    <string name="settings_storage_move_confirm">All existing entries will be moved from %1$s to %2$s. Do you want to continue?</string>
+    <string name="settings_restore_added_skipped">Added: %1$d\nSkipped duplicates: %2$d</string>
+    <string name="settings_storage_custom_folder">Custom Folder:\n%1$s</string>
+
+    <!-- Add Entry: top bar / chrome -->
+    <string name="addentry_cd_shortcuts_help">Shortcuts help</string>
+    <string name="addentry_cd_insert_template">Insert template</string>
+    <string name="addentry_cd_jump_to_today">Jump to today</string>
+    <string name="addentry_cd_share">Share</string>
+    <string name="addentry_cd_bold">Bold</string>
+    <string name="addentry_cd_italic">Italic</string>
+
+    <!-- Add Entry: date header / time pickers -->
+    <string name="addentry_set_time">Set time</string>
+    <string name="addentry_event_chip">Event</string>
+    <string name="addentry_pick_time_title">Pick time</string>
+    <string name="addentry_hour_label">Hour</string>
+    <string name="addentry_minute_label">Minute</string>
+    <string name="addentry_new_event_title">New Event</string>
+    <string name="addentry_title_label">Title</string>
+    <string name="addentry_event_description_label">Event Description</string>
+
+    <!-- Add Entry: review sheet -->
+    <string name="addentry_todos_found_title">Todos Found</string>
+    <plurals name="addentry_convert_to_checklist">
+        <item quantity="one">Convert %1$d line to checklist</item>
+        <item quantity="other">Convert %1$d lines to checklist</item>
+    </plurals>
+    <string name="addentry_people_places_title">People &amp; Places</string>
+    <string name="addentry_no_tracked_mentions">No tracked people or places found in this entry.</string>
+    <string name="addentry_day_memory_title">Day Memory</string>
+    <string name="addentry_star_day_title">Star this day</string>
+    <string name="addentry_star_day_subtitle">Save it as a highlight so it returns in lookback.</string>
+    <string name="addentry_day_label_label">Day label</string>
+    <string name="addentry_day_label_placeholder">e.g. Reset Day</string>
+    <string name="addentry_follow_up_title">Follow up on</string>
+    <string name="addentry_next_month">Next month</string>
+    <string name="addentry_custom">Custom</string>
+    <string name="addentry_due_date_format">Due %1$s</string>
+    <string name="addentry_cd_clear_follow_up">Clear follow-up</string>
+    <string name="addentry_follow_up_note_label">Follow-up note</string>
+    <string name="addentry_follow_up_note_placeholder">What should you revisit?</string>
+    <string name="addentry_review_entry_title">Review Entry</string>
+    <string name="addentry_review_entry_subtitle">Quick pass before save. Pull todos out, check tracked mentions, and mark day if it matters.</string>
+    <plurals name="addentry_todos_count">
+        <item quantity="one">%1$d todo</item>
+        <item quantity="other">%1$d todos</item>
+    </plurals>
+    <plurals name="addentry_mentions_count">
+        <item quantity="one">%1$d mention</item>
+        <item quantity="other">%1$d mentions</item>
+    </plurals>
+    <string name="addentry_save_entry_button">Save Entry</string>
+
+    <!-- Add Entry: dialogs -->
+    <string name="addentry_discard_changes_title">Discard Changes</string>
+    <string name="addentry_discard_changes_message">You have unsaved changes. Go back and discard them, or stay to keep editing.</string>
+    <string name="addentry_go_back">Go Back</string>
+    <string name="addentry_stay">Stay</string>
+    <string name="addentry_shortcuts_title">Shortcuts</string>
+    <string name="addentry_help_bold_suffix"> to make text bold (or select text and tap Bold Button)</string>
+    <string name="addentry_help_italic_suffix"> to make text italic (or select text and tap Italic Button)</string>
+    <string name="addentry_help_today_suffix">: Expands to current date (e.g., 25-Dec-25)</string>
+    <string name="addentry_help_now_suffix">: Expands to current time (e.g., 14:30)</string>
+    <string name="addentry_help_week_suffix">: Expands to current week (e.g., Week 52)</string>
+    <string name="addentry_help_day_suffix">: Expands to current weekday (e.g., Monday)</string>
+    <string name="addentry_help_todo_suffix">: Expands to a todo checkbox (e.g., [ ] )</string>
+    <string name="addentry_help_toggle_suffix">: When entered anywhere in the line containing a todo checkbox, it will toggle it.</string>
+    <string name="addentry_okey">Okey!</string>
+    <string name="addentry_template_merge_message">This draft already has text. Choose how the template should be placed.</string>
+    <string name="addentry_template_merge_subtitle">Insert Below keeps the current draft. At Cursor places the template where your caret is now.</string>
+    <string name="addentry_insert_below">Insert Below</string>
+    <string name="addentry_at_cursor">At Cursor</string>
+    <string name="addentry_replace_draft">Replace Draft</string>
+
+    <!-- Add Entry: templates -->
+    <string name="addentry_popular_chip">Popular</string>
+    <string name="addentry_new_chip">New</string>
+    <string name="addentry_best_for_format">Best for: %1$s</string>
+    <string name="addentry_cd_remove_favorite">Remove template favorite</string>
+    <string name="addentry_cd_favorite_template">Favorite template</string>
+    <string name="addentry_checklist_chip">Checklist</string>
+    <string name="addentry_followup_chip">Follow-up</string>
+    <plurals name="addentry_sections_count">
+        <item quantity="one">%1$d section</item>
+        <item quantity="other">%1$d sections</item>
+    </plurals>
+    <string name="addentry_cd_toggle_favorite">Toggle favorite template</string>
+    <string name="addentry_template_preview_label">Template preview</string>
+    <string name="addentry_use_template_button">Use Template</string>
+    <string name="addentry_start_blank_title">Start Blank</string>
+    <string name="addentry_start_blank_subtitle">Skip templates and keep writing from an empty draft.</string>
+    <string name="addentry_blank_entry_name">Blank Entry</string>
+    <string name="addentry_blank_entry_description">Plain journal entry</string>
+    <string name="addentry_blank_category">General</string>
+    <string name="addentry_quick_picks_title">Quick Picks</string>
+    <string name="addentry_sort_recommended">Recommended</string>
+    <string name="addentry_sort_recent">Recent</string>
+    <string name="addentry_sort_az">A-Z</string>
+    <string name="addentry_no_templates_title">No templates found</string>
+    <string name="addentry_no_templates_subtitle">Try a different search or category.</string>
+    <string name="addentry_search_templates_label">Search templates</string>
+    <string name="addentry_search_templates_placeholder">Meeting, health, reflection...</string>
+    <string name="addentry_cd_clear_search">Clear search</string>
+    <string name="addentry_choose_template_title">Choose a Template</string>
+    <string name="addentry_templates_ready_format">%1$d of %2$d templates ready</string>
+    <string name="addentry_category_all">All</string>
+
+    <!-- Add Entry: editor -->
+    <string name="addentry_editor_placeholder">What happened?</string>
+    <string name="addentry_todo_chip">Todo</string>
+    <string name="addentry_numbered_list_chip">N List</string>
+    <string name="addentry_bulleted_list_chip">B List</string>
+    <string name="addentry_words_count_format">%1$d WORDS</string>
+    <string name="addentry_chars_count_format">%1$d CHARS</string>
+
+    <!-- Home: follow-up reminders -->
+    <plurals name="home_followup_due_today">
+        <item quantity="one">Follow-up due today</item>
+        <item quantity="other">Follow-ups due today</item>
+    </plurals>
+    <string name="home_followup_subtitle">Jump back into the linked day and continue from there.</string>
+    <string name="home_from_date_format">From %1$s</string>
+    <string name="home_more_due_today_format">+%1$d more due today</string>
+
+    <!-- Home: day/star label dialogs -->
+    <string name="home_add_label_title">Add Label</string>
+    <string name="home_edit_label_title">Edit Label</string>
+    <string name="home_day_label_hint">Add a short label for this day (max 30 characters).</string>
+    <string name="home_day_label_placeholder">e.g., First day at school</string>
+    <string name="home_char_count_format">%1$d/30</string>
+    <string name="home_star_label_title">Add a Label for This Day</string>
+    <string name="home_star_label_hint">Give this day a memorable label (max 30 characters)</string>
+    <string name="home_star_label_placeholder">e.g., My Birthday, At school</string>
+    <string name="home_star_button">Star</string>
+
+    <!-- Home: undo delete bar -->
+    <plurals name="home_entries_deleted_count">
+        <item quantity="one">Entry deleted</item>
+        <item quantity="other">%1$d entries deleted</item>
+    </plurals>
+    <string name="home_restore_button">RESTORE</string>
+
+    <!-- Home: top bar -->
+    <string name="home_search_placeholder">Search entries...</string>
+    <string name="home_cd_search">Search</string>
+    <string name="home_cd_clear_search">Clear Search</string>
+    <string name="home_cd_favorite">Favorite</string>
+
+    <!-- Home: daily insights -->
+    <string name="home_stat_entries">Entries</string>
+    <string name="home_stat_words">Words</string>
+    <string name="home_stat_chars">Chars</string>
+    <string name="home_stat_versions">Vers</string>
+
+    <!-- Home: date navigator -->
+    <string name="home_add_label_chip">Add label</string>
+
+    <!-- Home: search and keyword filter results -->
+    <plurals name="home_matches_found_count">
+        <item quantity="one">%1$d Match Found</item>
+        <item quantity="other">%1$d Matches Found</item>
+    </plurals>
+    <string name="home_no_keyword_matches">No matches found for this keyword yet.</string>
+
+    <!-- Home: empty state -->
+    <string name="home_cd_empty_status_icon">Empty Status Icon</string>
+    <string name="home_empty_future">This is the future. Record a reminder!</string>
+    <string name="home_empty_past">You are in the Past. Record a Memory before it fades...</string>
+    <string name="home_empty_today">No entries yet. Start your day.</string>
+
+    <!-- Home: FAB cluster -->
+    <string name="home_cd_saving">Saving</string>
+    <string name="home_cd_add_entry">Add Entry</string>
+
+    <!-- Home: selection and dialogs -->
+    <string name="home_delete_selected_format">Delete %1$d</string>
+    <string name="home_future_date_title">Future Date Entry</string>
+    <string name="home_future_date_message_format">You are adding an entry for a future date (%1$s). Do you want to continue?</string>
+    <string name="home_cache_issue_title">Data Cache Issue Detected</string>
+    <string name="home_cache_issue_message">It appears a substantial number of journal entries are missing from the cache. Would you like to perform a full data cache refresh to attempt to restore them?</string>
+    <string name="home_refresh_button">Refresh</string>
+    <string name="home_ignore_button">Ignore</string>
+
+    <!-- Nav Drawer: items -->
+    <string name="nav_people_places">People &amp; Places</string>
+    <string name="nav_statistics">Statistics</string>
+    <string name="nav_todos">Todos</string>
+    <string name="nav_rebuild_index">Rebuild Database Index</string>
+    <string name="nav_backup_data">Backup Data</string>
+
+    <!-- Nav Drawer: status / sync -->
+    <string name="nav_status_header">Status</string>
+    <string name="nav_finishing_index_rebuild">Finishing index rebuild...</string>
+    <string name="nav_rebuilding_index">Rebuilding database index</string>
+    <string name="nav_refreshing_index">Refreshing index</string>
+    <string name="nav_backup_too_old">backup is too old...</string>
+    <string name="nav_sync_percent_eta_format">%1$d%% - %2$s</string>
+    <string name="nav_sync_percent_format">%1$d%%</string>
+    <string name="nav_working">Working...</string>
+    <string name="nav_eta_almost_done">almost done</string>
+    <string name="nav_eta_seconds_left_format">~%1$ds left</string>
+    <string name="nav_eta_minutes_left_format">~%1$dm left</string>
+    <string name="nav_eta_hours_left_format">~%1$dh left</string>
+
+    <!-- Nav Drawer: brand header -->
+    <string name="nav_cd_menu">Menu</string>
+    <string name="nav_cd_rj_logo">RJ Logo</string>
+    <string name="nav_tagline">yet another journaling app</string>
+    <string name="nav_version_format">v%1$s</string>
+    <string name="nav_cd_play_store">Play Store</string>
+    <string name="nav_cd_website">Website</string>
+    <string name="nav_cd_share_app">Share App</string>
+
+    <!-- Nav Drawer: easter egg -->
+    <string name="nav_cd_yaja_logo">Yaja Logo</string>
+    <string name="nav_easter_quote_part1">"Write down a passing thought or what you had for lunch; it doesn\'t have to be profound.\n</string>
+    <string name="nav_easter_quote_part2">Your words can just exist.</string>
+    <string name="nav_easter_quote_part3">"</string>
+    <string name="nav_from_labs">from the labs of RJ</string>
+
+    <!-- Nav Drawer: share app -->
+    <string name="nav_share_yaja">Share yaja</string>
+    <string name="nav_share_text_body">yaja — yet another journaling app\n\nA distraction-free daily journal that stores entries as plain markdown files.\n\nhttps://play.google.com/store/apps/details?id=com.mj.yaja</string>
+    <string name="settings_change_storage_location_title">Change Storage Location</string>
+    <string name="settings_change_storage_location_message">All existing entries will be moved from %1$s to %2$s. Do you want to continue?</string>
+    <string name="settings_yes">Yes</string>
+    <string name="settings_no">No</string>
+    <string name="settings_restore_summary_title">Restore Summary</string>
+    <string name="settings_restore_section_journal">Journal</string>
+    <string name="settings_restore_section_shortcodes">Shortcodes</string>
+    <string name="settings_restore_section_date_keywords">Date Keywords</string>
+    <string name="settings_restore_section_people_places">People &amp; Places</string>
+    <string name="settings_restore_journal_summary">Added to new days: %1$d\nMerged into existing days: %2$d\nDuplicate journal entries skipped: %3$d</string>
+    <string name="settings_restore_shortcodes_summary">Added: %1$d\nSkipped duplicates: %2$d</string>
+    <string name="settings_restore_date_keywords_summary">Added: %1$d\nSkipped duplicates: %2$d</string>
+    <string name="settings_restore_people_places_summary">Added: %1$d\nSkipped duplicates: %2$d</string>
+    <string name="rebuild_tools_title">Rebuild Tools</string>
+    <string name="rebuild_tools_back">Back</string>
+    <string name="rebuild_tools_intro">Use focused rebuilds first. Rebuilding the database is only for storage changes, database corruption, or index mismatch.</string>
+    <string name="rebuild_todo_index_title">Rebuild Todo Index</string>
+    <string name="rebuild_todo_index_subtitle">Refresh todos from journal files and update Todo screen/widget. Best when todos look stale.</string>
+    <string name="rebuild_todo_index_button">Rebuild Todos</string>
+    <string name="rebuild_people_places_title">Rebuild People &amp; Places</string>
+    <string name="rebuild_people_places_subtitle">Refresh keyword aliases, co-mentions, trends, and relationship data.</string>
+    <string name="rebuild_people_places_button">Rebuild People &amp; Places</string>
+    <string name="rebuild_database_title">Full Database Rebuild</string>
+    <string name="rebuild_database_subtitle">Recompile database cache from markdown files. Re-indexes entries, counts, todos, People &amp; Places, and widgets from scratch.</string>
+    <string name="rebuild_database_button">Rebuild Database</string>
+    <string name="rebuild_database_confirm_title">Rebuild database index</string>
+    <string name="rebuild_database_confirm_message">This will clear and re-index the entire Room SQLite database from your Markdown files. For large journals, this may take a few minutes.</string>
+    <string name="rebuild_database_confirm_start">Start Rebuild</string>
+    <string name="rebuild_database_status_title">Database Index Status</string>
+    <string name="rebuild_database_storage_engine">Storage Engine</string>
+    <string name="rebuild_database_storage_engine_value">Room SQLite Database</string>
+    <string name="rebuild_database_indexed_days">Indexed Days</string>
+    <string name="rebuild_database_indexed_days_value">%1$d days indexed</string>
+    <string name="rebuild_database_file_size">Database File Size</string>
+    <string name="rebuild_database_last_sync">Last Index Sync</string>
+    <string name="rebuild_database_age_never">Never</string>
+    <string name="rebuild_database_age_just_now">Just now</string>
+    <string name="rebuild_database_age_one_minute">1 minute ago</string>
+    <string name="rebuild_database_age_minutes">%1$d minutes ago</string>
+    <string name="rebuild_database_age_one_hour">1 hour ago</string>
+    <string name="rebuild_database_age_hours">%1$d hours ago</string>
+    <string name="shortcodes_title">Shortcodes</string>
+    <string name="shortcodes_import_cd">Import</string>
+    <string name="shortcodes_export_cd">Export</string>
+    <string name="shortcodes_help_cd">Help</string>
+    <string name="shortcodes_new">New Shortcode</string>
+    <string name="shortcodes_empty_title">No custom shortcodes</string>
+    <string name="shortcodes_empty_subtitle">Add one to expand snippets like @yday into dynamic text.</string>
+    <string name="shortcodes_dynamic_dates_hint">Use {{today:format}} for dynamic dates.</string>
+    <string name="shortcodes_help_title">Shortcode Help</string>
+    <string name="shortcodes_help_built_in">Built-in Shortcodes:</string>
+    <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (checkbox), @x (toggle checkbox)</string>
+    <string name="shortcodes_help_dynamic_patterns">Dynamic Patterns:</string>
+    <string name="shortcodes_help_dynamic_desc">Use {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, or {{now:FORMAT}}.</string>
+    <string name="shortcodes_help_example">Example: @yday -> Yesterday: {{yesterday:dd-MMM-yy}}</string>
+    <string name="shortcodes_help_common_formats">Common formats: dd-MM-yy, HH:mm, EEEE (day name).</string>
+    <string name="action_close">Close</string>
+    <string name="keyword_detail_title_fallback">Keyword</string>
+    <string name="keyword_detail_not_found">Keyword not found</string>
+    <string name="keyword_detail_last_indexed">Last indexed %1$s</string>
+    <string name="keyword_detail_mentions_section">Mentions</string>
+    <string name="pin_biometric_prompt_title">Unlock with Biometric</string>
+    <string name="pin_biometric_prompt_subtitle">Use your fingerprint or face to unlock</string>
+    <string name="pin_error_no_biometric_enrolled">No biometric enrolled. Please enroll a fingerprint or face in device settings.</string>
+    <string name="pin_error_hardware_unavailable">Biometric hardware is unavailable.</string>
+    <string name="pin_error_no_hardware">This device does not have biometric hardware.</string>
+    <string name="pin_error_not_available">Biometric authentication is not available.</string>
+    <string name="pin_title_confirm">Confirm PIN</string>
+    <string name="pin_title_set_new">Set New PIN</string>
+    <string name="pin_title_disable">Enter Current PIN to Disable</string>
+    <string name="pin_title_enter">Enter PIN</string>
+    <string name="pin_error_incorrect">Incorrect PIN. Try again.</string>
+    <string name="pin_error_mismatch">PINs don\'t match. Start over.</string>
+    <string name="pin_cd_use_biometric">Use biometric</string>
+    <string name="pin_cd_backspace">Backspace</string>
+    <string name="timeline_preview_empty_labeled">This day is labeled, but there is no journal entry yet.</string>
+    <string name="timeline_preview_loading">Loading preview...</string>
+    <plurals name="timeline_preview_more_entries">
+        <item quantity="one">+ %1$d more entry on this day</item>
+        <item quantity="other">+ %1$d more entries on this day</item>
+    </plurals>
+    <string name="timeline_preview_open_day">Open This Day</string>
+    <string name="timeline_chip_today">TODAY</string>
+    <plurals name="timeline_chip_entries">
+        <item quantity="one">%1$d entry</item>
+        <item quantity="other">%1$d entries</item>
+    </plurals>
+    <string name="timeline_chip_follow_up">Follow-up</string>
+    <string name="timeline_chip_label_only">Label only</string>
+    <string name="timeline_cd_favorite">Favorite</string>
+    <string name="version_history_title">Version History</string>
+    <string name="version_history_day_versions_title">Day Versions</string>
+    <string name="version_history_keep_copies_title">Keep safety copies</string>
+    <string name="version_history_keep_copies_subtitle">Before Yaja changes a day file, it saves the current file into app data under History Files.</string>
+    <string name="version_history_versions_kept_title">Versions kept per day</string>
+    <plurals name="version_history_versions_kept_subtitle">
+        <item quantity="one">Yaja keeps the newest %1$d version for each date.</item>
+        <item quantity="other">Yaja keeps the newest %1$d versions for each date.</item>
+    </plurals>
+    <string name="version_history_retention_title">Retention</string>
+    <plurals name="version_history_retention_subtitle">
+        <item quantity="one">Snapshots older than %1$d day are cleaned up automatically.</item>
+        <item quantity="other">Snapshots older than %1$d days are cleaned up automatically.</item>
+    </plurals>
+    <string name="version_history_notes">Notes: version history protects day markdown files before add, edit, delete, reorder, label, star, and revisit changes. It is not a cloud backup; keep using Backup for portable copies.</string>
+    <string name="version_history_snapshots_for">Snapshots for %1$s</string>
+    <string name="version_history_snapshots_subtitle">Open a saved version, inspect it, and restore it for this day.</string>
+    <string name="version_history_empty">No saved versions yet for this date.</string>
+    <string name="action_view">View</string>
+    <string name="version_history_date_intro">Open an earlier saved version for this day, inspect it, and restore it when needed.</string>
+    <string name="action_next">Next</string>
+    <string name="action_apply">Apply</string>
+    <string name="action_restore">Restore</string>
+    <string name="statistics_choose_title">Choose Statistics</string>
+    <string name="statistics_choose_subtitle">Hide sections you do not want. At least one section must stay visible.</string>
+    <string name="statistics_visible_count">%1$d of %2$d visible</string>
+    <string name="statistics_show_all">Show All</string>
+    <string name="statistics_one_section_visible">One section must remain visible</string>
+    <string name="statistics_shown">Shown in statistics</string>
+    <string name="statistics_hidden">Hidden from statistics</string>
+    <string name="statistics_select_start_date">Select Start Date</string>
+    <string name="statistics_select_end_date">Select End Date</string>
+    <string name="statistics_filter_by_period">Filter by Period</string>
+    <string name="statistics_cd_reorder">Long press to reorder</string>
+    <string name="statistics_total_entries">Total Entries</string>
+    <string name="statistics_total_words">Total Words</string>
+    <string name="statistics_avg_words_per_entry">Avg. Words/Entry</string>
+    <string name="statistics_current_streak">Current Streak</string>
+    <string name="statistics_pages_written">Pages Written</string>
+    <string name="statistics_days_highlighted">Days Highlighted</string>
+    <plurals name="statistics_days_count">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <string name="statistics_period_all_time">All-Time Statistics</string>
+    <string name="statistics_period_current_year">Current Year Statistics</string>
+    <string name="statistics_period_previous_year">Previous Year Statistics</string>
+    <string name="statistics_period_current_month">Current Month Statistics</string>
+    <string name="statistics_period_previous_month">Previous Month Statistics</string>
+    <string name="statistics_period_custom">Custom Period Statistics</string>
+    <string name="statistics_period_chip_all_time">All Time</string>
+    <string name="statistics_period_chip_current_year">Current Year</string>
+    <string name="statistics_period_chip_previous_year">Prev Year</string>
+    <string name="statistics_period_chip_current_month">This Month</string>
+    <string name="statistics_period_chip_previous_month">Prev Month</string>
+    <string name="statistics_period_chip_custom">Custom</string>
+    <string name="statistics_sections_visible">%1$d of %2$d sections visible</string>
+    <string name="statistics_loading_stages">Loading statistics in stages...</string>
+    <string name="review_period_weekly">Weekly Review</string>
+    <string name="review_period_monthly">Monthly Review</string>
+    <string name="review_anchor_week">Week containing %1$s</string>
+    <string name="review_anchor_month">Month containing %1$s</string>
+    <string name="review_chip_entries">Entries %1$d</string>
+    <string name="review_chip_words">Words %1$d</string>
+    <string name="review_chip_days">Days %1$d</string>
+    <string name="review_hint_jump">Tap date chips below to jump back into the journal.</string>
+    <string name="review_chip_streak">Streak %1$d</string>
+    <string name="review_chip_gap">Gap %1$d</string>
+    <string name="review_chip_labels">Labels %1$d</string>
+    <string name="review_chip_favorites">Favorites %1$d</string>
+    <string name="review_empty_period">No journal entries in this period yet. Labels and highlights still appear below if they exist.</string>
+    <string name="review_writing_rhythm">Writing Rhythm</string>
+    <string name="review_best_streak">Best streak</string>
+    <string name="review_longest_gap">Longest gap</string>
+    <string name="review_most_active_days">Most Active Days</string>
+    <string name="review_day_entries_words">%1$d entries | %2$d words</string>
+    <string name="review_top_people">Top People</string>
+    <string name="review_top_places">Top Places</string>
+    <string name="review_no_people_mentions">No people mentions</string>
+    <string name="review_no_place_mentions">No place mentions</string>
+    <string name="review_favorite_moments">Favorite Moments</string>
+    <string name="review_starred_day">Starred day</string>
+    <string name="review_highlighted_in_period">Highlighted in this period</string>
+    <string name="review_labels_created">Labels Created</string>
+    <string name="review_labeled_day">Labeled day</string>
+    <string name="review_language_split">Language Split</string>
+    <string name="review_not_enough_text">Not enough text in this period</string>
+    <string name="lookback_reviews_title">Reviews</string>
+    <string name="lookback_reviews_intro">Build a quick reflection around your selected journal day.</string>
+    <string name="lookback_seven_days">7 days</string>
+    <string name="lookback_one_month">1 month</string>
+    <string name="lookback_weekly_review">Weekly Review</string>
+    <string name="lookback_weekly_review_subtitle">This week in one glance</string>
+    <string name="lookback_monthly_review">Monthly Review</string>
+    <string name="lookback_monthly_review_subtitle">This month summarized</string>
+    <string name="lookback_flashbacks_title">On this day in past years</string>
+    <string name="lookback_highlights_title">Your Highlights</string>
+    <string name="lookback_empty_title">No lookbacks or highlights yet.</string>
+    <string name="lookback_empty_subtitle">Favorite important days to see them here!</string>
+    <string name="lookback_cd_random_entry">Go to random entry</string>
+    <!-- Statistics: comparison & insights cards -->
+    <string name="statistics_period_label">Period</string>
+    <string name="statistics_compare_mode_title">Compare Mode</string>
+    <string name="statistics_compare_mode_subtitle">Month, year, and keyword deltas</string>
+    <string name="statistics_this_year">This Year</string>
+    <string name="statistics_writing_days_delta">Writing Days Delta</string>
+    <string name="statistics_top_person_delta">Top Person Delta</string>
+    <string name="statistics_no_people_mentions">No people mentions yet</string>
+    <string name="statistics_top_place_delta">Top Place Delta</string>
+    <string name="statistics_no_place_mentions">No place mentions yet</string>
+    <string name="statistics_structured_writing">Structured Writing</string>
+    <string name="statistics_template_led_format">Template-led %1$d · %2$d%%</string>
+    <string name="statistics_blank_format">Blank %1$d · %2$d%%</string>
+    <string name="statistics_most_used_templates">Most Used Templates</string>
+    <string name="statistics_template_mix">Template Mix</string>
+    <string name="statistics_follow_up_leaders">Follow-up Leaders</string>
+    <string name="statistics_compare_details">Compare Details</string>
+    <string name="statistics_label_month">Month</string>
+    <string name="statistics_label_year">Year</string>
+    <string name="statistics_this_month_count_format">This month %1$d</string>
+    <string name="statistics_last_month_count_format">Last month %1$d</string>
+    <string name="statistics_longest_streak">Longest Streak</string>
+    <string name="statistics_most_active_day">Most Active Day</string>
+    <string name="statistics_writing_consistency">Writing Consistency</string>
+    <string name="statistics_days_with_entries">Days With Entries</string>
+    <string name="statistics_best_month">Best Month</string>
+    <string name="statistics_best_month_format">%1$s · %2$d entries</string>
+    <string name="statistics_avg_writing_days_week">Avg. Writing Days / Week</string>
+    <string name="statistics_days_decimal_format">%1$.1f days</string>
+    <string name="statistics_based_on_total_words">Based on total words written per day</string>
+    <string name="statistics_light_words">Light (&lt; 50 words)</string>
+    <string name="statistics_moderate_words">Moderate (50-200 words)</string>
+    <string name="statistics_heavy_words">Heavy (200-500 words)</string>
+    <string name="statistics_intense_words">Intense (500+ words)</string>
+    <string name="statistics_not_enough_text_languages">Not enough text to detect languages</string>
+    <plurals name="statistics_languages_detected_count">
+        <item quantity="one">%1$d language detected</item>
+        <item quantity="other">%1$d languages detected</item>
+    </plurals>
+    <string name="statistics_language_detection_settling">Language detection is still settling.</string>
+    <string name="statistics_latin_scripts_as_english">Latin scripts are shown as English</string>
+    <string name="statistics_use_more_accurate_detection">Use more accurate detection</string>
+    <string name="statistics_write_more_entries_languages">Write more entries to see language stats.</string>
+    <string name="statistics_based_on_entry_time">Based on entry time</string>
+    <string name="statistics_morning_time">Morning (5am-noon)</string>
+    <string name="statistics_afternoon_time">Afternoon (noon-5pm)</string>
+    <string name="statistics_evening_time">Evening (5pm-9pm)</string>
+    <string name="statistics_night_time">Night (9pm-5am)</string>
+    <string name="statistics_heatmap_filling">Heatmap is still filling in.</string>
+    <string name="statistics_heatmap_less">Less</string>
+    <string name="statistics_heatmap_more">More</string>
+    <string name="action_open">Open</string>
+
+    <!-- Tasker event plugin -->
+    <string name="tasker_event_title">Yaja Journal Events</string>
+    <string name="tasker_event_desc">Pick which Yaja journal events should trigger this Tasker profile.</string>
+    <string name="tasker_event_saved">Entry Saved</string>
+    <string name="tasker_event_edited">Entry Edited</string>
+    <string name="tasker_event_deleted">Entry Deleted</string>
+    <string name="tasker_event_default_hint">If none selected, Yaja will default to Entry Saved.</string>
+
+    <!-- Tasker action plugin -->
+    <string name="tasker_action_title">Yaja Quick Capture</string>
+    <string name="tasker_action_desc">Configure what Tasker should quickly capture in Yaja.</string>
+    <string name="tasker_action_add_entry">Add Entry</string>
+    <string name="tasker_action_add_event">Add Event</string>
+    <string name="tasker_action_add_todo">Add Todo</string>
+    <string name="tasker_action_append">Append</string>
+    <string name="tasker_action_match_header_label">Match / header</string>
+    <string name="tasker_action_match_header_placeholder">Missed Calls</string>
+    <string name="tasker_action_line_to_append_label">Line to append</string>
+    <string name="tasker_action_text_label">Text</string>
+    <string name="tasker_action_placeholder_event">Event note from Tasker</string>
+    <string name="tasker_action_placeholder_todo">Buy milk</string>
+    <string name="tasker_action_placeholder_append" formatted="false">%antextbig</string>
+    <string name="tasker_action_placeholder_default">Quick note from Tasker</string>
+    <string name="tasker_action_tip_append">First call creates an entry starting with the match text. Later calls append the line under it.</string>
+    <string name="tasker_action_tip_default">Tip: Tasker variables can be placed in the text field.</string>
+
+    <!-- Crash log dialog -->
+    <string name="crash_log_title">Previous Session Crash Log</string>
+    <string name="crash_log_clear_close">Clear &amp; Close</string>
+
+    <!-- Heatmap tap action labels -->
+    <string name="tap_action_launch_app">Launch App</string>
+    <string name="tap_action_quick_capture">Quick Capture</string>
+    <string name="tap_action_do_nothing">Do Nothing</string>
+
+    <!-- Heatmap widget config -->
+    <string name="widget_heatmap_title">Yaja Writing Heatmap</string>
+    <string name="widget_cell_shape">Cell Shape</string>
+    <string name="widget_corner_radius">Corner Radius: %1$ddp</string>
+    <string name="widget_square">Square</string>
+    <string name="widget_round">Round</string>
+    <string name="widget_inner_margin">Inner Margin: %1$ddp</string>
+    <string name="widget_inner_margin_desc">Space between the heatmap and the widget edges</string>
+    <string name="widget_none">None</string>
+    <string name="widget_max">Max</string>
+    <string name="widget_on_tap">On Tap</string>
+    <string name="widget_on_tap_desc">Action when widget is tapped</string>
+
+    <!-- Quick Capture widget config -->
+    <string name="widget_qc_label_placeholder">Capture</string>
+    <string name="widget_qc_shape">Widget Shape</string>
+    <string name="widget_show_label">Show Label</string>
+    <string name="widget_show_label_desc">Display \'Capture\' text on the widget</string>
+    <string name="widget_show_icon">Show Icon</string>
+    <string name="widget_show_icon_required">Icon required when label is hidden</string>
+    <string name="widget_show_icon_desc">Display pen icon on the widget</string>
+    <string name="widget_label_text">Label Text</string>
+    <string name="widget_label_char_count">%1$d/20</string>
+
+    <!-- Todo list widget config -->
+    <string name="widget_todo_title">Todo Widget</string>
+    <string name="widget_todo_desc">Rounded, heatmap-like todo list widget.</string>
+    <string name="widget_todo_corner_radius">Corner radius: %1$ddp</string>
+    <string name="widget_todo_padding">Padding: %1$ddp</string>
+    <string name="widget_todo_show_completed">Show completed tasks</string>
+    <string name="widget_todo_show_completed_desc">Include checked items in widget list</string>
+    <string name="widget_todo_include_events">Include events</string>
+    <string name="widget_todo_include_events_desc">Show event entries alongside todos in the widget</string>
+    <string name="widget_todo_show_header">Show Todo header</string>
+    <string name="widget_todo_show_header_desc">Show or hide widget title row</string>
+    <string name="widget_todo_auto_hide">Auto hide widget when all todos completed</string>
+    <string name="widget_todo_auto_hide_unavailable">Unavailable while completed tasks are shown</string>
+    <string name="widget_todo_auto_hide_desc">Make the widget transparent when there are no pending tasks</string>
+
+    <!-- Todo widget confirm dialog -->
+    <string name="todo_confirm_mark_done">done</string>
+    <string name="todo_confirm_mark_not_done">not done</string>
+    <string name="todo_confirm_title">Mark task as %1$s?</string>
+    <string name="todo_confirm_reopen">This todo is currently completed. Confirm before reopening it.</string>
+    <string name="todo_confirm_complete">This todo is still open. Confirm before marking it done.</string>
+    <string name="todo_confirm_accidental_tap">Accidental taps will not change the task.</string>
+    <string name="todo_confirm_yes_mark">Yes, mark %1$s</string>
+    <string name="todo_confirm_open_yaja">Open in Yaja</string>
+    <string name="todo_confirm_keep_as_is">Keep as is</string>
+
+    <!-- Help screen branding -->
+    <string name="help_tagline">yet another journaling app</string>
+    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_from_labs">from the labs of RJ</string>
+    <string name="help_made_in">Made in 🇮🇳</string>
+
+    <!-- Leftover hardcoded strings externalization -->
+    <string name="settings_import_cancel_cd">Cancel import</string>
+    <string name="timeline_show_all_dates">Show all dates</string>
+    <string name="timeline_show_all_dates_subtitle">Include all past days, even without entries</string>
+    <string name="settings_background_tint_clean">Clean</string>
+    <string name="settings_background_tint_soft">Soft</string>
+    <string name="settings_background_tint_rich">Rich</string>
+    <string name="settings_background_tint_deep">Deep</string>
+    <string name="settings_accent_style_complementary">Complementary</string>
+    <string name="settings_accent_style_analogous">Analogous</string>
+    <string name="settings_accent_style_triadic">Triadic</string>
+    <string name="settings_accent_style_soft">Soft</string>
+    <string name="action_clear">Clear</string>
+    <string name="compliance_master_start_section">Schedule Start</string>
+    <string name="compliance_master_start_help">Select the start date and optional time for this recurring schedule.</string>
 </resources>

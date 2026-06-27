@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.screens
 
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -7,19 +8,35 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.MenuBook
+import androidx.compose.material.icons.automirrored.rounded.Note
+import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mj.yaja.R
+import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
 import java.time.Instant
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -46,8 +63,46 @@ data class AllTimeStatsData(
     val totalDaysWithEntries: Int,
     val writingConsistencyScore: Float, // 0-100
     val monthlyEntryTrend: List<Pair<String, Int>>, // Month, count
-    val entriesByLength: Triple<Int, Int, Int> // short, medium, long
+    val entriesByLength: DayDistribution,
+    val totalHighlightedDays: Int,            // favorited days with entries in this period
+    val bestMonthLabel: String?,              // e.g. "Mar 2025"
+    val bestMonthCount: Int,                  // entries in that best month
+    val averageDaysPerWeek: Float,            // writing days per week on average
+    val writingTimeDistribution: TimeDistribution, // when during the day the user writes
+    val languageDistribution: Map<String, Int>, // ISO 639-1 code → entry count, sorted by count desc
+    val templateInsights: TemplateInsightsData? = null
 )
+
+/** Daily writing volume categories. Each field counts days that fall in that bracket. */
+data class DayDistribution(
+    val light: Int,    // < 50 words
+    val moderate: Int, // 50–200 words
+    val heavy: Int,    // 200–500 words
+    val intense: Int   // 500+ words
+)
+
+/** How entries are distributed across times of day. */
+data class TimeDistribution(
+    val morning: Int,   // 05:00–11:59
+    val afternoon: Int, // 12:00–16:59
+    val evening: Int,   // 17:00–20:59
+    val night: Int      // 21:00–04:59
+)
+
+/** The 6 sections below the overview cards that the user can reorder. */
+enum class StatisticsSection(val displayName: String) {
+    WRITING_INSIGHTS("Writing Insights"),
+    DISTRIBUTION("Daily Writing Distribution"),
+    WHEN_YOU_WRITE("When You Write"),
+    MONTHLY_ACTIVITY("Monthly Activity"),
+    HEATMAP("Writing Activity Heatmap"),
+    LANGUAGES("Languages"),
+    PEOPLE_PLACES("People & Places"),
+    TEMPLATE_INSIGHTS("Structured Writing")
+}
+
+/** Number of non-reorderable items pinned above the section list in the LazyColumn. */
+private const val STATS_FIXED_TOP = 5
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -55,41 +110,127 @@ fun StatisticsScreen(
     viewModel: JournalViewModel,
     onOpenDrawer: () -> Unit,
     onNavigateBack: () -> Unit,
-    onNavigateToJournal: () -> Unit,
-    onNavigateToCalendar: () -> Unit,
-    onNavigateToLookback: () -> Unit,
-    onNavigateToShortcodes: () -> Unit,
-    onNavigateToSettings: () -> Unit,
-    onNavigateToHelp: () -> Unit
+    onNavigateToJournal: () -> Unit = {},
+    onNavigateToCalendar: () -> Unit = {},
+    onNavigateToLookback: () -> Unit = {},
+    onNavigateToShortcodes: () -> Unit = {},
+    onNavigateToSettings: () -> Unit = {},
+    onNavigateToHelp: () -> Unit = {}
 ) {
-    val allTimeStats by viewModel.allTimeStats.collectAsState()
-    val heatmapData by viewModel.heatmapData.collectAsState()
-    val uiState by viewModel.uiState.collectAsState()
+    val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
+    val heatmapData by viewModel.heatmapData.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val datesWithEntries = uiState.datesWithEntries
+    val highlightedDays = uiState.favoritedHighlights.size
     var selectedPeriod by remember { mutableStateOf(StatisticsPeriod.ALL_TIME) }
+
+    val keywordIndexingIds by viewModel.keywordIndexingIds.collectAsStateWithLifecycle()
+    val keywordMatchState by viewModel.keywordMatchState.collectAsStateWithLifecycle()
+    val keywords by viewModel.keywords.collectAsStateWithLifecycle()
+    val statisticsSettling by viewModel.statisticsSettling.collectAsStateWithLifecycle()
+
+    // Section order — restored from prefs, falls back to default, new sections appended at end
+    val savedSectionOrder by viewModel.statisticsSectionOrder.collectAsStateWithLifecycle()
+    val sectionOrder = remember(savedSectionOrder) {
+        val parsed = savedSectionOrder.mapNotNull { name ->
+            runCatching { StatisticsSection.valueOf(name) }.getOrNull()
+        }
+        val allSections = StatisticsSection.values().toList()
+        val withMissing = parsed + allSections.filter { it !in parsed }
+        mutableStateListOf(*withMissing.toTypedArray())
+    }
+
+    val haptics = LocalHapticFeedback.current
+    val listState = rememberLazyListState()
+    val reorderState = rememberReorderableLazyListState(
+        lazyListState = listState,
+        onMove = { from, to ->
+            val sectionFrom = from.index - STATS_FIXED_TOP
+            val sectionTo   = to.index   - STATS_FIXED_TOP
+            if (sectionFrom in 0 until sectionOrder.size &&
+                sectionTo   in 0 until sectionOrder.size) {
+                sectionOrder.add(sectionTo, sectionOrder.removeAt(sectionFrom))
+                viewModel.setStatisticsSectionOrder(sectionOrder.map { it.name })
+            }
+        }
+    )
     var customStartDate by remember { mutableStateOf(LocalDate.now().minusYears(1)) }
     var customEndDate by remember { mutableStateOf(LocalDate.now()) }
-    var showCustomDatePicker by remember { mutableStateOf(false) }
     var showStartDatePicker by remember { mutableStateOf(false) }
     var showEndDatePicker by remember { mutableStateOf(false) }
+    val today = remember { LocalDate.now() }
+    val yesterday = remember { today.minusDays(1) }
+    val todayMillis = remember { today.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+    val yesterdayMillis = remember { yesterday.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli() }
+
+    // --- Start date picker: only dates up to yesterday ---
+    val startSelectableDates = remember(yesterdayMillis) {
+        object : SelectableDates {
+            override fun isSelectableDate(utcTimeMillis: Long): Boolean =
+                utcTimeMillis <= yesterdayMillis
+            override fun isSelectableYear(year: Int): Boolean =
+                year <= yesterday.year
+        }
+    }
     val startDatePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        initialSelectedDateMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+        yearRange = IntRange(2000, yesterday.year),
+        selectableDates = startSelectableDates
     )
-    val endDatePickerState = rememberDatePickerState(
-        initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
-    )
+    // Hard guard: if M3 ever allows a bad selection, immediately revert it
+    LaunchedEffect(startDatePickerState.selectedDateMillis) {
+        val sel = startDatePickerState.selectedDateMillis ?: return@LaunchedEffect
+        if (sel > yesterdayMillis) {
+            startDatePickerState.selectedDateMillis = yesterdayMillis
+        }
+    }
+
+    // --- End date picker: only dates from start date to today ---
+    val endDatePickerState = key(customStartDate) {
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        rememberDatePickerState(
+            initialSelectedDateMillis = customEndDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli(),
+            yearRange = IntRange(customStartDate.year, today.year),
+            selectableDates = object : SelectableDates {
+                override fun isSelectableDate(utcTimeMillis: Long): Boolean =
+                    utcTimeMillis in fromMillis..todayMillis
+                override fun isSelectableYear(year: Int): Boolean =
+                    year in customStartDate.year..today.year
+            }
+        )
+    }
+    // Hard guard for end date
+    LaunchedEffect(endDatePickerState.selectedDateMillis, customStartDate) {
+        val sel = endDatePickerState.selectedDateMillis ?: return@LaunchedEffect
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        if (sel < fromMillis) {
+            endDatePickerState.selectedDateMillis = fromMillis
+        } else if (sel > todayMillis) {
+            endDatePickerState.selectedDateMillis = todayMillis
+        }
+    }
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Statistics") },
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        stringResource(R.string.settings_nav_statistics_title),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "Back")
-                    }
+                    com.mj.yaja.ui.components.AnimatedMenuButton(
+                        onClick = onOpenDrawer,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
@@ -104,20 +245,26 @@ fun StatisticsScreen(
                 CircularProgressIndicator()
             }
         } else {
-            LazyColumn(
+            AppScreenReveal(
+                visible = true,
+                key = selectedPeriod.name,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
                     .padding(horizontal = 16.dp, vertical = 12.dp),
+                state = listState,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                item {
+                item(key = "period_selector") {
                     PeriodSelector(
                         selectedPeriod = selectedPeriod,
                         onPeriodChange = { period ->
                             selectedPeriod = period
                             if (period == StatisticsPeriod.CUSTOM) {
-                                showCustomDatePicker = true
+                                showStartDatePicker = true
                             } else {
                                 viewModel.calculateStatsByPeriod(period)
                                 viewModel.updateHeatmapData()
@@ -126,17 +273,10 @@ fun StatisticsScreen(
                     )
                 }
 
-                item {
+                item(key = "period_title") {
                     Column(modifier = Modifier.padding(top = 8.dp)) {
                         Text(
-                            when (selectedPeriod) {
-                                StatisticsPeriod.ALL_TIME -> "All-Time Statistics"
-                                StatisticsPeriod.CURRENT_YEAR -> "Current Year Statistics"
-                                StatisticsPeriod.PREVIOUS_YEAR -> "Previous Year Statistics"
-                                StatisticsPeriod.CURRENT_MONTH -> "Current Month Statistics"
-                                StatisticsPeriod.PREVIOUS_MONTH -> "Previous Month Statistics"
-                                StatisticsPeriod.CUSTOM -> "Custom Period Statistics"
-                            },
+                            selectedPeriod.titleText(),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -152,22 +292,22 @@ fun StatisticsScreen(
                     }
                 }
 
-                // Overview Cards (2x2 grid)
-                item {
+                // Overview Cards (fixed, non-reorderable)
+                item(key = "overview_1") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         StatisticCard(
-                            icon = Icons.Rounded.Note,
-                            title = "Total Entries",
+                            icon = Icons.AutoMirrored.Rounded.Note,
+                            title = stringResource(R.string.statistics_total_entries),
                             value = allTimeStats!!.totalEntries.toString(),
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
                             icon = Icons.Rounded.Edit,
-                            title = "Total Words",
+                            title = stringResource(R.string.statistics_total_words),
                             value = allTimeStats!!.totalWords.toString(),
                             color = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.weight(1f)
@@ -175,255 +315,100 @@ fun StatisticsScreen(
                     }
                 }
 
-                item {
+                item(key = "overview_2") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         StatisticCard(
-                            icon = Icons.Rounded.TrendingUp,
-                            title = "Avg. Words/Entry",
+                            icon = Icons.AutoMirrored.Rounded.TrendingUp,
+                            title = stringResource(R.string.statistics_avg_words_per_entry),
                             value = String.format("%.1f", allTimeStats!!.averageWordsPerEntry),
                             color = MaterialTheme.colorScheme.tertiary,
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
                             icon = Icons.Rounded.LocalFireDepartment,
-                            title = "Current Streak",
-                            value = "${allTimeStats!!.currentStreak} days",
+                            title = stringResource(R.string.statistics_current_streak),
+                            value = pluralStringResource(R.plurals.statistics_days_count, allTimeStats!!.currentStreak, allTimeStats!!.currentStreak),
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.weight(1f)
                         )
                     }
                 }
 
-                // Detailed Stats Section
-                item {
-                    Text(
-                        "Writing Insights",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    ElevatedCard(
-                        modifier = Modifier.fillMaxWidth()
+                item(key = "overview_3") {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            // Longest Streak
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.EmojiEvents,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Longest Streak",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            "${allTimeStats!!.longestStreakAllTime} days",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            Divider()
-
-                            // Most Active Day
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.DateRange,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.secondary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Most Active Day",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            allTimeStats!!.mostActiveDay ?: "—",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            Divider()
-
-                            // Writing Consistency
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.CheckCircle,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.tertiary,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Writing Consistency",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            "${String.format("%.0f", allTimeStats!!.writingConsistencyScore)}%",
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-
-                            Divider()
-
-                            // Days with Entries
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Rounded.DateRange,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.error,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column {
-                                        Text(
-                                            "Days With Entries",
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-                                        Text(
-                                            allTimeStats!!.totalDaysWithEntries.toString(),
-                                            style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                            }
-                        }
+                        StatisticCard(
+                            icon = Icons.AutoMirrored.Rounded.MenuBook,
+                            title = stringResource(R.string.statistics_pages_written),
+                            value = "~ ${(allTimeStats!!.totalWords / 250).coerceAtLeast(0)}",
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatisticCard(
+                            icon = Icons.Rounded.Star,
+                            title = stringResource(R.string.statistics_days_highlighted),
+                            value = highlightedDays.toString(),
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.weight(1f)
+                        )
                     }
                 }
 
-                // Entry Length Distribution
-                item {
-                    Text(
-                        "Entry Distribution",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                }
-
-                item {
-                    ElevatedCard(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Column(
-                            modifier = Modifier
+                // Reorderable sections — long-press the ≡ handle to drag
+                items(
+                    items = sectionOrder,
+                    key = { it }
+                ) { section ->
+                    ReorderableItem(
+                        state = reorderState,
+                        key = section
+                    ) { isDragging ->
+                        val dragElevation by animateDpAsState(
+                            targetValue = if (isDragging) 6.dp else 0.dp,
+                            label = "drag_elevation"
+                        )
+                        StatisticsSectionContainer(
+                            section = section,
+                            entranceTriggered = true,
+                            entranceIndex = sectionOrder.indexOf(section) + STATS_FIXED_TOP,
+                            haptics = haptics,
+                            viewModel = viewModel,
+                            allTimeStats = allTimeStats!!,
+                            datesWithEntries = datesWithEntries,
+                            heatmapData = heatmapData,
+                            statisticsSettling = statisticsSettling,
+                            keywordIndexingIds = keywordIndexingIds,
+                            keywordMatchState = keywordMatchState,
+                            keywords = keywords,
+                            containerModifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            val (short, medium, long) = allTimeStats!!.entriesByLength
-                            val total = short + medium + long
-
-                            fun getPercentage(count: Int): Float {
-                                return if (total == 0) 0f else (count.toFloat() / total) * 100
-                            }
-
-                            EntryLengthBar(
-                                label = "Short (< 50 words)",
-                                count = short,
-                                percentage = getPercentage(short),
-                                color = MaterialTheme.colorScheme.primary
-                            )
-
-                            EntryLengthBar(
-                                label = "Medium (50-200 words)",
-                                count = medium,
-                                percentage = getPercentage(medium),
-                                color = MaterialTheme.colorScheme.secondary
-                            )
-
-                            EntryLengthBar(
-                                label = "Long (> 200 words)",
-                                count = long,
-                                percentage = getPercentage(long),
-                                color = MaterialTheme.colorScheme.tertiary
-                            )
-                        }
+                                .animateItem(
+                                    placementSpec = spring(
+                                        dampingRatio = Spring.DampingRatioLowBouncy,
+                                        stiffness = Spring.StiffnessMediumLow
+                                    )
+                                )
+                                .graphicsLayer { shadowElevation = dragElevation.toPx() },
+                            dragHandleModifier = Modifier
+                                .size(20.dp)
+                                .longPressDraggableHandle(
+                                    onDragStarted = {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                    }
+                                )
+                        )
                     }
                 }
 
-                item {
-                    Text(
-                        "Writing Activity Heatmap",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
+                item(key = "spacer") {
+                    Spacer(modifier = Modifier.height(120.dp))
                 }
-
-                item {
-                    EntryHeatmap(
-                        datesWithEntries = datesWithEntries,
-                        entryLengthMap = heatmapData
-                    )
-                }
-
-                item {
-                    Spacer(modifier = Modifier.height(32.dp))
-                }
+            }
             }
         }
     }
@@ -434,95 +419,89 @@ fun StatisticsScreen(
         viewModel.updateHeatmapData()
     }
 
-    // Custom Date Picker Dialog
-    if (showCustomDatePicker) {
-        AlertDialog(
-            onDismissRequest = { showCustomDatePicker = false },
-            title = { Text("Select Custom Date Range") },
-            text = {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    Text(
-                        "Start Date: ${customStartDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Button(
-                        onClick = { showStartDatePicker = true },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Choose Start Date")
-                    }
-
-                    Text(
-                        "End Date: ${customEndDate.format(DateTimeFormatter.ofPattern("dd MMM yyyy"))}",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    Button(
-                        onClick = { showEndDatePicker = true },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("Choose End Date")
-                    }
-                }
+    // Step 1: Pick start date
+    if (showStartDatePicker) {
+        val startConfirmEnabled = startDatePickerState.selectedDateMillis
+            ?.let { it <= yesterdayMillis } == true
+        DatePickerDialog(
+            onDismissRequest = {
+                showStartDatePicker = false
+                selectedPeriod = StatisticsPeriod.ALL_TIME
             },
             confirmButton = {
                 TextButton(
+                    enabled = startConfirmEnabled,
                     onClick = {
-                        viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
-                        viewModel.updateHeatmapData()
-                        showCustomDatePicker = false
+                        startDatePickerState.selectedDateMillis?.let { millis ->
+                            // Double-validate: only accept dates up to yesterday
+                            if (millis <= yesterdayMillis) {
+                                customStartDate = Instant.ofEpochMilli(millis)
+                                    .atZone(ZoneOffset.UTC).toLocalDate()
+                            }
+                        }
+                        showStartDatePicker = false
+                        showEndDatePicker = true
                     }
-                ) {
-                    Text("Apply")
-                }
+                ) { Text(stringResource(R.string.action_next)) }
             },
             dismissButton = {
-                TextButton(onClick = { showCustomDatePicker = false }) {
-                    Text("Cancel")
-                }
-            }
-        )
-    }
-
-    if (showStartDatePicker) {
-        DatePickerDialog(
-            onDismissRequest = { showStartDatePicker = false },
-            confirmButton = {
                 TextButton(onClick = {
-                    startDatePickerState.selectedDateMillis?.let { millis ->
-                        customStartDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
-                    }
                     showStartDatePicker = false
-                }) { Text("OK") }
-            },
-            dismissButton = {
-                TextButton(onClick = { showStartDatePicker = false }) { Text("Cancel") }
+                    selectedPeriod = StatisticsPeriod.ALL_TIME
+                }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
-            DatePicker(state = startDatePickerState)
+            DatePicker(
+                state = startDatePickerState,
+                showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
+                headline = {
+                    Text(
+                        stringResource(R.string.statistics_select_start_date),
+                        modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)
+                    )
+                }
+            )
         }
     }
 
+    // Step 2: Pick end date, then apply
     if (showEndDatePicker) {
+        val fromMillis = customStartDate.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+        val endConfirmEnabled = endDatePickerState.selectedDateMillis
+            ?.let { it in fromMillis..todayMillis } == true
         DatePickerDialog(
             onDismissRequest = { showEndDatePicker = false },
             confirmButton = {
-                TextButton(onClick = {
-                    endDatePickerState.selectedDateMillis?.let { millis ->
-                        customEndDate = Instant.ofEpochMilli(millis).atZone(ZoneOffset.UTC).toLocalDate()
+                TextButton(
+                    enabled = endConfirmEnabled,
+                    onClick = {
+                        endDatePickerState.selectedDateMillis?.let { millis ->
+                            // Double-validate: only accept dates in [startDate, today]
+                            if (millis in fromMillis..todayMillis) {
+                                customEndDate = Instant.ofEpochMilli(millis)
+                                    .atZone(ZoneOffset.UTC).toLocalDate()
+                            }
+                        }
+                        showEndDatePicker = false
+                        viewModel.calculateStatsByPeriod(StatisticsPeriod.CUSTOM, customStartDate, customEndDate)
+                        viewModel.updateHeatmapData()
                     }
-                    showEndDatePicker = false
-                }) { Text("OK") }
+                ) { Text(stringResource(R.string.action_apply)) }
             },
             dismissButton = {
-                TextButton(onClick = { showEndDatePicker = false }) { Text("Cancel") }
+                TextButton(onClick = { showEndDatePicker = false }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
-            DatePicker(state = endDatePickerState)
+            DatePicker(
+                state = endDatePickerState,
+                showModeToggle = false,  // hide text-input mode — bypasses SelectableDates
+                headline = {
+                    Text(
+                        stringResource(R.string.statistics_select_end_date),
+                        modifier = androidx.compose.ui.Modifier.padding(start = 24.dp, bottom = 8.dp)
+                    )
+                }
+            )
         }
     }
 }
@@ -535,7 +514,7 @@ private fun PeriodSelector(
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Filter by Period",
+            text = stringResource(R.string.statistics_filter_by_period),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -550,12 +529,12 @@ private fun PeriodSelector(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             listOf(
-                StatisticsPeriod.ALL_TIME to "All Time",
-                StatisticsPeriod.CURRENT_YEAR to "Current Year",
-                StatisticsPeriod.PREVIOUS_YEAR to "Prev Year",
-                StatisticsPeriod.CURRENT_MONTH to "This Month",
-                StatisticsPeriod.PREVIOUS_MONTH to "Prev Month",
-                StatisticsPeriod.CUSTOM to "Custom"
+                StatisticsPeriod.ALL_TIME to stringResource(R.string.statistics_period_chip_all_time),
+                StatisticsPeriod.CURRENT_YEAR to stringResource(R.string.statistics_period_chip_current_year),
+                StatisticsPeriod.PREVIOUS_YEAR to stringResource(R.string.statistics_period_chip_previous_year),
+                StatisticsPeriod.CURRENT_MONTH to stringResource(R.string.statistics_period_chip_current_month),
+                StatisticsPeriod.PREVIOUS_MONTH to stringResource(R.string.statistics_period_chip_previous_month),
+                StatisticsPeriod.CUSTOM to stringResource(R.string.statistics_period_chip_custom)
             ).forEach { (period, label) ->
                 FilterChip(
                     selected = selectedPeriod == period,
@@ -566,6 +545,17 @@ private fun PeriodSelector(
         }
     }
 }
+
+@Composable
+private fun StatisticsPeriod.titleText(): String =
+    when (this) {
+        StatisticsPeriod.ALL_TIME -> stringResource(R.string.statistics_period_all_time)
+        StatisticsPeriod.CURRENT_YEAR -> stringResource(R.string.statistics_period_current_year)
+        StatisticsPeriod.PREVIOUS_YEAR -> stringResource(R.string.statistics_period_previous_year)
+        StatisticsPeriod.CURRENT_MONTH -> stringResource(R.string.statistics_period_current_month)
+        StatisticsPeriod.PREVIOUS_MONTH -> stringResource(R.string.statistics_period_previous_month)
+        StatisticsPeriod.CUSTOM -> stringResource(R.string.statistics_period_custom)
+    }
 
 @Composable
 private fun StatisticCard(
@@ -608,173 +598,5 @@ private fun StatisticCard(
     }
 }
 
-@Composable
-private fun EntryLengthBar(
-    label: String,
-    count: Int,
-    percentage: Float,
-    color: androidx.compose.ui.graphics.Color
-) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                label,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface
-            )
-            Text(
-                "$count (${String.format("%.0f", percentage)}%)",
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.SemiBold,
-                color = color
-            )
-        }
 
-        // Progress bar
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(8.dp)
-                .background(
-                    MaterialTheme.colorScheme.surfaceVariant,
-                    androidx.compose.foundation.shape.RoundedCornerShape(4.dp)
-                )
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth(percentage / 100f)
-                    .background(color, androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
-            )
-        }
-    }
-}
 
-@Composable
-private fun EntryHeatmap(
-    datesWithEntries: Set<LocalDate> = emptySet(),
-    entryLengthMap: Map<LocalDate, Int> = emptyMap()
-) {
-    // Generate last 52 weeks of data for heatmap
-    val today = LocalDate.now()
-    val startDate = today.minusWeeks(51)
-
-    val weeks = mutableListOf<List<LocalDate>>()
-    var currentDate = startDate
-
-    // Group dates by week (Sunday to Saturday)
-    while (currentDate <= today) {
-        val weekDates = mutableListOf<LocalDate>()
-        for (i in 0..6) {
-            if (currentDate <= today) {
-                weekDates.add(currentDate)
-                currentDate = currentDate.plusDays(1)
-            }
-        }
-        if (weekDates.isNotEmpty()) {
-            weeks.add(weekDates)
-        }
-    }
-
-    val scrollState = rememberScrollState()
-
-    // Scroll to the right to show recent dates once layout is complete
-    LaunchedEffect(scrollState.maxValue) {
-        if (scrollState.maxValue > 0) {
-            scrollState.scrollTo(scrollState.maxValue)
-        }
-    }
-
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            // Heatmap grid
-            Row(
-                modifier = Modifier.horizontalScroll(scrollState),
-                horizontalArrangement = Arrangement.spacedBy(2.dp)
-            ) {
-                weeks.forEach { week ->
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(2.dp)
-                    ) {
-                        week.forEach { date ->
-                            // Get word count for this date
-                            val wordCount = entryLengthMap[date] ?: 0
-                            val hasEntry = datesWithEntries.contains(date)
-
-                            // Color based on entry length
-                            val cellColor = when {
-                                !hasEntry -> MaterialTheme.colorScheme.surfaceVariant
-                                wordCount < 50 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)    // Light
-                                wordCount < 200 -> MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)   // Medium
-                                else -> MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)              // Dark
-                            }
-
-                            Surface(
-                                modifier = Modifier
-                                    .size(12.dp),
-                                shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
-                                color = cellColor
-                            ) {}
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // Legend
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    "Less",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-
-                Surface(
-                    modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
-                    color = MaterialTheme.colorScheme.surfaceVariant
-                ) {}
-
-                Surface(
-                    modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
-                ) {}
-
-                Surface(
-                    modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
-                ) {}
-
-                Surface(
-                    modifier = Modifier.size(12.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(2.dp),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
-                ) {}
-
-                Text(
-                    "More",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
-    }
-}
