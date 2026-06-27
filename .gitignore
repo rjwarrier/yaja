@@ -35,3 +35,12 @@ tmp_tail.txt
 # Sample journal entries (may contain real data)
 /sample_journal_entries/
 sample_journal_entries.zip
+
+# Backup zip archives & local backup folders
+*.zip
+/backups/
+
+# Snapshots & Dev artifacts
+/.codeopt_snapshots/
+/NOT NEEDED/
+screenshot*.png
