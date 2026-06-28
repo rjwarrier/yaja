@@ -29,10 +29,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -53,7 +55,9 @@ fun CalendarDay(
         val interactionSource = remember { MutableInteractionSource() }
 
         val animationPreference = LocalAnimationPreference.current
-        val finalScale = if (isToday && !isSelected && animationPreference != AnimationPreference.OFF) {
+        // Today's gentle pulse. Kept as State (no .value read here) so it's consumed inside
+        // graphicsLayer's draw-phase lambda below — the cell redraws each frame without recomposing.
+        val pulseScale: State<Float> = if (isToday && !isSelected && animationPreference != AnimationPreference.OFF) {
                 val infiniteTransition = rememberInfiniteTransition(label = "TodayPulse")
                 val targetPulse = if (animationPreference == AnimationPreference.REDUCED) 1.01f else 1.03f
                 val duration = if (animationPreference == AnimationPreference.REDUCED) 2400 else 1200
@@ -66,9 +70,9 @@ fun CalendarDay(
                                         repeatMode = RepeatMode.Reverse
                                 ),
                         label = "Pulse"
-                ).value
+                )
         } else {
-                1f
+                remember { mutableStateOf(1f) }
         }
 
         val containerColor =
@@ -112,7 +116,11 @@ fun CalendarDay(
                 modifier =
                         Modifier.aspectRatio(1.15f)
                                 .padding(3.dp)
-                                .scale(finalScale)
+                                .graphicsLayer {
+                                        val s = pulseScale.value
+                                        scaleX = s
+                                        scaleY = s
+                                }
                                 .clip(expressiveShape)
                                 .background(containerColor)
                                 .border(width = 1.dp, color = borderColor, shape = expressiveShape)

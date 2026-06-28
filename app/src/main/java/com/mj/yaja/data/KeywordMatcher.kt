@@ -26,6 +26,9 @@ object KeywordMatcher {
     private val TIMESTAMP_REGEX = Regex("<!--.*?-->", RegexOption.DOT_MATCHES_ALL)
     private val WHITESPACE_REGEX = Regex("\\s+")
     private val NON_LETTER_DIGIT_REGEX = Regex("[^\\p{L}\\d]")
+
+    /** Matches runs of letters/digits — i.e. word tokens. Reused across the hot indexing path. */
+    private val TOKEN_REGEX = Regex("""[\p{L}\d]+""")
     private val SNIPPET_MAX = 120
 
     // ── Public API ────────────────────────────────────────────────────────
@@ -189,7 +192,7 @@ object KeywordMatcher {
 
     /** Tokenise text while keeping original ranges so fuzzy snippets/matched text stay accurate. */
     private fun tokenizeWithRanges(text: String): List<TokenSpan> =
-        Regex("""[\p{L}\d]+""")
+        TOKEN_REGEX
             .findAll(text)
             .map { mr ->
                 TokenSpan(
@@ -314,7 +317,7 @@ object KeywordMatcher {
     }
 
     private fun KeywordMatch.wordCount(): Int =
-        Regex("""[\p{L}\d]+""").findAll(matchedText).count().coerceAtLeast(1)
+        TOKEN_REGEX.findAll(matchedText).count().coerceAtLeast(1)
 
     private fun fuzzyConfidence(candidate: String, target: String, threshold: Float): Float? {
         val maxLen = maxOf(candidate.length, target.length)

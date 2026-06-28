@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Description
@@ -340,10 +341,10 @@ internal fun KeywordsListSection(
                                         )
                                 }
                         } else {
-                                items(people, key = { it.id }) { keyword ->
+                                itemsIndexed(people, key = { _, it -> it.id }) { index, keyword ->
                                         AppStaggeredEntrance(
                                                 visible = contentVisible,
-                                                index = people.indexOf(keyword).coerceAtMost(5) + 1
+                                                index = index.coerceAtMost(5) + 1
                                         ) {
                                                 KeywordCard(
                                                         keyword = keyword,
@@ -387,10 +388,10 @@ internal fun KeywordsListSection(
                                         )
                                 }
                         } else {
-                                items(places, key = { it.id }) { keyword ->
+                                itemsIndexed(places, key = { _, it -> it.id }) { index, keyword ->
                                         AppStaggeredEntrance(
                                                 visible = contentVisible,
-                                                index = places.indexOf(keyword).coerceAtMost(5) + 1
+                                                index = index.coerceAtMost(5) + 1
                                         ) {
                                                 KeywordCard(
                                                         keyword = keyword,

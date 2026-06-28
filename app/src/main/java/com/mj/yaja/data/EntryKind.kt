@@ -6,6 +6,8 @@ enum class EntryKind {
 }
 
 private val entryKindRegex = Regex("""<!--type:([a-z_]+)-->""", RegexOption.IGNORE_CASE)
+private val leadingNewlinesRegex = Regex("""^\n+""")
+private val leadingTimeMarkerRegex = Regex("^<!--time:[^>]+-->\\n?")
 
 fun parseEntryKind(entry: String): EntryKind {
     val rawKind = entryKindRegex.find(entry)?.groupValues?.getOrNull(1)?.lowercase()
@@ -16,14 +18,13 @@ fun parseEntryKind(entry: String): EntryKind {
 }
 
 fun stripEntryKindMetadata(entry: String): String =
-    entry.replace(entryKindRegex, "").replace(Regex("""^\n+"""), "")
+    entry.replace(entryKindRegex, "").replace(leadingNewlinesRegex, "")
 
 fun applyEntryKindMetadata(entry: String, kind: EntryKind): String {
     val withoutKind = stripEntryKindMetadata(entry).trimStart('\n')
     if (kind == EntryKind.NORMAL) return withoutKind
 
-    val timeRegex = Regex("^<!--time:[^>]+-->\\n?")
-    val timeMatch = timeRegex.find(withoutKind)
+    val timeMatch = leadingTimeMarkerRegex.find(withoutKind)
     return if (timeMatch != null) {
         val timePrefix = timeMatch.value.trimEnd()
         val remainder = withoutKind.removePrefix(timeMatch.value).trimStart('\n')

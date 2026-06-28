@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
@@ -301,11 +302,10 @@ fun TimelineScreen(
                             }
 
                             if (collapsedMonths[section.yearMonth] != true) {
-                                items(
+                                itemsIndexed(
                                     items = section.nodes,
-                                    key = { node -> "date_${node.date}" }
-                                ) { node ->
-                                    val nodeIndex = section.nodes.indexOf(node)
+                                    key = { _, node -> "date_${node.date}" }
+                                ) { nodeIndex, node ->
                                     AppStaggeredEntrance(
                                         visible = true,
                                         index = nodeIndex.coerceAtMost(6),
@@ -313,8 +313,8 @@ fun TimelineScreen(
                                     ) {
                                         TimelineDateRow(
                                             node = node,
-                                            isFirst = node == section.nodes.firstOrNull(),
-                                            isLast = node == section.nodes.lastOrNull(),
+                                            isFirst = nodeIndex == 0,
+                                            isLast = nodeIndex == section.nodes.lastIndex,
                                             density = selectedDensity,
                                             style = selectedStyle,
                                             onClick = { onNavigateToDate(node.date) },
