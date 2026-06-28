@@ -298,8 +298,15 @@ internal fun calculateMonthlyEntryStats(
 
     for (i in 11 downTo 0) {
         val month = currentMonth.minusMonths(i.toLong())
-        val count = countsByMonth[month] ?: 0
-        stats.add(month to count)
+        val writtenDays = countsByMonth[month] ?: 0
+        val totalDays = month.lengthOfMonth()
+        val coveragePercent =
+            if (totalDays > 0) {
+                ((writtenDays.toFloat() / totalDays.toFloat()) * 100f).toInt()
+            } else {
+                0
+            }
+        stats.add(month to coveragePercent)
     }
     return stats
 }

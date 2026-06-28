@@ -65,6 +65,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.KeywordDefinition
@@ -75,7 +77,8 @@ import java.util.Locale
 
 private data class CalendarGraphPoint(
         val label: String,
-        val shortLabel: String,
+        val comparisonLabel: String,
+        val axisLabel: String,
         val value: Float,
         val highlighted: Boolean
 )
@@ -89,13 +92,16 @@ fun CalendarConsistencySection(
         onGraphModeChange: (CalendarGraphMode) -> Unit,
         onGraphFrequencyChange: (CalendarGraphFrequency) -> Unit
 ) {
-        val monthFormatter = remember { DateTimeFormatter.ofPattern("MMM", Locale.getDefault()) }
+        val monthComparisonFormatter = remember { DateTimeFormatter.ofPattern("MMM", Locale.getDefault()) }
+        val monthAxisFormatter = remember { DateTimeFormatter.ofPattern("MM", Locale.getDefault()) }
+        val showPercent = graphFrequency == CalendarGraphFrequency.MONTH
         val monthSeries =
                 remember(monthlyStats) {
                         monthlyStats.mapIndexed { index, (month, value) ->
                                 CalendarGraphPoint(
                                         label = month.format(DateTimeFormatter.ofPattern("MMM yyyy", Locale.getDefault())),
-                                        shortLabel = month.format(monthFormatter),
+                                        comparisonLabel = month.format(monthComparisonFormatter),
+                                        axisLabel = month.format(monthAxisFormatter),
                                         value = value.toFloat(),
                                         highlighted = index == monthlyStats.lastIndex
                                 )
@@ -106,7 +112,8 @@ fun CalendarConsistencySection(
                         yearlyStats.takeLast(10).mapIndexed { index, (year, value) ->
                                 CalendarGraphPoint(
                                         label = year.toString(),
-                                        shortLabel = year.toString().takeLast(2),
+                                        comparisonLabel = year.toString().takeLast(2),
+                                        axisLabel = year.toString().takeLast(2),
                                         value = value,
                                         highlighted = index == yearlyStats.takeLast(10).lastIndex
                                 )
@@ -138,15 +145,21 @@ fun CalendarConsistencySection(
                         stringResource(
                                 R.string.calendar_consistency_delta_format,
                                 deltaPercent,
-                                previousPoint.label.takeLast(2)
+                                previousPoint.comparisonLabel
                         )
                 } else if (previousPoint != null) {
                         stringResource(
                                 R.string.calendar_consistency_previous_period_format,
-                                previousPoint.label.takeLast(2)
+                                previousPoint.comparisonLabel
                         )
                 } else {
                         stringResource(R.string.calendar_consistency_first_period)
+                }
+        val currentValueText =
+                if (showPercent) {
+                        stringResource(R.string.calendar_percent_format, currentPoint.value.toInt())
+                } else {
+                        currentPoint.value.toInt().toString()
                 }
 
         ElevatedCard(
@@ -181,7 +194,7 @@ fun CalendarConsistencySection(
                                                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                                                         ) {
                                                                 Text(
-                                                                        text = currentPoint.value.toInt().toString(),
+                                                                        text = currentValueText,
                                                                         style = MaterialTheme.typography.headlineLarge,
                                                                         fontWeight = FontWeight.ExtraBold,
                                                                         color = MaterialTheme.colorScheme.onSurface
@@ -221,7 +234,7 @@ fun CalendarConsistencySection(
                                                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                                                         ) {
                                                                 Text(
-                                                                        text = currentPoint.value.toInt().toString(),
+                                                                        text = currentValueText,
                                                                         style = MaterialTheme.typography.headlineLarge,
                                                                         fontWeight = FontWeight.ExtraBold,
                                                                         color = MaterialTheme.colorScheme.onSurface
@@ -246,7 +259,7 @@ fun CalendarConsistencySection(
                         }
 
                         if (graphMode == CalendarGraphMode.BAR) {
-                                CalendarBarConsistencyGraph(points = points)
+                                CalendarBarConsistencyGraph(points = points, showPercent = showPercent)
                         } else {
                                 CalendarLineConsistencyGraph(points = points)
                         }
@@ -379,7 +392,10 @@ private fun CalendarTogglePill(
 }
 
 @Composable
-private fun CalendarBarConsistencyGraph(points: List<CalendarGraphPoint>) {
+private fun CalendarBarConsistencyGraph(
+        points: List<CalendarGraphPoint>,
+        showPercent: Boolean
+) {
         val maxValue = points.maxOf { it.value }.coerceAtLeast(1f)
         val gridLineColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.08f)
         Column(
@@ -417,8 +433,17 @@ private fun CalendarBarConsistencyGraph(points: List<CalendarGraphPoint>) {
                                                 verticalArrangement = Arrangement.Bottom
                                         ) {
                                                 if (point.highlighted) {
+                                                        val highlightedValueText =
+                                                                if (showPercent) {
+                                                                        stringResource(
+                                                                                R.string.calendar_percent_format,
+                                                                                point.value.toInt()
+                                                                        )
+                                                                } else {
+                                                                        point.value.toInt().toString()
+                                                                }
                                                         Text(
-                                                                text = point.value.toInt().toString(),
+                                                                text = highlightedValueText,
                                                                 style = MaterialTheme.typography.labelLarge,
                                                                 color = MaterialTheme.colorScheme.primary,
                                                                 fontWeight = FontWeight.Bold,
@@ -445,23 +470,7 @@ private fun CalendarBarConsistencyGraph(points: List<CalendarGraphPoint>) {
                                 }
                         }
                 }
-                Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                        points.forEach { point ->
-                                Text(
-                                        text = point.shortLabel,
-                                        style = MaterialTheme.typography.labelMedium,
-                                        color =
-                                                if (point.highlighted) MaterialTheme.colorScheme.primary
-                                                else MaterialTheme.colorScheme.onSurfaceVariant,
-                                        fontWeight = if (point.highlighted) FontWeight.Bold else FontWeight.Medium,
-                                        modifier = Modifier.weight(1f),
-                                        textAlign = androidx.compose.ui.text.style.TextAlign.Center
-                                )
-                        }
-                }
+                CalendarAxisLabelsRow(points = points, itemSpacing = 10.dp)
         }
 }
 
@@ -481,7 +490,7 @@ private fun CalendarLineConsistencyGraph(points: List<CalendarGraphPoint>) {
                         modifier = Modifier.fillMaxWidth().height(278.dp)
                 ) {
                         Canvas(modifier = Modifier.fillMaxSize()) {
-                                val spacing = if (points.size > 1) size.width / (points.size - 1) else 0f
+                                val slotWidth = if (points.isNotEmpty()) size.width / points.size else 0f
                                 val bottomOfChart = size.height
                                 val topOfChart = size.height - 260.dp.toPx()
                                 val chartHeight = bottomOfChart - topOfChart
@@ -500,7 +509,7 @@ private fun CalendarLineConsistencyGraph(points: List<CalendarGraphPoint>) {
 
                                 // Subtle vertical grid lines in the background
                                 points.forEachIndexed { index, _ ->
-                                        val x = spacing * index
+                                        val x = slotWidth * index + (slotWidth / 2f)
                                         drawLine(
                                                 color = gridLineColor,
                                                 start = Offset(x, topOfChart),
@@ -512,7 +521,7 @@ private fun CalendarLineConsistencyGraph(points: List<CalendarGraphPoint>) {
                                 val pointOffsets =
                                         points.mapIndexed { index, point ->
                                                 Offset(
-                                                        x = spacing * index,
+                                                        x = slotWidth * index + (slotWidth / 2f),
                                                         y = bottomOfChart - ((point.value / maxValue) * chartHeight)
                                                 )
                                         }
@@ -560,20 +569,30 @@ private fun CalendarLineConsistencyGraph(points: List<CalendarGraphPoint>) {
                                 }
                         }
                 }
-                Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                        points.forEach { point ->
-                                Text(
-                                        text = point.shortLabel,
-                                        style = MaterialTheme.typography.labelMedium,
-                                        color =
-                                                if (point.highlighted) MaterialTheme.colorScheme.primary
-                                                else MaterialTheme.colorScheme.onSurfaceVariant,
-                                        fontWeight = if (point.highlighted) FontWeight.Bold else FontWeight.Medium
-                                )
-                        }
+                CalendarAxisLabelsRow(points = points)
+        }
+}
+
+@Composable
+private fun CalendarAxisLabelsRow(
+        points: List<CalendarGraphPoint>,
+        itemSpacing: Dp = 0.dp
+) {
+        Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(itemSpacing)
+        ) {
+                points.forEach { point ->
+                        Text(
+                                text = point.axisLabel,
+                                style = MaterialTheme.typography.labelMedium,
+                                color =
+                                        if (point.highlighted) MaterialTheme.colorScheme.primary
+                                        else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = if (point.highlighted) FontWeight.Bold else FontWeight.Medium,
+                                modifier = Modifier.weight(1f),
+                                textAlign = TextAlign.Center
+                        )
                 }
         }
 }
