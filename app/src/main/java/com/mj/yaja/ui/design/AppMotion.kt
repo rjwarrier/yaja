@@ -400,26 +400,35 @@ fun Modifier.expressiveFabMotion(
     } else {
         val isPressed by interactionSource.collectIsPressedAsState()
         val scale by animateFloatAsState(
-            targetValue = if (isPressed) 0.88f else 1f,
+            targetValue = if (isPressed) 0.82f else 1f,
             animationSpec = animationPreference.floatSpring(
-                dampingRatio = 0.45f,
-                stiffness = 650f
+                dampingRatio = 0.40f,
+                stiffness = 760f
             ),
             label = "fab_press_scale"
         )
         val translationY by animateFloatAsState(
-            targetValue = if (isPressed) 6f else 0f,
+            targetValue = if (isPressed) 9f else 0f,
             animationSpec = animationPreference.floatSpring(
-                dampingRatio = 0.50f,
-                stiffness = 550f
+                dampingRatio = 0.46f,
+                stiffness = 680f
             ),
             label = "fab_press_lift"
+        )
+        val rotationZ by animateFloatAsState(
+            targetValue = if (isPressed) -5f else 0f,
+            animationSpec = animationPreference.floatSpring(
+                dampingRatio = 0.48f,
+                stiffness = 720f
+            ),
+            label = "fab_press_rotation"
         )
 
         this.graphicsLayer {
             scaleX = scale
             scaleY = scale
             this.translationY = translationY
+            this.rotationZ = rotationZ
         }
     }
 }
@@ -427,7 +436,8 @@ fun Modifier.expressiveFabMotion(
 fun Modifier.expressivePressMotion(
     interactionSource: InteractionSource,
     enabled: Boolean = true,
-    pressedScale: Float = 0.95f
+    pressedScale: Float = 0.95f,
+    pressedTranslationY: Float = 4f
 ): Modifier = composed {
     val animationPreference = LocalAnimationPreference.current
     if (!enabled || animationPreference == AnimationPreference.OFF) {
@@ -437,14 +447,23 @@ fun Modifier.expressivePressMotion(
         val scale by animateFloatAsState(
             targetValue = if (isPressed) pressedScale else 1f,
             animationSpec = animationPreference.floatSpring(
-                dampingRatio = 0.45f,
-                stiffness = 650f
+                dampingRatio = 0.40f,
+                stiffness = 760f
             ),
             label = "press_scale"
+        )
+        val translationY by animateFloatAsState(
+            targetValue = if (isPressed) pressedTranslationY else 0f,
+            animationSpec = animationPreference.floatSpring(
+                dampingRatio = 0.46f,
+                stiffness = 700f
+            ),
+            label = "press_translation"
         )
         this.graphicsLayer {
             scaleX = scale
             scaleY = scale
+            this.translationY = translationY
         }
     }
 }

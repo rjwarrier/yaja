@@ -687,8 +687,6 @@
     <string name="addentry_set_time">시간 설정</string>
     <string name="addentry_event_chip">이벤트</string>
     <string name="addentry_pick_time_title">시간 선택</string>
-    <string name="addentry_hour_label">시</string>
-    <string name="addentry_minute_label">분</string>
     <string name="addentry_new_event_title">새 이벤트</string>
     <string name="addentry_title_label">제목</string>
     <string name="addentry_event_description_label">이벤트 설명</string>

@@ -27,7 +27,9 @@ class BackupService(
         val content: String,
         val entries: List<String>,
         val isStarred: Boolean,
-        val label: String
+        val label: String,
+        val revisitOn: LocalDate? = null,
+        val revisitNote: String = ""
     )
 
     data class BackupBundle(
@@ -238,7 +240,9 @@ class BackupService(
                                         content = raw,
                                         entries = entries,
                                         isStarred = frontmatter.isStarred,
-                                        label = frontmatter.label
+                                        label = frontmatter.label,
+                                        revisitOn = frontmatter.revisitOn,
+                                        revisitNote = frontmatter.revisitNote
                                     )
                                 }
                             }

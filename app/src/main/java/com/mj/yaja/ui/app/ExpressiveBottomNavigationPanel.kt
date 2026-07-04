@@ -45,8 +45,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
@@ -54,6 +57,7 @@ import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.dpSpring
 import com.mj.yaja.ui.design.floatSpring
 import com.mj.yaja.ui.design.rememberAppEntrance
+import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.navigation.Route
 
 private data class BottomPanelItem(
@@ -79,35 +83,48 @@ fun ExpressiveBottomNavigationPanel(
 ) {
     val visible = rememberAppEntrance(delayMillis = 120)
     val motionPreference = LocalAnimationPreference.current
+    val density = LocalDensity.current
     val selectedRoute = if (currentRoute == Route.ComplianceMaster.path) {
         Route.Todos.path
     } else {
         currentRoute
     }
+    val journalLabel = stringResource(R.string.nav_journal)
+    val calendarLabel = stringResource(R.string.nav_calendar)
+    val lookbackLabel = stringResource(R.string.nav_lookback)
+    val peopleLabel = stringResource(R.string.nav_people_places)
+    val todosLabel = stringResource(R.string.nav_todos)
+    val statsLabel = stringResource(R.string.nav_statistics)
 
     val items = remember(
         showLookbackInNavBar,
         showKeywordsInNavBar,
         showTodosInNavBar,
-        showStatisticsInNavBar
+        showStatisticsInNavBar,
+        journalLabel,
+        calendarLabel,
+        lookbackLabel,
+        peopleLabel,
+        todosLabel,
+        statsLabel
     ) {
         buildList {
-            add(BottomPanelItem(Route.Home.path, "Journal", Icons.AutoMirrored.Rounded.MenuBook))
-            add(BottomPanelItem(Route.Calendar.path, "Calendar", Icons.Rounded.CalendarMonth))
+            add(BottomPanelItem(Route.Home.path, journalLabel, Icons.AutoMirrored.Rounded.MenuBook))
+            add(BottomPanelItem(Route.Calendar.path, calendarLabel, Icons.Rounded.CalendarMonth))
             if (showLookbackInNavBar) {
-                add(BottomPanelItem(Route.Lookback.path, "Lookback", Icons.Rounded.History))
+                add(BottomPanelItem(Route.Lookback.path, lookbackLabel, Icons.Rounded.History))
             }
             if (showKeywordsInNavBar) {
-                add(BottomPanelItem(Route.Keywords.path, "People", Icons.Rounded.People))
+                add(BottomPanelItem(Route.Keywords.path, peopleLabel, Icons.Rounded.People))
             }
             if (showTodosInNavBar) {
-                add(BottomPanelItem(Route.Todos.path, "Todos", Icons.Rounded.Checklist))
+                add(BottomPanelItem(Route.Todos.path, todosLabel, Icons.Rounded.Checklist))
             }
             if (showStatisticsInNavBar) {
                 add(
                     BottomPanelItem(
                         Route.Statistics.path,
-                        "Stats",
+                        statsLabel,
                         Icons.AutoMirrored.Rounded.TrendingUp
                     )
                 )
@@ -219,12 +236,14 @@ fun ExpressiveBottomNavigationPanel(
                     ) {
                         items.forEach { item ->
                             val selected = indicatorRoute == item.route
+                            val iconTapMotion = rememberBottomNavIconTapMotion(item.route)
                             val iconColor by animateColorAsState(
                                 targetValue = if (selected) {
                                     MaterialTheme.colorScheme.onSecondaryContainer
                                 } else {
                                     MaterialTheme.colorScheme.onSurfaceVariant
                                 },
+                                animationSpec = motionPreference.tweenSpec(160),
                                 label = "bottom_panel_icon_color_${item.route}"
                             )
                             val textColor by animateColorAsState(
@@ -233,6 +252,7 @@ fun ExpressiveBottomNavigationPanel(
                                 } else {
                                     MaterialTheme.colorScheme.onSurfaceVariant
                                 },
+                                animationSpec = motionPreference.tweenSpec(160),
                                 label = "bottom_panel_text_color_${item.route}"
                             )
                             val scale by animateFloatAsState(
@@ -249,9 +269,10 @@ fun ExpressiveBottomNavigationPanel(
                                     .weight(1f)
                                     .height(containerHeight)
                                     .clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = null
-                                    ) {
+                                            interactionSource = remember(item.route) { MutableInteractionSource() },
+                                            indication = null
+                                        ) {
+                                        iconTapMotion.play(motionPreference)
                                         indicatorRoute = item.route
                                         when (item.route) {
                                             Route.Home.path -> onNavigateHome()
@@ -283,8 +304,10 @@ fun ExpressiveBottomNavigationPanel(
                                         modifier = Modifier
                                             .size(24.dp)
                                             .graphicsLayer {
-                                                scaleX = scale
-                                                scaleY = scale
+                                                scaleX = scale * iconTapMotion.scale.value
+                                                scaleY = scale * iconTapMotion.scale.value
+                                                rotationZ = iconTapMotion.rotation.value
+                                                translationY = with(density) { iconTapMotion.liftDp.value.dp.toPx() }
                                             }
                                     )
                                 }

@@ -787,8 +787,6 @@
     <string name="addentry_set_time">Setha isikhathi</string>
     <string name="addentry_event_chip">Umcimbi Omusha</string>
     <string name="addentry_pick_time_title">Khetha isikhathi</string>
-    <string name="addentry_hour_label">Ihora</string>
-    <string name="addentry_minute_label">Umzuzu</string>
     <string name="addentry_new_event_title">Umcimbi Omusha</string>
     <string name="addentry_title_label">Isihloko</string>
     <string name="addentry_event_description_label">Incazelo Yomcimbi</string>

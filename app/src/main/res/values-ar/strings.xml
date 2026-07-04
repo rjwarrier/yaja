@@ -774,8 +774,6 @@
     <string name="addentry_set_time">ضبط الوقت</string>
     <string name="addentry_event_chip">حدث</string>
     <string name="addentry_pick_time_title">اختر الوقت</string>
-    <string name="addentry_hour_label">ساعة</string>
-    <string name="addentry_minute_label">دقيقة</string>
     <string name="addentry_new_event_title">حدث جديد</string>
     <string name="addentry_title_label">عنوان</string>
     <string name="addentry_event_description_label">وصف الحدث</string>

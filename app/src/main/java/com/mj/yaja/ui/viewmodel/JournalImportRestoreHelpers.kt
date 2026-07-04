@@ -154,14 +154,18 @@ internal fun launchManagedEntryImport(
         importState.value = JournalViewModel.ImportState.Running()
         try {
             onSetup()
-            val result = importBlock { current, total ->
-                importState.value = JournalViewModel.ImportState.Running(current, total)
+            val result = withContext(Dispatchers.IO) {
+                importBlock { current, total ->
+                    importState.value = JournalViewModel.ImportState.Running(current, total)
+                }
             }
 
             if (result.cancelled) {
                 importState.value = JournalViewModel.ImportState.Idle
             } else {
-                onSuccess(result)
+                withContext(Dispatchers.IO) {
+                    onSuccess(result)
+                }
                 importState.value = buildImportSuccessState(result)
             }
         } catch (e: CancellationException) {
@@ -380,6 +384,8 @@ internal fun processRestoreBundle(
     setEntriesForDate: (LocalDate, List<String>) -> Unit,
     getDayLabel: (LocalDate) -> String,
     setDayLabel: (LocalDate, String) -> Unit,
+    getRevisitDate: (LocalDate) -> LocalDate?,
+    setRevisit: (LocalDate, LocalDate?, String) -> Unit,
     isDateStarred: (LocalDate) -> Boolean,
     setStarred: (LocalDate, Boolean, String) -> Unit,
     mergeShortcodes: (Map<String, String>) -> Int,
@@ -422,6 +428,9 @@ internal fun processRestoreBundle(
         val labelToApply = currentLabel.ifBlank { day.label }
         if (currentLabel.isBlank() && day.label.isNotBlank()) {
             setDayLabel(date, day.label)
+        }
+        if (day.revisitOn != null && getRevisitDate(date) == null) {
+            setRevisit(date, day.revisitOn, day.revisitNote)
         }
         if (day.isStarred && !isDateStarred(date)) {
             setStarred(date, true, labelToApply)

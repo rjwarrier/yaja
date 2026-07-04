@@ -689,8 +689,6 @@
     <string name="addentry_set_time">நேரத்தை அமை</string>
     <string name="addentry_event_chip">நிகழ்வு</string>
     <string name="addentry_pick_time_title">நேரத்தைத் தேர்ந்தெடு</string>
-    <string name="addentry_hour_label">மணி</string>
-    <string name="addentry_minute_label">நிமிடம்</string>
     <string name="addentry_new_event_title">புதிய நிகழ்வு</string>
     <string name="addentry_title_label">தலைப்பு</string>
     <string name="addentry_event_description_label">நிகழ்வு விளக்கம்</string>

@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.data.AppFontFamily
@@ -63,7 +64,7 @@ fun FontSelectionCard(
                 ElevatedCard(
                         onClick = onClick,
                         interactionSource = interactionSource,
-                        modifier = Modifier.fillMaxWidth().height(80.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 80.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                         shape = MaterialTheme.shapes.medium,
                         colors =
                                 CardDefaults.elevatedCardColors(
@@ -78,7 +79,7 @@ fun FontSelectionCard(
                                 )
                 ) {
                         Box(
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier.fillMaxWidth().heightIn(min = 80.dp),
                                 contentAlignment = Alignment.Center
                         ) {
                                 Text(
@@ -145,7 +146,7 @@ fun ThemeSelectionCard(
         ElevatedCard(
                 onClick = onClick,
                 interactionSource = interactionSource,
-                modifier = modifier.height(100.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
+                modifier = modifier.heightIn(min = 100.dp).expressivePressMotion(interactionSource, pressedScale = 0.94f),
                 shape = MaterialTheme.shapes.medium,
                 colors =
                         CardDefaults.elevatedCardColors(
@@ -159,7 +160,7 @@ fun ThemeSelectionCard(
                         )
         ) {
                 Column(
-                        modifier = Modifier.fillMaxSize().padding(8.dp),
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 100.dp).padding(8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                 ) {
@@ -229,7 +230,8 @@ fun ThemeSelectionCard(
                                         if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
                                         else MaterialTheme.colorScheme.onSurfaceVariant,
                                 textAlign = TextAlign.Center,
-                                maxLines = 1
+                                maxLines = 2,
+                                overflow = TextOverflow.Ellipsis
                         )
                 }
         }

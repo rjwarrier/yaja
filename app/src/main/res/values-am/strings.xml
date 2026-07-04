@@ -787,8 +787,6 @@
     <string name="addentry_set_time">ጊዜ ያዘጋጁ</string>
     <string name="addentry_event_chip">ክስተት</string>
     <string name="addentry_pick_time_title">ጊዜ ይምረጡ</string>
-    <string name="addentry_hour_label">ሰአት</string>
-    <string name="addentry_minute_label">ደቂቃ</string>
     <string name="addentry_new_event_title">አዲስ ክስተት</string>
     <string name="addentry_title_label">ርዕስ</string>
     <string name="addentry_event_description_label">የክስተት መግለጫ</string>

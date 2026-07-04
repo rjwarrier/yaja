@@ -689,8 +689,6 @@
     <string name="addentry_set_time">समय सेट करें</string>
     <string name="addentry_event_chip">इवेंट</string>
     <string name="addentry_pick_time_title">समय चुनें</string>
-    <string name="addentry_hour_label">घंटा</string>
-    <string name="addentry_minute_label">मिनट</string>
     <string name="addentry_new_event_title">नया इवेंट</string>
     <string name="addentry_title_label">शीर्षक</string>
     <string name="addentry_event_description_label">इवेंट विवरण</string>

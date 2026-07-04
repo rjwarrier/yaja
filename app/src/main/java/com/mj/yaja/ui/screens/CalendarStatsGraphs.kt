@@ -626,6 +626,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
 
                         val primaryColor = MaterialTheme.colorScheme.primary
                         val secondaryColor = MaterialTheme.colorScheme.secondary
+                        val pointFillColor = MaterialTheme.colorScheme.surfaceContainerHighest
                         val onSurfaceVariant = MaterialTheme.colorScheme.onSurfaceVariant
 
                         Box(
@@ -737,7 +738,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
 
                                                 points.forEach { point ->
                                                         drawCircle(
-                                                                Color.White,
+                                                                pointFillColor,
                                                                 radius = 5.dp.toPx(),
                                                                 center = point
                                                         )
@@ -761,7 +762,7 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
                                                                                 height)
                                                         )
                                                 drawCircle(
-                                                        Color.White,
+                                                        pointFillColor,
                                                         radius = 5.dp.toPx(),
                                                         center = point
                                                 )
@@ -852,9 +853,15 @@ fun YearlyConsistencyGraph(stats: List<Pair<Int, Float>>) {
 @Composable
 fun MorphingBackground(
         modifier: Modifier = Modifier,
-        color: Color = Color.Magenta.copy(alpha = 0.2f)
+        color: Color = Color.Unspecified
 ) {
         val animationPreference = LocalAnimationPreference.current
+        val backgroundColor =
+                if (color == Color.Unspecified) {
+                        MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+                } else {
+                        color
+                }
         val tl: Float
         val tr: Float
         val bl: Float
@@ -938,7 +945,7 @@ fun MorphingBackground(
                                                 )
                                         clip = true
                                 }
-                                .background(color)
+                                .background(backgroundColor)
         )
 }
 

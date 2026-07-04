@@ -687,8 +687,6 @@
     <string name="addentry_set_time">वेळ सेट करा</string>
     <string name="addentry_event_chip">इव्हेंट</string>
     <string name="addentry_pick_time_title">वेळ निवडा</string>
-    <string name="addentry_hour_label">तास</string>
-    <string name="addentry_minute_label">मिनिट</string>
     <string name="addentry_new_event_title">नवीन इव्हेंट</string>
     <string name="addentry_title_label">शीर्षक</string>
     <string name="addentry_event_description_label">इव्हेंटचे वर्णन</string>

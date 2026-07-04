@@ -687,8 +687,6 @@
     <string name="addentry_set_time">সময় নির্ধারণ করুন</string>
     <string name="addentry_event_chip">ইভেন্ট</string>
     <string name="addentry_pick_time_title">সময় নির্বাচন করুন</string>
-    <string name="addentry_hour_label">ঘণ্টা</string>
-    <string name="addentry_minute_label">মিনিট</string>
     <string name="addentry_new_event_title">নতুন ইভেন্ট</string>
     <string name="addentry_title_label">শিরোনাম</string>
     <string name="addentry_event_description_label">ইভেন্টের বিবরণ</string>

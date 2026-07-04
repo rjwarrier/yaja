@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Nastavte čas</string>
     <string name="addentry_event_chip">Událost</string>
     <string name="addentry_pick_time_title">Vyberte čas</string>
-    <string name="addentry_hour_label">Hodina</string>
-    <string name="addentry_minute_label">Minuta</string>
     <string name="addentry_new_event_title">Nová událost</string>
     <string name="addentry_title_label">Titul</string>
     <string name="addentry_event_description_label">Popis události</string>

@@ -687,8 +687,6 @@
     <string name="addentry_set_time">Imposta ora</string>
     <string name="addentry_event_chip">Evento</string>
     <string name="addentry_pick_time_title">Scegli ora</string>
-    <string name="addentry_hour_label">Ora</string>
-    <string name="addentry_minute_label">Minuto</string>
     <string name="addentry_new_event_title">Nuovo evento</string>
     <string name="addentry_title_label">Titolo</string>
     <string name="addentry_event_description_label">Descrizione evento</string>

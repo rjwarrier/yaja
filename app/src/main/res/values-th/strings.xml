@@ -774,8 +774,6 @@
     <string name="addentry_set_time">ตั้งเวลา</string>
     <string name="addentry_event_chip">เหตุการณ์</string>
     <string name="addentry_pick_time_title">เลือกเวลา</string>
-    <string name="addentry_hour_label">ชั่วโมง</string>
-    <string name="addentry_minute_label">นาที</string>
     <string name="addentry_new_event_title">กิจกรรมใหม่</string>
     <string name="addentry_title_label">ชื่อ</string>
     <string name="addentry_event_description_label">คำอธิบายเหตุการณ์</string>

@@ -683,8 +683,6 @@
     <string name="addentry_set_time">Saati ayarla</string>
     <string name="addentry_event_chip">Etkinlik</string>
     <string name="addentry_pick_time_title">Saat seç</string>
-    <string name="addentry_hour_label">Saat</string>
-    <string name="addentry_minute_label">Dakika</string>
     <string name="addentry_new_event_title">Yeni Etkinlik</string>
     <string name="addentry_title_label">Başlık</string>
     <string name="addentry_event_description_label">Etkinlik Açıklaması</string>

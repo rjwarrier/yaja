@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Itakda ang oras</string>
     <string name="addentry_event_chip">Kaganapan</string>
     <string name="addentry_pick_time_title">Pumili ng oras</string>
-    <string name="addentry_hour_label">Oras</string>
-    <string name="addentry_minute_label">minuto</string>
     <string name="addentry_new_event_title">Bagong Kaganapan</string>
     <string name="addentry_title_label">Pamagat</string>
     <string name="addentry_event_description_label">Paglalarawan ng Kaganapan</string>

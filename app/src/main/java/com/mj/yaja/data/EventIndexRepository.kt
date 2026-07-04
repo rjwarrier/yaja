@@ -34,7 +34,7 @@ class EventIndexRepository private constructor(context: Context) {
         private const val PREFS_NAME = "event_index_cache"
         private const val KEY_BUILT = "built"
         private const val KEY_FINGERPRINT = "fingerprint"
-        private val TIME_REGEX = Regex("""<!--time:(\d{2}:\d{2})-->""")
+        private val TIME_REGEX = Regex("""<!--time:(\d{2}:\d{2})(?:, added on .*?)?-->""")
 
         @Volatile private var instance: EventIndexRepository? = null
 
@@ -72,7 +72,10 @@ class EventIndexRepository private constructor(context: Context) {
         entries: List<String>,
         fingerprint: JournalStorageFingerprint? = null
     ) {
-        val parsed = parseDate(date, entries).map { it.toEventIndexEntity() }
+        val parsedEntries = parseDate(date, entries)
+        val parsed = parsedEntries.map { it.toEventIndexEntity() }
+        _entries.value = sortEntries(_entries.value.filterNot { it.date == date } + parsedEntries)
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             eventDao.deleteByDate(date.toString())
             if (parsed.isNotEmpty()) {
@@ -84,6 +87,8 @@ class EventIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun removeDate(date: LocalDate, fingerprint: JournalStorageFingerprint? = null) {
+        _entries.value = sortEntries(_entries.value.filterNot { it.date == date })
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             eventDao.deleteByDate(date.toString())
         }
@@ -96,13 +101,17 @@ class EventIndexRepository private constructor(context: Context) {
         entriesForDate: (LocalDate) -> List<String>,
         fingerprint: JournalStorageFingerprint? = null
     ) {
-        val rebuilt = mutableListOf<EventIndexEntity>()
-        dates.toSet().forEach { date ->
-            rebuilt += parseDate(date, entriesForDate(date)).map { it.toEventIndexEntity() }
+        val dateSet = dates.toSet()
+        val rebuiltEntries = mutableListOf<EventItem>()
+        dateSet.forEach { date ->
+            rebuiltEntries += parseDate(date, entriesForDate(date))
         }
+        val rebuilt = rebuiltEntries.map { it.toEventIndexEntity() }
+        _entries.value = sortEntries(_entries.value.filterNot { it.date in dateSet } + rebuiltEntries)
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             database.runInTransaction {
-                val dateStrings = dates.map { it.toString() }
+                val dateStrings = dateSet.map { it.toString() }
                 if (dateStrings.isNotEmpty()) {
                     eventDao.deleteByDates(dateStrings)
                 }
@@ -116,6 +125,8 @@ class EventIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun clearAll() {
+        _entries.value = emptyList()
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             eventDao.deleteAll()
         }

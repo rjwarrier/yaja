@@ -257,6 +257,101 @@ class MarkdownFileManager(
         }
     }
 
+    private fun hasFrontmatterData(frontmatter: MarkdownFileManager.Companion.FrontmatterSnapshot): Boolean =
+        frontmatter.isStarred ||
+            frontmatter.label.isNotEmpty() ||
+            frontmatter.revisitOn != null ||
+            frontmatter.revisitNote.isNotEmpty()
+
+    private fun buildJournalDayCacheEntity(
+        date: LocalDate,
+        entries: List<String>,
+        frontmatter: MarkdownFileManager.Companion.FrontmatterSnapshot,
+        metadata: DateFileMetadata?
+    ): JournalDayCacheEntity =
+        JournalDayCacheEntity(
+            date = date.toString(),
+            journalId = "default",
+            entries = entries,
+            isStarred = frontmatter.isStarred,
+            label = frontmatter.label,
+            revisitOn = frontmatter.revisitOn?.toString(),
+            revisitNote = frontmatter.revisitNote,
+            wordCount = countWords(entries),
+            entryCount = entries.size,
+            fileModifiedAt = metadata?.modifiedAt ?: 0L,
+            fileSize = metadata?.size ?: 0L
+        )
+
+    private fun applyScannedDateToMemoryState(
+        date: LocalDate,
+        entries: List<String>,
+        frontmatter: MarkdownFileManager.Companion.FrontmatterSnapshot,
+        metadata: DateFileMetadata?
+    ) {
+        if (entries.isNotEmpty()) {
+            cache[date] = entries
+            entryCountCache[date] = entries.size
+            wordCountCache[date] = countWords(entries)
+        } else {
+            cache.remove(date)
+            entryCountCache.remove(date)
+            wordCountCache.remove(date)
+        }
+        metadata?.let { dateMetadataCache[date] = it } ?: dateMetadataCache.remove(date)
+        applyFrontmatterToMemoryState(
+            date = date,
+            frontmatter = frontmatter,
+            starredDates = starredDates,
+            dayLabels = dayLabels,
+            revisitDates = revisitDates,
+            revisitNotes = revisitNotes
+        )
+    }
+
+    private fun removeScannedDateFromMemoryState(date: LocalDate) {
+        cache.remove(date)
+        entryCountCache.remove(date)
+        wordCountCache.remove(date)
+        dateMetadataCache.remove(date)
+        starredDates.remove(date)
+        dayLabels.remove(date)
+        revisitDates.remove(date)
+        revisitNotes.remove(date)
+    }
+
+    private fun mergeJournalDateContentForMigration(
+        date: LocalDate,
+        destinationContent: String,
+        sourceContent: String
+    ): String {
+        val destination = parseJournalDateContent(destinationContent)
+        val source = parseJournalDateContent(sourceContent)
+        val mergedEntries = linkedSetOf<String>().apply {
+            addAll(destination.entries)
+            addAll(source.entries)
+        }.toList()
+        val destinationFrontmatter = destination.frontmatter
+        val sourceFrontmatter = source.frontmatter
+        val revisitOn = destinationFrontmatter.revisitOn ?: sourceFrontmatter.revisitOn
+        val revisitNote = when {
+            destinationFrontmatter.revisitOn != null -> destinationFrontmatter.revisitNote
+            sourceFrontmatter.revisitOn != null -> sourceFrontmatter.revisitNote
+            else -> destinationFrontmatter.revisitNote.ifBlank { sourceFrontmatter.revisitNote }
+        }
+
+        return buildJournalDateContent(
+            date = date,
+            entries = mergedEntries,
+            frontmatter = JournalDateFrontmatterState(
+                isStarred = destinationFrontmatter.isStarred || sourceFrontmatter.isStarred,
+                dayLabel = destinationFrontmatter.label.ifBlank { sourceFrontmatter.label },
+                revisitOn = revisitOn,
+                revisitNote = revisitNote
+            )
+        )
+    }
+
     private fun saveLabelsCacheToDisk(immediate: Boolean = false) {}
     private fun loadLabelsCacheFromDisk(): Boolean = false
     private fun loadEntryCountCacheFromDisk(): Boolean = false
@@ -459,36 +554,20 @@ class MarkdownFileManager(
             // instead of opening the file once for entries and again for frontmatter.
             val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
             val entries = parsed?.entries.orEmpty()
+            val metadata = parsed?.let {
+                journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
+                    ?.let { raw -> DateFileMetadata(raw.first, raw.second) }
+            }
             synchronized(this) {
                 if (expectedEpoch != cacheEpoch) return
-                if (parsed != null && entries.isNotEmpty()) {
-                    cache[date] = entries
-                    entryCountCache[date] = entries.size
-                    wordCountCache[date] = countWords(entries)
-                    val metadata = journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
-                    metadata?.let { dateMetadataCache[date] = DateFileMetadata(it.first, it.second) }
-
-                    val snapshot = parsed.frontmatter
-                    if (snapshot.isStarred) starredDates[date] = snapshot.label
-                    if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label
-                    snapshot.revisitOn?.let { revisitDates[date] = it }
-                    if (snapshot.revisitNote.isNotEmpty()) revisitNotes[date] = snapshot.revisitNote
-
-                    entities.add(
-                        JournalDayCacheEntity(
-                            date = date.toString(),
-                            journalId = "default",
-                            entries = entries,
-                            isStarred = snapshot.isStarred,
-                            label = snapshot.label,
-                            revisitOn = snapshot.revisitOn?.toString(),
-                            revisitNote = snapshot.revisitNote,
-                            wordCount = wordCountCache[date] ?: 0,
-                            entryCount = entries.size,
-                            fileModifiedAt = metadata?.second ?: 0L,
-                            fileSize = metadata?.first ?: 0L
-                        )
+                if (parsed != null && (entries.isNotEmpty() || hasFrontmatterData(parsed.frontmatter))) {
+                    applyScannedDateToMemoryState(
+                        date = date,
+                        entries = entries,
+                        frontmatter = parsed.frontmatter,
+                        metadata = metadata
                     )
+                    entities.add(buildJournalDayCacheEntity(date, entries, parsed.frontmatter, metadata))
                 }
             }
             onProgress?.invoke(index + 1, total)
@@ -519,14 +598,7 @@ class MarkdownFileManager(
             val rawMetadata = journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
             val metadata = rawMetadata?.let { DateFileMetadata(it.first, it.second) }
             if (metadata == null) {
-                cache.remove(date)
-                entryCountCache.remove(date)
-                wordCountCache.remove(date)
-                dateMetadataCache.remove(date)
-                starredDates.remove(date)
-                dayLabels.remove(date)
-                revisitDates.remove(date)
-                revisitNotes.remove(date)
+                removeScannedDateFromMemoryState(date)
                 toDelete.add(date.toString())
                 if (toDelete.size >= 50) {
                     dao.deleteDays("default", toDelete)
@@ -536,51 +608,26 @@ class MarkdownFileManager(
                 return@forEachIndexed
             }
             val previousMetadata = dateMetadataCache[date]
-            val needsRead = previousMetadata != metadata || !cache.containsKey(date)
+            val knowsDateWithoutEntries = previousMetadata == metadata && dateMetadataCache.containsKey(date)
+            val needsRead = previousMetadata != metadata || (!cache.containsKey(date) && !knowsDateWithoutEntries)
             if (needsRead) {
                 val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
                 val entries = parsed?.entries.orEmpty()
                 if (expectedEpoch != cacheEpoch) return
-                if (parsed != null && entries.isNotEmpty()) {
-                    cache[date] = entries
-                    entryCountCache[date] = entries.size
-                    wordCountCache[date] = countWords(entries)
-                    dateMetadataCache[date] = metadata
-
-                    val snapshot = parsed.frontmatter
-                    if (snapshot.isStarred) starredDates[date] = snapshot.label else starredDates.remove(date)
-                    if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label else dayLabels.remove(date)
-                    snapshot.revisitOn?.let { revisitDates[date] = it } ?: revisitDates.remove(date)
-                    if (snapshot.revisitNote.isNotEmpty()) revisitNotes[date] = snapshot.revisitNote else revisitNotes.remove(date)
-
-                    toInsert.add(
-                        JournalDayCacheEntity(
-                            date = date.toString(),
-                            journalId = "default",
-                            entries = entries,
-                            isStarred = snapshot.isStarred,
-                            label = snapshot.label,
-                            revisitOn = snapshot.revisitOn?.toString(),
-                            revisitNote = snapshot.revisitNote,
-                            wordCount = wordCountCache[date] ?: 0,
-                            entryCount = entries.size,
-                            fileModifiedAt = metadata.modifiedAt,
-                            fileSize = metadata.size
-                        )
+                if (parsed != null && (entries.isNotEmpty() || hasFrontmatterData(parsed.frontmatter))) {
+                    applyScannedDateToMemoryState(
+                        date = date,
+                        entries = entries,
+                        frontmatter = parsed.frontmatter,
+                        metadata = metadata
                     )
+                    toInsert.add(buildJournalDayCacheEntity(date, entries, parsed.frontmatter, metadata))
                     if (toInsert.size >= 50) {
                         dao.insertAll(toInsert)
                         toInsert.clear()
                     }
                 } else {
-                    cache.remove(date)
-                    entryCountCache.remove(date)
-                    wordCountCache.remove(date)
-                    dateMetadataCache.remove(date)
-                    starredDates.remove(date)
-                    dayLabels.remove(date)
-                    revisitDates.remove(date)
-                    revisitNotes.remove(date)
+                    removeScannedDateFromMemoryState(date)
                     toDelete.add(date.toString())
                     if (toDelete.size >= 50) {
                         dao.deleteDays("default", toDelete)
@@ -681,47 +728,26 @@ class MarkdownFileManager(
                     orderedDates.forEachIndexed { index, date ->
                         ensureActive()
                         if (expectedEpoch != cacheEpoch) return@launch
-                        if (!cache.containsKey(date)) {
+                        if (!cache.containsKey(date) && !dateMetadataCache.containsKey(date)) {
                             val parsed = journalStorage.readDateContent(date)?.let { parseJournalDateContent(it) }
                             val entries = parsed?.entries.orEmpty()
                             if (expectedEpoch != cacheEpoch) return@launch
-                            if (parsed != null && entries.isNotEmpty()) {
-                                cache[date] = entries
-                                entryCountCache[date] = entries.size
-                                wordCountCache[date] = countWords(entries)
-
+                            if (parsed != null && (entries.isNotEmpty() || hasFrontmatterData(parsed.frontmatter))) {
                                 val rawMetadata = journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)
                                 val metadata = rawMetadata?.let { DateFileMetadata(it.first, it.second) }
-                                metadata?.let { dateMetadataCache[date] = it }
-
-                                val snapshot = parsed.frontmatter
-                                if (snapshot.isStarred) starredDates[date] = snapshot.label
-                                if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label
-                                snapshot.revisitOn?.let { revisitDates[date] = it }
-                                if (snapshot.revisitNote.isNotEmpty()) revisitNotes[date] = snapshot.revisitNote
-
-                                toInsert.add(
-                                    JournalDayCacheEntity(
-                                        date = date.toString(),
-                                        journalId = "default",
-                                        entries = entries,
-                                        isStarred = snapshot.isStarred,
-                                        label = snapshot.label,
-                                        revisitOn = snapshot.revisitOn?.toString(),
-                                        revisitNote = snapshot.revisitNote,
-                                        wordCount = wordCountCache[date] ?: 0,
-                                        entryCount = entries.size,
-                                        fileModifiedAt = metadata?.modifiedAt ?: 0L,
-                                        fileSize = metadata?.size ?: 0L
-                                    )
+                                applyScannedDateToMemoryState(
+                                    date = date,
+                                    entries = entries,
+                                    frontmatter = parsed.frontmatter,
+                                    metadata = metadata
                                 )
+                                toInsert.add(buildJournalDayCacheEntity(date, entries, parsed.frontmatter, metadata))
                                 if (toInsert.size >= 50) {
                                     dao.insertAll(toInsert)
                                     toInsert.clear()
                                 }
                             } else {
-                                entryCountCache.remove(date)
-                                wordCountCache.remove(date)
+                                removeScannedDateFromMemoryState(date)
                                 toDelete.add(date.toString())
                                 if (toDelete.size >= 50) {
                                     dao.deleteDays("default", toDelete)
@@ -1592,11 +1618,20 @@ class MarkdownFileManager(
 
         // 2. Read from SOURCE and write to DESTINATION
         for (date in datesWithData) {
-            val entries = journalStorage.getEntriesForDateFromSpecificStorage(date, fromUriString)
-            if (entries.isNotEmpty()) {
-                if (!journalStorage.addEntriesToSpecificStorage(date, entries, toUriString)) {
-                    throw IOException("Failed to migrate entries for $date")
-                }
+            val sourceContent = journalStorage.readDateContentFromSpecificStorage(date, fromUriString)
+                ?: throw IOException("Failed to read source journal file for $date")
+            val destinationContent = journalStorage.readDateContentFromSpecificStorage(date, toUriString)
+            val contentToWrite = if (destinationContent.isNullOrBlank()) {
+                sourceContent
+            } else {
+                mergeJournalDateContentForMigration(
+                    date = date,
+                    destinationContent = destinationContent,
+                    sourceContent = sourceContent
+                )
+            }
+            if (!journalStorage.writeDateContentToSpecificStorage(date, contentToWrite, toUriString)) {
+                throw IOException("Failed to migrate journal file for $date")
             }
         }
 
@@ -1667,7 +1702,10 @@ class MarkdownFileManager(
     fun setRevisit(date: LocalDate, revisitOn: LocalDate?, note: String = ""): Boolean = withDateMutationLock(date) {
         ensureFrontmatterPopulated()
         val entries = getEntriesForDateForMutation(date)
-        if (entries.isEmpty()) return@withDateMutationLock false
+        val currentContent = journalStorage.readDateContent(date)
+        if (entries.isEmpty() && currentContent.isNullOrBlank() && revisitOn == null) {
+            return@withDateMutationLock false
+        }
         if (!snapshotDateBeforeMutation(date, "set_revisit")) return@withDateMutationLock false
 
         val previousState = captureRevisitState(
@@ -1684,13 +1722,29 @@ class MarkdownFileManager(
         )
 
         val content = buildFileContent(date, entries)
-        if (journalStorage.writeDateContent(date, content, createIfNotExists = false)) {
+        val shouldCreateFile = currentContent.isNullOrBlank()
+        if (journalStorage.writeDateContent(date, content, createIfNotExists = shouldCreateFile)) {
             finalizeFrontmatterWriteSuccess(
                 date = date,
                 entries = entries,
                 saveLabelsCacheToDisk = { saveDayToDb(date) },
                 scheduleFingerprintRefresh = ::scheduleFingerprintRefresh
             )
+            if (entries.isEmpty()) {
+                finalizeLabelOnlyDayWriteSuccess(
+                    date = date,
+                    context = context,
+                    cache = cache,
+                    entryCountCache = entryCountCache,
+                    wordCountCache = wordCountCache,
+                    updateCachedDatePresence = { targetDate, hasEntries ->
+                        updateCachedDatePresence(targetDate, hasEntries)
+                    },
+                    saveCacheToDisk = { saveDayToDb(date) },
+                    saveEntryCountCacheToDisk = {},
+                    saveWordCountCacheToDisk = {}
+                )
+            }
             true
         } else {
             finalizeFrontmatterWriteFailure(
@@ -1802,7 +1856,10 @@ class MarkdownFileManager(
     fun setStarred(date: LocalDate, starred: Boolean, label: String = ""): Boolean = withDateMutationLock(date) {
         ensureFrontmatterPopulated()
         val entries = getEntriesForDateForMutation(date)
-        if (entries.isEmpty()) return@withDateMutationLock false
+        val currentContent = journalStorage.readDateContent(date)
+        if (entries.isEmpty() && currentContent.isNullOrBlank() && !starred) {
+            return@withDateMutationLock false
+        }
         if (!snapshotDateBeforeMutation(date, "set_starred")) return@withDateMutationLock false
 
         val previousState = captureStarLabelState(
@@ -1820,7 +1877,8 @@ class MarkdownFileManager(
 
         // Update the markdown file via buildFileContent to stay consistent
         val content = buildFileContent(date, entries)
-        if (journalStorage.writeDateContent(date, content, createIfNotExists = false)) {
+        val shouldCreateFile = currentContent.isNullOrBlank()
+        if (journalStorage.writeDateContent(date, content, createIfNotExists = shouldCreateFile)) {
             finalizeFrontmatterWriteSuccess(
                 date = date,
                 entries = entries,
@@ -1828,6 +1886,21 @@ class MarkdownFileManager(
                 scheduleFingerprintRefresh = ::scheduleFingerprintRefresh,
                 syncTodoIndexForDate = ::scheduleTodoIndexSyncForDate
             )
+            if (entries.isEmpty()) {
+                finalizeLabelOnlyDayWriteSuccess(
+                    date = date,
+                    context = context,
+                    cache = cache,
+                    entryCountCache = entryCountCache,
+                    wordCountCache = wordCountCache,
+                    updateCachedDatePresence = { targetDate, hasEntries ->
+                        updateCachedDatePresence(targetDate, hasEntries)
+                    },
+                    saveCacheToDisk = { saveDayToDb(date) },
+                    saveEntryCountCacheToDisk = {},
+                    saveWordCountCacheToDisk = {}
+                )
+            }
             true
         } else {
             finalizeFrontmatterWriteFailure(
@@ -2039,7 +2112,9 @@ class MarkdownFileManager(
                 content = content,
                 entries = entries,
                 isStarred = frontmatter.isStarred,
-                label = frontmatter.label
+                label = frontmatter.label,
+                revisitOn = frontmatter.revisitOn,
+                revisitNote = frontmatter.revisitNote
             )
             onProgress(index + 1, total)
         }
@@ -2130,4 +2205,3 @@ class MarkdownFileManager(
     private fun countWords(entries: List<String>): Int =
         countWordsIgnoringChecklistMarkers(entries)
 }
-

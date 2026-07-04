@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Ustaw czas</string>
     <string name="addentry_event_chip">Wydarzenie</string>
     <string name="addentry_pick_time_title">Wybierz czas</string>
-    <string name="addentry_hour_label">Godzina</string>
-    <string name="addentry_minute_label">Chwila</string>
     <string name="addentry_new_event_title">Nowe wydarzenie</string>
     <string name="addentry_title_label">Tytuł</string>
     <string name="addentry_event_description_label">Opis wydarzenia</string>

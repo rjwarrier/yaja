@@ -30,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TimeInput
@@ -69,22 +70,26 @@ fun EditorDateHeaderCard(
         recordedTime: String?,
         selectedEntryKind: EntryKind = EntryKind.NORMAL,
         entryText: String = "",
+        isEditingMode: Boolean = false,
         onRecordedTimeClick: () -> Unit,
         dayFormatter: DateTimeFormatter,
         weekdayFormatter: DateTimeFormatter,
         monthYearFormatter: DateTimeFormatter
 ) {
+        val rawMentionedEventTime =
+                remember(selectedEntryKind, entryText) {
+                        if (selectedEntryKind != EntryKind.EVENT) null else extractMentionedEventTime(entryText)
+                }
         val mentionedEventTime =
-                remember(selectedEntryKind, entryText, recordedTime) {
-                        if (selectedEntryKind != EntryKind.EVENT) {
-                                null
-                        } else {
-                                extractMentionedEventTime(entryText)
-                                        ?.takeIf { time ->
-                                                time != recordedTime && time != "${recordedTime} Hrs"
-                                        }
+                remember(rawMentionedEventTime, recordedTime) {
+                        rawMentionedEventTime?.takeIf { time ->
+                                time != recordedTime && time != "${recordedTime} Hrs"
                         }
                 }
+        // Only treat as full-day once editing settles — while actively typing, a missing time
+        // is often just not-typed-yet, not a deliberate full-day choice.
+        val isFullDayEvent =
+                selectedEntryKind == EntryKind.EVENT && rawMentionedEventTime == null && !isEditingMode
         Surface(
                 modifier =
                         Modifier.fillMaxWidth()
@@ -211,10 +216,10 @@ fun EditorDateHeaderCard(
                                                         fontWeight = FontWeight.Medium
                                                 )
 
-                                                mentionedEventTime?.let { eventTime ->
+                                                if (isFullDayEvent) {
                                                         EntryHeaderMetaChip(
-                                                                text = eventTime,
-                                                                icon = Icons.Rounded.AccessTime,
+                                                                text = stringResource(R.string.addentry_full_day_event_label),
+                                                                icon = Icons.Rounded.Today,
                                                                 containerColor =
                                                                         MaterialTheme.colorScheme.primary,
                                                                 contentColor =
@@ -224,6 +229,21 @@ fun EditorDateHeaderCard(
                                                                 fontWeight = FontWeight.Bold,
                                                                 shape = RoundedCornerShape(10.dp)
                                                         )
+                                                } else {
+                                                        mentionedEventTime?.let { eventTime ->
+                                                                EntryHeaderMetaChip(
+                                                                        text = eventTime,
+                                                                        icon = Icons.Rounded.AccessTime,
+                                                                        containerColor =
+                                                                                MaterialTheme.colorScheme.primary,
+                                                                        contentColor =
+                                                                                MaterialTheme.colorScheme.onPrimary,
+                                                                        iconTint =
+                                                                                MaterialTheme.colorScheme.onPrimary,
+                                                                        fontWeight = FontWeight.Bold,
+                                                                        shape = RoundedCornerShape(10.dp)
+                                                                )
+                                                        }
                                                 }
                                         }
                                 }
@@ -280,6 +300,31 @@ private fun EntryHeaderMetaChip(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+private fun M3TimePickerInput(timePickerState: androidx.compose.material3.TimePickerState) {
+        var useDialMode by remember { mutableStateOf(true) }
+
+        androidx.compose.foundation.layout.Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp)
+        ) {
+                if (useDialMode) {
+                        TimePicker(state = timePickerState)
+                } else {
+                        TimeInput(state = timePickerState)
+                }
+                TextButton(onClick = { useDialMode = !useDialMode }) {
+                        Text(
+                                stringResource(
+                                        if (useDialMode) R.string.addentry_switch_to_keyboard
+                                        else R.string.addentry_switch_to_dial
+                                )
+                        )
+                }
+        }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun EntryTimePickerDialog(
         initialTime: String,
         onDismiss: () -> Unit,
@@ -290,8 +335,12 @@ fun EntryTimePickerDialog(
                         runCatching { LocalTime.parse(initialTime, DateTimeFormatter.ofPattern("HH:mm")) }
                                 .getOrElse { LocalTime.now() }
                 }
-        var selectedHour by remember { mutableStateOf(parsedTime.hour) }
-        var selectedMinute by remember { mutableStateOf(parsedTime.minute) }
+        val timePickerState =
+                rememberTimePickerState(
+                        initialHour = parsedTime.hour,
+                        initialMinute = parsedTime.minute,
+                        is24Hour = true
+                )
 
         AlertDialog(
                 onDismissRequest = onDismiss,
@@ -301,8 +350,8 @@ fun EntryTimePickerDialog(
                                         onConfirm(
                                                 String.format(
                                                         "%02d:%02d",
-                                                        selectedHour,
-                                                        selectedMinute
+                                                        timePickerState.hour,
+                                                        timePickerState.minute
                                                 )
                                         )
                                 }
@@ -319,122 +368,46 @@ fun EntryTimePickerDialog(
                                 modifier = Modifier.fillMaxWidth(),
                                 contentAlignment = Alignment.Center
                         ) {
-                                CustomTimeInput(
-                                        hour = selectedHour,
-                                        minute = selectedMinute,
-                                        onTimeChange = { h, m ->
-                                                selectedHour = h
-                                                selectedMinute = m
-                                        }
-                                )
+                                M3TimePickerInput(timePickerState = timePickerState)
                         }
                 }
         )
-}
-
-@Composable
-fun CustomTimeInput(
-        hour: Int,
-        minute: Int,
-        onTimeChange: (Int, Int) -> Unit
-) {
-        var hourText by remember { mutableStateOf(String.format("%02d", hour)) }
-        var minuteText by remember { mutableStateOf(String.format("%02d", minute)) }
-
-        androidx.compose.runtime.LaunchedEffect(hour) {
-                val parsed = hourText.toIntOrNull()
-                if (parsed != hour) {
-                        hourText = String.format("%02d", hour)
-                }
-        }
-
-        androidx.compose.runtime.LaunchedEffect(minute) {
-                val parsed = minuteText.toIntOrNull()
-                if (parsed != minute) {
-                        minuteText = String.format("%02d", minute)
-                }
-        }
-
-        androidx.compose.foundation.layout.Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)
-        ) {
-                androidx.compose.foundation.layout.Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        OutlinedTextField(
-                                value = hourText,
-                                onValueChange = { newValue ->
-                                        val filtered = newValue.filter { it.isDigit() }.take(2)
-                                        val h = filtered.toIntOrNull()
-                                        if (h != null) {
-                                                val clamped = h.coerceIn(0, 23)
-                                                hourText = if (clamped != h) clamped.toString() else filtered
-                                                onTimeChange(clamped, minute)
-                                        } else {
-                                                hourText = ""
-                                                onTimeChange(0, minute)
-                                        }
-                                },
-                                modifier = Modifier.width(80.dp),
-                                textStyle = MaterialTheme.typography.headlineMedium.copy(
-                                        textAlign = TextAlign.Center,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                ),
-                                keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
-                                singleLine = true
-                        )
-                        Text(stringResource(R.string.addentry_hour_label), style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
-                }
-
-                Text(":", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(bottom = 24.dp))
-
-                androidx.compose.foundation.layout.Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        OutlinedTextField(
-                                value = minuteText,
-                                onValueChange = { newValue ->
-                                        val filtered = newValue.filter { it.isDigit() }.take(2)
-                                        val m = filtered.toIntOrNull()
-                                        if (m != null) {
-                                                val clamped = m.coerceIn(0, 59)
-                                                minuteText = if (clamped != m) clamped.toString() else filtered
-                                                onTimeChange(hour, clamped)
-                                        } else {
-                                                minuteText = ""
-                                                onTimeChange(hour, 0)
-                                        }
-                                },
-                                modifier = Modifier.width(80.dp),
-                                textStyle = MaterialTheme.typography.headlineMedium.copy(
-                                        textAlign = TextAlign.Center,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                ),
-                                keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
-                                singleLine = true
-                        )
-                        Text(stringResource(R.string.addentry_minute_label), style = MaterialTheme.typography.labelSmall, modifier = Modifier.padding(top = 8.dp))
-                }
-        }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EventInputDialog(
         onDismiss: () -> Unit,
-        onConfirm: (time: String, title: String, description: String) -> Unit
+        onConfirm: (time: String, title: String, description: String, isAllDay: Boolean) -> Unit
 ) {
         var title by remember { mutableStateOf("") }
         var description by remember { mutableStateOf("") }
-        
-        val parsedTime = LocalTime.now()
-        var selectedHour by remember { mutableStateOf(parsedTime.hour) }
-        var selectedMinute by remember { mutableStateOf(parsedTime.minute) }
+        var isAllDay by remember { mutableStateOf(false) }
+
+        val parsedTime = remember { LocalTime.now() }
+        val timePickerState =
+                rememberTimePickerState(
+                        initialHour = parsedTime.hour,
+                        initialMinute = parsedTime.minute,
+                        is24Hour = true
+                )
 
         AlertDialog(
                 onDismissRequest = onDismiss,
                 confirmButton = {
                         TextButton(
                                 onClick = {
-                                        val timeString = String.format("%02d:%02d", selectedHour, selectedMinute)
-                                        onConfirm(timeString, title.trim(), description.trim())
+                                        val timeString =
+                                                if (isAllDay) {
+                                                        ""
+                                                } else {
+                                                        String.format(
+                                                                "%02d:%02d",
+                                                                timePickerState.hour,
+                                                                timePickerState.minute
+                                                        )
+                                                }
+                                        onConfirm(timeString, title.trim(), description.trim(), isAllDay)
                                 },
                                 enabled = title.isNotBlank()
                         ) {
@@ -453,15 +426,22 @@ fun EventInputDialog(
                                 verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(16.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                                CustomTimeInput(
-                                        hour = selectedHour,
-                                        minute = selectedMinute,
-                                        onTimeChange = { h, m ->
-                                                selectedHour = h
-                                                selectedMinute = m
-                                        }
-                                )
-                                
+                                Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                        Text(
+                                                text = stringResource(R.string.addentry_full_day_event_label),
+                                                style = MaterialTheme.typography.bodyLarge
+                                        )
+                                        Switch(checked = isAllDay, onCheckedChange = { isAllDay = it })
+                                }
+
+                                if (!isAllDay) {
+                                        M3TimePickerInput(timePickerState = timePickerState)
+                                }
+
                                 OutlinedTextField(
                                         value = title,
                                         onValueChange = { title = it },
@@ -469,7 +449,7 @@ fun EventInputDialog(
                                         singleLine = true,
                                         modifier = Modifier.fillMaxWidth()
                                 )
-                                
+
                                 OutlinedTextField(
                                         value = description,
                                         onValueChange = { description = it },

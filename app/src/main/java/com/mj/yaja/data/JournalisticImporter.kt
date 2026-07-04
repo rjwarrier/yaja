@@ -54,7 +54,7 @@ class JournalisticImporter(
         onProgress: ((current: Int, total: Int) -> Unit)? = null
     ): ImportResult {
         val json = context.contentResolver.openInputStream(uri)
-            ?.bufferedReader(Charsets.UTF_8)?.readText()
+            ?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }
             ?: throw IllegalArgumentException("Could not read file")
         return parseAndImport(json, onProgress)
     }

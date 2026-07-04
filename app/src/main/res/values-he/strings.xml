@@ -774,8 +774,6 @@
     <string name="addentry_set_time">הגדר זמן</string>
     <string name="addentry_event_chip">מִקרֶה</string>
     <string name="addentry_pick_time_title">בחר זמן</string>
-    <string name="addentry_hour_label">שָׁעָה</string>
-    <string name="addentry_minute_label">דַקָה</string>
     <string name="addentry_new_event_title">אירוע חדש</string>
     <string name="addentry_title_label">כּוֹתֶרֶת</string>
     <string name="addentry_event_description_label">תיאור האירוע</string>

@@ -429,7 +429,7 @@ class JournalStorage(
         }
     }
 
-    private fun readDateContentFromSpecificStorage(date: LocalDate, uriString: String?): String? {
+    fun readDateContentFromSpecificStorage(date: LocalDate, uriString: String?): String? {
         if (uriString != null) {
             val dayFile = getDocumentFileForDate(date, uriString, createIfNotExists = false) ?: return null
             return try {
@@ -453,6 +453,24 @@ class JournalStorage(
         } else {
             null
         }
+    }
+
+    fun writeDateContentToSpecificStorage(date: LocalDate, content: String, uriString: String?): Boolean {
+        if (uriString != null) {
+            val dayFile = getDocumentFileForDate(date, uriString, createIfNotExists = true) ?: return false
+            return try {
+                val outputStream = context.contentResolver.openOutputStream(dayFile.uri, "wt")
+                    ?: return false
+                outputStream.use { it.write(content.toByteArray(Charsets.UTF_8)) }
+                true
+            } catch (e: Exception) {
+                logError("Exception caught", e)
+                false
+            }
+        }
+
+        val file = File(defaultJournalsDir, "$date.md")
+        return writeLocalDateContentAtomically(file, content)
     }
 
     private fun appendEntriesToRawContent(

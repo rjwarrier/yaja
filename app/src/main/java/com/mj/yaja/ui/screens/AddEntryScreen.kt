@@ -376,10 +376,15 @@ fun AddEntryScreen(
         if (showEventInputDialog) {
                 EventInputDialog(
                         onDismiss = { showEventInputDialog = false },
-                        onConfirm = { time, title, description ->
+                        onConfirm = { time, title, description, isAllDay ->
                                 showEventInputDialog = false
                                 selectedEntryKind = EntryKind.EVENT
-                                val eventText = "$time : $title\n\n$description"
+                                val eventText =
+                                        if (isAllDay) {
+                                                "$title\n\n$description"
+                                        } else {
+                                                "$time : $title\n\n$description"
+                                        }
                                 textFieldValue = insertEditorSnippetAtCursor(textFieldValue, eventText)
                         }
                 )

@@ -86,6 +86,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
@@ -405,9 +406,10 @@ fun HomeTopBar(
                     }
                 }
 
+                val favoriteColor = MaterialTheme.colorScheme.tertiary
+                val favoriteContainerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.72f)
                 Surface(
-                    color = if (isFavorited) Color(0xFFFFD700).copy(alpha = 0.15f)
-                    else MaterialTheme.colorScheme.surfaceContainerHigh,
+                    color = if (isFavorited) favoriteContainerColor else MaterialTheme.colorScheme.surfaceContainerHigh,
                     shape = RoundedCornerShape(18.dp),
                     modifier = Modifier.size(46.dp),
                     onClick = onToggleStar
@@ -440,7 +442,7 @@ fun HomeTopBar(
                             Icon(
                                 imageVector = if (starred) Icons.Rounded.Star else Icons.Rounded.StarOutline,
                                 contentDescription = stringResource(R.string.home_cd_favorite),
-                                tint = if (starred) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurfaceVariant,
+                                tint = if (starred) favoriteColor else MaterialTheme.colorScheme.onSurfaceVariant,
                                 modifier = Modifier.graphicsLayer {
                                     scaleX = starScale.value
                                     scaleY = starScale.value
@@ -678,7 +680,6 @@ private fun HomeDateNavigator(
         val dateCellSpacing = 6.dp
         val dateCellWidth = (maxWidth - (dateCellSpacing * 6)) / 7
         val isTodaySelected = selectedDate == today
-        val useLightTodayForeground = isTodaySelected
         val heroContainerColor =
             if (isTodaySelected) {
                 MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)
@@ -686,9 +687,14 @@ private fun HomeDateNavigator(
             } else {
                 MaterialTheme.colorScheme.surfaceContainerLow
             }
+        val useLightTodayForeground = isTodaySelected && heroContainerColor.luminance() < 0.42f
         val heroBorderColor =
             if (isTodaySelected) {
-                Color.White.copy(alpha = 0.14f)
+                if (useLightTodayForeground) {
+                    Color.White.copy(alpha = 0.14f)
+                } else {
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.34f)
+                }
             } else {
                 MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.14f)
             }
@@ -1207,7 +1213,12 @@ private fun HomeDateNavigator(
                         label = "date_chip_border"
                     )
                     val chipScale by animateFloatAsState(
-                        targetValue = if (isSelected) 1f else 0.97f,
+                        targetValue = when {
+                            isSelected -> 1.08f
+                            isToday -> 1.03f
+                            hasLabel -> 1.01f
+                            else -> 0.96f
+                        },
                         animationSpec = motionPreference.floatSpring(
                             dampingRatio = 0.82f,
                             stiffness = androidx.compose.animation.core.Spring.StiffnessMediumLow
@@ -1228,6 +1239,7 @@ private fun HomeDateNavigator(
                             .graphicsLayer {
                                 scaleX = chipScale
                                 scaleY = chipScale
+                                translationY = if (isSelected) -2f else 0f
                             },
                         shape = RoundedCornerShape(16.dp),
                         color = containerColor,

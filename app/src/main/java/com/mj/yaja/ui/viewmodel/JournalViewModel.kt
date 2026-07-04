@@ -940,6 +940,8 @@ class JournalViewModel(
                 details = "date=$date chars=${entry.length} customTime=${customTime != null}"
             )
             updateLoadedStatisticsForChangedDate(date)
+            val entriesSnapshot = _uiState.value.entries
+            val dayLabelSnapshot = _currentDayLabel.value
             viewModelScope.launch {
               invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
               highlightsJob = refreshFavoritedHighlightsWorkflow(
@@ -950,10 +952,10 @@ class JournalViewModel(
               )
               emitTaskerEntrySavedEvent(
                   context = fileManager.getContext(),
-                  date = _uiState.value.selectedDate,
-                  entries = _uiState.value.entries,
+                  date = date,
+                  entries = entriesSnapshot,
                   sourceEntry = entry,
-                  dayLabel = _currentDayLabel.value,
+                  dayLabel = dayLabelSnapshot,
                   customTime = customTime,
                   isEdit = false
               )
@@ -973,6 +975,8 @@ class JournalViewModel(
                 details = "date=$date index=$editedIndex chars=${newEntry.length} customTime=${customTime != null}"
             )
             updateLoadedStatisticsForChangedDate(date)
+            val entriesSnapshot = _uiState.value.entries
+            val dayLabelSnapshot = _currentDayLabel.value
             viewModelScope.launch {
               invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
               highlightsJob = refreshFavoritedHighlightsWorkflow(
@@ -983,10 +987,10 @@ class JournalViewModel(
               )
               emitTaskerEntrySavedEvent(
                   context = fileManager.getContext(),
-                  date = _uiState.value.selectedDate,
-                  entries = _uiState.value.entries,
+                  date = date,
+                  entries = entriesSnapshot,
                   sourceEntry = newEntry,
-                  dayLabel = _currentDayLabel.value,
+                  dayLabel = dayLabelSnapshot,
                   customTime = customTime,
                   isEdit = true,
                   entryIndexHint = editedIndex
@@ -1016,24 +1020,25 @@ class JournalViewModel(
                   appLogRepository.logInfo(
                       event = "Entry deleted",
                       details = "date=$date index=$index hadEntry=${deletedEntry != null}"
-                  )
-                  updateLoadedStatisticsForChangedDate(date)
-                  viewModelScope.launch {
-                    invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
-                  highlightsJob = refreshFavoritedHighlightsWorkflow(
+                   )
+                   updateLoadedStatisticsForChangedDate(date)
+                   val dayLabelSnapshot = _currentDayLabel.value
+                   viewModelScope.launch {
+                     invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+                   highlightsJob = refreshFavoritedHighlightsWorkflow(
                       scope = viewModelScope,
                       currentJob = highlightsJob,
                       starredDates = _starredDates.value,
                       uiState = _uiState
                   )
-                  deletedEntry?.let {
-                      emitTaskerEntryDeletedEvent(
-                          context = fileManager.getContext(),
-                          date = _uiState.value.selectedDate,
-                          sourceEntry = it,
-                          dayLabel = _currentDayLabel.value
-                      )
-                  }
+                   deletedEntry?.let {
+                       emitTaskerEntryDeletedEvent(
+                           context = fileManager.getContext(),
+                           date = date,
+                           sourceEntry = it,
+                           dayLabel = dayLabelSnapshot
+                       )
+                   }
               }
           }
       }
@@ -1085,24 +1090,25 @@ class JournalViewModel(
               appLogRepository.logInfo(
                   event = "Entry deleted",
                   details = "date=$date index=$index hadEntry=${deletedEntry != null}"
-              )
-              updateLoadedStatisticsForChangedDate(date)
-              viewModelScope.launch {
-                invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
-              highlightsJob = refreshFavoritedHighlightsWorkflow(
+               )
+               updateLoadedStatisticsForChangedDate(date)
+               val dayLabelSnapshot = _currentDayLabel.value
+               viewModelScope.launch {
+                 invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+               highlightsJob = refreshFavoritedHighlightsWorkflow(
                   scope = viewModelScope,
                   currentJob = highlightsJob,
                   starredDates = _starredDates.value,
                   uiState = _uiState
               )
-              deletedEntry?.let {
-                  emitTaskerEntryDeletedEvent(
-                      context = fileManager.getContext(),
-                      date = _uiState.value.selectedDate,
-                      sourceEntry = it,
-                      dayLabel = _currentDayLabel.value
-                  )
-              }
+               deletedEntry?.let {
+                   emitTaskerEntryDeletedEvent(
+                       context = fileManager.getContext(),
+                       date = date,
+                       sourceEntry = it,
+                       dayLabel = dayLabelSnapshot
+                   )
+               }
           }
       }
 
@@ -1443,6 +1449,8 @@ class JournalViewModel(
                             setEntriesForDate = fileManager::setEntriesForDate,
                             getDayLabel = fileManager::getDayLabel,
                             setDayLabel = fileManager::setDayLabel,
+                            getRevisitDate = fileManager::getRevisitDate,
+                            setRevisit = fileManager::setRevisit,
                             isDateStarred = fileManager::isDateStarred,
                             setStarred = fileManager::setStarred,
                             mergeShortcodes = { newShortcodes ->

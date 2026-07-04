@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Встановити час</string>
     <string name="addentry_event_chip">Подія</string>
     <string name="addentry_pick_time_title">Виберіть час</string>
-    <string name="addentry_hour_label">годину</string>
-    <string name="addentry_minute_label">хвилина</string>
     <string name="addentry_new_event_title">Нова подія</string>
     <string name="addentry_title_label">Назва</string>
     <string name="addentry_event_description_label">Опис події</string>

@@ -2,6 +2,7 @@ package com.mj.yaja.ui.screens
 
 import android.os.Build
 import android.view.HapticFeedbackConstants
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
@@ -65,7 +66,9 @@ import com.mj.yaja.ui.theme.DataFontScaleWrapper
 import com.mj.yaja.ui.theme.metaSmallTextStyle
 import com.mj.yaja.ui.theme.metaTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
+import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.expressivePressMotion
+import com.mj.yaja.ui.design.tweenSpec
 import java.time.LocalDate
 import kotlin.math.absoluteValue
 import kotlinx.coroutines.delay
@@ -100,6 +103,7 @@ fun JournalEntryItem(
         entryStyle: EntryStyle = EntryStyle.CARDS
 ) {
         val view = LocalView.current
+        val motionPreference = LocalAnimationPreference.current
         var isExpanded by remember { mutableStateOf(false) }
         var isDeleteSwipeArmed by remember { mutableStateOf(false) }
 
@@ -258,6 +262,7 @@ fun JournalEntryItem(
                                 Modifier.fillMaxWidth()
                                         .padding(horizontal = 20.dp)
                                         .then(wobbleModifier)
+                                        .animateContentSize(animationSpec = motionPreference.tweenSpec(180))
                                         .expressivePressMotion(interactionSource, pressedScale = 0.98f)
                                         .combinedClickable(
                                                 interactionSource = interactionSource,
@@ -378,19 +383,22 @@ fun JournalEntryItem(
                                                                 modifier = Modifier.padding(bottom = 8.dp),
                                                                 verticalAlignment = Alignment.CenterVertically
                                                         ) {
-                                                                mentionedEventTime
-                                                                        ?.takeIf {
-                                                                                val recordedTime =
-                                                                                        match?.groupValues?.getOrNull(1)
-                                                                                it != recordedTime &&
-                                                                                        it !=
-                                                                                                "${recordedTime} Hrs" &&
-                                                                                        !eventTextStartsWithTime(
-                                                                                                cleanEntry,
-                                                                                                it
-                                                                                        )
-                                                                        }
-                                                                        ?.let { mentionedTime ->
+                                                                val displayedEventTime =
+                                                                        mentionedEventTime
+                                                                                ?.takeIf {
+                                                                                        val recordedTime =
+                                                                                                match?.groupValues?.getOrNull(1)
+                                                                                        it != recordedTime &&
+                                                                                                it !=
+                                                                                                        "${recordedTime} Hrs" &&
+                                                                                                !eventTextStartsWithTime(
+                                                                                                        cleanEntry,
+                                                                                                        it
+                                                                                                )
+                                                                                }
+                                                                val isFullDayEvent =
+                                                                        mentionedEventTime == null
+                                                                if (displayedEventTime != null || isFullDayEvent) {
                                                                                 Surface(
                                                                                         shape =
                                                                                                 RoundedCornerShape(
@@ -414,7 +422,10 @@ fun JournalEntryItem(
                                                                                         ) {
                                                                                                 Text(
                                                                                                         text =
-                                                                                                                mentionedTime,
+                                                                                                                displayedEventTime
+                                                                                                                        ?: stringResource(
+                                                                                                                                R.string.addentry_full_day_event_label
+                                                                                                                        ),
                                                                                                         style =
                                                                                                                 MaterialTheme.typography.metaSmallTextStyle(),
                                                                                                         color =
@@ -430,7 +441,7 @@ fun JournalEntryItem(
                                                                                                         8.dp
                                                                                                 )
                                                                                 )
-                                                                        }
+                                                                }
 
                                                                 Surface(
                                                                         shape =

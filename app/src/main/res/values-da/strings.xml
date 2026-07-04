@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Indstil tid</string>
     <string name="addentry_event_chip">Tilfælde</string>
     <string name="addentry_pick_time_title">Vælg tid</string>
-    <string name="addentry_hour_label">Time</string>
-    <string name="addentry_minute_label">Minut</string>
     <string name="addentry_new_event_title">Ny begivenhed</string>
     <string name="addentry_title_label">Titel</string>
     <string name="addentry_event_description_label">Begivenhedsbeskrivelse</string>

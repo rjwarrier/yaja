@@ -787,8 +787,6 @@
     <string name="addentry_set_time">સમય સેટ કરો</string>
     <string name="addentry_event_chip">ઘટના</string>
     <string name="addentry_pick_time_title">સમય પસંદ કરો</string>
-    <string name="addentry_hour_label">કલાક</string>
-    <string name="addentry_minute_label">મિનિટ</string>
     <string name="addentry_new_event_title">નવી ઘટના</string>
     <string name="addentry_title_label">શીર્ષક</string>
     <string name="addentry_event_description_label">ઇવેન્ટ વર્ણન</string>

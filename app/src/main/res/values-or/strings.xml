@@ -787,8 +787,6 @@
     <string name="addentry_set_time">ସମୟ ସ୍ଥିର କରନ୍ତୁ |</string>
     <string name="addentry_event_chip">ଘଟଣା</string>
     <string name="addentry_pick_time_title">ସମୟ ବାଛନ୍ତୁ |</string>
-    <string name="addentry_hour_label">ଘଣ୍ଟା |</string>
-    <string name="addentry_minute_label">ମିନିଟ୍ |</string>
     <string name="addentry_new_event_title">ନୂତନ ଘଟଣା |</string>
     <string name="addentry_title_label">ଆଖ୍ୟା</string>
     <string name="addentry_event_description_label">ଘଟଣା ବର୍ଣ୍ଣନା</string>

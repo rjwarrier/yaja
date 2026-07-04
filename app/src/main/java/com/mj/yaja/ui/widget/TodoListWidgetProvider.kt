@@ -318,7 +318,8 @@ class TodoListWidgetProvider : AppWidgetProvider() {
             val displayText = intent.getStringExtra(EXTRA_DISPLAY_TEXT)
             val nextCheckedState = !intent.getBooleanExtra(EXTRA_IS_CHECKED, false)
             val todoIndexRepository = TodoIndexRepository.getInstance(appContext)
-            if (date != null && entryIndex >= 0 && lineIndex >= 0) {
+            val trustedMutation = isTrustedWidgetMutationIntent(appContext, intent)
+            if (trustedMutation && date != null && entryIndex >= 0 && lineIndex >= 0) {
                 val changed = todoIndexRepository.setCheckedState(
                     date = date,
                     entryIndex = entryIndex,

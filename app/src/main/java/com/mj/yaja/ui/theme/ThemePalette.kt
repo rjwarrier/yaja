@@ -7,6 +7,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.CustomPalette
@@ -179,17 +180,20 @@ fun buildCustomPaletteScheme(
             inversePrimary = primary
         )
     } else {
+        val lightPrimary = tint(primary, Color.Black, 0.08f)
+        val lightSecondary = tint(secondary, Color.Black, 0.1f)
+        val lightTertiary = tint(tertiary, Color.Black, 0.12f)
         lightColorScheme(
-            primary = tint(primary, Color.Black, 0.08f),
-            onPrimary = Color.White,
+            primary = lightPrimary,
+            onPrimary = accessibleTextColor(lightPrimary),
             primaryContainer = tint(primary, Color.White, 0.72f),
             onPrimaryContainer = tint(primary, Color.Black, 0.68f),
-            secondary = tint(secondary, Color.Black, 0.1f),
-            onSecondary = Color.White,
+            secondary = lightSecondary,
+            onSecondary = accessibleTextColor(lightSecondary),
             secondaryContainer = tint(secondary, Color.White, 0.76f),
             onSecondaryContainer = tint(secondary, Color.Black, 0.66f),
-            tertiary = tint(tertiary, Color.Black, 0.12f),
-            onTertiary = Color.White,
+            tertiary = lightTertiary,
+            onTertiary = accessibleTextColor(lightTertiary),
             tertiaryContainer = tint(tertiary, Color.White, 0.74f),
             onTertiaryContainer = tint(tertiary, Color.Black, 0.66f),
             background = background,
@@ -213,6 +217,21 @@ fun buildCustomPaletteScheme(
 
 private fun tint(color: Color, target: Color, amount: Float): Color =
     lerp(color, target, amount.coerceIn(0f, 1f))
+
+private fun accessibleTextColor(container: Color): Color {
+    val darkText = Color(0xFF111111)
+    val whiteContrast = contrastRatio(container, Color.White)
+    val darkContrast = contrastRatio(container, darkText)
+    return if (whiteContrast >= 4.5f || whiteContrast >= darkContrast) Color.White else darkText
+}
+
+private fun contrastRatio(first: Color, second: Color): Float {
+    val firstLuminance = first.luminance()
+    val secondLuminance = second.luminance()
+    val lighter = maxOf(firstLuminance, secondLuminance)
+    val darker = minOf(firstLuminance, secondLuminance)
+    return (lighter + 0.05f) / (darker + 0.05f)
+}
 
 fun personalThemeSpec(slot: PersonalThemeSlot): ThemePaletteSpec {
     val main = hsvColor(slot.hue, slot.saturation, slot.brightness)

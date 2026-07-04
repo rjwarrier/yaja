@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Aseta aika</string>
     <string name="addentry_event_chip">Tapahtuma</string>
     <string name="addentry_pick_time_title">Valitse aika</string>
-    <string name="addentry_hour_label">Tunnin</string>
-    <string name="addentry_minute_label">Minuutti</string>
     <string name="addentry_new_event_title">Uusi Tapahtuma</string>
     <string name="addentry_title_label">Otsikko</string>
     <string name="addentry_event_description_label">Tapahtuman kuvaus</string>

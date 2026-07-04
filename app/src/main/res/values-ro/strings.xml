@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Setați ora</string>
     <string name="addentry_event_chip">Eveniment</string>
     <string name="addentry_pick_time_title">Alege timpul</string>
-    <string name="addentry_hour_label">Oră</string>
-    <string name="addentry_minute_label">Minut</string>
     <string name="addentry_new_event_title">Eveniment nou</string>
     <string name="addentry_title_label">Titlu</string>
     <string name="addentry_event_description_label">Descrierea evenimentului</string>

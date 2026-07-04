@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Weka wakati</string>
     <string name="addentry_event_chip">Tukio</string>
     <string name="addentry_pick_time_title">Chagua wakati</string>
-    <string name="addentry_hour_label">Saa</string>
-    <string name="addentry_minute_label">Dakika</string>
     <string name="addentry_new_event_title">Tukio Jipya</string>
     <string name="addentry_title_label">Kichwa</string>
     <string name="addentry_event_description_label">Maelezo ya Tukio</string>

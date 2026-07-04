@@ -687,8 +687,6 @@
     <string name="addentry_set_time">ಸಮಯ ಹೊಂದಿಸಿ</string>
     <string name="addentry_event_chip">ಕಾರ್ಯಕ್ರಮ</string>
     <string name="addentry_pick_time_title">ಸಮಯ ಆಯ್ಕೆಮಾಡಿ</string>
-    <string name="addentry_hour_label">ಗಂಟೆ</string>
-    <string name="addentry_minute_label">ನಿಮಿಷ</string>
     <string name="addentry_new_event_title">ಹೊಸ ಕಾರ್ಯಕ್ರಮ</string>
     <string name="addentry_title_label">ಶೀರ್ಷಿಕೆ</string>
     <string name="addentry_event_description_label">ಕಾರ್ಯಕ್ರಮದ ವಿವರಣೆ</string>

@@ -787,11 +787,12 @@
     <string name="addentry_set_time">Set time</string>
     <string name="addentry_event_chip">Event</string>
     <string name="addentry_pick_time_title">Pick time</string>
-    <string name="addentry_hour_label">Hour</string>
-    <string name="addentry_minute_label">Minute</string>
     <string name="addentry_new_event_title">New Event</string>
     <string name="addentry_title_label">Title</string>
     <string name="addentry_event_description_label">Event Description</string>
+    <string name="addentry_full_day_event_label">Full day event</string>
+    <string name="addentry_switch_to_keyboard">Switch to keyboard input</string>
+    <string name="addentry_switch_to_dial">Switch to dial</string>
 
     <!-- Add Entry: review sheet -->
     <string name="addentry_todos_found_title">Todos Found</string>

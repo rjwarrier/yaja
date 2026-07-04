@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -122,244 +123,131 @@ fun AppNavigationDrawer(
                                 ) {
                                         var topSectionHeightPx by remember { mutableStateOf(0) }
                                         var bottomSectionHeightPx by remember { mutableStateOf(0) }
-                                        val viewportHeightPx = constraints.maxHeight
-                                        val shouldScrollWholeMenu =
-                                                topSectionHeightPx + bottomSectionHeightPx > viewportHeightPx
-
-                                        if (shouldScrollWholeMenu) {
-                                                Column(
-                                                        modifier =
-                                                                Modifier.fillMaxWidth()
-                                                                        .verticalScroll(drawerScrollState)
-                                                ) {
-                                                        Column(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .onSizeChanged {
-                                                                                        topSectionHeightPx = it.height
-                                                                                }
-                                                        ) {
-                                                                Spacer(Modifier.height(24.dp))
-                                                                DrawerBrandHeader(
-                                                                        versionName = BuildConfig.VERSION_NAME,
-                                                                        onLogoClick = { showLogoEasterEgg = true },
-                                                                        onOpenPlayStore = {
-                                                                                uriHandler.openUri(
-                                                                                        "https://play.google.com/store/apps/details?id=com.mj.yaja"
-                                                                                )
-                                                                        },
-                                                                        onOpenWebsite = {
-                                                                                uriHandler.openUri("https://ranjithj.in/yaja/")
-                                                                        },
-                                                                        onShareApp = {
-                                                                                val intent = Intent(Intent.ACTION_SEND).apply {
-                                                                                        type = "text/plain"
-                                                                                        putExtra(Intent.EXTRA_TEXT, shareTextBody)
-                                                                                }
-                                                                                context.startActivity(
-                                                                                        Intent.createChooser(intent, shareYajaTitle)
-                                                                                )
-                                                                        }
-                                                                )
-                                                                Spacer(Modifier.height(24.dp))
-                                                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                                                                Spacer(Modifier.height(16.dp))
-                                                                DrawerPrimarySection(
-                                                                        currentRoute = currentRoute,
-                                                                        syncProgress = syncProgress,
-                                                                        backgroundWorkLabel = backgroundWorkLabel,
-                                                                        syncStartedAtMillis = syncStartedAtMillis,
-                                                                        onNavigateToJournal = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToJournal()
-                                                                        },
-                                                                        onNavigateToCalendar = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToCalendar()
-                                                                        }
-                                                                )
-                                                                DrawerPowerFeaturesSection(
-                                                                        currentRoute = currentRoute,
-                                                                        showLookbackInNavBar = showLookbackInNavBar,
-                                                                        showKeywordsInNavBar = showKeywordsInNavBar,
-                                                                        showTodosInNavBar = showTodosInNavBar,
-                                                                        showStatistics = showStatistics,
-                                                                        showStatisticsInNavBar = showStatisticsInNavBar,
-                                                                        onNavigateToLookback = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToLookback()
-                                                                        },
-                                                                        onNavigateToKeywords = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToKeywords()
-                                                                        },
-                                                                        onNavigateToStatistics = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToStatistics()
-                                                                        },
-                                                                        onNavigateToTodos = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToTodos()
-                                                                        }
-                                                                )
-                                                                DrawerWritingToolsSection(
-                                                                        currentRoute = currentRoute,
-                                                                        onNavigateToShortcodes = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToShortcodes()
-                                                                        }
-                                                                )
-                                                                Spacer(Modifier.height(12.dp))
-                                                        }
-                                                        Column(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .onSizeChanged {
-                                                                                        bottomSectionHeightPx = it.height
-                                                                                }
-                                                        ) {
-                                                                DrawerAdvancedAndAppSection(
-                                                                        currentRoute = currentRoute,
-                                                                        showBackupReminder = showBackupReminder,
-                                                                        syncProgress = syncProgress,
-                                                                        backgroundWorkLabel = backgroundWorkLabel,
-                                                                        syncStartedAtMillis = syncStartedAtMillis,
-                                                                        onNavigateToRebuildCache = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToRebuildCache()
-                                                                        },
-                                                                        onBackupData = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onBackupData()
-                                                                        },
-                                                                        onNavigateToSettings = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToSettings()
-                                                                        },
-                                                                        onNavigateToHelp = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToHelp()
-                                                                        }
-                                                                )
-                                                        }
+                                        val density = LocalDensity.current
+                                        val spacerHeight =
+                                                with(density) {
+                                                        (constraints.maxHeight -
+                                                                topSectionHeightPx -
+                                                                bottomSectionHeightPx)
+                                                                .coerceAtLeast(0)
+                                                                .toDp()
                                                 }
-                                        } else {
+
+                                        Column(
+                                                modifier =
+                                                        Modifier.fillMaxWidth()
+                                                                .verticalScroll(drawerScrollState)
+                                        ) {
                                                 Column(
                                                         modifier =
                                                                 Modifier.fillMaxWidth()
-                                                                        .fillMaxHeight()
-                                                ) {
-                                                        Column(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .onSizeChanged {
-                                                                                        topSectionHeightPx = it.height
-                                                                                }
-                                                        ) {
-                                                Spacer(Modifier.height(24.dp))
-                                                DrawerBrandHeader(
-                                                        versionName = BuildConfig.VERSION_NAME,
-                                                        onLogoClick = { showLogoEasterEgg = true },
-                                                        onOpenPlayStore = {
-                                                                uriHandler.openUri(
-                                                                        "https://play.google.com/store/apps/details?id=com.mj.yaja"
-                                                                )
-                                                        },
-                                                        onOpenWebsite = {
-                                                                uriHandler.openUri("https://ranjithj.in/yaja/")
-                                                        },
-                                                        onShareApp = {
-                                                                val intent = Intent(Intent.ACTION_SEND).apply {
-                                                                        type = "text/plain"
-                                                                        putExtra(Intent.EXTRA_TEXT, shareTextBody)
-                                                                }
-                                                                context.startActivity(
-                                                                        Intent.createChooser(intent, shareYajaTitle)
-                                                                )
-                                                        }
-                                                )
-                                                Spacer(Modifier.height(24.dp))
-                                                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-                                                Spacer(Modifier.height(16.dp))
-                                                DrawerPrimarySection(
-                                                        currentRoute = currentRoute,
-                                                        syncProgress = syncProgress,
-                                                        backgroundWorkLabel = backgroundWorkLabel,
-                                                        syncStartedAtMillis = syncStartedAtMillis,
-                                                        onNavigateToJournal = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToJournal()
-                                                        },
-                                                        onNavigateToCalendar = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToCalendar()
-                                                        }
-                                                )
-                                                DrawerPowerFeaturesSection(
-                                                        currentRoute = currentRoute,
-                                                        showLookbackInNavBar = showLookbackInNavBar,
-                                                        showKeywordsInNavBar = showKeywordsInNavBar,
-                                                        showTodosInNavBar = showTodosInNavBar,
-                                                        showStatistics = showStatistics,
-                                                        showStatisticsInNavBar = showStatisticsInNavBar,
-                                                        onNavigateToLookback = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToLookback()
-                                                        },
-                                                        onNavigateToKeywords = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToKeywords()
-                                                        },
-                                                        onNavigateToStatistics = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToStatistics()
-                                                        },
-                                                        onNavigateToTodos = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToTodos()
-                                                        }
-                                                )
-                                                DrawerWritingToolsSection(
-                                                        currentRoute = currentRoute,
-                                                        onNavigateToShortcodes = {
-                                                                scope.launch { drawerState.close() }
-                                                                onNavigateToShortcodes()
-                                                        }
-                                                )
-                                                Spacer(Modifier.height(12.dp))
-                                                        }
-                                                        Spacer(modifier = Modifier.weight(1f))
-                                                        Column(
-                                                                modifier =
-                                                                        Modifier.fillMaxWidth()
-                                                                                .onSizeChanged {
-                                                                                        bottomSectionHeightPx = it.height
-                                                                                }
-                                                        ) {
-                                                                DrawerAdvancedAndAppSection(
-                                                                        currentRoute = currentRoute,
-                                                                        showBackupReminder = showBackupReminder,
-                                                                        syncProgress = syncProgress,
-                                                                        backgroundWorkLabel = backgroundWorkLabel,
-                                                                        syncStartedAtMillis = syncStartedAtMillis,
-                                                                        onNavigateToRebuildCache = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToRebuildCache()
-                                                                        },
-                                                                        onBackupData = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onBackupData()
-                                                                        },
-                                                                        onNavigateToSettings = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToSettings()
-                                                                        },
-                                                                        onNavigateToHelp = {
-                                                                                scope.launch { drawerState.close() }
-                                                                                onNavigateToHelp()
+                                                                        .onSizeChanged {
+                                                                                topSectionHeightPx = it.height
                                                                         }
-                                                                )
-                                                        }
+                                                ) {
+                                                        Spacer(Modifier.height(24.dp))
+                                                        DrawerBrandHeader(
+                                                                versionName = BuildConfig.VERSION_NAME,
+                                                                onLogoClick = { showLogoEasterEgg = true },
+                                                                onOpenPlayStore = {
+                                                                        uriHandler.openUri(
+                                                                                "https://play.google.com/store/apps/details?id=com.mj.yaja"
+                                                                        )
+                                                                },
+                                                                onOpenWebsite = {
+                                                                        uriHandler.openUri("https://ranjithj.in/yaja/")
+                                                                },
+                                                                onShareApp = {
+                                                                        val intent = Intent(Intent.ACTION_SEND).apply {
+                                                                                type = "text/plain"
+                                                                                putExtra(Intent.EXTRA_TEXT, shareTextBody)
+                                                                        }
+                                                                        context.startActivity(
+                                                                                Intent.createChooser(intent, shareYajaTitle)
+                                                                        )
+                                                                }
+                                                        )
+                                                        Spacer(Modifier.height(24.dp))
+                                                        HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                                                        Spacer(Modifier.height(16.dp))
+                                                        DrawerPrimarySection(
+                                                                currentRoute = currentRoute,
+                                                                syncProgress = syncProgress,
+                                                                backgroundWorkLabel = backgroundWorkLabel,
+                                                                syncStartedAtMillis = syncStartedAtMillis,
+                                                                onNavigateToJournal = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToJournal()
+                                                                },
+                                                                onNavigateToCalendar = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToCalendar()
+                                                                }
+                                                        )
+                                                        DrawerPowerFeaturesSection(
+                                                                currentRoute = currentRoute,
+                                                                showLookbackInNavBar = showLookbackInNavBar,
+                                                                showKeywordsInNavBar = showKeywordsInNavBar,
+                                                                showTodosInNavBar = showTodosInNavBar,
+                                                                showStatistics = showStatistics,
+                                                                showStatisticsInNavBar = showStatisticsInNavBar,
+                                                                onNavigateToLookback = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToLookback()
+                                                                },
+                                                                onNavigateToKeywords = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToKeywords()
+                                                                },
+                                                                onNavigateToStatistics = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToStatistics()
+                                                                },
+                                                                onNavigateToTodos = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToTodos()
+                                                                }
+                                                        )
+                                                        DrawerWritingToolsSection(
+                                                                currentRoute = currentRoute,
+                                                                onNavigateToShortcodes = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToShortcodes()
+                                                                }
+                                                        )
+                                                        Spacer(Modifier.height(12.dp))
+                                                }
+                                                Spacer(Modifier.height(spacerHeight))
+                                                Column(
+                                                        modifier =
+                                                                Modifier.fillMaxWidth()
+                                                                        .onSizeChanged {
+                                                                                bottomSectionHeightPx = it.height
+                                                                        }
+                                                ) {
+                                                        DrawerAdvancedAndAppSection(
+                                                                currentRoute = currentRoute,
+                                                                showBackupReminder = showBackupReminder,
+                                                                syncProgress = syncProgress,
+                                                                backgroundWorkLabel = backgroundWorkLabel,
+                                                                syncStartedAtMillis = syncStartedAtMillis,
+                                                                onNavigateToRebuildCache = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToRebuildCache()
+                                                                },
+                                                                onBackupData = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onBackupData()
+                                                                },
+                                                                onNavigateToSettings = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToSettings()
+                                                                },
+                                                                onNavigateToHelp = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToHelp()
+                                                                }
+                                                        )
                                                 }
                                         }
                                 }

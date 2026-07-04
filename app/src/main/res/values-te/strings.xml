@@ -686,8 +686,6 @@
     <string name="addentry_set_time">సమయాన్ని సెట్ చేయి</string>
     <string name="addentry_event_chip">ఈవెంట్</string>
     <string name="addentry_pick_time_title">సమయాన్ని ఎంచుకోండి</string>
-    <string name="addentry_hour_label">గంట</string>
-    <string name="addentry_minute_label">నిమిషం</string>
     <string name="addentry_new_event_title">కొత్త ఈవెంట్</string>
     <string name="addentry_title_label">శీర్షిక</string>
     <string name="addentry_event_description_label">ఈవెంట్ వివరణ</string>

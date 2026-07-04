@@ -683,8 +683,6 @@
     <string name="addentry_set_time">Đặt giờ</string>
     <string name="addentry_event_chip">Sự kiện</string>
     <string name="addentry_pick_time_title">Chọn giờ</string>
-    <string name="addentry_hour_label">Giờ</string>
-    <string name="addentry_minute_label">Phút</string>
     <string name="addentry_new_event_title">Sự Kiện Mới</string>
     <string name="addentry_title_label">Tiêu đề</string>
     <string name="addentry_event_description_label">Mô Tả Sự Kiện</string>

@@ -787,8 +787,6 @@
     <string name="addentry_set_time">ਸਮਾਂ ਸੈੱਟ ਕਰੋ</string>
     <string name="addentry_event_chip">ਘਟਨਾ</string>
     <string name="addentry_pick_time_title">ਸਮਾਂ ਚੁਣੋ</string>
-    <string name="addentry_hour_label">ਘੰਟਾ</string>
-    <string name="addentry_minute_label">ਮਿੰਟ</string>
     <string name="addentry_new_event_title">ਨਵਾਂ ਇਵੈਂਟ</string>
     <string name="addentry_title_label">ਸਿਰਲੇਖ</string>
     <string name="addentry_event_description_label">ਇਵੈਂਟ ਵਰਣਨ</string>

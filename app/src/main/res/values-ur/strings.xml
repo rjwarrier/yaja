@@ -774,8 +774,6 @@
     <string name="addentry_set_time">وقت مقرر کریں۔</string>
     <string name="addentry_event_chip">واقعہ</string>
     <string name="addentry_pick_time_title">وقت کا انتخاب کریں۔</string>
-    <string name="addentry_hour_label">گھنٹہ</string>
-    <string name="addentry_minute_label">منٹ</string>
     <string name="addentry_new_event_title">نیا واقعہ</string>
     <string name="addentry_title_label">عنوان</string>
     <string name="addentry_event_description_label">واقعہ کی تفصیل</string>

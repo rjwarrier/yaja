@@ -117,7 +117,10 @@ class TodoIndexRepository private constructor(context: Context) {
         dayLabel: String,
         fingerprint: JournalStorageFingerprint? = null
     ) {
-        val parsed = parseDate(date, entries, dayLabel).map { it.toTodoIndexEntity() }
+        val parsedEntries = parseDate(date, entries, dayLabel)
+        val parsed = parsedEntries.map { it.toTodoIndexEntity() }
+        _entries.value = sortEntries(_entries.value.filterNot { it.date == date } + parsedEntries)
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             database.runInTransaction {
                 todoDao.deleteByDate(date.toString())
@@ -132,6 +135,8 @@ class TodoIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun removeDate(date: LocalDate, fingerprint: JournalStorageFingerprint? = null) {
+        _entries.value = sortEntries(_entries.value.filterNot { it.date == date })
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             todoDao.deleteByDate(date.toString())
         }
@@ -149,31 +154,36 @@ class TodoIndexRepository private constructor(context: Context) {
     ): Boolean {
         var changed = false
         val normalizedDisplayText = displayText.orEmpty().trim().lowercase()
-        val matches = _entries.value.any { entry ->
+        fun TodoIndexEntry.matchesTarget(): Boolean {
             val positionMatches =
-                entry.date == date &&
-                    entry.entryIndex == entryIndex &&
-                    entry.lineIndexInEntry == lineIndexInEntry
+                date == this.date &&
+                    entryIndex == this.entryIndex &&
+                    lineIndexInEntry == this.lineIndexInEntry
             val hashMatches =
-                entry.date == date &&
+                date == this.date &&
                     !lineHash.isNullOrBlank() &&
-                    entry.lineHash == lineHash
+                    this.lineHash == lineHash
             val textMatches =
-                entry.date == date &&
+                date == this.date &&
                     normalizedDisplayText.isNotBlank() &&
-                    entry.displayText.trim().lowercase() == normalizedDisplayText
-            val shouldUpdate =
-                when {
-                    positionMatches -> true
-                    !lineHash.isNullOrBlank() -> hashMatches
-                    normalizedDisplayText.isNotBlank() -> textMatches
-                    else -> false
-                }
-            shouldUpdate
+                    this.displayText.trim().lowercase() == normalizedDisplayText
+            return when {
+                positionMatches -> true
+                !lineHash.isNullOrBlank() -> hashMatches
+                normalizedDisplayText.isNotBlank() -> textMatches
+                else -> false
+            }
         }
+        val matches = _entries.value.any { it.matchesTarget() }
 
         if (matches) {
             changed = true
+            _entries.value = sortEntries(
+                _entries.value.map { entry ->
+                    if (entry.matchesTarget()) entry.copy(isChecked = isChecked) else entry
+                }
+            )
+            versionCounter.incrementAndGet()
             persistenceScope.launch {
                 if (!lineHash.isNullOrBlank()) {
                     todoDao.updateCheckedStateByHash(date.toString(), lineHash, isChecked)
@@ -194,12 +204,16 @@ class TodoIndexRepository private constructor(context: Context) {
         dayLabelForDate: (LocalDate) -> String,
         fingerprint: JournalStorageFingerprint? = null
     ) {
-        val rebuilt = mutableListOf<TodoIndexEntity>()
-        dates.toSet().forEach { date ->
-            rebuilt += parseDate(date, entriesForDate(date), dayLabelForDate(date)).map { it.toTodoIndexEntity() }
+        val dateSet = dates.toSet()
+        val rebuiltEntries = mutableListOf<TodoIndexEntry>()
+        dateSet.forEach { date ->
+            rebuiltEntries += parseDate(date, entriesForDate(date), dayLabelForDate(date))
         }
+        val rebuilt = rebuiltEntries.map { it.toTodoIndexEntity() }
+        _entries.value = sortEntries(_entries.value.filterNot { it.date in dateSet } + rebuiltEntries)
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
-            val dateStrings = dates.map { it.toString() }
+            val dateStrings = dateSet.map { it.toString() }
             if (dateStrings.isNotEmpty()) {
                 todoDao.deleteByDates(dateStrings)
             }
@@ -213,6 +227,8 @@ class TodoIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun clearAll() {
+        _entries.value = emptyList()
+        versionCounter.incrementAndGet()
         persistenceScope.launch {
             todoDao.deleteAll()
         }

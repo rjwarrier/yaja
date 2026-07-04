@@ -687,8 +687,6 @@
     <string name="addentry_set_time">Установить время</string>
     <string name="addentry_event_chip">Событие</string>
     <string name="addentry_pick_time_title">Выберите время</string>
-    <string name="addentry_hour_label">Час</string>
-    <string name="addentry_minute_label">Минута</string>
     <string name="addentry_new_event_title">Новое событие</string>
     <string name="addentry_title_label">Название</string>
     <string name="addentry_event_description_label">Описание события</string>

@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Tijd instellen</string>
     <string name="addentry_event_chip">Evenement</string>
     <string name="addentry_pick_time_title">Kies tijd</string>
-    <string name="addentry_hour_label">Uur</string>
-    <string name="addentry_minute_label">Minuut</string>
     <string name="addentry_new_event_title">Nieuw evenement</string>
     <string name="addentry_title_label">Titel</string>
     <string name="addentry_event_description_label">Evenementbeschrijving</string>

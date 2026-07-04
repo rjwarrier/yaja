@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Ρύθμιση ώρας</string>
     <string name="addentry_event_chip">Συμβάν</string>
     <string name="addentry_pick_time_title">Διάλεξε ώρα</string>
-    <string name="addentry_hour_label">Ωρα</string>
-    <string name="addentry_minute_label">Λεπτό</string>
     <string name="addentry_new_event_title">Νέα Εκδήλωση</string>
     <string name="addentry_title_label">Τίτλος</string>
     <string name="addentry_event_description_label">Περιγραφή συμβάντος</string>

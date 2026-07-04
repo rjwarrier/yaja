@@ -689,8 +689,6 @@
     <string name="addentry_set_time">時間を設定</string>
     <string name="addentry_event_chip">イベント</string>
     <string name="addentry_pick_time_title">時間を選択</string>
-    <string name="addentry_hour_label">時</string>
-    <string name="addentry_minute_label">分</string>
     <string name="addentry_new_event_title">新規イベント</string>
     <string name="addentry_title_label">タイトル</string>
     <string name="addentry_event_description_label">イベントの説明</string>

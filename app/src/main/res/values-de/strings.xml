@@ -687,8 +687,6 @@
     <string name="addentry_set_time">Uhrzeit festlegen</string>
     <string name="addentry_event_chip">Ereignis</string>
     <string name="addentry_pick_time_title">Uhrzeit wählen</string>
-    <string name="addentry_hour_label">Stunde</string>
-    <string name="addentry_minute_label">Minute</string>
     <string name="addentry_new_event_title">Neues Ereignis</string>
     <string name="addentry_title_label">Titel</string>
     <string name="addentry_event_description_label">Ereignisbeschreibung</string>

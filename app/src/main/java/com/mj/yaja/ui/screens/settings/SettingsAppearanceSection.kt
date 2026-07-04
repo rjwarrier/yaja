@@ -643,7 +643,6 @@ private fun PaletteGrid(
                 row.forEach { spec ->
                     PaletteCard(
                         modifier = Modifier.weight(1f),
-                        palette = spec.palette,
                         label = spec.label,
                         colors = spec.preview,
                         selected = spec.palette == selected,
@@ -662,7 +661,6 @@ private fun PaletteGrid(
 @Composable
 private fun PaletteCard(
     modifier: Modifier = Modifier,
-    palette: CustomPalette,
     label: String,
     colors: List<Color>,
     selected: Boolean,
@@ -670,20 +668,13 @@ private fun PaletteCard(
     onClick: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    val selectedColor =
-        when (palette) {
-            CustomPalette.YAJA -> Color(0xFF7E513F)
-            CustomPalette.OCEAN -> Color(0xFF203B4E)
-            CustomPalette.FOREST -> Color(0xFF31452E)
-            CustomPalette.ROSE -> Color(0xFF4C3041)
-            CustomPalette.AMBER -> Color(0xFF4D3B25)
-            CustomPalette.MONO -> Color(0xFF3C4048)
-            CustomPalette.SUNSET -> Color(0xFF5A3530)
-            CustomPalette.LAVENDER -> Color(0xFF473A5C)
-            CustomPalette.EARTH -> Color(0xFF4E4031)
-            CustomPalette.CYBER -> Color(0xFF203C46)
-            CustomPalette.PERSONAL -> Color(0xFF213E4D)
-        }
+    val selectedAnchor = colors.firstOrNull() ?: MaterialTheme.colorScheme.primary
+    val selectedColor = lerp(
+        selectedAnchor,
+        Color.Black,
+        if (selectedAnchor.luminance() > 0.45f) 0.56f else 0.22f
+    )
+    val selectedTextColor = if (selectedColor.luminance() > 0.42f) Color(0xFF111111) else Color.White
     ElevatedCard(
         onClick = onClick,
         modifier = modifier
@@ -718,9 +709,7 @@ private fun PaletteCard(
             Text(
                 text = label,
                 style = MaterialTheme.typography.titleSmall,
-                color = if (selectedColor.luminance() > 0.42f) Color(0xFF111111) else Color.White
-                    .takeIf { selected }
-                    ?: panelColors.primaryText
+                color = if (selected) selectedTextColor else panelColors.primaryText
             )
         }
     }

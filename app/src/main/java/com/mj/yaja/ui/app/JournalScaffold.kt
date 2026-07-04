@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
@@ -54,9 +55,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.R
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.ui.components.AppNavigationDrawer
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.enterOrNone
+import com.mj.yaja.ui.design.exitOrNone
+import com.mj.yaja.ui.design.floatTween
+import com.mj.yaja.ui.design.scaledDuration
+import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import kotlin.math.max
@@ -89,6 +97,7 @@ fun JournalScaffold(
     val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
     val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val motionPreference = LocalAnimationPreference.current
     val shouldShowBottomChrome =
         showBottomBar &&
             (currentRoute in topLevelRoutes)
@@ -251,16 +260,38 @@ fun JournalScaffold(
 
             AnimatedVisibility(
                 visible = drawerState.isClosed,
-                enter = fadeIn() + slideInVertically(initialOffsetY = { it / 2 }),
-                exit = fadeOut() + slideOutVertically(targetOffsetY = { it / 2 }),
+                enter = motionPreference.enterOrNone(
+                    fadeIn(animationSpec = motionPreference.floatTween(180)) +
+                        slideInVertically(
+                            animationSpec = motionPreference.tweenSpec(220),
+                            initialOffsetY = { it / 2 }
+                        )
+                ),
+                exit = motionPreference.exitOrNone(
+                    fadeOut(animationSpec = motionPreference.floatTween(140)) +
+                        slideOutVertically(
+                            animationSpec = motionPreference.tweenSpec(180),
+                            targetOffsetY = { it / 2 }
+                        )
+                ),
                 modifier = Modifier.align(Alignment.BottomCenter)
             ) { bottomBar() }
 
             val isImportRunning = importState is JournalViewModel.ImportState.Running
             AnimatedVisibility(
                 visible = isImportRunning && drawerState.isClosed,
-                enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
+                enter = motionPreference.enterOrNone(
+                    slideInVertically(
+                        animationSpec = motionPreference.tweenSpec(220),
+                        initialOffsetY = { it }
+                    ) + fadeIn(animationSpec = motionPreference.floatTween(180))
+                ),
+                exit = motionPreference.exitOrNone(
+                    slideOutVertically(
+                        animationSpec = motionPreference.tweenSpec(180),
+                        targetOffsetY = { it }
+                    ) + fadeOut(animationSpec = motionPreference.floatTween(140))
+                ),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = if (shouldShowBottomChrome) bottomChromePadding else 40.dp)
@@ -277,8 +308,18 @@ fun JournalScaffold(
 
             AnimatedVisibility(
                 visible = syncProgress != null || backgroundWorkLabel != null,
-                enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
+                enter = motionPreference.enterOrNone(
+                    slideInVertically(
+                        animationSpec = motionPreference.tweenSpec(220),
+                        initialOffsetY = { it }
+                    ) + fadeIn(animationSpec = motionPreference.floatTween(180))
+                ),
+                exit = motionPreference.exitOrNone(
+                    slideOutVertically(
+                        animationSpec = motionPreference.tweenSpec(180),
+                        targetOffsetY = { it }
+                    ) + fadeOut(animationSpec = motionPreference.floatTween(140))
+                ),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = if (shouldShowBottomChrome) syncChromePadding else 32.dp)
@@ -320,26 +361,27 @@ private fun SyncProgressPill(progress: Float?, label: String) {
         shadowElevation = 8.dp,
         modifier = Modifier
             .padding(horizontal = 24.dp)
-            .height(64.dp)
+            .heightIn(min = 64.dp)
             .widthIn(min = 240.dp, max = 380.dp)
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 20.dp),
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
                     text = label,
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 1
+                    maxLines = 2,
+                    modifier = Modifier.weight(1f)
                 )
                 if (progressText != null) {
                     Text(
@@ -358,7 +400,7 @@ private fun SyncProgressPill(progress: Float?, label: String) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             if (progress != null) {
                 SquigglyLinearProgressIndicator(
@@ -408,11 +450,11 @@ private fun ImportProgressChip(
         shadowElevation = 8.dp,
         modifier = Modifier
             .padding(horizontal = 24.dp)
-            .height(44.dp)
+            .heightIn(min = 44.dp)
             .widthIn(min = 200.dp, max = 300.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
@@ -436,10 +478,9 @@ private fun ImportProgressChip(
                 text = stringResource(R.string.settings_import_label),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1
+                maxLines = 1,
+                modifier = Modifier.weight(1f)
             )
-
-            Spacer(modifier = Modifier.weight(1f))
 
             IconButton(
                 onClick = onCancel,
@@ -463,16 +504,29 @@ private fun SquigglyLinearProgressIndicator(
     color: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.primary,
     trackColor: androidx.compose.ui.graphics.Color = MaterialTheme.colorScheme.surfaceVariant
 ) {
-    val infiniteTransition = rememberInfiniteTransition(label = "squiggly")
-    val phase by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 2f * PI.toFloat(),
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = "phase"
-    )
+    val motionPreference = LocalAnimationPreference.current
+    val phase = if (motionPreference == AnimationPreference.OFF) {
+        0f
+    } else {
+        val infiniteTransition = rememberInfiniteTransition(label = "squiggly")
+        val animatedPhase by infiniteTransition.animateFloat(
+            initialValue = 0f,
+            targetValue = 2f * PI.toFloat(),
+            animationSpec = infiniteRepeatable(
+                animation = tween(
+                    durationMillis = when (motionPreference) {
+                        AnimationPreference.FULL -> 1500
+                        AnimationPreference.REDUCED -> motionPreference.scaledDuration(3200)
+                        AnimationPreference.OFF -> 0
+                    },
+                    easing = LinearEasing
+                ),
+                repeatMode = RepeatMode.Restart
+            ),
+            label = "phase"
+        )
+        animatedPhase
+    }
 
     Canvas(modifier = modifier) {
         val width = size.width

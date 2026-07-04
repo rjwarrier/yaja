@@ -35,6 +35,7 @@ import androidx.compose.material.icons.rounded.EmojiEvents
 import androidx.compose.material.icons.rounded.EventRepeat
 import androidx.compose.material.icons.rounded.ExpandLess
 import androidx.compose.material.icons.rounded.ExpandMore
+import androidx.compose.material.icons.rounded.Today
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -44,8 +45,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.dpSpring
 import com.mj.yaja.ui.design.expressiveFabMotion
 import com.mj.yaja.ui.design.expressivePressMotion
+import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.tweenSpec
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -251,6 +256,7 @@ internal fun TodoFilterChips(
     eventCount: Int,
     onFilterSelected: (TodoFilter) -> Unit
 ) {
+    val motionPreference = LocalAnimationPreference.current
     val selectedContainer = when (selectedFilter) {
         TodoFilter.EVENTS -> lerp(
             MaterialTheme.colorScheme.surfaceContainerHighest,
@@ -288,6 +294,10 @@ internal fun TodoFilterChips(
         val slotWidth = innerMaxWidth / items.size
         val animatedOffset by animateDpAsState(
             targetValue = slotWidth * selectedIndex,
+            animationSpec = motionPreference.dpSpring(
+                dampingRatio = Spring.DampingRatioNoBouncy,
+                stiffness = Spring.StiffnessMedium
+            ),
             label = "todo_filter_segment_offset"
         )
         Surface(
@@ -496,12 +506,14 @@ internal fun TodoItemCard(
     onToggle: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val motionPreference = LocalAnimationPreference.current
     val containerColor by animateColorAsState(
         targetValue = if (item.isChecked) {
             MaterialTheme.colorScheme.surfaceContainerHigh
         } else {
             MaterialTheme.colorScheme.surfaceContainerLow
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "todo_item_container"
     )
     val textColor by animateColorAsState(
@@ -510,6 +522,7 @@ internal fun TodoItemCard(
         } else {
             MaterialTheme.colorScheme.onSurface
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "todo_item_text"
     )
     val chipColor by animateColorAsState(
@@ -518,6 +531,7 @@ internal fun TodoItemCard(
         } else {
             MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.42f)
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "todo_item_chip_container"
     )
     val chipTextColor by animateColorAsState(
@@ -526,11 +540,12 @@ internal fun TodoItemCard(
         } else {
             MaterialTheme.colorScheme.onPrimaryContainer
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "todo_item_chip_text"
     )
     val cardScale by animateFloatAsState(
         targetValue = if (item.isChecked) 0.985f else 1f,
-        animationSpec = androidx.compose.animation.core.spring(
+        animationSpec = motionPreference.floatSpring(
             dampingRatio = Spring.DampingRatioNoBouncy,
             stiffness = Spring.StiffnessMediumLow
         ),
@@ -542,7 +557,7 @@ internal fun TodoItemCard(
     Surface(
         modifier = modifier
             .fillMaxWidth()
-            .animateContentSize()
+            .animateContentSize(animationSpec = motionPreference.tweenSpec(180))
             .scale(cardScale)
             .expressivePressMotion(interactionSource, pressedScale = 0.97f),
         shape = RoundedCornerShape(22.dp),
@@ -723,26 +738,27 @@ internal fun EventItemCard(
                         }
                     }
                 }
-                item.mentionedTime
-                    ?.takeIf { it.isNotBlank() && it != item.recordedTime && it != "${item.recordedTime} Hrs" }
-                    ?.let { mentionedTime ->
-                        Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = timeChipContainer
+                val mentionedTime =
+                    item.mentionedTime
+                        ?.takeIf { it.isNotBlank() && it != item.recordedTime && it != "${item.recordedTime} Hrs" }
+                if (mentionedTime != null || item.mentionedTime == null) {
+                    Surface(
+                        shape = RoundedCornerShape(8.dp),
+                        color = timeChipContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(5.dp)
                         ) {
-                            Row(
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(5.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Rounded.Alarm,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(14.dp),
-                                    tint = timeChipContent
-                                )
-                                Text(
-                                text = mentionedTime,
+                            Icon(
+                                imageVector = if (mentionedTime == null) Icons.Rounded.Today else Icons.Rounded.Alarm,
+                                contentDescription = null,
+                                modifier = Modifier.size(14.dp),
+                                tint = timeChipContent
+                            )
+                            Text(
+                                text = mentionedTime ?: stringResource(R.string.addentry_full_day_event_label),
                                 style = MaterialTheme.typography.metaTextStyle().copy(fontWeight = FontWeight.SemiBold),
                                 color = timeChipContent
                             )

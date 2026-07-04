@@ -195,6 +195,7 @@ internal fun AddEntryTopSection(
             recordedTime = recordedTime,
             selectedEntryKind = selectedEntryKind,
             entryText = entryText,
+            isEditingMode = isEditingMode,
             onRecordedTimeClick = onRecordedTimeClick,
             dayFormatter = dayFormatter,
             weekdayFormatter = weekdayFormatter,

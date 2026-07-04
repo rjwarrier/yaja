@@ -48,7 +48,7 @@ class DayOneImporter(
                 extractJsonFromZip(uri)
             else ->
                 context.contentResolver.openInputStream(uri)
-                    ?.bufferedReader(Charsets.UTF_8)?.readText()
+                    ?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }
         } ?: throw IllegalArgumentException("Could not read file — ensure it is a Day One .zip or .json export")
 
         return parseAndImport(json, onProgress)

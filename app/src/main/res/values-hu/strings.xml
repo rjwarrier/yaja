@@ -787,8 +787,6 @@
     <string name="addentry_set_time">Állítsa be az időt</string>
     <string name="addentry_event_chip">Esemény</string>
     <string name="addentry_pick_time_title">Válassz időpontot</string>
-    <string name="addentry_hour_label">Óra</string>
-    <string name="addentry_minute_label">Perc</string>
     <string name="addentry_new_event_title">Új esemény</string>
     <string name="addentry_title_label">Cím</string>
     <string name="addentry_event_description_label">Esemény leírása</string>

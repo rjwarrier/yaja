@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Still inn tid</string>
     <string name="addentry_event_chip">Hendelse</string>
     <string name="addentry_pick_time_title">Velg tid</string>
-    <string name="addentry_hour_label">Time</string>
-    <string name="addentry_minute_label">Minutt</string>
     <string name="addentry_new_event_title">Ny begivenhet</string>
     <string name="addentry_title_label">Tittel</string>
     <string name="addentry_event_description_label">Begivenhetsbeskrivelse</string>

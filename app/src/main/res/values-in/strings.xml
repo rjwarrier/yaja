@@ -687,8 +687,6 @@
     <string name="addentry_set_time">Atur waktu</string>
     <string name="addentry_event_chip">Acara</string>
     <string name="addentry_pick_time_title">Pilih waktu</string>
-    <string name="addentry_hour_label">Jam</string>
-    <string name="addentry_minute_label">Menit</string>
     <string name="addentry_new_event_title">Acara Baru</string>
     <string name="addentry_title_label">Judul</string>
     <string name="addentry_event_description_label">Deskripsi Acara</string>

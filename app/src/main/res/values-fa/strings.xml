@@ -774,8 +774,6 @@
     <string name="addentry_set_time">زمان را تنظیم کنید</string>
     <string name="addentry_event_chip">رویداد</string>
     <string name="addentry_pick_time_title">زمان را انتخاب کنید</string>
-    <string name="addentry_hour_label">ساعت</string>
-    <string name="addentry_minute_label">دقیقه</string>
     <string name="addentry_new_event_title">رویداد جدید</string>
     <string name="addentry_title_label">عنوان</string>
     <string name="addentry_event_description_label">شرح رویداد</string>

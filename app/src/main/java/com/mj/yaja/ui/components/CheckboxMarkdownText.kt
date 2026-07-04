@@ -32,6 +32,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.KeywordDefinition
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.utils.DateLinkUtils
 import com.mj.yaja.ui.utils.MarkdownUtils
 import java.time.LocalDate
@@ -45,12 +48,14 @@ fun ExpressiveCheckbox(
     size: Dp = 26.dp
 ) {
     val shape = RoundedCornerShape(7.dp)
+    val motionPreference = LocalAnimationPreference.current
     val containerColor by animateColorAsState(
         targetValue = if (checked) {
             MaterialTheme.colorScheme.tertiary
         } else {
             MaterialTheme.colorScheme.primary.copy(alpha = 0.08f)
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "expressive_checkbox_container"
     )
     val borderColor by animateColorAsState(
@@ -59,11 +64,12 @@ fun ExpressiveCheckbox(
         } else {
             MaterialTheme.colorScheme.primary
         },
+        animationSpec = motionPreference.tweenSpec(160),
         label = "expressive_checkbox_border"
     )
     val checkScale by animateFloatAsState(
         targetValue = if (checked) 1f else 0.72f,
-        animationSpec = androidx.compose.animation.core.spring(
+        animationSpec = motionPreference.floatSpring(
             dampingRatio = Spring.DampingRatioMediumBouncy,
             stiffness = Spring.StiffnessMediumLow
         ),

@@ -3,6 +3,7 @@ package com.mj.yaja
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import com.mj.yaja.data.MarkdownFileManager
 import com.mj.yaja.data.SettingsRepository
@@ -81,6 +82,10 @@ class TaskerReceiver : BroadcastReceiver() {
     }
 
     private fun resolveSenderPackage(context: Context): String? {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            Log.w("TaskerReceiver", "Sender verification is unavailable before Android 14; allowing legacy Tasker path because access is enabled")
+            return TASKER_PACKAGE
+        }
         val directSender = getSentFromPackage()
         if (!directSender.isNullOrBlank()) return directSender
         val senderUid = getSentFromUid()

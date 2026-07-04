@@ -774,8 +774,6 @@
     <string name="addentry_set_time">Tetapkan masa</string>
     <string name="addentry_event_chip">Peristiwa</string>
     <string name="addentry_pick_time_title">Pilih masa</string>
-    <string name="addentry_hour_label">jam</string>
-    <string name="addentry_minute_label">minit</string>
     <string name="addentry_new_event_title">Acara Baru</string>
     <string name="addentry_title_label">Tajuk</string>
     <string name="addentry_event_description_label">Penerangan Peristiwa</string>
