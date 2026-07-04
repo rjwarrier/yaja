@@ -35,6 +35,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -45,6 +46,14 @@ import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
+private data class CacheDiagnosticsSnapshot(
+    val cachedDays: Int = 0,
+    val dbSize: Long = 0L,
+    val cacheAgeMs: Long? = null
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,13 +62,24 @@ fun RebuildCacheScreen(
     onNavigateBack: () -> Unit
 ) {
     var showFullRebuildWarning by remember { mutableStateOf(false) }
-    
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val fileManager = viewModel.fileManager
-    
-    val cachedDays = remember(uiState.isLoading) { fileManager.getCachedDaysCount() }
-    val dbSize = remember(uiState.isLoading) { fileManager.getDatabaseSize() }
-    val cacheAgeMs = remember(uiState.isLoading) { fileManager.getJournalCacheAgeMillis() }
+    val diagnostics by produceState(
+        initialValue = CacheDiagnosticsSnapshot(),
+        key1 = uiState.isLoading
+    ) {
+        value = withContext(Dispatchers.IO) {
+            CacheDiagnosticsSnapshot(
+                cachedDays = fileManager.getCachedDaysCount(),
+                dbSize = fileManager.getDatabaseSize(),
+                cacheAgeMs = fileManager.getJournalCacheAgeMillis()
+            )
+        }
+    }
+    val cachedDays = diagnostics.cachedDays
+    val dbSize = diagnostics.dbSize
+    val cacheAgeMs = diagnostics.cacheAgeMs
 
     val formattedDbSize = remember(dbSize) {
         val kb = dbSize / 1024.0

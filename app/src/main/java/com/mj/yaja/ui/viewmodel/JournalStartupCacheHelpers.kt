@@ -5,8 +5,10 @@ import com.mj.yaja.data.HomeScreenSnapshot
 import com.mj.yaja.data.MarkdownFileManager
 import java.time.LocalDate
 import java.time.YearMonth
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.withContext
 
 internal data class StartupBootstrapSnapshot(
     val loadedFromDiskCache: Boolean,
@@ -50,7 +52,7 @@ internal suspend fun loadStartupBootstrapSnapshot(
     logPerf: (String, Long) -> Unit
 ): StartupBootstrapSnapshot {
     val primeStartedAt = System.currentTimeMillis()
-    val loadedFromDiskCache = fileManager.primeCachesFromDisk()
+    val loadedFromDiskCache = withContext(Dispatchers.IO) { fileManager.primeCachesFromDisk() }
     logPerf("startup.primeCachesFromDisk", System.currentTimeMillis() - primeStartedAt)
 
     val cachedDatesStartedAt = System.currentTimeMillis()

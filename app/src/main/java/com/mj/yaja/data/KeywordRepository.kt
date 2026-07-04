@@ -4,9 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.mj.yaja.data.database.JournalDatabase
 import com.mj.yaja.data.database.KeywordEntity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.UUID
 
 /**
@@ -16,6 +21,7 @@ import java.util.UUID
  * Singleton pattern mirrors [SettingsRepository].
  */
 class KeywordRepository private constructor(context: Context) {
+    private val repositoryScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences("keyword_prefs", Context.MODE_PRIVATE)
@@ -23,13 +29,21 @@ class KeywordRepository private constructor(context: Context) {
     private val database = JournalDatabase.getDatabase(context)
     private val keywordDao = database.keywordDao()
 
-    private val _keywords = MutableStateFlow(loadKeywords())
+    private val _keywords = MutableStateFlow<List<KeywordDefinition>>(emptyList())
     val keywords: StateFlow<List<KeywordDefinition>> = _keywords.asStateFlow()
 
     private val _fuzzyThreshold = MutableStateFlow(
         prefs.getFloat(KEY_FUZZY_THRESHOLD, DEFAULT_FUZZY_THRESHOLD)
     )
     val fuzzyThreshold: StateFlow<Float> = _fuzzyThreshold.asStateFlow()
+
+    init {
+        repositoryScope.launch {
+            keywordDao.observeAllKeywords().collect { entities ->
+                _keywords.value = entities.map { it.toKeywordDefinition() }
+            }
+        }
+    }
 
     // ── CRUD ──────────────────────────────────────────────────────────────
 
@@ -110,14 +124,6 @@ class KeywordRepository private constructor(context: Context) {
     }
 
     // ── Serialisation ─────────────────────────────────────────────────────
-
-    private fun loadKeywords(): List<KeywordDefinition> {
-        return try {
-            keywordDao.getAllKeywordsSync().map { it.toKeywordDefinition() }
-        } catch (e: Exception) {
-            emptyList()
-        }
-    }
 
     private fun KeywordEntity.toKeywordDefinition(): KeywordDefinition = KeywordDefinition(
         id = id,

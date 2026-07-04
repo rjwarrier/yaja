@@ -86,18 +86,14 @@ class TodoIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun getEntries(showCompleted: Boolean = true): List<TodoIndexEntry> =
-        _entries.value
-            .asSequence()
-            .filter { showCompleted || !it.isChecked }
-            .distinctBy { it.identityKey() }
-            .toList()
+        if (showCompleted) _entries.value else _entries.value.filterNot { it.isChecked }
 
     @Synchronized
     fun getTodoItems(): List<TodoItem> =
         toTodoItems(_entries.value)
 
     fun toTodoItems(entries: List<TodoIndexEntry>): List<TodoItem> =
-        entries.distinctBy { it.identityKey() }.map {
+        entries.map {
             TodoItem(
                 date = it.date,
                 entryIndex = it.entryIndex,
@@ -203,22 +199,37 @@ class TodoIndexRepository private constructor(context: Context) {
         entriesForDate: (LocalDate) -> List<String>,
         dayLabelForDate: (LocalDate) -> String,
         fingerprint: JournalStorageFingerprint? = null
+    ) = rebuildStreaming(
+        dates = dates,
+        entryLoader = entriesForDate,
+        dayLabelLoader = dayLabelForDate,
+        fingerprint = fingerprint
+    )
+
+    @Synchronized
+    fun rebuildStreaming(
+        dates: Iterable<LocalDate>,
+        entryLoader: (LocalDate) -> List<String>,
+        dayLabelLoader: (LocalDate) -> String,
+        fingerprint: JournalStorageFingerprint? = null
     ) {
         val dateSet = dates.toSet()
         val rebuiltEntries = mutableListOf<TodoIndexEntry>()
         dateSet.forEach { date ->
-            rebuiltEntries += parseDate(date, entriesForDate(date), dayLabelForDate(date))
+            rebuiltEntries += parseDate(date, entryLoader(date), dayLabelLoader(date))
         }
         val rebuilt = rebuiltEntries.map { it.toTodoIndexEntity() }
         _entries.value = sortEntries(_entries.value.filterNot { it.date in dateSet } + rebuiltEntries)
         versionCounter.incrementAndGet()
         persistenceScope.launch {
-            val dateStrings = dateSet.map { it.toString() }
-            if (dateStrings.isNotEmpty()) {
-                todoDao.deleteByDates(dateStrings)
-            }
-            if (rebuilt.isNotEmpty()) {
-                todoDao.insertAll(rebuilt)
+            database.runInTransaction {
+                val dateStrings = dateSet.map { it.toString() }
+                if (dateStrings.isNotEmpty()) {
+                    todoDao.deleteByDates(dateStrings)
+                }
+                if (rebuilt.isNotEmpty()) {
+                    todoDao.insertAll(rebuilt)
+                }
             }
         }
         markFingerprint(fingerprint)

@@ -39,19 +39,22 @@ internal suspend fun refreshTodosWorkflow(
     val shouldRebuildEvents = forceRebuild || !eventIndexRepository.isCurrent(fingerprint)
     if (shouldRebuildTodos || shouldRebuildEvents) {
         emitBackgroundToast("Updating todos and events...")
-        val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDate(date) }
+        val entriesSnapshot = fileManager.getEntriesSnapshotForRebuild()
+        val entryLoader: (java.time.LocalDate) -> List<String> = { date ->
+            entriesSnapshot[date] ?: fileManager.readEntriesForDateDirect(date)
+        }
         if (shouldRebuildTodos) {
-            todoIndexRepository.rebuild(
+            todoIndexRepository.rebuildStreaming(
                 dates = dates,
-                entriesForDate = { date -> entriesByDate[date].orEmpty() },
-                dayLabelForDate = { date -> fileManager.getDayLabel(date) },
+                entryLoader = entryLoader,
+                dayLabelLoader = { date -> fileManager.getDayLabel(date) },
                 fingerprint = fingerprint
             )
         }
         if (shouldRebuildEvents) {
-            eventIndexRepository.rebuild(
+            eventIndexRepository.rebuildStreaming(
                 dates = dates,
-                entriesForDate = { date -> entriesByDate[date].orEmpty() },
+                entryLoader = entryLoader,
                 fingerprint = fingerprint
             )
         }
@@ -77,16 +80,19 @@ internal suspend fun rebuildTodoIndexWorkflow(
     val dates = fileManager.getAllJournalDatesLightweight(forceRefresh = true)
     val fingerprint = fileManager.computeCurrentJournalFingerprint(knownDates = dates)
     emitBackgroundToast("Updating todos and events...")
-    val entriesByDate = dates.associateWith { date -> fileManager.getEntriesForDate(date) }
-    todoIndexRepository.rebuild(
+    val entriesSnapshot = fileManager.getEntriesSnapshotForRebuild()
+    val entryLoader: (java.time.LocalDate) -> List<String> = { date ->
+        entriesSnapshot[date] ?: fileManager.readEntriesForDateDirect(date)
+    }
+    todoIndexRepository.rebuildStreaming(
         dates = dates,
-        entriesForDate = { date -> entriesByDate[date].orEmpty() },
-        dayLabelForDate = { date -> fileManager.getDayLabel(date) },
+        entryLoader = entryLoader,
+        dayLabelLoader = { date -> fileManager.getDayLabel(date) },
         fingerprint = fingerprint
     )
-    eventIndexRepository.rebuild(
+    eventIndexRepository.rebuildStreaming(
         dates = dates,
-        entriesForDate = { date -> entriesByDate[date].orEmpty() },
+        entryLoader = entryLoader,
         fingerprint = fingerprint
     )
     emitBackgroundToast("Todos and events updated.")

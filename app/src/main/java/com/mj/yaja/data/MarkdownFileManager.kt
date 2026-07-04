@@ -59,6 +59,7 @@ class MarkdownFileManager(
         private const val SLOW_MUTATION_STAGE_MS = 500L
         private const val MAX_SEARCH_RESULTS = 200
         private val MONTH_FORMATTER = DateTimeFormatter.ofPattern("MM")
+        private val SEARCH_METADATA_REGEX = Regex("<!--.*?-->")
         private val REVISIT_MARKER_ORDER =
             compareByDescending<RevisitMarker> { it.sourceDate }
                 .thenByDescending { it.entryIndex ?: -1 }
@@ -1577,7 +1578,12 @@ class MarkdownFileManager(
         if (query.isBlank()) return emptyList()
         ensureFrontmatterPopulated()
         val results = mutableListOf<SearchResult>()
-        val timestampRegex = Regex("<!--.*?-->")
+        val cachedSnapshot =
+            if (cachePopulated) {
+                null
+            } else {
+                getEntriesSnapshotForRebuild().ifEmpty { null }
+            }
         // Split into words for AND-logic: all words must appear in the entry or label
         val words = query.trim().lowercase().splitToSequence(Regex("\\s+")).filter { it.isNotBlank() }.toList()
 
@@ -1592,8 +1598,12 @@ class MarkdownFileManager(
             }
 
             // Check each entry's content
-            getEntriesForDate(date).forEach { entry ->
-                val cleanEntry = entry.replace(timestampRegex, "").trim()
+            val entries =
+                cache[date]
+                    ?: cachedSnapshot?.get(date)
+                    ?: getEntriesForDate(date)
+            entries.forEach { entry ->
+                val cleanEntry = entry.replace(SEARCH_METADATA_REGEX, "").trim()
                 val lower = cleanEntry.lowercase()
                 if (words.all { word -> lower.contains(word) }) {
                     val snippet =

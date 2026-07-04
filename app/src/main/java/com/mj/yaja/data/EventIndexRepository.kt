@@ -64,7 +64,7 @@ class EventIndexRepository private constructor(context: Context) {
 
     @Synchronized
     fun getEntries(): List<EventItem> =
-        _entries.value.distinctBy { it.identityKey() }
+        _entries.value
 
     @Synchronized
     fun replaceDate(
@@ -100,11 +100,22 @@ class EventIndexRepository private constructor(context: Context) {
         dates: Iterable<LocalDate>,
         entriesForDate: (LocalDate) -> List<String>,
         fingerprint: JournalStorageFingerprint? = null
+    ) = rebuildStreaming(
+        dates = dates,
+        entryLoader = entriesForDate,
+        fingerprint = fingerprint
+    )
+
+    @Synchronized
+    fun rebuildStreaming(
+        dates: Iterable<LocalDate>,
+        entryLoader: (LocalDate) -> List<String>,
+        fingerprint: JournalStorageFingerprint? = null
     ) {
         val dateSet = dates.toSet()
         val rebuiltEntries = mutableListOf<EventItem>()
         dateSet.forEach { date ->
-            rebuiltEntries += parseDate(date, entriesForDate(date))
+            rebuiltEntries += parseDate(date, entryLoader(date))
         }
         val rebuilt = rebuiltEntries.map { it.toEventIndexEntity() }
         _entries.value = sortEntries(_entries.value.filterNot { it.date in dateSet } + rebuiltEntries)
