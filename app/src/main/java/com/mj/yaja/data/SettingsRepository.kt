@@ -223,6 +223,20 @@ class SettingsRepository(private val context: Context) {
     private val _storageUri = MutableStateFlow(getSavedStorageUri())
     val storageUri: StateFlow<String?> = _storageUri.asStateFlow()
 
+    private val _hasCompletedOnboarding =
+        MutableStateFlow(prefs.getBoolean(KEY_ONBOARDING_COMPLETED, false))
+    val hasCompletedOnboarding: StateFlow<Boolean> = _hasCompletedOnboarding.asStateFlow()
+
+    private val _showOnboardingNextLaunch =
+        MutableStateFlow(prefs.getBoolean(KEY_SHOW_ONBOARDING_NEXT_LAUNCH, false))
+    val showOnboardingNextLaunch: StateFlow<Boolean> = _showOnboardingNextLaunch.asStateFlow()
+
+    private val _shouldShowOnboarding =
+        MutableStateFlow(
+            !_hasCompletedOnboarding.value || _showOnboardingNextLaunch.value
+        )
+    val shouldShowOnboarding: StateFlow<Boolean> = _shouldShowOnboarding.asStateFlow()
+
     private val _showTimestamps = MutableStateFlow(getSavedShowTimestamps())
     val showTimestamps: StateFlow<Boolean> = _showTimestamps.asStateFlow()
 
@@ -658,6 +672,23 @@ class SettingsRepository(private val context: Context) {
             prefs.edit().putString(KEY_STORAGE_URI, uriString).apply()
         }
         _storageUri.value = uriString
+    }
+
+    fun markOnboardingCompleted() {
+        prefs.edit().putBoolean(KEY_ONBOARDING_COMPLETED, true).apply()
+        _hasCompletedOnboarding.value = true
+        _shouldShowOnboarding.value = false
+    }
+
+    fun setShowOnboardingNextLaunch(enabled: Boolean) {
+        prefs.edit().putBoolean(KEY_SHOW_ONBOARDING_NEXT_LAUNCH, enabled).apply()
+        _showOnboardingNextLaunch.value = enabled
+    }
+
+    fun consumeOnboardingLaunchRequest() {
+        if (!_showOnboardingNextLaunch.value) return
+        prefs.edit().putBoolean(KEY_SHOW_ONBOARDING_NEXT_LAUNCH, false).apply()
+        _showOnboardingNextLaunch.value = false
     }
 
     fun setShowTimestamps(show: Boolean) {
@@ -1397,6 +1428,8 @@ class SettingsRepository(private val context: Context) {
         const val MONO_FONT_WEIGHT_DEFAULT = 400
         private const val KEY_ENTRY_STYLE = "entry_style"
         private const val KEY_STORAGE_URI = "storage_uri"
+        private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
+        private const val KEY_SHOW_ONBOARDING_NEXT_LAUNCH = "show_onboarding_next_launch"
         private const val KEY_SHOW_TIMESTAMPS = "show_timestamps"
         private const val KEY_SHOW_DAY_HEADER_STATS = "show_day_header_stats"
         private const val KEY_RENDER_CHECKBOXES_AS_TEXT = "render_checkboxes_as_text"

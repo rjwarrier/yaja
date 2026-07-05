@@ -70,6 +70,8 @@ fun DataAndStorageSection(
     onSwipeToSyncEnabledChange: (Boolean) -> Unit,
     largeJournalSafeMode: Boolean,
     onLargeJournalSafeModeChange: (Boolean) -> Unit,
+    showOnboardingNextLaunch: Boolean,
+    onShowOnboardingNextLaunchChange: (Boolean) -> Unit,
     versionHistoryEnabled: Boolean,
     onVersionHistoryEnabledChange: (Boolean) -> Unit,
     onNavigateToVersionHistory: () -> Unit,
@@ -121,6 +123,15 @@ fun DataAndStorageSection(
             subtitle = stringResource(R.string.settings_large_journal_safe_mode_subtitle),
             checked = largeJournalSafeMode,
             onCheckedChange = onLargeJournalSafeModeChange
+        )
+
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+
+        PreferencesSwitchRow(
+            title = stringResource(R.string.settings_onboarding_next_launch_title),
+            subtitle = stringResource(R.string.settings_onboarding_next_launch_subtitle),
+            checked = showOnboardingNextLaunch,
+            onCheckedChange = onShowOnboardingNextLaunchChange
         )
 
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)

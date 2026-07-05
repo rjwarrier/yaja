@@ -85,9 +85,18 @@ fun JournalApp(
             val showTodosInNavBar by viewModel.showTodosInNavBar.collectAsStateWithLifecycle()
             val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
             val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
+            val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsStateWithLifecycle()
+            val showOnboardingNextLaunch by
+                viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
+            val shouldConsumeOnboardingLaunchRequest = remember { showOnboardingNextLaunch }
             val useExpressivePanel =
                 showBottomBar && navigationChromeMode == NavigationChromeMode.EXPRESSIVE_PANEL
-            val startDestination = if (isPinEnabled) Route.PinLock.path else Route.Home.path
+            val startDestination =
+                when {
+                    isPinEnabled -> Route.PinLock.path
+                    shouldShowOnboarding -> Route.Onboarding.path
+                    else -> Route.Home.path
+                }
 
             val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
             val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -108,6 +117,12 @@ fun JournalApp(
                             }
                         }
                     }
+                }
+            }
+
+            LaunchedEffect(shouldConsumeOnboardingLaunchRequest) {
+                if (shouldConsumeOnboardingLaunchRequest) {
+                    viewModel.consumeOnboardingLaunchRequest()
                 }
             }
 

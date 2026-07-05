@@ -20,6 +20,7 @@ import com.mj.yaja.data.AnimationPreference
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -81,17 +82,17 @@ fun CalendarHeaderNavigator(
                 label = "NextScale"
         ).value
 
-        Row(
+        Box(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                contentAlignment = Alignment.Center
         ) {
                 FilledTonalIconButton(
                         modifier =
-                                Modifier.graphicsLayer {
-                                        scaleX = prevScale
-                                        scaleY = prevScale
-                                },
+                                Modifier.align(Alignment.CenterStart)
+                                        .graphicsLayer {
+                                                scaleX = prevScale
+                                                scaleY = prevScale
+                                        },
                         interactionSource = prevInteractionSource,
                         onClick = onPreviousClick,
                         shape = RoundedCornerShape(18.dp)
@@ -124,7 +125,8 @@ fun CalendarHeaderNavigator(
                                 }
                         },
                         modifier =
-                                Modifier.clickable(onClick = onHeaderClick)
+                                Modifier.align(Alignment.Center)
+                                        .clickable(onClick = onHeaderClick)
                                         .padding(horizontal = 16.dp, vertical = 8.dp),
                         label = "HeaderText"
                 ) { headerText ->
@@ -162,10 +164,11 @@ fun CalendarHeaderNavigator(
                                                 currentYearWindowStart + 9 < maxYearMonth.year
                                 },
                         modifier =
-                                Modifier.graphicsLayer {
-                                        scaleX = nextScale
-                                        scaleY = nextScale
-                                },
+                                Modifier.align(Alignment.CenterEnd)
+                                        .graphicsLayer {
+                                                scaleX = nextScale
+                                                scaleY = nextScale
+                                        },
                         interactionSource = nextInteractionSource,
                         onClick = onNextClick,
                         shape = RoundedCornerShape(18.dp)

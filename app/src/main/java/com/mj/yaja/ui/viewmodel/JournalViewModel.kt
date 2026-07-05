@@ -223,6 +223,9 @@ class JournalViewModel(
     val customFontName = settingsRepository.customFontName
     val entryStyle = settingsRepository.entryStyle
     val storageUri = settingsRepository.storageUri
+    val hasCompletedOnboarding = settingsRepository.hasCompletedOnboarding
+    val shouldShowOnboarding = settingsRepository.shouldShowOnboarding
+    val showOnboardingNextLaunch = settingsRepository.showOnboardingNextLaunch
     val showTimestamps = settingsRepository.showTimestamps
     val showDayHeaderStats = settingsRepository.showDayHeaderStats
     val renderCheckboxesAsText = settingsRepository.renderCheckboxesAsText
@@ -2671,6 +2674,7 @@ class JournalViewModel(
 
     fun setStorageUri(uriString: String?) {
         val oldUri = settingsRepository.storageUri.value
+        if (oldUri == uriString) return
         appLogRepository.logInfo(
             event = "Storage location change requested",
             details = "fromCustom=${oldUri != null} toCustom=${uriString != null}"
@@ -2761,6 +2765,18 @@ class JournalViewModel(
                   _toastEvents.emit("Storage change failed. Yaja kept the current data safely.")
               }
         }
+    }
+
+    fun completeOnboarding() {
+        settingsRepository.markOnboardingCompleted()
+    }
+
+    fun setShowOnboardingNextLaunch(enabled: Boolean) {
+        settingsRepository.setShowOnboardingNextLaunch(enabled)
+    }
+
+    fun consumeOnboardingLaunchRequest() {
+        settingsRepository.consumeOnboardingLaunchRequest()
     }
 
     fun refreshCache() {

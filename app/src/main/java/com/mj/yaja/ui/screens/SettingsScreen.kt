@@ -157,6 +157,7 @@ fun SettingsScreen(
         val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
         val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsStateWithLifecycle()
         val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsStateWithLifecycle()
+        val showOnboardingNextLaunch by viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
         val versionHistoryEnabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
         val importState by viewModel.importState.collectAsStateWithLifecycle()
         val restoreSummary by viewModel.restoreSummary.collectAsStateWithLifecycle()
@@ -613,6 +614,10 @@ fun SettingsScreen(
                                                         onSwipeToSyncEnabledChange = { viewModel.setSwipeToSyncEnabled(it) },
                                                         largeJournalSafeMode = largeJournalSafeMode,
                                                         onLargeJournalSafeModeChange = { viewModel.setLargeJournalSafeMode(it) },
+                                                        showOnboardingNextLaunch = showOnboardingNextLaunch,
+                                                        onShowOnboardingNextLaunchChange = {
+                                                                viewModel.setShowOnboardingNextLaunch(it)
+                                                        },
                                                         versionHistoryEnabled = versionHistoryEnabled,
                                                         onVersionHistoryEnabledChange = {
                                                                 viewModel.setVersionHistoryEnabled(it)

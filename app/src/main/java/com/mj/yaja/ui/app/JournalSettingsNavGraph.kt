@@ -10,6 +10,7 @@ import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.AppLogScreen
 import com.mj.yaja.ui.screens.AppearanceSettingsScreen
 import com.mj.yaja.ui.screens.HelpScreen
+import com.mj.yaja.ui.screens.OnboardingScreen
 import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
 import com.mj.yaja.ui.screens.RebuildCacheScreen
@@ -25,13 +26,35 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
         viewModel: JournalViewModel,
         onOpenDrawer: () -> Unit
 ) {
+        composable(Route.Onboarding.path) {
+                val hasCompletedOnboarding by
+                        viewModel.hasCompletedOnboarding.collectAsStateWithLifecycle()
+                OnboardingScreen(
+                        viewModel = viewModel,
+                        isRerun = hasCompletedOnboarding,
+                        onNavigateToPinSetup = { navController.navigate(Route.PinSetup.path) },
+                        onComplete = {
+                                navController.navigate(Route.Home.path) {
+                                        popUpTo(Route.Onboarding.path) { inclusive = true }
+                                }
+                        }
+                )
+        }
         composable(Route.PinLock.path) {
                 val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
+                val shouldShowOnboarding by
+                        viewModel.shouldShowOnboarding.collectAsStateWithLifecycle()
                 PinLockScreen(
                         mode = PinMode.ENTER,
                         checkPin = { viewModel.checkPin(it) },
                         onEnterCorrect = {
-                                navController.navigate(Route.Home.path) {
+                                val destination =
+                                        if (shouldShowOnboarding) {
+                                                Route.Onboarding.path
+                                        } else {
+                                                Route.Home.path
+                                        }
+                                navController.navigate(destination) {
                                         popUpTo(Route.PinLock.path) { inclusive = true }
                                 }
                         },
