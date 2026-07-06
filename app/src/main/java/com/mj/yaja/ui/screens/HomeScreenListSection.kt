@@ -52,6 +52,7 @@ internal fun HomeLoadedEntriesSection(
         enableDragAndDrop: Boolean,
         entryDeleteSelectionEnabled: Boolean,
         showTimestamps: Boolean,
+        hideTextModeEnabled: Boolean,
         renderCheckboxesAsText: Boolean,
         isPreviewLimitEnabled: Boolean,
         previewLimitLength: Int,
@@ -148,6 +149,7 @@ internal fun HomeLoadedEntriesSection(
                                         JournalEntryItem(
                                                 entry = item.text,
                                                 showTimestamps = showTimestamps,
+                                                hideTextModeEnabled = hideTextModeEnabled,
                                                 renderCheckboxesAsText = renderCheckboxesAsText,
                                                 swipeToDeleteEnabled = false,
                                                 isPreviewLimitEnabled = isPreviewLimitEnabled,

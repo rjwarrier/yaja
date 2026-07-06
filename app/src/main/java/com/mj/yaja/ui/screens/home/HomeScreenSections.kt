@@ -52,6 +52,8 @@ import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarOutline
 import androidx.compose.material.icons.rounded.Today
+import androidx.compose.material.icons.rounded.Visibility
+import androidx.compose.material.icons.rounded.VisibilityOff
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -123,6 +125,7 @@ import com.mj.yaja.ui.theme.metaSmallTextStyle
 import com.mj.yaja.ui.theme.metaTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.R
+import com.mj.yaja.data.estimateReadingTimeMinutes
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -303,6 +306,8 @@ fun HomeTopBar(
     onOpenDrawer: () -> Unit,
     isFavorited: Boolean,
     onToggleStar: () -> Unit,
+    hideTextModeEnabled: Boolean,
+    onHideTextModeEnabledChange: (Boolean) -> Unit,
     entryCount: Int,
     totalWords: Int,
     totalChars: Int,
@@ -380,6 +385,29 @@ fun HomeTopBar(
                     ),
                     singleLine = true
                 )
+
+                Surface(
+                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    shape = RoundedCornerShape(18.dp),
+                    modifier = Modifier.size(46.dp),
+                    onClick = { onHideTextModeEnabledChange(!hideTextModeEnabled) }
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector =
+                                if (hideTextModeEnabled) Icons.Rounded.VisibilityOff
+                                else Icons.Rounded.Visibility,
+                            contentDescription =
+                                if (hideTextModeEnabled) {
+                                    stringResource(R.string.home_cd_disable_hide_text_mode)
+                                } else {
+                                    stringResource(R.string.home_cd_enable_hide_text_mode)
+                                },
+                            modifier = Modifier.size(22.dp),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                }
 
                 val starScale = remember { Animatable(1f) }
                 LaunchedEffect(isFavorited, motionPreference) {
@@ -498,6 +526,7 @@ private fun HomeDailyInsightsRow(entryCount: Int, totalWords: Int, totalChars: I
         entryCount = entryCount,
         totalWords = totalWords,
         totalChars = totalChars,
+        readingTimeMinutes = estimateReadingTimeMinutes(totalWords),
         versionCount = 0,
         onOpenVersionSnapshots = {},
         showVersionSnapshotsButton = false,
@@ -510,6 +539,7 @@ private fun HomeDailyInsightsRow(
     entryCount: Int,
     totalWords: Int,
     totalChars: Int,
+    readingTimeMinutes: Int,
     versionCount: Int,
     onOpenVersionSnapshots: () -> Unit,
     showVersionSnapshotsButton: Boolean,
@@ -518,7 +548,7 @@ private fun HomeDailyInsightsRow(
     val stats = buildList {
         add("Entries" to entryCount.toString())
         add("Words" to totalWords.toString())
-        add("Chars" to totalChars.toString())
+        add("Read" to "${readingTimeMinutes}m")
         if (showVersionSnapshotsButton && versionCount > 0) {
             add("Vers" to versionCount.toString())
         }
@@ -617,6 +647,7 @@ private fun statLabel(label: String): String =
         "Entries" -> stringResource(R.string.home_stat_entries)
         "Words" -> stringResource(R.string.home_stat_words)
         "Chars" -> stringResource(R.string.home_stat_chars)
+        "Read" -> stringResource(R.string.home_stat_read)
         "Vers" -> stringResource(R.string.home_stat_versions)
         else -> label
     }
@@ -884,6 +915,7 @@ private fun HomeDateNavigator(
                                         } else {
                                             MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.82f)
                                         }
+                                    val localReadingTimeMinutes = estimateReadingTimeMinutes(totalWords)
 
                                     val labelTextStyle =
                                         MaterialTheme.typography.titleSmall.copy(
@@ -1025,6 +1057,7 @@ private fun HomeDateNavigator(
                                                 entryCount = entryCount,
                                                 totalWords = totalWords,
                                                 totalChars = totalChars,
+                                                readingTimeMinutes = localReadingTimeMinutes,
                                                 versionCount = versionSnapshotsCount,
                                                 onOpenVersionSnapshots = onOpenVersionSnapshots,
                                                 showVersionSnapshotsButton = showVersionSnapshotsButton,
@@ -1323,7 +1356,8 @@ private fun DateNavButton(
 @Composable
 fun SearchResultsContent(
     searchResults: List<com.mj.yaja.data.SearchResult>,
-    onResultClicked: (LocalDate) -> Unit
+    onResultClicked: (LocalDate) -> Unit,
+    hideTextModeEnabled: Boolean
 ) {
     Column {
         Text(
@@ -1377,13 +1411,23 @@ fun SearchResultsContent(
                                 color = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.padding(bottom = 8.dp)
                             )
-                            Text(
-                                text = MarkdownUtils.parseMarkdown(result.entryPreview),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = 2,
-                                overflow = TextOverflow.Ellipsis
-                            )
+                            if (hideTextModeEnabled) {
+                                Text(
+                                    text = stringResource(R.string.home_hidden_result_preview),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            } else {
+                                Text(
+                                    text = MarkdownUtils.parseMarkdown(result.entryPreview),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
                         }
                     }
                 }

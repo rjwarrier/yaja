@@ -82,6 +82,7 @@ private val ENTRY_TIME_METADATA_REGEX =
 fun JournalEntryItem(
         entry: String,
         showTimestamps: Boolean,
+        hideTextModeEnabled: Boolean,
         renderCheckboxesAsText: Boolean,
         swipeToDeleteEnabled: Boolean,
         swipeDeleteDirection: SwipeDirection = SwipeDirection.END_TO_START,
@@ -106,6 +107,7 @@ fun JournalEntryItem(
         val motionPreference = LocalAnimationPreference.current
         var isExpanded by remember { mutableStateOf(false) }
         var isDeleteSwipeArmed by remember { mutableStateOf(false) }
+        var isRevealed by remember(entry, hideTextModeEnabled) { mutableStateOf(false) }
 
         val dismissState =
                 rememberSwipeToDismissBoxState(
@@ -271,6 +273,8 @@ fun JournalEntryItem(
                                                         isDeleteSwipeArmed = false
                                                         if (selectionMode) {
                                                                 onToggleSelected()
+                                                        } else if (hideTextModeEnabled && !isRevealed) {
+                                                                isRevealed = true
                                                         } else if (isTruncated && !isExpanded) {
                                                                 isExpanded = true
                                                         } else {
@@ -495,18 +499,28 @@ fun JournalEntryItem(
                                                                 cleanEntry.take(previewLimitLength) + "..."
                                                         } else cleanEntry
 
-                                                DataFontScaleWrapper {
-                                                        CheckboxMarkdownText(
-                                                                text = truncatedEntry,
-                                                                renderCheckboxesAsText = renderCheckboxesAsText,
+                                                val shouldHideText = hideTextModeEnabled && !isRevealed
+
+                                                if (shouldHideText) {
+                                                        Text(
+                                                                text = stringResource(R.string.home_hidden_entry_preview),
                                                                 style = MaterialTheme.typography.contentTextStyle(),
-                                                                color = MaterialTheme.colorScheme.onSurface,
-                                                                entryDate = entryDate,
-                                                                onDateLinkClick = onDateLinkClick,
-                                                                keywords = keywords,
-                                                                monthFirst = monthFirst,
-                                                                customKeywords = customKeywords
+                                                                color = MaterialTheme.colorScheme.onSurfaceVariant
                                                         )
+                                                } else {
+                                                        DataFontScaleWrapper {
+                                                                CheckboxMarkdownText(
+                                                                        text = truncatedEntry,
+                                                                        renderCheckboxesAsText = renderCheckboxesAsText,
+                                                                        style = MaterialTheme.typography.contentTextStyle(),
+                                                                        color = MaterialTheme.colorScheme.onSurface,
+                                                                        entryDate = entryDate,
+                                                                        onDateLinkClick = onDateLinkClick,
+                                                                        keywords = keywords,
+                                                                        monthFirst = monthFirst,
+                                                                        customKeywords = customKeywords
+                                                                )
+                                                        }
                                                 }
 
                                                 if (isEventEntry) {

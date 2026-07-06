@@ -38,6 +38,7 @@ import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Description
 import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.rounded.CenterFocusStrong
 import androidx.compose.material.icons.rounded.FormatBold
 import androidx.compose.material.icons.rounded.FormatItalic
 import androidx.compose.material.icons.rounded.Share
@@ -81,6 +82,8 @@ fun AddEntryTopBar(
         onShowHelp: () -> Unit,
         onShowTemplates: () -> Unit,
         onDelete: () -> Unit,
+        isFocusMode: Boolean,
+        onToggleFocusMode: () -> Unit,
         onJumpToToday: () -> Unit,
         shareText: String
 ) {
@@ -132,6 +135,22 @@ fun AddEntryTopBar(
                                         verticalAlignment = Alignment.CenterVertically
                                 ) {
                                         if (isEditingMode) {
+                                                IconButton(
+                                                        onClick = onToggleFocusMode,
+                                                        enabled = !isSaving
+                                                ) {
+                                                        Icon(
+                                                                imageVector = Icons.Rounded.CenterFocusStrong,
+                                                                contentDescription = stringResource(
+                                                                        if (isFocusMode) {
+                                                                                R.string.addentry_cd_exit_focus_mode
+                                                                        } else {
+                                                                                R.string.addentry_cd_enter_focus_mode
+                                                                        }
+                                                                ),
+                                                                tint = MaterialTheme.colorScheme.primary
+                                                        )
+                                                }
                                                 IconButton(
                                                         onClick = onShowHelp,
                                                         enabled = !isSaving

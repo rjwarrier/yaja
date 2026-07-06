@@ -6,9 +6,11 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import androidx.core.net.toUri
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.AppLogScreen
 import com.mj.yaja.ui.screens.AppearanceSettingsScreen
+import com.mj.yaja.ui.screens.DataPrivacyDashboardScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.OnboardingScreen
 import com.mj.yaja.ui.screens.PinLockScreen
@@ -104,6 +106,9 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         onNavigateToHelp = { navController.navigate(Route.Help.path) },
                         onNavigateToAppLog = { navController.navigate(Route.AppLog.path) },
                         onNavigateToShortcodes = { navController.navigate(Route.Shortcodes.path) },
+                        onNavigateToPrivacyDashboard = {
+                                navController.navigate(Route.DataPrivacyDashboard.path)
+                        },
                         onNavigateToJournal = {
                                 navController.navigate(Route.Home.path) {
                                         popUpTo(Route.Home.path) { inclusive = true }
@@ -119,6 +124,60 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
         composable(Route.Appearance.path) {
                 AppearanceSettingsScreen(
                         viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.DataPrivacyDashboard.path) {
+                val storageUri by viewModel.storageUri.collectAsStateWithLifecycle()
+                val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
+                val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
+                val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
+                val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
+                val autoLockTimeoutMinutes by
+                        viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
+                val hideTextModeEnabled by
+                        viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
+                val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
+                val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
+                val includeEntryTextInTaskerEvents by
+                        viewModel.includeEntryTextInTaskerEvents.collectAsStateWithLifecycle()
+
+                val formattedBackupDate =
+                        if (lastBackupTimestamp == 0L) {
+                                "Never"
+                        } else {
+                                val instant = java.time.Instant.ofEpochMilli(lastBackupTimestamp)
+                                val dateTime =
+                                        java.time.LocalDateTime.ofInstant(
+                                                instant,
+                                                java.time.ZoneId.systemDefault()
+                                        )
+                                val formatter =
+                                        java.time.format.DateTimeFormatter.ofPattern(
+                                                "dd-MMM-yy HH:mm 'hrs'"
+                                        )
+                                dateTime.format(formatter)
+                        }
+
+                DataPrivacyDashboardScreen(
+                        isPinEnabled = isPinEnabled,
+                        isBiometricEnabled = isBiometricEnabled,
+                        autoLockTimeoutMinutes = autoLockTimeoutMinutes,
+                        hideTextModeEnabled = hideTextModeEnabled,
+                        storageLocationText =
+                                if (storageUri == null) {
+                                        "App Internal Storage (Default)"
+                                } else {
+                                        "Custom Folder:\n" +
+                                                (storageUri?.toUri()?.path
+                                                        ?.substringAfterLast(":")
+                                                        ?: "")
+                                },
+                        formattedBackupDate = formattedBackupDate,
+                        backupReminderDays = backupReminderDays,
+                        allowTaskerAccess = allowTaskerAccess,
+                        allowTaskerEvents = allowTaskerEvents,
+                        includeEntryTextInTaskerEvents = includeEntryTextInTaskerEvents,
                         onNavigateBack = { navController.popBackStack() }
                 )
         }

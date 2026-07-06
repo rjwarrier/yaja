@@ -36,6 +36,7 @@ import com.mj.yaja.data.ThemeColorIntensity
 import com.mj.yaja.data.ThemePreference
 import com.mj.yaja.data.TodoIndexRepository
 import com.mj.yaja.data.TodoItem
+import com.mj.yaja.data.TodoParser
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.AppLanguage
@@ -241,6 +242,8 @@ class JournalViewModel(
     val isPinEnabled = settingsRepository.isPinEnabled
     val isBiometricEnabled = settingsRepository.isBiometricEnabled
     val autoLockTimeoutMinutes = settingsRepository.autoLockTimeoutMinutes
+    val hideTextModeEnabled = settingsRepository.hideTextModeEnabled
+    val carryForwardTodosEnabled = settingsRepository.carryForwardTodosEnabled
 
     private val _shouldLock = MutableStateFlow(false)
     val shouldLock: StateFlow<Boolean> = _shouldLock.asStateFlow()
@@ -570,6 +573,10 @@ class JournalViewModel(
     fun disableBiometric() = settingsRepository.disableBiometric()
     fun setAutoLockTimeout(minutes: Int) = settingsRepository.setAutoLockTimeout(minutes)
     fun setAllowFutureEntries(allow: Boolean) = settingsRepository.setAllowFutureEntries(allow)
+    fun setHideTextModeEnabled(enabled: Boolean) =
+        settingsRepository.setHideTextModeEnabled(enabled)
+    fun setCarryForwardTodosEnabled(enabled: Boolean) =
+        settingsRepository.setCarryForwardTodosEnabled(enabled)
     fun setAllowTaskerAccess(allow: Boolean) = settingsRepository.setAllowTaskerAccess(allow)
     fun setAllowTaskerEvents(allow: Boolean) = settingsRepository.setAllowTaskerEvents(allow)
     fun setIncludeEntryTextInTaskerEvents(include: Boolean) =
@@ -876,6 +883,97 @@ class JournalViewModel(
         }
     }
 
+    private val carryForwardMarkerRegex = Regex("""\s*\(from \d{4}-\d{2}-\d{2}\)$""")
+
+    private fun stripCarryForwardMarker(text: String): String =
+        text.trim().replace(carryForwardMarkerRegex, "").trim()
+
+    private fun normalizeTodoCarryForwardText(text: String): String =
+        stripCarryForwardMarker(text).lowercase()
+
+    private fun buildCarryForwardLine(displayText: String, sourceDate: LocalDate): String =
+        "[ ] ${stripCarryForwardMarker(displayText)} (from $sourceDate)"
+
+    private fun removeMovedTodosFromEntries(
+        entries: List<String>,
+        movedTodos: List<String>
+    ): List<String> {
+        if (movedTodos.isEmpty()) return entries
+
+        val remainingCounts =
+            movedTodos
+                .groupingBy(::normalizeTodoCarryForwardText)
+                .eachCount()
+                .toMutableMap()
+
+        return entries.mapNotNull { entry ->
+            val keptLines =
+                entry.lines().filter { line ->
+                    val parsedTodo = TodoParser.parseLine(line)
+                    if (parsedTodo == null || parsedTodo.isChecked) {
+                        true
+                    } else {
+                        val normalized = normalizeTodoCarryForwardText(parsedTodo.displayText)
+                        val remaining = remainingCounts[normalized] ?: 0
+                        if (remaining > 0) {
+                            remainingCounts[normalized] = remaining - 1
+                            false
+                        } else {
+                            true
+                        }
+                    }
+                }
+
+            keptLines.joinToString("\n").trim().takeIf { it.isNotBlank() }
+        }
+    }
+
+    private suspend fun carryForwardOpenTodosIfNeeded(date: LocalDate) {
+        if (date != LocalDate.now() || !settingsRepository.carryForwardTodosEnabled.value) return
+
+        val previousDate = date.minusDays(1)
+        val openTodosFromYesterday =
+            todoIndexRepository.getEntries(showCompleted = false)
+                .filter { it.date == previousDate && !it.isChecked }
+                .map { stripCarryForwardMarker(it.displayText) }
+                .filter { it.isNotBlank() }
+                .distinctBy(::normalizeTodoCarryForwardText)
+
+        if (openTodosFromYesterday.isEmpty()) return
+
+        val yesterdaysEntries = fileManager.getEntriesForDateFromDisk(previousDate)
+        val todaysEntries = fileManager.getEntriesForDateFromDisk(date)
+        val existingTodoTexts =
+            todaysEntries.flatMap { entry ->
+                entry.lines().mapNotNull(TodoParser::parseLine)
+            }.map { normalizeTodoCarryForwardText(it.displayText) }.toSet()
+
+        val missingTodos =
+            openTodosFromYesterday.filter { todo ->
+                normalizeTodoCarryForwardText(todo) !in existingTodoTexts
+            }
+
+        if (missingTodos.isEmpty()) return
+
+        val updatedYesterdaysEntries =
+            removeMovedTodosFromEntries(
+                entries = yesterdaysEntries,
+                movedTodos = missingTodos
+            )
+
+        val heading = "### Carried Forward"
+        val carryForwardBlock = buildList {
+            if (todaysEntries.none { it.contains(heading) }) add(heading)
+            addAll(missingTodos.map { todo -> buildCarryForwardLine(todo, previousDate) })
+        }.joinToString("\n")
+
+        val updatedEntries = todaysEntries.toMutableList()
+        updatedEntries += carryForwardBlock
+
+        fileManager.setEntriesForDate(previousDate, updatedYesterdaysEntries)
+        fileManager.setEntriesForDate(date, updatedEntries)
+    }
+
     private fun loadEntries(date: LocalDate, showLoading: Boolean = true, reason: String = "unknown") {
         val isForcedRefresh = reason == "selected_date_refresh" || reason == "pull_to_refresh"
         if (!isForcedRefresh && entriesJob?.isActive == true && loadingDate == date) {
@@ -901,6 +999,7 @@ class JournalViewModel(
             fileManager = fileManager,
             date = date,
             showLoading = showLoading,
+            beforeLoad = { carryForwardOpenTodosIfNeeded(date) },
             isRequestStillCurrent = {
                 requestId == latestEntriesRequestId && _uiState.value.selectedDate == date
             },

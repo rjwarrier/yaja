@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.mj.yaja.R
 import com.mj.yaja.data.countCharsIgnoringChecklistMarkers
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
+import com.mj.yaja.data.estimateReadingTimeMinutes
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,6 +64,7 @@ fun HomeScreen(
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
         val showDayHeaderStats by viewModel.showDayHeaderStats.collectAsStateWithLifecycle()
+        val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
         val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
         val swipeToNavigateDatesEnabled by
                 viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
@@ -186,6 +188,8 @@ fun HomeScreen(
                         onClearSearch = { viewModel.clearSearch() },
                         showTimestamps = showTimestamps,
                         showDayHeaderStats = showDayHeaderStats,
+                        hideTextModeEnabled = hideTextModeEnabled,
+                        onHideTextModeEnabledChange = { viewModel.setHideTextModeEnabled(it) },
                         renderCheckboxesAsText = renderCheckboxesAsText,
                         isFavorited = isFavorited,
                         allowFutureEntries = allowFutureEntries,
@@ -321,6 +325,8 @@ fun HomeScreenContent(
         onClearSearch: () -> Unit = {},
         showTimestamps: Boolean = true,
         showDayHeaderStats: Boolean = true,
+        hideTextModeEnabled: Boolean = false,
+        onHideTextModeEnabledChange: (Boolean) -> Unit = {},
         renderCheckboxesAsText: Boolean = false,
         isFavorited: Boolean = false,
         onToggleFavorite: () -> Unit = {},
@@ -358,6 +364,7 @@ fun HomeScreenContent(
         val totalChars = remember(cleanedEntries) {
                 countCharsIgnoringChecklistMarkers(cleanedEntries)
         }
+        val readingTimeMinutes = remember(totalWords) { estimateReadingTimeMinutes(totalWords) }
         var showFutureDateDialog by remember { mutableStateOf(false) }
         var nextEntryItemId by rememberSaveable { mutableLongStateOf(0L) }
         var reorderedEntryItems by remember { mutableStateOf(entries.map { HomeEntryListItem(nextEntryItemId++, it) }) }
@@ -398,6 +405,8 @@ fun HomeScreenContent(
                                 onOpenDrawer = onOpenDrawer,
                                 isFavorited = isFavorited,
                                 onToggleStar = onToggleStar,
+                                hideTextModeEnabled = hideTextModeEnabled,
+                                onHideTextModeEnabledChange = onHideTextModeEnabledChange,
                                 entryCount = entries.size,
                                 totalWords = totalWords,
                                 totalChars = totalChars,
@@ -491,7 +500,8 @@ fun HomeScreenContent(
                                         if (searchQuery.isNotEmpty()) {
                                                 SearchResultsContent(
                                                         searchResults = searchResults,
-                                                        onResultClicked = onResultClicked
+                                                        onResultClicked = onResultClicked,
+                                                        hideTextModeEnabled = hideTextModeEnabled
                                                 )
                                         } else if (isLoading) {
                                                 // Ignore empty loading state flash
@@ -533,6 +543,7 @@ fun HomeScreenContent(
                                                         entryDeleteSelectionEnabled =
                                                                 entryDeleteSelectionEnabled,
                                                         showTimestamps = showTimestamps,
+                                                        hideTextModeEnabled = hideTextModeEnabled,
                                                         renderCheckboxesAsText = renderCheckboxesAsText,
                                                         isPreviewLimitEnabled =
                                                                 isPreviewLimitEnabled,

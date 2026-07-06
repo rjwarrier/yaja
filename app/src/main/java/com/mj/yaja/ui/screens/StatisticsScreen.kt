@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.R
+import com.mj.yaja.data.estimateReadingTimeMinutes
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import sh.calvin.reorderable.ReorderableItem
@@ -102,7 +103,7 @@ enum class StatisticsSection(val displayName: String) {
 }
 
 /** Number of non-reorderable items pinned above the section list in the LazyColumn. */
-private const val STATS_FIXED_TOP = 5
+private const val STATS_FIXED_TOP = 6
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -350,10 +351,40 @@ fun StatisticsScreen(
                             modifier = Modifier.weight(1f)
                         )
                         StatisticCard(
+                            icon = Icons.Rounded.Schedule,
+                            title = stringResource(R.string.statistics_reading_time),
+                            value = pluralStringResource(
+                                R.plurals.statistics_minutes_count,
+                                estimateReadingTimeMinutes(allTimeStats!!.totalWords),
+                                estimateReadingTimeMinutes(allTimeStats!!.totalWords)
+                            ),
+                            color = MaterialTheme.colorScheme.tertiary,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+
+                item(key = "overview_4") {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        StatisticCard(
                             icon = Icons.Rounded.Star,
                             title = stringResource(R.string.statistics_days_highlighted),
                             value = highlightedDays.toString(),
                             color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        StatisticCard(
+                            icon = Icons.Rounded.HourglassBottom,
+                            title = stringResource(R.string.statistics_avg_reading_time_per_entry),
+                            value = pluralStringResource(
+                                R.plurals.statistics_minutes_count,
+                                estimateReadingTimeMinutes(allTimeStats!!.averageWordsPerEntry.toInt()),
+                                estimateReadingTimeMinutes(allTimeStats!!.averageWordsPerEntry.toInt())
+                            ),
+                            color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.weight(1f)
                         )
                     }

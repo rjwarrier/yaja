@@ -81,6 +81,7 @@ internal fun launchSelectedDateLoad(
     fileManager: MarkdownFileManager,
     date: LocalDate,
     showLoading: Boolean,
+    beforeLoad: suspend () -> Unit = {},
     isRequestStillCurrent: () -> Boolean,
     uiState: MutableStateFlow<JournalUiState>,
     currentDayLabel: MutableStateFlow<String>,
@@ -95,6 +96,7 @@ internal fun launchSelectedDateLoad(
     scope.launch {
         val startedAt = System.currentTimeMillis()
         val loaded = withContext(Dispatchers.IO) {
+            beforeLoad()
             fileManager.revalidateDateCache(date, forceDiskRead = true)
             loadDateStateSnapshot(fileManager, date)
         }

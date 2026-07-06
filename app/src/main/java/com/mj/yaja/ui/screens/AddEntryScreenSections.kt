@@ -162,6 +162,8 @@ internal fun AddEntryTopSection(
     onShowHelp: () -> Unit,
     onShowTemplates: () -> Unit,
     onDelete: () -> Unit,
+    isFocusMode: Boolean,
+    onToggleFocusMode: () -> Unit,
     onJumpToToday: () -> Unit,
     shareText: String,
     selectedDate: LocalDate,
@@ -185,6 +187,8 @@ internal fun AddEntryTopSection(
             onShowHelp = onShowHelp,
             onShowTemplates = onShowTemplates,
             onDelete = onDelete,
+            isFocusMode = isFocusMode,
+            onToggleFocusMode = onToggleFocusMode,
             onJumpToToday = onJumpToToday,
             shareText = shareText
         )
@@ -379,6 +383,7 @@ internal fun AddEntryBodySection(
     isEditingMode: Boolean,
     textFieldValue: TextFieldValue,
     onTextFieldValueChange: (TextFieldValue) -> Unit,
+    isFocusMode: Boolean,
     selectedDate: LocalDate,
     keywords: List<KeywordDefinition>,
     keywordHighlightingEnabled: Boolean,
@@ -436,19 +441,21 @@ internal fun AddEntryBodySection(
                                 .weight(1f)
                     )
                 } else {
-                    EntryQuickInsertChips(
-                        selectedEntryKind = selectedEntryKind,
-                        selectedListMode = selectedListMode,
-                        onSelectEvent = onSelectEvent,
-                        onInsertTodo = onInsertTodo,
-                        onToggleNumberedList = onToggleNumberedList,
-                        onToggleBulletedList = onToggleBulletedList,
-                        onInsertNumericList = onInsertNumericList,
-                        onInsertAlphabeticList = onInsertAlphabeticList,
-                        onInsertPlusBullet = onInsertPlusBullet,
-                        onInsertQuoteBullet = onInsertQuoteBullet,
-                        modifier = Modifier.padding(bottom = 16.dp)
-                    )
+                    if (!isFocusMode) {
+                        EntryQuickInsertChips(
+                            selectedEntryKind = selectedEntryKind,
+                            selectedListMode = selectedListMode,
+                            onSelectEvent = onSelectEvent,
+                            onInsertTodo = onInsertTodo,
+                            onToggleNumberedList = onToggleNumberedList,
+                            onToggleBulletedList = onToggleBulletedList,
+                            onInsertNumericList = onInsertNumericList,
+                            onInsertAlphabeticList = onInsertAlphabeticList,
+                            onInsertPlusBullet = onInsertPlusBullet,
+                            onInsertQuoteBullet = onInsertQuoteBullet,
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        )
+                    }
                     EntryEditorField(
                         value = textFieldValue,
                         customShortcodes = customShortcodes,
@@ -460,17 +467,19 @@ internal fun AddEntryBodySection(
                     )
                 }
 
-                EntryCountFooter(
-                    text = textFieldValue.text,
-                    motionPreference = motionPreference,
-                    modifier =
-                        Modifier.padding(bottom = 16.dp)
-                            .align(Alignment.CenterHorizontally)
-                )
+                if (!isFocusMode) {
+                    EntryCountFooter(
+                        text = textFieldValue.text,
+                        motionPreference = motionPreference,
+                        modifier =
+                            Modifier.padding(bottom = 16.dp)
+                                .align(Alignment.CenterHorizontally)
+                    )
+                }
             }
 
             AddEntryFloatingChrome(
-                isFormattingBarVisible = isFormattingBarVisible,
+                isFormattingBarVisible = isFormattingBarVisible && !isFocusMode,
                 motionPreference = motionPreference,
                 onBold = onBold,
                 onItalic = onItalic,

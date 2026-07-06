@@ -111,6 +111,7 @@ fun SettingsScreen(
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
         onNavigateToShortcodes: () -> Unit,
+        onNavigateToPrivacyDashboard: () -> Unit,
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit,
         onNavigateToLookback: () -> Unit
@@ -143,6 +144,8 @@ fun SettingsScreen(
         val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
         val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
         val autoLockTimeoutMinutes by viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
+        val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
+        val carryForwardTodosEnabled by viewModel.carryForwardTodosEnabled.collectAsStateWithLifecycle()
         val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
         val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsStateWithLifecycle()
         val showKeywordsInNavBar by viewModel.showKeywordsInNavBar.collectAsStateWithLifecycle()
@@ -159,6 +162,10 @@ fun SettingsScreen(
         val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsStateWithLifecycle()
         val showOnboardingNextLaunch by viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
         val versionHistoryEnabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
+        val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
+        val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
+        val includeEntryTextInTaskerEvents by
+                viewModel.includeEntryTextInTaskerEvents.collectAsStateWithLifecycle()
         val importState by viewModel.importState.collectAsStateWithLifecycle()
         val restoreSummary by viewModel.restoreSummary.collectAsStateWithLifecycle()
         val context = LocalContext.current
@@ -198,6 +205,7 @@ fun SettingsScreen(
                                 SettingsSearchTarget("Language", "Language", listOf("español", "português", "français", "translate", "locale"), languageRequester),
                                 SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), journalRequester),
                                 SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), journalRequester),
+                                SettingsSearchTarget("Carry Forward Todos", "Journal Experience", listOf("unchecked tasks", "yesterday todo"), journalRequester),
                                 SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), journalRequester),
                                 SettingsSearchTarget("Render Checkboxes as Text", "Journal Experience", listOf("todo checkbox", "text checkbox"), journalRequester),
                                 SettingsSearchTarget("Truncate Long Entries", "Journal Experience", listOf("preview", "character limit"), journalRequester),
@@ -221,6 +229,8 @@ fun SettingsScreen(
                                 SettingsSearchTarget("PIN", "Privacy & Security", listOf("password", "lock"), securityRequester),
                                 SettingsSearchTarget("Biometric", "Privacy & Security", listOf("fingerprint", "face unlock"), securityRequester),
                                 SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), securityRequester),
+                                SettingsSearchTarget("Hide Text Mode", "Privacy & Security", listOf("privacy", "panic blur", "hide text"), securityRequester),
+                                SettingsSearchTarget("Privacy Dashboard", "Privacy & Security", listOf("transparency", "data dashboard", "widgets", "tasker"), securityRequester, onSelect = onNavigateToPrivacyDashboard),
                                 SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), dataRequester),
                                 SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), dataRequester),
                                 SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), dataRequester),
@@ -483,6 +493,10 @@ fun SettingsScreen(
                                                         onShowDayHeaderStatsChange = {
                                                                 viewModel.setShowDayHeaderStats(it)
                                                         },
+                                                        carryForwardTodosEnabled = carryForwardTodosEnabled,
+                                                        onCarryForwardTodosEnabledChange = {
+                                                                viewModel.setCarryForwardTodosEnabled(it)
+                                                        },
                                                         entryStyle = entryStyle,
                                                         onEntryStyleSelected = {
                                                                 viewModel.setEntryStyle(it)
@@ -588,7 +602,12 @@ fun SettingsScreen(
                                                         onEnableBiometric = { viewModel.enableBiometric() },
                                                         onDisableBiometric = { viewModel.disableBiometric() },
                                                         autoLockTimeoutMinutes = autoLockTimeoutMinutes,
-                                                        onAutoLockTimeoutChange = { viewModel.setAutoLockTimeout(it) }
+                                                        onAutoLockTimeoutChange = { viewModel.setAutoLockTimeout(it) },
+                                                        hideTextModeEnabled = hideTextModeEnabled,
+                                                        onHideTextModeEnabledChange = {
+                                                                viewModel.setHideTextModeEnabled(it)
+                                                        },
+                                                        onNavigateToPrivacyDashboard = onNavigateToPrivacyDashboard
                                                 )
                                         }
 

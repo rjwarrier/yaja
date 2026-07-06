@@ -291,6 +291,12 @@ class SettingsRepository(private val context: Context) {
     private val _autoLockTimeoutMinutes = MutableStateFlow(prefs.getInt(KEY_AUTO_LOCK_TIMEOUT, 5))
     val autoLockTimeoutMinutes: StateFlow<Int> = _autoLockTimeoutMinutes.asStateFlow()
 
+    private val _hideTextModeEnabled = MutableStateFlow(getSavedHideTextModeEnabled())
+    val hideTextModeEnabled: StateFlow<Boolean> = _hideTextModeEnabled.asStateFlow()
+
+    private val _carryForwardTodosEnabled = MutableStateFlow(getSavedCarryForwardTodosEnabled())
+    val carryForwardTodosEnabled: StateFlow<Boolean> = _carryForwardTodosEnabled.asStateFlow()
+
     private val _allowFutureEntries = MutableStateFlow(getSavedAllowFutureEntries())
     val allowFutureEntries: StateFlow<Boolean> = _allowFutureEntries.asStateFlow()
 
@@ -786,6 +792,16 @@ class SettingsRepository(private val context: Context) {
         _allowFutureEntries.value = allow
     }
 
+    fun setHideTextModeEnabled(enabled: Boolean) {
+        prefs.edit().putBoolean(KEY_HIDE_TEXT_MODE_ENABLED, enabled).apply()
+        _hideTextModeEnabled.value = enabled
+    }
+
+    fun setCarryForwardTodosEnabled(enabled: Boolean) {
+        prefs.edit().putBoolean(KEY_CARRY_FORWARD_TODOS_ENABLED, enabled).apply()
+        _carryForwardTodosEnabled.value = enabled
+    }
+
     fun setAllowTaskerAccess(allow: Boolean) {
         prefs.edit().putBoolean(KEY_ALLOW_TASKER_ACCESS, allow).apply()
         _allowTaskerAccess.value = allow
@@ -1254,6 +1270,12 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedAllowFutureEntries(): Boolean =
             prefs.getBoolean(KEY_ALLOW_FUTURE_ENTRIES, false)
 
+    private fun getSavedHideTextModeEnabled(): Boolean =
+            prefs.getBoolean(KEY_HIDE_TEXT_MODE_ENABLED, false)
+
+    private fun getSavedCarryForwardTodosEnabled(): Boolean =
+            prefs.getBoolean(KEY_CARRY_FORWARD_TODOS_ENABLED, false)
+
     private fun getSavedAllowTaskerAccess(): Boolean =
             prefs.getBoolean(KEY_ALLOW_TASKER_ACCESS, false)
 
@@ -1454,6 +1476,8 @@ class SettingsRepository(private val context: Context) {
         private const val PBKDF2_ITERATIONS = 10_000
         private const val PBKDF2_KEY_LENGTH_BITS = 256
         private const val KEY_ALLOW_FUTURE_ENTRIES = "allow_future_entries"
+        private const val KEY_HIDE_TEXT_MODE_ENABLED = "hide_text_mode_enabled"
+        private const val KEY_CARRY_FORWARD_TODOS_ENABLED = "carry_forward_todos_enabled"
         private const val KEY_ALLOW_TASKER_ACCESS = "allow_tasker_access"
         private const val KEY_ALLOW_TASKER_EVENTS = "allow_tasker_events"
         private const val KEY_INCLUDE_ENTRY_TEXT_IN_TASKER_EVENTS =

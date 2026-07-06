@@ -59,6 +59,8 @@ fun JournalExperienceSection(
     onRenderCheckboxesAsTextChange: (Boolean) -> Unit,
     showDayHeaderStats: Boolean,
     onShowDayHeaderStatsChange: (Boolean) -> Unit,
+    carryForwardTodosEnabled: Boolean,
+    onCarryForwardTodosEnabledChange: (Boolean) -> Unit,
     entryStyle: EntryStyle,
     onEntryStyleSelected: (EntryStyle) -> Unit,
     dateOrderPreference: DateOrderPreference,
@@ -184,6 +186,15 @@ fun JournalExperienceSection(
             subtitle = stringResource(R.string.settings_journal_allow_future_subtitle),
             checked = allowFutureEntries,
             onCheckedChange = onAllowFutureEntriesChange
+        )
+
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+
+        PreferencesSwitchRow(
+            title = stringResource(R.string.settings_journal_carry_forward_title),
+            subtitle = stringResource(R.string.settings_journal_carry_forward_subtitle),
+            checked = carryForwardTodosEnabled,
+            onCheckedChange = onCarryForwardTodosEnabledChange
         )
 
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)

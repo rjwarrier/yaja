@@ -131,6 +131,8 @@
     <string name="settings_journal_show_timestamps_subtitle">Display entry time on the timeline.</string>
     <string name="settings_journal_allow_future_title">Allow Future Entries</string>
     <string name="settings_journal_allow_future_subtitle">Enable adding entries to future dates.</string>
+    <string name="settings_journal_carry_forward_title">Carry Forward Unchecked Todos</string>
+    <string name="settings_journal_carry_forward_subtitle">Bring yesterday\'s open checklist items into today when the day is loaded.</string>
     <string name="settings_journal_truncate_title">Truncate Long Entries</string>
     <string name="settings_journal_truncate_subtitle">Shorten long entries on the home screen.</string>
     <string name="settings_journal_char_limit_title">Character Limit</string>
@@ -1165,6 +1167,12 @@
     <string name="statistics_current_streak">Current Streak</string>
     <string name="statistics_pages_written">Pages Written</string>
     <string name="statistics_days_highlighted">Days Highlighted</string>
+    <string name="statistics_reading_time">Reading Time</string>
+    <string name="statistics_avg_reading_time_per_entry">Avg. Read / Entry</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d min</item>
+        <item quantity="other">%1$d min</item>
+    </plurals>
     <plurals name="statistics_days_count">
         <item quantity="one">%1$d day</item>
         <item quantity="other">%1$d days</item>
@@ -1277,6 +1285,36 @@
     <string name="statistics_heatmap_less">Less</string>
     <string name="statistics_heatmap_more">More</string>
     <string name="action_open">Open</string>
+    <string name="addentry_cd_enter_focus_mode">Enter focus mode</string>
+    <string name="addentry_cd_exit_focus_mode">Exit focus mode</string>
+    <string name="addentry_reading_time_format">%1$d min read</string>
+    <string name="home_cd_enable_hide_text_mode">Enable hide text mode</string>
+    <string name="home_cd_disable_hide_text_mode">Disable hide text mode</string>
+    <string name="home_hidden_entry_preview">Text hidden. Tap once to reveal.</string>
+    <string name="home_hidden_result_preview">Preview hidden while hide text mode is on.</string>
+    <string name="home_stat_read">Read</string>
+    <string name="settings_hide_text_mode_title">Hide Text Mode</string>
+    <string name="settings_hide_text_mode_subtitle">Hide journal text on Home until you tap an entry to reveal it.</string>
+    <string name="settings_privacy_dashboard_title">Privacy Dashboard</string>
+    <string name="settings_privacy_dashboard_overview">Local Transparency</string>
+    <string name="settings_privacy_storage_title">Storage Location</string>
+    <string name="settings_privacy_backup_title">Backup Rules</string>
+    <string name="settings_privacy_backup_summary">Last backup: %1$s. Reminder threshold: %2$d days.</string>
+    <string name="settings_privacy_lock_title">App Lock</string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Biometrics: %2$s. Auto-lock after %3$d minutes.</string>
+    <string name="settings_privacy_hide_mode_title">Hide Text Mode</string>
+    <string name="settings_privacy_hide_mode_on">Home text is hidden by default until you reveal an entry.</string>
+    <string name="settings_privacy_hide_mode_off">Home text is visible normally.</string>
+    <string name="settings_privacy_tasker_title">Tasker Exposure</string>
+    <string name="settings_privacy_tasker_summary">Quick capture access: %1$s. Event sharing: %2$s. Entry text included in events: %3$s.</string>
+    <string name="settings_privacy_share_title">Manual Sharing</string>
+    <string name="settings_privacy_share_summary">Entry text can leave the app only when you explicitly use Share from the editor or export a backup.</string>
+    <string name="settings_privacy_widgets_title">Widget Exposure</string>
+    <string name="settings_privacy_widgets_summary">%1$d widget instances active. Quick Capture: %2$d. Quick Todo: %3$d. Heatmap: %4$d. Todo List: %5$d.</string>
+    <string name="settings_privacy_state_on">On</string>
+    <string name="settings_privacy_state_off">Off</string>
+    <string name="settings_privacy_state_yes">Yes</string>
+    <string name="settings_privacy_state_no">No</string>
 
     <!-- Tasker event plugin -->
     <string name="tasker_event_title">Yaja Journal Events</string>

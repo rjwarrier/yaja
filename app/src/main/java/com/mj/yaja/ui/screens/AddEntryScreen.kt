@@ -64,6 +64,7 @@ fun AddEntryScreen(
         val today = remember { LocalDate.now() }
 
         var isEditingMode by remember { mutableStateOf(editingEntry == null) }
+        var isFocusMode by remember { mutableStateOf(false) }
         val entryRevisitMetadata =
                 remember(editingEntry) {
                         buildEntryRevisitMetadata(editingEntry)
@@ -300,6 +301,8 @@ fun AddEntryScreen(
                 )
         }
 
+        BackHandler(enabled = isFocusMode) { isFocusMode = false }
+
         BackHandler(enabled = hasUnsavedChanges && !isSaving) { showDiscardDialog = true }
 
         val dayFormatter = remember { DateTimeFormatter.ofPattern("dd") }
@@ -412,6 +415,8 @@ fun AddEntryScreen(
                                 onShowHelp = { showHelpDialog = true },
                                 onShowTemplates = { showTemplateSheet = true },
                                 onDelete = { handleDeleteEntry() },
+                                isFocusMode = isFocusMode,
+                                onToggleFocusMode = { isFocusMode = !isFocusMode },
                                 onJumpToToday = {
                                         if (isSaving) return@AddEntryTopSection
                                         viewModel.clearEditing()
@@ -438,6 +443,7 @@ fun AddEntryScreen(
                         isEditingMode = isEditingMode,
                         textFieldValue = textFieldValue,
                         onTextFieldValueChange = { textFieldValue = it },
+                        isFocusMode = isFocusMode,
                         selectedDate = uiState.selectedDate,
                         keywords = keywords,
                         keywordHighlightingEnabled = keywordHighlightingEnabled,

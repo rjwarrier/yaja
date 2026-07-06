@@ -52,6 +52,7 @@ import com.mj.yaja.ui.components.ExpressiveCheckbox
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.countCharsIgnoringChecklistMarkers
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
+import com.mj.yaja.data.estimateReadingTimeMinutes
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryKind
@@ -485,6 +486,7 @@ fun EntryCountFooter(
 ) {
         val wordCount = countWordsIgnoringChecklistMarkers(text)
         val charCount = countCharsIgnoringChecklistMarkers(text)
+        val readingTimeMinutes = estimateReadingTimeMinutes(wordCount)
 
         AnimatedVisibility(
                 visible = text.isNotEmpty(),
@@ -496,6 +498,19 @@ fun EntryCountFooter(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                        Surface(
+                                shape = RoundedCornerShape(16.dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerLow,
+                                tonalElevation = 0.dp,
+                                shadowElevation = 0.dp
+                        ) {
+                                Text(
+                                        text = stringResource(R.string.addentry_reading_time_format, readingTimeMinutes),
+                                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                        }
                         Surface(
                                 shape = RoundedCornerShape(16.dp),
                                 color = MaterialTheme.colorScheme.surfaceContainerLow,

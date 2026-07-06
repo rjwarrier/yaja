@@ -18,3 +18,20 @@ fun countWordsIgnoringChecklistMarkers(entries: List<String>): Int =
 
 fun countCharsIgnoringChecklistMarkers(entries: List<String>): Int =
     entries.sumOf(::countCharsIgnoringChecklistMarkers)
+
+fun estimateReadingTimeMinutes(wordCount: Int, wordsPerMinute: Int = 225): Int {
+    if (wordCount <= 0 || wordsPerMinute <= 0) return 0
+    return ((wordCount + wordsPerMinute - 1) / wordsPerMinute).coerceAtLeast(1)
+}
+
+fun estimateReadingTimeMinutes(text: String, wordsPerMinute: Int = 225): Int =
+    estimateReadingTimeMinutes(
+        wordCount = countWordsIgnoringChecklistMarkers(text),
+        wordsPerMinute = wordsPerMinute
+    )
+
+fun estimateReadingTimeMinutes(entries: List<String>, wordsPerMinute: Int = 225): Int =
+    estimateReadingTimeMinutes(
+        wordCount = countWordsIgnoringChecklistMarkers(entries),
+        wordsPerMinute = wordsPerMinute
+    )
