@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.EventItem
 import com.mj.yaja.data.TodoItem
+import com.mj.yaja.data.stripMentionedEventTimeFromText
 import com.mj.yaja.ui.components.ExpressiveCheckbox
 import com.mj.yaja.ui.theme.metaSmallTextStyle
 import com.mj.yaja.ui.theme.metaTextStyle
@@ -682,22 +683,30 @@ internal fun EventItemCard(
     modifier: Modifier = Modifier
 ) {
     val cardContainer = MaterialTheme.colorScheme.surfaceContainerLow
-    val eventChipContainer = lerp(
-        MaterialTheme.colorScheme.surfaceContainerHighest,
-        MaterialTheme.colorScheme.tertiaryContainer,
-        0.56f
-    )
-    val metaChipContainer = lerp(
-        MaterialTheme.colorScheme.surfaceContainerHighest,
-        MaterialTheme.colorScheme.tertiaryContainer,
-        0.38f
-    )
     val timeChipContainer = lerp(
         MaterialTheme.colorScheme.secondaryContainer,
         MaterialTheme.colorScheme.tertiaryContainer,
         0.5f
     )
     val timeChipContent = MaterialTheme.colorScheme.onTertiaryContainer
+    val displayText = remember(item.displayText, item.mentionedTime) {
+        stripMentionedEventTimeFromText(item.displayText, item.mentionedTime)
+            .ifBlank { item.displayText }
+    }
+    val eventTextParts = remember(displayText) {
+        val lines = displayText.lines()
+        val titleIndex = lines.indexOfFirst { it.isNotBlank() }
+        if (titleIndex == -1) {
+            displayText to ""
+        } else {
+            val title = lines[titleIndex].trim()
+            val detail = lines
+                .drop(titleIndex + 1)
+                .joinToString("\n")
+                .trim()
+            title to detail
+        }
+    }
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
@@ -714,30 +723,6 @@ internal fun EventItemCard(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                item.recordedTime?.takeIf { it.isNotBlank() }?.let { recordedTime ->
-                    Surface(
-                        shape = RoundedCornerShape(8.dp),
-                        color = timeChipContainer
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(5.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Rounded.Alarm,
-                                contentDescription = null,
-                                modifier = Modifier.size(14.dp),
-                                tint = timeChipContent
-                            )
-                            Text(
-                                text = "$recordedTime Hrs",
-                                style = MaterialTheme.typography.metaTextStyle().copy(fontWeight = FontWeight.SemiBold),
-                                color = timeChipContent
-                            )
-                        }
-                    }
-                }
                 val mentionedTime =
                     item.mentionedTime
                         ?.takeIf { it.isNotBlank() && it != item.recordedTime && it != "${item.recordedTime} Hrs" }
@@ -765,58 +750,22 @@ internal fun EventItemCard(
                         }
                     }
                 }
-                Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = eventChipContainer
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.EmojiEvents,
-                            contentDescription = null,
-                            modifier = Modifier.size(13.dp),
-                            tint = MaterialTheme.colorScheme.onTertiaryContainer
-                        )
-                        Text(
-                            text = stringResource(R.string.addentry_event_chip),
-                            style = MaterialTheme.typography.metaTextStyle().copy(fontWeight = FontWeight.SemiBold),
-                            color = MaterialTheme.colorScheme.onTertiaryContainer
-                        )
-                    }
-                }
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = MarkdownUtils.parseMarkdown(item.displayText),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
+                    text = MarkdownUtils.parseMarkdown(eventTextParts.first),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.SemiBold
                 )
-                Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = metaChipContainer
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.EditCalendar,
-                            contentDescription = null,
-                            modifier = Modifier.size(13.dp),
-                            tint = MaterialTheme.colorScheme.onTertiaryContainer
-                        )
-                        Text(
-                            text = "Entry ${item.entryIndex + 1}",
-                            style = MaterialTheme.typography.metaSmallTextStyle(),
-                            color = MaterialTheme.colorScheme.onTertiaryContainer
-                        )
-                    }
+                if (eventTextParts.second.isNotBlank()) {
+                    Text(
+                        text = MarkdownUtils.parseMarkdown(eventTextParts.second),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
         }

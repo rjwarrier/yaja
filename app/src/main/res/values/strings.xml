@@ -1321,6 +1321,33 @@
     <string name="settings_privacy_state_off">Off</string>
     <string name="settings_privacy_state_yes">Yes</string>
     <string name="settings_privacy_state_no">No</string>
+    <string name="settings_privacy_risk_low">Low Exposure</string>
+    <string name="settings_privacy_risk_medium">Medium Exposure</string>
+    <string name="settings_privacy_risk_high">High Exposure</string>
+    <string name="settings_privacy_risk_low_summary">Most journal text stays on-device unless you explicitly share it.</string>
+    <string name="settings_privacy_risk_medium_summary">A few enabled surfaces can expose text or metadata outside the main journal view.</string>
+    <string name="settings_privacy_risk_high_summary">Several enabled surfaces can reveal journal content or metadata. Tightening a few settings is recommended.</string>
+    <string name="settings_privacy_exposure_title">Current Exposure Level</string>
+    <string name="settings_privacy_surfaces_title">Exposure Surfaces</string>
+    <string name="settings_privacy_storage_backup_title">Storage &amp; Backup</string>
+    <string name="settings_privacy_controls_title">Privacy Controls</string>
+    <string name="settings_privacy_recommendations_title">Recommendations</string>
+    <string name="settings_privacy_quick_actions_title">Quick Actions</string>
+    <string name="settings_privacy_surface_local_title">On-device Journal</string>
+    <string name="settings_privacy_surface_local_summary">Your day files live locally and stay in-app unless you use share, backup, Tasker, or widgets.</string>
+    <string name="settings_privacy_state_default">Default</string>
+    <string name="settings_privacy_state_manual">Manual Only</string>
+    <string name="settings_privacy_state_active">Active</string>
+    <string name="settings_privacy_state_visible">Visible</string>
+    <string name="settings_privacy_state_none">None</string>
+    <string name="settings_privacy_recommend_pin">Add a PIN so the app does not open straight into your journal.</string>
+    <string name="settings_privacy_recommend_hide">Turn on Hide Text Mode to keep Home safer in public or around other people.</string>
+    <string name="settings_privacy_recommend_tasker_text">Disable entry text in Tasker events unless you truly need the full journal text there.</string>
+    <string name="settings_privacy_recommend_widgets">Review active widgets since home screen surfaces can expose metadata at a glance.</string>
+    <string name="settings_privacy_action_set_pin">Set PIN</string>
+    <string name="settings_privacy_action_enable_hide">Enable Hide Text</string>
+    <string name="settings_privacy_action_disable_tasker_text">Disable Tasker Text</string>
+    <string name="settings_privacy_action_open_tasker">Open Tasker Settings</string>
 
     <!-- Tasker event plugin -->
     <string name="tasker_event_title">Yaja Journal Events</string>

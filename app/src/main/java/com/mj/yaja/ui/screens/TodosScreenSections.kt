@@ -286,7 +286,7 @@ internal fun TodosScreenContent(
                                     allCount = todos.size,
                                     openCount = openTodos.size,
                                     doneCount = doneTodos.size,
-                                    eventCount = events.size,
+                                    eventCount = upcomingEventsCount,
                                     onFilterSelected = { selectedFilter = it }
                                 )
                             }

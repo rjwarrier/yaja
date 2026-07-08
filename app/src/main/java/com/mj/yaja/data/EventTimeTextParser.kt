@@ -31,6 +31,26 @@ fun eventTextStartsWithTime(text: String, candidate: String?): Boolean {
     return normalizeEventTimeToken(leadingTime) == normalizeEventTimeToken(candidate)
 }
 
+fun stripMentionedEventTimeFromText(text: String, candidate: String?): String {
+    if (candidate.isNullOrBlank()) return text.trim()
+    val normalizedCandidate = normalizeEventTimeToken(candidate)
+    return text
+        .lineSequence()
+        .map { line ->
+            val withoutTime = eventTimeTokenRegex.replace(line) { match ->
+                if (normalizeEventTimeToken(match.value) == normalizedCandidate) "" else match.value
+            }
+            withoutTime
+                .replace(Regex("""^\s*[-:|,]+\s*"""), "")
+                .replace(Regex("""\s*[:|,]\s*$"""), "")
+                .replace(Regex("""\s{2,}"""), " ")
+                .trim()
+        }
+        .joinToString("\n")
+        .replace(Regex("""\n{3,}"""), "\n\n")
+        .trim()
+}
+
 private fun extractLeadingEventTime(text: String): String? {
     val trimmed = text.trimStart()
     val meridiemMatch = meridiemTimeRegex.find(trimmed)?.takeIf { it.range.first == 0 }
@@ -51,6 +71,9 @@ private fun extractLeadingEventTime(text: String): String? {
         }
     }
 }
+
+private val eventTimeTokenRegex =
+    Regex("""\b\d{1,2}(?:[:.]\d{2})?\s*(?:AM|PM|am|pm)\b|\b(?:[01]?\d|2[0-3])[:.][0-5]\d(?:\s*(?:Hrs|hrs|HR|hr|Hr))?\b""")
 
 private fun normalizeEventTimeToken(value: String): String {
     val trimmed = value.trim()

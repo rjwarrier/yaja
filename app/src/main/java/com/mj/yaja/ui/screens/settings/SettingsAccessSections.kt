@@ -3,7 +3,10 @@ package com.mj.yaja.ui.screens
 import android.util.Log
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,22 +15,34 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Article
 import androidx.compose.material.icons.automirrored.rounded.HelpOutline
+import androidx.compose.material.icons.rounded.Archive
 import androidx.compose.material.icons.rounded.Fingerprint
+import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.NorthEast
+import androidx.compose.material.icons.rounded.Security
+import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material.icons.rounded.Storage
 import androidx.compose.material.icons.rounded.VisibilityOff
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.material.icons.rounded.Shield
+import androidx.compose.material.icons.rounded.WarningAmber
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -538,6 +553,10 @@ fun DataPrivacyDashboardScreen(
     allowTaskerAccess: Boolean,
     allowTaskerEvents: Boolean,
     includeEntryTextInTaskerEvents: Boolean,
+    onEnableHideTextMode: () -> Unit,
+    onDisableTaskerTextSharing: () -> Unit,
+    onNavigateToTaskerIntegration: () -> Unit,
+    onNavigateToPinSetup: () -> Unit,
     onNavigateBack: () -> Unit
 ) {
     val context = LocalContext.current
@@ -563,6 +582,34 @@ fun DataPrivacyDashboardScreen(
         ).size
     }
     val totalWidgets = quickCaptureCount + quickTodoCount + heatmapCount + todoListCount
+    val riskScore =
+        (if (isPinEnabled) 0 else 2) +
+            (if (hideTextModeEnabled) 0 else 1) +
+            (if (includeEntryTextInTaskerEvents) 2 else 0) +
+            (if (allowTaskerAccess || allowTaskerEvents) 1 else 0) +
+            (if (totalWidgets > 0) 1 else 0)
+    val riskLabel =
+        when {
+            riskScore >= 5 -> stringResource(R.string.settings_privacy_risk_high)
+            riskScore >= 3 -> stringResource(R.string.settings_privacy_risk_medium)
+            else -> stringResource(R.string.settings_privacy_risk_low)
+        }
+    val riskSummary =
+        when {
+            riskScore >= 5 -> stringResource(R.string.settings_privacy_risk_high_summary)
+            riskScore >= 3 -> stringResource(R.string.settings_privacy_risk_medium_summary)
+            else -> stringResource(R.string.settings_privacy_risk_low_summary)
+        }
+    val recommendations = buildList {
+        if (!isPinEnabled) add(stringResource(R.string.settings_privacy_recommend_pin))
+        if (!hideTextModeEnabled) add(stringResource(R.string.settings_privacy_recommend_hide))
+        if (includeEntryTextInTaskerEvents) {
+            add(stringResource(R.string.settings_privacy_recommend_tasker_text))
+        }
+        if (totalWidgets > 0) {
+            add(stringResource(R.string.settings_privacy_recommend_widgets))
+        }
+    }
 
     androidx.compose.material3.Scaffold(
         topBar = {
@@ -588,11 +635,67 @@ fun DataPrivacyDashboardScreen(
                 title = stringResource(R.string.settings_privacy_dashboard_overview)
             )
 
+            PrivacyHeroCard(
+                riskLabel = riskLabel,
+                riskSummary = riskSummary
+            )
+
+            DashboardSectionTitle(stringResource(R.string.settings_privacy_surfaces_title))
+            PrivacySurfaceRow(
+                icon = Icons.Rounded.Lock,
+                title = stringResource(R.string.settings_privacy_surface_local_title),
+                summary = stringResource(R.string.settings_privacy_surface_local_summary),
+                stateLabel = stringResource(R.string.settings_privacy_state_default)
+            )
+            PrivacySurfaceRow(
+                icon = Icons.Rounded.Share,
+                title = stringResource(R.string.settings_privacy_share_title),
+                summary = stringResource(R.string.settings_privacy_share_summary),
+                stateLabel = stringResource(R.string.settings_privacy_state_manual)
+            )
+            PrivacySurfaceRow(
+                icon = Icons.Rounded.Settings,
+                title = stringResource(R.string.settings_privacy_tasker_title),
+                summary = stringResource(
+                    R.string.settings_privacy_tasker_summary,
+                    if (allowTaskerAccess) stringResource(R.string.settings_privacy_state_on) else stringResource(R.string.settings_privacy_state_off),
+                    if (allowTaskerEvents) stringResource(R.string.settings_privacy_state_on) else stringResource(R.string.settings_privacy_state_off),
+                    if (includeEntryTextInTaskerEvents) stringResource(R.string.settings_privacy_state_yes) else stringResource(R.string.settings_privacy_state_no)
+                ),
+                stateLabel =
+                    if (allowTaskerAccess || allowTaskerEvents) {
+                        stringResource(R.string.settings_privacy_state_active)
+                    } else {
+                        stringResource(R.string.settings_privacy_state_off)
+                    }
+            )
+            PrivacySurfaceRow(
+                icon = Icons.Rounded.GridView,
+                title = stringResource(R.string.settings_privacy_widgets_title),
+                summary = stringResource(
+                    R.string.settings_privacy_widgets_summary,
+                    totalWidgets,
+                    quickCaptureCount,
+                    quickTodoCount,
+                    heatmapCount,
+                    todoListCount
+                ),
+                stateLabel =
+                    if (totalWidgets > 0) {
+                        stringResource(R.string.settings_privacy_state_visible)
+                    } else {
+                        stringResource(R.string.settings_privacy_state_none)
+                    }
+            )
+
+            DashboardSectionTitle(stringResource(R.string.settings_privacy_storage_backup_title))
             PrivacyStatusCard(
+                icon = Icons.Rounded.Storage,
                 title = stringResource(R.string.settings_privacy_storage_title),
                 summary = storageLocationText
             )
             PrivacyStatusCard(
+                icon = Icons.Rounded.Archive,
                 title = stringResource(R.string.settings_privacy_backup_title),
                 summary = stringResource(
                     R.string.settings_privacy_backup_summary,
@@ -600,7 +703,10 @@ fun DataPrivacyDashboardScreen(
                     backupReminderDays
                 )
             )
+
+            DashboardSectionTitle(stringResource(R.string.settings_privacy_controls_title))
             PrivacyStatusCard(
+                icon = Icons.Rounded.Security,
                 title = stringResource(R.string.settings_privacy_lock_title),
                 summary = stringResource(
                     R.string.settings_privacy_lock_summary,
@@ -610,6 +716,7 @@ fun DataPrivacyDashboardScreen(
                 )
             )
             PrivacyStatusCard(
+                icon = Icons.Rounded.VisibilityOff,
                 title = stringResource(R.string.settings_privacy_hide_mode_title),
                 summary = if (hideTextModeEnabled) {
                     stringResource(R.string.settings_privacy_hide_mode_on)
@@ -617,36 +724,86 @@ fun DataPrivacyDashboardScreen(
                     stringResource(R.string.settings_privacy_hide_mode_off)
                 }
             )
-            PrivacyStatusCard(
-                title = stringResource(R.string.settings_privacy_tasker_title),
-                summary = stringResource(
-                    R.string.settings_privacy_tasker_summary,
-                    if (allowTaskerAccess) stringResource(R.string.settings_privacy_state_on) else stringResource(R.string.settings_privacy_state_off),
-                    if (allowTaskerEvents) stringResource(R.string.settings_privacy_state_on) else stringResource(R.string.settings_privacy_state_off),
-                    if (includeEntryTextInTaskerEvents) stringResource(R.string.settings_privacy_state_yes) else stringResource(R.string.settings_privacy_state_no)
+
+            if (recommendations.isNotEmpty()) {
+                DashboardSectionTitle(stringResource(R.string.settings_privacy_recommendations_title))
+                ElevatedCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                    ),
+                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+                    shape = MaterialTheme.shapes.medium
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 14.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        recommendations.forEach { recommendation ->
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                verticalAlignment = Alignment.Top
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Rounded.WarningAmber,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Text(
+                                    text = recommendation,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            DashboardSectionTitle(stringResource(R.string.settings_privacy_quick_actions_title))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                if (!isPinEnabled) {
+                    QuickActionChip(
+                        icon = Icons.Rounded.Lock,
+                        label = stringResource(R.string.settings_privacy_action_set_pin),
+                        onClick = onNavigateToPinSetup
+                    )
+                }
+                if (!hideTextModeEnabled) {
+                    QuickActionChip(
+                        icon = Icons.Rounded.VisibilityOff,
+                        label = stringResource(R.string.settings_privacy_action_enable_hide),
+                        onClick = onEnableHideTextMode
+                    )
+                }
+                if (includeEntryTextInTaskerEvents) {
+                    QuickActionChip(
+                        icon = Icons.Rounded.Settings,
+                        label = stringResource(R.string.settings_privacy_action_disable_tasker_text),
+                        onClick = onDisableTaskerTextSharing
+                    )
+                }
+                QuickActionChip(
+                    icon = Icons.Rounded.NorthEast,
+                    label = stringResource(R.string.settings_privacy_action_open_tasker),
+                    onClick = onNavigateToTaskerIntegration
                 )
-            )
-            PrivacyStatusCard(
-                title = stringResource(R.string.settings_privacy_share_title),
-                summary = stringResource(R.string.settings_privacy_share_summary)
-            )
-            PrivacyStatusCard(
-                title = stringResource(R.string.settings_privacy_widgets_title),
-                summary = stringResource(
-                    R.string.settings_privacy_widgets_summary,
-                    totalWidgets,
-                    quickCaptureCount,
-                    quickTodoCount,
-                    heatmapCount,
-                    todoListCount
-                )
-            )
+            }
         }
     }
 }
 
 @Composable
 private fun PrivacyStatusCard(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
     title: String,
     summary: String
 ) {
@@ -664,17 +821,194 @@ private fun PrivacyStatusCard(
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontWeight = FontWeight.SemiBold
-            )
-            Text(
-                text = summary,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.Top
+            ) {
+                Surface(
+                    shape = MaterialTheme.shapes.small,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.size(36.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
+                }
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Text(
+                        text = summary,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PrivacyHeroCard(
+    riskLabel: String,
+    riskSummary: String
+) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.58f)
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.large
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 18.dp, vertical = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Surface(
+                shape = MaterialTheme.shapes.medium,
+                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.28f),
+                modifier = Modifier.size(44.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = Icons.Rounded.Shield,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.settings_privacy_exposure_title),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.82f)
+                )
+                Text(
+                    text = riskSummary,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+            FilterChip(
+                selected = true,
+                onClick = {},
+                label = { Text(riskLabel) }
             )
         }
     }
+}
+
+@Composable
+private fun DashboardSectionTitle(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(start = 2.dp, top = 8.dp)
+    )
+}
+
+@Composable
+private fun PrivacySurfaceRow(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    summary: String,
+    stateLabel: String
+) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Surface(
+                shape = MaterialTheme.shapes.small,
+                color = MaterialTheme.colorScheme.secondaryContainer,
+                modifier = Modifier.size(38.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(
+                    text = summary,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            AssistChip(
+                onClick = {},
+                label = { Text(stateLabel) },
+                colors = AssistChipDefaults.assistChipColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+                )
+            )
+        }
+    }
+}
+
+@Composable
+private fun QuickActionChip(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    label: String,
+    onClick: () -> Unit
+) {
+    AssistChip(
+        onClick = onClick,
+        label = { Text(label) },
+        leadingIcon = {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+        },
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        colors = AssistChipDefaults.assistChipColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        )
+    )
 }

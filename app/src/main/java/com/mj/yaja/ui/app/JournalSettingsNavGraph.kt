@@ -178,6 +178,14 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         allowTaskerAccess = allowTaskerAccess,
                         allowTaskerEvents = allowTaskerEvents,
                         includeEntryTextInTaskerEvents = includeEntryTextInTaskerEvents,
+                        onEnableHideTextMode = { viewModel.setHideTextModeEnabled(true) },
+                        onDisableTaskerTextSharing = {
+                                viewModel.setIncludeEntryTextInTaskerEvents(false)
+                        },
+                        onNavigateToTaskerIntegration = {
+                                navController.navigate(Route.TaskerIntegration.path)
+                        },
+                        onNavigateToPinSetup = { navController.navigate(Route.PinSetup.path) },
                         onNavigateBack = { navController.popBackStack() }
                 )
         }
