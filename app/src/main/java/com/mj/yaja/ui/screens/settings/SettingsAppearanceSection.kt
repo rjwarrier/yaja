@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.TextFields
@@ -395,14 +397,6 @@ fun AppearanceSection(
     }
 
     Spacer(modifier = Modifier.height(24.dp))
-    SectionLabel(stringResource(R.string.settings_layout_label))
-    FabPlacementCard(
-        fabPlacement = fabPlacement,
-        panelColors = panelColors,
-        onFabPlacementSelected = onFabPlacementSelected
-    )
-
-    Spacer(modifier = Modifier.height(24.dp))
     SectionLabel(stringResource(R.string.settings_ui_font_size_label))
     FontScaleCard(
         fontScalePreference = fontScalePreference,
@@ -448,7 +442,21 @@ fun AppearanceSection(
         }
     }
 
-    Spacer(modifier = Modifier.height(32.dp))
+    Spacer(modifier = Modifier.height(24.dp))
+    SectionLabel(stringResource(R.string.settings_layout_label))
+    Text(
+        text = stringResource(R.string.settings_layout_desc),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
+    )
+    FabPlacementCard(
+        fabPlacement = fabPlacement,
+        panelColors = panelColors,
+        onFabPlacementSelected = onFabPlacementSelected
+    )
+
+    Spacer(modifier = Modifier.height(56.dp))
 }
 
 @Composable
@@ -810,12 +818,18 @@ private fun FabPlacementCard(
     onFabPlacementSelected: (FabPlacement) -> Unit
 ) {
     val options = listOf(
-        FabPlacement.LEFT to stringResource(R.string.settings_fab_side_left),
-        FabPlacement.RIGHT to stringResource(R.string.settings_fab_side_right)
+        FabPlacement.LEFT to stringResource(R.string.settings_fab_side_left_short),
+        FabPlacement.RIGHT to stringResource(R.string.settings_fab_side_right_short)
     )
     SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
         options.forEachIndexed { index, (placement, label) ->
             val selected = fabPlacement == placement
+            val icon =
+                if (placement == FabPlacement.LEFT) {
+                    Icons.AutoMirrored.Rounded.KeyboardArrowLeft
+                } else {
+                    Icons.AutoMirrored.Rounded.KeyboardArrowRight
+                }
             SegmentedButton(
                 selected = selected,
                 onClick = { onFabPlacementSelected(placement) },
@@ -830,7 +844,11 @@ private fun FabPlacementCard(
                     inactiveContentColor = panelColors.primaryText
                 ),
                 icon = {
-                    SegmentedButtonDefaults.Icon(active = selected)
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
                 },
                 label = {
                     Text(
@@ -1267,10 +1285,14 @@ private fun MonoWeightCard(
                     if (snapped != monoFontWeight) onMonoFontWeightChange(snapped)
                 },
                 valueRange = MONO_WEIGHT_SLIDER_MIN..MONO_WEIGHT_SLIDER_MAX,
+                steps = ((MONO_WEIGHT_SLIDER_MAX - MONO_WEIGHT_SLIDER_MIN) / MONO_WEIGHT_SLIDER_STEP)
+                    .roundToInt() - 1,
                 colors = SliderDefaults.colors(
                     thumbColor = MaterialTheme.colorScheme.primary,
                     activeTrackColor = MaterialTheme.colorScheme.primary,
-                    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant
+                    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+                    activeTickColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.4f),
+                    inactiveTickColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
                 )
             )
 
