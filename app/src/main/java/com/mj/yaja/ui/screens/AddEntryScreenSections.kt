@@ -23,6 +23,7 @@ import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.EntryRevisitMetadata
 import com.mj.yaja.data.EntryTemplate
+import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.parseEntryKind
 import com.mj.yaja.data.parseEntryRevisitMetadata
@@ -394,6 +395,7 @@ internal fun AddEntryBodySection(
     motionPreference: AnimationPreference,
     isSaving: Boolean,
     mutationLabel: String?,
+    fabPlacement: FabPlacement = FabPlacement.RIGHT,
     hasContentToSave: Boolean,
     selectedEntryKind: EntryKind,
     selectedListMode: ListInsertMode,
@@ -485,6 +487,7 @@ internal fun AddEntryBodySection(
                 onItalic = onItalic,
                 isSaving = isSaving,
                 mutationLabel = mutationLabel,
+                fabPlacement = fabPlacement,
                 isEditingMode = isEditingMode,
                 hasContentToSave = hasContentToSave,
                 onPrimaryAction = onPrimaryAction

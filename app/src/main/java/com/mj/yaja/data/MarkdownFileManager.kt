@@ -1349,7 +1349,11 @@ class MarkdownFileManager(
         val toggledLine = TodoParser.toggleLine(line) ?: return@withDateMutationLock false
         lines[targetLineIndex] = toggledLine
         entries[targetEntryIndex] = lines.joinToString("\n")
-        trySetEntriesForDate(date, entries, preserveMissingDiskEntries = false).success
+        val result = trySetEntriesForDate(date, entries, preserveMissingDiskEntries = false)
+        if (result.success) {
+            updateTodoIndexRows(date, result.entries)
+        }
+        result.success
     }
 
     private data class TodoLineTarget(

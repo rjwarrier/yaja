@@ -130,6 +130,11 @@ enum class NavigationChromeMode {
     EXPRESSIVE_PANEL
 }
 
+enum class FabPlacement {
+    RIGHT,
+    LEFT
+}
+
 /** App display language. SYSTEM follows the device locale. */
 enum class AppLanguage(val tag: String?, val nativeName: String?) {
     SYSTEM(null, null),
@@ -361,6 +366,9 @@ class SettingsRepository(private val context: Context) {
 
     private val _showBottomPanelLabels = MutableStateFlow(getSavedShowBottomPanelLabels())
     val showBottomPanelLabels: StateFlow<Boolean> = _showBottomPanelLabels.asStateFlow()
+
+    private val _fabPlacement = MutableStateFlow(getSavedFabPlacement())
+    val fabPlacement: StateFlow<FabPlacement> = _fabPlacement.asStateFlow()
 
     private val _customShortcodes = MutableStateFlow(getSavedCustomShortcodes())
     val customShortcodes: StateFlow<Map<String, String>> = _customShortcodes.asStateFlow()
@@ -726,6 +734,11 @@ class SettingsRepository(private val context: Context) {
     fun setShowBottomPanelLabels(show: Boolean) {
         prefs.edit().putBoolean(KEY_SHOW_BOTTOM_PANEL_LABELS, show).apply()
         _showBottomPanelLabels.value = show
+    }
+
+    fun setFabPlacement(placement: FabPlacement) {
+        prefs.edit().putString(KEY_FAB_PLACEMENT, placement.name).apply()
+        _fabPlacement.value = placement
     }
 
     fun setFontScalePreference(preference: FontScalePreference) {
@@ -1226,6 +1239,9 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedShowBottomPanelLabels(): Boolean =
             prefs.getBoolean(KEY_SHOW_BOTTOM_PANEL_LABELS, true)
 
+    private fun getSavedFabPlacement(): FabPlacement =
+            getEnum(prefs.getString(KEY_FAB_PLACEMENT, null), FabPlacement.RIGHT)
+
     private fun getSavedFontScalePreference(): FontScalePreference =
             getEnum(prefs.getString(KEY_FONT_SCALE, null), FontScalePreference.NORMAL)
 
@@ -1493,6 +1509,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_SHOW_BOTTOM_BAR = "show_bottom_bar"
         private const val KEY_NAVIGATION_CHROME_MODE = "navigation_chrome_mode"
         private const val KEY_SHOW_BOTTOM_PANEL_LABELS = "show_bottom_panel_labels"
+        private const val KEY_FAB_PLACEMENT = "fab_placement"
         private const val SHORTCODE_CODEC_PREFIX = "v3|"
         private const val KEY_CUSTOM_SHORTCODES = "custom_shortcodes"
         private const val KEY_ENTRY_REVIEW_ENABLED = "entry_review_enabled"

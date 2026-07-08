@@ -70,6 +70,7 @@ fun KeywordsScreen(
     val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
     val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
     val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+    val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
     val isAnyKeywordIndexing = keywordIndexingIds.isNotEmpty()
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -253,7 +254,7 @@ fun KeywordsScreen(
                     visible = fabEntranceTriggered,
                     bottomPadding = 0.dp,
                     onClick = { showCreateDialog = true },
-                    modifier = Modifier.align(Alignment.BottomEnd)
+                    modifier = Modifier.align(fabPlacement.fabAlignment())
                 )
             }
         }

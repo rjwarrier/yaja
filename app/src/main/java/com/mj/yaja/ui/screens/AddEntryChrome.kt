@@ -62,6 +62,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
 import com.mj.yaja.ui.design.enterOrNone
@@ -227,11 +228,13 @@ fun AddEntryFloatingChrome(
         onItalic: () -> Unit,
         isSaving: Boolean,
         mutationLabel: String?,
+        fabPlacement: FabPlacement = FabPlacement.RIGHT,
         isEditingMode: Boolean,
         hasContentToSave: Boolean,
         onPrimaryAction: () -> Unit
 ) {
         val primaryFabInteraction = remember { MutableInteractionSource() }
+        val fabAlignment = fabPlacement.fabAlignment()
         Box(modifier = Modifier.fillMaxSize()) {
                 AnimatedVisibility(
                         visible = isFormattingBarVisible,
@@ -319,11 +322,17 @@ fun AddEntryFloatingChrome(
                                         ) { it / 3 } + fadeOut(
                                                 motionPreference.floatTween(120)
                                         )
-                                ),
+                        ),
                         modifier =
-                                Modifier.align(Alignment.BottomEnd)
+                                Modifier.align(fabAlignment)
                                         .navigationBarsPadding()
-                                        .padding(end = 88.dp, bottom = 20.dp)
+                                        .then(
+                                                if (fabPlacement == FabPlacement.LEFT) {
+                                                        Modifier.padding(start = 88.dp, bottom = 20.dp)
+                                                } else {
+                                                        Modifier.padding(end = 88.dp, bottom = 20.dp)
+                                                }
+                                        )
                 ) {
                         Surface(
                                 shape = CircleShape,
@@ -346,8 +355,14 @@ fun AddEntryFloatingChrome(
                         index = 0,
                         strength = AppEntranceStrength.SUBTLE,
                         modifier =
-                                Modifier.align(Alignment.BottomEnd)
-                                        .padding(end = 16.dp, bottom = 16.dp)
+                                Modifier.align(fabAlignment)
+                                        .then(
+                                                if (fabPlacement == FabPlacement.LEFT) {
+                                                        Modifier.padding(start = 16.dp, bottom = 16.dp)
+                                                } else {
+                                                        Modifier.padding(end = 16.dp, bottom = 16.dp)
+                                                }
+                                        )
                 ) {
                         FloatingActionButton(
                                 onClick = onPrimaryAction,

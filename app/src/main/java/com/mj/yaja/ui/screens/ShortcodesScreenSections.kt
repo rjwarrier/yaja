@@ -96,13 +96,15 @@ internal fun ShortcodesTopBar(
 @Composable
 internal fun ShortcodesFab(
     visible: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val fabInteraction = androidx.compose.runtime.remember { MutableInteractionSource() }
     AppStaggeredEntrance(
         visible = visible,
         index = 0,
-        strength = AppEntranceStrength.SUBTLE
+        strength = AppEntranceStrength.SUBTLE,
+        modifier = modifier
     ) {
         ExtendedFloatingActionButton(
             onClick = onClick,

@@ -59,6 +59,7 @@ fun AddEntryScreen(
         val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
         val keywords by viewModel.keywords.collectAsStateWithLifecycle()
         val favoritedDates by viewModel.favoritedDates.collectAsStateWithLifecycle()
+        val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
         val editingEntry = uiState.editingEntry
         val motionPreference = LocalAnimationPreference.current
         val today = remember { LocalDate.now() }
@@ -457,6 +458,7 @@ fun AddEntryScreen(
                         motionPreference = motionPreference,
                         isSaving = isSaving,
                         mutationLabel = mutationLabel,
+                        fabPlacement = fabPlacement,
                         hasContentToSave = textFieldValue.text.isNotBlank(),
                         selectedEntryKind = selectedEntryKind,
                         selectedListMode = selectedListMode,

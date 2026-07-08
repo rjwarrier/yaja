@@ -126,6 +126,7 @@ fun ComplianceMasterScreen(
     val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
     val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
     val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+    val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
     var editorItem by remember { mutableStateOf<ComplianceMasterItem?>(null) }
     var showEditor by remember { mutableStateOf(false) }
     var editorItemType by remember { mutableStateOf(ComplianceItemType.TASK) }
@@ -190,20 +191,27 @@ fun ComplianceMasterScreen(
         },
         floatingActionButton = {
             if (!showEditor) {
-                FloatingActionButton(
-                    onClick = {
-                        editorItem = null
-                        editorItemType = ComplianceItemType.TASK
-                        showEditor = true
-                    },
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier = Modifier.padding(bottom = bottomChromePadding)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = bottomChromePadding)
                 ) {
-                    Icon(
-                        imageVector = Icons.Rounded.Add,
-                        contentDescription = stringResource(R.string.compliance_master_add)
-                    )
+                    FloatingActionButton(
+                        onClick = {
+                            editorItem = null
+                            editorItemType = ComplianceItemType.TASK
+                            showEditor = true
+                        },
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.align(fabPlacement.fabAlignment())
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Add,
+                            contentDescription = stringResource(R.string.compliance_master_add)
+                        )
+                    }
                 }
             }
         },

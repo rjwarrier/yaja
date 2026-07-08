@@ -68,6 +68,7 @@ fun LookbackScreen(
         val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
         val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
         val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
         val entranceTriggered = rememberAppEntrance()
         val motionPreference = LocalAnimationPreference.current
         val listState = rememberLazyListState()
@@ -139,7 +140,7 @@ fun LookbackScreen(
                                         onClick = {
                                                 viewModel.surpriseMe()?.let { onSurpriseMeNavigate(it) }
                                         },
-                                        modifier = Modifier.align(Alignment.BottomEnd)
+                                        modifier = Modifier.align(fabPlacement.fabAlignment())
                                 )
                         }
                 },

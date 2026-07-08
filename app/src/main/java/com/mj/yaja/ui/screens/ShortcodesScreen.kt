@@ -42,6 +42,7 @@ fun ShortcodesScreen(
     var showAddShortcodeDialog by remember { mutableStateOf(false) }
     var editingShortcode by remember { mutableStateOf<Pair<String, String>?>(null) }
     var showHelpDialog by remember { mutableStateOf(false) }
+    val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val entranceTriggered = rememberAppEntrance()
@@ -114,10 +115,17 @@ fun ShortcodesScreen(
                 )
             },
             floatingActionButton = {
-                ShortcodesFab(
-                        visible = entranceTriggered,
-                        onClick = { showAddShortcodeDialog = true }
-                )
+                Box(
+                        modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
+                ) {
+                        ShortcodesFab(
+                                visible = entranceTriggered,
+                                onClick = { showAddShortcodeDialog = true },
+                                modifier = Modifier.align(fabPlacement.fabAlignment())
+                        )
+                }
             }
     ) { paddingValues ->
         AppScreenReveal(

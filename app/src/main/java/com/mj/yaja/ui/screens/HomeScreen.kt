@@ -37,6 +37,7 @@ import com.mj.yaja.data.KeywordMatch
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.data.DueRevisitItem
 import com.mj.yaja.data.EntryStyle
+import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.ui.components.AnimatedMenuButton
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.utils.MarkdownUtils
@@ -82,6 +83,7 @@ fun HomeScreen(
         val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
         val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
         val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
         val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
         val versionSnapshots by viewModel.versionHistorySnapshots.collectAsStateWithLifecycle()
         // Day label dialog state (for all days)
@@ -242,6 +244,7 @@ fun HomeScreen(
                         monthFirst = monthFirst,
                         customDateKeywords = customDateKeywords,
                         isDrawerOpen = isDrawerOpen,
+                        fabPlacement = fabPlacement,
                         entryDeleteSelectionEnabled = entryDeleteSelectionEnabled,
                         fabBottomPadding =
                                 if (showBottomBar) {
@@ -350,6 +353,7 @@ fun HomeScreenContent(
         monthFirst: Boolean = com.mj.yaja.ui.utils.DateLinkUtils.isMonthFirst(),
         customDateKeywords: List<com.mj.yaja.data.DateKeywordEntry> = emptyList(),
         isDrawerOpen: Boolean = false,
+        fabPlacement: FabPlacement = FabPlacement.RIGHT,
         fabBottomPadding: Dp = 0.dp
 ) {
         val dayFormatter = remember { DateTimeFormatter.ofPattern("dd") }
@@ -454,7 +458,7 @@ fun HomeScreenContent(
                                                 onNavigateToAddEntry()
                                         },
                                         onFutureDateAttempt = { showFutureDateDialog = true },
-                                        modifier = Modifier.align(Alignment.BottomEnd)
+                                        modifier = Modifier.align(fabPlacement.fabAlignment())
                                 )
                         }
                 },

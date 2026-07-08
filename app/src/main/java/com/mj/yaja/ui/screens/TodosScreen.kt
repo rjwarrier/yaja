@@ -49,6 +49,7 @@ fun TodosScreen(
     val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
     val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
     val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+    val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
     var showAddTodoDialog by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
@@ -88,8 +89,8 @@ fun TodosScreen(
                     .padding(bottom = fabBottomPadding)
             ) {
                 Column(
-                    modifier = Modifier.align(Alignment.BottomEnd),
-                    horizontalAlignment = Alignment.End,
+                    modifier = Modifier.align(fabPlacement.fabAlignment()),
+                    horizontalAlignment = fabPlacement.fabHorizontalAlignment(),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     TodoAddRecurringFab(

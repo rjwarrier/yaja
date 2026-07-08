@@ -285,6 +285,7 @@ class JournalViewModel(
     val showBottomBar = settingsRepository.showBottomBar
     val navigationChromeMode = settingsRepository.navigationChromeMode
     val showBottomPanelLabels = settingsRepository.showBottomPanelLabels
+    val fabPlacement = settingsRepository.fabPlacement
     val customShortcodes = settingsRepository.customShortcodes
     val recentTemplateIds = settingsRepository.recentTemplateIds
     val favoriteTemplateIds = settingsRepository.favoriteTemplateIds
@@ -687,6 +688,8 @@ class JournalViewModel(
             settingsRepository.setNavigationChromeMode(mode)
     fun setShowBottomPanelLabels(show: Boolean) =
             settingsRepository.setShowBottomPanelLabels(show)
+    fun setFabPlacement(placement: com.mj.yaja.data.FabPlacement) =
+            settingsRepository.setFabPlacement(placement)
     fun setPreviewLimitEnabled(enabled: Boolean) =
             settingsRepository.setPreviewLimitEnabled(enabled)
     fun setPreviewLimitLength(length: Int) = settingsRepository.setPreviewLimitLength(length)

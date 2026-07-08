@@ -51,6 +51,7 @@ fun AppearanceSettingsScreen(
         val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
         val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
         val customFontName by viewModel.customFontName.collectAsStateWithLifecycle()
+        val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
 
         // Font files come through with inconsistent MIME types across file managers,
         // so accept everything and validate the bytes after picking.
@@ -143,6 +144,10 @@ fun AppearanceSettingsScreen(
                                         },
                                         onClearCustomFont = {
                                                 viewModel.clearCustomFont()
+                                        },
+                                        fabPlacement = fabPlacement,
+                                        onFabPlacementSelected = {
+                                                viewModel.setFabPlacement(it)
                                         },
                                         fontScalePreference = fontScalePreference,
                                         onFontScaleSelected = { viewModel.setFontScalePreference(it) },

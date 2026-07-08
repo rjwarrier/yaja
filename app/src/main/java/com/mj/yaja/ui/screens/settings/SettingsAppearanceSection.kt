@@ -25,6 +25,7 @@ import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.TextFields
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
@@ -32,8 +33,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -56,6 +60,7 @@ import com.mj.yaja.data.AppFontFamily
 import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
+import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
 import com.mj.yaja.data.PersonalAccentStyle
 import com.mj.yaja.data.PersonalThemeSlot
@@ -166,6 +171,8 @@ fun AppearanceSection(
     customFontName: String?,
     onPickCustomFont: () -> Unit,
     onClearCustomFont: () -> Unit,
+    fabPlacement: FabPlacement,
+    onFabPlacementSelected: (FabPlacement) -> Unit,
     fontScalePreference: FontScalePreference,
     onFontScaleSelected: (FontScalePreference) -> Unit,
     dataFontScalePreference: FontScalePreference,
@@ -386,6 +393,14 @@ fun AppearanceSection(
             )
         }
     }
+
+    Spacer(modifier = Modifier.height(24.dp))
+    SectionLabel(stringResource(R.string.settings_layout_label))
+    FabPlacementCard(
+        fabPlacement = fabPlacement,
+        panelColors = panelColors,
+        onFabPlacementSelected = onFabPlacementSelected
+    )
 
     Spacer(modifier = Modifier.height(24.dp))
     SectionLabel(stringResource(R.string.settings_ui_font_size_label))
@@ -783,6 +798,48 @@ private fun <T> LabeledDiscreteSlider(
                     )
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun FabPlacementCard(
+    fabPlacement: FabPlacement,
+    panelColors: AppearancePanelColors,
+    onFabPlacementSelected: (FabPlacement) -> Unit
+) {
+    val options = listOf(
+        FabPlacement.LEFT to stringResource(R.string.settings_fab_side_left),
+        FabPlacement.RIGHT to stringResource(R.string.settings_fab_side_right)
+    )
+    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+        options.forEachIndexed { index, (placement, label) ->
+            val selected = fabPlacement == placement
+            SegmentedButton(
+                selected = selected,
+                onClick = { onFabPlacementSelected(placement) },
+                shape = SegmentedButtonDefaults.itemShape(
+                    index = index,
+                    count = options.size
+                ),
+                colors = SegmentedButtonDefaults.colors(
+                    activeContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                    activeContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    inactiveContainerColor = panelColors.cardAlt,
+                    inactiveContentColor = panelColors.primaryText
+                ),
+                icon = {
+                    SegmentedButtonDefaults.Icon(active = selected)
+                },
+                label = {
+                    Text(
+                        text = label,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            )
         }
     }
 }
