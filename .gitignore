@@ -17,6 +17,7 @@ local.properties
 
 # Release signing key — keep out of version control
 Sign/
+keystore.properties
 
 # Release build artifacts (APKs, AABs, PDFs)
 /app/release/
