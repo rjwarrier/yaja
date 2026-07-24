@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.CalendarDensityPreference
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryStyle
@@ -63,6 +64,8 @@ fun JournalExperienceSection(
     onCarryForwardTodosEnabledChange: (Boolean) -> Unit,
     entryStyle: EntryStyle,
     onEntryStyleSelected: (EntryStyle) -> Unit,
+    calendarDensityPreference: CalendarDensityPreference,
+    onCalendarDensityPreferenceChange: (CalendarDensityPreference) -> Unit,
     dateOrderPreference: DateOrderPreference,
     onDateOrderChange: (DateOrderPreference) -> Unit,
     animationPreference: AnimationPreference,
@@ -152,6 +155,69 @@ fun JournalExperienceSection(
                 }
             }
         }
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_calendar_density_title),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_calendar_density_subtitle),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .background(
+                        MaterialTheme.colorScheme.surfaceVariant,
+                        MaterialTheme.shapes.small
+                    )
+                    .padding(3.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                listOf(
+                    stringResource(R.string.settings_calendar_density_comfortable) to CalendarDensityPreference.COMFORTABLE,
+                    stringResource(R.string.settings_calendar_density_compact) to CalendarDensityPreference.COMPACT,
+                    stringResource(R.string.settings_calendar_density_dense) to CalendarDensityPreference.DENSE
+                ).forEach { (label, preference) ->
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                if (calendarDensityPreference == preference) {
+                                    MaterialTheme.colorScheme.primaryContainer
+                                } else {
+                                    Color.Transparent
+                                },
+                                shape = MaterialTheme.shapes.small
+                            )
+                            .clickable { onCalendarDensityPreferenceChange(preference) }
+                            .padding(horizontal = 10.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (calendarDensityPreference == preference) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            }
+                        )
+                    }
+                }
+            }
+        }
+
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         PreferencesSwitchRow(

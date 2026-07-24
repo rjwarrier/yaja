@@ -86,6 +86,10 @@ fun JournalScaffold(
     showKeywordsInNavBar: Boolean,
     showTodosInNavBar: Boolean,
     showStatisticsInNavBar: Boolean,
+    bottomShowLookbackInNavBar: Boolean = showLookbackInNavBar,
+    bottomShowKeywordsInNavBar: Boolean = showKeywordsInNavBar,
+    bottomShowTodosInNavBar: Boolean = showTodosInNavBar,
+    bottomShowStatisticsInNavBar: Boolean = showStatisticsInNavBar,
     showStatistics: Boolean,
     topLevelRoutes: Set<String>,
     onStartUpdateFlow: (com.google.android.play.core.appupdate.AppUpdateInfo) -> Unit = {}
@@ -167,10 +171,10 @@ fun JournalScaffold(
                             navController.navigate(Route.Keywords.path) { popUpTo(Route.Home.path) }
                         }
                     },
-                    showLookbackInNavBar = showLookbackInNavBar,
-                    showKeywordsInNavBar = showKeywordsInNavBar,
-                    showTodosInNavBar = showTodosInNavBar,
-                    showStatisticsInNavBar = showStatistics && showStatisticsInNavBar,
+                    showLookbackInNavBar = bottomShowLookbackInNavBar,
+                    showKeywordsInNavBar = bottomShowKeywordsInNavBar,
+                    showTodosInNavBar = bottomShowTodosInNavBar,
+                    showStatisticsInNavBar = bottomShowStatisticsInNavBar,
                     showLabels = showBottomPanelLabels
                 )
             } else {
@@ -209,10 +213,10 @@ fun JournalScaffold(
                             navController.navigate(Route.Keywords.path) { popUpTo(Route.Home.path) }
                         }
                     },
-                    showLookbackInNavBar = showLookbackInNavBar,
-                    showKeywordsInNavBar = showKeywordsInNavBar,
-                    showTodosInNavBar = showTodosInNavBar,
-                    showStatisticsInNavBar = showStatisticsInNavBar
+                    showLookbackInNavBar = bottomShowLookbackInNavBar,
+                    showKeywordsInNavBar = bottomShowKeywordsInNavBar,
+                    showTodosInNavBar = bottomShowTodosInNavBar,
+                    showStatisticsInNavBar = bottomShowStatisticsInNavBar
                 )
             }
         }

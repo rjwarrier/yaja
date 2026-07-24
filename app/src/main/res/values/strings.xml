@@ -73,6 +73,7 @@
         <item quantity="one">%1$d / %2$d day</item>
         <item quantity="other">%1$d / %2$d days</item>
     </plurals>
+    <string name="calendar_empty_month_hint">No entries in this month yet.</string>
     <string name="calendar_days_of_memories">days of memories</string>
     <string name="calendar_consistency_last_12_months">LAST 12 MONTHS</string>
     <string name="calendar_consistency_title_format">CONSISTENCY - %1$s</string>
@@ -107,6 +108,15 @@
     <string name="settings_search_no_results">No matching settings</string>
     <string name="settings_search_close">Close</string>
 
+    <!-- Progressive settings -->
+    <string name="settings_progressive_title">Suggested Next Tweaks</string>
+    <string name="settings_progressive_subtitle">Shortcuts to settings that can make Yaja easier to operate day to day.</string>
+    <string name="settings_progressive_privacy_pin">Set PIN</string>
+    <string name="settings_progressive_privacy_review">Review Privacy</string>
+    <string name="settings_progressive_nav_try">Try Adaptive Nav</string>
+    <string name="settings_progressive_nav_active">Adaptive Nav On</string>
+    <string name="settings_progressive_calendar_density">Calendar: %1$s</string>
+
     <!-- Settings section headers -->
     <string name="settings_section_journal_experience">Journal Experience</string>
     <string name="settings_section_navigation_gestures">Navigation &amp; Gestures</string>
@@ -123,6 +133,11 @@
     <string name="settings_journal_entry_style_subtitle">Choose between elevated cards and a flatter journal look.</string>
     <string name="settings_journal_entry_style_cards">Cards</string>
     <string name="settings_journal_entry_style_flat">Flat</string>
+    <string name="settings_calendar_density_title">Calendar Density</string>
+    <string name="settings_calendar_density_subtitle">Tune the calendar grid for comfort, compact scanning, or maximum date density.</string>
+    <string name="settings_calendar_density_comfortable">Comfort</string>
+    <string name="settings_calendar_density_compact">Compact</string>
+    <string name="settings_calendar_density_dense">Dense</string>
     <string name="settings_journal_render_checkboxes_title">Render Checkboxes as Text</string>
     <string name="settings_journal_render_checkboxes_subtitle">Show todos as [ ] and [x] across the app instead of expressive checkboxes.</string>
     <string name="settings_journal_day_header_counts_title">Show Day Header Counts</string>
@@ -333,6 +348,8 @@
     <string name="settings_navigation_mode_subtitle">Choose between the floating nav bar and the full bottom panel.</string>
     <string name="settings_nav_mode_floating">Floating</string>
     <string name="settings_nav_mode_panel">Panel</string>
+    <string name="settings_adaptive_bottom_nav_title">Adaptive Bottom Navigation</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Show optional bottom tabs only when that section has content, while keeping configured screens in the drawer.</string>
     <string name="settings_navigation_screens_label">Navigation Screens</string>
     <string name="settings_nav_summary_floating">Journal and Calendar always stay in the floating bar. Pick up to 2 more screens. Currently selected: %1$d of %2$d.</string>
     <string name="settings_nav_summary_panel">Journal and Calendar always stay in the bottom panel. Pick up to 3 more screens. Currently selected: %1$d of %2$d.</string>
@@ -349,6 +366,7 @@
     <string name="todos_stat_done_today">Done today</string>
     <string name="todos_stat_events">Events</string>
     <string name="todos_stat_still_open">Still open</string>
+    <string name="todos_empty_refresh">Refresh</string>
     <string name="todos_stat_past_7d">Past 7d</string>
     <string name="todos_stat_days">Days</string>
     <string name="todos_empty_done">No completed todos yet</string>
@@ -989,6 +1007,8 @@
     <string name="home_empty_future">This is the future. Record a reminder!</string>
     <string name="home_empty_past">You are in the Past. Record a Memory before it fades...</string>
     <string name="home_empty_today">No entries yet. Start your day.</string>
+    <string name="home_loading_title">Loading this day</string>
+    <string name="home_loading_subtitle">Preparing entries, labels, and follow-ups.</string>
 
     <!-- Home: FAB cluster -->
     <string name="home_cd_saving">Saving</string>

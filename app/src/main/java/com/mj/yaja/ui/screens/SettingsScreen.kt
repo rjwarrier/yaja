@@ -67,6 +67,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.DropdownMenu
@@ -153,6 +154,9 @@ fun SettingsScreen(
         val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
         val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
         val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
+        val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
+        val calendarDensityPreference by
+                viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
         val swipeToNavigateDatesEnabled by viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
         val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
         val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
@@ -466,6 +470,24 @@ fun SettingsScreen(
                                         )
                                         Spacer(modifier = Modifier.height(20.dp))
 
+                                        ProgressiveSettingsCard(
+                                                isPinEnabled = isPinEnabled,
+                                                adaptiveBottomNav = adaptiveBottomNav,
+                                                calendarDensityPreference = calendarDensityPreference.name,
+                                                onOpenPrivacy = onNavigateToPrivacyDashboard,
+                                                onOpenNavigation = {
+                                                        scope.launch {
+                                                                navigationRequester.bringIntoView()
+                                                        }
+                                                },
+                                                onOpenCalendarSettings = {
+                                                        scope.launch {
+                                                                journalRequester.bringIntoView()
+                                                        }
+                                                }
+                                        )
+                                        Spacer(modifier = Modifier.height(20.dp))
+
                                         AppearanceEntrySection(onNavigateToAppearance = onNavigateToAppearance)
 
                                         Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
@@ -500,6 +522,10 @@ fun SettingsScreen(
                                                         entryStyle = entryStyle,
                                                         onEntryStyleSelected = {
                                                                 viewModel.setEntryStyle(it)
+                                                        },
+                                                        calendarDensityPreference = calendarDensityPreference,
+                                                        onCalendarDensityPreferenceChange = {
+                                                                viewModel.setCalendarDensityPreference(it)
                                                         },
                                                         dateOrderPreference = dateOrderPreference,
                                                         onDateOrderChange = { viewModel.setDateOrderPreference(it) },
@@ -540,6 +566,10 @@ fun SettingsScreen(
                                                                 showBottomPanelLabels = showBottomPanelLabels,
                                                                 onShowBottomPanelLabelsChange = {
                                                                         viewModel.setShowBottomPanelLabels(it)
+                                                                },
+                                                                adaptiveBottomNav = adaptiveBottomNav,
+                                                                onAdaptiveBottomNavChange = {
+                                                                        viewModel.setAdaptiveBottomNav(it)
                                                                 },
                                                                 showLookbackInNavBar = showLookbackInNavBar,
                                                                 onShowLookbackChange = { viewModel.setShowLookbackInNavBar(it) },
@@ -682,6 +712,94 @@ private data class SettingsSearchTarget(
         val requester: BringIntoViewRequester? = null,
         val onSelect: (() -> Unit)? = null
 )
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ProgressiveSettingsCard(
+        isPinEnabled: Boolean,
+        adaptiveBottomNav: Boolean,
+        calendarDensityPreference: String,
+        onOpenPrivacy: () -> Unit,
+        onOpenNavigation: () -> Unit,
+        onOpenCalendarSettings: () -> Unit
+) {
+        ElevatedCard(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                ),
+                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+                shape = MaterialTheme.shapes.medium
+        ) {
+                Column(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                        Text(
+                                text = stringResource(R.string.settings_progressive_title),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                                text = stringResource(R.string.settings_progressive_subtitle),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        FlowRow(
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                                TextButton(onClick = onOpenPrivacy) {
+                                        Icon(
+                                                imageVector = Icons.Rounded.Lock,
+                                                contentDescription = null,
+                                                modifier = Modifier.size(16.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Text(
+                                                if (isPinEnabled) {
+                                                        stringResource(R.string.settings_progressive_privacy_review)
+                                                } else {
+                                                        stringResource(R.string.settings_progressive_privacy_pin)
+                                                }
+                                        )
+                                }
+                                TextButton(onClick = onOpenNavigation) {
+                                        Icon(
+                                                imageVector = Icons.Rounded.Swipe,
+                                                contentDescription = null,
+                                                modifier = Modifier.size(16.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Text(
+                                                if (adaptiveBottomNav) {
+                                                        stringResource(R.string.settings_progressive_nav_active)
+                                                } else {
+                                                        stringResource(R.string.settings_progressive_nav_try)
+                                                }
+                                        )
+                                }
+                                TextButton(onClick = onOpenCalendarSettings) {
+                                        Icon(
+                                                imageVector = Icons.Rounded.CalendarMonth,
+                                                contentDescription = null,
+                                                modifier = Modifier.size(16.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Text(
+                                                stringResource(
+                                                        R.string.settings_progressive_calendar_density,
+                                                        calendarDensityPreference.lowercase().replaceFirstChar {
+                                                                if (it.isLowerCase()) it.titlecase() else it.toString()
+                                                        }
+                                                )
+                                        )
+                                }
+                        }
+                }
+        }
+}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

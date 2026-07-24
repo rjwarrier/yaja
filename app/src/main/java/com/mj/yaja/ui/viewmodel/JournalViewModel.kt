@@ -18,6 +18,7 @@ import com.mj.yaja.data.applyEntryKindMetadata
 import com.mj.yaja.data.FontScalePreference
 import com.mj.yaja.data.HomeScreenSnapshot
 import com.mj.yaja.data.BackgroundTintLevel
+import com.mj.yaja.data.CalendarDensityPreference
 import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
 import com.mj.yaja.data.PersonalAccentStyle
@@ -286,6 +287,8 @@ class JournalViewModel(
     val navigationChromeMode = settingsRepository.navigationChromeMode
     val showBottomPanelLabels = settingsRepository.showBottomPanelLabels
     val fabPlacement = settingsRepository.fabPlacement
+    val calendarDensityPreference = settingsRepository.calendarDensityPreference
+    val adaptiveBottomNav = settingsRepository.adaptiveBottomNav
     val customShortcodes = settingsRepository.customShortcodes
     val recentTemplateIds = settingsRepository.recentTemplateIds
     val favoriteTemplateIds = settingsRepository.favoriteTemplateIds
@@ -690,6 +693,10 @@ class JournalViewModel(
             settingsRepository.setShowBottomPanelLabels(show)
     fun setFabPlacement(placement: com.mj.yaja.data.FabPlacement) =
             settingsRepository.setFabPlacement(placement)
+    fun setCalendarDensityPreference(preference: CalendarDensityPreference) =
+            settingsRepository.setCalendarDensityPreference(preference)
+    fun setAdaptiveBottomNav(enabled: Boolean) =
+            settingsRepository.setAdaptiveBottomNav(enabled)
     fun setPreviewLimitEnabled(enabled: Boolean) =
             settingsRepository.setPreviewLimitEnabled(enabled)
     fun setPreviewLimitLength(length: Int) = settingsRepository.setPreviewLimitLength(length)

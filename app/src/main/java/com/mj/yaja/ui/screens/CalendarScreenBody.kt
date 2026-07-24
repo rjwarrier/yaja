@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.CalendarDensityPreference
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle
@@ -68,7 +69,10 @@ import kotlin.math.max
 import kotlin.math.sin
 
 @Composable
-fun CalendarWeekdayHeader(firstDayOfWeekPref: java.time.DayOfWeek) {
+fun CalendarWeekdayHeader(
+        firstDayOfWeekPref: java.time.DayOfWeek,
+        density: CalendarDensityPreference
+) {
         val daysOfWeek =
                 if (firstDayOfWeekPref == java.time.DayOfWeek.SUNDAY) {
                         listOf(
@@ -101,12 +105,12 @@ fun CalendarWeekdayHeader(firstDayOfWeekPref: java.time.DayOfWeek) {
                                 Box(
                                         modifier = Modifier
                                                 .weight(1f)
-                                                .padding(horizontal = 3.dp)
+                                                .padding(horizontal = if (density == CalendarDensityPreference.COMFORTABLE) 3.dp else 2.dp)
                                                 .background(
                                                         color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f),
-                                                        shape = RoundedCornerShape(12.dp)
+                                                        shape = RoundedCornerShape(if (density == CalendarDensityPreference.DENSE) 8.dp else 12.dp)
                                                 )
-                                                .padding(vertical = 6.dp),
+                                                .padding(vertical = if (density == CalendarDensityPreference.COMFORTABLE) 6.dp else 4.dp),
                                         contentAlignment = Alignment.Center
                                 ) {
                                         Text(
@@ -122,7 +126,15 @@ fun CalendarWeekdayHeader(firstDayOfWeekPref: java.time.DayOfWeek) {
                         }
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(
+                        modifier = Modifier.height(
+                                when (density) {
+                                        CalendarDensityPreference.COMFORTABLE -> 16.dp
+                                        CalendarDensityPreference.COMPACT -> 10.dp
+                                        CalendarDensityPreference.DENSE -> 6.dp
+                                }
+                        )
+                )
         }
 }
 
@@ -137,6 +149,7 @@ fun CalendarViewModeBody(
         favoritedDates: Set<String>,
         revisitTargetDates: Set<LocalDate>,
         firstDayOfWeekPref: java.time.DayOfWeek,
+        density: CalendarDensityPreference,
         onSelectDate: (LocalDate) -> Unit,
         onSelectFutureDateWithEntries: (LocalDate) -> Unit,
         onFutureDateRequest: (LocalDate) -> Unit,
@@ -181,6 +194,7 @@ fun CalendarViewModeBody(
                                         favoritedDates = favoritedDates,
                                         revisitTargetDates = revisitTargetDates,
                                         firstDayOfWeekPref = firstDayOfWeekPref,
+                                        density = density,
                                         onSelectDate = onSelectDate,
                                         onSelectFutureDateWithEntries =
                                                 onSelectFutureDateWithEntries,
@@ -213,6 +227,7 @@ private fun CalendarDaysGrid(
         favoritedDates: Set<String>,
         revisitTargetDates: Set<LocalDate>,
         firstDayOfWeekPref: java.time.DayOfWeek,
+        density: CalendarDensityPreference,
         onSelectDate: (LocalDate) -> Unit,
         onSelectFutureDateWithEntries: (LocalDate) -> Unit,
         onFutureDateRequest: (LocalDate) -> Unit,
@@ -266,6 +281,7 @@ private fun CalendarDaysGrid(
                                                                         isFuture &&
                                                                                 !allowFutureEntries,
                                                                 isFavorited = isFavorited,
+                                                                density = density,
                                                                 onClick = {
                                                                         if (isFuture) {
                                                                                 if (hasEntries) {
@@ -290,7 +306,13 @@ private fun CalendarDaysGrid(
                                                         )
                                                 } else {
                                                         Spacer(
-                                                                modifier = Modifier.aspectRatio(1.15f)
+                                                                modifier = Modifier.aspectRatio(
+                                                                        when (density) {
+                                                                                CalendarDensityPreference.COMFORTABLE -> 1.15f
+                                                                                CalendarDensityPreference.COMPACT -> 1.28f
+                                                                                CalendarDensityPreference.DENSE -> 1.42f
+                                                                        }
+                                                                )
                                                         )
                                                 }
                                         }
@@ -454,7 +476,8 @@ private fun CalendarYearsGrid(
 fun CalendarMonthCoverageSummary(
         viewMode: CalendarViewMode,
         currentMonth: YearMonth,
-        datesWithEntries: Set<LocalDate>
+        datesWithEntries: Set<LocalDate>,
+        density: CalendarDensityPreference = CalendarDensityPreference.COMFORTABLE
 ) {
         if (viewMode != CalendarViewMode.DAYS) return
 
@@ -478,8 +501,8 @@ fun CalendarMonthCoverageSummary(
         val pct = if (denominator > 0) (entriesInMonth * 100) / denominator else 0
 
         Surface(
-                modifier = Modifier.fillMaxWidth().padding(top = 18.dp),
-                shape = RoundedCornerShape(24.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = if (density == CalendarDensityPreference.DENSE) 10.dp else 18.dp),
+                shape = RoundedCornerShape(if (density == CalendarDensityPreference.DENSE) 18.dp else 24.dp),
                 color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.72f),
                 tonalElevation = 0.dp,
                 shadowElevation = 0.dp
@@ -489,7 +512,10 @@ fun CalendarMonthCoverageSummary(
                 Row(
                         modifier =
                                 Modifier.fillMaxWidth()
-                                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                                        .padding(
+                                                horizontal = 16.dp,
+                                                vertical = if (density == CalendarDensityPreference.DENSE) 8.dp else 12.dp
+                                        ),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
@@ -516,7 +542,7 @@ fun CalendarMonthCoverageSummary(
                                                 label = "month_coverage_wave_phase"
                                         )
                                 Canvas(
-                                        modifier = Modifier.size(48.dp)
+                                        modifier = Modifier.size(if (density == CalendarDensityPreference.DENSE) 40.dp else 48.dp)
                                 ) {
                                         val strokeWidth = 4.dp.toPx()
                                         val radius = (size.minDimension / 2f) - strokeWidth
@@ -592,6 +618,13 @@ fun CalendarMonthCoverageSummary(
                                                 style = MaterialTheme.typography.titleLarge,
                                                 color = MaterialTheme.colorScheme.onSurface,
                                                 fontWeight = FontWeight.ExtraBold
+                                        )
+                                }
+                                if (entriesInMonth == 0) {
+                                        Text(
+                                                text = stringResource(R.string.calendar_empty_month_hint),
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                 }
                         }

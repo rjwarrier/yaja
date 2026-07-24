@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.data.CalendarDensityPreference
 
 @Composable
 fun CalendarDay(
@@ -49,10 +50,35 @@ fun CalendarDay(
         isFuture: Boolean = false,
         isDimmed: Boolean = false,
         isFavorited: Boolean = false,
+        density: CalendarDensityPreference = CalendarDensityPreference.COMFORTABLE,
         onClick: () -> Unit
 ) {
-        val expressiveShape = RoundedCornerShape(18.dp)
+        val expressiveShape = RoundedCornerShape(
+                when (density) {
+                        CalendarDensityPreference.COMFORTABLE -> 18.dp
+                        CalendarDensityPreference.COMPACT -> 14.dp
+                        CalendarDensityPreference.DENSE -> 10.dp
+                }
+        )
         val interactionSource = remember { MutableInteractionSource() }
+        val cellAspectRatio =
+                when (density) {
+                        CalendarDensityPreference.COMFORTABLE -> 1.15f
+                        CalendarDensityPreference.COMPACT -> 1.28f
+                        CalendarDensityPreference.DENSE -> 1.42f
+                }
+        val cellPadding =
+                when (density) {
+                        CalendarDensityPreference.COMFORTABLE -> 3.dp
+                        CalendarDensityPreference.COMPACT -> 2.dp
+                        CalendarDensityPreference.DENSE -> 1.dp
+                }
+        val indicatorSize =
+                when (density) {
+                        CalendarDensityPreference.COMFORTABLE -> 4.dp
+                        CalendarDensityPreference.COMPACT -> 3.5.dp
+                        CalendarDensityPreference.DENSE -> 3.dp
+                }
 
         val animationPreference = LocalAnimationPreference.current
         // Today's gentle pulse. Kept as State (no .value read here) so it's consumed inside
@@ -114,8 +140,8 @@ fun CalendarDay(
 
         Box(
                 modifier =
-                        Modifier.aspectRatio(1.15f)
-                                .padding(3.dp)
+                        Modifier.aspectRatio(cellAspectRatio)
+                                .padding(cellPadding)
                                 .graphicsLayer {
                                         val s = pulseScale.value
                                         scaleX = s
@@ -139,7 +165,11 @@ fun CalendarDay(
                         Text(
                                 text = day.toString(),
                                 style =
-                                        MaterialTheme.typography.bodyMedium.copy(
+                                        (if (density == CalendarDensityPreference.DENSE) {
+                                                MaterialTheme.typography.labelLarge
+                                        } else {
+                                                MaterialTheme.typography.bodyMedium
+                                        }).copy(
                                                 fontWeight =
                                                         if (isToday) FontWeight.ExtraBold
                                                         else if (isSelected) FontWeight.Bold
@@ -173,14 +203,16 @@ fun CalendarDay(
                                 )
                         ) {
                                 Box(
-                                        modifier = Modifier.height(6.dp),
+                                        modifier = Modifier.height(
+                                                if (density == CalendarDensityPreference.DENSE) 4.dp else 6.dp
+                                        ),
                                         contentAlignment = Alignment.Center
                                 ) {
-                                        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        Row(horizontalArrangement = Arrangement.spacedBy(if (density == CalendarDensityPreference.DENSE) 2.dp else 4.dp)) {
                                                 if (hasEntries) {
                                                         Box(
                                                                 modifier =
-                                                                        Modifier.size(4.dp)
+                                                                        Modifier.size(indicatorSize)
                                                                                 .background(
                                                                                         indicatorColor,
                                                                                         shape = CircleShape
@@ -190,7 +222,7 @@ fun CalendarDay(
                                                 if (hasFollowUp) {
                                                         Box(
                                                                 modifier =
-                                                                        Modifier.size(5.dp)
+                                                                        Modifier.size(indicatorSize + 1.dp)
                                                                                 .background(
                                                                                         MaterialTheme
                                                                                                 .colorScheme

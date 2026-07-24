@@ -508,7 +508,7 @@ fun HomeScreenContent(
                                                         hideTextModeEnabled = hideTextModeEnabled
                                                 )
                                         } else if (isLoading) {
-                                                // Ignore empty loading state flash
+                                                HomeLoadingStateSection()
                                         } else if (isKeywordFilterActive) {
                                                 KeywordFilterResultsContent(
                                                         keywordFilteredEntries = keywordFilteredEntries.orEmpty(),
@@ -603,6 +603,48 @@ fun HomeScreenContent(
                         onDismissCacheAnomalyDialog = onDismissAnomalyDialog,
                         onAcceptCacheAnomalyRefresh = onAcceptAnomalyRefresh
                 )
+        }
+}
+
+@Composable
+private fun HomeLoadingStateSection() {
+        Box(
+                modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
+                contentAlignment = Alignment.TopCenter
+        ) {
+                ElevatedCard(
+                        modifier = Modifier.fillMaxWidth().padding(top = 112.dp),
+                        colors =
+                                CardDefaults.elevatedCardColors(
+                                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                                ),
+                        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+                        shape = MaterialTheme.shapes.large
+                ) {
+                        Row(
+                                modifier = Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(14.dp)
+                        ) {
+                                CircularProgressIndicator(
+                                        modifier = Modifier.size(28.dp),
+                                        strokeWidth = 3.dp
+                                )
+                                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        Text(
+                                                text = stringResource(R.string.home_loading_title),
+                                                style = MaterialTheme.typography.titleMedium,
+                                                fontWeight = FontWeight.SemiBold,
+                                                color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                        Text(
+                                                text = stringResource(R.string.home_loading_subtitle),
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                }
+                        }
+                }
         }
 }
 

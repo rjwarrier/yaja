@@ -250,10 +250,10 @@ internal fun TodosScreenContent(
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 }
                 selectedFilter == TodoFilter.EVENTS && events.isEmpty() -> {
-                    TodosEmptyState(message = emptyMessage)
+                    TodosEmptyState(message = emptyMessage, onRefresh = onRefresh)
                 }
                 selectedFilter != TodoFilter.EVENTS && filteredVisibleTodos.isEmpty() -> {
-                    TodosEmptyState(message = emptyMessage)
+                    TodosEmptyState(message = emptyMessage, onRefresh = onRefresh)
                 }
                 else -> {
                     LazyColumn(

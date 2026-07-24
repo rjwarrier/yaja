@@ -135,6 +135,12 @@ enum class FabPlacement {
     LEFT
 }
 
+enum class CalendarDensityPreference {
+    COMFORTABLE,
+    COMPACT,
+    DENSE
+}
+
 /** App display language. SYSTEM follows the device locale. */
 enum class AppLanguage(val tag: String?, val nativeName: String?) {
     SYSTEM(null, null),
@@ -369,6 +375,13 @@ class SettingsRepository(private val context: Context) {
 
     private val _fabPlacement = MutableStateFlow(getSavedFabPlacement())
     val fabPlacement: StateFlow<FabPlacement> = _fabPlacement.asStateFlow()
+
+    private val _calendarDensityPreference = MutableStateFlow(getSavedCalendarDensityPreference())
+    val calendarDensityPreference: StateFlow<CalendarDensityPreference> =
+            _calendarDensityPreference.asStateFlow()
+
+    private val _adaptiveBottomNav = MutableStateFlow(getSavedAdaptiveBottomNav())
+    val adaptiveBottomNav: StateFlow<Boolean> = _adaptiveBottomNav.asStateFlow()
 
     private val _customShortcodes = MutableStateFlow(getSavedCustomShortcodes())
     val customShortcodes: StateFlow<Map<String, String>> = _customShortcodes.asStateFlow()
@@ -739,6 +752,16 @@ class SettingsRepository(private val context: Context) {
     fun setFabPlacement(placement: FabPlacement) {
         prefs.edit().putString(KEY_FAB_PLACEMENT, placement.name).apply()
         _fabPlacement.value = placement
+    }
+
+    fun setCalendarDensityPreference(preference: CalendarDensityPreference) {
+        prefs.edit().putString(KEY_CALENDAR_DENSITY, preference.name).apply()
+        _calendarDensityPreference.value = preference
+    }
+
+    fun setAdaptiveBottomNav(enabled: Boolean) {
+        prefs.edit().putBoolean(KEY_ADAPTIVE_BOTTOM_NAV, enabled).apply()
+        _adaptiveBottomNav.value = enabled
     }
 
     fun setFontScalePreference(preference: FontScalePreference) {
@@ -1242,6 +1265,15 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedFabPlacement(): FabPlacement =
             getEnum(prefs.getString(KEY_FAB_PLACEMENT, null), FabPlacement.RIGHT)
 
+    private fun getSavedCalendarDensityPreference(): CalendarDensityPreference =
+            getEnum(
+                    prefs.getString(KEY_CALENDAR_DENSITY, null),
+                    CalendarDensityPreference.COMFORTABLE
+            )
+
+    private fun getSavedAdaptiveBottomNav(): Boolean =
+            prefs.getBoolean(KEY_ADAPTIVE_BOTTOM_NAV, false)
+
     private fun getSavedFontScalePreference(): FontScalePreference =
             getEnum(prefs.getString(KEY_FONT_SCALE, null), FontScalePreference.NORMAL)
 
@@ -1510,6 +1542,8 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_NAVIGATION_CHROME_MODE = "navigation_chrome_mode"
         private const val KEY_SHOW_BOTTOM_PANEL_LABELS = "show_bottom_panel_labels"
         private const val KEY_FAB_PLACEMENT = "fab_placement"
+        private const val KEY_CALENDAR_DENSITY = "calendar_density"
+        private const val KEY_ADAPTIVE_BOTTOM_NAV = "adaptive_bottom_nav"
         private const val SHORTCODE_CODEC_PREFIX = "v3|"
         private const val KEY_CUSTOM_SHORTCODES = "custom_shortcodes"
         private const val KEY_ENTRY_REVIEW_ENABLED = "entry_review_enabled"

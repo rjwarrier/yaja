@@ -85,6 +85,11 @@ fun JournalApp(
             val showTodosInNavBar by viewModel.showTodosInNavBar.collectAsStateWithLifecycle()
             val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
             val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
+            val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+            val todos by viewModel.todos.collectAsStateWithLifecycle()
+            val events by viewModel.events.collectAsStateWithLifecycle()
+            val keywords by viewModel.keywords.collectAsStateWithLifecycle()
             val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsStateWithLifecycle()
             val showOnboardingNextLaunch by
                 viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
@@ -138,24 +143,76 @@ fun JournalApp(
 
             val topLevelRoutes = remember(
                 useExpressivePanel,
+                adaptiveBottomNav,
                 showLookbackInNavBar,
                 showKeywordsInNavBar,
                 showTodosInNavBar,
                 showStatistics,
-                showStatisticsInNavBar
+                showStatisticsInNavBar,
+                currentRoute,
+                uiState.datesWithEntries.size,
+                todos.size,
+                events.size,
+                keywords.size
             ) {
+                val bottomShowLookback =
+                    showLookbackInNavBar &&
+                        (!adaptiveBottomNav ||
+                            uiState.datesWithEntries.size > 1 ||
+                            currentRoute == Route.Lookback.path)
+                val bottomShowKeywords =
+                    showKeywordsInNavBar &&
+                        (!adaptiveBottomNav ||
+                            keywords.isNotEmpty() ||
+                            currentRoute == Route.Keywords.path)
+                val bottomShowTodos =
+                    showTodosInNavBar &&
+                        (!adaptiveBottomNav ||
+                            todos.isNotEmpty() ||
+                            events.isNotEmpty() ||
+                            currentRoute == Route.Todos.path ||
+                            currentRoute == Route.ComplianceMaster.path)
+                val bottomShowStatistics =
+                    showStatistics &&
+                        showStatisticsInNavBar &&
+                        (!adaptiveBottomNav ||
+                            uiState.datesWithEntries.size >= 3 ||
+                            currentRoute == Route.Statistics.path)
                 buildSet {
                     add(Route.Home.path)
                     add(Route.Calendar.path)
-                    if (showLookbackInNavBar) add(Route.Lookback.path)
-                    if (showKeywordsInNavBar) add(Route.Keywords.path)
-                    if (showTodosInNavBar) {
+                    if (bottomShowLookback) add(Route.Lookback.path)
+                    if (bottomShowKeywords) add(Route.Keywords.path)
+                    if (bottomShowTodos) {
                         add(Route.Todos.path)
                         add(Route.ComplianceMaster.path)
                     }
-                    if (showStatistics && showStatisticsInNavBar) add(Route.Statistics.path)
+                    if (bottomShowStatistics) add(Route.Statistics.path)
                 }
             }
+            val bottomShowLookbackInNavBar =
+                showLookbackInNavBar &&
+                    (!adaptiveBottomNav ||
+                        uiState.datesWithEntries.size > 1 ||
+                        currentRoute == Route.Lookback.path)
+            val bottomShowKeywordsInNavBar =
+                showKeywordsInNavBar &&
+                    (!adaptiveBottomNav ||
+                        keywords.isNotEmpty() ||
+                        currentRoute == Route.Keywords.path)
+            val bottomShowTodosInNavBar =
+                showTodosInNavBar &&
+                    (!adaptiveBottomNav ||
+                        todos.isNotEmpty() ||
+                        events.isNotEmpty() ||
+                        currentRoute == Route.Todos.path ||
+                        currentRoute == Route.ComplianceMaster.path)
+            val bottomShowStatisticsInNavBar =
+                showStatistics &&
+                    showStatisticsInNavBar &&
+                    (!adaptiveBottomNav ||
+                        uiState.datesWithEntries.size >= 3 ||
+                        currentRoute == Route.Statistics.path)
 
             JournalScaffold(
                 viewModel = viewModel,
@@ -170,6 +227,10 @@ fun JournalApp(
                 showKeywordsInNavBar = showKeywordsInNavBar,
                 showTodosInNavBar = showTodosInNavBar,
                 showStatisticsInNavBar = showStatistics && showStatisticsInNavBar,
+                bottomShowLookbackInNavBar = bottomShowLookbackInNavBar,
+                bottomShowKeywordsInNavBar = bottomShowKeywordsInNavBar,
+                bottomShowTodosInNavBar = bottomShowTodosInNavBar,
+                bottomShowStatisticsInNavBar = bottomShowStatisticsInNavBar,
                 showStatistics = showStatistics,
                 topLevelRoutes = topLevelRoutes
             )

@@ -35,6 +35,8 @@ fun NavigationSection(
     onNavigationChromeModeChange: (NavigationChromeMode) -> Unit,
     showBottomPanelLabels: Boolean,
     onShowBottomPanelLabelsChange: (Boolean) -> Unit,
+    adaptiveBottomNav: Boolean,
+    onAdaptiveBottomNavChange: (Boolean) -> Unit,
     showLookbackInNavBar: Boolean,
     onShowLookbackChange: (Boolean) -> Unit,
     showKeywordsInNavBar: Boolean,
@@ -126,6 +128,15 @@ fun NavigationSection(
                 }
             }
         }
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+
+        PreferencesSwitchRow(
+            title = stringResource(R.string.settings_adaptive_bottom_nav_title),
+            subtitle = stringResource(R.string.settings_adaptive_bottom_nav_subtitle),
+            checked = adaptiveBottomNav,
+            onCheckedChange = onAdaptiveBottomNavChange
+        )
+
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
         val maxOptionalItems =

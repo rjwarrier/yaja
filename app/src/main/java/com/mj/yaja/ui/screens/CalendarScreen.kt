@@ -77,6 +77,8 @@ fun CalendarScreen(
 ) {
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val firstDayOfWeekPref by viewModel.firstDayOfWeek.collectAsStateWithLifecycle()
+        val calendarDensityPreference by
+                viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
         val scope = rememberCoroutineScope()
         val entranceTriggered = rememberAppEntrance()
 
@@ -298,7 +300,9 @@ fun CalendarScreen(
                                                                 ) {
                                                                         CalendarWeekdayHeader(
                                                                                 firstDayOfWeekPref =
-                                                                                        firstDayOfWeekPref
+                                                                                        firstDayOfWeekPref,
+                                                                                density =
+                                                                                        calendarDensityPreference
                                                                         )
                                                                 }
 
@@ -318,6 +322,8 @@ fun CalendarScreen(
                                                                                 revisitTargetDates,
                                                                         firstDayOfWeekPref =
                                                                                 firstDayOfWeekPref,
+                                                                        density =
+                                                                                calendarDensityPreference,
                                                                         onSelectDate = onDateSelected,
                                                                         onSelectFutureDateWithEntries =
                                                                                 onDateSelected,
@@ -356,7 +362,8 @@ fun CalendarScreen(
                                                                         viewMode = viewMode,
                                                                         currentMonth = currentMonth,
                                                                         datesWithEntries =
-                                                                                uiState.datesWithEntries
+                                                                                uiState.datesWithEntries,
+                                                                        density = calendarDensityPreference
                                                                 )
                                                         }
                                                 }
