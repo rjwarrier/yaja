@@ -171,7 +171,7 @@ fun JournalApp(
                             todos.isNotEmpty() ||
                             events.isNotEmpty() ||
                             currentRoute == Route.Todos.path ||
-                            currentRoute == Route.ComplianceMaster.path)
+                            currentRoute == Route.RecurringTasks.path)
                 val bottomShowStatistics =
                     showStatistics &&
                         showStatisticsInNavBar &&
@@ -185,7 +185,7 @@ fun JournalApp(
                     if (bottomShowKeywords) add(Route.Keywords.path)
                     if (bottomShowTodos) {
                         add(Route.Todos.path)
-                        add(Route.ComplianceMaster.path)
+                        add(Route.RecurringTasks.path)
                     }
                     if (bottomShowStatistics) add(Route.Statistics.path)
                 }
@@ -206,7 +206,7 @@ fun JournalApp(
                         todos.isNotEmpty() ||
                         events.isNotEmpty() ||
                         currentRoute == Route.Todos.path ||
-                        currentRoute == Route.ComplianceMaster.path)
+                        currentRoute == Route.RecurringTasks.path)
             val bottomShowStatisticsInNavBar =
                 showStatistics &&
                     showStatisticsInNavBar &&

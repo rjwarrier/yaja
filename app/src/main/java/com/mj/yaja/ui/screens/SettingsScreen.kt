@@ -303,6 +303,37 @@ fun SettingsScreen(
         val journalisticLauncher = rememberLauncherForActivityResult(
                 ActivityResultContracts.OpenDocument()
         ) { uri -> if (uri != null) viewModel.importJournalisticFile(uri, context) }
+        val markdownFolderImportLauncher = rememberLauncherForActivityResult(
+                ActivityResultContracts.OpenDocumentTree()
+        ) { uri ->
+                if (uri != null) {
+                        try {
+                                context.contentResolver.takePersistableUriPermission(
+                                        uri,
+                                        android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+                                )
+                        } catch (e: SecurityException) {
+                                android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission for markdown folder import", e)
+                        }
+                        viewModel.importMarkdownFolder(uri, context)
+                }
+        }
+        val obsidianExportLauncher = rememberLauncherForActivityResult(
+                ActivityResultContracts.OpenDocumentTree()
+        ) { uri ->
+                if (uri != null) {
+                        try {
+                                context.contentResolver.takePersistableUriPermission(
+                                        uri,
+                                        android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or
+                                                android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                                )
+                        } catch (e: SecurityException) {
+                                android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission for Obsidian export", e)
+                        }
+                        viewModel.exportObsidianVault(uri, context)
+                }
+        }
         val backupRestoreLauncher = rememberLauncherForActivityResult(
                 ActivityResultContracts.OpenDocument()
         ) { uri -> if (uri != null) viewModel.restoreBackupZip(uri, context) }
@@ -658,6 +689,9 @@ fun SettingsScreen(
                                                         onRestoreBackup = {
                                                                 backupRestoreLauncher.launch(arrayOf("application/zip", "*/*"))
                                                         },
+                                                        onExportObsidianVault = {
+                                                                obsidianExportLauncher.launch(null)
+                                                        },
                                                         onRefreshCache = onNavigateToRebuildCache,
                                                         swipeToSyncEnabled = swipeToSyncEnabled,
                                                         onSwipeToSyncEnabledChange = { viewModel.setSwipeToSyncEnabled(it) },
@@ -678,6 +712,9 @@ fun SettingsScreen(
                                                         },
                                                         onLaunchJournalisticImport = {
                                                                 journalisticLauncher.launch(arrayOf("application/json", "*/*"))
+                                                        },
+                                                        onLaunchMarkdownFolderImport = {
+                                                                markdownFolderImportLauncher.launch(null)
                                                         },
                                                         onCancelImport = { viewModel.cancelImport() },
                                                         onResetImportState = { viewModel.resetImportState() }

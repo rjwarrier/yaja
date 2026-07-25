@@ -9,7 +9,7 @@ import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.KeywordDetailScreen
 import com.mj.yaja.ui.screens.KeywordsScreen
 import com.mj.yaja.ui.screens.LookbackScreen
-import com.mj.yaja.ui.screens.ComplianceMasterScreen
+import com.mj.yaja.ui.screens.RecurringTasksScreen
 import com.mj.yaja.ui.screens.ReviewPeriodType
 import com.mj.yaja.ui.screens.ReviewScreen
 import com.mj.yaja.ui.screens.StatisticsScreen
@@ -117,13 +117,13 @@ internal fun NavGraphBuilder.addInsightRoutes(
                                 viewModel.selectDate(date)
                                 navController.navigate(Route.Home.path)
                         },
-                        onNavigateToComplianceMaster = {
-                                navController.navigate(Route.ComplianceMaster.path)
+                        onNavigateToRecurringTask = {
+                                navController.navigate(Route.RecurringTasks.path)
                         }
                 )
         }
-        composable(Route.ComplianceMaster.path) {
-                ComplianceMasterScreen(
+        composable(Route.RecurringTasks.path) {
+                RecurringTasksScreen(
                         viewModel = viewModel,
                         onNavigateBack = { navController.popBackStack() }
                 )

@@ -672,7 +672,7 @@ internal fun TodoAddRecurringFab(
     ) {
         Icon(
             imageVector = Icons.Rounded.EventRepeat,
-            contentDescription = stringResource(R.string.todos_cd_open_compliance_master),
+            contentDescription = stringResource(R.string.todos_cd_open_recurring_tasks),
             modifier = Modifier.size(28.dp)
         )
     }

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
     tableName = "compliance_masters",
     indices = [Index(value = ["journalId"])]
 )
-data class ComplianceMasterEntity(
+data class RecurringTaskEntity(
     @PrimaryKey val id: String,
     val journalId: String,
     val title: String,

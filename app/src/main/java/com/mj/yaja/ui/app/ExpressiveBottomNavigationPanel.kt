@@ -84,7 +84,7 @@ fun ExpressiveBottomNavigationPanel(
     val visible = rememberAppEntrance(delayMillis = 120)
     val motionPreference = LocalAnimationPreference.current
     val density = LocalDensity.current
-    val selectedRoute = if (currentRoute == Route.ComplianceMaster.path) {
+    val selectedRoute = if (currentRoute == Route.RecurringTasks.path) {
         Route.Todos.path
     } else {
         currentRoute

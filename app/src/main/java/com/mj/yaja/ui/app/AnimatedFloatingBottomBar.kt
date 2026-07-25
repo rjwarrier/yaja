@@ -60,7 +60,7 @@ fun AnimatedFloatingBottomBar(
     showTodosInNavBar: Boolean = false,
     showStatisticsInNavBar: Boolean = false
 ) {
-    val selectedRoute = if (currentRoute == Route.ComplianceMaster.path) {
+    val selectedRoute = if (currentRoute == Route.RecurringTasks.path) {
         Route.Todos.path
     } else {
         currentRoute

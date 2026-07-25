@@ -797,7 +797,7 @@ class SettingsRepository(private val context: Context) {
     }
 
     fun setBackupReminderDays(days: Int) {
-        val clamped = days.coerceIn(0, 30)
+        val clamped = days.coerceIn(0, 60)
         prefs.edit().putInt(KEY_BACKUP_REMINDER_DAYS, clamped).apply()
         _backupReminderDays.value = clamped
     }
@@ -1293,7 +1293,7 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedLastBackupTimestamp(): Long = prefs.getLong(KEY_LAST_BACKUP, 0L)
 
     private fun getSavedBackupReminderDays(): Int =
-            prefs.getInt(KEY_BACKUP_REMINDER_DAYS, 7).coerceIn(0, 30)
+            prefs.getInt(KEY_BACKUP_REMINDER_DAYS, 7).coerceIn(0, 60)
 
     private fun getSavedAppLogRetentionDays(): Int =
             prefs.getInt(KEY_APP_LOG_RETENTION_DAYS, 7).coerceIn(1, 30)

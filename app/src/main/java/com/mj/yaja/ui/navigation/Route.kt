@@ -20,7 +20,7 @@ sealed class Route(val path: String) {
     data object VersionSnapshots : Route("version_snapshots")
     data object DataPrivacyDashboard : Route("data_privacy_dashboard")
     data object TaskerIntegration : Route("tasker_integration")
-    data object ComplianceMaster : Route("compliance_master")
+    data object RecurringTasks : Route("recurring_tasks")
     data object AppLog : Route("app_log")
     data object Shortcodes : Route("shortcodes")
     data object Todos : Route("todos")

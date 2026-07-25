@@ -3,8 +3,8 @@ package com.mj.yaja.data
 import android.content.Context
 import android.util.Log
 import com.mj.yaja.data.database.JournalDatabase
-import com.mj.yaja.data.database.ComplianceMasterEntity
-import com.mj.yaja.data.database.ComplianceGenerationEntity
+import com.mj.yaja.data.database.RecurringTaskEntity
+import com.mj.yaja.data.database.RecurringTaskGenerationEntity
 import java.time.LocalDate
 import java.time.YearMonth
 import java.util.UUID
@@ -16,14 +16,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-enum class ComplianceScheduleMode {
+enum class RecurringTaskScheduleMode {
     DAY_OF_MONTH,
     DAY_OF_WEEK,
     FIRST_DAY_OF_MONTH,
     LAST_DAY_OF_MONTH
 }
 
-enum class ComplianceFrequency {
+enum class RecurringTaskFrequency {
     WEEKLY,
     BIWEEKLY,
     MONTHLY,
@@ -32,13 +32,13 @@ enum class ComplianceFrequency {
     ANNUAL
 }
 
-enum class ComplianceEndMode {
+enum class RecurringTaskEndMode {
     NEVER,
     ON_DATE,
     AFTER_OCCURRENCES
 }
 
-enum class ComplianceItemType {
+enum class RecurringTaskItemType {
     TASK,
     EVENT
 }
@@ -51,33 +51,33 @@ data class CardSchedule(
 )
 
 @androidx.compose.runtime.Immutable
-data class ComplianceMasterItem(
+data class RecurringTaskItem(
     val id: String,
     val title: String,
     val description: String = "",
     val isActive: Boolean = true,
-    val itemType: ComplianceItemType = ComplianceItemType.TASK,
-    val scheduleMode: ComplianceScheduleMode,
-    val frequency: ComplianceFrequency,
+    val itemType: RecurringTaskItemType = RecurringTaskItemType.TASK,
+    val scheduleMode: RecurringTaskScheduleMode,
+    val frequency: RecurringTaskFrequency,
     val dueDayOfMonth: Int?,
     val dueDayOfWeek: Int?,
     val leadDays: Int,
     val anchorDate: String,
     val startMonth: String,
     val startTime: String? = null,
-    val endMode: ComplianceEndMode = ComplianceEndMode.NEVER,
+    val endMode: RecurringTaskEndMode = RecurringTaskEndMode.NEVER,
     val endDate: String? = null,
     val endCount: Int? = null,
     val retiredOn: String? = null,
     val createdAt: Long = System.currentTimeMillis()
 )
 
-class ComplianceMasterRepository private constructor(context: Context) {
+class RecurringTaskRepository private constructor(context: Context) {
     private val database = JournalDatabase.getDatabase(context)
-    private val dao = database.complianceDao()
+    private val dao = database.recurringTaskDao()
     private val journalId = "default"
 
-    val items: StateFlow<List<ComplianceMasterItem>> = dao.observeActiveMasters(journalId)
+    val items: StateFlow<List<RecurringTaskItem>> = dao.observeActiveMasters(journalId)
         .map { entities -> entities.map { it.toItem() } }
         .stateIn(
             scope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
@@ -86,11 +86,11 @@ class ComplianceMasterRepository private constructor(context: Context) {
         )
 
     companion object {
-        @Volatile private var instance: ComplianceMasterRepository? = null
+        @Volatile private var instance: RecurringTaskRepository? = null
 
-        fun getInstance(context: Context): ComplianceMasterRepository =
+        fun getInstance(context: Context): RecurringTaskRepository =
             instance ?: synchronized(this) {
-                instance ?: ComplianceMasterRepository(context.applicationContext).also { instance = it }
+                instance ?: RecurringTaskRepository(context.applicationContext).also { instance = it }
             }
     }
 
@@ -99,13 +99,13 @@ class ComplianceMasterRepository private constructor(context: Context) {
         title: String,
         description: String = "",
         isActive: Boolean = true,
-        itemType: ComplianceItemType = ComplianceItemType.TASK,
-        scheduleMode: ComplianceScheduleMode,
-        frequency: ComplianceFrequency,
+        itemType: RecurringTaskItemType = RecurringTaskItemType.TASK,
+        scheduleMode: RecurringTaskScheduleMode,
+        frequency: RecurringTaskFrequency,
         dueDayOfMonth: Int?,
         dueDayOfWeek: Int?,
         leadDays: Int,
-        endMode: ComplianceEndMode = ComplianceEndMode.NEVER,
+        endMode: RecurringTaskEndMode = RecurringTaskEndMode.NEVER,
         endDate: LocalDate? = null,
         endCount: Int? = null,
         anchorDate: LocalDate = LocalDate.now(),
@@ -119,8 +119,8 @@ class ComplianceMasterRepository private constructor(context: Context) {
         val safeDueWeekday = dueDayOfWeek?.coerceIn(1, 7)
         val safeLeadDays = leadDays.coerceIn(0, 30)
         // End condition is editable: only persist the payload relevant to the chosen mode.
-        val safeEndDate = endDate?.toString().takeIf { endMode == ComplianceEndMode.ON_DATE }
-        val safeEndCount = endCount?.coerceIn(1, 999).takeIf { endMode == ComplianceEndMode.AFTER_OCCURRENCES }
+        val safeEndDate = endDate?.toString().takeIf { endMode == RecurringTaskEndMode.ON_DATE }
+        val safeEndCount = endCount?.coerceIn(1, 999).takeIf { endMode == RecurringTaskEndMode.AFTER_OCCURRENCES }
 
         val existing = if (id != null) dao.getAllMastersSync(journalId).firstOrNull { it.id == id } else null
         val futureGeneratedDates =
@@ -128,7 +128,7 @@ class ComplianceMasterRepository private constructor(context: Context) {
                 ?.let { dao.getFutureGenerationDates(it.id, LocalDate.now().toString()) }
                 .orEmpty()
 
-        val entity = ComplianceMasterEntity(
+        val entity = RecurringTaskEntity(
             id = id ?: UUID.randomUUID().toString(),
             journalId = journalId,
             title = normalizedTitle,
@@ -211,11 +211,11 @@ class ComplianceMasterRepository private constructor(context: Context) {
                                 true
                             }
                         if (!updated) {
-                            Log.e("ComplianceGen", "Failed to update recurring entry on $dueDate.md")
+                            Log.e("RecurringTaskGen", "Failed to update recurring entry on $dueDate.md")
                             return@forEach
                         }
                         dao.insertGeneration(
-                            ComplianceGenerationEntity(
+                            RecurringTaskGenerationEntity(
                                 itemId = item.id,
                                 targetDate = dueDate.toString()
                             )
@@ -225,54 +225,54 @@ class ComplianceMasterRepository private constructor(context: Context) {
                     val result = fileManager.tryAddEntryForDate(dueDate, entryText)
                     if (result.success) {
                         dao.insertGeneration(
-                            ComplianceGenerationEntity(
+                            RecurringTaskGenerationEntity(
                                 itemId = item.id,
                                 targetDate = dueDate.toString()
                             )
                         )
-                        Log.d("ComplianceGen", "Generated recurring todo: '${item.title}' written to $dueDate.md")
+                        Log.d("RecurringTaskGen", "Generated recurring todo: '${item.title}' written to $dueDate.md")
                     } else {
-                        Log.e("ComplianceGen", "Failed to write recurring todo to $dueDate.md")
+                        Log.e("RecurringTaskGen", "Failed to write recurring todo to $dueDate.md")
                     }
                 }
             }
 
             // Auto-retire once all scheduled occurrences have passed.
-            if (item.endMode == ComplianceEndMode.AFTER_OCCURRENCES) {
+            if (item.endMode == RecurringTaskEndMode.AFTER_OCCURRENCES) {
                 val rem = remainingOccurrences(item, today) ?: 0
                 if (rem == 0) {
                     dao.retireMaster(item.id, today.toString())
-                    Log.d("ComplianceGen", "Auto-retired '${item.title}': all ${item.endCount} occurrences exhausted")
+                    Log.d("RecurringTaskGen", "Auto-retired '${item.title}': all ${item.endCount} occurrences exhausted")
                 }
             }
         }
     }
 
-    private fun getDueDates(item: ComplianceMasterItem, today: LocalDate): List<LocalDate> {
+    private fun getDueDates(item: RecurringTaskItem, today: LocalDate): List<LocalDate> {
         val startMonth = runCatching { YearMonth.parse(item.startMonth) }.getOrDefault(YearMonth.from(today))
         val anchorDate = runCatching { LocalDate.parse(item.anchorDate) }.getOrDefault(today)
         return when (item.scheduleMode) {
-            ComplianceScheduleMode.DAY_OF_MONTH,
-            ComplianceScheduleMode.FIRST_DAY_OF_MONTH,
-            ComplianceScheduleMode.LAST_DAY_OF_MONTH -> {
+            RecurringTaskScheduleMode.DAY_OF_MONTH,
+            RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH,
+            RecurringTaskScheduleMode.LAST_DAY_OF_MONTH -> {
                 generateMonthBasedDueDates(item, today, startMonth)
             }
-            ComplianceScheduleMode.DAY_OF_WEEK -> {
+            RecurringTaskScheduleMode.DAY_OF_WEEK -> {
                 generateWeekdayBasedDueDates(item, today, anchorDate)
             }
         }
     }
 
     private fun generateMonthBasedDueDates(
-        item: ComplianceMasterItem,
+        item: RecurringTaskItem,
         today: LocalDate,
         startMonth: YearMonth
     ): List<LocalDate> {
         val monthsStep = when (item.frequency) {
-            ComplianceFrequency.MONTHLY -> 1
-            ComplianceFrequency.QUARTERLY -> 3
-            ComplianceFrequency.HALF_YEARLY -> 6
-            ComplianceFrequency.ANNUAL -> 12
+            RecurringTaskFrequency.MONTHLY -> 1
+            RecurringTaskFrequency.QUARTERLY -> 3
+            RecurringTaskFrequency.HALF_YEARLY -> 6
+            RecurringTaskFrequency.ANNUAL -> 12
             else -> 1
         }
         val evaluationLimitMonth = YearMonth.from(today.plusDays(item.leadDays.toLong()))
@@ -308,7 +308,7 @@ class ComplianceMasterRepository private constructor(context: Context) {
     }
 
     private fun generateWeekdayBasedDueDates(
-        item: ComplianceMasterItem,
+        item: RecurringTaskItem,
         today: LocalDate,
         anchorDate: LocalDate
     ): List<LocalDate> {
@@ -319,9 +319,9 @@ class ComplianceMasterRepository private constructor(context: Context) {
         val evaluationLimitDate = today.plusDays(item.leadDays.toLong())
 
         return when (item.frequency) {
-            ComplianceFrequency.WEEKLY,
-            ComplianceFrequency.BIWEEKLY -> {
-                val stepDays = if (item.frequency == ComplianceFrequency.BIWEEKLY) 14L else 7L
+            RecurringTaskFrequency.WEEKLY,
+            RecurringTaskFrequency.BIWEEKLY -> {
+                val stepDays = if (item.frequency == RecurringTaskFrequency.BIWEEKLY) 14L else 7L
                 val firstDueDate = firstWeekdayAfter(createdOn, dueWeekday)
                 val lookbackDate = today.minusDays(item.leadDays.toLong())
                 val daysBetween = lookbackDate.toEpochDay() - firstDueDate.toEpochDay()
@@ -345,7 +345,7 @@ class ComplianceMasterRepository private constructor(context: Context) {
                     }
                     .toList()
             }
-            ComplianceFrequency.MONTHLY -> {
+            RecurringTaskFrequency.MONTHLY -> {
                 val evaluationLimitMonth = YearMonth.from(evaluationLimitDate)
                 val anchorOrdinal = ((anchorDate.dayOfMonth - 1) / 7) + 1
                 val startMonth = YearMonth.from(anchorDate)
@@ -381,21 +381,21 @@ class ComplianceMasterRepository private constructor(context: Context) {
         }
     }
 
-    private fun dueDateForMonth(item: ComplianceMasterItem, month: YearMonth): LocalDate =
+    private fun dueDateForMonth(item: RecurringTaskItem, month: YearMonth): LocalDate =
         when (item.scheduleMode) {
-            ComplianceScheduleMode.FIRST_DAY_OF_MONTH -> month.atDay(1)
-            ComplianceScheduleMode.LAST_DAY_OF_MONTH -> month.atEndOfMonth()
-            ComplianceScheduleMode.DAY_OF_MONTH -> month.atDay((item.dueDayOfMonth ?: 1).coerceAtMost(month.lengthOfMonth()))
-            ComplianceScheduleMode.DAY_OF_WEEK -> month.atDay(1)
+            RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH -> month.atDay(1)
+            RecurringTaskScheduleMode.LAST_DAY_OF_MONTH -> month.atEndOfMonth()
+            RecurringTaskScheduleMode.DAY_OF_MONTH -> month.atDay((item.dueDayOfMonth ?: 1).coerceAtMost(month.lengthOfMonth()))
+            RecurringTaskScheduleMode.DAY_OF_WEEK -> month.atDay(1)
         }
 
     private fun matchesAnnualAnchor(
-        item: ComplianceMasterItem,
+        item: RecurringTaskItem,
         month: YearMonth,
         startMonth: YearMonth
     ): Boolean =
         when (item.frequency) {
-            ComplianceFrequency.ANNUAL -> month.month == startMonth.month
+            RecurringTaskFrequency.ANNUAL -> month.month == startMonth.month
             else -> true
         }
 
@@ -416,7 +416,7 @@ class ComplianceMasterRepository private constructor(context: Context) {
         return null
     }
 
-    fun previewUpcomingDates(item: ComplianceMasterItem, count: Int = 5): List<LocalDate> {
+    fun previewUpcomingDates(item: RecurringTaskItem, count: Int = 5): List<LocalDate> {
         val today = LocalDate.now()
         val horizon = today.plusYears(3)
         val endDate = effectiveEndDate(item)
@@ -429,15 +429,15 @@ class ComplianceMasterRepository private constructor(context: Context) {
     }
 
     /** Public read for UI: resolves the schedule's effective end date (null = recurs forever). */
-    fun resolveEndDate(item: ComplianceMasterItem): LocalDate? = effectiveEndDate(item)
+    fun resolveEndDate(item: RecurringTaskItem): LocalDate? = effectiveEndDate(item)
 
     /**
-     * For [ComplianceEndMode.AFTER_OCCURRENCES]: how many of the N scheduled occurrences are still
+     * For [RecurringTaskEndMode.AFTER_OCCURRENCES]: how many of the N scheduled occurrences are still
      * to come (today counts as remaining). Decreases as due dates pass, giving the card a live
      * countdown. Returns null for any other end mode.
      */
-    fun remainingOccurrences(item: ComplianceMasterItem, today: LocalDate = LocalDate.now()): Int? {
-        if (item.endMode != ComplianceEndMode.AFTER_OCCURRENCES) return null
+    fun remainingOccurrences(item: RecurringTaskItem, today: LocalDate = LocalDate.now()): Int? {
+        if (item.endMode != RecurringTaskEndMode.AFTER_OCCURRENCES) return null
         val n = item.endCount?.takeIf { it > 0 } ?: return null
         return occurrenceSequence(item).take(n).count { !it.isBefore(today) }
     }
@@ -446,19 +446,19 @@ class ComplianceMasterRepository private constructor(context: Context) {
      * Computes all card display fields in one pass — avoids walking the occurrence sequence
      * three separate times when the card renders.
      */
-    fun cardSchedule(item: ComplianceMasterItem, today: LocalDate = LocalDate.now()): CardSchedule {
+    fun cardSchedule(item: RecurringTaskItem, today: LocalDate = LocalDate.now()): CardSchedule {
         val endDate: LocalDate?
         val remaining: Int?
         when (item.endMode) {
-            ComplianceEndMode.NEVER -> {
+            RecurringTaskEndMode.NEVER -> {
                 endDate = null
                 remaining = null
             }
-            ComplianceEndMode.ON_DATE -> {
+            RecurringTaskEndMode.ON_DATE -> {
                 endDate = item.endDate?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
                 remaining = null
             }
-            ComplianceEndMode.AFTER_OCCURRENCES -> {
+            RecurringTaskEndMode.AFTER_OCCURRENCES -> {
                 val n = item.endCount?.takeIf { it > 0 }
                 if (n != null) {
                     // Walk occurrence sequence once to derive both the cut-off and the live count.
@@ -483,10 +483,10 @@ class ComplianceMasterRepository private constructor(context: Context) {
         return candidate
     }
 
-    private fun creationDate(item: ComplianceMasterItem): LocalDate =
+    private fun creationDate(item: RecurringTaskItem): LocalDate =
         runCatching { LocalDate.parse(item.anchorDate) }.getOrDefault(LocalDate.now())
 
-    private fun retirementDate(item: ComplianceMasterItem): LocalDate? =
+    private fun retirementDate(item: RecurringTaskItem): LocalDate? =
         item.retiredOn?.let { value ->
             runCatching { LocalDate.parse(value) }.getOrNull()
         }
@@ -503,22 +503,22 @@ class ComplianceMasterRepository private constructor(context: Context) {
     /**
      * Lazy, unbounded sequence of every due date this schedule would ever produce, counted from the
      * schedule's own origin (anchor / start month) — independent of [leadDays] and "today". Used to
-     * resolve the absolute cut-off for [ComplianceEndMode.AFTER_OCCURRENCES]. Enumeration order and
+     * resolve the absolute cut-off for [RecurringTaskEndMode.AFTER_OCCURRENCES]. Enumeration order and
      * dates match the generators exactly, so the Nth element here is the Nth todo that gets written.
      */
-    private fun occurrenceSequence(item: ComplianceMasterItem): Sequence<LocalDate> {
+    private fun occurrenceSequence(item: RecurringTaskItem): Sequence<LocalDate> {
         val anchor = creationDate(item)
         val startMonth = runCatching { YearMonth.parse(item.startMonth) }
             .getOrDefault(YearMonth.from(anchor))
         return when (item.scheduleMode) {
-            ComplianceScheduleMode.DAY_OF_MONTH,
-            ComplianceScheduleMode.FIRST_DAY_OF_MONTH,
-            ComplianceScheduleMode.LAST_DAY_OF_MONTH -> {
+            RecurringTaskScheduleMode.DAY_OF_MONTH,
+            RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH,
+            RecurringTaskScheduleMode.LAST_DAY_OF_MONTH -> {
                 val monthsStep = when (item.frequency) {
-                    ComplianceFrequency.MONTHLY -> 1L
-                    ComplianceFrequency.QUARTERLY -> 3L
-                    ComplianceFrequency.HALF_YEARLY -> 6L
-                    ComplianceFrequency.ANNUAL -> 12L
+                    RecurringTaskFrequency.MONTHLY -> 1L
+                    RecurringTaskFrequency.QUARTERLY -> 3L
+                    RecurringTaskFrequency.HALF_YEARLY -> 6L
+                    RecurringTaskFrequency.ANNUAL -> 12L
                     else -> 1L
                 }
                 generateSequence(startMonth) { it.plusMonths(monthsStep) }
@@ -526,16 +526,16 @@ class ComplianceMasterRepository private constructor(context: Context) {
                     .map { dueDateForMonth(item, it) }
                     .filter { !it.isBefore(anchor) }
             }
-            ComplianceScheduleMode.DAY_OF_WEEK -> {
+            RecurringTaskScheduleMode.DAY_OF_WEEK -> {
                 val dueWeekday = item.dueDayOfWeek ?: anchor.dayOfWeek.value
                 when (item.frequency) {
-                    ComplianceFrequency.WEEKLY,
-                    ComplianceFrequency.BIWEEKLY -> {
-                        val stepDays = if (item.frequency == ComplianceFrequency.BIWEEKLY) 14L else 7L
+                    RecurringTaskFrequency.WEEKLY,
+                    RecurringTaskFrequency.BIWEEKLY -> {
+                        val stepDays = if (item.frequency == RecurringTaskFrequency.BIWEEKLY) 14L else 7L
                         val first = firstWeekdayAfter(anchor, dueWeekday)
                         generateSequence(first) { it.plusDays(stepDays) }
                     }
-                    ComplianceFrequency.MONTHLY -> {
+                    RecurringTaskFrequency.MONTHLY -> {
                         val anchorOrdinal = ((anchor.dayOfMonth - 1) / 7) + 1
                         generateSequence(YearMonth.from(anchor)) { it.plusMonths(1) }
                             .mapNotNull { nthWeekdayOfMonth(it, dueWeekday, anchorOrdinal) }
@@ -548,20 +548,20 @@ class ComplianceMasterRepository private constructor(context: Context) {
     }
 
     /** Date of the Nth occurrence (1-based) from schedule origin, or null if [n] is invalid. */
-    private fun nthOccurrenceDate(item: ComplianceMasterItem, n: Int): LocalDate? =
+    private fun nthOccurrenceDate(item: RecurringTaskItem, n: Int): LocalDate? =
         if (n <= 0) null else occurrenceSequence(item).drop(n - 1).firstOrNull()
 
     /**
      * Absolute last allowed due date for this schedule, or null when it recurs indefinitely.
-     * For [ComplianceEndMode.AFTER_OCCURRENCES] this resolves the count to the concrete date of the
+     * For [RecurringTaskEndMode.AFTER_OCCURRENCES] this resolves the count to the concrete date of the
      * final occurrence, so the generators only need a simple date comparison.
      */
-    private fun effectiveEndDate(item: ComplianceMasterItem): LocalDate? =
+    private fun effectiveEndDate(item: RecurringTaskItem): LocalDate? =
         when (item.endMode) {
-            ComplianceEndMode.NEVER -> null
-            ComplianceEndMode.ON_DATE ->
+            RecurringTaskEndMode.NEVER -> null
+            RecurringTaskEndMode.ON_DATE ->
                 item.endDate?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
-            ComplianceEndMode.AFTER_OCCURRENCES ->
+            RecurringTaskEndMode.AFTER_OCCURRENCES ->
                 item.endCount?.takeIf { it > 0 }?.let { nthOccurrenceDate(item, it) }
         }
 
@@ -570,15 +570,15 @@ class ComplianceMasterRepository private constructor(context: Context) {
 
     private fun complianceMarker(itemId: String): String = "<!--compliance:$itemId-->"
 
-    private fun generatedEntryText(item: ComplianceMasterItem): String = buildString {
+    private fun generatedEntryText(item: RecurringTaskItem): String = buildString {
         val timeHeader = item.startTime?.let { "<!--time:$it-->\n" } ?: ""
         when (item.itemType) {
-            ComplianceItemType.EVENT -> {
+            RecurringTaskItemType.EVENT -> {
                 append(timeHeader)
                 append("<!--type:event-->\n")
                 append("${item.title} ${complianceMarker(item.id)}")
             }
-            ComplianceItemType.TASK -> {
+            RecurringTaskItemType.TASK -> {
                 append(timeHeader)
                 append("[ ] ${item.title} ${complianceMarker(item.id)}")
             }
@@ -622,26 +622,26 @@ class ComplianceMasterRepository private constructor(context: Context) {
             .asReversed()
             .forEach { index ->
                 if (!fileManager.tryDeleteEntryForDate(date, index).success) {
-                    Log.e("ComplianceGen", "Failed to remove obsolete recurring entry on $date.md")
+                    Log.e("RecurringTaskGen", "Failed to remove obsolete recurring entry on $date.md")
                 }
             }
     }
 
-    private fun ComplianceMasterEntity.toItem() = ComplianceMasterItem(
+    private fun RecurringTaskEntity.toItem() = RecurringTaskItem(
         id = id,
         title = title,
         description = description,
         isActive = isActive,
-        itemType = runCatching { ComplianceItemType.valueOf(itemType) }.getOrDefault(ComplianceItemType.TASK),
-        scheduleMode = ComplianceScheduleMode.valueOf(scheduleMode),
-        frequency = ComplianceFrequency.valueOf(frequency),
+        itemType = runCatching { RecurringTaskItemType.valueOf(itemType) }.getOrDefault(RecurringTaskItemType.TASK),
+        scheduleMode = RecurringTaskScheduleMode.valueOf(scheduleMode),
+        frequency = RecurringTaskFrequency.valueOf(frequency),
         dueDayOfMonth = dueDayOfMonth,
         dueDayOfWeek = dueDayOfWeek,
         leadDays = leadDays,
         anchorDate = anchorDate,
         startMonth = startMonth,
         startTime = startTime,
-        endMode = runCatching { ComplianceEndMode.valueOf(endMode) }.getOrDefault(ComplianceEndMode.NEVER),
+        endMode = runCatching { RecurringTaskEndMode.valueOf(endMode) }.getOrDefault(RecurringTaskEndMode.NEVER),
         endDate = endDate,
         endCount = endCount,
         retiredOn = retiredOn,

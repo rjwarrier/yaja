@@ -1,6 +1,7 @@
 package com.mj.yaja.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
@@ -48,9 +50,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.TextStyle
@@ -180,7 +184,9 @@ fun AppearanceSection(
     dataFontScalePreference: FontScalePreference,
     onDataFontScaleSelected: (FontScalePreference) -> Unit,
     followUiFontScale: Boolean,
-    onFollowUiFontScaleChanged: (Boolean) -> Unit
+    onFollowUiFontScaleChanged: (Boolean) -> Unit,
+    selectedAppIcon: com.mj.yaja.ui.theme.AppIcon,
+    onAppIconSelected: (com.mj.yaja.ui.theme.AppIcon) -> Unit
 ) {
     val panelColors = appearancePanelColors()
     val activePersonalThemeSlot =
@@ -456,7 +462,76 @@ fun AppearanceSection(
         onFabPlacementSelected = onFabPlacementSelected
     )
 
-    Spacer(modifier = Modifier.height(56.dp))
+    Spacer(modifier = Modifier.height(24.dp))
+    SectionLabel(stringResource(R.string.settings_app_icon_label))
+    Text(
+        text = stringResource(R.string.settings_app_icon_desc),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
+    )
+    com.mj.yaja.ui.theme.AppIcon.entries.chunked(4).forEach { rowOptions ->
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            rowOptions.forEach { icon ->
+                AppIconCard(
+                    modifier = Modifier.weight(1f),
+                    iconRes = icon.foregroundRes,
+                    label = stringResource(icon.labelRes),
+                    isSelected = selectedAppIcon == icon,
+                    panelColors = panelColors,
+                    onClick = { onAppIconSelected(icon) }
+                )
+            }
+            repeat(4 - rowOptions.size) { Spacer(modifier = Modifier.weight(1f)) }
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+    }
+
+    Spacer(modifier = Modifier.height(46.dp))
+}
+
+@Composable
+private fun AppIconCard(
+    modifier: Modifier = Modifier,
+    iconRes: Int,
+    label: String,
+    isSelected: Boolean,
+    panelColors: AppearancePanelColors,
+    onClick: () -> Unit
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val cardColor =
+        if (isSelected) MaterialTheme.colorScheme.primaryContainer else panelColors.cardAlt
+
+    ElevatedCard(
+        onClick = onClick,
+        modifier = modifier.expressivePressMotion(interactionSource, pressedScale = 0.94f),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.elevatedCardColors(containerColor = cardColor),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        interactionSource = interactionSource
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = iconRes),
+                contentDescription = label,
+                modifier = Modifier.size(48.dp),
+                colorFilter = if (isSelected) {
+                    ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
+                } else {
+                    null
+                }
+            )
+        }
+    }
 }
 
 @Composable

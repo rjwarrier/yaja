@@ -7,15 +7,15 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ComplianceDao {
+interface RecurringTaskDao {
     @Query("SELECT * FROM compliance_masters WHERE journalId = :journalId AND retiredOn IS NULL ORDER BY title COLLATE NOCASE ASC")
-    fun observeActiveMasters(journalId: String): Flow<List<ComplianceMasterEntity>>
+    fun observeActiveMasters(journalId: String): Flow<List<RecurringTaskEntity>>
 
     @Query("SELECT * FROM compliance_masters WHERE journalId = :journalId ORDER BY title COLLATE NOCASE ASC")
-    fun getAllMastersSync(journalId: String): List<ComplianceMasterEntity>
+    fun getAllMastersSync(journalId: String): List<RecurringTaskEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrUpdateMaster(master: ComplianceMasterEntity): Long
+    fun insertOrUpdateMaster(master: RecurringTaskEntity): Long
 
     @Query("UPDATE compliance_masters SET retiredOn = :retiredOn WHERE id = :id")
     fun retireMaster(id: String, retiredOn: String): Int
@@ -27,7 +27,7 @@ interface ComplianceDao {
     fun hasGeneration(itemId: String, targetDate: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGeneration(generation: ComplianceGenerationEntity): Long
+    fun insertGeneration(generation: RecurringTaskGenerationEntity): Long
 
     @Query("DELETE FROM compliance_generations WHERE itemId = :itemId")
     fun deleteGenerationsByItem(itemId: String): Int

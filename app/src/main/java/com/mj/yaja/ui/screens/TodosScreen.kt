@@ -38,7 +38,7 @@ fun TodosScreen(
     viewModel: JournalViewModel,
     onOpenDrawer: () -> Unit,
     onNavigateToDate: (LocalDate) -> Unit,
-    onNavigateToComplianceMaster: () -> Unit
+    onNavigateToRecurringTask: () -> Unit
 ) {
     val todos by viewModel.todos.collectAsStateWithLifecycle()
     val events by viewModel.events.collectAsStateWithLifecycle()
@@ -78,7 +78,7 @@ fun TodosScreen(
         topBar = {
             TodosTopBar(
                 onOpenDrawer = onOpenDrawer,
-                onOpenComplianceMaster = onNavigateToComplianceMaster
+                onOpenRecurringTask = onNavigateToRecurringTask
             )
         },
         floatingActionButton = {
@@ -94,7 +94,7 @@ fun TodosScreen(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     TodoAddRecurringFab(
-                        onClick = onNavigateToComplianceMaster
+                        onClick = onNavigateToRecurringTask
                     )
                     TodoAddFab(
                         onClick = { showAddTodoDialog = true }

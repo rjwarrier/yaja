@@ -73,7 +73,7 @@ internal data class TodoHeroMetrics(
 @Composable
 internal fun TodosTopBar(
     onOpenDrawer: () -> Unit,
-    onOpenComplianceMaster: () -> Unit
+    onOpenRecurringTask: () -> Unit
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -92,8 +92,8 @@ internal fun TodosTopBar(
         actions = {
             AnimatedIconButton(
                 imageVector = Icons.Rounded.EventRepeat,
-                contentDescription = stringResource(R.string.compliance_master_intro_title),
-                onClick = onOpenComplianceMaster,
+                contentDescription = stringResource(R.string.recurring_task_intro_title),
+                onClick = onOpenRecurringTask,
                 modifier = Modifier.padding(end = 8.dp)
             )
         },

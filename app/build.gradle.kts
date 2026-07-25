@@ -20,8 +20,8 @@ android {
         applicationId = "com.mj.yaja"
         minSdk = 26
         targetSdk = 36
-        versionCode = 91
-        versionName = "3.0.4"
+        versionCode = 92
+        versionName = "3.0.5"
 
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -121,11 +121,7 @@ dependencies {
     // ML Kit Language Identification (optional, toggled by user in Statistics)
     implementation("com.google.mlkit:language-id:17.0.6")
 
-    // Jetpack Glance — Compose-style home-screen widgets
-    implementation("androidx.glance:glance-appwidget:1.1.1")
-    implementation("androidx.glance:glance-material3:1.1.1")
     implementation("com.joaomgcd:taskerpluginlibrary:0.4.10")
-    implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

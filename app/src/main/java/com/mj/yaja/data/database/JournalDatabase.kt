@@ -13,8 +13,8 @@ import androidx.room.TypeConverters
         TodoIndexEntity::class,
         EventIndexEntity::class,
         KeywordMatchEntity::class,
-        ComplianceMasterEntity::class,
-        ComplianceGenerationEntity::class
+        RecurringTaskEntity::class,
+        RecurringTaskGenerationEntity::class
     ],
     version = 8,
     exportSchema = false
@@ -26,7 +26,7 @@ abstract class JournalDatabase : RoomDatabase() {
     abstract fun todoIndexDao(): TodoIndexDao
     abstract fun eventIndexDao(): EventIndexDao
     abstract fun keywordMatchDao(): KeywordMatchDao
-    abstract fun complianceDao(): ComplianceDao
+    abstract fun recurringTaskDao(): RecurringTaskDao
 
     companion object {
         @Volatile

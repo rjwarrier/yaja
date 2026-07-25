@@ -6,6 +6,7 @@ import android.net.Uri
 import com.mj.yaja.data.DayOneImporter
 import com.mj.yaja.data.JournalisticImporter
 import com.mj.yaja.data.KeywordDefinition
+import com.mj.yaja.data.MarkdownFolderImporter
 import com.mj.yaja.data.backup.BackupService
 import com.mj.yaja.data.keywords.KeywordCsvCodec
 import java.io.BufferedReader
@@ -236,6 +237,34 @@ internal fun launchJournalisticEntryImport(
     )
 }
 
+internal fun launchMarkdownFolderEntryImport(
+    scope: CoroutineScope,
+    importState: MutableStateFlow<JournalViewModel.ImportState>,
+    context: Context,
+    treeUri: Uri,
+    fileManager: com.mj.yaja.data.MarkdownFileManager,
+    onImporterChanged: (MarkdownFolderImporter?) -> Unit,
+    onImportSuccess: (EntryImportSummary) -> Unit
+): Job {
+    var importer: MarkdownFolderImporter? = null
+    return launchManagedEntryImport(
+        scope = scope,
+        importState = importState,
+        onSetup = {
+            importer = MarkdownFolderImporter(context, fileManager)
+            onImporterChanged(importer)
+        },
+        onTeardown = {
+            onImporterChanged(null)
+            importer = null
+        },
+        onSuccess = onImportSuccess,
+        importBlock = { progress ->
+            importer!!.importFromTreeUri(treeUri, progress).toEntryImportSummary()
+        }
+    )
+}
+
 internal fun launchKeywordBackupImport(
     scope: CoroutineScope,
     importState: MutableStateFlow<JournalViewModel.ImportState>,
@@ -327,14 +356,24 @@ internal fun runEntryImportSuccessRefresh(
 internal fun cancelActiveImport(
     importJob: Job?,
     dayOneImporter: DayOneImporter?,
-    journalisticImporter: JournalisticImporter?
+    journalisticImporter: JournalisticImporter?,
+    markdownFolderImporter: MarkdownFolderImporter? = null
 ) {
     importJob?.cancel()
     dayOneImporter?.requestCancel()
     journalisticImporter?.requestCancel()
+    markdownFolderImporter?.requestCancel()
 }
 
 internal fun DayOneImporter.ImportResult.toEntryImportSummary(): EntryImportSummary =
+    EntryImportSummary(
+        newDays = newDays,
+        mergedDays = mergedDays,
+        skippedEntries = skippedEntries,
+        cancelled = cancelled
+    )
+
+internal fun MarkdownFolderImporter.ImportResult.toEntryImportSummary(): EntryImportSummary =
     EntryImportSummary(
         newDays = newDays,
         mergedDays = mergedDays,

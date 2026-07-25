@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Monochrome layer for Android 13+ Themed Icons — single-colour silhouette, system-tinted. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:translateX="28"
+        android:translateY="28"
+        android:scaleX="0.0541667"
+        android:scaleY="0.0541667">
+        <group android:translateY="960">
+            <path
+                android:fillColor="#000000"
+                android:pathData="M611-461 461-612l111-110-29-29-191 191q-12 12-28 12t-28-12q-12-12-12-28.5t12-28.5l190-190q24-24 56.5-24t56.5 24l29 29 50-50q12-12 28.5-12t28.5 12l93 93q12 12 12 28.5T828-678L611-461ZM160-120q-17 0-28.5-11.5T120-160v-77q0-16 6-30.5t17-25.5l261-262 151 150-262 262q-11 11-25.5 17t-30.5 6h-77Z"/>
+        </group>
+    </group>
+</vector>

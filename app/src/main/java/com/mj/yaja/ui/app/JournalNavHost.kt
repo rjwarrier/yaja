@@ -24,8 +24,7 @@ fun JournalNavHost(
     viewModel: JournalViewModel,
     modifier: Modifier = Modifier,
     onOpenDrawer: () -> Unit,
-    isDrawerOpen: Boolean,
-    onStartUpdateFlow: (com.google.android.play.core.appupdate.AppUpdateInfo) -> Unit
+    isDrawerOpen: Boolean
 ) {
     val motionPreference = LocalAnimationPreference.current
     NavHost(
@@ -79,8 +78,7 @@ fun JournalNavHost(
             viewModel = viewModel,
             onOpenDrawer = onOpenDrawer,
             isDrawerOpen = isDrawerOpen,
-            motionPreference = motionPreference,
-            onStartUpdateFlow = onStartUpdateFlow
+            motionPreference = motionPreference
         )
         addInsightRoutes(
             navController = navController,

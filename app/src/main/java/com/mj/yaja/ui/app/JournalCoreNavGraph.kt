@@ -26,8 +26,7 @@ internal fun NavGraphBuilder.addCoreJournalRoutes(
         viewModel: JournalViewModel,
         onOpenDrawer: () -> Unit,
         isDrawerOpen: Boolean,
-        motionPreference: AnimationPreference,
-        onStartUpdateFlow: (com.google.android.play.core.appupdate.AppUpdateInfo) -> Unit
+        motionPreference: AnimationPreference
 ) {
         composable(
                 route = Route.Home.path,

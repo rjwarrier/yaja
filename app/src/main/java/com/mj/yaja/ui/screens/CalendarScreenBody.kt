@@ -276,7 +276,6 @@ private fun CalendarDaysGrid(
                                                                 isToday = isToday,
                                                                 hasEntries = hasEntries,
                                                                 hasFollowUp = hasFollowUp,
-                                                                isFuture = isFuture,
                                                                 isDimmed =
                                                                         isFuture &&
                                                                                 !allowFutureEntries,

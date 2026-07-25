@@ -234,6 +234,18 @@ fun QuickCaptureDialog(onDismissRequest: () -> Unit, onSave: (String) -> Unit) {
                                                         Modifier.fillMaxWidth()
                                                                 .focusRequester(focusRequester),
                                                 placeholder = { Text(stringResource(R.string.quick_capture_hint)) },
+                                                trailingIcon = {
+                                                        VoiceCaptureButton(
+                                                                onResult = { recognized ->
+                                                                        val separator = if (textFieldValue.text.isBlank()) "" else " "
+                                                                        val newText = textFieldValue.text + separator + recognized
+                                                                        textFieldValue = TextFieldValue(
+                                                                                text = newText,
+                                                                                selection = TextRange(newText.length)
+                                                                        )
+                                                                }
+                                                        )
+                                                },
                                                 visualTransformation = MarkdownVisualTransformation(),
                                                 minLines = 5,
                                                 maxLines = 25,
@@ -421,6 +433,21 @@ fun QuickTodoDialog(
                                                                         stringResource(R.string.quick_todo_placeholder)
                                                                 } else {
                                                                         stringResource(R.string.quick_event_placeholder)
+                                                                }
+                                                        )
+                                                },
+                                                trailingIcon = {
+                                                        VoiceCaptureButton(
+                                                                onResult = { recognized ->
+                                                                        val separator = if (textFieldValue.text.isBlank()) "" else " "
+                                                                        val newText = textFieldValue.text + separator + recognized
+                                                                        textFieldValue = normalizeQuickAddTextField(
+                                                                                textFieldValue.copy(
+                                                                                        text = newText,
+                                                                                        selection = TextRange(newText.length)
+                                                                                ),
+                                                                                quickAddKind
+                                                                        )
                                                                 }
                                                         )
                                                 },

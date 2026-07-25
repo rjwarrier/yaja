@@ -21,15 +21,6 @@ import com.mj.yaja.ui.widget.QuickCaptureWidgetProvider
 import com.mj.yaja.ui.widget.TodoListWidgetProvider
 import java.time.LocalDate
 import java.io.File
-import androidx.activity.result.contract.ActivityResultContracts
-import com.google.android.play.core.appupdate.AppUpdateInfo
-import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.appupdate.AppUpdateOptions
-import com.google.android.play.core.install.InstallStateUpdatedListener
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.InstallStatus
-import com.google.android.play.core.install.model.UpdateAvailability
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,22 +28,6 @@ class MainActivity : AppCompatActivity() {
     private var wasInBackground = false
     private var isWidgetStatusReceiverRegistered = false
     private var isTaskerRefreshReceiverRegistered = false
-
-    private var appUpdateManager: AppUpdateManager? = null
-
-    private val installStateUpdatedListener = InstallStateUpdatedListener { state ->
-        if (state.installStatus() == InstallStatus.DOWNLOADED) {
-            viewModel.setUpdateDownloaded(true)
-        }
-    }
-
-    private val updateLauncher = registerForActivityResult(
-        ActivityResultContracts.StartIntentSenderForResult()
-    ) { result ->
-        if (result.resultCode != RESULT_OK) {
-            android.util.Log.w("MainActivity", "In-app update flow failed or was cancelled.")
-        }
-    }
 
     private val settingsRepository by lazy { SettingsRepository.getInstance(applicationContext) }
     private val fileManager by lazy { MarkdownFileManager.getInstance(applicationContext, settingsRepository) }
@@ -85,10 +60,6 @@ class MainActivity : AppCompatActivity() {
         try {
             super.onCreate(savedInstanceState)
 
-            // Check for updates (disabled for now)
-            // appUpdateManager = AppUpdateManagerFactory.create(applicationContext)
-            // checkPlayStoreUpdate()
-
             setContent {
                 val crashLog = remember { checkCrashLog() }
                 JournalApp(
@@ -104,32 +75,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkPlayStoreUpdate() {
-        appUpdateManager?.appUpdateInfo?.addOnSuccessListener { info ->
-            if (info.installStatus() == InstallStatus.DOWNLOADED) {
-                viewModel.setUpdateDownloaded(true)
-            } else if (info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                && info.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
-            ) {
-                viewModel.setAppUpdateInfo(info)
-            }
-        }
-    }
-
-    private fun startUpdateFlow(appUpdateInfo: AppUpdateInfo) {
-        val manager = appUpdateManager ?: return
-        val options = AppUpdateOptions.defaultOptions(AppUpdateType.FLEXIBLE)
-        try {
-            manager.startUpdateFlowForResult(
-                appUpdateInfo,
-                updateLauncher,
-                options
-            )
-        } catch (e: Exception) {
-            android.util.Log.e("MainActivity", "Failed to start in-app update flow", e)
-        }
-    }
-
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
@@ -138,13 +83,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        // appUpdateManager?.registerListener(installStateUpdatedListener)
-        // Also check if an update is already downloaded but not installed (e.g. if app closed during download)
-        // appUpdateManager?.appUpdateInfo?.addOnSuccessListener { info ->
-        //     if (info.installStatus() == InstallStatus.DOWNLOADED) {
-        //         viewModel.setUpdateDownloaded(true)
-        //     }
-        // }
         WidgetAppearanceHelper.refreshWidgetsIfAppearanceChanged(
             context = applicationContext,
             immediate = false
@@ -178,7 +116,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        // appUpdateManager?.unregisterListener(installStateUpdatedListener)
         if (isWidgetStatusReceiverRegistered) {
             try {
                 unregisterReceiver(widgetStatusReceiver)

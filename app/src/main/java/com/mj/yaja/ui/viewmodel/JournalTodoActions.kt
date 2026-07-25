@@ -5,7 +5,7 @@ import com.mj.yaja.data.MarkdownFileManager
 import com.mj.yaja.data.EventIndexRepository
 import com.mj.yaja.data.TodoIndexRepository
 import com.mj.yaja.data.TodoItem
-import com.mj.yaja.data.ComplianceMasterRepository
+import com.mj.yaja.data.RecurringTaskRepository
 import com.mj.yaja.ui.widget.WidgetRefreshCoordinator
 
 internal fun sortedTodoItems(
@@ -28,7 +28,7 @@ internal suspend fun refreshTodosWorkflow(
     publishCurrentTodos()
 
     runCatching {
-        ComplianceMasterRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
+        RecurringTaskRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
     }.onFailure {
         Log.e("YajaTodoPipeline", "Error generating recurring todos", it)
     }
@@ -72,7 +72,7 @@ internal suspend fun rebuildTodoIndexWorkflow(
     publishCurrentTodos: () -> Unit
 ) {
     runCatching {
-        ComplianceMasterRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
+        RecurringTaskRepository.getInstance(fileManager.getContext()).generateTodos(fileManager)
     }.onFailure {
         Log.e("YajaTodoPipeline", "Error generating recurring todos", it)
     }

@@ -147,20 +147,6 @@ class JournalViewModel(
     private val _uiState = MutableStateFlow(JournalUiState())
     val uiState: StateFlow<JournalUiState> = _uiState.asStateFlow()
 
-    private val _appUpdateInfo = MutableStateFlow<com.google.android.play.core.appupdate.AppUpdateInfo?>(null)
-    val appUpdateInfo: StateFlow<com.google.android.play.core.appupdate.AppUpdateInfo?> = _appUpdateInfo.asStateFlow()
-
-    fun setAppUpdateInfo(info: com.google.android.play.core.appupdate.AppUpdateInfo?) {
-        _appUpdateInfo.value = info
-    }
-
-    private val _isUpdateDownloaded = MutableStateFlow(false)
-    val isUpdateDownloaded: StateFlow<Boolean> = _isUpdateDownloaded.asStateFlow()
-
-    fun setUpdateDownloaded(downloaded: Boolean) {
-        _isUpdateDownloaded.value = downloaded
-    }
-
     // Soft-delete staging keeps enough context to restore an entry in place.
     private val _lastDeleted = MutableStateFlow<DeletedEntryBatch?>(null)
     val lastDeleted: StateFlow<DeletedEntryBatch?> = _lastDeleted.asStateFlow()
@@ -211,6 +197,7 @@ class JournalViewModel(
 
     private var currentDayOneImporter: com.mj.yaja.data.DayOneImporter? = null
     private var currentJournalisticImporter: com.mj.yaja.data.JournalisticImporter? = null
+    private var currentMarkdownFolderImporter: com.mj.yaja.data.MarkdownFolderImporter? = null
 
     val themePreference = settingsRepository.themePreference
     val colorSource = settingsRepository.colorSource
@@ -1545,6 +1532,43 @@ class JournalViewModel(
         }
     }
 
+    fun exportObsidianVault(treeUri: Uri, context: Context) {
+        viewModelScope.launch {
+            _toastEvents.emit("Preparing Obsidian export...")
+            _backgroundWorkLabel.value = "Preparing export"
+            _syncProgress.value = 0.02f
+            try {
+                val exporter = com.mj.yaja.data.ObsidianExporter(
+                    context.applicationContext,
+                    fileManager,
+                    keywordRepository,
+                    keywordMatchCache
+                )
+                val dates = withContext(Dispatchers.IO) { fileManager.getAllJournalDatesLightweight() }
+                val result = withContext(Dispatchers.IO) {
+                    exporter.exportToTreeUri(treeUri, dates) { current, total ->
+                        val progress = current.toFloat() / total.coerceAtLeast(1).toFloat()
+                        _backgroundWorkLabel.value = "Exporting to vault"
+                        _syncProgress.value = 0.05f + (progress * 0.9f)
+                    }
+                }
+                _syncProgress.value = 1f
+                _toastEvents.emit(
+                    if (result.cancelled) {
+                        "Export cancelled after ${result.daysExported} day(s)."
+                    } else {
+                        "Exported ${result.daysExported} day(s) to Obsidian vault."
+                    }
+                )
+            } catch (e: Exception) {
+                _toastEvents.emit(e.message ?: "Obsidian export couldn't be created.")
+            } finally {
+                _syncProgress.value = null
+                _backgroundWorkLabel.value = null
+            }
+        }
+    }
+
     fun restoreBackupZip(uri: android.net.Uri, context: android.content.Context) {
         if (!canStartImport(_importState.value)) return
         importJob?.cancel()
@@ -1803,6 +1827,26 @@ class JournalViewModel(
         )
     }
 
+    fun importMarkdownFolder(treeUri: android.net.Uri, context: android.content.Context) {
+        if (!canStartImport(_importState.value)) return
+        importJob?.cancel()
+        importJob = launchMarkdownFolderEntryImport(
+            scope = viewModelScope,
+            importState = _importState,
+            context = context,
+            treeUri = treeUri,
+            fileManager = fileManager,
+            onImporterChanged = { currentMarkdownFolderImporter = it },
+            onImportSuccess = {
+                runEntryImportSuccessRefresh(
+                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                    forceFileRefresh = { fileManager.forceRefresh { _, _ -> } },
+                    markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt
+                )
+            }
+        )
+    }
+
     fun importKeywordsFromBackupZip(uri: android.net.Uri, context: android.content.Context) {
         if (!canStartImport(_importState.value)) return
         importJob?.cancel()
@@ -1819,7 +1863,8 @@ class JournalViewModel(
         cancelActiveImport(
             importJob = importJob,
             dayOneImporter = currentDayOneImporter,
-            journalisticImporter = currentJournalisticImporter
+            journalisticImporter = currentJournalisticImporter,
+            markdownFolderImporter = currentMarkdownFolderImporter
         )
     }
 
@@ -3011,40 +3056,40 @@ class JournalViewModel(
     fun setFollowUiFontScale(follow: Boolean) =
         settingsRepository.setFollowUiFontScale(follow)
 
-    // --- Compliance Master feature integration ---
-    private val complianceRepository = com.mj.yaja.data.ComplianceMasterRepository.getInstance(fileManager.getContext())
-    val complianceMasters: StateFlow<List<com.mj.yaja.data.ComplianceMasterItem>> = complianceRepository.items
+    // --- Recurring Tasks feature integration ---
+    private val recurringTaskRepository = com.mj.yaja.data.RecurringTaskRepository.getInstance(fileManager.getContext())
+    val recurringTasks: StateFlow<List<com.mj.yaja.data.RecurringTaskItem>> = recurringTaskRepository.items
 
-    fun getComplianceUpcomingDates(item: com.mj.yaja.data.ComplianceMasterItem, limit: Int): List<LocalDate> =
-        complianceRepository.previewUpcomingDates(item, limit)
+    fun getRecurringTaskUpcomingDates(item: com.mj.yaja.data.RecurringTaskItem, limit: Int): List<LocalDate> =
+        recurringTaskRepository.previewUpcomingDates(item, limit)
 
-    fun getComplianceCardSchedule(item: com.mj.yaja.data.ComplianceMasterItem): com.mj.yaja.data.CardSchedule =
-        complianceRepository.cardSchedule(item)
+    fun getRecurringTaskCardSchedule(item: com.mj.yaja.data.RecurringTaskItem): com.mj.yaja.data.CardSchedule =
+        recurringTaskRepository.cardSchedule(item)
 
-    fun toggleComplianceMasterActive(id: String, active: Boolean) {
+    fun toggleRecurringTaskActive(id: String, active: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            complianceRepository.setActive(id, active, fileManager)
+            recurringTaskRepository.setActive(id, active, fileManager)
         }
     }
 
-    fun deleteComplianceMaster(id: String) {
+    fun deleteRecurringTask(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            complianceRepository.delete(id, fileManager)
+            recurringTaskRepository.delete(id, fileManager)
         }
     }
 
-    fun upsertComplianceMaster(
+    fun upsertRecurringTask(
         id: String?,
         title: String,
         description: String,
         isActive: Boolean,
-        itemType: com.mj.yaja.data.ComplianceItemType,
-        scheduleMode: com.mj.yaja.data.ComplianceScheduleMode,
-        frequency: com.mj.yaja.data.ComplianceFrequency,
+        itemType: com.mj.yaja.data.RecurringTaskItemType,
+        scheduleMode: com.mj.yaja.data.RecurringTaskScheduleMode,
+        frequency: com.mj.yaja.data.RecurringTaskFrequency,
         dueDayOfMonth: Int?,
         dueDayOfWeek: Int?,
         leadDays: Int,
-        endMode: com.mj.yaja.data.ComplianceEndMode,
+        endMode: com.mj.yaja.data.RecurringTaskEndMode,
         endDate: LocalDate?,
         endCount: Int?,
         anchorDate: LocalDate,
@@ -3052,7 +3097,7 @@ class JournalViewModel(
         startTime: String?
     ) {
         viewModelScope.launch(Dispatchers.IO) {
-            complianceRepository.upsert(
+            recurringTaskRepository.upsert(
                 id = id,
                 title = title,
                 description = description,

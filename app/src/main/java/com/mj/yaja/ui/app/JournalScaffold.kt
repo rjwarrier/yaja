@@ -91,8 +91,7 @@ fun JournalScaffold(
     bottomShowTodosInNavBar: Boolean = showTodosInNavBar,
     bottomShowStatisticsInNavBar: Boolean = showStatisticsInNavBar,
     showStatistics: Boolean,
-    topLevelRoutes: Set<String>,
-    onStartUpdateFlow: (com.google.android.play.core.appupdate.AppUpdateInfo) -> Unit = {}
+    topLevelRoutes: Set<String>
 ) {
     val scope = rememberCoroutineScope()
     val importState by viewModel.importState.collectAsStateWithLifecycle()
@@ -258,8 +257,7 @@ fun JournalScaffold(
                 viewModel = viewModel,
                 modifier = Modifier.fillMaxSize(),
                 onOpenDrawer = { scope.launch { drawerState.open() } },
-                isDrawerOpen = isDrawerOpen,
-                onStartUpdateFlow = onStartUpdateFlow
+                isDrawerOpen = isDrawerOpen
             )
 
             AnimatedVisibility(

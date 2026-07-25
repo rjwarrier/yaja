@@ -94,11 +94,11 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mj.yaja.R
 import com.mj.yaja.data.CardSchedule
-import com.mj.yaja.data.ComplianceEndMode
-import com.mj.yaja.data.ComplianceItemType
-import com.mj.yaja.data.ComplianceFrequency
-import com.mj.yaja.data.ComplianceMasterItem
-import com.mj.yaja.data.ComplianceScheduleMode
+import com.mj.yaja.data.RecurringTaskEndMode
+import com.mj.yaja.data.RecurringTaskItemType
+import com.mj.yaja.data.RecurringTaskFrequency
+import com.mj.yaja.data.RecurringTaskItem
+import com.mj.yaja.data.RecurringTaskScheduleMode
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.Instant
@@ -115,11 +115,11 @@ import androidx.compose.material3.rememberTimePickerState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ComplianceMasterScreen(
+fun RecurringTasksScreen(
     viewModel: JournalViewModel,
     onNavigateBack: () -> Unit
 ) {
-    val items by viewModel.complianceMasters.collectAsStateWithLifecycle()
+    val items by viewModel.recurringTasks.collectAsStateWithLifecycle()
     val sortedItems = remember(items) {
         items.sortedWith(compareBy({ !it.isActive }, { it.title.lowercase() }))
     }
@@ -127,10 +127,10 @@ fun ComplianceMasterScreen(
     val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
     val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
     val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
-    var editorItem by remember { mutableStateOf<ComplianceMasterItem?>(null) }
+    var editorItem by remember { mutableStateOf<RecurringTaskItem?>(null) }
     var showEditor by remember { mutableStateOf(false) }
-    var editorItemType by remember { mutableStateOf(ComplianceItemType.TASK) }
-    var deleteConfirmItem by remember { mutableStateOf<ComplianceMasterItem?>(null) }
+    var editorItemType by remember { mutableStateOf(RecurringTaskItemType.TASK) }
+    var deleteConfirmItem by remember { mutableStateOf<RecurringTaskItem?>(null) }
     val bottomChromePadding = remember(showBottomBar, navigationChromeMode, showBottomPanelLabels) {
         if (showBottomBar) {
             when (navigationChromeMode) {
@@ -150,16 +150,16 @@ fun ComplianceMasterScreen(
                         text = stringResource(
                             when {
                                 showEditor && editorItem == null -> {
-                                    if (editorItemType == ComplianceItemType.EVENT)
-                                        R.string.compliance_master_add_event
-                                    else R.string.compliance_master_add
+                                    if (editorItemType == RecurringTaskItemType.EVENT)
+                                        R.string.recurring_task_add_event
+                                    else R.string.recurring_task_add
                                 }
                                 showEditor -> {
-                                    if (editorItemType == ComplianceItemType.EVENT)
-                                        R.string.compliance_master_edit_event
-                                    else R.string.compliance_master_edit
+                                    if (editorItemType == RecurringTaskItemType.EVENT)
+                                        R.string.recurring_task_edit_event
+                                    else R.string.recurring_task_edit
                                 }
-                                else -> R.string.compliance_master_title
+                                else -> R.string.recurring_task_title
                             }
                         ),
                         style = MaterialTheme.typography.headlineSmall,
@@ -200,7 +200,7 @@ fun ComplianceMasterScreen(
                     FloatingActionButton(
                         onClick = {
                             editorItem = null
-                            editorItemType = ComplianceItemType.TASK
+                            editorItemType = RecurringTaskItemType.TASK
                             showEditor = true
                         },
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -209,7 +209,7 @@ fun ComplianceMasterScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Add,
-                            contentDescription = stringResource(R.string.compliance_master_add)
+                            contentDescription = stringResource(R.string.recurring_task_add)
                         )
                     }
                 }
@@ -231,19 +231,19 @@ fun ComplianceMasterScreen(
             label = "editor_transition"
         ) { editorActive ->
             if (editorActive) {
-                  ComplianceMasterEditorPage(
+                  RecurringTaskEditorPage(
                      item = editorItem,
                      paddingValues = paddingValues,
                      bottomChromePadding = bottomChromePadding,
                      currentItemType = editorItemType,
                      onItemTypeChange = { editorItemType = it },
-                     computeUpcomingDates = { viewModel.getComplianceUpcomingDates(it, 5) },
+                     computeUpcomingDates = { viewModel.getRecurringTaskUpcomingDates(it, 5) },
                     onDismiss = {
                         showEditor = false
                         editorItem = null
                     },
                     onSave = { title, description, itemType, scheduleMode, frequency, dueDay, dueWeekday, leadDays, endMode, endDate, endCount, startDate, startMonth, startTime ->
-                        viewModel.upsertComplianceMaster(
+                        viewModel.upsertRecurringTask(
                             id = editorItem?.id,
                             title = title,
                             description = description,
@@ -292,13 +292,13 @@ fun ComplianceMasterScreen(
                                         verticalArrangement = Arrangement.spacedBy(6.dp)
                                     ) {
                                         Text(
-                                            text = stringResource(R.string.compliance_master_intro_title),
+                                            text = stringResource(R.string.recurring_task_intro_title),
                                             style = MaterialTheme.typography.titleMedium,
                                             color = MaterialTheme.colorScheme.onSurface,
                                             fontWeight = FontWeight.SemiBold
                                         )
                                         Text(
-                                            text = stringResource(R.string.compliance_master_intro_body),
+                                            text = stringResource(R.string.recurring_task_intro_body),
                                             style = MaterialTheme.typography.bodyMedium,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
@@ -313,7 +313,7 @@ fun ComplianceMasterScreen(
                                     color = MaterialTheme.colorScheme.surfaceContainer
                                 ) {
                                     Text(
-                                        text = stringResource(R.string.compliance_master_empty),
+                                        text = stringResource(R.string.recurring_task_empty),
                                         modifier = Modifier.fillMaxWidth().padding(18.dp),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -326,10 +326,10 @@ fun ComplianceMasterScreen(
                                 key = { it.id }
                             ) { item ->
                                 val schedule = remember(item) {
-                                    viewModel.getComplianceCardSchedule(item)
+                                    viewModel.getRecurringTaskCardSchedule(item)
                                 }
                                 Box(modifier = Modifier.animateItem()) {
-                                    ComplianceMasterCard(
+                                    RecurringTaskCard(
                                         item = item,
                                         nextDate = schedule.nextDate,
                                         endDate = schedule.endDate,
@@ -340,7 +340,7 @@ fun ComplianceMasterScreen(
                                              showEditor = true
                                          },
                                         onDelete = { deleteConfirmItem = item },
-                                        onToggleActive = { active -> viewModel.toggleComplianceMasterActive(item.id, active) }
+                                        onToggleActive = { active -> viewModel.toggleRecurringTaskActive(item.id, active) }
                                     )
                                 }
                             }
@@ -357,18 +357,18 @@ fun ComplianceMasterScreen(
             title = {
                 Text(
                     stringResource(
-                        if (pending.itemType == ComplianceItemType.EVENT)
-                            R.string.compliance_master_delete_confirm_title_event
-                        else R.string.compliance_master_delete_confirm_title
+                        if (pending.itemType == RecurringTaskItemType.EVENT)
+                            R.string.recurring_task_delete_confirm_title_event
+                        else R.string.recurring_task_delete_confirm_title
                     )
                 )
             },
             text = {
-                Text(stringResource(R.string.compliance_master_delete_confirm_body, pending.title))
+                Text(stringResource(R.string.recurring_task_delete_confirm_body, pending.title))
             },
             confirmButton = {
                 TextButton(onClick = {
-                    viewModel.deleteComplianceMaster(pending.id)
+                    viewModel.deleteRecurringTask(pending.id)
                     deleteConfirmItem = null
                 }) {
                     Text(
@@ -388,8 +388,8 @@ fun ComplianceMasterScreen(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ComplianceMasterCard(
-    item: ComplianceMasterItem,
+private fun RecurringTaskCard(
+    item: RecurringTaskItem,
     nextDate: LocalDate?,
     endDate: LocalDate?,
     remaining: Int?,
@@ -442,7 +442,7 @@ private fun ComplianceMasterCard(
                             contentColor = MaterialTheme.colorScheme.onErrorContainer
                         ) {
                             Text(
-                                text = stringResource(R.string.compliance_master_status_deactivated),
+                                text = stringResource(R.string.recurring_task_status_deactivated),
                                 style = MaterialTheme.typography.labelSmall,
                                 modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
                                 fontWeight = FontWeight.Bold
@@ -475,7 +475,7 @@ private fun ComplianceMasterCard(
 
             // Metadata info
             Text(
-                text = complianceSummary(item),
+                text = recurringTaskSummary(item),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = contentAlpha)
             )
@@ -489,13 +489,13 @@ private fun ComplianceMasterCard(
                 verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 // Type chip: Task vs Event
-                ComplianceInfoChip(
-                    icon = if (item.itemType == ComplianceItemType.EVENT)
+                RecurringTaskInfoChip(
+                    icon = if (item.itemType == RecurringTaskItemType.EVENT)
                         Icons.Rounded.Event else Icons.Rounded.TaskAlt,
                     text = stringResource(
-                        if (item.itemType == ComplianceItemType.EVENT)
-                            R.string.compliance_master_type_event
-                        else R.string.compliance_master_type_task
+                        if (item.itemType == RecurringTaskItemType.EVENT)
+                            R.string.recurring_task_type_event
+                        else R.string.recurring_task_type_task
                     ),
                     container = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
                     content = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -509,7 +509,7 @@ private fun ComplianceMasterCard(
                     }
                 }
                 if (formattedTime != null) {
-                    ComplianceInfoChip(
+                    RecurringTaskInfoChip(
                         icon = Icons.Rounded.AccessTime,
                         text = formattedTime,
                         container = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f),
@@ -518,10 +518,10 @@ private fun ComplianceMasterCard(
                     )
                 }
                 if (showNextChip) {
-                    ComplianceInfoChip(
+                    RecurringTaskInfoChip(
                         icon = Icons.Rounded.Event,
                         text = stringResource(
-                            R.string.compliance_master_next_date,
+                            R.string.recurring_task_next_date,
                             nextDate!!.format(dateFormatter)
                         ),
                         container = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.65f),
@@ -531,8 +531,8 @@ private fun ComplianceMasterCard(
                 }
                 // End condition: ∞ for never, date for on-date, live countdown for occurrences
                 when (item.endMode) {
-                    ComplianceEndMode.NEVER -> {
-                        ComplianceInfoChip(
+                    RecurringTaskEndMode.NEVER -> {
+                        RecurringTaskInfoChip(
                             icon = Icons.Rounded.AllInclusive,
                             text = "",
                             container = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f),
@@ -540,12 +540,12 @@ private fun ComplianceMasterCard(
                             alpha = contentAlpha
                         )
                     }
-                    ComplianceEndMode.ON_DATE -> {
+                    RecurringTaskEndMode.ON_DATE -> {
                         if (endDate != null) {
-                            ComplianceInfoChip(
+                            RecurringTaskInfoChip(
                                 icon = Icons.Rounded.EventBusy,
                                 text = stringResource(
-                                    R.string.compliance_master_ends_on,
+                                    R.string.recurring_task_ends_on,
                                     endDate.format(dateFormatter)
                                 ),
                                 container = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f),
@@ -554,21 +554,21 @@ private fun ComplianceMasterCard(
                             )
                         }
                     }
-                    ComplianceEndMode.AFTER_OCCURRENCES -> {
+                    RecurringTaskEndMode.AFTER_OCCURRENCES -> {
                         if (remaining != null) {
                             if (remaining == 0) {
-                                ComplianceInfoChip(
+                                RecurringTaskInfoChip(
                                     icon = Icons.Rounded.EventBusy,
-                                    text = stringResource(R.string.compliance_master_ended),
+                                    text = stringResource(R.string.recurring_task_ended),
                                     container = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.55f),
                                     content = MaterialTheme.colorScheme.onErrorContainer,
                                     alpha = contentAlpha
                                 )
                             } else {
-                                ComplianceInfoChip(
+                                RecurringTaskInfoChip(
                                     icon = Icons.Rounded.EventBusy,
                                     text = stringResource(
-                                        R.string.compliance_master_ends_remaining,
+                                        R.string.recurring_task_ends_remaining,
                                         remaining
                                     ),
                                     container = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f),
@@ -645,7 +645,7 @@ private fun ComplianceMasterCard(
 }
 
 @Composable
-private fun ComplianceInfoChip(
+private fun RecurringTaskInfoChip(
     icon: androidx.compose.ui.graphics.vector.ImageVector,
     text: String,
     container: androidx.compose.ui.graphics.Color,
@@ -680,24 +680,24 @@ private fun ComplianceInfoChip(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ComplianceMasterEditorPage(
-    item: ComplianceMasterItem?,
+private fun RecurringTaskEditorPage(
+    item: RecurringTaskItem?,
     paddingValues: PaddingValues,
     bottomChromePadding: Dp,
-    currentItemType: ComplianceItemType,
-    onItemTypeChange: (ComplianceItemType) -> Unit,
-    computeUpcomingDates: (ComplianceMasterItem) -> List<LocalDate>,
+    currentItemType: RecurringTaskItemType,
+    onItemTypeChange: (RecurringTaskItemType) -> Unit,
+    computeUpcomingDates: (RecurringTaskItem) -> List<LocalDate>,
     onDismiss: () -> Unit,
     onSave: (
         String,
         String, // description
-        ComplianceItemType,
-        ComplianceScheduleMode,
-        ComplianceFrequency,
+        RecurringTaskItemType,
+        RecurringTaskScheduleMode,
+        RecurringTaskFrequency,
         Int?,
         Int?,
         Int,
-        ComplianceEndMode,
+        RecurringTaskEndMode,
         LocalDate?,
         Int?,
         LocalDate,
@@ -709,14 +709,14 @@ private fun ComplianceMasterEditorPage(
     var description by remember(item?.id) { mutableStateOf(item?.description.orEmpty()) }
     val itemType = currentItemType
     var scheduleMode by remember(item?.id) {
-        mutableStateOf(item?.scheduleMode ?: ComplianceScheduleMode.DAY_OF_MONTH)
+        mutableStateOf(item?.scheduleMode ?: RecurringTaskScheduleMode.DAY_OF_MONTH)
     }
     var frequency by remember(item?.id) {
-        mutableStateOf(item?.frequency ?: ComplianceFrequency.MONTHLY)
+        mutableStateOf(item?.frequency ?: RecurringTaskFrequency.MONTHLY)
     }
     var revealDayText by remember(item?.id) { mutableStateOf((item?.leadDays ?: 0).toString()) }
     var endMode by remember(item?.id) {
-        mutableStateOf(item?.endMode ?: ComplianceEndMode.NEVER)
+        mutableStateOf(item?.endMode ?: RecurringTaskEndMode.NEVER)
     }
     var endDate by remember(item?.id) {
         mutableStateOf(item?.endDate?.let { runCatching { LocalDate.parse(it) }.getOrNull() })
@@ -743,20 +743,20 @@ private fun ComplianceMasterEditorPage(
     val previewLeadDays = revealDayText.toIntOrNull()?.coerceIn(0, 30) ?: 0
     val previewEndCount = endCountText.toIntOrNull()?.coerceIn(1, 999)
     val previewDates = remember(scheduleMode, frequency, previewDueDay, previewDueWeekday, endMode, endDate, previewEndCount, startDate) {
-        val tempItem = ComplianceMasterItem(
+        val tempItem = RecurringTaskItem(
             id = "preview",
             title = "",
             scheduleMode = scheduleMode,
             frequency = frequency,
-            dueDayOfMonth = previewDueDay.takeIf { scheduleMode == ComplianceScheduleMode.DAY_OF_MONTH },
-            dueDayOfWeek = previewDueWeekday.takeIf { scheduleMode == ComplianceScheduleMode.DAY_OF_WEEK },
+            dueDayOfMonth = previewDueDay.takeIf { scheduleMode == RecurringTaskScheduleMode.DAY_OF_MONTH },
+            dueDayOfWeek = previewDueWeekday.takeIf { scheduleMode == RecurringTaskScheduleMode.DAY_OF_WEEK },
             leadDays = 0,
             anchorDate = startDate.toString(),
             startMonth = YearMonth.from(startDate).toString(),
             startTime = startTime?.format(DateTimeFormatter.ofPattern("HH:mm")),
             endMode = endMode,
-            endDate = endDate?.toString().takeIf { endMode == ComplianceEndMode.ON_DATE },
-            endCount = previewEndCount.takeIf { endMode == ComplianceEndMode.AFTER_OCCURRENCES }
+            endDate = endDate?.toString().takeIf { endMode == RecurringTaskEndMode.ON_DATE },
+            endCount = previewEndCount.takeIf { endMode == RecurringTaskEndMode.AFTER_OCCURRENCES }
         )
         computeUpcomingDates(tempItem)
     }
@@ -770,12 +770,12 @@ private fun ComplianceMasterEditorPage(
             itemType,
             scheduleMode,
             frequency,
-            startDate.dayOfMonth.takeIf { scheduleMode == ComplianceScheduleMode.DAY_OF_MONTH },
-            startDate.dayOfWeek.value.takeIf { scheduleMode == ComplianceScheduleMode.DAY_OF_WEEK },
+            startDate.dayOfMonth.takeIf { scheduleMode == RecurringTaskScheduleMode.DAY_OF_MONTH },
+            startDate.dayOfWeek.value.takeIf { scheduleMode == RecurringTaskScheduleMode.DAY_OF_WEEK },
             parsedLeadDays,
             endMode,
-            endDate.takeIf { endMode == ComplianceEndMode.ON_DATE },
-            parsedEndCount.takeIf { endMode == ComplianceEndMode.AFTER_OCCURRENCES },
+            endDate.takeIf { endMode == RecurringTaskEndMode.ON_DATE },
+            parsedEndCount.takeIf { endMode == RecurringTaskEndMode.AFTER_OCCURRENCES },
             startDate,
             YearMonth.from(startDate),
             startTime?.format(DateTimeFormatter.ofPattern("HH:mm"))
@@ -808,20 +808,20 @@ private fun ComplianceMasterEditorPage(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.compliance_master_editor_task_section),
+                        text = stringResource(R.string.recurring_task_editor_task_section),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = stringResource(R.string.compliance_master_type_label),
+                        text = stringResource(R.string.recurring_task_type_label),
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    ComplianceSegmentedSelector(
+                    RecurringTaskSegmentedSelector(
                         options = listOf(
-                            ComplianceItemType.TASK to stringResource(R.string.compliance_master_type_task),
-                            ComplianceItemType.EVENT to stringResource(R.string.compliance_master_type_event)
+                            RecurringTaskItemType.TASK to stringResource(R.string.recurring_task_type_task),
+                            RecurringTaskItemType.EVENT to stringResource(R.string.recurring_task_type_event)
                         ),
                         selected = itemType,
                         onSelected = onItemTypeChange
@@ -835,18 +835,18 @@ private fun ComplianceMasterEditorPage(
                         label = {
                             Text(
                                 stringResource(
-                                    if (itemType == ComplianceItemType.EVENT)
-                                        R.string.compliance_master_field_title_event
-                                    else R.string.compliance_master_field_title
+                                    if (itemType == RecurringTaskItemType.EVENT)
+                                        R.string.recurring_task_field_title_event
+                                    else R.string.recurring_task_field_title
                                 )
                             )
                         },
                         placeholder = {
                             Text(
                                 stringResource(
-                                    if (itemType == ComplianceItemType.EVENT)
-                                        R.string.compliance_master_field_title_event_hint
-                                    else R.string.compliance_master_field_title_hint
+                                    if (itemType == RecurringTaskItemType.EVENT)
+                                        R.string.recurring_task_field_title_event_hint
+                                    else R.string.recurring_task_field_title_hint
                                 )
                             )
                         }
@@ -858,9 +858,9 @@ private fun ComplianceMasterEditorPage(
                         shape = MaterialTheme.shapes.medium,
                         singleLine = false,
                         maxLines = 3,
-                        label = { Text(stringResource(R.string.compliance_master_field_description)) },
+                        label = { Text(stringResource(R.string.recurring_task_field_description)) },
                         placeholder = {
-                            Text(stringResource(R.string.compliance_master_field_description_hint))
+                            Text(stringResource(R.string.recurring_task_field_description_hint))
                         }
                     )
                 }
@@ -868,19 +868,19 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("schedule_mode") {
-            ComplianceEditorCard {
-                ComplianceEditorSectionHeader(
+            RecurringTaskEditorCard {
+                RecurringTaskEditorSectionHeader(
                     step = 1,
-                    title = stringResource(R.string.compliance_master_field_schedule_mode),
-                    description = stringResource(R.string.compliance_master_schedule_mode_help)
+                    title = stringResource(R.string.recurring_task_field_schedule_mode),
+                    description = stringResource(R.string.recurring_task_schedule_mode_help)
                 )
                 Text(
-                    text = stringResource(R.string.compliance_master_select_schedule_type),
+                    text = stringResource(R.string.recurring_task_select_schedule_type),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                ComplianceSegmentedSelector(
-                    options = complianceModeOptions().map { option ->
+                RecurringTaskSegmentedSelector(
+                    options = recurringTaskModeOptions().map { option ->
                         option.first to stringResource(option.titleRes)
                     },
                     selected = scheduleMode,
@@ -903,12 +903,12 @@ private fun ComplianceMasterEditorPage(
                 ) {
                     AnimatedContent(
                         targetState = scheduleMode,
-                        transitionSpec = { complianceContentTransition() },
+                        transitionSpec = { recurringTaskContentTransition() },
                         label = "schedule_mode_description"
                     ) { mode ->
                         Text(
                             text = stringResource(
-                                complianceModeOptions()
+                                recurringTaskModeOptions()
                                     .first { it.first == mode }
                                     .descriptionRes
                             ),
@@ -922,22 +922,22 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("frequency") {
-            ComplianceEditorCard {
-                ComplianceEditorSectionHeader(
+            RecurringTaskEditorCard {
+                RecurringTaskEditorSectionHeader(
                     step = 2,
-                    title = stringResource(R.string.compliance_master_field_frequency),
+                    title = stringResource(R.string.recurring_task_field_frequency),
                     description = stringResource(
-                        if (itemType == ComplianceItemType.EVENT)
-                            R.string.compliance_master_frequency_help_event
-                        else R.string.compliance_master_frequency_help
+                        if (itemType == RecurringTaskItemType.EVENT)
+                            R.string.recurring_task_frequency_help_event
+                        else R.string.recurring_task_frequency_help
                     )
                 )
                 Text(
-                    text = stringResource(R.string.compliance_master_select_frequency),
+                    text = stringResource(R.string.recurring_task_select_frequency),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                ComplianceSegmentedSelector(
+                RecurringTaskSegmentedSelector(
                     options = allowedFrequencies(scheduleMode).map { option ->
                         option to stringResource(frequencyLabelRes(option))
                     },
@@ -948,11 +948,11 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("start_schedule") {
-            ComplianceEditorCard {
-                ComplianceEditorSectionHeader(
+            RecurringTaskEditorCard {
+                RecurringTaskEditorSectionHeader(
                     step = 3,
-                    title = stringResource(R.string.compliance_master_start_section),
-                    description = stringResource(R.string.compliance_master_start_help)
+                    title = stringResource(R.string.recurring_task_start_section),
+                    description = stringResource(R.string.recurring_task_start_help)
                 )
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -995,8 +995,8 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("preview") {
-            ComplianceExecutionPreviewCard(
-                description = complianceExecutionDescription(
+            RecurringTaskExecutionPreviewCard(
+                description = recurringTaskExecutionDescription(
                     itemType = itemType,
                     scheduleMode = scheduleMode,
                     frequency = frequency,
@@ -1010,11 +1010,11 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("details") {
-            ComplianceEditorCard {
-                ComplianceEditorSectionHeader(
+            RecurringTaskEditorCard {
+                RecurringTaskEditorSectionHeader(
                     step = 4,
-                    title = stringResource(R.string.compliance_master_schedule_details),
-                    description = stringResource(R.string.compliance_master_details_boundary_help)
+                    title = stringResource(R.string.recurring_task_schedule_details),
+                    description = stringResource(R.string.recurring_task_details_boundary_help)
                 )
                 OutlinedTextField(
                     value = revealDayText,
@@ -1027,10 +1027,10 @@ private fun ComplianceMasterEditorPage(
                     shape = MaterialTheme.shapes.medium,
                     singleLine = true,
                     label = {
-                        Text(stringResource(R.string.compliance_master_field_reveal_day))
+                        Text(stringResource(R.string.recurring_task_field_reveal_day))
                     },
                     supportingText = {
-                        Text(stringResource(R.string.compliance_master_reveal_day_help))
+                        Text(stringResource(R.string.recurring_task_reveal_day_help))
                     },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
@@ -1038,18 +1038,18 @@ private fun ComplianceMasterEditorPage(
         }
 
         item("end") {
-            ComplianceEditorCard {
-                ComplianceEditorSectionHeader(
+            RecurringTaskEditorCard {
+                RecurringTaskEditorSectionHeader(
                     step = 5,
-                    title = stringResource(R.string.compliance_master_end_section),
+                    title = stringResource(R.string.recurring_task_end_section),
                     description = stringResource(
-                        if (itemType == ComplianceItemType.EVENT)
-                            R.string.compliance_master_end_help_event
-                        else R.string.compliance_master_end_help
+                        if (itemType == RecurringTaskItemType.EVENT)
+                            R.string.recurring_task_end_help_event
+                        else R.string.recurring_task_end_help
                     )
                 )
-                ComplianceSegmentedSelector(
-                    options = complianceEndModeOptions().map { option ->
+                RecurringTaskSegmentedSelector(
+                    options = recurringTaskEndModeOptions().map { option ->
                         option.first to stringResource(option.second)
                     },
                     selected = endMode,
@@ -1069,7 +1069,7 @@ private fun ComplianceMasterEditorPage(
                 ) {
                     AnimatedContent(
                         targetState = endMode,
-                        transitionSpec = { complianceContentTransition() },
+                        transitionSpec = { recurringTaskContentTransition() },
                         label = "end_mode_content"
                     ) { mode ->
                         Column(
@@ -1077,14 +1077,14 @@ private fun ComplianceMasterEditorPage(
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             when (mode) {
-                                ComplianceEndMode.NEVER -> {
+                                RecurringTaskEndMode.NEVER -> {
                                     Text(
-                                        text = stringResource(R.string.compliance_master_end_never_desc),
+                                        text = stringResource(R.string.recurring_task_end_never_desc),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
-                                ComplianceEndMode.ON_DATE -> {
+                                RecurringTaskEndMode.ON_DATE -> {
                                     val endFormatter = remember {
                                         DateTimeFormatter.ofPattern("d MMM yyyy")
                                     }
@@ -1103,16 +1103,16 @@ private fun ComplianceMasterEditorPage(
                                         )
                                         Text(
                                             text = endDate?.format(endFormatter)
-                                                ?: stringResource(R.string.compliance_master_end_date_select)
+                                                ?: stringResource(R.string.recurring_task_end_date_select)
                                         )
                                     }
                                     Text(
-                                        text = stringResource(R.string.compliance_master_end_date_help),
+                                        text = stringResource(R.string.recurring_task_end_date_help),
                                         style = MaterialTheme.typography.bodySmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
-                                ComplianceEndMode.AFTER_OCCURRENCES -> {
+                                RecurringTaskEndMode.AFTER_OCCURRENCES -> {
                                     OutlinedTextField(
                                         value = endCountText,
                                         onValueChange = { value ->
@@ -1124,14 +1124,14 @@ private fun ComplianceMasterEditorPage(
                                         shape = MaterialTheme.shapes.medium,
                                         singleLine = true,
                                         label = {
-                                            Text(stringResource(R.string.compliance_master_end_count_label))
+                                            Text(stringResource(R.string.recurring_task_end_count_label))
                                         },
                                         supportingText = {
                                             Text(
                                                 stringResource(
-                                                    if (itemType == ComplianceItemType.EVENT)
-                                                        R.string.compliance_master_end_count_help_event
-                                                    else R.string.compliance_master_end_count_help
+                                                    if (itemType == RecurringTaskItemType.EVENT)
+                                                        R.string.recurring_task_end_count_help_event
+                                                    else R.string.recurring_task_end_count_help
                                                 )
                                             )
                                         },
@@ -1302,7 +1302,7 @@ private fun ComplianceMasterEditorPage(
                 Text(stringResource(R.string.action_cancel))
             }
             val currentEndDate = endDate
-            val isEndDateInvalid = endMode == ComplianceEndMode.ON_DATE && (currentEndDate == null || currentEndDate.isBefore(startDate))
+            val isEndDateInvalid = endMode == RecurringTaskEndMode.ON_DATE && (currentEndDate == null || currentEndDate.isBefore(startDate))
             Button(
                 onClick = ::save,
                 enabled = title.isNotBlank() && !isEndDateInvalid,
@@ -1321,7 +1321,7 @@ private fun ComplianceMasterEditorPage(
 }
 
 @Composable
-private fun ComplianceEditorCard(content: @Composable ColumnScope.() -> Unit) {
+private fun RecurringTaskEditorCard(content: @Composable ColumnScope.() -> Unit) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -1343,7 +1343,7 @@ private fun ComplianceEditorCard(content: @Composable ColumnScope.() -> Unit) {
 }
 
 @Composable
-private fun ComplianceEditorSectionHeader(
+private fun RecurringTaskEditorSectionHeader(
     step: Int,
     title: String,
     description: String
@@ -1381,7 +1381,7 @@ private fun ComplianceEditorSectionHeader(
 }
 
 @Composable
-private fun ComplianceExecutionPreviewCard(
+private fun RecurringTaskExecutionPreviewCard(
     description: String,
     upcomingDates: List<LocalDate> = emptyList(),
     startTime: String? = null
@@ -1409,15 +1409,15 @@ private fun ComplianceExecutionPreviewCard(
             )
             Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
                 Text(
-                    text = stringResource(R.string.compliance_master_execution_title).uppercase(),
+                    text = stringResource(R.string.recurring_task_execution_title).uppercase(),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold
                 )
                 AnimatedContent(
                     targetState = description,
-                    transitionSpec = { complianceContentTransition() },
-                    label = "compliance_preview_description"
+                    transitionSpec = { recurringTaskContentTransition() },
+                    label = "recurring_task_preview_description"
                 ) { previewText ->
                     Text(
                         text = previewText,
@@ -1430,7 +1430,7 @@ private fun ComplianceExecutionPreviewCard(
                         modifier = Modifier.height(4.dp)
                     )
                     Text(
-                        text = stringResource(R.string.compliance_master_upcoming).uppercase(),
+                        text = stringResource(R.string.recurring_task_upcoming).uppercase(),
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = FontWeight.Bold
@@ -1461,7 +1461,7 @@ private fun ComplianceExecutionPreviewCard(
     }
 }
 
-private fun complianceContentTransition() =
+private fun recurringTaskContentTransition() =
     (fadeIn(
         animationSpec = tween(durationMillis = 170, delayMillis = 60, easing = FastOutSlowInEasing)
     ) + scaleIn(
@@ -1476,7 +1476,7 @@ private fun complianceContentTransition() =
     )
 
 @Composable
-private fun <T> ComplianceSegmentedSelector(
+private fun <T> RecurringTaskSegmentedSelector(
     options: List<Pair<T, String>>,
     selected: T,
     onSelected: (T) -> Unit
@@ -1499,7 +1499,7 @@ private fun <T> ComplianceSegmentedSelector(
                     dampingRatio = Spring.DampingRatioNoBouncy,
                     stiffness = Spring.StiffnessMediumLow
                 ),
-                label = "compliance_segment_offset"
+                label = "recurring_task_segment_offset"
             )
 
             Box(
@@ -1532,7 +1532,7 @@ private fun <T> ComplianceSegmentedSelector(
                                 MaterialTheme.colorScheme.onSurfaceVariant
                             },
                             animationSpec = tween(durationMillis = 180, easing = FastOutSlowInEasing),
-                            label = "compliance_segment_text_color"
+                            label = "recurring_task_segment_text_color"
                         )
                         Box(
                             modifier = Modifier
@@ -1561,7 +1561,7 @@ private fun <T> ComplianceSegmentedSelector(
 }
 
 @Composable
-private fun ComplianceOptionChip(
+private fun RecurringTaskOptionChip(
     label: String,
     selected: Boolean,
     onClick: () -> Unit,
@@ -1610,73 +1610,73 @@ private fun ComplianceOptionChip(
     }
 }
 
-private data class ComplianceModeOption(
-    val first: ComplianceScheduleMode,
+private data class RecurringTaskModeOption(
+    val first: RecurringTaskScheduleMode,
     val titleRes: Int,
     val descriptionRes: Int
 )
 
-private fun complianceModeOptions(): List<ComplianceModeOption> =
+private fun recurringTaskModeOptions(): List<RecurringTaskModeOption> =
     listOf(
-        ComplianceModeOption(
-            ComplianceScheduleMode.DAY_OF_MONTH,
-            R.string.compliance_mode_day_of_month,
-            R.string.compliance_mode_day_of_month_desc
+        RecurringTaskModeOption(
+            RecurringTaskScheduleMode.DAY_OF_MONTH,
+            R.string.recurring_task_mode_day_of_month,
+            R.string.recurring_task_mode_day_of_month_desc
         ),
-        ComplianceModeOption(
-            ComplianceScheduleMode.DAY_OF_WEEK,
-            R.string.compliance_mode_day_of_week,
-            R.string.compliance_mode_day_of_week_desc
+        RecurringTaskModeOption(
+            RecurringTaskScheduleMode.DAY_OF_WEEK,
+            R.string.recurring_task_mode_day_of_week,
+            R.string.recurring_task_mode_day_of_week_desc
         ),
-        ComplianceModeOption(
-            ComplianceScheduleMode.FIRST_DAY_OF_MONTH,
-            R.string.compliance_mode_first_day,
-            R.string.compliance_mode_first_day_desc
+        RecurringTaskModeOption(
+            RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH,
+            R.string.recurring_task_mode_first_day,
+            R.string.recurring_task_mode_first_day_desc
         ),
-        ComplianceModeOption(
-            ComplianceScheduleMode.LAST_DAY_OF_MONTH,
-            R.string.compliance_mode_last_day,
-            R.string.compliance_mode_last_day_desc
+        RecurringTaskModeOption(
+            RecurringTaskScheduleMode.LAST_DAY_OF_MONTH,
+            R.string.recurring_task_mode_last_day,
+            R.string.recurring_task_mode_last_day_desc
         )
     )
 
-private fun complianceEndModeOptions(): List<Pair<ComplianceEndMode, Int>> =
+private fun recurringTaskEndModeOptions(): List<Pair<RecurringTaskEndMode, Int>> =
     listOf(
-        ComplianceEndMode.NEVER to R.string.compliance_master_end_never,
-        ComplianceEndMode.ON_DATE to R.string.compliance_master_end_on_date,
-        ComplianceEndMode.AFTER_OCCURRENCES to R.string.compliance_master_end_after
+        RecurringTaskEndMode.NEVER to R.string.recurring_task_end_never,
+        RecurringTaskEndMode.ON_DATE to R.string.recurring_task_end_on_date,
+        RecurringTaskEndMode.AFTER_OCCURRENCES to R.string.recurring_task_end_after
     )
 
-private fun allowedFrequencies(mode: ComplianceScheduleMode): List<ComplianceFrequency> =
+private fun allowedFrequencies(mode: RecurringTaskScheduleMode): List<RecurringTaskFrequency> =
     when (mode) {
-        ComplianceScheduleMode.DAY_OF_MONTH,
-        ComplianceScheduleMode.FIRST_DAY_OF_MONTH,
-        ComplianceScheduleMode.LAST_DAY_OF_MONTH ->
+        RecurringTaskScheduleMode.DAY_OF_MONTH,
+        RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH,
+        RecurringTaskScheduleMode.LAST_DAY_OF_MONTH ->
             listOf(
-                ComplianceFrequency.MONTHLY,
-                ComplianceFrequency.QUARTERLY,
-                ComplianceFrequency.HALF_YEARLY,
-                ComplianceFrequency.ANNUAL
+                RecurringTaskFrequency.MONTHLY,
+                RecurringTaskFrequency.QUARTERLY,
+                RecurringTaskFrequency.HALF_YEARLY,
+                RecurringTaskFrequency.ANNUAL
             )
-        ComplianceScheduleMode.DAY_OF_WEEK ->
+        RecurringTaskScheduleMode.DAY_OF_WEEK ->
             listOf(
-                ComplianceFrequency.WEEKLY,
-                ComplianceFrequency.BIWEEKLY,
-                ComplianceFrequency.MONTHLY
+                RecurringTaskFrequency.WEEKLY,
+                RecurringTaskFrequency.BIWEEKLY,
+                RecurringTaskFrequency.MONTHLY
             )
     }
 
-private fun defaultFrequencyFor(mode: ComplianceScheduleMode): ComplianceFrequency =
+private fun defaultFrequencyFor(mode: RecurringTaskScheduleMode): RecurringTaskFrequency =
     allowedFrequencies(mode).first()
 
-private fun frequencyLabelRes(frequency: ComplianceFrequency): Int =
+private fun frequencyLabelRes(frequency: RecurringTaskFrequency): Int =
     when (frequency) {
-        ComplianceFrequency.WEEKLY -> R.string.compliance_frequency_weekly
-        ComplianceFrequency.BIWEEKLY -> R.string.compliance_frequency_biweekly
-        ComplianceFrequency.MONTHLY -> R.string.compliance_frequency_monthly
-        ComplianceFrequency.QUARTERLY -> R.string.compliance_frequency_quarterly
-        ComplianceFrequency.HALF_YEARLY -> R.string.compliance_frequency_half_yearly
-        ComplianceFrequency.ANNUAL -> R.string.compliance_frequency_annual
+        RecurringTaskFrequency.WEEKLY -> R.string.recurring_task_frequency_weekly
+        RecurringTaskFrequency.BIWEEKLY -> R.string.recurring_task_frequency_biweekly
+        RecurringTaskFrequency.MONTHLY -> R.string.recurring_task_frequency_monthly
+        RecurringTaskFrequency.QUARTERLY -> R.string.recurring_task_frequency_quarterly
+        RecurringTaskFrequency.HALF_YEARLY -> R.string.recurring_task_frequency_half_yearly
+        RecurringTaskFrequency.ANNUAL -> R.string.recurring_task_frequency_annual
     }
 
 private fun weekdayLabels(): List<Int> =
@@ -1691,96 +1691,96 @@ private fun weekdayLabels(): List<Int> =
     )
 
 @Composable
-private fun complianceSummary(item: ComplianceMasterItem): String {
+private fun recurringTaskSummary(item: RecurringTaskItem): String {
     val frequency = stringResource(frequencyLabelRes(item.frequency))
     return when (item.scheduleMode) {
-        ComplianceScheduleMode.DAY_OF_MONTH ->
+        RecurringTaskScheduleMode.DAY_OF_MONTH ->
             stringResource(
-                R.string.compliance_master_summary_day_of_month,
+                R.string.recurring_task_summary_day_of_month,
                 item.dueDayOfMonth ?: 1,
                 frequency,
                 item.leadDays
             )
-        ComplianceScheduleMode.DAY_OF_WEEK -> {
+        RecurringTaskScheduleMode.DAY_OF_WEEK -> {
             val weekdayRes = weekdayLabels()[(item.dueDayOfWeek ?: 1) - 1]
             stringResource(
-                R.string.compliance_master_summary_day_of_week,
+                R.string.recurring_task_summary_day_of_week,
                 stringResource(weekdayRes),
                 frequency
             )
         }
-        ComplianceScheduleMode.FIRST_DAY_OF_MONTH ->
-            stringResource(R.string.compliance_master_summary_first_day, frequency, item.leadDays)
-        ComplianceScheduleMode.LAST_DAY_OF_MONTH ->
-            stringResource(R.string.compliance_master_summary_last_day, frequency, item.leadDays)
+        RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH ->
+            stringResource(R.string.recurring_task_summary_first_day, frequency, item.leadDays)
+        RecurringTaskScheduleMode.LAST_DAY_OF_MONTH ->
+            stringResource(R.string.recurring_task_summary_last_day, frequency, item.leadDays)
     }
 }
 
 @Composable
-private fun complianceExecutionDescription(
-    itemType: ComplianceItemType,
-    scheduleMode: ComplianceScheduleMode,
-    frequency: ComplianceFrequency,
+private fun recurringTaskExecutionDescription(
+    itemType: RecurringTaskItemType,
+    scheduleMode: RecurringTaskScheduleMode,
+    frequency: RecurringTaskFrequency,
     dueDayOfMonth: Int?,
     dueDayOfWeek: Int?,
     revealDayOfMonth: Int
 ): String {
     val recurrence = stringResource(recurrenceLabelRes(frequency))
-    val isEvent = itemType == ComplianceItemType.EVENT
+    val isEvent = itemType == RecurringTaskItemType.EVENT
     return when (scheduleMode) {
-        ComplianceScheduleMode.DAY_OF_MONTH ->
+        RecurringTaskScheduleMode.DAY_OF_MONTH ->
             stringResource(
-                if (isEvent) R.string.compliance_master_execution_day_of_month_event
-                else R.string.compliance_master_execution_day_of_month,
+                if (isEvent) R.string.recurring_task_execution_day_of_month_event
+                else R.string.recurring_task_execution_day_of_month,
                 recurrence,
                 dueDayOfMonth ?: 1,
                 revealDayOfMonth
             )
-        ComplianceScheduleMode.DAY_OF_WEEK -> {
+        RecurringTaskScheduleMode.DAY_OF_WEEK -> {
             val weekdayRes = weekdayLabels()[(dueDayOfWeek ?: 1).coerceIn(1, 7) - 1]
             val weekday = stringResource(weekdayRes)
-            if (frequency == ComplianceFrequency.MONTHLY) {
+            if (frequency == RecurringTaskFrequency.MONTHLY) {
                 stringResource(
-                    if (isEvent) R.string.compliance_master_execution_monthly_weekday_event
-                    else R.string.compliance_master_execution_monthly_weekday,
+                    if (isEvent) R.string.recurring_task_execution_monthly_weekday_event
+                    else R.string.recurring_task_execution_monthly_weekday,
                     weekday,
                     revealDayOfMonth
                 )
             } else {
                 stringResource(
-                    if (isEvent) R.string.compliance_master_execution_weekday_event
-                    else R.string.compliance_master_execution_weekday,
+                    if (isEvent) R.string.recurring_task_execution_weekday_event
+                    else R.string.recurring_task_execution_weekday,
                     recurrence,
                     weekday,
                     revealDayOfMonth
                 )
             }
         }
-        ComplianceScheduleMode.FIRST_DAY_OF_MONTH ->
+        RecurringTaskScheduleMode.FIRST_DAY_OF_MONTH ->
             stringResource(
-                if (isEvent) R.string.compliance_master_execution_month_boundary_event
-                else R.string.compliance_master_execution_month_boundary,
+                if (isEvent) R.string.recurring_task_execution_month_boundary_event
+                else R.string.recurring_task_execution_month_boundary,
                 recurrence,
-                stringResource(R.string.compliance_master_boundary_first),
+                stringResource(R.string.recurring_task_boundary_first),
                 revealDayOfMonth
             )
-        ComplianceScheduleMode.LAST_DAY_OF_MONTH ->
+        RecurringTaskScheduleMode.LAST_DAY_OF_MONTH ->
             stringResource(
-                if (isEvent) R.string.compliance_master_execution_month_boundary_event
-                else R.string.compliance_master_execution_month_boundary,
+                if (isEvent) R.string.recurring_task_execution_month_boundary_event
+                else R.string.recurring_task_execution_month_boundary,
                 recurrence,
-                stringResource(R.string.compliance_master_boundary_last),
+                stringResource(R.string.recurring_task_boundary_last),
                 revealDayOfMonth
             )
     }
 }
 
-private fun recurrenceLabelRes(frequency: ComplianceFrequency): Int =
+private fun recurrenceLabelRes(frequency: RecurringTaskFrequency): Int =
     when (frequency) {
-        ComplianceFrequency.WEEKLY -> R.string.compliance_master_recurrence_weekly
-        ComplianceFrequency.BIWEEKLY -> R.string.compliance_master_recurrence_biweekly
-        ComplianceFrequency.MONTHLY -> R.string.compliance_master_recurrence_monthly
-        ComplianceFrequency.QUARTERLY -> R.string.compliance_master_recurrence_quarterly
-        ComplianceFrequency.HALF_YEARLY -> R.string.compliance_master_recurrence_half_yearly
-        ComplianceFrequency.ANNUAL -> R.string.compliance_master_recurrence_annual
+        RecurringTaskFrequency.WEEKLY -> R.string.recurring_task_recurrence_weekly
+        RecurringTaskFrequency.BIWEEKLY -> R.string.recurring_task_recurrence_biweekly
+        RecurringTaskFrequency.MONTHLY -> R.string.recurring_task_recurrence_monthly
+        RecurringTaskFrequency.QUARTERLY -> R.string.recurring_task_recurrence_quarterly
+        RecurringTaskFrequency.HALF_YEARLY -> R.string.recurring_task_recurrence_half_yearly
+        RecurringTaskFrequency.ANNUAL -> R.string.recurring_task_recurrence_annual
     }

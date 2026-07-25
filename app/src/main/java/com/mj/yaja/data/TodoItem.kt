@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 enum class TodoSourceType {
     JOURNAL,
-    COMPLIANCE
+    RECURRING
 }
 
 data class TodoItem(

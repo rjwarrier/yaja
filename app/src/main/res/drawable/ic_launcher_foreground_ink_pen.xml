@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols glyph, adapted into the adaptive-icon safe zone with extra
+     padding beyond the standard 66dp safe zone so round/squircle launcher masks
+     don't crowd the glyph. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:translateX="28"
+        android:translateY="28"
+        android:scaleX="0.0541667"
+        android:scaleY="0.0541667">
+        <group android:translateY="960">
+            <path
+                android:fillColor="@color/ic_launcher_foreground"
+                android:pathData="m490-527 37 37 217-217-37-37-217 217ZM200-200h37l233-233-37-37-233 233v37Zm355-205L405-555l167-167-29-29-191 191q-12 12-28 12t-28-12q-12-12-12-28.5t12-28.5l190-190q24-24 56.5-24t56.5 24l29 29 50-50q12-12 28.5-12t28.5 12l93 93q12 12 12 28.5T828-678L555-405ZM160-120q-17 0-28.5-11.5T120-160v-77q0-16 6-30.5t17-25.5l262-262 150 150-262 262q-11 11-25.5 17t-30.5 6h-77Z"/>
+        </group>
+    </group>
+</vector>

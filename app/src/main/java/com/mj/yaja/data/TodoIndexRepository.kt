@@ -101,7 +101,7 @@ class TodoIndexRepository private constructor(context: Context) {
                 displayText = it.displayText,
                 isChecked = it.isChecked,
                 lineHash = it.lineHash,
-                sourceType = if (it.complianceId != null) TodoSourceType.COMPLIANCE else TodoSourceType.JOURNAL,
+                sourceType = if (it.complianceId != null) TodoSourceType.RECURRING else TodoSourceType.JOURNAL,
                 sourceId = it.complianceId
             )
         }

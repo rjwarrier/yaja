@@ -65,6 +65,7 @@ fun DataAndStorageSection(
     onBackupNow: () -> Unit,
     onBackupReminderDaysChange: (Int) -> Unit,
     onRestoreBackup: () -> Unit,
+    onExportObsidianVault: () -> Unit,
     onRefreshCache: () -> Unit,
     swipeToSyncEnabled: Boolean,
     onSwipeToSyncEnabledChange: (Boolean) -> Unit,
@@ -78,6 +79,7 @@ fun DataAndStorageSection(
     importState: JournalViewModel.ImportState,
     onLaunchDayOneImport: () -> Unit,
     onLaunchJournalisticImport: () -> Unit,
+    onLaunchMarkdownFolderImport: () -> Unit,
     onCancelImport: () -> Unit,
     onResetImportState: () -> Unit
 ) {
@@ -275,8 +277,8 @@ fun DataAndStorageSection(
                     Slider(
                         value = backupReminderDays.toFloat(),
                         onValueChange = { onBackupReminderDaysChange(it.toInt()) },
-                        valueRange = 0f..30f,
-                        steps = 29,
+                        valueRange = 0f..60f,
+                        steps = 59,
                         colors = SliderDefaults.colors(
                             thumbColor = MaterialTheme.colorScheme.primary,
                             activeTrackColor = MaterialTheme.colorScheme.primary
@@ -305,6 +307,45 @@ fun DataAndStorageSection(
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
                     ) { Text(stringResource(R.string.settings_backup_now_button)) }
                 }
+            }
+        }
+    }
+
+    Spacer(modifier = Modifier.height(24.dp))
+
+    Text(
+        text = stringResource(R.string.settings_obsidian_export_title),
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(start = 6.dp, bottom = 10.dp)
+    )
+
+    Spacer(modifier = Modifier.height(6.dp))
+
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
+            Text(
+                text = stringResource(R.string.settings_obsidian_export_description),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 20.sp
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.End)
+            ) {
+                TextButton(
+                    onClick = onExportObsidianVault,
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
+                ) { Text(stringResource(R.string.settings_obsidian_export_button)) }
             }
         }
     }
@@ -527,6 +568,13 @@ fun DataAndStorageSection(
                 subtitle = stringResource(R.string.settings_import_source_journalistic_subtitle),
                 enabled = importState !is JournalViewModel.ImportState.Running,
                 onClick = onLaunchJournalisticImport
+            )
+            HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+            ImportSourceRow(
+                title = stringResource(R.string.settings_import_source_markdown_folder),
+                subtitle = stringResource(R.string.settings_import_source_markdown_folder_subtitle),
+                enabled = importState !is JournalViewModel.ImportState.Running,
+                onClick = onLaunchMarkdownFolderImport
             )
         }
     }

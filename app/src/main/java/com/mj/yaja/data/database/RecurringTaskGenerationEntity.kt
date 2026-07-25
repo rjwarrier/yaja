@@ -6,7 +6,7 @@ import androidx.room.Entity
     tableName = "compliance_generations",
     primaryKeys = ["itemId", "targetDate"]
 )
-data class ComplianceGenerationEntity(
+data class RecurringTaskGenerationEntity(
     val itemId: String,
     val targetDate: String, // format: YYYY-MM-DD
     val generatedAt: Long = System.currentTimeMillis()

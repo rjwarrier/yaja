@@ -47,7 +47,6 @@ fun CalendarDay(
         isToday: Boolean,
         hasEntries: Boolean,
         hasFollowUp: Boolean = false,
-        isFuture: Boolean = false,
         isDimmed: Boolean = false,
         isFavorited: Boolean = false,
         density: CalendarDensityPreference = CalendarDensityPreference.COMFORTABLE,
