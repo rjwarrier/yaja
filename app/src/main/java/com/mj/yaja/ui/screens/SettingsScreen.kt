@@ -104,6 +104,7 @@ fun SettingsScreen(
         onNavigateToVersionHistory: () -> Unit,
         onNavigateToAppearance: () -> Unit,
         onNavigateToJournalExperience: () -> Unit,
+        onNavigateToNavigationGestures: () -> Unit,
         onNavigateToDataRecovery: () -> Unit,
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
@@ -115,7 +116,6 @@ fun SettingsScreen(
 ) {
         val scope = rememberCoroutineScope()
         val languageRequester = remember { BringIntoViewRequester() }
-        val navigationRequester = remember { BringIntoViewRequester() }
         val reviewRequester = remember { BringIntoViewRequester() }
         val securityRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
@@ -127,19 +127,9 @@ fun SettingsScreen(
         val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
         val autoLockTimeoutMinutes by viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
         val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
-        val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
-        val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsStateWithLifecycle()
-        val showKeywordsInNavBar by viewModel.showKeywordsInNavBar.collectAsStateWithLifecycle()
-        val showTodosInNavBar by viewModel.showTodosInNavBar.collectAsStateWithLifecycle()
-        val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
-        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
-        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
         val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
         val calendarDensityPreference by
                 viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
-        val swipeToNavigateDatesEnabled by viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
-        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
-        val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
         val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
         val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
@@ -170,14 +160,14 @@ fun SettingsScreen(
                                 SettingsSearchTarget("Entry Style", "Journal Experience", listOf("cards", "flat"), onSelect = onNavigateToJournalExperience),
                                 SettingsSearchTarget("Animations", "Journal Experience", listOf("motion", "reduced"), onSelect = onNavigateToJournalExperience),
                                 SettingsSearchTarget("Date Keywords", "Journal Experience", listOf("keywords", "today", "tomorrow"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Navigation Mode", "Navigation & Gestures", listOf("floating", "panel", "bottom panel"), navigationRequester),
-                                SettingsSearchTarget("Lookback", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
-                                SettingsSearchTarget("People & Places", "Navigation & Gestures", listOf("keywords", "nav bar"), navigationRequester),
-                                SettingsSearchTarget("Todos", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
-                                SettingsSearchTarget("Statistics", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
-                                SettingsSearchTarget("Swipe to Navigate Dates", "Navigation & Gestures", listOf("gestures", "swipe"), navigationRequester),
-                                SettingsSearchTarget("Enable Drag-to-Reorder", "Navigation & Gestures", listOf("drag", "reorder"), navigationRequester),
-                                SettingsSearchTarget("Entry Delete", "Navigation & Gestures", listOf("selection", "delete"), navigationRequester),
+                                SettingsSearchTarget("Navigation Mode", "Navigation & Gestures", listOf("floating", "panel", "bottom panel"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Lookback", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("People & Places", "Navigation & Gestures", listOf("keywords", "nav bar"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Todos", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Statistics", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Swipe to Navigate Dates", "Navigation & Gestures", listOf("gestures", "swipe"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Enable Drag-to-Reorder", "Navigation & Gestures", listOf("drag", "reorder"), onSelect = onNavigateToNavigationGestures),
+                                SettingsSearchTarget("Entry Delete", "Navigation & Gestures", listOf("selection", "delete"), onSelect = onNavigateToNavigationGestures),
                                 SettingsSearchTarget("Post-write Review", "Review & Insights", listOf("save sheet", "review"), reviewRequester),
                                 SettingsSearchTarget("People & Places Highlighting", "Review & Insights", listOf("highlighting", "people places"), reviewRequester),
                                 SettingsSearchTarget("Match Sensitivity", "Review & Insights", listOf("keyword matching", "fuzzy"), reviewRequester),
@@ -305,11 +295,7 @@ fun SettingsScreen(
                                                 adaptiveBottomNav = adaptiveBottomNav,
                                                 calendarDensityPreference = calendarDensityPreference.name,
                                                 onOpenPrivacy = onNavigateToPrivacyDashboard,
-                                                onOpenNavigation = {
-                                                        scope.launch {
-                                                                navigationRequester.bringIntoView()
-                                                        }
-                                                },
+                                                onOpenNavigation = onNavigateToNavigationGestures,
                                                 onOpenCalendarSettings = onNavigateToJournalExperience
                                         )
                                         Spacer(modifier = Modifier.height(20.dp))
@@ -329,55 +315,10 @@ fun SettingsScreen(
                                                         onNavigateToJournalExperience
                                         )
 
-                                        Column(modifier = Modifier.bringIntoViewRequester(navigationRequester)) {
-                                                SettingsSectionHeader(
-                                                        icon = Icons.Rounded.Swipe,
-                                                        title = stringResource(R.string.settings_section_navigation_gestures)
-                                                )
-                                                Spacer(modifier = Modifier.height(12.dp))
-
-                                                NavigationSection(
-                                                                navigationChromeMode = navigationChromeMode,
-                                                                onNavigationChromeModeChange = {
-                                                                        viewModel.setNavigationChromeMode(it)
-                                                                },
-                                                                showBottomPanelLabels = showBottomPanelLabels,
-                                                                onShowBottomPanelLabelsChange = {
-                                                                        viewModel.setShowBottomPanelLabels(it)
-                                                                },
-                                                                adaptiveBottomNav = adaptiveBottomNav,
-                                                                onAdaptiveBottomNavChange = {
-                                                                        viewModel.setAdaptiveBottomNav(it)
-                                                                },
-                                                                showLookbackInNavBar = showLookbackInNavBar,
-                                                                onShowLookbackChange = { viewModel.setShowLookbackInNavBar(it) },
-                                                                showKeywordsInNavBar = showKeywordsInNavBar,
-                                                                onShowKeywordsChange = { viewModel.setShowKeywordsInNavBar(it) },
-                                                                showTodosInNavBar = showTodosInNavBar,
-                                                                onShowTodosChange = { viewModel.setShowTodosInNavBar(it) },
-                                                                showStatistics = showStatistics,
-                                                                showStatisticsInNavBar = showStatisticsInNavBar,
-                                                                onShowStatisticsInNavBarChange = {
-                                                                        viewModel.setShowStatisticsInNavBar(it)
-                                                                }
-                                                        )
-                                                        Spacer(modifier = Modifier.height(32.dp))
-
-                                                // ── Gestures Section ──
-                                                GesturesSection(
-                                                        entryDeleteSelectionEnabled = entryDeleteSelectionEnabled,
-                                                        onEntryDeleteSelectionEnabledChange = {
-                                                                viewModel.setEntryDeleteSelectionEnabled(it)
-                                                        },
-                                                        swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled,
-                                                        onSwipeToNavigateDatesEnabledChange = {
-                                                                viewModel.setSwipeToNavigateDatesEnabled(it)
-                                                        },
-                                                        enableDragAndDrop = enableDragAndDrop,
-                                                        onEnableDragAndDropChange = { viewModel.setEnableDragAndDrop(it) }
-                                                )
-                                        }
-                                        Spacer(modifier = Modifier.height(32.dp))
+                                        NavigationGesturesEntrySection(
+                                                onNavigateToNavigationGestures =
+                                                        onNavigateToNavigationGestures
+                                        )
 
                                         Column(modifier = Modifier.bringIntoViewRequester(reviewRequester)) {
                                                 SettingsSectionHeader(

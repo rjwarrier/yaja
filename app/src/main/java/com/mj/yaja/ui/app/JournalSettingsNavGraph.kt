@@ -14,6 +14,7 @@ import com.mj.yaja.ui.screens.DataRecoverySettingsScreen
 import com.mj.yaja.ui.screens.DataPrivacyDashboardScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.JournalExperienceSettingsScreen
+import com.mj.yaja.ui.screens.NavigationGesturesSettingsScreen
 import com.mj.yaja.ui.screens.OnboardingScreen
 import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
@@ -108,6 +109,9 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         onNavigateToJournalExperience = {
                                 navController.navigate(Route.JournalExperience.path)
                         },
+                        onNavigateToNavigationGestures = {
+                                navController.navigate(Route.NavigationGestures.path)
+                        },
                         onNavigateToDataRecovery = {
                                 navController.navigate(Route.DataRecovery.path)
                         },
@@ -137,6 +141,12 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
         }
         composable(Route.JournalExperience.path) {
                 JournalExperienceSettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.NavigationGestures.path) {
+                NavigationGesturesSettingsScreen(
                         viewModel = viewModel,
                         onNavigateBack = { navController.popBackStack() }
                 )
