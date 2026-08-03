@@ -103,6 +103,7 @@ fun SettingsScreen(
         onNavigateToRebuildCache: () -> Unit,
         onNavigateToVersionHistory: () -> Unit,
         onNavigateToAppearance: () -> Unit,
+        onNavigateToJournalExperience: () -> Unit,
         onNavigateToDataRecovery: () -> Unit,
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
@@ -114,30 +115,18 @@ fun SettingsScreen(
 ) {
         val scope = rememberCoroutineScope()
         val languageRequester = remember { BringIntoViewRequester() }
-        val journalRequester = remember { BringIntoViewRequester() }
         val navigationRequester = remember { BringIntoViewRequester() }
         val reviewRequester = remember { BringIntoViewRequester() }
         val securityRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
         val helpRequester = remember { BringIntoViewRequester() }
         val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
-        val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
-        val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
-        val allowFutureEntries by viewModel.allowFutureEntries.collectAsStateWithLifecycle()
-        val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsStateWithLifecycle()
-        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
-        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
         val entryReviewEnabled by viewModel.entryReviewEnabled.collectAsStateWithLifecycle()
         val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
-        val showDayHeaderStats by viewModel.showDayHeaderStats.collectAsStateWithLifecycle()
-        val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
         val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
         val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
         val autoLockTimeoutMinutes by viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
         val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
-        val carryForwardTodosEnabled by viewModel.carryForwardTodosEnabled.collectAsStateWithLifecycle()
         val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
         val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsStateWithLifecycle()
         val showKeywordsInNavBar by viewModel.showKeywordsInNavBar.collectAsStateWithLifecycle()
@@ -152,7 +141,6 @@ fun SettingsScreen(
         val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
         val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
-        val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
         val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
         val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
         val includeEntryTextInTaskerEvents by
@@ -171,17 +159,17 @@ fun SettingsScreen(
                                 SettingsSearchTarget("Font", "Appearance", listOf("sans", "serif", "mono"), onSelect = onNavigateToAppearance),
                                 SettingsSearchTarget("Font Size", "Appearance", listOf("text size", "scale"), onSelect = onNavigateToAppearance),
                                 SettingsSearchTarget("Language", "Language", listOf("español", "português", "français", "translate", "locale"), languageRequester),
-                                SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), journalRequester),
-                                SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), journalRequester),
-                                SettingsSearchTarget("Carry Forward Todos", "Journal Experience", listOf("unchecked tasks", "yesterday todo"), journalRequester),
-                                SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), journalRequester),
-                                SettingsSearchTarget("Render Checkboxes as Text", "Journal Experience", listOf("todo checkbox", "text checkbox"), journalRequester),
-                                SettingsSearchTarget("Truncate Long Entries", "Journal Experience", listOf("preview", "character limit"), journalRequester),
-                                SettingsSearchTarget("First Day of Week", "Journal Experience", listOf("calendar", "sunday", "monday"), journalRequester),
-                                SettingsSearchTarget("Date Order", "Journal Experience", listOf("dd/mm", "mm/dd"), journalRequester),
-                                SettingsSearchTarget("Entry Style", "Journal Experience", listOf("cards", "flat"), journalRequester),
-                                SettingsSearchTarget("Animations", "Journal Experience", listOf("motion", "reduced"), journalRequester),
-                                SettingsSearchTarget("Date Keywords", "Journal Experience", listOf("keywords", "today", "tomorrow"), journalRequester),
+                                SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Carry Forward Todos", "Journal Experience", listOf("unchecked tasks", "yesterday todo"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Render Checkboxes as Text", "Journal Experience", listOf("todo checkbox", "text checkbox"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Truncate Long Entries", "Journal Experience", listOf("preview", "character limit"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("First Day of Week", "Journal Experience", listOf("calendar", "sunday", "monday"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Date Order", "Journal Experience", listOf("dd/mm", "mm/dd"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Entry Style", "Journal Experience", listOf("cards", "flat"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Animations", "Journal Experience", listOf("motion", "reduced"), onSelect = onNavigateToJournalExperience),
+                                SettingsSearchTarget("Date Keywords", "Journal Experience", listOf("keywords", "today", "tomorrow"), onSelect = onNavigateToJournalExperience),
                                 SettingsSearchTarget("Navigation Mode", "Navigation & Gestures", listOf("floating", "panel", "bottom panel"), navigationRequester),
                                 SettingsSearchTarget("Lookback", "Navigation & Gestures", listOf("nav bar"), navigationRequester),
                                 SettingsSearchTarget("People & Places", "Navigation & Gestures", listOf("keywords", "nav bar"), navigationRequester),
@@ -322,11 +310,7 @@ fun SettingsScreen(
                                                                 navigationRequester.bringIntoView()
                                                         }
                                                 },
-                                                onOpenCalendarSettings = {
-                                                        scope.launch {
-                                                                journalRequester.bringIntoView()
-                                                        }
-                                                }
+                                                onOpenCalendarSettings = onNavigateToJournalExperience
                                         )
                                         Spacer(modifier = Modifier.height(20.dp))
 
@@ -340,58 +324,10 @@ fun SettingsScreen(
                                         }
 
                                         // ── Preferences Section ──
-                                        Column(modifier = Modifier.bringIntoViewRequester(journalRequester)) {
-                                                SettingsSectionHeader(
-                                                        icon = Icons.Rounded.Settings,
-                                                        title = stringResource(R.string.settings_section_journal_experience)
-                                                )
-
-                                                Spacer(modifier = Modifier.height(12.dp))
-
-                                                JournalExperienceSection(
-                                                        renderCheckboxesAsText = renderCheckboxesAsText,
-                                                        onRenderCheckboxesAsTextChange = {
-                                                                viewModel.setRenderCheckboxesAsText(it)
-                                                        },
-                                                        showDayHeaderStats = showDayHeaderStats,
-                                                        onShowDayHeaderStatsChange = {
-                                                                viewModel.setShowDayHeaderStats(it)
-                                                        },
-                                                        carryForwardTodosEnabled = carryForwardTodosEnabled,
-                                                        onCarryForwardTodosEnabledChange = {
-                                                                viewModel.setCarryForwardTodosEnabled(it)
-                                                        },
-                                                        entryStyle = entryStyle,
-                                                        onEntryStyleSelected = {
-                                                                viewModel.setEntryStyle(it)
-                                                        },
-                                                        calendarDensityPreference = calendarDensityPreference,
-                                                        onCalendarDensityPreferenceChange = {
-                                                                viewModel.setCalendarDensityPreference(it)
-                                                        },
-                                                        dateOrderPreference = dateOrderPreference,
-                                                        onDateOrderChange = { viewModel.setDateOrderPreference(it) },
-                                                        animationPreference = animationPreference,
-                                                        onAnimationPreferenceChange = {
-                                                                viewModel.setAnimationPreference(it)
-                                                        },
-                                                        customDateKeywords = customDateKeywords,
-                                                        onSetCustomDateKeywords = { viewModel.setCustomDateKeywords(it) },
-                                                        fuzzyThreshold = fuzzyThreshold,
-                                                        onFuzzyThresholdChange = { viewModel.setKeywordFuzzyThreshold(it) },
-                                                        showTimestamps = showTimestamps,
-                                                        onShowTimestampsChange = { viewModel.setShowTimestamps(it) },
-                                                        allowFutureEntries = allowFutureEntries,
-                                                        onAllowFutureEntriesChange = { viewModel.setAllowFutureEntries(it) },
-                                                        isPreviewLimitEnabled = isPreviewLimitEnabled,
-                                                        onIsPreviewLimitEnabledChange = { viewModel.setPreviewLimitEnabled(it) },
-                                                        previewLimitLength = previewLimitLength,
-                                                        onPreviewLimitLengthChange = { viewModel.setPreviewLimitLength(it) },
-                                                        firstDayOfWeek = firstDayOfWeek,
-                                                        onFirstDayOfWeekChange = { viewModel.setFirstDayOfWeek(it) }
-                                                )
-                                        }
-                                        Spacer(modifier = Modifier.height(32.dp))
+                                        JournalExperienceEntrySection(
+                                                onNavigateToJournalExperience =
+                                                        onNavigateToJournalExperience
+                                        )
 
                                         Column(modifier = Modifier.bringIntoViewRequester(navigationRequester)) {
                                                 SettingsSectionHeader(
