@@ -48,6 +48,7 @@ import com.mj.yaja.data.keywords.KeywordCsvCodec
 import com.mj.yaja.domain.entries.DeletedEntryBatch
 import com.mj.yaja.domain.entries.EntryCoordinator
 import com.mj.yaja.domain.keywords.KeywordCoordinator
+import com.mj.yaja.util.PerformanceTrace
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.LocalTime
@@ -427,7 +428,7 @@ class JournalViewModel(
     )
 
       private fun logPerf(phase: String, elapsedMs: Long) {
-          Log.d(TAG, "perf:$phase=${elapsedMs}ms")
+          PerformanceTrace.log(TAG, phase, elapsedMs)
       }
 
     private suspend fun emitBackgroundToast(message: String) {

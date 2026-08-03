@@ -19,6 +19,7 @@ import com.mj.yaja.ui.viewmodel.JournalViewModel
 import com.mj.yaja.ui.widget.WidgetAppearanceHelper
 import com.mj.yaja.ui.widget.QuickCaptureWidgetProvider
 import com.mj.yaja.ui.widget.TodoListWidgetProvider
+import com.mj.yaja.util.PerformanceTrace
 import java.time.LocalDate
 import java.io.File
 
@@ -58,16 +59,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
-            super.onCreate(savedInstanceState)
+            PerformanceTrace.trace("MainActivity.onCreate") {
+                super.onCreate(savedInstanceState)
 
-            setContent {
-                val crashLog = remember { checkCrashLog() }
-                JournalApp(
-                    viewModel = viewModel,
-                    initialCrashLog = crashLog
-                )
+                PerformanceTrace.trace("MainActivity.setContent") {
+                    setContent {
+                        val crashLog = remember { checkCrashLog() }
+                        JournalApp(
+                            viewModel = viewModel,
+                            initialCrashLog = crashLog
+                        )
+                    }
+                }
+                PerformanceTrace.trace("MainActivity.handleExternalOpenIntent") {
+                    handleExternalOpenIntent(intent)
+                }
             }
-            handleExternalOpenIntent(intent)
         } catch (e: Throwable) {
             android.util.Log.e("MainActivity", "Critical crash in onCreate", e)
             super.onCreate(savedInstanceState)

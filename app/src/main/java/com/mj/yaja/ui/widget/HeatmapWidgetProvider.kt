@@ -20,6 +20,7 @@ import com.mj.yaja.R
 import com.mj.yaja.data.MarkdownFileManager
 import com.mj.yaja.data.SettingsRepository
 import com.mj.yaja.ui.screens.QuickCaptureActivity
+import com.mj.yaja.util.PerformanceTrace
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -44,7 +45,7 @@ enum class HeatmapTapAction(val key: String, val label: String) {
 
 class HeatmapWidgetProvider : AppWidgetProvider() {
     private fun logPerf(phase: String, elapsedMs: Long) {
-        Log.d("HeatmapWidget", "perf:$phase=${elapsedMs}ms")
+        PerformanceTrace.log("HeatmapWidget", phase, elapsedMs)
     }
 
     private fun finishPendingResultSafely(pendingResult: BroadcastReceiver.PendingResult?) {

@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.viewmodel
 
+import com.mj.yaja.util.PerformanceTrace
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -213,10 +214,7 @@ internal suspend fun timedPhaseWorkflow(
     logPerf: (String, Long) -> Unit,
     block: suspend () -> Unit
 ) {
-    val startedAt = System.currentTimeMillis()
-    try {
+    PerformanceTrace.measureSuspend(name, logPerf) {
         block()
-    } finally {
-        logPerf(name, System.currentTimeMillis() - startedAt)
     }
 }
