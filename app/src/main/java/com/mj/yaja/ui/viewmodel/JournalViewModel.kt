@@ -1229,51 +1229,6 @@ class JournalViewModel(
         }
     }
 
-    private val carryForwardMarkerRegex = Regex("""\s*\(from \d{4}-\d{2}-\d{2}\)$""")
-
-    private fun stripCarryForwardMarker(text: String): String =
-        text.trim().replace(carryForwardMarkerRegex, "").trim()
-
-    private fun normalizeTodoCarryForwardText(text: String): String =
-        stripCarryForwardMarker(text).lowercase()
-
-    private fun buildCarryForwardLine(displayText: String, sourceDate: LocalDate): String =
-        "[ ] ${stripCarryForwardMarker(displayText)} (from $sourceDate)"
-
-    private fun removeMovedTodosFromEntries(
-        entries: List<String>,
-        movedTodos: List<String>
-    ): List<String> {
-        if (movedTodos.isEmpty()) return entries
-
-        val remainingCounts =
-            movedTodos
-                .groupingBy(::normalizeTodoCarryForwardText)
-                .eachCount()
-                .toMutableMap()
-
-        return entries.mapNotNull { entry ->
-            val keptLines =
-                entry.lines().filter { line ->
-                    val parsedTodo = TodoParser.parseLine(line)
-                    if (parsedTodo == null || parsedTodo.isChecked) {
-                        true
-                    } else {
-                        val normalized = normalizeTodoCarryForwardText(parsedTodo.displayText)
-                        val remaining = remainingCounts[normalized] ?: 0
-                        if (remaining > 0) {
-                            remainingCounts[normalized] = remaining - 1
-                            false
-                        } else {
-                            true
-                        }
-                    }
-                }
-
-            keptLines.joinToString("\n").trim().takeIf { it.isNotBlank() }
-        }
-    }
-
     private suspend fun carryForwardOpenTodosIfNeeded(date: LocalDate) {
         if (date != LocalDate.now() || !settingsRepository.carryForwardTodosEnabled.value) return
 
@@ -1281,37 +1236,34 @@ class JournalViewModel(
         val openTodosFromYesterday =
             todoIndexRepository.getEntries(showCompleted = false)
                 .filter { it.date == previousDate && !it.isChecked }
-                .map { stripCarryForwardMarker(it.displayText) }
+                .map { TodoCarryForwardPlanner.stripCarryForwardMarker(it.displayText) }
                 .filter { it.isNotBlank() }
-                .distinctBy(::normalizeTodoCarryForwardText)
+                .distinctBy(TodoCarryForwardPlanner::normalizeTodoText)
 
         if (openTodosFromYesterday.isEmpty()) return
 
         val yesterdaysEntries = fileManager.getEntriesForDateFromDisk(previousDate)
         val todaysEntries = fileManager.getEntriesForDateFromDisk(date)
-        val existingTodoTexts =
-            todaysEntries.flatMap { entry ->
-                entry.lines().mapNotNull(TodoParser::parseLine)
-            }.map { normalizeTodoCarryForwardText(it.displayText) }.toSet()
-
         val missingTodos =
-            openTodosFromYesterday.filter { todo ->
-                normalizeTodoCarryForwardText(todo) !in existingTodoTexts
-            }
+            TodoCarryForwardPlanner.missingTodosForToday(
+                openTodosFromPreviousDay = openTodosFromYesterday,
+                todaysEntries = todaysEntries
+            )
 
         if (missingTodos.isEmpty()) return
 
         val updatedYesterdaysEntries =
-            removeMovedTodosFromEntries(
+            TodoCarryForwardPlanner.removeMovedTodosFromEntries(
                 entries = yesterdaysEntries,
                 movedTodos = missingTodos
             )
 
-        val heading = "### Carried Forward"
-        val carryForwardBlock = buildList {
-            if (todaysEntries.none { it.contains(heading) }) add(heading)
-            addAll(missingTodos.map { todo -> buildCarryForwardLine(todo, previousDate) })
-        }.joinToString("\n")
+        val carryForwardBlock =
+            TodoCarryForwardPlanner.buildCarryForwardBlock(
+                todaysEntries = todaysEntries,
+                missingTodos = missingTodos,
+                sourceDate = previousDate
+            )
 
         val updatedEntries = todaysEntries.toMutableList()
         updatedEntries += carryForwardBlock
