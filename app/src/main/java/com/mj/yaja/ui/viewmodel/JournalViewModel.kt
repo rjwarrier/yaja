@@ -61,12 +61,15 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
@@ -232,6 +235,29 @@ class JournalViewModel(
     val isBiometricEnabled = settingsRepository.isBiometricEnabled
     val autoLockTimeoutMinutes = settingsRepository.autoLockTimeoutMinutes
     val hideTextModeEnabled = settingsRepository.hideTextModeEnabled
+    val privacySecuritySettingsUiState: StateFlow<PrivacySecuritySettingsUiState> =
+        combine(
+            isPinEnabled,
+            isBiometricEnabled,
+            autoLockTimeoutMinutes,
+            hideTextModeEnabled
+        ) { pinEnabled, biometricEnabled, autoLockMinutes, hideTextEnabled ->
+            PrivacySecuritySettingsUiState(
+                isPinEnabled = pinEnabled,
+                isBiometricEnabled = biometricEnabled,
+                autoLockTimeoutMinutes = autoLockMinutes,
+                hideTextModeEnabled = hideTextEnabled
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = PrivacySecuritySettingsUiState(
+                isPinEnabled = isPinEnabled.value,
+                isBiometricEnabled = isBiometricEnabled.value,
+                autoLockTimeoutMinutes = autoLockTimeoutMinutes.value,
+                hideTextModeEnabled = hideTextModeEnabled.value
+            )
+        )
     val carryForwardTodosEnabled = settingsRepository.carryForwardTodosEnabled
 
     private val _shouldLock = MutableStateFlow(false)

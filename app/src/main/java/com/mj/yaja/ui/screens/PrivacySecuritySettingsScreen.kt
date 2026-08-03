@@ -34,11 +34,7 @@ fun PrivacySecuritySettingsScreen(
         onNavigateToPinDisable: () -> Unit,
         onNavigateToPrivacyDashboard: () -> Unit
 ) {
-        val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
-        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
-        val autoLockTimeoutMinutes by
-                viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
-        val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
+        val uiState by viewModel.privacySecuritySettingsUiState.collectAsStateWithLifecycle()
 
         Scaffold(
                 topBar = {
@@ -80,18 +76,18 @@ fun PrivacySecuritySettingsScreen(
                                                 .verticalScroll(rememberScrollState())
                         ) {
                                 SecuritySection(
-                                        isPinEnabled = isPinEnabled,
+                                        isPinEnabled = uiState.isPinEnabled,
                                         onEnablePin = onNavigateToPinSetup,
                                         onDisablePin = onNavigateToPinDisable,
                                         onChangePin = onNavigateToPinSetup,
-                                        isBiometricEnabled = isBiometricEnabled,
+                                        isBiometricEnabled = uiState.isBiometricEnabled,
                                         onEnableBiometric = { viewModel.enableBiometric() },
                                         onDisableBiometric = { viewModel.disableBiometric() },
-                                        autoLockTimeoutMinutes = autoLockTimeoutMinutes,
+                                        autoLockTimeoutMinutes = uiState.autoLockTimeoutMinutes,
                                         onAutoLockTimeoutChange = {
                                                 viewModel.setAutoLockTimeout(it)
                                         },
-                                        hideTextModeEnabled = hideTextModeEnabled,
+                                        hideTextModeEnabled = uiState.hideTextModeEnabled,
                                         onHideTextModeEnabledChange = {
                                                 viewModel.setHideTextModeEnabled(it)
                                         },
