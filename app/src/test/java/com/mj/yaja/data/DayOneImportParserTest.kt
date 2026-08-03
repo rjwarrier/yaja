@@ -9,11 +9,7 @@ class DayOneImportParserTest {
     fun `cleanAndSplit trims multiline text and drops blank lines`() {
         val lines =
             DayOneImportParser.cleanAndSplit(
-                """
-                    First line
-                    
-                      Second line  
-                """.trimIndent()
+                "First line\n\n  Second line  "
             )
 
         assertEquals(listOf("First line", "Second line"), lines)
