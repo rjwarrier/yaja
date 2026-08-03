@@ -18,6 +18,7 @@ import com.mj.yaja.ui.screens.NavigationGesturesSettingsScreen
 import com.mj.yaja.ui.screens.OnboardingScreen
 import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
+import com.mj.yaja.ui.screens.PrivacySecuritySettingsScreen
 import com.mj.yaja.ui.screens.RebuildCacheScreen
 import com.mj.yaja.ui.screens.SettingsScreen
 import com.mj.yaja.ui.screens.ShortcodesScreen
@@ -112,6 +113,9 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         onNavigateToNavigationGestures = {
                                 navController.navigate(Route.NavigationGestures.path)
                         },
+                        onNavigateToPrivacySecurity = {
+                                navController.navigate(Route.PrivacySecurity.path)
+                        },
                         onNavigateToDataRecovery = {
                                 navController.navigate(Route.DataRecovery.path)
                         },
@@ -149,6 +153,17 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                 NavigationGesturesSettingsScreen(
                         viewModel = viewModel,
                         onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.PrivacySecurity.path) {
+                PrivacySecuritySettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() },
+                        onNavigateToPinSetup = { navController.navigate(Route.PinSetup.path) },
+                        onNavigateToPinDisable = { navController.navigate(Route.PinDisable.path) },
+                        onNavigateToPrivacyDashboard = {
+                                navController.navigate(Route.DataPrivacyDashboard.path)
+                        }
                 )
         }
         composable(Route.DataRecovery.path) {

@@ -17,6 +17,7 @@ sealed class Route(val path: String) {
     data object Appearance : Route("appearance")
     data object JournalExperience : Route("journal_experience")
     data object NavigationGestures : Route("navigation_gestures")
+    data object PrivacySecurity : Route("privacy_security")
     data object DataRecovery : Route("data_recovery")
     data object RebuildCache : Route("rebuild_cache")
     data object VersionHistory : Route("version_history")

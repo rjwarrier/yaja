@@ -105,6 +105,7 @@ fun SettingsScreen(
         onNavigateToAppearance: () -> Unit,
         onNavigateToJournalExperience: () -> Unit,
         onNavigateToNavigationGestures: () -> Unit,
+        onNavigateToPrivacySecurity: () -> Unit,
         onNavigateToDataRecovery: () -> Unit,
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
@@ -117,24 +118,16 @@ fun SettingsScreen(
         val scope = rememberCoroutineScope()
         val languageRequester = remember { BringIntoViewRequester() }
         val reviewRequester = remember { BringIntoViewRequester() }
-        val securityRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
         val helpRequester = remember { BringIntoViewRequester() }
         val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
         val entryReviewEnabled by viewModel.entryReviewEnabled.collectAsStateWithLifecycle()
         val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
         val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
-        val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
-        val autoLockTimeoutMinutes by viewModel.autoLockTimeoutMinutes.collectAsStateWithLifecycle()
-        val hideTextModeEnabled by viewModel.hideTextModeEnabled.collectAsStateWithLifecycle()
         val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
         val calendarDensityPreference by
                 viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
-        val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
-        val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
-        val includeEntryTextInTaskerEvents by
-                viewModel.includeEntryTextInTaskerEvents.collectAsStateWithLifecycle()
 
         var settingsSearchQuery by rememberSaveable { mutableStateOf("") }
         var settingsSearchHistory by rememberSaveable { mutableStateOf(listOf<String>()) }
@@ -171,12 +164,12 @@ fun SettingsScreen(
                                 SettingsSearchTarget("Post-write Review", "Review & Insights", listOf("save sheet", "review"), reviewRequester),
                                 SettingsSearchTarget("People & Places Highlighting", "Review & Insights", listOf("highlighting", "people places"), reviewRequester),
                                 SettingsSearchTarget("Match Sensitivity", "Review & Insights", listOf("keyword matching", "fuzzy"), reviewRequester),
-                                SettingsSearchTarget("Privacy & Security", "Privacy & Security", listOf("pin", "biometric", "lock"), securityRequester),
-                                SettingsSearchTarget("PIN", "Privacy & Security", listOf("password", "lock"), securityRequester),
-                                SettingsSearchTarget("Biometric", "Privacy & Security", listOf("fingerprint", "face unlock"), securityRequester),
-                                SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), securityRequester),
-                                SettingsSearchTarget("Hide Text Mode", "Privacy & Security", listOf("privacy", "panic blur", "hide text"), securityRequester),
-                                SettingsSearchTarget("Privacy Dashboard", "Privacy & Security", listOf("transparency", "data dashboard", "widgets", "tasker"), securityRequester, onSelect = onNavigateToPrivacyDashboard),
+                                SettingsSearchTarget("Privacy & Security", "Privacy & Security", listOf("pin", "biometric", "lock"), onSelect = onNavigateToPrivacySecurity),
+                                SettingsSearchTarget("PIN", "Privacy & Security", listOf("password", "lock"), onSelect = onNavigateToPrivacySecurity),
+                                SettingsSearchTarget("Biometric", "Privacy & Security", listOf("fingerprint", "face unlock"), onSelect = onNavigateToPrivacySecurity),
+                                SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), onSelect = onNavigateToPrivacySecurity),
+                                SettingsSearchTarget("Hide Text Mode", "Privacy & Security", listOf("privacy", "panic blur", "hide text"), onSelect = onNavigateToPrivacySecurity),
+                                SettingsSearchTarget("Privacy Dashboard", "Privacy & Security", listOf("transparency", "data dashboard", "widgets", "tasker"), onSelect = onNavigateToPrivacyDashboard),
                                 SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), onSelect = onNavigateToDataRecovery),
                                 SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), onSelect = onNavigateToDataRecovery),
                                 SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), onSelect = onNavigateToDataRecovery),
@@ -294,7 +287,7 @@ fun SettingsScreen(
                                                 isPinEnabled = isPinEnabled,
                                                 adaptiveBottomNav = adaptiveBottomNav,
                                                 calendarDensityPreference = calendarDensityPreference.name,
-                                                onOpenPrivacy = onNavigateToPrivacyDashboard,
+                                                onOpenPrivacy = onNavigateToPrivacySecurity,
                                                 onOpenNavigation = onNavigateToNavigationGestures,
                                                 onOpenCalendarSettings = onNavigateToJournalExperience
                                         )
@@ -341,24 +334,10 @@ fun SettingsScreen(
                                                 )
                                         }
 
-                                        Column(modifier = Modifier.bringIntoViewRequester(securityRequester)) {
-                                                SecuritySection(
-                                                        isPinEnabled = isPinEnabled,
-                                                        onEnablePin = onNavigateToPinSetup,
-                                                        onDisablePin = onNavigateToPinDisable,
-                                                        onChangePin = onNavigateToPinSetup,
-                                                        isBiometricEnabled = isBiometricEnabled,
-                                                        onEnableBiometric = { viewModel.enableBiometric() },
-                                                        onDisableBiometric = { viewModel.disableBiometric() },
-                                                        autoLockTimeoutMinutes = autoLockTimeoutMinutes,
-                                                        onAutoLockTimeoutChange = { viewModel.setAutoLockTimeout(it) },
-                                                        hideTextModeEnabled = hideTextModeEnabled,
-                                                        onHideTextModeEnabledChange = {
-                                                                viewModel.setHideTextModeEnabled(it)
-                                                        },
-                                                        onNavigateToPrivacyDashboard = onNavigateToPrivacyDashboard
-                                                )
-                                        }
+                                        PrivacySecurityEntrySection(
+                                                onNavigateToPrivacySecurity =
+                                                        onNavigateToPrivacySecurity
+                                        )
 
                                         DataRecoveryEntrySection(
                                                 onNavigateToDataRecovery = onNavigateToDataRecovery

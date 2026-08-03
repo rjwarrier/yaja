@@ -4,6 +4,7 @@ import android.util.Log
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -537,6 +538,53 @@ fun SecuritySection(
         }
     }
 
+    Spacer(modifier = Modifier.height(32.dp))
+}
+
+@Composable
+fun PrivacySecurityEntrySection(onNavigateToPrivacySecurity: () -> Unit) {
+    SettingsSectionHeader(
+        icon = Icons.Rounded.Lock,
+        title = stringResource(R.string.settings_privacy_security_title)
+    )
+    Spacer(modifier = Modifier.height(12.dp))
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onNavigateToPrivacySecurity),
+        shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Lock,
+                contentDescription = stringResource(R.string.settings_privacy_security_title),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(28.dp)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_privacy_security_title),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_privacy_security_subtitle),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
     Spacer(modifier = Modifier.height(32.dp))
 }
 
