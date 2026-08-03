@@ -5,7 +5,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
@@ -61,7 +60,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.DropdownMenu
@@ -123,10 +121,6 @@ fun SettingsScreen(
         val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
         val entryReviewEnabled by viewModel.entryReviewEnabled.collectAsStateWithLifecycle()
         val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
-        val isPinEnabled by viewModel.isPinEnabled.collectAsStateWithLifecycle()
-        val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
-        val calendarDensityPreference by
-                viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
 
         var settingsSearchQuery by rememberSaveable { mutableStateOf("") }
@@ -281,18 +275,6 @@ fun SettingsScreen(
                                                         showSettingsSuggestions = false
                                                 }
                                         )
-                                        Spacer(modifier = Modifier.height(20.dp))
-
-                                        ProgressiveSettingsCard(
-                                                isPinEnabled = isPinEnabled,
-                                                adaptiveBottomNav = adaptiveBottomNav,
-                                                calendarDensityPreference = calendarDensityPreference.name,
-                                                onOpenPrivacy = onNavigateToPrivacySecurity,
-                                                onOpenNavigation = onNavigateToNavigationGestures,
-                                                onOpenCalendarSettings = onNavigateToJournalExperience
-                                        )
-                                        Spacer(modifier = Modifier.height(20.dp))
-
                                         AppearanceEntrySection(onNavigateToAppearance = onNavigateToAppearance)
 
                                         Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
@@ -371,94 +353,6 @@ private data class SettingsSearchTarget(
         val requester: BringIntoViewRequester? = null,
         val onSelect: (() -> Unit)? = null
 )
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun ProgressiveSettingsCard(
-        isPinEnabled: Boolean,
-        adaptiveBottomNav: Boolean,
-        calendarDensityPreference: String,
-        onOpenPrivacy: () -> Unit,
-        onOpenNavigation: () -> Unit,
-        onOpenCalendarSettings: () -> Unit
-) {
-        ElevatedCard(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-                ),
-                elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
-                shape = MaterialTheme.shapes.medium
-        ) {
-                Column(
-                        modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                        Text(
-                                text = stringResource(R.string.settings_progressive_title),
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Text(
-                                text = stringResource(R.string.settings_progressive_subtitle),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        FlowRow(
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                                TextButton(onClick = onOpenPrivacy) {
-                                        Icon(
-                                                imageVector = Icons.Rounded.Lock,
-                                                contentDescription = null,
-                                                modifier = Modifier.size(16.dp)
-                                        )
-                                        Spacer(modifier = Modifier.width(6.dp))
-                                        Text(
-                                                if (isPinEnabled) {
-                                                        stringResource(R.string.settings_progressive_privacy_review)
-                                                } else {
-                                                        stringResource(R.string.settings_progressive_privacy_pin)
-                                                }
-                                        )
-                                }
-                                TextButton(onClick = onOpenNavigation) {
-                                        Icon(
-                                                imageVector = Icons.Rounded.Swipe,
-                                                contentDescription = null,
-                                                modifier = Modifier.size(16.dp)
-                                        )
-                                        Spacer(modifier = Modifier.width(6.dp))
-                                        Text(
-                                                if (adaptiveBottomNav) {
-                                                        stringResource(R.string.settings_progressive_nav_active)
-                                                } else {
-                                                        stringResource(R.string.settings_progressive_nav_try)
-                                                }
-                                        )
-                                }
-                                TextButton(onClick = onOpenCalendarSettings) {
-                                        Icon(
-                                                imageVector = Icons.Rounded.CalendarMonth,
-                                                contentDescription = null,
-                                                modifier = Modifier.size(16.dp)
-                                        )
-                                        Spacer(modifier = Modifier.width(6.dp))
-                                        Text(
-                                                stringResource(
-                                                        R.string.settings_progressive_calendar_density,
-                                                        calendarDensityPreference.lowercase().replaceFirstChar {
-                                                                if (it.isLowerCase()) it.titlecase() else it.toString()
-                                                        }
-                                                )
-                                        )
-                                }
-                        }
-                }
-        }
-}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
