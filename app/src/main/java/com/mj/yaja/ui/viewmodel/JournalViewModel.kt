@@ -182,6 +182,19 @@ class JournalViewModel(
         val fuzzyThreshold: Float
     )
 
+    private data class DataRecoveryStorageSettingsSlice(
+        val storageUri: String?,
+        val lastBackupTimestamp: Long,
+        val backupReminderDays: Int,
+        val showOnboardingNextLaunch: Boolean
+    )
+
+    private data class DataRecoverySafetySettingsSlice(
+        val swipeToSyncEnabled: Boolean,
+        val largeJournalSafeMode: Boolean,
+        val versionHistoryEnabled: Boolean
+    )
+
     companion object {
         private const val TAG = "JournalViewModel"
         private const val LARGE_JOURNAL_DATE_THRESHOLD = 1000
@@ -333,6 +346,65 @@ class JournalViewModel(
     val versionHistoryEnabled = settingsRepository.versionHistoryEnabled
     val versionHistoryMaxVersions = settingsRepository.versionHistoryMaxVersions
     val versionHistoryRetentionDays = settingsRepository.versionHistoryRetentionDays
+    val dataRecoverySettingsUiState: StateFlow<DataRecoverySettingsUiState> =
+        combine(
+            combine(
+                storageUri,
+                lastBackupTimestamp,
+                backupReminderDays,
+                showOnboardingNextLaunch
+            ) { uri, backupTimestamp, reminderDays, showOnboarding ->
+                DataRecoveryStorageSettingsSlice(
+                    storageUri = uri,
+                    lastBackupTimestamp = backupTimestamp,
+                    backupReminderDays = reminderDays,
+                    showOnboardingNextLaunch = showOnboarding
+                )
+            },
+            combine(
+                swipeToSyncEnabled,
+                largeJournalSafeMode,
+                versionHistoryEnabled
+            ) { swipeSync, safeMode, versionHistory ->
+                DataRecoverySafetySettingsSlice(
+                    swipeToSyncEnabled = swipeSync,
+                    largeJournalSafeMode = safeMode,
+                    versionHistoryEnabled = versionHistory
+                )
+            },
+            combine(
+                importState,
+                restoreSummary
+            ) { importProgress, restore ->
+                importProgress to restore
+            }
+        ) { storage, safety, progress ->
+            DataRecoverySettingsUiState(
+                storageUri = storage.storageUri,
+                lastBackupTimestamp = storage.lastBackupTimestamp,
+                backupReminderDays = storage.backupReminderDays,
+                swipeToSyncEnabled = safety.swipeToSyncEnabled,
+                largeJournalSafeMode = safety.largeJournalSafeMode,
+                showOnboardingNextLaunch = storage.showOnboardingNextLaunch,
+                versionHistoryEnabled = safety.versionHistoryEnabled,
+                importState = progress.first,
+                restoreSummary = progress.second
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = DataRecoverySettingsUiState(
+                storageUri = storageUri.value,
+                lastBackupTimestamp = lastBackupTimestamp.value,
+                backupReminderDays = backupReminderDays.value,
+                swipeToSyncEnabled = swipeToSyncEnabled.value,
+                largeJournalSafeMode = largeJournalSafeMode.value,
+                showOnboardingNextLaunch = showOnboardingNextLaunch.value,
+                versionHistoryEnabled = versionHistoryEnabled.value,
+                importState = importState.value,
+                restoreSummary = restoreSummary.value
+            )
+        )
     val lastBackgroundFullRefreshAt = settingsRepository.lastBackgroundFullRefreshAt
     val showStatistics = settingsRepository.showStatistics
     val showLookbackInNavBar = settingsRepository.showLookbackInNavBar

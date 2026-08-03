@@ -58,3 +58,16 @@ data class JournalExperienceSettingsUiState(
     val fuzzyThreshold: Float = 0.90f,
     val entryStyle: EntryStyle = EntryStyle.CARDS
 )
+
+@Immutable
+data class DataRecoverySettingsUiState(
+    val storageUri: String? = null,
+    val lastBackupTimestamp: Long = 0L,
+    val backupReminderDays: Int = 7,
+    val swipeToSyncEnabled: Boolean = false,
+    val largeJournalSafeMode: Boolean = false,
+    val showOnboardingNextLaunch: Boolean = false,
+    val versionHistoryEnabled: Boolean = false,
+    val importState: JournalViewModel.ImportState = JournalViewModel.ImportState.Idle,
+    val restoreSummary: JournalViewModel.RestoreSummary? = null
+)

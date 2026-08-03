@@ -51,22 +51,14 @@ fun DataRecoverySettingsScreen(
         onNavigateToVersionHistory: () -> Unit
 ) {
         val context = LocalContext.current
-        val storageUriString by viewModel.storageUri.collectAsStateWithLifecycle()
-        val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
-        val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
-        val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsStateWithLifecycle()
-        val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsStateWithLifecycle()
-        val showOnboardingNextLaunch by viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
-        val versionHistoryEnabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
-        val importState by viewModel.importState.collectAsStateWithLifecycle()
-        val restoreSummary by viewModel.restoreSummary.collectAsStateWithLifecycle()
+        val uiState by viewModel.dataRecoverySettingsUiState.collectAsStateWithLifecycle()
 
         val formattedBackupDate =
-                remember(lastBackupTimestamp) {
-                        if (lastBackupTimestamp == 0L) {
+                remember(uiState.lastBackupTimestamp) {
+                        if (uiState.lastBackupTimestamp == 0L) {
                                 "Never"
                         } else {
-                                val instant = Instant.ofEpochMilli(lastBackupTimestamp)
+                                val instant = Instant.ofEpochMilli(uiState.lastBackupTimestamp)
                                 val dateTime =
                                         LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
                                 val formatter =
@@ -101,7 +93,7 @@ fun DataRecoverySettingsScreen(
                                         )
                                 }
                                 val newUriString = uri.toString()
-                                if (newUriString != storageUriString) {
+                                if (newUriString != uiState.storageUri) {
                                         confirmLocationChange(newUriString)
                                 }
                         }
@@ -196,23 +188,23 @@ fun DataRecoverySettingsScreen(
                         ) {
                                 DataAndStorageSection(
                                         storageLocationText =
-                                                if (storageUriString == null) {
+                                                if (uiState.storageUri == null) {
                                                         "App Internal Storage (Default)"
                                                 } else {
                                                         "Custom Folder:\n" +
                                                                 (
-                                                                        storageUriString
+                                                                        uiState.storageUri
                                                                                 ?.toUri()
                                                                                 ?.path
                                                                                 ?.substringAfterLast(":")
                                                                                 ?: ""
                                                                 )
                                                 },
-                                        hasCustomStorage = storageUriString != null,
+                                        hasCustomStorage = uiState.storageUri != null,
                                         onResetStorage = { confirmLocationChange(null) },
                                         onChooseFolder = { storageLauncher.launch(null) },
                                         formattedBackupDate = formattedBackupDate,
-                                        backupReminderDays = backupReminderDays,
+                                        backupReminderDays = uiState.backupReminderDays,
                                         onBackupNow = { viewModel.backupData(context) },
                                         onBackupReminderDaysChange = {
                                                 viewModel.setBackupReminderDays(it)
@@ -226,24 +218,24 @@ fun DataRecoverySettingsScreen(
                                                 obsidianExportLauncher.launch(null)
                                         },
                                         onRefreshCache = onNavigateToRebuildCache,
-                                        swipeToSyncEnabled = swipeToSyncEnabled,
+                                        swipeToSyncEnabled = uiState.swipeToSyncEnabled,
                                         onSwipeToSyncEnabledChange = {
                                                 viewModel.setSwipeToSyncEnabled(it)
                                         },
-                                        largeJournalSafeMode = largeJournalSafeMode,
+                                        largeJournalSafeMode = uiState.largeJournalSafeMode,
                                         onLargeJournalSafeModeChange = {
                                                 viewModel.setLargeJournalSafeMode(it)
                                         },
-                                        showOnboardingNextLaunch = showOnboardingNextLaunch,
+                                        showOnboardingNextLaunch = uiState.showOnboardingNextLaunch,
                                         onShowOnboardingNextLaunchChange = {
                                                 viewModel.setShowOnboardingNextLaunch(it)
                                         },
-                                        versionHistoryEnabled = versionHistoryEnabled,
+                                        versionHistoryEnabled = uiState.versionHistoryEnabled,
                                         onVersionHistoryEnabledChange = {
                                                 viewModel.setVersionHistoryEnabled(it)
                                         },
                                         onNavigateToVersionHistory = onNavigateToVersionHistory,
-                                        importState = importState,
+                                        importState = uiState.importState,
                                         onLaunchDayOneImport = {
                                                 dayOneLauncher.launch(
                                                         arrayOf(
@@ -277,10 +269,10 @@ fun DataRecoverySettingsScreen(
                                         ?: "the new folder"
                         }
                 val currentName =
-                        if (storageUriString == null) {
+                        if (uiState.storageUri == null) {
                                 "App Internal Storage"
                         } else {
-                                storageUriString?.toUri()?.path?.substringAfterLast(":")
+                                uiState.storageUri?.toUri()?.path?.substringAfterLast(":")
                                         ?: "the current folder"
                         }
 
@@ -316,7 +308,7 @@ fun DataRecoverySettingsScreen(
                 )
         }
 
-        restoreSummary?.let { summary ->
+        uiState.restoreSummary?.let { summary ->
                 AlertDialog(
                         onDismissRequest = { viewModel.dismissRestoreSummary() },
                         title = { Text(stringResource(R.string.settings_restore_summary_title)) },
