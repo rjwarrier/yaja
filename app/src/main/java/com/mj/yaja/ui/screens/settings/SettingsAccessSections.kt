@@ -543,11 +543,6 @@ fun SecuritySection(
 
 @Composable
 fun PrivacySecurityEntrySection(onNavigateToPrivacySecurity: () -> Unit) {
-    SettingsSectionHeader(
-        icon = Icons.Rounded.Lock,
-        title = stringResource(R.string.settings_privacy_security_title)
-    )
-    Spacer(modifier = Modifier.height(12.dp))
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()

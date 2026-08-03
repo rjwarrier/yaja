@@ -584,11 +584,6 @@ fun DataAndStorageSection(
 
 @Composable
 fun DataRecoveryEntrySection(onNavigateToDataRecovery: () -> Unit) {
-    SettingsSectionHeader(
-        icon = Icons.Rounded.Storage,
-        title = stringResource(R.string.settings_data_recovery_title)
-    )
-    Spacer(modifier = Modifier.height(12.dp))
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()

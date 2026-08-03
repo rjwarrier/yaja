@@ -638,11 +638,6 @@ fun JournalExperienceSection(
 
 @Composable
 fun JournalExperienceEntrySection(onNavigateToJournalExperience: () -> Unit) {
-    SettingsSectionHeader(
-        icon = Icons.Rounded.Settings,
-        title = stringResource(R.string.settings_section_journal_experience)
-    )
-    Spacer(modifier = Modifier.height(12.dp))
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()

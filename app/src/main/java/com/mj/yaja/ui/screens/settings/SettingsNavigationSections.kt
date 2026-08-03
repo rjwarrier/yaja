@@ -326,11 +326,6 @@ fun GesturesSection(
 
 @Composable
 fun NavigationGesturesEntrySection(onNavigateToNavigationGestures: () -> Unit) {
-    SettingsSectionHeader(
-        icon = Icons.Rounded.ViewAgenda,
-        title = stringResource(R.string.settings_section_navigation_gestures)
-    )
-    Spacer(modifier = Modifier.height(12.dp))
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()

@@ -104,8 +104,6 @@ private val AppearanceCardColorAltLight = Color(0xFFF3F6F9)
 
 @Composable
 fun AppearanceEntrySection(onNavigateToAppearance: () -> Unit) {
-    SettingsSectionHeader(icon = Icons.Rounded.Palette, title = stringResource(R.string.settings_appearance))
-    Spacer(modifier = Modifier.height(12.dp))
     val interactionSource = remember { MutableInteractionSource() }
     ElevatedCard(
         onClick = onNavigateToAppearance,
