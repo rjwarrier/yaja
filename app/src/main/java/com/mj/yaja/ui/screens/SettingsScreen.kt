@@ -128,78 +128,59 @@ fun SettingsScreen(
         var showSettingsSuggestions by remember { mutableStateOf(false) }
 
         val settingsSearchTargets =
-                remember {
-                        listOf(
-                                SettingsSearchTarget("Theme", "Appearance", listOf("light", "dark", "amoled", "system"), onSelect = onNavigateToAppearance),
-                                SettingsSearchTarget("Colors", "Appearance", listOf("material you", "custom", "palette"), onSelect = onNavigateToAppearance),
-                                SettingsSearchTarget("Personal Themes", "Appearance", listOf("personal", "theme slots", "generated accents"), onSelect = onNavigateToAppearance),
-                                SettingsSearchTarget("Font", "Appearance", listOf("sans", "serif", "mono"), onSelect = onNavigateToAppearance),
-                                SettingsSearchTarget("Font Size", "Appearance", listOf("text size", "scale"), onSelect = onNavigateToAppearance),
-                                SettingsSearchTarget("Language", "Language", listOf("español", "português", "français", "translate", "locale"), languageRequester),
-                                SettingsSearchTarget("Show Timestamps", "Journal Experience", listOf("time", "timeline"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Allow Future Entries", "Journal Experience", listOf("future dates"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Carry Forward Todos", "Journal Experience", listOf("unchecked tasks", "yesterday todo"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Show Day Header Counts", "Journal Experience", listOf("header stats", "counts"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Render Checkboxes as Text", "Journal Experience", listOf("todo checkbox", "text checkbox"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Truncate Long Entries", "Journal Experience", listOf("preview", "character limit"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("First Day of Week", "Journal Experience", listOf("calendar", "sunday", "monday"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Date Order", "Journal Experience", listOf("dd/mm", "mm/dd"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Entry Style", "Journal Experience", listOf("cards", "flat"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Animations", "Journal Experience", listOf("motion", "reduced"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Date Keywords", "Journal Experience", listOf("keywords", "today", "tomorrow"), onSelect = onNavigateToJournalExperience),
-                                SettingsSearchTarget("Navigation Mode", "Navigation & Gestures", listOf("floating", "panel", "bottom panel"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Lookback", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("People & Places", "Navigation & Gestures", listOf("keywords", "nav bar"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Todos", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Statistics", "Navigation & Gestures", listOf("nav bar"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Swipe to Navigate Dates", "Navigation & Gestures", listOf("gestures", "swipe"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Enable Drag-to-Reorder", "Navigation & Gestures", listOf("drag", "reorder"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Entry Delete", "Navigation & Gestures", listOf("selection", "delete"), onSelect = onNavigateToNavigationGestures),
-                                SettingsSearchTarget("Post-write Review", "Review & Insights", listOf("save sheet", "review"), reviewRequester),
-                                SettingsSearchTarget("People & Places Highlighting", "Review & Insights", listOf("highlighting", "people places"), reviewRequester),
-                                SettingsSearchTarget("Match Sensitivity", "Review & Insights", listOf("keyword matching", "fuzzy"), reviewRequester),
-                                SettingsSearchTarget("Privacy & Security", "Privacy & Security", listOf("pin", "biometric", "lock"), onSelect = onNavigateToPrivacySecurity),
-                                SettingsSearchTarget("PIN", "Privacy & Security", listOf("password", "lock"), onSelect = onNavigateToPrivacySecurity),
-                                SettingsSearchTarget("Biometric", "Privacy & Security", listOf("fingerprint", "face unlock"), onSelect = onNavigateToPrivacySecurity),
-                                SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), onSelect = onNavigateToPrivacySecurity),
-                                SettingsSearchTarget("Hide Text Mode", "Privacy & Security", listOf("privacy", "panic blur", "hide text"), onSelect = onNavigateToPrivacySecurity),
-                                SettingsSearchTarget("Privacy Dashboard", "Privacy & Security", listOf("transparency", "data dashboard", "widgets", "tasker"), onSelect = onNavigateToPrivacyDashboard),
-                                SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Restore Backup", "Data & Recovery", listOf("restore zip"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Import", "Data & Recovery", listOf("day one", "journalistic"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Rebuild Cache", "Data & Recovery", listOf("refresh cache", "rebuild"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Version History", "Data & Recovery", listOf("snapshots", "history"), onSelect = onNavigateToDataRecovery),
-                                SettingsSearchTarget("Tasker", "Advanced Integrations", listOf("tasker integration", "automation"), integrationsRequester),
-                                SettingsSearchTarget("Shortcodes", "Advanced Integrations", listOf("snippets", "text expansion"), integrationsRequester),
-                                SettingsSearchTarget("Help & About", "Help & About", listOf("help", "about", "faq"), helpRequester),
-                                SettingsSearchTarget("App Log", "Help & About", listOf("logs", "crash"), helpRequester)
+                SettingsSearchRegistry.entries.map { entry ->
+                        LocalizedSettingsSearchEntry(
+                                id = entry.id,
+                                title = stringResource(entry.titleRes),
+                                section = stringResource(entry.sectionRes),
+                                keywords = entry.keywords,
+                                action = entry.action
                         )
+                }
+        val settingsSearchTargetsById =
+                remember(settingsSearchTargets) { settingsSearchTargets.associateBy { it.id.name } }
+        val settingsSearchHistoryTargets =
+                remember(settingsSearchHistory, settingsSearchTargetsById) {
+                        settingsSearchHistory.mapNotNull { settingsSearchTargetsById[it] }
                 }
         val filteredSettingsTargets =
                 remember(settingsSearchQuery, settingsSearchTargets) {
-                        val query = settingsSearchQuery.trim().lowercase()
-                        if (query.isBlank()) {
-                                emptyList()
-                        } else {
-                                settingsSearchTargets.filter { target ->
-                                        target.title.lowercase().contains(query) ||
-                                                target.section.lowercase().contains(query) ||
-                                                target.keywords.any { it.contains(query) }
-                                }
-                        }
+                        SettingsSearchMatcher.search(settingsSearchQuery, settingsSearchTargets)
                 }
 
-        fun jumpToSettingsTarget(target: SettingsSearchTarget) {
-                settingsSearchQuery = target.title
-                settingsSearchHistory =
-                        listOf(target.title) + settingsSearchHistory.filterNot { it == target.title }.take(4)
-                showSettingsSuggestions = false
-                target.onSelect?.invoke()
-                target.requester?.let { requester -> scope.launch { requester.bringIntoView() } }
+        fun runSettingsSearchAction(action: SettingsSearchAction) {
+                when (action) {
+                        is SettingsSearchAction.OpenDestination -> {
+                                when (action.destination) {
+                                        SettingsDestinationId.APPEARANCE -> onNavigateToAppearance()
+                                        SettingsDestinationId.JOURNAL_EXPERIENCE -> onNavigateToJournalExperience()
+                                        SettingsDestinationId.NAVIGATION_GESTURES -> onNavigateToNavigationGestures()
+                                        SettingsDestinationId.PRIVACY_SECURITY -> onNavigateToPrivacySecurity()
+                                        SettingsDestinationId.PRIVACY_DASHBOARD -> onNavigateToPrivacyDashboard()
+                                        SettingsDestinationId.DATA_RECOVERY -> onNavigateToDataRecovery()
+                                }
+                        }
+                        is SettingsSearchAction.ScrollTo -> {
+                                val requester =
+                                        when (action.anchor) {
+                                                SettingsSearchAnchor.LANGUAGE -> languageRequester
+                                                SettingsSearchAnchor.REVIEW_INSIGHTS -> reviewRequester
+                                                SettingsSearchAnchor.ADVANCED_INTEGRATIONS -> integrationsRequester
+                                                SettingsSearchAnchor.HELP_ABOUT -> helpRequester
+                                        }
+                                scope.launch { requester.bringIntoView() }
+                        }
+                }
         }
 
+        fun jumpToSettingsTarget(target: LocalizedSettingsSearchEntry) {
+                settingsSearchQuery = target.title
+                settingsSearchHistory =
+                        listOf(target.id.name) +
+                                settingsSearchHistory.filterNot { it == target.id.name }.take(4)
+                showSettingsSuggestions = false
+                runSettingsSearchAction(target.action)
+        }
         Scaffold(
                 topBar = {
                         CenterAlignedTopAppBar(
@@ -251,21 +232,10 @@ fun SettingsScreen(
                                                         settingsSearchQuery = it
                                                         showSettingsSuggestions = true
                                                 },
-                                                history = settingsSearchHistory,
+                                                history = settingsSearchHistoryTargets,
                                                 filteredTargets = filteredSettingsTargets,
                                                 showSuggestions = showSettingsSuggestions,
-                                                onHistoryTap = { title ->
-                                                        val target =
-                                                                settingsSearchTargets.firstOrNull {
-                                                                        it.title == title
-                                                                }
-                                                        if (target != null) {
-                                                                jumpToSettingsTarget(target)
-                                                        } else {
-                                                                settingsSearchQuery = title
-                                                                showSettingsSuggestions = false
-                                                        }
-                                                },
+                                                onHistoryTap = { jumpToSettingsTarget(it) },
                                                 onTargetTap = { jumpToSettingsTarget(it) },
                                                 onClearQuery = {
                                                         settingsSearchQuery = ""
@@ -346,25 +316,16 @@ fun SettingsScreen(
         }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
-private data class SettingsSearchTarget(
-        val title: String,
-        val section: String,
-        val keywords: List<String>,
-        val requester: BringIntoViewRequester? = null,
-        val onSelect: (() -> Unit)? = null
-)
-
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun SettingsSearchCard(
         query: String,
         onQueryChange: (String) -> Unit,
-        history: List<String>,
-        filteredTargets: List<SettingsSearchTarget>,
+        history: List<LocalizedSettingsSearchEntry>,
+        filteredTargets: List<LocalizedSettingsSearchEntry>,
         showSuggestions: Boolean,
-        onHistoryTap: (String) -> Unit,
-        onTargetTap: (SettingsSearchTarget) -> Unit,
+        onHistoryTap: (LocalizedSettingsSearchEntry) -> Unit,
+        onTargetTap: (LocalizedSettingsSearchEntry) -> Unit,
         onClearQuery: () -> Unit,
         onDismissSuggestions: () -> Unit
 ) {
@@ -466,7 +427,7 @@ private fun SettingsSearchCard(
                                                                                 )
                                                         ) {
                                                                 Text(
-                                                                        text = item,
+                                                                        text = item.title,
                                                                         style = MaterialTheme.typography.labelLarge,
                                                                         color = MaterialTheme.colorScheme.onSurface
                                                                 )
