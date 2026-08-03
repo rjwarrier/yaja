@@ -104,47 +104,12 @@ private val AppearanceCardColorAltLight = Color(0xFFF3F6F9)
 
 @Composable
 fun AppearanceEntrySection(onNavigateToAppearance: () -> Unit) {
-    val interactionSource = remember { MutableInteractionSource() }
-    ElevatedCard(
+    SettingsDestinationEntry(
+        icon = Icons.Rounded.Palette,
+        title = stringResource(R.string.settings_appearance),
+        subtitle = stringResource(R.string.settings_appearance_subtitle),
         onClick = onNavigateToAppearance,
-        modifier = Modifier
-            .fillMaxWidth()
-            .expressivePressMotion(interactionSource, pressedScale = 0.96f),
-        shape = MaterialTheme.shapes.medium,
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-        ),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
-        interactionSource = interactionSource
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Rounded.Palette,
-                contentDescription = stringResource(R.string.settings_appearance),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(28.dp)
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.settings_appearance),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = stringResource(R.string.settings_appearance_subtitle),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
-    }
-    Spacer(modifier = Modifier.height(32.dp))
+    )
 }
 
 @Composable
