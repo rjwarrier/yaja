@@ -67,9 +67,6 @@ fun LanguageSection(
     appLanguage: AppLanguage,
     onLanguageSelected: (AppLanguage) -> Unit
 ) {
-    SettingsSectionHeader(icon = Icons.Rounded.Language, title = stringResource(R.string.settings_language))
-    Spacer(modifier = Modifier.height(12.dp))
-
     var showPicker by remember { mutableStateOf(false) }
     val systemDefaultLabel = stringResource(R.string.settings_language_system_default)
     val currentLanguageLabel = appLanguage.displayLabel(systemDefaultLabel)
