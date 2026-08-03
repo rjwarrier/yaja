@@ -90,7 +90,7 @@ class DayOneImporter(
                 val creationDate = obj.optString("creationDate").ifBlank { continue }
                 val rawText = obj.optString("text", "")
 
-                val lines = cleanAndSplit(rawText)
+                val lines = DayOneImportParser.cleanAndSplit(rawText)
                 if (lines.isEmpty()) { skipped++; continue }
 
                 val instant = Instant.parse(creationDate)
@@ -147,21 +147,4 @@ class DayOneImporter(
 
     // ─── Text cleaning (mirrors dayone.py logic) ──────────────────────────
 
-    /**
-     * Cleans a Day One entry text and returns non-blank lines ready to be stored
-     * as individual Yaja entries.
-     */
-    private fun cleanAndSplit(raw: String): List<String> {
-        var text = raw
-        // Remove embedded image links: ![](dayone-moment://XXXX)
-        text = text.replace(Regex("""!\[.*?]\(dayone-moment://.*?\)"""), "")
-        // Remove HTML paragraph tags
-        text = text.replace("<p dir=\"auto\">", "").replace("</p>", "")
-        // Remove any remaining HTML-ish tags
-        text = text.replace(Regex("<[^>]+>"), "")
-
-        return text.lines()
-            .map { it.trim() }
-            .filter { it.isNotBlank() }
-    }
 }
