@@ -118,10 +118,7 @@ fun SettingsScreen(
         val reviewRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
         val helpRequester = remember { BringIntoViewRequester() }
-        val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
-        val entryReviewEnabled by viewModel.entryReviewEnabled.collectAsStateWithLifecycle()
-        val keywordHighlightingEnabled by viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
-        val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
+        val uiState by viewModel.rootSettingsUiState.collectAsStateWithLifecycle()
 
         var settingsSearchQuery by rememberSaveable { mutableStateOf("") }
         var settingsSearchHistory by rememberSaveable { mutableStateOf(listOf<String>()) }
@@ -270,7 +267,7 @@ fun SettingsScreen(
 
                                         Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
                                                 LanguageSection(
-                                                        appLanguage = appLanguage,
+                                                        appLanguage = uiState.appLanguage,
                                                         onLanguageSelected = { viewModel.setAppLanguage(it) }
                                                 )
                                         }
@@ -283,15 +280,15 @@ fun SettingsScreen(
                                                 Spacer(modifier = Modifier.height(12.dp))
 
                                                 ReviewAndInsightsSection(
-                                                        entryReviewEnabled = entryReviewEnabled,
+                                                        entryReviewEnabled = uiState.entryReviewEnabled,
                                                         onEntryReviewEnabledChange = {
                                                                 viewModel.setEntryReviewEnabled(it)
                                                         },
-                                                        keywordHighlightingEnabled = keywordHighlightingEnabled,
+                                                        keywordHighlightingEnabled = uiState.keywordHighlightingEnabled,
                                                         onKeywordHighlightingEnabledChange = {
                                                                 viewModel.setKeywordHighlightingEnabled(it)
                                                         },
-                                                        fuzzyThreshold = fuzzyThreshold,
+                                                        fuzzyThreshold = uiState.fuzzyThreshold,
                                                         onFuzzyThresholdChange = { viewModel.setKeywordFuzzyThreshold(it) }
                                                 )
                                         }

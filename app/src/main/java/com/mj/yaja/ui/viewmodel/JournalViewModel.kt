@@ -317,6 +317,29 @@ class JournalViewModel(
     val useMLKitDetection = settingsRepository.useMLKitDetection
     val keywords = keywordRepository.keywords
     val fuzzyThreshold = keywordRepository.fuzzyThreshold
+    val rootSettingsUiState: StateFlow<RootSettingsUiState> =
+        combine(
+            appLanguage,
+            entryReviewEnabled,
+            keywordHighlightingEnabled,
+            fuzzyThreshold
+        ) { language, reviewEnabled, highlightingEnabled, threshold ->
+            RootSettingsUiState(
+                appLanguage = language,
+                entryReviewEnabled = reviewEnabled,
+                keywordHighlightingEnabled = highlightingEnabled,
+                fuzzyThreshold = threshold
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = RootSettingsUiState(
+                appLanguage = appLanguage.value,
+                entryReviewEnabled = entryReviewEnabled.value,
+                keywordHighlightingEnabled = keywordHighlightingEnabled.value,
+                fuzzyThreshold = fuzzyThreshold.value
+            )
+        )
     private val keywordCoordinator = KeywordCoordinator(
         fileManager = fileManager,
         keywordRepository = keywordRepository,
