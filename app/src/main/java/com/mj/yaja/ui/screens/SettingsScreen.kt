@@ -275,16 +275,10 @@ fun SettingsScreen(
                                                         showSettingsSuggestions = false
                                                 }
                                         )
+                                        Spacer(modifier = Modifier.height(20.dp))
+
                                         AppearanceEntrySection(onNavigateToAppearance = onNavigateToAppearance)
 
-                                        Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
-                                                LanguageSection(
-                                                        appLanguage = appLanguage,
-                                                        onLanguageSelected = { viewModel.setAppLanguage(it) }
-                                                )
-                                        }
-
-                                        // ── Preferences Section ──
                                         JournalExperienceEntrySection(
                                                 onNavigateToJournalExperience =
                                                         onNavigateToJournalExperience
@@ -294,6 +288,22 @@ fun SettingsScreen(
                                                 onNavigateToNavigationGestures =
                                                         onNavigateToNavigationGestures
                                         )
+
+                                        PrivacySecurityEntrySection(
+                                                onNavigateToPrivacySecurity =
+                                                        onNavigateToPrivacySecurity
+                                        )
+
+                                        DataRecoveryEntrySection(
+                                                onNavigateToDataRecovery = onNavigateToDataRecovery
+                                        )
+
+                                        Column(modifier = Modifier.bringIntoViewRequester(languageRequester)) {
+                                                LanguageSection(
+                                                        appLanguage = appLanguage,
+                                                        onLanguageSelected = { viewModel.setAppLanguage(it) }
+                                                )
+                                        }
 
                                         Column(modifier = Modifier.bringIntoViewRequester(reviewRequester)) {
                                                 SettingsSectionHeader(
@@ -315,15 +325,6 @@ fun SettingsScreen(
                                                         onFuzzyThresholdChange = { viewModel.setKeywordFuzzyThreshold(it) }
                                                 )
                                         }
-
-                                        PrivacySecurityEntrySection(
-                                                onNavigateToPrivacySecurity =
-                                                        onNavigateToPrivacySecurity
-                                        )
-
-                                        DataRecoveryEntrySection(
-                                                onNavigateToDataRecovery = onNavigateToDataRecovery
-                                        )
 
                                         Column(modifier = Modifier.bringIntoViewRequester(integrationsRequester)) {
                                                 TaskerIntegrationSection(
