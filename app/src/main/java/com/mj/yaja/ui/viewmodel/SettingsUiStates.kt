@@ -3,11 +3,20 @@ package com.mj.yaja.ui.viewmodel
 import androidx.compose.runtime.Immutable
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.AppLanguage
+import com.mj.yaja.data.AppFontFamily
+import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.CalendarDensityPreference
+import com.mj.yaja.data.ColorSource
+import com.mj.yaja.data.CustomPalette
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryStyle
+import com.mj.yaja.data.FabPlacement
+import com.mj.yaja.data.FontScalePreference
 import com.mj.yaja.data.NavigationChromeMode
+import com.mj.yaja.data.PersonalThemeSlot
+import com.mj.yaja.data.ThemeColorIntensity
+import com.mj.yaja.data.ThemePreference
 import java.time.DayOfWeek
 
 @Immutable
@@ -70,4 +79,23 @@ data class DataRecoverySettingsUiState(
     val versionHistoryEnabled: Boolean = false,
     val importState: JournalViewModel.ImportState = JournalViewModel.ImportState.Idle,
     val restoreSummary: JournalViewModel.RestoreSummary? = null
+)
+
+@Immutable
+data class AppearanceSettingsUiState(
+    val themePreference: ThemePreference = ThemePreference.SYSTEM,
+    val colorSource: ColorSource = ColorSource.MATERIAL_YOU,
+    val customPalette: CustomPalette = CustomPalette.YAJA,
+    val themeColorIntensity: ThemeColorIntensity = ThemeColorIntensity.NORMAL,
+    val backgroundTintLevel: BackgroundTintLevel = BackgroundTintLevel.CLEAN,
+    val personalThemeSlots: List<PersonalThemeSlot> = emptyList(),
+    val activePersonalThemeSlotId: Int = 0,
+    val fontScalePreference: FontScalePreference = FontScalePreference.NORMAL,
+    val dataFontScalePreference: FontScalePreference = FontScalePreference.NORMAL,
+    val followUiFontScale: Boolean = true,
+    val appFontFamily: AppFontFamily = AppFontFamily.SANS_SERIF,
+    val monoFontWeight: Int = 400,
+    val customFontPath: String? = null,
+    val customFontName: String? = null,
+    val fabPlacement: FabPlacement = FabPlacement.RIGHT
 )

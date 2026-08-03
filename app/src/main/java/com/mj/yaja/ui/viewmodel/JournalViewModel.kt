@@ -16,6 +16,7 @@ import com.mj.yaja.data.EventIndexRepository
 import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.applyEntryKindMetadata
+import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
 import com.mj.yaja.data.HomeScreenSnapshot
 import com.mj.yaja.data.BackgroundTintLevel
@@ -43,6 +44,7 @@ import com.mj.yaja.data.TodoItem
 import com.mj.yaja.data.TodoParser
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
 import com.mj.yaja.data.AnimationPreference
+import com.mj.yaja.data.AppFontFamily
 import com.mj.yaja.data.AppLanguage
 import com.mj.yaja.data.AppLogRepository
 import com.mj.yaja.data.DueRevisitItem
@@ -193,6 +195,33 @@ class JournalViewModel(
         val swipeToSyncEnabled: Boolean,
         val largeJournalSafeMode: Boolean,
         val versionHistoryEnabled: Boolean
+    )
+
+    private data class AppearanceThemeSettingsSlice(
+        val themePreference: ThemePreference,
+        val colorSource: ColorSource,
+        val customPalette: CustomPalette,
+        val themeColorIntensity: ThemeColorIntensity,
+        val backgroundTintLevel: BackgroundTintLevel
+    )
+
+    private data class AppearancePersonalThemeSettingsSlice(
+        val personalThemeSlots: List<PersonalThemeSlot>,
+        val activePersonalThemeSlotId: Int
+    )
+
+    private data class AppearanceFontSettingsSlice(
+        val fontScalePreference: FontScalePreference,
+        val dataFontScalePreference: FontScalePreference,
+        val followUiFontScale: Boolean,
+        val appFontFamily: AppFontFamily,
+        val monoFontWeight: Int
+    )
+
+    private data class AppearanceCustomFontSettingsSlice(
+        val customFontPath: String?,
+        val customFontName: String?,
+        val fabPlacement: FabPlacement
     )
 
     companion object {
@@ -3369,6 +3398,97 @@ class JournalViewModel(
     // --- Font scale settings delegation ---
     val dataFontScalePreference = settingsRepository.dataFontScalePreference
     val followUiFontScale = settingsRepository.followUiFontScale
+    val appearanceSettingsUiState: StateFlow<AppearanceSettingsUiState> =
+        combine(
+            combine(
+                themePreference,
+                colorSource,
+                customPalette,
+                themeColorIntensity,
+                backgroundTintLevel
+            ) { theme, source, palette, intensity, tintLevel ->
+                AppearanceThemeSettingsSlice(
+                    themePreference = theme,
+                    colorSource = source,
+                    customPalette = palette,
+                    themeColorIntensity = intensity,
+                    backgroundTintLevel = tintLevel
+                )
+            },
+            combine(
+                personalThemeSlots,
+                activePersonalThemeSlotId
+            ) { slots, activeSlotId ->
+                AppearancePersonalThemeSettingsSlice(
+                    personalThemeSlots = slots,
+                    activePersonalThemeSlotId = activeSlotId
+                )
+            },
+            combine(
+                fontScalePreference,
+                dataFontScalePreference,
+                followUiFontScale,
+                appFontFamily,
+                monoFontWeight
+            ) { uiFontScale, dataFontScale, followUiScale, fontFamily, monoWeight ->
+                AppearanceFontSettingsSlice(
+                    fontScalePreference = uiFontScale,
+                    dataFontScalePreference = dataFontScale,
+                    followUiFontScale = followUiScale,
+                    appFontFamily = fontFamily,
+                    monoFontWeight = monoWeight
+                )
+            },
+            combine(
+                customFontPath,
+                customFontName,
+                fabPlacement
+            ) { fontPath, fontName, placement ->
+                AppearanceCustomFontSettingsSlice(
+                    customFontPath = fontPath,
+                    customFontName = fontName,
+                    fabPlacement = placement
+                )
+            }
+        ) { theme, personalTheme, font, customFont ->
+            AppearanceSettingsUiState(
+                themePreference = theme.themePreference,
+                colorSource = theme.colorSource,
+                customPalette = theme.customPalette,
+                themeColorIntensity = theme.themeColorIntensity,
+                backgroundTintLevel = theme.backgroundTintLevel,
+                personalThemeSlots = personalTheme.personalThemeSlots,
+                activePersonalThemeSlotId = personalTheme.activePersonalThemeSlotId,
+                fontScalePreference = font.fontScalePreference,
+                dataFontScalePreference = font.dataFontScalePreference,
+                followUiFontScale = font.followUiFontScale,
+                appFontFamily = font.appFontFamily,
+                monoFontWeight = font.monoFontWeight,
+                customFontPath = customFont.customFontPath,
+                customFontName = customFont.customFontName,
+                fabPlacement = customFont.fabPlacement
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = AppearanceSettingsUiState(
+                themePreference = themePreference.value,
+                colorSource = colorSource.value,
+                customPalette = customPalette.value,
+                themeColorIntensity = themeColorIntensity.value,
+                backgroundTintLevel = backgroundTintLevel.value,
+                personalThemeSlots = personalThemeSlots.value,
+                activePersonalThemeSlotId = activePersonalThemeSlotId.value,
+                fontScalePreference = fontScalePreference.value,
+                dataFontScalePreference = dataFontScalePreference.value,
+                followUiFontScale = followUiFontScale.value,
+                appFontFamily = appFontFamily.value,
+                monoFontWeight = monoFontWeight.value,
+                customFontPath = customFontPath.value,
+                customFontName = customFontName.value,
+                fabPlacement = fabPlacement.value
+            )
+        )
 
     fun setDataFontScalePreference(preference: FontScalePreference) =
         settingsRepository.setDataFontScalePreference(preference)

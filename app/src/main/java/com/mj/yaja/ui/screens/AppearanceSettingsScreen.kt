@@ -48,21 +48,7 @@ fun AppearanceSettingsScreen(
 ) {
         val context = LocalContext.current
 
-        val themePreference by viewModel.themePreference.collectAsStateWithLifecycle()
-        val colorSource by viewModel.colorSource.collectAsStateWithLifecycle()
-        val customPalette by viewModel.customPalette.collectAsStateWithLifecycle()
-        val themeColorIntensity by viewModel.themeColorIntensity.collectAsStateWithLifecycle()
-        val backgroundTintLevel by viewModel.backgroundTintLevel.collectAsStateWithLifecycle()
-        val personalThemeSlots by viewModel.personalThemeSlots.collectAsStateWithLifecycle()
-        val activePersonalThemeSlotId by viewModel.activePersonalThemeSlotId.collectAsStateWithLifecycle()
-        val fontScalePreference by viewModel.fontScalePreference.collectAsStateWithLifecycle()
-        val dataFontScalePreference by viewModel.dataFontScalePreference.collectAsStateWithLifecycle()
-        val followUiFontScale by viewModel.followUiFontScale.collectAsStateWithLifecycle()
-        val appFontFamily by viewModel.appFontFamily.collectAsStateWithLifecycle()
-        val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
-        val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
-        val customFontName by viewModel.customFontName.collectAsStateWithLifecycle()
-        val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
+        val uiState by viewModel.appearanceSettingsUiState.collectAsStateWithLifecycle()
         var selectedAppIcon by remember { mutableStateOf(AppIconManager.getSelectedIcon(context)) }
         var pendingAppIcon by remember { mutableStateOf<AppIcon?>(null) }
 
@@ -74,8 +60,8 @@ fun AppearanceSettingsScreen(
 
         val scrollState = rememberScrollState()
 
-        LaunchedEffect(followUiFontScale) {
-                if (!followUiFontScale) {
+        LaunchedEffect(uiState.followUiFontScale) {
+                if (!uiState.followUiFontScale) {
                         // Wait for AnimatedVisibility to start expanding, then scroll to the bottom
                         kotlinx.coroutines.delay(200)
                         scrollState.animateScrollTo(scrollState.maxValue)
@@ -110,22 +96,22 @@ fun AppearanceSettingsScreen(
                                         .verticalScroll(scrollState)
                         ) {
                                 AppearanceSection(
-                                        themePreference = themePreference,
+                                        themePreference = uiState.themePreference,
                                         onThemeSelected = { viewModel.setThemePreference(it) },
-                                        colorSource = colorSource,
+                                        colorSource = uiState.colorSource,
                                         onColorSourceSelected = { viewModel.setColorSource(it) },
-                                        customPalette = customPalette,
+                                        customPalette = uiState.customPalette,
                                         onCustomPaletteSelected = { viewModel.setCustomPalette(it) },
-                                        themeColorIntensity = themeColorIntensity,
+                                        themeColorIntensity = uiState.themeColorIntensity,
                                         onThemeColorIntensitySelected = {
                                                 viewModel.setThemeColorIntensity(it)
                                         },
-                                        backgroundTintLevel = backgroundTintLevel,
+                                        backgroundTintLevel = uiState.backgroundTintLevel,
                                         onBackgroundTintLevelSelected = {
                                                 viewModel.setBackgroundTintLevel(it)
                                         },
-                                        personalThemeSlots = personalThemeSlots,
-                                        activePersonalThemeSlotId = activePersonalThemeSlotId,
+                                        personalThemeSlots = uiState.personalThemeSlots,
+                                        activePersonalThemeSlotId = uiState.activePersonalThemeSlotId,
                                         onActivePersonalThemeSlotSelected = {
                                                 viewModel.setActivePersonalThemeSlotId(it)
                                         },
@@ -144,29 +130,29 @@ fun AppearanceSettingsScreen(
                                         onPersonalThemeAccentStyleSelected = { slotId, style ->
                                                 viewModel.setPersonalThemeAccentStyle(slotId, style)
                                         },
-                                        appFontFamily = appFontFamily,
+                                        appFontFamily = uiState.appFontFamily,
                                         onFontFamilySelected = { viewModel.setAppFontFamily(it) },
-                                        monoFontWeight = monoFontWeight,
+                                        monoFontWeight = uiState.monoFontWeight,
                                         onMonoFontWeightChange = {
                                                 viewModel.setMonoFontWeight(it)
                                         },
-                                        customFontPath = customFontPath,
-                                        customFontName = customFontName,
+                                        customFontPath = uiState.customFontPath,
+                                        customFontName = uiState.customFontName,
                                         onPickCustomFont = {
                                                 customFontLauncher.launch(arrayOf("*/*"))
                                         },
                                         onClearCustomFont = {
                                                 viewModel.clearCustomFont()
                                         },
-                                        fabPlacement = fabPlacement,
+                                        fabPlacement = uiState.fabPlacement,
                                         onFabPlacementSelected = {
                                                 viewModel.setFabPlacement(it)
                                         },
-                                        fontScalePreference = fontScalePreference,
+                                        fontScalePreference = uiState.fontScalePreference,
                                         onFontScaleSelected = { viewModel.setFontScalePreference(it) },
-                                        dataFontScalePreference = dataFontScalePreference,
+                                        dataFontScalePreference = uiState.dataFontScalePreference,
                                         onDataFontScaleSelected = { viewModel.setDataFontScalePreference(it) },
-                                        followUiFontScale = followUiFontScale,
+                                        followUiFontScale = uiState.followUiFontScale,
                                         onFollowUiFontScaleChanged = { viewModel.setFollowUiFontScale(it) },
                                         selectedAppIcon = selectedAppIcon,
                                         onAppIconSelected = { icon -> pendingAppIcon = icon }
