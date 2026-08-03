@@ -1,8 +1,14 @@
 package com.mj.yaja.ui.viewmodel
 
 import androidx.compose.runtime.Immutable
+import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.AppLanguage
+import com.mj.yaja.data.CalendarDensityPreference
+import com.mj.yaja.data.DateKeywordEntry
+import com.mj.yaja.data.DateOrderPreference
+import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.NavigationChromeMode
+import java.time.DayOfWeek
 
 @Immutable
 data class RootSettingsUiState(
@@ -33,4 +39,22 @@ data class NavigationGesturesSettingsUiState(
     val swipeToNavigateDatesEnabled: Boolean = true,
     val enableDragAndDrop: Boolean = false,
     val entryDeleteSelectionEnabled: Boolean = false
+)
+
+@Immutable
+data class JournalExperienceSettingsUiState(
+    val animationPreference: AnimationPreference = AnimationPreference.FULL,
+    val isPreviewLimitEnabled: Boolean = false,
+    val previewLimitLength: Int = 280,
+    val showTimestamps: Boolean = true,
+    val allowFutureEntries: Boolean = true,
+    val firstDayOfWeek: DayOfWeek = DayOfWeek.MONDAY,
+    val dateOrderPreference: DateOrderPreference = DateOrderPreference.AUTO,
+    val customDateKeywords: List<DateKeywordEntry> = emptyList(),
+    val showDayHeaderStats: Boolean = true,
+    val renderCheckboxesAsText: Boolean = false,
+    val carryForwardTodosEnabled: Boolean = false,
+    val calendarDensityPreference: CalendarDensityPreference = CalendarDensityPreference.COMFORTABLE,
+    val fuzzyThreshold: Float = 0.90f,
+    val entryStyle: EntryStyle = EntryStyle.CARDS
 )

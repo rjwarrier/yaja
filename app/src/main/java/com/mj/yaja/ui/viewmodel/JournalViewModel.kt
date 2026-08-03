@@ -14,6 +14,7 @@ import com.mj.yaja.data.DailyJournalMetrics
 import com.mj.yaja.data.EventItem
 import com.mj.yaja.data.EventIndexRepository
 import com.mj.yaja.data.EntryKind
+import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.applyEntryKindMetadata
 import com.mj.yaja.data.FontScalePreference
 import com.mj.yaja.data.HomeScreenSnapshot
@@ -21,6 +22,8 @@ import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.CalendarDensityPreference
 import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
+import com.mj.yaja.data.DateKeywordEntry
+import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.PersonalAccentStyle
 import com.mj.yaja.data.PersonalThemeSlot
 import com.mj.yaja.data.KeywordDefinition
@@ -154,6 +157,29 @@ class JournalViewModel(
         val swipeToNavigateDatesEnabled: Boolean,
         val enableDragAndDrop: Boolean,
         val entryDeleteSelectionEnabled: Boolean
+    )
+
+    private data class JournalExperienceDisplaySettingsSlice(
+        val animationPreference: AnimationPreference,
+        val entryStyle: EntryStyle,
+        val showTimestamps: Boolean,
+        val showDayHeaderStats: Boolean,
+        val renderCheckboxesAsText: Boolean
+    )
+
+    private data class JournalExperienceDateSettingsSlice(
+        val allowFutureEntries: Boolean,
+        val firstDayOfWeek: DayOfWeek,
+        val dateOrderPreference: DateOrderPreference,
+        val calendarDensityPreference: CalendarDensityPreference,
+        val customDateKeywords: List<DateKeywordEntry>
+    )
+
+    private data class JournalExperiencePreviewSettingsSlice(
+        val carryForwardTodosEnabled: Boolean,
+        val isPreviewLimitEnabled: Boolean,
+        val previewLimitLength: Int,
+        val fuzzyThreshold: Float
     )
 
     companion object {
@@ -407,6 +433,88 @@ class JournalViewModel(
     val useMLKitDetection = settingsRepository.useMLKitDetection
     val keywords = keywordRepository.keywords
     val fuzzyThreshold = keywordRepository.fuzzyThreshold
+    val journalExperienceSettingsUiState: StateFlow<JournalExperienceSettingsUiState> =
+        combine(
+            combine(
+                animationPreference,
+                entryStyle,
+                showTimestamps,
+                showDayHeaderStats,
+                renderCheckboxesAsText
+            ) { animation, style, timestamps, dayHeaderStats, checkboxesAsText ->
+                JournalExperienceDisplaySettingsSlice(
+                    animationPreference = animation,
+                    entryStyle = style,
+                    showTimestamps = timestamps,
+                    showDayHeaderStats = dayHeaderStats,
+                    renderCheckboxesAsText = checkboxesAsText
+                )
+            },
+            combine(
+                allowFutureEntries,
+                firstDayOfWeek,
+                dateOrderPreference,
+                calendarDensityPreference,
+                customDateKeywords
+            ) { futureEntries, firstDay, dateOrder, calendarDensity, dateKeywords ->
+                JournalExperienceDateSettingsSlice(
+                    allowFutureEntries = futureEntries,
+                    firstDayOfWeek = firstDay,
+                    dateOrderPreference = dateOrder,
+                    calendarDensityPreference = calendarDensity,
+                    customDateKeywords = dateKeywords
+                )
+            },
+            combine(
+                carryForwardTodosEnabled,
+                isPreviewLimitEnabled,
+                previewLimitLength,
+                fuzzyThreshold
+            ) { carryForward, previewLimitEnabled, previewLength, threshold ->
+                JournalExperiencePreviewSettingsSlice(
+                    carryForwardTodosEnabled = carryForward,
+                    isPreviewLimitEnabled = previewLimitEnabled,
+                    previewLimitLength = previewLength,
+                    fuzzyThreshold = threshold
+                )
+            }
+        ) { display, date, preview ->
+            JournalExperienceSettingsUiState(
+                animationPreference = display.animationPreference,
+                isPreviewLimitEnabled = preview.isPreviewLimitEnabled,
+                previewLimitLength = preview.previewLimitLength,
+                showTimestamps = display.showTimestamps,
+                allowFutureEntries = date.allowFutureEntries,
+                firstDayOfWeek = date.firstDayOfWeek,
+                dateOrderPreference = date.dateOrderPreference,
+                customDateKeywords = date.customDateKeywords,
+                showDayHeaderStats = display.showDayHeaderStats,
+                renderCheckboxesAsText = display.renderCheckboxesAsText,
+                carryForwardTodosEnabled = preview.carryForwardTodosEnabled,
+                calendarDensityPreference = date.calendarDensityPreference,
+                fuzzyThreshold = preview.fuzzyThreshold,
+                entryStyle = display.entryStyle
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = JournalExperienceSettingsUiState(
+                animationPreference = animationPreference.value,
+                isPreviewLimitEnabled = isPreviewLimitEnabled.value,
+                previewLimitLength = previewLimitLength.value,
+                showTimestamps = showTimestamps.value,
+                allowFutureEntries = allowFutureEntries.value,
+                firstDayOfWeek = firstDayOfWeek.value,
+                dateOrderPreference = dateOrderPreference.value,
+                customDateKeywords = customDateKeywords.value,
+                showDayHeaderStats = showDayHeaderStats.value,
+                renderCheckboxesAsText = renderCheckboxesAsText.value,
+                carryForwardTodosEnabled = carryForwardTodosEnabled.value,
+                calendarDensityPreference = calendarDensityPreference.value,
+                fuzzyThreshold = fuzzyThreshold.value,
+                entryStyle = entryStyle.value
+            )
+        )
     val rootSettingsUiState: StateFlow<RootSettingsUiState> =
         combine(
             appLanguage,

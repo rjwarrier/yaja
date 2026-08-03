@@ -31,21 +31,7 @@ fun JournalExperienceSettingsScreen(
         viewModel: JournalViewModel,
         onNavigateBack: () -> Unit
 ) {
-        val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
-        val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
-        val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
-        val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
-        val allowFutureEntries by viewModel.allowFutureEntries.collectAsStateWithLifecycle()
-        val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsStateWithLifecycle()
-        val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
-        val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
-        val showDayHeaderStats by viewModel.showDayHeaderStats.collectAsStateWithLifecycle()
-        val renderCheckboxesAsText by viewModel.renderCheckboxesAsText.collectAsStateWithLifecycle()
-        val carryForwardTodosEnabled by viewModel.carryForwardTodosEnabled.collectAsStateWithLifecycle()
-        val calendarDensityPreference by
-                viewModel.calendarDensityPreference.collectAsStateWithLifecycle()
-        val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
-        val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
+        val uiState by viewModel.journalExperienceSettingsUiState.collectAsStateWithLifecycle()
 
         Scaffold(
                 topBar = {
@@ -87,57 +73,57 @@ fun JournalExperienceSettingsScreen(
                                                 .verticalScroll(rememberScrollState())
                         ) {
                                 JournalExperienceSection(
-                                        renderCheckboxesAsText = renderCheckboxesAsText,
+                                        renderCheckboxesAsText = uiState.renderCheckboxesAsText,
                                         onRenderCheckboxesAsTextChange = {
                                                 viewModel.setRenderCheckboxesAsText(it)
                                         },
-                                        showDayHeaderStats = showDayHeaderStats,
+                                        showDayHeaderStats = uiState.showDayHeaderStats,
                                         onShowDayHeaderStatsChange = {
                                                 viewModel.setShowDayHeaderStats(it)
                                         },
-                                        carryForwardTodosEnabled = carryForwardTodosEnabled,
+                                        carryForwardTodosEnabled = uiState.carryForwardTodosEnabled,
                                         onCarryForwardTodosEnabledChange = {
                                                 viewModel.setCarryForwardTodosEnabled(it)
                                         },
-                                        entryStyle = entryStyle,
+                                        entryStyle = uiState.entryStyle,
                                         onEntryStyleSelected = { viewModel.setEntryStyle(it) },
-                                        calendarDensityPreference = calendarDensityPreference,
+                                        calendarDensityPreference = uiState.calendarDensityPreference,
                                         onCalendarDensityPreferenceChange = {
                                                 viewModel.setCalendarDensityPreference(it)
                                         },
-                                        dateOrderPreference = dateOrderPreference,
+                                        dateOrderPreference = uiState.dateOrderPreference,
                                         onDateOrderChange = {
                                                 viewModel.setDateOrderPreference(it)
                                         },
-                                        animationPreference = animationPreference,
+                                        animationPreference = uiState.animationPreference,
                                         onAnimationPreferenceChange = {
                                                 viewModel.setAnimationPreference(it)
                                         },
-                                        customDateKeywords = customDateKeywords,
+                                        customDateKeywords = uiState.customDateKeywords,
                                         onSetCustomDateKeywords = {
                                                 viewModel.setCustomDateKeywords(it)
                                         },
-                                        fuzzyThreshold = fuzzyThreshold,
+                                        fuzzyThreshold = uiState.fuzzyThreshold,
                                         onFuzzyThresholdChange = {
                                                 viewModel.setKeywordFuzzyThreshold(it)
                                         },
-                                        showTimestamps = showTimestamps,
+                                        showTimestamps = uiState.showTimestamps,
                                         onShowTimestampsChange = {
                                                 viewModel.setShowTimestamps(it)
                                         },
-                                        allowFutureEntries = allowFutureEntries,
+                                        allowFutureEntries = uiState.allowFutureEntries,
                                         onAllowFutureEntriesChange = {
                                                 viewModel.setAllowFutureEntries(it)
                                         },
-                                        isPreviewLimitEnabled = isPreviewLimitEnabled,
+                                        isPreviewLimitEnabled = uiState.isPreviewLimitEnabled,
                                         onIsPreviewLimitEnabledChange = {
                                                 viewModel.setPreviewLimitEnabled(it)
                                         },
-                                        previewLimitLength = previewLimitLength,
+                                        previewLimitLength = uiState.previewLimitLength,
                                         onPreviewLimitLengthChange = {
                                                 viewModel.setPreviewLimitLength(it)
                                         },
-                                        firstDayOfWeek = firstDayOfWeek,
+                                        firstDayOfWeek = uiState.firstDayOfWeek,
                                         onFirstDayOfWeekChange = {
                                                 viewModel.setFirstDayOfWeek(it)
                                         }
