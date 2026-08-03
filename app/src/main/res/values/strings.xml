@@ -132,6 +132,9 @@
     <string name="settings_language_title">App Language</string>
     <string name="settings_language_subtitle">Choose the language used throughout the app.</string>
     <string name="settings_language_system_default">System default</string>
+    <string name="settings_language_picker_title">Choose Language</string>
+    <string name="settings_language_picker_subtitle">Search or pick the display language for Yaja.</string>
+    <string name="settings_language_search_placeholder">Search languages</string>
 
     <!-- Settings: Journal Experience -->
     <string name="settings_journal_entry_style_title">Entry Style</string>
