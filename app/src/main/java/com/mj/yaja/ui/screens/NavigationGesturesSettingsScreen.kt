@@ -33,19 +33,7 @@ fun NavigationGesturesSettingsScreen(
         viewModel: JournalViewModel,
         onNavigateBack: () -> Unit
 ) {
-        val showStatistics by viewModel.showStatistics.collectAsStateWithLifecycle()
-        val showLookbackInNavBar by viewModel.showLookbackInNavBar.collectAsStateWithLifecycle()
-        val showKeywordsInNavBar by viewModel.showKeywordsInNavBar.collectAsStateWithLifecycle()
-        val showTodosInNavBar by viewModel.showTodosInNavBar.collectAsStateWithLifecycle()
-        val showStatisticsInNavBar by viewModel.showStatisticsInNavBar.collectAsStateWithLifecycle()
-        val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
-        val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
-        val adaptiveBottomNav by viewModel.adaptiveBottomNav.collectAsStateWithLifecycle()
-        val swipeToNavigateDatesEnabled by
-                viewModel.swipeToNavigateDatesEnabled.collectAsStateWithLifecycle()
-        val enableDragAndDrop by viewModel.enableDragAndDrop.collectAsStateWithLifecycle()
-        val entryDeleteSelectionEnabled by
-                viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
+        val uiState by viewModel.navigationGesturesSettingsUiState.collectAsStateWithLifecycle()
 
         Scaffold(
                 topBar = {
@@ -87,47 +75,47 @@ fun NavigationGesturesSettingsScreen(
                                                 .verticalScroll(rememberScrollState())
                         ) {
                                 NavigationSection(
-                                        navigationChromeMode = navigationChromeMode,
+                                        navigationChromeMode = uiState.navigationChromeMode,
                                         onNavigationChromeModeChange = {
                                                 viewModel.setNavigationChromeMode(it)
                                         },
-                                        showBottomPanelLabels = showBottomPanelLabels,
+                                        showBottomPanelLabels = uiState.showBottomPanelLabels,
                                         onShowBottomPanelLabelsChange = {
                                                 viewModel.setShowBottomPanelLabels(it)
                                         },
-                                        adaptiveBottomNav = adaptiveBottomNav,
+                                        adaptiveBottomNav = uiState.adaptiveBottomNav,
                                         onAdaptiveBottomNavChange = {
                                                 viewModel.setAdaptiveBottomNav(it)
                                         },
-                                        showLookbackInNavBar = showLookbackInNavBar,
+                                        showLookbackInNavBar = uiState.showLookbackInNavBar,
                                         onShowLookbackChange = {
                                                 viewModel.setShowLookbackInNavBar(it)
                                         },
-                                        showKeywordsInNavBar = showKeywordsInNavBar,
+                                        showKeywordsInNavBar = uiState.showKeywordsInNavBar,
                                         onShowKeywordsChange = {
                                                 viewModel.setShowKeywordsInNavBar(it)
                                         },
-                                        showTodosInNavBar = showTodosInNavBar,
+                                        showTodosInNavBar = uiState.showTodosInNavBar,
                                         onShowTodosChange = {
                                                 viewModel.setShowTodosInNavBar(it)
                                         },
-                                        showStatistics = showStatistics,
-                                        showStatisticsInNavBar = showStatisticsInNavBar,
+                                        showStatistics = uiState.showStatistics,
+                                        showStatisticsInNavBar = uiState.showStatisticsInNavBar,
                                         onShowStatisticsInNavBarChange = {
                                                 viewModel.setShowStatisticsInNavBar(it)
                                         }
                                 )
                                 Spacer(modifier = Modifier.height(32.dp))
                                 GesturesSection(
-                                        entryDeleteSelectionEnabled = entryDeleteSelectionEnabled,
+                                        entryDeleteSelectionEnabled = uiState.entryDeleteSelectionEnabled,
                                         onEntryDeleteSelectionEnabledChange = {
                                                 viewModel.setEntryDeleteSelectionEnabled(it)
                                         },
-                                        swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled,
+                                        swipeToNavigateDatesEnabled = uiState.swipeToNavigateDatesEnabled,
                                         onSwipeToNavigateDatesEnabledChange = {
                                                 viewModel.setSwipeToNavigateDatesEnabled(it)
                                         },
-                                        enableDragAndDrop = enableDragAndDrop,
+                                        enableDragAndDrop = uiState.enableDragAndDrop,
                                         onEnableDragAndDropChange = {
                                                 viewModel.setEnableDragAndDrop(it)
                                         }

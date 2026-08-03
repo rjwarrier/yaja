@@ -136,6 +136,26 @@ class JournalViewModel(
         val rangeEnd: LocalDate?
     )
 
+    private data class NavigationVisibilitySettingsSlice(
+        val showStatistics: Boolean,
+        val showLookbackInNavBar: Boolean,
+        val showKeywordsInNavBar: Boolean,
+        val showTodosInNavBar: Boolean,
+        val showStatisticsInNavBar: Boolean
+    )
+
+    private data class NavigationChromeSettingsSlice(
+        val navigationChromeMode: NavigationChromeMode,
+        val showBottomPanelLabels: Boolean,
+        val adaptiveBottomNav: Boolean
+    )
+
+    private data class GestureSettingsSlice(
+        val swipeToNavigateDatesEnabled: Boolean,
+        val enableDragAndDrop: Boolean,
+        val entryDeleteSelectionEnabled: Boolean
+    )
+
     companion object {
         private const val TAG = "JournalViewModel"
         private const val LARGE_JOURNAL_DATE_THRESHOLD = 1000
@@ -303,6 +323,76 @@ class JournalViewModel(
     val fabPlacement = settingsRepository.fabPlacement
     val calendarDensityPreference = settingsRepository.calendarDensityPreference
     val adaptiveBottomNav = settingsRepository.adaptiveBottomNav
+    val navigationGesturesSettingsUiState: StateFlow<NavigationGesturesSettingsUiState> =
+        combine(
+            combine(
+                showStatistics,
+                showLookbackInNavBar,
+                showKeywordsInNavBar,
+                showTodosInNavBar,
+                showStatisticsInNavBar
+            ) { statistics, lookback, keywords, todos, statisticsInNav ->
+                NavigationVisibilitySettingsSlice(
+                    showStatistics = statistics,
+                    showLookbackInNavBar = lookback,
+                    showKeywordsInNavBar = keywords,
+                    showTodosInNavBar = todos,
+                    showStatisticsInNavBar = statisticsInNav
+                )
+            },
+            combine(
+                navigationChromeMode,
+                showBottomPanelLabels,
+                adaptiveBottomNav
+            ) { chromeMode, bottomPanelLabels, adaptiveNav ->
+                NavigationChromeSettingsSlice(
+                    navigationChromeMode = chromeMode,
+                    showBottomPanelLabels = bottomPanelLabels,
+                    adaptiveBottomNav = adaptiveNav
+                )
+            },
+            combine(
+                swipeToNavigateDatesEnabled,
+                enableDragAndDrop,
+                entryDeleteSelectionEnabled
+            ) { swipeToNavigate, dragAndDrop, deleteSelection ->
+                GestureSettingsSlice(
+                    swipeToNavigateDatesEnabled = swipeToNavigate,
+                    enableDragAndDrop = dragAndDrop,
+                    entryDeleteSelectionEnabled = deleteSelection
+                )
+            }
+        ) { visibility, chrome, gestures ->
+            NavigationGesturesSettingsUiState(
+                showStatistics = visibility.showStatistics,
+                showLookbackInNavBar = visibility.showLookbackInNavBar,
+                showKeywordsInNavBar = visibility.showKeywordsInNavBar,
+                showTodosInNavBar = visibility.showTodosInNavBar,
+                showStatisticsInNavBar = visibility.showStatisticsInNavBar,
+                navigationChromeMode = chrome.navigationChromeMode,
+                showBottomPanelLabels = chrome.showBottomPanelLabels,
+                adaptiveBottomNav = chrome.adaptiveBottomNav,
+                swipeToNavigateDatesEnabled = gestures.swipeToNavigateDatesEnabled,
+                enableDragAndDrop = gestures.enableDragAndDrop,
+                entryDeleteSelectionEnabled = gestures.entryDeleteSelectionEnabled
+            )
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = NavigationGesturesSettingsUiState(
+                showStatistics = showStatistics.value,
+                showLookbackInNavBar = showLookbackInNavBar.value,
+                showKeywordsInNavBar = showKeywordsInNavBar.value,
+                showTodosInNavBar = showTodosInNavBar.value,
+                showStatisticsInNavBar = showStatisticsInNavBar.value,
+                navigationChromeMode = navigationChromeMode.value,
+                showBottomPanelLabels = showBottomPanelLabels.value,
+                adaptiveBottomNav = adaptiveBottomNav.value,
+                swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled.value,
+                enableDragAndDrop = enableDragAndDrop.value,
+                entryDeleteSelectionEnabled = entryDeleteSelectionEnabled.value
+            )
+        )
     val customShortcodes = settingsRepository.customShortcodes
     val recentTemplateIds = settingsRepository.recentTemplateIds
     val favoriteTemplateIds = settingsRepository.favoriteTemplateIds
