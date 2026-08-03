@@ -583,6 +583,53 @@ fun DataAndStorageSection(
 }
 
 @Composable
+fun DataRecoveryEntrySection(onNavigateToDataRecovery: () -> Unit) {
+    SettingsSectionHeader(
+        icon = Icons.Rounded.Storage,
+        title = stringResource(R.string.settings_data_recovery_title)
+    )
+    Spacer(modifier = Modifier.height(12.dp))
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onNavigateToDataRecovery),
+        shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Storage,
+                contentDescription = stringResource(R.string.settings_data_recovery_title),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(28.dp)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_data_recovery_title),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_data_recovery_subtitle),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
+    Spacer(modifier = Modifier.height(32.dp))
+}
+
+@Composable
 private fun ImportSourceRow(
     title: String,
     subtitle: String,

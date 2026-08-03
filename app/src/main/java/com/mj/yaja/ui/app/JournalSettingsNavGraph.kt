@@ -10,6 +10,7 @@ import androidx.core.net.toUri
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.AppLogScreen
 import com.mj.yaja.ui.screens.AppearanceSettingsScreen
+import com.mj.yaja.ui.screens.DataRecoverySettingsScreen
 import com.mj.yaja.ui.screens.DataPrivacyDashboardScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.OnboardingScreen
@@ -103,6 +104,9 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                                 navController.navigate(Route.VersionHistory.path)
                         },
                         onNavigateToAppearance = { navController.navigate(Route.Appearance.path) },
+                        onNavigateToDataRecovery = {
+                                navController.navigate(Route.DataRecovery.path)
+                        },
                         onNavigateToHelp = { navController.navigate(Route.Help.path) },
                         onNavigateToAppLog = { navController.navigate(Route.AppLog.path) },
                         onNavigateToShortcodes = { navController.navigate(Route.Shortcodes.path) },
@@ -125,6 +129,18 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                 AppearanceSettingsScreen(
                         viewModel = viewModel,
                         onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.DataRecovery.path) {
+                DataRecoverySettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() },
+                        onNavigateToRebuildCache = {
+                                navController.navigate(Route.RebuildCache.path)
+                        },
+                        onNavigateToVersionHistory = {
+                                navController.navigate(Route.VersionHistory.path)
+                        }
                 )
         }
         composable(Route.DataPrivacyDashboard.path) {

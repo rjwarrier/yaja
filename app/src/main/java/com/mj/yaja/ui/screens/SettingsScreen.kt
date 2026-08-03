@@ -1,8 +1,5 @@
 package com.mj.yaja.ui.screens
 
-import android.util.Log
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -28,7 +25,6 @@ import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Storage
 import androidx.compose.material.icons.rounded.Swipe
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -58,14 +54,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.net.toUri
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Close
@@ -109,6 +103,7 @@ fun SettingsScreen(
         onNavigateToRebuildCache: () -> Unit,
         onNavigateToVersionHistory: () -> Unit,
         onNavigateToAppearance: () -> Unit,
+        onNavigateToDataRecovery: () -> Unit,
         onNavigateToHelp: () -> Unit,
         onNavigateToAppLog: () -> Unit,
         onNavigateToShortcodes: () -> Unit,
@@ -123,18 +118,14 @@ fun SettingsScreen(
         val navigationRequester = remember { BringIntoViewRequester() }
         val reviewRequester = remember { BringIntoViewRequester() }
         val securityRequester = remember { BringIntoViewRequester() }
-        val dataRequester = remember { BringIntoViewRequester() }
         val integrationsRequester = remember { BringIntoViewRequester() }
         val helpRequester = remember { BringIntoViewRequester() }
         val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
         val animationPreference by viewModel.animationPreference.collectAsStateWithLifecycle()
         val isPreviewLimitEnabled by viewModel.isPreviewLimitEnabled.collectAsStateWithLifecycle()
         val previewLimitLength by viewModel.previewLimitLength.collectAsStateWithLifecycle()
-        val storageUriString by viewModel.storageUri.collectAsStateWithLifecycle()
         val showTimestamps by viewModel.showTimestamps.collectAsStateWithLifecycle()
         val allowFutureEntries by viewModel.allowFutureEntries.collectAsStateWithLifecycle()
-        val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
-        val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
         val firstDayOfWeek by viewModel.firstDayOfWeek.collectAsStateWithLifecycle()
         val dateOrderPreference by viewModel.dateOrderPreference.collectAsStateWithLifecycle()
         val customDateKeywords by viewModel.customDateKeywords.collectAsStateWithLifecycle()
@@ -162,38 +153,11 @@ fun SettingsScreen(
         val entryDeleteSelectionEnabled by viewModel.entryDeleteSelectionEnabled.collectAsStateWithLifecycle()
         val fuzzyThreshold by viewModel.fuzzyThreshold.collectAsStateWithLifecycle()
         val entryStyle by viewModel.entryStyle.collectAsStateWithLifecycle()
-        val swipeToSyncEnabled by viewModel.swipeToSyncEnabled.collectAsStateWithLifecycle()
-        val largeJournalSafeMode by viewModel.largeJournalSafeMode.collectAsStateWithLifecycle()
-        val showOnboardingNextLaunch by viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
-        val versionHistoryEnabled by viewModel.versionHistoryEnabled.collectAsStateWithLifecycle()
         val allowTaskerAccess by viewModel.allowTaskerAccess.collectAsStateWithLifecycle()
         val allowTaskerEvents by viewModel.allowTaskerEvents.collectAsStateWithLifecycle()
         val includeEntryTextInTaskerEvents by
                 viewModel.includeEntryTextInTaskerEvents.collectAsStateWithLifecycle()
-        val importState by viewModel.importState.collectAsStateWithLifecycle()
-        val restoreSummary by viewModel.restoreSummary.collectAsStateWithLifecycle()
-        val context = LocalContext.current
-        val formattedBackupDate =
-                remember(lastBackupTimestamp) {
-                        if (lastBackupTimestamp == 0L) {
-                                "Never"
-                        } else {
-                                val instant = java.time.Instant.ofEpochMilli(lastBackupTimestamp)
-                                val dateTime =
-                                        java.time.LocalDateTime.ofInstant(
-                                                instant,
-                                                java.time.ZoneId.systemDefault()
-                                        )
-                                val formatter =
-                                        java.time.format.DateTimeFormatter.ofPattern(
-                                                "dd-MMM-yy HH:mm 'hrs'"
-                                        )
-                                dateTime.format(formatter)
-                        }
-                }
 
-        var pendingUriString by remember { mutableStateOf<String?>(null) }
-        var showDialog by remember { mutableStateOf(false) }
         var settingsSearchQuery by rememberSaveable { mutableStateOf("") }
         var settingsSearchHistory by rememberSaveable { mutableStateOf(listOf<String>()) }
         var showSettingsSuggestions by remember { mutableStateOf(false) }
@@ -235,13 +199,13 @@ fun SettingsScreen(
                                 SettingsSearchTarget("Auto Lock", "Privacy & Security", listOf("timeout"), securityRequester),
                                 SettingsSearchTarget("Hide Text Mode", "Privacy & Security", listOf("privacy", "panic blur", "hide text"), securityRequester),
                                 SettingsSearchTarget("Privacy Dashboard", "Privacy & Security", listOf("transparency", "data dashboard", "widgets", "tasker"), securityRequester, onSelect = onNavigateToPrivacyDashboard),
-                                SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), dataRequester),
-                                SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), dataRequester),
-                                SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), dataRequester),
-                                SettingsSearchTarget("Restore Backup", "Data & Recovery", listOf("restore zip"), dataRequester),
-                                SettingsSearchTarget("Import", "Data & Recovery", listOf("day one", "journalistic"), dataRequester),
-                                SettingsSearchTarget("Rebuild Cache", "Data & Recovery", listOf("refresh cache", "rebuild"), dataRequester),
-                                SettingsSearchTarget("Version History", "Data & Recovery", listOf("snapshots", "history"), dataRequester),
+                                SettingsSearchTarget("Data & Recovery", "Data & Recovery", listOf("backup", "restore", "storage"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Storage Location", "Data & Recovery", listOf("folder", "storage"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Backup", "Data & Recovery", listOf("backup now", "backup reminder"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Restore Backup", "Data & Recovery", listOf("restore zip"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Import", "Data & Recovery", listOf("day one", "journalistic"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Rebuild Cache", "Data & Recovery", listOf("refresh cache", "rebuild"), onSelect = onNavigateToDataRecovery),
+                                SettingsSearchTarget("Version History", "Data & Recovery", listOf("snapshots", "history"), onSelect = onNavigateToDataRecovery),
                                 SettingsSearchTarget("Tasker", "Advanced Integrations", listOf("tasker integration", "automation"), integrationsRequester),
                                 SettingsSearchTarget("Shortcodes", "Advanced Integrations", listOf("snippets", "text expansion"), integrationsRequester),
                                 SettingsSearchTarget("Help & About", "Help & About", listOf("help", "about", "faq"), helpRequester),
@@ -269,159 +233,6 @@ fun SettingsScreen(
                 showSettingsSuggestions = false
                 target.onSelect?.invoke()
                 target.requester?.let { requester -> scope.launch { requester.bringIntoView() } }
-        }
-
-        val confirmLocationChange = { uriString: String? ->
-                pendingUriString = uriString
-                showDialog = true
-        }
-
-        val launcher =
-                rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri
-                        ->
-                        if (uri != null) {
-                                val contentResolver = context.contentResolver
-                                val takeFlags: Int =
-                                        android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or
-                                                android.content.Intent
-                                                        .FLAG_GRANT_WRITE_URI_PERMISSION
-                                try {
-                                        contentResolver.takePersistableUriPermission(uri, takeFlags)
-                                } catch (e: SecurityException) {
-                                        android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission", e)
-                                }
-                                val newUriString = uri.toString()
-                                if (newUriString != storageUriString) {
-                                        confirmLocationChange(newUriString)
-                                }
-                        }
-                }
-
-        val dayOneLauncher = rememberLauncherForActivityResult(
-                ActivityResultContracts.OpenDocument()
-        ) { uri -> if (uri != null) viewModel.importDayOneFile(uri, context) }
-        val journalisticLauncher = rememberLauncherForActivityResult(
-                ActivityResultContracts.OpenDocument()
-        ) { uri -> if (uri != null) viewModel.importJournalisticFile(uri, context) }
-        val markdownFolderImportLauncher = rememberLauncherForActivityResult(
-                ActivityResultContracts.OpenDocumentTree()
-        ) { uri ->
-                if (uri != null) {
-                        try {
-                                context.contentResolver.takePersistableUriPermission(
-                                        uri,
-                                        android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
-                                )
-                        } catch (e: SecurityException) {
-                                android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission for markdown folder import", e)
-                        }
-                        viewModel.importMarkdownFolder(uri, context)
-                }
-        }
-        val obsidianExportLauncher = rememberLauncherForActivityResult(
-                ActivityResultContracts.OpenDocumentTree()
-        ) { uri ->
-                if (uri != null) {
-                        try {
-                                context.contentResolver.takePersistableUriPermission(
-                                        uri,
-                                        android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or
-                                                android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                                )
-                        } catch (e: SecurityException) {
-                                android.util.Log.e("SettingsScreen", "Failed to take persistable URI permission for Obsidian export", e)
-                        }
-                        viewModel.exportObsidianVault(uri, context)
-                }
-        }
-        val backupRestoreLauncher = rememberLauncherForActivityResult(
-                ActivityResultContracts.OpenDocument()
-        ) { uri -> if (uri != null) viewModel.restoreBackupZip(uri, context) }
-
-        if (showDialog) {
-                val destName =
-                        if (pendingUriString == null) "App Internal Storage"
-                        else
-                                pendingUriString?.toUri()?.path?.substringAfterLast(":")
-                                        ?: "the new folder"
-                val currentName =
-                        if (storageUriString == null) "App Internal Storage"
-                        else
-                                storageUriString?.toUri()?.path?.substringAfterLast(":")
-                                        ?: "the current folder"
-
-                AlertDialog(
-                        onDismissRequest = { showDialog = false },
-                        title = { Text(stringResource(R.string.settings_change_storage_location_title)) },
-                        text = {
-                                Text(
-                                        stringResource(R.string.settings_change_storage_location_message, currentName, destName)
-                                )
-                        },
-                        confirmButton = {
-                                TextButton(
-                                        onClick = {
-                                                viewModel.setStorageUri(pendingUriString)
-                                                showDialog = false
-                                        }
-                                ) { Text(stringResource(R.string.settings_yes)) }
-                        },
-                        dismissButton = {
-                                TextButton(onClick = { showDialog = false }) { Text(stringResource(R.string.settings_no)) }
-                        }
-                )
-        }
-
-        restoreSummary?.let { summary ->
-                AlertDialog(
-                        onDismissRequest = { viewModel.dismissRestoreSummary() },
-                        title = { Text(stringResource(R.string.settings_restore_summary_title)) },
-                        text = {
-                                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                                        Text(
-                                                stringResource(R.string.settings_restore_section_journal),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.SemiBold
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_journal_summary, summary.newDays, summary.mergedDays, summary.skippedJournalEntries),
-                                                style = MaterialTheme.typography.bodySmall
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_section_shortcodes),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.SemiBold
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_shortcodes_summary, summary.shortcodesAdded, summary.shortcodesSkipped),
-                                                style = MaterialTheme.typography.bodySmall
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_section_date_keywords),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.SemiBold
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_date_keywords_summary, summary.dateKeywordsAdded, summary.dateKeywordsSkipped),
-                                                style = MaterialTheme.typography.bodySmall
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_section_people_places),
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                fontWeight = FontWeight.SemiBold
-                                        )
-                                        Text(
-                                                stringResource(R.string.settings_restore_people_places_summary, summary.peoplePlacesAdded, summary.peoplePlacesSkipped),
-                                                style = MaterialTheme.typography.bodySmall
-                                        )
-                                }
-                        },
-                        confirmButton = {
-                                TextButton(onClick = { viewModel.dismissRestoreSummary() }) {
-                                        Text(stringResource(R.string.action_done))
-                                }
-                        }
-                )
         }
 
         Scaffold(
@@ -672,54 +483,9 @@ fun SettingsScreen(
                                                 )
                                         }
 
-                                        Column(modifier = Modifier.bringIntoViewRequester(dataRequester)) {
-                                                DataAndStorageSection(
-                                                        storageLocationText = if (storageUriString == null) {
-                                                                "App Internal Storage (Default)"
-                                                        } else {
-                                                                "Custom Folder:\n" + (storageUriString?.toUri()?.path?.substringAfterLast(":") ?: "")
-                                                        },
-                                                        hasCustomStorage = storageUriString != null,
-                                                        onResetStorage = { confirmLocationChange(null) },
-                                                        onChooseFolder = { launcher.launch(null) },
-                                                        formattedBackupDate = formattedBackupDate,
-                                                        backupReminderDays = backupReminderDays,
-                                                        onBackupNow = { viewModel.backupData(context) },
-                                                        onBackupReminderDaysChange = { viewModel.setBackupReminderDays(it) },
-                                                        onRestoreBackup = {
-                                                                backupRestoreLauncher.launch(arrayOf("application/zip", "*/*"))
-                                                        },
-                                                        onExportObsidianVault = {
-                                                                obsidianExportLauncher.launch(null)
-                                                        },
-                                                        onRefreshCache = onNavigateToRebuildCache,
-                                                        swipeToSyncEnabled = swipeToSyncEnabled,
-                                                        onSwipeToSyncEnabledChange = { viewModel.setSwipeToSyncEnabled(it) },
-                                                        largeJournalSafeMode = largeJournalSafeMode,
-                                                        onLargeJournalSafeModeChange = { viewModel.setLargeJournalSafeMode(it) },
-                                                        showOnboardingNextLaunch = showOnboardingNextLaunch,
-                                                        onShowOnboardingNextLaunchChange = {
-                                                                viewModel.setShowOnboardingNextLaunch(it)
-                                                        },
-                                                        versionHistoryEnabled = versionHistoryEnabled,
-                                                        onVersionHistoryEnabledChange = {
-                                                                viewModel.setVersionHistoryEnabled(it)
-                                                        },
-                                                        onNavigateToVersionHistory = onNavigateToVersionHistory,
-                                                        importState = importState,
-                                                        onLaunchDayOneImport = {
-                                                                dayOneLauncher.launch(arrayOf("application/zip", "application/json", "*/*"))
-                                                        },
-                                                        onLaunchJournalisticImport = {
-                                                                journalisticLauncher.launch(arrayOf("application/json", "*/*"))
-                                                        },
-                                                        onLaunchMarkdownFolderImport = {
-                                                                markdownFolderImportLauncher.launch(null)
-                                                        },
-                                                        onCancelImport = { viewModel.cancelImport() },
-                                                        onResetImportState = { viewModel.resetImportState() }
-                                                )
-                                        }
+                                        DataRecoveryEntrySection(
+                                                onNavigateToDataRecovery = onNavigateToDataRecovery
+                                        )
 
                                         Column(modifier = Modifier.bringIntoViewRequester(integrationsRequester)) {
                                                 TaskerIntegrationSection(

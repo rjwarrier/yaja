@@ -94,6 +94,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_appearance_subtitle">Theme, colors, fonts and personal styles</string>
+    <string name="settings_data_recovery_subtitle">Storage, backups, restore, imports and cache tools</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_font">Font</string>
     <string name="settings_storage">Storage</string>

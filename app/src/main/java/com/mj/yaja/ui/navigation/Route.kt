@@ -15,6 +15,7 @@ sealed class Route(val path: String) {
     data object Onboarding : Route("onboarding")
     data object Settings : Route("settings")
     data object Appearance : Route("appearance")
+    data object DataRecovery : Route("data_recovery")
     data object RebuildCache : Route("rebuild_cache")
     data object VersionHistory : Route("version_history")
     data object VersionSnapshots : Route("version_snapshots")
