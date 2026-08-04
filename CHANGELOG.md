@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.1 - August 4, 2026
 
 ### Highlights
 - Reworked Settings into a lighter hub so larger settings groups now open in their own focused screens.
@@ -30,6 +30,11 @@
 - Continued the Stage 10 split by moving version-history snapshot listing and restore orchestration into `JournalMutationService`.
 - Continued the Stage 10 split by moving Room cache priming, full cache population, hot-window refresh, incremental warmup, cache invalidation, and cache day persistence into `JournalCacheCoordinator`.
 - Completed the Stage 10 `MarkdownFileManager` split by moving entry read/revalidation paths into `JournalCacheCoordinator`, todo/event index synchronization into `JournalIndexCoordinator`, and frontmatter scanning into `JournalMetadataRepository`.
+- Removed the no-op disk-cache stubs left over from the Stage 10 split (and their now-dead constructor parameters in `JournalQueryService`/`JournalIndexCoordinator`).
+- Hoisted three regexes that were being recompiled on every call in `AddEntryComponents`, `EntryRevisitCodec`, and `EntryCoordinator`, and cached the per-keyword mention-match regex used while typing.
+- Guarded a per-mutation debug log and stripped `Log.d`/`v`/`i` calls from release builds via ProGuard.
+- Fixed Appearance, Language, and Recurring Tasks animations that bypassed the user's Animation preference (Full/Reduced/Off).
+- Fixed a linear keyword-lookup scan in `ObsidianExporter` that reran per match instead of once per export.
 
 ### Verification
 - Created a source-only backup zip before implementation: `_code_backups/yaja-v2-source-20260803-194508.zip`.
