@@ -13,6 +13,7 @@ data class EntryRevisitMetadata(
 
 private val revisitCommentRegex =
     Regex("""^<!--revisit:(\d{4}-\d{2}-\d{2})(?:\|([^>]*))?-->\n?""", RegexOption.MULTILINE)
+private val revisitTimeMetadataRegex = Regex("^<!--time:[^>]+-->\\n?")
 
 fun parseEntryRevisitMetadata(entry: String): EntryRevisitMetadata {
     val match = revisitCommentRegex.find(entry) ?: return EntryRevisitMetadata()
@@ -56,8 +57,7 @@ fun applyEntryRevisitMetadata(
             "<!--revisit:$revisitOn|$encodedNote-->"
         }
 
-    val timeRegex = Regex("^<!--time:[^>]+-->\\n?")
-    val timeMatch = timeRegex.find(withoutRevisit)
+    val timeMatch = revisitTimeMetadataRegex.find(withoutRevisit)
     return if (timeMatch != null) {
         val timePrefix = timeMatch.value.trimEnd('\n')
         val body = withoutRevisit.removePrefix(timeMatch.value).trimStart('\n')

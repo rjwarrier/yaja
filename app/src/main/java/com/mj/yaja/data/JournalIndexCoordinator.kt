@@ -2,6 +2,7 @@ package com.mj.yaja.data
 
 import android.content.Context
 import android.util.Log
+import com.mj.yaja.BuildConfig
 import com.mj.yaja.data.storage.JournalStorage
 import com.mj.yaja.data.storage.JournalStorageFingerprint
 import com.mj.yaja.ui.widget.WidgetRefreshCoordinator
@@ -18,8 +19,7 @@ internal class JournalIndexCoordinator(
     private val dateMetadataCache: ConcurrentHashMap<LocalDate, DateFileMetadata>,
     private val todoIndexRepository: TodoIndexRepository,
     private val eventIndexRepository: EventIndexRepository,
-    private val dayLabelProvider: (LocalDate) -> String,
-    private val saveDateMetadataCache: () -> Unit
+    private val dayLabelProvider: (LocalDate) -> String
 ) {
     fun syncTodoIndexForDate(
         date: LocalDate,
@@ -39,10 +39,12 @@ internal class JournalIndexCoordinator(
             todoIndexRepository.replaceDate(date, entries, dayLabelProvider(date))
             eventIndexRepository.replaceDate(date, entries)
         }
-        Log.d(
-            TODO_PIPELINE_TAG,
-            "Todo/event indexes synced: date=$date todoRows=${todoIndexRepository.getEntries().size} eventRows=${eventIndexRepository.getEntries().size}"
-        )
+        if (BuildConfig.DEBUG) {
+            Log.d(
+                TODO_PIPELINE_TAG,
+                "Todo/event indexes synced: date=$date todoRows=${todoIndexRepository.getEntries().size} eventRows=${eventIndexRepository.getEntries().size}"
+            )
+        }
         WidgetRefreshCoordinator.requestTodoListUpdate(context)
     }
 
@@ -68,7 +70,6 @@ internal class JournalIndexCoordinator(
     fun syncDateFileMetadata(date: LocalDate) {
         journalStorage.getDateFileMetadata(date, settingsRepository.storageUri.value)?.let {
             dateMetadataCache[date] = DateFileMetadata(it.first, it.second)
-            saveDateMetadataCache()
         }
     }
 

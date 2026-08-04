@@ -61,7 +61,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.AppLanguage
+import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.expressivePressMotion
+import com.mj.yaja.ui.design.tweenSpec
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -362,6 +364,7 @@ private fun LanguageOptionRow(
     onClick: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
+    val animationPreference = LocalAnimationPreference.current
     val containerColor by animateColorAsState(
         targetValue =
             if (isSelected) {
@@ -369,6 +372,7 @@ private fun LanguageOptionRow(
             } else {
                 MaterialTheme.colorScheme.surfaceContainerLow
             },
+        animationSpec = animationPreference.tweenSpec(200),
         label = "languageOptionContainer"
     )
     val contentColor by animateColorAsState(
@@ -378,6 +382,7 @@ private fun LanguageOptionRow(
             } else {
                 MaterialTheme.colorScheme.onSurface
             },
+        animationSpec = animationPreference.tweenSpec(200),
         label = "languageOptionContent"
     )
     val borderColor by animateColorAsState(
@@ -387,10 +392,12 @@ private fun LanguageOptionRow(
             } else {
                 MaterialTheme.colorScheme.outlineVariant
             },
+        animationSpec = animationPreference.tweenSpec(200),
         label = "languageOptionBorder"
     )
     val startPadding by animateDpAsState(
         targetValue = if (isSelected) 18.dp else 16.dp,
+        animationSpec = animationPreference.tweenSpec(200),
         label = "languageOptionPadding"
     )
 

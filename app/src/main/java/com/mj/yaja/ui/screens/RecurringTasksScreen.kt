@@ -100,6 +100,8 @@ import com.mj.yaja.data.RecurringTaskFrequency
 import com.mj.yaja.data.RecurringTaskItem
 import com.mj.yaja.data.RecurringTaskScheduleMode
 import com.mj.yaja.data.NavigationChromeMode
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.dpSpring
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.time.Instant
 import java.time.LocalDate
@@ -1483,6 +1485,8 @@ private fun <T> RecurringTaskSegmentedSelector(
 ) {
     if (options.isEmpty()) return
 
+    val animationPreference = LocalAnimationPreference.current
+
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(999.dp),
@@ -1495,7 +1499,7 @@ private fun <T> RecurringTaskSegmentedSelector(
             val slotWidth = (maxWidth - gap * (options.size - 1)) / options.size
             val pillOffset by animateDpAsState(
                 targetValue = (slotWidth + gap) * selectedIndex,
-                animationSpec = spring(
+                animationSpec = animationPreference.dpSpring(
                     dampingRatio = Spring.DampingRatioNoBouncy,
                     stiffness = Spring.StiffnessMediumLow
                 ),

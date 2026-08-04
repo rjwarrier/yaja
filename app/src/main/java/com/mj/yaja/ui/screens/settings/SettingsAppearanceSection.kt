@@ -92,6 +92,7 @@ import com.mj.yaja.ui.design.exitOrNone
 import com.mj.yaja.ui.design.expressivePressMotion
 import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.design.floatSpring
+import com.mj.yaja.ui.design.dpSpring
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.Spring
@@ -600,7 +601,7 @@ private fun SourceToggleRow(
             val targetOffset = if (selected == ColorSource.MATERIAL_YOU) 0.dp else slotWidth + gap
             val pillOffset by animateDpAsState(
                 targetValue = targetOffset,
-                animationSpec = spring(
+                animationSpec = animationPreference.dpSpring(
                     dampingRatio = Spring.DampingRatioNoBouncy,
                     stiffness = Spring.StiffnessMedium
                 ),

@@ -43,6 +43,10 @@ class ObsidianExporter(
         val root = DocumentFile.fromTreeUri(context, treeUri)
             ?: throw IllegalStateException("Could not open the selected folder")
 
+        // Resolved once for the whole export instead of once per match/tag — getKeywordById
+        // is a linear scan, and a long journal export can hit it thousands of times.
+        val keywordNames = keywordRepository.keywords.value.associate { it.id to it.name }
+
         val sorted = dates.sorted()
         val total = sorted.size
         var exported = 0
@@ -57,7 +61,7 @@ class ObsidianExporter(
                 if (entries.isEmpty()) return@forEachIndexed
 
                 val matches = keywordMatchCache.getMatchesForDate(date)
-                val body = buildVaultNote(date, entries, matches)
+                val body = buildVaultNote(date, entries, matches, keywordNames)
 
                 val dayFile = resolveDayFile(root, date) ?: return@forEachIndexed
                 context.contentResolver.openOutputStream(dayFile.uri, "wt")?.use { out ->
@@ -85,10 +89,11 @@ class ObsidianExporter(
     private fun buildVaultNote(
         date: LocalDate,
         entries: List<String>,
-        matches: List<KeywordMatch>
+        matches: List<KeywordMatch>,
+        keywordNames: Map<String, String>
     ): String {
         val tags = matches
-            .mapNotNull { keywordRepository.getKeywordById(it.keywordId)?.name }
+            .mapNotNull { keywordNames[it.keywordId] }
             .distinct()
 
         val frontmatter = buildString {
@@ -101,8 +106,9 @@ class ObsidianExporter(
             appendLine("---")
         }
 
+        val matchesByEntryIndex = matches.groupBy { it.entryIndex }
         val linkedEntries = entries.mapIndexed { entryIndex, entry ->
-            applyWikilinks(entry, matches.filter { it.entryIndex == entryIndex })
+            applyWikilinks(entry, matchesByEntryIndex[entryIndex].orEmpty(), keywordNames)
         }
 
         return frontmatter + "\n" + linkedEntries.joinToString("\n\n")
@@ -110,7 +116,11 @@ class ObsidianExporter(
 
     /** Rewrites each keyword mention span as an Obsidian `[[wikilink]]`, using the
      *  keyword's canonical name rather than the raw matched alias text. */
-    private fun applyWikilinks(entry: String, entryMatches: List<KeywordMatch>): String {
+    private fun applyWikilinks(
+        entry: String,
+        entryMatches: List<KeywordMatch>,
+        keywordNames: Map<String, String>
+    ): String {
         val valid = entryMatches
             .filter { it.startIndex >= 0 && it.endExclusive in (it.startIndex + 1)..entry.length }
             .sortedByDescending { it.startIndex }
@@ -120,7 +130,7 @@ class ObsidianExporter(
         var lastReplacedStart = entry.length
         for (match in valid) {
             if (match.endExclusive > lastReplacedStart) continue // overlapping match, skip
-            val name = keywordRepository.getKeywordById(match.keywordId)?.name ?: continue
+            val name = keywordNames[match.keywordId] ?: continue
             result.replace(match.startIndex, match.endExclusive, "[[$name]]")
             lastReplacedStart = match.startIndex
         }

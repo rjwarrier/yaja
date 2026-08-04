@@ -104,9 +104,12 @@ fun convertReviewTodosToChecklist(text: String): String {
                 }
 }
 
+// Compiled once instead of per call to extractTodoTexts.
+private val CLAUSE_SPLIT_REGEX = Regex("(?<=[.!?;])\\s+|\\s+[-+*>\\u2022]\\s+")
+
 private fun extractTodoTexts(line: String): List<String> {
         val clauses =
-                line.split(Regex("(?<=[.!?;])\\s+|\\s+[-+*>\\u2022]\\s+"))
+                line.split(CLAUSE_SPLIT_REGEX)
                         .map { it.trim() }
                         .filter { it.isNotBlank() }
         val lineStartsWithTodo = startsWithTodoTrigger(line.trim())
@@ -161,6 +164,15 @@ private val todoTriggerRegex =
                 "(?i)\\b(todo:|todo\\s+|need to\\s+|have to\\s+|should\\s+|must\\s+|plan to\\s+|remember to\\s+|remember\\s+|i should\\s+|i need to\\s+|i have to\\s+|got to\\s+|dont forget to\\s+|don't forget to\\s+|follow up with\\s+)"
         )
 
+// Called on every keystroke via buildReviewMentionSuggestions; caches per-term
+// word-boundary regexes so typing doesn't recompile them for every keyword/alias.
+private val termMatchRegexCache = java.util.concurrent.ConcurrentHashMap<String, Regex>()
+
+private fun termMatchRegex(term: String): Regex =
+        termMatchRegexCache.getOrPut(term) {
+                Regex("\\b${Regex.escape(term)}\\b", RegexOption.IGNORE_CASE)
+        }
+
 fun buildReviewMentionSuggestions(
         text: String,
         keywords: List<KeywordDefinition>
@@ -175,12 +187,7 @@ fun buildReviewMentionSuggestions(
                                         .filter { it.isNotBlank() }
                         val matches =
                                 terms.sumOf { term ->
-                                        Regex(
-                                                        "\\b${Regex.escape(term)}\\b",
-                                                        RegexOption.IGNORE_CASE
-                                                )
-                                                .findAll(text)
-                                                .count()
+                                        termMatchRegex(term).findAll(text).count()
                                 }
                         if (matches > 0) {
                                 ReviewMentionSuggestion(

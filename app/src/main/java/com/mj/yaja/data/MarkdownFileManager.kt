@@ -187,11 +187,7 @@ class MarkdownFileManager(
             dao = dao,
             isCachePopulated = { cachePopulated },
             allJournalDatesProvider = { forceRefresh -> getAllJournalDatesLightweight(forceRefresh) },
-            entriesForDateProvider = { date -> getEntriesForDate(date) },
-            loadEntryCountCache = { loadEntryCountCacheFromDisk() },
-            loadWordCountCache = { loadWordCountCacheFromDisk() },
-            saveEntryCountCache = { saveEntryCountCacheToDisk() },
-            saveWordCountCache = { saveWordCountCacheToDisk() }
+            entriesForDateProvider = { date -> getEntriesForDate(date) }
         )
     private val journalBackupGateway by lazy {
         JournalBackupGateway(
@@ -322,8 +318,7 @@ class MarkdownFileManager(
             dateMetadataCache = dateMetadataCache,
             todoIndexRepository = todoIndexRepository,
             eventIndexRepository = eventIndexRepository,
-            dayLabelProvider = { date -> getDayLabel(date) },
-            saveDateMetadataCache = { saveDateMetadataCacheToDisk() }
+            dayLabelProvider = { date -> getDayLabel(date) }
         )
     }
 
@@ -340,24 +335,11 @@ class MarkdownFileManager(
     private fun deleteDayFromDb(date: LocalDate, immediate: Boolean = false) =
         journalCacheCoordinator.deleteDayFromDb(date, immediate)
 
-    private fun saveLabelsCacheToDisk(immediate: Boolean = false) {}
-    private fun loadLabelsCacheFromDisk(): Boolean = false
-    private fun loadEntryCountCacheFromDisk(): Boolean = false
-    private fun saveEntryCountCacheToDisk(immediate: Boolean = false) {}
-    private fun loadWordCountCacheFromDisk(): Boolean = false
-    private fun saveWordCountCacheToDisk(immediate: Boolean = false) {}
-    private fun loadDateMetadataCacheFromDisk(): Boolean = false
-    private fun saveDateMetadataCacheToDisk(immediate: Boolean = false) {}
-    private fun persistDateIntCache(targetFile: File, source: Map<LocalDate, Int>, label: String) {}
-
     private fun ensureCachePopulated(onProgress: ((Int, Int) -> Unit)? = null) =
         journalCacheCoordinator.ensureCachePopulated(this, migrationJob, onProgress)
 
     private fun ensureFrontmatterPopulated() =
         journalCacheCoordinator.ensureFrontmatterPopulated(this, migrationJob)
-
-    private fun saveCacheToDisk(immediate: Boolean = false) {}
-    private fun loadCacheFromDisk(): Boolean = false
 
     fun primeCachesFromDisk(): Boolean =
         journalCacheCoordinator.primeCachesFromDisk(this)

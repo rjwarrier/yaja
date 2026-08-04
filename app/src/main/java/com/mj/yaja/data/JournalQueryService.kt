@@ -15,11 +15,7 @@ internal class JournalQueryService(
     private val dao: JournalCacheDao,
     private val isCachePopulated: () -> Boolean,
     private val allJournalDatesProvider: (forceRefresh: Boolean) -> Set<LocalDate>,
-    private val entriesForDateProvider: (LocalDate) -> List<String>,
-    private val loadEntryCountCache: () -> Boolean,
-    private val loadWordCountCache: () -> Boolean,
-    private val saveEntryCountCache: () -> Unit,
-    private val saveWordCountCache: () -> Unit
+    private val entriesForDateProvider: (LocalDate) -> List<String>
 ) {
     fun getAllJournalDatesWithData(): Set<LocalDate> {
         return if (isCachePopulated()) cache.keys.toSet() else allJournalDatesProvider(false)
@@ -65,14 +61,7 @@ internal class JournalQueryService(
     }
 
     fun getDailyMetricsSnapshotForDates(dates: Iterable<LocalDate>): Map<LocalDate, DailyJournalMetrics> {
-        if (entryCountCache.isEmpty()) {
-            loadEntryCountCache()
-        }
-        if (wordCountCache.isEmpty()) {
-            loadWordCountCache()
-        }
         val snapshot = linkedMapOf<LocalDate, DailyJournalMetrics>()
-        var didMutateCache = false
         dates.forEach { date ->
             val cachedEntryCount = entryCountCache[date]
             val cachedWordCount = wordCountCache[date]
@@ -90,24 +79,15 @@ internal class JournalQueryService(
                     )
                     entryCountCache[date] = metrics.entryCount
                     wordCountCache[date] = metrics.wordCount
-                    didMutateCache = true
                     snapshot[date] = metrics
                 }
             }
-        }
-        if (didMutateCache) {
-            saveEntryCountCache()
-            saveWordCountCache()
         }
         return snapshot
     }
 
     fun getWordCountSnapshotSince(startDate: LocalDate): Map<LocalDate, Int> {
-        if (wordCountCache.isEmpty()) {
-            loadWordCountCache()
-        }
         val snapshot = linkedMapOf<LocalDate, Int>()
-        var didMutateCache = false
         allJournalDatesProvider(true)
             .asSequence()
             .filter { !it.isBefore(startDate) }
@@ -122,15 +102,10 @@ internal class JournalQueryService(
                         val count = countWordsIgnoringChecklistMarkers(entries)
                         entryCountCache[date] = entries.size
                         wordCountCache[date] = count
-                        didMutateCache = true
                         snapshot[date] = count
                     }
                 }
             }
-        if (didMutateCache) {
-            saveEntryCountCache()
-            saveWordCountCache()
-        }
         return snapshot
     }
 

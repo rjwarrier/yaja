@@ -71,3 +71,11 @@
 -keep class com.mj.yaja.ui.screens.QuickCaptureActivity
 -keep class com.mj.yaja.TaskerReceiver
 -keep class com.mj.yaja.YajaApplication
+
+# ── Strip debug/verbose logging from release builds ──────────────────────────
+# Log.w/e are kept: crash and error paths stay diagnosable via logcat.
+-assumenosideeffects class android.util.Log {
+    public static int d(...);
+    public static int v(...);
+    public static int i(...);
+}

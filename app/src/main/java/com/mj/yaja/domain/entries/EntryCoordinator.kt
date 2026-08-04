@@ -37,6 +37,10 @@ data class DeleteCommitResult(
     val deletedCount: Int
 )
 
+// Compiled once instead of per updateEntry call.
+private val ENTRY_TIME_METADATA_REGEX =
+    Regex("^<!--time:(\\d{2}:\\d{2})(?:, added on (.*?))?-->\\n?")
+
 class EntryCoordinator(
     private val fileManager: MarkdownFileManager,
     private val settingsRepository: SettingsRepository,
@@ -84,8 +88,7 @@ class EntryCoordinator(
         if (index == -1) return
 
         var finalNewEntry = newEntry
-        val timeRegex = Regex("^<!--time:(\\d{2}:\\d{2})(?:, added on (.*?))?-->\\n?")
-        val match = timeRegex.find(oldEntry)
+        val match = ENTRY_TIME_METADATA_REGEX.find(oldEntry)
         if (!finalNewEntry.startsWith("<!--time:")) {
             finalNewEntry =
                 when {
