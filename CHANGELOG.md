@@ -27,6 +27,7 @@
 - Continued the Stage 10 split by moving frontmatter write mutations for revisits, day labels, and starred dates into `JournalMetadataRepository` while preserving date-level locks in the facade.
 - Continued the Stage 10 split by introducing `JournalCacheCoordinator` for cache statistics, lightweight date discovery, cached entry/label reads, fingerprint persistence, and fingerprint refresh scheduling.
 - Continued the Stage 10 split by moving version-history snapshot listing and restore orchestration into `JournalMutationService`.
+- Continued the Stage 10 split by moving Room cache priming, full cache population, hot-window refresh, incremental warmup, cache invalidation, and cache day persistence into `JournalCacheCoordinator`.
 
 ### Verification
 - Created a source-only backup zip before implementation: `_code_backups/yaja-v2-source-20260803-194508.zip`.
@@ -44,6 +45,7 @@
 - Verified the Stage 10 frontmatter mutation extraction with `:app:compileDebugKotlin`.
 - Verified the Stage 10 cache coordinator extraction with `:app:compileDebugKotlin`.
 - Verified the Stage 10 version-history mutation extraction with `:app:compileDebugKotlin`.
+- Verified the Stage 10 cache warmup/population extraction with `:app:compileDebugKotlin`.
 - Verified the final debug APK build with `:app:assembleDebug`.
 - Installed the latest debug build to the connected device as an update, preserving app data.
 
