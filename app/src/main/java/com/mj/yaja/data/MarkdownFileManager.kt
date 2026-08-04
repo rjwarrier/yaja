@@ -1665,6 +1665,7 @@ class MarkdownFileManager(
         shortcodes: Map<String, String>,
         dateKeywords: List<DateKeywordEntry> = emptyList(),
         keywords: List<KeywordDefinition> = emptyList(),
+        recurringTasks: List<RecurringTaskItem> = emptyList(),
         onProgress: (Int, Int) -> Unit = { _, _ -> }
     ): BackupService.BackupZipResult? {
         Log.d(TAG, "Direct backup started")
@@ -1672,6 +1673,7 @@ class MarkdownFileManager(
             shortcodes = shortcodes,
             dateKeywords = dateKeywords,
             keywords = keywords,
+            recurringTasks = recurringTasks,
             writeJournalFiles = { zip ->
                 journalStorage.copyJournalFilesToZip(
                     zip = zip,

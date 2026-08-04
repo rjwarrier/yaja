@@ -17,7 +17,7 @@ import androidx.room.TypeConverters
         RecurringTaskGenerationEntity::class
     ],
     version = 8,
-    exportSchema = false
+    exportSchema = true
 )
 @TypeConverters(JournalTypeConverters::class)
 abstract class JournalDatabase : RoomDatabase() {
@@ -31,6 +31,37 @@ abstract class JournalDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: JournalDatabase? = null
+
+        val MIGRATION_1_2 = object : androidx.room.migration.Migration(1, 2) {
+            override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                db.execSQL("DROP TABLE IF EXISTS `journal_day_cache_migration`")
+                createJournalDayCacheTable(db, "journal_day_cache_migration")
+                if (hasTable(db, "journal_day_cache")) {
+                    val columns = tableColumns(db, "journal_day_cache")
+                    db.execSQL(
+                        "INSERT OR REPLACE INTO `journal_day_cache_migration` (" +
+                            "`date`, `journalId`, `entries`, `isStarred`, `label`, `revisitOn`, " +
+                            "`revisitNote`, `wordCount`, `entryCount`, `fileModifiedAt`, `fileSize`" +
+                            ") SELECT " +
+                            selectColumn(columns, "date", "''") + ", " +
+                            selectColumn(columns, "journalId", "'default'") + ", " +
+                            selectColumn(columns, "entries", "'[]'") + ", " +
+                            selectColumn(columns, "isStarred", "0") + ", " +
+                            selectColumn(columns, "label", "''") + ", " +
+                            selectColumn(columns, "revisitOn", "NULL") + ", " +
+                            selectColumn(columns, "revisitNote", "''") + ", " +
+                            selectColumn(columns, "wordCount", "0") + ", " +
+                            selectColumn(columns, "entryCount", "0") + ", " +
+                            selectColumn(columns, "fileModifiedAt", "0") + ", " +
+                            selectColumn(columns, "fileSize", "0") +
+                            " FROM `journal_day_cache` WHERE " + selectColumn(columns, "date", "''") + " != ''"
+                    )
+                    db.execSQL("DROP TABLE `journal_day_cache`")
+                }
+                db.execSQL("ALTER TABLE `journal_day_cache_migration` RENAME TO `journal_day_cache`")
+                createJournalDayCacheIndexes(db)
+            }
+        }
 
         val MIGRATION_2_3 = object : androidx.room.migration.Migration(2, 3) {
             override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
@@ -169,13 +200,59 @@ abstract class JournalDatabase : RoomDatabase() {
             table: String,
             column: String
         ): Boolean =
+            tableColumns(db, table).contains(column)
+
+        private fun hasTable(
+            db: androidx.sqlite.db.SupportSQLiteDatabase,
+            table: String
+        ): Boolean =
+            db.query(
+                "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
+                arrayOf(table)
+            ).use { cursor -> cursor.moveToFirst() }
+
+        private fun tableColumns(
+            db: androidx.sqlite.db.SupportSQLiteDatabase,
+            table: String
+        ): Set<String> =
             db.query("PRAGMA table_info(`$table`)").use { cursor ->
                 val nameIndex = cursor.getColumnIndex("name")
+                val columns = mutableSetOf<String>()
                 while (cursor.moveToNext()) {
-                    if (nameIndex >= 0 && cursor.getString(nameIndex) == column) return@use true
+                    if (nameIndex >= 0) columns += cursor.getString(nameIndex)
                 }
-                false
+                columns
             }
+
+        private fun selectColumn(columns: Set<String>, column: String, fallback: String): String =
+            if (columns.contains(column)) "`$column`" else fallback
+
+        private fun createJournalDayCacheTable(
+            db: androidx.sqlite.db.SupportSQLiteDatabase,
+            table: String
+        ) {
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `$table` (" +
+                    "`date` TEXT NOT NULL, " +
+                    "`journalId` TEXT NOT NULL, " +
+                    "`entries` TEXT NOT NULL, " +
+                    "`isStarred` INTEGER NOT NULL, " +
+                    "`label` TEXT NOT NULL, " +
+                    "`revisitOn` TEXT, " +
+                    "`revisitNote` TEXT NOT NULL, " +
+                    "`wordCount` INTEGER NOT NULL, " +
+                    "`entryCount` INTEGER NOT NULL, " +
+                    "`fileModifiedAt` INTEGER NOT NULL, " +
+                    "`fileSize` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`journalId`, `date`)" +
+                    ")"
+            )
+        }
+
+        private fun createJournalDayCacheIndexes(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+            db.execSQL("CREATE INDEX IF NOT EXISTS `index_journal_day_cache_journalId_isStarred_date` ON `journal_day_cache` (`journalId`, `isStarred`, `date`)")
+            db.execSQL("CREATE INDEX IF NOT EXISTS `index_journal_day_cache_journalId_revisitOn_date` ON `journal_day_cache` (`journalId`, `revisitOn`, `date`)")
+        }
 
         fun getDatabase(context: Context): JournalDatabase {
             return INSTANCE ?: synchronized(this) {
@@ -184,8 +261,7 @@ abstract class JournalDatabase : RoomDatabase() {
                     JournalDatabase::class.java,
                     "journal_database"
                 )
-                .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
-                .fallbackToDestructiveMigration()
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
                 .build()
                 INSTANCE = instance
                 instance

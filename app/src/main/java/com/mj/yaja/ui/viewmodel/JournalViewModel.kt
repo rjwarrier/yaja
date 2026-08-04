@@ -124,7 +124,9 @@ class JournalViewModel(
         val dateKeywordsAdded: Int,
         val dateKeywordsSkipped: Int,
         val peoplePlacesAdded: Int,
-        val peoplePlacesSkipped: Int
+        val peoplePlacesSkipped: Int,
+        val recurringTasksAdded: Int = 0,
+        val recurringTasksSkipped: Int = 0
     )
 
     private data class StatisticsBuildResult(
@@ -1437,8 +1439,9 @@ class JournalViewModel(
                 val shortcodes = settingsRepository.customShortcodes.value
                 val dateKeywords = settingsRepository.customDateKeywords.value
                 val keywordList = keywordRepository.keywords.value
+                val recurringTaskList = recurringTaskRepository.exportAll()
                 val result = withContext(Dispatchers.IO) {
-                    fileManager.createBackupZip(shortcodes, dateKeywords, keywordList) { current, total ->
+                    fileManager.createBackupZip(shortcodes, dateKeywords, keywordList, recurringTaskList) { current, total ->
                         val scanProgress = current.toFloat() / total.coerceAtLeast(1).toFloat()
                         _backgroundWorkLabel.value = "Backing up data"
                         _syncProgress.value = 0.05f + (scanProgress * 0.82f)
@@ -1579,6 +1582,9 @@ class JournalViewModel(
                                     incoming = importedKeywords,
                                     importKeywords = ::importKeywords
                                 )
+                            },
+                            importRecurringTasksIgnoringDuplicates = { importedTasks ->
+                                recurringTaskRepository.importIgnoringExistingIds(importedTasks)
                             },
                             publishProgress = publishProgress
                         )

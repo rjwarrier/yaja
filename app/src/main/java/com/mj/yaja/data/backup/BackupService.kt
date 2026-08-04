@@ -7,6 +7,11 @@ import androidx.core.content.FileProvider
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.MarkdownFileManager
+import com.mj.yaja.data.RecurringTaskEndMode
+import com.mj.yaja.data.RecurringTaskFrequency
+import com.mj.yaja.data.RecurringTaskItem
+import com.mj.yaja.data.RecurringTaskItemType
+import com.mj.yaja.data.RecurringTaskScheduleMode
 import com.mj.yaja.data.SettingsRepository
 import com.mj.yaja.data.keywords.KeywordCsvCodec
 import java.io.ByteArrayOutputStream
@@ -17,6 +22,7 @@ import java.time.format.DateTimeFormatter
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
+import org.json.JSONArray
 import org.json.JSONObject
 
 class BackupService(
@@ -36,7 +42,8 @@ class BackupService(
         val journalDays: Map<LocalDate, BackupJournalDay>,
         val shortcodes: Map<String, String>,
         val dateKeywords: List<DateKeywordEntry>,
-        val keywords: List<KeywordDefinition>
+        val keywords: List<KeywordDefinition>,
+        val recurringTasks: List<RecurringTaskItem> = emptyList()
     )
 
     data class BackupZipResult(
@@ -48,6 +55,7 @@ class BackupService(
         shortcodes: Map<String, String>,
         dateKeywords: List<DateKeywordEntry>,
         keywords: List<KeywordDefinition>,
+        recurringTasks: List<RecurringTaskItem> = emptyList(),
         writeJournalFiles: (ZipOutputStream) -> Int
     ): BackupZipResult? {
         val backupDir = File(context.filesDir, "backups")
@@ -58,7 +66,7 @@ class BackupService(
 
         var journalDayCount = 0
         val zipCreated = try {
-            Log.d(logTag, "Backup ZIP direct create started: shortcodes=${shortcodes.size} dateKeywords=${dateKeywords.size} keywords=${keywords.size}")
+            Log.d(logTag, "Backup ZIP direct create started: shortcodes=${shortcodes.size} dateKeywords=${dateKeywords.size} keywords=${keywords.size} recurringTasks=${recurringTasks.size}")
             ZipOutputStream(java.io.FileOutputStream(zipFile)).use { zos ->
                 if (shortcodes.isNotEmpty()) {
                     zos.putNextEntry(ZipEntry("settings/shortcodes.yaja"))
@@ -78,16 +86,23 @@ class BackupService(
                     zos.closeEntry()
                 }
 
+                if (recurringTasks.isNotEmpty()) {
+                    zos.putNextEntry(ZipEntry("settings/recurring_tasks.json"))
+                    zos.write(serializeRecurringTasks(recurringTasks).toByteArray(Charsets.UTF_8))
+                    zos.closeEntry()
+                }
+
                 journalDayCount = writeJournalFiles(zos)
 
                 val manifest = JSONObject().apply {
                     put("format", "yaja-backup")
-                    put("version", 2)
+                    put("version", 3)
                     put("createdAt", System.currentTimeMillis())
                     put("journalDays", journalDayCount)
                     put("shortcodes", shortcodes.size)
                     put("dateKeywords", dateKeywords.size)
                     put("keywords", keywords.size)
+                    put("recurringTasks", recurringTasks.size)
                 }
                 zos.putNextEntry(ZipEntry("manifest.json"))
                 zos.write(manifest.toString().toByteArray(Charsets.UTF_8))
@@ -109,7 +124,8 @@ class BackupService(
         journalDays: Map<LocalDate, BackupJournalDay>,
         shortcodes: Map<String, String>,
         dateKeywords: List<DateKeywordEntry>,
-        keywords: List<KeywordDefinition>
+        keywords: List<KeywordDefinition>,
+        recurringTasks: List<RecurringTaskItem> = emptyList()
     ): BackupZipResult? {
         val backupDir = File(context.filesDir, "backups")
         if (!backupDir.exists()) backupDir.mkdirs()
@@ -122,12 +138,13 @@ class BackupService(
             ZipOutputStream(java.io.FileOutputStream(zipFile)).use { zos ->
                 val manifest = JSONObject().apply {
                     put("format", "yaja-backup")
-                    put("version", 2)
+                    put("version", 3)
                     put("createdAt", System.currentTimeMillis())
                     put("journalDays", journalDays.size)
                     put("shortcodes", shortcodes.size)
                     put("dateKeywords", dateKeywords.size)
                     put("keywords", keywords.size)
+                    put("recurringTasks", recurringTasks.size)
                 }
                 zos.putNextEntry(ZipEntry("manifest.json"))
                 zos.write(manifest.toString().toByteArray(Charsets.UTF_8))
@@ -148,6 +165,12 @@ class BackupService(
                 if (keywords.isNotEmpty()) {
                     zos.putNextEntry(ZipEntry("settings/keywords.csv"))
                     zos.write(KeywordCsvCodec.encode(keywords).toByteArray(Charsets.UTF_8))
+                    zos.closeEntry()
+                }
+
+                if (recurringTasks.isNotEmpty()) {
+                    zos.putNextEntry(ZipEntry("settings/recurring_tasks.json"))
+                    zos.write(serializeRecurringTasks(recurringTasks).toByteArray(Charsets.UTF_8))
                     zos.closeEntry()
                 }
 
@@ -191,6 +214,7 @@ class BackupService(
             var shortcodes = emptyMap<String, String>()
             var dateKeywords = emptyList<DateKeywordEntry>()
             var keywords = emptyList<KeywordDefinition>()
+            var recurringTasks = emptyList<RecurringTaskItem>()
             var sawManifest = false
             var manifestValid = false
 
@@ -226,6 +250,9 @@ class BackupService(
                                             KeywordCsvCodec.parseLine(line)?.let(parsed::add)
                                         }
                                     keywords = parsed
+                                }
+                                entry.name.equals("settings/recurring_tasks.json", ignoreCase = true) -> {
+                                    recurringTasks = deserializeRecurringTasks(raw)
                                 }
                                 entry.name.endsWith(".md", ignoreCase = true) -> {
                                     val date = extractDateFromPath(entry.name) ?: run {
@@ -268,7 +295,8 @@ class BackupService(
                 journalDays = journalDays,
                 shortcodes = shortcodes,
                 dateKeywords = dateKeywords,
-                keywords = keywords
+                keywords = keywords,
+                recurringTasks = recurringTasks
             )
         } catch (e: Exception) {
             Log.e(logTag, "Failed to read backup zip", e)
@@ -352,5 +380,92 @@ class BackupService(
             rows += currentRow.toList()
         }
         return rows
+    }
+
+    companion object {
+        fun serializeRecurringTasks(tasks: List<RecurringTaskItem>): String {
+            val array = JSONArray()
+            tasks.forEach { task ->
+                array.put(
+                    JSONObject().apply {
+                        put("id", task.id)
+                        put("title", task.title)
+                        put("description", task.description)
+                        put("isActive", task.isActive)
+                        put("itemType", task.itemType.name)
+                        put("scheduleMode", task.scheduleMode.name)
+                        put("frequency", task.frequency.name)
+                        put("dueDayOfMonth", task.dueDayOfMonth)
+                        put("dueDayOfWeek", task.dueDayOfWeek)
+                        put("leadDays", task.leadDays)
+                        put("anchorDate", task.anchorDate)
+                        put("startMonth", task.startMonth)
+                        put("startTime", task.startTime)
+                        put("endMode", task.endMode.name)
+                        put("endDate", task.endDate)
+                        put("endCount", task.endCount)
+                        put("retiredOn", task.retiredOn)
+                        put("createdAt", task.createdAt)
+                    }
+                )
+            }
+            return array.toString()
+        }
+
+        fun deserializeRecurringTasks(raw: String): List<RecurringTaskItem> {
+            if (raw.isBlank()) return emptyList()
+            return runCatching {
+                val array = JSONArray(raw)
+                buildList {
+                    for (index in 0 until array.length()) {
+                        val obj = array.optJSONObject(index) ?: continue
+                        val id = obj.optString("id").trim()
+                        val title = obj.optString("title").trim()
+                        if (id.isBlank() || title.isBlank()) continue
+                        val scheduleMode = enumValueOrNull<RecurringTaskScheduleMode>(
+                            obj.optString("scheduleMode")
+                        ) ?: continue
+                        val frequency = enumValueOrNull<RecurringTaskFrequency>(
+                            obj.optString("frequency")
+                        ) ?: continue
+                        add(
+                            RecurringTaskItem(
+                                id = id,
+                                title = title,
+                                description = obj.optString("description", ""),
+                                isActive = obj.optBoolean("isActive", true),
+                                itemType = enumValueOrNull<RecurringTaskItemType>(
+                                    obj.optString("itemType")
+                                ) ?: RecurringTaskItemType.TASK,
+                                scheduleMode = scheduleMode,
+                                frequency = frequency,
+                                dueDayOfMonth = obj.optionalInt("dueDayOfMonth"),
+                                dueDayOfWeek = obj.optionalInt("dueDayOfWeek"),
+                                leadDays = obj.optInt("leadDays", 0).coerceIn(0, 30),
+                                anchorDate = obj.optString("anchorDate"),
+                                startMonth = obj.optString("startMonth"),
+                                startTime = obj.optionalString("startTime"),
+                                endMode = enumValueOrNull<RecurringTaskEndMode>(
+                                    obj.optString("endMode")
+                                ) ?: RecurringTaskEndMode.NEVER,
+                                endDate = obj.optionalString("endDate"),
+                                endCount = obj.optionalInt("endCount"),
+                                retiredOn = obj.optionalString("retiredOn"),
+                                createdAt = obj.optLong("createdAt", System.currentTimeMillis())
+                            )
+                        )
+                    }
+                }
+            }.getOrDefault(emptyList())
+        }
+
+        private inline fun <reified T : Enum<T>> enumValueOrNull(value: String): T? =
+            runCatching { enumValueOf<T>(value) }.getOrNull()
+
+        private fun JSONObject.optionalString(name: String): String? =
+            if (isNull(name)) null else optString(name).takeIf { it.isNotBlank() }
+
+        private fun JSONObject.optionalInt(name: String): Int? =
+            if (isNull(name) || !has(name)) null else optInt(name)
     }
 }

@@ -249,6 +249,23 @@ class RecurringTaskRepository private constructor(context: Context) {
         }
     }
 
+    suspend fun exportAll(): List<RecurringTaskItem> = withContext(Dispatchers.IO) {
+        dao.getAllMastersSync(journalId).map { it.toItem() }
+    }
+
+    suspend fun importIgnoringExistingIds(tasks: List<RecurringTaskItem>): Int = withContext(Dispatchers.IO) {
+        if (tasks.isEmpty()) return@withContext 0
+        val existingIds = dao.getAllMastersSync(journalId).mapTo(mutableSetOf()) { it.id }
+        val imported = tasks
+            .filter { task -> task.id.isNotBlank() && task.id !in existingIds }
+            .map { task -> task.toEntity(journalId) }
+        imported.forEach { entity ->
+            dao.insertOrUpdateMaster(entity)
+            existingIds += entity.id
+        }
+        imported.size
+    }
+
     private fun getDueDates(item: RecurringTaskItem, today: LocalDate): List<LocalDate> {
         val startMonth = runCatching { YearMonth.parse(item.startMonth) }.getOrDefault(YearMonth.from(today))
         val anchorDate = runCatching { LocalDate.parse(item.anchorDate) }.getOrDefault(today)
@@ -645,6 +662,28 @@ class RecurringTaskRepository private constructor(context: Context) {
         endMode = runCatching { RecurringTaskEndMode.valueOf(endMode) }.getOrDefault(RecurringTaskEndMode.NEVER),
         endDate = endDate,
         endCount = endCount,
+        retiredOn = retiredOn,
+        createdAt = createdAt
+    )
+
+    private fun RecurringTaskItem.toEntity(journalId: String) = RecurringTaskEntity(
+        id = id,
+        journalId = journalId,
+        title = title.trim(),
+        description = description.trim(),
+        isActive = isActive,
+        itemType = itemType.name,
+        scheduleMode = scheduleMode.name,
+        frequency = frequency.name,
+        dueDayOfMonth = dueDayOfMonth?.coerceIn(1, 31),
+        dueDayOfWeek = dueDayOfWeek?.coerceIn(1, 7),
+        leadDays = leadDays.coerceIn(0, 30),
+        anchorDate = anchorDate,
+        startMonth = startMonth,
+        startTime = startTime,
+        endMode = endMode.name,
+        endDate = endDate.takeIf { endMode == RecurringTaskEndMode.ON_DATE },
+        endCount = endCount?.coerceIn(1, 999).takeIf { endMode == RecurringTaskEndMode.AFTER_OCCURRENCES },
         retiredOn = retiredOn,
         createdAt = createdAt
     )

@@ -7,6 +7,7 @@ import com.mj.yaja.data.DayOneImporter
 import com.mj.yaja.data.JournalisticImporter
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.MarkdownFolderImporter
+import com.mj.yaja.data.RecurringTaskItem
 import com.mj.yaja.data.backup.BackupService
 import com.mj.yaja.data.keywords.KeywordCsvCodec
 import java.io.BufferedReader
@@ -38,7 +39,9 @@ internal data class RestoreProcessingResult(
     val dateKeywordsAdded: Int,
     val dateKeywordsSkipped: Int,
     val keywordsAdded: Int,
-    val keywordsSkipped: Int
+    val keywordsSkipped: Int,
+    val recurringTasksAdded: Int,
+    val recurringTasksSkipped: Int
 )
 
 internal fun canStartImport(importState: JournalViewModel.ImportState): Boolean =
@@ -72,13 +75,16 @@ internal fun buildRestoreSummary(
         dateKeywordsAdded = processed.dateKeywordsAdded,
         dateKeywordsSkipped = processed.dateKeywordsSkipped,
         peoplePlacesAdded = processed.keywordsAdded,
-        peoplePlacesSkipped = processed.keywordsSkipped
+        peoplePlacesSkipped = processed.keywordsSkipped,
+        recurringTasksAdded = processed.recurringTasksAdded,
+        recurringTasksSkipped = processed.recurringTasksSkipped
     )
 
 internal fun buildRestoreToastMessage(processed: RestoreProcessingResult): String =
     "Restore finished. ${processed.newDays} new days, ${processed.mergedDays} merged, " +
         "${processed.shortcodesAdded} shortcode(s), ${processed.dateKeywordsAdded} date keyword(s), " +
-        "${processed.keywordsAdded} People & Places keyword(s) added."
+        "${processed.keywordsAdded} People & Places keyword(s), " +
+        "${processed.recurringTasksAdded} recurring task(s) added."
 
 internal fun createBackupShareIntent(uri: Uri): Intent =
     Intent(Intent.ACTION_SEND).apply {
@@ -113,7 +119,7 @@ internal suspend fun runBackupShareWorkflow(
 
 internal suspend fun runRestoreBackupWorkflow(
     bundle: BackupService.BackupBundle,
-    processRestoreBundle: (BackupService.BackupBundle, (Int, Int) -> Unit) -> RestoreProcessingResult,
+    processRestoreBundle: suspend (BackupService.BackupBundle, (Int, Int) -> Unit) -> RestoreProcessingResult,
     publishRunningState: (Int, Int) -> Unit,
     clearLookbackCache: () -> Unit,
     reloadSelectedDate: () -> Unit,
@@ -417,7 +423,7 @@ internal fun parseKeywordsFromBackupZip(
     return importedKeywords
 }
 
-internal fun processRestoreBundle(
+internal suspend fun processRestoreBundle(
     bundle: BackupService.BackupBundle,
     getEntriesForDate: (LocalDate) -> List<String>,
     setEntriesForDate: (LocalDate, List<String>) -> Unit,
@@ -430,10 +436,12 @@ internal fun processRestoreBundle(
     mergeShortcodes: (Map<String, String>) -> Int,
     mergeDateKeywords: (List<com.mj.yaja.data.DateKeywordEntry>) -> Int,
     importKeywordsIgnoringDuplicates: (List<KeywordDefinition>) -> Int,
+    importRecurringTasksIgnoringDuplicates: suspend (List<RecurringTaskItem>) -> Int,
     publishProgress: (current: Int, total: Int) -> Unit
 ): RestoreProcessingResult {
     val totalSteps =
         bundle.journalDays.size +
+            1 +
             1 +
             1 +
             1
@@ -494,6 +502,11 @@ internal fun processRestoreBundle(
     completedSteps += 1
     publishProgress(completedSteps, totalSteps.coerceAtLeast(1))
 
+    val recurringTasksAdded = importRecurringTasksIgnoringDuplicates(bundle.recurringTasks)
+    val recurringTasksSkipped = (bundle.recurringTasks.size - recurringTasksAdded).coerceAtLeast(0)
+    completedSteps += 1
+    publishProgress(completedSteps, totalSteps.coerceAtLeast(1))
+
     return RestoreProcessingResult(
         newDays = newDays,
         mergedDays = mergedDays,
@@ -503,7 +516,9 @@ internal fun processRestoreBundle(
         dateKeywordsAdded = dateKeywordsAdded,
         dateKeywordsSkipped = dateKeywordsSkipped,
         keywordsAdded = keywordsAdded,
-        keywordsSkipped = keywordsSkipped
+        keywordsSkipped = keywordsSkipped,
+        recurringTasksAdded = recurringTasksAdded,
+        recurringTasksSkipped = recurringTasksSkipped
     )
 }
 

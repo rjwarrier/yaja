@@ -83,6 +83,10 @@ composeCompiler {
     }
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.core:core-remoteviews:1.0.0")

@@ -1,5 +1,6 @@
 package com.mj.yaja.data
 
+import com.mj.yaja.data.backup.BackupService
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -69,5 +70,51 @@ class SettingsBackupCodecsTest {
             emptyList<DateKeywordEntry>(),
             SettingsRepository.deserializeDateKeywords("""[{"k":"soon"}]""")
         )
+    }
+
+    @Test
+    fun `recurring task codec preserves stable ids and schedule fields`() {
+        val tasks = listOf(
+            RecurringTaskItem(
+                id = "task-1",
+                title = "Water plants",
+                description = "Balcony first",
+                isActive = true,
+                itemType = RecurringTaskItemType.TASK,
+                scheduleMode = RecurringTaskScheduleMode.DAY_OF_WEEK,
+                frequency = RecurringTaskFrequency.WEEKLY,
+                dueDayOfMonth = null,
+                dueDayOfWeek = 6,
+                leadDays = 1,
+                anchorDate = "2026-08-01",
+                startMonth = "2026-08",
+                startTime = "09:00",
+                endMode = RecurringTaskEndMode.AFTER_OCCURRENCES,
+                endDate = null,
+                endCount = 12,
+                retiredOn = null,
+                createdAt = 1234L
+            )
+        )
+
+        val restored = BackupService.deserializeRecurringTasks(
+            BackupService.serializeRecurringTasks(tasks)
+        )
+
+        assertEquals(tasks, restored)
+    }
+
+    @Test
+    fun `recurring task codec skips malformed rows safely`() {
+        val restored = BackupService.deserializeRecurringTasks(
+            """[
+              {"id":"","title":"Missing id","scheduleMode":"DAY_OF_WEEK","frequency":"WEEKLY"},
+              {"id":"bad-mode","title":"Bad mode","scheduleMode":"NOPE","frequency":"WEEKLY"},
+              {"id":"task-2","title":"Valid","scheduleMode":"FIRST_DAY_OF_MONTH","frequency":"MONTHLY","anchorDate":"2026-08-01","startMonth":"2026-08"}
+            ]"""
+        )
+
+        assertEquals(1, restored.size)
+        assertEquals("task-2", restored.single().id)
     }
 }
