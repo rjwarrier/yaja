@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.UUID
 
 /**
@@ -36,6 +37,13 @@ class KeywordRepository private constructor(context: Context) {
         prefs.getFloat(KEY_FUZZY_THRESHOLD, DEFAULT_FUZZY_THRESHOLD)
     )
     val fuzzyThreshold: StateFlow<Float> = _fuzzyThreshold.asStateFlow()
+
+    private fun <T> runRoomOffMain(block: () -> T): T =
+        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+            runBlocking(Dispatchers.IO) { block() }
+        } else {
+            block()
+        }
 
     init {
         repositoryScope.launch {
@@ -64,7 +72,7 @@ class KeywordRepository private constructor(context: Context) {
             isEnabled = enabled,
             createdAt = System.currentTimeMillis()
         )
-        keywordDao.insertOrUpdate(keyword.toKeywordEntity())
+        runRoomOffMain { keywordDao.insertOrUpdate(keyword.toKeywordEntity()) }
         val updated = _keywords.value + keyword
         _keywords.value = updated
         return keyword
@@ -72,14 +80,14 @@ class KeywordRepository private constructor(context: Context) {
 
     /** Replace an existing keyword (matched by [KeywordDefinition.id]). */
     fun updateKeyword(keyword: KeywordDefinition) {
-        keywordDao.insertOrUpdate(keyword.toKeywordEntity())
+        runRoomOffMain { keywordDao.insertOrUpdate(keyword.toKeywordEntity()) }
         val updated = _keywords.value.map { if (it.id == keyword.id) keyword else it }
         _keywords.value = updated
     }
 
     /** Remove a keyword by id. */
     fun deleteKeyword(id: String) {
-        keywordDao.delete(id)
+        runRoomOffMain { keywordDao.delete(id) }
         val updated = _keywords.value.filter { it.id != id }
         _keywords.value = updated
     }
@@ -89,7 +97,7 @@ class KeywordRepository private constructor(context: Context) {
         val updated = _keywords.value.map {
             if (it.id == id) {
                 val kw = it.copy(isEnabled = enabled)
-                keywordDao.insertOrUpdate(kw.toKeywordEntity())
+                runRoomOffMain { keywordDao.insertOrUpdate(kw.toKeywordEntity()) }
                 kw
             } else {
                 it
@@ -107,8 +115,10 @@ class KeywordRepository private constructor(context: Context) {
                 aliases = keyword.aliases.map { it.trim() }.filter { it.isNotEmpty() }
             )
         }
-        keywordDao.deleteAll()
-        keywordDao.insertAll(normalized.map { it.toKeywordEntity() })
+        runRoomOffMain {
+            keywordDao.deleteAll()
+            keywordDao.insertAll(normalized.map { it.toKeywordEntity() })
+        }
         _keywords.value = normalized
     }
 

@@ -33,6 +33,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
@@ -215,6 +216,13 @@ class MarkdownFileManager(
     private val backupService by lazy { BackupService(context, TAG) }
     @Volatile private var fingerprintRefreshJob: Job? = null
 
+    private fun <T> runRoomOffMain(block: () -> T): T =
+        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+            runBlocking(Dispatchers.IO) { block() }
+        } else {
+            block()
+        }
+
     private fun saveDayToDb(date: LocalDate, immediate: Boolean = false) {
         val entries = cache[date]
         val entryCount = entryCountCache[date] ?: entries?.size ?: 0
@@ -240,7 +248,7 @@ class MarkdownFileManager(
         )
 
         if (immediate) {
-            dao.insertOrUpdate(entity)
+            runRoomOffMain { dao.insertOrUpdate(entity) }
         } else {
             cacheScope.launch {
                 dao.insertOrUpdate(entity)
@@ -250,7 +258,7 @@ class MarkdownFileManager(
 
     private fun deleteDayFromDb(date: LocalDate, immediate: Boolean = false) {
         if (immediate) {
-            dao.delete("default", date.toString())
+            runRoomOffMain { dao.delete("default", date.toString()) }
         } else {
             cacheScope.launch {
                 dao.delete("default", date.toString())
@@ -407,7 +415,7 @@ class MarkdownFileManager(
         synchronized(this) {
             var loadedAnything = false
             try {
-                val allDays = dao.getAllDaysSync("default")
+                val allDays = runRoomOffMain { dao.getAllDaysSync("default") }
                 if (allDays.isNotEmpty()) {
                     cache.clear()
                     entryCountCache.clear()
@@ -477,7 +485,7 @@ class MarkdownFileManager(
 
     fun getCachedDaysCount(): Int {
         try {
-            return dao.getCount("default")
+            return runRoomOffMain { dao.getCount("default") }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to get cached days count", e)
             return 0
@@ -575,7 +583,7 @@ class MarkdownFileManager(
         }
 
         if (expectedEpoch == cacheEpoch && entities.isNotEmpty()) {
-            dao.insertAll(entities)
+            runRoomOffMain { dao.insertAll(entities) }
         }
         cachePopulated = true
         frontmatterPopulated = true
@@ -602,7 +610,7 @@ class MarkdownFileManager(
                 removeScannedDateFromMemoryState(date)
                 toDelete.add(date.toString())
                 if (toDelete.size >= 50) {
-                    dao.deleteDays("default", toDelete)
+                    runRoomOffMain { dao.deleteDays("default", toDelete) }
                     toDelete.clear()
                 }
                 onProgress?.invoke(index + 1, total)
@@ -624,14 +632,14 @@ class MarkdownFileManager(
                     )
                     toInsert.add(buildJournalDayCacheEntity(date, entries, parsed.frontmatter, metadata))
                     if (toInsert.size >= 50) {
-                        dao.insertAll(toInsert)
+                        runRoomOffMain { dao.insertAll(toInsert) }
                         toInsert.clear()
                     }
                 } else {
                     removeScannedDateFromMemoryState(date)
                     toDelete.add(date.toString())
                     if (toDelete.size >= 50) {
-                        dao.deleteDays("default", toDelete)
+                        runRoomOffMain { dao.deleteDays("default", toDelete) }
                         toDelete.clear()
                     }
                 }
@@ -640,10 +648,10 @@ class MarkdownFileManager(
         }
         if (expectedEpoch == cacheEpoch) {
             if (toInsert.isNotEmpty()) {
-                dao.insertAll(toInsert)
+                runRoomOffMain { dao.insertAll(toInsert) }
             }
             if (toDelete.isNotEmpty()) {
-                dao.deleteDays("default", toDelete)
+                runRoomOffMain { dao.deleteDays("default", toDelete) }
             }
         }
         lightweightDatesCache = allDates
@@ -868,7 +876,7 @@ class MarkdownFileManager(
      */
     fun getEntriesSnapshotForRebuild(): Map<LocalDate, List<String>> {
         return try {
-            dao.getAllDaysSync("default")
+            runRoomOffMain { dao.getAllDaysSync("default") }
                 .mapNotNull { entity ->
                     runCatching { LocalDate.parse(entity.date) }.getOrNull()
                         ?.let { date -> date to entity.entries }
@@ -1474,7 +1482,7 @@ class MarkdownFileManager(
             return synchronized(this) { cache.mapValues { (_, entries) -> entries.toList() } }
         }
         try {
-            val allDays = dao.getAllDaysSync("default")
+            val allDays = runRoomOffMain { dao.getAllDaysSync("default") }
             if (allDays.isNotEmpty()) {
                 val snapshot = linkedMapOf<LocalDate, List<String>>()
                 allDays.forEach { entity ->

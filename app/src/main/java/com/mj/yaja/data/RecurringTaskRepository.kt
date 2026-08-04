@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.withContext
 
 enum class RecurringTaskScheduleMode {
     DAY_OF_MONTH,
@@ -112,9 +113,9 @@ class RecurringTaskRepository private constructor(context: Context) {
         startMonth: YearMonth = YearMonth.now(),
         startTime: String? = null,
         fileManager: MarkdownFileManager
-    ): Boolean {
+    ): Boolean = withContext(Dispatchers.IO) {
         val normalizedTitle = title.trim()
-        if (normalizedTitle.isBlank()) return false
+        if (normalizedTitle.isBlank()) return@withContext false
         val safeDueDay = dueDayOfMonth?.coerceIn(1, 31)
         val safeDueWeekday = dueDayOfWeek?.coerceIn(1, 7)
         val safeLeadDays = leadDays.coerceIn(0, 30)
@@ -159,14 +160,14 @@ class RecurringTaskRepository private constructor(context: Context) {
                 retainedDates = getDueDates(entity.toItem(), LocalDate.now()).toSet()
             )
         }
-        return true
+        true
     }
 
     suspend fun delete(
         itemId: String,
         fileManager: MarkdownFileManager,
         retiredOn: LocalDate = LocalDate.now()
-    ) {
+    ) = withContext(Dispatchers.IO) {
         removeFutureGeneratedEntries(fileManager, itemId, retiredOn)
         dao.clearFutureGenerations(itemId, LocalDate.now().toString())
         dao.retireMaster(itemId, retiredOn.toString())
@@ -177,8 +178,8 @@ class RecurringTaskRepository private constructor(context: Context) {
         isActive: Boolean,
         fileManager: MarkdownFileManager,
         today: LocalDate = LocalDate.now()
-    ) {
-        val existing = dao.getAllMastersSync(journalId).firstOrNull { it.id == itemId } ?: return
+    ) = withContext(Dispatchers.IO) {
+        val existing = dao.getAllMastersSync(journalId).firstOrNull { it.id == itemId } ?: return@withContext
         val entity = existing.copy(isActive = isActive)
         dao.insertOrUpdateMaster(entity)
         if (!isActive) {
@@ -187,7 +188,7 @@ class RecurringTaskRepository private constructor(context: Context) {
         }
     }
 
-    suspend fun generateTodos(fileManager: MarkdownFileManager, today: LocalDate = LocalDate.now()) {
+    suspend fun generateTodos(fileManager: MarkdownFileManager, today: LocalDate = LocalDate.now()) = withContext(Dispatchers.IO) {
         val masters = dao.getAllMastersSync(journalId)
         
         masters.forEach { entity ->
