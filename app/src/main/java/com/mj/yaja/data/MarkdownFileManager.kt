@@ -28,7 +28,6 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -296,7 +295,23 @@ class MarkdownFileManager(
         )
     }
     private val backupService by lazy { BackupService(context, TAG) }
-    @Volatile private var fingerprintRefreshJob: Job? = null
+    private val journalCacheCoordinator by lazy {
+        JournalCacheCoordinator(
+            context = context,
+            scope = cacheScope,
+            journalStorage = journalStorage,
+            metadataStore = metadataStore,
+            cache = cache,
+            dayLabels = dayLabels,
+            settingsRepository = settingsRepository,
+            cachedDatesProvider = { lightweightDatesCache },
+            setCachedDates = { dates -> lightweightDatesCache = dates },
+            isCachePopulated = { cachePopulated },
+            totalCachedEntriesProvider = { cache.values.sumOf { it.size } },
+            runRoomCount = { runRoomOffMain { dao.getCount("default") } },
+            markTodoFingerprint = { fingerprint -> todoIndexRepository.markFingerprint(fingerprint) }
+        )
+    }
 
     private fun <T> runRoomOffMain(block: () -> T): T =
         if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
@@ -510,87 +525,44 @@ class MarkdownFileManager(
     }
 
     fun getCachedJournalDates(): Set<LocalDate> =
-        lightweightDatesCache ?: cache.keys.toSet()
+        journalCacheCoordinator.getCachedJournalDates()
 
-    fun getJournalCacheAgeMillis(): Long? {
-        val dbFile = context.getDatabasePath("journal_database")
-        if (!dbFile.exists()) return null
-        return (System.currentTimeMillis() - dbFile.lastModified()).coerceAtLeast(0L)
-    }
+    fun getJournalCacheAgeMillis(): Long? =
+        journalCacheCoordinator.getJournalCacheAgeMillis()
 
-    fun getDatabaseSize(): Long {
-        val dbFile = context.getDatabasePath("journal_database")
-        if (!dbFile.exists()) return 0L
-        var totalSize = dbFile.length()
-        val walFile = File(dbFile.path + "-wal")
-        if (walFile.exists()) {
-            totalSize += walFile.length()
-        }
-        val shmFile = File(dbFile.path + "-shm")
-        if (shmFile.exists()) {
-            totalSize += shmFile.length()
-        }
-        return totalSize
-    }
+    fun getDatabaseSize(): Long =
+        journalCacheCoordinator.getDatabaseSize()
 
-    fun getCachedDaysCount(): Int {
-        try {
-            return runRoomOffMain { dao.getCount("default") }
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to get cached days count", e)
-            return 0
-        }
-    }
+    fun getCachedDaysCount(): Int =
+        journalCacheCoordinator.getCachedDaysCount()
 
     fun computeCurrentJournalFingerprint(
         knownDates: Collection<LocalDate> = getCachedJournalDates(),
         anchorDate: LocalDate = LocalDate.now()
     ): JournalStorageFingerprint? =
-        journalStorage.computeSampledStorageFingerprint(
-            uriString = settingsRepository.storageUri.value,
-            knownDates = knownDates,
-            anchorDate = anchorDate
-        )
+        journalCacheCoordinator.computeCurrentJournalFingerprint(knownDates, anchorDate)
 
     fun persistCurrentJournalFingerprint(
         immediate: Boolean = false,
         knownDates: Collection<LocalDate> = getCachedJournalDates(),
         anchorDate: LocalDate = LocalDate.now()
-    ): JournalStorageFingerprint? {
-        val fingerprint = computeCurrentJournalFingerprint(knownDates, anchorDate)
-        storeJournalFingerprint(fingerprint, immediate)
-        return fingerprint
-    }
+    ): JournalStorageFingerprint? =
+        journalCacheCoordinator.persistCurrentJournalFingerprint(immediate, knownDates, anchorDate)
 
     fun storeJournalFingerprint(
         fingerprint: JournalStorageFingerprint?,
         immediate: Boolean = false
-    ) {
-        if (immediate) {
-            metadataStore.saveFingerprintBlocking(fingerprint)
-        } else {
-            metadataStore.saveFingerprint(fingerprint)
-        }
-    }
+    ) = journalCacheCoordinator.storeJournalFingerprint(fingerprint, immediate)
 
     private fun scheduleFingerprintRefresh(delayMillis: Long = 600L) {
-        fingerprintRefreshJob?.cancel()
-        fingerprintRefreshJob = cacheScope.launch {
-            delay(delayMillis)
-            val fingerprint = persistCurrentJournalFingerprint(
-                immediate = false,
-                knownDates = getCachedJournalDates(),
-                anchorDate = LocalDate.now()
-            )
-            todoIndexRepository.markFingerprint(fingerprint)
-        }
+        journalCacheCoordinator.scheduleFingerprintRefresh(delayMillis)
     }
 
     fun getCachedEntriesForDate(date: LocalDate): List<String>? =
-        cache[date]?.toList()
+        journalCacheCoordinator.getCachedEntriesForDate(date)
 
     fun getCachedDayLabel(date: LocalDate): String =
-        dayLabels[date].orEmpty()
+        journalCacheCoordinator.getCachedDayLabel(date)
     private fun populateCache(onProgress: ((Int, Int) -> Unit)? = null) {
         val expectedEpoch = cacheEpoch
         val orderedDates = getAllJournalDatesLightweight().sortedDescending()
@@ -711,8 +683,7 @@ class MarkdownFileManager(
         synchronized(this) {
             warmupJob?.cancel()
             warmupJob = null
-            fingerprintRefreshJob?.cancel()
-            fingerprintRefreshJob = null
+            journalCacheCoordinator.cancelFingerprintRefresh()
             cacheEpoch += 1
             cache.clear()
             entryCountCache.clear()
@@ -756,12 +727,7 @@ class MarkdownFileManager(
             lightweightDatesCache?.let { return it }
         }
         synchronized(this) {
-            if (!forceRefresh) {
-                lightweightDatesCache?.let { return it }
-            }
-            return journalStorage
-                .listJournalDates(settingsRepository.storageUri.value)
-                .also { lightweightDatesCache = it }
+            return journalCacheCoordinator.getAllJournalDatesLightweight(forceRefresh)
         }
     }
 
