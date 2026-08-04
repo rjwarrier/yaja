@@ -24,6 +24,7 @@
 - Continued the Stage 10 split by moving backup ZIP creation, backup parsing, backup journal snapshots, and storage migration orchestration into `JournalBackupGateway`.
 - Continued the Stage 10 split by moving frontmatter read queries and revisit aggregation into `JournalMetadataRepository`.
 - Continued the Stage 10 split by moving entry add, insert, delete, update, set, and todo-line toggle mutation logic into `JournalMutationService` while preserving date-level locks in the facade.
+- Continued the Stage 10 split by moving frontmatter write mutations for revisits, day labels, and starred dates into `JournalMetadataRepository` while preserving date-level locks in the facade.
 
 ### Verification
 - Created a source-only backup zip before implementation: `_code_backups/yaja-v2-source-20260803-194508.zip`.
@@ -38,6 +39,7 @@
 - Verified the Stage 10 backup/migration gateway extraction with `:app:compileDebugKotlin`.
 - Verified the Stage 10 metadata read/revisit extraction with `:app:compileDebugKotlin`.
 - Verified the Stage 10 entry mutation extraction with `:app:compileDebugKotlin`.
+- Verified the Stage 10 frontmatter mutation extraction with `:app:compileDebugKotlin`.
 - Verified the final debug APK build with `:app:assembleDebug`.
 - Installed the latest debug build to the connected device as an update, preserving app data.
 

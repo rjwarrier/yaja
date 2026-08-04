@@ -219,9 +219,13 @@ class MarkdownFileManager(
             invalidateCache = { invalidateCache() }
         )
     }
-    private val journalMetadataRepository =
+    private val journalMetadataRepository by lazy {
         JournalMetadataRepository(
+            context = context,
+            journalStorage = journalStorage,
             cache = cache,
+            entryCountCache = entryCountCache,
+            wordCountCache = wordCountCache,
             starredDates = starredDates,
             dayLabels = dayLabels,
             revisitDates = revisitDates,
@@ -233,10 +237,23 @@ class MarkdownFileManager(
                 frontmatterPopulated = true
             },
             entriesForDateProvider = { date -> getEntriesForDate(date) },
+            entriesForMutationProvider = { date -> getEntriesForDateForMutation(date) },
+            contentBuilder = { date, entries -> buildFileContent(date, entries) },
+            snapshotBeforeMutation = { date, reason -> snapshotDateBeforeMutation(date, reason) },
+            updateCachedDatePresence = { date, hasEntries -> updateCachedDatePresence(date, hasEntries) },
+            saveDayToDb = { date -> saveDayToDb(date) },
+            deleteDayFromDb = { date -> deleteDayFromDb(date) },
+            scheduleFingerprintRefresh = { scheduleFingerprintRefresh() },
+            scheduleTodoIndexSyncForDate = { date, entries -> scheduleTodoIndexSyncForDate(date, entries) },
+            removeTodoDate = { date ->
+                todoIndexRepository.removeDate(date)
+                eventIndexRepository.removeDate(date)
+            },
             rebuildSnapshotProvider = { getEntriesSnapshotForRebuild() },
             entriesSnapshotForDatesProvider = { dates -> getEntriesSnapshotForDates(dates) },
             allJournalDatesProvider = { getAllJournalDatesLightweight() }
         )
+    }
     private val journalMutationService by lazy {
         JournalMutationService(
             journalStorage = journalStorage,
@@ -1245,152 +1262,12 @@ class MarkdownFileManager(
     fun getEntryRevisit(date: LocalDate, entryIndex: Int): EntryRevisitMetadata =
         journalMetadataRepository.getEntryRevisit(date, entryIndex)
 
-    fun setRevisit(date: LocalDate, revisitOn: LocalDate?, note: String = ""): Boolean = withDateMutationLock(date) {
-        ensureFrontmatterPopulated()
-        val entries = getEntriesForDateForMutation(date)
-        val currentContent = journalStorage.readDateContent(date)
-        if (entries.isEmpty() && currentContent.isNullOrBlank() && revisitOn == null) {
-            return@withDateMutationLock false
-        }
-        if (!snapshotDateBeforeMutation(date, "set_revisit")) return@withDateMutationLock false
-
-        val previousState = captureRevisitState(
-            date = date,
-            revisitDates = revisitDates,
-            revisitNotes = revisitNotes
-        )
-        applyRevisitMutationToMemoryState(
-            date = date,
-            revisitOn = revisitOn,
-            note = note,
-            revisitDates = revisitDates,
-            revisitNotes = revisitNotes
-        )
-
-        val content = buildFileContent(date, entries)
-        val shouldCreateFile = currentContent.isNullOrBlank()
-        if (journalStorage.writeDateContent(date, content, createIfNotExists = shouldCreateFile)) {
-            finalizeFrontmatterWriteSuccess(
-                date = date,
-                entries = entries,
-                saveLabelsCacheToDisk = { saveDayToDb(date) },
-                scheduleFingerprintRefresh = ::scheduleFingerprintRefresh
-            )
-            if (entries.isEmpty()) {
-                finalizeLabelOnlyDayWriteSuccess(
-                    date = date,
-                    context = context,
-                    cache = cache,
-                    entryCountCache = entryCountCache,
-                    wordCountCache = wordCountCache,
-                    updateCachedDatePresence = { targetDate, hasEntries ->
-                        updateCachedDatePresence(targetDate, hasEntries)
-                    },
-                    saveCacheToDisk = { saveDayToDb(date) },
-                    saveEntryCountCacheToDisk = {},
-                    saveWordCountCacheToDisk = {}
-                )
-            }
-            true
-        } else {
-            finalizeFrontmatterWriteFailure(
-                saveLabelsCacheToDisk = { saveDayToDb(date) }
-            ) {
-                restoreCapturedRevisitState(
-                    date = date,
-                    previousState = previousState,
-                    revisitDates = revisitDates,
-                    revisitNotes = revisitNotes
-                )
-            }
-        }
-    }
+    fun setRevisit(date: LocalDate, revisitOn: LocalDate?, note: String = ""): Boolean =
+        withDateMutationLock(date) { journalMetadataRepository.setRevisit(date, revisitOn, note) }
 
     /** Set or clear the day label for any date. Writes label: to frontmatter without changing starred status. */
-    fun setDayLabel(date: LocalDate, label: String): Boolean = withDateMutationLock(date) {
-        ensureFrontmatterPopulated()
-        val entries = getEntriesForDateForMutation(date)
-        val trimmed = label.take(30)
-        val previousLabel = captureOptionalMapValue(date, dayLabels)
-        val currentContent = journalStorage.readDateContent(date)
-        if (!snapshotDateBeforeMutation(date, "set_day_label")) return@withDateMutationLock false
-
-        applyDayLabelMutationToMemoryState(
-            date = date,
-            label = trimmed,
-            dayLabels = dayLabels
-        )
-
-        if (entries.isEmpty() && trimmed.isEmpty()) {
-            val deleted = if (currentContent.isNullOrBlank()) {
-                true
-            } else {
-                journalStorage.deleteDateFile(date)
-            }
-            if (deleted) {
-                finalizeEmptyDayLabelDeletionSuccess(
-                    date = date,
-                    context = context,
-                    cache = cache,
-                    entryCountCache = entryCountCache,
-                    wordCountCache = wordCountCache,
-                    updateCachedDatePresence = { targetDate, hasEntries ->
-                        updateCachedDatePresence(targetDate, hasEntries)
-                    },
-                    saveCacheToDisk = { deleteDayFromDb(date) },
-                    saveEntryCountCacheToDisk = {},
-                    saveWordCountCacheToDisk = {},
-                    saveLabelsCacheToDisk = { deleteDayFromDb(date) },
-                    removeTodoDate = { targetDate ->
-                        todoIndexRepository.removeDate(targetDate)
-                        eventIndexRepository.removeDate(targetDate)
-                    },
-                    scheduleFingerprintRefresh = ::scheduleFingerprintRefresh
-                )
-                true
-            } else {
-                finalizeFrontmatterWriteFailure(
-                    saveLabelsCacheToDisk = { saveDayToDb(date) }
-                ) {
-                    restoreCapturedOptionalValue(date, previousLabel, dayLabels)
-                }
-            }
-        } else {
-            val content = buildFileContent(date, entries)
-            val shouldCreateFile = currentContent.isNullOrBlank()
-            if (journalStorage.writeDateContent(date, content, createIfNotExists = shouldCreateFile)) {
-                finalizeFrontmatterWriteSuccess(
-                    date = date,
-                    entries = entries,
-                    saveLabelsCacheToDisk = { saveDayToDb(date) },
-                    scheduleFingerprintRefresh = ::scheduleFingerprintRefresh,
-                    syncTodoIndexForDate = ::scheduleTodoIndexSyncForDate
-                )
-                if (entries.isEmpty()) {
-                    finalizeLabelOnlyDayWriteSuccess(
-                        date = date,
-                        context = context,
-                        cache = cache,
-                        entryCountCache = entryCountCache,
-                        wordCountCache = wordCountCache,
-                        updateCachedDatePresence = { targetDate, hasEntries ->
-                            updateCachedDatePresence(targetDate, hasEntries)
-                        },
-                        saveCacheToDisk = { saveDayToDb(date) },
-                        saveEntryCountCacheToDisk = {},
-                        saveWordCountCacheToDisk = {}
-                    )
-                }
-                true
-            } else {
-                finalizeFrontmatterWriteFailure(
-                    saveLabelsCacheToDisk = { saveDayToDb(date) }
-                ) {
-                    restoreCapturedOptionalValue(date, previousLabel, dayLabels)
-                }
-            }
-        }
-    }
+    fun setDayLabel(date: LocalDate, label: String): Boolean =
+        withDateMutationLock(date) { journalMetadataRepository.setDayLabel(date, label) }
 
     /** Toggle starred status for a date. */
     fun toggleStarred(date: LocalDate, label: String = ""): Boolean {
@@ -1399,68 +1276,8 @@ class MarkdownFileManager(
     }
 
     /** Set starred status for a date with optional label. Updates the markdown file with frontmatter. */
-    fun setStarred(date: LocalDate, starred: Boolean, label: String = ""): Boolean = withDateMutationLock(date) {
-        ensureFrontmatterPopulated()
-        val entries = getEntriesForDateForMutation(date)
-        val currentContent = journalStorage.readDateContent(date)
-        if (entries.isEmpty() && currentContent.isNullOrBlank() && !starred) {
-            return@withDateMutationLock false
-        }
-        if (!snapshotDateBeforeMutation(date, "set_starred")) return@withDateMutationLock false
-
-        val previousState = captureStarLabelState(
-            date = date,
-            starredDates = starredDates,
-            dayLabels = dayLabels
-        )
-        applyStarredMutationToMemoryState(
-            date = date,
-            starred = starred,
-            label = label,
-            starredDates = starredDates,
-            dayLabels = dayLabels
-        )
-
-        // Update the markdown file via buildFileContent to stay consistent
-        val content = buildFileContent(date, entries)
-        val shouldCreateFile = currentContent.isNullOrBlank()
-        if (journalStorage.writeDateContent(date, content, createIfNotExists = shouldCreateFile)) {
-            finalizeFrontmatterWriteSuccess(
-                date = date,
-                entries = entries,
-                saveLabelsCacheToDisk = { saveDayToDb(date) },
-                scheduleFingerprintRefresh = ::scheduleFingerprintRefresh,
-                syncTodoIndexForDate = ::scheduleTodoIndexSyncForDate
-            )
-            if (entries.isEmpty()) {
-                finalizeLabelOnlyDayWriteSuccess(
-                    date = date,
-                    context = context,
-                    cache = cache,
-                    entryCountCache = entryCountCache,
-                    wordCountCache = wordCountCache,
-                    updateCachedDatePresence = { targetDate, hasEntries ->
-                        updateCachedDatePresence(targetDate, hasEntries)
-                    },
-                    saveCacheToDisk = { saveDayToDb(date) },
-                    saveEntryCountCacheToDisk = {},
-                    saveWordCountCacheToDisk = {}
-                )
-            }
-            true
-        } else {
-            finalizeFrontmatterWriteFailure(
-                saveLabelsCacheToDisk = { saveDayToDb(date) }
-            ) {
-                restoreCapturedStarLabelState(
-                    date = date,
-                    previousState = previousState,
-                    starredDates = starredDates,
-                    dayLabels = dayLabels
-                )
-            }
-        }
-    }
+    fun setStarred(date: LocalDate, starred: Boolean, label: String = ""): Boolean =
+        withDateMutationLock(date) { journalMetadataRepository.setStarred(date, starred, label) }
 
     /** Get all starred dates. */
     fun getStarredDates(): List<LocalDate> =
