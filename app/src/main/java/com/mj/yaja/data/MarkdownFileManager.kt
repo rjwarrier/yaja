@@ -274,7 +274,11 @@ class MarkdownFileManager(
             updateTodoIndexRows = { date, entries -> updateTodoIndexRows(date, entries) },
             scheduleTodoIndexRowsUpdate = { date, entries -> scheduleTodoIndexRowsUpdate(date, entries) },
             scheduleEntryMutationRefresh = { date, entries -> scheduleEntryMutationRefresh(date, entries) },
-            removeDateMetadata = { date -> dateMetadataCache.remove(date) }
+            removeDateMetadata = { date -> dateMetadataCache.remove(date) },
+            versionHistoryManager = versionHistoryManager,
+            snapshotDateBeforeMutation = { date, reason -> snapshotDateBeforeMutation(date, reason) },
+            currentDateContentProvider = { date -> journalStorage.readDateContent(date) },
+            applyRawDateContentToState = { date, content -> applyRawDateContentToState(date, content) }
         )
     }
 
@@ -965,36 +969,11 @@ class MarkdownFileManager(
         )
     }
 
-    fun getVersionHistorySnapshots(date: LocalDate): List<VersionHistorySnapshotInfo> {
-        return versionHistoryManager.listSnapshots(date).mapNotNull { snapshot ->
-            versionHistoryManager.restoreSnapshot(snapshot)?.let { content ->
-                VersionHistorySnapshotInfo(
-                    id = snapshot.file.name,
-                    createdAt = snapshot.createdAt,
-                    content = content
-                )
-            }
-        }
-    }
+    fun getVersionHistorySnapshots(date: LocalDate): List<VersionHistorySnapshotInfo> =
+        journalMutationService.getVersionHistorySnapshots(date)
 
-    fun restoreVersionHistorySnapshot(date: LocalDate, snapshotId: String): Boolean = withDateMutationLock(date) {
-        val snapshot = versionHistoryManager.listSnapshots(date).firstOrNull { it.file.name == snapshotId }
-            ?: return@withDateMutationLock false
-        val restoredContent = versionHistoryManager.restoreSnapshot(snapshot)
-            ?: return@withDateMutationLock false
-        val currentContent = journalStorage.readDateContent(date)
-        if (currentContent == restoredContent) {
-            return@withDateMutationLock true
-        }
-        if (!snapshotDateBeforeMutation(date, "restore_version")) {
-            return@withDateMutationLock false
-        }
-        if (!journalStorage.writeDateContent(date, restoredContent, createIfNotExists = true)) {
-            return@withDateMutationLock false
-        }
-        applyRawDateContentToState(date, restoredContent)
-        true
-    }
+    fun restoreVersionHistorySnapshot(date: LocalDate, snapshotId: String): Boolean =
+        withDateMutationLock(date) { journalMutationService.restoreVersionHistorySnapshot(date, snapshotId) }
 
     private fun <T> withDateMutationLock(date: LocalDate, block: () -> T): T {
         val lock = mutationLocks.getOrPut(date) { Any() }

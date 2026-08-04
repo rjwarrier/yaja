@@ -25,8 +25,42 @@ internal class JournalMutationService(
     private val updateTodoIndexRows: (LocalDate, List<String>?) -> Unit,
     private val scheduleTodoIndexRowsUpdate: (LocalDate, List<String>?) -> Unit,
     private val scheduleEntryMutationRefresh: (LocalDate, List<String>?) -> Unit,
-    private val removeDateMetadata: (LocalDate) -> Unit
+    private val removeDateMetadata: (LocalDate) -> Unit,
+    private val versionHistoryManager: VersionHistoryManager,
+    private val snapshotDateBeforeMutation: (LocalDate, String) -> Boolean,
+    private val currentDateContentProvider: (LocalDate) -> String?,
+    private val applyRawDateContentToState: (LocalDate, String) -> Unit
 ) {
+    fun getVersionHistorySnapshots(date: LocalDate): List<MarkdownFileManager.VersionHistorySnapshotInfo> =
+        versionHistoryManager.listSnapshots(date).mapNotNull { snapshot ->
+            versionHistoryManager.restoreSnapshot(snapshot)?.let { content ->
+                MarkdownFileManager.VersionHistorySnapshotInfo(
+                    id = snapshot.file.name,
+                    createdAt = snapshot.createdAt,
+                    content = content
+                )
+            }
+        }
+
+    fun restoreVersionHistorySnapshot(date: LocalDate, snapshotId: String): Boolean {
+        val snapshot = versionHistoryManager.listSnapshots(date).firstOrNull { it.file.name == snapshotId }
+            ?: return false
+        val restoredContent = versionHistoryManager.restoreSnapshot(snapshot)
+            ?: return false
+        val currentContent = currentDateContentProvider(date)
+        if (currentContent == restoredContent) {
+            return true
+        }
+        if (!snapshotDateBeforeMutation(date, "restore_version")) {
+            return false
+        }
+        if (!journalStorage.writeDateContent(date, restoredContent, createIfNotExists = true)) {
+            return false
+        }
+        applyRawDateContentToState(date, restoredContent)
+        return true
+    }
+
     fun tryAddEntryForDate(date: LocalDate, entry: String): MarkdownFileManager.EntryMutationResult {
         if (entry.isBlank()) return MarkdownFileManager.EntryMutationResult(entriesForMutationProvider(date), false)
         val existingEntries = traceMutationStage("addEntry", date, "read") {
