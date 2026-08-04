@@ -58,9 +58,7 @@ class MarkdownFileManager(
         private const val TAG = "MarkdownFileManager"
         private const val TODO_PIPELINE_TAG = "YajaTodoPipeline"
         private const val SLOW_MUTATION_STAGE_MS = 500L
-        private const val MAX_SEARCH_RESULTS = 200
         private val MONTH_FORMATTER = DateTimeFormatter.ofPattern("MM")
-        private val SEARCH_METADATA_REGEX = Regex("<!--.*?-->")
         private val REVISIT_MARKER_ORDER =
             compareByDescending<RevisitMarker> { it.sourceDate }
                 .thenByDescending { it.entryIndex ?: -1 }
@@ -196,6 +194,16 @@ class MarkdownFileManager(
     @Volatile private var cacheEpoch: Long = 0L
     private val database = JournalDatabase.getDatabase(context)
     private val dao = database.journalCacheDao()
+    private val journalSearchService =
+        JournalSearchService(
+            ensureSearchMetadataReady = { ensureFrontmatterPopulated() },
+            isCachePopulated = { cachePopulated },
+            cachedEntriesForDate = { date -> cache[date] },
+            rebuildSnapshotProvider = { getEntriesSnapshotForRebuild().ifEmpty { null } },
+            allJournalDatesProvider = { getAllJournalDatesLightweight() },
+            labelForDate = { date -> dayLabels[date] },
+            entriesForDateProvider = { date -> getEntriesForDate(date) }
+        )
 
     val migrationJob: Job = cacheScope.launch {
         JsonToRoomMigrator.migrateIfNeeded(context, database)
@@ -1586,51 +1594,8 @@ class MarkdownFileManager(
         return snapshot
     }
 
-    fun searchEntries(query: String): List<SearchResult> {
-        if (query.isBlank()) return emptyList()
-        ensureFrontmatterPopulated()
-        val results = mutableListOf<SearchResult>()
-        val cachedSnapshot =
-            if (cachePopulated) {
-                null
-            } else {
-                getEntriesSnapshotForRebuild().ifEmpty { null }
-            }
-        // Split into words for AND-logic: all words must appear in the entry or label
-        val words = query.trim().lowercase().splitToSequence(Regex("\\s+")).filter { it.isNotBlank() }.toList()
-
-        for (date in getAllJournalDatesLightweight().sortedDescending()) {
-            // Check day label — surfaces dates whose label matches even if no entry does
-            val label = dayLabels[date] ?: ""
-            if (label.isNotEmpty()) {
-                val labelLower = label.lowercase()
-                if (words.all { word -> labelLower.contains(word) }) {
-                    results.add(SearchResult(date, "Label: $label"))
-                }
-            }
-
-            // Check each entry's content
-            val entries =
-                cache[date]
-                    ?: cachedSnapshot?.get(date)
-                    ?: getEntriesForDate(date)
-            entries.forEach { entry ->
-                val cleanEntry = entry.replace(SEARCH_METADATA_REGEX, "").trim()
-                val lower = cleanEntry.lowercase()
-                if (words.all { word -> lower.contains(word) }) {
-                    val snippet =
-                            cleanEntry.replace("\n", " ").take(100).let {
-                                if (cleanEntry.length > 100) "$it..." else it
-                            }
-                    results.add(SearchResult(date, snippet))
-                }
-            }
-
-            // Newest dates are scanned first, so capping keeps the most relevant matches.
-            if (results.size >= MAX_SEARCH_RESULTS) break
-        }
-        return results
-    }
+    fun searchEntries(query: String): List<SearchResult> =
+        journalSearchService.searchEntries(query)
 
     suspend fun migrateEntries(fromUriString: String?, toUriString: String?) = withContext(Dispatchers.IO) {
         // If they are the same, nothing to do
