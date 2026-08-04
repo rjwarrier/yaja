@@ -44,7 +44,6 @@ internal class JournalCacheCoordinator(
     private val setFrontmatterPopulated: (Boolean) -> Unit,
     private val totalCachedEntriesProvider: () -> Int,
     private val runRoomCount: () -> Int,
-    private val saveDateMetadataCache: () -> Unit,
     private val markTodoFingerprint: (JournalStorageFingerprint?) -> Unit
 ) {
     private var fingerprintRefreshJob: Job? = null
@@ -535,6 +534,71 @@ internal class JournalCacheCoordinator(
 
     fun getCachedDayLabel(date: LocalDate): String =
         dayLabels[date].orEmpty()
+
+    fun getEntriesForDate(date: LocalDate): List<String> {
+        cache[date]?.let { return it }
+        val knownDates = cachedDatesProvider()
+        if (knownDates != null && !knownDates.contains(date)) {
+            return emptyList()
+        }
+        val entries = journalStorage.readEntriesForDate(date)
+        if (entries.isNotEmpty()) {
+            cache[date] = entries
+            entryCountCache[date] = entries.size
+            wordCountCache[date] = countWordsIgnoringChecklistMarkers(entries)
+            updateCachedDatePresence(date, hasEntries = true)
+        }
+        return entries
+    }
+
+    fun getEntriesSnapshotForRebuild(): Map<LocalDate, List<String>> {
+        return try {
+            runRoomOffMain { dao.getAllDaysSync(DEFAULT_JOURNAL_ID) }
+                .mapNotNull { entity ->
+                    runCatching { LocalDate.parse(entity.date) }.getOrNull()
+                        ?.let { date -> date to entity.entries }
+                }
+                .toMap()
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to load entries snapshot from Room for rebuild", e)
+            emptyMap()
+        }
+    }
+
+    fun readEntriesForDateDirect(date: LocalDate): List<String> =
+        journalStorage.readEntriesForDate(date)
+
+    fun revalidateDateCache(date: LocalDate, forceDiskRead: Boolean = false): Boolean {
+        val metadata = readDateMetadata(date)
+        val previousMetadata = dateMetadataCache[date]
+
+        if (metadata == null) {
+            if (cache.remove(date) != null) {
+                entryCountCache.remove(date)
+                wordCountCache.remove(date)
+                dateMetadataCache.remove(date)
+                return true
+            }
+            return false
+        }
+
+        if (forceDiskRead || previousMetadata != metadata || !cache.containsKey(date)) {
+            val entries = journalStorage.readEntriesForDate(date)
+            if (entries.isNotEmpty()) {
+                cache[date] = entries
+                entryCountCache[date] = entries.size
+                wordCountCache[date] = countWordsIgnoringChecklistMarkers(entries)
+                dateMetadataCache[date] = metadata
+            } else {
+                cache.remove(date)
+                entryCountCache.remove(date)
+                wordCountCache.remove(date)
+                dateMetadataCache.remove(date)
+            }
+            return true
+        }
+        return false
+    }
 
     fun getAllJournalDatesLightweight(forceRefresh: Boolean = false): Set<LocalDate> {
         if (!forceRefresh) {

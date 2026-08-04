@@ -17,7 +17,7 @@ internal class JournalMetadataRepository(
     private val revisitNotes: ConcurrentHashMap<LocalDate, String>,
     private val isCachePopulated: () -> Boolean,
     private val ensureFrontmatterPopulated: () -> Unit,
-    private val populateFrontmatterData: () -> Unit,
+    private val setFrontmatterPopulated: (Boolean) -> Unit,
     private val entriesForDateProvider: (LocalDate) -> List<String>,
     private val entriesForMutationProvider: (LocalDate) -> List<String>,
     private val contentBuilder: (LocalDate, List<String>) -> String,
@@ -267,6 +267,7 @@ internal class JournalMetadataRepository(
     fun refreshFrontmatterSnapshot(lock: Any) {
         synchronized(lock) {
             populateFrontmatterData()
+            setFrontmatterPopulated(true)
         }
     }
 
@@ -403,6 +404,21 @@ internal class JournalMetadataRepository(
 
     private fun cacheSnapshot(): Map<LocalDate, List<String>> =
         cache
+
+    private fun populateFrontmatterData() {
+        starredDates.clear()
+        dayLabels.clear()
+        revisitDates.clear()
+        revisitNotes.clear()
+        allJournalDatesProvider().forEach { date ->
+            val lines = journalStorage.readDateContent(date)?.lines() ?: return@forEach
+            val snapshot = MarkdownFileManager.parseFrontmatter(lines)
+            if (snapshot.isStarred) starredDates[date] = snapshot.label
+            if (snapshot.label.isNotEmpty()) dayLabels[date] = snapshot.label
+            snapshot.revisitOn?.let { revisitDates[date] = it }
+            if (snapshot.revisitNote.isNotEmpty()) revisitNotes[date] = snapshot.revisitNote
+        }
+    }
 
     private companion object {
         private val REVISIT_MARKER_ORDER =
