@@ -11,7 +11,6 @@ import com.mj.yaja.data.backup.BackupService
 import com.mj.yaja.data.backup.BackupService.BackupBundle
 import com.mj.yaja.data.backup.BackupService.BackupJournalDay
 import com.mj.yaja.data.KeywordDefinition
-import com.mj.yaja.data.keywords.KeywordCsvCodec
 import com.mj.yaja.data.storage.JournalCacheMetadataStore
 import com.mj.yaja.data.storage.JournalCacheFileOps
 import com.mj.yaja.data.storage.JournalCacheStore
@@ -21,7 +20,6 @@ import com.mj.yaja.data.storage.JournalStorageFingerprint
 import com.mj.yaja.data.storage.JournalStorage
 import com.mj.yaja.ui.widget.WidgetRefreshCoordinator
 import java.io.File
-import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.ConcurrentHashMap
@@ -34,9 +32,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import org.json.JSONArray
-import org.json.JSONObject
 
 class MarkdownFileManager(
         private val context: Context,
@@ -218,6 +213,20 @@ class MarkdownFileManager(
             saveEntryCountCache = { saveEntryCountCacheToDisk() },
             saveWordCountCache = { saveWordCountCacheToDisk() }
         )
+    private val journalBackupGateway by lazy {
+        JournalBackupGateway(
+            backupService = backupService,
+            journalStorage = journalStorage,
+            storageUriProvider = { settingsRepository.storageUri.value },
+            cache = cache,
+            dayLabels = dayLabels,
+            starredDates = starredDates,
+            revisitDates = revisitDates,
+            revisitNotes = revisitNotes,
+            allJournalDatesProvider = { forceRefresh -> getAllJournalDatesLightweight(forceRefresh) },
+            invalidateCache = { invalidateCache() }
+        )
+    }
 
     val migrationJob: Job = cacheScope.launch {
         JsonToRoomMigrator.migrateIfNeeded(context, database)
@@ -349,38 +358,6 @@ class MarkdownFileManager(
         dayLabels.remove(date)
         revisitDates.remove(date)
         revisitNotes.remove(date)
-    }
-
-    private fun mergeJournalDateContentForMigration(
-        date: LocalDate,
-        destinationContent: String,
-        sourceContent: String
-    ): String {
-        val destination = parseJournalDateContent(destinationContent)
-        val source = parseJournalDateContent(sourceContent)
-        val mergedEntries = linkedSetOf<String>().apply {
-            addAll(destination.entries)
-            addAll(source.entries)
-        }.toList()
-        val destinationFrontmatter = destination.frontmatter
-        val sourceFrontmatter = source.frontmatter
-        val revisitOn = destinationFrontmatter.revisitOn ?: sourceFrontmatter.revisitOn
-        val revisitNote = when {
-            destinationFrontmatter.revisitOn != null -> destinationFrontmatter.revisitNote
-            sourceFrontmatter.revisitOn != null -> sourceFrontmatter.revisitNote
-            else -> destinationFrontmatter.revisitNote.ifBlank { sourceFrontmatter.revisitNote }
-        }
-
-        return buildJournalDateContent(
-            date = date,
-            entries = mergedEntries,
-            frontmatter = JournalDateFrontmatterState(
-                isStarred = destinationFrontmatter.isStarred || sourceFrontmatter.isStarred,
-                dayLabel = destinationFrontmatter.label.ifBlank { sourceFrontmatter.label },
-                revisitOn = revisitOn,
-                revisitNote = revisitNote
-            )
-        )
     }
 
     private fun saveLabelsCacheToDisk(immediate: Boolean = false) {}
@@ -1514,34 +1491,8 @@ class MarkdownFileManager(
     fun searchEntries(query: String): List<SearchResult> =
         journalSearchService.searchEntries(query)
 
-    suspend fun migrateEntries(fromUriString: String?, toUriString: String?) = withContext(Dispatchers.IO) {
-        // If they are the same, nothing to do
-        if (fromUriString == toUriString) return@withContext
-
-        val datesWithData = journalStorage.listJournalDates(fromUriString)
-
-        // 2. Read from SOURCE and write to DESTINATION
-        for (date in datesWithData) {
-            val sourceContent = journalStorage.readDateContentFromSpecificStorage(date, fromUriString)
-                ?: throw IOException("Failed to read source journal file for $date")
-            val destinationContent = journalStorage.readDateContentFromSpecificStorage(date, toUriString)
-            val contentToWrite = if (destinationContent.isNullOrBlank()) {
-                sourceContent
-            } else {
-                mergeJournalDateContentForMigration(
-                    date = date,
-                    destinationContent = destinationContent,
-                    sourceContent = sourceContent
-                )
-            }
-            if (!journalStorage.writeDateContentToSpecificStorage(date, contentToWrite, toUriString)) {
-                throw IOException("Failed to migrate journal file for $date")
-            }
-        }
-
-        // 3. Invalidate cache since storage has changed
-        invalidateCache()
-    }
+    suspend fun migrateEntries(fromUriString: String?, toUriString: String?) =
+        journalBackupGateway.migrateEntries(fromUriString, toUriString)
 
     fun createBackupZip(
         shortcodes: Map<String, String>,
@@ -1549,26 +1500,17 @@ class MarkdownFileManager(
         keywords: List<KeywordDefinition> = emptyList(),
         recurringTasks: List<RecurringTaskItem> = emptyList(),
         onProgress: (Int, Int) -> Unit = { _, _ -> }
-    ): BackupService.BackupZipResult? {
-        Log.d(TAG, "Direct backup started")
-        return backupService.createBackupZipFromJournalFiles(
+    ): BackupService.BackupZipResult? =
+        journalBackupGateway.createBackupZip(
             shortcodes = shortcodes,
             dateKeywords = dateKeywords,
             keywords = keywords,
             recurringTasks = recurringTasks,
-            writeJournalFiles = { zip ->
-                journalStorage.copyJournalFilesToZip(
-                    zip = zip,
-                    uriString = settingsRepository.storageUri.value,
-                    onProgress = onProgress
-                )
-            }
-        ).also { result ->
-            Log.d(TAG, "Direct backup finished: size=${result?.sizeBytes}")
-        }
-    }
+            onProgress = onProgress
+        )
 
-    fun readBackupZip(uri: Uri): BackupBundle? = backupService.readBackupZip(uri)
+    fun readBackupZip(uri: Uri): BackupBundle? =
+        journalBackupGateway.readBackupZip(uri)
 
     // ── Starred dates (persisted in markdown files) ─────────────────────
 
@@ -1986,46 +1928,8 @@ class MarkdownFileManager(
 
     fun getBackupJournalSnapshot(
         onProgress: (Int, Int) -> Unit = { _, _ -> }
-    ): Map<LocalDate, BackupJournalDay> {
-        val snapshot = linkedMapOf<LocalDate, BackupJournalDay>()
-        val forcedDates = runCatching { getAllJournalDatesLightweight(forceRefresh = true) }
-            .getOrElse {
-                Log.w(TAG, "Backup date scan failed; falling back to cached/frontmatter dates", it)
-                emptySet()
-            }
-        val candidateDates = linkedSetOf<LocalDate>().apply {
-            addAll(forcedDates)
-            addAll(getAllJournalDatesLightweight())
-            addAll(cache.keys)
-            addAll(dayLabels.keys)
-            addAll(starredDates.keys)
-            addAll(revisitDates.keys)
-            addAll(revisitNotes.keys)
-        }
-        val sortedDates = candidateDates.sorted()
-        val total = sortedDates.size.coerceAtLeast(1)
-        onProgress(0, total)
-        sortedDates.forEachIndexed { index, date ->
-            val content = journalStorage.readDateContent(date)?.takeIf { it.isNotBlank() }
-            if (content == null) {
-                onProgress(index + 1, total)
-                return@forEachIndexed
-            }
-            val lines = content.lines()
-            val entries = parseEntries(lines)
-            val frontmatter = parseFrontmatter(lines)
-            snapshot[date] = BackupJournalDay(
-                content = content,
-                entries = entries,
-                isStarred = frontmatter.isStarred,
-                label = frontmatter.label,
-                revisitOn = frontmatter.revisitOn,
-                revisitNote = frontmatter.revisitNote
-            )
-            onProgress(index + 1, total)
-        }
-        return snapshot
-    }
+    ): Map<LocalDate, BackupJournalDay> =
+        journalBackupGateway.getBackupJournalSnapshot(onProgress)
 
     /** Reload starred status and day labels for all dates from disk (called after populate cache). */
     private fun populateFrontmatterData() {
