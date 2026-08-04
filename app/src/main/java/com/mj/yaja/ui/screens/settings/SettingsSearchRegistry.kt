@@ -55,6 +55,10 @@ internal enum class SettingsSearchEntryId {
 
 internal enum class SettingsDestinationId {
     APPEARANCE,
+    LANGUAGE,
+    REVIEW_INSIGHTS,
+    ADVANCED_INTEGRATIONS,
+    HELP_ABOUT,
     JOURNAL_EXPERIENCE,
     NAVIGATION_GESTURES,
     PRIVACY_SECURITY,
@@ -62,16 +66,8 @@ internal enum class SettingsDestinationId {
     DATA_RECOVERY
 }
 
-internal enum class SettingsSearchAnchor {
-    LANGUAGE,
-    REVIEW_INSIGHTS,
-    ADVANCED_INTEGRATIONS,
-    HELP_ABOUT
-}
-
 internal sealed interface SettingsSearchAction {
     data class OpenDestination(val destination: SettingsDestinationId) : SettingsSearchAction
-    data class ScrollTo(val anchor: SettingsSearchAnchor) : SettingsSearchAction
 }
 
 internal data class SettingsSearchEntry(
@@ -97,7 +93,7 @@ internal object SettingsSearchRegistry {
         entry(SettingsSearchEntryId.PERSONAL_THEMES, R.string.settings_personal_themes_title, R.string.settings_appearance, "personal", "theme slots", "generated accents", destination = SettingsDestinationId.APPEARANCE),
         entry(SettingsSearchEntryId.FONT, R.string.settings_font, R.string.settings_appearance, "sans", "serif", "mono", destination = SettingsDestinationId.APPEARANCE),
         entry(SettingsSearchEntryId.FONT_SIZE, R.string.settings_font_size_label, R.string.settings_appearance, "text size", "scale", destination = SettingsDestinationId.APPEARANCE),
-        entry(SettingsSearchEntryId.LANGUAGE, R.string.settings_language, R.string.settings_language, "espanol", "portugues", "francais", "translate", "locale", anchor = SettingsSearchAnchor.LANGUAGE),
+        entry(SettingsSearchEntryId.LANGUAGE, R.string.settings_language, R.string.settings_language, "espanol", "portugues", "francais", "translate", "locale", destination = SettingsDestinationId.LANGUAGE),
         entry(SettingsSearchEntryId.SHOW_TIMESTAMPS, R.string.settings_journal_show_timestamps_title, R.string.settings_section_journal_experience, "time", "timeline", destination = SettingsDestinationId.JOURNAL_EXPERIENCE),
         entry(SettingsSearchEntryId.ALLOW_FUTURE_ENTRIES, R.string.settings_journal_allow_future_title, R.string.settings_section_journal_experience, "future dates", destination = SettingsDestinationId.JOURNAL_EXPERIENCE),
         entry(SettingsSearchEntryId.CARRY_FORWARD_TODOS, R.string.settings_journal_carry_forward_title, R.string.settings_section_journal_experience, "unchecked tasks", "yesterday todo", destination = SettingsDestinationId.JOURNAL_EXPERIENCE),
@@ -117,9 +113,9 @@ internal object SettingsSearchRegistry {
         entry(SettingsSearchEntryId.SWIPE_TO_NAVIGATE_DATES, R.string.settings_swipe_navigate_title, R.string.settings_section_navigation_gestures, "gestures", "swipe", destination = SettingsDestinationId.NAVIGATION_GESTURES),
         entry(SettingsSearchEntryId.ENABLE_DRAG_REORDER, R.string.settings_drag_reorder_title, R.string.settings_section_navigation_gestures, "drag", "reorder", destination = SettingsDestinationId.NAVIGATION_GESTURES),
         entry(SettingsSearchEntryId.ENTRY_DELETE, R.string.settings_entry_delete_title, R.string.settings_section_navigation_gestures, "selection", "delete", destination = SettingsDestinationId.NAVIGATION_GESTURES),
-        entry(SettingsSearchEntryId.POST_WRITE_REVIEW, R.string.settings_review_post_write_title, R.string.settings_section_review_insights, "save sheet", "review", anchor = SettingsSearchAnchor.REVIEW_INSIGHTS),
-        entry(SettingsSearchEntryId.PEOPLE_PLACES_HIGHLIGHTING, R.string.settings_review_highlighting_title, R.string.settings_section_review_insights, "highlighting", "people places", anchor = SettingsSearchAnchor.REVIEW_INSIGHTS),
-        entry(SettingsSearchEntryId.MATCH_SENSITIVITY, R.string.settings_review_match_sensitivity_title, R.string.settings_section_review_insights, "keyword matching", "fuzzy", anchor = SettingsSearchAnchor.REVIEW_INSIGHTS),
+        entry(SettingsSearchEntryId.POST_WRITE_REVIEW, R.string.settings_review_post_write_title, R.string.settings_section_review_insights, "save sheet", "review", destination = SettingsDestinationId.REVIEW_INSIGHTS),
+        entry(SettingsSearchEntryId.PEOPLE_PLACES_HIGHLIGHTING, R.string.settings_review_highlighting_title, R.string.settings_section_review_insights, "highlighting", "people places", destination = SettingsDestinationId.REVIEW_INSIGHTS),
+        entry(SettingsSearchEntryId.MATCH_SENSITIVITY, R.string.settings_review_match_sensitivity_title, R.string.settings_section_review_insights, "keyword matching", "fuzzy", destination = SettingsDestinationId.REVIEW_INSIGHTS),
         entry(SettingsSearchEntryId.PRIVACY_SECURITY, R.string.settings_privacy_security_title, R.string.settings_privacy_security_title, "pin", "biometric", "lock", destination = SettingsDestinationId.PRIVACY_SECURITY),
         entry(SettingsSearchEntryId.PIN, R.string.settings_pin_lock_title, R.string.settings_privacy_security_title, "password", "lock", destination = SettingsDestinationId.PRIVACY_SECURITY),
         entry(SettingsSearchEntryId.BIOMETRIC, R.string.settings_biometric_unlock_title, R.string.settings_privacy_security_title, "fingerprint", "face unlock", destination = SettingsDestinationId.PRIVACY_SECURITY),
@@ -133,10 +129,10 @@ internal object SettingsSearchRegistry {
         entry(SettingsSearchEntryId.IMPORT, R.string.settings_import_label, R.string.settings_data_recovery_title, "day one", "journalistic", destination = SettingsDestinationId.DATA_RECOVERY),
         entry(SettingsSearchEntryId.REBUILD_CACHE, R.string.rebuild_tools_title, R.string.settings_data_recovery_title, "refresh cache", "rebuild", destination = SettingsDestinationId.DATA_RECOVERY),
         entry(SettingsSearchEntryId.VERSION_HISTORY, R.string.settings_version_history_title, R.string.settings_data_recovery_title, "snapshots", "history", destination = SettingsDestinationId.DATA_RECOVERY),
-        entry(SettingsSearchEntryId.TASKER, R.string.settings_tasker_integration_title, R.string.settings_advanced_integrations_title, "tasker integration", "automation", anchor = SettingsSearchAnchor.ADVANCED_INTEGRATIONS),
-        entry(SettingsSearchEntryId.SHORTCODES, R.string.shortcodes_title, R.string.settings_advanced_integrations_title, "snippets", "text expansion", anchor = SettingsSearchAnchor.ADVANCED_INTEGRATIONS),
-        entry(SettingsSearchEntryId.HELP_ABOUT, R.string.nav_help, R.string.nav_help, "help", "about", "faq", anchor = SettingsSearchAnchor.HELP_ABOUT),
-        entry(SettingsSearchEntryId.APP_LOG, R.string.settings_app_log_title, R.string.nav_help, "logs", "crash", anchor = SettingsSearchAnchor.HELP_ABOUT)
+        entry(SettingsSearchEntryId.TASKER, R.string.settings_tasker_integration_title, R.string.settings_advanced_integrations_title, "tasker integration", "automation", destination = SettingsDestinationId.ADVANCED_INTEGRATIONS),
+        entry(SettingsSearchEntryId.SHORTCODES, R.string.shortcodes_title, R.string.settings_advanced_integrations_title, "snippets", "text expansion", destination = SettingsDestinationId.ADVANCED_INTEGRATIONS),
+        entry(SettingsSearchEntryId.HELP_ABOUT, R.string.nav_help, R.string.nav_help, "help", "about", "faq", destination = SettingsDestinationId.HELP_ABOUT),
+        entry(SettingsSearchEntryId.APP_LOG, R.string.settings_app_log_title, R.string.nav_help, "logs", "crash", destination = SettingsDestinationId.HELP_ABOUT)
     )
 
     private fun entry(
@@ -144,12 +140,10 @@ internal object SettingsSearchRegistry {
         @StringRes titleRes: Int,
         @StringRes sectionRes: Int,
         vararg keywords: String,
-        destination: SettingsDestinationId? = null,
-        anchor: SettingsSearchAnchor? = null
+        destination: SettingsDestinationId? = null
     ): SettingsSearchEntry {
         val action = when {
             destination != null -> SettingsSearchAction.OpenDestination(destination)
-            anchor != null -> SettingsSearchAction.ScrollTo(anchor)
             else -> error("Settings search entry $id needs an action")
         }
         return SettingsSearchEntry(

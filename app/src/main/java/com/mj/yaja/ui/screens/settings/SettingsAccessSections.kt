@@ -70,11 +70,14 @@ import com.mj.yaja.ui.widget.TodoListWidgetProvider
 @Composable
 fun AboutSection(
     onNavigateToHelp: () -> Unit,
-    onNavigateToAppLog: () -> Unit
+    onNavigateToAppLog: () -> Unit,
+    showHeader: Boolean = true
 ) {
     val uriHandler = LocalUriHandler.current
-    SettingsSectionHeader(icon = Icons.Rounded.Info, title = stringResource(R.string.nav_help))
-    Spacer(modifier = Modifier.height(12.dp))
+    if (showHeader) {
+        SettingsSectionHeader(icon = Icons.Rounded.Info, title = stringResource(R.string.nav_help))
+        Spacer(modifier = Modifier.height(12.dp))
+    }
     val interactionHelp = remember { MutableInteractionSource() }
     ElevatedCard(
         onClick = onNavigateToHelp,
@@ -207,10 +210,13 @@ fun AboutSection(
 @Composable
 fun TaskerIntegrationSection(
     onNavigateToTaskerIntegration: () -> Unit,
-    onNavigateToShortcodes: () -> Unit
+    onNavigateToShortcodes: () -> Unit,
+    showHeader: Boolean = true
 ) {
-    SettingsSectionHeader(icon = Icons.Rounded.Settings, title = stringResource(R.string.settings_advanced_integrations_title))
-    Spacer(modifier = Modifier.height(12.dp))
+    if (showHeader) {
+        SettingsSectionHeader(icon = Icons.Rounded.Settings, title = stringResource(R.string.settings_advanced_integrations_title))
+        Spacer(modifier = Modifier.height(12.dp))
+    }
     val interactionTasker = remember { MutableInteractionSource() }
     ElevatedCard(
         onClick = onNavigateToTaskerIntegration,

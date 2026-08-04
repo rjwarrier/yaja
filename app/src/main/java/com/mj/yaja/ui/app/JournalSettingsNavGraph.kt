@@ -8,18 +8,22 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.core.net.toUri
 import com.mj.yaja.ui.navigation.Route
+import com.mj.yaja.ui.screens.AdvancedIntegrationsSettingsScreen
 import com.mj.yaja.ui.screens.AppLogScreen
 import com.mj.yaja.ui.screens.AppearanceSettingsScreen
 import com.mj.yaja.ui.screens.DataRecoverySettingsScreen
 import com.mj.yaja.ui.screens.DataPrivacyDashboardScreen
 import com.mj.yaja.ui.screens.HelpScreen
+import com.mj.yaja.ui.screens.HelpAboutSettingsScreen
 import com.mj.yaja.ui.screens.JournalExperienceSettingsScreen
+import com.mj.yaja.ui.screens.LanguageSettingsScreen
 import com.mj.yaja.ui.screens.NavigationGesturesSettingsScreen
 import com.mj.yaja.ui.screens.OnboardingScreen
 import com.mj.yaja.ui.screens.PinLockScreen
 import com.mj.yaja.ui.screens.PinMode
 import com.mj.yaja.ui.screens.PrivacySecuritySettingsScreen
 import com.mj.yaja.ui.screens.RebuildCacheScreen
+import com.mj.yaja.ui.screens.ReviewInsightsSettingsScreen
 import com.mj.yaja.ui.screens.SettingsScreen
 import com.mj.yaja.ui.screens.ShortcodesScreen
 import com.mj.yaja.ui.screens.TaskerIntegrationScreen
@@ -92,7 +96,6 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
         }
         composable(Route.Settings.path) {
                 SettingsScreen(
-                        viewModel = viewModel,
                         onOpenDrawer = onOpenDrawer,
                         onNavigateBack = { navController.popBackStack() },
                         onNavigateToPinSetup = { navController.navigate(Route.PinSetup.path) },
@@ -118,6 +121,18 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         },
                         onNavigateToDataRecovery = {
                                 navController.navigate(Route.DataRecovery.path)
+                        },
+                        onNavigateToLanguage = {
+                                navController.navigate(Route.LanguageSettings.path)
+                        },
+                        onNavigateToReviewInsights = {
+                                navController.navigate(Route.ReviewInsightsSettings.path)
+                        },
+                        onNavigateToAdvancedIntegrations = {
+                                navController.navigate(Route.AdvancedIntegrationsSettings.path)
+                        },
+                        onNavigateToHelpAbout = {
+                                navController.navigate(Route.HelpAboutSettings.path)
                         },
                         onNavigateToHelp = { navController.navigate(Route.Help.path) },
                         onNavigateToAppLog = { navController.navigate(Route.AppLog.path) },
@@ -176,6 +191,36 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                         onNavigateToVersionHistory = {
                                 navController.navigate(Route.VersionHistory.path)
                         }
+                )
+        }
+        composable(Route.LanguageSettings.path) {
+                LanguageSettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.ReviewInsightsSettings.path) {
+                ReviewInsightsSettingsScreen(
+                        viewModel = viewModel,
+                        onNavigateBack = { navController.popBackStack() }
+                )
+        }
+        composable(Route.AdvancedIntegrationsSettings.path) {
+                AdvancedIntegrationsSettingsScreen(
+                        onNavigateBack = { navController.popBackStack() },
+                        onNavigateToTaskerIntegration = {
+                                navController.navigate(Route.TaskerIntegration.path)
+                        },
+                        onNavigateToShortcodes = {
+                                navController.navigate(Route.Shortcodes.path)
+                        }
+                )
+        }
+        composable(Route.HelpAboutSettings.path) {
+                HelpAboutSettingsScreen(
+                        onNavigateBack = { navController.popBackStack() },
+                        onNavigateToHelp = { navController.navigate(Route.Help.path) },
+                        onNavigateToAppLog = { navController.navigate(Route.AppLog.path) }
                 )
         }
         composable(Route.DataPrivacyDashboard.path) {
