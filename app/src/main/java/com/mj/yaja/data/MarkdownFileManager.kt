@@ -54,13 +54,6 @@ class MarkdownFileManager(
         private const val TODO_PIPELINE_TAG = "YajaTodoPipeline"
         private const val SLOW_MUTATION_STAGE_MS = 500L
         private val MONTH_FORMATTER = DateTimeFormatter.ofPattern("MM")
-        private val REVISIT_MARKER_ORDER =
-            compareByDescending<RevisitMarker> { it.sourceDate }
-                .thenByDescending { it.entryIndex ?: -1 }
-        private val DUE_REVISIT_ORDER =
-            compareByDescending<DueRevisitItem> { it.sourceDate }
-                .thenByDescending { it.entryIndex ?: -1 }
-
         @Volatile private var instance: MarkdownFileManager? = null
 
         /**
@@ -227,6 +220,24 @@ class MarkdownFileManager(
             invalidateCache = { invalidateCache() }
         )
     }
+    private val journalMetadataRepository =
+        JournalMetadataRepository(
+            cache = cache,
+            starredDates = starredDates,
+            dayLabels = dayLabels,
+            revisitDates = revisitDates,
+            revisitNotes = revisitNotes,
+            isCachePopulated = { cachePopulated },
+            ensureFrontmatterPopulated = { ensureFrontmatterPopulated() },
+            populateFrontmatterData = {
+                populateFrontmatterData()
+                frontmatterPopulated = true
+            },
+            entriesForDateProvider = { date -> getEntriesForDate(date) },
+            rebuildSnapshotProvider = { getEntriesSnapshotForRebuild() },
+            entriesSnapshotForDatesProvider = { dates -> getEntriesSnapshotForDates(dates) },
+            allJournalDatesProvider = { getAllJournalDatesLightweight() }
+        )
 
     val migrationJob: Job = cacheScope.launch {
         JsonToRoomMigrator.migrateIfNeeded(context, database)
@@ -1515,37 +1526,25 @@ class MarkdownFileManager(
     // ── Starred dates (persisted in markdown files) ─────────────────────
 
     /** Check if a date is starred by reading the markdown file. */
-    fun isDateStarred(date: LocalDate): Boolean {
-        ensureFrontmatterPopulated()
-        return starredDates.containsKey(date)
-    }
+    fun isDateStarred(date: LocalDate): Boolean =
+        journalMetadataRepository.isDateStarred(date)
 
     /** Get the label for a starred date. Returns empty string if not starred or no label. */
-    fun getStarredLabel(date: LocalDate): String {
-        ensureFrontmatterPopulated()
-        return starredDates[date] ?: ""
-    }
+    fun getStarredLabel(date: LocalDate): String =
+        journalMetadataRepository.getStarredLabel(date)
 
     /** Get the day label for any date. Returns empty string if no label. */
-    fun getDayLabel(date: LocalDate): String {
-        ensureFrontmatterPopulated()
-        return dayLabels[date] ?: ""
-    }
+    fun getDayLabel(date: LocalDate): String =
+        journalMetadataRepository.getDayLabel(date)
 
-    fun getRevisitDate(date: LocalDate): LocalDate? {
-        ensureFrontmatterPopulated()
-        return revisitDates[date]
-    }
+    fun getRevisitDate(date: LocalDate): LocalDate? =
+        journalMetadataRepository.getRevisitDate(date)
 
-    fun getRevisitNote(date: LocalDate): String {
-        ensureFrontmatterPopulated()
-        return revisitNotes[date].orEmpty()
-    }
+    fun getRevisitNote(date: LocalDate): String =
+        journalMetadataRepository.getRevisitNote(date)
 
-    fun getEntryRevisit(date: LocalDate, entryIndex: Int): EntryRevisitMetadata {
-        val entry = getEntriesForDate(date).getOrNull(entryIndex).orEmpty()
-        return parseEntryRevisitMetadata(entry)
-    }
+    fun getEntryRevisit(date: LocalDate, entryIndex: Int): EntryRevisitMetadata =
+        journalMetadataRepository.getEntryRevisit(date, entryIndex)
 
     fun setRevisit(date: LocalDate, revisitOn: LocalDate?, note: String = ""): Boolean = withDateMutationLock(date) {
         ensureFrontmatterPopulated()
@@ -1765,25 +1764,17 @@ class MarkdownFileManager(
     }
 
     /** Get all starred dates. */
-    fun getStarredDates(): List<LocalDate> {
-        ensureFrontmatterPopulated()
-        return starredDates.keys.sorted()
-    }
+    fun getStarredDates(): List<LocalDate> =
+        journalMetadataRepository.getStarredDates()
 
     /** Return a snapshot of all day labels (date → label).
      *  Uses dayLabels as the authoritative source so edits made via the day label dialog
      *  are always reflected, regardless of how the label was originally set. */
-    fun refreshFrontmatterSnapshot() {
-        synchronized(this) {
-            populateFrontmatterData()
-            frontmatterPopulated = true
-        }
-    }
+    fun refreshFrontmatterSnapshot() =
+        journalMetadataRepository.refreshFrontmatterSnapshot(this)
 
-    fun getAllStarredLabels(): Map<LocalDate, String> {
-        ensureFrontmatterPopulated()
-        return dayLabels.toMap()
-    }
+    fun getAllStarredLabels(): Map<LocalDate, String> =
+        journalMetadataRepository.getAllStarredLabels()
 
     data class RevisitOverview(
         val markers: List<RevisitMarker>,
@@ -1795,136 +1786,17 @@ class MarkdownFileManager(
      * Produces all revisit state in one corpus scan. Prefer this over calling
      * [getAllRevisitMarkers] and [getDueRevisitItems] separately, which scans twice.
      */
-    fun getRevisitOverview(targetDate: LocalDate): RevisitOverview {
-        ensureFrontmatterPopulated()
-        val markers = mutableListOf<RevisitMarker>()
-        val dueItems = mutableListOf<DueRevisitItem>()
+    fun getRevisitOverview(targetDate: LocalDate): RevisitOverview =
+        journalMetadataRepository.getRevisitOverview(targetDate)
 
-        revisitDates.forEach { (sourceDate, revisitOn) ->
-            val note = revisitNotes[sourceDate].orEmpty()
-            markers += RevisitMarker(sourceDate = sourceDate, revisitOn = revisitOn, note = note)
-            if (revisitOn == targetDate) {
-                dueItems +=
-                    DueRevisitItem(
-                        sourceDate = sourceDate,
-                        revisitOn = revisitOn,
-                        label = dayLabels[sourceDate].orEmpty(),
-                        note = note
-                    )
-            }
-        }
+    fun getAllRevisitMarkers(): List<RevisitMarker> =
+        journalMetadataRepository.getAllRevisitMarkers()
 
-        forEachEntryRevisit { date, index, revisitOn, note ->
-            markers +=
-                RevisitMarker(
-                    sourceDate = date,
-                    revisitOn = revisitOn,
-                    entryIndex = index,
-                    note = note
-                )
-            if (revisitOn == targetDate) {
-                dueItems +=
-                    DueRevisitItem(
-                        sourceDate = date,
-                        revisitOn = targetDate,
-                        entryIndex = index,
-                        label = dayLabels[date].orEmpty(),
-                        note = note
-                    )
-            }
-        }
+    fun getRevisitTargetDates(): Set<LocalDate> =
+        journalMetadataRepository.getRevisitTargetDates()
 
-        return RevisitOverview(
-            markers = markers.sortedWith(REVISIT_MARKER_ORDER),
-            targetDates = markers.mapTo(linkedSetOf()) { it.revisitOn },
-            dueItems = dueItems.sortedWith(DUE_REVISIT_ORDER)
-        )
-    }
-
-    fun getAllRevisitMarkers(): List<RevisitMarker> {
-        ensureFrontmatterPopulated()
-        val markers = mutableListOf<RevisitMarker>()
-        revisitDates.forEach { (sourceDate, revisitOn) ->
-            markers +=
-                RevisitMarker(
-                    sourceDate = sourceDate,
-                    revisitOn = revisitOn,
-                    note = revisitNotes[sourceDate].orEmpty()
-                )
-        }
-        forEachEntryRevisit { date, index, revisitOn, note ->
-            markers +=
-                RevisitMarker(
-                    sourceDate = date,
-                    revisitOn = revisitOn,
-                    entryIndex = index,
-                    note = note
-                )
-        }
-        return markers.sortedWith(REVISIT_MARKER_ORDER)
-    }
-
-    fun getRevisitTargetDates(): Set<LocalDate> {
-        ensureFrontmatterPopulated()
-        val targetDates = revisitDates.values.toMutableSet()
-        forEachEntryRevisit { _, _, revisitOn, _ -> targetDates += revisitOn }
-        return targetDates
-    }
-
-    fun getDueRevisitItems(targetDate: LocalDate): List<DueRevisitItem> {
-        ensureFrontmatterPopulated()
-        val items = mutableListOf<DueRevisitItem>()
-
-        revisitDates.forEach { (sourceDate, revisitOn) ->
-            if (revisitOn == targetDate) {
-                items +=
-                    DueRevisitItem(
-                        sourceDate = sourceDate,
-                        revisitOn = revisitOn,
-                        label = dayLabels[sourceDate].orEmpty(),
-                        note = revisitNotes[sourceDate].orEmpty()
-                    )
-            }
-        }
-
-        forEachEntryRevisit { date, index, revisitOn, note ->
-            if (revisitOn == targetDate) {
-                items +=
-                    DueRevisitItem(
-                        sourceDate = date,
-                        revisitOn = targetDate,
-                        entryIndex = index,
-                        label = dayLabels[date].orEmpty(),
-                        note = note
-                    )
-            }
-        }
-
-        return items.sortedWith(DUE_REVISIT_ORDER)
-    }
-
-    /**
-     * Walks every entry carrying entry-level revisit metadata. Sources entries from the
-     * in-memory cache (or the Room snapshot before warmup completes) so the scan never
-     * falls back to one SAF file read per day.
-     */
-    private fun forEachEntryRevisit(action: (LocalDate, Int, LocalDate, String) -> Unit) {
-        val snapshot: Map<LocalDate, List<String>> =
-            if (cachePopulated) {
-                cache
-            } else {
-                getEntriesSnapshotForRebuild().ifEmpty {
-                    getEntriesSnapshotForDates(getAllJournalDatesLightweight())
-                }
-            }
-        snapshot.forEach { (date, entries) ->
-            entries.forEachIndexed { index, entry ->
-                val revisit = parseEntryRevisitMetadata(entry)
-                val revisitOn = revisit.revisitOn ?: return@forEachIndexed
-                action(date, index, revisitOn, revisit.note)
-            }
-        }
-    }
+    fun getDueRevisitItems(targetDate: LocalDate): List<DueRevisitItem> =
+        journalMetadataRepository.getDueRevisitItems(targetDate)
 
     fun getBackupJournalSnapshot(
         onProgress: (Int, Int) -> Unit = { _, _ -> }

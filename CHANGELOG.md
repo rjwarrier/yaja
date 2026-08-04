@@ -22,6 +22,7 @@
 - Started the Stage 10 `MarkdownFileManager` responsibility split by moving journal search into a dedicated `JournalSearchService` facade dependency.
 - Continued the Stage 10 split by moving read-only journal query snapshots and metrics calculations into `JournalQueryService`.
 - Continued the Stage 10 split by moving backup ZIP creation, backup parsing, backup journal snapshots, and storage migration orchestration into `JournalBackupGateway`.
+- Continued the Stage 10 split by moving frontmatter read queries and revisit aggregation into `JournalMetadataRepository`.
 
 ### Verification
 - Created a source-only backup zip before implementation: `_code_backups/yaja-v2-source-20260803-194508.zip`.
@@ -34,6 +35,7 @@
 - Verified the Stage 10 search extraction with `JournalSearchServiceTest` and `:app:assembleDebug`.
 - Verified the Stage 10 query/metrics extraction with `:app:compileDebugKotlin`.
 - Verified the Stage 10 backup/migration gateway extraction with `:app:compileDebugKotlin`.
+- Verified the Stage 10 metadata read/revisit extraction with `:app:compileDebugKotlin`.
 - Verified the final debug APK build with `:app:assembleDebug`.
 - Installed the latest debug build to the connected device as an update, preserving app data.
 
