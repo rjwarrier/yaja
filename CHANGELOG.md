@@ -20,6 +20,7 @@
 - Started the `JournalViewModel` feature-ownership split by extracting settings state composition and direct settings actions into `SettingsFeatureController`.
 - Removed Room's destructive migration fallback, enabled schema export, added a defensive old-cache migration, and expanded backup ZIPs to preserve recurring-task schedules.
 - Started the Stage 10 `MarkdownFileManager` responsibility split by moving journal search into a dedicated `JournalSearchService` facade dependency.
+- Continued the Stage 10 split by moving read-only journal query snapshots and metrics calculations into `JournalQueryService`.
 
 ### Verification
 - Created a source-only backup zip before implementation: `_code_backups/yaja-v2-source-20260803-194508.zip`.
@@ -27,8 +28,10 @@
 - Created a source-only backup zip before the ViewModel ownership stage: `_code_backups/yaja-v2-source-20260804-063741.zip`.
 - Created a source-only backup zip before the destructive-migration removal stage: `_code_backups/yaja-v2-source-20260804-065619.zip`.
 - Created a source-only backup zip before the Stage 10 search extraction: `_code_backups/yaja-v2-source-stage10-20260804-073025.zip`.
+- Created a source-only backup zip before continuing Stage 10: `_code_backups/yaja-v2-source-stage10-continuation-20260804-074548.zip`.
 - Verified each extraction with local Kotlin compilation.
 - Verified the Stage 10 search extraction with `JournalSearchServiceTest` and `:app:assembleDebug`.
+- Verified the Stage 10 query/metrics extraction with `:app:compileDebugKotlin`.
 - Verified the final debug APK build with `:app:assembleDebug`.
 - Installed the latest debug build to the connected device as an update, preserving app data.
 

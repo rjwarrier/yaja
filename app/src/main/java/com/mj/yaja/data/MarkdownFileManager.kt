@@ -204,6 +204,20 @@ class MarkdownFileManager(
             labelForDate = { date -> dayLabels[date] },
             entriesForDateProvider = { date -> getEntriesForDate(date) }
         )
+    private val journalQueryService =
+        JournalQueryService(
+            cache = cache,
+            entryCountCache = entryCountCache,
+            wordCountCache = wordCountCache,
+            dao = dao,
+            isCachePopulated = { cachePopulated },
+            allJournalDatesProvider = { forceRefresh -> getAllJournalDatesLightweight(forceRefresh) },
+            entriesForDateProvider = { date -> getEntriesForDate(date) },
+            loadEntryCountCache = { loadEntryCountCacheFromDisk() },
+            loadWordCountCache = { loadWordCountCacheFromDisk() },
+            saveEntryCountCache = { saveEntryCountCacheToDisk() },
+            saveWordCountCache = { saveWordCountCacheToDisk() }
+        )
 
     val migrationJob: Job = cacheScope.launch {
         JsonToRoomMigrator.migrateIfNeeded(context, database)
@@ -1481,118 +1495,21 @@ class MarkdownFileManager(
         }
     }
 
-    fun getAllJournalDatesWithData(): Set<LocalDate> {
-        return if (cachePopulated) cache.keys.toSet() else getAllJournalDatesLightweight()
-    }
+    fun getAllJournalDatesWithData(): Set<LocalDate> =
+        journalQueryService.getAllJournalDatesWithData()
 
-    fun getCacheSnapshot(): Map<LocalDate, List<String>> {
-        if (cachePopulated) {
-            return synchronized(this) { cache.mapValues { (_, entries) -> entries.toList() } }
-        }
-        try {
-            val allDays = runRoomOffMain { dao.getAllDaysSync("default") }
-            if (allDays.isNotEmpty()) {
-                val snapshot = linkedMapOf<LocalDate, List<String>>()
-                allDays.forEach { entity ->
-                    val date = LocalDate.parse(entity.date)
-                    snapshot[date] = entity.entries
-                }
-                return snapshot
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to load cache snapshot from Room database", e)
-        }
-        val snapshot = linkedMapOf<LocalDate, List<String>>()
-        getAllJournalDatesLightweight().sortedDescending().forEach { date ->
-            val entries = getEntriesForDate(date)
-            if (entries.isNotEmpty()) {
-                snapshot[date] = entries
-            }
-        }
-        return snapshot
-    }
+    fun getCacheSnapshot(): Map<LocalDate, List<String>> =
+        journalQueryService.getCacheSnapshot()
 
     /** Snapshot only the requested dates, without forcing a full-journal snapshot. */
-    fun getEntriesSnapshotForDates(dates: Iterable<LocalDate>): Map<LocalDate, List<String>> {
-        val snapshot = linkedMapOf<LocalDate, List<String>>()
-        dates.forEach { date ->
-            val entries = getEntriesForDate(date)
-            if (entries.isNotEmpty()) {
-                snapshot[date] = entries
-            }
-        }
-        return snapshot
-    }
+    fun getEntriesSnapshotForDates(dates: Iterable<LocalDate>): Map<LocalDate, List<String>> =
+        journalQueryService.getEntriesSnapshotForDates(dates)
 
-    fun getDailyMetricsSnapshotForDates(dates: Iterable<LocalDate>): Map<LocalDate, DailyJournalMetrics> {
-        if (entryCountCache.isEmpty()) {
-            loadEntryCountCacheFromDisk()
-        }
-        if (wordCountCache.isEmpty()) {
-            loadWordCountCacheFromDisk()
-        }
-        val snapshot = linkedMapOf<LocalDate, DailyJournalMetrics>()
-        var didMutateCache = false
-        dates.forEach { date ->
-            val cachedEntryCount = entryCountCache[date]
-            val cachedWordCount = wordCountCache[date]
-            if (cachedEntryCount != null && cachedWordCount != null) {
-                snapshot[date] = DailyJournalMetrics(
-                    entryCount = cachedEntryCount,
-                    wordCount = cachedWordCount
-                )
-            } else {
-                val entries = getEntriesForDate(date)
-                if (entries.isNotEmpty()) {
-                    val metrics = DailyJournalMetrics(
-                        entryCount = entries.size,
-                        wordCount = countWords(entries)
-                    )
-                    entryCountCache[date] = metrics.entryCount
-                    wordCountCache[date] = metrics.wordCount
-                    didMutateCache = true
-                    snapshot[date] = metrics
-                }
-            }
-        }
-        if (didMutateCache) {
-            saveEntryCountCacheToDisk()
-            saveWordCountCacheToDisk()
-        }
-        return snapshot
-    }
+    fun getDailyMetricsSnapshotForDates(dates: Iterable<LocalDate>): Map<LocalDate, DailyJournalMetrics> =
+        journalQueryService.getDailyMetricsSnapshotForDates(dates)
 
-    fun getWordCountSnapshotSince(startDate: LocalDate): Map<LocalDate, Int> {
-        if (wordCountCache.isEmpty()) {
-            loadWordCountCacheFromDisk()
-        }
-        val snapshot = linkedMapOf<LocalDate, Int>()
-        var didMutateCache = false
-        getAllJournalDatesLightweight(forceRefresh = true)
-            .asSequence()
-            .filter { !it.isBefore(startDate) }
-            .sorted()
-            .forEach { date ->
-                val cachedCount = wordCountCache[date]
-                if (cachedCount != null) {
-                    snapshot[date] = cachedCount
-                } else {
-                    val entries = getEntriesForDate(date)
-                    if (entries.isNotEmpty()) {
-                        val count = countWords(entries)
-                        entryCountCache[date] = entries.size
-                        wordCountCache[date] = count
-                        didMutateCache = true
-                        snapshot[date] = count
-                    }
-                }
-            }
-        if (didMutateCache) {
-            saveEntryCountCacheToDisk()
-            saveWordCountCacheToDisk()
-        }
-        return snapshot
-    }
+    fun getWordCountSnapshotSince(startDate: LocalDate): Map<LocalDate, Int> =
+        journalQueryService.getWordCountSnapshotSince(startDate)
 
     fun searchEntries(query: String): List<SearchResult> =
         journalSearchService.searchEntries(query)
