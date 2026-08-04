@@ -15,6 +15,7 @@
 - Removed the `Suggested Next Tweaks` card from Settings.
 - Removed duplicate large section headings above the tappable settings destination cards.
 - Moved the remaining smaller Settings root sections — Language, Review & Insights, Advanced Integrations, and Help & About — into their own focused screens.
+- Promoted the Language settings screen into a direct searchable language list, removing the extra picker tap while keeping expressive selected-row animations.
 - Reduced `SettingsScreen.kt` from about 1,020 lines to about 413 lines, and removed lifecycle state collection from the Settings root.
 - Removed Room's main-thread query bypass and moved remaining synchronous cache, keyword, and recurring-task database access off the UI thread.
 - Started the `JournalViewModel` feature-ownership split by extracting settings state composition and direct settings actions into `SettingsFeatureController`.
@@ -39,6 +40,7 @@
 - Created a source-only backup zip before continuing Stage 10: `_code_backups/yaja-v2-source-stage10-continuation-20260804-074548.zip`.
 - Created a source-only backup zip before completing Stage 10: `_code_backups/yaja-v2-source-stage10-rest-20260804-083634.zip`.
 - Created a source-only backup zip before moving the remaining Settings items to dedicated screens: `_code_backups/yaja-v2-source-settings-rest-20260804-085620.zip`.
+- Created a source-only backup zip before promoting the Language screen picker: `_code_backups/yaja-v2-source-language-list-20260804-091717.zip`.
 - Verified each extraction with local Kotlin compilation.
 - Verified the Stage 10 search extraction with `JournalSearchServiceTest` and `:app:assembleDebug`.
 - Verified the Stage 10 query/metrics extraction with `:app:compileDebugKotlin`.
@@ -51,6 +53,7 @@
 - Verified the Stage 10 cache warmup/population extraction with `:app:compileDebugKotlin`.
 - Verified the completed Stage 10 split with `:app:compileDebugKotlin` and `:app:assembleDebug`.
 - Verified the remaining Settings-screen extraction with `:app:compileDebugKotlin` and `:app:assembleDebug`.
+- Verified the direct Language list screen with `:app:compileDebugKotlin` and `:app:assembleDebug`.
 - Verified the final debug APK build with `:app:assembleDebug`.
 - Installed the latest debug build to the connected device as an update, preserving app data.
 

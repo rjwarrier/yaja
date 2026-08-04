@@ -65,21 +65,49 @@ private fun SmallSettingsScreenScaffold(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageSettingsScreen(
     viewModel: JournalViewModel,
     onNavigateBack: () -> Unit
 ) {
-    val uiState by viewModel.rootSettingsUiState.collectAsStateWithLifecycle()
+    val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
 
-    SmallSettingsScreenScaffold(
-        title = stringResource(R.string.settings_language),
-        onNavigateBack = onNavigateBack
-    ) {
-        LanguageSection(
-            appLanguage = uiState.appLanguage,
-            onLanguageSelected = { viewModel.setAppLanguage(it) }
-        )
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.settings_language),
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = onNavigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            contentDescription = stringResource(R.string.action_back)
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { paddingValues ->
+        AppScreenReveal(visible = true, modifier = Modifier.fillMaxSize()) {
+            LanguagePickerScreenContent(
+                selectedLanguage = appLanguage,
+                onLanguageSelected = { viewModel.setAppLanguage(it) },
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(horizontal = 20.dp)
+                    .padding(top = 8.dp)
+            )
+        }
     }
 }
 

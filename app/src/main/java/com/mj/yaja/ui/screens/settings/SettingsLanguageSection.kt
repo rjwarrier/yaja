@@ -14,8 +14,10 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -163,6 +165,88 @@ fun LanguageSection(
     }
 }
 
+@Composable
+fun LanguagePickerScreenContent(
+    selectedLanguage: AppLanguage,
+    onLanguageSelected: (AppLanguage) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val systemDefaultLabel = stringResource(R.string.settings_language_system_default)
+    var query by remember { mutableStateOf("") }
+    val filteredLanguages =
+        remember(query, systemDefaultLabel) {
+            filterLanguages(
+                query = query,
+                systemDefaultLabel = systemDefaultLabel
+            )
+        }
+
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        TextField(
+            value = query,
+            onValueChange = { query = it },
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            shape = RoundedCornerShape(28.dp),
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Search,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            },
+            trailingIcon = {
+                if (query.isNotBlank()) {
+                    IconButton(onClick = { query = "" }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = stringResource(R.string.settings_search_clear),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            },
+            placeholder = {
+                Text(
+                    text = stringResource(R.string.settings_language_search_placeholder),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            },
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                cursorColor = MaterialTheme.colorScheme.primary,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent
+            )
+        )
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+            contentPadding = PaddingValues(bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(filteredLanguages, key = { it.name }) { language ->
+                LanguageOptionRow(
+                    language = language,
+                    isSelected = language == selectedLanguage,
+                    systemDefaultLabel = systemDefaultLabel,
+                    onClick = { onLanguageSelected(language) }
+                )
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun LanguagePickerSheet(
@@ -175,18 +259,10 @@ private fun LanguagePickerSheet(
     var query by remember { mutableStateOf("") }
     val filteredLanguages =
         remember(query, systemDefaultLabel) {
-            val normalizedQuery = query.trim().lowercase()
-            if (normalizedQuery.isBlank()) {
-                AppLanguage.entries
-            } else {
-                AppLanguage.entries.filter { language ->
-                    val label = language.displayLabel(systemDefaultLabel)
-                    val meta = language.displayMeta(systemDefaultLabel)
-                    label.lowercase().contains(normalizedQuery) ||
-                        meta.lowercase().contains(normalizedQuery) ||
-                        language.name.lowercase().contains(normalizedQuery)
-                }
-            }
+            filterLanguages(
+                query = query,
+                systemDefaultLabel = systemDefaultLabel
+            )
         }
 
     ModalBottomSheet(
@@ -403,3 +479,20 @@ private fun AppLanguage.displayMeta(systemDefaultLabel: String): String =
 
 private fun AppLanguage.languageInitial(systemDefaultLabel: String): String =
     displayLabel(systemDefaultLabel).firstOrNull()?.uppercaseChar()?.toString() ?: "?"
+
+private fun filterLanguages(
+    query: String,
+    systemDefaultLabel: String
+): List<AppLanguage> {
+    val normalizedQuery = query.trim().lowercase()
+    if (normalizedQuery.isBlank()) {
+        return AppLanguage.entries
+    }
+    return AppLanguage.entries.filter { language ->
+        val label = language.displayLabel(systemDefaultLabel)
+        val meta = language.displayMeta(systemDefaultLabel)
+        label.lowercase().contains(normalizedQuery) ||
+            meta.lowercase().contains(normalizedQuery) ||
+            language.name.lowercase().contains(normalizedQuery)
+    }
+}
