@@ -14,7 +14,6 @@ import com.mj.yaja.data.DailyJournalMetrics
 import com.mj.yaja.data.EventItem
 import com.mj.yaja.data.EventIndexRepository
 import com.mj.yaja.data.EntryKind
-import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.applyEntryKindMetadata
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
@@ -23,10 +22,8 @@ import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.CalendarDensityPreference
 import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
-import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.PersonalAccentStyle
-import com.mj.yaja.data.PersonalThemeSlot
 import com.mj.yaja.data.KeywordDefinition
 import com.mj.yaja.data.KeywordMatch
 import com.mj.yaja.data.KeywordMatchCache
@@ -44,7 +41,6 @@ import com.mj.yaja.data.TodoItem
 import com.mj.yaja.data.TodoParser
 import com.mj.yaja.data.countWordsIgnoringChecklistMarkers
 import com.mj.yaja.data.AnimationPreference
-import com.mj.yaja.data.AppFontFamily
 import com.mj.yaja.data.AppLanguage
 import com.mj.yaja.data.AppLogRepository
 import com.mj.yaja.data.DueRevisitItem
@@ -66,15 +62,12 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
@@ -139,89 +132,6 @@ class JournalViewModel(
         val contributions: LinkedHashMap<LocalDate, DayStatisticsAnalysis>,
         val rangeStart: LocalDate?,
         val rangeEnd: LocalDate?
-    )
-
-    private data class NavigationVisibilitySettingsSlice(
-        val showStatistics: Boolean,
-        val showLookbackInNavBar: Boolean,
-        val showKeywordsInNavBar: Boolean,
-        val showTodosInNavBar: Boolean,
-        val showStatisticsInNavBar: Boolean
-    )
-
-    private data class NavigationChromeSettingsSlice(
-        val navigationChromeMode: NavigationChromeMode,
-        val showBottomPanelLabels: Boolean,
-        val adaptiveBottomNav: Boolean
-    )
-
-    private data class GestureSettingsSlice(
-        val swipeToNavigateDatesEnabled: Boolean,
-        val enableDragAndDrop: Boolean,
-        val entryDeleteSelectionEnabled: Boolean
-    )
-
-    private data class JournalExperienceDisplaySettingsSlice(
-        val animationPreference: AnimationPreference,
-        val entryStyle: EntryStyle,
-        val showTimestamps: Boolean,
-        val showDayHeaderStats: Boolean,
-        val renderCheckboxesAsText: Boolean
-    )
-
-    private data class JournalExperienceDateSettingsSlice(
-        val allowFutureEntries: Boolean,
-        val firstDayOfWeek: DayOfWeek,
-        val dateOrderPreference: DateOrderPreference,
-        val calendarDensityPreference: CalendarDensityPreference,
-        val customDateKeywords: List<DateKeywordEntry>
-    )
-
-    private data class JournalExperiencePreviewSettingsSlice(
-        val carryForwardTodosEnabled: Boolean,
-        val isPreviewLimitEnabled: Boolean,
-        val previewLimitLength: Int,
-        val fuzzyThreshold: Float
-    )
-
-    private data class DataRecoveryStorageSettingsSlice(
-        val storageUri: String?,
-        val lastBackupTimestamp: Long,
-        val backupReminderDays: Int,
-        val showOnboardingNextLaunch: Boolean
-    )
-
-    private data class DataRecoverySafetySettingsSlice(
-        val swipeToSyncEnabled: Boolean,
-        val largeJournalSafeMode: Boolean,
-        val versionHistoryEnabled: Boolean
-    )
-
-    private data class AppearanceThemeSettingsSlice(
-        val themePreference: ThemePreference,
-        val colorSource: ColorSource,
-        val customPalette: CustomPalette,
-        val themeColorIntensity: ThemeColorIntensity,
-        val backgroundTintLevel: BackgroundTintLevel
-    )
-
-    private data class AppearancePersonalThemeSettingsSlice(
-        val personalThemeSlots: List<PersonalThemeSlot>,
-        val activePersonalThemeSlotId: Int
-    )
-
-    private data class AppearanceFontSettingsSlice(
-        val fontScalePreference: FontScalePreference,
-        val dataFontScalePreference: FontScalePreference,
-        val followUiFontScale: Boolean,
-        val appFontFamily: AppFontFamily,
-        val monoFontWeight: Int
-    )
-
-    private data class AppearanceCustomFontSettingsSlice(
-        val customFontPath: String?,
-        val customFontName: String?,
-        val fabPlacement: FabPlacement
     )
 
     companion object {
@@ -291,70 +201,58 @@ class JournalViewModel(
     private var currentJournalisticImporter: com.mj.yaja.data.JournalisticImporter? = null
     private var currentMarkdownFolderImporter: com.mj.yaja.data.MarkdownFolderImporter? = null
 
-    val themePreference = settingsRepository.themePreference
-    val colorSource = settingsRepository.colorSource
-    val customPalette = settingsRepository.customPalette
-    val themeColorIntensity = settingsRepository.themeColorIntensity
-    val backgroundTintLevel = settingsRepository.backgroundTintLevel
-    val personalThemeSlots = settingsRepository.personalThemeSlots
-    val activePersonalThemeSlotId = settingsRepository.activePersonalThemeSlotId
-    val appFontFamily = settingsRepository.appFontFamily
-    val monoFontWeight = settingsRepository.monoFontWeight
-    val customFontPath = settingsRepository.customFontPath
-    val customFontName = settingsRepository.customFontName
-    val entryStyle = settingsRepository.entryStyle
-    val storageUri = settingsRepository.storageUri
-    val hasCompletedOnboarding = settingsRepository.hasCompletedOnboarding
-    val shouldShowOnboarding = settingsRepository.shouldShowOnboarding
-    val showOnboardingNextLaunch = settingsRepository.showOnboardingNextLaunch
-    val showTimestamps = settingsRepository.showTimestamps
-    val showDayHeaderStats = settingsRepository.showDayHeaderStats
-    val renderCheckboxesAsText = settingsRepository.renderCheckboxesAsText
-    val fontScalePreference = settingsRepository.fontScalePreference
-    val appLanguage = settingsRepository.appLanguage
-    val animationPreference = settingsRepository.animationPreference
-    val lastBackupTimestamp = settingsRepository.lastBackupTimestamp
-    val backupReminderDays = settingsRepository.backupReminderDays
-    val appLogRetentionDays = settingsRepository.appLogRetentionDays
-    val firstDayOfWeek = settingsRepository.firstDayOfWeek
-    val dateOrderPreference = settingsRepository.dateOrderPreference
-    val customDateKeywords = settingsRepository.customDateKeywords
-    val isPinEnabled = settingsRepository.isPinEnabled
-    val isBiometricEnabled = settingsRepository.isBiometricEnabled
-    val autoLockTimeoutMinutes = settingsRepository.autoLockTimeoutMinutes
-    val hideTextModeEnabled = settingsRepository.hideTextModeEnabled
-    val privacySecuritySettingsUiState: StateFlow<PrivacySecuritySettingsUiState> =
-        combine(
-            isPinEnabled,
-            isBiometricEnabled,
-            autoLockTimeoutMinutes,
-            hideTextModeEnabled
-        ) { pinEnabled, biometricEnabled, autoLockMinutes, hideTextEnabled ->
-            PrivacySecuritySettingsUiState(
-                isPinEnabled = pinEnabled,
-                isBiometricEnabled = biometricEnabled,
-                autoLockTimeoutMinutes = autoLockMinutes,
-                hideTextModeEnabled = hideTextEnabled
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = PrivacySecuritySettingsUiState(
-                isPinEnabled = isPinEnabled.value,
-                isBiometricEnabled = isBiometricEnabled.value,
-                autoLockTimeoutMinutes = autoLockTimeoutMinutes.value,
-                hideTextModeEnabled = hideTextModeEnabled.value
-            )
-        )
-    val carryForwardTodosEnabled = settingsRepository.carryForwardTodosEnabled
+    private val settingsFeature = SettingsFeatureController(
+        settingsRepository = settingsRepository,
+        keywordRepository = keywordRepository,
+        importState = importState,
+        restoreSummary = restoreSummary,
+        scope = viewModelScope
+    )
+
+    val themePreference = settingsFeature.themePreference
+    val colorSource = settingsFeature.colorSource
+    val customPalette = settingsFeature.customPalette
+    val themeColorIntensity = settingsFeature.themeColorIntensity
+    val backgroundTintLevel = settingsFeature.backgroundTintLevel
+    val personalThemeSlots = settingsFeature.personalThemeSlots
+    val activePersonalThemeSlotId = settingsFeature.activePersonalThemeSlotId
+    val appFontFamily = settingsFeature.appFontFamily
+    val monoFontWeight = settingsFeature.monoFontWeight
+    val customFontPath = settingsFeature.customFontPath
+    val customFontName = settingsFeature.customFontName
+    val entryStyle = settingsFeature.entryStyle
+    val storageUri = settingsFeature.storageUri
+    val hasCompletedOnboarding = settingsFeature.hasCompletedOnboarding
+    val shouldShowOnboarding = settingsFeature.shouldShowOnboarding
+    val showOnboardingNextLaunch = settingsFeature.showOnboardingNextLaunch
+    val showTimestamps = settingsFeature.showTimestamps
+    val showDayHeaderStats = settingsFeature.showDayHeaderStats
+    val renderCheckboxesAsText = settingsFeature.renderCheckboxesAsText
+    val fontScalePreference = settingsFeature.fontScalePreference
+    val dataFontScalePreference = settingsFeature.dataFontScalePreference
+    val followUiFontScale = settingsFeature.followUiFontScale
+    val appLanguage = settingsFeature.appLanguage
+    val animationPreference = settingsFeature.animationPreference
+    val lastBackupTimestamp = settingsFeature.lastBackupTimestamp
+    val backupReminderDays = settingsFeature.backupReminderDays
+    val appLogRetentionDays = settingsFeature.appLogRetentionDays
+    val firstDayOfWeek = settingsFeature.firstDayOfWeek
+    val dateOrderPreference = settingsFeature.dateOrderPreference
+    val customDateKeywords = settingsFeature.customDateKeywords
+    val isPinEnabled = settingsFeature.isPinEnabled
+    val isBiometricEnabled = settingsFeature.isBiometricEnabled
+    val autoLockTimeoutMinutes = settingsFeature.autoLockTimeoutMinutes
+    val hideTextModeEnabled = settingsFeature.hideTextModeEnabled
+    val privacySecuritySettingsUiState = settingsFeature.privacySecuritySettingsUiState
+    val carryForwardTodosEnabled = settingsFeature.carryForwardTodosEnabled
 
     private val _shouldLock = MutableStateFlow(false)
     val shouldLock: StateFlow<Boolean> = _shouldLock.asStateFlow()
 
     /** Called from MainActivity.onStart with the timestamp of last user activity. */
     fun checkAutoLockTimeout(lastActivityTime: Long) {
-        if (!settingsRepository.isPinEnabled.value) return
-        val timeoutMillis = settingsRepository.autoLockTimeoutMinutes.value * 60_000L
+        if (!isPinEnabled.value) return
+        val timeoutMillis = autoLockTimeoutMinutes.value * 60_000L
         if (System.currentTimeMillis() - lastActivityTime >= timeoutMillis) {
             _shouldLock.value = true
         }
@@ -365,280 +263,51 @@ class JournalViewModel(
         _shouldLock.value = false
     }
 
-    val allowFutureEntries = settingsRepository.allowFutureEntries
-    val allowTaskerAccess = settingsRepository.allowTaskerAccess
-    val allowTaskerEvents = settingsRepository.allowTaskerEvents
-    val includeEntryTextInTaskerEvents = settingsRepository.includeEntryTextInTaskerEvents
-    val swipeToNavigateDatesEnabled = settingsRepository.swipeToNavigateDatesEnabled
-    val swipeToSyncEnabled = settingsRepository.swipeToSyncEnabled
-    val largeJournalSafeMode = settingsRepository.largeJournalSafeMode
-    val versionHistoryEnabled = settingsRepository.versionHistoryEnabled
-    val versionHistoryMaxVersions = settingsRepository.versionHistoryMaxVersions
-    val versionHistoryRetentionDays = settingsRepository.versionHistoryRetentionDays
-    val dataRecoverySettingsUiState: StateFlow<DataRecoverySettingsUiState> =
-        combine(
-            combine(
-                storageUri,
-                lastBackupTimestamp,
-                backupReminderDays,
-                showOnboardingNextLaunch
-            ) { uri, backupTimestamp, reminderDays, showOnboarding ->
-                DataRecoveryStorageSettingsSlice(
-                    storageUri = uri,
-                    lastBackupTimestamp = backupTimestamp,
-                    backupReminderDays = reminderDays,
-                    showOnboardingNextLaunch = showOnboarding
-                )
-            },
-            combine(
-                swipeToSyncEnabled,
-                largeJournalSafeMode,
-                versionHistoryEnabled
-            ) { swipeSync, safeMode, versionHistory ->
-                DataRecoverySafetySettingsSlice(
-                    swipeToSyncEnabled = swipeSync,
-                    largeJournalSafeMode = safeMode,
-                    versionHistoryEnabled = versionHistory
-                )
-            },
-            combine(
-                importState,
-                restoreSummary
-            ) { importProgress, restore ->
-                importProgress to restore
-            }
-        ) { storage, safety, progress ->
-            DataRecoverySettingsUiState(
-                storageUri = storage.storageUri,
-                lastBackupTimestamp = storage.lastBackupTimestamp,
-                backupReminderDays = storage.backupReminderDays,
-                swipeToSyncEnabled = safety.swipeToSyncEnabled,
-                largeJournalSafeMode = safety.largeJournalSafeMode,
-                showOnboardingNextLaunch = storage.showOnboardingNextLaunch,
-                versionHistoryEnabled = safety.versionHistoryEnabled,
-                importState = progress.first,
-                restoreSummary = progress.second
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = DataRecoverySettingsUiState(
-                storageUri = storageUri.value,
-                lastBackupTimestamp = lastBackupTimestamp.value,
-                backupReminderDays = backupReminderDays.value,
-                swipeToSyncEnabled = swipeToSyncEnabled.value,
-                largeJournalSafeMode = largeJournalSafeMode.value,
-                showOnboardingNextLaunch = showOnboardingNextLaunch.value,
-                versionHistoryEnabled = versionHistoryEnabled.value,
-                importState = importState.value,
-                restoreSummary = restoreSummary.value
-            )
-        )
-    val lastBackgroundFullRefreshAt = settingsRepository.lastBackgroundFullRefreshAt
-    val showStatistics = settingsRepository.showStatistics
-    val showLookbackInNavBar = settingsRepository.showLookbackInNavBar
-    val showKeywordsInNavBar = settingsRepository.showKeywordsInNavBar
-    val showTodosInNavBar = settingsRepository.showTodosInNavBar
-    val showCompletedTodos = settingsRepository.showCompletedTodos
-    val showStatisticsInNavBar = settingsRepository.showStatisticsInNavBar
-    val enableDragAndDrop = settingsRepository.enableDragAndDrop
-    val entryDeleteSelectionEnabled = settingsRepository.entryDeleteSelectionEnabled
-    val hasActiveWidgets = settingsRepository.hasActiveWidgets
-    val showBottomBar = settingsRepository.showBottomBar
-    val navigationChromeMode = settingsRepository.navigationChromeMode
-    val showBottomPanelLabels = settingsRepository.showBottomPanelLabels
-    val fabPlacement = settingsRepository.fabPlacement
-    val calendarDensityPreference = settingsRepository.calendarDensityPreference
-    val adaptiveBottomNav = settingsRepository.adaptiveBottomNav
-    val navigationGesturesSettingsUiState: StateFlow<NavigationGesturesSettingsUiState> =
-        combine(
-            combine(
-                showStatistics,
-                showLookbackInNavBar,
-                showKeywordsInNavBar,
-                showTodosInNavBar,
-                showStatisticsInNavBar
-            ) { statistics, lookback, keywords, todos, statisticsInNav ->
-                NavigationVisibilitySettingsSlice(
-                    showStatistics = statistics,
-                    showLookbackInNavBar = lookback,
-                    showKeywordsInNavBar = keywords,
-                    showTodosInNavBar = todos,
-                    showStatisticsInNavBar = statisticsInNav
-                )
-            },
-            combine(
-                navigationChromeMode,
-                showBottomPanelLabels,
-                adaptiveBottomNav
-            ) { chromeMode, bottomPanelLabels, adaptiveNav ->
-                NavigationChromeSettingsSlice(
-                    navigationChromeMode = chromeMode,
-                    showBottomPanelLabels = bottomPanelLabels,
-                    adaptiveBottomNav = adaptiveNav
-                )
-            },
-            combine(
-                swipeToNavigateDatesEnabled,
-                enableDragAndDrop,
-                entryDeleteSelectionEnabled
-            ) { swipeToNavigate, dragAndDrop, deleteSelection ->
-                GestureSettingsSlice(
-                    swipeToNavigateDatesEnabled = swipeToNavigate,
-                    enableDragAndDrop = dragAndDrop,
-                    entryDeleteSelectionEnabled = deleteSelection
-                )
-            }
-        ) { visibility, chrome, gestures ->
-            NavigationGesturesSettingsUiState(
-                showStatistics = visibility.showStatistics,
-                showLookbackInNavBar = visibility.showLookbackInNavBar,
-                showKeywordsInNavBar = visibility.showKeywordsInNavBar,
-                showTodosInNavBar = visibility.showTodosInNavBar,
-                showStatisticsInNavBar = visibility.showStatisticsInNavBar,
-                navigationChromeMode = chrome.navigationChromeMode,
-                showBottomPanelLabels = chrome.showBottomPanelLabels,
-                adaptiveBottomNav = chrome.adaptiveBottomNav,
-                swipeToNavigateDatesEnabled = gestures.swipeToNavigateDatesEnabled,
-                enableDragAndDrop = gestures.enableDragAndDrop,
-                entryDeleteSelectionEnabled = gestures.entryDeleteSelectionEnabled
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = NavigationGesturesSettingsUiState(
-                showStatistics = showStatistics.value,
-                showLookbackInNavBar = showLookbackInNavBar.value,
-                showKeywordsInNavBar = showKeywordsInNavBar.value,
-                showTodosInNavBar = showTodosInNavBar.value,
-                showStatisticsInNavBar = showStatisticsInNavBar.value,
-                navigationChromeMode = navigationChromeMode.value,
-                showBottomPanelLabels = showBottomPanelLabels.value,
-                adaptiveBottomNav = adaptiveBottomNav.value,
-                swipeToNavigateDatesEnabled = swipeToNavigateDatesEnabled.value,
-                enableDragAndDrop = enableDragAndDrop.value,
-                entryDeleteSelectionEnabled = entryDeleteSelectionEnabled.value
-            )
-        )
-    val customShortcodes = settingsRepository.customShortcodes
-    val recentTemplateIds = settingsRepository.recentTemplateIds
-    val favoriteTemplateIds = settingsRepository.favoriteTemplateIds
-    val templateUsageCounts = settingsRepository.templateUsageCounts
-    val templateFollowUpCounts = settingsRepository.templateFollowUpCounts
-    val entryReviewEnabled = settingsRepository.entryReviewEnabled
-    val keywordHighlightingEnabled = settingsRepository.keywordHighlightingEnabled
-    val isPreviewLimitEnabled = settingsRepository.isPreviewLimitEnabled
-    val previewLimitLength = settingsRepository.previewLimitLength
-    val statisticsSectionOrder = settingsRepository.statisticsSectionOrder
-    val visibleStatisticsSections = settingsRepository.visibleStatisticsSections
-    val useMLKitDetection = settingsRepository.useMLKitDetection
-    val keywords = keywordRepository.keywords
-    val fuzzyThreshold = keywordRepository.fuzzyThreshold
-    val journalExperienceSettingsUiState: StateFlow<JournalExperienceSettingsUiState> =
-        combine(
-            combine(
-                animationPreference,
-                entryStyle,
-                showTimestamps,
-                showDayHeaderStats,
-                renderCheckboxesAsText
-            ) { animation, style, timestamps, dayHeaderStats, checkboxesAsText ->
-                JournalExperienceDisplaySettingsSlice(
-                    animationPreference = animation,
-                    entryStyle = style,
-                    showTimestamps = timestamps,
-                    showDayHeaderStats = dayHeaderStats,
-                    renderCheckboxesAsText = checkboxesAsText
-                )
-            },
-            combine(
-                allowFutureEntries,
-                firstDayOfWeek,
-                dateOrderPreference,
-                calendarDensityPreference,
-                customDateKeywords
-            ) { futureEntries, firstDay, dateOrder, calendarDensity, dateKeywords ->
-                JournalExperienceDateSettingsSlice(
-                    allowFutureEntries = futureEntries,
-                    firstDayOfWeek = firstDay,
-                    dateOrderPreference = dateOrder,
-                    calendarDensityPreference = calendarDensity,
-                    customDateKeywords = dateKeywords
-                )
-            },
-            combine(
-                carryForwardTodosEnabled,
-                isPreviewLimitEnabled,
-                previewLimitLength,
-                fuzzyThreshold
-            ) { carryForward, previewLimitEnabled, previewLength, threshold ->
-                JournalExperiencePreviewSettingsSlice(
-                    carryForwardTodosEnabled = carryForward,
-                    isPreviewLimitEnabled = previewLimitEnabled,
-                    previewLimitLength = previewLength,
-                    fuzzyThreshold = threshold
-                )
-            }
-        ) { display, date, preview ->
-            JournalExperienceSettingsUiState(
-                animationPreference = display.animationPreference,
-                isPreviewLimitEnabled = preview.isPreviewLimitEnabled,
-                previewLimitLength = preview.previewLimitLength,
-                showTimestamps = display.showTimestamps,
-                allowFutureEntries = date.allowFutureEntries,
-                firstDayOfWeek = date.firstDayOfWeek,
-                dateOrderPreference = date.dateOrderPreference,
-                customDateKeywords = date.customDateKeywords,
-                showDayHeaderStats = display.showDayHeaderStats,
-                renderCheckboxesAsText = display.renderCheckboxesAsText,
-                carryForwardTodosEnabled = preview.carryForwardTodosEnabled,
-                calendarDensityPreference = date.calendarDensityPreference,
-                fuzzyThreshold = preview.fuzzyThreshold,
-                entryStyle = display.entryStyle
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = JournalExperienceSettingsUiState(
-                animationPreference = animationPreference.value,
-                isPreviewLimitEnabled = isPreviewLimitEnabled.value,
-                previewLimitLength = previewLimitLength.value,
-                showTimestamps = showTimestamps.value,
-                allowFutureEntries = allowFutureEntries.value,
-                firstDayOfWeek = firstDayOfWeek.value,
-                dateOrderPreference = dateOrderPreference.value,
-                customDateKeywords = customDateKeywords.value,
-                showDayHeaderStats = showDayHeaderStats.value,
-                renderCheckboxesAsText = renderCheckboxesAsText.value,
-                carryForwardTodosEnabled = carryForwardTodosEnabled.value,
-                calendarDensityPreference = calendarDensityPreference.value,
-                fuzzyThreshold = fuzzyThreshold.value,
-                entryStyle = entryStyle.value
-            )
-        )
-    val rootSettingsUiState: StateFlow<RootSettingsUiState> =
-        combine(
-            appLanguage,
-            entryReviewEnabled,
-            keywordHighlightingEnabled,
-            fuzzyThreshold
-        ) { language, reviewEnabled, highlightingEnabled, threshold ->
-            RootSettingsUiState(
-                appLanguage = language,
-                entryReviewEnabled = reviewEnabled,
-                keywordHighlightingEnabled = highlightingEnabled,
-                fuzzyThreshold = threshold
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = RootSettingsUiState(
-                appLanguage = appLanguage.value,
-                entryReviewEnabled = entryReviewEnabled.value,
-                keywordHighlightingEnabled = keywordHighlightingEnabled.value,
-                fuzzyThreshold = fuzzyThreshold.value
-            )
-        )
+    val allowFutureEntries = settingsFeature.allowFutureEntries
+    val allowTaskerAccess = settingsFeature.allowTaskerAccess
+    val allowTaskerEvents = settingsFeature.allowTaskerEvents
+    val includeEntryTextInTaskerEvents = settingsFeature.includeEntryTextInTaskerEvents
+    val swipeToNavigateDatesEnabled = settingsFeature.swipeToNavigateDatesEnabled
+    val swipeToSyncEnabled = settingsFeature.swipeToSyncEnabled
+    val largeJournalSafeMode = settingsFeature.largeJournalSafeMode
+    val versionHistoryEnabled = settingsFeature.versionHistoryEnabled
+    val versionHistoryMaxVersions = settingsFeature.versionHistoryMaxVersions
+    val versionHistoryRetentionDays = settingsFeature.versionHistoryRetentionDays
+    val dataRecoverySettingsUiState = settingsFeature.dataRecoverySettingsUiState
+    val lastBackgroundFullRefreshAt = settingsFeature.lastBackgroundFullRefreshAt
+    val showStatistics = settingsFeature.showStatistics
+    val showLookbackInNavBar = settingsFeature.showLookbackInNavBar
+    val showKeywordsInNavBar = settingsFeature.showKeywordsInNavBar
+    val showTodosInNavBar = settingsFeature.showTodosInNavBar
+    val showCompletedTodos = settingsFeature.showCompletedTodos
+    val showStatisticsInNavBar = settingsFeature.showStatisticsInNavBar
+    val enableDragAndDrop = settingsFeature.enableDragAndDrop
+    val entryDeleteSelectionEnabled = settingsFeature.entryDeleteSelectionEnabled
+    val hasActiveWidgets = settingsFeature.hasActiveWidgets
+    val showBottomBar = settingsFeature.showBottomBar
+    val navigationChromeMode = settingsFeature.navigationChromeMode
+    val showBottomPanelLabels = settingsFeature.showBottomPanelLabels
+    val fabPlacement = settingsFeature.fabPlacement
+    val calendarDensityPreference = settingsFeature.calendarDensityPreference
+    val adaptiveBottomNav = settingsFeature.adaptiveBottomNav
+    val navigationGesturesSettingsUiState = settingsFeature.navigationGesturesSettingsUiState
+    val customShortcodes = settingsFeature.customShortcodes
+    val recentTemplateIds = settingsFeature.recentTemplateIds
+    val favoriteTemplateIds = settingsFeature.favoriteTemplateIds
+    val templateUsageCounts = settingsFeature.templateUsageCounts
+    val templateFollowUpCounts = settingsFeature.templateFollowUpCounts
+    val entryReviewEnabled = settingsFeature.entryReviewEnabled
+    val keywordHighlightingEnabled = settingsFeature.keywordHighlightingEnabled
+    val isPreviewLimitEnabled = settingsFeature.isPreviewLimitEnabled
+    val previewLimitLength = settingsFeature.previewLimitLength
+    val statisticsSectionOrder = settingsFeature.statisticsSectionOrder
+    val visibleStatisticsSections = settingsFeature.visibleStatisticsSections
+    val useMLKitDetection = settingsFeature.useMLKitDetection
+    val keywords = settingsFeature.keywords
+    val fuzzyThreshold = settingsFeature.fuzzyThreshold
+    val journalExperienceSettingsUiState = settingsFeature.journalExperienceSettingsUiState
+    val rootSettingsUiState = settingsFeature.rootSettingsUiState
+    val appearanceSettingsUiState = settingsFeature.appearanceSettingsUiState
     private val keywordCoordinator = KeywordCoordinator(
         fileManager = fileManager,
         keywordRepository = keywordRepository,
@@ -656,19 +325,19 @@ class JournalViewModel(
     val keywordEstimatedRemainingMillis = keywordCoordinator.keywordEstimatedRemainingMillis
 
     fun markTemplateUsed(templateId: String) {
-        settingsRepository.markTemplateUsed(templateId)
+        settingsFeature.markTemplateUsed(templateId)
     }
 
     fun toggleFavoriteTemplate(templateId: String) {
-        settingsRepository.toggleFavoriteTemplate(templateId)
+        settingsFeature.toggleFavoriteTemplate(templateId)
     }
 
     fun incrementTemplateUsage(templateId: String) {
-        settingsRepository.incrementTemplateUsage(templateId)
+        settingsFeature.incrementTemplateUsage(templateId)
     }
 
     fun incrementTemplateFollowUp(templateId: String) {
-        settingsRepository.incrementTemplateFollowUp(templateId)
+        settingsFeature.incrementTemplateFollowUp(templateId)
     }
 
     suspend fun buildReviewSummary(
@@ -906,34 +575,34 @@ class JournalViewModel(
         }
     }
 
-    fun setPin(plain: String) = settingsRepository.setPin(plain)
-    fun clearPin() = settingsRepository.clearPin()
-    fun checkPin(plain: String) = settingsRepository.checkPin(plain)
-    fun enableBiometric() = settingsRepository.enableBiometric()
-    fun disableBiometric() = settingsRepository.disableBiometric()
-    fun setAutoLockTimeout(minutes: Int) = settingsRepository.setAutoLockTimeout(minutes)
-    fun setAllowFutureEntries(allow: Boolean) = settingsRepository.setAllowFutureEntries(allow)
+    fun setPin(plain: String) = settingsFeature.setPin(plain)
+    fun clearPin() = settingsFeature.clearPin()
+    fun checkPin(plain: String) = settingsFeature.checkPin(plain)
+    fun enableBiometric() = settingsFeature.enableBiometric()
+    fun disableBiometric() = settingsFeature.disableBiometric()
+    fun setAutoLockTimeout(minutes: Int) = settingsFeature.setAutoLockTimeout(minutes)
+    fun setAllowFutureEntries(allow: Boolean) = settingsFeature.setAllowFutureEntries(allow)
     fun setHideTextModeEnabled(enabled: Boolean) =
-        settingsRepository.setHideTextModeEnabled(enabled)
+        settingsFeature.setHideTextModeEnabled(enabled)
     fun setCarryForwardTodosEnabled(enabled: Boolean) =
-        settingsRepository.setCarryForwardTodosEnabled(enabled)
-    fun setAllowTaskerAccess(allow: Boolean) = settingsRepository.setAllowTaskerAccess(allow)
-    fun setAllowTaskerEvents(allow: Boolean) = settingsRepository.setAllowTaskerEvents(allow)
+        settingsFeature.setCarryForwardTodosEnabled(enabled)
+    fun setAllowTaskerAccess(allow: Boolean) = settingsFeature.setAllowTaskerAccess(allow)
+    fun setAllowTaskerEvents(allow: Boolean) = settingsFeature.setAllowTaskerEvents(allow)
     fun setIncludeEntryTextInTaskerEvents(include: Boolean) =
-        settingsRepository.setIncludeEntryTextInTaskerEvents(include)
+        settingsFeature.setIncludeEntryTextInTaskerEvents(include)
     fun setSwipeToNavigateDatesEnabled(enabled: Boolean) =
-            settingsRepository.setSwipeToNavigateDatesEnabled(enabled)
-    fun setSwipeToSyncEnabled(enabled: Boolean) = settingsRepository.setSwipeToSyncEnabled(enabled)
+            settingsFeature.setSwipeToNavigateDatesEnabled(enabled)
+    fun setSwipeToSyncEnabled(enabled: Boolean) = settingsFeature.setSwipeToSyncEnabled(enabled)
     fun setLargeJournalSafeMode(enabled: Boolean) =
-            settingsRepository.setLargeJournalSafeMode(enabled)
+            settingsFeature.setLargeJournalSafeMode(enabled)
     fun setVersionHistoryEnabled(enabled: Boolean) =
-            settingsRepository.setVersionHistoryEnabled(enabled)
+            settingsFeature.setVersionHistoryEnabled(enabled)
     fun setVersionHistoryMaxVersions(count: Int) =
-            settingsRepository.setVersionHistoryMaxVersions(count)
+            settingsFeature.setVersionHistoryMaxVersions(count)
     fun setVersionHistoryRetentionDays(days: Int) =
-        settingsRepository.setVersionHistoryRetentionDays(days)
+        settingsFeature.setVersionHistoryRetentionDays(days)
 
-    fun setBackupReminderDays(days: Int) = settingsRepository.setBackupReminderDays(days)
+    fun setBackupReminderDays(days: Int) = settingsFeature.setBackupReminderDays(days)
 
     fun loadVersionHistorySnapshots(date: LocalDate = _uiState.value.selectedDate) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -1022,21 +691,21 @@ class JournalViewModel(
             }
         }
     }
-    fun setShowBottomBar(show: Boolean) = settingsRepository.setShowBottomBar(show)
+    fun setShowBottomBar(show: Boolean) = settingsFeature.setShowBottomBar(show)
     fun setNavigationChromeMode(mode: NavigationChromeMode) =
-            settingsRepository.setNavigationChromeMode(mode)
+            settingsFeature.setNavigationChromeMode(mode)
     fun setShowBottomPanelLabels(show: Boolean) =
-            settingsRepository.setShowBottomPanelLabels(show)
+            settingsFeature.setShowBottomPanelLabels(show)
     fun setFabPlacement(placement: com.mj.yaja.data.FabPlacement) =
-            settingsRepository.setFabPlacement(placement)
+            settingsFeature.setFabPlacement(placement)
     fun setCalendarDensityPreference(preference: CalendarDensityPreference) =
-            settingsRepository.setCalendarDensityPreference(preference)
+            settingsFeature.setCalendarDensityPreference(preference)
     fun setAdaptiveBottomNav(enabled: Boolean) =
-            settingsRepository.setAdaptiveBottomNav(enabled)
+            settingsFeature.setAdaptiveBottomNav(enabled)
     fun setPreviewLimitEnabled(enabled: Boolean) =
-            settingsRepository.setPreviewLimitEnabled(enabled)
-    fun setPreviewLimitLength(length: Int) = settingsRepository.setPreviewLimitLength(length)
-    fun refreshWidgetStatus() = settingsRepository.refreshActiveWidgetsStatus()
+            settingsFeature.setPreviewLimitEnabled(enabled)
+    fun setPreviewLimitLength(length: Int) = settingsFeature.setPreviewLimitLength(length)
+    fun refreshWidgetStatus() = settingsFeature.refreshWidgetStatus()
 
     // Keyword actions
 
@@ -1966,40 +1635,40 @@ class JournalViewModel(
         }
     }
 
-    fun setThemePreference(preference: ThemePreference) = settingsRepository.setThemePreference(preference)
+    fun setThemePreference(preference: ThemePreference) = settingsFeature.setThemePreference(preference)
 
-    fun setColorSource(source: ColorSource) = settingsRepository.setColorSource(source)
+    fun setColorSource(source: ColorSource) = settingsFeature.setColorSource(source)
 
-    fun setCustomPalette(palette: CustomPalette) = settingsRepository.setCustomPalette(palette)
+    fun setCustomPalette(palette: CustomPalette) = settingsFeature.setCustomPalette(palette)
 
     fun setThemeColorIntensity(intensity: ThemeColorIntensity) =
-        settingsRepository.setThemeColorIntensity(intensity)
+        settingsFeature.setThemeColorIntensity(intensity)
 
     fun setBackgroundTintLevel(level: BackgroundTintLevel) =
-        settingsRepository.setBackgroundTintLevel(level)
+        settingsFeature.setBackgroundTintLevel(level)
 
     fun setActivePersonalThemeSlotId(slotId: Int) =
-        settingsRepository.setActivePersonalThemeSlotId(slotId)
+        settingsFeature.setActivePersonalThemeSlotId(slotId)
 
     fun renamePersonalThemeSlot(slotId: Int, name: String) =
-        settingsRepository.renamePersonalThemeSlot(slotId, name)
+        settingsFeature.renamePersonalThemeSlot(slotId, name)
 
     fun setPersonalThemeHue(slotId: Int, hue: Float) =
-        settingsRepository.setPersonalThemeHue(slotId, hue)
+        settingsFeature.setPersonalThemeHue(slotId, hue)
 
     fun setPersonalThemeSaturation(slotId: Int, saturation: Float) =
-        settingsRepository.setPersonalThemeSaturation(slotId, saturation)
+        settingsFeature.setPersonalThemeSaturation(slotId, saturation)
 
     fun setPersonalThemeBrightness(slotId: Int, brightness: Float) =
-        settingsRepository.setPersonalThemeBrightness(slotId, brightness)
+        settingsFeature.setPersonalThemeBrightness(slotId, brightness)
 
     fun setPersonalThemeAccentStyle(slotId: Int, style: PersonalAccentStyle) =
-        settingsRepository.setPersonalThemeAccentStyle(slotId, style)
+        settingsFeature.setPersonalThemeAccentStyle(slotId, style)
 
     fun setAppFontFamily(fontFamily: com.mj.yaja.data.AppFontFamily) =
-        settingsRepository.setAppFontFamily(fontFamily)
+        settingsFeature.setAppFontFamily(fontFamily)
 
-    fun setMonoFontWeight(weight: Int) = settingsRepository.setMonoFontWeight(weight)
+    fun setMonoFontWeight(weight: Int) = settingsFeature.setMonoFontWeight(weight)
 
     /** Copies a user-picked font file (TTF/OTF) into app storage and activates it. */
     fun setCustomFontFromUri(uri: android.net.Uri, context: android.content.Context) {
@@ -2043,50 +1712,50 @@ class JournalViewModel(
     }
 
     fun setEntryStyle(style: com.mj.yaja.data.EntryStyle) =
-        settingsRepository.setEntryStyle(style)
+        settingsFeature.setEntryStyle(style)
 
     fun setFontScalePreference(preference: FontScalePreference) =
-        settingsRepository.setFontScalePreference(preference)
+        settingsFeature.setFontScalePreference(preference)
 
     fun setAppLanguage(language: AppLanguage) =
-        settingsRepository.setAppLanguage(language)
+        settingsFeature.setAppLanguage(language)
 
     fun setAnimationPreference(preference: AnimationPreference) =
-        settingsRepository.setAnimationPreference(preference)
+        settingsFeature.setAnimationPreference(preference)
 
-    fun setFirstDayOfWeek(dayOfWeek: DayOfWeek) = settingsRepository.setFirstDayOfWeek(dayOfWeek)
+    fun setFirstDayOfWeek(dayOfWeek: DayOfWeek) = settingsFeature.setFirstDayOfWeek(dayOfWeek)
 
     fun setDateOrderPreference(pref: com.mj.yaja.data.DateOrderPreference) =
-        settingsRepository.setDateOrderPreference(pref)
+        settingsFeature.setDateOrderPreference(pref)
 
     fun setCustomDateKeywords(entries: List<com.mj.yaja.data.DateKeywordEntry>) =
-        settingsRepository.setCustomDateKeywords(entries)
+        settingsFeature.setCustomDateKeywords(entries)
 
-    fun setShowTimestamps(show: Boolean) = settingsRepository.setShowTimestamps(show)
-    fun setShowDayHeaderStats(show: Boolean) = settingsRepository.setShowDayHeaderStats(show)
+    fun setShowTimestamps(show: Boolean) = settingsFeature.setShowTimestamps(show)
+    fun setShowDayHeaderStats(show: Boolean) = settingsFeature.setShowDayHeaderStats(show)
     fun setRenderCheckboxesAsText(renderAsText: Boolean) =
-        settingsRepository.setRenderCheckboxesAsText(renderAsText)
+        settingsFeature.setRenderCheckboxesAsText(renderAsText)
 
-    fun setShowStatistics(show: Boolean) = settingsRepository.setShowStatistics(show)
+    fun setShowStatistics(show: Boolean) = settingsFeature.setShowStatistics(show)
 
-    fun setShowLookbackInNavBar(show: Boolean) = settingsRepository.setShowLookbackInNavBar(show)
+    fun setShowLookbackInNavBar(show: Boolean) = settingsFeature.setShowLookbackInNavBar(show)
 
-    fun setShowKeywordsInNavBar(show: Boolean) = settingsRepository.setShowKeywordsInNavBar(show)
+    fun setShowKeywordsInNavBar(show: Boolean) = settingsFeature.setShowKeywordsInNavBar(show)
 
-    fun setShowTodosInNavBar(show: Boolean) = settingsRepository.setShowTodosInNavBar(show)
+    fun setShowTodosInNavBar(show: Boolean) = settingsFeature.setShowTodosInNavBar(show)
 
-    fun setShowCompletedTodos(show: Boolean) = settingsRepository.setShowCompletedTodos(show)
+    fun setShowCompletedTodos(show: Boolean) = settingsFeature.setShowCompletedTodos(show)
 
-    fun setShowStatisticsInNavBar(show: Boolean) = settingsRepository.setShowStatisticsInNavBar(show)
+    fun setShowStatisticsInNavBar(show: Boolean) = settingsFeature.setShowStatisticsInNavBar(show)
 
-    fun setEnableDragAndDrop(enable: Boolean) = settingsRepository.setEnableDragAndDrop(enable)
+    fun setEnableDragAndDrop(enable: Boolean) = settingsFeature.setEnableDragAndDrop(enable)
     fun setEntryDeleteSelectionEnabled(enable: Boolean) =
-            settingsRepository.setEntryDeleteSelectionEnabled(enable)
+            settingsFeature.setEntryDeleteSelectionEnabled(enable)
 
-    fun setEntryReviewEnabled(enabled: Boolean) = settingsRepository.setEntryReviewEnabled(enabled)
+    fun setEntryReviewEnabled(enabled: Boolean) = settingsFeature.setEntryReviewEnabled(enabled)
 
     fun setKeywordHighlightingEnabled(enabled: Boolean) =
-        settingsRepository.setKeywordHighlightingEnabled(enabled)
+        settingsFeature.setKeywordHighlightingEnabled(enabled)
 
     fun importDayOneFile(uri: android.net.Uri, context: android.content.Context) {
         if (!canStartImport(_importState.value)) return
@@ -2322,28 +1991,28 @@ class JournalViewModel(
     }
 
     fun setStatisticsSectionOrder(order: List<String>) {
-        settingsRepository.setStatisticsSectionOrder(order)
+        settingsFeature.setStatisticsSectionOrder(order)
     }
 
     fun setVisibleStatisticsSections(sectionNames: Set<String>) {
-        settingsRepository.setVisibleStatisticsSections(sectionNames)
+        settingsFeature.setVisibleStatisticsSections(sectionNames)
     }
 
     fun setUseMLKitDetection(enabled: Boolean) {
-        settingsRepository.setUseMLKitDetection(enabled)
+        settingsFeature.setUseMLKitDetection(enabled)
         calculateStatsByPeriod(com.mj.yaja.ui.screens.StatisticsPeriod.ALL_TIME)
     }
 
     fun setCustomShortcode(code: String, value: String) {
-        val current = settingsRepository.customShortcodes.value.toMutableMap()
+        val current = customShortcodes.value.toMutableMap()
         current[code] = value
-        settingsRepository.setCustomShortcodes(current)
+        settingsFeature.setCustomShortcodes(current)
     }
 
     fun removeCustomShortcode(code: String) {
-        val current = settingsRepository.customShortcodes.value.toMutableMap()
+        val current = customShortcodes.value.toMutableMap()
         current.remove(code)
-        settingsRepository.setCustomShortcodes(current)
+        settingsFeature.setCustomShortcodes(current)
     }
 
     fun reorderEntries(reorderedEntries: List<String>) {
@@ -2511,9 +2180,9 @@ class JournalViewModel(
 
     fun importCustomShortcodes(newShortcodes: Map<String, String>) {
         mergeImportedShortcodes(
-            current = settingsRepository.customShortcodes.value,
+            current = customShortcodes.value,
             incoming = newShortcodes,
-            persist = settingsRepository::setCustomShortcodes
+            persist = settingsFeature::setCustomShortcodes
         )
     }
 
@@ -3348,106 +3017,11 @@ class JournalViewModel(
     }
 
     // --- Font scale settings delegation ---
-    val dataFontScalePreference = settingsRepository.dataFontScalePreference
-    val followUiFontScale = settingsRepository.followUiFontScale
-    val appearanceSettingsUiState: StateFlow<AppearanceSettingsUiState> =
-        combine(
-            combine(
-                themePreference,
-                colorSource,
-                customPalette,
-                themeColorIntensity,
-                backgroundTintLevel
-            ) { theme, source, palette, intensity, tintLevel ->
-                AppearanceThemeSettingsSlice(
-                    themePreference = theme,
-                    colorSource = source,
-                    customPalette = palette,
-                    themeColorIntensity = intensity,
-                    backgroundTintLevel = tintLevel
-                )
-            },
-            combine(
-                personalThemeSlots,
-                activePersonalThemeSlotId
-            ) { slots, activeSlotId ->
-                AppearancePersonalThemeSettingsSlice(
-                    personalThemeSlots = slots,
-                    activePersonalThemeSlotId = activeSlotId
-                )
-            },
-            combine(
-                fontScalePreference,
-                dataFontScalePreference,
-                followUiFontScale,
-                appFontFamily,
-                monoFontWeight
-            ) { uiFontScale, dataFontScale, followUiScale, fontFamily, monoWeight ->
-                AppearanceFontSettingsSlice(
-                    fontScalePreference = uiFontScale,
-                    dataFontScalePreference = dataFontScale,
-                    followUiFontScale = followUiScale,
-                    appFontFamily = fontFamily,
-                    monoFontWeight = monoWeight
-                )
-            },
-            combine(
-                customFontPath,
-                customFontName,
-                fabPlacement
-            ) { fontPath, fontName, placement ->
-                AppearanceCustomFontSettingsSlice(
-                    customFontPath = fontPath,
-                    customFontName = fontName,
-                    fabPlacement = placement
-                )
-            }
-        ) { theme, personalTheme, font, customFont ->
-            AppearanceSettingsUiState(
-                themePreference = theme.themePreference,
-                colorSource = theme.colorSource,
-                customPalette = theme.customPalette,
-                themeColorIntensity = theme.themeColorIntensity,
-                backgroundTintLevel = theme.backgroundTintLevel,
-                personalThemeSlots = personalTheme.personalThemeSlots,
-                activePersonalThemeSlotId = personalTheme.activePersonalThemeSlotId,
-                fontScalePreference = font.fontScalePreference,
-                dataFontScalePreference = font.dataFontScalePreference,
-                followUiFontScale = font.followUiFontScale,
-                appFontFamily = font.appFontFamily,
-                monoFontWeight = font.monoFontWeight,
-                customFontPath = customFont.customFontPath,
-                customFontName = customFont.customFontName,
-                fabPlacement = customFont.fabPlacement
-            )
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = AppearanceSettingsUiState(
-                themePreference = themePreference.value,
-                colorSource = colorSource.value,
-                customPalette = customPalette.value,
-                themeColorIntensity = themeColorIntensity.value,
-                backgroundTintLevel = backgroundTintLevel.value,
-                personalThemeSlots = personalThemeSlots.value,
-                activePersonalThemeSlotId = activePersonalThemeSlotId.value,
-                fontScalePreference = fontScalePreference.value,
-                dataFontScalePreference = dataFontScalePreference.value,
-                followUiFontScale = followUiFontScale.value,
-                appFontFamily = appFontFamily.value,
-                monoFontWeight = monoFontWeight.value,
-                customFontPath = customFontPath.value,
-                customFontName = customFontName.value,
-                fabPlacement = fabPlacement.value
-            )
-        )
-
     fun setDataFontScalePreference(preference: FontScalePreference) =
-        settingsRepository.setDataFontScalePreference(preference)
+        settingsFeature.setDataFontScalePreference(preference)
 
     fun setFollowUiFontScale(follow: Boolean) =
-        settingsRepository.setFollowUiFontScale(follow)
-
+        settingsFeature.setFollowUiFontScale(follow)
     // --- Recurring Tasks feature integration ---
     private val recurringTaskRepository = com.mj.yaja.data.RecurringTaskRepository.getInstance(fileManager.getContext())
     val recurringTasks: StateFlow<List<com.mj.yaja.data.RecurringTaskItem>> = recurringTaskRepository.items
