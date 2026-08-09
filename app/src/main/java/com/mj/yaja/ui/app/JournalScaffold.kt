@@ -241,7 +241,9 @@ fun JournalScaffold(
         onBackupData = { viewModel.backupData(context) },
         showBackupReminder = backupTooOld,
         onNavigateToSettings = { navController.navigate(Route.Settings.path) { popUpTo(Route.Home.path) } },
-        onNavigateToHelp = { navController.navigate(Route.Help.path) { popUpTo(Route.Home.path) } },
+        onNavigateToHelp = {
+                navController.navigate(Route.HelpAboutSettings.path) { popUpTo(Route.Home.path) }
+        },
         showStatistics = showStatistics,
         showLookbackInNavBar = showLookbackInNavBar,
         showKeywordsInNavBar = showKeywordsInNavBar,

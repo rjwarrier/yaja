@@ -3,7 +3,6 @@ package com.mj.yaja.ui.screens
 import android.util.Log
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -90,6 +89,7 @@ import com.mj.yaja.ui.widget.TodoListWidgetProvider
 fun AboutSection(
     onNavigateToHelp: () -> Unit,
     onNavigateToAppLog: () -> Unit,
+    onNavigateToShare: () -> Unit,
     showHeader: Boolean = true
 ) {
     val uriHandler = LocalUriHandler.current
@@ -181,13 +181,13 @@ fun AboutSection(
     }
     Spacer(modifier = Modifier.height(12.dp))
 
-    HelpAboutBrandFooter(uriHandler = uriHandler, context = LocalContext.current)
+    HelpAboutBrandFooter(uriHandler = uriHandler, onShare = onNavigateToShare)
     Spacer(modifier = Modifier.height(12.dp))
 
     OtherAppsCard(uriHandler = uriHandler)
     Spacer(modifier = Modifier.height(12.dp))
 
-    GitHubAndShareRow(context = LocalContext.current, uriHandler = uriHandler)
+    GitHubAndShareRow(uriHandler = uriHandler, onShare = onNavigateToShare)
     Spacer(modifier = Modifier.height(12.dp))
 
     val interactionWeb = remember { MutableInteractionSource() }
@@ -238,8 +238,9 @@ fun AboutSection(
 @Composable
 private fun HelpAboutBrandFooter(
     uriHandler: androidx.compose.ui.platform.UriHandler,
-    context: android.content.Context
+    onShare: () -> Unit
 ) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -324,15 +325,7 @@ private fun HelpAboutBrandFooter(
                 modifier = Modifier.weight(1f),
                 icon = Icons.Rounded.Share,
                 label = stringResource(R.string.help_footer_share),
-                onClick = {
-                    val intent = Intent(Intent.ACTION_SEND).apply {
-                        type = "text/plain"
-                        putExtra(Intent.EXTRA_TEXT, context.getString(R.string.help_share_yaja_text))
-                    }
-                    context.startActivity(
-                        Intent.createChooser(intent, context.getString(R.string.help_share_yaja))
-                    )
-                }
+                onClick = onShare
             )
         }
         Spacer(modifier = Modifier.height(10.dp))
@@ -462,11 +455,10 @@ private const val YAJA_GITHUB_URL = "https://github.com/rjwarrier/yaja"
 
 @Composable
 private fun GitHubAndShareRow(
-    context: android.content.Context,
-    uriHandler: androidx.compose.ui.platform.UriHandler
+    uriHandler: androidx.compose.ui.platform.UriHandler,
+    onShare: () -> Unit
 ) {
     val shareTitle = stringResource(R.string.nav_share_yaja)
-    val shareTextBody = stringResource(R.string.nav_share_text_body)
 
     Row(
         modifier = Modifier
@@ -498,13 +490,7 @@ private fun GitHubAndShareRow(
 
         val interactionShare = remember { MutableInteractionSource() }
         OutlinedButton(
-            onClick = {
-                val intent = Intent(Intent.ACTION_SEND).apply {
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_TEXT, shareTextBody)
-                }
-                context.startActivity(Intent.createChooser(intent, shareTitle))
-            },
+            onClick = onShare,
             interactionSource = interactionShare,
             modifier = Modifier
                 .weight(1f)

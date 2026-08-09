@@ -157,7 +157,8 @@ fun AdvancedIntegrationsSettingsScreen(
 fun HelpAboutSettingsScreen(
     onNavigateBack: () -> Unit,
     onNavigateToHelp: () -> Unit,
-    onNavigateToAppLog: () -> Unit
+    onNavigateToAppLog: () -> Unit,
+    onNavigateToShare: () -> Unit
 ) {
     SmallSettingsScreenScaffold(
         title = stringResource(R.string.nav_help),
@@ -166,6 +167,7 @@ fun HelpAboutSettingsScreen(
         AboutSection(
             onNavigateToHelp = onNavigateToHelp,
             onNavigateToAppLog = onNavigateToAppLog,
+            onNavigateToShare = onNavigateToShare,
             showHeader = false
         )
     }

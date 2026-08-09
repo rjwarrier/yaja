@@ -255,7 +255,7 @@ internal fun DrawerAdvancedAndAppSection(
         NavigationDrawerItem(
                 icon = { Icon(Icons.AutoMirrored.Rounded.Help, contentDescription = null) },
                 label = { Text(stringResource(R.string.nav_help)) },
-                selected = currentRoute == "help",
+                selected = currentRoute == "help_about_settings",
                 onClick = onNavigateToHelp,
                 modifier = Modifier.padding(horizontal = 12.dp)
         )

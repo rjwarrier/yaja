@@ -33,6 +33,7 @@ sealed class Route(val path: String) {
     data object Shortcodes : Route("shortcodes")
     data object Todos : Route("todos")
     data object Help : Route("help")
+    data object ShareApp : Route("share_app")
     data object PinLock : Route("pin_lock")
     data object PinSetup : Route("pin_setup")
     data object PinDisable : Route("pin_disable")

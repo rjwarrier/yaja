@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    FileProvider paths: only expose the backups/ subdirectory.
-    Sharing a backup ZIP shares only that file, not the entire filesDir.
+    FileProvider paths: only expose the backups/ subdirectory and the share
+    promo image staged in cache/exports/. Sharing a backup ZIP or the promo
+    image shares only that file, never the enclosing directory.
 -->
 <paths>
     <files-path name="backups" path="backups/" />
+    <cache-path name="exports" path="exports/" />
 </paths>
 

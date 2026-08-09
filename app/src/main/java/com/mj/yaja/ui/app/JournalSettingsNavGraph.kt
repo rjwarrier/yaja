@@ -15,6 +15,7 @@ import com.mj.yaja.ui.screens.DataRecoverySettingsScreen
 import com.mj.yaja.ui.screens.DataPrivacyDashboardScreen
 import com.mj.yaja.ui.screens.HelpScreen
 import com.mj.yaja.ui.screens.HelpAboutSettingsScreen
+import com.mj.yaja.ui.screens.ShareAppScreen
 import com.mj.yaja.ui.screens.JournalExperienceSettingsScreen
 import com.mj.yaja.ui.screens.LanguageSettingsScreen
 import com.mj.yaja.ui.screens.NavigationGesturesSettingsScreen
@@ -220,8 +221,12 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                 HelpAboutSettingsScreen(
                         onNavigateBack = { navController.popBackStack() },
                         onNavigateToHelp = { navController.navigate(Route.Help.path) },
-                        onNavigateToAppLog = { navController.navigate(Route.AppLog.path) }
+                        onNavigateToAppLog = { navController.navigate(Route.AppLog.path) },
+                        onNavigateToShare = { navController.navigate(Route.ShareApp.path) }
                 )
+        }
+        composable(Route.ShareApp.path) {
+                ShareAppScreen(onNavigateBack = { navController.popBackStack() })
         }
         composable(Route.DataPrivacyDashboard.path) {
                 val storageUri by viewModel.storageUri.collectAsStateWithLifecycle()
