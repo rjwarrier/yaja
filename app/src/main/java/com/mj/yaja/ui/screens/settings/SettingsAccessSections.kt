@@ -4,7 +4,9 @@ import android.util.Log
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -21,12 +23,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Article
+import androidx.compose.material.icons.automirrored.rounded.Chat
 import androidx.compose.material.icons.automirrored.rounded.HelpOutline
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Archive
+import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Fingerprint
+import androidx.compose.material.icons.rounded.Forum
 import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Language
@@ -34,6 +40,7 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.NorthEast
 import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material.icons.rounded.Shop
 import androidx.compose.material.icons.rounded.Storage
 import androidx.compose.material.icons.rounded.VisibilityOff
 import androidx.compose.material.icons.rounded.Settings
@@ -61,13 +68,19 @@ import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.expressivePressMotion
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.mj.yaja.BuildConfig
 import com.mj.yaja.R
+import com.mj.yaja.ui.theme.BodoniModaFamily
 import com.mj.yaja.ui.widget.HeatmapWidgetProvider
 import com.mj.yaja.ui.widget.QuickCaptureWidgetProvider
 import com.mj.yaja.ui.widget.QuickTodoWidgetProvider
@@ -168,6 +181,9 @@ fun AboutSection(
     }
     Spacer(modifier = Modifier.height(12.dp))
 
+    HelpAboutBrandFooter(uriHandler = uriHandler, context = LocalContext.current)
+    Spacer(modifier = Modifier.height(12.dp))
+
     OtherAppsCard(uriHandler = uriHandler)
     Spacer(modifier = Modifier.height(12.dp))
 
@@ -217,6 +233,141 @@ fun AboutSection(
     }
 
     Spacer(modifier = Modifier.height(32.dp))
+}
+
+@Composable
+private fun HelpAboutBrandFooter(
+    uriHandler: androidx.compose.ui.platform.UriHandler,
+    context: android.content.Context
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Surface(
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            modifier = Modifier.size(80.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Icon(
+                    painter = painterResource(id = R.drawable.rj_logo),
+                    contentDescription = stringResource(R.string.help_cd_rj_logo),
+                    modifier = Modifier
+                        .size(80.dp)
+                        .padding(14.dp),
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "yaja",
+            style = MaterialTheme.typography.headlineSmall.copy(
+                fontFamily = BodoniModaFamily,
+                fontWeight = FontWeight.ExtraBold
+            ),
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = stringResource(R.string.help_tagline),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            text = stringResource(R.string.help_version_prefix, BuildConfig.VERSION_NAME),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .background(
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                    CircleShape
+                )
+                .padding(horizontal = 12.dp, vertical = 4.dp)
+        )
+        Spacer(modifier = Modifier.height(24.dp))
+        Text(
+            text = stringResource(R.string.help_from_labs),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+            letterSpacing = 1.sp
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.help_made_in),
+            style = MaterialTheme.typography.labelMedium
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.Rounded.Shop,
+                label = stringResource(R.string.help_footer_play_store),
+                onClick = {
+                    uriHandler.openUri("https://play.google.com/store/apps/details?id=com.mj.yaja")
+                }
+            )
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.Rounded.Language,
+                label = stringResource(R.string.help_footer_website),
+                onClick = {
+                    uriHandler.openUri("https://ranjithj.in/yaja/")
+                }
+            )
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.Rounded.Share,
+                label = stringResource(R.string.help_footer_share),
+                onClick = {
+                    val intent = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_TEXT, context.getString(R.string.help_share_yaja_text))
+                    }
+                    context.startActivity(
+                        Intent.createChooser(intent, context.getString(R.string.help_share_yaja))
+                    )
+                }
+            )
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.Rounded.Code,
+                label = stringResource(R.string.help_footer_github),
+                onClick = {
+                    uriHandler.openUri("https://github.com/rjwarrier/yaja/tree/feature/ui-improvements-and-fixes")
+                }
+            )
+            val clipboardManager = LocalClipboardManager.current
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.AutoMirrored.Rounded.Chat,
+                label = stringResource(R.string.help_footer_discord),
+                onClick = {
+                    clipboardManager.setText(AnnotatedString("medvl_jedi"))
+                    Toast.makeText(context, context.getString(R.string.help_discord_copied), Toast.LENGTH_SHORT).show()
+                }
+            )
+            HelpFooterActionButton(
+                modifier = Modifier.weight(1f),
+                icon = Icons.Rounded.Forum,
+                label = stringResource(R.string.help_footer_reddit),
+                onClick = {
+                    uriHandler.openUri("https://www.reddit.com/r/yaja_journal/")
+                }
+            )
+        }
+    }
 }
 
 private data class OtherApp(val name: String, val tagline: String, val playStoreUrl: String)
