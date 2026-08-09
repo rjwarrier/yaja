@@ -112,7 +112,7 @@ fun AboutSection(
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = stringResource(R.string.nav_help),
+                    text = stringResource(R.string.settings_help_card_title),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -168,6 +168,12 @@ fun AboutSection(
     }
     Spacer(modifier = Modifier.height(12.dp))
 
+    OtherAppsCard(uriHandler = uriHandler)
+    Spacer(modifier = Modifier.height(12.dp))
+
+    GitHubAndShareRow(context = LocalContext.current, uriHandler = uriHandler)
+    Spacer(modifier = Modifier.height(12.dp))
+
     val interactionWeb = remember { MutableInteractionSource() }
     ElevatedCard(
         onClick = { uriHandler.openUri("https://ranjithj.in/yaja/") },
@@ -209,12 +215,6 @@ fun AboutSection(
             }
         }
     }
-    Spacer(modifier = Modifier.height(12.dp))
-
-    OtherAppsCard(uriHandler = uriHandler)
-    Spacer(modifier = Modifier.height(12.dp))
-
-    GitHubAndShareRow(context = LocalContext.current, uriHandler = uriHandler)
 
     Spacer(modifier = Modifier.height(32.dp))
 }
