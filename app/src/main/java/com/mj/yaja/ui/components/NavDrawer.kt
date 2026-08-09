@@ -1,6 +1,5 @@
 ﻿package com.mj.yaja.ui.components
 
-import android.content.Intent
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.RepeatMode
@@ -82,6 +81,7 @@ fun AppNavigationDrawer(
         showBackupReminder: Boolean = false,
         onNavigateToSettings: () -> Unit,
         onNavigateToHelp: () -> Unit,
+        onNavigateToShare: () -> Unit,
         showStatistics: Boolean = true,
         showLookbackInNavBar: Boolean = true,
         showKeywordsInNavBar: Boolean = false,
@@ -92,10 +92,7 @@ fun AppNavigationDrawer(
         content: @Composable () -> Unit
 ) {
         var showLogoEasterEgg by remember { mutableStateOf(false) }
-        val context = LocalContext.current
         val uriHandler = LocalUriHandler.current
-        val shareTextBody = stringResource(R.string.nav_share_text_body)
-        val shareYajaTitle = stringResource(R.string.nav_share_yaja)
         var syncStartedAtMillis by remember { mutableStateOf<Long?>(null) }
         LaunchedEffect(syncProgress == null) {
                 if (syncProgress == null) {
@@ -158,13 +155,8 @@ fun AppNavigationDrawer(
                                                                         uriHandler.openUri("https://ranjithj.in/yaja/")
                                                                 },
                                                                 onShareApp = {
-                                                                        val intent = Intent(Intent.ACTION_SEND).apply {
-                                                                                type = "text/plain"
-                                                                                putExtra(Intent.EXTRA_TEXT, shareTextBody)
-                                                                        }
-                                                                        context.startActivity(
-                                                                                Intent.createChooser(intent, shareYajaTitle)
-                                                                        )
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToShare()
                                                                 }
                                                         )
                                                         Spacer(Modifier.height(24.dp))

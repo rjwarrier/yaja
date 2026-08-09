@@ -244,6 +244,9 @@ fun JournalScaffold(
         onNavigateToHelp = {
                 navController.navigate(Route.HelpAboutSettings.path) { popUpTo(Route.Home.path) }
         },
+        onNavigateToShare = {
+                navController.navigate(Route.ShareApp.path) { popUpTo(Route.Home.path) }
+        },
         showStatistics = showStatistics,
         showLookbackInNavBar = showLookbackInNavBar,
         showKeywordsInNavBar = showKeywordsInNavBar,
