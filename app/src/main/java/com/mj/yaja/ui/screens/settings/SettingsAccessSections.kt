@@ -3,14 +3,18 @@ package com.mj.yaja.ui.screens
 import android.util.Log
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.Intent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +24,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Article
 import androidx.compose.material.icons.automirrored.rounded.HelpOutline
+import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Archive
 import androidx.compose.material.icons.rounded.Fingerprint
 import androidx.compose.material.icons.rounded.GridView
@@ -43,6 +48,7 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
@@ -203,8 +209,165 @@ fun AboutSection(
             }
         }
     }
+    Spacer(modifier = Modifier.height(12.dp))
+
+    OtherAppsCard(uriHandler = uriHandler)
+    Spacer(modifier = Modifier.height(12.dp))
+
+    GitHubAndShareRow(context = LocalContext.current, uriHandler = uriHandler)
 
     Spacer(modifier = Modifier.height(32.dp))
+}
+
+private data class OtherApp(val name: String, val tagline: String, val playStoreUrl: String)
+
+private val otherApps = listOf(
+    OtherApp(
+        name = "Assetrack",
+        tagline = "Track your assets",
+        playStoreUrl = "https://play.google.com/store/apps/details?id=com.mj.assetrack"
+    ),
+    OtherApp(
+        name = "Ultra",
+        tagline = "Smart reminders",
+        playStoreUrl = "https://play.google.com/store/apps/details?id=com.ultra.reminders"
+    )
+)
+
+@Composable
+private fun OtherAppsCard(uriHandler: androidx.compose.ui.platform.UriHandler) {
+    ElevatedCard(
+        shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.settings_other_apps_title),
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Max),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                otherApps.forEach { app ->
+                    val interaction = remember { MutableInteractionSource() }
+                    Surface(
+                        onClick = { uriHandler.openUri(app.playStoreUrl) },
+                        color = MaterialTheme.colorScheme.surfaceContainer,
+                        shape = MaterialTheme.shapes.small,
+                        interactionSource = interaction,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .expressivePressMotion(interaction, pressedScale = 0.96f)
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(horizontal = 8.dp, vertical = 10.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = app.name,
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface,
+                                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                            )
+                            Text(
+                                text = app.tagline,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private const val YAJA_GITHUB_URL = "https://github.com/rjwarrier/yaja"
+
+@Composable
+private fun GitHubAndShareRow(
+    context: android.content.Context,
+    uriHandler: androidx.compose.ui.platform.UriHandler
+) {
+    val shareTitle = stringResource(R.string.nav_share_yaja)
+    val shareTextBody = stringResource(R.string.nav_share_text_body)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(IntrinsicSize.Max),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        val interactionGitHub = remember { MutableInteractionSource() }
+        OutlinedButton(
+            onClick = { uriHandler.openUri(YAJA_GITHUB_URL) },
+            interactionSource = interactionGitHub,
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .expressivePressMotion(interactionGitHub, pressedScale = 0.96f)
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = stringResource(R.string.settings_github_title),
+                style = MaterialTheme.typography.labelLarge,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+            )
+        }
+
+        val interactionShare = remember { MutableInteractionSource() }
+        OutlinedButton(
+            onClick = {
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, shareTextBody)
+                }
+                context.startActivity(Intent.createChooser(intent, shareTitle))
+            },
+            interactionSource = interactionShare,
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .expressivePressMotion(interactionShare, pressedScale = 0.96f)
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Share,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = shareTitle,
+                style = MaterialTheme.typography.labelLarge,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+            )
+        }
+    }
 }
 
 @Composable

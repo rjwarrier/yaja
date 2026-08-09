@@ -617,6 +617,8 @@
     <string name="app_log_local_time_format">%1$s | local time\n%2$s</string>
     <string name="settings_website_title">Yaja Website</string>
     <string name="settings_website_subtitle">Open the official website for updates and details</string>
+    <string name="settings_other_apps_title">Other apps by the developer</string>
+    <string name="settings_github_title">View source on GitHub</string>
     <string name="settings_advanced_integrations_title">Advanced Integrations</string>
     <string name="settings_tasker_integration_title">Tasker Integration</string>
     <string name="settings_tasker_integration_subtitle">Quick capture actions and journal event triggers</string>
