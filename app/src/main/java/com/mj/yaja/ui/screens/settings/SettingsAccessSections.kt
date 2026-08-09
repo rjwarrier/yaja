@@ -370,18 +370,23 @@ private fun HelpAboutBrandFooter(
     }
 }
 
-private data class OtherApp(val name: String, val tagline: String, val playStoreUrl: String)
+private data class OtherApp(val name: String, val tagline: String, val url: String)
 
 private val otherApps = listOf(
     OtherApp(
         name = "Assetrack",
         tagline = "Track your assets",
-        playStoreUrl = "https://play.google.com/store/apps/details?id=com.mj.assetrack"
+        url = "https://play.google.com/store/apps/details?id=com.mj.assetrack"
     ),
     OtherApp(
         name = "Ultra",
         tagline = "Smart reminders",
-        playStoreUrl = "https://play.google.com/store/apps/details?id=com.ultra.reminders"
+        url = "https://play.google.com/store/apps/details?id=com.ultra.reminders"
+    ),
+    OtherApp(
+        name = "Yata",
+        tagline = "Local to-do app",
+        url = "https://github.com/rjwarrier/yata/releases"
     )
 )
 
@@ -416,7 +421,7 @@ private fun OtherAppsCard(uriHandler: androidx.compose.ui.platform.UriHandler) {
                 otherApps.forEach { app ->
                     val interaction = remember { MutableInteractionSource() }
                     Surface(
-                        onClick = { uriHandler.openUri(app.playStoreUrl) },
+                        onClick = { uriHandler.openUri(app.url) },
                         color = MaterialTheme.colorScheme.surfaceContainer,
                         shape = MaterialTheme.shapes.small,
                         interactionSource = interaction,
