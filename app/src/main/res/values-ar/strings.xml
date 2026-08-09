@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">تطبيق يومية آخر</string>
-    <string name="help_version_prefix">ضد %1$s</string>
+    <string name="help_version_prefix">ضد %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">من مختبرات RJ</string>
     <string name="help_made_in">صنع في 🇮🇳</string>
 

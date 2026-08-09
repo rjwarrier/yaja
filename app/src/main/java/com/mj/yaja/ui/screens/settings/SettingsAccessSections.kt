@@ -78,6 +78,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mj.yaja.BuildConfig
+import com.mj.yaja.BuildInfo
 import com.mj.yaja.R
 import com.mj.yaja.ui.theme.BodoniModaFamily
 import com.mj.yaja.ui.widget.HeatmapWidgetProvider
@@ -276,7 +277,11 @@ private fun HelpAboutBrandFooter(
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Text(
-            text = stringResource(R.string.help_version_prefix, BuildConfig.VERSION_NAME),
+            text = stringResource(
+                R.string.help_version_prefix,
+                BuildConfig.VERSION_NAME,
+                "${BuildConfig.VERSION_CODE}.${BuildInfo.BUILD_DATE}"
+            ),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.primary,
             fontWeight = FontWeight.Bold,

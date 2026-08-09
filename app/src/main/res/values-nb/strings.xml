@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">Ja, merk __FMT_0__</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">fra laboratoriene til RJ</string>
     <string name="help_made_in">Laget i 🇮🇳</string>
 

@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">kolejna aplikacja do prowadzenia dziennika</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">z laboratoriów RJ</string>
     <string name="help_made_in">Wykonane w 🇮🇳</string>
 

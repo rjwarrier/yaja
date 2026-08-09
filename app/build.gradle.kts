@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Properties
 
 plugins {
@@ -71,6 +73,39 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+// Stamped fresh into every build (not just release) so the About screen's
+// build line reflects exactly when this APK was assembled, not just the day.
+val generatedBuildInfoDir = layout.buildDirectory.dir("generated/buildInfo/main/kotlin")
+val generateBuildInfo by tasks.registering {
+    // Captured from this task-local val, not the outer script-level val — referencing
+    // the outer val from inside doLast pulls the whole build script into config-cache
+    // serialization, which Gradle rejects.
+    val outputDir = layout.buildDirectory.dir("generated/buildInfo/main/kotlin")
+    outputs.dir(outputDir)
+    outputs.upToDateWhen { false }
+    doLast {
+        val timestamp = SimpleDateFormat("ddMMyyyyHHmm").format(Date())
+        val packageDir = outputDir.get().asFile.resolve("com/mj/yaja")
+        packageDir.mkdirs()
+        packageDir.resolve("BuildInfo.kt").writeText(
+            """
+            package com.mj.yaja
+
+            internal object BuildInfo {
+                const val BUILD_DATE = "$timestamp"
+            }
+            """.trimIndent()
+        )
+    }
+}
+android.sourceSets.getByName("main").kotlin.srcDir(generatedBuildInfoDir.get().asFile)
+// Name-matched, not withType<KotlinCompile>() — KSP's kspDebugKotlin/kspReleaseKotlin
+// tasks also read this source dir and need the same explicit dependency, but they
+// aren't KotlinCompile tasks.
+tasks.matching { it.name.contains("Kotlin") }.configureEach {
+    dependsOn(generateBuildInfo)
 }
 
 // Compose compiler stability/recomposition reports.

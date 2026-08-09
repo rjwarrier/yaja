@@ -1223,7 +1223,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">আরেকটি জার্নালিং অ্যাপ</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ-এর ল্যাব থেকে</string>
     <string name="help_made_in">তৈরি 🇮🇳-এ</string>
 

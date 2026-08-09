@@ -1323,7 +1323,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">ତଥାପି ଅନ୍ୟ ଏକ ସାମ୍ବାଦିକତା ଆପ୍ |</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ ର ଲ୍ୟାବରୁ |</string>
     <string name="help_made_in">M ରେ ତିଆରି</string>
 

@@ -1223,7 +1223,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">ಮತ್ತೊಂದು ಸರಳ ದಿನಚರಿ ಅಪ್ಲಿಕೇಶನ್</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ ಲ್ಯಾಬ್ಸ್‌ನಿಂದ</string>
     <string name="help_made_in">ಭಾರತದಲ್ಲಿ ತಯಾರಿಸಲಾಗಿದೆ 🇮🇳</string>
 

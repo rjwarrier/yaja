@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">vielä yksi päiväkirjasovellus</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ:n laboratorioista</string>
     <string name="help_made_in">Valmistettu 🇮🇳</string>
 

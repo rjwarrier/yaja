@@ -1220,7 +1220,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">yet another journaling app</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">từ phòng thí nghiệm của RJ</string>
     <string name="help_made_in">Sản xuất tại 🇮🇳</string>
 

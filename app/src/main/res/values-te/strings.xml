@@ -1202,7 +1202,7 @@
     <string name="todo_confirm_open_yaja">యజలో తెరువు</string>
     <string name="todo_confirm_keep_as_is">ఉన్నది ఉన్నట్లు ఉంచు</string>
     <string name="help_tagline">మరొక సరళమైన దినచర్య యాప్</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ ల్యాబ్స్ నుండి</string>
     <string name="help_made_in">భారతదేశంలో తయారు చేయబడింది 🇮🇳</string>
     <string name="settings_import_cancel_cd">దిగుమతిని రద్దు చేయి</string>

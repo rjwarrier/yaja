@@ -1306,7 +1306,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">encore une autre app de journal</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">des laboratoires de RJ</string>
     <string name="help_made_in">Fabriqué en 🇮🇳</string>
 

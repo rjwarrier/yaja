@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">isa pang journaling app</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">galing sa labs ni RJ</string>
     <string name="help_made_in">Ginawa sa 🇮🇳</string>
 

@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">یکی دیگر از برنامه های روزنامه نگاری</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">از آزمایشگاه های RJ</string>
     <string name="help_made_in">ساخت 🇮🇳</string>
 

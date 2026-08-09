@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">ще один додаток для ведення журналу</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">з лабораторій RJ</string>
     <string name="help_made_in">Зроблено в 🇮🇳</string>
 

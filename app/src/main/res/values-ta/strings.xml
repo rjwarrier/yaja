@@ -1225,7 +1225,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">yet another journaling app</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">RJ-இன் ஆய்வகங்களிலிருந்து</string>
     <string name="help_made_in">Made in 🇮🇳</string>
 

@@ -1323,7 +1323,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">አሁንም ሌላ የመጽሔት መተግበሪያ</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">ከ RJ ቤተ-ሙከራዎች</string>
     <string name="help_made_in">በ 🇮🇳 የተሰራ</string>
 

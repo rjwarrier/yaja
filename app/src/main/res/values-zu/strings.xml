@@ -1323,7 +1323,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">futhi olunye uhlelo lokusebenza lokubhalela</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">kusuka kumalebhu e-RJ</string>
     <string name="help_made_in">Kwenziwe ngo 🇮🇳</string>
 

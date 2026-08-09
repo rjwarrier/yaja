@@ -1323,7 +1323,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">ਇੱਕ ਹੋਰ ਜਰਨਲਿੰਗ ਐਪ</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">ਆਰਜੇ ਦੀਆਂ ਲੈਬਾਂ ਤੋਂ</string>
     <string name="help_made_in">🇮🇳 ਵਿੱਚ ਬਣਾਇਆ ਗਿਆ</string>
 

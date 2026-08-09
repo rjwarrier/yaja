@@ -1310,7 +1310,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">încă o aplicație de jurnal</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">din laboratoarele RJ</string>
     <string name="help_made_in">Fabricat în 🇮🇳</string>
 

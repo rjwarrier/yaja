@@ -1223,7 +1223,7 @@
 
     <!-- Help screen branding -->
     <string name="help_tagline">еще одно приложение для ведения журналов</string>
-    <string name="help_version_prefix">v %1$s</string>
+    <string name="help_version_prefix">v %1$s  ·  Build %2$s</string>
     <string name="help_from_labs">из лабораторий RJ</string>
     <string name="help_made_in">Сделано в 🇮🇳</string>
 
