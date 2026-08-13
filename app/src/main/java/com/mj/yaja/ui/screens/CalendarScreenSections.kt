@@ -98,16 +98,16 @@ fun CalendarJumpToDateDialog(
         }
         AlertDialog(
                 onDismissRequest = onDismiss,
-                title = { Text("Jump to Date") },
+                title = { Text(stringResource(R.string.calendar_quick_action_jump_title)) },
                 text = {
                         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                                 OutlinedTextField(
                                         value = jumpDateValue,
                                         onValueChange = onValueChange,
                                         modifier =
-                                                Modifier.fillMaxWidth()
-                                                        .focusRequester(focusRequester),
-                                        placeholder = { Text("DD-MM-YY") },
+                                                        Modifier.fillMaxWidth()
+                                                                .focusRequester(focusRequester),
+                                        placeholder = { Text(stringResource(R.string.calendar_jump_placeholder)) },
                                         isError = jumpDateError,
                                         singleLine = true,
                                         keyboardOptions =
@@ -146,7 +146,7 @@ fun CalendarJumpToDateDialog(
                                 )
                                 if (jumpDateError) {
                                         Text(
-                                                "Invalid date. Use DD-MM-YY format.",
+                                                stringResource(R.string.calendar_jump_invalid_date),
                                                 style = MaterialTheme.typography.labelSmall,
                                                 color = MaterialTheme.colorScheme.error
                                         )
@@ -167,9 +167,9 @@ fun CalendarJumpToDateDialog(
                                         }
                                 },
                                 enabled = jumpDateValue.text.filter { it.isDigit() }.length >= 6
-                        ) { Text("Go") }
+                        ) { Text(stringResource(R.string.calendar_action_go)) }
                 },
-                dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } },
+                dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_cancel)) } },
                 shape = MaterialTheme.shapes.medium
         )
 }
@@ -187,10 +187,13 @@ fun CalendarFutureDateDialogs(
         if (showFutureDateDialog && pendingFutureDate != null) {
                 AlertDialog(
                         onDismissRequest = onDismissFutureDate,
-                        title = { Text("Future Date Entry") },
+                        title = { Text(stringResource(R.string.home_future_date_title)) },
                         text = {
                                 Text(
-                                        "You are adding an entry for a future date (${pendingFutureDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))}). Do you want to continue?"
+                                        stringResource(
+                                                R.string.home_future_date_message_format,
+                                                pendingFutureDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                                        )
                                 )
                         },
                         confirmButton = {
@@ -199,10 +202,10 @@ fun CalendarFutureDateDialogs(
                                                 onConfirmFutureDate(pendingFutureDate)
                                                 onDismissFutureDate()
                                         }
-                                ) { Text("Yes") }
+                                ) { Text(stringResource(R.string.action_yes)) }
                         },
                         dismissButton = {
-                                TextButton(onClick = onDismissFutureDate) { Text("No") }
+                                TextButton(onClick = onDismissFutureDate) { Text(stringResource(R.string.action_no)) }
                         }
                 )
         }
@@ -210,10 +213,10 @@ fun CalendarFutureDateDialogs(
         if (showEnableFutureDateDialog && pendingFutureDate != null) {
                 AlertDialog(
                         onDismissRequest = onDismissEnableFutureDate,
-                        title = { Text("Enable Future Dates") },
+                        title = { Text(stringResource(R.string.calendar_enable_future_dates_title)) },
                         text = {
                                 Text(
-                                        "Future date entry is disabled. Do you want to enable it?"
+                                        stringResource(R.string.calendar_enable_future_dates_message)
                                 )
                         },
                         confirmButton = {
@@ -222,11 +225,11 @@ fun CalendarFutureDateDialogs(
                                                 onEnableFutureDate(pendingFutureDate)
                                                 onDismissEnableFutureDate()
                                         }
-                                ) { Text("Enable") }
+                                ) { Text(stringResource(R.string.calendar_action_enable)) }
                         },
                         dismissButton = {
                                 TextButton(onClick = onDismissEnableFutureDate) {
-                                        Text("Cancel")
+                                        Text(stringResource(R.string.action_cancel))
                                 }
                         }
                 )

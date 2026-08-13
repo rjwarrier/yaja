@@ -527,12 +527,16 @@ class TodoListWidgetProvider : AppWidgetProvider() {
         views.setImageViewBitmap(R.id.widget_background, bitmap)
         views.setTextColor(R.id.widget_title, fgColor)
         views.setTextColor(R.id.widget_empty, fgColor)
-        views.setTextViewText(R.id.widget_empty, "Great, No Pending Tasks!")
+        views.setTextViewText(R.id.widget_empty, context.getString(R.string.widget_todo_empty))
         views.setTextViewTextSize(R.id.widget_empty, android.util.TypedValue.COMPLEX_UNIT_SP, 13f)
         views.setInt(R.id.widget_empty_icon, "setColorFilter", fgColor)
         views.setViewVisibility(R.id.widget_title_row, if (showHeader) View.VISIBLE else View.GONE)
         views.setTextViewText(R.id.widget_title, if (showHeader) {
-            if (includeEvents) "Todos & Events" else "Todos"
+            if (includeEvents) {
+                context.getString(R.string.widget_todo_header_todos_events)
+            } else {
+                context.getString(R.string.todo_list_widget_name)
+            }
         } else "")
         views.setViewPadding(
             R.id.widget_title_row,
@@ -713,13 +717,13 @@ class TodoListWidgetProvider : AppWidgetProvider() {
                 "$prefix ${item.title}"
             }
         )
-        val periodLabel = getRelativePeriodLabel(item.date)
+        val periodLabel = getRelativePeriodLabel(context, item.date)
         val metaBuilder = android.text.SpannableStringBuilder()
         val highlightColor = if (item.isEvent) eventColor else fgColor
         val bgHighlightColor = androidx.core.graphics.ColorUtils.setAlphaComponent(highlightColor, 40)
 
         if (item.isEvent) {
-            metaBuilder.append("Event")
+            metaBuilder.append(context.getString(R.string.widget_todo_event_label))
             if (periodLabel != null) {
                 metaBuilder.append(" |  ")
                 val start = metaBuilder.length
@@ -939,25 +943,49 @@ class TodoListWidgetProvider : AppWidgetProvider() {
         return minOut + (maxOut - minOut) * progress
     }
     
-    private fun getRelativePeriodLabel(date: LocalDate): String? {
+    private fun getRelativePeriodLabel(context: Context, date: LocalDate): String? {
         val today = LocalDate.now()
         val days = java.time.temporal.ChronoUnit.DAYS.between(today, date)
         return when {
-            days == 0L -> "Today"
-            days == 1L -> "Tomorrow"
-            days == 2L -> "Day after tomorrow"
-            days == -1L -> "Yesterday"
-            days == -2L -> "Day before yesterday"
-            days in 3L..6L -> "In $days days"
-            days in -6L..-3L -> "${Math.abs(days)} days ago"
-            days in 7L..13L -> "Next week"
-            days in -13L..-7L -> "Last week"
-            days in 14L..29L -> "In ${days / 7} weeks"
-            days in -29L..-14L -> "${Math.abs(days / 7)} weeks ago"
-            days in 30L..59L -> "In 1 month"
-            days in -59L..-30L -> "1 month ago"
-            days >= 60L -> "In ${days / 30} months"
-            days <= -60L -> "${Math.abs(days / 30)} months ago"
+            days == 0L -> context.getString(R.string.settings_meaning_today)
+            days == 1L -> context.getString(R.string.settings_meaning_tomorrow)
+            days == 2L -> context.getString(R.string.settings_meaning_day_after_tomorrow)
+            days == -1L -> context.getString(R.string.settings_meaning_yesterday)
+            days == -2L -> context.getString(R.string.settings_meaning_day_before_yesterday)
+            days in 3L..6L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_in_days,
+                days.toInt(),
+                days.toInt()
+            )
+            days in -6L..-3L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_days_ago,
+                Math.abs(days).toInt(),
+                Math.abs(days).toInt()
+            )
+            days in 7L..13L -> context.getString(R.string.settings_meaning_next_week)
+            days in -13L..-7L -> context.getString(R.string.settings_meaning_last_week)
+            days in 14L..29L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_in_weeks,
+                (days / 7).toInt(),
+                (days / 7).toInt()
+            )
+            days in -29L..-14L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_weeks_ago,
+                Math.abs(days / 7).toInt(),
+                Math.abs(days / 7).toInt()
+            )
+            days in 30L..59L -> context.getString(R.string.todos_relative_in_one_month)
+            days in -59L..-30L -> context.getString(R.string.todos_relative_one_month_ago)
+            days >= 60L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_in_months,
+                (days / 30).toInt(),
+                (days / 30).toInt()
+            )
+            days <= -60L -> context.resources.getQuantityString(
+                R.plurals.todos_relative_months_ago,
+                Math.abs(days / 30).toInt(),
+                Math.abs(days / 30).toInt()
+            )
             else -> null
         }
     }

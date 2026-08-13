@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">Nota</string>
     <string name="tasker_screen_body_notes">Teks kemasukan tidak dikongsi dengan Tasker melainkan anda mendayakan Sertakan Teks Masuk dalam Acara. Jika Tasker tidak menunjukkan pilihan atau pembolehubah terkini, buka semula skrin konfigurasi Tasker selepas mengemas kini Yaja.</string>
     <string name="tasker_screen_section_example">Contoh</string>
-    <string name="tasker_screen_body_example">Contoh tindakan: Tindakan Tasker &gt; Yaja Quick Capture &gt; Tambah, dengan Padanan / pengepala ditetapkan kepada Panggilan Tidak Dijawab dan Talian untuk menambah ditetapkan kepada pembolehubah Tasker. Contoh acara: Acara Tasker &gt; Acara Jurnal Yaja &gt; Entri Diubah Suai, kemudian gunakan pembolehubah seperti %%yaja_event_type, %%yaja_date dan secara pilihan %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Contoh tindakan: Tindakan Tasker &gt; Yaja Quick Capture &gt; Tambah, dengan Padanan / pengepala ditetapkan kepada Panggilan Tidak Dijawab dan Talian untuk menambah ditetapkan kepada pembolehubah Tasker. Contoh acara: Acara Tasker &gt; Acara Jurnal Yaja &gt; Entri Diubah Suai, kemudian gunakan pembolehubah seperti %%yaja_event_type, %%yaja_date dan secara pilihan %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Kes guna</string>
     <string name="tasker_screen_use_case_1">1. Gunakan acara jurnal Yaja dalam Tasker untuk mencetuskan tindakan penyegerakan FolderSync, jadi folder Yaja anda ditolak ke mana-mana pembekal awan selepas entri berubah.</string>
     <string name="tasker_screen_use_case_2">2. Gunakan Pushbullet dengan Tasker untuk menghantar teks ke Yaja Quick Capture, jadi teks yang ditolak akan disimpan sebagai entri baharu untuk hari semasa.</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">Ketelusan Storan Pada Peranti</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja menggunakan model storan tempatan yang selamat. Data jurnal peribadi anda kekal setempat dan tidak pernah meninggalkan peranti anda pada bila-bila masa:</string>
     <string name="rebuild_cache_source_of_truth_title">Sumber Kebenaran (Fail Markdown)</string>
-    <string name="rebuild_cache_source_of_truth_desc">Semua entri, item senarai semak (todos), acara garis masa, bintang dan teg disimpan secara kekal dalam fail Markdown (.md) teks biasa dalam folder jurnal tempatan pilihan anda. Data anda adalah 100% milik anda dan berada pada peranti anda sepenuhnya.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">Semua entri, item senarai semak (todos), acara garis masa, bintang dan teg disimpan secara kekal dalam fail Markdown (.md) teks biasa dalam folder jurnal tempatan pilihan anda. Data anda adalah 100% milik anda dan berada pada peranti anda sepenuhnya.</string>
     <string name="rebuild_cache_read_cache_title">Baca Cache &amp; Indeks (Pangkalan Data SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">Untuk mendayakan pemuatan skrin segera, sorotan kalendar, kata kunci dan statistik tanpa mengimbas sistem fail pada setiap skrol, Yaja menghuraikan fail Markdown anda dan mengindeksnya dalam pangkalan data Room SQLite setempat pada peranti anda.</string>
-    <string name="rebuild_cache_local_private_title">100% Tempatan &amp; Swasta</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% Tempatan &amp; Swasta</string>
     <string name="rebuild_cache_local_private_desc">Yaja tidak mempunyai sebarang pangkalan data awan, pelayan sandaran jauh atau telemetri yang menjejaki teks anda. Semua entri jurnal dan data yang dihuraikan kekal pada peranti fizikal anda dan tidak meninggalkannya pada bila-bila masa.</string>
     <string name="keywords_export_success">Kata kunci dieksport</string>
     <string name="keywords_export_failed">Tidak dapat mengeksport kata kunci</string>
@@ -1326,4 +1326,260 @@
     <string name="settings_accent_style_analogous">Analogi</string>
     <string name="settings_accent_style_triadic">Triadic</string>
     <string name="settings_accent_style_soft">Lembut</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">Tangkapan suara</string>
+    <string name="calendar_empty_month_hint">Tiada penyertaan dalam bulan ini lagi.</string>
+    <string name="settings_data_recovery_subtitle">Alat penyimpanan, sandaran, pemulihan, import dan cache</string>
+    <string name="settings_journal_experience_subtitle">Paparan kemasukan, tingkah laku kalendar, kata kunci tarikh dan gerakan</string>
+    <string name="settings_navigation_gestures_subtitle">Navigasi bawah, tab pilihan, leret dan kawalan seret</string>
+    <string name="settings_privacy_security_subtitle">PIN kunci, buka kunci biometrik, kunci auto dan mod teks sembunyi</string>
+    <string name="settings_progressive_title">Mencadangkan Tweak Seterusnya</string>
+    <string name="settings_progressive_subtitle">Pintasan kepada tetapan yang boleh menjadikan Yaja lebih mudah untuk beroperasi dari hari ke hari.
+Set</string>
+    <string name="settings_progressive_privacy_pin">PIN</string>
+    <string name="settings_progressive_privacy_review">Semakan Privasi</string>
+    <string name="settings_progressive_nav_try">Cuba Adaptive Nav</string>
+    <string name="settings_progressive_nav_active">Adaptive Nav On</string>
+    <string name="settings_progressive_calendar_density">Kalendar: %1$s</string>
+    <string name="settings_language_picker_title">Pilih Bahasa</string>
+    <string name="settings_language_picker_subtitle">Cari atau pilih bahasa paparan untuk Yaja.</string>
+    <string name="settings_language_search_placeholder">Cari bahasa</string>
+    <string name="settings_calendar_density_title">Ketumpatan Kalendar</string>
+    <string name="settings_calendar_density_subtitle">Tala grid kalendar untuk keselesaan, pengimbasan padat atau ketumpatan tarikh maksimum.</string>
+    <string name="settings_calendar_density_comfortable">Keselesaan</string>
+    <string name="settings_calendar_density_compact">Padat</string>
+    <string name="settings_calendar_density_dense">Padat</string>
+    <string name="settings_journal_carry_forward_title">Bawa Hadapan Tidak Ditanda Todos</string>
+    <string name="settings_journal_carry_forward_subtitle">Bawa item senarai semak terbuka semalam ke hari ini apabila hari itu dimuatkan.</string>
+    <string name="quick_capture_tile_label">Tangkap Pantas</string>
+    <string name="recurring_task_execution_day_of_month_event">Acara dibuat %1$s pada hari %2$d. Ia ditulis ke fail harian anda %3$d hari lebih awal.</string>
+    <string name="recurring_task_execution_weekday_event">Acara dicipta %1$s pada %2$s. Ia ditulis ke fail harian anda %3$d hari lebih awal.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">Acara dibuat setiap bulan pada kejadian %1$s yang sama dengan tarikh mula. Ia ditulis ke fail harian anda %2$d hari lebih awal.</string>
+    <string name="recurring_task_execution_month_boundary_event">Acara dibuat %1$s pada %2$s pada bulan yang sepatutnya. Ia ditulis ke fail harian anda %3$d hari lebih awal.</string>
+    <string name="recurring_task_add_event">Tambah acara berulang</string>
+    <string name="recurring_task_edit_event">Edit acara berulang</string>
+    <string name="recurring_task_field_title_event">Nama acara</string>
+    <string name="recurring_task_field_title_event_hint">Contoh: Mesyuarat penyegerakan mingguan</string>
+    <string name="recurring_task_frequency_help_event">Pilih kekerapan acara ini berulang.</string>
+    <string name="recurring_task_details_weekday_help_event">Pilih hari bekerja pada tarikh acara ini akan tiba.</string>
+    <string name="recurring_task_delete_confirm_title_event">Padamkan acara berulang?</string>
+    <string name="recurring_task_end_help_event">Pilih apabila acara ini berhenti berulang</string>
+    <string name="recurring_task_end_count_help_event">Berhenti selepas banyak acara ini dicipta.</string>
+    <string name="settings_adaptive_bottom_nav_title">Navigasi Bawah Adaptif</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Tunjukkan tab bawah pilihan hanya apabila bahagian itu mempunyai kandungan, sambil mengekalkan skrin yang dikonfigurasikan dalam laci.</string>
+    <string name="todos_empty_refresh">Muat semula</string>
+    <string name="settings_onboarding_next_launch_title">Tunjukkan persediaan alu-aluan pada pelancaran seterusnya</string>
+    <string name="settings_onboarding_next_launch_subtitle">Jalankan pilihan pengenalan dan storan sekali pada pelancaran apl seterusnya, kemudian matikan ini secara automatik.</string>
+    <string name="settings_obsidian_export_title">Eksport Obsidian</string>
+    <string name="settings_obsidian_export_description">Cerminkan jurnal anda ke dalam peti besi markdown biasa — satu fail setiap hari, dengan sebutan Orang &amp; Tempat ditulis semula sebagai [[wikilinks]]. Data anda tidak pernah dikunci ke dalam Yaja.
+Bilik Kebal Eksport</string>
+    <string name="settings_obsidian_export_button">Folder Markdown</string>
+    <string name="settings_import_source_markdown_folder"></string>
+    <string name="settings_import_source_markdown_folder_subtitle">Mana-mana folder fail .md — Obsidian, Jekyll atau nota harian yang serupa</string>
+    <string name="onboarding_title">Selamat datang ke yaja</string>
+    <string name="onboarding_body">Yaja ialah jurnal penurunan harga tempatan yang pertama. Entri anda kekal pada peranti anda sebagai fail biasa, jadi apl itu kekal peribadi, tahan lama dan tidak menghalang anda.</string>
+    <string name="onboarding_progress">Langkah %1$d daripada %2$d</string>
+    <string name="onboarding_intro_private">Peribadi secara lalai. Yaja menyimpan jurnal anda pada peranti anda dan bukannya menghalakannya melalui perkhidmatan awan.
+Entri</string>
+    <string name="onboarding_intro_files">ialah fail penurunan harga biasa, jadi tulisan anda kekal mudah alih dan boleh difahami di luar apl juga.</string>
+    <string name="onboarding_intro_flexible">Anda boleh mulakan sekarang dan masih menyesuaikan storan, import, penampilan dan keselamatan kemudian.</string>
+    <string name="onboarding_storage_title">Pilih tempat entri baharu harus disimpan</string>
+    <string name="onboarding_storage_body">Anda boleh menyimpan segala-galanya dalam storan aplikasi dalaman atau memilih folder anda sendiri. Anda boleh menukar ini kemudian daripada Tetapan &gt; Data &amp; Pemulihan.</string>
+    <string name="onboarding_storage_internal">Storan semasa: Storan apl dalaman</string>
+    <string name="onboarding_storage_custom">Storan semasa: Folder tersuai (%1$s)</string>
+    <string name="onboarding_storage_note">Folder tersuai memerlukan kebenaran menulis supaya Yaja boleh menyimpan fail jurnal dengan selamat.</string>
+    <string name="onboarding_continue_internal">Teruskan dengan Storan Dalaman</string>
+    <string name="onboarding_switch_internal">Tukar kepada Storan Dalaman</string>
+    <string name="onboarding_choose_folder">Pilih Folder Tersuai</string>
+    <string name="onboarding_customize_title">Pilih beberapa lalai permulaan</string>
+    <string name="onboarding_customize_body">Ini adalah pilihan larian pertama pilihan. Semua di sini boleh ditukar kemudian daripada Tetapan.
+Tema</string>
+    <string name="onboarding_theme_title"></string>
+    <string name="onboarding_backup_title">Peringatan sandaran</string>
+    <string name="onboarding_backup_body">Pilih masa Yaja harus mengingatkan anda bahawa sudah tiba masanya untuk membuat zip sandaran.</string>
+    <string name="onboarding_backup_off">Mati</string>
+    <string name="onboarding_backup_30">30 hari</string>
+    <string name="onboarding_backup_60">60 hari</string>
+    <string name="onboarding_version_history_title">Sejarah versi</string>
+    <string name="onboarding_version_history_body">Simpan salinan selamat sebelum pengeditan dan pemadaman berisiko.</string>
+    <string name="onboarding_pin_setup">Sediakan kunci PIN
+Kunci</string>
+    <string name="onboarding_pin_enabled">PIN sudah didayakan</string>
+    <string name="onboarding_import_title">Bawa masuk jurnal sedia ada jika anda mahu</string>
+    <string name="onboarding_import_body">Anda boleh mengimport sekarang, atau langkau ini dan lakukannya kemudian daripada Tetapan &gt; Data &amp; Pemulihan.</string>
+    <string name="onboarding_import_running">Mengimport %1$d daripada %2$d…</string>
+    <string name="onboarding_import_success">Import selesai: %1$d hari baharu, %2$d digabungkan.
+Import</string>
+    <string name="onboarding_import_cancelled">dibatalkan.</string>
+    <string name="onboarding_import_later">Anda boleh menyelesaikan onboarding walaupun import masih berjalan di latar belakang.</string>
+    <string name="onboarding_back">Belakang</string>
+    <string name="onboarding_next">Seterusnya</string>
+    <string name="onboarding_finish">Selesai</string>
+    <string name="onboarding_skip">Langkau buat masa ini</string>
+    <string name="onboarding_rerun_note">Persediaan ini telah dibuka semula daripada Tetapan dan tidak akan dipaparkan lagi melainkan anda memintanya.</string>
+    <string name="settings_other_apps_title">Apl lain oleh pembangun</string>
+    <string name="settings_github_title">Lihat sumber di GitHub
+Bantuan</string>
+    <string name="settings_help_card_title"></string>
+    <string name="share_app_title">Kongsi yaja</string>
+    <string name="share_app_default_message">yaja — satu lagi aplikasi jurnal\\n\\nA jurnal harian tanpa gangguan yang menyimpan entri sebagai fail penurunan harga biasa.</string>
+    <string name="share_app_include_image_title">Sertakan imej</string>
+    <string name="share_app_include_image_subtitle">Lampirkan imej promosi bersama dengan mesej anda
+Mesej</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">Pautan ini ditambah pada penghujung secara automatik:</string>
+    <string name="share_app_image_cd">yaja gambar promo
+Susun Atur</string>
+    <string name="settings_layout_label">FAB</string>
+    <string name="settings_layout_desc">Pilih butang tindakan apl sisi yang dipaparkan.
+Ikon Apl</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">Pilih ikon yang ditunjukkan pada skrin utama anda. Apl dimulakan semula sebentar apabila anda bertukar.</string>
+    <string name="settings_app_icon_confirm_title">Tukar ikon aplikasi?</string>
+    <string name="settings_app_icon_confirm_message">Yaja akan dimulakan semula untuk menggunakan ikon baharu.</string>
+    <string name="settings_app_icon_classic">Klasik
+Buku Nota</string>
+    <string name="settings_app_icon_notebook"></string>
+    <string name="settings_app_icon_quill">Quill
+Nota Pantas</string>
+    <string name="settings_app_icon_quick_notes"></string>
+    <string name="settings_app_icon_sticky_note">Nota Melekit
+Perpustakaan</string>
+    <string name="settings_app_icon_library">Pen Dakwat</string>
+    <string name="settings_app_icon_ink_pen">Artikel</string>
+    <string name="settings_app_icon_article"></string>
+    <string name="settings_app_icon_edit_square">Sunting Petak</string>
+    <string name="settings_app_icon_note_stack">Tindanan Nota</string>
+    <string name="settings_app_icon_subject">Subjek
+Suapan</string>
+    <string name="settings_app_icon_feed">Buku</string>
+    <string name="settings_app_icon_book_style"></string>
+    <string name="settings_app_icon_border_pen">Pen Sempadan</string>
+    <string name="settings_app_icon_post_add">Tambah Pos</string>
+    <string name="settings_app_icon_notebook_filled">Notebook (Berlorek)</string>
+    <string name="settings_app_icon_quill_filled">Quill (Berlorek)
+Nota Pantas</string>
+    <string name="settings_app_icon_quick_notes_filled">(Berlorek)</string>
+    <string name="settings_app_icon_sticky_note_filled">Sticky Note (Berlorek)
+Perpustakaan</string>
+    <string name="settings_app_icon_library_filled">(Berlorek)</string>
+    <string name="settings_app_icon_ink_pen_filled">Pen Dakwat (Berlorek)
+Artikel</string>
+    <string name="settings_app_icon_article_filled">(Berlorek)</string>
+    <string name="settings_app_icon_edit_square_filled">Edit Petak (Berlorek)
+Timbunan Nota</string>
+    <string name="settings_app_icon_note_stack_filled">(Berlorek)</string>
+    <string name="settings_app_icon_subject_filled">Subjek (Berlorek)
+Suapan</string>
+    <string name="settings_app_icon_feed_filled">(Berlorek)
+Buku</string>
+    <string name="settings_app_icon_book_style_filled">(Berlorek)</string>
+    <string name="settings_app_icon_border_pen_filled">Pen Sempadan (Berlorek)</string>
+    <string name="settings_app_icon_post_add_filled">Tambah Siaran (Berlorek)</string>
+    <string name="settings_app_icon_wordmark">Wordmark</string>
+    <string name="settings_fab_side_right">FABs di sebelah kanan</string>
+    <string name="settings_fab_side_left">FABs di sebelah kiri</string>
+    <string name="settings_fab_side_right_short">Betul</string>
+    <string name="settings_fab_side_left_short">Kiri</string>
+    <string name="timeline_filter_all">Semua</string>
+    <string name="timeline_filter_favorites">Kegemaran</string>
+    <string name="timeline_filter_labeled">Berlabel</string>
+    <string name="timeline_filter_with_entries">Dengan Penyertaan</string>
+    <string name="timeline_density_comfortable">Selesa</string>
+    <string name="timeline_density_compact">Padat</string>
+    <string name="timeline_style_track">Lagu Klasik</string>
+    <string name="timeline_style_card">Kad Moden</string>
+    <string name="timeline_all_years">Sepanjang Tahun</string>
+    <string name="timeline_month_summary_format">%1$d hari kemasukan | %2$d berlabel | %3$d kegemaran</string>
+    <string name="addentry_full_day_event_label">Acara sehari penuh</string>
+    <string name="addentry_switch_to_keyboard">Tukar kepada input papan kekunci</string>
+    <string name="addentry_switch_to_dial">Tukar ke dail</string>
+    <string name="home_loading_title">Memuatkan hari ini</string>
+    <string name="home_loading_subtitle">Menyediakan entri, label dan tindakan susulan.</string>
+    <string name="statistics_reading_time">Masa Membaca
+Purata</string>
+    <string name="statistics_avg_reading_time_per_entry">. Baca / Kemasukan</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d min</item>
+        <item quantity="other">%1$d min</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">Masukkan mod fokus</string>
+    <string name="addentry_cd_exit_focus_mode">Keluar dari mod fokus</string>
+    <string name="addentry_reading_time_format">%1$d min dibaca</string>
+    <string name="home_cd_enable_hide_text_mode">Dayakan mod sembunyikan teks</string>
+    <string name="home_cd_disable_hide_text_mode">Lumpuhkan mod sembunyikan teks
+Teks</string>
+    <string name="home_hidden_entry_preview">disembunyikan. Ketik sekali untuk mendedahkan.</string>
+    <string name="home_hidden_result_preview">Pratonton disembunyikan semasa mod teks sembunyi dihidupkan.</string>
+    <string name="home_stat_read">Baca</string>
+    <string name="settings_hide_text_mode_title">Sembunyikan Mod Teks</string>
+    <string name="settings_hide_text_mode_subtitle">Sembunyikan teks jurnal pada Laman Utama sehingga anda mengetik entri untuk mendedahkannya.</string>
+    <string name="settings_privacy_dashboard_title">Papan Pemuka Privasi</string>
+    <string name="settings_privacy_dashboard_overview">Ketelusan Setempat</string>
+    <string name="settings_privacy_storage_title">Lokasi Storan
+Peraturan Sandaran</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">Sandaran terakhir: %1$s. Ambang peringatan: %2$d hari.
+Kunci Apl</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Biometrik: %2$s. Autokunci selepas %3$d minit.</string>
+    <string name="settings_privacy_hide_mode_title">Sembunyikan Mod Teks
+Teks utama</string>
+    <string name="settings_privacy_hide_mode_on">disembunyikan secara lalai sehingga anda mendedahkan entri.
+Teks rumah</string>
+    <string name="settings_privacy_hide_mode_off">kelihatan seperti biasa.
+Pendedahan</string>
+    <string name="settings_privacy_tasker_title">Tasker</string>
+    <string name="settings_privacy_tasker_summary">Akses tangkapan pantas: %1$s. Perkongsian acara: %2$s. Teks penyertaan disertakan dalam acara: %3$s.
+Perkongsian Manual</string>
+    <string name="settings_privacy_share_title">Teks masuk</string>
+    <string name="settings_privacy_share_summary">boleh meninggalkan apl hanya apabila anda secara eksplisit menggunakan Kongsi daripada editor atau mengeksport sandaran.
+Pendedahan Widget</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d aktif. Tangkapan Pantas: %2$d. Tugasan Pantas: %3$d. Peta haba: %4$d. Senarai Todo: %5$d.</string>
+    <string name="settings_privacy_state_on">Hidup</string>
+    <string name="settings_privacy_state_off">Mati</string>
+    <string name="settings_privacy_state_yes">Ya</string>
+    <string name="settings_privacy_state_no">No</string>
+    <string name="settings_privacy_risk_low">Pendedahan Rendah</string>
+    <string name="settings_privacy_risk_medium">Pendedahan Sederhana</string>
+    <string name="settings_privacy_risk_high">Pendedahan Tinggi</string>
+    <string name="settings_privacy_risk_low_summary">Kebanyakan teks jurnal kekal pada peranti melainkan anda mengongsinya secara eksplisit.</string>
+    <string name="settings_privacy_risk_medium_summary">Beberapa permukaan yang didayakan boleh mendedahkan teks atau metadata di luar paparan jurnal utama.</string>
+    <string name="settings_privacy_risk_high_summary">Beberapa permukaan yang didayakan boleh mendedahkan kandungan jurnal atau metadata. Mengetatkan beberapa tetapan adalah disyorkan.</string>
+    <string name="settings_privacy_exposure_title">Tahap Pendedahan Semasa
+Permukaan Dedahan</string>
+    <string name="settings_privacy_surfaces_title"></string>
+    <string name="settings_privacy_storage_backup_title">Storan &amp; Sandaran</string>
+    <string name="settings_privacy_controls_title">Kawalan Privasi
+Pengesyoran</string>
+    <string name="settings_privacy_recommendations_title">Tindakan Pantas</string>
+    <string name="settings_privacy_quick_actions_title"></string>
+    <string name="settings_privacy_surface_local_title">Jurnal Pada Peranti</string>
+    <string name="settings_privacy_surface_local_summary">Fail hari anda disiarkan secara setempat dan kekal dalam apl melainkan anda menggunakan perkongsian, sandaran, Tasker atau widget.</string>
+    <string name="settings_privacy_state_default">Lalai
+Manual</string>
+    <string name="settings_privacy_state_manual">Sahaja</string>
+    <string name="settings_privacy_state_active">Aktif</string>
+    <string name="settings_privacy_state_visible">Kelihatan</string>
+    <string name="settings_privacy_state_none">Tiada</string>
+    <string name="settings_privacy_recommend_pin">Tambahkan PIN supaya apl tidak dibuka terus ke dalam jurnal anda.</string>
+    <string name="settings_privacy_recommend_hide">Hidupkan Mod Sembunyikan Teks untuk memastikan Rumah lebih selamat di khalayak ramai atau di sekeliling orang lain.</string>
+    <string name="settings_privacy_recommend_tasker_text">Lumpuhkan teks kemasukan dalam acara Tasker melainkan anda benar-benar memerlukan teks jurnal penuh di sana.</string>
+    <string name="settings_privacy_recommend_widgets">Semak widget aktif kerana permukaan skrin utama boleh mendedahkan metadata sepintas lalu.
+Set</string>
+    <string name="settings_privacy_action_set_pin">PIN</string>
+    <string name="settings_privacy_action_enable_hide">Dayakan Sembunyikan Teks</string>
+    <string name="settings_privacy_action_disable_tasker_text">Lumpuhkan Teks Tasker</string>
+    <string name="settings_privacy_action_open_tasker">Buka Tetapan Tasker</string>
+    <string name="widget_todo_empty">Hebat, Tiada Tugas Tertunda!</string>
+    <string name="widget_todo_header_todos_events">Todos &amp; Acara
+Acara</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">Jelas</string>
+    <string name="recurring_task_start_section">Jadual Mula</string>
+    <string name="recurring_task_start_help">Pilih tarikh mula dan masa pilihan untuk jadual berulang ini.</string>
 </resources>

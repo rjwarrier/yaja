@@ -8,7 +8,7 @@ class SettingsSearchMatcherTest {
     private val appearanceAction =
         SettingsSearchAction.OpenDestination(SettingsDestinationId.APPEARANCE)
     private val languageAction =
-        SettingsSearchAction.ScrollTo(SettingsSearchAnchor.LANGUAGE)
+        SettingsSearchAction.OpenDestination(SettingsDestinationId.LANGUAGE)
 
     @Test
     fun search_prefersExactTitleOverPrefixAndKeywordMatches() {
@@ -48,7 +48,7 @@ class SettingsSearchMatcherTest {
 
         assertEquals(entries.size, entries.map { it.id }.toSet().size)
         assertTrue(entries.all { it.keywords.isNotEmpty() })
-        assertTrue(entries.all { it.action is SettingsSearchAction.OpenDestination || it.action is SettingsSearchAction.ScrollTo })
+        assertTrue(entries.all { it.action is SettingsSearchAction.OpenDestination })
     }
 
     private fun entry(

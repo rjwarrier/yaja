@@ -216,9 +216,9 @@ private fun shareApp(
 
     val imageUri = if (includeImage) stagePromoImage(context) else null
     val intent = Intent(Intent.ACTION_SEND).apply {
-        // image/png (not text/plain) is what makes share targets treat this as an
+        // image/jpeg (not text/plain) is what makes share targets treat this as an
         // image-with-caption rather than dropping the attachment silently.
-        type = if (imageUri != null) "image/png" else "text/plain"
+        type = if (imageUri != null) "image/jpeg" else "text/plain"
         putExtra(Intent.EXTRA_TEXT, body)
         if (imageUri != null) {
             putExtra(Intent.EXTRA_STREAM, imageUri)
@@ -231,7 +231,7 @@ private fun shareApp(
 /** Copy the promo drawable into cache/exports/ so FileProvider can hand it to the chooser. */
 private fun stagePromoImage(context: Context): Uri? = runCatching {
     val exportsDir = File(context.cacheDir, "exports").apply { mkdirs() }
-    val imageFile = File(exportsDir, "share_promo.png")
+    val imageFile = File(exportsDir, "share_promo.jpg")
     context.resources.openRawResource(R.drawable.share_promo).use { input ->
         imageFile.outputStream().use { output -> input.copyTo(output) }
     }

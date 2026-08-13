@@ -497,7 +497,14 @@ fun DataAndStorageSection(
                                             modifier = Modifier.size(14.dp),
                                             strokeWidth = 1.5.dp
                                         )
-                                        Text("${s.current}/${s.total}", style = MaterialTheme.typography.labelSmall)
+                                        Text(
+                                            stringResource(
+                                                R.string.settings_import_progress_count_format,
+                                                s.current,
+                                                s.total
+                                            ),
+                                            style = MaterialTheme.typography.labelSmall
+                                        )
                                     }
                                     Spacer(modifier = Modifier.height(3.dp))
                                     LinearProgressIndicator(

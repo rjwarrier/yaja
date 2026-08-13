@@ -28,13 +28,13 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_input_add"
             android:tint="@color/ic_launcher_foreground" 
-            android:contentDescription="Quick Capture" />
+            android:contentDescription="@string/quick_capture_widget_name" />
             
         <TextView
             android:id="@+id/widget_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capture"
+            android:text="@string/widget_qc_label_placeholder"
             android:textColor="@color/ic_launcher_foreground"
             android:textSize="12sp"
             android:fontFamily="sans-serif-medium"

@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">Vidokezo</string>
     <string name="tasker_screen_body_notes">Maandishi ya ingizo hayashirikiwi na Tasker isipokuwa uwashe Jumuisha Maandishi ya Ingizo katika Matukio. Ikiwa Tasker haionyeshi chaguo au vigeu vipya zaidi, fungua upya skrini ya usanidi wa Tasker baada ya kusasisha Yaja.</string>
     <string name="tasker_screen_section_example">Mfano</string>
-    <string name="tasker_screen_body_example">Mfano wa kitendo: Kitendo cha Mfanyakazi &gt; Yaja Capture Haraka &gt; Weka, na Mechi / kichwa kimewekwa kuwa Simu Zilizoporwa na Laini ili kuambatanisha kuweka kwa kibadilishaji cha Tasker. Mfano wa tukio: Tukio la Tasker &gt; Matukio ya Jarida la Yaja &gt; Ingizo Limebadilishwa, kisha utumie vibadala kama vile %%yaja_event_type, %%tarehe_ya_yaja, na kwa hiari %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Mfano wa kitendo: Kitendo cha Mfanyakazi &gt; Yaja Capture Haraka &gt; Weka, na Mechi / kichwa kimewekwa kuwa Simu Zilizoporwa na Laini ili kuambatanisha kuweka kwa kibadilishaji cha Tasker. Mfano wa tukio: Tukio la Tasker &gt; Matukio ya Jarida la Yaja &gt; Ingizo Limebadilishwa, kisha utumie vibadala kama vile %%yaja_event_type, %%tarehe_ya_yaja, na kwa hiari %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Tumia kesi</string>
     <string name="tasker_screen_use_case_1">1. Tumia tukio la jarida la Yaja katika Tasker ili kuanzisha kitendo cha kusawazisha FolderSync, ili folda yako ya Yaja isukumwe hadi kwa mtoa huduma wa wingu baada ya maingizo kubadilika.</string>
     <string name="tasker_screen_use_case_2">2. Tumia Pushbullet na Tasker kutuma maandishi katika Yaja Quick Capture, ili maandishi yaliyosukumwa yahifadhiwe kama ingizo jipya la siku ya sasa.</string>
@@ -320,7 +320,7 @@
     <string name="settings_nav_mode_panel">Paneli</string>
     <string name="settings_navigation_screens_label">Skrini za Urambazaji</string>
     <string name="settings_nav_summary_floating">Jarida na Kalenda daima hukaa kwenye upau unaoelea. Chukua hadi skrini 2 zaidi. Imechaguliwa kwa sasa: %1$d ya %2$d.</string>
-    <string name="settings_nav_summary_panel">Onyesha Watu na Maeneo katika upau au paneli inayotumika ya kusogeza.</string>
+    <string name="settings_nav_summary_panel">Journal and Calendar always stay in the bottom panel. Pick up to 3 more screens. Currently selected: %1$d of %2$d.</string>
     <string name="settings_nav_lookback_subtitle">Onyesha Kuangalia tena katika upau wa kusogeza au paneli inayotumika.</string>
     <string name="settings_nav_people_places_subtitle">Onyesha Watu na Maeneo katika upau au paneli inayotumika ya kusogeza.</string>
     <string name="settings_nav_todos_title">Todos</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">Uwazi wa Hifadhi ya Kifaa</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja hutumia mfano salama wa uhifadhi wa ndani. Data yako ya shajara ya kibinafsi inasalia kuwa ndani na haitoki kwenye kifaa chako wakati wowote:</string>
     <string name="rebuild_cache_source_of_truth_title">Chanzo cha Ukweli (Faili za Alama)</string>
-    <string name="rebuild_cache_source_of_truth_desc">Maingizo yote, vipengee vya orodha (ya kufanya), matukio ya kalenda ya matukio, nyota, na lebo huhifadhiwa kabisa katika faili za maandishi ya Markdown (.md) katika folda ya jarida lako la ndani ulilochagua. Data yako inamilikiwa nawe kwa 100% na iko kwenye kifaa chako kabisa.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">Maingizo yote, vipengee vya orodha (ya kufanya), matukio ya kalenda ya matukio, nyota, na lebo huhifadhiwa kabisa katika faili za maandishi ya Markdown (.md) katika folda ya jarida lako la ndani ulilochagua. Data yako inamilikiwa nawe kwa 100% na iko kwenye kifaa chako kabisa.</string>
     <string name="rebuild_cache_read_cache_title">Soma Cache &amp; Index (SQLite Database)</string>
     <string name="rebuild_cache_read_cache_desc">Ili kuwezesha upakiaji wa skrini papo hapo, vivutio vya kalenda, manenomsingi na takwimu bila kuchanganua mfumo wa faili kwenye kila kusogeza, Yaja huchanganua faili zako za Markdown na kuziweka katika faharasa katika hifadhidata ya karibu ya Room SQLite kwenye kifaa chako.</string>
-    <string name="rebuild_cache_local_private_title">100% Ndani na Faragha</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% Ndani na Faragha</string>
     <string name="rebuild_cache_local_private_desc">Yaja haina hifadhidata za wingu, seva za chelezo za mbali, au kufuatilia maandishi yako kwa telemetry. Maingizo yote ya majarida na data iliyochanganuliwa husalia kwenye kifaa chako halisi na usiwahi kuiacha wakati wowote.</string>
     <string name="keywords_export_success">Maneno muhimu yamehamishwa</string>
     <string name="keywords_export_failed">Haikuweza kuhamisha manenomsingi</string>
@@ -701,7 +701,7 @@
     <string name="keywords_sort_most_mentioned">Zilizotajwa Zaidi</string>
     <string name="keywords_sort_recently_added">Iliyoongezwa Hivi Karibuni</string>
     <string name="keywords_peak_mentions_format">Kilele %1$s • %2$d taja%3$s</string>
-    <string name="keywords_co_occurrence_days_format">A-Z</string>
+    <string name="keywords_co_occurrence_days_format">%1$s • %2$d</string>
     <string name="keywords_connections_meta_days_format">%1$d siku</string>
     <string name="keywords_connections_meta_days_suffix_plural">s</string>
     <string name="keywords_connections_meta_together">pamoja</string>
@@ -1326,4 +1326,279 @@
     <string name="settings_accent_style_analogous">Analojia</string>
     <string name="settings_accent_style_triadic">Utatu</string>
     <string name="settings_accent_style_soft">Laini</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">Nasa sauti</string>
+    <string name="calendar_empty_month_hint">Bado Hakuna maingizo mwezi huu.</string>
+    <string name="settings_data_recovery_subtitle">Hifadhi, chelezo, kurejesha, uagizaji na zana za kache
+Onyesho la ingizo la</string>
+    <string name="settings_journal_experience_subtitle">, tabia ya kalenda, maneno muhimu ya tarehe na mwendo
+Urambazaji wa chini wa</string>
+    <string name="settings_navigation_gestures_subtitle">, vichupo vya hiari, swipes na vidhibiti vya kuburuta</string>
+    <string name="settings_privacy_security_subtitle">PIN kufuli, kufungua kibayometriki, kujifunga kiotomatiki na hali ya kuficha maandishi</string>
+    <string name="settings_progressive_title">Zilizopendekezwa Marekebisho Yanayofuata</string>
+    <string name="settings_progressive_subtitle">Njia za mkato za mipangilio inayoweza kurahisisha Yaja kufanya kazi siku hadi siku.</string>
+    <string name="settings_progressive_privacy_pin">Weka PIN</string>
+    <string name="settings_progressive_privacy_review">Kagua Faragha</string>
+    <string name="settings_progressive_nav_try">Jaribu Nav ya Adaptive</string>
+    <string name="settings_progressive_nav_active">Nav Adaptive Imewashwa
+Kalenda ya</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">Chagua Lugha</string>
+    <string name="settings_language_picker_subtitle">Tafuta au chagua lugha ya kuonyesha kwa Yaja.</string>
+    <string name="settings_language_search_placeholder">Tafuta lugha
+Uzito wa Kalenda ya</string>
+    <string name="settings_calendar_density_title"></string>
+    <string name="settings_calendar_density_subtitle">Rekebisha gridi ya kalenda kwa faraja, uchanganuzi wa kompakt, au msongamano wa juu zaidi wa tarehe.
+Faraja ya</string>
+    <string name="settings_calendar_density_comfortable">Kiunga cha</string>
+    <string name="settings_calendar_density_compact"></string>
+    <string name="settings_calendar_density_dense">Nzito</string>
+    <string name="settings_journal_carry_forward_title">Sogeza Mbele Todos Zisizochaguliwa</string>
+    <string name="settings_journal_carry_forward_subtitle">Lete vipengee vya orodha vilivyo wazi vya jana wakati siku inapopakiwa.
+Upigaji picha wa haraka wa</string>
+    <string name="quick_capture_tile_label"></string>
+    <string name="recurring_task_execution_day_of_month_event">Tukio limeundwa %1$s kwa siku %2$d. Imeandikwa kwa faili yako ya kila siku %3$d siku mapema.</string>
+    <string name="recurring_task_execution_weekday_event">Tukio limeundwa %1$s kwenye %2$s. Imeandikwa kwa faili yako ya kila siku %3$d siku mapema.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">Tukio huundwa kila mwezi kwa tukio sawa la %1$s kama tarehe ya kuanza. Imeandikwa kwa faili yako ya kila siku %2$d siku mapema.</string>
+    <string name="recurring_task_execution_month_boundary_event">Tukio limeundwa %1$s kwenye %2$s ya mwezi unaotakiwa. Imeandikwa kwa faili yako ya kila siku %3$d siku mapema.</string>
+    <string name="recurring_task_add_event">Ongeza tukio linalojirudia</string>
+    <string name="recurring_task_edit_event">Hariri tukio linalojirudia
+Jina la Tukio la</string>
+    <string name="recurring_task_field_title_event"></string>
+    <string name="recurring_task_field_title_event_hint">Mfano: Mkutano wa kusawazisha kila wiki</string>
+    <string name="recurring_task_frequency_help_event">Chagua ni mara ngapi tukio hili linajirudia.</string>
+    <string name="recurring_task_details_weekday_help_event">Chagua siku ya juma ambayo tukio hili litafanyika.</string>
+    <string name="recurring_task_delete_confirm_title_event">Je, ungependa kufuta tukio linalojirudia?</string>
+    <string name="recurring_task_end_help_event">Chagua wakati tukio hili litaacha kujirudia</string>
+    <string name="recurring_task_end_count_help_event">Inasimama baada ya haya matukio mengi kuundwa.
+Urambazaji wa Chini wa Adaptive wa</string>
+    <string name="settings_adaptive_bottom_nav_title"></string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Onyesha vichupo vya chini vya hiari tu wakati sehemu hiyo ina maudhui, huku ukiweka skrini zilizosanidiwa kwenye droo.
+Onyesha upya</string>
+    <string name="todos_empty_refresh"></string>
+    <string name="settings_onboarding_next_launch_title">Onyesha usanidi wa kukaribisha kwenye uzinduzi unaofuata</string>
+    <string name="settings_onboarding_next_launch_subtitle">Tekeleza chaguo la utangulizi na hifadhi mara moja katika uzinduzi unaofuata wa programu, kisha uzime kiotomatiki.
+Usafirishaji wa nje wa</string>
+    <string name="settings_obsidian_export_title">Obsidian</string>
+    <string name="settings_obsidian_export_description">Onyesha shajara yako katika hifadhi ya alama tupu - faili moja kwa siku, huku mtaji wa People &amp; Places ukiandikwa upya kama [[wikilinks]]. Data yako haifungiwi katika Yaja.</string>
+    <string name="settings_obsidian_export_button">Vault ya Kusafirisha nje
+Folda ya alama ya</string>
+    <string name="settings_import_source_markdown_folder"></string>
+    <string name="settings_import_source_markdown_folder_subtitle">Folda yoyote ya faili za .md - Obsidian, Jekyll, au noti sawa za kila siku</string>
+    <string name="onboarding_title">Karibu kwenye yaja</string>
+    <string name="onboarding_body">Yaja ni jarida la kwanza la alama za ndani. Maingizo yako hukaa kwenye kifaa chako kama faili rahisi, kwa hivyo programu zisalie ya kibinafsi, ya kudumu na isiyo ya kawaida.</string>
+    <string name="onboarding_progress">Hatua %1$d ya %2$d</string>
+    <string name="onboarding_intro_private">Faragha kwa chaguomsingi. Yaja huweka shajara yako kwenye kifaa chako badala ya kuelekeza kupitia huduma ya wingu.
+Maingizo ya</string>
+    <string name="onboarding_intro_files">ni faili za alama zilizo wazi, kwa hivyo maandishi yako yanasalia kuwa ya kubebeka na kueleweka nje ya programu pia.</string>
+    <string name="onboarding_intro_flexible">Unaweza kuanza sasa hivi na bado ubadilishe upendavyo hifadhi, uagizaji, mwonekano na usalama baadaye.</string>
+    <string name="onboarding_storage_title">Chagua mahali maingizo mapya yanapaswa kuishi</string>
+    <string name="onboarding_storage_body">Unaweza kuweka kila kitu kwenye hifadhi ya ndani ya programu au uchague folda yako mwenyewe. Unaweza kubadilisha hii baadaye kutoka kwa Mipangilio &gt; Data na Urejeshi.</string>
+    <string name="onboarding_storage_internal">Hifadhi ya sasa: Hifadhi ya ndani ya programu</string>
+    <string name="onboarding_storage_custom">Hifadhi ya sasa: Folda maalum (%1$s)</string>
+    <string name="onboarding_storage_note">Folda maalum zinahitaji ruhusa ya kuandika ili Yaja iweze kuhifadhi faili za jarida kwa usalama.</string>
+    <string name="onboarding_continue_internal">Endelea na Hifadhi ya Ndani</string>
+    <string name="onboarding_switch_internal">Badilisha hadi Hifadhi ya Ndani</string>
+    <string name="onboarding_choose_folder">Chagua Folda Maalum</string>
+    <string name="onboarding_customize_title">Chagua chaguo-msingi chache za kuanzia</string>
+    <string name="onboarding_customize_body">Haya ni mapendeleo ya hiari ya uendeshaji wa kwanza. Kila kitu hapa kinaweza kubadilishwa baadaye kutoka kwa Mipangilio.
+Mandhari ya</string>
+    <string name="onboarding_theme_title">Kikumbusho cha chelezo cha</string>
+    <string name="onboarding_backup_title"></string>
+    <string name="onboarding_backup_body">Chagua wakati Yaja itakukumbusha kuwa ni wakati wa kutengeneza zip mbadala.</string>
+    <string name="onboarding_backup_off">Imezimwa</string>
+    <string name="onboarding_backup_30">siku 30</string>
+    <string name="onboarding_backup_60">siku 60
+Historia ya toleo la</string>
+    <string name="onboarding_version_history_title"></string>
+    <string name="onboarding_version_history_body">Hifadhi nakala salama kabla ya uhariri na ufutaji hatari.</string>
+    <string name="onboarding_pin_setup">Sanidi kufuli ya PIN
+Kufuli ya</string>
+    <string name="onboarding_pin_enabled">PIN tayari imewashwa</string>
+    <string name="onboarding_import_title">Leta jarida lililopo ukitaka</string>
+    <string name="onboarding_import_body">Unaweza kuleta sasa hivi, au uruke hii na uifanye baadaye kutoka kwa Mipangilio &gt; Data na Urejeshaji.</string>
+    <string name="onboarding_import_running">Inaleta %1$d ya %2$d…</string>
+    <string name="onboarding_import_success">Imemaliza kuagiza: %1$d siku mpya, %2$d imeunganishwa.
+Uingizaji wa</string>
+    <string name="onboarding_import_cancelled">umeghairiwa.</string>
+    <string name="onboarding_import_later">Unaweza kumaliza kuabiri hata kama uletaji bado unaendelea chinichini.</string>
+    <string name="onboarding_back">Nyuma</string>
+    <string name="onboarding_next">Inayofuata</string>
+    <string name="onboarding_finish">Maliza</string>
+    <string name="onboarding_skip">Ruka kwa sasa</string>
+    <string name="onboarding_rerun_note">Mipangilio hii ilifunguliwa tena kutoka kwa Mipangilio na haitaonekana tena isipokuwa ukiiombe.</string>
+    <string name="settings_other_apps_title">Programu zingine na msanidi</string>
+    <string name="settings_github_title">Tazama chanzo kwenye GitHub
+Msaada wa</string>
+    <string name="settings_help_card_title"></string>
+    <string name="share_app_title">Shiriki yaja</string>
+    <string name="share_app_default_message">yaja — programu nyingine ya uandishi \\n\\nA isiyo na kukengeusha ya kila siku ambayo huhifadhi maingizo kama faili za alama wazi.</string>
+    <string name="share_app_include_image_title">Jumuisha picha</string>
+    <string name="share_app_include_image_subtitle">Ambatanisha picha ya ofa pamoja na ujumbe wako
+Ujumbe wa</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">Kiungo hiki huongezwa mwishoni kiotomatiki:</string>
+    <string name="share_app_image_cd">yaja promo picha
+Mpangilio wa</string>
+    <string name="settings_layout_label">FAB</string>
+    <string name="settings_layout_desc">Chagua vitufe vya vitendo vya programu vinavyoonekana kwenye upande gani.
+Aikoni ya Programu ya</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">Chagua ikoni inayoonyeshwa kwenye skrini yako ya kwanza. Programu huanza tena kwa muda mfupi unapobadilisha.</string>
+    <string name="settings_app_icon_confirm_title">Badilisha aikoni ya programu?</string>
+    <string name="settings_app_icon_confirm_message">Yaja itaanza upya ili kutumia ikoni mpya.</string>
+    <string name="settings_app_icon_classic">Classic
+Daftari ya</string>
+    <string name="settings_app_icon_notebook">Utoaji wa</string>
+    <string name="settings_app_icon_quill">Vidokezo vya Haraka vya</string>
+    <string name="settings_app_icon_quick_notes">Ujumbe Nata wa</string>
+    <string name="settings_app_icon_sticky_note">Maktaba ya</string>
+    <string name="settings_app_icon_library">Kalamu ya Wino ya</string>
+    <string name="settings_app_icon_ink_pen">Kifungu cha</string>
+    <string name="settings_app_icon_article">Badilisha</string>
+    <string name="settings_app_icon_edit_square">Kubadilisha Mraba
+Mkusanyiko wa Note wa</string>
+    <string name="settings_app_icon_note_stack">Sehemu ya</string>
+    <string name="settings_app_icon_subject">Mlisho wa</string>
+    <string name="settings_app_icon_feed">Kitabu cha</string>
+    <string name="settings_app_icon_book_style">Kalamu ya Mpaka ya</string>
+    <string name="settings_app_icon_border_pen"></string>
+    <string name="settings_app_icon_post_add">Chapisho Ongeza
+Daftari la</string>
+    <string name="settings_app_icon_notebook_filled">(Lililo kivuli)</string>
+    <string name="settings_app_icon_quill_filled">Quill (Kivuli)
+Vidokezo vya Haraka vya</string>
+    <string name="settings_app_icon_quick_notes_filled">(Vilivyotiwa Kivuli)
+Kidokezo Nata cha</string>
+    <string name="settings_app_icon_sticky_note_filled">(Yenye Kivuli)
+Maktaba ya</string>
+    <string name="settings_app_icon_library_filled">(Inayo kivuli)
+Kalamu ya Wino ya</string>
+    <string name="settings_app_icon_ink_pen_filled">(Inayo kivuli)
+Kifungu cha</string>
+    <string name="settings_app_icon_article_filled">(Kilichotiwa Kivuli)
+Hariri Mraba</string>
+    <string name="settings_app_icon_edit_square_filled">(Kivuli)
+Rafu ya Note ya</string>
+    <string name="settings_app_icon_note_stack_filled">(Iliyotiwa Kivuli)
+Mada ya</string>
+    <string name="settings_app_icon_subject_filled">(Yenye Kivuli)
+Mlisho wa</string>
+    <string name="settings_app_icon_feed_filled">(Wenye Kivuli)
+Kitabu cha</string>
+    <string name="settings_app_icon_book_style_filled">(Kilichotiwa Kivuli)
+Kalamu ya Mpaka ya</string>
+    <string name="settings_app_icon_border_pen_filled">(Inayo kivuli)
+Chapisho la</string>
+    <string name="settings_app_icon_post_add_filled">Ongeza (Lina kivuli)
+Alama ya neno</string>
+    <string name="settings_app_icon_wordmark"></string>
+    <string name="settings_fab_side_right">FABs upande wa kulia</string>
+    <string name="settings_fab_side_left">FABs upande wa kushoto</string>
+    <string name="settings_fab_side_right_short">kulia</string>
+    <string name="settings_fab_side_left_short">Kushoto</string>
+    <string name="timeline_filter_all">Zote
+Vipendwa vya</string>
+    <string name="timeline_filter_favorites"></string>
+    <string name="timeline_filter_labeled">Inayo Lebo</string>
+    <string name="timeline_filter_with_entries">Pamoja na Maingizo</string>
+    <string name="timeline_density_comfortable">Raha
+Kiunga cha</string>
+    <string name="timeline_density_compact">Wimbo wa Kawaida wa</string>
+    <string name="timeline_style_track">Kadi ya Kisasa ya</string>
+    <string name="timeline_style_card"></string>
+    <string name="timeline_all_years">Miaka Yote</string>
+    <string name="timeline_month_summary_format">%1$d siku za kuingia | %2$d iliyoandikwa | %3$d vipendwa</string>
+    <string name="addentry_full_day_event_label">Tukio la siku nzima</string>
+    <string name="addentry_switch_to_keyboard">Badilisha hadi kuweka kibodi</string>
+    <string name="addentry_switch_to_dial">Badilisha ili kupiga simu</string>
+    <string name="home_loading_title">Inapakia siku hii</string>
+    <string name="home_loading_subtitle">Inatayarisha maingizo, lebo na ufuatiliaji.
+Wakati wa Kusoma wa</string>
+    <string name="statistics_reading_time"></string>
+    <string name="statistics_avg_reading_time_per_entry">Avg. Kusoma / Kuingia</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d min</item>
+        <item quantity="other">%1$d min</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">Weka hali ya umakini</string>
+    <string name="addentry_cd_exit_focus_mode">Toka katika hali ya umakini</string>
+    <string name="addentry_reading_time_format">%1$d dakika imesomwa</string>
+    <string name="home_cd_enable_hide_text_mode">Washa hali ya maandishi ya kuficha</string>
+    <string name="home_cd_disable_hide_text_mode">Zima hali ya maandishi ya kuficha
+Maandishi ya</string>
+    <string name="home_hidden_entry_preview">yamefichwa. Gusa mara moja ili kufichua.
+Onyesho la Kuchungulia la</string>
+    <string name="home_hidden_result_preview">limefichwa wakati hali ya maandishi ya kuficha imewashwa.</string>
+    <string name="home_stat_read">Imesomwa</string>
+    <string name="settings_hide_text_mode_title">Ficha Hali ya Maandishi</string>
+    <string name="settings_hide_text_mode_subtitle">Ficha maandishi ya jarida kwenye Nyumbani hadi uguse ingizo ili kuyafichua.
+Dashibodi ya Faragha ya</string>
+    <string name="settings_privacy_dashboard_title">Uwazi wa Ndani wa</string>
+    <string name="settings_privacy_dashboard_overview">Mahali pa Kuhifadhi</string>
+    <string name="settings_privacy_storage_title">Sheria za Hifadhi nakala za</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">Hifadhi rudufu ya mwisho: %1$s. Kiwango cha juu cha ukumbusho: siku %2$d.
+Kufuli ya Programu ya</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Biometriska: %2$s. Funga kiotomatiki baada ya dakika %3$d.</string>
+    <string name="settings_privacy_hide_mode_title">Ficha Hali ya Maandishi
+Maandishi ya Nyumbani ya</string>
+    <string name="settings_privacy_hide_mode_on">hufichwa kwa chaguomsingi hadi udhihirishe ingizo.
+Maandishi ya Nyumbani ya</string>
+    <string name="settings_privacy_hide_mode_off">yanaonekana kawaida.
+Mfiduo wa</string>
+    <string name="settings_privacy_tasker_title">Tasker</string>
+    <string name="settings_privacy_tasker_summary">Ufikiaji wa kupiga picha kwa haraka: %1$s. Kushiriki tukio: %2$s. Maandishi ya ingizo yamejumuishwa katika matukio: %3$s.
+Ushirikiano wa Mwongozo wa</string>
+    <string name="settings_privacy_share_title">Maandishi ya Ingizo la</string>
+    <string name="settings_privacy_share_summary">yanaweza tu kuondoka kwenye programu unapotumia kwa njia ya Kushiriki kutoka kwa kihariri au kuhamisha nakala rudufu.
+Mfichuo wa Wijeti ya</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d yanatumika. Ukamataji wa haraka: %2$d. Kufanya haraka: %3$d. Ramani ya joto: %4$d. Orodha ya Mambo ya Kufanya: %5$d.</string>
+    <string name="settings_privacy_state_on">Imewashwa</string>
+    <string name="settings_privacy_state_off">Imezimwa</string>
+    <string name="settings_privacy_state_yes">Ndiyo
+Nambari ya</string>
+    <string name="settings_privacy_state_no">Mfiduo wa Chini wa</string>
+    <string name="settings_privacy_risk_low">Mfiduo wa Kati wa</string>
+    <string name="settings_privacy_risk_medium">Mfiduo wa Juu wa</string>
+    <string name="settings_privacy_risk_high"></string>
+    <string name="settings_privacy_risk_low_summary">Maandishi mengi ya jarida hukaa kwenye kifaa isipokuwa uyashiriki kwa uwazi.</string>
+    <string name="settings_privacy_risk_medium_summary">Nyuso chache zilizowezeshwa zinaweza kufichua maandishi au metadata nje ya mwonekano mkuu wa jarida.</string>
+    <string name="settings_privacy_risk_high_summary">Nyuso kadhaa zilizowezeshwa zinaweza kufichua maudhui ya jarida au metadata. Inashauriwa kuimarisha mipangilio machache.
+Kiwango cha Sasa cha Mfiduo wa</string>
+    <string name="settings_privacy_exposure_title">Nyuso za Mfichuo wa</string>
+    <string name="settings_privacy_surfaces_title">Hifadhi na Hifadhi rudufu ya</string>
+    <string name="settings_privacy_storage_backup_title">Vidhibiti vya Faragha vya</string>
+    <string name="settings_privacy_controls_title">Mapendekezo ya</string>
+    <string name="settings_privacy_recommendations_title">Vitendo vya Haraka vya</string>
+    <string name="settings_privacy_quick_actions_title"></string>
+    <string name="settings_privacy_surface_local_title">Jarida la Kifaa</string>
+    <string name="settings_privacy_surface_local_summary">Faili zako za siku huishi ndani ya nchi na hukaa ndani ya programu isipokuwa utumie kushiriki, kuhifadhi nakala, Tasker, au wijeti.</string>
+    <string name="settings_privacy_state_default">Chaguomsingi
+Mwongozo wa</string>
+    <string name="settings_privacy_state_manual">Pekee</string>
+    <string name="settings_privacy_state_active">Imetumika</string>
+    <string name="settings_privacy_state_visible">Inayoonekana</string>
+    <string name="settings_privacy_state_none">Hakuna</string>
+    <string name="settings_privacy_recommend_pin">Ongeza PIN ili programu isifunguke moja kwa moja kwenye jarida lako.</string>
+    <string name="settings_privacy_recommend_hide">Washa Hali ya Ficha Maandishi ili kuweka Nyumbani salama zaidi hadharani au karibu na watu wengine.</string>
+    <string name="settings_privacy_recommend_tasker_text">Lemaza maandishi katika matukio ya Tasker isipokuwa kwa kweli unahitaji maandishi kamili ya jarida hapo.</string>
+    <string name="settings_privacy_recommend_widgets">Kagua wijeti zinazotumika kwa kuwa nyuso za skrini ya kwanza zinaweza kufichua metadata kwa haraka.</string>
+    <string name="settings_privacy_action_set_pin">Weka PIN</string>
+    <string name="settings_privacy_action_enable_hide">Washa Ficha Maandishi</string>
+    <string name="settings_privacy_action_disable_tasker_text">Zima Maandishi ya Tasker</string>
+    <string name="settings_privacy_action_open_tasker">Fungua Mipangilio ya Tasker</string>
+    <string name="widget_todo_empty">Nzuri, Hakuna Majukumu Yanayosubiri!</string>
+    <string name="widget_todo_header_todos_events">Mambo na Matukio
+Tukio la</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">Wazi
+Ratiba ya</string>
+    <string name="recurring_task_start_section">Anza</string>
+    <string name="recurring_task_start_help">Chagua tarehe ya kuanza na wakati wa hiari kwa ratiba hii inayojirudia.</string>
 </resources>

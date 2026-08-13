@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">Notas</string>
     <string name="tasker_screen_body_notes">O texto da entrada não é compartilhado com o Tasker a menos que você ative Incluir texto da entrada nos eventos. Se o Tasker não mostrar as opções ou variáveis mais recentes, reabra a tela de configuração do Tasker após atualizar o Yaja.</string>
     <string name="tasker_screen_section_example">Exemplo</string>
-    <string name="tasker_screen_body_example">Exemplo de ação: ação do Tasker &gt; Captura rápida do Yaja &gt; Anexar, com Corresponder / cabeçalho definido como Chamadas perdidas e Linha para anexar definida como uma variável do Tasker. Exemplo de evento: evento do Tasker &gt; Eventos do diário Yaja &gt; Entrada modificada, depois use variáveis como %%yaja_event_type, %%yaja_date e, opcionalmente, %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Exemplo de ação: ação do Tasker &gt; Captura rápida do Yaja &gt; Anexar, com Corresponder / cabeçalho definido como Chamadas perdidas e Linha para anexar definida como uma variável do Tasker. Exemplo de evento: evento do Tasker &gt; Eventos do diário Yaja &gt; Entrada modificada, depois use variáveis como %%yaja_event_type, %%yaja_date e, opcionalmente, %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Casos de uso</string>
     <string name="tasker_screen_use_case_1">1. Use um evento de diário do Yaja no Tasker para acionar uma sincronização do FolderSync, para que sua pasta do Yaja seja enviada a qualquer provedor em nuvem após mudanças nas entradas.</string>
     <string name="tasker_screen_use_case_2">2. Use o Pushbullet com o Tasker para enviar texto para a Captura rápida do Yaja, para que o texto enviado seja salvo como uma nova entrada para o dia atual.</string>
@@ -262,8 +262,8 @@
     <string name="recurring_task_summary_last_day">Último dia • %1$s • mostrar a partir do dia %2$d</string>
     <string name="recurring_task_execution_title">Como isso vai funcionar</string>
     <string name="recurring_task_execution_day_of_month">Uma tarefa é criada %1$s no dia %2$d. Ela aparece em Tarefas a partir do dia %3$d de cada mês de vencimento.</string>
-    <string name="recurring_task_execution_weekday">Uma tarefa é criada %1$s em %2$s. Apenas ocorrências com vencimento hoje ou antes são mostradas.</string>
-    <string name="recurring_task_execution_monthly_weekday">Uma tarefa é criada mensalmente na mesma ocorrência de %1$s da data inicial. Apenas ocorrências com vencimento hoje ou antes são mostradas.</string>
+    <string name="recurring_task_execution_weekday">A todo is created %1$s on %2$s. It is written to your daily file %3$d days in advance.</string>
+    <string name="recurring_task_execution_monthly_weekday">A todo is created monthly on the same %1$s occurrence as the starting date. It is written to your daily file %2$d days in advance.</string>
     <string name="recurring_task_execution_month_boundary">Uma tarefa é criada %1$s no %2$s do mês de vencimento. Ela aparece em Tarefas a partir do dia %3$d desse mês.</string>
     <string name="recurring_task_boundary_first">primeiro dia</string>
     <string name="recurring_task_boundary_last">último dia</string>
@@ -626,10 +626,10 @@
     <string name="rebuild_cache_storage_transparency_title">Transparência do armazenamento no dispositivo</string>
     <string name="rebuild_cache_storage_transparency_desc">O Yaja usa um modelo de armazenamento local seguro. Os dados do seu diário pessoal permanecem locais e nunca saem do seu dispositivo em nenhum momento:</string>
     <string name="rebuild_cache_source_of_truth_title">Fonte da verdade (arquivos Markdown)</string>
-    <string name="rebuild_cache_source_of_truth_desc">Todas as entradas, itens de lista de tarefas, eventos da linha do tempo, favoritos e tags são salvos permanentemente em arquivos Markdown (.md) de texto simples na pasta local do seu diário. Seus dados são 100% seus e residem inteiramente no seu dispositivo.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">Todas as entradas, itens de lista de tarefas, eventos da linha do tempo, favoritos e tags são salvos permanentemente em arquivos Markdown (.md) de texto simples na pasta local do seu diário. Seus dados são 100% seus e residem inteiramente no seu dispositivo.</string>
     <string name="rebuild_cache_read_cache_title">Cache de leitura e índice (banco de dados SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">Para permitir o carregamento instantâneo de telas, destaques do calendário, palavras-chave e estatísticas sem varrer o sistema de arquivos a cada rolagem, o Yaja analisa seus arquivos Markdown e os indexa em um banco de dados SQLite local do Room no seu dispositivo.</string>
-    <string name="rebuild_cache_local_private_title">100% local e privado</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% local e privado</string>
     <string name="rebuild_cache_local_private_desc">O Yaja não possui bancos de dados na nuvem, servidores de backup remoto ou telemetria rastreando seu texto. Todas as entradas do diário e os dados analisados permanecem estritamente no seu dispositivo físico e nunca saem dele.</string>
     <string name="keywords_export_success">Palavras-chave exportadas</string>
     <string name="keywords_export_failed">Não foi possível exportar as palavras-chave</string>
@@ -1326,4 +1326,269 @@
     <string name="settings_ui_font_size_label">Tamanho da fonte da UI</string>
     <string name="settings_data_font_size_label">Tamanho da fonte do conteúdo</string>
     <string name="settings_follow_ui_font_scale_label">Igualar tamanho da fonte do conteúdo ao da UI</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">Captura de voz</string>
+    <string name="calendar_empty_month_hint">Ainda não há entradas neste mês.</string>
+    <string name="settings_data_recovery_subtitle">Ferramentas de armazenamento, backups, restauração, importação e cache</string>
+    <string name="settings_journal_experience_subtitle">Exibição de entrada, comportamento do calendário, palavras-chave de data e movimento</string>
+    <string name="settings_navigation_gestures_subtitle">Navegação inferior, guias opcionais, deslizar e arrastar controles
+Bloqueio</string>
+    <string name="settings_privacy_security_subtitle">PIN, desbloqueio biométrico, bloqueio automático e modo de ocultar texto</string>
+    <string name="settings_progressive_title">Sugestão de Próximos Ajustes</string>
+    <string name="settings_progressive_subtitle">Atalhos para configurações que podem tornar o Yaja mais fácil de operar no dia a dia.</string>
+    <string name="settings_progressive_privacy_pin">Conjunto PIN</string>
+    <string name="settings_progressive_privacy_review">Revisão Privacidade</string>
+    <string name="settings_progressive_nav_try">Experimente a navegação adaptativa</string>
+    <string name="settings_progressive_nav_active">Navegação adaptativa ativada
+Calendário</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">Escolha o idioma</string>
+    <string name="settings_language_picker_subtitle">Pesquise ou escolha o idioma de exibição para Yaja.</string>
+    <string name="settings_language_search_placeholder">Idiomas de pesquisa
+Densidade do calendário</string>
+    <string name="settings_calendar_density_title"></string>
+    <string name="settings_calendar_density_subtitle">Ajuste a grade do calendário para conforto, digitalização compacta ou densidade máxima de data.</string>
+    <string name="settings_calendar_density_comfortable">Conforto</string>
+    <string name="settings_calendar_density_compact">Compacto</string>
+    <string name="settings_calendar_density_dense">Denso</string>
+    <string name="settings_journal_carry_forward_title">Transportar todos desmarcados</string>
+    <string name="settings_journal_carry_forward_subtitle">Traga os itens da lista de verificação aberta de ontem para hoje, quando o dia estiver carregado.</string>
+    <string name="quick_capture_tile_label">Captura Rápida</string>
+    <string name="recurring_task_execution_day_of_month_event">Um evento é criado %1$s no dia %2$d. Ele é gravado em seu arquivo diário %3$d com dias de antecedência.</string>
+    <string name="recurring_task_execution_weekday_event">Um evento %1$s é criado em %2$s. Ele é gravado em seu arquivo diário %3$d com dias de antecedência.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">Um evento é criado mensalmente na mesma ocorrência %1$s da data de início. Ele é gravado em seu arquivo diário %2$d com dias de antecedência.</string>
+    <string name="recurring_task_execution_month_boundary_event">Um evento %1$s é criado no %2$s do mês de vencimento. Ele é gravado em seu arquivo diário %3$d com dias de antecedência.</string>
+    <string name="recurring_task_add_event">Adicionar evento recorrente</string>
+    <string name="recurring_task_edit_event">Editar evento recorrente</string>
+    <string name="recurring_task_field_title_event">Nome do evento</string>
+    <string name="recurring_task_field_title_event_hint">Exemplo: reunião de sincronização semanal</string>
+    <string name="recurring_task_frequency_help_event">Escolha com que frequência esse evento se repete.</string>
+    <string name="recurring_task_details_weekday_help_event">Escolha o dia da semana em que este evento vence.</string>
+    <string name="recurring_task_delete_confirm_title_event">Excluir evento recorrente?</string>
+    <string name="recurring_task_end_help_event">Escolha quando este evento para de se repetir</string>
+    <string name="recurring_task_end_count_help_event">Pára após a criação de tantos eventos.</string>
+    <string name="settings_adaptive_bottom_nav_title">Navegação inferior adaptável</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Mostrar guias inferiores opcionais somente quando essa seção tiver conteúdo, mantendo as telas configuradas na gaveta.
+Atualização</string>
+    <string name="todos_empty_refresh"></string>
+    <string name="settings_onboarding_next_launch_title">Mostrar configuração de boas-vindas no próximo lançamento</string>
+    <string name="settings_onboarding_next_launch_subtitle">Execute a opção de introdução e armazenamento uma vez na próxima inicialização do aplicativo e, em seguida, desligue-a automaticamente.</string>
+    <string name="settings_obsidian_export_title">Exportação de Obsidiana</string>
+    <string name="settings_obsidian_export_description">Espelhe seu diário em um cofre simples de descontos - um arquivo por dia, com menções de Pessoas e Lugares reescritas como [[wikilinks]]. Seus dados nunca são bloqueados no Yaja.
+Cofre de exportação</string>
+    <string name="settings_obsidian_export_button">Pasta de marcação</string>
+    <string name="settings_import_source_markdown_folder"></string>
+    <string name="settings_import_source_markdown_folder_subtitle">Qualquer pasta de arquivos .md — Obsidian, Jekyll ou notas diárias semelhantes</string>
+    <string name="onboarding_title">Bem-vindo ao yaja</string>
+    <string name="onboarding_body">Yaja é um diário de remarcação local. Suas entradas permanecem no seu dispositivo como arquivos simples, para que o aplicativo permaneça pessoal, durável e fora do seu caminho.</string>
+    <string name="onboarding_progress">Etapa %1$d de %2$d</string>
+    <string name="onboarding_intro_private">Privado por padrão. Yaja mantém seu diário em seu dispositivo em vez de encaminhá-lo por meio de um serviço em nuvem.
+As entradas</string>
+    <string name="onboarding_intro_files">são arquivos markdown simples, para que sua escrita permaneça portátil e compreensível fora do aplicativo também.</string>
+    <string name="onboarding_intro_flexible">Você pode começar simplesmente agora e ainda personalizar o armazenamento, as importações, a aparência e a segurança posteriormente.</string>
+    <string name="onboarding_storage_title">Escolha onde as novas entradas devem ficar</string>
+    <string name="onboarding_storage_body">Você pode manter tudo no armazenamento interno do aplicativo ou escolher sua própria pasta. Você pode alterar isso mais tarde em Configurações &gt; Dados e recuperação.</string>
+    <string name="onboarding_storage_internal">Armazenamento atual: armazenamento interno do aplicativo</string>
+    <string name="onboarding_storage_custom">Armazenamento atual: pasta personalizada (%1$s)</string>
+    <string name="onboarding_storage_note">As pastas personalizadas precisam de permissão de gravação para que Yaja possa salvar arquivos de diário com segurança.</string>
+    <string name="onboarding_continue_internal">Continuar com armazenamento interno</string>
+    <string name="onboarding_switch_internal">Mudar para armazenamento interno</string>
+    <string name="onboarding_choose_folder">Escolha pasta personalizada</string>
+    <string name="onboarding_customize_title">Escolha alguns padrões iniciais</string>
+    <string name="onboarding_customize_body">Estas são preferências opcionais de primeira execução. Tudo aqui pode ser alterado posteriormente em Configurações.
+Tema</string>
+    <string name="onboarding_theme_title"></string>
+    <string name="onboarding_backup_title">Lembrete de backup</string>
+    <string name="onboarding_backup_body">Escolha quando Yaja deve lembrá-lo de que é hora de fazer um zip de backup.</string>
+    <string name="onboarding_backup_off">desligado</string>
+    <string name="onboarding_backup_30">30 dias</string>
+    <string name="onboarding_backup_60">60 dias
+Histórico de versões do</string>
+    <string name="onboarding_version_history_title"></string>
+    <string name="onboarding_version_history_body">Mantenha cópias seguras antes de edições e exclusões arriscadas.</string>
+    <string name="onboarding_pin_setup">Configurar bloqueio PIN
+O bloqueio</string>
+    <string name="onboarding_pin_enabled">PIN já está ativado</string>
+    <string name="onboarding_import_title">Traga um diário existente se desejar</string>
+    <string name="onboarding_import_body">Você pode importar agora ou pular e fazer isso mais tarde em Configurações&gt; Dados e recuperação.</string>
+    <string name="onboarding_import_running">Importando %1$d de %2$d…</string>
+    <string name="onboarding_import_success">Importação concluída: %1$d novos dias, %2$d mesclado.</string>
+    <string name="onboarding_import_cancelled">Importação cancelada.</string>
+    <string name="onboarding_import_later">Você pode concluir a integração mesmo se uma importação ainda estiver em execução em segundo plano.</string>
+    <string name="onboarding_back">Voltar</string>
+    <string name="onboarding_next">Próximo
+Acabamento</string>
+    <string name="onboarding_finish"></string>
+    <string name="onboarding_skip">Ignorar por enquanto</string>
+    <string name="onboarding_rerun_note">Esta configuração foi reaberta em Configurações e não será exibida novamente, a menos que você solicite.</string>
+    <string name="settings_other_apps_title">Outros aplicativos do desenvolvedor</string>
+    <string name="settings_github_title">Ver código-fonte no GitHub</string>
+    <string name="settings_help_card_title">Ajuda</string>
+    <string name="share_app_title">Compartilhe sim</string>
+    <string name="share_app_default_message">yaja – mais um aplicativo de registro no diário\\n\\nUm diário diário sem distrações que armazena entradas como arquivos de remarcação simples.</string>
+    <string name="share_app_include_image_title">Incluir imagem</string>
+    <string name="share_app_include_image_subtitle">Anexe a imagem promocional junto com sua mensagem
+Mensagem</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">Este link é adicionado automaticamente no final:
+Imagem promocional</string>
+    <string name="share_app_image_cd">yaja
+Layout FAB</string>
+    <string name="settings_layout_label"></string>
+    <string name="settings_layout_desc">Escolha em qual lado os botões de ação do aplicativo aparecem.
+Ícone do aplicativo</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">Escolha o ícone mostrado na tela inicial. O aplicativo é reiniciado brevemente quando você alterna.</string>
+    <string name="settings_app_icon_confirm_title">Alterar ícone do aplicativo?</string>
+    <string name="settings_app_icon_confirm_message">Yaja será reiniciado para aplicar o novo ícone.</string>
+    <string name="settings_app_icon_classic">Clássico
+Caderno</string>
+    <string name="settings_app_icon_notebook">Pena</string>
+    <string name="settings_app_icon_quill"></string>
+    <string name="settings_app_icon_quick_notes">Notas rápidas
+Nota adesiva</string>
+    <string name="settings_app_icon_sticky_note">Biblioteca</string>
+    <string name="settings_app_icon_library">Caneta de tinta</string>
+    <string name="settings_app_icon_ink_pen"></string>
+    <string name="settings_app_icon_article">Artigo</string>
+    <string name="settings_app_icon_edit_square">Editar Quadrado
+Pilha de notas</string>
+    <string name="settings_app_icon_note_stack"></string>
+    <string name="settings_app_icon_subject">Assunto
+Alimentação</string>
+    <string name="settings_app_icon_feed">Livro</string>
+    <string name="settings_app_icon_book_style">Caneta de borda</string>
+    <string name="settings_app_icon_border_pen"></string>
+    <string name="settings_app_icon_post_add">Adicionar postagem
+Caderno</string>
+    <string name="settings_app_icon_notebook_filled">(sombreado)
+Pena</string>
+    <string name="settings_app_icon_quill_filled">(sombreada)
+Notas rápidas</string>
+    <string name="settings_app_icon_quick_notes_filled">(sombreado)
+Nota adesiva</string>
+    <string name="settings_app_icon_sticky_note_filled">(sombreada)
+Biblioteca</string>
+    <string name="settings_app_icon_library_filled">(sombreada)
+Caneta de tinta</string>
+    <string name="settings_app_icon_ink_pen_filled">(sombreada)
+Artigo</string>
+    <string name="settings_app_icon_article_filled">(sombreado)</string>
+    <string name="settings_app_icon_edit_square_filled">Editar quadrado (sombreado)
+Pilha de notas</string>
+    <string name="settings_app_icon_note_stack_filled">(sombreada)
+Assunto</string>
+    <string name="settings_app_icon_subject_filled">(sombreado)
+Feed</string>
+    <string name="settings_app_icon_feed_filled">(sombreado)
+Livro</string>
+    <string name="settings_app_icon_book_style_filled">(sombreado)
+Caneta de borda</string>
+    <string name="settings_app_icon_border_pen_filled">(sombreada)</string>
+    <string name="settings_app_icon_post_add_filled">Adicionar postagem (sombreado)
+Marca nominativa</string>
+    <string name="settings_app_icon_wordmark"></string>
+    <string name="settings_fab_side_right">FABs à direita</string>
+    <string name="settings_fab_side_left">FABs à esquerda</string>
+    <string name="settings_fab_side_right_short">Direita</string>
+    <string name="settings_fab_side_left_short">Esquerda</string>
+    <string name="timeline_filter_all">Todos
+Favoritos de</string>
+    <string name="timeline_filter_favorites"></string>
+    <string name="timeline_filter_labeled">rotulado</string>
+    <string name="timeline_filter_with_entries">com entradas</string>
+    <string name="timeline_density_comfortable">Confortável</string>
+    <string name="timeline_density_compact">Compacto
+Faixa Clássica</string>
+    <string name="timeline_style_track">Cartão Moderno</string>
+    <string name="timeline_style_card"></string>
+    <string name="timeline_all_years">todos os anos</string>
+    <string name="timeline_month_summary_format">%1$d dias de entrada | %2$d rotulado | Favoritos de %3$d</string>
+    <string name="addentry_full_day_event_label">Evento de dia inteiro</string>
+    <string name="addentry_switch_to_keyboard">Alternar para entrada de teclado</string>
+    <string name="addentry_switch_to_dial">Alternar para discar</string>
+    <string name="home_loading_title">Carregando este dia</string>
+    <string name="home_loading_subtitle">Preparando entradas, rótulos e acompanhamentos.
+Tempo de leitura</string>
+    <string name="statistics_reading_time"></string>
+    <string name="statistics_avg_reading_time_per_entry">Média. Ler/Entrar</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d min</item>
+        <item quantity="other">%1$d min</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">Entrar no modo de foco</string>
+    <string name="addentry_cd_exit_focus_mode">Sair do modo de foco</string>
+    <string name="addentry_reading_time_format">%1$d leitura mínima</string>
+    <string name="home_cd_enable_hide_text_mode">Ativar modo de ocultar texto</string>
+    <string name="home_cd_disable_hide_text_mode">Desativar modo de ocultar texto</string>
+    <string name="home_hidden_entry_preview">Texto oculto. Toque uma vez para revelar.</string>
+    <string name="home_hidden_result_preview">Visualização oculta enquanto o modo ocultar texto está ativado.</string>
+    <string name="home_stat_read">Ler</string>
+    <string name="settings_hide_text_mode_title">Ocultar modo de texto</string>
+    <string name="settings_hide_text_mode_subtitle">Oculte o texto do diário na página inicial até tocar em uma entrada para revelá-la.
+Painel de privacidade</string>
+    <string name="settings_privacy_dashboard_title">Transparência local</string>
+    <string name="settings_privacy_dashboard_overview">Local de armazenamento</string>
+    <string name="settings_privacy_storage_title">Regras de backup</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">Último backup: %1$s. Limite de lembrete: %2$d dias.
+Bloqueio de aplicativo</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Biometria: %2$s. Bloqueio automático após %3$d minutos.</string>
+    <string name="settings_privacy_hide_mode_title">Ocultar modo de texto</string>
+    <string name="settings_privacy_hide_mode_on">O texto inicial fica oculto por padrão até que você revele uma entrada.</string>
+    <string name="settings_privacy_hide_mode_off">O texto inicial é visível normalmente.
+Exposição</string>
+    <string name="settings_privacy_tasker_title">Tasker</string>
+    <string name="settings_privacy_tasker_summary">Acesso rápido à captura: %1$s. Compartilhamento de eventos: %2$s. Texto de entrada incluído nos eventos: %3$s.
+Compartilhamento manual</string>
+    <string name="settings_privacy_share_title"></string>
+    <string name="settings_privacy_share_summary">O texto de entrada só pode sair do aplicativo quando você usa explicitamente Compartilhar no editor ou exporta um backup.
+Exposição do widget</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d ativas. Captura Rápida: %2$d. Tarefa rápida: %3$d. Mapa de calor: %4$d. Lista de tarefas: %5$d.</string>
+    <string name="settings_privacy_state_on">ativado</string>
+    <string name="settings_privacy_state_off">desativado</string>
+    <string name="settings_privacy_state_yes">Sim</string>
+    <string name="settings_privacy_state_no">Não</string>
+    <string name="settings_privacy_risk_low">Baixa Exposição</string>
+    <string name="settings_privacy_risk_medium">Exposição Média</string>
+    <string name="settings_privacy_risk_high">Alta Exposição</string>
+    <string name="settings_privacy_risk_low_summary">A maior parte do texto do diário permanece no dispositivo, a menos que você o compartilhe explicitamente.</string>
+    <string name="settings_privacy_risk_medium_summary">Algumas superfícies habilitadas podem expor texto ou metadados fora da visualização principal do diário.</string>
+    <string name="settings_privacy_risk_high_summary">Várias superfícies habilitadas podem revelar conteúdo ou metadados do diário. Recomenda-se apertar algumas configurações.</string>
+    <string name="settings_privacy_exposure_title">Nível de exposição atual
+Superfícies de exposição</string>
+    <string name="settings_privacy_surfaces_title"></string>
+    <string name="settings_privacy_storage_backup_title">Armazenamento e Backup
+Controles de privacidade</string>
+    <string name="settings_privacy_controls_title">Recomendações</string>
+    <string name="settings_privacy_recommendations_title"></string>
+    <string name="settings_privacy_quick_actions_title">Ações rápidas</string>
+    <string name="settings_privacy_surface_local_title">Diário no dispositivo</string>
+    <string name="settings_privacy_surface_local_summary">Seus arquivos diários ficam localizados localmente e permanecem no aplicativo, a menos que você use compartilhamento, backup, Tasker ou widgets.</string>
+    <string name="settings_privacy_state_default">Padrão
+Somente manual</string>
+    <string name="settings_privacy_state_manual"></string>
+    <string name="settings_privacy_state_active">Ativo</string>
+    <string name="settings_privacy_state_visible">Visível</string>
+    <string name="settings_privacy_state_none">Nenhum</string>
+    <string name="settings_privacy_recommend_pin">Adicione um PIN para que o aplicativo não abra diretamente no seu diário.</string>
+    <string name="settings_privacy_recommend_hide">Ative o modo Ocultar texto para manter a casa mais segura em público ou perto de outras pessoas.</string>
+    <string name="settings_privacy_recommend_tasker_text">Desative o texto de entrada em eventos Tasker, a menos que você realmente precise do texto completo do diário.</string>
+    <string name="settings_privacy_recommend_widgets">Revise os widgets ativos, pois as superfícies da tela inicial podem expor metadados rapidamente.</string>
+    <string name="settings_privacy_action_set_pin">Conjunto PIN</string>
+    <string name="settings_privacy_action_enable_hide">Ativar ocultar texto</string>
+    <string name="settings_privacy_action_disable_tasker_text">Desativar texto Tasker</string>
+    <string name="settings_privacy_action_open_tasker">Abrir configurações Tasker</string>
+    <string name="widget_todo_empty">Ótimo, sem tarefas pendentes!</string>
+    <string name="widget_todo_header_todos_events">Todos e Eventos
+Evento</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">Transparente</string>
+    <string name="recurring_task_start_section">Agendamento de início</string>
+    <string name="recurring_task_start_help">Selecione a data de início e o horário opcional para esta programação recorrente.</string>
 </resources>

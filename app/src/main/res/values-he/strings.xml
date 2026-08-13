@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">הערות</string>
     <string name="tasker_screen_body_notes">טקסט רשומה אינו משותף עם Tasker אלא אם כן תפעיל את כלול טקסט רשומה באירועים. אם Tasker אינו מציג את האפשרויות או המשתנים העדכניים ביותר, פתח מחדש את מסך תצורת Tasker לאחר עדכון Yaja.</string>
     <string name="tasker_screen_section_example">דוּגמָה</string>
-    <string name="tasker_screen_body_example">1. השתמש באירוע יומן Yaja ב-Tasker כדי להפעיל פעולת סינכרון של FolderSync, כך שתיקיית Yaja שלך תידחף לכל ספק ענן לאחר שינוי הערכים.</string>
+    <string name="tasker_screen_body_example" formatted="false">1. השתמש באירוע יומן Yaja ב-Tasker כדי להפעיל פעולת סינכרון של FolderSync, כך שתיקיית Yaja שלך תידחף לכל ספק ענן לאחר שינוי הערכים.</string>
     <string name="tasker_screen_section_use_cases">מקרי שימוש</string>
     <string name="tasker_screen_use_case_1">1. השתמש באירוע יומן Yaja ב-Tasker כדי להפעיל פעולת סינכרון של FolderSync, כך שתיקיית Yaja שלך תידחף לכל ספק ענן לאחר שינוי הערכים.</string>
     <string name="tasker_screen_use_case_2">2. השתמש ב-Pushbullet עם Tasker כדי לשלוח טקסט לתוך Yaja Quick Capture, כך שהטקסט שנדחף יישמר כערך חדש ליום הנוכחי.</string>
@@ -520,7 +520,7 @@
     <string name="app_log_privacy_description">יומן זה מתעד אירועי אפליקציה גדולים, פעולות מטמון/אחסון, רענון ווידג\'ט ופרטי קריסה. זה לא כולל רשומות ביומן, טקסט מטלות או תוכן הערות פרטיות.</string>
     <plurals name="app_log_retention_days">
         <item quantity="one">שמור על %d היום האחרון</item>
-        <item quantity="other">אין עדיין יומן אפליקציה.</item>
+        <item quantity="other">Keep last %d days</item>
     </plurals>
     <string name="app_log_retention_description">אירועי יומן ישנים יותר נגזמים באופן אוטומטי במהלך רישום ומיד כאשר הגדרה זו משתנה.</string>
     <string name="app_log_empty">אין עדיין יומן אפליקציה.</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">שקיפות אחסון במכשיר</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja משתמש במודל אחסון מקומי מאובטח. נתוני היומן האישיים שלך נשארים מקומיים ולעולם לא עוזבים את המכשיר שלך בכל עת:</string>
     <string name="rebuild_cache_source_of_truth_title">מקור האמת (קבצי Markdown)</string>
-    <string name="rebuild_cache_source_of_truth_desc">כל הערכים, פריטי הבדיקה (מטלות), אירועי ציר הזמן, הכוכבים והתגים נשמרים לצמיתות בקבצי Markdown (.md) רגיל בתיקיית היומן המקומית שבחרת. הנתונים שלך נמצאים בבעלותך ב-100% והם נמצאים כולו במכשיר שלך.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">כל הערכים, פריטי הבדיקה (מטלות), אירועי ציר הזמן, הכוכבים והתגים נשמרים לצמיתות בקבצי Markdown (.md) רגיל בתיקיית היומן המקומית שבחרת. הנתונים שלך נמצאים בבעלותך ב-100% והם נמצאים כולו במכשיר שלך.</string>
     <string name="rebuild_cache_read_cache_title">קרא מטמון ואינדקס (SQLite Database)</string>
     <string name="rebuild_cache_read_cache_desc">כדי לאפשר טעינת מסך מיידית, הדגשות לוח שנה, מילות מפתח וסטטיסטיקות מבלי לסרוק את מערכת הקבצים בכל גלילה, Yaja מנתח את קבצי ה-Markdown שלך ומאנדקסת אותם במסד נתונים מקומי של Room SQLite במכשיר שלך.</string>
-    <string name="rebuild_cache_local_private_title">100% מקומי ופרטי</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% מקומי ופרטי</string>
     <string name="rebuild_cache_local_private_desc">ל-Yaja אין מסדי נתונים בענן, שרתי גיבוי מרוחקים או טלמטריה העוקבים אחר הטקסט שלך. כל רשומות היומן והנתונים המנותחים נשארים אך ורק במכשיר הפיזי שלך ולעולם לא עוזבים אותו בכל עת.</string>
     <string name="keywords_export_success">מילות מפתח יוצאו</string>
     <string name="keywords_export_failed">לא ניתן לייצא מילות מפתח</string>
@@ -1326,4 +1326,251 @@
     <string name="settings_accent_style_analogous">מַקְבִּיל</string>
     <string name="settings_accent_style_triadic">טריאדי</string>
     <string name="settings_accent_style_soft">רַך</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">לכידת קול</string>
+    <string name="calendar_empty_month_hint">עדיין אין ערכים בחודש זה.</string>
+    <string name="settings_data_recovery_subtitle">כלי אחסון, גיבויים, שחזור, ייבוא ומטמון</string>
+    <string name="settings_journal_experience_subtitle">תצוגת כניסה, התנהגות לוח שנה, מילות מפתח של תאריך ותנועה</string>
+    <string name="settings_navigation_gestures_subtitle">ניווט תחתון, כרטיסיות אופציונליות, פקדי החלקה וגרירה</string>
+    <string name="settings_privacy_security_subtitle">PIN נעילה, פתיחה ביומטרית, נעילה אוטומטית ומצב הסתרת טקסט</string>
+    <string name="settings_progressive_title">הציעו את השינויים הבאים</string>
+    <string name="settings_progressive_subtitle">קיצורי דרך להגדרות שיכולות להפוך את Yaja לקל יותר לתפעול מדי יום.</string>
+    <string name="settings_progressive_privacy_pin">סט PIN
+פרטיות סקירת</string>
+    <string name="settings_progressive_privacy_review"></string>
+    <string name="settings_progressive_nav_try">נסה את ה-Adaptive Nav</string>
+    <string name="settings_progressive_nav_active">ניווט אדפטיבי פועל
+לוח שנה</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">בחר שפה</string>
+    <string name="settings_language_picker_subtitle">חפש או בחר את שפת התצוגה עבור Yaja.</string>
+    <string name="settings_language_search_placeholder">שפות חיפוש</string>
+    <string name="settings_calendar_density_title">צפיפות לוח שנה</string>
+    <string name="settings_calendar_density_subtitle">כוונן את רשת לוח השנה לנוחות, סריקה קומפקטית או צפיפות תאריך מקסימלית.</string>
+    <string name="settings_calendar_density_comfortable">נוחות</string>
+    <string name="settings_calendar_density_compact">קומפקטי</string>
+    <string name="settings_calendar_density_dense">צפוף</string>
+    <string name="settings_journal_carry_forward_title">העבר מטלות לא מסומנות</string>
+    <string name="settings_journal_carry_forward_subtitle">הבא את פריטי רשימת הבדיקה הפתוחים של אתמול להיום כשהיום נטען.</string>
+    <string name="quick_capture_tile_label">לכידה מהירה</string>
+    <string name="recurring_task_execution_day_of_month_event">אירוע נוצר %1$s ביום %2$d. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="recurring_task_execution_weekday_event">אירוע נוצר %1$s ב-%2$s. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">אירוע נוצר מדי חודש באותו אירוע %1$s כמו תאריך ההתחלה. זה נכתב לקובץ היומי שלך %2$d ימים מראש.</string>
+    <string name="recurring_task_execution_month_boundary_event">אירוע נוצר %1$s ב-%2$s של החודש המיועד. זה נכתב לקובץ היומי שלך %3$d ימים מראש.</string>
+    <string name="recurring_task_add_event">הוסף אירוע חוזר</string>
+    <string name="recurring_task_edit_event">ערוך אירוע חוזר</string>
+    <string name="recurring_task_field_title_event">שם האירוע</string>
+    <string name="recurring_task_field_title_event_hint">דוגמה: פגישת סנכרון שבועית</string>
+    <string name="recurring_task_frequency_help_event">בחר באיזו תדירות אירוע זה יחזור על עצמו.</string>
+    <string name="recurring_task_details_weekday_help_event">בחר את יום השבוע שבו אירוע זה יגיע.</string>
+    <string name="recurring_task_delete_confirm_title_event">למחוק אירוע חוזר?</string>
+    <string name="recurring_task_end_help_event">בחר מתי אירוע זה יפסיק לחזור</string>
+    <string name="recurring_task_end_count_help_event">מפסיק לאחר יצירת אירועים רבים כל כך.</string>
+    <string name="settings_adaptive_bottom_nav_title">ניווט תחתון אדפטיבי</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">הצג כרטיסיות תחתונות אופציונליות רק כאשר בחלק זה יש תוכן, תוך שמירה על מסכים מוגדרים במגירה.
+רענון</string>
+    <string name="todos_empty_refresh"></string>
+    <string name="settings_onboarding_next_launch_title">הצג את הגדרת קבלת הפנים בהשקה הבאה</string>
+    <string name="settings_onboarding_next_launch_subtitle">הפעל את בחירת המבוא והאחסון פעם אחת בהשקת האפליקציה הבאה, ולאחר מכן כבה זאת באופן אוטומטי.</string>
+    <string name="settings_obsidian_export_title">ייצוא אובסידיאן</string>
+    <string name="settings_obsidian_export_description">שיקוף את היומן שלך לכספת סימון פשוטה - קובץ אחד ליום, עם אזכורים של אנשים ומקומות שנכתבו מחדש כ-[[wikilinks]]. הנתונים שלך לעולם אינם נעולים ב-Yaja.</string>
+    <string name="settings_obsidian_export_button">כספת ייצוא</string>
+    <string name="settings_import_source_markdown_folder">תיקיית Markdown</string>
+    <string name="settings_import_source_markdown_folder_subtitle">כל תיקיה של קבצי .md - Obsidian, Jekyll או הערות יומיות דומות</string>
+    <string name="onboarding_title">ברוכים הבאים ל-yaja</string>
+    <string name="onboarding_body">Yaja הוא יומן סימון מקומי ראשון. הערכים שלך נשארים במכשיר שלך כקבצים רגילים, כך שהאפליקציה נשארת אישית, עמידה ומרוחקת מהדרך שלך.</string>
+    <string name="onboarding_progress">שלב %1$d של %2$d</string>
+    <string name="onboarding_intro_private">פרטי כברירת מחדל. Yaja שומר את היומן שלך במכשיר שלך במקום לנתב אותו דרך שירות ענן.
+ערכים</string>
+    <string name="onboarding_intro_files">הם קבצי סימון פשוטים, כך שהכתיבה שלך נשארת ניידת ומובן גם מחוץ לאפליקציה.</string>
+    <string name="onboarding_intro_flexible">אתה יכול להתחיל פשוט עכשיו ועדיין להתאים אישית את האחסון, הייבוא, המראה והאבטחה מאוחר יותר.</string>
+    <string name="onboarding_storage_title">בחר היכן ערכים חדשים צריכים לחיות</string>
+    <string name="onboarding_storage_body">אתה יכול לשמור הכל באחסון אפליקציות פנימי או לבחור תיקייה משלך. תוכל לשנות זאת מאוחר יותר מהגדרות &gt; נתונים ושחזור.</string>
+    <string name="onboarding_storage_internal">אחסון נוכחי: אחסון אפליקציה פנימי</string>
+    <string name="onboarding_storage_custom">אחסון נוכחי: תיקייה מותאמת אישית (%1$s)</string>
+    <string name="onboarding_storage_note">תיקיות מותאמות אישית זקוקות להרשאת כתיבה כדי ש-Yaja יוכל לשמור קבצי יומן בבטחה.</string>
+    <string name="onboarding_continue_internal">המשך עם אחסון פנימי</string>
+    <string name="onboarding_switch_internal">עבור לאחסון פנימי</string>
+    <string name="onboarding_choose_folder">בחר תיקייה מותאמת אישית</string>
+    <string name="onboarding_customize_title">בחר כמה ברירות מחדל התחלתיות</string>
+    <string name="onboarding_customize_body">אלו הן העדפות אופציונליות להפעלה ראשונה. הכל כאן ניתן לשנות מאוחר יותר מהגדרות.
+נושא</string>
+    <string name="onboarding_theme_title">תזכורת לגיבוי</string>
+    <string name="onboarding_backup_title"></string>
+    <string name="onboarding_backup_body">בחר מתי Yaja צריך להזכיר לך שהגיע הזמן לעשות zip גיבוי.</string>
+    <string name="onboarding_backup_off">כבוי</string>
+    <string name="onboarding_backup_30">30 ימים</string>
+    <string name="onboarding_backup_60">60 ימים</string>
+    <string name="onboarding_version_history_title">היסטוריית גרסאות</string>
+    <string name="onboarding_version_history_body">שמור עותקים בטוחים לפני עריכות ומחיקות מסוכנות.</string>
+    <string name="onboarding_pin_setup">הגדר נעילת PIN
+נעילה</string>
+    <string name="onboarding_pin_enabled">PIN כבר מופעלת</string>
+    <string name="onboarding_import_title">הכנס יומן קיים אם תרצה</string>
+    <string name="onboarding_import_body">אתה יכול לייבא כבר עכשיו, או לדלג על זה ולעשות זאת מאוחר יותר מהגדרות &gt; נתונים ושחזור.</string>
+    <string name="onboarding_import_running">מייבא %1$d של %2$d...
+ייבוא</string>
+    <string name="onboarding_import_success">הסתיים: %1$d ימים חדשים, %2$d התמזגו.
+ייבוא ​​</string>
+    <string name="onboarding_import_cancelled">בוטל.</string>
+    <string name="onboarding_import_later">אתה יכול לסיים את ההטמעה גם אם ייבוא ​​עדיין פועל ברקע.</string>
+    <string name="onboarding_back">חזרה</string>
+    <string name="onboarding_next">הבא</string>
+    <string name="onboarding_finish">גימור</string>
+    <string name="onboarding_skip">דלג לעת עתה</string>
+    <string name="onboarding_rerun_note">הגדרה זו נפתחה מחדש מההגדרות ולא תוצג שוב אלא אם תבקש זאת.</string>
+    <string name="settings_other_apps_title">אפליקציות אחרות של המפתח</string>
+    <string name="settings_github_title">צפה במקור ב- GitHub</string>
+    <string name="settings_help_card_title">עזרה</string>
+    <string name="share_app_title">שתף yaja</string>
+    <string name="share_app_default_message">yaja - עוד אפליקציית יומן\\n\\nA יומן יומי נטול הסחות דעת המאחסן ערכים כקובצי סימון רגילים.</string>
+    <string name="share_app_include_image_title">כלול תמונה</string>
+    <string name="share_app_include_image_subtitle">צרף את תמונת הפרומו יחד עם ההודעה שלך
+הודעה</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">קישור זה נוסף בסוף באופן אוטומטי:
+תמונת פרומו של</string>
+    <string name="share_app_image_cd">yaja</string>
+    <string name="settings_layout_label">פריסת FAB</string>
+    <string name="settings_layout_desc">בחר באילו לחצני הפעולה של האפליקציה יופיעו.
+סמל האפליקציה</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">בחר את הסמל המוצג במסך הבית שלך. האפליקציה מופעלת מחדש לזמן קצר לאחר המעבר.</string>
+    <string name="settings_app_icon_confirm_title">לשנות את סמל האפליקציה?</string>
+    <string name="settings_app_icon_confirm_message">Yaja יופעל מחדש כדי להחיל את הסמל החדש.</string>
+    <string name="settings_app_icon_classic">קלאסי
+מחברת</string>
+    <string name="settings_app_icon_notebook"></string>
+    <string name="settings_app_icon_quill">קולמוס</string>
+    <string name="settings_app_icon_quick_notes">הערות מהירות
+פתק נדבק</string>
+    <string name="settings_app_icon_sticky_note">ספריית</string>
+    <string name="settings_app_icon_library">עט דיו</string>
+    <string name="settings_app_icon_ink_pen">מאמר</string>
+    <string name="settings_app_icon_article"></string>
+    <string name="settings_app_icon_edit_square">עריכה ריבוע
+מחסנית הערות</string>
+    <string name="settings_app_icon_note_stack"></string>
+    <string name="settings_app_icon_subject">נושא
+עדכון</string>
+    <string name="settings_app_icon_feed">ספר</string>
+    <string name="settings_app_icon_book_style"></string>
+    <string name="settings_app_icon_border_pen">עט גבול</string>
+    <string name="settings_app_icon_post_add">הוסף פוסט
+מחברת</string>
+    <string name="settings_app_icon_notebook_filled">(מוצל)</string>
+    <string name="settings_app_icon_quill_filled">קולמוס (מוצל)</string>
+    <string name="settings_app_icon_quick_notes_filled">הערות מהירות (מוצלות)</string>
+    <string name="settings_app_icon_sticky_note_filled">פתק דביק (מוצל)
+ספריית</string>
+    <string name="settings_app_icon_library_filled">(מוצלת)
+עט דיו</string>
+    <string name="settings_app_icon_ink_pen_filled">(מוצל)
+מאמר</string>
+    <string name="settings_app_icon_article_filled">(מוצל)</string>
+    <string name="settings_app_icon_edit_square_filled">ריבוע עריכה (מוצל)</string>
+    <string name="settings_app_icon_note_stack_filled">ערימת הערות (מוצל)</string>
+    <string name="settings_app_icon_subject_filled">נושא (מוצל)
+עדכון</string>
+    <string name="settings_app_icon_feed_filled">(מוצל)
+ספר</string>
+    <string name="settings_app_icon_book_style_filled">(מוצל)</string>
+    <string name="settings_app_icon_border_pen_filled">עט גבול (מוצל)</string>
+    <string name="settings_app_icon_post_add_filled">הוסף פוסט (מוצל)</string>
+    <string name="settings_app_icon_wordmark">סימן מילים</string>
+    <string name="settings_fab_side_right">FABs בצד ימין</string>
+    <string name="settings_fab_side_left">FABs בצד שמאל</string>
+    <string name="settings_fab_side_right_short">מימין</string>
+    <string name="settings_fab_side_left_short">משמאל</string>
+    <string name="timeline_filter_all">הכל</string>
+    <string name="timeline_filter_favorites">מועדפים</string>
+    <string name="timeline_filter_labeled">עם תווית</string>
+    <string name="timeline_filter_with_entries">עם ערכים</string>
+    <string name="timeline_density_comfortable">נוח</string>
+    <string name="timeline_density_compact">קומפקטי</string>
+    <string name="timeline_style_track">מסלול קלאסי</string>
+    <string name="timeline_style_card">כרטיס מודרני</string>
+    <string name="timeline_all_years">כל השנים</string>
+    <string name="timeline_month_summary_format">%1$d ימי כניסה | %2$d שכותרתו | %3$d מועדפים</string>
+    <string name="addentry_full_day_event_label">אירוע יום שלם</string>
+    <string name="addentry_switch_to_keyboard">עבור לקלט מקלדת</string>
+    <string name="addentry_switch_to_dial">מתג לחיוג</string>
+    <string name="home_loading_title">טוען היום</string>
+    <string name="home_loading_subtitle">הכנת ערכים, תוויות ומעקבים.
+זמן קריאה</string>
+    <string name="statistics_reading_time"></string>
+    <string name="statistics_avg_reading_time_per_entry">ממוצע קרא / ערך</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d דקות</item>
+        <item quantity="other">%1$d דקות</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">היכנס למצב מיקוד</string>
+    <string name="addentry_cd_exit_focus_mode">צא ממצב מיקוד</string>
+    <string name="addentry_reading_time_format">%1$d קריאה דקות</string>
+    <string name="home_cd_enable_hide_text_mode">אפשר מצב הסתרת טקסט</string>
+    <string name="home_cd_disable_hide_text_mode">בטל מצב הסתרת טקסט</string>
+    <string name="home_hidden_entry_preview">טקסט מוסתר. הקש פעם אחת כדי לחשוף.</string>
+    <string name="home_hidden_result_preview">תצוגה מקדימה מוסתרת כאשר מצב הסתרת טקסט מופעל.</string>
+    <string name="home_stat_read">קריאה</string>
+    <string name="settings_hide_text_mode_title">הסתר מצב טקסט</string>
+    <string name="settings_hide_text_mode_subtitle">הסתר טקסט ביומן בדף הבית עד שתקיש על ערך כדי לחשוף אותו.</string>
+    <string name="settings_privacy_dashboard_title">לוח המחוונים הפרטיות</string>
+    <string name="settings_privacy_dashboard_overview">שקיפות מקומית</string>
+    <string name="settings_privacy_storage_title">מיקום אחסון
+כללי גיבוי</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">גיבוי אחרון: %1$s. סף תזכורת: %2$d ימים.</string>
+    <string name="settings_privacy_lock_title">נעילת אפליקציה</string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. ביומטריה: %2$s. נעילה אוטומטית לאחר %3$d דקות.</string>
+    <string name="settings_privacy_hide_mode_title">הסתר מצב טקסט</string>
+    <string name="settings_privacy_hide_mode_on">טקסט הבית מוסתר כברירת מחדל עד שתחשוף ערך.</string>
+    <string name="settings_privacy_hide_mode_off">טקסט הבית גלוי כרגיל.</string>
+    <string name="settings_privacy_tasker_title">Tasker חשיפה</string>
+    <string name="settings_privacy_tasker_summary">גישה מהירה לכידה: %1$s. שיתוף אירועים: %2$s. טקסט כניסה כלול באירועים: %3$s.</string>
+    <string name="settings_privacy_share_title">שיתוף ידני</string>
+    <string name="settings_privacy_share_summary">טקסט כניסה יכול לצאת מהאפליקציה רק כאשר אתה משתמש במפורש בשיתוף מהעורך או מייצא גיבוי.</string>
+    <string name="settings_privacy_widgets_title">חשיפת יישומון</string>
+    <string name="settings_privacy_widgets_summary">%1$d פעילים. צילום מהיר: %2$d. מטלה מהירה: %3$d. מפת חום: %4$d. רשימת מטלות: %5$d.</string>
+    <string name="settings_privacy_state_on">פועל</string>
+    <string name="settings_privacy_state_off">כבוי</string>
+    <string name="settings_privacy_state_yes">כן</string>
+    <string name="settings_privacy_state_no">מס</string>
+    <string name="settings_privacy_risk_low">חשיפה נמוכה</string>
+    <string name="settings_privacy_risk_medium">חשיפה בינונית</string>
+    <string name="settings_privacy_risk_high">חשיפה גבוהה</string>
+    <string name="settings_privacy_risk_low_summary">רוב הטקסט ביומן נשאר במכשיר אלא אם כן אתה משתף אותו במפורש.</string>
+    <string name="settings_privacy_risk_medium_summary">כמה משטחים מופעלים יכולים לחשוף טקסט או מטא נתונים מחוץ לתצוגת היומן הראשית.</string>
+    <string name="settings_privacy_risk_high_summary">מספר משטחים מופעלים יכולים לחשוף תוכן יומן או מטא נתונים. מומלץ להדק כמה הגדרות.</string>
+    <string name="settings_privacy_exposure_title">רמת חשיפה נוכחית
+משטחי חשיפה</string>
+    <string name="settings_privacy_surfaces_title"></string>
+    <string name="settings_privacy_storage_backup_title">אחסון וגיבוי</string>
+    <string name="settings_privacy_controls_title">בקרות פרטיות</string>
+    <string name="settings_privacy_recommendations_title">המלצות</string>
+    <string name="settings_privacy_quick_actions_title">פעולות מהירות</string>
+    <string name="settings_privacy_surface_local_title">יומן במכשיר</string>
+    <string name="settings_privacy_surface_local_summary">קובצי היום שלך חיים באופן מקומי ונשארים בתוך האפליקציה אלא אם כן אתה משתמש בשיתוף, גיבוי, Tasker או ווידג\'טים.</string>
+    <string name="settings_privacy_state_default">ברירת מחדל</string>
+    <string name="settings_privacy_state_manual">ידני בלבד</string>
+    <string name="settings_privacy_state_active">פעיל</string>
+    <string name="settings_privacy_state_visible">גלוי</string>
+    <string name="settings_privacy_state_none">אין</string>
+    <string name="settings_privacy_recommend_pin">הוסף PIN כדי שהאפליקציה לא תיפתח ישירות ביומן שלך.</string>
+    <string name="settings_privacy_recommend_hide">הפעל את מצב הסתר טקסט כדי לשמור על הבית בטוח יותר בציבור או בקרבת אנשים אחרים.</string>
+    <string name="settings_privacy_recommend_tasker_text">השבת טקסט רשומה באירועי Tasker אלא אם כן אתה באמת צריך את טקסט היומן המלא שם.</string>
+    <string name="settings_privacy_recommend_widgets">סקור ווידג\'טים פעילים מכיוון שמשטחי מסך הבית יכולים לחשוף מטא נתונים במבט חטוף.</string>
+    <string name="settings_privacy_action_set_pin">סט PIN</string>
+    <string name="settings_privacy_action_enable_hide">אפשר הסתר טקסט</string>
+    <string name="settings_privacy_action_disable_tasker_text">השבת Tasker טקסט</string>
+    <string name="settings_privacy_action_open_tasker">פתח את הגדרות Tasker</string>
+    <string name="widget_todo_empty">נהדר, אין משימות ממתינות!</string>
+    <string name="widget_todo_header_todos_events">מטלות ואירועים
+אירוע</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">ברור</string>
+    <string name="recurring_task_start_section">התחלה של לוח זמנים</string>
+    <string name="recurring_task_start_help">בחר את תאריך ההתחלה והשעה האופציונלית עבור לוח זמנים חוזר זה.</string>
 </resources>

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:maxLines="3"
-            android:text="[ ] Buy milk"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:ellipsize="end"
             android:fontFamily="serif"
             android:maxLines="1"
-            android:text="Tue, 30 Apr | Home"
+            android:text=""
             android:textSize="12sp" />
     </LinearLayout>
 </FrameLayout>

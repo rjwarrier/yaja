@@ -227,7 +227,7 @@
     <string name="tasker_screen_section_notes">Notes</string>
     <string name="tasker_screen_body_notes">Entry text is not shared with Tasker unless you enable Include Entry Text in Events. If Tasker does not show the latest options or variables, reopen the Tasker configuration screen after updating Yaja.</string>
     <string name="tasker_screen_section_example">Example</string>
-    <string name="tasker_screen_body_example">Action example: Tasker action &gt; Yaja Quick Capture &gt; Append, with Match / header set to Missed Calls and Line to append set to a Tasker variable. Event example: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, then use variables like %%yaja_event_type, %%yaja_date, and optionally %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Action example: Tasker action &gt; Yaja Quick Capture &gt; Append, with Match / header set to Missed Calls and Line to append set to a Tasker variable. Event example: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, then use variables like %%yaja_event_type, %%yaja_date, and optionally %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Use cases</string>
     <string name="tasker_screen_use_case_1">1. Use a Yaja journal event in Tasker to trigger a FolderSync sync action, so your Yaja folder gets pushed to any cloud provider after entries change.</string>
     <string name="tasker_screen_use_case_2">2. Use Pushbullet with Tasker to send text into Yaja Quick Capture, so the pushed text gets saved as a new entry for the current day.</string>
@@ -765,10 +765,10 @@
     <string name="rebuild_cache_storage_transparency_title">On-Device Storage Transparency</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja uses a secure local storage model. Your personal journal data remains local and never leaves your device at any time:</string>
     <string name="rebuild_cache_source_of_truth_title">Source of Truth (Markdown Files)</string>
-    <string name="rebuild_cache_source_of_truth_desc">All entries, checklist items (todos), timeline events, stars, and tags are permanently saved in plaintext Markdown (.md) files in your selected local journal folder. Your data is 100% owned by you and resides entirely on your device.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">All entries, checklist items (todos), timeline events, stars, and tags are permanently saved in plaintext Markdown (.md) files in your selected local journal folder. Your data is 100% owned by you and resides entirely on your device.</string>
     <string name="rebuild_cache_read_cache_title">Read Cache &amp; Index (SQLite Database)</string>
     <string name="rebuild_cache_read_cache_desc">To enable instant screen loading, calendar highlights, keywords, and statistics without scanning the filesystem on every scroll, Yaja parses your Markdown files and indexes them in a local Room SQLite database on your device.</string>
-    <string name="rebuild_cache_local_private_title">100% Local &amp; Private</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% Local &amp; Private</string>
     <string name="rebuild_cache_local_private_desc">Yaja does not have any cloud databases, remote backup servers, or telemetry tracking your text. All journal entries and parsed data remain strictly on your physical device and never leave it at any time.</string>
     <string name="keywords_export_success">Keywords exported</string>
     <string name="keywords_export_failed">Couldn\'t export keywords</string>
@@ -876,6 +876,16 @@
     <string name="timeline_label_prefix">Label: %1$s</string>
     <string name="timeline_label_search_placeholder">Search day labels</string>
     <string name="timeline_filters_title">Timeline Filters &amp; Layout</string>
+    <string name="timeline_filter_all">All</string>
+    <string name="timeline_filter_favorites">Favorites</string>
+    <string name="timeline_filter_labeled">Labeled</string>
+    <string name="timeline_filter_with_entries">With Entries</string>
+    <string name="timeline_density_comfortable">Comfortable</string>
+    <string name="timeline_density_compact">Compact</string>
+    <string name="timeline_style_track">Classic Track</string>
+    <string name="timeline_style_card">Modern Card</string>
+    <string name="timeline_all_years">All Years</string>
+    <string name="timeline_month_summary_format">%1$d entry days | %2$d labeled | %3$d favorites</string>
     <string name="settings_meaning_tomorrow">Tomorrow</string>
     <string name="settings_meaning_day_before_yesterday">Day before yesterday</string>
     <string name="settings_meaning_day_after_tomorrow">Day after tomorrow</string>
@@ -1500,6 +1510,9 @@
     <string name="widget_todo_auto_hide">Auto hide widget when all todos completed</string>
     <string name="widget_todo_auto_hide_unavailable">Unavailable while completed tasks are shown</string>
     <string name="widget_todo_auto_hide_desc">Make the widget transparent when there are no pending tasks</string>
+    <string name="widget_todo_empty">Great, No Pending Tasks!</string>
+    <string name="widget_todo_header_todos_events">Todos &amp; Events</string>
+    <string name="widget_todo_event_label">Event</string>
 
     <!-- Todo widget confirm dialog -->
     <string name="todo_confirm_mark_done">done</string>
@@ -1520,6 +1533,7 @@
 
     <!-- Leftover hardcoded strings externalization -->
     <string name="settings_import_cancel_cd">Cancel import</string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
     <string name="timeline_show_all_dates">Show all dates</string>
     <string name="timeline_show_all_dates_subtitle">Include all past days, even without entries</string>
     <string name="settings_background_tint_clean">Clean</string>

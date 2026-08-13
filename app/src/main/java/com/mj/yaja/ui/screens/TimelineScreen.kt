@@ -292,7 +292,12 @@ fun TimelineScreen(
                             stickyHeader(key = "month_${section.yearMonth}") {
                                 TimelineMonthHeader(
                                     title = section.yearMonth.format(monthFormatter).uppercase(Locale.getDefault()),
-                                    summary = "${section.entryDayCount} entry days Â· ${section.labeledCount} labeled Â· ${section.favoriteCount} favorites",
+                                    summary = stringResource(
+                                        R.string.timeline_month_summary_format,
+                                        section.entryDayCount,
+                                        section.labeledCount,
+                                        section.favoriteCount
+                                    ),
                                     isCollapsed = collapsedMonths[section.yearMonth] == true,
                                     onToggle = {
                                         val currentlyCollapsed = collapsedMonths[section.yearMonth] == true

@@ -69,7 +69,7 @@ fun TimelineQuickActionsRow(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(6.dp))
-                Text("Today")
+                Text(stringResource(R.string.timeline_quick_today))
             }
             FilledTonalButton(
                 onClick = onOpenMonthMenu,
@@ -82,7 +82,7 @@ fun TimelineQuickActionsRow(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(6.dp))
-                Text("Month")
+                Text(stringResource(R.string.timeline_quick_month))
             }
             FilledTonalButton(
                 onClick = onOpenFilters,
@@ -95,7 +95,7 @@ fun TimelineQuickActionsRow(
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(6.dp))
-                Text("Filters")
+                Text(stringResource(R.string.timeline_quick_filters))
             }
         }
     }
@@ -110,11 +110,11 @@ fun TimelineActiveFiltersRow(
     labelQuery: String
 ) {
     val activeChips = buildList {
-        if (selectedFilter != TimelineFilter.ALL) add(selectedFilter.label)
+        if (selectedFilter != TimelineFilter.ALL) add(stringResource(selectedFilter.labelRes))
         if (selectedYear != ALL_YEARS) add(selectedYear)
-        if (showAllDates) add("All dates")
-        if (selectedDensity != TimelineDensity.COMFORTABLE) add(selectedDensity.label)
-        if (labelQuery.isNotBlank()) add("Label: ${labelQuery.trim()}")
+        if (showAllDates) add(stringResource(R.string.timeline_all_dates))
+        if (selectedDensity != TimelineDensity.COMFORTABLE) add(stringResource(selectedDensity.labelRes))
+        if (labelQuery.isNotBlank()) add(stringResource(R.string.timeline_label_prefix, labelQuery.trim()))
     }
     if (activeChips.isEmpty()) return
 
@@ -157,7 +157,7 @@ fun TimelineLabelSearchField(
                 contentDescription = null
             )
         },
-        placeholder = { Text("Search day labels") }
+        placeholder = { Text(stringResource(R.string.timeline_label_search_placeholder)) }
     )
 }
 
@@ -184,7 +184,7 @@ fun TimelineFilterSheet(
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         Text(
-            text = "Timeline Filters & Layout",
+            text = stringResource(R.string.timeline_filters_title),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface,
             fontWeight = FontWeight.Bold
@@ -232,7 +232,7 @@ fun TimelineFilterRow(
                 onClick = { onFilterSelected(filter) },
                 label = {
                     Text(
-                        text = filter.label,
+                        text = stringResource(filter.labelRes),
                         fontWeight = if (filter == selectedFilter) FontWeight.SemiBold else FontWeight.Medium
                     )
                 },
@@ -251,6 +251,7 @@ fun TimelineYearFilterRow(
     selectedYear: String,
     onYearSelected: (String) -> Unit
 ) {
+    val allYearsLabel = stringResource(R.string.timeline_all_years)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -263,7 +264,7 @@ fun TimelineYearFilterRow(
             onClick = { onYearSelected(ALL_YEARS) },
             label = {
                 Text(
-                    text = ALL_YEARS,
+                    text = allYearsLabel,
                     fontWeight = if (selectedYear == ALL_YEARS) FontWeight.SemiBold else FontWeight.Medium
                 )
             },
@@ -352,7 +353,7 @@ fun TimelineControlsRow(
                         onClick = { onDensitySelected(density) },
                         label = {
                             Text(
-                                density.label,
+                                stringResource(density.labelRes),
                                 fontWeight = if (selectedDensity == density) FontWeight.SemiBold else FontWeight.Medium
                             )
                         }
@@ -372,7 +373,7 @@ fun TimelineControlsRow(
                         onClick = { onStyleSelected(style) },
                         label = {
                             Text(
-                                style.label,
+                                stringResource(style.labelRes),
                                 fontWeight = if (selectedStyle == style) FontWeight.SemiBold else FontWeight.Medium
                             )
                         }

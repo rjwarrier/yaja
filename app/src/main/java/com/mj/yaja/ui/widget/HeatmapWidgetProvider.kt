@@ -32,10 +32,10 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 /** Action to perform when the heatmap widget is tapped. */
-enum class HeatmapTapAction(val key: String, val label: String) {
-    LAUNCH_APP("launch_app", "Launch App"),
-    QUICK_CAPTURE("quick_capture", "Quick Capture"),
-    DO_NOTHING("do_nothing", "Do Nothing");
+enum class HeatmapTapAction(val key: String) {
+    LAUNCH_APP("launch_app"),
+    QUICK_CAPTURE("quick_capture"),
+    DO_NOTHING("do_nothing");
 
     companion object {
         fun fromKey(key: String?): HeatmapTapAction =

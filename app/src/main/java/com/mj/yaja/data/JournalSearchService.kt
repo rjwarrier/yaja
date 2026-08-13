@@ -30,7 +30,7 @@ internal class JournalSearchService(
             if (label.isNotEmpty()) {
                 val labelLower = label.lowercase()
                 if (words.all { word -> labelLower.contains(word) }) {
-                    results.add(SearchResult(date, "Label: $label"))
+                    results.add(SearchResult(date, label, isLabelMatch = true))
                 }
             }
 

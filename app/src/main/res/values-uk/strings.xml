@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">Примітки</string>
     <string name="tasker_screen_body_notes">Текст запису не надається Tasker, якщо ви не ввімкнете «Включати текст запису в події». Якщо Tasker не показує останні параметри або змінні, повторно відкрийте екран конфігурації Tasker після оновлення Yaja.</string>
     <string name="tasker_screen_section_example">приклад</string>
-    <string name="tasker_screen_body_example">Приклад дії: дія Tasker &gt; Yaja Quick Capture &gt; Append, із параметром «Збіг/заголовок», установленим на «Пропущені виклики», а «Line to append» — змінною Tasker. Приклад події: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, потім використовуйте такі змінні, як %%yaja_event_type, %%yaja_date і, за бажанням, %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Приклад дії: дія Tasker &gt; Yaja Quick Capture &gt; Append, із параметром «Збіг/заголовок», установленим на «Пропущені виклики», а «Line to append» — змінною Tasker. Приклад події: Tasker event &gt; Yaja Journal Events &gt; Entry Modified, потім використовуйте такі змінні, як %%yaja_event_type, %%yaja_date і, за бажанням, %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Випадки використання</string>
     <string name="tasker_screen_use_case_1">1. Використовуйте подію журналу Yaja в Tasker, щоб ініціювати дію синхронізації FolderSync, щоб ваша папка Yaja надсилалася до будь-якого хмарного постачальника після зміни записів.</string>
     <string name="tasker_screen_use_case_2">2. Використовуйте Pushbullet із Tasker, щоб надіслати текст у Yaja Quick Capture, щоб надісланий текст зберігався як новий запис для поточного дня.</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">Прозорість зберігання на пристрої</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja використовує безпечну модель локального зберігання. Дані вашого особистого журналу залишаються локальними та ніколи не залишають ваш пристрій:</string>
     <string name="rebuild_cache_source_of_truth_title">Джерело правди (файли уцінки)</string>
-    <string name="rebuild_cache_source_of_truth_desc">Усі записи, елементи контрольного списку (todos), події на часовій шкалі, зірочки та теги постійно зберігаються у файлах Markdown (.md) у відкритому тексті у вибраній папці локального журналу. Ваші дані на 100% належать вам і повністю зберігаються на вашому пристрої.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">Усі записи, елементи контрольного списку (todos), події на часовій шкалі, зірочки та теги постійно зберігаються у файлах Markdown (.md) у відкритому тексті у вибраній папці локального журналу. Ваші дані на 100% належать вам і повністю зберігаються на вашому пристрої.</string>
     <string name="rebuild_cache_read_cache_title">Читання кешу та індексу (база даних SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">Щоб увімкнути миттєве завантаження екрана, основні моменти календаря, ключові слова та статистику без сканування файлової системи під час кожного прокручування, Yaja аналізує ваші файли Markdown та індексує їх у локальній базі даних Room SQLite на вашому пристрої.</string>
-    <string name="rebuild_cache_local_private_title">100% локальний і приватний</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% локальний і приватний</string>
     <string name="rebuild_cache_local_private_desc">Yaja не має хмарних баз даних, віддалених серверів резервного копіювання чи телеметрії, яка відстежує ваш текст. Усі записи в журналі та проаналізовані дані зберігаються виключно на вашому фізичному пристрої й ніколи не залишають його в будь-який час.</string>
     <string name="keywords_export_success">Експортовані ключові слова</string>
     <string name="keywords_export_failed">Не вдалося експортувати ключові слова</string>
@@ -1326,4 +1326,243 @@
     <string name="settings_accent_style_analogous">аналогічний</string>
     <string name="settings_accent_style_triadic">Триадичні</string>
     <string name="settings_accent_style_soft">М\'який</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">Захоплення голосу</string>
+    <string name="calendar_empty_month_hint">У цьому місяці ще немає записів.</string>
+    <string name="settings_data_recovery_subtitle">Інструменти зберігання, резервного копіювання, відновлення, імпорту та кешування</string>
+    <string name="settings_journal_experience_subtitle">Відображення запису, поведінка календаря, ключові слова дати та рух</string>
+    <string name="settings_navigation_gestures_subtitle">Нижня навігація, додаткові вкладки, гортання та перетягування</string>
+    <string name="settings_privacy_security_subtitle">PIN блокування, біометричне розблокування, автоматичне блокування та режим приховування тексту</string>
+    <string name="settings_progressive_title">Пропоновані наступні налаштування</string>
+    <string name="settings_progressive_subtitle">Ярлики налаштувань, які можуть полегшити повсякденне керування Yaja.</string>
+    <string name="settings_progressive_privacy_pin">Набір PIN</string>
+    <string name="settings_progressive_privacy_review">Огляд конфіденційності</string>
+    <string name="settings_progressive_nav_try">Спробуйте Adaptive Nav</string>
+    <string name="settings_progressive_nav_active">Адаптивну навігацію увімкнено
+Календар</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">Виберіть мову</string>
+    <string name="settings_language_picker_subtitle">Знайдіть або виберіть мову відображення для Yaja.</string>
+    <string name="settings_language_search_placeholder">Пошук мов</string>
+    <string name="settings_calendar_density_title">Щільність календаря</string>
+    <string name="settings_calendar_density_subtitle">Налаштуйте сітку календаря для зручності, компактного сканування або максимальної щільності дати.</string>
+    <string name="settings_calendar_density_comfortable">Комфорт</string>
+    <string name="settings_calendar_density_compact">Компактний</string>
+    <string name="settings_calendar_density_dense">Щільний</string>
+    <string name="settings_journal_carry_forward_title">Перенести неперемічені завдання</string>
+    <string name="settings_journal_carry_forward_subtitle">Перенести вчорашні відкриті пункти контрольного списку в сьогоднішній день, коли день завантажено.</string>
+    <string name="quick_capture_tile_label">Швидке захоплення</string>
+    <string name="recurring_task_execution_day_of_month_event">Подія створюється %1$s в день %2$d. Він записується у ваш щоденний файл %3$d днів наперед.</string>
+    <string name="recurring_task_execution_weekday_event">Подія створюється %1$s на %2$s. Він записується у ваш щоденний файл %3$d днів наперед.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">Подія створюється щомісяця в той самий %1$s, що й дата початку. Він записується у ваш щоденний файл %2$d днів наперед.</string>
+    <string name="recurring_task_execution_month_boundary_event">Подія створюється %1$s у %2$s відповідного місяця. Він записується у ваш щоденний файл %3$d днів наперед.</string>
+    <string name="recurring_task_add_event">Додати повторювану подію</string>
+    <string name="recurring_task_edit_event">Редагувати повторювану подію</string>
+    <string name="recurring_task_field_title_event">Назва події</string>
+    <string name="recurring_task_field_title_event_hint">Приклад: щотижнева нарада синхронізації</string>
+    <string name="recurring_task_frequency_help_event">Виберіть частоту повторення цієї події.</string>
+    <string name="recurring_task_details_weekday_help_event">Виберіть день тижня, у який має відбутися ця подія.</string>
+    <string name="recurring_task_delete_confirm_title_event">Видалити повторювану подію?</string>
+    <string name="recurring_task_end_help_event">Виберіть, коли ця подія припинить повторюватися</string>
+    <string name="recurring_task_end_count_help_event">Зупиняється після створення такої кількості подій.</string>
+    <string name="settings_adaptive_bottom_nav_title">Адаптивна нижня навігація</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Показувати додаткові нижні вкладки, лише якщо цей розділ має вміст, зберігаючи налаштовані екрани в ящику.</string>
+    <string name="todos_empty_refresh">Оновити</string>
+    <string name="settings_onboarding_next_launch_title">Показати вітальні налаштування під час наступного запуску</string>
+    <string name="settings_onboarding_next_launch_subtitle">Запустіть інтро та вибір пам’яті один раз під час наступного запуску програми, а потім автоматично вимкніть це.</string>
+    <string name="settings_obsidian_export_title">Експорт обсидіану</string>
+    <string name="settings_obsidian_export_description">Віддзеркалюйте свій журнал у звичайне сховище розміток — один файл на день із переписаними згадками про людей і місця як [[wikilinks]]. Ваші дані ніколи не блокуються в Yaja.</string>
+    <string name="settings_obsidian_export_button">Експортувати сховище</string>
+    <string name="settings_import_source_markdown_folder">Папка Markdown</string>
+    <string name="settings_import_source_markdown_folder_subtitle">Будь-яка папка файлів .md — Obsidian, Jekyll або подібні щоденні нотатки</string>
+    <string name="onboarding_title">Ласкаво просимо до yaja</string>
+    <string name="onboarding_body">Yaja — це локальний щоденник уцінок. Ваші записи залишаються на вашому пристрої як звичайні файли, тож програма залишається особистою, довговічною та недоступною для вас.</string>
+    <string name="onboarding_progress">Крок %1$d з %2$d</string>
+    <string name="onboarding_intro_private">Приватний за замовчуванням. Yaja зберігає ваш журнал на вашому пристрої замість того, щоб направляти його через хмарну службу.</string>
+    <string name="onboarding_intro_files">Записи — це звичайні файли розмітки, тож ваші записи залишаються переносними та зрозумілими й поза програмою.</string>
+    <string name="onboarding_intro_flexible">Ви можете почати просто зараз і налаштувати сховище, імпорт, зовнішній вигляд і захист пізніше.</string>
+    <string name="onboarding_storage_title">Виберіть місце розміщення нових записів</string>
+    <string name="onboarding_storage_body">Ви можете зберігати все у внутрішній пам’яті програми або вибрати власну папку. Ви можете змінити це пізніше в меню «Налаштування» &gt; «Дані та відновлення».</string>
+    <string name="onboarding_storage_internal">Поточна пам’ять: внутрішня пам’ять програми</string>
+    <string name="onboarding_storage_custom">Поточне сховище: Користувацька папка (%1$s)</string>
+    <string name="onboarding_storage_note">Для спеціальних папок потрібен дозвіл на запис, щоб Yaja міг безпечно зберігати файли журналу.</string>
+    <string name="onboarding_continue_internal">Продовжити з внутрішньою пам’яттю</string>
+    <string name="onboarding_switch_internal">Перейти на внутрішню пам’ять</string>
+    <string name="onboarding_choose_folder">Виберіть власну папку</string>
+    <string name="onboarding_customize_title">Виберіть кілька початкових параметрів за замовчуванням</string>
+    <string name="onboarding_customize_body">Це необов’язкові параметри першого запуску. Все тут можна змінити пізніше в налаштуваннях.
+Тема</string>
+    <string name="onboarding_theme_title"></string>
+    <string name="onboarding_backup_title">Нагадування про резервне копіювання</string>
+    <string name="onboarding_backup_body">Виберіть, коли Yaja має нагадати вам, що настав час створити резервну копію zip.</string>
+    <string name="onboarding_backup_off">Вимк</string>
+    <string name="onboarding_backup_30">30 днів</string>
+    <string name="onboarding_backup_60">60 днів</string>
+    <string name="onboarding_version_history_title">Історія версій</string>
+    <string name="onboarding_version_history_body">Зберігайте безпечні копії перед ризикованим редагуванням і видаленням.</string>
+    <string name="onboarding_pin_setup">Налаштувати блокування PIN
+Блокування</string>
+    <string name="onboarding_pin_enabled">PIN уже ввімкнено</string>
+    <string name="onboarding_import_title">Додайте існуючий журнал, якщо хочете</string>
+    <string name="onboarding_import_body">Ви можете імпортувати прямо зараз або пропустити це та зробити це пізніше в меню «Налаштування» &gt; «Дані та відновлення».</string>
+    <string name="onboarding_import_running">Імпортування %1$d з %2$d…</string>
+    <string name="onboarding_import_success">Імпорт завершено: %1$d нові дні, %2$d об’єднано.</string>
+    <string name="onboarding_import_cancelled">Імпорт скасовано.</string>
+    <string name="onboarding_import_later">Ви можете завершити адаптацію, навіть якщо імпорт все ще виконується у фоновому режимі.</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далі</string>
+    <string name="onboarding_finish">Завершення</string>
+    <string name="onboarding_skip">Пропустити поки що</string>
+    <string name="onboarding_rerun_note">Це налаштування було повторно відкрито з налаштувань і більше не відображатиметься, доки ви не попросите.</string>
+    <string name="settings_other_apps_title">Інші програми від розробника</string>
+    <string name="settings_github_title">Переглянути джерело на GitHub</string>
+    <string name="settings_help_card_title">Довідка</string>
+    <string name="share_app_title">Поділіться яджа</string>
+    <string name="share_app_default_message">yaja — ще один додаток для ведення журналу\\n\\nA щоденний щоденник без відволікання, який зберігає записи як звичайні файли розмітки.</string>
+    <string name="share_app_include_image_title">Включити зображення</string>
+    <string name="share_app_include_image_subtitle">Додайте рекламне зображення разом із своїм повідомленням</string>
+    <string name="share_app_message_label">Повідомлення</string>
+    <string name="share_app_link_note">Це посилання додається в кінці автоматично:
+Рекламне зображення</string>
+    <string name="share_app_image_cd">yaja
+Макет</string>
+    <string name="settings_layout_label">FAB</string>
+    <string name="settings_layout_desc">Виберіть, на якій стороні відображаються кнопки дій програми.
+Значок програми</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">Виберіть значок, який відображається на головному екрані. Програма ненадовго перезапускається, коли ви перемикаєтеся.</string>
+    <string name="settings_app_icon_confirm_title">Змінити значок програми?</string>
+    <string name="settings_app_icon_confirm_message">Yaja перезапуститься, щоб застосувати новий значок.</string>
+    <string name="settings_app_icon_classic">Класика</string>
+    <string name="settings_app_icon_notebook">Ноутбук</string>
+    <string name="settings_app_icon_quill">Quill</string>
+    <string name="settings_app_icon_quick_notes">Короткі нотатки</string>
+    <string name="settings_app_icon_sticky_note">Наліпка
+Бібліотека</string>
+    <string name="settings_app_icon_library"></string>
+    <string name="settings_app_icon_ink_pen">Чорнильна ручка</string>
+    <string name="settings_app_icon_article">Стаття</string>
+    <string name="settings_app_icon_edit_square">Редагувати квадрат</string>
+    <string name="settings_app_icon_note_stack">Стек нотаток</string>
+    <string name="settings_app_icon_subject">Тема
+Стрічка</string>
+    <string name="settings_app_icon_feed"></string>
+    <string name="settings_app_icon_book_style">Книга
+Ручка</string>
+    <string name="settings_app_icon_border_pen"></string>
+    <string name="settings_app_icon_post_add">Додати допис
+Блокнот</string>
+    <string name="settings_app_icon_notebook_filled">(заштрихований)</string>
+    <string name="settings_app_icon_quill_filled">Перо (заштриховане)</string>
+    <string name="settings_app_icon_quick_notes_filled">Короткі нотатки (заштриховані)</string>
+    <string name="settings_app_icon_sticky_note_filled">Наліпка (заштрихована)
+Бібліотека</string>
+    <string name="settings_app_icon_library_filled">(заштрихована)</string>
+    <string name="settings_app_icon_ink_pen_filled">Ink Pen (заштрихована)</string>
+    <string name="settings_app_icon_article_filled">Стаття (заштрихована)</string>
+    <string name="settings_app_icon_edit_square_filled">Редагувати квадрат (заштрихований)</string>
+    <string name="settings_app_icon_note_stack_filled">Стопка нотаток (заштрихована)</string>
+    <string name="settings_app_icon_subject_filled">Тема (заштрихована)
+Стрічка</string>
+    <string name="settings_app_icon_feed_filled">(заштрихована)
+Книга</string>
+    <string name="settings_app_icon_book_style_filled">(заштрихована)</string>
+    <string name="settings_app_icon_border_pen_filled">Ручка з рамкою (заштрихована)</string>
+    <string name="settings_app_icon_post_add_filled">Опублікувати додавання (заштриховано)
+Словесний знак</string>
+    <string name="settings_app_icon_wordmark"></string>
+    <string name="settings_fab_side_right">FAB праворуч</string>
+    <string name="settings_fab_side_left">FABs ліворуч</string>
+    <string name="settings_fab_side_right_short">Правильно</string>
+    <string name="settings_fab_side_left_short">Ліворуч</string>
+    <string name="timeline_filter_all">Усі</string>
+    <string name="timeline_filter_favorites">Вибране</string>
+    <string name="timeline_filter_labeled">Позначено</string>
+    <string name="timeline_filter_with_entries">З записами</string>
+    <string name="timeline_density_comfortable">Зручно</string>
+    <string name="timeline_density_compact">Компактний</string>
+    <string name="timeline_style_track">Класичний трек</string>
+    <string name="timeline_style_card">Сучасна листівка</string>
+    <string name="timeline_all_years">Усі роки</string>
+    <string name="timeline_month_summary_format">%1$d дні входу | %2$d з позначкою | %3$d улюблені</string>
+    <string name="addentry_full_day_event_label">Подія на цілий день</string>
+    <string name="addentry_switch_to_keyboard">Переключитися на введення з клавіатури</string>
+    <string name="addentry_switch_to_dial">Перемикання на набір</string>
+    <string name="home_loading_title">Завантаження цього дня</string>
+    <string name="home_loading_subtitle">Підготовка записів, міток і подальших дій.</string>
+    <string name="statistics_reading_time">Час читання</string>
+    <string name="statistics_avg_reading_time_per_entry">Сер. Читати / Вступ</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d хв</item>
+        <item quantity="other">%1$d хв</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">Перейдіть у режим фокусування</string>
+    <string name="addentry_cd_exit_focus_mode">Вийти з режиму фокусування</string>
+    <string name="addentry_reading_time_format">%1$d хвилинне читання</string>
+    <string name="home_cd_enable_hide_text_mode">Увімкнути режим приховування тексту</string>
+    <string name="home_cd_disable_hide_text_mode">Вимкнути режим приховування тексту</string>
+    <string name="home_hidden_entry_preview">Текст приховано. Натисніть один раз, щоб відкрити.</string>
+    <string name="home_hidden_result_preview">Попередній перегляд приховано, коли ввімкнено режим приховування тексту.</string>
+    <string name="home_stat_read">Читати</string>
+    <string name="settings_hide_text_mode_title">Режим приховування тексту</string>
+    <string name="settings_hide_text_mode_subtitle">Приховувати текст журналу на головній сторінці, доки ви не торкнетеся запису, щоб відкрити його.</string>
+    <string name="settings_privacy_dashboard_title">Інформаційна панель конфіденційності</string>
+    <string name="settings_privacy_dashboard_overview">Локальна прозорість</string>
+    <string name="settings_privacy_storage_title">Місце зберігання</string>
+    <string name="settings_privacy_backup_title">Правила резервного копіювання</string>
+    <string name="settings_privacy_backup_summary">Остання резервна копія: %1$s. Поріг нагадування: %2$d днів.
+Блокування програми</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Біометрія: %2$s. Автоматичне блокування через %3$d хвилин.</string>
+    <string name="settings_privacy_hide_mode_title">Режим приховування тексту</string>
+    <string name="settings_privacy_hide_mode_on">Домашній текст приховано за умовчанням, доки ви не відкриєте запис.</string>
+    <string name="settings_privacy_hide_mode_off">Домашній текст видно нормально.</string>
+    <string name="settings_privacy_tasker_title">Tasker Експозиція</string>
+    <string name="settings_privacy_tasker_summary">Швидкий доступ до зйомки: %1$s. Спільне використання подій: %2$s. Текст запису, включений у події: %3$s.</string>
+    <string name="settings_privacy_share_title">Обмін вручну</string>
+    <string name="settings_privacy_share_summary">Текст запису може залишати програму, лише якщо ви явно використовуєте Share з редактора або експортуєте резервну копію.</string>
+    <string name="settings_privacy_widgets_title">Викриття віджетів</string>
+    <string name="settings_privacy_widgets_summary">%1$d. Швидке захоплення: %2$d. Швидке завдання: %3$d. Теплова карта: %4$d. Список завдань: %5$d.</string>
+    <string name="settings_privacy_state_on">Увімкнено</string>
+    <string name="settings_privacy_state_off">Вимк</string>
+    <string name="settings_privacy_state_yes">Так</string>
+    <string name="settings_privacy_state_no">№</string>
+    <string name="settings_privacy_risk_low">Низька експозиція</string>
+    <string name="settings_privacy_risk_medium">Середня експозиція</string>
+    <string name="settings_privacy_risk_high">Висока експозиція</string>
+    <string name="settings_privacy_risk_low_summary">Більшість тексту щоденника залишається на пристрої, якщо ви явно ним не поділитеся.</string>
+    <string name="settings_privacy_risk_medium_summary">Кілька ввімкнених поверхонь можуть виставляти текст або метадані за межі головного перегляду журналу.</string>
+    <string name="settings_privacy_risk_high_summary">Кілька ввімкнених поверхонь можуть розкривати вміст або метадані журналу. Рекомендується посилити кілька параметрів.</string>
+    <string name="settings_privacy_exposure_title">Поточний рівень експозиції</string>
+    <string name="settings_privacy_surfaces_title">Поверхні експозиції</string>
+    <string name="settings_privacy_storage_backup_title">Зберігання та резервне копіювання</string>
+    <string name="settings_privacy_controls_title">Елементи керування конфіденційністю
+Рекомендації</string>
+    <string name="settings_privacy_recommendations_title"></string>
+    <string name="settings_privacy_quick_actions_title">Швидкі дії</string>
+    <string name="settings_privacy_surface_local_title">Журнал на пристрої</string>
+    <string name="settings_privacy_surface_local_summary">Ваші щоденні файли зберігаються локально та залишаються в програмі, якщо ви не використовуєте спільний доступ, резервне копіювання, Tasker або віджети.</string>
+    <string name="settings_privacy_state_default">За замовчуванням</string>
+    <string name="settings_privacy_state_manual">Тільки вручну</string>
+    <string name="settings_privacy_state_active">Активний</string>
+    <string name="settings_privacy_state_visible">Видимий</string>
+    <string name="settings_privacy_state_none">Жодного</string>
+    <string name="settings_privacy_recommend_pin">Додайте PIN, щоб програма не відкривалася прямо у вашому журналі.</string>
+    <string name="settings_privacy_recommend_hide">Увімкніть режим приховування тексту, щоб зробити дім безпечнішим у громадських місцях або поруч з іншими людьми.</string>
+    <string name="settings_privacy_recommend_tasker_text">Вимкніть текст запису в подіях Tasker, якщо вам справді не потрібен повний текст журналу.</string>
+    <string name="settings_privacy_recommend_widgets">Переглядайте активні віджети, оскільки поверхні головного екрана можуть відкривати метадані з першого погляду.</string>
+    <string name="settings_privacy_action_set_pin">Набір PIN</string>
+    <string name="settings_privacy_action_enable_hide">Увімкнути приховування тексту</string>
+    <string name="settings_privacy_action_disable_tasker_text">Вимкнути Tasker Text</string>
+    <string name="settings_privacy_action_open_tasker">Відкрийте налаштування Tasker</string>
+    <string name="widget_todo_empty">Чудово, немає незавершених завдань!</string>
+    <string name="widget_todo_header_todos_events">Завдання та події
+Подія</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">Очистити</string>
+    <string name="recurring_task_start_section">Початок розкладу</string>
+    <string name="recurring_task_start_help">Виберіть дату початку та необов’язковий час для цього повторюваного розкладу.</string>
 </resources>

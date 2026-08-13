@@ -101,7 +101,8 @@ class QuickCaptureWidgetProvider : AppWidgetProvider() {
 
                 fun getLabelText(context: Context, appWidgetId: Int): String {
                         val prefs = context.getSharedPreferences("journal_settings", Context.MODE_PRIVATE)
-                        return prefs.getString("$PREF_QC_LABEL_TEXT$appWidgetId", "Capture") ?: "Capture"
+                        val defaultLabel = context.getString(R.string.widget_qc_label_placeholder)
+                        return prefs.getString("$PREF_QC_LABEL_TEXT$appWidgetId", defaultLabel) ?: defaultLabel
                 }
 
                 fun setLabelText(context: Context, appWidgetId: Int, text: String) {

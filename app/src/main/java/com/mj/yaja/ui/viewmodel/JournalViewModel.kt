@@ -398,7 +398,12 @@ class JournalViewModel(
     private var importJob: kotlinx.coroutines.Job? = null
     private var storageMigrationJob: kotlinx.coroutines.Job? = null
     private var backgroundMaintenanceJob: kotlinx.coroutines.Job? = null
+    private var todoRefreshJob: kotlinx.coroutines.Job? = null
+    private var cacheRefreshJob: kotlinx.coroutines.Job? = null
     private var latestEntriesRequestId: Long = 0L
+    private var latestTodoRefreshRequestId: Long = 0L
+    private var latestCacheRefreshRequestId: Long = 0L
+    private var latestStatisticsRequestId: Long = 0L
     private val lookbackSnapshotCache =
         object : LinkedHashMap<LocalDate, Map<Int, List<String>>>(24, 0.75f, true) {
             override fun removeEldestEntry(
@@ -514,66 +519,81 @@ class JournalViewModel(
         lastPersistedHomeSnapshot = savedHomeSnapshot
         val today = savedHomeSnapshot?.selectedDate ?: LocalDate.now()
         viewModelScope.launch {
-            val startupStartedAt = System.currentTimeMillis()
-            _uiState.update { it.copy(isLoading = true) }
-            var bootstrapSnapshot: StartupBootstrapSnapshot? = null
+            try {
+                val startupStartedAt = System.currentTimeMillis()
+                _uiState.update { it.copy(isLoading = true) }
+                var bootstrapSnapshot: StartupBootstrapSnapshot? = null
                 timedPhaseWorkflow("startup.bootstrap", ::logPerf) {
-                withContext(Dispatchers.IO) {
-                    val bootstrap = loadStartupBootstrapSnapshot(
-                        fileManager = fileManager,
-                        savedHomeSnapshot = savedHomeSnapshot,
-                        today = today,
-                        lastKnownEntryCount = settingsRepository.lastKnownEntryCount.value,
-                        largeJournalThreshold = LARGE_JOURNAL_DATE_THRESHOLD,
-                        logTag = TAG,
-                        logPerf = ::logPerf
-                    )
-                    bootstrapSnapshot = bootstrap
+                    withContext(Dispatchers.IO) {
+                        val bootstrap = loadStartupBootstrapSnapshot(
+                            fileManager = fileManager,
+                            savedHomeSnapshot = savedHomeSnapshot,
+                            today = today,
+                            lastKnownEntryCount = settingsRepository.lastKnownEntryCount.value,
+                            largeJournalThreshold = LARGE_JOURNAL_DATE_THRESHOLD,
+                            logTag = TAG,
+                            logPerf = ::logPerf
+                        )
+                        bootstrapSnapshot = bootstrap
+                    }
                 }
+                val bootstrap = bootstrapSnapshot ?: error("Startup bootstrap did not produce a snapshot")
+                applyStartupBootstrapSnapshot(
+                    bootstrap = bootstrap,
+                    startupDate = today,
+                    uiState = _uiState,
+                    currentDayLabel = _currentDayLabel,
+                    persistHomeScreenSnapshot = { selectedDate, entries, dayLabel ->
+                        persistHomeSnapshotIfChanged(
+                            selectedDate = selectedDate,
+                            entries = entries,
+                            dayLabel = dayLabel,
+                            lastPersistedSnapshot = lastPersistedHomeSnapshot,
+                            persistSnapshot = settingsRepository::setHomeScreenSnapshot,
+                            updateLastPersistedSnapshot = { snapshot ->
+                                lastPersistedHomeSnapshot = snapshot
+                            }
+                        )
+                    },
+                    calculateMonthlyStats = ::calculateMonthlyEntryStats,
+                    calculateYearlyStats = ::calculateYearlyEntryStats,
+                    refreshSelectedDateOnStartup = { startupDate ->
+                        refreshSelectedDateOnStartup(
+                            date = startupDate,
+                            loadEntries = { d, r -> loadEntries(d, reason = r) }
+                        )
+                    },
+                    publishCachedTodos = { ensureTodosLoaded() },
+                    onCacheAnomalyDetected = {
+                        _uiState.update { it.copy(showCacheAnomalyDialog = true) }
+                    },
+                    onEntryCountConfirmed = { count ->
+                        settingsRepository.setLastKnownEntryCount(count)
+                    },
+                    onFallbackImmediateLoad = {
+                        Log.d(TAG, "startup.fallingBackToImmediateLoad")
+                    },
+                    logTag = TAG
+                )
+                logPerf("startup.total", System.currentTimeMillis() - startupStartedAt)
+                queuePostLaunchRefreshWork(
+                    date = today,
+                    dateCount = bootstrap.initialDateCount
+                )
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                Log.w(TAG, "Startup bootstrap failed; falling back to selected date load", e)
+                _currentDayLabel.value = savedHomeSnapshot?.dayLabel.orEmpty()
+                _uiState.update {
+                    it.copy(
+                        selectedDate = today,
+                        entries = savedHomeSnapshot?.entries.orEmpty(),
+                        isLoading = false
+                    )
+                }
+                loadEntries(today, showLoading = false, reason = "startup_bootstrap_fallback")
             }
-            val bootstrap = bootstrapSnapshot ?: return@launch
-            applyStartupBootstrapSnapshot(
-                bootstrap = bootstrap,
-                startupDate = today,
-                uiState = _uiState,
-                currentDayLabel = _currentDayLabel,
-                persistHomeScreenSnapshot = { selectedDate, entries, dayLabel ->
-                    persistHomeSnapshotIfChanged(
-                        selectedDate = selectedDate,
-                        entries = entries,
-                        dayLabel = dayLabel,
-                        lastPersistedSnapshot = lastPersistedHomeSnapshot,
-                        persistSnapshot = settingsRepository::setHomeScreenSnapshot,
-                        updateLastPersistedSnapshot = { snapshot ->
-                            lastPersistedHomeSnapshot = snapshot
-                        }
-                    )
-                },
-                calculateMonthlyStats = ::calculateMonthlyEntryStats,
-                calculateYearlyStats = ::calculateYearlyEntryStats,
-                refreshSelectedDateOnStartup = { startupDate ->
-                    refreshSelectedDateOnStartup(
-                        date = startupDate,
-                        loadEntries = { d, r -> loadEntries(d, reason = r) }
-                    )
-                },
-                publishCachedTodos = { ensureTodosLoaded() },
-                onCacheAnomalyDetected = {
-                    _uiState.update { it.copy(showCacheAnomalyDialog = true) }
-                },
-                onEntryCountConfirmed = { count ->
-                    settingsRepository.setLastKnownEntryCount(count)
-                },
-                onFallbackImmediateLoad = {
-                    Log.d(TAG, "startup.fallingBackToImmediateLoad")
-                },
-                logTag = TAG
-            )
-            logPerf("startup.total", System.currentTimeMillis() - startupStartedAt)
-            queuePostLaunchRefreshWork(
-                date = today,
-                dateCount = bootstrap.initialDateCount
-            )
         }
     }
 
@@ -967,7 +987,6 @@ class JournalViewModel(
             scope = viewModelScope,
             fileManager = fileManager,
             date = date,
-            showLoading = showLoading,
             beforeLoad = { carryForwardOpenTodosIfNeeded(date) },
             isRequestStillCurrent = {
                 requestId == latestEntriesRequestId && _uiState.value.selectedDate == date
@@ -999,6 +1018,12 @@ class JournalViewModel(
                 if (requestId == latestEntriesRequestId) {
                     loadingDate = null
                 }
+            },
+            onLoadFailed = { error, _ ->
+                if (requestId == latestEntriesRequestId) {
+                    loadingDate = null
+                }
+                Log.w(TAG, "Failed to load entries for $date", error)
             }
         )
     }
@@ -2037,7 +2062,12 @@ class JournalViewModel(
             event = "Todo refresh requested",
             details = "forceRebuild=$forceRebuild"
         )
-        viewModelScope.launch(Dispatchers.Default) {
+        if (todoRefreshJob?.isActive == true) {
+            if (!forceRebuild) return
+            todoRefreshJob?.cancel()
+        }
+        val requestId = ++latestTodoRefreshRequestId
+        todoRefreshJob = viewModelScope.launch(Dispatchers.Default) {
             _todoRefreshInProgress.value = true
             try {
                 refreshTodosWorkflow(
@@ -2049,7 +2079,9 @@ class JournalViewModel(
                     publishCurrentTodos = { publishCurrentTodoAndEventIndexes() }
                 )
             } finally {
-                _todoRefreshInProgress.value = false
+                if (requestId == latestTodoRefreshRequestId) {
+                    _todoRefreshInProgress.value = false
+                }
             }
         }
     }
@@ -2328,6 +2360,7 @@ class JournalViewModel(
             endDate = endDate,
               useMLKit = settingsRepository.useMLKitDetection.value
           )
+          val requestId = ++latestStatisticsRequestId
           statisticsJob?.cancel()
           lastStatisticsRequestKey = requestKey
           _statisticsSettling.value = true
@@ -2511,13 +2544,15 @@ class JournalViewModel(
                         )
 
                         withContext(Dispatchers.Main) {
-                            _allTimeStats.value = snapshot
-                            val analysisProgress = buildStatisticsProgressSnapshot(
-                                processedCount = processedCount,
-                                totalCount = populatedDates.size,
-                                useMLKit = useMLKit
-                            )
-                            _statisticsProgress.value = 0.30f + (analysisProgress * 0.60f)
+                            if (requestId == latestStatisticsRequestId) {
+                                _allTimeStats.value = snapshot
+                                val analysisProgress = buildStatisticsProgressSnapshot(
+                                    processedCount = processedCount,
+                                    totalCount = populatedDates.size,
+                                    useMLKit = useMLKit
+                                )
+                                _statisticsProgress.value = 0.30f + (analysisProgress * 0.60f)
+                            }
                         }
                     }
                 }
@@ -2566,6 +2601,9 @@ class JournalViewModel(
             }
 
             // Show stats immediately (language section fills after ML Kit if enabled)
+            if (requestId != latestStatisticsRequestId) {
+                return@launch
+            }
             val stats = result.stats
             statisticsContributionCache = result.contributions
             statisticsRangeStart = result.rangeStart
@@ -2586,10 +2624,12 @@ class JournalViewModel(
                             executor = langDetectExecutor
                         )
 
-                    _allTimeStats.value = stats.copy(languageDistribution = mlDistribution)
-                    lastStatisticsRequestKey = requestKey
-                    lastStatisticsCompletedAt = System.currentTimeMillis()
-                    _statisticsProgress.value = 1f
+                    if (requestId == latestStatisticsRequestId) {
+                        _allTimeStats.value = stats.copy(languageDistribution = mlDistribution)
+                        lastStatisticsRequestKey = requestKey
+                        lastStatisticsCompletedAt = System.currentTimeMillis()
+                        _statisticsProgress.value = 1f
+                    }
                 } catch (e: Exception) {
                     Log.w("JournalViewModel", "ML Kit failed, falling back to Unicode", e)
                     val fallback =
@@ -2597,30 +2637,38 @@ class JournalViewModel(
                             texts = textsForMLKit,
                             totalEntries = stats.totalEntries
                         )
-                    _allTimeStats.value = stats.copy(languageDistribution = fallback)
-                    lastStatisticsRequestKey = requestKey
-                    lastStatisticsCompletedAt = System.currentTimeMillis()
-                    _statisticsProgress.value = 1f
+                    if (requestId == latestStatisticsRequestId) {
+                        _allTimeStats.value = stats.copy(languageDistribution = fallback)
+                        lastStatisticsRequestKey = requestKey
+                        lastStatisticsCompletedAt = System.currentTimeMillis()
+                        _statisticsProgress.value = 1f
+                    }
                 }
             }
-            _statisticsSettling.value = false
-            _statisticsProgress.value = null
-            if (showToasts) {
+            if (requestId == latestStatisticsRequestId) {
+                _statisticsSettling.value = false
+                _statisticsProgress.value = null
+            }
+            if (showToasts && requestId == latestStatisticsRequestId) {
                 _toastEvents.emit("Stats Computed")
             }
             logPerf("statistics.total", System.currentTimeMillis() - startedAt)
             } catch (e: CancellationException) {
-                _statisticsSettling.value = false
-                _statisticsProgress.value = null
+                if (requestId == latestStatisticsRequestId) {
+                    _statisticsSettling.value = false
+                    _statisticsProgress.value = null
+                }
                 throw e
             } catch (e: Exception) {
                 Log.e("JournalViewModel", "Statistics calculation failed", e)
-                if (_allTimeStats.value == null) {
-                    _allTimeStats.value = emptyAllTimeStatsSnapshot()
+                if (requestId == latestStatisticsRequestId) {
+                    if (_allTimeStats.value == null) {
+                        _allTimeStats.value = emptyAllTimeStatsSnapshot()
+                    }
+                    _statisticsSettling.value = false
+                    _statisticsProgress.value = null
+                    _toastEvents.emit("Statistics couldn't fully load. Showing a safe fallback.")
                 }
-                _statisticsSettling.value = false
-                _statisticsProgress.value = null
-                _toastEvents.emit("Statistics couldn't fully load. Showing a safe fallback.")
             }
         }
     }
@@ -2911,7 +2959,9 @@ class JournalViewModel(
 
     fun refreshCache() {
         appLogRepository.logInfo("Cache rebuild requested")
-        viewModelScope.launch {
+        cacheRefreshJob?.cancel()
+        val requestId = ++latestCacheRefreshRequestId
+        cacheRefreshJob = viewModelScope.launch {
             runCacheRefreshWorkflow(
                 fileManager = fileManager,
                 selectedDate = _uiState.value.selectedDate,
@@ -2924,7 +2974,11 @@ class JournalViewModel(
                     val outcome = runCacheRefreshSequence(
                         fileManager = fileManager,
                         selectedDate = _uiState.value.selectedDate,
-                        updateProgress = { progress -> _syncProgress.value = progress },
+                        updateProgress = { progress ->
+                            if (requestId == latestCacheRefreshRequestId) {
+                                _syncProgress.value = progress
+                            }
+                        },
                         clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
                         reloadEntries = { date -> loadEntries(date) },
                         refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
@@ -2956,7 +3010,8 @@ class JournalViewModel(
                 logError = { exception ->
                     Log.e("JournalViewModel", "Cache refresh failed", exception)
                 },
-                isDeferredStartupActive = { deferredStartupJob?.isActive == true }
+                isDeferredStartupActive = { deferredStartupJob?.isActive == true },
+                isRefreshCurrent = { requestId == latestCacheRefreshRequestId }
             )
         }
     }

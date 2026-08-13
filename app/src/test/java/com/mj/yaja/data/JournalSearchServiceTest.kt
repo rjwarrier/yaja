@@ -48,7 +48,7 @@ class JournalSearchServiceTest {
         assertTrue(metadataLoaded)
         assertEquals(
             listOf(
-                SearchResult(newer, "Label: Morning mood"),
+                SearchResult(newer, "Morning mood", isLabelMatch = true),
                 SearchResult(newer, "Morning coffee at home"),
                 SearchResult(older, "Morning walk in park")
             ),

@@ -1420,8 +1420,13 @@ fun SearchResultsContent(
                                     overflow = TextOverflow.Ellipsis
                                 )
                             } else {
+                                val resultPreview = if (result.isLabelMatch) {
+                                    stringResource(R.string.timeline_label_prefix, result.entryPreview)
+                                } else {
+                                    result.entryPreview
+                                }
                                 Text(
-                                    text = MarkdownUtils.parseMarkdown(result.entryPreview),
+                                    text = MarkdownUtils.parseMarkdown(resultPreview),
                                     style = MaterialTheme.typography.bodyMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     maxLines = 2,

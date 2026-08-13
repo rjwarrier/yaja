@@ -1,29 +1,31 @@
 package com.mj.yaja.ui.screens
 
+import androidx.annotation.StringRes
+import com.mj.yaja.R
 import com.mj.yaja.data.DailyJournalMetrics
 import java.time.LocalDate
 import java.time.YearMonth
 import java.util.Locale
 import kotlin.math.abs
 
-enum class TimelineFilter(val label: String) {
-    ALL("All"),
-    FAVORITES("Favorites"),
-    LABELED("Labeled"),
-    WITH_ENTRIES("With Entries")
+enum class TimelineFilter(@param:StringRes val labelRes: Int) {
+    ALL(R.string.timeline_filter_all),
+    FAVORITES(R.string.timeline_filter_favorites),
+    LABELED(R.string.timeline_filter_labeled),
+    WITH_ENTRIES(R.string.timeline_filter_with_entries)
 }
 
-enum class TimelineDensity(val label: String, val trackHeight: Int, val verticalPadding: Int) {
-    COMFORTABLE("Comfortable", 64, 6),
-    COMPACT("Compact", 50, 2)
+enum class TimelineDensity(@param:StringRes val labelRes: Int, val trackHeight: Int, val verticalPadding: Int) {
+    COMFORTABLE(R.string.timeline_density_comfortable, 64, 6),
+    COMPACT(R.string.timeline_density_compact, 50, 2)
 }
 
-enum class TimelineStyle(val label: String) {
-    TRACK("Classic Track"),
-    CARD("Modern Card")
+enum class TimelineStyle(@param:StringRes val labelRes: Int) {
+    TRACK(R.string.timeline_style_track),
+    CARD(R.string.timeline_style_card)
 }
 
-const val ALL_YEARS = "All Years"
+const val ALL_YEARS = "__all_years"
 
 data class TimelineDateNode(
     val date: LocalDate,

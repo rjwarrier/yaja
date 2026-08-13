@@ -4,6 +4,7 @@ import com.mj.yaja.data.HomeScreenSnapshot
 import com.mj.yaja.data.DueRevisitItem
 import com.mj.yaja.data.MarkdownFileManager
 import java.time.LocalDate
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -80,7 +81,6 @@ internal fun launchSelectedDateLoad(
     scope: CoroutineScope,
     fileManager: MarkdownFileManager,
     date: LocalDate,
-    showLoading: Boolean,
     beforeLoad: suspend () -> Unit = {},
     isRequestStillCurrent: () -> Boolean,
     uiState: MutableStateFlow<JournalUiState>,
@@ -91,35 +91,47 @@ internal fun launchSelectedDateLoad(
     persistHomeScreenSnapshot: (LocalDate, List<String>, String) -> Unit,
     logPerf: (String, Long) -> Unit,
     onLoadApplied: (LoadedDateState, Long) -> Unit = { _, _ -> },
-    onStaleResultDiscarded: (LoadedDateState, Long) -> Unit = { _, _ -> }
+    onStaleResultDiscarded: (LoadedDateState, Long) -> Unit = { _, _ -> },
+    onLoadFailed: (Throwable, Long) -> Unit = { _, _ -> }
 ): Job =
     scope.launch {
         val startedAt = System.currentTimeMillis()
-        val loaded = withContext(Dispatchers.IO) {
-            beforeLoad()
-            fileManager.revalidateDateCache(date, forceDiskRead = true)
-            loadDateStateSnapshot(fileManager, date)
-        }
-        val elapsedMs = System.currentTimeMillis() - startedAt
-        if (!isRequestStillCurrent()) {
-            onStaleResultDiscarded(loaded, elapsedMs)
-            return@launch
-        }
-        currentDayLabel.value = loaded.dayLabel
-        currentRevisitDate.value = loaded.revisitDate
-        currentRevisitNote.value = loaded.revisitNote
-        dueRevisits.value = loaded.dueRevisits
-        uiState.update { current ->
-            current.copy(
-                entries = loaded.entries,
-                isLoading = if (showLoading) false else current.isLoading
+        try {
+            val loaded = withContext(Dispatchers.IO) {
+                beforeLoad()
+                fileManager.revalidateDateCache(date, forceDiskRead = true)
+                loadDateStateSnapshot(fileManager, date)
+            }
+            val elapsedMs = System.currentTimeMillis() - startedAt
+            if (!isRequestStillCurrent()) {
+                onStaleResultDiscarded(loaded, elapsedMs)
+                return@launch
+            }
+            currentDayLabel.value = loaded.dayLabel
+            currentRevisitDate.value = loaded.revisitDate
+            currentRevisitNote.value = loaded.revisitNote
+            dueRevisits.value = loaded.dueRevisits
+            uiState.update { current ->
+                current.copy(
+                    entries = loaded.entries,
+                    isLoading = false
+                )
+            }
+            persistHomeScreenSnapshot(
+                date,
+                loaded.entries,
+                currentDayLabel.value
             )
+            onLoadApplied(loaded, elapsedMs)
+            logPerf("loadEntries", elapsedMs)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            val elapsedMs = System.currentTimeMillis() - startedAt
+            if (isRequestStillCurrent()) {
+                uiState.update { it.copy(isLoading = false) }
+            }
+            onLoadFailed(e, elapsedMs)
+            logPerf("loadEntries.failed", elapsedMs)
         }
-        persistHomeScreenSnapshot(
-            date,
-            loaded.entries,
-            currentDayLabel.value
-        )
-        onLoadApplied(loaded, elapsedMs)
-        logPerf("loadEntries", elapsedMs)
     }

@@ -32,7 +32,7 @@
                 android:id="@+id/widget_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Todos"
+                android:text="@string/todo_list_widget_name"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:fontFamily="monospace" />
@@ -80,7 +80,7 @@
                     android:fontFamily="monospace"
                     android:gravity="center"
                     android:paddingTop="8dp"
-                    android:text="Great, No Pending Tasks!"
+                    android:text="@string/widget_todo_empty"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>

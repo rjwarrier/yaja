@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">Lưu ý</string>
     <string name="tasker_screen_body_notes">Văn bản mục nhật ký không được chia sẻ with Tasker trừ khi bạn bật tính năng Bao gồm văn bản mục trong Sự kiện. Nếu Tasker không hiển thị các tùy chọn hoặc biến số gần đây, hãy mở lại màn hình cấu hình của Tasker sau khi cập nhật Yaja.</string>
     <string name="tasker_screen_section_example">Ví dụ</string>
-    <string name="tasker_screen_body_example">Ví dụ hành động: Hành động Tasker &gt; Ghi Nhanh Yaja &gt; Nối Thêm, với Khớp / Tiêu đề được đặt là Cuộc gọi nhỡ và Dòng nối thêm được đặt thành biến Tasker. Ví dụ sự kiện: Sự kiện Tasker &gt; Sự Kiện Nhật Ký Yaja &gt; Đã Sửa Mục Nhật Ký, sau đó sử dụng các biến như %yaja_event_type, %yaja_date, và tùy chọn %yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">Ví dụ hành động: Hành động Tasker &gt; Ghi Nhanh Yaja &gt; Nối Thêm, với Khớp / Tiêu đề được đặt là Cuộc gọi nhỡ và Dòng nối thêm được đặt thành biến Tasker. Ví dụ sự kiện: Sự kiện Tasker &gt; Sự Kiện Nhật Ký Yaja &gt; Đã Sửa Mục Nhật Ký, sau đó sử dụng các biến như %yaja_event_type, %yaja_date, và tùy chọn %yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">Trường hợp sử dụng</string>
     <string name="tasker_screen_use_case_1">1. Sử dụng sự kiện nhật ký Yaja trong Tasker để kích hoạt hành động đồng bộ hóa FolderSync, nhằm đẩy thư mục Yaja của bạn lên bất kỳ nhà cung cấp đám mây nào sau khi các mục thay đổi.</string>
     <string name="tasker_screen_use_case_2">2. Sử dụng Pushbullet với Tasker để gửi văn bản đến Ghi Nhanh Yaja, để văn bản được đẩy được lưu dưới dạng một mục mới cho ngày hôm nay.</string>
@@ -538,10 +538,10 @@
     <string name="rebuild_cache_storage_transparency_title">Sự Minh Bạch Của Lưu Trữ Trên Thiết Bị</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja sử dụng mô hình lưu trữ cục bộ an toàn. Dữ liệu nhật ký cá nhân của bạn được lưu giữ hoàn toàn trong thiết bị và không bao giờ rời khỏi thiết bị trong bất kỳ tình huống nào:</string>
     <string name="rebuild_cache_source_of_truth_title">Nguồn Gốc Sự Thật (Các file Markdown)</string>
-    <string name="rebuild_cache_source_of_truth_desc">Tất cả các mục nhật ký, việc cần làm, sự kiện dòng thời gian, ngôi sao và nhãn được lưu trữ vĩnh viễn trong các file văn bản thuần Markdown (.md) trong thư mục nhật ký cục bộ do bạn chọn. Dữ liệu của bạn thuộc sở hữu 100% của bạn.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">Tất cả các mục nhật ký, việc cần làm, sự kiện dòng thời gian, ngôi sao và nhãn được lưu trữ vĩnh viễn trong các file văn bản thuần Markdown (.md) trong thư mục nhật ký cục bộ do bạn chọn. Dữ liệu của bạn thuộc sở hữu 100% của bạn.</string>
     <string name="rebuild_cache_read_cache_title">Đọc Bộ Nhớ Đệm &amp; Chỉ Mục (Cơ sở dữ liệu Room SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">Để kích hoạt tính năng tải màn hình tức thì, đánh dấu lịch, từ khóa và thống kê mà không cần quét hệ thống file mỗi khi cuộn, Yaja phân tích các file Markdown của bạn và lập chỉ mục cho chúng trong một cơ sở dữ liệu Room SQLite cục bộ trên thiết bị của bạn.</string>
-    <string name="rebuild_cache_local_private_title">100% Cục Bộ &amp; Riêng Tư</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100% Cục Bộ &amp; Riêng Tư</string>
     <string name="rebuild_cache_local_private_desc">Yaja không có cơ sở dữ liệu đám mây, máy chủ sao lưu từ xa hoặc đo lường từ xa để theo dõi văn bản của bạn. Tất cả các mục nhật ký và dữ liệu được phân tích cú pháp đều được giới hạn nghiêm ngặt trong thiết bị vật lý của bạn.</string>
     <string name="keywords_export_success">Đã xuất từ khóa</string>
     <string name="keywords_export_failed">Không thể xuất từ khóa</string>
@@ -1256,7 +1256,7 @@
     <string name="recurring_task_empty">Chưa có công việc định kỳ nào. Hãy thêm một công việc để tự động tạo việc cần làm theo lịch đã chọn.</string>
     <string name="recurring_task_execution_day_of_month">Một công việc được tạo %1$s vào ngày %2$d. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
     <string name="recurring_task_execution_month_boundary">Một công việc được tạo %1$s vào %2$s của tháng đến hạn. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
-    <string name="recurring_task_execution_monthly_weekday">Một công việc được tạo hàng tháng vào cùng một thứ trong tuần của ngày bắt đầu. Nó được viết vào tệp hàng ngày của bạn trước %2$d ngày.</string>
+    <string name="recurring_task_execution_monthly_weekday">A todo is created monthly on the same %1$s occurrence as the starting date. It is written to your daily file %2$d days in advance.</string>
     <string name="recurring_task_execution_title">Cách lịch trình hoạt động</string>
     <string name="recurring_task_execution_weekday">Một công việc được tạo %1$s vào %2$s. Nó được viết vào tệp hàng ngày của bạn trước %3$d ngày.</string>
     <string name="recurring_task_field_description">Mô tả</string>
@@ -1324,4 +1324,265 @@
     <string name="settings_ui_font_size_label">Kích thước phông chữ giao diện</string>
     <string name="settings_data_font_size_label">Kích thước phông chữ nội dung</string>
     <string name="settings_follow_ui_font_scale_label">Đặt phông chữ nội dung bằng phông chữ giao diện</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">Ghi âm giọng nói</string>
+    <string name="calendar_empty_month_hint">Chưa có mục nào trong tháng này.</string>
+    <string name="settings_data_recovery_subtitle">Công cụ lưu trữ, sao lưu, khôi phục, nhập và bộ đệm</string>
+    <string name="settings_journal_experience_subtitle">Hiển thị mục nhập, hành vi lịch, từ khóa ngày và chuyển động</string>
+    <string name="settings_navigation_gestures_subtitle">Điều hướng phía dưới, các tab tùy chọn, thao tác vuốt và điều khiển kéo
+Khóa</string>
+    <string name="settings_privacy_security_subtitle">PIN, mở khóa sinh trắc học, chế độ tự động khóa và ẩn văn bản</string>
+    <string name="settings_progressive_title">đề xuất các chỉnh sửa tiếp theo</string>
+    <string name="settings_progressive_subtitle">Phím tắt cho các cài đặt có thể giúp Yaja hoạt động hàng ngày dễ dàng hơn.</string>
+    <string name="settings_progressive_privacy_pin">Bộ PIN</string>
+    <string name="settings_progressive_privacy_review">Đánh giá quyền riêng tư</string>
+    <string name="settings_progressive_nav_try">Dùng thử Điều hướng thích ứng
+Bật điều hướng thích ứng</string>
+    <string name="settings_progressive_nav_active">Lịch</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">Chọn ngôn ngữ</string>
+    <string name="settings_language_picker_subtitle">Tìm kiếm hoặc chọn ngôn ngữ hiển thị cho Yaja.</string>
+    <string name="settings_language_search_placeholder">Tìm kiếm ngôn ngữ
+Mật độ lịch</string>
+    <string name="settings_calendar_density_title"></string>
+    <string name="settings_calendar_density_subtitle">Điều chỉnh lưới lịch để thoải mái, quét nhỏ gọn hoặc mật độ ngày tối đa.</string>
+    <string name="settings_calendar_density_comfortable">Tiện nghi</string>
+    <string name="settings_calendar_density_compact">Nhỏ Gọn</string>
+    <string name="settings_calendar_density_dense">dày đặc</string>
+    <string name="settings_journal_carry_forward_title">Chuyển tiếp các Todos không được kiểm tra</string>
+    <string name="settings_journal_carry_forward_subtitle">Mang các mục trong danh sách kiểm tra mở của ngày hôm qua vào hôm nay khi ngày đã tải xong.</string>
+    <string name="quick_capture_tile_label">Chụp nhanh</string>
+    <string name="recurring_task_execution_day_of_month_event">Một sự kiện được tạo %1$s vào ngày %2$d. Nó được ghi vào tệp hàng ngày %3$d của bạn trước nhiều ngày.</string>
+    <string name="recurring_task_execution_weekday_event">Một sự kiện được tạo %1$s trên %2$s. Nó được ghi vào tệp hàng ngày %3$d của bạn trước nhiều ngày.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">Một sự kiện được tạo hàng tháng vào cùng một lần xuất hiện %1$s như ngày bắt đầu. Nó được ghi vào tệp hàng ngày %2$d của bạn trước nhiều ngày.</string>
+    <string name="recurring_task_execution_month_boundary_event">Một sự kiện được tạo %1$s trên %2$s của tháng đến hạn. Nó được ghi vào tệp hàng ngày %3$d của bạn trước nhiều ngày.</string>
+    <string name="recurring_task_add_event">Thêm sự kiện định kỳ</string>
+    <string name="recurring_task_edit_event">Chỉnh sửa sự kiện định kỳ</string>
+    <string name="recurring_task_field_title_event">Tên sự kiện</string>
+    <string name="recurring_task_field_title_event_hint">Ví dụ: Cuộc họp đồng bộ hàng tuần</string>
+    <string name="recurring_task_frequency_help_event">Chọn tần suất lặp lại sự kiện này.</string>
+    <string name="recurring_task_details_weekday_help_event">Chọn ngày trong tuần mà sự kiện này sẽ diễn ra.</string>
+    <string name="recurring_task_delete_confirm_title_event">Xóa sự kiện định kỳ?</string>
+    <string name="recurring_task_end_help_event">Chọn thời điểm sự kiện này ngừng lặp lại</string>
+    <string name="recurring_task_end_count_help_event">Dừng sau khi nhiều sự kiện được tạo.
+Điều hướng phía dưới thích ứng</string>
+    <string name="settings_adaptive_bottom_nav_title"></string>
+    <string name="settings_adaptive_bottom_nav_subtitle">Chỉ hiển thị các tab dưới cùng tùy chọn khi phần đó có nội dung, trong khi vẫn giữ các màn hình đã định cấu hình trong ngăn kéo.</string>
+    <string name="todos_empty_refresh">Làm mới</string>
+    <string name="settings_onboarding_next_launch_title">Hiển thị thiết lập chào mừng trong lần khởi chạy tiếp theo</string>
+    <string name="settings_onboarding_next_launch_subtitle">Chạy phần giới thiệu và lựa chọn bộ nhớ một lần ở lần khởi chạy ứng dụng tiếp theo, sau đó tự động tắt tính năng này.
+Xuất khẩu Obsidian</string>
+    <string name="settings_obsidian_export_title"></string>
+    <string name="settings_obsidian_export_description">Phản chiếu nhật ký của bạn vào một kho lưu trữ đánh dấu đơn giản — một tệp mỗi ngày, với các đề cập về Người &amp; Địa điểm được viết lại dưới dạng [[wikilinks]]. Dữ liệu của bạn không bao giờ bị khóa vào Yaja.
+Kho xuất</string>
+    <string name="settings_obsidian_export_button">Thư mục đánh dấu</string>
+    <string name="settings_import_source_markdown_folder"></string>
+    <string name="settings_import_source_markdown_folder_subtitle">Bất kỳ thư mục nào chứa các tệp .md - Obsidian, Jekyll hoặc các ghi chú hàng ngày tương tự</string>
+    <string name="onboarding_title">Chào mừng đến với yaja</string>
+    <string name="onboarding_body">Yaja là tạp chí giảm giá đầu tiên tại địa phương. Các mục nhập của bạn vẫn còn trên thiết bị của bạn dưới dạng các tệp đơn giản, vì vậy ứng dụng luôn mang tính cá nhân, bền bỉ và không gây cản trở cho bạn.</string>
+    <string name="onboarding_progress">Bước %1$d của %2$d</string>
+    <string name="onboarding_intro_private">Riêng tư theo mặc định. Yaja giữ nhật ký của bạn trên thiết bị thay vì định tuyến nó qua dịch vụ đám mây.</string>
+    <string name="onboarding_intro_files">Các mục nhập là các tệp đánh dấu đơn giản, vì vậy bài viết của bạn vẫn có thể di chuyển được và dễ hiểu bên ngoài ứng dụng.</string>
+    <string name="onboarding_intro_flexible">Bạn có thể bắt đầu ngay bây giờ và vẫn có thể tùy chỉnh bộ nhớ, nhập, giao diện và bảo mật sau này.</string>
+    <string name="onboarding_storage_title">Chọn nơi các mục mới sẽ xuất hiện</string>
+    <string name="onboarding_storage_body">Bạn có thể giữ mọi thứ trong bộ nhớ ứng dụng nội bộ hoặc chọn thư mục của riêng bạn. Bạn có thể thay đổi điều này sau từ Cài đặt &gt; Dữ liệu &amp; Khôi phục.</string>
+    <string name="onboarding_storage_internal">Bộ nhớ hiện tại: Bộ nhớ ứng dụng nội bộ</string>
+    <string name="onboarding_storage_custom">Bộ nhớ hiện tại: Thư mục tùy chỉnh (%1$s)</string>
+    <string name="onboarding_storage_note">Các thư mục tùy chỉnh cần có quyền ghi để Yaja có thể lưu các tệp nhật ký một cách an toàn.</string>
+    <string name="onboarding_continue_internal">Tiếp tục với Bộ nhớ trong</string>
+    <string name="onboarding_switch_internal">Chuyển sang bộ nhớ trong</string>
+    <string name="onboarding_choose_folder">Chọn thư mục tùy chỉnh</string>
+    <string name="onboarding_customize_title">Chọn một số giá trị mặc định ban đầu</string>
+    <string name="onboarding_customize_body">Đây là các tùy chọn tùy chọn trong lần chạy đầu tiên. Mọi thứ ở đây có thể được thay đổi sau từ Cài đặt.
+Chủ đề</string>
+    <string name="onboarding_theme_title">Lời nhắc sao lưu</string>
+    <string name="onboarding_backup_title"></string>
+    <string name="onboarding_backup_body">Chọn thời điểm Yaja sẽ nhắc bạn rằng đã đến lúc tạo một zip dự phòng.</string>
+    <string name="onboarding_backup_off">Tắt</string>
+    <string name="onboarding_backup_30">30 ngày</string>
+    <string name="onboarding_backup_60">60 ngày
+Lịch sử phiên bản</string>
+    <string name="onboarding_version_history_title"></string>
+    <string name="onboarding_version_history_body">Giữ các bản sao an toàn trước khi chỉnh sửa và xóa có tính rủi ro.</string>
+    <string name="onboarding_pin_setup">Thiết lập khóa PIN
+Khóa</string>
+    <string name="onboarding_pin_enabled">PIN đã được bật</string>
+    <string name="onboarding_import_title">Mang theo tạp chí hiện có nếu bạn muốn</string>
+    <string name="onboarding_import_body">Bạn có thể nhập ngay bây giờ hoặc bỏ qua phần này và thực hiện sau từ Cài đặt &gt; Dữ liệu &amp; Khôi phục.</string>
+    <string name="onboarding_import_running">Đang nhập %1$d của %2$d…</string>
+    <string name="onboarding_import_success">Nhập xong: %1$d ngày mới, %2$d đã hợp nhất.</string>
+    <string name="onboarding_import_cancelled">Đã hủy nhập.</string>
+    <string name="onboarding_import_later">Bạn có thể hoàn tất quá trình triển khai ngay cả khi quá trình nhập vẫn đang chạy ở chế độ nền.</string>
+    <string name="onboarding_back">Quay lại</string>
+    <string name="onboarding_next">Tiếp theo</string>
+    <string name="onboarding_finish">Hoàn thiện</string>
+    <string name="onboarding_skip">Bỏ qua bây giờ</string>
+    <string name="onboarding_rerun_note">Thiết lập này đã được mở lại từ Cài đặt và sẽ không hiển thị lại trừ khi bạn yêu cầu.</string>
+    <string name="settings_other_apps_title">Các ứng dụng khác của nhà phát triển</string>
+    <string name="settings_github_title">Xem nguồn trên GitHub
+Trợ giúp</string>
+    <string name="settings_help_card_title"></string>
+    <string name="share_app_title">Chia sẻ</string>
+    <string name="share_app_default_message">yaja — một ứng dụng ghi nhật ký khác\\n\\nA một cuốn nhật ký hàng ngày không bị phân tâm, lưu trữ các mục dưới dạng tệp đánh dấu đơn giản.</string>
+    <string name="share_app_include_image_title">Bao gồm hình ảnh</string>
+    <string name="share_app_include_image_subtitle">Đính kèm hình ảnh quảng cáo cùng với tin nhắn của bạn
+Tin nhắn</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">Liên kết này được tự động thêm vào cuối:
+Hình ảnh quảng cáo yaja</string>
+    <string name="share_app_image_cd">Bố cục FAB</string>
+    <string name="settings_layout_label"></string>
+    <string name="settings_layout_desc">Chọn nút tác vụ ứng dụng bên nào sẽ xuất hiện.
+Biểu tượng ứng dụng</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">Chọn biểu tượng hiển thị trên màn hình chính của bạn. Ứng dụng sẽ khởi động lại trong thời gian ngắn khi bạn chuyển đổi.</string>
+    <string name="settings_app_icon_confirm_title">Thay đổi biểu tượng ứng dụng?</string>
+    <string name="settings_app_icon_confirm_message">Yaja sẽ khởi động lại để áp dụng biểu tượng mới.</string>
+    <string name="settings_app_icon_classic">Cổ điển
+Máy tính xách tay</string>
+    <string name="settings_app_icon_notebook">Bút lông</string>
+    <string name="settings_app_icon_quill"></string>
+    <string name="settings_app_icon_quick_notes">Ghi chú nhanh
+Giấy ghi chú</string>
+    <string name="settings_app_icon_sticky_note">Thư viện</string>
+    <string name="settings_app_icon_library">Bút mực</string>
+    <string name="settings_app_icon_ink_pen">Bài viết</string>
+    <string name="settings_app_icon_article"></string>
+    <string name="settings_app_icon_edit_square">Chỉnh sửa hình vuông
+Ngăn xếp ghi chú</string>
+    <string name="settings_app_icon_note_stack">Chủ đề</string>
+    <string name="settings_app_icon_subject">Nguồn cấp dữ liệu</string>
+    <string name="settings_app_icon_feed">Sách</string>
+    <string name="settings_app_icon_book_style">Bút viền</string>
+    <string name="settings_app_icon_border_pen"></string>
+    <string name="settings_app_icon_post_add">Đăng bài Thêm
+Sổ tay</string>
+    <string name="settings_app_icon_notebook_filled">(Bóng mờ)</string>
+    <string name="settings_app_icon_quill_filled">Quill (Bóng mờ)</string>
+    <string name="settings_app_icon_quick_notes_filled">Ghi chú nhanh (Bóng mờ)
+Giấy dán</string>
+    <string name="settings_app_icon_sticky_note_filled">(Bóng mờ)
+Thư viện</string>
+    <string name="settings_app_icon_library_filled">(Bóng mờ)
+Bút mực</string>
+    <string name="settings_app_icon_ink_pen_filled">(Bóng mờ)
+Bài viết</string>
+    <string name="settings_app_icon_article_filled">(Bóng mờ)</string>
+    <string name="settings_app_icon_edit_square_filled">Chỉnh sửa hình vuông (Bóng mờ)
+Ngăn xếp ghi chú</string>
+    <string name="settings_app_icon_note_stack_filled">(Bóng mờ)
+Chủ đề</string>
+    <string name="settings_app_icon_subject_filled">(Bóng mờ)
+Nguồn cấp dữ liệu</string>
+    <string name="settings_app_icon_feed_filled">(Bóng mờ)
+Sách</string>
+    <string name="settings_app_icon_book_style_filled">(Bóng mờ)
+Bút viền</string>
+    <string name="settings_app_icon_border_pen_filled">(Bóng mờ)
+Thêm bài đăng</string>
+    <string name="settings_app_icon_post_add_filled">(Bóng mờ)</string>
+    <string name="settings_app_icon_wordmark">Nhãn từ</string>
+    <string name="settings_fab_side_right">FAB ở bên phải</string>
+    <string name="settings_fab_side_left">FAB ở bên trái</string>
+    <string name="settings_fab_side_right_short">Đúng</string>
+    <string name="settings_fab_side_left_short">Còn Lại</string>
+    <string name="timeline_filter_all">Tất cả</string>
+    <string name="timeline_filter_favorites">Yêu thích</string>
+    <string name="timeline_filter_labeled">được gắn nhãn</string>
+    <string name="timeline_filter_with_entries">có mục</string>
+    <string name="timeline_density_comfortable">Thoải mái</string>
+    <string name="timeline_density_compact">Nhỏ Gọn
+Bản nhạc cổ điển</string>
+    <string name="timeline_style_track">Thẻ hiện đại</string>
+    <string name="timeline_style_card"></string>
+    <string name="timeline_all_years">Tất Cả Năm</string>
+    <string name="timeline_month_summary_format">%1$d ngày vào | %2$d được gắn nhãn | %3$d yêu thích</string>
+    <string name="addentry_full_day_event_label">Sự kiện cả ngày</string>
+    <string name="addentry_switch_to_keyboard">Chuyển sang nhập bằng bàn phím</string>
+    <string name="addentry_switch_to_dial">Chuyển sang quay số</string>
+    <string name="home_loading_title">Đang tải ngày này</string>
+    <string name="home_loading_subtitle">Chuẩn bị các mục nhập, nhãn và theo dõi.</string>
+    <string name="statistics_reading_time">Thời gian đọc</string>
+    <string name="statistics_avg_reading_time_per_entry">Trung bình Đọc/Nhập</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d phút</item>
+        <item quantity="other">%1$d phút</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">Vào chế độ lấy nét</string>
+    <string name="addentry_cd_exit_focus_mode">Thoát chế độ lấy nét</string>
+    <string name="addentry_reading_time_format">%1$d phút đọc</string>
+    <string name="home_cd_enable_hide_text_mode">Bật chế độ ẩn văn bản</string>
+    <string name="home_cd_disable_hide_text_mode">Tắt chế độ ẩn văn bản</string>
+    <string name="home_hidden_entry_preview">Văn bản bị ẩn. Nhấn một lần để tiết lộ.</string>
+    <string name="home_hidden_result_preview">Xem trước ẩn khi chế độ ẩn văn bản được bật.</string>
+    <string name="home_stat_read">Đọc</string>
+    <string name="settings_hide_text_mode_title">Ẩn Chế độ Văn bản</string>
+    <string name="settings_hide_text_mode_subtitle">Ẩn văn bản nhật ký trên Trang chủ cho đến khi bạn nhấn vào một mục để hiển thị nó.
+Trang tổng quan về quyền riêng tư của</string>
+    <string name="settings_privacy_dashboard_title"></string>
+    <string name="settings_privacy_dashboard_overview">Minh bạch địa phương
+Vị trí lưu trữ</string>
+    <string name="settings_privacy_storage_title">Quy tắc sao lưu</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">Lần sao lưu cuối cùng: %1$s. Ngưỡng nhắc nhở: %2$d ngày.
+Khóa ứng dụng</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. Sinh trắc học: %2$s. Tự động khóa sau phút %3$d.</string>
+    <string name="settings_privacy_hide_mode_title">Ẩn Chế độ Văn bản
+Theo mặc định, văn bản Trang chủ</string>
+    <string name="settings_privacy_hide_mode_on">bị ẩn cho đến khi bạn tiết lộ một mục nhập.</string>
+    <string name="settings_privacy_hide_mode_off">Văn bản trang chủ hiển thị bình thường.
+Tiếp xúc với</string>
+    <string name="settings_privacy_tasker_title">Tasker</string>
+    <string name="settings_privacy_tasker_summary">Truy cập chụp nhanh: %1$s. Chia sẻ sự kiện: %2$s. Văn bản nhập có trong sự kiện: %3$s.
+Chia sẻ thủ công</string>
+    <string name="settings_privacy_share_title"></string>
+    <string name="settings_privacy_share_summary">Văn bản nhập chỉ có thể rời khỏi ứng dụng khi bạn sử dụng rõ ràng Chia sẻ từ trình chỉnh sửa hoặc xuất bản sao lưu.
+Tiếp xúc với tiện ích</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d đang hoạt động. Chụp nhanh: %2$d. Việc cần làm nhanh: %3$d. Bản đồ nhiệt: %4$d. Danh sách việc cần làm: %5$d.</string>
+    <string name="settings_privacy_state_on">Bật</string>
+    <string name="settings_privacy_state_off">Tắt</string>
+    <string name="settings_privacy_state_yes">Có</string>
+    <string name="settings_privacy_state_no">Không</string>
+    <string name="settings_privacy_risk_low">Độ phơi sáng thấp</string>
+    <string name="settings_privacy_risk_medium">Phơi sáng trung bình</string>
+    <string name="settings_privacy_risk_high">Độ phơi sáng cao</string>
+    <string name="settings_privacy_risk_low_summary">Hầu hết văn bản nhật ký vẫn ở trên thiết bị trừ khi bạn chia sẻ nó một cách rõ ràng.</string>
+    <string name="settings_privacy_risk_medium_summary">Một số bề mặt được kích hoạt có thể hiển thị văn bản hoặc siêu dữ liệu bên ngoài chế độ xem tạp chí chính.</string>
+    <string name="settings_privacy_risk_high_summary">Một số bề mặt được kích hoạt có thể tiết lộ nội dung hoặc siêu dữ liệu của tạp chí. Nên thắt chặt một số cài đặt.</string>
+    <string name="settings_privacy_exposure_title">Mức phơi sáng hiện tại
+Bề mặt tiếp xúc</string>
+    <string name="settings_privacy_surfaces_title">Lưu trữ và sao lưu</string>
+    <string name="settings_privacy_storage_backup_title">Kiểm soát quyền riêng tư của</string>
+    <string name="settings_privacy_controls_title">Khuyến nghị của</string>
+    <string name="settings_privacy_recommendations_title"></string>
+    <string name="settings_privacy_quick_actions_title">Thao tác nhanh</string>
+    <string name="settings_privacy_surface_local_title">Nhật ký trên thiết bị</string>
+    <string name="settings_privacy_surface_local_summary">Các tệp trong ngày của bạn tồn tại cục bộ và ở trong ứng dụng trừ khi bạn sử dụng tính năng chia sẻ, sao lưu, Tasker hoặc tiện ích.</string>
+    <string name="settings_privacy_state_default">Mặc định
+Chỉ hướng dẫn sử dụng</string>
+    <string name="settings_privacy_state_manual"></string>
+    <string name="settings_privacy_state_active">Đang hoạt động</string>
+    <string name="settings_privacy_state_visible">hiển thị</string>
+    <string name="settings_privacy_state_none">Không có</string>
+    <string name="settings_privacy_recommend_pin">Thêm PIN để ứng dụng không mở thẳng vào nhật ký của bạn.</string>
+    <string name="settings_privacy_recommend_hide">Bật Chế độ ẩn văn bản để giữ Nhà an toàn hơn ở nơi công cộng hoặc xung quanh người khác.</string>
+    <string name="settings_privacy_recommend_tasker_text">Tắt văn bản nhập trong các sự kiện Tasker trừ khi bạn thực sự cần văn bản nhật ký đầy đủ ở đó.</string>
+    <string name="settings_privacy_recommend_widgets">Xem lại các tiện ích đang hoạt động vì bề mặt màn hình chính có thể hiển thị nhanh siêu dữ liệu.</string>
+    <string name="settings_privacy_action_set_pin">Bộ PIN</string>
+    <string name="settings_privacy_action_enable_hide">Bật Ẩn văn bản</string>
+    <string name="settings_privacy_action_disable_tasker_text">Tắt văn bản Tasker</string>
+    <string name="settings_privacy_action_open_tasker">Mở cài đặt Tasker</string>
+    <string name="widget_todo_empty">Tuyệt vời, không có nhiệm vụ nào đang chờ xử lý!</string>
+    <string name="widget_todo_header_todos_events">Việc cần làm và sự kiện
+Sự kiện</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">Xóa
+Bắt đầu lịch trình</string>
+    <string name="recurring_task_start_section"></string>
+    <string name="recurring_task_start_help">Chọn ngày bắt đầu và thời gian tùy chọn cho lịch trình định kỳ này.</string>
 </resources>

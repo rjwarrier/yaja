@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">یادداشت ها</string>
     <string name="tasker_screen_body_notes">متن ورودی با Tasker به اشتراک گذاشته نمی شود مگر اینکه Include Entry Text in Events را فعال کنید. اگر Tasker آخرین گزینه‌ها یا متغیرها را نشان نمی‌دهد، پس از به‌روزرسانی Yaja، صفحه پیکربندی Tasker را دوباره باز کنید.</string>
     <string name="tasker_screen_section_example">مثال</string>
-    <string name="tasker_screen_body_example">مثال اقدام: Tasker action &gt; Yaja Quick Capture &gt; Append، با Match / header روی تماس‌های از دست رفته و Line برای اضافه کردن مجموعه به متغیر Tasker تنظیم شده است. مثال رویداد: Tasker event &gt; Yaja Journal Events &gt; Entry Modified، سپس از متغیرهایی مانند %%yaja_event_type، %%yaja_date، و به صورت اختیاری %%yaja_entry_text استفاده کنید.</string>
+    <string name="tasker_screen_body_example" formatted="false">مثال اقدام: Tasker action &gt; Yaja Quick Capture &gt; Append، با Match / header روی تماس‌های از دست رفته و Line برای اضافه کردن مجموعه به متغیر Tasker تنظیم شده است. مثال رویداد: Tasker event &gt; Yaja Journal Events &gt; Entry Modified، سپس از متغیرهایی مانند %%yaja_event_type، %%yaja_date، و به صورت اختیاری %%yaja_entry_text استفاده کنید.</string>
     <string name="tasker_screen_section_use_cases">موارد استفاده کنید</string>
     <string name="tasker_screen_use_case_1">1. از یک رویداد ژورنال Yaja در Tasker برای راه اندازی یک عمل همگام سازی FolderSync استفاده کنید تا پوشه Yaja شما پس از تغییر ورودی ها به هر ارائه دهنده ابری منتقل شود.</string>
     <string name="tasker_screen_use_case_2">2. از Pushbullet با Tasker برای ارسال متن به Yaja Quick Capture استفاده کنید تا متن فشار داده شده به عنوان ورودی جدید برای روز جاری ذخیره شود.</string>
@@ -319,7 +319,7 @@
     <string name="settings_nav_mode_floating">شناور</string>
     <string name="settings_nav_mode_panel">پانل</string>
     <string name="settings_navigation_screens_label">صفحه های ناوبری</string>
-    <string name="settings_nav_summary_floating">نمایش Lookback در نوار یا پانل پیمایش فعال.</string>
+    <string name="settings_nav_summary_floating">Journal and Calendar always stay in the floating bar. Pick up to 2 more screens. Currently selected: %1$d of %2$d.</string>
     <string name="settings_nav_summary_panel">مجله و تقویم همیشه در پانل پایین باقی می مانند. حداکثر 3 صفحه نمایش دیگر را انتخاب کنید. در حال حاضر انتخاب شده: %1$d از %2$d.</string>
     <string name="settings_nav_lookback_subtitle">نمایش Lookback در نوار یا پانل پیمایش فعال.</string>
     <string name="settings_nav_people_places_subtitle">نمایش افراد و مکان‌ها در نوار یا پانل پیمایش فعال.</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">شفافیت ذخیره سازی روی دستگاه</string>
     <string name="rebuild_cache_storage_transparency_desc">Yaja از یک مدل ذخیره سازی محلی امن استفاده می کند. اطلاعات دفترچه شخصی شما محلی باقی می ماند و هرگز دستگاه شما را در هیچ زمانی ترک نمی کند:</string>
     <string name="rebuild_cache_source_of_truth_title">منبع حقیقت (فایل های Markdown)</string>
-    <string name="rebuild_cache_source_of_truth_desc">همه ورودی‌ها، موارد فهرست چک (todos)، رویدادهای جدول زمانی، ستاره‌ها و برچسب‌ها به‌طور دائم در فایل‌های Markdown (.md) متن ساده در پوشه مجله محلی انتخابی شما ذخیره می‌شوند. داده های شما 100٪ متعلق به شما است و به طور کامل در دستگاه شما قرار دارد.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">همه ورودی‌ها، موارد فهرست چک (todos)، رویدادهای جدول زمانی، ستاره‌ها و برچسب‌ها به‌طور دائم در فایل‌های Markdown (.md) متن ساده در پوشه مجله محلی انتخابی شما ذخیره می‌شوند. داده های شما 100٪ متعلق به شما است و به طور کامل در دستگاه شما قرار دارد.</string>
     <string name="rebuild_cache_read_cache_title">خواندن حافظه پنهان و فهرست (پایگاه داده SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">برای فعال کردن بارگذاری فوری صفحه، نکات برجسته تقویم، کلمات کلیدی و آمار بدون اسکن سیستم فایل در هر اسکرول، Yaja فایل‌های Markdown شما را تجزیه و در یک پایگاه داده محلی Room SQLite در دستگاه شما فهرست می‌کند.</string>
-    <string name="rebuild_cache_local_private_title">100٪ محلی و خصوصی</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100٪ محلی و خصوصی</string>
     <string name="rebuild_cache_local_private_desc">Yaja هیچ پایگاه داده ابری، سرورهای پشتیبان از راه دور یا ردیابی متن شما از راه دور ندارد. همه ورودی‌های مجله و داده‌های تجزیه‌شده دقیقاً روی دستگاه فیزیکی شما باقی می‌مانند و هرگز آن را در هیچ زمانی ترک نمی‌کنند.</string>
     <string name="keywords_export_success">کلمات کلیدی صادر شد</string>
     <string name="keywords_export_failed">کلمات کلیدی صادر نشد</string>
@@ -1326,4 +1326,271 @@
     <string name="settings_accent_style_analogous">مشابه</string>
     <string name="settings_accent_style_triadic">سه گانه</string>
     <string name="settings_accent_style_soft">نرم</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">ضبط صدا</string>
+    <string name="calendar_empty_month_hint">هنوز هیچ ورودی در این ماه ثبت نشده است.</string>
+    <string name="settings_data_recovery_subtitle">ابزارهای ذخیره سازی، پشتیبان گیری، بازیابی، واردات و کش</string>
+    <string name="settings_journal_experience_subtitle">نمایش ورودی، رفتار تقویم، کلمات کلیدی تاریخ و حرکت</string>
+    <string name="settings_navigation_gestures_subtitle">پیمایش پایین، برگه‌های اختیاری، کنترل‌های تند کشیدن و کشیدن
+قفل</string>
+    <string name="settings_privacy_security_subtitle">PIN، باز کردن قفل بیومتریک، قفل خودکار و حالت پنهان کردن متن</string>
+    <string name="settings_progressive_title">ترفندهای بعدی پیشنهاد شده است</string>
+    <string name="settings_progressive_subtitle">میانبرهایی برای تنظیماتی که می‌توانند کار روزانه Yaja را آسان‌تر کنند.
+مجموعه</string>
+    <string name="settings_progressive_privacy_pin">PIN</string>
+    <string name="settings_progressive_privacy_review">بررسی حریم خصوصی</string>
+    <string name="settings_progressive_nav_try">Adaptive Nav را امتحان کنید</string>
+    <string name="settings_progressive_nav_active">Adaptive Nav روشن
+تقویم</string>
+    <string name="settings_progressive_calendar_density">: %1$s</string>
+    <string name="settings_language_picker_title">زبان را انتخاب کنید</string>
+    <string name="settings_language_picker_subtitle">زبان نمایش را برای Yaja جستجو یا انتخاب کنید.</string>
+    <string name="settings_language_search_placeholder">زبان‌های جستجو
+تراکم تقویم</string>
+    <string name="settings_calendar_density_title"></string>
+    <string name="settings_calendar_density_subtitle">شبکه تقویم را برای راحتی، اسکن فشرده یا حداکثر تراکم تاریخ تنظیم کنید.</string>
+    <string name="settings_calendar_density_comfortable">راحتی</string>
+    <string name="settings_calendar_density_compact">فشرده</string>
+    <string name="settings_calendar_density_dense">متراکم</string>
+    <string name="settings_journal_carry_forward_title">کارهای بدون علامت را به جلو منتقل کنید</string>
+    <string name="settings_journal_carry_forward_subtitle">هنگامی که روز بارگذاری می شود، موارد چک لیست باز دیروز را به امروز بیاورید.</string>
+    <string name="quick_capture_tile_label">عکسبرداری سریع</string>
+    <string name="recurring_task_execution_day_of_month_event">یک رویداد %1$s در روز %2$d ایجاد می شود. روز قبل در فایل روزانه شما %3$d نوشته می شود.</string>
+    <string name="recurring_task_execution_weekday_event">یک رویداد %1$s در %2$s ایجاد می شود. روز قبل در فایل روزانه شما %3$d نوشته می شود.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">یک رویداد ماهانه در همان رویداد %1$s به عنوان تاریخ شروع ایجاد می شود. روز قبل در فایل روزانه شما %2$d نوشته می شود.</string>
+    <string name="recurring_task_execution_month_boundary_event">یک رویداد %1$s در %2$s ماه مقرر ایجاد می شود. روز قبل در فایل روزانه شما %3$d نوشته می شود.</string>
+    <string name="recurring_task_add_event">رویداد تکرار شونده را اضافه کنید</string>
+    <string name="recurring_task_edit_event">رویداد تکرارشونده را ویرایش کنید</string>
+    <string name="recurring_task_field_title_event">نام رویداد</string>
+    <string name="recurring_task_field_title_event_hint">مثال: جلسه همگام سازی هفتگی</string>
+    <string name="recurring_task_frequency_help_event">تعداد دفعات تکرار این رویداد را انتخاب کنید.</string>
+    <string name="recurring_task_details_weekday_help_event">روز هفته ای را انتخاب کنید که این رویداد در آن سررسید می شود.</string>
+    <string name="recurring_task_delete_confirm_title_event">رویداد تکرارشونده حذف شود؟</string>
+    <string name="recurring_task_end_help_event">انتخاب کنید چه زمانی تکرار این رویداد متوقف شود</string>
+    <string name="recurring_task_end_count_help_event">پس از ایجاد بسیاری از رویدادها متوقف می شود.</string>
+    <string name="settings_adaptive_bottom_nav_title">ناوبری تطبیقی پایین</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">برگه های پایین اختیاری را فقط زمانی نشان دهید که آن بخش دارای محتوا باشد، در حالی که صفحه های پیکربندی شده را در کشو نگه دارید.</string>
+    <string name="todos_empty_refresh">Refresh</string>
+    <string name="settings_onboarding_next_launch_title">راه‌اندازی خوش‌آمدگویی را در راه‌اندازی بعدی نمایش دهید</string>
+    <string name="settings_onboarding_next_launch_subtitle">انتخاب مقدمه و فضای ذخیره‌سازی را یک‌بار در راه‌اندازی برنامه بعدی اجرا کنید، سپس آن را به‌طور خودکار خاموش کنید.</string>
+    <string name="settings_obsidian_export_title">صادرات ابسیدین</string>
+    <string name="settings_obsidian_export_description">ژورنال خود را به یک طاق علامت گذاری ساده منعکس کنید - یک فایل در روز، با ذکر افراد و مکان ها به عنوان [[ویکی پیوندها]] بازنویسی می شود. اطلاعات شما هرگز در Yaja قفل نمی شود.
+خزانه صادراتی</string>
+    <string name="settings_obsidian_export_button"></string>
+    <string name="settings_import_source_markdown_folder">پوشه Markdown</string>
+    <string name="settings_import_source_markdown_folder_subtitle">هر پوشه ای از فایل های .md - Obsidian، Jekyll یا یادداشت های روزانه مشابه</string>
+    <string name="onboarding_title">به yaja خوش آمدید</string>
+    <string name="onboarding_body">Yaja اولین مجله نشانه گذاری محلی است. ورودی‌های شما به‌عنوان فایل‌های ساده در دستگاه شما باقی می‌مانند، بنابراین برنامه شخصی، بادوام و دور از دسترس شما می‌ماند.</string>
+    <string name="onboarding_progress">مرحله %1$d از %2$d</string>
+    <string name="onboarding_intro_private">به طور پیش فرض خصوصی. Yaja دفترچه یادداشت شما را به جای مسیریابی از طریق سرویس ابری، روی دستگاه شما نگه می دارد.
+ورودی‌های</string>
+    <string name="onboarding_intro_files">فایل‌های علامت‌گذاری ساده هستند، بنابراین نوشته‌های شما در خارج از برنامه نیز قابل حمل و قابل درک می‌مانند.</string>
+    <string name="onboarding_intro_flexible">می‌توانید اکنون به سادگی شروع کنید و همچنان ذخیره‌سازی، واردات، ظاهر و امنیت را بعداً سفارشی کنید.</string>
+    <string name="onboarding_storage_title">محل زندگی ورودی های جدید را انتخاب کنید</string>
+    <string name="onboarding_storage_body">می توانید همه چیز را در حافظه داخلی برنامه نگه دارید یا پوشه خود را انتخاب کنید. بعداً می‌توانید این مورد را از تنظیمات &gt; داده و بازیابی تغییر دهید.</string>
+    <string name="onboarding_storage_internal">حافظه فعلی: حافظه داخلی برنامه</string>
+    <string name="onboarding_storage_custom">فضای ذخیره سازی فعلی: پوشه سفارشی (%1$s)
+پوشه‌های سفارشی</string>
+    <string name="onboarding_storage_note">به مجوز نوشتن نیاز دارند تا Yaja بتواند فایل‌های مجله را با خیال راحت ذخیره کند.</string>
+    <string name="onboarding_continue_internal">با حافظه داخلی ادامه دهید</string>
+    <string name="onboarding_switch_internal">به حافظه داخلی بروید</string>
+    <string name="onboarding_choose_folder">پوشه سفارشی را انتخاب کنید</string>
+    <string name="onboarding_customize_title">چند پیش فرض شروع را انتخاب کنید</string>
+    <string name="onboarding_customize_body">اینها اولویت‌های اولیه انتخابی هستند. همه چیز در اینجا را می توان بعداً از تنظیمات تغییر داد.
+تم</string>
+    <string name="onboarding_theme_title">یادآوری پشتیبان</string>
+    <string name="onboarding_backup_title"></string>
+    <string name="onboarding_backup_body">زمانی را انتخاب کنید که Yaja به شما یادآوری کند که زمان ایجاد یک فایل فشرده پشتیبان فرا رسیده است.</string>
+    <string name="onboarding_backup_off">خاموش</string>
+    <string name="onboarding_backup_30">30 روز</string>
+    <string name="onboarding_backup_60">60 روز
+تاریخچه نسخه</string>
+    <string name="onboarding_version_history_title"></string>
+    <string name="onboarding_version_history_body">کپی ها را قبل از ویرایش ها و حذف های خطرناک نگه دارید.</string>
+    <string name="onboarding_pin_setup">قفل PIN را تنظیم کنید
+قفل</string>
+    <string name="onboarding_pin_enabled">PIN قبلاً فعال شده است</string>
+    <string name="onboarding_import_title">در صورت تمایل یک مجله موجود بیاورید</string>
+    <string name="onboarding_import_body">می‌توانید همین حالا وارد کنید، یا از این کار رد شوید و بعداً از تنظیمات &gt; داده و بازیابی انجام دهید.</string>
+    <string name="onboarding_import_running">وارد کردن %1$d از %2$d…
+واردات</string>
+    <string name="onboarding_import_success">به پایان رسید: %1$d روزهای جدید، %2$d ادغام شد.</string>
+    <string name="onboarding_import_cancelled">واردات لغو شد.</string>
+    <string name="onboarding_import_later">حتی اگر وارد کردن هنوز در پس‌زمینه در حال اجرا باشد، می‌توانید ورود را تمام کنید.</string>
+    <string name="onboarding_back">عقب</string>
+    <string name="onboarding_next">بعدی</string>
+    <string name="onboarding_finish">پایان</string>
+    <string name="onboarding_skip">در حال حاضر رد شوید</string>
+    <string name="onboarding_rerun_note">این تنظیم مجدداً از تنظیمات باز شد و تا زمانی که شما آن را درخواست نکنید، دیگر نشان داده نخواهد شد.</string>
+    <string name="settings_other_apps_title">سایر برنامه های توسعه دهنده</string>
+    <string name="settings_github_title">منبع را در GitHub مشاهده کنید</string>
+    <string name="settings_help_card_title">راهنما</string>
+    <string name="share_app_title">به اشتراک بگذارید yaja</string>
+    <string name="share_app_default_message">yaja — یکی دیگر از برنامه های ژورنالیستی \\n\\nA مجله روزانه بدون حواس پرتی که ورودی ها را به عنوان فایل های علامت گذاری ساده ذخیره می کند.</string>
+    <string name="share_app_include_image_title">شامل تصویر</string>
+    <string name="share_app_include_image_subtitle">تصویر تبلیغاتی را به همراه پیام خود پیوست کنید
+پیام</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">این پیوند در پایان به طور خودکار اضافه می شود:
+تصویر تبلیغاتی</string>
+    <string name="share_app_image_cd">yaja
+طرح بندی</string>
+    <string name="settings_layout_label">FAB</string>
+    <string name="settings_layout_desc">انتخاب کنید که دکمه‌های عملکرد برنامه جانبی در کدام قسمت ظاهر شوند.
+نماد برنامه</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">نماد نشان داده شده در صفحه اصلی خود را انتخاب کنید. وقتی تغییر می دهید، برنامه برای مدت کوتاهی مجدداً راه اندازی می شود.</string>
+    <string name="settings_app_icon_confirm_title">نماد برنامه را تغییر دهید؟</string>
+    <string name="settings_app_icon_confirm_message">Yaja برای اعمال نماد جدید راه اندازی مجدد می شود.</string>
+    <string name="settings_app_icon_classic">کلاسیک
+نوت بوک</string>
+    <string name="settings_app_icon_notebook">لحاف</string>
+    <string name="settings_app_icon_quill">یادداشت های سریع</string>
+    <string name="settings_app_icon_quick_notes">یادداشت چسبنده</string>
+    <string name="settings_app_icon_sticky_note">کتابخانه</string>
+    <string name="settings_app_icon_library">قلم جوهر</string>
+    <string name="settings_app_icon_ink_pen">مقاله</string>
+    <string name="settings_app_icon_article"></string>
+    <string name="settings_app_icon_edit_square">مربع ویرایش
+پشته یادداشت</string>
+    <string name="settings_app_icon_note_stack">موضوع</string>
+    <string name="settings_app_icon_subject">خوراک</string>
+    <string name="settings_app_icon_feed">کتاب</string>
+    <string name="settings_app_icon_book_style">قلم حاشیه ای</string>
+    <string name="settings_app_icon_border_pen"></string>
+    <string name="settings_app_icon_post_add">افزودن پست
+نوت بوک</string>
+    <string name="settings_app_icon_notebook_filled">(سایه دار)
+لحاف</string>
+    <string name="settings_app_icon_quill_filled">(سایه دار)</string>
+    <string name="settings_app_icon_quick_notes_filled">یادداشت های سریع (سایه دار)
+یادداشت چسبناک</string>
+    <string name="settings_app_icon_sticky_note_filled">(سایه دار)
+کتابخانه</string>
+    <string name="settings_app_icon_library_filled">(سایه دار)
+قلم جوهر</string>
+    <string name="settings_app_icon_ink_pen_filled">(سایه دار)
+مقاله</string>
+    <string name="settings_app_icon_article_filled">(سایه دار)</string>
+    <string name="settings_app_icon_edit_square_filled">مربع ویرایش (سایه دار)
+پشته یادداشت</string>
+    <string name="settings_app_icon_note_stack_filled">(سایه دار)
+موضوع</string>
+    <string name="settings_app_icon_subject_filled">(سایه دار)
+فید</string>
+    <string name="settings_app_icon_feed_filled">(سایه دار)
+کتاب</string>
+    <string name="settings_app_icon_book_style_filled">(سایه دار)
+قلم حاشیه ای</string>
+    <string name="settings_app_icon_border_pen_filled">(سایه دار)</string>
+    <string name="settings_app_icon_post_add_filled">افزودن پست (سایه دار)</string>
+    <string name="settings_app_icon_wordmark">Wordmark
+FAB های</string>
+    <string name="settings_fab_side_right">در سمت راست
+FAB های</string>
+    <string name="settings_fab_side_left">در سمت چپ</string>
+    <string name="settings_fab_side_right_short">درست است</string>
+    <string name="settings_fab_side_left_short">سمت چپ</string>
+    <string name="timeline_filter_all">همه</string>
+    <string name="timeline_filter_favorites">موارد دلخواه</string>
+    <string name="timeline_filter_labeled">دارای برچسب</string>
+    <string name="timeline_filter_with_entries">با ورودی</string>
+    <string name="timeline_density_comfortable">راحت</string>
+    <string name="timeline_density_compact">فشرده
+آهنگ کلاسیک</string>
+    <string name="timeline_style_track">کارت مدرن</string>
+    <string name="timeline_style_card"></string>
+    <string name="timeline_all_years">تمام سالها</string>
+    <string name="timeline_month_summary_format">%1$d روزهای ورود | %2$d با برچسب | موارد دلخواه %3$d
+رویداد تمام روزه</string>
+    <string name="addentry_full_day_event_label"></string>
+    <string name="addentry_switch_to_keyboard">به ورودی صفحه کلید بروید</string>
+    <string name="addentry_switch_to_dial">به شماره گیری تغییر حالت دهید</string>
+    <string name="home_loading_title">در حال بارگیری این روز</string>
+    <string name="home_loading_subtitle">آماده‌سازی مدخل‌ها، برچسب‌ها و موارد بعدی.</string>
+    <string name="statistics_reading_time">زمان خواندن
+میانگین</string>
+    <string name="statistics_avg_reading_time_per_entry">خواندن / ورود</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d دقیقه</item>
+        <item quantity="other">%1$d دقیقه</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">وارد حالت فوکوس شوید</string>
+    <string name="addentry_cd_exit_focus_mode">از حالت فوکوس خارج شوید</string>
+    <string name="addentry_reading_time_format">%1$d دقیقه خواندن</string>
+    <string name="home_cd_enable_hide_text_mode">حالت پنهان کردن متن را فعال کنید</string>
+    <string name="home_cd_disable_hide_text_mode">حالت پنهان کردن متن را غیرفعال کنید</string>
+    <string name="home_hidden_entry_preview">متن پنهان شد. برای نمایش یک بار ضربه بزنید.
+پیش‌نمایش</string>
+    <string name="home_hidden_result_preview">در حالی که حالت مخفی کردن متن روشن است پنهان است.</string>
+    <string name="home_stat_read">بخوانید</string>
+    <string name="settings_hide_text_mode_title">حالت متن را پنهان کنید</string>
+    <string name="settings_hide_text_mode_subtitle">متن مجله را در صفحه اصلی پنهان کنید تا زمانی که روی یک ورودی ضربه بزنید تا آن را نشان دهید.
+داشبورد حریم خصوصی</string>
+    <string name="settings_privacy_dashboard_title"></string>
+    <string name="settings_privacy_dashboard_overview">شفافیت محلی
+مکان ذخیره سازی</string>
+    <string name="settings_privacy_storage_title">قوانین پشتیبان گیری</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">آخرین نسخه پشتیبان: %1$s. آستانه یادآوری: %2$d روز.
+قفل برنامه</string>
+    <string name="settings_privacy_lock_title"></string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. بیومتریک: %2$s. قفل خودکار بعد از دقیقه %3$d.</string>
+    <string name="settings_privacy_hide_mode_title">حالت متن را پنهان کنید</string>
+    <string name="settings_privacy_hide_mode_on">متن اصلی به طور پیش‌فرض پنهان می‌شود تا زمانی که یک ورودی را نشان دهید.
+متن اصلی</string>
+    <string name="settings_privacy_hide_mode_off">به طور معمول قابل مشاهده است.</string>
+    <string name="settings_privacy_tasker_title">Tasker قرار گرفتن در معرض</string>
+    <string name="settings_privacy_tasker_summary">دسترسی سریع به عکسبرداری: %1$s. اشتراک گذاری رویداد: %2$s. متن ورودی موجود در رویدادها: %3$s.
+اشتراک گذاری دستی</string>
+    <string name="settings_privacy_share_title">متن ورودی</string>
+    <string name="settings_privacy_share_summary">تنها زمانی می‌تواند از برنامه خارج شود که به صراحت از اشتراک‌گذاری از ویرایشگر استفاده کنید یا یک نسخه پشتیبان صادر کنید.
+قرار گرفتن در معرض ویجت</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d فعال هستند. عکسبرداری سریع: %2$d. Quick Todo: %3$d. نقشه حرارتی: %4$d. لیست کارها: %5$d.</string>
+    <string name="settings_privacy_state_on">روشن</string>
+    <string name="settings_privacy_state_off">خاموش</string>
+    <string name="settings_privacy_state_yes">بله</string>
+    <string name="settings_privacy_state_no">شماره</string>
+    <string name="settings_privacy_risk_low">نوردهی کم</string>
+    <string name="settings_privacy_risk_medium">نوردهی متوسط</string>
+    <string name="settings_privacy_risk_high">نوردهی بالا</string>
+    <string name="settings_privacy_risk_low_summary">اکثر متن‌های مجله روی دستگاه می‌مانند، مگر اینکه به‌صراحت آن را به اشتراک بگذارید.</string>
+    <string name="settings_privacy_risk_medium_summary">چند سطح فعال می‌توانند متن یا ابرداده را خارج از نمای مجله اصلی نمایش دهند.</string>
+    <string name="settings_privacy_risk_high_summary">چندین سطح فعال می توانند محتوای مجله یا ابرداده را نشان دهند. سفت کردن چند تنظیمات توصیه می شود.</string>
+    <string name="settings_privacy_exposure_title">سطح قرار گرفتن در معرض فعلی
+سطوح نوردهی</string>
+    <string name="settings_privacy_surfaces_title">ذخیره سازی و پشتیبان گیری</string>
+    <string name="settings_privacy_storage_backup_title"></string>
+    <string name="settings_privacy_controls_title">کنترل های حریم خصوصی
+توصیه های</string>
+    <string name="settings_privacy_recommendations_title"></string>
+    <string name="settings_privacy_quick_actions_title">اقدامات سریع</string>
+    <string name="settings_privacy_surface_local_title">مجله روی دستگاه</string>
+    <string name="settings_privacy_surface_local_summary">فایل‌های روزانه شما بصورت محلی زنده می‌شوند و در برنامه باقی می‌مانند مگر اینکه از اشتراک‌گذاری، پشتیبان‌گیری، Tasker یا ویجت‌ها استفاده کنید.</string>
+    <string name="settings_privacy_state_default">پیش‌فرض
+فقط کتابچه راهنمای</string>
+    <string name="settings_privacy_state_manual"></string>
+    <string name="settings_privacy_state_active">فعال</string>
+    <string name="settings_privacy_state_visible">قابل مشاهده است</string>
+    <string name="settings_privacy_state_none">هیچ کدام</string>
+    <string name="settings_privacy_recommend_pin">یک PIN اضافه کنید تا برنامه مستقیماً در مجله شما باز نشود.</string>
+    <string name="settings_privacy_recommend_hide">حالت مخفی کردن متن را روشن کنید تا خانه را در عموم یا اطراف افراد دیگر ایمن نگه دارید.</string>
+    <string name="settings_privacy_recommend_tasker_text">متن ورودی را در رویدادهای Tasker غیرفعال کنید مگر اینکه واقعاً به متن کامل مجله در آنجا نیاز داشته باشید.</string>
+    <string name="settings_privacy_recommend_widgets">ویجت‌های فعال را مرور کنید زیرا سطوح صفحه اصلی می‌توانند ابرداده‌ها را در یک نگاه آشکار کنند.
+مجموعه</string>
+    <string name="settings_privacy_action_set_pin">PIN</string>
+    <string name="settings_privacy_action_enable_hide">پنهان کردن متن را فعال کنید</string>
+    <string name="settings_privacy_action_disable_tasker_text">متن Tasker را غیرفعال کنید</string>
+    <string name="settings_privacy_action_open_tasker">تنظیمات Tasker را باز کنید</string>
+    <string name="widget_todo_empty">عالی، بدون کار معلق!</string>
+    <string name="widget_todo_header_todos_events">کارها و رویدادها
+رویداد</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">پاک کردن</string>
+    <string name="recurring_task_start_section">شروع برنامه</string>
+    <string name="recurring_task_start_help">تاریخ شروع و زمان اختیاری را برای این برنامه تکراری انتخاب کنید.</string>
 </resources>

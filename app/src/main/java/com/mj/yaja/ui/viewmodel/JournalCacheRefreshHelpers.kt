@@ -23,14 +23,19 @@ internal suspend fun runCacheRefreshWorkflow(
     runSequence: suspend (() -> Unit) -> CacheRefreshOutcome,
     onRefreshCompleted: (Long) -> Unit,
     logError: (Exception) -> Unit,
-    isDeferredStartupActive: () -> Boolean
+    isDeferredStartupActive: () -> Boolean,
+    isRefreshCurrent: () -> Boolean = { true }
 ) {
     try {
-        backgroundWorkLabel.value = "Rebuilding cache"
-        // emitBackgroundToast("Rebuilding cache...")
-        uiState.update { it.copy(isLoading = true) }
+        if (isRefreshCurrent()) {
+            backgroundWorkLabel.value = "Rebuilding cache"
+            // emitBackgroundToast("Rebuilding cache...")
+            uiState.update { it.copy(isLoading = true) }
+        }
         val outcome = runSequence { }
-        onRefreshCompleted(outcome.completedAt)
+        if (isRefreshCurrent()) {
+            onRefreshCompleted(outcome.completedAt)
+        }
         // toastEvents.emit("Cache rebuilt.")
     } catch (e: kotlinx.coroutines.CancellationException) {
         throw e
@@ -38,10 +43,12 @@ internal suspend fun runCacheRefreshWorkflow(
         logError(e)
         // toastEvents.emit("Cache rebuild failed. Yaja kept the current data safely.")
     } finally {
-        uiState.update { it.copy(isLoading = false) }
-        syncProgress.value = null
-        if (!isDeferredStartupActive()) {
-            backgroundWorkLabel.value = null
+        if (isRefreshCurrent()) {
+            uiState.update { it.copy(isLoading = false) }
+            syncProgress.value = null
+            if (!isDeferredStartupActive()) {
+                backgroundWorkLabel.value = null
+            }
         }
     }
 }

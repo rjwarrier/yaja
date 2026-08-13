@@ -201,7 +201,7 @@
     <string name="tasker_screen_section_notes">ملحوظات</string>
     <string name="tasker_screen_body_notes">لا تتم مشاركة نص الإدخال مع تاسكر إلا إذا قمت بتمكين تضمين نص الإدخال في الأحداث. إذا لم يُظهر تاسكر أحدث الخيارات أو المتغيرات، فأعد فتح شاشة تكوين تاسكر بعد تحديث Yaja.</string>
     <string name="tasker_screen_section_example">مثال</string>
-    <string name="tasker_screen_body_example">مثال الإجراء: إجراء تاسكر &gt; Yaja Quick Capture &gt; إلحاق، مع تعيين المطابقة / الرأس على المكالمات الفائتة وتعيين الخط للإلحاق بمتغير تاسكر. مثال على الحدث: حدث تاسكر &gt; أحداث مجلة Yaja &gt; تعديل الإدخال، ثم استخدم المتغيرات مثل %%yaja_event_type، و%%yaja_date، واختياريًا %%yaja_entry_text.</string>
+    <string name="tasker_screen_body_example" formatted="false">مثال الإجراء: إجراء تاسكر &gt; Yaja Quick Capture &gt; إلحاق، مع تعيين المطابقة / الرأس على المكالمات الفائتة وتعيين الخط للإلحاق بمتغير تاسكر. مثال على الحدث: حدث تاسكر &gt; أحداث مجلة Yaja &gt; تعديل الإدخال، ثم استخدم المتغيرات مثل %%yaja_event_type، و%%yaja_date، واختياريًا %%yaja_entry_text.</string>
     <string name="tasker_screen_section_use_cases">حالات الاستخدام</string>
     <string name="tasker_screen_use_case_1">1. استخدم حدث مجلة Yaja في تاسكر لتشغيل إجراء مزامنة FolderSync، بحيث يتم دفع مجلد Yaja الخاص بك إلى أي مزود سحابي بعد تغيير الإدخالات.</string>
     <string name="tasker_screen_use_case_2">2. استخدم Pushbullet مع تاسكر لإرسال نص إلى Yaja Quick Capture، بحيث يتم حفظ النص المدفوع كإدخال جديد لليوم الحالي.</string>
@@ -629,10 +629,10 @@
     <string name="rebuild_cache_storage_transparency_title">شفافية التخزين على الجهاز</string>
     <string name="rebuild_cache_storage_transparency_desc">يستخدم Yaja نموذج تخزين محلي آمن. تظل بيانات دفتر يومياتك الشخصية محلية ولا تترك جهازك مطلقًا في أي وقت:</string>
     <string name="rebuild_cache_source_of_truth_title">مصدر الحقيقة (ملفات تخفيض السعر)</string>
-    <string name="rebuild_cache_source_of_truth_desc">يتم حفظ جميع الإدخالات وعناصر قائمة التحقق (todos) وأحداث المخطط الزمني والنجوم والعلامات بشكل دائم في ملفات Markdown (.md) ذات النص العادي في مجلد دفتر اليومية المحلي المحدد. بياناتك مملوكة لك بنسبة 100% وموجودة بالكامل على جهازك.</string>
+    <string name="rebuild_cache_source_of_truth_desc" formatted="false">يتم حفظ جميع الإدخالات وعناصر قائمة التحقق (todos) وأحداث المخطط الزمني والنجوم والعلامات بشكل دائم في ملفات Markdown (.md) ذات النص العادي في مجلد دفتر اليومية المحلي المحدد. بياناتك مملوكة لك بنسبة 100% وموجودة بالكامل على جهازك.</string>
     <string name="rebuild_cache_read_cache_title">قراءة ذاكرة التخزين المؤقت والفهرس (قاعدة بيانات SQLite)</string>
     <string name="rebuild_cache_read_cache_desc">لتمكين التحميل الفوري للشاشة، وإبرازات التقويم، والكلمات الرئيسية، والإحصائيات دون فحص نظام الملفات في كل تمريرة، يقوم Yaja بتحليل ملفات Markdown وفهرستها في قاعدة بيانات Room SQLite المحلية على جهازك.</string>
-    <string name="rebuild_cache_local_private_title">100٪ محلي وخاص</string>
+    <string name="rebuild_cache_local_private_title" formatted="false">100٪ محلي وخاص</string>
     <string name="rebuild_cache_local_private_desc">ليس لدى Yaja أي قواعد بيانات سحابية، أو خوادم نسخ احتياطي عن بعد، أو قياس عن بعد لتتبع النص الخاص بك. تظل جميع إدخالات دفتر اليومية والبيانات التي تم تحليلها بشكل صارم على جهازك الفعلي ولا تتركها أبدًا في أي وقت.</string>
     <string name="keywords_export_success">الكلمات الرئيسية التي تم تصديرها</string>
     <string name="keywords_export_failed">تعذر تصدير الكلمات الرئيسية</string>
@@ -1326,4 +1326,270 @@
     <string name="settings_accent_style_analogous">مماثل</string>
     <string name="settings_accent_style_triadic">ثلاثي</string>
     <string name="settings_accent_style_soft">ناعم</string>
+
+
+    <!-- Machine-filled missing translations; review native phrasing before release. -->
+    <string name="cd_voice_capture">التقاط الصوت</string>
+    <string name="calendar_empty_month_hint">لا يوجد إدخالات في هذا الشهر حتى الآن.</string>
+    <string name="settings_data_recovery_subtitle">أدوات التخزين والنسخ الاحتياطي والاستعادة والاستيراد وذاكرة التخزين المؤقت</string>
+    <string name="settings_journal_experience_subtitle">عرض الإدخال وسلوك التقويم والكلمات الرئيسية للتاريخ والحركة</string>
+    <string name="settings_navigation_gestures_subtitle">التنقل السفلي وعلامات التبويب الاختيارية والتمرير السريع وعناصر التحكم في السحب
+قفل</string>
+    <string name="settings_privacy_security_subtitle">PIN وفتح القفل البيومتري والقفل التلقائي ووضع إخفاء النص</string>
+    <string name="settings_progressive_title">يقترح التعديلات التالية</string>
+    <string name="settings_progressive_subtitle">اختصارات للإعدادات التي يمكن أن تجعل تشغيل Yaja أسهل يومًا بعد يوم.</string>
+    <string name="settings_progressive_privacy_pin">مجموعة PIN</string>
+    <string name="settings_progressive_privacy_review">مراجعة الخصوصية</string>
+    <string name="settings_progressive_nav_try">جرب التنقل التكيفي
+تشغيل نظام التنقل التكيفي</string>
+    <string name="settings_progressive_nav_active"></string>
+    <string name="settings_progressive_calendar_density">التقويم: %1$s</string>
+    <string name="settings_language_picker_title">اختر اللغة</string>
+    <string name="settings_language_picker_subtitle">ابحث أو اختر لغة العرض لـ Yaja.</string>
+    <string name="settings_language_search_placeholder">لغات البحث
+كثافة التقويم</string>
+    <string name="settings_calendar_density_title"></string>
+    <string name="settings_calendar_density_subtitle">قم بضبط شبكة التقويم للحصول على الراحة، أو المسح الضوئي المضغوط، أو أقصى كثافة للتاريخ.
+راحة</string>
+    <string name="settings_calendar_density_comfortable"></string>
+    <string name="settings_calendar_density_compact">مدمج</string>
+    <string name="settings_calendar_density_dense">كثيفة</string>
+    <string name="settings_journal_carry_forward_title">تابع المهام غير المحددة للأمام</string>
+    <string name="settings_journal_carry_forward_subtitle">قم بإحضار عناصر قائمة التحقق المفتوحة بالأمس إلى اليوم عند تحميل اليوم.</string>
+    <string name="quick_capture_tile_label">التقاط سريع</string>
+    <string name="recurring_task_execution_day_of_month_event">تم إنشاء حدث %1$s في اليوم %2$d. يتم كتابته في ملفك اليومي %3$d قبل أيام.</string>
+    <string name="recurring_task_execution_weekday_event">تم إنشاء حدث %1$s على %2$s. يتم كتابته في ملفك اليومي %3$d قبل أيام.</string>
+    <string name="recurring_task_execution_monthly_weekday_event">يتم تكوين حدث شهريًا بنفس تكرار %1$s كتاريخ البدء. يتم كتابته في ملفك اليومي %2$d قبل أيام.</string>
+    <string name="recurring_task_execution_month_boundary_event">تم إنشاء حدث %1$s على %2$s للشهر المستحق. يتم كتابته في ملفك اليومي %3$d قبل أيام.</string>
+    <string name="recurring_task_add_event">إضافة حدث متكرر</string>
+    <string name="recurring_task_edit_event">تحرير الحدث المتكرر</string>
+    <string name="recurring_task_field_title_event">اسم الحدث</string>
+    <string name="recurring_task_field_title_event_hint">مثال: اجتماع المزامنة الأسبوعي</string>
+    <string name="recurring_task_frequency_help_event">اختر عدد مرات تكرار هذا الحدث.</string>
+    <string name="recurring_task_details_weekday_help_event">اختر يوم الأسبوع الذي يصبح فيه هذا الحدث مستحقًا.</string>
+    <string name="recurring_task_delete_confirm_title_event">هل تريد حذف الحدث المتكرر؟</string>
+    <string name="recurring_task_end_help_event">اختر متى يتوقف هذا الحدث عن التكرار</string>
+    <string name="recurring_task_end_count_help_event">يتوقف بعد إنشاء هذا العدد من الأحداث.</string>
+    <string name="settings_adaptive_bottom_nav_title">التنقل السفلي التكيفي</string>
+    <string name="settings_adaptive_bottom_nav_subtitle">قم بعرض علامات التبويب السفلية الاختيارية فقط عندما يحتوي هذا القسم على محتوى، مع الاحتفاظ بالشاشات التي تم تكوينها في الدرج.
+تحديث</string>
+    <string name="todos_empty_refresh"></string>
+    <string name="settings_onboarding_next_launch_title">إظهار الإعداد الترحيبي عند الإطلاق التالي</string>
+    <string name="settings_onboarding_next_launch_subtitle">قم بتشغيل المقدمة واختيار التخزين مرة واحدة عند تشغيل التطبيق التالي، ثم قم بإيقاف تشغيل هذا تلقائيًا.</string>
+    <string name="settings_obsidian_export_title">تصدير سبج</string>
+    <string name="settings_obsidian_export_description">قم بنسخ يومياتك في قبو تخفيض بسيط - ملف واحد يوميًا، مع إعادة كتابة الإشارات إلى الأشخاص والأماكن كـ [[روابط ويكي]]. لا يتم قفل بياناتك أبدًا في Yaja.</string>
+    <string name="settings_obsidian_export_button">خزنة التصدير
+مجلد تخفيض السعر</string>
+    <string name="settings_import_source_markdown_folder"></string>
+    <string name="settings_import_source_markdown_folder_subtitle">أي مجلد يحتوي على ملفات .md — Obsidian، أو Jekyll، أو الملاحظات اليومية المشابهة</string>
+    <string name="onboarding_title">مرحبًا بك في yaja</string>
+    <string name="onboarding_body">Yaja هي مجلة تخفيض السعر المحلية الأولى. تظل إدخالاتك على جهازك كملفات عادية، لذلك يظل التطبيق شخصيًا ومتينًا وبعيدًا عن طريقك.</string>
+    <string name="onboarding_progress">الخطوة %1$d من %2$d</string>
+    <string name="onboarding_intro_private">خاص بشكل افتراضي. يحتفظ Yaja بمذكرتك على جهازك بدلاً من توجيهها عبر خدمة سحابية.
+إدخالات</string>
+    <string name="onboarding_intro_files">عبارة عن ملفات تخفيض بسيطة، لذا تظل كتابتك محمولة ومفهومة خارج التطبيق أيضًا.</string>
+    <string name="onboarding_intro_flexible">يمكنك البدء ببساطة الآن والاستمرار في تخصيص التخزين والواردات والمظهر والأمان لاحقًا.</string>
+    <string name="onboarding_storage_title">اختر المكان الذي يجب أن تتواجد فيه الإدخالات الجديدة</string>
+    <string name="onboarding_storage_body">يمكنك الاحتفاظ بكل شيء في وحدة تخزين التطبيقات الداخلية أو اختيار المجلد الخاص بك. يمكنك تغيير ذلك لاحقًا من الإعدادات &gt; البيانات والاسترداد.</string>
+    <string name="onboarding_storage_internal">التخزين الحالي: تخزين التطبيقات الداخلي</string>
+    <string name="onboarding_storage_custom">التخزين الحالي: مجلد مخصص (%1$s)</string>
+    <string name="onboarding_storage_note">تحتاج المجلدات المخصصة إلى إذن كتابة حتى يتمكن Yaja من حفظ ملفات دفتر اليومية بأمان.</string>
+    <string name="onboarding_continue_internal">تابع مع وحدة التخزين الداخلية</string>
+    <string name="onboarding_switch_internal">قم بالتبديل إلى وحدة التخزين الداخلية</string>
+    <string name="onboarding_choose_folder">اختر مجلد مخصص</string>
+    <string name="onboarding_customize_title">اختر بعض الإعدادات الافتراضية للبدء</string>
+    <string name="onboarding_customize_body">هذه هي تفضيلات اختيارية للتشغيل لأول مرة. يمكن تغيير كل شيء هنا لاحقًا من الإعدادات.
+موضوع</string>
+    <string name="onboarding_theme_title"></string>
+    <string name="onboarding_backup_title">تذكير النسخ الاحتياطي</string>
+    <string name="onboarding_backup_body">اختر الوقت الذي يجب أن يذكرك فيه Yaja بأن الوقت قد حان لإنشاء ملف مضغوط احتياطي.</string>
+    <string name="onboarding_backup_off">معطل</string>
+    <string name="onboarding_backup_30">30 يومًا</string>
+    <string name="onboarding_backup_60">60 يومًا</string>
+    <string name="onboarding_version_history_title">تاريخ الإصدار</string>
+    <string name="onboarding_version_history_body">احتفظ بنسخ آمنة قبل إجراء عمليات التحرير والحذف المحفوفة بالمخاطر.</string>
+    <string name="onboarding_pin_setup">قم بإعداد قفل PIN
+قفل</string>
+    <string name="onboarding_pin_enabled">PIN ممكّن بالفعل</string>
+    <string name="onboarding_import_title">قم بإحضار مجلة موجودة إذا كنت تريد ذلك</string>
+    <string name="onboarding_import_body">يمكنك الاستيراد الآن، أو تخطي ذلك والقيام بذلك لاحقًا من الإعدادات &gt; البيانات والاسترداد.</string>
+    <string name="onboarding_import_running">جارٍ استيراد %1$d من %2$d...</string>
+    <string name="onboarding_import_success">انتهى الاستيراد: %1$d أيام جديدة، تم دمج %2$d.
+تم إلغاء الاستيراد</string>
+    <string name="onboarding_import_cancelled">.</string>
+    <string name="onboarding_import_later">يمكنك إنهاء عملية الإعداد حتى لو كانت عملية الاستيراد لا تزال قيد التشغيل في الخلفية.</string>
+    <string name="onboarding_back">العودة</string>
+    <string name="onboarding_next">التالي
+لمسة نهائية</string>
+    <string name="onboarding_finish"></string>
+    <string name="onboarding_skip">تخطى الآن</string>
+    <string name="onboarding_rerun_note">تمت إعادة فتح هذا الإعداد من الإعدادات ولن يظهر مرة أخرى إلا إذا طلبت ذلك.</string>
+    <string name="settings_other_apps_title">تطبيقات أخرى من قبل المطور</string>
+    <string name="settings_github_title">عرض المصدر على GitHub
+مساعدة</string>
+    <string name="settings_help_card_title"></string>
+    <string name="share_app_title">شارك ياجا</string>
+    <string name="share_app_default_message">yaja - تطبيق يومية آخر \\n\\nA مجلة يومية خالية من التشتيت تقوم بتخزين الإدخالات كملفات تخفيض بسيطة.</string>
+    <string name="share_app_include_image_title">تضمين الصورة</string>
+    <string name="share_app_include_image_subtitle">قم بإرفاق الصورة الترويجية مع رسالتك
+رسالة</string>
+    <string name="share_app_message_label"></string>
+    <string name="share_app_link_note">يتم إضافة هذا الرابط في النهاية تلقائيًا:
+الصورة الترويجية لـ</string>
+    <string name="share_app_image_cd">yaja
+تخطيط</string>
+    <string name="settings_layout_label">FAB</string>
+    <string name="settings_layout_desc">اختر أزرار إجراءات التطبيق الجانبية التي تظهر عليها.
+أيقونة التطبيق</string>
+    <string name="settings_app_icon_label"></string>
+    <string name="settings_app_icon_desc">اختر الأيقونة التي تظهر على شاشتك الرئيسية. تتم إعادة تشغيل التطبيق لفترة وجيزة عند التبديل.</string>
+    <string name="settings_app_icon_confirm_title">هل تريد تغيير أيقونة التطبيق؟
+سيتم إعادة تشغيل</string>
+    <string name="settings_app_icon_confirm_message">Yaja لتطبيق الرمز الجديد.</string>
+    <string name="settings_app_icon_classic">كلاسيك
+دفتر</string>
+    <string name="settings_app_icon_notebook"></string>
+    <string name="settings_app_icon_quill">ريشة</string>
+    <string name="settings_app_icon_quick_notes">ملاحظات سريعة</string>
+    <string name="settings_app_icon_sticky_note">ملاحظة لاصقة
+مكتبة</string>
+    <string name="settings_app_icon_library">قلم حبر</string>
+    <string name="settings_app_icon_ink_pen">مقالة</string>
+    <string name="settings_app_icon_article"></string>
+    <string name="settings_app_icon_edit_square">مربع التحرير</string>
+    <string name="settings_app_icon_note_stack">كومة الملاحظات
+موضوع</string>
+    <string name="settings_app_icon_subject">تغذية</string>
+    <string name="settings_app_icon_feed">كتاب</string>
+    <string name="settings_app_icon_book_style"></string>
+    <string name="settings_app_icon_border_pen">قلم الحدود</string>
+    <string name="settings_app_icon_post_add">إضافة مشاركة
+دفتر</string>
+    <string name="settings_app_icon_notebook_filled">(مظلل)
+ريشة</string>
+    <string name="settings_app_icon_quill_filled">(مظللة)
+ملاحظات سريعة</string>
+    <string name="settings_app_icon_quick_notes_filled">(مظللة)</string>
+    <string name="settings_app_icon_sticky_note_filled">مذكرة لاصقة (مظللة)
+مكتبة</string>
+    <string name="settings_app_icon_library_filled">(مظللة)
+قلم حبر</string>
+    <string name="settings_app_icon_ink_pen_filled">(مظلل)</string>
+    <string name="settings_app_icon_article_filled">المقالة (مظللة)
+مربع التحرير</string>
+    <string name="settings_app_icon_edit_square_filled">(مظلل)</string>
+    <string name="settings_app_icon_note_stack_filled">مجموعة الملاحظات (مظللة)</string>
+    <string name="settings_app_icon_subject_filled">الموضوع (مظلل)
+تغذية</string>
+    <string name="settings_app_icon_feed_filled">(مظللة)
+كتاب</string>
+    <string name="settings_app_icon_book_style_filled">(مظلل)
+قلم حدود</string>
+    <string name="settings_app_icon_border_pen_filled">(مظلل)</string>
+    <string name="settings_app_icon_post_add_filled">إضافة مشاركة (مظللة)
+العلامة التجارية</string>
+    <string name="settings_app_icon_wordmark"></string>
+    <string name="settings_fab_side_right">FABs على اليمين</string>
+    <string name="settings_fab_side_left">FABs على اليسار</string>
+    <string name="settings_fab_side_right_short">صحيح</string>
+    <string name="settings_fab_side_left_short">يسار</string>
+    <string name="timeline_filter_all">الكل
+المفضلة</string>
+    <string name="timeline_filter_favorites"></string>
+    <string name="timeline_filter_labeled">المسمى</string>
+    <string name="timeline_filter_with_entries">مع الإدخالات</string>
+    <string name="timeline_density_comfortable">مريح</string>
+    <string name="timeline_density_compact">مدمج
+المسار الكلاسيكي</string>
+    <string name="timeline_style_track">بطاقة</string>
+    <string name="timeline_style_card">الحديثة</string>
+    <string name="timeline_all_years">كل السنوات
+أيام دخول</string>
+    <string name="timeline_month_summary_format">%1$d | %2$d المسمى | المفضلة %3$d</string>
+    <string name="addentry_full_day_event_label">حدث ليوم كامل</string>
+    <string name="addentry_switch_to_keyboard">قم بالتبديل إلى إدخال لوحة المفاتيح</string>
+    <string name="addentry_switch_to_dial">قم بالتبديل للاتصال</string>
+    <string name="home_loading_title">يتم التحميل هذا اليوم</string>
+    <string name="home_loading_subtitle">إعداد الإدخالات والتسميات والمتابعات.</string>
+    <string name="statistics_reading_time">وقت القراءة
+متوسط</string>
+    <string name="statistics_avg_reading_time_per_entry">. قراءة / دخول</string>
+    <plurals name="statistics_minutes_count">
+        <item quantity="one">%1$d دقيقة</item>
+        <item quantity="other">%1$d دقيقة</item>
+    </plurals>
+    <string name="addentry_cd_enter_focus_mode">أدخل إلى وضع التركيز</string>
+    <string name="addentry_cd_exit_focus_mode">للخروج من وضع التركيز</string>
+    <string name="addentry_reading_time_format">%1$d دقيقة قراءة</string>
+    <string name="home_cd_enable_hide_text_mode">تمكين وضع إخفاء النص</string>
+    <string name="home_cd_disable_hide_text_mode">تعطيل وضع إخفاء النص</string>
+    <string name="home_hidden_entry_preview">النص مخفي. اضغط مرة واحدة للكشف.</string>
+    <string name="home_hidden_result_preview">معاينة مخفية أثناء تشغيل وضع إخفاء النص.
+قراءة</string>
+    <string name="home_stat_read"></string>
+    <string name="settings_hide_text_mode_title">إخفاء وضع النص</string>
+    <string name="settings_hide_text_mode_subtitle">قم بإخفاء نص دفتر اليومية في الصفحة الرئيسية حتى تنقر على أحد الإدخالات للكشف عنه.
+لوحة تحكم الخصوصية</string>
+    <string name="settings_privacy_dashboard_title"></string>
+    <string name="settings_privacy_dashboard_overview">الشفافية المحلية
+موقع تخزين</string>
+    <string name="settings_privacy_storage_title">قواعد النسخ الاحتياطي</string>
+    <string name="settings_privacy_backup_title"></string>
+    <string name="settings_privacy_backup_summary">آخر نسخة احتياطية: %1$s. عتبة التذكير: أيام %2$d.</string>
+    <string name="settings_privacy_lock_title">قفل التطبيقات</string>
+    <string name="settings_privacy_lock_summary">PIN: %1$s. القياسات الحيوية: %2$s. القفل التلقائي بعد دقائق %3$d.</string>
+    <string name="settings_privacy_hide_mode_title">إخفاء وضع النص</string>
+    <string name="settings_privacy_hide_mode_on">يتم إخفاء النص الرئيسي بشكل افتراضي حتى تكشف عن إدخال.</string>
+    <string name="settings_privacy_hide_mode_off">النص الرئيسي مرئي بشكل طبيعي.
+التعرض</string>
+    <string name="settings_privacy_tasker_title">Tasker</string>
+    <string name="settings_privacy_tasker_summary">الوصول السريع للالتقاط: %1$s. مشاركة الحدث: %2$s. نص الإدخال المضمن في الأحداث: %3$s.</string>
+    <string name="settings_privacy_share_title">المشاركة اليدوية</string>
+    <string name="settings_privacy_share_summary">يمكن أن يغادر نص الإدخال التطبيق فقط عند استخدام المشاركة بشكل صريح من المحرر أو تصدير نسخة احتياطية.
+تعرض القطعة</string>
+    <string name="settings_privacy_widgets_title"></string>
+    <string name="settings_privacy_widgets_summary">%1$d نشطة. الالتقاط السريع: %2$d. المهام السريعة: %3$d. الخريطة الحرارية: %4$d. قائمة المهام: %5$d.
+تشغيل</string>
+    <string name="settings_privacy_state_on"></string>
+    <string name="settings_privacy_state_off">معطل</string>
+    <string name="settings_privacy_state_yes">نعم
+رقم</string>
+    <string name="settings_privacy_state_no"></string>
+    <string name="settings_privacy_risk_low">التعرض المنخفض</string>
+    <string name="settings_privacy_risk_medium">التعرض المتوسط</string>
+    <string name="settings_privacy_risk_high">التعرض العالي</string>
+    <string name="settings_privacy_risk_low_summary">تظل معظم نصوص دفتر اليومية على الجهاز ما لم تشاركها بشكل صريح.</string>
+    <string name="settings_privacy_risk_medium_summary">يمكن لعدد قليل من الأسطح الممكنة عرض النص أو البيانات التعريفية خارج عرض المجلة الرئيسي.</string>
+    <string name="settings_privacy_risk_high_summary">يمكن للعديد من الأسطح الممكنة الكشف عن محتوى المجلة أو بيانات التعريف. يوصى بتشديد بعض الإعدادات.</string>
+    <string name="settings_privacy_exposure_title">مستوى التعرض الحالي
+أسطح التعرض</string>
+    <string name="settings_privacy_surfaces_title"></string>
+    <string name="settings_privacy_storage_backup_title">التخزين والنسخ الاحتياطي</string>
+    <string name="settings_privacy_controls_title">ضوابط الخصوصية
+توصيات</string>
+    <string name="settings_privacy_recommendations_title"></string>
+    <string name="settings_privacy_quick_actions_title">الإجراءات السريعة</string>
+    <string name="settings_privacy_surface_local_title">المجلة الموجودة على الجهاز</string>
+    <string name="settings_privacy_surface_local_summary">يتم بث ملفاتك اليومية محليًا وتبقى داخل التطبيق ما لم تستخدم المشاركة أو النسخ الاحتياطي أو Tasker أو عناصر واجهة المستخدم.</string>
+    <string name="settings_privacy_state_default">الافتراضي</string>
+    <string name="settings_privacy_state_manual">يدوي فقط</string>
+    <string name="settings_privacy_state_active">نشط</string>
+    <string name="settings_privacy_state_visible">مرئية</string>
+    <string name="settings_privacy_state_none">لا شيء</string>
+    <string name="settings_privacy_recommend_pin">أضف PIN حتى لا يفتح التطبيق مباشرة في دفتر يومياتك.</string>
+    <string name="settings_privacy_recommend_hide">قم بتشغيل \"إخفاء وضع النص\" للحفاظ على أمان المنزل في الأماكن العامة أو بالقرب من الأشخاص الآخرين.</string>
+    <string name="settings_privacy_recommend_tasker_text">قم بتعطيل نص الإدخال في أحداث Tasker إلا إذا كنت بحاجة حقًا إلى نص دفتر اليومية الكامل هناك.</string>
+    <string name="settings_privacy_recommend_widgets">قم بمراجعة عناصر واجهة المستخدم النشطة نظرًا لأن أسطح الشاشة الرئيسية يمكن أن تعرض البيانات التعريفية في لمحة واحدة.</string>
+    <string name="settings_privacy_action_set_pin">مجموعة PIN</string>
+    <string name="settings_privacy_action_enable_hide">تمكين إخفاء النص</string>
+    <string name="settings_privacy_action_disable_tasker_text">تعطيل نص Tasker</string>
+    <string name="settings_privacy_action_open_tasker">افتح إعدادات Tasker</string>
+    <string name="widget_todo_empty">رائع، لا توجد مهام معلقة!</string>
+    <string name="widget_todo_header_todos_events">تودوس والأحداث
+حدث</string>
+    <string name="widget_todo_event_label"></string>
+    <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="action_clear">واضح</string>
+    <string name="recurring_task_start_section">جدول البدء</string>
+    <string name="recurring_task_start_help">حدد تاريخ البدء والوقت الاختياري لهذا الجدول المتكرر.</string>
 </resources>
