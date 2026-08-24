@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynamické vzory:</string>
     <string name="shortcodes_help_dynamic_desc">Použijte {{today:FORMAT}}, {{včera:FORMAT}}, {{tomorrow:FORMAT}} nebo {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Příklad: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Běžné formáty: dd-MM-rr, HH:mm, EEEE (název dne).</string>
     <string name="action_close">Blízko</string>
     <string name="keyword_detail_title_fallback">Klíčové slovo</string>
     <string name="keyword_detail_not_found">Klíčové slovo nenalezeno</string>
@@ -1554,4 +1553,9 @@ Vstupní dny</string>
 Událost</string>
     <string name="widget_todo_event_label"></string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Dynamické</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" není typ data, takže zůstane jako prostý text. Použijte: %2$s</string>
+    <string name="shortcodes_code_hint">Text, který spustí rozbalení, např. @today</string>
+    <string name="shortcodes_expansion_hint">Na co se rozbalí při psaní</string>
+    <string name="shortcodes_help_format_codes_title">Kódy formátu</string>
 </resources>

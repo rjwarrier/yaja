@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Corak Dinamik:</string>
     <string name="shortcodes_help_dynamic_desc">Gunakan {{hari ini:FORMAT}}, {{semalam:FORMAT}}, {{esok:FORMAT}} atau {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Contoh: @yday -&gt; Semalam: {{semalam:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Format biasa: dd-MM-yy, HH:mm, EEEE (nama hari).</string>
     <string name="action_close">tutup</string>
     <string name="keyword_detail_title_fallback">Kata kunci</string>
     <string name="keyword_detail_not_found">Kata kunci tidak ditemui</string>
@@ -1582,4 +1581,9 @@ Acara</string>
     <string name="action_clear">Jelas</string>
     <string name="recurring_task_start_section">Jadual Mula</string>
     <string name="recurring_task_start_help">Pilih tarikh mula dan masa pilihan untuk jadual berulang ini.</string>
+    <string name="shortcodes_dynamic_badge">Dinamik</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" bukan jenis tarikh, jadi ini kekal sebagai teks biasa. Guna: %2$s</string>
+    <string name="shortcodes_code_hint">Teks yang mencetuskan pengembangan, cth. @today</string>
+    <string name="shortcodes_expansion_hint">Menjadi apa apabila ditaip</string>
+    <string name="shortcodes_help_format_codes_title">Kod Format</string>
 </resources>

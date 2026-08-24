@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Δυναμικά μοτίβα:</string>
     <string name="shortcodes_help_dynamic_desc">Χρησιμοποιήστε τα {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} ή {{ now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Παράδειγμα: @yday -&gt; Χθες: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Συνήθεις μορφές: ηη-ΜΜ-εε, ΩΩ:λλ, ΕΕΕΕ (όνομα ημέρας).</string>
     <string name="action_close">Κοντά</string>
     <string name="keyword_detail_title_fallback">Λέξη-κλειδί</string>
     <string name="keyword_detail_not_found">Η λέξη-κλειδί δεν βρέθηκε</string>
@@ -1560,4 +1559,9 @@
     <string name="action_clear">Καθαρό</string>
     <string name="recurring_task_start_section">Έναρξη χρονοδιαγράμματος</string>
     <string name="recurring_task_start_help">Επιλέξτε την ημερομηνία έναρξης και την προαιρετική ώρα για αυτό το επαναλαμβανόμενο πρόγραμμα.</string>
+    <string name="shortcodes_dynamic_badge">Δυναμικό</string>
+    <string name="shortcodes_unknown_placeholder">Το \"%1$s\" δεν είναι τύπος ημερομηνίας, οπότε παραμένει απλό κείμενο. Χρησιμοποιήστε: %2$s</string>
+    <string name="shortcodes_code_hint">Κείμενο που ενεργοποιεί την επέκταση, π.χ. @today</string>
+    <string name="shortcodes_expansion_hint">Σε τι επεκτείνεται όταν πληκτρολογείται</string>
+    <string name="shortcodes_help_format_codes_title">Κωδικοί μορφής</string>
 </resources>

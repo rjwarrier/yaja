@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">Pola Dinamis:</string>
     <string name="shortcodes_help_dynamic_desc">Gunakan {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, atau {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Contoh: @yday -> Kemarin: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Format umum: dd-MM-yy, HH:mm, EEEE (nama hari).</string>
     <string name="action_close">Tutup</string>
     <string name="keyword_detail_title_fallback">Kata Kunci</string>
     <string name="keyword_detail_not_found">Kata kunci tidak ditemukan</string>
@@ -1584,6 +1583,11 @@ Acara</string>
 Jadwal</string>
     <string name="recurring_task_start_section">Dimulai</string>
     <string name="recurring_task_start_help">Pilih tanggal mulai dan waktu opsional untuk jadwal berulang ini.</string>
+    <string name="shortcodes_dynamic_badge">Dinamis</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" bukan tipe tanggal, jadi ini tetap teks biasa. Gunakan: %2$s</string>
+    <string name="shortcodes_code_hint">Teks yang memicu perluasan, mis. @today</string>
+    <string name="shortcodes_expansion_hint">Menjadi apa saat diketik</string>
+    <string name="shortcodes_help_format_codes_title">Kode Format</string>
 </resources>
 
 

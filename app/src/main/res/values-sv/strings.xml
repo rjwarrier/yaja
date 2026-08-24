@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynamiska mönster:</string>
     <string name="shortcodes_help_dynamic_desc">Använd {{today:FORMAT}}, {{yesterday:FORMAT}}, {{morgon:FORMAT}} eller {{nu:FORMAT}}.</string>
     <string name="shortcodes_help_example">Exempel: @yday -&gt; Igår: {{igår:dd-MMM-åå}}</string>
-    <string name="shortcodes_help_common_formats">Vanliga format: dd-MM-åå, TT:mm, EEEE (dagens namn).</string>
     <string name="action_close">Nära</string>
     <string name="keyword_detail_title_fallback">Nyckelord</string>
     <string name="keyword_detail_not_found">Sökordet hittades inte</string>
@@ -1548,4 +1547,9 @@
     <string name="action_clear">Rensa</string>
     <string name="recurring_task_start_section">Schemastart</string>
     <string name="recurring_task_start_help">Välj startdatum och valfri tid för detta återkommande schema.</string>
+    <string name="shortcodes_dynamic_badge">Dynamisk</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" är inte en datumtyp, så detta förblir vanlig text. Använd: %2$s</string>
+    <string name="shortcodes_code_hint">Text som utlöser expansionen, t.ex. @today</string>
+    <string name="shortcodes_expansion_hint">Vad det expanderar till när du skriver</string>
+    <string name="shortcodes_help_format_codes_title">Formatkoder</string>
 </resources>

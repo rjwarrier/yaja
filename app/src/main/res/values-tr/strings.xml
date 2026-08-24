@@ -944,7 +944,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dinamik Desenler:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} veya {{now:FORMAT}} kullanın.</string>
     <string name="shortcodes_help_example">Örnek: @yday -> Dün: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Ortak biçimler: dd-MM-yy, HH:mm, EEEE (gün adı).</string>
     <string name="action_close">Kapat</string>
     <string name="keyword_detail_title_fallback">Anahtar Kelime</string>
     <string name="keyword_detail_not_found">Anahtar kelime bulunamadı</string>
@@ -1548,4 +1547,9 @@
     <string name="widget_todo_header_todos_events">Yapılacaklar ve Etkinlikler</string>
     <string name="widget_todo_event_label">Etkinliği</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Dinamik</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" bir tarih türü değil, bu nedenle düz metin olarak kalır. Kullanın: %2$s</string>
+    <string name="shortcodes_code_hint">Genişletmeyi tetikleyen metin, örn. @today</string>
+    <string name="shortcodes_expansion_hint">Yazıldığında neye dönüştüğü</string>
+    <string name="shortcodes_help_format_codes_title">Biçim Kodları</string>
 </resources>

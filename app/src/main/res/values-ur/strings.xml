@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">متحرک پیٹرن:</string>
     <string name="shortcodes_help_dynamic_desc">{{آج:FORMAT}}، {{کل:FORMAT}}، {{کل:FORMAT}}، یا {{اب:FORMAT}} استعمال کریں۔</string>
     <string name="shortcodes_help_example">مثال: @yday -&gt; کل: {{کل:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">عام فارمیٹس: dd-MM-yy، HH:mm، EEEE (دن کا نام)۔</string>
     <string name="action_close">بند</string>
     <string name="keyword_detail_title_fallback">کلیدی لفظ</string>
     <string name="keyword_detail_not_found">کلیدی لفظ نہیں ملا</string>
@@ -1549,4 +1548,9 @@
     <string name="action_clear">صاف</string>
     <string name="recurring_task_start_section">شیڈول شروع</string>
     <string name="recurring_task_start_help">اس بار بار چلنے والے شیڈول کے لیے تاریخ آغاز اور اختیاری وقت منتخب کریں۔</string>
+    <string name="shortcodes_dynamic_badge">متحرک</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" تاریخ کی قسم نہیں ہے، اس لیے یہ سادہ متن ہی رہے گا۔ استعمال کریں: %2$s</string>
+    <string name="shortcodes_code_hint">وہ متن جو توسیع شروع کرتا ہے، مثلاً @today</string>
+    <string name="shortcodes_expansion_hint">ٹائپ کرنے پر یہ کیا بن جاتا ہے</string>
+    <string name="shortcodes_help_format_codes_title">فارمیٹ کوڈز</string>
 </resources>

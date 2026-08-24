@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">الأنماط الديناميكية:</string>
     <string name="shortcodes_help_dynamic_desc">استخدم {{today:FORMAT}} أو {{yesterday:FORMAT}} أو {{tomorrow:FORMAT}} أو {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">مثال: @yday -&gt; أمس: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">التنسيقات الشائعة: dd-MM-yy، HH:mm، EEEE (اسم اليوم).</string>
     <string name="action_close">يغلق</string>
     <string name="keyword_detail_title_fallback">الكلمة الرئيسية</string>
     <string name="keyword_detail_not_found">لم يتم العثور على الكلمة الرئيسية</string>
@@ -1592,4 +1591,9 @@
     <string name="action_clear">واضح</string>
     <string name="recurring_task_start_section">جدول البدء</string>
     <string name="recurring_task_start_help">حدد تاريخ البدء والوقت الاختياري لهذا الجدول المتكرر.</string>
+    <string name="shortcodes_dynamic_badge">ديناميكي</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ليس نوع تاريخ، لذا سيبقى نصًا عاديًا. استخدم: %2$s</string>
+    <string name="shortcodes_code_hint">النص الذي يشغّل التوسيع، مثل @today</string>
+    <string name="shortcodes_expansion_hint">ما الذي يتوسع إليه عند الكتابة</string>
+    <string name="shortcodes_help_format_codes_title">رموز التنسيق</string>
 </resources>

@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">ಡೈನಾಮಿಕ್ ಮಾದರಿಗಳು:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, ಅಥವಾ {{now:FORMAT}} ಬಳಸಿ.</string>
     <string name="shortcodes_help_example">ಉದಾಹರಣೆ: @yday -> ನಿನ್ನೆ: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">ಸಾಮಾನ್ಯ ರೂಪಗಳು: dd-MM-yy, HH:mm, EEEE (ದಿನದ ಹೆಸರು).</string>
     <string name="action_close">ಮುಚ್ಚಿ</string>
     <string name="keyword_detail_title_fallback">ಕೀವರ್ಡ್</string>
     <string name="keyword_detail_not_found">ಕೀವರ್ಡ್ ಕಂಡುಬಂದಿಲ್ಲ</string>
@@ -1556,4 +1555,9 @@ ZXQPH1ZXQ ನ</string>
     <string name="action_clear">ತೆರವುಗೊಳಿಸಿ</string>
     <string name="recurring_task_start_section">ವೇಳಾಪಟ್ಟಿ ಪ್ರಾರಂಭ</string>
     <string name="recurring_task_start_help">ಈ ಪುನರಾವರ್ತಿತ ವೇಳಾಪಟ್ಟಿಗಾಗಿ ಪ್ರಾರಂಭ ದಿನಾಂಕ ಮತ್ತು ಐಚ್ಛಿಕ ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="shortcodes_dynamic_badge">ಡೈನಮಿಕ್</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ದಿನಾಂಕ ಪ್ರಕಾರವಲ್ಲ, ಆದ್ದರಿಂದ ಇದು ಸಾದಾ ಪಠ್ಯವಾಗಿ ಉಳಿಯುತ್ತದೆ. ಬಳಸಿ: %2$s</string>
+    <string name="shortcodes_code_hint">ವಿಸ್ತರಣೆಯನ್ನು ಪ್ರಚೋದಿಸುವ ಪಠ್ಯ, ಉದಾ. @today</string>
+    <string name="shortcodes_expansion_hint">ಟೈಪ್ ಮಾಡಿದಾಗ ಅದು ಏನಾಗಿ ವಿಸ್ತರಿಸುತ್ತದೆ</string>
+    <string name="shortcodes_help_format_codes_title">ಫಾರ್ಮ್ಯಾಟ್ ಕೋಡ್‌ಗಳು</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Miundo Inayobadilika:</string>
     <string name="shortcodes_help_dynamic_desc">Tumia {{leo:FORMAT}}, {{jana:FORMAT}}, {{kesho:FORMAT}}, au {{sasa:FORMAT}}.</string>
     <string name="shortcodes_help_example">Mfano: @yday -&gt; Jana: {{jana:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Miundo ya kawaida: dd-MM-yy, HH:mm, EEEE (jina la siku).</string>
     <string name="action_close">Funga</string>
     <string name="keyword_detail_title_fallback">Neno muhimu</string>
     <string name="keyword_detail_not_found">Neno kuu halijapatikana</string>
@@ -1601,4 +1600,9 @@ Tukio la</string>
 Ratiba ya</string>
     <string name="recurring_task_start_section">Anza</string>
     <string name="recurring_task_start_help">Chagua tarehe ya kuanza na wakati wa hiari kwa ratiba hii inayojirudia.</string>
+    <string name="shortcodes_dynamic_badge">Inayobadilika</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" si aina ya tarehe, kwa hivyo hii itabaki maandishi ya kawaida. Tumia: %2$s</string>
+    <string name="shortcodes_code_hint">Maandishi yanayoanzisha upanuzi, k.m. @today</string>
+    <string name="shortcodes_expansion_hint">Inakuwa nini inapoandikwa</string>
+    <string name="shortcodes_help_format_codes_title">Misimbo ya Umbizo</string>
 </resources>

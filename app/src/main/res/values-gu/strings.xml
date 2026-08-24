@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">ગતિશીલ પેટર્ન:</string>
     <string name="shortcodes_help_dynamic_desc">{{આજે:FORMAT}}, {{ગઈકાલ:FORMAT}}, {{કાલ:FORMAT}}, અથવા {{હવે:FORMAT}} નો ઉપયોગ કરો.</string>
     <string name="shortcodes_help_example">ઉદાહરણ: @yday -&gt; ગઈકાલે: {{yosterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">સામાન્ય ફોર્મેટ્સ: dd-MM-yy, HH:mm, EEEE (દિવસનું નામ).</string>
     <string name="action_close">બંધ કરો</string>
     <string name="keyword_detail_title_fallback">કીવર્ડ</string>
     <string name="keyword_detail_not_found">કીવર્ડ મળ્યો નથી</string>
@@ -1554,4 +1553,9 @@ ZXQPH1ZXQ નું</string>
     <string name="widget_todo_header_todos_events">ટોડો અને ઇવેન્ટ્સ</string>
     <string name="widget_todo_event_label">ઇવેન્ટ</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">ડાયનેમિક</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" તારીખનો પ્રકાર નથી, તેથી આ સાદા લખાણ તરીકે રહેશે. વાપરો: %2$s</string>
+    <string name="shortcodes_code_hint">વિસ્તરણ શરૂ કરતું લખાણ, દા.ત. @today</string>
+    <string name="shortcodes_expansion_hint">ટાઇપ કરતાં તે શેમાં વિસ્તરે છે</string>
+    <string name="shortcodes_help_format_codes_title">ફોર્મેટ કોડ</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynamiske mønstre:</string>
     <string name="shortcodes_help_dynamic_desc">Bruk {{today:FORMAT}}, {{yesterday:FORMAT}}, {{morgen:FORMAT}} eller {{nå:FORMAT}}.</string>
     <string name="shortcodes_help_example">Eksempel: @yday -&gt; I går: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Vanlige formater: dd-MM-åå, TT:mm, EEEE (dagsnavn).</string>
     <string name="action_close">Lukke</string>
     <string name="keyword_detail_title_fallback">Nøkkelord</string>
     <string name="keyword_detail_not_found">Finner ikke søkeord</string>
@@ -1548,4 +1547,9 @@
     <string name="action_clear">Klar</string>
     <string name="recurring_task_start_section">Planstart</string>
     <string name="recurring_task_start_help">Velg startdato og valgfritt klokkeslett for denne gjentakende tidsplanen.</string>
+    <string name="shortcodes_dynamic_badge">Dynamisk</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" er ikke en datotype, så dette forblir vanlig tekst. Bruk: %2$s</string>
+    <string name="shortcodes_code_hint">Tekst som utløser utvidelsen, f.eks. @today</string>
+    <string name="shortcodes_expansion_hint">Hva det utvides til når du skriver</string>
+    <string name="shortcodes_help_format_codes_title">Formatkoder</string>
 </resources>

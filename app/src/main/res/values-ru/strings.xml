@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">Динамические шаблоны:</string>
     <string name="shortcodes_help_dynamic_desc">Используйте {{сегодня:FORMAT}}, {{вчера:FORMAT}}, {{завтра:FORMAT}} или {{сейчас:FORMAT}}.</string>
     <string name="shortcodes_help_example">Пример: @yday -&gt; Вчера: {{вчера:дд-МММ-гг}}</string>
-    <string name="shortcodes_help_common_formats">Общие форматы: дд-ММ-гг, ЧЧ:мм, EEEE (название дня).</string>
     <string name="action_close">Закрыть</string>
     <string name="keyword_detail_title_fallback">Ключевое слово</string>
     <string name="keyword_detail_not_found">Ключевое слово не найдено</string>
@@ -1560,4 +1559,9 @@
     <string name="action_clear">Прозрачный</string>
     <string name="recurring_task_start_section">Начало расписания</string>
     <string name="recurring_task_start_help">Выберите дату начала и дополнительное время для этого повторяющегося расписания.</string>
+    <string name="shortcodes_dynamic_badge">Динамический</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" не является типом даты, поэтому останется обычным текстом. Используйте: %2$s</string>
+    <string name="shortcodes_code_hint">Текст, запускающий подстановку, напр. @today</string>
+    <string name="shortcodes_expansion_hint">Во что превращается при вводе</string>
+    <string name="shortcodes_help_format_codes_title">Коды формата</string>
 </resources>

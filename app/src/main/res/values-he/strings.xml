@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">תבניות דינמיות:</string>
     <string name="shortcodes_help_dynamic_desc">השתמש ב-{{today:FORMAT}}, {{yesterday:FORMAT}}, {{מחר:FORMAT}} או {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">דוגמה: @yday -&gt; אתמול: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">פורמטים נפוצים: dd-MM-yy, HH:mm, EEEE (שם יום).</string>
     <string name="action_close">לִסְגוֹר</string>
     <string name="keyword_detail_title_fallback">מילת מפתח</string>
     <string name="keyword_detail_not_found">מילת מפתח לא נמצאה</string>
@@ -1573,4 +1572,9 @@
     <string name="action_clear">ברור</string>
     <string name="recurring_task_start_section">התחלה של לוח זמנים</string>
     <string name="recurring_task_start_help">בחר את תאריך ההתחלה והשעה האופציונלית עבור לוח זמנים חוזר זה.</string>
+    <string name="shortcodes_dynamic_badge">דינמי</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" אינו סוג תאריך, ולכן זה יישאר טקסט רגיל. השתמש: %2$s</string>
+    <string name="shortcodes_code_hint">הטקסט שמפעיל את ההרחבה, למשל @today</string>
+    <string name="shortcodes_expansion_hint">למה זה מתרחב בעת הקלדה</string>
+    <string name="shortcodes_help_format_codes_title">קודי תבנית</string>
 </resources>

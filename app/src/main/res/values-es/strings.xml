@@ -1031,7 +1031,6 @@
     <string name="shortcodes_help_dynamic_patterns">Patrones dinámicos:</string>
     <string name="shortcodes_help_dynamic_desc">Usa {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} o {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Ejemplo: @yday -> Ayer: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Formatos comunes: dd-MM-yy, HH:mm, EEEE (nombre del día).</string>
     <string name="action_close">Cerrar</string>
     <string name="keyword_detail_title_fallback">Palabra clave</string>
     <string name="keyword_detail_not_found">Palabra clave no encontrada</string>
@@ -1549,4 +1548,9 @@
 Evento</string>
     <string name="widget_todo_event_label"></string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Dinámico</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" no es un tipo de fecha, así que esto queda como texto sin formato. Usa: %2$s</string>
+    <string name="shortcodes_code_hint">Texto que activa la expansión, p. ej. @today</string>
+    <string name="shortcodes_expansion_hint">En qué se expande al escribirlo</string>
+    <string name="shortcodes_help_format_codes_title">Códigos de formato</string>
 </resources>

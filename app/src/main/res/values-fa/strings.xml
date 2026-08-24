@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">الگوهای پویا:</string>
     <string name="shortcodes_help_dynamic_desc">از {{today:FORMAT}}، {{yesterday:FORMAT}}، {{tomorrow:FORMAT}} یا {{now:FORMAT}} استفاده کنید.</string>
     <string name="shortcodes_help_example">مثال: @yday -&gt; دیروز: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">قالب‌های رایج: dd-MM-yy، HH:mm، EEEE (نام روز).</string>
     <string name="action_close">بستن</string>
     <string name="keyword_detail_title_fallback">کلمه کلیدی</string>
     <string name="keyword_detail_not_found">کلمه کلیدی پیدا نشد</string>
@@ -1593,4 +1592,9 @@ FAB های</string>
     <string name="action_clear">پاک کردن</string>
     <string name="recurring_task_start_section">شروع برنامه</string>
     <string name="recurring_task_start_help">تاریخ شروع و زمان اختیاری را برای این برنامه تکراری انتخاب کنید.</string>
+    <string name="shortcodes_dynamic_badge">پویا</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" یک نوع تاریخ نیست، بنابراین به‌صورت متن ساده باقی می‌ماند. استفاده کنید: %2$s</string>
+    <string name="shortcodes_code_hint">متنی که گسترش را آغاز می‌کند، مثلاً @today</string>
+    <string name="shortcodes_expansion_hint">هنگام تایپ به چه چیزی گسترش می‌یابد</string>
+    <string name="shortcodes_help_format_codes_title">کدهای قالب</string>
 </resources>

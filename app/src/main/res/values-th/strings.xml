@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">รูปแบบไดนามิก:</string>
     <string name="shortcodes_help_dynamic_desc">ใช้ {{today:FORMAT}}, {{yesterday:FORMAT}}, {{today:FORMAT}} หรือ {{now:FORMAT}}</string>
     <string name="shortcodes_help_example">ตัวอย่าง: @yday -&gt; เมื่อวาน: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">รูปแบบทั่วไป: dd-MM-yy, HH:mm, EEEE (ชื่อวัน)</string>
     <string name="action_close">ปิด</string>
     <string name="keyword_detail_title_fallback">คำสำคัญ</string>
     <string name="keyword_detail_not_found">ไม่พบคำสำคัญ</string>
@@ -1552,4 +1551,9 @@
 เหตุการณ์</string>
     <string name="widget_todo_event_label"></string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">ไดนามิก</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ไม่ใช่ประเภทวันที่ ข้อความนี้จึงคงเป็นข้อความธรรมดา ใช้: %2$s</string>
+    <string name="shortcodes_code_hint">ข้อความที่ทำให้เกิดการขยาย เช่น @today</string>
+    <string name="shortcodes_expansion_hint">สิ่งที่จะขยายเป็นเมื่อพิมพ์</string>
+    <string name="shortcodes_help_format_codes_title">รหัสรูปแบบ</string>
 </resources>

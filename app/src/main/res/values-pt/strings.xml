@@ -1031,7 +1031,6 @@
     <string name="shortcodes_help_dynamic_patterns">Padrões dinâmicos:</string>
     <string name="shortcodes_help_dynamic_desc">Use {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} ou {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Exemplo: @yday -> Ontem: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Formatos comuns: dd-MM-yy, HH:mm, EEEE (nome do dia).</string>
     <string name="action_close">Fechar</string>
     <string name="keyword_detail_title_fallback">Palavra-chave</string>
     <string name="keyword_detail_not_found">Palavra-chave não encontrada</string>
@@ -1591,4 +1590,9 @@ Evento</string>
     <string name="action_clear">Transparente</string>
     <string name="recurring_task_start_section">Agendamento de início</string>
     <string name="recurring_task_start_help">Selecione a data de início e o horário opcional para esta programação recorrente.</string>
+    <string name="shortcodes_dynamic_badge">Dinâmico</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" não é um tipo de data, portanto isto permanece como texto simples. Use: %2$s</string>
+    <string name="shortcodes_code_hint">Texto que aciona a expansão, ex. @today</string>
+    <string name="shortcodes_expansion_hint">No que se expande ao ser digitado</string>
+    <string name="shortcodes_help_format_codes_title">Códigos de formato</string>
 </resources>

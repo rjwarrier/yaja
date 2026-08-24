@@ -952,7 +952,6 @@
 
     <string name="shortcodes_help_dynamic_desc">Use {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, या {{now:FORMAT}} का उपयोग करें।</string>
     <string name="shortcodes_help_example">उदाहरण: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">सामान्य प्रारूप: dd-MM-yy, HH:mm, EEEE (दिन का नाम)।</string>
     <string name="action_close">बंद करें</string>
     <string name="keyword_detail_title_fallback">कीवर्ड</string>
     <string name="keyword_detail_not_found">कीवर्ड नहीं मिला</string>
@@ -1555,4 +1554,9 @@
     <string name="action_clear">साफ़</string>
     <string name="recurring_task_start_section">शेड्यूल प्रारंभ</string>
     <string name="recurring_task_start_help">इस आवर्ती शेड्यूल के लिए प्रारंभ तिथि और वैकल्पिक समय का चयन करें।</string>
+    <string name="shortcodes_dynamic_badge">डायनामिक</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" कोई दिनांक प्रकार नहीं है, इसलिए यह सादे टेक्स्ट के रूप में रहेगा। उपयोग करें: %2$s</string>
+    <string name="shortcodes_code_hint">विस्तार शुरू करने वाला टेक्स्ट, जैसे @today</string>
+    <string name="shortcodes_expansion_hint">टाइप करने पर यह किसमें बदलता है</string>
+    <string name="shortcodes_help_format_codes_title">फ़ॉर्मैट कोड</string>
 </resources>

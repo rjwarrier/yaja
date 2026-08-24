@@ -950,7 +950,6 @@
     <string name="shortcodes_help_dynamic_patterns">மாறும் வடிவங்கள்:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, அல்லது {{now:FORMAT}} ஆகியவற்றைப் பயன்படுத்தவும்.</string>
     <string name="shortcodes_help_example">உதாரணம்: @yday -> நேற்று: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">பொதுவான வடிவங்கள்: dd-MM-yy, HH:mm, EEEE (நாளின் பெயர்).</string>
     <string name="action_close">மூடு</string>
     <string name="keyword_detail_title_fallback">முக்கிய வார்த்தை</string>
     <string name="keyword_detail_not_found">முக்கிய வார்த்தை கண்டறியப்படவில்லை</string>
@@ -1556,4 +1555,9 @@
     <string name="action_clear">தெளிவானது</string>
     <string name="recurring_task_start_section">அட்டவணை தொடக்கம்</string>
     <string name="recurring_task_start_help">இந்த தொடர்ச்சியான அட்டவணைக்கான தொடக்க தேதி மற்றும் விருப்ப நேரத்தைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="shortcodes_dynamic_badge">டைனமிக்</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" என்பது தேதி வகை அல்ல, எனவே இது சாதாரண உரையாகவே இருக்கும். பயன்படுத்தவும்: %2$s</string>
+    <string name="shortcodes_code_hint">விரிவாக்கத்தைத் தொடங்கும் உரை, எ.கா. @today</string>
+    <string name="shortcodes_expansion_hint">தட்டச்சு செய்யும்போது இது எதுவாக மாறும்</string>
+    <string name="shortcodes_help_format_codes_title">வடிவமைப்புக் குறியீடுகள்</string>
 </resources>

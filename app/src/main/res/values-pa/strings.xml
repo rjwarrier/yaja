@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">ਗਤੀਸ਼ੀਲ ਪੈਟਰਨ:</string>
     <string name="shortcodes_help_dynamic_desc">{{ਅੱਜ:FORMAT}}, {{ਕੱਲ੍ਹ:FORMAT}}, {{ਕੱਲ੍ਹ:FORMAT}}, ਜਾਂ {{ਹੁਣ:FORMAT}} ਦੀ ਵਰਤੋਂ ਕਰੋ।</string>
     <string name="shortcodes_help_example">ਉਦਾਹਰਨ: @yday -&gt; ਕੱਲ੍ਹ: {{ਕੱਲ੍ਹ:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">ਆਮ ਫਾਰਮੈਟ: dd-MM-yy, HH:mm, EEEE (ਦਿਨ ਦਾ ਨਾਮ)।</string>
     <string name="action_close">ਬੰਦ ਕਰੋ</string>
     <string name="keyword_detail_title_fallback">ਕੀਵਰਡ</string>
     <string name="keyword_detail_not_found">ਕੀਵਰਡ ਨਹੀਂ ਮਿਲਿਆ</string>
@@ -1552,4 +1551,9 @@ ZXQPH1ZXQ ਦਾ</string>
     <string name="widget_todo_header_todos_events">ਟੋਡੋ ਅਤੇ ਇਵੈਂਟ</string>
     <string name="widget_todo_event_label">ਇਵੈਂਟ</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">ਡਾਇਨਾਮਿਕ</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ਇੱਕ ਤਾਰੀਖ ਕਿਸਮ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸਾਦੇ ਲਿਖਤ ਵਜੋਂ ਰਹੇਗਾ। ਵਰਤੋ: %2$s</string>
+    <string name="shortcodes_code_hint">ਵਿਸਥਾਰ ਸ਼ੁਰੂ ਕਰਨ ਵਾਲੀ ਲਿਖਤ, ਜਿਵੇਂ @today</string>
+    <string name="shortcodes_expansion_hint">ਟਾਈਪ ਕਰਨ ਵੇਲੇ ਇਹ ਕੀ ਬਣਦਾ ਹੈ</string>
+    <string name="shortcodes_help_format_codes_title">ਫਾਰਮੈਟ ਕੋਡ</string>
 </resources>

@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">ଗତିଶୀଳ ନମୁନା:</string>
     <string name="shortcodes_help_dynamic_desc">{{ଆଜି ବ୍ୟବହାର କରନ୍ତୁ: FORMAT}}, {{ଗତକାଲି: FORMAT}}, {{ଆସନ୍ତାକାଲି: FORMAT}}, କିମ୍ବା {{ବର୍ତ୍ତମାନ: FORMAT}} |</string>
     <string name="shortcodes_help_example">ଉଦାହରଣ: @yday -&gt; ଗତକାଲି: {{ଗତକାଲି: dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">ସାଧାରଣ ଫର୍ମାଟ୍: dd-MM-yy, HH: mm, EEEE (ଦିନ ନାମ) |</string>
     <string name="action_close">ବନ୍ଦ</string>
     <string name="keyword_detail_title_fallback">କୀ ଶବ୍ଦ |</string>
     <string name="keyword_detail_not_found">କୀୱାର୍ଡ ମିଳିଲା ନାହିଁ |</string>
@@ -1556,4 +1555,9 @@
     <string name="widget_todo_header_todos_events">ଟୋଡୋସ୍ ଏବଂ ଇଭେଣ୍ଟସ୍ |</string>
     <string name="widget_todo_event_label">ଇଭେଣ୍ଟ |</string>
     <string name="settings_import_progress_count_format">%1$d / %2$d</string>
+    <string name="shortcodes_dynamic_badge">ଡାଇନାମିକ୍</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ଏକ ତାରିଖ ପ୍ରକାର ନୁହେଁ, ତେଣୁ ଏହା ସାଧାରଣ ଟେକ୍ସଟ୍ ଭାବରେ ରହିବ। ବ୍ୟବହାର କରନ୍ତୁ: %2$s</string>
+    <string name="shortcodes_code_hint">ବିସ୍ତାର ଆରମ୍ଭ କରୁଥିବା ଟେକ୍ସଟ୍, ଯଥା @today</string>
+    <string name="shortcodes_expansion_hint">ଟାଇପ୍ କଲାବେଳେ ଏହା ଯାହା ହୁଏ</string>
+    <string name="shortcodes_help_format_codes_title">ଫର୍ମାଟ୍ କୋଡ୍</string>
 </resources>

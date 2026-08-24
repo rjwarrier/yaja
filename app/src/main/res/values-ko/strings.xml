@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">동적 패턴:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:포맷}}, {{yesterday:포맷}}, {{tomorrow:포맷}} 또는 {{now:포맷}}을 사용하세요.</string>
     <string name="shortcodes_help_example">예: @yday -> Yesterday: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">자주 쓰이는 포맷: dd-MM-yy, HH:mm, EEEE (요일명).</string>
     <string name="action_close">닫기</string>
     <string name="keyword_detail_title_fallback">키워드</string>
     <string name="keyword_detail_not_found">키워드를 찾을 수 없습니다</string>
@@ -1553,4 +1552,9 @@
     <string name="widget_todo_header_todos_events">할 일 및 이벤트</string>
     <string name="widget_todo_event_label">이벤트</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">동적</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\"은(는) 날짜 유형이 아니므로 일반 텍스트로 유지됩니다. 사용: %2$s</string>
+    <string name="shortcodes_code_hint">확장을 실행하는 텍스트(예: @today)</string>
+    <string name="shortcodes_expansion_hint">입력 시 확장되는 내용</string>
+    <string name="shortcodes_help_format_codes_title">형식 코드</string>
 </resources>

@@ -946,7 +946,6 @@
     <string name="shortcodes_help_dynamic_patterns">డైనమిక్ నమూనాలు:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, లేదా {{now:FORMAT}} ఉపయోగించండి.</string>
     <string name="shortcodes_help_example">ఉదాహరణ: @yday -> నిన్న: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">సాధారణ ఆకృతులు: dd-MM-yy, HH:mm, EEEE (రోజు పేరు).</string>
     <string name="action_close">మూసివేయి</string>
     <string name="keyword_detail_title_fallback">కీవర్డ్</string>
     <string name="keyword_detail_not_found">కీవర్డ్ కనుగొనబడలేదు</string>
@@ -1532,4 +1531,9 @@ ZXQPH1ZXQ యొక్క</string>
     <string name="action_clear">క్లియర్</string>
     <string name="recurring_task_start_section">షెడ్యూల్ ప్రారంభం</string>
     <string name="recurring_task_start_help">ఈ పునరావృత షెడ్యూల్ కోసం ప్రారంభ తేదీ మరియు ఐచ్ఛిక సమయాన్ని ఎంచుకోండి.</string>
+    <string name="shortcodes_dynamic_badge">డైనమిక్</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" అనేది తేదీ రకం కాదు, కాబట్టి ఇది సాధారణ వచనంగానే ఉంటుంది. ఉపయోగించండి: %2$s</string>
+    <string name="shortcodes_code_hint">విస్తరణను ప్రారంభించే వచనం, ఉదా. @today</string>
+    <string name="shortcodes_expansion_hint">టైప్ చేసినప్పుడు ఇది దేనిగా మారుతుంది</string>
+    <string name="shortcodes_help_format_codes_title">ఫార్మాట్ కోడ్‌లు</string>
 </resources>

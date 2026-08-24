@@ -91,6 +91,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.unit.Density
@@ -337,14 +338,14 @@ fun HomeTopBar(
                 .fillMaxWidth()
                 .windowInsetsPadding(WindowInsets.statusBars)
         ) {
-            BoxWithConstraints(
+            // Measured off the window rather than with BoxWithConstraints: this row recomposes on
+            // every search keystroke, and a SubcomposeLayout here would pay for that each time.
+            // 16.dp of padding either side, so the row is 32.dp narrower than the window.
+            val compactSearch = LocalConfiguration.current.screenWidthDp.dp - 32.dp < 360.dp
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-            ) {
-            val compactSearch = maxWidth < 360.dp
-            Row(
-                modifier = Modifier.fillMaxWidth(),
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -355,13 +356,16 @@ fun HomeTopBar(
                     onValueChange = onSearchQueryChanged,
                     placeholder = {
                         Text(
+                            // The narrow label deliberately shares the search icon's description:
+                            // both want the bare word "Search", already translated everywhere.
                             stringResource(
                                 if (compactSearch) R.string.home_cd_search
                                 else R.string.home_search_placeholder
                             ),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                            maxLines = 1
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                     },
                     modifier = Modifier.weight(1f),
@@ -487,7 +491,6 @@ fun HomeTopBar(
                         }
                     }
                 }
-            }
             }
 
             AnimatedVisibility(

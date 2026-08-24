@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">ተለዋዋጭ ቅጦች፡</string>
     <string name="shortcodes_help_dynamic_desc">{{ዛሬ፡ፎርማት}}፣ {{ትላንት፡ፎርማት}}፣ {{ነገ፡ፎርማት}}፣ ወይም {{አሁን፡FORMAT}} ተጠቀም።</string>
     <string name="shortcodes_help_example">ምሳሌ፡ @yday -&gt; ትላንት፡ {{ትላንትና፡dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">የተለመዱ ቅርጸቶች፡dd-MM-yy፣ HH:mm፣ EEEE (የቀን ስም)።</string>
     <string name="action_close">ገጠመ</string>
     <string name="keyword_detail_title_fallback">ቁልፍ ቃል</string>
     <string name="keyword_detail_not_found">ቁልፍ ቃል አልተገኘም።</string>
@@ -1548,4 +1547,9 @@
     <string name="widget_todo_header_todos_events">ቶዶስ እና ዝግጅቶች</string>
     <string name="widget_todo_event_label">ክስተት</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">ተለዋዋጭ</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" የቀን ዓይነት አይደለም፣ ስለዚህ እንደ ተራ ጽሑፍ ይቆያል። ይጠቀሙ፡ %2$s</string>
+    <string name="shortcodes_code_hint">ማስፋፊያውን የሚያስነሳ ጽሑፍ፣ ለምሳሌ @today</string>
+    <string name="shortcodes_expansion_hint">ሲተይቡ ወደ ምን እንደሚስፋፋ</string>
+    <string name="shortcodes_help_format_codes_title">የቅርጸት ኮዶች</string>
 </resources>

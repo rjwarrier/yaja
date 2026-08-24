@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dinamikus minták:</string>
     <string name="shortcodes_help_dynamic_desc">Használja a következőt: {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} vagy {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Példa: @yday -&gt; Tegnap: {{tegnap:nn-HH-éé}}</string>
-    <string name="shortcodes_help_common_formats">Általános formátumok: nn-MM-yy, ÓÓ:pp, EEEE (nap neve).</string>
     <string name="action_close">Közeli</string>
     <string name="keyword_detail_title_fallback">Kulcsszó</string>
     <string name="keyword_detail_not_found">A kulcsszó nem található</string>
@@ -1550,4 +1549,9 @@ Csak</string>
     <string name="widget_todo_header_todos_events">Teendők és események</string>
     <string name="widget_todo_event_label">esemény</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Dinamikus</string>
+    <string name="shortcodes_unknown_placeholder">A(z) \"%1$s\" nem dátumtípus, ezért ez egyszerű szövegként marad. Használja: %2$s</string>
+    <string name="shortcodes_code_hint">A kibontást kiváltó szöveg, pl. @today</string>
+    <string name="shortcodes_expansion_hint">Mivé bővül gépeléskor</string>
+    <string name="shortcodes_help_format_codes_title">Formátumkódok</string>
 </resources>

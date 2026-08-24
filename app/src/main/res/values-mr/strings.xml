@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">डायनॅमिक नमुने (Dynamic Patterns):</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, किंवा {{now:FORMAT}} वापरा.</string>
     <string name="shortcodes_help_example">उदाहरण: @yday -> काल: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">सामान्य स्वरूप: dd-MM-yy, HH:mm, EEEE (वाराचे नाव).</string>
     <string name="action_close">बंद करा</string>
     <string name="keyword_detail_title_fallback">कीवर्ड</string>
     <string name="keyword_detail_not_found">कीवर्ड आढळला नाही</string>
@@ -1552,4 +1551,9 @@
     <string name="widget_todo_header_todos_events">Todos आणि कार्यक्रम</string>
     <string name="widget_todo_event_label">इव्हेंट</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">डायनॅमिक</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" हा दिनांक प्रकार नाही, त्यामुळे हे साध्या मजकुरासारखे राहील. वापरा: %2$s</string>
+    <string name="shortcodes_code_hint">विस्तार सुरू करणारा मजकूर, उदा. @today</string>
+    <string name="shortcodes_expansion_hint">टाइप केल्यावर ते कशात बदलते</string>
+    <string name="shortcodes_help_format_codes_title">फॉरमॅट कोड</string>
 </resources>

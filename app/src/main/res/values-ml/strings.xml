@@ -951,7 +951,6 @@
     <string name="shortcodes_help_dynamic_patterns">ഡൈനാമിക് പാറ്റേണുകൾ:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, അല്ലെങ്കിൽ {{now:FORMAT}} ഉപയോഗിക്കുക.</string>
     <string name="shortcodes_help_example">ഉദാഹരണം: @yday -> ഇന്നലെ: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">സാധാരണ ഫോർമാറ്റുകൾ: dd-MM-yy, HH:mm, EEEE (ദിവസത്തിന്റെ പേര്).</string>
     <string name="action_close">അടയ്ക്കുക</string>
     <string name="keyword_detail_title_fallback">കീവേഡ്</string>
     <string name="keyword_detail_not_found">കീവേഡ് കണ്ടെത്താനായില്ല</string>
@@ -1557,4 +1556,9 @@ ZXQPH0ZXQ ദിവസവും പ്രവർത്തിക്കുന്ന
     <string name="action_clear">ക്ലിയർ</string>
     <string name="recurring_task_start_section">ഷെഡ്യൂൾ ആരംഭിക്കുന്നു</string>
     <string name="recurring_task_start_help">ഈ ആവർത്തന ഷെഡ്യൂളിനായി ആരംഭ തീയതിയും ഓപ്‌ഷണൽ സമയവും തിരഞ്ഞെടുക്കുക.</string>
+    <string name="shortcodes_dynamic_badge">ഡൈനാമിക്</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ഒരു തീയതി തരമല്ല, അതിനാൽ ഇത് സാധാരണ ടെക്‌സ്റ്റായി തുടരും. ഉപയോഗിക്കുക: %2$s</string>
+    <string name="shortcodes_code_hint">വികസനം ആരംഭിക്കുന്ന ടെക്‌സ്റ്റ്, ഉദാ. @today</string>
+    <string name="shortcodes_expansion_hint">ടൈപ്പ് ചെയ്യുമ്പോൾ ഇത് എന്തായി മാറുന്നു</string>
+    <string name="shortcodes_help_format_codes_title">ഫോർമാറ്റ് കോഡുകൾ</string>
 </resources>

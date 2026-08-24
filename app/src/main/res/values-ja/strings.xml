@@ -951,7 +951,6 @@
     <string name="shortcodes_help_dynamic_patterns">動的パターン:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}、{{yesterday:FORMAT}}、{{tomorrow:FORMAT}}、または {{now:FORMAT}} を使用します。</string>
     <string name="shortcodes_help_example">例: @yday -> 昨日: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">一般的な形式: dd-MM-yy, HH:mm, EEEE (曜日名)。</string>
     <string name="action_close">閉じる</string>
     <string name="keyword_detail_title_fallback">キーワード</string>
     <string name="keyword_detail_not_found">キーワードが見つかりません</string>
@@ -1555,4 +1554,9 @@
     <string name="action_clear">クリア</string>
     <string name="recurring_task_start_section">スケジュール開始</string>
     <string name="recurring_task_start_help">この定期的なスケジュールの開始日とオプションの時間を選択します。</string>
+    <string name="shortcodes_dynamic_badge">動的</string>
+    <string name="shortcodes_unknown_placeholder">「%1$s」は日付タイプではないため、通常のテキストのままになります。使用可能: %2$s</string>
+    <string name="shortcodes_code_hint">展開を実行するテキスト（例: @today）</string>
+    <string name="shortcodes_expansion_hint">入力時に何に展開されるか</string>
+    <string name="shortcodes_help_format_codes_title">書式コード</string>
 </resources>

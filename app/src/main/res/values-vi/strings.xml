@@ -944,7 +944,6 @@
     <string name="shortcodes_help_dynamic_patterns">Mẫu Hình Động:</string>
     <string name="shortcodes_help_dynamic_desc">Sử dụng {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, hoặc {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Ví dụ: @yday -> Hôm qua: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Định dạng phổ biến: dd-MM-yy, HH:mm, EEEE (tên thứ).</string>
     <string name="action_close">Đóng</string>
     <string name="keyword_detail_title_fallback">Từ Khóa</string>
     <string name="keyword_detail_not_found">Không tìm thấy từ khóa</string>
@@ -1585,4 +1584,9 @@ Sự kiện</string>
 Bắt đầu lịch trình</string>
     <string name="recurring_task_start_section"></string>
     <string name="recurring_task_start_help">Chọn ngày bắt đầu và thời gian tùy chọn cho lịch trình định kỳ này.</string>
+    <string name="shortcodes_dynamic_badge">Động</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" không phải là loại ngày, nên phần này giữ nguyên dạng văn bản thường. Dùng: %2$s</string>
+    <string name="shortcodes_code_hint">Văn bản kích hoạt việc mở rộng, ví dụ @today</string>
+    <string name="shortcodes_expansion_hint">Nội dung được thay thế khi gõ</string>
+    <string name="shortcodes_help_format_codes_title">Mã định dạng</string>
 </resources>

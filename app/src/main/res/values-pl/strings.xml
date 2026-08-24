@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Wzory dynamiczne:</string>
     <string name="shortcodes_help_dynamic_desc">Użyj {{today:FORMAT}}, {{wczoraj:FORMAT}}, {{jutro:FORMAT}} lub {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Przykład: @yday -&gt; Wczoraj: {{wczoraj:dd-MMM-rr}}</string>
-    <string name="shortcodes_help_common_formats">Popularne formaty: dd-MM-rr, HH:mm, EEEE (nazwa dnia).</string>
     <string name="action_close">Zamknąć</string>
     <string name="keyword_detail_title_fallback">Słowo kluczowe</string>
     <string name="keyword_detail_not_found">Nie znaleziono słowa kluczowego</string>
@@ -1580,4 +1579,9 @@ Zalecenia</string>
 Rozpoczęcie harmonogramu</string>
     <string name="recurring_task_start_section"></string>
     <string name="recurring_task_start_help">Wybierz datę rozpoczęcia i opcjonalną godzinę dla tego harmonogramu cyklicznego.</string>
+    <string name="shortcodes_dynamic_badge">Dynamiczne</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" nie jest typem daty, więc pozostanie zwykłym tekstem. Użyj: %2$s</string>
+    <string name="shortcodes_code_hint">Tekst wyzwalający rozwinięcie, np. @today</string>
+    <string name="shortcodes_expansion_hint">W co rozwija się po wpisaniu</string>
+    <string name="shortcodes_help_format_codes_title">Kody formatu</string>
 </resources>

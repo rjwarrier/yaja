@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">ডায়নামিক প্যাটার্ন:</string>
     <string name="shortcodes_help_dynamic_desc">{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, বা {{now:FORMAT}} ব্যবহার করুন।</string>
     <string name="shortcodes_help_example">উদাহরণ: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">সাধারণ ফরম্যাট: dd-MM-yy, HH:mm, EEEE (দিনের নাম)।</string>
     <string name="action_close">বন্ধ করুন</string>
     <string name="keyword_detail_title_fallback">কীওয়ার্ড</string>
     <string name="keyword_detail_not_found">কীওয়ার্ড পাওয়া যায়নি</string>
@@ -1554,4 +1553,9 @@ ZXQPH1ZXQ এর</string>
     <string name="action_clear">সাফ</string>
     <string name="recurring_task_start_section">সময়সূচী শুরু</string>
     <string name="recurring_task_start_help">এই পুনরাবৃত্ত সময়সূচীর জন্য শুরুর তারিখ এবং ঐচ্ছিক সময় নির্বাচন করুন।</string>
+    <string name="shortcodes_dynamic_badge">ডাইনামিক</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" একটি তারিখ টাইপ নয়, তাই এটি সাধারণ টেক্সট হিসেবে থাকবে। ব্যবহার করুন: %2$s</string>
+    <string name="shortcodes_code_hint">যে টেক্সট সম্প্রসারণ শুরু করে, যেমন @today</string>
+    <string name="shortcodes_expansion_hint">টাইপ করলে এটি কীসে পরিণত হয়</string>
+    <string name="shortcodes_help_format_codes_title">ফরম্যাট কোড</string>
 </resources>

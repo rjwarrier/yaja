@@ -948,7 +948,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynamische Muster:</string>
     <string name="shortcodes_help_dynamic_desc">Verwende {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} oder {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Beispiel: @yday -> Gestern: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Gängige Formate: dd-MM-yy, HH:mm, EEEE (Wochentagsname).</string>
     <string name="action_close">Schließen</string>
     <string name="keyword_detail_title_fallback">Schlüsselwort</string>
     <string name="keyword_detail_not_found">Schlüsselwort nicht gefunden</string>
@@ -1549,4 +1548,9 @@
     <string name="widget_todo_header_todos_events">Todos &amp; Events</string>
     <string name="widget_todo_event_label">-Ereignis</string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Dynamisch</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ist kein Datumstyp, daher bleibt dies einfacher Text. Verwenden Sie: %2$s</string>
+    <string name="shortcodes_code_hint">Text, der die Erweiterung auslöst, z. B. @today</string>
+    <string name="shortcodes_expansion_hint">Wozu es beim Tippen erweitert wird</string>
+    <string name="shortcodes_help_format_codes_title">Formatcodes</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Mga Dynamic na Pattern:</string>
     <string name="shortcodes_help_dynamic_desc">Gamitin ang {{ngayon:FORMAT}}, {{kahapon:FORMAT}}, {{bukas:FORMAT}}, o {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Halimbawa: @yday -&gt; Kahapon: {{kahapon:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Mga karaniwang format: dd-MM-yy, HH:mm, EEEE (pangalan ng araw).</string>
     <string name="action_close">Isara</string>
     <string name="keyword_detail_title_fallback">Keyword</string>
     <string name="keyword_detail_not_found">Hindi nahanap ang keyword</string>
@@ -1556,4 +1555,9 @@ Ang</string>
     <string name="action_clear">Maaliwalas</string>
     <string name="recurring_task_start_section">Pagsisimula ng Iskedyul</string>
     <string name="recurring_task_start_help">Piliin ang petsa ng pagsisimula at opsyonal na oras para sa umuulit na iskedyul na ito.</string>
+    <string name="shortcodes_dynamic_badge">Dinamiko</string>
+    <string name="shortcodes_unknown_placeholder">Hindi uri ng petsa ang \"%1$s\", kaya mananatili itong plain text. Gamitin: %2$s</string>
+    <string name="shortcodes_code_hint">Tekstong nagpapagana ng pagpapalawak, hal. @today</string>
+    <string name="shortcodes_expansion_hint">Kung saan ito lumalawak kapag na-type</string>
+    <string name="shortcodes_help_format_codes_title">Mga Format Code</string>
 </resources>

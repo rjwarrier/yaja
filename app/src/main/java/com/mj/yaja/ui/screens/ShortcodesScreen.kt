@@ -46,6 +46,9 @@ import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -499,24 +502,17 @@ fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleSmall
                     )
+                    // Each code is shown against the current date/time rather than a written
+                    // description: the sample is self-explanatory, and it localises itself
+                    // through the formatter instead of needing 14 translated strings.
+                    val sample = remember { LocalDateTime.now() }
                     FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(6.dp),
                             verticalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
-                        FormatCodeChip("yyyy", stringResource(R.string.shortcodes_help_format_year4))
-                        FormatCodeChip("yy", stringResource(R.string.shortcodes_help_format_year2))
-                        FormatCodeChip("MM", stringResource(R.string.shortcodes_help_format_month_num))
-                        FormatCodeChip("MMM", stringResource(R.string.shortcodes_help_format_month_short))
-                        FormatCodeChip("MMMM", stringResource(R.string.shortcodes_help_format_month_full))
-                        FormatCodeChip("dd", stringResource(R.string.shortcodes_help_format_day))
-                        FormatCodeChip("EEE", stringResource(R.string.shortcodes_help_format_weekday_short))
-                        FormatCodeChip("EEEE", stringResource(R.string.shortcodes_help_format_weekday_full))
-                        FormatCodeChip("HH", stringResource(R.string.shortcodes_help_format_hour24))
-                        FormatCodeChip("hh", stringResource(R.string.shortcodes_help_format_hour12))
-                        FormatCodeChip("mm", stringResource(R.string.shortcodes_help_format_minute))
-                        FormatCodeChip("ss", stringResource(R.string.shortcodes_help_format_second))
-                        FormatCodeChip("a", stringResource(R.string.shortcodes_help_format_ampm))
-                        FormatCodeChip("ww", stringResource(R.string.shortcodes_help_format_week))
+                        FORMAT_CODE_SAMPLES.forEach { pattern ->
+                            FormatCodeChip(pattern = pattern, sample = sample)
+                        }
                     }
                 }
             },
@@ -524,8 +520,19 @@ fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
     )
 }
 
+/** Pattern letters worth showing, ordered coarsest unit first. */
+private val FORMAT_CODE_SAMPLES =
+        listOf("yyyy", "yy", "MM", "MMM", "MMMM", "dd", "EEE", "EEEE", "HH", "hh", "mm", "ss", "a", "ww")
+
 @Composable
-private fun FormatCodeChip(code: String, meaning: String) {
+private fun FormatCodeChip(pattern: String, sample: LocalDateTime) {
+    // 'ww' needs week fields some locales resolve differently, so a pattern that cannot be
+    // rendered is shown bare rather than taking the dialog down with it.
+    val rendered = remember(pattern, sample) {
+        runCatching {
+            sample.format(DateTimeFormatter.ofPattern(pattern, Locale.getDefault()))
+        }.getOrNull()
+    }
     Surface(
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             shape = RoundedCornerShape(999.dp)
@@ -536,16 +543,18 @@ private fun FormatCodeChip(code: String, meaning: String) {
                 verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                    text = code,
+                    text = pattern,
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
             )
-            Text(
-                    text = meaning,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            if (rendered != null) {
+                Text(
+                        text = rendered,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

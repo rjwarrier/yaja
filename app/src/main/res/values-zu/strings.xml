@@ -1048,7 +1048,6 @@
     <string name="shortcodes_help_dynamic_patterns">Amaphethini Anamandla:</string>
     <string name="shortcodes_help_dynamic_desc">Sebenzisa i-{{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}}, noma {{manje:FORMAT}}.</string>
     <string name="shortcodes_help_example">Isibonelo: @yday -&gt; Izolo: {{izolo:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Amafomethi avamile: dd-MM-yy, HH:mm, EEEE (igama losuku).</string>
     <string name="action_close">Vala</string>
     <string name="keyword_detail_title_fallback">Igama elingukhiye</string>
     <string name="keyword_detail_not_found">Igama elingukhiye alitholakali</string>
@@ -1650,4 +1649,9 @@ I-</string>
 Umcimbi we-</string>
     <string name="widget_todo_event_label"></string>
     <string name="settings_import_progress_count_format">%1$d/%2$d</string>
+    <string name="shortcodes_dynamic_badge">Okuguqukayo</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" akulona uhlobo lwedethi, ngakho lokhu kuhlala kungumbhalo ojwayelekile. Sebenzisa: %2$s</string>
+    <string name="shortcodes_code_hint">Umbhalo ovula ukunwetshwa, isb. @today</string>
+    <string name="shortcodes_expansion_hint">Okuguqulwa kukho lapho ubhala</string>
+    <string name="shortcodes_help_format_codes_title">Amakhodi Wefomethi</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Динамічні візерунки:</string>
     <string name="shortcodes_help_dynamic_desc">Використовуйте {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} або {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Приклад: @yday -&gt; Yesterday: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Загальні формати: дд-мм-рр, ГГ:хх, EEEE (назва дня).</string>
     <string name="action_close">Закрити</string>
     <string name="keyword_detail_title_fallback">Ключове слово</string>
     <string name="keyword_detail_not_found">Ключове слово не знайдено</string>
@@ -1565,4 +1564,9 @@
     <string name="action_clear">Очистити</string>
     <string name="recurring_task_start_section">Початок розкладу</string>
     <string name="recurring_task_start_help">Виберіть дату початку та необов’язковий час для цього повторюваного розкладу.</string>
+    <string name="shortcodes_dynamic_badge">Динамічний</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" не є типом дати, тому це залишиться звичайним текстом. Використовуйте: %2$s</string>
+    <string name="shortcodes_code_hint">Текст, що запускає підстановку, напр. @today</string>
+    <string name="shortcodes_expansion_hint">На що перетворюється під час введення</string>
+    <string name="shortcodes_help_format_codes_title">Коди формату</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynamische patronen:</string>
     <string name="shortcodes_help_dynamic_desc">Gebruik {{vandaag:FORMAT}}, {{gisteren:FORMAT}}, {{morgen:FORMAT}} of {{nu:FORMAT}}.</string>
     <string name="shortcodes_help_example">Voorbeeld: @yday -&gt; Gisteren: {{gisteren:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Trefwoord</string>
     <string name="action_close">Dichtbij</string>
     <string name="keyword_detail_title_fallback">Trefwoord</string>
     <string name="keyword_detail_not_found">Zoekwoord niet gevonden</string>
@@ -1549,4 +1548,9 @@ Alleen</string>
     <string name="action_clear">Helder</string>
     <string name="recurring_task_start_section">Schema start</string>
     <string name="recurring_task_start_help">Selecteer de startdatum en optionele tijd voor dit terugkerende schema.</string>
+    <string name="shortcodes_dynamic_badge">Dynamisch</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" is geen datumtype, dus dit blijft gewone tekst. Gebruik: %2$s</string>
+    <string name="shortcodes_code_hint">Tekst die de uitbreiding activeert, bijv. @today</string>
+    <string name="shortcodes_expansion_hint">Waarin het verandert bij typen</string>
+    <string name="shortcodes_help_format_codes_title">Opmaakcodes</string>
 </resources>

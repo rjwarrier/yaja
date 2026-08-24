@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Dynaamiset kuviot:</string>
     <string name="shortcodes_help_dynamic_desc">Käytä {{today:FORMAT}}, {{yesterday:FORMAT}}, {{tomorrow:FORMAT}} tai {{now:FORMAT}}.</string>
     <string name="shortcodes_help_example">Esimerkki: @yday -&gt; Eilen: {{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">Yleiset muodot: pp-KK-vv, HH:mm, EEEE (päivän nimi).</string>
     <string name="action_close">Lähellä</string>
     <string name="keyword_detail_title_fallback">avainsana</string>
     <string name="keyword_detail_not_found">Avainsanaa ei löydy</string>
@@ -1550,4 +1549,9 @@ Vain manuaalinen</string>
     <string name="action_clear">Kirkas</string>
     <string name="recurring_task_start_section">Aikataulun aloitus</string>
     <string name="recurring_task_start_help">Valitse tämän toistuvan aikataulun alkamispäivä ja valinnainen aika.</string>
+    <string name="shortcodes_dynamic_badge">Dynaaminen</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" ei ole päivämäärätyyppi, joten tämä pysyy pelkkänä tekstinä. Käytä: %2$s</string>
+    <string name="shortcodes_code_hint">Teksti joka laukaisee laajennuksen, esim. @today</string>
+    <string name="shortcodes_expansion_hint">Miksi se laajenee kirjoitettaessa</string>
+    <string name="shortcodes_help_format_codes_title">Muotoilukoodit</string>
 </resources>

@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">Modele dinamice:</string>
     <string name="shortcodes_help_dynamic_desc">Folosiți {{azi:FORMAT}}, {{ieri:FORMAT}}, {{mâine:FORMAT}} sau {{acum:FORMAT}}.</string>
     <string name="shortcodes_help_example">Exemplu: @ay -&gt; Ieri: {{ieri:zz-MMM-aa}}</string>
-    <string name="shortcodes_help_common_formats">Formate comune: zz-LL-aa, HH:mm, EEEE (numele zilei).</string>
     <string name="action_close">Aproape</string>
     <string name="keyword_detail_title_fallback">Cuvânt cheie</string>
     <string name="keyword_detail_not_found">Cuvânt cheie nu a fost găsit</string>
@@ -1553,4 +1552,9 @@ Creion cu cerneală</string>
     <string name="action_clear">Șterge</string>
     <string name="recurring_task_start_section">Program de începere</string>
     <string name="recurring_task_start_help">Selectați data de începere și ora opțională pentru acest program recurent.</string>
+    <string name="shortcodes_dynamic_badge">Dinamic</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" nu este un tip de dată, deci va rămâne text simplu. Folosiți: %2$s</string>
+    <string name="shortcodes_code_hint">Textul care declanșează extinderea, de ex. @today</string>
+    <string name="shortcodes_expansion_hint">În ce se transformă când este tastat</string>
+    <string name="shortcodes_help_format_codes_title">Coduri de format</string>
 </resources>

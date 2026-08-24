@@ -951,7 +951,6 @@
     <string name="shortcodes_help_dynamic_patterns">动态模式：</string>
     <string name="shortcodes_help_dynamic_desc">使用 {{today:FORMAT}}、{{yesterday:FORMAT}}、{{tomorrow:FORMAT}} 或 {{now:FORMAT}}。</string>
     <string name="shortcodes_help_example">示例：@yday -> 昨天：{{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">常用格式：dd-MM-yy、HH:mm、EEEE (星期名称)。</string>
     <string name="action_close">关闭</string>
     <string name="keyword_detail_title_fallback">关键词</string>
     <string name="keyword_detail_not_found">未找到该关键词</string>
@@ -1556,4 +1555,9 @@
     <string name="action_clear">清除</string>
     <string name="recurring_task_start_section">日程开始</string>
     <string name="recurring_task_start_help">选择此循环计划的开始日期和可选时间。</string>
+    <string name="shortcodes_dynamic_badge">动态</string>
+    <string name="shortcodes_unknown_placeholder">“%1$s”不是日期类型，因此将保持为纯文本。可用：%2$s</string>
+    <string name="shortcodes_code_hint">触发展开的文本，例如 @today</string>
+    <string name="shortcodes_expansion_hint">输入时展开为什么内容</string>
+    <string name="shortcodes_help_format_codes_title">格式代码</string>
 </resources>

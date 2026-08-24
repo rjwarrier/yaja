@@ -1035,7 +1035,6 @@
     <string name="shortcodes_help_dynamic_patterns">動態模式：</string>
     <string name="shortcodes_help_dynamic_desc">使用 {{today:FORMAT}}、{{yesterday:FORMAT}}、{{tomorrow:FORMAT}} 或 {{now:FORMAT}}。</string>
     <string name="shortcodes_help_example">例：@yday -&gt; 昨天：{{yesterday:dd-MMM-yy}}</string>
-    <string name="shortcodes_help_common_formats">常見格式：dd-MM-yy、HH:mm、EEEE（日期名稱）。</string>
     <string name="action_close">關閉</string>
     <string name="keyword_detail_title_fallback">關鍵字</string>
     <string name="keyword_detail_not_found">找不到關鍵字</string>
@@ -1550,4 +1549,9 @@
     <string name="action_clear">清除</string>
     <string name="recurring_task_start_section">行程開始</string>
     <string name="recurring_task_start_help">選擇此循環計畫的開始日期和選用時間。</string>
+    <string name="shortcodes_dynamic_badge">動態</string>
+    <string name="shortcodes_unknown_placeholder">「%1$s」不是日期類型，因此將保持為純文字。可用：%2$s</string>
+    <string name="shortcodes_code_hint">觸發展開的文字，例如 @today</string>
+    <string name="shortcodes_expansion_hint">輸入時展開為什麼內容</string>
+    <string name="shortcodes_help_format_codes_title">格式代碼</string>
 </resources>
