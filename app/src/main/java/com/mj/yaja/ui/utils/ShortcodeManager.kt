@@ -31,6 +31,21 @@ object ShortcodeManager {
      */
     fun expandValue(value: String): String = expandPlaceholders(value)
 
+    /** The placeholder types [expandValue] knows how to resolve. */
+    val PLACEHOLDER_TYPES = listOf("today", "yesterday", "tomorrow", "now")
+
+    private val ANY_PLACEHOLDER = Regex("\\{\\{([^:{}]+):[^{}]*\\}\\}")
+
+    /**
+     * Names the first `{{type:format}}` in [value] whose type [expandValue] does not recognize, or
+     * null when every placeholder present will resolve. Lets the editor warn about a placeholder
+     * that would otherwise reach the entry as literal text.
+     */
+    fun unresolvedPlaceholderType(value: String): String? =
+            ANY_PLACEHOLDER.findAll(value)
+                    .map { it.groupValues[1] }
+                    .firstOrNull { it !in PLACEHOLDER_TYPES }
+
     private fun expandPlaceholders(value: String): String {
         var expanded = value
         val now = LocalDate.now()

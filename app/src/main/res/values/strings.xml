@@ -1181,6 +1181,7 @@
     <string name="shortcodes_empty_subtitle">Add one to expand snippets like @yday into dynamic text.</string>
     <string name="shortcodes_dynamic_dates_hint">Use {{today:format}} for dynamic dates.</string>
     <string name="shortcodes_dynamic_badge">Dynamic</string>
+    <string name="shortcodes_unknown_placeholder">\"%1$s\" is not a date type, so this stays as plain text. Use: %2$s</string>
     <string name="shortcodes_code_hint">Text that triggers the expansion, e.g. @today</string>
     <string name="shortcodes_expansion_hint">What it expands to when typed</string>
     <string name="shortcodes_help_title">Shortcode Help</string>

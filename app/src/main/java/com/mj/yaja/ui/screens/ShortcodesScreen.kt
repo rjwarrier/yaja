@@ -38,6 +38,7 @@ import com.mj.yaja.ui.design.floatTween
 import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.design.rememberAppEntrance
 import com.mj.yaja.ui.design.AppScreenReveal
+import com.mj.yaja.ui.utils.ShortcodeManager
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -358,10 +359,14 @@ fun ShortcodeEditDialog(
                             modifier = Modifier.fillMaxWidth(),
                             shape = MaterialTheme.shapes.medium
                     )
+                    val unknownType = ShortcodeManager.unresolvedPlaceholderType(value.text)
+                    val accent =
+                            if (unknownType != null) MaterialTheme.colorScheme.error
+                            else MaterialTheme.colorScheme.primary
                     Surface(
                             shape = MaterialTheme.shapes.large,
                             color = MaterialTheme.colorScheme.surfaceContainerLow,
-                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
+                            border = BorderStroke(1.dp, accent.copy(alpha = 0.2f)),
                             modifier = Modifier.fillMaxWidth()
                     ) {
                         Row(
@@ -370,13 +375,24 @@ fun ShortcodeEditDialog(
                                 verticalAlignment = Alignment.Top
                         ) {
                             Icon(
-                                    imageVector = Icons.Rounded.Info,
+                                    imageVector =
+                                            if (unknownType != null) Icons.Rounded.Warning
+                                            else Icons.Rounded.Info,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
+                                    tint = accent,
                                     modifier = Modifier.size(20.dp)
                             )
                             Text(
-                                    stringResource(R.string.shortcodes_dynamic_dates_hint),
+                                    text =
+                                            if (unknownType != null) {
+                                                stringResource(
+                                                        R.string.shortcodes_unknown_placeholder,
+                                                        unknownType,
+                                                        ShortcodeManager.PLACEHOLDER_TYPES.joinToString(", ")
+                                                )
+                                            } else {
+                                                stringResource(R.string.shortcodes_dynamic_dates_hint)
+                                            },
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -395,15 +411,15 @@ fun ShortcodeEditDialog(
 }
 
 /**
- * Seeds an empty expansion field with a ready-to-fill dynamic-date placeholder, parking the caret
+ * Seeds an empty expansion field with a placeholder named after the code itself, parking the caret
  * between the colon and the closing braces so the next keystrokes land in the format slot.
- * [ShortcodeManager] only resolves today/yesterday/tomorrow/now, so the scaffold always names one
- * of those rather than echoing the code text back, which would never expand.
+ * [ShortcodeManager] only resolves today/yesterday/tomorrow/now, so a code named anything else
+ * seeds a placeholder the dialog then flags as unresolvable.
  */
 internal fun dynamicScaffoldValue(code: String): TextFieldValue {
     if (!code.startsWith("@") || code.length < 2) return TextFieldValue("")
-    val scaffold = "{{today:}}"
-    return TextFieldValue(scaffold, selection = TextRange(scaffold.indexOf(':') + 1))
+    val scaffold = "{{${code.removePrefix("@")}:}}"
+    return TextFieldValue(scaffold, selection = TextRange(scaffold.length - 2))
 }
 
 @OptIn(ExperimentalLayoutApi::class)
