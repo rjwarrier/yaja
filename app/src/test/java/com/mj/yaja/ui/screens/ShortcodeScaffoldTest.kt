@@ -11,23 +11,38 @@ import org.junit.Test
 class ShortcodeScaffoldTest {
 
     @Test
-    fun `scaffold echoes the code text without its at sign`() {
-        assertEquals("{{2day:}}", dynamicScaffoldValue("@2day").text)
-        assertEquals("{{today:}}", dynamicScaffoldValue("@today").text)
-        assertEquals("{{yday:}}", dynamicScaffoldValue("@yday").text)
+    fun `every recognized date type seeds its own placeholder`() {
+        ShortcodeManager.PLACEHOLDER_TYPES.forEach { type ->
+            assertEquals("{{$type:}}", dynamicScaffoldValue("@$type").text)
+        }
     }
 
     @Test
-    fun `scaffold keeps the whole code as it is typed out character by character`() {
-        // Regression: the seed used to freeze after the first character, so typing "@this"
-        // left "{{t:}}" behind instead of "{{this:}}".
-        val typedSoFar = listOf("@", "@t", "@th", "@thi", "@this")
-        val seeds = typedSoFar.map { dynamicScaffoldValue(it).text }
+    fun `a code that is not a date type seeds nothing`() {
+        listOf("@2day", "@yday", "@this", "@t", "@todayish", "@nowhere").forEach { code ->
+            assertEquals("seeding $code would only be text to delete", "", dynamicScaffoldValue(code).text)
+        }
+    }
+
+    @Test
+    fun `seed appears only once the code spells a whole date type`() {
+        // Also a regression guard: the seed used to latch on the first character and never
+        // update again, so typing past a match has to keep being re-evaluated.
+        val seeds = listOf("@", "@t", "@to", "@tod", "@toda", "@today", "@todayx")
+            .map { dynamicScaffoldValue(it).text }
 
         assertEquals(
-            listOf("", "{{t:}}", "{{th:}}", "{{thi:}}", "{{this:}}"),
+            listOf("", "", "", "", "", "{{today:}}", ""),
             seeds
         )
+    }
+
+    @Test
+    fun `type match ignores case but seeds the canonical name so it still resolves`() {
+        val seeded = dynamicScaffoldValue("@Today").text
+
+        assertEquals("{{today:}}", seeded)
+        assertNull(ShortcodeManager.unresolvedPlaceholderType(seeded))
     }
 
     @Test
@@ -38,8 +53,9 @@ class ShortcodeScaffoldTest {
 
     @Test
     fun `scaffold parks the caret directly after the colon`() {
-        val result = dynamicScaffoldValue("@2day")
+        val result = dynamicScaffoldValue("@today")
 
+        assertEquals("{{today:}}", result.text)
         assertEquals(
             "caret must sit in the format slot, not after the closing braces",
             result.text.indexOf(':') + 1,
@@ -74,9 +90,8 @@ class ShortcodeScaffoldTest {
     // ── unresolved placeholder detection ──────────────────────────────────
 
     @Test
-    fun `echoed code that is not a date type is reported as unresolvable`() {
-        val scaffold = dynamicScaffoldValue("@2day")
-        assertEquals("2day", ShortcodeManager.unresolvedPlaceholderType(scaffold.text))
+    fun `a hand written placeholder that is not a date type is reported as unresolvable`() {
+        assertEquals("2day", ShortcodeManager.unresolvedPlaceholderType("{{2day:dd-HH-mm}}"))
     }
 
     @Test

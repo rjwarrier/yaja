@@ -432,14 +432,18 @@ fun ShortcodeEditDialog(
 }
 
 /**
- * Seeds an empty expansion field with a placeholder named after the code itself, parking the caret
- * between the colon and the closing braces so the next keystrokes land in the format slot.
- * [ShortcodeManager] only resolves today/yesterday/tomorrow/now, so a code named anything else
- * seeds a placeholder the dialog then flags as unresolvable.
+ * Seeds the expansion field when the code names one of [ShortcodeManager.PLACEHOLDER_TYPES],
+ * parking the caret between the colon and the closing braces so the next keystrokes land in the
+ * format slot. Any other code seeds nothing: a placeholder named after it could never resolve, so
+ * pre-filling one would only be text to delete.
  */
 internal fun dynamicScaffoldValue(code: String): TextFieldValue {
-    if (!code.startsWith("@") || code.length < 2) return TextFieldValue("")
-    val scaffold = "{{${code.removePrefix("@")}:}}"
+    if (!code.startsWith("@")) return TextFieldValue("")
+    val token = code.removePrefix("@")
+    // Matched loosely but seeded canonically, so @Today still yields a placeholder that resolves.
+    val type = ShortcodeManager.PLACEHOLDER_TYPES.firstOrNull { it.equals(token, ignoreCase = true) }
+            ?: return TextFieldValue("")
+    val scaffold = "{{$type:}}"
     return TextFieldValue(scaffold, selection = formatSlotOf(scaffold))
 }
 
