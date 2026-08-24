@@ -181,7 +181,7 @@ internal fun ShortcodesScreenContent(
                         value = value,
                         index = index,
                         animateIn = entranceTriggered,
-                        onClick = { onEdit(code, value) },
+                        onEdit = { onEdit(code, value) },
                         onDelete = { onDelete(code) }
                     )
                 }

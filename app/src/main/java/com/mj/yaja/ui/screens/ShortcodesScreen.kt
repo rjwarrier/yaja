@@ -4,7 +4,13 @@ import android.util.Log
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +29,11 @@ import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppStaggeredEntrance
+import com.mj.yaja.ui.design.LocalAnimationPreference
+import com.mj.yaja.ui.design.enterOrNone
+import com.mj.yaja.ui.design.exitOrNone
+import com.mj.yaja.ui.design.floatTween
+import com.mj.yaja.ui.design.tweenSpec
 import com.mj.yaja.ui.design.rememberAppEntrance
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.viewmodel.JournalViewModel
@@ -137,7 +148,7 @@ fun ShortcodesScreen(
                 entranceTriggered = entranceTriggered,
                 paddingValues = paddingValues,
                 onEdit = { code, value -> editingShortcode = Pair(code, value) },
-                onDelete = { code -> viewModel.removeCustomShortcode(code) }
+                onDelete = { code -> viewModel.removeCustomShortcode(code) },
             )
         }
 
@@ -169,10 +180,14 @@ fun ShortcodeItem(
         value: String,
         index: Int,
         animateIn: Boolean,
-        onClick: () -> Unit,
+        onEdit: () -> Unit,
         onDelete: () -> Unit,
         modifier: Modifier = Modifier
 ) {
+    var expanded by remember { mutableStateOf(false) }
+    val preference = LocalAnimationPreference.current
+    val isDynamic = value.contains("{{")
+
     AppStaggeredEntrance(
             visible = animateIn,
             index = index,
@@ -180,57 +195,109 @@ fun ShortcodeItem(
             modifier = modifier
     ) {
         ElevatedCard(
+                onClick = { expanded = !expanded },
                 modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 2.dp)
-                        .clickable(onClick = onClick),
+                        .animateContentSize(animationSpec = preference.tweenSpec(200)),
                 colors = CardDefaults.elevatedCardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerLow
                 ),
                 shape = MaterialTheme.shapes.large
         ) {
-                Row(
-                        modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 16.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                Column(
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                        Surface(
-                                color = MaterialTheme.colorScheme.secondaryContainer,
-                                shape = RoundedCornerShape(16.dp),
-                                modifier = Modifier.size(40.dp)
+                        Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
                         ) {
-                                Box(contentAlignment = Alignment.Center) {
-                                        Icon(
-                                                Icons.AutoMirrored.Rounded.ShortText,
-                                                contentDescription = null,
-                                                tint = MaterialTheme.colorScheme.onSecondaryContainer,
-                                                modifier = Modifier.size(20.dp)
-                                        )
+                                Surface(
+                                        color = MaterialTheme.colorScheme.secondaryContainer,
+                                        shape = RoundedCornerShape(16.dp),
+                                        modifier = Modifier.size(40.dp)
+                                ) {
+                                        Box(contentAlignment = Alignment.Center) {
+                                                Icon(
+                                                        Icons.AutoMirrored.Rounded.ShortText,
+                                                        contentDescription = null,
+                                                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                                                        modifier = Modifier.size(20.dp)
+                                                )
+                                        }
                                 }
-                        }
-                        Spacer(modifier = Modifier.width(14.dp))
-                        Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                        text = code,
-                                        style = MaterialTheme.typography.titleSmall,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.primary
-                                )
-                                Spacer(modifier = Modifier.height(2.dp))
-                                Text(
-                                        text = value,
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        maxLines = 1
-                                )
-                        }
-                        IconButton(onClick = onDelete) {
+                                Spacer(modifier = Modifier.width(14.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                        Text(
+                                                text = code,
+                                                style = MaterialTheme.typography.titleSmall,
+                                                fontWeight = FontWeight.Bold,
+                                                color = MaterialTheme.colorScheme.primary
+                                        )
+                                        Spacer(modifier = Modifier.height(2.dp))
+                                        Text(
+                                                text = value,
+                                                style = MaterialTheme.typography.bodyMedium,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                maxLines = 1
+                                        )
+                                        if (isDynamic) {
+                                                Surface(
+                                                        color = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.75f),
+                                                        shape = RoundedCornerShape(999.dp),
+                                                        modifier = Modifier.padding(top = 6.dp)
+                                                ) {
+                                                        Text(
+                                                                text = stringResource(R.string.shortcodes_dynamic_badge),
+                                                                style = MaterialTheme.typography.labelSmall,
+                                                                fontWeight = FontWeight.Bold,
+                                                                color = MaterialTheme.colorScheme.onTertiaryContainer,
+                                                                modifier = Modifier.padding(horizontal = 9.dp, vertical = 3.dp)
+                                                        )
+                                                }
+                                        }
+                                }
                                 Icon(
-                                        Icons.Rounded.Delete,
-                                        contentDescription = stringResource(R.string.action_delete),
-                                        tint = MaterialTheme.colorScheme.error
+                                        imageVector = if (expanded) Icons.Rounded.ExpandLess else Icons.Rounded.ExpandMore,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
+                        }
+
+                        AnimatedVisibility(
+                                visible = expanded,
+                                enter = preference.enterOrNone(
+                                        fadeIn(preference.floatTween(150)) + expandVertically(preference.tweenSpec(200))
+                                ),
+                                exit = preference.exitOrNone(
+                                        fadeOut(preference.floatTween(100)) + shrinkVertically(preference.tweenSpec(180))
+                                )
+                        ) {
+                                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f))
+                                        Row(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                horizontalArrangement = Arrangement.End
+                                        ) {
+                                                TextButton(
+                                                        onClick = onDelete,
+                                                        colors = ButtonDefaults.textButtonColors(
+                                                                contentColor = MaterialTheme.colorScheme.error
+                                                        ),
+                                                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
+                                                ) {
+                                                        Text(stringResource(R.string.action_delete), style = MaterialTheme.typography.labelLarge)
+                                                }
+                                                Spacer(modifier = Modifier.width(4.dp))
+                                                TextButton(
+                                                        onClick = onEdit,
+                                                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
+                                                ) {
+                                                        Text(stringResource(R.string.action_edit), style = MaterialTheme.typography.labelLarge)
+                                                }
+                                        }
+                                }
                         }
                 }
         }
@@ -265,6 +332,10 @@ fun ShortcodeEditDialog(
                             value = code,
                             onValueChange = { code = it },
                             label = { Text(stringResource(R.string.shortcodes_code_label)) },
+                            supportingText = { Text(stringResource(R.string.shortcodes_code_hint)) },
+                            leadingIcon = {
+                                Icon(Icons.AutoMirrored.Rounded.ShortText, contentDescription = null)
+                            },
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth(),
                             shape = MaterialTheme.shapes.medium
@@ -273,25 +344,41 @@ fun ShortcodeEditDialog(
                             value = value,
                             onValueChange = { value = it },
                             label = { Text(stringResource(R.string.shortcodes_expansion_label)) },
+                            supportingText = { Text(stringResource(R.string.shortcodes_expansion_hint)) },
+                            leadingIcon = {
+                                Icon(Icons.Rounded.Description, contentDescription = null)
+                            },
                             modifier = Modifier.fillMaxWidth(),
                             shape = MaterialTheme.shapes.medium
                     )
                     Surface(
-                            color = MaterialTheme.colorScheme.secondaryContainer,
-                            shape = MaterialTheme.shapes.small,
+                            shape = MaterialTheme.shapes.large,
+                            color = MaterialTheme.colorScheme.surfaceContainerLow,
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
                             modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                                stringResource(R.string.shortcodes_dynamic_dates_hint),
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                modifier = Modifier.padding(8.dp)
-                        )
+                        Row(
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),
+                                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                verticalAlignment = Alignment.Top
+                        ) {
+                            Icon(
+                                    imageVector = Icons.Rounded.Info,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.size(20.dp)
+                            )
+                            Text(
+                                    stringResource(R.string.shortcodes_dynamic_dates_hint),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             },
             confirmButton = {
-                Button(
+                TextButton(
                         onClick = { if (code.isNotBlank()) onConfirm(code, value) },
                         enabled = code.startsWith("@") && code.length > 1
                 ) { Text(stringResource(R.string.action_save)) }

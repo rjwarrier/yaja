@@ -1180,6 +1180,9 @@
     <string name="shortcodes_empty_title">No custom shortcodes</string>
     <string name="shortcodes_empty_subtitle">Add one to expand snippets like @yday into dynamic text.</string>
     <string name="shortcodes_dynamic_dates_hint">Use {{today:format}} for dynamic dates.</string>
+    <string name="shortcodes_dynamic_badge">Dynamic</string>
+    <string name="shortcodes_code_hint">Text that triggers the expansion, e.g. @today</string>
+    <string name="shortcodes_expansion_hint">What it expands to when typed</string>
     <string name="shortcodes_help_title">Shortcode Help</string>
     <string name="shortcodes_help_built_in">Built-in Shortcodes:</string>
     <string name="shortcodes_help_built_in_examples">@today, @now, @week, @day, @t (checkbox), @x (toggle checkbox)</string>
