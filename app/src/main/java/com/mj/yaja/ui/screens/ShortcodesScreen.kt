@@ -21,6 +21,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -316,6 +319,10 @@ fun ShortcodeEditDialog(
 ) {
     var code by remember(initialCode) { mutableStateOf(initialCode) }
     var value by remember(initialValue) { mutableStateOf(TextFieldValue(initialValue)) }
+    // While true the expansion is still the generated scaffold, so it keeps tracking the code.
+    // The first hand edit hands ownership to the user and stops the regeneration for good.
+    var scaffolded by remember(initialValue) { mutableStateOf(initialValue.isEmpty()) }
+    val expansionFocus = remember { FocusRequester() }
 
     AlertDialog(
             onDismissRequest = onDismiss,
@@ -335,7 +342,7 @@ fun ShortcodeEditDialog(
                             value = code,
                             onValueChange = { newCode ->
                                 code = newCode
-                                if (value.text.isEmpty()) {
+                                if (scaffolded) {
                                     value = dynamicScaffoldValue(newCode)
                                 }
                             },
@@ -350,13 +357,27 @@ fun ShortcodeEditDialog(
                     )
                     OutlinedTextField(
                             value = value,
-                            onValueChange = { value = it },
+                            onValueChange = { newValue ->
+                                // Caret moves alone must not count as taking ownership, or simply
+                                // tapping into the field would freeze the scaffold.
+                                if (newValue.text != value.text) {
+                                    scaffolded = false
+                                }
+                                value = newValue
+                            },
                             label = { Text(stringResource(R.string.shortcodes_expansion_label)) },
                             supportingText = { Text(stringResource(R.string.shortcodes_expansion_hint)) },
                             leadingIcon = {
                                 Icon(Icons.Rounded.Description, contentDescription = null)
                             },
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                    .fillMaxWidth()
+                                    .focusRequester(expansionFocus)
+                                    .onFocusChanged { focusState ->
+                                        if (focusState.isFocused && scaffolded) {
+                                            value = value.copy(selection = formatSlotOf(value.text))
+                                        }
+                                    },
                             shape = MaterialTheme.shapes.medium
                     )
                     val unknownType = ShortcodeManager.unresolvedPlaceholderType(value.text)
@@ -419,7 +440,16 @@ fun ShortcodeEditDialog(
 internal fun dynamicScaffoldValue(code: String): TextFieldValue {
     if (!code.startsWith("@") || code.length < 2) return TextFieldValue("")
     val scaffold = "{{${code.removePrefix("@")}:}}"
-    return TextFieldValue(scaffold, selection = TextRange(scaffold.length - 2))
+    return TextFieldValue(scaffold, selection = formatSlotOf(scaffold))
+}
+
+/**
+ * The collapsed caret position between a placeholder's colon and its closing braces — the slot the
+ * format pattern goes in. Falls back to the end of [text] when there is no placeholder to aim at.
+ */
+internal fun formatSlotOf(text: String): TextRange {
+    val colon = text.lastIndexOf(':')
+    return if (colon < 0) TextRange(text.length) else TextRange(colon + 1)
 }
 
 @OptIn(ExperimentalLayoutApi::class)

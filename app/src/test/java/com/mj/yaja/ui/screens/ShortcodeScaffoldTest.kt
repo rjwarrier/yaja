@@ -1,5 +1,6 @@
 package com.mj.yaja.ui.screens
 
+import androidx.compose.ui.text.TextRange
 import com.mj.yaja.ui.utils.ShortcodeManager
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -14,6 +15,25 @@ class ShortcodeScaffoldTest {
         assertEquals("{{2day:}}", dynamicScaffoldValue("@2day").text)
         assertEquals("{{today:}}", dynamicScaffoldValue("@today").text)
         assertEquals("{{yday:}}", dynamicScaffoldValue("@yday").text)
+    }
+
+    @Test
+    fun `scaffold keeps the whole code as it is typed out character by character`() {
+        // Regression: the seed used to freeze after the first character, so typing "@this"
+        // left "{{t:}}" behind instead of "{{this:}}".
+        val typedSoFar = listOf("@", "@t", "@th", "@thi", "@this")
+        val seeds = typedSoFar.map { dynamicScaffoldValue(it).text }
+
+        assertEquals(
+            listOf("", "{{t:}}", "{{th:}}", "{{thi:}}", "{{this:}}"),
+            seeds
+        )
+    }
+
+    @Test
+    fun `format slot lands after the colon and tolerates text with no placeholder`() {
+        assertEquals(TextRange("{{this:".length), formatSlotOf("{{this:}}"))
+        assertEquals(TextRange("plain".length), formatSlotOf("plain"))
     }
 
     @Test
