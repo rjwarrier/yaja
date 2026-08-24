@@ -337,10 +337,14 @@ fun HomeTopBar(
                 .fillMaxWidth()
                 .windowInsetsPadding(WindowInsets.statusBars)
         ) {
-            Row(
+            BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            ) {
+            val compactSearch = maxWidth < 360.dp
+            Row(
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -351,9 +355,13 @@ fun HomeTopBar(
                     onValueChange = onSearchQueryChanged,
                     placeholder = {
                         Text(
-                            stringResource(R.string.home_search_placeholder),
+                            stringResource(
+                                if (compactSearch) R.string.home_cd_search
+                                else R.string.home_search_placeholder
+                            ),
                             style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                            maxLines = 1
                         )
                     },
                     modifier = Modifier.weight(1f),
@@ -479,6 +487,7 @@ fun HomeTopBar(
                         }
                     }
                 }
+            }
             }
 
             AnimatedVisibility(

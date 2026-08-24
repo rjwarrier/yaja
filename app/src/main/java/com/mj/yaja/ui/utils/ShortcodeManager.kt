@@ -12,10 +12,12 @@ object ShortcodeManager {
         // 1. Expand Custom (and newly migrated built-in) Shortcodes
         customShortcodes.forEach { (code, value) ->
             if (result.contains(code)) {
-                val expandedValue = expandPlaceholders(value)
-                result = result.replace(code, expandedValue)
+                result = result.replace(code, value)
             }
         }
+
+        // 2. Expand {{today:FORMAT}} / {{now:FORMAT}} placeholders anywhere in the text
+        result = expandPlaceholders(result)
 
         // 3. Handle @x (Todo Toggle Logic) - Moved from AddEntryScreen
         if ("@x" in result) {
