@@ -12,12 +12,9 @@ object ShortcodeManager {
         // 1. Expand Custom (and newly migrated built-in) Shortcodes
         customShortcodes.forEach { (code, value) ->
             if (result.contains(code)) {
-                result = result.replace(code, value)
+                result = result.replace(code, expandValue(value))
             }
         }
-
-        // 2. Expand {{today:FORMAT}} / {{now:FORMAT}} placeholders anywhere in the text
-        result = expandPlaceholders(result)
 
         // 3. Handle @x (Todo Toggle Logic) - Moved from AddEntryScreen
         if ("@x" in result) {
@@ -26,6 +23,13 @@ object ShortcodeManager {
 
         return result
     }
+
+    /**
+     * Resolves the {{today:FORMAT}} / {{now:FORMAT}} placeholders inside a shortcode's stored
+     * value. Callers that substitute a shortcode themselves must route the value through this
+     * rather than [expand], which only resolves placeholders for codes it substitutes itself.
+     */
+    fun expandValue(value: String): String = expandPlaceholders(value)
 
     private fun expandPlaceholders(value: String): String {
         var expanded = value

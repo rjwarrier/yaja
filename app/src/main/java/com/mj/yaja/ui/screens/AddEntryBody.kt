@@ -378,7 +378,7 @@ private fun expandShortcodesBeforeCursor(
                 while (true) {
                         val index = text.indexOf(code, searchStart)
                         if (index < 0) break
-                        val expanded = ShortcodeManager.expand(rawSnippet, emptyMap())
+                        val expanded = ShortcodeManager.expandValue(rawSnippet)
                         text = text.replaceRange(index, index + code.length, expanded)
                         if (index < cursor) {
                                 cursor += expanded.length - code.length

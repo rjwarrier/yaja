@@ -24,7 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
@@ -311,8 +313,8 @@ fun ShortcodeEditDialog(
         onDismiss: () -> Unit,
         onConfirm: (String, String) -> Unit
 ) {
-    var code by remember { mutableStateOf(initialCode) }
-    var value by remember { mutableStateOf(initialValue) }
+    var code by remember(initialCode) { mutableStateOf(initialCode) }
+    var value by remember(initialValue) { mutableStateOf(TextFieldValue(initialValue)) }
 
     AlertDialog(
             onDismissRequest = onDismiss,
@@ -330,7 +332,12 @@ fun ShortcodeEditDialog(
                 Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     OutlinedTextField(
                             value = code,
-                            onValueChange = { code = it },
+                            onValueChange = { newCode ->
+                                code = newCode
+                                if (value.text.isEmpty()) {
+                                    value = dynamicScaffoldValue(newCode)
+                                }
+                            },
                             label = { Text(stringResource(R.string.shortcodes_code_label)) },
                             supportingText = { Text(stringResource(R.string.shortcodes_code_hint)) },
                             leadingIcon = {
@@ -379,7 +386,7 @@ fun ShortcodeEditDialog(
             },
             confirmButton = {
                 TextButton(
-                        onClick = { if (code.isNotBlank()) onConfirm(code, value) },
+                        onClick = { if (code.isNotBlank()) onConfirm(code, value.text) },
                         enabled = code.startsWith("@") && code.length > 1
                 ) { Text(stringResource(R.string.action_save)) }
             },
@@ -387,6 +394,19 @@ fun ShortcodeEditDialog(
     )
 }
 
+/**
+ * Seeds an empty expansion field with a ready-to-fill dynamic-date placeholder, parking the caret
+ * between the colon and the closing braces so the next keystrokes land in the format slot.
+ * [ShortcodeManager] only resolves today/yesterday/tomorrow/now, so the scaffold always names one
+ * of those rather than echoing the code text back, which would never expand.
+ */
+internal fun dynamicScaffoldValue(code: String): TextFieldValue {
+    if (!code.startsWith("@") || code.length < 2) return TextFieldValue("")
+    val scaffold = "{{today:}}"
+    return TextFieldValue(scaffold, selection = TextRange(scaffold.indexOf(':') + 1))
+}
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
     AlertDialog(
@@ -421,14 +441,63 @@ fun ShortcodeHelpDialog(onDismiss: () -> Unit) {
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.primary
                     )
+
+                    HorizontalDivider()
+
                     Text(
-                            stringResource(R.string.shortcodes_help_common_formats),
-                            style = MaterialTheme.typography.bodySmall
+                            stringResource(R.string.shortcodes_help_format_codes_title),
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.titleSmall
                     )
+                    FlowRow(
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        FormatCodeChip("yyyy", stringResource(R.string.shortcodes_help_format_year4))
+                        FormatCodeChip("yy", stringResource(R.string.shortcodes_help_format_year2))
+                        FormatCodeChip("MM", stringResource(R.string.shortcodes_help_format_month_num))
+                        FormatCodeChip("MMM", stringResource(R.string.shortcodes_help_format_month_short))
+                        FormatCodeChip("MMMM", stringResource(R.string.shortcodes_help_format_month_full))
+                        FormatCodeChip("dd", stringResource(R.string.shortcodes_help_format_day))
+                        FormatCodeChip("EEE", stringResource(R.string.shortcodes_help_format_weekday_short))
+                        FormatCodeChip("EEEE", stringResource(R.string.shortcodes_help_format_weekday_full))
+                        FormatCodeChip("HH", stringResource(R.string.shortcodes_help_format_hour24))
+                        FormatCodeChip("hh", stringResource(R.string.shortcodes_help_format_hour12))
+                        FormatCodeChip("mm", stringResource(R.string.shortcodes_help_format_minute))
+                        FormatCodeChip("ss", stringResource(R.string.shortcodes_help_format_second))
+                        FormatCodeChip("a", stringResource(R.string.shortcodes_help_format_ampm))
+                        FormatCodeChip("ww", stringResource(R.string.shortcodes_help_format_week))
+                    }
                 }
             },
             confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.action_close)) } }
     )
+}
+
+@Composable
+private fun FormatCodeChip(code: String, meaning: String) {
+    Surface(
+            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            shape = RoundedCornerShape(999.dp)
+    ) {
+        Row(
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                    text = code,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                    text = meaning,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
 }
 
 private fun encodeCsvField(value: String): String {

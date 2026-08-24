@@ -32,6 +32,21 @@ class AddEntryBodyTest {
     }
 
     @Test
+    fun `placeholder typed literally into an entry is left alone`() {
+        val codes = mapOf("@now" to "{{now:HH:mm}}")
+        val typed = "I set @yday to {{yesterday:dd-MMM-yy}}"
+        val current = TextFieldValue("")
+        val newValue = TextFieldValue(typed, selection = TextRange(typed.length))
+
+        val result = handleEditorValueChange(current, newValue, codes)
+
+        assertTrue(
+            "only substituted shortcode values expand, not text the user typed",
+            result.text.contains("{{yesterday:dd-MMM-yy}}")
+        )
+    }
+
+    @Test
     fun `plain shortcode without placeholder still expands verbatim`() {
         val codes = mapOf("@week" to "Week {{today:ww}}")
         val current = TextFieldValue("")
