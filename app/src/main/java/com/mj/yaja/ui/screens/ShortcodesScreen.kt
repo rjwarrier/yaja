@@ -150,6 +150,10 @@ fun ShortcodesScreen(
                         editingShortcode = null
                 },
                 onConfirmEdit = { code, value ->
+                        val originalCode = editingShortcode?.first
+                        if (originalCode != null && originalCode != code) {
+                                viewModel.removeCustomShortcode(originalCode)
+                        }
                         viewModel.setCustomShortcode(code, value)
                         showAddShortcodeDialog = false
                         editingShortcode = null
