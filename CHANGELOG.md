@@ -1,5 +1,39 @@
 # Changelog
 
+## 3.1.2 - Unreleased
+
+### Highlights
+- Reworked the entry editor and navigation chrome so they hold up at large display sizes and large font scales, where the app has fewer dp to lay out and text outgrows the boxes holding it.
+- Focus mode now turns itself on when the keyboard would leave the editor with barely a line of text, and says so.
+- Added a UI size setting that scales the app's layout independently of its text.
+
+### New
+- Added a `UI Size` slider to Appearance, scaling every dp the way the system Display Size setting does while leaving text to the font size slider. Searchable under "display size", "ui scale", "zoom" and "bigger".
+- Focus mode is enabled automatically, with a toast, when the keyboard leaves the editor under three lines of text. It applies once per entry, so turning it back off keeps it off.
+- The focus button is tinted while focus mode is the app's doing rather than the user's, and returns to its plain style as soon as the toggle is touched.
+
+### Improved
+- Rebuilt the entry top bar as a three-slot row, so the title takes the width left by the action icons and ellipsizes rather than overlapping them.
+- Turned the quick-insert chips into a single scrolling row sized to their labels, instead of fixed-width tiles that wrapped to a second row and clipped their text.
+- Derived every bottom-panel height from one font-scale factor, so the bar, its indicator and its icons grow together and the indicator stays centred.
+- Let the drawer version pill, the shortcodes button, the delete-selected pill, the palette cards and the appearance slider labels size to their own content.
+- Focus mode now hides the date header card, which it previously left on screen.
+- The focus-mode choice survives rotation instead of resetting and re-announcing itself.
+
+### Fixed
+- Fixed the Edit Entry title being drawn over the focus, help, template and delete icons; the centred title reserved a fixed 96dp per side against up to four action buttons.
+- Fixed bottom-navigation indicators overlapping their neighbours: the tappable-size floor ignored how wide each slot actually was, which six enabled destinations on a large display size made visible.
+- Fixed quick-insert chip labels clipping inside fixed-height tiles.
+
+### Verification
+- Added `AppDensityTest` covering the density math behind UI size: that UI size moves layout without moving text, that the font sliders still move text without moving layout, that the compensation cancels correctly through the journal-text path, and that a zero or non-finite scale cannot produce a zero or NaN density.
+- Added `AddEntryFocusModeTest` covering the auto focus-mode decision, including its threshold boundary and its independence from the chrome it hides.
+- Verified with `:app:testDebugUnitTest` (122 tests) and `:app:assembleDebug`.
+
+### Notes
+- Requires a `versionCode` bump to 95; `3.1.1` shipped as 94.
+- `settings_ui_size_label` and `addentry_focus_mode_hint` are base-locale only and still need translating, as does `settings_storage_move_confirm` for es, fr and pt.
+
 ## 3.1.1 - August 28, 2026
 
 ### Highlights
