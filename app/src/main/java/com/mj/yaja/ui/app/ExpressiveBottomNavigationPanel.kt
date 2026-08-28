@@ -47,6 +47,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
@@ -64,6 +65,23 @@ private data class BottomPanelItem(
     val label: String,
     val icon: ImageVector
 )
+
+/** Smallest gap left between an indicator and the edge of the slot it sits in. */
+private val INDICATOR_SLOT_MARGIN = 4.dp
+
+/**
+ * Width of the selection indicator inside a slot [itemWidth] wide.
+ *
+ * The minimum keeps the indicator comfortably tappable, but it has to give way once the
+ * slots themselves are narrower than it: six destinations at a large display size leave
+ * roughly 57dp each, and a minimum that ignored the slot would overlap every neighbour.
+ */
+internal fun resolveIndicatorWidth(itemWidth: Dp, showLabels: Boolean): Dp {
+    val inset = if (showLabels) 18.dp else 20.dp
+    val comfortable = if (showLabels) 72.dp else 56.dp
+    val slotLimit = (itemWidth - INDICATOR_SLOT_MARGIN).coerceAtLeast(0.dp)
+    return (itemWidth - inset).coerceAtLeast(comfortable).coerceAtMost(slotLimit)
+}
 
 /** Ceiling on how far a large font scale may stretch the bottom panel. */
 private const val MAX_BOTTOM_PANEL_LABEL_SCALE = 1.6f
@@ -176,15 +194,7 @@ fun ExpressiveBottomNavigationPanel(
             ) {
                 val itemCount = items.size.coerceAtLeast(1)
                 val itemWidth = maxWidth / itemCount
-                // The floor keeps the indicator comfortably tappable, but it has to give
-                // way once the slots themselves are narrower than it — six destinations
-                // on a large display size leave about 57dp each, and an unbounded floor
-                // would overlap every neighbour.
-                val indicatorGap = if (showLabels) 18.dp else 20.dp
-                val targetIndicatorWidth =
-                    (itemWidth - indicatorGap)
-                        .coerceAtLeast(if (showLabels) 72.dp else 56.dp)
-                        .coerceAtMost((itemWidth - 4.dp).coerceAtLeast(0.dp))
+                val targetIndicatorWidth = resolveIndicatorWidth(itemWidth, showLabels)
                 val animatedIndicatorWidth by androidx.compose.animation.core.animateDpAsState(
                     targetValue = targetIndicatorWidth,
                     animationSpec = motionPreference.dpSpring(

@@ -153,8 +153,27 @@ internal fun AddEntryTransientSheets(
     }
 }
 
-/** Vertical room the full editor chrome needs at font scale 1: top bar, date card, quick-insert chips and count footer. */
-internal val EDITOR_CHROME_HEIGHT = 300.dp
+// Vertical room the full editor chrome needs at font scale 1, itemised so the total can
+// be audited against the layout instead of being a single unexplained number.
+//
+// The top bar pads itself by the status-bar inset. Whether that inset lands inside the
+// height the editor measures depends on how the activity fits system windows, so this
+// term is an allowance rather than a measurement: real padding in one mode, slack in
+// the other. The estimate is coarse either way — the threshold only has to separate a
+// usable editor from an unusable one.
+private val EDITOR_STATUS_BAR_ALLOWANCE = 28.dp
+private val EDITOR_TOP_BAR_HEIGHT = 62.dp
+private val EDITOR_DATE_CARD_HEIGHT = 100.dp
+private val EDITOR_QUICK_INSERT_HEIGHT = 70.dp
+private val EDITOR_COUNT_FOOTER_HEIGHT = 52.dp
+
+/** Total chrome above and below the editor at font scale 1. */
+internal val EDITOR_CHROME_HEIGHT =
+    EDITOR_STATUS_BAR_ALLOWANCE +
+        EDITOR_TOP_BAR_HEIGHT +
+        EDITOR_DATE_CARD_HEIGHT +
+        EDITOR_QUICK_INSERT_HEIGHT +
+        EDITOR_COUNT_FOOTER_HEIGHT
 
 /** Editor height worth keeping at font scale 1: three lines of the 24sp editor text. */
 internal val EDITOR_MIN_VISIBLE_HEIGHT = 72.dp
