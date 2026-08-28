@@ -149,6 +149,8 @@ fun AppearanceSettingsScreen(
                                                 viewModel.setFabPlacement(it)
                                         },
                                         fontScalePreference = uiState.fontScalePreference,
+                                        uiScalePreference = uiState.uiScalePreference,
+                                        onUiScaleSelected = { viewModel.setUiScalePreference(it) },
                                         onFontScaleSelected = { viewModel.setFontScalePreference(it) },
                                         dataFontScalePreference = uiState.dataFontScalePreference,
                                         onDataFontScaleSelected = { viewModel.setDataFontScalePreference(it) },

@@ -17,6 +17,7 @@ import com.mj.yaja.data.EntryKind
 import com.mj.yaja.data.applyEntryKindMetadata
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
+import com.mj.yaja.data.UiScalePreference
 import com.mj.yaja.data.HomeScreenSnapshot
 import com.mj.yaja.data.BackgroundTintLevel
 import com.mj.yaja.data.CalendarDensityPreference
@@ -230,6 +231,7 @@ class JournalViewModel(
     val showTimestamps = settingsFeature.showTimestamps
     val showDayHeaderStats = settingsFeature.showDayHeaderStats
     val renderCheckboxesAsText = settingsFeature.renderCheckboxesAsText
+    val uiScalePreference = settingsFeature.uiScalePreference
     val fontScalePreference = settingsFeature.fontScalePreference
     val dataFontScalePreference = settingsFeature.dataFontScalePreference
     val followUiFontScale = settingsFeature.followUiFontScale
@@ -1744,6 +1746,9 @@ class JournalViewModel(
 
     fun setEntryStyle(style: com.mj.yaja.data.EntryStyle) =
         settingsFeature.setEntryStyle(style)
+
+    fun setUiScalePreference(preference: UiScalePreference) =
+        settingsFeature.setUiScalePreference(preference)
 
     fun setFontScalePreference(preference: FontScalePreference) =
         settingsFeature.setFontScalePreference(preference)

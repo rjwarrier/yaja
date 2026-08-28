@@ -12,6 +12,7 @@ import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
+import com.mj.yaja.data.UiScalePreference
 import com.mj.yaja.data.KeywordRepository
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.data.PersonalAccentStyle
@@ -119,7 +120,8 @@ internal class SettingsFeatureController(
     private data class AppearanceCustomFontSettingsSlice(
         val customFontPath: String?,
         val customFontName: String?,
-        val fabPlacement: FabPlacement
+        val fabPlacement: FabPlacement,
+        val uiScalePreference: UiScalePreference
     )
 
     val themePreference = settingsRepository.themePreference
@@ -141,6 +143,7 @@ internal class SettingsFeatureController(
     val showTimestamps = settingsRepository.showTimestamps
     val showDayHeaderStats = settingsRepository.showDayHeaderStats
     val renderCheckboxesAsText = settingsRepository.renderCheckboxesAsText
+    val uiScalePreference = settingsRepository.uiScalePreference
     val fontScalePreference = settingsRepository.fontScalePreference
     val dataFontScalePreference = settingsRepository.dataFontScalePreference
     val followUiFontScale = settingsRepository.followUiFontScale
@@ -504,12 +507,14 @@ internal class SettingsFeatureController(
             combine(
                 customFontPath,
                 customFontName,
-                fabPlacement
-            ) { fontPath, fontName, placement ->
+                fabPlacement,
+                uiScalePreference
+            ) { fontPath, fontName, placement, uiScale ->
                 AppearanceCustomFontSettingsSlice(
                     customFontPath = fontPath,
                     customFontName = fontName,
-                    fabPlacement = placement
+                    fabPlacement = placement,
+                    uiScalePreference = uiScale
                 )
             }
         ) { theme, personalTheme, font, customFont ->
@@ -528,7 +533,8 @@ internal class SettingsFeatureController(
                 monoFontWeight = font.monoFontWeight,
                 customFontPath = customFont.customFontPath,
                 customFontName = customFont.customFontName,
-                fabPlacement = customFont.fabPlacement
+                fabPlacement = customFont.fabPlacement,
+                uiScalePreference = customFont.uiScalePreference
             )
         }.stateIn(
             scope = scope,
@@ -548,7 +554,8 @@ internal class SettingsFeatureController(
                 monoFontWeight = monoFontWeight.value,
                 customFontPath = customFontPath.value,
                 customFontName = customFontName.value,
-                fabPlacement = fabPlacement.value
+                fabPlacement = fabPlacement.value,
+                uiScalePreference = uiScalePreference.value
             )
         )
 
@@ -594,6 +601,7 @@ internal class SettingsFeatureController(
     fun setAppFontFamily(fontFamily: AppFontFamily) = settingsRepository.setAppFontFamily(fontFamily)
     fun setMonoFontWeight(weight: Int) = settingsRepository.setMonoFontWeight(weight)
     fun setEntryStyle(style: EntryStyle) = settingsRepository.setEntryStyle(style)
+    fun setUiScalePreference(preference: UiScalePreference) = settingsRepository.setUiScalePreference(preference)
     fun setFontScalePreference(preference: FontScalePreference) = settingsRepository.setFontScalePreference(preference)
     fun setDataFontScalePreference(preference: FontScalePreference) = settingsRepository.setDataFontScalePreference(preference)
     fun setFollowUiFontScale(follow: Boolean) = settingsRepository.setFollowUiFontScale(follow)

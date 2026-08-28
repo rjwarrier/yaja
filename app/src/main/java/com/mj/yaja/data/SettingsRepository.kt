@@ -83,6 +83,18 @@ enum class FontScalePreference(val scale: Float) {
     LARGER(1.28f)
 }
 
+/**
+ * App-local equivalent of the system Display Size setting: scales every dp, leaving
+ * text to [FontScalePreference]. NORMAL is 1.0 so existing installs are unaffected.
+ */
+enum class UiScalePreference(val scale: Float) {
+    SMALLER(0.90f),
+    SMALL(0.95f),
+    NORMAL(1.0f),
+    LARGE(1.08f),
+    LARGER(1.16f)
+}
+
 enum class AppFontFamily {
     SANS_SERIF,
     SERIF,
@@ -259,6 +271,9 @@ class SettingsRepository(private val context: Context) {
 
     private val _fontScalePreference = MutableStateFlow(getSavedFontScalePreference())
     val fontScalePreference: StateFlow<FontScalePreference> = _fontScalePreference.asStateFlow()
+
+    private val _uiScalePreference = MutableStateFlow(getSavedUiScalePreference())
+    val uiScalePreference: StateFlow<UiScalePreference> = _uiScalePreference.asStateFlow()
 
     private val _dataFontScalePreference = MutableStateFlow(getSavedDataFontScalePreference())
     val dataFontScalePreference: StateFlow<FontScalePreference> = _dataFontScalePreference.asStateFlow()
@@ -762,6 +777,11 @@ class SettingsRepository(private val context: Context) {
     fun setAdaptiveBottomNav(enabled: Boolean) {
         prefs.edit().putBoolean(KEY_ADAPTIVE_BOTTOM_NAV, enabled).apply()
         _adaptiveBottomNav.value = enabled
+    }
+
+    fun setUiScalePreference(preference: UiScalePreference) {
+        prefs.edit().putString(KEY_UI_SCALE, preference.name).apply()
+        _uiScalePreference.value = preference
     }
 
     fun setFontScalePreference(preference: FontScalePreference) {
@@ -1274,6 +1294,9 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedAdaptiveBottomNav(): Boolean =
             prefs.getBoolean(KEY_ADAPTIVE_BOTTOM_NAV, false)
 
+    private fun getSavedUiScalePreference(): UiScalePreference =
+            getEnum(prefs.getString(KEY_UI_SCALE, null), UiScalePreference.NORMAL)
+
     private fun getSavedFontScalePreference(): FontScalePreference =
             getEnum(prefs.getString(KEY_FONT_SCALE, null), FontScalePreference.NORMAL)
 
@@ -1503,6 +1526,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_SHOW_TIMESTAMPS = "show_timestamps"
         private const val KEY_SHOW_DAY_HEADER_STATS = "show_day_header_stats"
         private const val KEY_RENDER_CHECKBOXES_AS_TEXT = "render_checkboxes_as_text"
+        private const val KEY_UI_SCALE = "ui_scale"
         private const val KEY_FONT_SCALE = "font_scale"
         private const val KEY_DATA_FONT_SCALE = "data_font_scale"
         private const val KEY_FOLLOW_UI_FONT_SCALE = "follow_ui_font_scale"

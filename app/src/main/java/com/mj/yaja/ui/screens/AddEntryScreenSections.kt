@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.DateKeywordEntry
@@ -152,6 +153,29 @@ internal fun AddEntryTransientSheets(
     }
 }
 
+/** Vertical room the full editor chrome needs at font scale 1: top bar, date card, quick-insert chips and count footer. */
+internal val EDITOR_CHROME_HEIGHT = 300.dp
+
+/** Editor height worth keeping at font scale 1: three lines of the 24sp editor text. */
+internal val EDITOR_MIN_VISIBLE_HEIGHT = 72.dp
+
+/**
+ * Whether the editor is squeezed hard enough to turn focus mode on for the user.
+ *
+ * Deliberately takes the window and keyboard heights only, never the height of the
+ * chrome that focus mode would hide, so enabling focus mode cannot change the answer
+ * and flip the layout back and forth.
+ */
+internal fun shouldAutoEnableFocusMode(
+    isEditingMode: Boolean,
+    imeHeight: Dp,
+    availableHeight: Dp,
+    fontScale: Float
+): Boolean =
+    isEditingMode &&
+        imeHeight > 0.dp &&
+        availableHeight < (EDITOR_CHROME_HEIGHT + EDITOR_MIN_VISIBLE_HEIGHT) * fontScale
+
 @Composable
 internal fun AddEntryTopSection(
     headerMode: String,
@@ -164,9 +188,11 @@ internal fun AddEntryTopSection(
     onShowTemplates: () -> Unit,
     onDelete: () -> Unit,
     isFocusMode: Boolean,
+    isFocusModeAuto: Boolean,
     onToggleFocusMode: () -> Unit,
     onJumpToToday: () -> Unit,
     shareText: String,
+    showDateHeader: Boolean,
     selectedDate: LocalDate,
     dayLabel: String,
     recordedTime: String,
@@ -189,23 +215,26 @@ internal fun AddEntryTopSection(
             onShowTemplates = onShowTemplates,
             onDelete = onDelete,
             isFocusMode = isFocusMode,
+            isFocusModeAuto = isFocusModeAuto,
             onToggleFocusMode = onToggleFocusMode,
             onJumpToToday = onJumpToToday,
             shareText = shareText
         )
 
-        EditorDateHeaderCard(
-            selectedDate = selectedDate,
-            dayLabel = dayLabel,
-            recordedTime = recordedTime,
-            selectedEntryKind = selectedEntryKind,
-            entryText = entryText,
-            isEditingMode = isEditingMode,
-            onRecordedTimeClick = onRecordedTimeClick,
-            dayFormatter = dayFormatter,
-            weekdayFormatter = weekdayFormatter,
-            monthYearFormatter = monthYearFormatter
-        )
+        if (showDateHeader) {
+            EditorDateHeaderCard(
+                selectedDate = selectedDate,
+                dayLabel = dayLabel,
+                recordedTime = recordedTime,
+                selectedEntryKind = selectedEntryKind,
+                entryText = entryText,
+                isEditingMode = isEditingMode,
+                onRecordedTimeClick = onRecordedTimeClick,
+                dayFormatter = dayFormatter,
+                weekdayFormatter = weekdayFormatter,
+                monthYearFormatter = monthYearFormatter
+            )
+        }
     }
 }
 

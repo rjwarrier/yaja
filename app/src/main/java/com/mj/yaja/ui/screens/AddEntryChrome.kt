@@ -48,6 +48,7 @@ import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -59,6 +60,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
 import com.mj.yaja.data.AnimationPreference
@@ -84,6 +86,7 @@ fun AddEntryTopBar(
         onShowTemplates: () -> Unit,
         onDelete: () -> Unit,
         isFocusMode: Boolean,
+        isFocusModeAuto: Boolean,
         onToggleFocusMode: () -> Unit,
         onJumpToToday: () -> Unit,
         shareText: String
@@ -99,7 +102,7 @@ fun AddEntryTopBar(
                                 Modifier.fillMaxWidth()
                                         .windowInsetsPadding(WindowInsets.statusBars)
                 ) {
-                        Box(
+                        Row(
                                 modifier =
                                         Modifier.fillMaxWidth()
                                                 .padding(
@@ -107,12 +110,10 @@ fun AddEntryTopBar(
                                                         end = 8.dp,
                                                         top = 8.dp,
                                                         bottom = 6.dp
-                                                )
+                                                ),
+                                verticalAlignment = Alignment.CenterVertically
                         ) {
-                                IconButton(
-                                        onClick = onBack,
-                                        modifier = Modifier.align(Alignment.CenterStart)
-                                ) {
+                                IconButton(onClick = onBack) {
                                         Icon(
                                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                                                 contentDescription = stringResource(R.string.action_cancel)
@@ -125,21 +126,16 @@ fun AddEntryTopBar(
                                         color = MaterialTheme.colorScheme.primary,
                                         fontWeight = FontWeight.SemiBold,
                                         textAlign = TextAlign.Center,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
                                         modifier =
-                                                Modifier.fillMaxWidth()
-                                                        .align(Alignment.Center)
-                                                        .padding(horizontal = 96.dp)
+                                                Modifier.weight(1f)
+                                                        .padding(horizontal = 8.dp)
                                 )
 
-                                Row(
-                                        modifier = Modifier.align(Alignment.CenterEnd),
-                                        verticalAlignment = Alignment.CenterVertically
-                                ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
                                         if (isEditingMode) {
-                                                IconButton(
-                                                        onClick = onToggleFocusMode,
-                                                        enabled = !isSaving
-                                                ) {
+                                                val focusIcon: @Composable () -> Unit = {
                                                         Icon(
                                                                 imageVector = Icons.Rounded.CenterFocusStrong,
                                                                 contentDescription = stringResource(
@@ -149,7 +145,35 @@ fun AddEntryTopBar(
                                                                                 R.string.addentry_cd_enter_focus_mode
                                                                         }
                                                                 ),
-                                                                tint = MaterialTheme.colorScheme.primary
+                                                                tint =
+                                                                        if (isFocusModeAuto) {
+                                                                                MaterialTheme.colorScheme.onTertiaryContainer
+                                                                        } else {
+                                                                                MaterialTheme.colorScheme.primary
+                                                                        }
+                                                        )
+                                                }
+                                                // Auto-enabled focus mode is called out, so it reads as
+                                                // something the app did rather than something the user set.
+                                                if (isFocusModeAuto) {
+                                                        FilledTonalIconButton(
+                                                                onClick = onToggleFocusMode,
+                                                                enabled = !isSaving,
+                                                                shape = RoundedCornerShape(18.dp),
+                                                                colors =
+                                                                        IconButtonDefaults.filledTonalIconButtonColors(
+                                                                                containerColor =
+                                                                                        MaterialTheme.colorScheme.tertiaryContainer,
+                                                                                contentColor =
+                                                                                        MaterialTheme.colorScheme.onTertiaryContainer
+                                                                        ),
+                                                                content = focusIcon
+                                                        )
+                                                } else {
+                                                        IconButton(
+                                                                onClick = onToggleFocusMode,
+                                                                enabled = !isSaving,
+                                                                content = focusIcon
                                                         )
                                                 }
                                                 IconButton(

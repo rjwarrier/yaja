@@ -1889,7 +1889,7 @@ fun DeleteSelectedEntriesPill(
             onClick = {
                 onDeleteSelectedEntries()
             },
-            modifier = Modifier.height(64.dp),
+            modifier = Modifier.heightIn(min = 64.dp),
             shape = CircleShape,
             color = MaterialTheme.colorScheme.errorContainer,
             tonalElevation = 6.dp,

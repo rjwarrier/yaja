@@ -99,8 +99,55 @@ private val AmoledColorScheme = DarkColorScheme.copy(
     surfaceContainerHighest = Color(0xFF242424)
 )
 
+/** Bounds for the app's own display-size scaling; a density of 0 would collapse the UI. */
+internal const val MIN_UI_SCALE = 0.5f
+internal const val MAX_UI_SCALE = 2.0f
+
+/**
+ * Builds the density the app renders at.
+ *
+ * [uiScale] scales every dp, the way the system Display Size setting does. Since sp
+ * resolves to `density * fontScale`, [fontScale] is divided by [uiScale] so text keeps
+ * the size the font slider chose and the two controls stay independent.
+ *
+ * Both scales are validated: a zero, negative or non-finite value would otherwise
+ * produce a zero or NaN density and render nothing at all.
+ */
+internal fun resolveAppDensity(base: Density, fontScale: Float, uiScale: Float): Density {
+    val safeUiScale =
+        if (uiScale.isFinite() && uiScale > 0f) uiScale.coerceIn(MIN_UI_SCALE, MAX_UI_SCALE) else 1f
+    val safeFontScale = if (fontScale.isFinite() && fontScale > 0f) fontScale else 1f
+    return Density(
+        density = base.density * safeUiScale,
+        fontScale = base.fontScale * safeFontScale / safeUiScale
+    )
+}
+
 val LocalUiFontScale = staticCompositionLocalOf { 1.0f }
 val LocalDataFontScale = staticCompositionLocalOf { 1.0f }
+
+/**
+ * Swaps the UI font scale out of [current] and the data font scale in, leaving the
+ * density — and therefore the app's UI size — untouched.
+ *
+ * [uiFontScale] is guarded because it is a divisor: a zero would make journal text
+ * infinitely large.
+ */
+internal fun resolveDataFontDensity(
+    current: Density,
+    uiFontScale: Float,
+    dataFontScale: Float
+): Density {
+    val safeUiFontScale =
+        if (uiFontScale.isFinite() && uiFontScale > 0f) uiFontScale else 1f
+    val safeDataFontScale =
+        if (dataFontScale.isFinite() && dataFontScale > 0f) dataFontScale else 1f
+    val systemScale = current.fontScale / safeUiFontScale
+    return Density(
+        density = current.density,
+        fontScale = systemScale * safeDataFontScale
+    )
+}
 
 @Composable
 fun DataFontScaleWrapper(content: @Composable () -> Unit) {
@@ -110,12 +157,8 @@ fun DataFontScaleWrapper(content: @Composable () -> Unit) {
         content()
     } else {
         val currentDensity = LocalDensity.current
-        val systemScale = currentDensity.fontScale / uiScale
-        val dataDensity = remember(currentDensity.density, systemScale, dataScale) {
-            Density(
-                density = currentDensity.density,
-                fontScale = systemScale * dataScale
-            )
+        val dataDensity = remember(currentDensity, uiScale, dataScale) {
+            resolveDataFontDensity(currentDensity, uiScale, dataScale)
         }
         CompositionLocalProvider(LocalDensity provides dataDensity) {
             content()
@@ -129,6 +172,7 @@ fun JournalTheme(
     amoledTheme: Boolean = false,
     fontScale: Float = 1.0f,
     dataFontScale: Float = 1.0f,
+    uiScale: Float = 1.0f,
     appFontFamily: com.mj.yaja.data.AppFontFamily = com.mj.yaja.data.AppFontFamily.MONO,
     monoFontWeight: Int = MONO_WEIGHT_DEFAULT,
     customFontPath: String? = null,
@@ -210,10 +254,10 @@ fun JournalTheme(
     }
 
     val currentDensity = LocalDensity.current
-    val customDensity = Density(
-        density = currentDensity.density,
-        fontScale = currentDensity.fontScale * fontScale
-    )
+    val customDensity =
+        remember(currentDensity, fontScale, uiScale) {
+            resolveAppDensity(currentDensity, fontScale, uiScale)
+        }
 
     CompositionLocalProvider(
         LocalDensity provides customDensity,

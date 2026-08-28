@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -65,6 +64,9 @@ private data class BottomPanelItem(
     val label: String,
     val icon: ImageVector
 )
+
+/** Ceiling on how far a large font scale may stretch the bottom panel. */
+private const val MAX_BOTTOM_PANEL_LABEL_SCALE = 1.6f
 
 @Composable
 fun ExpressiveBottomNavigationPanel(
@@ -160,19 +162,29 @@ fun ExpressiveBottomNavigationPanel(
             tonalElevation = 4.dp,
             shadowElevation = 0.dp
         ) {
+            // The bar grows with the text it holds. Every height below is derived from
+            // this one factor so the indicator stays centred: a heightIn on the outer
+            // box alone would let it grow while the fixed inner heights clipped anyway.
+            val labelScale = density.fontScale.coerceIn(1f, MAX_BOTTOM_PANEL_LABEL_SCALE)
+            val containerHeight = (if (showLabels) 92.dp else 76.dp) * labelScale
+            val indicatorHeight = (if (showLabels) 62.dp else 48.dp) * labelScale
             BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxWidth()
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .height(if (showLabels) 92.dp else 76.dp)
+                    .height(containerHeight)
             ) {
                 val itemCount = items.size.coerceAtLeast(1)
                 val itemWidth = maxWidth / itemCount
-                val containerHeight = if (showLabels) 92.dp else 76.dp
-                val indicatorHeight = if (showLabels) 62.dp else 48.dp
+                // The floor keeps the indicator comfortably tappable, but it has to give
+                // way once the slots themselves are narrower than it — six destinations
+                // on a large display size leave about 57dp each, and an unbounded floor
+                // would overlap every neighbour.
+                val indicatorGap = if (showLabels) 18.dp else 20.dp
                 val targetIndicatorWidth =
-                    (itemWidth - if (showLabels) 18.dp else 20.dp)
+                    (itemWidth - indicatorGap)
                         .coerceAtLeast(if (showLabels) 72.dp else 56.dp)
+                        .coerceAtMost((itemWidth - 4.dp).coerceAtLeast(0.dp))
                 val animatedIndicatorWidth by androidx.compose.animation.core.animateDpAsState(
                     targetValue = targetIndicatorWidth,
                     animationSpec = motionPreference.dpSpring(
@@ -292,8 +304,7 @@ fun ExpressiveBottomNavigationPanel(
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .height(if (showLabels) 30.dp else 24.dp)
-                                        .heightIn(min = if (showLabels) 30.dp else 24.dp)
+                                        .height((if (showLabels) 30.dp else 24.dp) * labelScale)
                                         .fillMaxWidth(),
                                     contentAlignment = Alignment.Center
                                 ) {

@@ -7,18 +7,23 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.unit.dp
+import com.mj.yaja.R
 import com.mj.yaja.data.applyEntryRevisitMetadata
 import com.mj.yaja.data.EntryTemplate
 import com.mj.yaja.data.EntryTemplates
@@ -38,7 +43,7 @@ private val recordedTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPatte
 private fun extractRecordedTime(rawTimestamp: String?): String? =
         recordedTimeDisplayRegex.find(rawTimestamp.orEmpty())?.groupValues?.getOrNull(1)
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AddEntryScreen(
         viewModel: JournalViewModel,
@@ -65,7 +70,7 @@ fun AddEntryScreen(
         val today = remember { LocalDate.now() }
 
         var isEditingMode by remember { mutableStateOf(editingEntry == null) }
-        var isFocusMode by remember { mutableStateOf(false) }
+        var isFocusMode by rememberSaveable { mutableStateOf(false) }
         val entryRevisitMetadata =
                 remember(editingEntry) {
                         buildEntryRevisitMetadata(editingEntry)
@@ -394,149 +399,197 @@ fun AddEntryScreen(
                 )
         }
 
-        Scaffold(
-                topBar = {
-                        val headerMode = buildAddEntryHeaderMode(editingEntry, isEditingMode)
-                        AddEntryTopSection(
-                                headerMode = headerMode,
-                                isEditingMode = isEditingMode,
-                                isSaving = isSaving,
-                                canDelete = editingEntry != null,
-                                showJumpToToday = uiState.selectedDate != today,
-                                onBack = {
-                                        if (isSaving) {
-                                                return@AddEntryTopSection
-                                        } else if (hasUnsavedChanges) {
-                                                showDiscardDialog = true
-                                        } else {
+        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                val windowHeight = maxHeight
+                // With a tall keyboard, a large display size or a large font scale, the full
+                // editor chrome can leave the text field with barely a line or two of text.
+                // windowHeight is the space this screen actually gets, so it already accounts
+                // for a window that adjustResize shrank; the IME inset then reads as zero in
+                // that case and as the keyboard height when the window was left alone, which
+                // keeps the subtraction correct either way. Config-derived screen heights
+                // would double-count the keyboard whenever the window did resize.
+                // Reads the keyboard's animation target rather than WindowInsets.ime, which
+                // would resolve to a new height on every frame of the keyboard animation and
+                // recompose this whole screen with it; derivedStateOf then narrows that to the
+                // moments the answer actually flips.
+                val density = LocalDensity.current
+                val imeTarget = WindowInsets.imeAnimationTarget
+                val shouldAutoFocus by
+                        remember(density, windowHeight, isEditingMode, imeTarget) {
+                                derivedStateOf {
+                                        val imeHeight = with(density) { imeTarget.getBottom(density).toDp() }
+                                        shouldAutoEnableFocusMode(
+                                                isEditingMode = isEditingMode,
+                                                imeHeight = imeHeight,
+                                                availableHeight =
+                                                        (windowHeight - imeHeight).coerceAtLeast(0.dp),
+                                                fontScale = density.fontScale
+                                        )
+                                }
+                        }
+                // Applied at most once per entry, so turning focus mode back off keeps it off
+                // instead of the app immediately overriding the user again.
+                var focusModeAutoApplied by rememberSaveable(editingEntry) { mutableStateOf(false) }
+                var isFocusModeAuto by rememberSaveable(editingEntry) { mutableStateOf(false) }
+                LaunchedEffect(shouldAutoFocus) {
+                        if (shouldAutoFocus && !isFocusMode && !focusModeAutoApplied) {
+                                focusModeAutoApplied = true
+                                isFocusMode = true
+                                isFocusModeAuto = true
+                                Toast.makeText(
+                                        context,
+                                        context.getString(R.string.addentry_focus_mode_hint),
+                                        Toast.LENGTH_LONG
+                                ).show()
+                        }
+                }
+
+                Scaffold(
+                        topBar = {
+                                val headerMode = buildAddEntryHeaderMode(editingEntry, isEditingMode)
+                                AddEntryTopSection(
+                                        headerMode = headerMode,
+                                        isEditingMode = isEditingMode,
+                                        isSaving = isSaving,
+                                        canDelete = editingEntry != null,
+                                        showJumpToToday = uiState.selectedDate != today,
+                                        onBack = {
+                                                if (isSaving) {
+                                                        return@AddEntryTopSection
+                                                } else if (hasUnsavedChanges) {
+                                                        showDiscardDialog = true
+                                                } else {
+                                                        viewModel.clearEditing()
+                                                        onNavigateBack()
+                                                }
+                                        },
+                                        onShowHelp = { showHelpDialog = true },
+                                        onShowTemplates = { showTemplateSheet = true },
+                                        onDelete = { handleDeleteEntry() },
+                                        isFocusMode = isFocusMode,
+                                        isFocusModeAuto = isFocusModeAuto,
+                                        onToggleFocusMode = {
+                                                isFocusMode = !isFocusMode
+                                                isFocusModeAuto = false
+                                        },
+                                        onJumpToToday = {
+                                                if (isSaving) return@AddEntryTopSection
                                                 viewModel.clearEditing()
-                                                onNavigateBack()
-                                        }
-                                },
-                                onShowHelp = { showHelpDialog = true },
-                                onShowTemplates = { showTemplateSheet = true },
-                                onDelete = { handleDeleteEntry() },
+                                                onJumpToToday()
+                                        },
+                                        shareText = textFieldValue.text,
+                                        showDateHeader = !isFocusMode,
+                                        selectedDate = uiState.selectedDate,
+                                        dayLabel = currentDayLabel,
+                                        recordedTime = selectedRecordedTime,
+                                        selectedEntryKind = selectedEntryKind,
+                                        entryText = textFieldValue.text,
+                                        onRecordedTimeClick = { showTimePicker = true },
+                                        dayFormatter = dayFormatter,
+                                        weekdayFormatter = weekdayFormatter,
+                                        monthYearFormatter = monthYearFormatter
+                                )
+                        },
+                        bottomBar = {},
+                        containerColor = MaterialTheme.colorScheme.background,
+                        contentWindowInsets = WindowInsets.ime
+                ) { paddingValues ->
+                        AddEntryBodySection(
+                                paddingValues = paddingValues,
+                                isEditingMode = isEditingMode,
+                                textFieldValue = textFieldValue,
+                                onTextFieldValueChange = { textFieldValue = it },
                                 isFocusMode = isFocusMode,
-                                onToggleFocusMode = { isFocusMode = !isFocusMode },
-                                onJumpToToday = {
-                                        if (isSaving) return@AddEntryTopSection
-                                        viewModel.clearEditing()
-                                        onJumpToToday()
-                                },
-                                shareText = textFieldValue.text,
                                 selectedDate = uiState.selectedDate,
-                                dayLabel = currentDayLabel,
-                                recordedTime = selectedRecordedTime,
+                                keywords = keywords,
+                                keywordHighlightingEnabled = keywordHighlightingEnabled,
+                                dateOrderPreference = dateOrderPreference,
+                                customDateKeywords = customDateKeywords,
+                                onDateClick = { date ->
+                                        viewModel.selectDate(date)
+                                        onNavigateBack()
+                                },
+                                customShortcodes = customShortcodes,
+                                motionPreference = motionPreference,
+                                isSaving = isSaving,
+                                mutationLabel = mutationLabel,
+                                fabPlacement = fabPlacement,
+                                hasContentToSave = textFieldValue.text.isNotBlank(),
                                 selectedEntryKind = selectedEntryKind,
-                                entryText = textFieldValue.text,
-                                onRecordedTimeClick = { showTimePicker = true },
-                                dayFormatter = dayFormatter,
-                                weekdayFormatter = weekdayFormatter,
-                                monthYearFormatter = monthYearFormatter
+                                selectedListMode = selectedListMode,
+                                onSelectEvent = {
+                                        showEventInputDialog = true
+                                        selectedListMode = ListInsertMode.NONE
+                                },
+                                onInsertTodo = {
+                                        selectedEntryKind = EntryKind.NORMAL
+                                        selectedListMode = ListInsertMode.NONE
+                                        textFieldValue =
+                                                insertEditorSnippetAtCursor(
+                                                        textFieldValue,
+                                                        "[ ] "
+                                                )
+                                },
+                                onToggleNumberedList = {
+                                        selectedListMode =
+                                                if (selectedListMode == ListInsertMode.NUMBERED) {
+                                                        ListInsertMode.NONE
+                                                } else {
+                                                        ListInsertMode.NUMBERED
+                                                }
+                                },
+                                onToggleBulletedList = {
+                                        selectedListMode =
+                                                if (selectedListMode == ListInsertMode.BULLETED) {
+                                                        ListInsertMode.NONE
+                                                } else {
+                                                        ListInsertMode.BULLETED
+                                                }
+                                },
+                                onInsertNumericList = {
+                                        textFieldValue =
+                                                insertEditorSnippetAtCursor(
+                                                        textFieldValue,
+                                                        "1. "
+                                                )
+                                },
+                                onInsertAlphabeticList = {
+                                        textFieldValue =
+                                                insertEditorSnippetAtCursor(
+                                                        textFieldValue,
+                                                        "a. "
+                                                )
+                                },
+                                onInsertPlusBullet = {
+                                        textFieldValue =
+                                                insertEditorSnippetAtCursor(
+                                                        textFieldValue,
+                                                        "+ "
+                                                )
+                                },
+                                onInsertQuoteBullet = {
+                                        textFieldValue =
+                                                insertEditorSnippetAtCursor(
+                                                        textFieldValue,
+                                                        "> "
+                                                )
+                                },
+                                onBold = {
+                                        applyFormatting(
+                                                textFieldValue,
+                                                "**",
+                                                "**"
+                                        ) { textFieldValue = it }
+                                },
+                                onItalic = {
+                                        applyFormatting(
+                                                textFieldValue,
+                                                "*",
+                                                "*"
+                                        ) { textFieldValue = it }
+                                },
+                                onPrimaryAction = { handlePrimaryAction() }
                         )
-                },
-                bottomBar = {},
-                containerColor = MaterialTheme.colorScheme.background,
-                contentWindowInsets = WindowInsets.ime
-        ) { paddingValues ->
-                AddEntryBodySection(
-                        paddingValues = paddingValues,
-                        isEditingMode = isEditingMode,
-                        textFieldValue = textFieldValue,
-                        onTextFieldValueChange = { textFieldValue = it },
-                        isFocusMode = isFocusMode,
-                        selectedDate = uiState.selectedDate,
-                        keywords = keywords,
-                        keywordHighlightingEnabled = keywordHighlightingEnabled,
-                        dateOrderPreference = dateOrderPreference,
-                        customDateKeywords = customDateKeywords,
-                        onDateClick = { date ->
-                                viewModel.selectDate(date)
-                                onNavigateBack()
-                        },
-                        customShortcodes = customShortcodes,
-                        motionPreference = motionPreference,
-                        isSaving = isSaving,
-                        mutationLabel = mutationLabel,
-                        fabPlacement = fabPlacement,
-                        hasContentToSave = textFieldValue.text.isNotBlank(),
-                        selectedEntryKind = selectedEntryKind,
-                        selectedListMode = selectedListMode,
-                        onSelectEvent = {
-                                showEventInputDialog = true
-                                selectedListMode = ListInsertMode.NONE
-                        },
-                        onInsertTodo = {
-                                selectedEntryKind = EntryKind.NORMAL
-                                selectedListMode = ListInsertMode.NONE
-                                textFieldValue =
-                                        insertEditorSnippetAtCursor(
-                                                textFieldValue,
-                                                "[ ] "
-                                        )
-                        },
-                        onToggleNumberedList = {
-                                selectedListMode =
-                                        if (selectedListMode == ListInsertMode.NUMBERED) {
-                                                ListInsertMode.NONE
-                                        } else {
-                                                ListInsertMode.NUMBERED
-                                        }
-                        },
-                        onToggleBulletedList = {
-                                selectedListMode =
-                                        if (selectedListMode == ListInsertMode.BULLETED) {
-                                                ListInsertMode.NONE
-                                        } else {
-                                                ListInsertMode.BULLETED
-                                        }
-                        },
-                        onInsertNumericList = {
-                                textFieldValue =
-                                        insertEditorSnippetAtCursor(
-                                                textFieldValue,
-                                                "1. "
-                                        )
-                        },
-                        onInsertAlphabeticList = {
-                                textFieldValue =
-                                        insertEditorSnippetAtCursor(
-                                                textFieldValue,
-                                                "a. "
-                                        )
-                        },
-                        onInsertPlusBullet = {
-                                textFieldValue =
-                                        insertEditorSnippetAtCursor(
-                                                textFieldValue,
-                                                "+ "
-                                        )
-                        },
-                        onInsertQuoteBullet = {
-                                textFieldValue =
-                                        insertEditorSnippetAtCursor(
-                                                textFieldValue,
-                                                "> "
-                                        )
-                        },
-                        onBold = {
-                                applyFormatting(
-                                        textFieldValue,
-                                        "**",
-                                        "**"
-                                ) { textFieldValue = it }
-                        },
-                        onItalic = {
-                                applyFormatting(
-                                        textFieldValue,
-                                        "*",
-                                        "*"
-                                ) { textFieldValue = it }
-                        },
-                        onPrimaryAction = { handlePrimaryAction() }
-                )
+                }
         }
 }
-
-
-

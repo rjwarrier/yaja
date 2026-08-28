@@ -1,5 +1,39 @@
 # Changelog
 
+## 3.1.1 - August 28, 2026
+
+### Highlights
+- Rebuilt shortcode placeholder expansion so format codes resolve against a real date type and preview their output as you type.
+- Added a dedicated share screen and moved the app's outbound links into a reorganized About screen.
+
+### New
+- Added a dedicated share screen with an editable message and an image toggle, and routed the hamburger-menu share button to it.
+- Added other-apps cross-promo tiles plus GitHub and Share buttons to the About screen.
+- Added Yata to the Other Apps cross-promo tiles.
+- Added a version, build, and timestamp line to the About screen.
+- Added live samples for format codes so a shortcode shows the value it will produce.
+
+### Improved
+- Restyled the Shortcodes screen and editor to match the app's M3 expressive language.
+- Scoped placeholder expansion to shortcode values and seeded the format scaffold from the code text.
+- Kept the expansion scaffold tracking the full shortcode as it is typed.
+- Seeded the expansion only for codes that name a real date type, and warned on unresolvable types.
+- Completed the shortcode translations.
+- Moved the brand and footer block from the FAQ screen into the About screen, below the App Log.
+- Reordered the About screen so cross-promo, GitHub, and Share sit between the App Log and Website, and renamed the Help card.
+- Completed translations and hardened loading states.
+- Shrank the search hint on narrow widths.
+
+### Fixed
+- Fixed the `@now` shortcode leaking literal placeholder text.
+- Fixed shortcode rename leaving a stale duplicate entry.
+
+### Release
+- Bumped to `versionCode` 94, `versionName` 3.1.1, keeping `targetSdk` 36 and `minSdk` 26.
+- Verified the release build with `:app:bundleRelease` and `:app:assembleRelease`.
+- Confirmed the signed APK and AAB both report versionCode 94 and target API level 36 before publishing.
+- Published the signed APK and AAB to the `v3.1.1` GitHub release.
+
 ## 3.1 - August 4, 2026
 
 ### Highlights

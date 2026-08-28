@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -179,25 +182,24 @@ internal fun EntryQuickInsertChips(
         onInsertQuoteBullet: () -> Unit,
         modifier: Modifier = Modifier
 ) {
-        FlowRow(
-                modifier = modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+        Row(
+                modifier =
+                        modifier.fillMaxWidth()
+                                .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
                 QuickInsertTile(
                         label = stringResource(R.string.addentry_event_chip),
                         footer = null,
                         selected = selectedEntryKind == EntryKind.EVENT,
                         icon = Icons.Rounded.Event,
-                        onClick = onSelectEvent,
-                        modifier = Modifier.width(88.dp)
+                        onClick = onSelectEvent
                 )
                 QuickInsertTile(
                         label = stringResource(R.string.addentry_todo_chip),
                         footer = null,
                         selected = false,
                         onClick = onInsertTodo,
-                        modifier = Modifier.width(108.dp),
                         icon = Icons.Rounded.CheckCircleOutline
                 )
                 QuickInsertTile(
@@ -205,16 +207,14 @@ internal fun EntryQuickInsertChips(
                         footer = null,
                         selected = selectedListMode == ListInsertMode.NUMBERED,
                         icon = Icons.Rounded.FormatListNumbered,
-                        onClick = onToggleNumberedList,
-                        modifier = Modifier.width(88.dp)
+                        onClick = onToggleNumberedList
                 )
                 QuickInsertTile(
                         label = stringResource(R.string.addentry_bulleted_list_chip),
                         footer = null,
                         selected = selectedListMode == ListInsertMode.BULLETED,
                         icon = Icons.AutoMirrored.Rounded.FormatListBulleted,
-                        onClick = onToggleBulletedList,
-                        modifier = Modifier.width(88.dp)
+                        onClick = onToggleBulletedList
                 )
                 when (selectedListMode) {
                         ListInsertMode.NUMBERED -> {
@@ -223,16 +223,14 @@ internal fun EntryQuickInsertChips(
                                         footer = "1.",
                                         selected = false,
                                         icon = Icons.Rounded.FormatListNumbered,
-                                        onClick = onInsertNumericList,
-                                        modifier = Modifier.width(88.dp)
+                                        onClick = onInsertNumericList
                                 )
                                 QuickInsertTile(
                                         label = "a,b",
                                         footer = "a.",
                                         selected = false,
                                         icon = Icons.Rounded.FormatListNumbered,
-                                        onClick = onInsertAlphabeticList,
-                                        modifier = Modifier.width(88.dp)
+                                        onClick = onInsertAlphabeticList
                                 )
                         }
                         ListInsertMode.BULLETED -> {
@@ -241,16 +239,14 @@ internal fun EntryQuickInsertChips(
                                         footer = null,
                                         selected = false,
                                         icon = Icons.AutoMirrored.Rounded.FormatListBulleted,
-                                        onClick = onInsertPlusBullet,
-                                        modifier = Modifier.width(88.dp)
+                                        onClick = onInsertPlusBullet
                                 )
                                 QuickInsertTile(
                                         label = ">",
                                         footer = null,
                                         selected = false,
                                         icon = Icons.AutoMirrored.Rounded.FormatListBulleted,
-                                        onClick = onInsertQuoteBullet,
-                                        modifier = Modifier.width(88.dp)
+                                        onClick = onInsertQuoteBullet
                                 )
                         }
                         ListInsertMode.NONE -> Unit
@@ -270,7 +266,7 @@ private fun QuickInsertTile(
 ) {
         Surface(
                 onClick = onClick,
-                modifier = modifier.height(54.dp),
+                modifier = modifier.widthIn(min = 88.dp).heightIn(min = 54.dp),
                 shape = RoundedCornerShape(18.dp),
                 color =
                         if (selected) {

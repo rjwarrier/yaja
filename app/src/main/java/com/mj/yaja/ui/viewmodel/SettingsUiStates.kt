@@ -13,6 +13,7 @@ import com.mj.yaja.data.DateOrderPreference
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
+import com.mj.yaja.data.UiScalePreference
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.data.PersonalThemeSlot
 import com.mj.yaja.data.ThemeColorIntensity
@@ -90,6 +91,7 @@ data class AppearanceSettingsUiState(
     val backgroundTintLevel: BackgroundTintLevel = BackgroundTintLevel.CLEAN,
     val personalThemeSlots: List<PersonalThemeSlot> = emptyList(),
     val activePersonalThemeSlotId: Int = 0,
+    val uiScalePreference: UiScalePreference = UiScalePreference.NORMAL,
     val fontScalePreference: FontScalePreference = FontScalePreference.NORMAL,
     val dataFontScalePreference: FontScalePreference = FontScalePreference.NORMAL,
     val followUiFontScale: Boolean = true,

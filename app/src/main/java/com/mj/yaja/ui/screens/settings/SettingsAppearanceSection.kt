@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
@@ -68,6 +70,7 @@ import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
+import com.mj.yaja.data.UiScalePreference
 import com.mj.yaja.data.PersonalAccentStyle
 import com.mj.yaja.data.PersonalThemeSlot
 import com.mj.yaja.data.ThemeColorIntensity
@@ -143,6 +146,8 @@ fun AppearanceSection(
     onClearCustomFont: () -> Unit,
     fabPlacement: FabPlacement,
     onFabPlacementSelected: (FabPlacement) -> Unit,
+    uiScalePreference: UiScalePreference,
+    onUiScaleSelected: (UiScalePreference) -> Unit,
     fontScalePreference: FontScalePreference,
     onFontScaleSelected: (FontScalePreference) -> Unit,
     dataFontScalePreference: FontScalePreference,
@@ -365,6 +370,14 @@ fun AppearanceSection(
             )
         }
     }
+
+    Spacer(modifier = Modifier.height(24.dp))
+    SectionLabel(stringResource(R.string.settings_ui_size_label))
+    UiScaleCard(
+        uiScalePreference = uiScalePreference,
+        panelColors = panelColors,
+        onUiScaleSelected = onUiScaleSelected
+    )
 
     Spacer(modifier = Modifier.height(24.dp))
     SectionLabel(stringResource(R.string.settings_ui_font_size_label))
@@ -703,6 +716,8 @@ private fun PaletteGrid(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 row.forEach { spec ->
+                    // No intrinsic sizing here: every card in the row has the same
+                    // structure, so they reach the same height on their own.
                     PaletteCard(
                         modifier = Modifier.weight(1f),
                         label = spec.label,
@@ -740,7 +755,7 @@ private fun PaletteCard(
     ElevatedCard(
         onClick = onClick,
         modifier = modifier
-            .height(92.dp)
+            .heightIn(min = 92.dp)
             .expressivePressMotion(interactionSource, pressedScale = 0.93f),
         shape = RoundedCornerShape(22.dp),
         colors = CardDefaults.elevatedCardColors(
@@ -754,7 +769,7 @@ private fun PaletteCard(
         interactionSource = interactionSource
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().padding(horizontal = 10.dp, vertical = 12.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -1204,7 +1219,9 @@ private fun PersonalColorSlider(
             text = label,
             style = MaterialTheme.typography.titleSmall,
             color = panelColors.primaryText,
-            modifier = Modifier.width(58.dp)
+            // A minimum, not a cap: longer translations and larger font scales need
+            // the room, and the slider yields it.
+            modifier = Modifier.widthIn(min = 58.dp)
         )
         Slider(
             value = value,
@@ -1531,6 +1548,83 @@ private fun FontScaleCard(
                         } else {
                             MaterialTheme.colorScheme.onSurfaceVariant
                         }
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** Preview square size at the neutral step, and how far each step is amplified from it. */
+private const val UI_SCALE_PREVIEW_BASE = 20f
+private const val UI_SCALE_PREVIEW_GAIN = 60f
+
+@Composable
+private fun UiScaleCard(
+    uiScalePreference: UiScalePreference,
+    panelColors: AppearancePanelColors,
+    onUiScaleSelected: (UiScalePreference) -> Unit
+) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = panelColors.cardAlt
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp),
+        shape = MaterialTheme.shapes.medium
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            val steps = UiScalePreference.entries
+            val sliderValue = steps.indexOf(uiScalePreference).coerceAtLeast(0).toFloat()
+
+            Slider(
+                value = sliderValue,
+                onValueChange = { value ->
+                    onUiScaleSelected(steps[value.roundToInt().coerceIn(0, steps.lastIndex)])
+                },
+                valueRange = 0f..(steps.lastIndex).toFloat(),
+                // Slider rejects a negative step count, which a one-entry enum would give.
+                steps = (steps.size - 2).coerceAtLeast(0),
+                colors = SliderDefaults.colors(
+                    thumbColor = MaterialTheme.colorScheme.primary,
+                    activeTrackColor = MaterialTheme.colorScheme.primary,
+                    inactiveTrackColor = MaterialTheme.colorScheme.surfaceVariant,
+                    activeTickColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.4f),
+                    inactiveTickColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                )
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // The preview scales a shape rather than a glyph, since this slider moves
+                // layout rather than type. The scale difference between steps is only a
+                // few percent, so it is amplified here to stay legible as a preview.
+                steps.forEach { pref ->
+                    val isSelected = uiScalePreference == pref
+                    val previewSize =
+                        UI_SCALE_PREVIEW_BASE +
+                            (pref.scale - UiScalePreference.NORMAL.scale) * UI_SCALE_PREVIEW_GAIN
+                    Box(
+                        modifier = Modifier
+                            .size(previewSize.dp)
+                            .background(
+                                if (isSelected) {
+                                    MaterialTheme.colorScheme.primary
+                                } else {
+                                    MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.45f)
+                                },
+                                RoundedCornerShape(4.dp)
+                            )
                     )
                 }
             }

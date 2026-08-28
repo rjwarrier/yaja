@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -112,7 +113,7 @@ internal fun ShortcodesFab(
             icon = { Icon(Icons.Rounded.Add, contentDescription = null) },
             text = { Text(stringResource(R.string.shortcodes_new)) },
             modifier = Modifier
-                .height(64.dp)
+                .heightIn(min = 64.dp)
                 .expressiveFabMotion(fabInteraction),
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer

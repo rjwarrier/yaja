@@ -47,6 +47,7 @@ fun JournalApp(
     val appFontFamily by viewModel.appFontFamily.collectAsStateWithLifecycle()
     val monoFontWeight by viewModel.monoFontWeight.collectAsStateWithLifecycle()
     val customFontPath by viewModel.customFontPath.collectAsStateWithLifecycle()
+    val uiScalePreference by viewModel.uiScalePreference.collectAsStateWithLifecycle()
     val fontScalePreference by viewModel.fontScalePreference.collectAsStateWithLifecycle()
     val dataFontScalePreference by viewModel.dataFontScalePreference.collectAsStateWithLifecycle()
     val followUiFontScale by viewModel.followUiFontScale.collectAsStateWithLifecycle()
@@ -65,6 +66,7 @@ fun JournalApp(
         amoledTheme = useAmoledTheme,
         fontScale = fontScalePreference.scale,
         dataFontScale = if (followUiFontScale) fontScalePreference.scale else dataFontScalePreference.scale,
+        uiScale = uiScalePreference.scale,
         appFontFamily = appFontFamily,
         monoFontWeight = monoFontWeight,
         customFontPath = customFontPath,
