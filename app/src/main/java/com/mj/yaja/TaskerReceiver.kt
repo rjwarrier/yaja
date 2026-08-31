@@ -60,14 +60,21 @@ class TaskerReceiver : BroadcastReceiver() {
                         val formatter = DateTimeFormatter.ofPattern("HH:mm")
                         val timeString = LocalTime.now().format(formatter)
                         val finalEntry = "<!--time:$timeString-->\n${entryText.trim()}"
+                        val entryDate = LocalDate.now()
                         
                         val result = withTimeout(TASKER_SAVE_TIMEOUT_MS) {
-                            fileManager.tryAddEntryForDate(LocalDate.now(), finalEntry)
+                            fileManager.tryAddEntryForDate(entryDate, finalEntry)
                         }
                         if (!result.success) {
                             Log.e("TaskerReceiver", "Tasker entry save failed")
                             return@launch
                         }
+                        appContext.sendBroadcast(
+                            Intent(TaskerIntegration.ACTION_INTERNAL_ENTRY_ADDED).apply {
+                                setPackage(appContext.packageName)
+                                putExtra(TaskerIntegration.EXTRA_DATE, entryDate.toString())
+                            }
+                        )
                         Log.d("TaskerReceiver", "Entry added successfully")
                     } catch (e: Exception) {
                         Log.e("TaskerReceiver", "Error adding entry", e)
@@ -83,13 +90,13 @@ class TaskerReceiver : BroadcastReceiver() {
 
     private fun resolveSenderPackage(context: Context): String? {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            Log.w("TaskerReceiver", "Sender verification is unavailable before Android 14; allowing legacy Tasker path because access is enabled")
-            return TASKER_PACKAGE
+            Log.w("TaskerReceiver", "Sender verification is unavailable before Android 14; blocking legacy Tasker broadcast")
+            return null
         }
         val directSender = getSentFromPackage()
         if (!directSender.isNullOrBlank()) return directSender
         val senderUid = getSentFromUid()
         if (senderUid <= 0) return null
-        return context.packageManager.getPackagesForUid(senderUid)?.firstOrNull()
+        return context.packageManager.getPackagesForUid(senderUid)?.firstOrNull { it == TASKER_PACKAGE }
     }
 }

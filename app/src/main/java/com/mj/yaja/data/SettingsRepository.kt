@@ -588,6 +588,12 @@ class SettingsRepository(private val context: Context) {
         return salt
     }
 
+    private fun generateTaskerAuthToken(): String {
+        val token = ByteArray(TASKER_AUTH_TOKEN_BYTES)
+        SecureRandom().nextBytes(token)
+        return token.toHex()
+    }
+
     /** Legacy SHA-256 used only to detect and migrate old hashes. */
     private fun legacySha256(plain: String): String {
         val bytes = MessageDigest.getInstance("SHA-256").digest(plain.toByteArray())
@@ -866,6 +872,21 @@ class SettingsRepository(private val context: Context) {
     fun setAllowTaskerEvents(allow: Boolean) {
         prefs.edit().putBoolean(KEY_ALLOW_TASKER_EVENTS, allow).apply()
         _allowTaskerEvents.value = allow
+    }
+
+    @Synchronized
+    fun getOrCreateTaskerAuthToken(): String {
+        prefs.getString(KEY_TASKER_AUTH_TOKEN, null)
+            ?.takeIf { it.length >= TASKER_AUTH_TOKEN_HEX_LENGTH }
+            ?.let { return it }
+        val token = generateTaskerAuthToken()
+        prefs.edit().putString(KEY_TASKER_AUTH_TOKEN, token).apply()
+        return token
+    }
+
+    fun isValidTaskerAuthToken(candidate: String?): Boolean {
+        val expected = prefs.getString(KEY_TASKER_AUTH_TOKEN, null) ?: return false
+        return candidate == expected
     }
 
     fun setIncludeEntryTextInTaskerEvents(include: Boolean) {
@@ -1552,8 +1573,11 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_CARRY_FORWARD_TODOS_ENABLED = "carry_forward_todos_enabled"
         private const val KEY_ALLOW_TASKER_ACCESS = "allow_tasker_access"
         private const val KEY_ALLOW_TASKER_EVENTS = "allow_tasker_events"
+        private const val KEY_TASKER_AUTH_TOKEN = "tasker_auth_token"
+        private const val TASKER_AUTH_TOKEN_BYTES = 32
+        private const val TASKER_AUTH_TOKEN_HEX_LENGTH = TASKER_AUTH_TOKEN_BYTES * 2
         private const val KEY_INCLUDE_ENTRY_TEXT_IN_TASKER_EVENTS =
-                "include_entry_text_in_tasker_events"
+            "include_entry_text_in_tasker_events"
         private const val KEY_SWIPE_TO_DELETE = "swipe_to_delete"
         private const val KEY_SWIPE_TO_NAVIGATE_DATES = "swipe_to_navigate_dates"
         private const val KEY_SWIPE_DELETE_DIRECTION = "swipe_delete_direction"

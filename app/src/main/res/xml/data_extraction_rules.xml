@@ -2,9 +2,10 @@
 <data-extraction-rules>
     <cloud-backup>
         <!--
-            Cloud backup: only lightweight settings and People & Places definitions.
+            Cloud backup: only lightweight settings.
             Journal files, generated backup ZIPs, caches, and version-history snapshots are excluded
-            from silent cloud backup. Use Yaja's explicit Backup action for portable journal copies.
+            from silent cloud backup. Use Yaja's explicit Backup action for portable journal copies,
+            People & Places definitions, and recurring tasks.
         -->
         <include
             domain="sharedpref"
@@ -16,8 +17,9 @@
 
     <device-transfer>
         <!--
-            Device-to-device transfers: move real internal journal files and core settings,
-            but skip generated caches, exported backup ZIPs, and no-backup version history.
+            Device-to-device transfers: move real internal journal files, core settings, and the
+            Room database that owns People & Places definitions and recurring tasks. Generated
+            backup ZIPs and no-backup version history remain excluded.
         -->
         <include
             domain="sharedpref"
@@ -28,5 +30,14 @@
         <include
             domain="file"
             path="journals/" />
+        <include
+            domain="database"
+            path="journal_database" />
+        <include
+            domain="database"
+            path="journal_database-wal" />
+        <include
+            domain="database"
+            path="journal_database-shm" />
     </device-transfer>
 </data-extraction-rules>

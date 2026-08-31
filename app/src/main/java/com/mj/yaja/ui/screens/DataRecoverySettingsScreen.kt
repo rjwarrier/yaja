@@ -201,6 +201,7 @@ fun DataRecoverySettingsScreen(
                                                                 )
                                                 },
                                         hasCustomStorage = uiState.storageUri != null,
+                                        storageMigrationInProgress = uiState.storageMigrationInProgress,
                                         onResetStorage = { confirmLocationChange(null) },
                                         onChooseFolder = { storageLauncher.launch(null) },
                                         formattedBackupDate = formattedBackupDate,
@@ -292,6 +293,7 @@ fun DataRecoverySettingsScreen(
                         },
                         confirmButton = {
                                 TextButton(
+                                        enabled = !uiState.storageMigrationInProgress,
                                         onClick = {
                                                 viewModel.setStorageUri(pendingUriString)
                                                 showDialog = false

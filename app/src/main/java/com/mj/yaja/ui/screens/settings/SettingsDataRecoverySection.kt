@@ -58,6 +58,7 @@ import androidx.compose.animation.fadeOut
 fun DataAndStorageSection(
     storageLocationText: String,
     hasCustomStorage: Boolean,
+    storageMigrationInProgress: Boolean,
     onResetStorage: () -> Unit,
     onChooseFolder: () -> Unit,
     formattedBackupDate: String,
@@ -205,11 +206,13 @@ fun DataAndStorageSection(
             ) {
                 if (hasCustomStorage) {
                     TextButton(
+                        enabled = !storageMigrationInProgress,
                         onClick = onResetStorage,
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
                     ) { Text(stringResource(R.string.settings_reset_to_default)) }
                 }
                 TextButton(
+                    enabled = !storageMigrationInProgress,
                     onClick = onChooseFolder,
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 8.dp)
                 ) { Text(stringResource(R.string.settings_choose_folder)) }

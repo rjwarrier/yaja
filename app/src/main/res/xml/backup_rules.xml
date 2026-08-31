@@ -2,7 +2,9 @@
 <!--
     Legacy Auto Backup rules for Android 11 and below.
     Keep journal files, generated backups, caches, and version-history snapshots out of
-    silent cloud backup. Users can still create explicit Yaja backup ZIPs from Settings.
+    silent cloud backup. Room-backed People & Places definitions and recurring tasks are also
+    excluded from silent cloud backup because the same database contains journal-derived cache text.
+    Users can still create explicit Yaja backup ZIPs from Settings.
 -->
 <full-backup-content>
     <include

@@ -51,7 +51,9 @@ class YajaTaskerActionInput @JvmOverloads constructor(
     @field:TaskerInputField("entry_text")
     var entryText: String = "",
     @field:TaskerInputField("match_header")
-    var matchHeader: String = ""
+    var matchHeader: String = "",
+    @field:TaskerInputField("auth_token")
+    var authToken: String = ""
 )
 
 class YajaTaskerActionRunner : TaskerPluginRunnerActionNoOutput<YajaTaskerActionInput>() {
@@ -69,10 +71,14 @@ class YajaTaskerActionRunner : TaskerPluginRunnerActionNoOutput<YajaTaskerAction
         if (entryText.isBlank()) {
             return TaskerPluginResultError(1, if (actionKind == TaskerIntegration.PluginActionKind.APPEND) "Line to append is empty" else "Entry text is empty")
         }
+        val settingsRepository = SettingsRepository.getInstance(context.applicationContext)
+        if (!settingsRepository.isValidTaskerAuthToken(regular.authToken)) {
+            return TaskerPluginResultError(1, "Yaja Tasker action needs to be opened and saved again")
+        }
         return try {
             TaskerIntegration.executePluginAction(
                 context = context.applicationContext,
-                settingsRepository = SettingsRepository.getInstance(context.applicationContext),
+                settingsRepository = settingsRepository,
                 actionKind = actionKind,
                 entryText = regular.entryText,
                 matchHeader = regular.matchHeader
@@ -149,7 +155,8 @@ class TaskerPluginActionConfigActivity : ComponentActivity(), TaskerPluginConfig
             YajaTaskerActionInput(
                 actionKind = actionKind.name,
                 entryText = entryText,
-                matchHeader = matchHeader
+                matchHeader = matchHeader,
+                authToken = SettingsRepository.getInstance(applicationContext).getOrCreateTaskerAuthToken()
             )
         )
 }

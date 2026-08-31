@@ -38,6 +38,7 @@ internal class SettingsFeatureController(
     private val keywordRepository: KeywordRepository,
     importState: StateFlow<JournalViewModel.ImportState>,
     restoreSummary: StateFlow<JournalViewModel.RestoreSummary?>,
+    storageMigrationInProgress: StateFlow<Boolean>,
     scope: CoroutineScope
 ) {
     private data class NavigationVisibilitySettingsSlice(
@@ -94,6 +95,12 @@ internal class SettingsFeatureController(
         val swipeToSyncEnabled: Boolean,
         val largeJournalSafeMode: Boolean,
         val versionHistoryEnabled: Boolean
+    )
+
+    private data class DataRecoveryProgressSettingsSlice(
+        val importState: JournalViewModel.ImportState,
+        val restoreSummary: JournalViewModel.RestoreSummary?,
+        val storageMigrationInProgress: Boolean
     )
 
     private data class AppearanceThemeSettingsSlice(
@@ -253,9 +260,14 @@ internal class SettingsFeatureController(
             },
             combine(
                 importState,
-                restoreSummary
-            ) { importProgress, restore ->
-                importProgress to restore
+                restoreSummary,
+                storageMigrationInProgress
+            ) { importProgress, restore, migrationInProgress ->
+                DataRecoveryProgressSettingsSlice(
+                    importState = importProgress,
+                    restoreSummary = restore,
+                    storageMigrationInProgress = migrationInProgress
+                )
             }
         ) { storage, safety, progress ->
             DataRecoverySettingsUiState(
@@ -266,8 +278,9 @@ internal class SettingsFeatureController(
                 largeJournalSafeMode = safety.largeJournalSafeMode,
                 showOnboardingNextLaunch = storage.showOnboardingNextLaunch,
                 versionHistoryEnabled = safety.versionHistoryEnabled,
-                importState = progress.first,
-                restoreSummary = progress.second
+                importState = progress.importState,
+                restoreSummary = progress.restoreSummary,
+                storageMigrationInProgress = progress.storageMigrationInProgress
             )
         }.stateIn(
             scope = scope,
@@ -281,7 +294,8 @@ internal class SettingsFeatureController(
                 showOnboardingNextLaunch = showOnboardingNextLaunch.value,
                 versionHistoryEnabled = versionHistoryEnabled.value,
                 importState = importState.value,
-                restoreSummary = restoreSummary.value
+                restoreSummary = restoreSummary.value,
+                storageMigrationInProgress = storageMigrationInProgress.value
             )
         )
 

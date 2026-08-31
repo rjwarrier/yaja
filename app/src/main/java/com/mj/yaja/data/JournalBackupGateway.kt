@@ -10,6 +10,7 @@ import java.io.IOException
 import java.time.LocalDate
 import java.util.concurrent.ConcurrentHashMap
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 
 internal class JournalBackupGateway(
@@ -32,8 +33,10 @@ internal class JournalBackupGateway(
 
         // Read from SOURCE and write to DESTINATION
         for (date in datesWithData) {
+            ensureActive()
             val sourceContent = journalStorage.readDateContentFromSpecificStorage(date, fromUriString)
                 ?: throw IOException("Failed to read source journal file for $date")
+            ensureActive()
             val destinationContent = journalStorage.readDateContentFromSpecificStorage(date, toUriString)
             val contentToWrite = if (destinationContent.isNullOrBlank()) {
                 sourceContent
@@ -47,6 +50,7 @@ internal class JournalBackupGateway(
             if (!journalStorage.writeDateContentToSpecificStorage(date, contentToWrite, toUriString)) {
                 throw IOException("Failed to migrate journal file for $date")
             }
+            ensureActive()
         }
 
         // Invalidate cache since storage has changed

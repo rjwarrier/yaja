@@ -63,6 +63,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -195,6 +196,8 @@ class JournalViewModel(
     val importState: StateFlow<ImportState> = _importState.asStateFlow()
     private val _restoreSummary = MutableStateFlow<RestoreSummary?>(null)
     val restoreSummary: StateFlow<RestoreSummary?> = _restoreSummary.asStateFlow()
+    private val _storageMigrationInProgress = MutableStateFlow(false)
+    val storageMigrationInProgress: StateFlow<Boolean> = _storageMigrationInProgress.asStateFlow()
     private val _versionHistorySnapshots = MutableStateFlow<List<VersionHistorySnapshotUi>>(emptyList())
     val versionHistorySnapshots: StateFlow<List<VersionHistorySnapshotUi>> = _versionHistorySnapshots.asStateFlow()
     private val _versionHistoryRestoreInProgress = MutableStateFlow(false)
@@ -209,6 +212,7 @@ class JournalViewModel(
         keywordRepository = keywordRepository,
         importState = importState,
         restoreSummary = restoreSummary,
+        storageMigrationInProgress = storageMigrationInProgress,
         scope = viewModelScope
     )
 
@@ -402,6 +406,7 @@ class JournalViewModel(
     private var backgroundMaintenanceJob: kotlinx.coroutines.Job? = null
     private var todoRefreshJob: kotlinx.coroutines.Job? = null
     private var cacheRefreshJob: kotlinx.coroutines.Job? = null
+    private val storageMigrationMutex = Mutex()
     private var latestEntriesRequestId: Long = 0L
     private var latestTodoRefreshRequestId: Long = 0L
     private var latestCacheRefreshRequestId: Long = 0L
@@ -2856,97 +2861,103 @@ class JournalViewModel(
     }
 
     fun setStorageUri(uriString: String?) {
-        val oldUri = settingsRepository.storageUri.value
-        if (oldUri == uriString) return
-        appLogRepository.logInfo(
-            event = "Storage location change requested",
-            details = "fromCustom=${oldUri != null} toCustom=${uriString != null}"
-        )
         storageMigrationJob?.cancel()
         storageMigrationJob = viewModelScope.launch {
-            try {
-                runStorageMigrationWorkflow(
-                    oldUri = oldUri,
-                    newUri = uriString,
-                    setLoading = { isLoading ->
-                        _uiState.update { it.copy(isLoading = isLoading) }
-                    },
-                    migrateEntries = { previousUri, nextUri ->
-                        withContext(Dispatchers.IO) {
-                            // Invalidate cache before migration so it reads fresh from source.
-                            fileManager.invalidateCache()
-                            // Perform migration.
-                            fileManager.migrateEntries(previousUri, nextUri)
+            storageMigrationMutex.withLock {
+                val oldUri = settingsRepository.storageUri.value
+                if (oldUri == uriString) return@withLock
+                appLogRepository.logInfo(
+                    event = "Storage location change requested",
+                    details = "fromCustom=${oldUri != null} toCustom=${uriString != null}"
+                )
+                _storageMigrationInProgress.value = true
+                try {
+                    runStorageMigrationWorkflow(
+                        oldUri = oldUri,
+                        newUri = uriString,
+                        setLoading = { isLoading ->
+                            _uiState.update { it.copy(isLoading = isLoading) }
+                        },
+                        migrateEntries = { previousUri, nextUri ->
+                            withContext(Dispatchers.IO) {
+                                // Invalidate cache before migration so it reads fresh from source.
+                                fileManager.invalidateCache()
+                                // Perform migration.
+                                fileManager.migrateEntries(previousUri, nextUri)
+                                ensureActive()
 
-                            // MutableStateFlow and SharedPreferences writes are thread-safe.
-                            settingsRepository.setStorageUri(nextUri)
-                        }
-                    },
-                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
-                    reloadSelectedDate = { loadEntries(_uiState.value.selectedDate) },
-                    refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
-                    refreshStarredLabels = {
-                        refreshJournalMetaWorkflow(
-                            scope = viewModelScope,
-                            fileManager = fileManager,
-                            selectedDate = _uiState.value.selectedDate,
-                            starredDates = _starredDates,
-                            favoritedDates = _favoritedDates,
-                            starredLabels = _starredLabels,
-                            revisitMarkers = _revisitMarkers,
-                            revisitTargetDates = _revisitTargetDates,
-                            currentRevisitDate = _currentRevisitDate,
-                            currentRevisitNote = _currentRevisitNote,
-                            dueRevisits = _dueRevisits
-                        )
-                    },
-                    rebuildTodoIndex = {
-                        viewModelScope.launch(Dispatchers.Default) {
-                            rebuildTodoIndexWorkflow(
+                                // MutableStateFlow and SharedPreferences writes are thread-safe.
+                                settingsRepository.setStorageUri(nextUri)
+                            }
+                        },
+                        clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                        reloadSelectedDate = { loadEntries(_uiState.value.selectedDate) },
+                        refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
+                        refreshStarredLabels = {
+                            refreshJournalMetaWorkflow(
+                                scope = viewModelScope,
                                 fileManager = fileManager,
-                                todoIndexRepository = todoIndexRepository,
-                                eventIndexRepository = eventIndexRepository,
-                                emitBackgroundToast = ::emitBackgroundToast,
-                                publishCurrentTodos = { publishCurrentTodoAndEventIndexes() }
+                                selectedDate = _uiState.value.selectedDate,
+                                starredDates = _starredDates,
+                                favoritedDates = _favoritedDates,
+                                starredLabels = _starredLabels,
+                                revisitMarkers = _revisitMarkers,
+                                revisitTargetDates = _revisitTargetDates,
+                                currentRevisitDate = _currentRevisitDate,
+                                currentRevisitNote = _currentRevisitNote,
+                                dueRevisits = _dueRevisits
                             )
-                        }
-                    },
-                    loadAllJournalDates = {
-                        withContext(Dispatchers.IO) {
-                            fileManager.getAllJournalDatesLightweight()
-                        }
-                    },
-                    startIncrementalWarmup = { fileManager.startIncrementalWarmup(latestFirst = true) },
-                    runDeferredStartupWork = { dateCount ->
-                        runDeferredStartupWork(
-                            date = _uiState.value.selectedDate,
-                            dateCount = dateCount,
-                            announceLargeJournal = false
-                        )
-                    },
-                    persistJournalFingerprint = {
-                        withContext(Dispatchers.IO) {
-                            fileManager.persistCurrentJournalFingerprint(immediate = true)
-                        }
-                    },
-                    markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt,
-                    emitToast = { message -> _toastEvents.emit(message) }
-                  )
-                  appLogRepository.logInfo(
-                      event = "Storage location change completed",
-                      details = "customStorage=${settingsRepository.storageUri.value != null}"
-                  )
-              } catch (e: CancellationException) {
-                  throw e
-              } catch (e: Exception) {
-                  Log.e("JournalViewModel", "Storage migration failed", e)
-                  appLogRepository.logError(
-                      event = "Storage migration failed",
-                      throwable = e,
-                      details = "fromCustom=${oldUri != null} toCustom=${uriString != null}"
-                  )
-                  _toastEvents.emit("Storage change failed. Yaja kept the current data safely.")
-              }
+                        },
+                        rebuildTodoIndex = {
+                            viewModelScope.launch(Dispatchers.Default) {
+                                rebuildTodoIndexWorkflow(
+                                    fileManager = fileManager,
+                                    todoIndexRepository = todoIndexRepository,
+                                    eventIndexRepository = eventIndexRepository,
+                                    emitBackgroundToast = ::emitBackgroundToast,
+                                    publishCurrentTodos = { publishCurrentTodoAndEventIndexes() }
+                                )
+                            }
+                        },
+                        loadAllJournalDates = {
+                            withContext(Dispatchers.IO) {
+                                fileManager.getAllJournalDatesLightweight()
+                            }
+                        },
+                        startIncrementalWarmup = { fileManager.startIncrementalWarmup(latestFirst = true) },
+                        runDeferredStartupWork = { dateCount ->
+                            runDeferredStartupWork(
+                                date = _uiState.value.selectedDate,
+                                dateCount = dateCount,
+                                announceLargeJournal = false
+                            )
+                        },
+                        persistJournalFingerprint = {
+                            withContext(Dispatchers.IO) {
+                                fileManager.persistCurrentJournalFingerprint(immediate = true)
+                            }
+                        },
+                        markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt,
+                        emitToast = { message -> _toastEvents.emit(message) }
+                    )
+                    appLogRepository.logInfo(
+                        event = "Storage location change completed",
+                        details = "customStorage=${settingsRepository.storageUri.value != null}"
+                    )
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    Log.e("JournalViewModel", "Storage migration failed", e)
+                    appLogRepository.logError(
+                        event = "Storage migration failed",
+                        throwable = e,
+                        details = "fromCustom=${oldUri != null} toCustom=${uriString != null}"
+                    )
+                    _toastEvents.emit("Storage change failed. Yaja kept the current data safely.")
+                } finally {
+                    _storageMigrationInProgress.value = false
+                }
+            }
         }
     }
 

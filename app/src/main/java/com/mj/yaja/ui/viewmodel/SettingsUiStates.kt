@@ -79,7 +79,8 @@ data class DataRecoverySettingsUiState(
     val showOnboardingNextLaunch: Boolean = false,
     val versionHistoryEnabled: Boolean = false,
     val importState: JournalViewModel.ImportState = JournalViewModel.ImportState.Idle,
-    val restoreSummary: JournalViewModel.RestoreSummary? = null
+    val restoreSummary: JournalViewModel.RestoreSummary? = null,
+    val storageMigrationInProgress: Boolean = false
 )
 
 @Immutable
