@@ -22,9 +22,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.remember
@@ -50,6 +47,7 @@ fun TodosScreen(
     val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
     val showBottomPanelLabels by viewModel.showBottomPanelLabels.collectAsStateWithLifecycle()
     val fabPlacement by viewModel.fabPlacement.collectAsStateWithLifecycle()
+    val showCompletedTodos by viewModel.showCompletedTodos.collectAsStateWithLifecycle()
     var showAddTodoDialog by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
@@ -78,7 +76,9 @@ fun TodosScreen(
         topBar = {
             TodosTopBar(
                 onOpenDrawer = onOpenDrawer,
-                onOpenRecurringTask = onNavigateToRecurringTask
+                onOpenRecurringTask = onNavigateToRecurringTask,
+                showCompleted = showCompletedTodos,
+                onToggleShowCompleted = { viewModel.setShowCompletedTodos(!showCompletedTodos) }
             )
         },
         floatingActionButton = {
@@ -118,6 +118,7 @@ fun TodosScreen(
                 groupedTodos = grouped,
                 groupedEvents = groupedEvents,
                 renderCheckboxesAsText = renderCheckboxesAsText,
+                showCompleted = showCompletedTodos,
                 dayLabelForDate = viewModel::getDayLabel,
                 onNavigateToDate = onNavigateToDate,
                 onToggleTodo = viewModel::toggleTodo

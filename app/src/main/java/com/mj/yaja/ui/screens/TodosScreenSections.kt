@@ -18,6 +18,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.EventRepeat
+import androidx.compose.material.icons.rounded.Visibility
+import androidx.compose.material.icons.rounded.VisibilityOff
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -73,7 +75,9 @@ internal data class TodoHeroMetrics(
 @Composable
 internal fun TodosTopBar(
     onOpenDrawer: () -> Unit,
-    onOpenRecurringTask: () -> Unit
+    onOpenRecurringTask: () -> Unit,
+    showCompleted: Boolean,
+    onToggleShowCompleted: () -> Unit
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -90,6 +94,11 @@ internal fun TodosTopBar(
             )
         },
         actions = {
+            AnimatedIconButton(
+                imageVector = if (showCompleted) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff,
+                contentDescription = stringResource(R.string.widget_todo_show_completed),
+                onClick = onToggleShowCompleted
+            )
             AnimatedIconButton(
                 imageVector = Icons.Rounded.EventRepeat,
                 contentDescription = stringResource(R.string.recurring_task_intro_title),
@@ -116,6 +125,7 @@ internal fun TodosScreenContent(
     groupedTodos: List<Pair<LocalDate, List<TodoItem>>>,
     groupedEvents: List<Pair<LocalDate, List<EventItem>>>,
     renderCheckboxesAsText: Boolean,
+    showCompleted: Boolean,
     dayLabelForDate: (LocalDate) -> String?,
     onNavigateToDate: (LocalDate) -> Unit,
     onToggleTodo: (TodoItem) -> Unit
@@ -235,7 +245,7 @@ internal fun TodosScreenContent(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             val filteredVisibleTodos = when (selectedFilter) {
-                TodoFilter.ALL -> todos
+                TodoFilter.ALL -> if (showCompleted) todos else openTodos
                 TodoFilter.OPEN -> openTodos
                 TodoFilter.DONE -> doneTodos
                 TodoFilter.EVENTS -> emptyList()
@@ -445,7 +455,7 @@ internal fun TodosScreenContent(
                                 }
                             }
                         }
-                        if (selectedFilter != TodoFilter.OPEN && selectedFilter != TodoFilter.EVENTS) {
+                        if (selectedFilter == TodoFilter.DONE || (showCompleted && selectedFilter != TodoFilter.OPEN && selectedFilter != TodoFilter.EVENTS)) {
                             item("done_section_header") {
                                 AppStaggeredEntrance(
                                     visible = entranceTriggered,
