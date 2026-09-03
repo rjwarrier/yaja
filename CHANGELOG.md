@@ -3,11 +3,16 @@
 ## 3.1.2 - Unreleased
 
 ### Highlights
+- Added a Home dashboard screen — a hero "today" card, week strip, overview stats, and recent entries — as an alternative landing screen to the per-day Today view, selectable via a new Default Screen setting.
 - Reworked the entry editor and navigation chrome so they hold up at large display sizes and large font scales, where the app has fewer dp to lay out and text outgrows the boxes holding it.
 - Focus mode now turns itself on when the keyboard would leave the editor with barely a line of text, and says so.
 - Added a UI size setting that scales the app's layout independently of its text.
 
 ### New
+- Added a Home dashboard screen (`Route.Dashboard`) with a today hero card (greeting, status line, write/continue action, todos/events glance), a 7-day activity strip, flat overview stat tiles, and a Recent entries list with real preview/word/todo data pulled from the timeline metrics cache.
+- Added a `Default Screen` setting to Journal Experience, choosing whether the app opens to Home or Today on launch.
+- Long-pressing the bottom nav's journal icon toggles between Home and Today and persists the choice as the Default Screen setting, so it survives navigating away and app relaunch.
+- Added a "Home" entry to the navigation drawer, and a small "Go to Today" FAB on the dashboard.
 - Added a `UI Size` slider to Appearance, scaling every dp the way the system Display Size setting does while leaving text to the font size slider. Searchable under "display size", "ui scale", "zoom" and "bigger".
 - Focus mode is enabled automatically, with a toast, when the keyboard leaves the editor under three lines of text. It applies once per entry, so turning it back off keeps it off.
 - The focus button is tinted while focus mode is the app's doing rather than the user's, and returns to its plain style as soon as the toggle is touched.
@@ -21,6 +26,8 @@
 - The focus-mode choice survives rotation instead of resetting and re-announcing itself.
 
 ### Fixed
+- Fixed the current-streak stat showing 0 whenever today had no entry yet, even with an unbroken run of prior days; it now counts back from yesterday instead of zeroing out the moment today is unwritten.
+- Fixed the dashboard's Recent list ranking future-dated entries (allowed by Allow Future Entries) above genuinely recent ones; future dates are now excluded.
 - Fixed the Edit Entry title being drawn over the focus, help, template and delete icons; the centred title reserved a fixed 96dp per side against up to four action buttons.
 - Fixed bottom-navigation indicators overlapping their neighbours: the tappable-size floor ignored how wide each slot actually was, which six enabled destinations on a large display size made visible.
 - Fixed quick-insert chip labels clipping inside fixed-height tiles.
@@ -29,10 +36,12 @@
 - Added `AppDensityTest` covering the density math behind UI size: that UI size moves layout without moving text, that the font sliders still move text without moving layout, that the compensation cancels correctly through the journal-text path, and that a zero or non-finite scale cannot produce a zero or NaN density.
 - Added `AddEntryFocusModeTest` covering the auto focus-mode decision, including its threshold boundary and its independence from the chrome it hides.
 - Verified with `:app:testDebugUnitTest` (122 tests) and `:app:assembleDebug`.
+- Verified the Home dashboard with `:app:compileDebugKotlin` and `:app:installDebug` plus manual on-device checks of the Default Screen setting, the long-press toggle surviving navigation and relaunch, and PIN-unlock respecting the setting; no new automated tests were added for it.
 
 ### Notes
 - Requires a `versionCode` bump to 95; `3.1.1` shipped as 94.
 - `settings_ui_size_label` and `addentry_focus_mode_hint` are base-locale only and still need translating, as does `settings_storage_move_confirm` for es, fr and pt.
+- The new dashboard/Default Screen strings (`dashboard_*`, `settings_default_screen_*`, `nav_home`) are base-locale only and still need translating.
 
 ## 3.1.1 - August 28, 2026
 

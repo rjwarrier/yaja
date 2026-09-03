@@ -65,6 +65,7 @@ import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppScreenReveal
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import kotlinx.coroutines.async
 import java.text.NumberFormat
 import java.time.LocalDate
 import java.time.LocalTime
@@ -88,11 +89,17 @@ fun DashboardScreen(
         val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
 
         LaunchedEffect(Unit) {
-                viewModel.calculateStatsByPeriod(StatisticsPeriod.ALL_TIME)
+                // Reuses the same freshness cache Statistics relies on, so repeatedly reopening
+                // Home (e.g. via the long-press toggle) doesn't rescan the whole journal each time.
+                viewModel.ensureStatisticsLoaded(StatisticsPeriod.ALL_TIME)
         }
 
-        val today = remember { LocalDate.now() }
-        val now = remember { LocalTime.now() }
+        // Deliberately not `remember`ed: this screen can stay composed across a midnight
+        // rollover (backgrounded overnight, timezone travel), and a frozen "today" would leave
+        // the hero card, week strip, and streak filtering silently wrong until the next full
+        // recomposition from an unrelated state change.
+        val today = LocalDate.now()
+        val now = LocalTime.now()
         val hasTodayEntry = today in uiState.datesWithEntries
         val hasAnyEntries = uiState.datesWithEntries.isNotEmpty()
 
@@ -130,21 +137,33 @@ fun DashboardScreen(
                         .sortedDescending()
                         .take(3)
         }
+        // Todo counts are already in memory (`todos`), so they're derived synchronously and kept
+        // out of the IO-bound effect below — otherwise checking a box anywhere in the app would
+        // retrigger a disk read for every recent entry just to redraw an unrelated number.
+        val recentTodoCounts = remember(todos, recentDates) {
+                val byDate = todos.groupingBy { it.date }.eachCount()
+                recentDates.associateWith { byDate[it] ?: 0 }
+        }
         var recentDetails by remember { mutableStateOf<Map<LocalDate, DashboardRecentDetail>>(emptyMap()) }
         LaunchedEffect(recentDates) {
                 if (recentDates.isEmpty()) {
                         recentDetails = emptyMap()
                         return@LaunchedEffect
                 }
-                val metrics = viewModel.getTimelineMetrics(recentDates)
-                val todosByDate = todos.groupBy { it.date }
-                recentDetails = recentDates.associateWith { date ->
+                // The metrics batch and each date's preview are independent disk reads — fire
+                // them together instead of awaiting one at a time, which serialized what should
+                // be a single round-trip's worth of latency into up to four.
+                val metricsDeferred = async { viewModel.getTimelineMetrics(recentDates) }
+                val previewDeferredByDate = recentDates.associateWith { date ->
+                        async { viewModel.getTimelinePreview(date) }
+                }
+                val metrics = metricsDeferred.await()
+                recentDetails = previewDeferredByDate.mapValues { (date, deferred) ->
                         DashboardRecentDetail(
-                                preview = viewModel.getTimelinePreview(date)
+                                preview = deferred.await()
                                         ?.let { MarkdownUtils.stripMetadata(it).trim() }
                                         .orEmpty(),
-                                wordCount = metrics[date]?.wordCount ?: 0,
-                                todoCount = todosByDate[date]?.size ?: 0
+                                wordCount = metrics[date]?.wordCount ?: 0
                         )
                 }
         }
@@ -218,9 +237,9 @@ fun DashboardScreen(
                                 if (recentDates.isNotEmpty()) {
                                         Spacer(modifier = Modifier.height(22.dp))
                                         DashboardRecentSection(
-                                                today = today,
                                                 dates = recentDates,
                                                 details = recentDetails,
+                                                todoCounts = recentTodoCounts,
                                                 onAllEntries = onNavigateToTimeline,
                                                 onOpenDate = { date ->
                                                         viewModel.selectDate(date, source = "dashboard_recent_entry")
@@ -237,8 +256,7 @@ fun DashboardScreen(
 
 private data class DashboardRecentDetail(
         val preview: String,
-        val wordCount: Int,
-        val todoCount: Int
+        val wordCount: Int
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -304,13 +322,14 @@ private fun DashboardTodayHeroCard(
 ) {
         val dateFormatter = remember { DateTimeFormatter.ofPattern("EEEE '·' d MMMM", Locale.getDefault()) }
         val timeFormatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
-        val greeting = remember {
-                when (LocalTime.now().hour) {
-                        in 5..11 -> R.string.dashboard_greeting_morning
-                        in 12..16 -> R.string.dashboard_greeting_afternoon
-                        in 17..21 -> R.string.dashboard_greeting_evening
-                        else -> R.string.dashboard_greeting_night
-                }
+        // Derived from `now` (the same instant already shown in the meta row) rather than a
+        // separately cached clock read, so it can't drift out of sync with the displayed time
+        // or freeze on the hour it first composed at.
+        val greeting = when (now.hour) {
+                in 5..11 -> R.string.dashboard_greeting_morning
+                in 12..16 -> R.string.dashboard_greeting_afternoon
+                in 17..21 -> R.string.dashboard_greeting_evening
+                else -> R.string.dashboard_greeting_night
         }
         val statusText = when {
                 !hasTodayEntry -> stringResource(R.string.dashboard_status_empty)
@@ -461,7 +480,7 @@ private fun DashboardGlanceGroup(
 ) {
         Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.then(if (!active) Modifier.alpha(0.55f) else Modifier)
+                modifier = Modifier.alpha(if (active) 1f else 0.55f)
         ) {
                 Icon(
                         imageVector = icon,
@@ -659,9 +678,9 @@ private fun DashboardStatTile(
 
 @Composable
 private fun DashboardRecentSection(
-        today: LocalDate,
         dates: List<LocalDate>,
         details: Map<LocalDate, DashboardRecentDetail>,
+        todoCounts: Map<LocalDate, Int>,
         onAllEntries: () -> Unit,
         onOpenDate: (LocalDate) -> Unit
 ) {
@@ -700,9 +719,9 @@ private fun DashboardRecentSection(
                 dates.forEachIndexed { index, date ->
                         val detail = details[date]
                         DashboardRecentRow(
-                                today = today,
                                 date = date,
                                 detail = detail,
+                                todoCount = todoCounts[date] ?: 0,
                                 onClick = { onOpenDate(date) }
                         )
                         if (index != dates.lastIndex) {
@@ -716,9 +735,9 @@ private fun DashboardRecentSection(
 
 @Composable
 private fun DashboardRecentRow(
-        today: LocalDate,
         date: LocalDate,
         detail: DashboardRecentDetail?,
+        todoCount: Int,
         onClick: () -> Unit
 ) {
         val weekdayFormatter = remember { DateTimeFormatter.ofPattern("EEE", Locale.getDefault()) }
@@ -764,7 +783,6 @@ private fun DashboardRecentRow(
                                         style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
-                                val todoCount = detail?.todoCount ?: 0
                                 if (todoCount > 0) {
                                         Spacer(modifier = Modifier.width(10.dp))
                                         Icon(
