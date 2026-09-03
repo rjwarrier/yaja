@@ -87,6 +87,10 @@ fun JournalExperienceSettingsScreen(
                                         },
                                         entryStyle = uiState.entryStyle,
                                         onEntryStyleSelected = { viewModel.setEntryStyle(it) },
+                                        defaultScreenPreference = uiState.defaultScreenPreference,
+                                        onDefaultScreenPreferenceChange = {
+                                                viewModel.setDefaultScreenPreference(it)
+                                        },
                                         calendarDensityPreference = uiState.calendarDensityPreference,
                                         onCalendarDensityPreferenceChange = {
                                                 viewModel.setCalendarDensityPreference(it)

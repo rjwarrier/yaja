@@ -2,6 +2,7 @@
     <string name="app_name">yaja</string>
 
     <!-- Navigation -->
+    <string name="nav_home">Home</string>
     <string name="nav_journal">Journal</string>
     <string name="nav_calendar">Calendar</string>
     <string name="nav_lookback">Lookback</string>
@@ -141,6 +142,34 @@
     <string name="settings_journal_entry_style_subtitle">Choose between elevated cards and a flatter journal look.</string>
     <string name="settings_journal_entry_style_cards">Cards</string>
     <string name="settings_journal_entry_style_flat">Flat</string>
+    <string name="settings_default_screen_title">Default Screen</string>
+    <string name="settings_default_screen_subtitle">Choose which screen opens when you launch the app.</string>
+    <string name="settings_default_screen_home">Home</string>
+    <string name="settings_default_screen_today">Today</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Good morning</string>
+    <string name="dashboard_greeting_afternoon">Good afternoon</string>
+    <string name="dashboard_greeting_evening">Good evening</string>
+    <string name="dashboard_greeting_night">Still up?</string>
+    <string name="dashboard_section_this_week">This week</string>
+    <string name="dashboard_stat_streak">Day streak</string>
+    <string name="dashboard_stat_days">Days written</string>
+    <string name="dashboard_stat_entries">Entries</string>
+    <string name="dashboard_status_empty">Nothing written today yet.</string>
+    <string name="dashboard_write_first_entry">Write your first entry</string>
+    <string name="dashboard_write_today">Write today\'s entry</string>
+    <string name="dashboard_continue_today">Continue today\'s entry</string>
+    <string name="dashboard_glance_todos_format">%1$d to-dos</string>
+    <string name="dashboard_glance_events_format">%1$d events</string>
+    <string name="dashboard_week_summary_format">%1$d of 7 days</string>
+    <string name="dashboard_streak_summary_format">%1$d-day streak</string>
+    <string name="dashboard_recent_entries_title">Recent</string>
+    <string name="dashboard_all_entries">All entries</string>
+    <string name="dashboard_words_count_format">%1$d words</string>
+    <string name="dashboard_goto_today">Go to Today</string>
+
     <string name="settings_calendar_density_title">Calendar Density</string>
     <string name="settings_calendar_density_subtitle">Tune the calendar grid for comfort, compact scanning, or maximum date density.</string>
     <string name="settings_calendar_density_comfortable">Comfort</string>

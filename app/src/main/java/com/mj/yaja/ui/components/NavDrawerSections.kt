@@ -15,6 +15,7 @@ import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Cached
 import androidx.compose.material.icons.rounded.Checklist
 import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.IntegrationInstructions
 import androidx.compose.material.icons.rounded.People
 import androidx.compose.material.icons.rounded.Settings
@@ -37,9 +38,17 @@ internal fun DrawerPrimarySection(
         syncProgress: Float?,
         backgroundWorkLabel: String?,
         syncStartedAtMillis: Long?,
+        onNavigateToDashboard: () -> Unit,
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit
 ) {
+        NavigationDrawerItem(
+                icon = { Icon(Icons.Rounded.Home, contentDescription = null) },
+                label = { Text(stringResource(R.string.nav_home)) },
+                selected = currentRoute == "dashboard",
+                onClick = onNavigateToDashboard,
+                modifier = Modifier.padding(horizontal = 12.dp)
+        )
         NavigationDrawerItem(
                 icon = { Icon(Icons.AutoMirrored.Rounded.MenuBook, contentDescription = null) },
                 label = { Text(stringResource(R.string.nav_journal)) },

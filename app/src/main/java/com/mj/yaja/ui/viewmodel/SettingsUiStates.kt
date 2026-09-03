@@ -10,6 +10,7 @@ import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
+import com.mj.yaja.data.DefaultScreenPreference
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
@@ -66,7 +67,8 @@ data class JournalExperienceSettingsUiState(
     val carryForwardTodosEnabled: Boolean = false,
     val calendarDensityPreference: CalendarDensityPreference = CalendarDensityPreference.COMFORTABLE,
     val fuzzyThreshold: Float = 0.90f,
-    val entryStyle: EntryStyle = EntryStyle.CARDS
+    val entryStyle: EntryStyle = EntryStyle.CARDS,
+    val defaultScreenPreference: DefaultScreenPreference = DefaultScreenPreference.TODAY
 )
 
 @Immutable

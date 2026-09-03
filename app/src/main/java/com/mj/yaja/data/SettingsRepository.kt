@@ -147,6 +147,11 @@ enum class FabPlacement {
     LEFT
 }
 
+enum class DefaultScreenPreference {
+    HOME,
+    TODAY
+}
+
 enum class CalendarDensityPreference {
     COMFORTABLE,
     COMPACT,
@@ -384,6 +389,10 @@ class SettingsRepository(private val context: Context) {
 
     private val _navigationChromeMode = MutableStateFlow(getSavedNavigationChromeMode())
     val navigationChromeMode: StateFlow<NavigationChromeMode> = _navigationChromeMode.asStateFlow()
+
+    private val _defaultScreenPreference = MutableStateFlow(getSavedDefaultScreenPreference())
+    val defaultScreenPreference: StateFlow<DefaultScreenPreference> =
+            _defaultScreenPreference.asStateFlow()
 
     private val _showBottomPanelLabels = MutableStateFlow(getSavedShowBottomPanelLabels())
     val showBottomPanelLabels: StateFlow<Boolean> = _showBottomPanelLabels.asStateFlow()
@@ -763,6 +772,11 @@ class SettingsRepository(private val context: Context) {
         prefs.edit().putString(KEY_NAVIGATION_CHROME_MODE, mode.name).apply()
         _navigationChromeMode.value = mode
         normalizeNavigationItems()
+    }
+
+    fun setDefaultScreenPreference(preference: DefaultScreenPreference) {
+        prefs.edit().putString(KEY_DEFAULT_SCREEN_PREFERENCE, preference.name).apply()
+        _defaultScreenPreference.value = preference
     }
 
     fun setShowBottomPanelLabels(show: Boolean) {
@@ -1306,6 +1320,12 @@ class SettingsRepository(private val context: Context) {
     private fun getSavedFabPlacement(): FabPlacement =
             getEnum(prefs.getString(KEY_FAB_PLACEMENT, null), FabPlacement.RIGHT)
 
+    private fun getSavedDefaultScreenPreference(): DefaultScreenPreference =
+            getEnum(
+                    prefs.getString(KEY_DEFAULT_SCREEN_PREFERENCE, null),
+                    DefaultScreenPreference.TODAY
+            )
+
     private fun getSavedCalendarDensityPreference(): CalendarDensityPreference =
             getEnum(
                     prefs.getString(KEY_CALENDAR_DENSITY, null),
@@ -1590,6 +1610,7 @@ class SettingsRepository(private val context: Context) {
         private const val KEY_NAVIGATION_CHROME_MODE = "navigation_chrome_mode"
         private const val KEY_SHOW_BOTTOM_PANEL_LABELS = "show_bottom_panel_labels"
         private const val KEY_FAB_PLACEMENT = "fab_placement"
+        private const val KEY_DEFAULT_SCREEN_PREFERENCE = "default_screen_preference"
         private const val KEY_CALENDAR_DENSITY = "calendar_density"
         private const val KEY_ADAPTIVE_BOTTOM_NAV = "adaptive_bottom_nav"
         private const val SHORTCODE_CODEC_PREFIX = "v3|"

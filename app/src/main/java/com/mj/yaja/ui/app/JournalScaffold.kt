@@ -57,6 +57,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.R
+import com.mj.yaja.data.DefaultScreenPreference
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.ui.components.AppNavigationDrawer
 import com.mj.yaja.ui.design.LocalAnimationPreference
@@ -114,6 +115,33 @@ fun JournalScaffold(
     val bottomChromePadding = if (useExpressivePanel) 128.dp else 104.dp
     val syncChromePadding = if (useExpressivePanel) 120.dp else 96.dp
 
+    // The bottom nav's single "Journal" icon is deliberately ambiguous between Today and the
+    // Dashboard: it always targets whichever screen is currently the Default Screen setting, so
+    // the choice survives navigating away and back. Long-pressing flips that setting (and
+    // persists it), rather than just navigating once.
+    val defaultScreenPreference by viewModel.defaultScreenPreference.collectAsStateWithLifecycle()
+    val homeTargetRoute =
+        if (defaultScreenPreference == DefaultScreenPreference.HOME) {
+            Route.Dashboard.path
+        } else {
+            Route.Home.path
+        }
+
+    val onLongPressHome: () -> Unit = {
+        val newPreference =
+            if (defaultScreenPreference == DefaultScreenPreference.HOME) {
+                DefaultScreenPreference.TODAY
+            } else {
+                DefaultScreenPreference.HOME
+            }
+        viewModel.setDefaultScreenPreference(newPreference)
+        val newTargetRoute =
+            if (newPreference == DefaultScreenPreference.HOME) Route.Dashboard.path else Route.Home.path
+        navController.navigate(newTargetRoute) {
+            popUpTo(Route.Home.path) { inclusive = true }
+        }
+    }
+
     LaunchedEffect(Unit) {
         viewModel.toastEvents.collect { message ->
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
@@ -138,8 +166,8 @@ fun JournalScaffold(
                 ExpressiveBottomNavigationPanel(
                     currentRoute = currentRoute,
                     onNavigateHome = {
-                        if (currentRoute != Route.Home.path) {
-                            navController.navigate(Route.Home.path) {
+                        if (currentRoute != homeTargetRoute) {
+                            navController.navigate(homeTargetRoute) {
                                 popUpTo(Route.Home.path) { inclusive = true }
                             }
                         }
@@ -170,6 +198,7 @@ fun JournalScaffold(
                             navController.navigate(Route.Keywords.path) { popUpTo(Route.Home.path) }
                         }
                     },
+                    onLongPressHome = onLongPressHome,
                     showLookbackInNavBar = bottomShowLookbackInNavBar,
                     showKeywordsInNavBar = bottomShowKeywordsInNavBar,
                     showTodosInNavBar = bottomShowTodosInNavBar,
@@ -180,8 +209,8 @@ fun JournalScaffold(
                 AnimatedFloatingBottomBar(
                     currentRoute = currentRoute,
                     onNavigateHome = {
-                        if (currentRoute != Route.Home.path) {
-                            navController.navigate(Route.Home.path) {
+                        if (currentRoute != homeTargetRoute) {
+                            navController.navigate(homeTargetRoute) {
                                 popUpTo(Route.Home.path) { inclusive = true }
                             }
                         }
@@ -212,6 +241,7 @@ fun JournalScaffold(
                             navController.navigate(Route.Keywords.path) { popUpTo(Route.Home.path) }
                         }
                     },
+                    onLongPressHome = onLongPressHome,
                     showLookbackInNavBar = bottomShowLookbackInNavBar,
                     showKeywordsInNavBar = bottomShowKeywordsInNavBar,
                     showTodosInNavBar = bottomShowTodosInNavBar,
@@ -225,6 +255,9 @@ fun JournalScaffold(
         drawerState = drawerState,
         scope = scope,
         currentRoute = currentRoute ?: Route.Home.path,
+        onNavigateToDashboard = {
+            navController.navigate(Route.Dashboard.path) { popUpTo(Route.Home.path) }
+        },
         onNavigateToJournal = {
             navController.navigate(Route.Home.path) { popUpTo(Route.Home.path) { inclusive = true } }
         },

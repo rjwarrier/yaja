@@ -228,6 +228,7 @@ class JournalViewModel(
     val customFontPath = settingsFeature.customFontPath
     val customFontName = settingsFeature.customFontName
     val entryStyle = settingsFeature.entryStyle
+    val defaultScreenPreference = settingsFeature.defaultScreenPreference
     val storageUri = settingsFeature.storageUri
     val hasCompletedOnboarding = settingsFeature.hasCompletedOnboarding
     val shouldShowOnboarding = settingsFeature.shouldShowOnboarding
@@ -1751,6 +1752,9 @@ class JournalViewModel(
 
     fun setEntryStyle(style: com.mj.yaja.data.EntryStyle) =
         settingsFeature.setEntryStyle(style)
+
+    fun setDefaultScreenPreference(preference: com.mj.yaja.data.DefaultScreenPreference) =
+        settingsFeature.setDefaultScreenPreference(preference)
 
     fun setUiScalePreference(preference: UiScalePreference) =
         settingsFeature.setUiScalePreference(preference)

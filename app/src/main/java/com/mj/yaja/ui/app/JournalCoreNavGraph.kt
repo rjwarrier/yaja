@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.screens.AddEntryScreen
 import com.mj.yaja.ui.screens.CalendarScreen
+import com.mj.yaja.ui.screens.DashboardScreen
 import com.mj.yaja.ui.screens.HomeScreen
 import com.mj.yaja.ui.screens.TimelineScreen
 import com.mj.yaja.ui.viewmodel.JournalViewModel
@@ -75,6 +76,24 @@ internal fun NavGraphBuilder.addCoreJournalRoutes(
                         isDrawerOpen = isDrawerOpen,
                         onNavigateToAddEntry = { navController.navigate(Route.AddEntry.path) },
                         onNavigateToVersionSnapshots = { navController.navigate(Route.VersionSnapshots.path) }
+                )
+        }
+        composable(Route.Dashboard.path) {
+                DashboardScreen(
+                        viewModel = viewModel,
+                        onOpenDrawer = onOpenDrawer,
+                        onNavigateToAddEntry = { navController.navigate(Route.AddEntry.path) },
+                        onOpenToday = {
+                                navController.navigate(Route.Home.path) {
+                                        popUpTo(Route.Home.path) { inclusive = true }
+                                }
+                        },
+                        onNavigateToTimeline = {
+                                navController.navigate(Route.Timeline.path)
+                        },
+                        onNavigateToStatistics = {
+                                navController.navigate(Route.Statistics.path) { popUpTo(Route.Home.path) }
+                        }
                 )
         }
         composable(Route.Calendar.path) {

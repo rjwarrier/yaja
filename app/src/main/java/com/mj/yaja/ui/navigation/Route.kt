@@ -2,6 +2,7 @@ package com.mj.yaja.ui.navigation
 
 sealed class Route(val path: String) {
     data object Home : Route("home")
+    data object Dashboard : Route("dashboard")
     data object Calendar : Route("calendar")
     data object Timeline : Route("timeline")
     data object Lookback : Route("lookback")

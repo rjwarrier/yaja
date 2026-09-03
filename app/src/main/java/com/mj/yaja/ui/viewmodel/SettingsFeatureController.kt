@@ -9,6 +9,7 @@ import com.mj.yaja.data.ColorSource
 import com.mj.yaja.data.CustomPalette
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
+import com.mj.yaja.data.DefaultScreenPreference
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.data.FabPlacement
 import com.mj.yaja.data.FontScalePreference
@@ -143,6 +144,7 @@ internal class SettingsFeatureController(
     val customFontPath = settingsRepository.customFontPath
     val customFontName = settingsRepository.customFontName
     val entryStyle = settingsRepository.entryStyle
+    val defaultScreenPreference = settingsRepository.defaultScreenPreference
     val storageUri = settingsRepository.storageUri
     val hasCompletedOnboarding = settingsRepository.hasCompletedOnboarding
     val shouldShowOnboarding = settingsRepository.shouldShowOnboarding
@@ -414,8 +416,9 @@ internal class SettingsFeatureController(
                     previewLimitLength = previewLength,
                     fuzzyThreshold = threshold
                 )
-            }
-        ) { display, date, preview ->
+            },
+            defaultScreenPreference
+        ) { display, date, preview, defaultScreen ->
             JournalExperienceSettingsUiState(
                 animationPreference = display.animationPreference,
                 isPreviewLimitEnabled = preview.isPreviewLimitEnabled,
@@ -430,7 +433,8 @@ internal class SettingsFeatureController(
                 carryForwardTodosEnabled = preview.carryForwardTodosEnabled,
                 calendarDensityPreference = date.calendarDensityPreference,
                 fuzzyThreshold = preview.fuzzyThreshold,
-                entryStyle = display.entryStyle
+                entryStyle = display.entryStyle,
+                defaultScreenPreference = defaultScreen
             )
         }.stateIn(
             scope = scope,
@@ -449,7 +453,8 @@ internal class SettingsFeatureController(
                 carryForwardTodosEnabled = carryForwardTodosEnabled.value,
                 calendarDensityPreference = calendarDensityPreference.value,
                 fuzzyThreshold = fuzzyThreshold.value,
-                entryStyle = entryStyle.value
+                entryStyle = entryStyle.value,
+                defaultScreenPreference = defaultScreenPreference.value
             )
         )
 
@@ -615,6 +620,9 @@ internal class SettingsFeatureController(
     fun setAppFontFamily(fontFamily: AppFontFamily) = settingsRepository.setAppFontFamily(fontFamily)
     fun setMonoFontWeight(weight: Int) = settingsRepository.setMonoFontWeight(weight)
     fun setEntryStyle(style: EntryStyle) = settingsRepository.setEntryStyle(style)
+
+    fun setDefaultScreenPreference(preference: DefaultScreenPreference) =
+            settingsRepository.setDefaultScreenPreference(preference)
     fun setUiScalePreference(preference: UiScalePreference) = settingsRepository.setUiScalePreference(preference)
     fun setFontScalePreference(preference: FontScalePreference) = settingsRepository.setFontScalePreference(preference)
     fun setDataFontScalePreference(preference: FontScalePreference) = settingsRepository.setDataFontScalePreference(preference)

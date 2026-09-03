@@ -13,6 +13,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mj.yaja.data.ThemePreference
+import com.mj.yaja.data.DefaultScreenPreference
 import com.mj.yaja.data.NavigationChromeMode
 import com.mj.yaja.ui.navigation.Route
 import com.mj.yaja.ui.design.ProvideAnimationPreference
@@ -93,6 +94,8 @@ fun JournalApp(
             val events by viewModel.events.collectAsStateWithLifecycle()
             val keywords by viewModel.keywords.collectAsStateWithLifecycle()
             val shouldShowOnboarding by viewModel.shouldShowOnboarding.collectAsStateWithLifecycle()
+            val defaultScreenPreference by
+                viewModel.defaultScreenPreference.collectAsStateWithLifecycle()
             val showOnboardingNextLaunch by
                 viewModel.showOnboardingNextLaunch.collectAsStateWithLifecycle()
             val shouldConsumeOnboardingLaunchRequest = remember { showOnboardingNextLaunch }
@@ -102,6 +105,7 @@ fun JournalApp(
                 when {
                     isPinEnabled -> Route.PinLock.path
                     shouldShowOnboarding -> Route.Onboarding.path
+                    defaultScreenPreference == DefaultScreenPreference.HOME -> Route.Dashboard.path
                     else -> Route.Home.path
                 }
 
@@ -182,6 +186,7 @@ fun JournalApp(
                             currentRoute == Route.Statistics.path)
                 buildSet {
                     add(Route.Home.path)
+                    add(Route.Dashboard.path)
                     add(Route.Calendar.path)
                     if (bottomShowLookback) add(Route.Lookback.path)
                     if (bottomShowKeywords) add(Route.Keywords.path)

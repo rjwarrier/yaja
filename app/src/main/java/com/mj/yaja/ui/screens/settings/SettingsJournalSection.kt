@@ -46,6 +46,7 @@ import com.mj.yaja.data.AnimationPreference
 import com.mj.yaja.data.CalendarDensityPreference
 import com.mj.yaja.data.DateKeywordEntry
 import com.mj.yaja.data.DateOrderPreference
+import com.mj.yaja.data.DefaultScreenPreference
 import com.mj.yaja.data.EntryStyle
 import com.mj.yaja.ui.design.LocalAnimationPreference
 import com.mj.yaja.ui.design.enterOrNone
@@ -65,6 +66,8 @@ fun JournalExperienceSection(
     onCarryForwardTodosEnabledChange: (Boolean) -> Unit,
     entryStyle: EntryStyle,
     onEntryStyleSelected: (EntryStyle) -> Unit,
+    defaultScreenPreference: DefaultScreenPreference,
+    onDefaultScreenPreferenceChange: (DefaultScreenPreference) -> Unit,
     calendarDensityPreference: CalendarDensityPreference,
     onCalendarDensityPreferenceChange: (CalendarDensityPreference) -> Unit,
     dateOrderPreference: DateOrderPreference,
@@ -147,6 +150,67 @@ fun JournalExperienceSection(
                             text = label,
                             style = MaterialTheme.typography.labelLarge,
                             color = if (entryStyle == style) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            }
+                        )
+                    }
+                }
+            }
+        }
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.settings_default_screen_title),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.settings_default_screen_subtitle),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .background(
+                        MaterialTheme.colorScheme.surfaceVariant,
+                        MaterialTheme.shapes.small
+                    )
+                    .padding(3.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                listOf(
+                    stringResource(R.string.settings_default_screen_home) to DefaultScreenPreference.HOME,
+                    stringResource(R.string.settings_default_screen_today) to DefaultScreenPreference.TODAY
+                ).forEach { (label, preference) ->
+                    Box(
+                        modifier = Modifier
+                            .background(
+                                if (defaultScreenPreference == preference) {
+                                    MaterialTheme.colorScheme.primaryContainer
+                                } else {
+                                    Color.Transparent
+                                },
+                                shape = MaterialTheme.shapes.small
+                            )
+                            .clickable { onDefaultScreenPreferenceChange(preference) }
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (defaultScreenPreference == preference) {
                                 MaterialTheme.colorScheme.onPrimaryContainer
                             } else {
                                 MaterialTheme.colorScheme.onSurfaceVariant

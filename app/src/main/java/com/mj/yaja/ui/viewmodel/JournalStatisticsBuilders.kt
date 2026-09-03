@@ -266,8 +266,13 @@ internal fun buildAllTimeStatsSnapshot(
     val mostActiveDay = dayEntryCounts.maxByOrNull { it.value }?.key?.name
     val averageWordsPerEntry = if (totalEntries > 0) totalWords.toFloat() / totalEntries else 0f
 
+    // A streak isn't broken until the day fully passes without an entry: if today has no entry
+    // yet, count back from yesterday instead of zeroing out a streak that's still alive.
     var currentStreak = 0
     var tempDate = LocalDate.now()
+    if (!statsDateSet.contains(tempDate)) {
+        tempDate = tempDate.minusDays(1)
+    }
     while (statsDateSet.contains(tempDate)) {
         currentStreak++
         tempDate = tempDate.minusDays(1)

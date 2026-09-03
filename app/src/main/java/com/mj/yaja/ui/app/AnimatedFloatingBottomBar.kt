@@ -2,8 +2,9 @@ package com.mj.yaja.ui.app
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,7 +38,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mj.yaja.R
@@ -46,6 +49,7 @@ import com.mj.yaja.ui.design.dpSpring
 import com.mj.yaja.ui.design.floatSpring
 import com.mj.yaja.ui.navigation.Route
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AnimatedFloatingBottomBar(
     currentRoute: String?,
@@ -55,11 +59,13 @@ fun AnimatedFloatingBottomBar(
     onNavigateKeywords: () -> Unit,
     onNavigateStatistics: () -> Unit = {},
     onNavigateTodos: () -> Unit = {},
+    onLongPressHome: () -> Unit = {},
     showLookbackInNavBar: Boolean = true,
     showKeywordsInNavBar: Boolean = false,
     showTodosInNavBar: Boolean = false,
     showStatisticsInNavBar: Boolean = false
 ) {
+    val haptics = LocalHapticFeedback.current
     val selectedRoute = if (currentRoute == Route.RecurringTasks.path) {
         Route.Todos.path
     } else {
@@ -159,9 +165,17 @@ fun AnimatedFloatingBottomBar(
                             modifier = Modifier
                                 .width(itemWidth)
                                 .fillMaxHeight()
-                                .clickable(
+                                .combinedClickable(
                                         interactionSource = remember(route) { MutableInteractionSource() },
-                                        indication = null
+                                        indication = null,
+                                        onLongClick = if (route == Route.Home.path) {
+                                            {
+                                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                                onLongPressHome()
+                                            }
+                                        } else {
+                                            null
+                                        }
                                     ) {
                                     iconTapMotion.play(motionPreference)
                                     when (route) {

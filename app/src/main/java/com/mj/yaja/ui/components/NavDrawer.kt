@@ -69,6 +69,7 @@ fun AppNavigationDrawer(
         drawerState: DrawerState,
         scope: CoroutineScope,
         currentRoute: String,
+        onNavigateToDashboard: () -> Unit,
         onNavigateToJournal: () -> Unit,
         onNavigateToCalendar: () -> Unit,
         onNavigateToLookback: () -> Unit,
@@ -167,6 +168,10 @@ fun AppNavigationDrawer(
                                                                 syncProgress = syncProgress,
                                                                 backgroundWorkLabel = backgroundWorkLabel,
                                                                 syncStartedAtMillis = syncStartedAtMillis,
+                                                                onNavigateToDashboard = {
+                                                                        scope.launch { drawerState.close() }
+                                                                        onNavigateToDashboard()
+                                                                },
                                                                 onNavigateToJournal = {
                                                                         scope.launch { drawerState.close() }
                                                                         onNavigateToJournal()

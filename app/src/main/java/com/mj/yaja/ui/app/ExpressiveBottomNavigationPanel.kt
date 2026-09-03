@@ -2,8 +2,9 @@ package com.mj.yaja.ui.app
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,7 +45,9 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -86,6 +89,7 @@ internal fun resolveIndicatorWidth(itemWidth: Dp, showLabels: Boolean): Dp {
 /** Ceiling on how far a large font scale may stretch the bottom panel. */
 private const val MAX_BOTTOM_PANEL_LABEL_SCALE = 1.6f
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExpressiveBottomNavigationPanel(
     currentRoute: String?,
@@ -95,12 +99,14 @@ fun ExpressiveBottomNavigationPanel(
     onNavigateKeywords: () -> Unit,
     onNavigateTodos: () -> Unit,
     onNavigateStatistics: () -> Unit,
+    onLongPressHome: () -> Unit = {},
     showLookbackInNavBar: Boolean,
     showKeywordsInNavBar: Boolean,
     showTodosInNavBar: Boolean,
     showStatisticsInNavBar: Boolean,
     showLabels: Boolean
 ) {
+    val haptics = LocalHapticFeedback.current
     val visible = rememberAppEntrance(delayMillis = 120)
     val motionPreference = LocalAnimationPreference.current
     val density = LocalDensity.current
@@ -290,9 +296,17 @@ fun ExpressiveBottomNavigationPanel(
                                 modifier = Modifier
                                     .weight(1f)
                                     .height(containerHeight)
-                                    .clickable(
+                                    .combinedClickable(
                                             interactionSource = remember(item.route) { MutableInteractionSource() },
-                                            indication = null
+                                            indication = null,
+                                            onLongClick = if (item.route == Route.Home.path) {
+                                                {
+                                                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                                    onLongPressHome()
+                                                }
+                                            } else {
+                                                null
+                                            }
                                         ) {
                                         iconTapMotion.play(motionPreference)
                                         indicatorRoute = item.route

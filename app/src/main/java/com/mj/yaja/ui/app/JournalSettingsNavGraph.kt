@@ -55,15 +55,19 @@ internal fun NavGraphBuilder.addSecurityAndSettingsRoutes(
                 val isBiometricEnabled by viewModel.isBiometricEnabled.collectAsStateWithLifecycle()
                 val shouldShowOnboarding by
                         viewModel.shouldShowOnboarding.collectAsStateWithLifecycle()
+                val defaultScreenPreference by
+                        viewModel.defaultScreenPreference.collectAsStateWithLifecycle()
                 PinLockScreen(
                         mode = PinMode.ENTER,
                         checkPin = { viewModel.checkPin(it) },
                         onEnterCorrect = {
                                 val destination =
-                                        if (shouldShowOnboarding) {
-                                                Route.Onboarding.path
-                                        } else {
-                                                Route.Home.path
+                                        when {
+                                                shouldShowOnboarding -> Route.Onboarding.path
+                                                defaultScreenPreference ==
+                                                        com.mj.yaja.data.DefaultScreenPreference.HOME ->
+                                                        Route.Dashboard.path
+                                                else -> Route.Home.path
                                         }
                                 navController.navigate(destination) {
                                         popUpTo(Route.PinLock.path) { inclusive = true }
