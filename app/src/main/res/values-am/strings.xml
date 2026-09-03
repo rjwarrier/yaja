@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">ጆርናል</string>
+    <string name="nav_home">መነሻ</string>
     <string name="nav_calendar">የቀን መቁጠሪያ</string>
     <string name="nav_lookback">ወደ ኋላ ተመልከት</string>
     <string name="nav_settings">ቅንብሮች</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">ከፍ ባሉ ካርዶች እና በጠፍጣፋ መጽሔት እይታ መካከል ይምረጡ።</string>
     <string name="settings_journal_entry_style_cards">ካርዶች</string>
     <string name="settings_journal_entry_style_flat">ጠፍጣፋ</string>
+    <string name="settings_default_screen_title">ነባሪ ማያ ገጽ</string>
+    <string name="settings_default_screen_subtitle">መተግበሪያውን ሲከፍቱ የትኛው ማያ ገጽ እንደሚከፈት ይምረጡ።</string>
+    <string name="settings_default_screen_home">መነሻ</string>
+    <string name="settings_default_screen_today">ዛሬ</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">እንደምን አደሩ</string>
+    <string name="dashboard_greeting_afternoon">እንደምን ዋሉ</string>
+    <string name="dashboard_greeting_evening">እንደምን አመሹ</string>
+    <string name="dashboard_greeting_night">ገና አልተኙም?</string>
+    <string name="dashboard_section_this_week">በዚህ ሳምንት</string>
+    <string name="dashboard_stat_streak">ተከታታይ ቀናት</string>
+    <string name="dashboard_stat_days">የተጻፉ ቀናት</string>
+    <string name="dashboard_stat_entries">ማስታወሻዎች</string>
+    <string name="dashboard_status_empty">ዛሬ ገና ምንም አልተጻፈም።</string>
+    <string name="dashboard_write_first_entry">የመጀመሪያ ማስታወሻዎን ይጻፉ</string>
+    <string name="dashboard_write_today">የዛሬውን ማስታወሻ ይጻፉ</string>
+    <string name="dashboard_continue_today">የዛሬውን ማስታወሻ ይቀጥሉ</string>
+    <string name="dashboard_glance_todos_format">%1$d የሚሰሩ ነገሮች</string>
+    <string name="dashboard_glance_events_format">%1$d ክንውኖች</string>
+    <string name="dashboard_week_summary_format">ከ7 ቀናት %1$d</string>
+    <string name="dashboard_streak_summary_format">%1$d ተከታታይ ቀናት</string>
+    <string name="dashboard_recent_entries_title">የቅርብ ጊዜ</string>
+    <string name="dashboard_all_entries">ሁሉም ማስታወሻዎች</string>
+    <string name="dashboard_words_count_format">%1$d ቃላት</string>
+    <string name="dashboard_goto_today">ወደ ዛሬ ሂድ</string>
+
     <string name="settings_journal_render_checkboxes_title">አመልካች ሳጥኖችን እንደ ጽሑፍ ቅረጽ</string>
     <string name="settings_journal_render_checkboxes_subtitle">ገላጭ ከሆኑ የአመልካች ሳጥኖች ይልቅ ቶዶዎችን እንደ [] እና [x] ያሳዩ።</string>
     <string name="settings_journal_day_header_counts_title">የቀን ራስጌ ቆጠራዎችን አሳይ</string>

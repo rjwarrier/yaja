@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Časopis</string>
+    <string name="nav_home">Domů</string>
     <string name="nav_calendar">Kalendář</string>
     <string name="nav_lookback">Pohled zpět</string>
     <string name="nav_settings">Nastavení</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Vyberte si mezi vyvýšenými kartami a plošším vzhledem deníku.</string>
     <string name="settings_journal_entry_style_cards">Karty</string>
     <string name="settings_journal_entry_style_flat">Byt</string>
+    <string name="settings_default_screen_title">Výchozí obrazovka</string>
+    <string name="settings_default_screen_subtitle">Vyberte, která obrazovka se otevře při spuštění aplikace.</string>
+    <string name="settings_default_screen_home">Domů</string>
+    <string name="settings_default_screen_today">Dnes</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Dobré ráno</string>
+    <string name="dashboard_greeting_afternoon">Dobré odpoledne</string>
+    <string name="dashboard_greeting_evening">Dobrý večer</string>
+    <string name="dashboard_greeting_night">Ještě nespíš?</string>
+    <string name="dashboard_section_this_week">Tento týden</string>
+    <string name="dashboard_stat_streak">Série dní</string>
+    <string name="dashboard_stat_days">Zapsaných dní</string>
+    <string name="dashboard_stat_entries">Záznamy</string>
+    <string name="dashboard_status_empty">Dnes zatím nic napsáno.</string>
+    <string name="dashboard_write_first_entry">Napsat první záznam</string>
+    <string name="dashboard_write_today">Napsat dnešní záznam</string>
+    <string name="dashboard_continue_today">Pokračovat v dnešním záznamu</string>
+    <string name="dashboard_glance_todos_format">%1$d úkolů</string>
+    <string name="dashboard_glance_events_format">%1$d událostí</string>
+    <string name="dashboard_week_summary_format">%1$d ze 7 dní</string>
+    <string name="dashboard_streak_summary_format">Série %1$d dní</string>
+    <string name="dashboard_recent_entries_title">Nedávné</string>
+    <string name="dashboard_all_entries">Všechny záznamy</string>
+    <string name="dashboard_words_count_format">%1$d slov</string>
+    <string name="dashboard_goto_today">Přejít na dnešek</string>
+
     <string name="settings_journal_render_checkboxes_title">Vykreslit zaškrtávací políčka jako text</string>
     <string name="settings_journal_render_checkboxes_subtitle">Zobrazovat úkoly jako [ ] a [x] v celé aplikaci namísto výrazných zaškrtávacích políček.</string>
     <string name="settings_journal_day_header_counts_title">Zobrazit počty záhlaví dne</string>

@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">குறிப்பேடு</string>
+    <string name="nav_home">முகப்பு</string>
     <string name="nav_calendar">நாட்காட்டி</string>
     <string name="nav_lookback">பின்னோட்டம்</string>
     <string name="nav_settings">அமைப்புகள்</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">உயர்ந்த கார்டுகள் மற்றும் தட்டையான குறிப்பேடு தோற்றத்திற்கு இடையே தேர்வு செய்யவும்.</string>
     <string name="settings_journal_entry_style_cards">கார்டுகள்</string>
     <string name="settings_journal_entry_style_flat">தட்டையானது</string>
+    <string name="settings_default_screen_title">இயல்புத் திரை</string>
+    <string name="settings_default_screen_subtitle">ஆப்பைத் திறக்கும்போது எந்தத் திரை திறக்க வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="settings_default_screen_home">முகப்பு</string>
+    <string name="settings_default_screen_today">இன்று</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">காலை வணக்கம்</string>
+    <string name="dashboard_greeting_afternoon">மதிய வணக்கம்</string>
+    <string name="dashboard_greeting_evening">மாலை வணக்கம்</string>
+    <string name="dashboard_greeting_night">இன்னும் விழித்திருக்கிறீர்களா?</string>
+    <string name="dashboard_section_this_week">இந்த வாரம்</string>
+    <string name="dashboard_stat_streak">தொடர் நாட்கள்</string>
+    <string name="dashboard_stat_days">எழுதிய நாட்கள்</string>
+    <string name="dashboard_stat_entries">பதிவுகள்</string>
+    <string name="dashboard_status_empty">இன்று இதுவரை எதுவும் எழுதவில்லை.</string>
+    <string name="dashboard_write_first_entry">உங்கள் முதல் பதிவை எழுதுங்கள்</string>
+    <string name="dashboard_write_today">இன்றைய பதிவை எழுதுங்கள்</string>
+    <string name="dashboard_continue_today">இன்றைய பதிவைத் தொடருங்கள்</string>
+    <string name="dashboard_glance_todos_format">%1$d செய்யவேண்டியவை</string>
+    <string name="dashboard_glance_events_format">%1$d நிகழ்வுகள்</string>
+    <string name="dashboard_week_summary_format">7ல் %1$d நாட்கள்</string>
+    <string name="dashboard_streak_summary_format">%1$d நாட்கள் தொடர்ச்சி</string>
+    <string name="dashboard_recent_entries_title">சமீபத்தியவை</string>
+    <string name="dashboard_all_entries">அனைத்து பதிவுகளும்</string>
+    <string name="dashboard_words_count_format">%1$d சொற்கள்</string>
+    <string name="dashboard_goto_today">இன்றுக்குச் செல்லவும்</string>
+
     <string name="settings_journal_render_checkboxes_title">செக்பாக்ஸ்களை உரையாகக் காட்டு</string>
     <string name="settings_journal_render_checkboxes_subtitle">குறியீட்டு செக்பாக்ஸ்களுக்குப் பதிலாக செயலி முழுவதும் செய்ய வேண்டியவைகளை [ ] மற்றும் [x] எனக் காட்டு.</string>
     <string name="settings_journal_day_header_counts_title">நாளின் தலைப்பில் எண்ணிக்கையைக் காட்டு</string>

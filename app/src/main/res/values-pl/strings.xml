@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Dziennik</string>
+    <string name="nav_home">Start</string>
     <string name="nav_calendar">Kalendarz</string>
     <string name="nav_lookback">Spojrzenie wstecz</string>
     <string name="nav_settings">Ustawienia</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Wybierz pomiędzy podwyższonymi kartami a bardziej płaskim wyglądem dziennika.</string>
     <string name="settings_journal_entry_style_cards">Karty</string>
     <string name="settings_journal_entry_style_flat">Płaski</string>
+    <string name="settings_default_screen_title">Domyślny ekran</string>
+    <string name="settings_default_screen_subtitle">Wybierz, który ekran otwiera się po uruchomieniu aplikacji.</string>
+    <string name="settings_default_screen_home">Start</string>
+    <string name="settings_default_screen_today">Dziś</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Dzień dobry</string>
+    <string name="dashboard_greeting_afternoon">Dzień dobry</string>
+    <string name="dashboard_greeting_evening">Dobry wieczór</string>
+    <string name="dashboard_greeting_night">Wciąż nie śpisz?</string>
+    <string name="dashboard_section_this_week">W tym tygodniu</string>
+    <string name="dashboard_stat_streak">Passa dni</string>
+    <string name="dashboard_stat_days">Zapisane dni</string>
+    <string name="dashboard_stat_entries">Wpisy</string>
+    <string name="dashboard_status_empty">Dziś jeszcze nic nie napisano.</string>
+    <string name="dashboard_write_first_entry">Napisz pierwszy wpis</string>
+    <string name="dashboard_write_today">Napisz dzisiejszy wpis</string>
+    <string name="dashboard_continue_today">Kontynuuj dzisiejszy wpis</string>
+    <string name="dashboard_glance_todos_format">%1$d zadań</string>
+    <string name="dashboard_glance_events_format">%1$d wydarzeń</string>
+    <string name="dashboard_week_summary_format">%1$d z 7 dni</string>
+    <string name="dashboard_streak_summary_format">Passa %1$d dni</string>
+    <string name="dashboard_recent_entries_title">Ostatnie</string>
+    <string name="dashboard_all_entries">Wszystkie wpisy</string>
+    <string name="dashboard_words_count_format">%1$d słów</string>
+    <string name="dashboard_goto_today">Przejdź do dziś</string>
+
     <string name="settings_journal_render_checkboxes_title">Renderuj pola wyboru jako tekst</string>
     <string name="settings_journal_render_checkboxes_subtitle">Wyświetlaj zadania jako [ ] i [x] w całej aplikacji zamiast wyrazistych pól wyboru.</string>
     <string name="settings_journal_day_header_counts_title">Pokaż liczbę nagłówków dni</string>

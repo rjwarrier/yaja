@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Tijdschrift</string>
+    <string name="nav_home">Start</string>
     <string name="nav_calendar">Kalender</string>
     <string name="nav_lookback">Terugblik</string>
     <string name="nav_settings">Instellingen</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Kies tussen verhoogde kaarten en een vlakkere dagboeklook.</string>
     <string name="settings_journal_entry_style_cards">Kaarten</string>
     <string name="settings_journal_entry_style_flat">Vlak</string>
+    <string name="settings_default_screen_title">Standaardscherm</string>
+    <string name="settings_default_screen_subtitle">Kies welk scherm opent bij het starten van de app.</string>
+    <string name="settings_default_screen_home">Start</string>
+    <string name="settings_default_screen_today">Vandaag</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Goedemorgen</string>
+    <string name="dashboard_greeting_afternoon">Goedemiddag</string>
+    <string name="dashboard_greeting_evening">Goedenavond</string>
+    <string name="dashboard_greeting_night">Nog wakker?</string>
+    <string name="dashboard_section_this_week">Deze week</string>
+    <string name="dashboard_stat_streak">Reeks dagen</string>
+    <string name="dashboard_stat_days">Geschreven dagen</string>
+    <string name="dashboard_stat_entries">Items</string>
+    <string name="dashboard_status_empty">Nog niets geschreven vandaag.</string>
+    <string name="dashboard_write_first_entry">Schrijf je eerste item</string>
+    <string name="dashboard_write_today">Schrijf het item van vandaag</string>
+    <string name="dashboard_continue_today">Ga verder met het item van vandaag</string>
+    <string name="dashboard_glance_todos_format">%1$d taken</string>
+    <string name="dashboard_glance_events_format">%1$d gebeurtenissen</string>
+    <string name="dashboard_week_summary_format">%1$d van de 7 dagen</string>
+    <string name="dashboard_streak_summary_format">%1$d dagen op rij</string>
+    <string name="dashboard_recent_entries_title">Recent</string>
+    <string name="dashboard_all_entries">Alle items</string>
+    <string name="dashboard_words_count_format">%1$d woorden</string>
+    <string name="dashboard_goto_today">Ga naar vandaag</string>
+
     <string name="settings_journal_render_checkboxes_title">Geef selectievakjes weer als tekst</string>
     <string name="settings_journal_render_checkboxes_subtitle">Toon taken als [ ] en [x] in de app in plaats van expressieve selectievakjes.</string>
     <string name="settings_journal_day_header_counts_title">Toon dagkoptellingen</string>

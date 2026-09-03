@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">כְּתַב הָעֵת</string>
+    <string name="nav_home">בית</string>
     <string name="nav_calendar">לוּחַ שָׁנָה</string>
     <string name="nav_lookback">מבט לאחור</string>
     <string name="nav_settings">הגדרות</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">בחר בין קלפים מוגבהים ומראה יומן שטוח יותר.</string>
     <string name="settings_journal_entry_style_cards">קלפים</string>
     <string name="settings_journal_entry_style_flat">שָׁטוּחַ</string>
+    <string name="settings_default_screen_title">מסך ברירת מחדל</string>
+    <string name="settings_default_screen_subtitle">בחר איזה מסך נפתח כשאתה מפעיל את האפליקציה.</string>
+    <string name="settings_default_screen_home">בית</string>
+    <string name="settings_default_screen_today">היום</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">בוקר טוב</string>
+    <string name="dashboard_greeting_afternoon">צהריים טובים</string>
+    <string name="dashboard_greeting_evening">ערב טוב</string>
+    <string name="dashboard_greeting_night">עוד ער?</string>
+    <string name="dashboard_section_this_week">השבוע</string>
+    <string name="dashboard_stat_streak">רצף ימים</string>
+    <string name="dashboard_stat_days">ימי כתיבה</string>
+    <string name="dashboard_stat_entries">רשומות</string>
+    <string name="dashboard_status_empty">עדיין לא נכתב כלום היום.</string>
+    <string name="dashboard_write_first_entry">כתוב את הרשומה הראשונה שלך</string>
+    <string name="dashboard_write_today">כתוב את רשומת היום</string>
+    <string name="dashboard_continue_today">המשך את רשומת היום</string>
+    <string name="dashboard_glance_todos_format">%1$d משימות</string>
+    <string name="dashboard_glance_events_format">%1$d אירועים</string>
+    <string name="dashboard_week_summary_format">%1$d מתוך 7 ימים</string>
+    <string name="dashboard_streak_summary_format">רצף של %1$d ימים</string>
+    <string name="dashboard_recent_entries_title">אחרונות</string>
+    <string name="dashboard_all_entries">כל הרשומות</string>
+    <string name="dashboard_words_count_format">%1$d מילים</string>
+    <string name="dashboard_goto_today">מעבר להיום</string>
+
     <string name="settings_journal_render_checkboxes_title">עיבוד תיבות סימון כטקסט</string>
     <string name="settings_journal_render_checkboxes_subtitle">הצג מטלות כמו [ ] ו- [x] על פני האפליקציה במקום תיבות סימון אקספרסיביות.</string>
     <string name="settings_journal_day_header_counts_title">הצג ספירות כותרות של יום</string>

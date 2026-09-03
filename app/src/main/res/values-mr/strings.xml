@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">जर्नल</string>
+    <string name="nav_home">होम</string>
     <string name="nav_calendar">कॅलेंडर</string>
     <string name="nav_lookback">लूकबॅक</string>
     <string name="nav_settings">सेटिंग्ज</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">उभरेलेले कार्ड आणि सपाट जर्नल लूक दरम्यान निवडा.</string>
     <string name="settings_journal_entry_style_cards">कार्ड्स</string>
     <string name="settings_journal_entry_style_flat">सपाट</string>
+    <string name="settings_default_screen_title">डीफॉल्ट स्क्रीन</string>
+    <string name="settings_default_screen_subtitle">अ‍ॅप उघडल्यावर कोणती स्क्रीन उघडेल ते निवडा.</string>
+    <string name="settings_default_screen_home">होम</string>
+    <string name="settings_default_screen_today">आज</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">सुप्रभात</string>
+    <string name="dashboard_greeting_afternoon">शुभ दुपार</string>
+    <string name="dashboard_greeting_evening">शुभ संध्याकाळ</string>
+    <string name="dashboard_greeting_night">अजून जागे आहात?</string>
+    <string name="dashboard_section_this_week">या आठवड्यात</string>
+    <string name="dashboard_stat_streak">सलग दिवस</string>
+    <string name="dashboard_stat_days">लिहिलेले दिवस</string>
+    <string name="dashboard_stat_entries">नोंदी</string>
+    <string name="dashboard_status_empty">आज अजून काहीही लिहिले नाही.</string>
+    <string name="dashboard_write_first_entry">तुमची पहिली नोंद लिहा</string>
+    <string name="dashboard_write_today">आजची नोंद लिहा</string>
+    <string name="dashboard_continue_today">आजची नोंद सुरू ठेवा</string>
+    <string name="dashboard_glance_todos_format">%1$d कामे</string>
+    <string name="dashboard_glance_events_format">%1$d घटना</string>
+    <string name="dashboard_week_summary_format">7 पैकी %1$d दिवस</string>
+    <string name="dashboard_streak_summary_format">%1$d दिवसांची मालिका</string>
+    <string name="dashboard_recent_entries_title">अलीकडील</string>
+    <string name="dashboard_all_entries">सर्व नोंदी</string>
+    <string name="dashboard_words_count_format">%1$d शब्द</string>
+    <string name="dashboard_goto_today">आजवर जा</string>
+
     <string name="settings_journal_render_checkboxes_title">चेकबॉक्स मजकूर म्हणून दाखवा</string>
     <string name="settings_journal_render_checkboxes_subtitle">अ‍ॅपमध्ये एक्सप्रेसिव्ह चेकबॉक्स ऐवजी टूडूला [ ] आणि [x] स्वरूपात दाखवा.</string>
     <string name="settings_journal_day_header_counts_title">दिवसाच्या हेडरमध्ये संख्या दाखवा</string>

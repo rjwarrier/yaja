@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Diario</string>
+    <string name="nav_home">Home</string>
     <string name="nav_calendar">Calendario</string>
     <string name="nav_lookback">Retrospettiva</string>
     <string name="nav_settings">Impostazioni</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Scegli tra schede in rilievo e un aspetto più piatto del diario.</string>
     <string name="settings_journal_entry_style_cards">Schede</string>
     <string name="settings_journal_entry_style_flat">Piatto</string>
+    <string name="settings_default_screen_title">Schermata predefinita</string>
+    <string name="settings_default_screen_subtitle">Scegli quale schermata si apre all\'avvio dell\'app.</string>
+    <string name="settings_default_screen_home">Home</string>
+    <string name="settings_default_screen_today">Oggi</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Buongiorno</string>
+    <string name="dashboard_greeting_afternoon">Buon pomeriggio</string>
+    <string name="dashboard_greeting_evening">Buonasera</string>
+    <string name="dashboard_greeting_night">Ancora sveglio?</string>
+    <string name="dashboard_section_this_week">Questa settimana</string>
+    <string name="dashboard_stat_streak">Serie di giorni</string>
+    <string name="dashboard_stat_days">Giorni scritti</string>
+    <string name="dashboard_stat_entries">Voci</string>
+    <string name="dashboard_status_empty">Ancora nulla scritto oggi.</string>
+    <string name="dashboard_write_first_entry">Scrivi la tua prima voce</string>
+    <string name="dashboard_write_today">Scrivi la voce di oggi</string>
+    <string name="dashboard_continue_today">Continua la voce di oggi</string>
+    <string name="dashboard_glance_todos_format">%1$d attività</string>
+    <string name="dashboard_glance_events_format">%1$d eventi</string>
+    <string name="dashboard_week_summary_format">%1$d su 7 giorni</string>
+    <string name="dashboard_streak_summary_format">Serie di %1$d giorni</string>
+    <string name="dashboard_recent_entries_title">Recenti</string>
+    <string name="dashboard_all_entries">Tutte le voci</string>
+    <string name="dashboard_words_count_format">%1$d parole</string>
+    <string name="dashboard_goto_today">Vai a oggi</string>
+
     <string name="settings_journal_render_checkboxes_title">Mostra le caselle come testo</string>
     <string name="settings_journal_render_checkboxes_subtitle">Mostra i todo come [ ] e [x] in tutta l\'app invece di caselle espressive.</string>
     <string name="settings_journal_day_header_counts_title">Mostra conteggi nell\'intestazione del giorno</string>

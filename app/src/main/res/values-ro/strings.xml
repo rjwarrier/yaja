@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Jurnal</string>
+    <string name="nav_home">Acasă</string>
     <string name="nav_calendar">Calendaristic</string>
     <string name="nav_lookback">Privire în urmă</string>
     <string name="nav_settings">Setări</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Alegeți între cărțile ridicate și un aspect de jurnal mai plat.</string>
     <string name="settings_journal_entry_style_cards">Carduri</string>
     <string name="settings_journal_entry_style_flat">Plat</string>
+    <string name="settings_default_screen_title">Ecran implicit</string>
+    <string name="settings_default_screen_subtitle">Alege ce ecran se deschide la lansarea aplicației.</string>
+    <string name="settings_default_screen_home">Acasă</string>
+    <string name="settings_default_screen_today">Astăzi</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Bună dimineața</string>
+    <string name="dashboard_greeting_afternoon">Bună ziua</string>
+    <string name="dashboard_greeting_evening">Bună seara</string>
+    <string name="dashboard_greeting_night">Încă treaz?</string>
+    <string name="dashboard_section_this_week">Săptămâna aceasta</string>
+    <string name="dashboard_stat_streak">Serie de zile</string>
+    <string name="dashboard_stat_days">Zile scrise</string>
+    <string name="dashboard_stat_entries">Intrări</string>
+    <string name="dashboard_status_empty">Nimic scris astăzi încă.</string>
+    <string name="dashboard_write_first_entry">Scrie prima ta intrare</string>
+    <string name="dashboard_write_today">Scrie intrarea de azi</string>
+    <string name="dashboard_continue_today">Continuă intrarea de azi</string>
+    <string name="dashboard_glance_todos_format">%1$d sarcini</string>
+    <string name="dashboard_glance_events_format">%1$d evenimente</string>
+    <string name="dashboard_week_summary_format">%1$d din 7 zile</string>
+    <string name="dashboard_streak_summary_format">Serie de %1$d zile</string>
+    <string name="dashboard_recent_entries_title">Recente</string>
+    <string name="dashboard_all_entries">Toate intrările</string>
+    <string name="dashboard_words_count_format">%1$d cuvinte</string>
+    <string name="dashboard_goto_today">Mergi la azi</string>
+
     <string name="settings_journal_render_checkboxes_title">Redați casetele de selectare ca text</string>
     <string name="settings_journal_render_checkboxes_subtitle">Afișați toate ca [ ] și [x] în aplicație în loc de casete de selectare expresive.</string>
     <string name="settings_journal_day_header_counts_title">Afișați numărul antetului zilei</string>

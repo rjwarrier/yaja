@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Diario</string>
+    <string name="nav_home">Inicio</string>
     <string name="nav_calendar">Calendario</string>
     <string name="nav_lookback">Retrospectiva</string>
     <string name="nav_settings">Ajustes</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Elige entre tarjetas elevadas y un aspecto de diario más plano.</string>
     <string name="settings_journal_entry_style_cards">Tarjetas</string>
     <string name="settings_journal_entry_style_flat">Plano</string>
+    <string name="settings_default_screen_title">Pantalla predeterminada</string>
+    <string name="settings_default_screen_subtitle">Elige qué pantalla se abre al iniciar la app.</string>
+    <string name="settings_default_screen_home">Inicio</string>
+    <string name="settings_default_screen_today">Hoy</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Buenos días</string>
+    <string name="dashboard_greeting_afternoon">Buenas tardes</string>
+    <string name="dashboard_greeting_evening">Buenas noches</string>
+    <string name="dashboard_greeting_night">¿Sigues despierto?</string>
+    <string name="dashboard_section_this_week">Esta semana</string>
+    <string name="dashboard_stat_streak">Racha de días</string>
+    <string name="dashboard_stat_days">Días escritos</string>
+    <string name="dashboard_stat_entries">Entradas</string>
+    <string name="dashboard_status_empty">Nada escrito hoy todavía.</string>
+    <string name="dashboard_write_first_entry">Escribe tu primera entrada</string>
+    <string name="dashboard_write_today">Escribir la entrada de hoy</string>
+    <string name="dashboard_continue_today">Continuar la entrada de hoy</string>
+    <string name="dashboard_glance_todos_format">%1$d tareas</string>
+    <string name="dashboard_glance_events_format">%1$d eventos</string>
+    <string name="dashboard_week_summary_format">%1$d de 7 días</string>
+    <string name="dashboard_streak_summary_format">Racha de %1$d días</string>
+    <string name="dashboard_recent_entries_title">Recientes</string>
+    <string name="dashboard_all_entries">Todas las entradas</string>
+    <string name="dashboard_words_count_format">%1$d palabras</string>
+    <string name="dashboard_goto_today">Ir a hoy</string>
+
     <string name="settings_journal_render_checkboxes_title">Mostrar casillas como texto</string>
     <string name="settings_journal_render_checkboxes_subtitle">Muestra las tareas como [ ] y [x] en toda la app en lugar de casillas expresivas.</string>
     <string name="settings_journal_day_header_counts_title">Mostrar contadores en el encabezado del día</string>

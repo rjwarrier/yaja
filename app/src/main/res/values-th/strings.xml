@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">วารสาร</string>
+    <string name="nav_home">หน้าแรก</string>
     <string name="nav_calendar">ปฏิทิน</string>
     <string name="nav_lookback">มองย้อนกลับไป</string>
     <string name="nav_settings">การตั้งค่า</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">เลือกระหว่างการ์ดที่ยกระดับและลุคบันทึกประจำวันที่เรียบหรู</string>
     <string name="settings_journal_entry_style_cards">การ์ด</string>
     <string name="settings_journal_entry_style_flat">แบน</string>
+    <string name="settings_default_screen_title">หน้าจอเริ่มต้น</string>
+    <string name="settings_default_screen_subtitle">เลือกหน้าจอที่จะเปิดเมื่อคุณเปิดแอป</string>
+    <string name="settings_default_screen_home">หน้าแรก</string>
+    <string name="settings_default_screen_today">วันนี้</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">สวัสดีตอนเช้า</string>
+    <string name="dashboard_greeting_afternoon">สวัสดีตอนบ่าย</string>
+    <string name="dashboard_greeting_evening">สวัสดีตอนเย็น</string>
+    <string name="dashboard_greeting_night">ยังไม่นอนอีกเหรอ?</string>
+    <string name="dashboard_section_this_week">สัปดาห์นี้</string>
+    <string name="dashboard_stat_streak">วันติดต่อกัน</string>
+    <string name="dashboard_stat_days">วันที่เขียน</string>
+    <string name="dashboard_stat_entries">รายการ</string>
+    <string name="dashboard_status_empty">ยังไม่มีการเขียนอะไรวันนี้</string>
+    <string name="dashboard_write_first_entry">เขียนรายการแรกของคุณ</string>
+    <string name="dashboard_write_today">เขียนรายการของวันนี้</string>
+    <string name="dashboard_continue_today">เขียนรายการของวันนี้ต่อ</string>
+    <string name="dashboard_glance_todos_format">%1$d สิ่งที่ต้องทำ</string>
+    <string name="dashboard_glance_events_format">%1$d กิจกรรม</string>
+    <string name="dashboard_week_summary_format">%1$d จาก 7 วัน</string>
+    <string name="dashboard_streak_summary_format">ติดต่อกัน %1$d วัน</string>
+    <string name="dashboard_recent_entries_title">ล่าสุด</string>
+    <string name="dashboard_all_entries">รายการทั้งหมด</string>
+    <string name="dashboard_words_count_format">%1$d คำ</string>
+    <string name="dashboard_goto_today">ไปที่วันนี้</string>
+
     <string name="settings_journal_render_checkboxes_title">แสดงช่องทำเครื่องหมายเป็นข้อความ</string>
     <string name="settings_journal_render_checkboxes_subtitle">แสดงสิ่งที่ต้องทำเป็น [ ] และ [x] ทั่วทั้งแอป แทนที่จะแสดงช่องทำเครื่องหมาย</string>
     <string name="settings_journal_day_header_counts_title">แสดงจำนวนส่วนหัวของวัน</string>

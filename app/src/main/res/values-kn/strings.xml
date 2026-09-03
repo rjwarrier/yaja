@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">ದಿನಚರಿ</string>
+    <string name="nav_home">ಮುಖಪುಟ</string>
     <string name="nav_calendar">ಕ್ಯಾಲೆಂಡರ್</string>
     <string name="nav_lookback">ಹಿನ್ನೋಟ</string>
     <string name="nav_settings">ಹೊಂದಿಕೆಗಳು</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Choose between elevated cards and a flatter journal look.</string>
     <string name="settings_journal_entry_style_cards">Cards</string>
     <string name="settings_journal_entry_style_flat">Flat</string>
+    <string name="settings_default_screen_title">ಡೀಫಾಲ್ಟ್ ಪರದೆ</string>
+    <string name="settings_default_screen_subtitle">ಆ್ಯಪ್ ತೆರೆದಾಗ ಯಾವ ಪರದೆ ತೆರೆಯಬೇಕು ಎಂಬುದನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="settings_default_screen_home">ಮುಖಪುಟ</string>
+    <string name="settings_default_screen_today">ಇಂದು</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">ಶುಭೋದಯ</string>
+    <string name="dashboard_greeting_afternoon">ಶುಭ ಮಧ್ಯಾಹ್ನ</string>
+    <string name="dashboard_greeting_evening">ಶುಭ ಸಂಜೆ</string>
+    <string name="dashboard_greeting_night">ಇನ್ನೂ ಎಚ್ಚರವಾಗಿದ್ದೀರಾ?</string>
+    <string name="dashboard_section_this_week">ಈ ವಾರ</string>
+    <string name="dashboard_stat_streak">ದಿನಗಳ ಸರಣಿ</string>
+    <string name="dashboard_stat_days">ಬರೆದ ದಿನಗಳು</string>
+    <string name="dashboard_stat_entries">ನಮೂದುಗಳು</string>
+    <string name="dashboard_status_empty">ಇಂದು ಇನ್ನೂ ಏನೂ ಬರೆದಿಲ್ಲ.</string>
+    <string name="dashboard_write_first_entry">ನಿಮ್ಮ ಮೊದಲ ನಮೂದನ್ನು ಬರೆಯಿರಿ</string>
+    <string name="dashboard_write_today">ಇಂದಿನ ನಮೂದನ್ನು ಬರೆಯಿರಿ</string>
+    <string name="dashboard_continue_today">ಇಂದಿನ ನಮೂದನ್ನು ಮುಂದುವರಿಸಿ</string>
+    <string name="dashboard_glance_todos_format">%1$d ಕೆಲಸಗಳು</string>
+    <string name="dashboard_glance_events_format">%1$d ಘಟನೆಗಳು</string>
+    <string name="dashboard_week_summary_format">7ರಲ್ಲಿ %1$d ದಿನ</string>
+    <string name="dashboard_streak_summary_format">%1$d ದಿನಗಳ ಸರಣಿ</string>
+    <string name="dashboard_recent_entries_title">ಇತ್ತೀಚಿನ</string>
+    <string name="dashboard_all_entries">ಎಲ್ಲಾ ನಮೂದುಗಳು</string>
+    <string name="dashboard_words_count_format">%1$d ಪದಗಳು</string>
+    <string name="dashboard_goto_today">ಇಂದಿಗೆ ಹೋಗಿ</string>
+
     <string name="settings_journal_render_checkboxes_title">Render Checkboxes as Text</string>
     <string name="settings_journal_render_checkboxes_subtitle">Show todos as [ ] and [x] across the app instead of expressive checkboxes.</string>
     <string name="settings_journal_day_header_counts_title">Show Day Header Counts</string>

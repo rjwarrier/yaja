@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Tidsskrift</string>
+    <string name="nav_home">Hjem</string>
     <string name="nav_calendar">Kalender</string>
     <string name="nav_lookback">Tilbageblik</string>
     <string name="nav_settings">Indstillinger</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Vælg mellem forhøjede kort og et fladere journallook.</string>
     <string name="settings_journal_entry_style_cards">Kort</string>
     <string name="settings_journal_entry_style_flat">Flad</string>
+    <string name="settings_default_screen_title">Standardskærm</string>
+    <string name="settings_default_screen_subtitle">Vælg hvilken skærm der åbner, når du starter appen.</string>
+    <string name="settings_default_screen_home">Hjem</string>
+    <string name="settings_default_screen_today">I dag</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Godmorgen</string>
+    <string name="dashboard_greeting_afternoon">God eftermiddag</string>
+    <string name="dashboard_greeting_evening">Godaften</string>
+    <string name="dashboard_greeting_night">Stadig oppe?</string>
+    <string name="dashboard_section_this_week">Denne uge</string>
+    <string name="dashboard_stat_streak">Dages stribe</string>
+    <string name="dashboard_stat_days">Skrevne dage</string>
+    <string name="dashboard_stat_entries">Indlæg</string>
+    <string name="dashboard_status_empty">Intet skrevet i dag endnu.</string>
+    <string name="dashboard_write_first_entry">Skriv dit første indlæg</string>
+    <string name="dashboard_write_today">Skriv dagens indlæg</string>
+    <string name="dashboard_continue_today">Fortsæt dagens indlæg</string>
+    <string name="dashboard_glance_todos_format">%1$d opgaver</string>
+    <string name="dashboard_glance_events_format">%1$d begivenheder</string>
+    <string name="dashboard_week_summary_format">%1$d ud af 7 dage</string>
+    <string name="dashboard_streak_summary_format">%1$d dages stribe</string>
+    <string name="dashboard_recent_entries_title">Seneste</string>
+    <string name="dashboard_all_entries">Alle indlæg</string>
+    <string name="dashboard_words_count_format">%1$d ord</string>
+    <string name="dashboard_goto_today">Gå til i dag</string>
+
     <string name="settings_journal_render_checkboxes_title">Gengiv afkrydsningsfelter som tekst</string>
     <string name="settings_journal_render_checkboxes_subtitle">Vis gøremål som [ ] og [x] på tværs af appen i stedet for udtryksfulde afkrydsningsfelter.</string>
     <string name="settings_journal_day_header_counts_title">Vis antal dages overskrifter</string>

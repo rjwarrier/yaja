@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">জার্নাল</string>
+    <string name="nav_home">হোম</string>
     <string name="nav_calendar">ক্যালেন্ডার</string>
     <string name="nav_lookback">লুকব্যাক</string>
     <string name="nav_settings">সেটিংস</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">উঁচু কার্ড এবং একটি সমতল জার্নাল লুকের মধ্যে নির্বাচন করুন।</string>
     <string name="settings_journal_entry_style_cards">কার্ড</string>
     <string name="settings_journal_entry_style_flat">ফ্ল্যাট</string>
+    <string name="settings_default_screen_title">ডিফল্ট স্ক্রিন</string>
+    <string name="settings_default_screen_subtitle">অ্যাপ চালু করলে কোন স্ক্রিন খুলবে তা বেছে নিন।</string>
+    <string name="settings_default_screen_home">হোম</string>
+    <string name="settings_default_screen_today">আজ</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">শুভ সকাল</string>
+    <string name="dashboard_greeting_afternoon">শুভ অপরাহ্ন</string>
+    <string name="dashboard_greeting_evening">শুভ সন্ধ্যা</string>
+    <string name="dashboard_greeting_night">এখনও জেগে আছেন?</string>
+    <string name="dashboard_section_this_week">এই সপ্তাহে</string>
+    <string name="dashboard_stat_streak">দিনের ধারাবাহিকতা</string>
+    <string name="dashboard_stat_days">লেখা দিন</string>
+    <string name="dashboard_stat_entries">এন্ট্রি</string>
+    <string name="dashboard_status_empty">আজ এখনও কিছু লেখা হয়নি।</string>
+    <string name="dashboard_write_first_entry">আপনার প্রথম এন্ট্রি লিখুন</string>
+    <string name="dashboard_write_today">আজকের এন্ট্রি লিখুন</string>
+    <string name="dashboard_continue_today">আজকের এন্ট্রি চালিয়ে যান</string>
+    <string name="dashboard_glance_todos_format">%1$d কাজ</string>
+    <string name="dashboard_glance_events_format">%1$d ইভেন্ট</string>
+    <string name="dashboard_week_summary_format">7 দিনের মধ্যে %1$d</string>
+    <string name="dashboard_streak_summary_format">%1$d দিনের ধারাবাহিকতা</string>
+    <string name="dashboard_recent_entries_title">সাম্প্রতিক</string>
+    <string name="dashboard_all_entries">সব এন্ট্রি</string>
+    <string name="dashboard_words_count_format">%1$d শব্দ</string>
+    <string name="dashboard_goto_today">আজকে যান</string>
+
     <string name="settings_journal_render_checkboxes_title">চেকবক্স টেক্সট হিসেবে দেখান</string>
     <string name="settings_journal_render_checkboxes_subtitle">এক্সপ্রেসিভ চেকবক্সের পরিবর্তে অ্যাপ জুড়ে টুডুগুলো [ ] এবং [x] হিসেবে দেখান।</string>
     <string name="settings_journal_day_header_counts_title">দিনের হেডারে সংখ্যা দেখান</string>

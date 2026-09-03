@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Εφημερίδα</string>
+    <string name="nav_home">Αρχική</string>
     <string name="nav_calendar">Ημερολόγιο</string>
     <string name="nav_lookback">Αναδρομή</string>
     <string name="nav_settings">Ρυθμίσεις</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Επιλέξτε ανάμεσα σε υψηλές κάρτες και μια πιο επίπεδη εμφάνιση στο ημερολόγιο.</string>
     <string name="settings_journal_entry_style_cards">Καρτέλλες</string>
     <string name="settings_journal_entry_style_flat">Επίπεδα</string>
+    <string name="settings_default_screen_title">Προεπιλεγμένη οθόνη</string>
+    <string name="settings_default_screen_subtitle">Επιλέξτε ποια οθόνη ανοίγει όταν εκκινείτε την εφαρμογή.</string>
+    <string name="settings_default_screen_home">Αρχική</string>
+    <string name="settings_default_screen_today">Σήμερα</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Καλημέρα</string>
+    <string name="dashboard_greeting_afternoon">Καλό απόγευμα</string>
+    <string name="dashboard_greeting_evening">Καλησπέρα</string>
+    <string name="dashboard_greeting_night">Ακόμα ξύπνιος;</string>
+    <string name="dashboard_section_this_week">Αυτή την εβδομάδα</string>
+    <string name="dashboard_stat_streak">Σερί ημερών</string>
+    <string name="dashboard_stat_days">Ημέρες γραφής</string>
+    <string name="dashboard_stat_entries">Καταχωρίσεις</string>
+    <string name="dashboard_status_empty">Δεν έχει γραφτεί τίποτα σήμερα ακόμα.</string>
+    <string name="dashboard_write_first_entry">Γράψτε την πρώτη σας καταχώριση</string>
+    <string name="dashboard_write_today">Γράψτε τη σημερινή καταχώριση</string>
+    <string name="dashboard_continue_today">Συνεχίστε τη σημερινή καταχώριση</string>
+    <string name="dashboard_glance_todos_format">%1$d εργασίες</string>
+    <string name="dashboard_glance_events_format">%1$d εκδηλώσεις</string>
+    <string name="dashboard_week_summary_format">%1$d από 7 ημέρες</string>
+    <string name="dashboard_streak_summary_format">Σερί %1$d ημερών</string>
+    <string name="dashboard_recent_entries_title">Πρόσφατα</string>
+    <string name="dashboard_all_entries">Όλες οι καταχωρίσεις</string>
+    <string name="dashboard_words_count_format">%1$d λέξεις</string>
+    <string name="dashboard_goto_today">Μετάβαση στο σήμερα</string>
+
     <string name="settings_journal_render_checkboxes_title">Απόδοση πλαισίων ελέγχου ως κείμενο</string>
     <string name="settings_journal_render_checkboxes_subtitle">Εμφάνιση των εργασιών ως [ ] και [x] σε όλη την εφαρμογή αντί για εκφραστικά πλαίσια ελέγχου.</string>
     <string name="settings_journal_day_header_counts_title">Εμφάνιση μετρήσεων κεφαλίδων ημέρας</string>

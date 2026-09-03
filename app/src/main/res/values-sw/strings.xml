@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Jarida</string>
+    <string name="nav_home">Nyumbani</string>
     <string name="nav_calendar">Kalenda</string>
     <string name="nav_lookback">Angalia nyuma</string>
     <string name="nav_settings">Mipangilio</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Chagua kati ya kadi zilizoinuliwa na mwonekano wa kupendeza wa jarida.</string>
     <string name="settings_journal_entry_style_cards">Kadi</string>
     <string name="settings_journal_entry_style_flat">Gorofa</string>
+    <string name="settings_default_screen_title">Skrini Chaguo-msingi</string>
+    <string name="settings_default_screen_subtitle">Chagua skrini gani inayofunguka unapoanzisha programu.</string>
+    <string name="settings_default_screen_home">Nyumbani</string>
+    <string name="settings_default_screen_today">Leo</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Habari za asubuhi</string>
+    <string name="dashboard_greeting_afternoon">Habari za mchana</string>
+    <string name="dashboard_greeting_evening">Habari za jioni</string>
+    <string name="dashboard_greeting_night">Bado uko macho?</string>
+    <string name="dashboard_section_this_week">Wiki hii</string>
+    <string name="dashboard_stat_streak">Mfululizo wa siku</string>
+    <string name="dashboard_stat_days">Siku zilizoandikwa</string>
+    <string name="dashboard_stat_entries">Maandishi</string>
+    <string name="dashboard_status_empty">Bado hujaandika chochote leo.</string>
+    <string name="dashboard_write_first_entry">Andika andiko lako la kwanza</string>
+    <string name="dashboard_write_today">Andika andiko la leo</string>
+    <string name="dashboard_continue_today">Endelea na andiko la leo</string>
+    <string name="dashboard_glance_todos_format">Kazi %1$d</string>
+    <string name="dashboard_glance_events_format">Matukio %1$d</string>
+    <string name="dashboard_week_summary_format">Siku %1$d kati ya 7</string>
+    <string name="dashboard_streak_summary_format">Mfululizo wa siku %1$d</string>
+    <string name="dashboard_recent_entries_title">Hivi karibuni</string>
+    <string name="dashboard_all_entries">Maandiko yote</string>
+    <string name="dashboard_words_count_format">Maneno %1$d</string>
+    <string name="dashboard_goto_today">Nenda leo</string>
+
     <string name="settings_journal_render_checkboxes_title">Toa visanduku vya kuteua kama Maandishi</string>
     <string name="settings_journal_render_checkboxes_subtitle">Onyesha todos kama [ ] na [x] kote kwenye programu badala ya visanduku vya kuteua vinavyoeleweka.</string>
     <string name="settings_journal_day_header_counts_title">Onyesha Hesabu za Vichwa vya Siku</string>

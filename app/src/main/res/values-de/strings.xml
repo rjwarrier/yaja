@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Tagebuch</string>
+    <string name="nav_home">Start</string>
     <string name="nav_calendar">Kalender</string>
     <string name="nav_lookback">Rückblick</string>
     <string name="nav_settings">Einstellungen</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Wähle zwischen erhabenen Karten und einem flacheren Tagebuch-Look.</string>
     <string name="settings_journal_entry_style_cards">Karten</string>
     <string name="settings_journal_entry_style_flat">Flach</string>
+    <string name="settings_default_screen_title">Standardbildschirm</string>
+    <string name="settings_default_screen_subtitle">Wähle, welcher Bildschirm beim Start der App geöffnet wird.</string>
+    <string name="settings_default_screen_home">Start</string>
+    <string name="settings_default_screen_today">Heute</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Guten Morgen</string>
+    <string name="dashboard_greeting_afternoon">Guten Tag</string>
+    <string name="dashboard_greeting_evening">Guten Abend</string>
+    <string name="dashboard_greeting_night">Noch wach?</string>
+    <string name="dashboard_section_this_week">Diese Woche</string>
+    <string name="dashboard_stat_streak">Serie</string>
+    <string name="dashboard_stat_days">Geschriebene Tage</string>
+    <string name="dashboard_stat_entries">Einträge</string>
+    <string name="dashboard_status_empty">Heute noch nichts geschrieben.</string>
+    <string name="dashboard_write_first_entry">Ersten Eintrag schreiben</string>
+    <string name="dashboard_write_today">Heutigen Eintrag schreiben</string>
+    <string name="dashboard_continue_today">Heutigen Eintrag fortsetzen</string>
+    <string name="dashboard_glance_todos_format">%1$d Aufgaben</string>
+    <string name="dashboard_glance_events_format">%1$d Termine</string>
+    <string name="dashboard_week_summary_format">%1$d von 7 Tagen</string>
+    <string name="dashboard_streak_summary_format">%1$d Tage Serie</string>
+    <string name="dashboard_recent_entries_title">Zuletzt</string>
+    <string name="dashboard_all_entries">Alle Einträge</string>
+    <string name="dashboard_words_count_format">%1$d Wörter</string>
+    <string name="dashboard_goto_today">Zu Heute</string>
+
     <string name="settings_journal_render_checkboxes_title">Kästchen als Text anzeigen</string>
     <string name="settings_journal_render_checkboxes_subtitle">Zeige Todos in der gesamten App als [ ] und [x] statt als grafische Kästchen.</string>
     <string name="settings_journal_day_header_counts_title">Zähler in Tagesüberschrift anzeigen</string>

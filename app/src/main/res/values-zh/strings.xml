@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">日记</string>
+    <string name="nav_home">主页</string>
     <string name="nav_calendar">日历</string>
     <string name="nav_lookback">回顾</string>
     <string name="nav_settings">设置</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">在立体卡片和更扁平的日记外观之间进行选择。</string>
     <string name="settings_journal_entry_style_cards">卡片</string>
     <string name="settings_journal_entry_style_flat">扁平</string>
+    <string name="settings_default_screen_title">默认屏幕</string>
+    <string name="settings_default_screen_subtitle">选择启动应用时打开的屏幕。</string>
+    <string name="settings_default_screen_home">主页</string>
+    <string name="settings_default_screen_today">今天</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">早上好</string>
+    <string name="dashboard_greeting_afternoon">下午好</string>
+    <string name="dashboard_greeting_evening">晚上好</string>
+    <string name="dashboard_greeting_night">还没睡？</string>
+    <string name="dashboard_section_this_week">本周</string>
+    <string name="dashboard_stat_streak">连续天数</string>
+    <string name="dashboard_stat_days">写作天数</string>
+    <string name="dashboard_stat_entries">条目数</string>
+    <string name="dashboard_status_empty">今天还没有写任何内容。</string>
+    <string name="dashboard_write_first_entry">写下第一篇日记</string>
+    <string name="dashboard_write_today">写今天的日记</string>
+    <string name="dashboard_continue_today">继续写今天的日记</string>
+    <string name="dashboard_glance_todos_format">%1$d 项待办</string>
+    <string name="dashboard_glance_events_format">%1$d 个事件</string>
+    <string name="dashboard_week_summary_format">7天中的%1$d天</string>
+    <string name="dashboard_streak_summary_format">连续%1$d天</string>
+    <string name="dashboard_recent_entries_title">最近</string>
+    <string name="dashboard_all_entries">所有条目</string>
+    <string name="dashboard_words_count_format">%1$d字</string>
+    <string name="dashboard_goto_today">前往今天</string>
+
     <string name="settings_journal_render_checkboxes_title">将复选框渲染为文本</string>
     <string name="settings_journal_render_checkboxes_subtitle">在整个应用中将待办事项显示为 [ ] 和 [x]，而不是精美的复选框。</string>
     <string name="settings_journal_day_header_counts_title">显示日标题计数</string>

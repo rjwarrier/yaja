@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">مجلة</string>
+    <string name="nav_home">الرئيسية</string>
     <string name="nav_calendar">تقويم</string>
     <string name="nav_lookback">مراجعة</string>
     <string name="nav_settings">إعدادات</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">اختر بين البطاقات المرتفعة ومظهر المجلة المسطح.</string>
     <string name="settings_journal_entry_style_cards">بطاقات</string>
     <string name="settings_journal_entry_style_flat">مستوي</string>
+    <string name="settings_default_screen_title">الشاشة الافتراضية</string>
+    <string name="settings_default_screen_subtitle">اختر الشاشة التي تُفتح عند تشغيل التطبيق.</string>
+    <string name="settings_default_screen_home">الرئيسية</string>
+    <string name="settings_default_screen_today">اليوم</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">صباح الخير</string>
+    <string name="dashboard_greeting_afternoon">نهارك سعيد</string>
+    <string name="dashboard_greeting_evening">مساء الخير</string>
+    <string name="dashboard_greeting_night">ما زلت مستيقظًا؟</string>
+    <string name="dashboard_section_this_week">هذا الأسبوع</string>
+    <string name="dashboard_stat_streak">سلسلة الأيام</string>
+    <string name="dashboard_stat_days">أيام الكتابة</string>
+    <string name="dashboard_stat_entries">المدخلات</string>
+    <string name="dashboard_status_empty">لم تكتب شيئًا اليوم بعد.</string>
+    <string name="dashboard_write_first_entry">اكتب مدخلتك الأولى</string>
+    <string name="dashboard_write_today">اكتب مدخلة اليوم</string>
+    <string name="dashboard_continue_today">واصل مدخلة اليوم</string>
+    <string name="dashboard_glance_todos_format">%1$d مهام</string>
+    <string name="dashboard_glance_events_format">%1$d أحداث</string>
+    <string name="dashboard_week_summary_format">%1$d من 7 أيام</string>
+    <string name="dashboard_streak_summary_format">سلسلة %1$d أيام</string>
+    <string name="dashboard_recent_entries_title">الأخيرة</string>
+    <string name="dashboard_all_entries">جميع المدخلات</string>
+    <string name="dashboard_words_count_format">%1$d كلمة</string>
+    <string name="dashboard_goto_today">الانتقال إلى اليوم</string>
+
     <string name="settings_journal_render_checkboxes_title">عرض مربعات الاختيار كنص</string>
     <string name="settings_journal_render_checkboxes_subtitle">قم بعرض المهام على شكل [ ] و [x] عبر التطبيق بدلاً من مربعات الاختيار التعبيرية.</string>
     <string name="settings_journal_day_header_counts_title">إظهار عدد رؤوس اليوم</string>

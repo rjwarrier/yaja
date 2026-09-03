@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Journal</string>
+    <string name="nav_home">Home</string>
     <string name="nav_calendar">Kalendaryo</string>
     <string name="nav_lookback">Pagbabalik tanaw</string>
     <string name="nav_settings">Mga setting</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Pumili sa pagitan ng mga nakataas na card at isang mas flat na hitsura sa journal.</string>
     <string name="settings_journal_entry_style_cards">Mga kard</string>
     <string name="settings_journal_entry_style_flat">patag</string>
+    <string name="settings_default_screen_title">Default na Screen</string>
+    <string name="settings_default_screen_subtitle">Piliin kung aling screen ang bubukas kapag binuksan mo ang app.</string>
+    <string name="settings_default_screen_home">Home</string>
+    <string name="settings_default_screen_today">Ngayon</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Magandang umaga</string>
+    <string name="dashboard_greeting_afternoon">Magandang hapon</string>
+    <string name="dashboard_greeting_evening">Magandang gabi</string>
+    <string name="dashboard_greeting_night">Gising ka pa?</string>
+    <string name="dashboard_section_this_week">Ngayong linggo</string>
+    <string name="dashboard_stat_streak">Streak ng araw</string>
+    <string name="dashboard_stat_days">Araw na nasulatan</string>
+    <string name="dashboard_stat_entries">Entry</string>
+    <string name="dashboard_status_empty">Wala pang nasusulat ngayon.</string>
+    <string name="dashboard_write_first_entry">Isulat ang iyong unang entry</string>
+    <string name="dashboard_write_today">Isulat ang entry ngayon</string>
+    <string name="dashboard_continue_today">Ituloy ang entry ngayon</string>
+    <string name="dashboard_glance_todos_format">%1$d gagawin</string>
+    <string name="dashboard_glance_events_format">%1$d event</string>
+    <string name="dashboard_week_summary_format">%1$d sa 7 araw</string>
+    <string name="dashboard_streak_summary_format">%1$d araw na streak</string>
+    <string name="dashboard_recent_entries_title">Kamakailan</string>
+    <string name="dashboard_all_entries">Lahat ng entry</string>
+    <string name="dashboard_words_count_format">%1$d salita</string>
+    <string name="dashboard_goto_today">Pumunta sa ngayon</string>
+
     <string name="settings_journal_render_checkboxes_title">I-render ang Mga Checkbox bilang Teksto</string>
     <string name="settings_journal_render_checkboxes_subtitle">Ipakita ang mga todos bilang [ ] at [x] sa buong app sa halip na mga nagpapahayag na mga checkbox.</string>
     <string name="settings_journal_day_header_counts_title">Mga Bilang ng Show Day Header</string>

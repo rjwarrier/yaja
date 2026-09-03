@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">مجله</string>
+    <string name="nav_home">خانه</string>
     <string name="nav_calendar">تقویم</string>
     <string name="nav_lookback">نگاه به عقب</string>
     <string name="nav_settings">تنظیمات</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">بین کارت‌های برجسته و ظاهر مجله‌ای صاف‌تر انتخاب کنید.</string>
     <string name="settings_journal_entry_style_cards">کارت ها</string>
     <string name="settings_journal_entry_style_flat">تخت</string>
+    <string name="settings_default_screen_title">صفحه پیش‌فرض</string>
+    <string name="settings_default_screen_subtitle">انتخاب کنید هنگام باز کردن برنامه کدام صفحه باز شود.</string>
+    <string name="settings_default_screen_home">خانه</string>
+    <string name="settings_default_screen_today">امروز</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">صبح بخیر</string>
+    <string name="dashboard_greeting_afternoon">ظهر بخیر</string>
+    <string name="dashboard_greeting_evening">عصر بخیر</string>
+    <string name="dashboard_greeting_night">هنوز بیداری؟</string>
+    <string name="dashboard_section_this_week">این هفته</string>
+    <string name="dashboard_stat_streak">روزهای متوالی</string>
+    <string name="dashboard_stat_days">روزهای نوشته‌شده</string>
+    <string name="dashboard_stat_entries">نوشته‌ها</string>
+    <string name="dashboard_status_empty">هنوز چیزی امروز نوشته نشده.</string>
+    <string name="dashboard_write_first_entry">اولین نوشته خود را بنویسید</string>
+    <string name="dashboard_write_today">نوشتهٔ امروز را بنویسید</string>
+    <string name="dashboard_continue_today">ادامه نوشتهٔ امروز</string>
+    <string name="dashboard_glance_todos_format">%1$d کار</string>
+    <string name="dashboard_glance_events_format">%1$d رویداد</string>
+    <string name="dashboard_week_summary_format">%1$d از 7 روز</string>
+    <string name="dashboard_streak_summary_format">%1$d روز متوالی</string>
+    <string name="dashboard_recent_entries_title">اخیر</string>
+    <string name="dashboard_all_entries">همه نوشته‌ها</string>
+    <string name="dashboard_words_count_format">%1$d واژه</string>
+    <string name="dashboard_goto_today">رفتن به امروز</string>
+
     <string name="settings_journal_render_checkboxes_title">چک باکس ها را به صورت متن ارائه دهید</string>
     <string name="settings_journal_render_checkboxes_subtitle">به جای چک باکس های رسا، کارها را به صورت [ ] و [x] در برنامه نشان دهید.</string>
     <string name="settings_journal_day_header_counts_title">نمایش تعداد سرصفحه روز</string>

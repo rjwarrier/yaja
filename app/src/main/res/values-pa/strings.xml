@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">ਜਰਨਲ</string>
+    <string name="nav_home">ਹੋਮ</string>
     <string name="nav_calendar">ਕੈਲੰਡਰ</string>
     <string name="nav_lookback">ਲੁੱਕਬੈਕ</string>
     <string name="nav_settings">ਸੈਟਿੰਗਾਂ</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">ਐਲੀਵੇਟਿਡ ਕਾਰਡਾਂ ਅਤੇ ਚਾਪਲੂਸੀ ਜਰਨਲ ਦਿੱਖ ਦੇ ਵਿਚਕਾਰ ਚੁਣੋ।</string>
     <string name="settings_journal_entry_style_cards">ਕਾਰਡ</string>
     <string name="settings_journal_entry_style_flat">ਫਲੈਟ</string>
+    <string name="settings_default_screen_title">ਡਿਫਾਲਟ ਸਕ੍ਰੀਨ</string>
+    <string name="settings_default_screen_subtitle">ਚੁਣੋ ਕਿ ਐਪ ਖੋਲ੍ਹਣ \'ਤੇ ਕਿਹੜੀ ਸਕ੍ਰੀਨ ਖੁੱਲ੍ਹੇ।</string>
+    <string name="settings_default_screen_home">ਹੋਮ</string>
+    <string name="settings_default_screen_today">ਅੱਜ</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">ਸ਼ੁਭ ਸਵੇਰ</string>
+    <string name="dashboard_greeting_afternoon">ਸ਼ੁਭ ਦੁਪਹਿਰ</string>
+    <string name="dashboard_greeting_evening">ਸ਼ੁਭ ਸ਼ਾਮ</string>
+    <string name="dashboard_greeting_night">ਹਾਲੇ ਜਾਗ ਰਹੇ ਹੋ?</string>
+    <string name="dashboard_section_this_week">ਇਸ ਹਫ਼ਤੇ</string>
+    <string name="dashboard_stat_streak">ਲਗਾਤਾਰ ਦਿਨ</string>
+    <string name="dashboard_stat_days">ਲਿਖੇ ਗਏ ਦਿਨ</string>
+    <string name="dashboard_stat_entries">ਐਂਟਰੀਆਂ</string>
+    <string name="dashboard_status_empty">ਅੱਜ ਹਾਲੇ ਕੁਝ ਨਹੀਂ ਲਿਖਿਆ ਗਿਆ।</string>
+    <string name="dashboard_write_first_entry">ਆਪਣੀ ਪਹਿਲੀ ਐਂਟਰੀ ਲਿਖੋ</string>
+    <string name="dashboard_write_today">ਅੱਜ ਦੀ ਐਂਟਰੀ ਲਿਖੋ</string>
+    <string name="dashboard_continue_today">ਅੱਜ ਦੀ ਐਂਟਰੀ ਜਾਰੀ ਰੱਖੋ</string>
+    <string name="dashboard_glance_todos_format">%1$d ਕੰਮ</string>
+    <string name="dashboard_glance_events_format">%1$d ਸਮਾਗਮ</string>
+    <string name="dashboard_week_summary_format">7 ਵਿੱਚੋਂ %1$d ਦਿਨ</string>
+    <string name="dashboard_streak_summary_format">%1$d ਦਿਨਾਂ ਦੀ ਲੜੀ</string>
+    <string name="dashboard_recent_entries_title">ਹਾਲੀਆ</string>
+    <string name="dashboard_all_entries">ਸਾਰੀਆਂ ਐਂਟਰੀਆਂ</string>
+    <string name="dashboard_words_count_format">%1$d ਸ਼ਬਦ</string>
+    <string name="dashboard_goto_today">ਅੱਜ \'ਤੇ ਜਾਓ</string>
+
     <string name="settings_journal_render_checkboxes_title">ਚੈਕਬਾਕਸ ਨੂੰ ਟੈਕਸਟ ਦੇ ਰੂਪ ਵਿੱਚ ਰੈਂਡਰ ਕਰੋ</string>
     <string name="settings_journal_render_checkboxes_subtitle">ਐਕਸਪ੍ਰੈਸਿਵ ਚੈਕਬਾਕਸ ਦੀ ਬਜਾਏ ਪੂਰੇ ਐਪ ਵਿੱਚ ਟੂਡੋ ਨੂੰ [ ] ਅਤੇ [x] ਦੇ ਰੂਪ ਵਿੱਚ ਦਿਖਾਓ।</string>
     <string name="settings_journal_day_header_counts_title">ਦਿਨ ਸਿਰਲੇਖ ਦੀ ਗਿਣਤੀ ਦਿਖਾਓ</string>

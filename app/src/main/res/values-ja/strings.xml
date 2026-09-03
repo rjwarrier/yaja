@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">ジャーナル</string>
+    <string name="nav_home">ホーム</string>
     <string name="nav_calendar">カレンダー</string>
     <string name="nav_lookback">振り返り</string>
     <string name="nav_settings">設定</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">立体的なカードと、フラットなジャーナルの外観から選択します。</string>
     <string name="settings_journal_entry_style_cards">カード</string>
     <string name="settings_journal_entry_style_flat">フラット</string>
+    <string name="settings_default_screen_title">デフォルト画面</string>
+    <string name="settings_default_screen_subtitle">アプリ起動時に開く画面を選択します。</string>
+    <string name="settings_default_screen_home">ホーム</string>
+    <string name="settings_default_screen_today">今日</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">おはようございます</string>
+    <string name="dashboard_greeting_afternoon">こんにちは</string>
+    <string name="dashboard_greeting_evening">こんばんは</string>
+    <string name="dashboard_greeting_night">まだ起きていますか?</string>
+    <string name="dashboard_section_this_week">今週</string>
+    <string name="dashboard_stat_streak">連続記録</string>
+    <string name="dashboard_stat_days">記録した日数</string>
+    <string name="dashboard_stat_entries">エントリー数</string>
+    <string name="dashboard_status_empty">今日はまだ何も書いていません。</string>
+    <string name="dashboard_write_first_entry">最初のエントリーを書く</string>
+    <string name="dashboard_write_today">今日のエントリーを書く</string>
+    <string name="dashboard_continue_today">今日のエントリーを続ける</string>
+    <string name="dashboard_glance_todos_format">%1$d件のToDo</string>
+    <string name="dashboard_glance_events_format">%1$d件の予定</string>
+    <string name="dashboard_week_summary_format">7日中%1$d日</string>
+    <string name="dashboard_streak_summary_format">%1$d日連続</string>
+    <string name="dashboard_recent_entries_title">最近</string>
+    <string name="dashboard_all_entries">すべてのエントリー</string>
+    <string name="dashboard_words_count_format">%1$d語</string>
+    <string name="dashboard_goto_today">今日に移動</string>
+
     <string name="settings_journal_render_checkboxes_title">チェックボックスをテキストとしてレンダリング</string>
     <string name="settings_journal_render_checkboxes_subtitle">チェックボックスの代わりに、アプリ全体でToDoを [ ] と [x] として表示します。</string>
     <string name="settings_journal_day_header_counts_title">日ヘッダーに件数を表示</string>

@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">جرنل</string>
+    <string name="nav_home">ہوم</string>
     <string name="nav_calendar">کیلنڈر</string>
     <string name="nav_lookback">دیکھو</string>
     <string name="nav_settings">ترتیبات</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">بلند کارڈز اور چاپلوسی جرنل کی شکل میں سے انتخاب کریں۔</string>
     <string name="settings_journal_entry_style_cards">کارڈز</string>
     <string name="settings_journal_entry_style_flat">فلیٹ</string>
+    <string name="settings_default_screen_title">طے شدہ اسکرین</string>
+    <string name="settings_default_screen_subtitle">منتخب کریں کہ ایپ کھولنے پر کون سی اسکرین کھلے۔</string>
+    <string name="settings_default_screen_home">ہوم</string>
+    <string name="settings_default_screen_today">آج</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">صبح بخیر</string>
+    <string name="dashboard_greeting_afternoon">دوپہر بخیر</string>
+    <string name="dashboard_greeting_evening">شام بخیر</string>
+    <string name="dashboard_greeting_night">ابھی تک جاگ رہے ہیں؟</string>
+    <string name="dashboard_section_this_week">اس ہفتے</string>
+    <string name="dashboard_stat_streak">دنوں کا تسلسل</string>
+    <string name="dashboard_stat_days">لکھے گئے دن</string>
+    <string name="dashboard_stat_entries">اندراجات</string>
+    <string name="dashboard_status_empty">آج ابھی تک کچھ نہیں لکھا گیا۔</string>
+    <string name="dashboard_write_first_entry">اپنا پہلا اندراج لکھیں</string>
+    <string name="dashboard_write_today">آج کا اندراج لکھیں</string>
+    <string name="dashboard_continue_today">آج کا اندراج جاری رکھیں</string>
+    <string name="dashboard_glance_todos_format">%1$d کام</string>
+    <string name="dashboard_glance_events_format">%1$d واقعات</string>
+    <string name="dashboard_week_summary_format">7 میں سے %1$d دن</string>
+    <string name="dashboard_streak_summary_format">%1$d دن کا تسلسل</string>
+    <string name="dashboard_recent_entries_title">حالیہ</string>
+    <string name="dashboard_all_entries">تمام اندراجات</string>
+    <string name="dashboard_words_count_format">%1$d الفاظ</string>
+    <string name="dashboard_goto_today">آج پر جائیں</string>
+
     <string name="settings_journal_render_checkboxes_title">چیک باکسز کو بطور ٹیکسٹ رینڈر کریں۔</string>
     <string name="settings_journal_render_checkboxes_subtitle">تاثراتی چیک باکسز کے بجائے پورے ایپ میں ٹوڈو کو بطور [ ] اور [x] دکھائیں۔</string>
     <string name="settings_journal_day_header_counts_title">دن کے ہیڈر کی گنتی دکھائیں۔</string>

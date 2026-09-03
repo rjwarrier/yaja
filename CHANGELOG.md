@@ -41,7 +41,7 @@
 ### Notes
 - Requires a `versionCode` bump to 95; `3.1.1` shipped as 94.
 - `settings_ui_size_label` and `addentry_focus_mode_hint` are base-locale only and still need translating, as does `settings_storage_move_confirm` for es, fr and pt.
-- The new dashboard/Default Screen strings (`dashboard_*`, `settings_default_screen_*`, `nav_home`) are base-locale only and still need translating.
+- Translated the new dashboard/Default Screen strings (`dashboard_*`, `settings_default_screen_*`, `nav_home`) into all 44 shipped locales; the less common ones (am, gu, kn, mr, or, pa, sw, ta, te, zu) haven't been reviewed by a native speaker yet.
 
 ## 3.1.1 - August 28, 2026
 

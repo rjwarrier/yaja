@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Журнал</string>
+    <string name="nav_home">Главная</string>
     <string name="nav_calendar">Календарь</string>
     <string name="nav_lookback">Обзор</string>
     <string name="nav_settings">Настройки</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Выбирайте между повышенными карточками и более плоским журнальным видом.</string>
     <string name="settings_journal_entry_style_cards">Карты</string>
     <string name="settings_journal_entry_style_flat">Квартира</string>
+    <string name="settings_default_screen_title">Экран по умолчанию</string>
+    <string name="settings_default_screen_subtitle">Выберите, какой экран открывается при запуске приложения.</string>
+    <string name="settings_default_screen_home">Главная</string>
+    <string name="settings_default_screen_today">Сегодня</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Доброе утро</string>
+    <string name="dashboard_greeting_afternoon">Добрый день</string>
+    <string name="dashboard_greeting_evening">Добрый вечер</string>
+    <string name="dashboard_greeting_night">Ещё не спите?</string>
+    <string name="dashboard_section_this_week">На этой неделе</string>
+    <string name="dashboard_stat_streak">Серия дней</string>
+    <string name="dashboard_stat_days">Дней с записями</string>
+    <string name="dashboard_stat_entries">Записи</string>
+    <string name="dashboard_status_empty">Сегодня пока ничего не написано.</string>
+    <string name="dashboard_write_first_entry">Напишите первую запись</string>
+    <string name="dashboard_write_today">Написать запись за сегодня</string>
+    <string name="dashboard_continue_today">Продолжить запись за сегодня</string>
+    <string name="dashboard_glance_todos_format">%1$d задач</string>
+    <string name="dashboard_glance_events_format">%1$d событий</string>
+    <string name="dashboard_week_summary_format">%1$d из 7 дней</string>
+    <string name="dashboard_streak_summary_format">Серия %1$d дней</string>
+    <string name="dashboard_recent_entries_title">Недавние</string>
+    <string name="dashboard_all_entries">Все записи</string>
+    <string name="dashboard_words_count_format">%1$d слов</string>
+    <string name="dashboard_goto_today">Перейти к сегодня</string>
+
     <string name="settings_journal_render_checkboxes_title">Отобразить флажки как текст</string>
     <string name="settings_journal_render_checkboxes_subtitle">Покажите задачи в приложении как [ ] и [x] вместо выразительных флажков.</string>
     <string name="settings_journal_day_header_counts_title">Количество заголовков в день шоу</string>

@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Günlük</string>
+    <string name="nav_home">Ana Sayfa</string>
     <string name="nav_calendar">Takvim</string>
     <string name="nav_lookback">Geçmişe Bakış</string>
     <string name="nav_settings">Ayarlar</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Kayan kartlar ile daha düz bir günlük görünümü arasında seçim yapın.</string>
     <string name="settings_journal_entry_style_cards">Kartlar</string>
     <string name="settings_journal_entry_style_flat">Düz</string>
+    <string name="settings_default_screen_title">Varsayılan Ekran</string>
+    <string name="settings_default_screen_subtitle">Uygulamayı başlattığınızda hangi ekranın açılacağını seçin.</string>
+    <string name="settings_default_screen_home">Ana Sayfa</string>
+    <string name="settings_default_screen_today">Bugün</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Günaydın</string>
+    <string name="dashboard_greeting_afternoon">İyi günler</string>
+    <string name="dashboard_greeting_evening">İyi akşamlar</string>
+    <string name="dashboard_greeting_night">Hâlâ uyanık mısın?</string>
+    <string name="dashboard_section_this_week">Bu hafta</string>
+    <string name="dashboard_stat_streak">Gün serisi</string>
+    <string name="dashboard_stat_days">Yazılan gün</string>
+    <string name="dashboard_stat_entries">Girdi</string>
+    <string name="dashboard_status_empty">Bugün henüz bir şey yazılmadı.</string>
+    <string name="dashboard_write_first_entry">İlk girdini yaz</string>
+    <string name="dashboard_write_today">Bugünün girdisini yaz</string>
+    <string name="dashboard_continue_today">Bugünün girdisine devam et</string>
+    <string name="dashboard_glance_todos_format">%1$d görev</string>
+    <string name="dashboard_glance_events_format">%1$d etkinlik</string>
+    <string name="dashboard_week_summary_format">7 günden %1$d</string>
+    <string name="dashboard_streak_summary_format">%1$d günlük seri</string>
+    <string name="dashboard_recent_entries_title">Son</string>
+    <string name="dashboard_all_entries">Tüm girdiler</string>
+    <string name="dashboard_words_count_format">%1$d kelime</string>
+    <string name="dashboard_goto_today">Bugüne git</string>
+
     <string name="settings_journal_render_checkboxes_title">Onay Kutularını Metin Olarak Göster</string>
     <string name="settings_journal_render_checkboxes_subtitle">Normal onay kutuları yerine uygulama genelinde yapılacakları [ ] and [x] olarak göster.</string>
     <string name="settings_journal_day_header_counts_title">Gün Başlığında Sayıları Göster</string>

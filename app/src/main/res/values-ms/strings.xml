@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Jurnal</string>
+    <string name="nav_home">Laman Utama</string>
     <string name="nav_calendar">Kalendar</string>
     <string name="nav_lookback">Imbas kembali</string>
     <string name="nav_settings">tetapan</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Pilih antara kad tinggi dan rupa jurnal yang lebih rata.</string>
     <string name="settings_journal_entry_style_cards">Kad</string>
     <string name="settings_journal_entry_style_flat">rata</string>
+    <string name="settings_default_screen_title">Skrin Lalai</string>
+    <string name="settings_default_screen_subtitle">Pilih skrin yang dibuka apabila anda melancarkan apl.</string>
+    <string name="settings_default_screen_home">Laman Utama</string>
+    <string name="settings_default_screen_today">Hari ini</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Selamat pagi</string>
+    <string name="dashboard_greeting_afternoon">Selamat tengah hari</string>
+    <string name="dashboard_greeting_evening">Selamat petang</string>
+    <string name="dashboard_greeting_night">Masih belum tidur?</string>
+    <string name="dashboard_section_this_week">Minggu ini</string>
+    <string name="dashboard_stat_streak">Jujukan hari</string>
+    <string name="dashboard_stat_days">Hari ditulis</string>
+    <string name="dashboard_stat_entries">Entri</string>
+    <string name="dashboard_status_empty">Belum ada yang ditulis hari ini.</string>
+    <string name="dashboard_write_first_entry">Tulis entri pertama anda</string>
+    <string name="dashboard_write_today">Tulis entri hari ini</string>
+    <string name="dashboard_continue_today">Sambung entri hari ini</string>
+    <string name="dashboard_glance_todos_format">%1$d perkara</string>
+    <string name="dashboard_glance_events_format">%1$d acara</string>
+    <string name="dashboard_week_summary_format">%1$d daripada 7 hari</string>
+    <string name="dashboard_streak_summary_format">Jujukan %1$d hari</string>
+    <string name="dashboard_recent_entries_title">Terkini</string>
+    <string name="dashboard_all_entries">Semua entri</string>
+    <string name="dashboard_words_count_format">%1$d perkataan</string>
+    <string name="dashboard_goto_today">Pergi ke hari ini</string>
+
     <string name="settings_journal_render_checkboxes_title">Buat Kotak Semak sebagai Teks</string>
     <string name="settings_journal_render_checkboxes_subtitle">Tunjukkan todos sebagai [ ] dan [x] merentas apl dan bukannya kotak pilihan ekspresif.</string>
     <string name="settings_journal_day_header_counts_title">Kiraan Pengepala Hari Papar</string>

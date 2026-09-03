@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">저널</string>
+    <string name="nav_home">홈</string>
     <string name="nav_calendar">달력</string>
     <string name="nav_lookback">둘러보기</string>
     <string name="nav_settings">설정</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">입체적인 카드 스타일과 평면적인 저널 스타일 중에서 선택하세요.</string>
     <string name="settings_journal_entry_style_cards">카드형</string>
     <string name="settings_journal_entry_style_flat">평면형</string>
+    <string name="settings_default_screen_title">기본 화면</string>
+    <string name="settings_default_screen_subtitle">앱을 실행할 때 열릴 화면을 선택하세요.</string>
+    <string name="settings_default_screen_home">홈</string>
+    <string name="settings_default_screen_today">오늘</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">좋은 아침이에요</string>
+    <string name="dashboard_greeting_afternoon">좋은 오후예요</string>
+    <string name="dashboard_greeting_evening">좋은 저녁이에요</string>
+    <string name="dashboard_greeting_night">아직 안 주무세요?</string>
+    <string name="dashboard_section_this_week">이번 주</string>
+    <string name="dashboard_stat_streak">연속 기록</string>
+    <string name="dashboard_stat_days">작성한 날</string>
+    <string name="dashboard_stat_entries">항목</string>
+    <string name="dashboard_status_empty">오늘은 아직 작성한 내용이 없어요.</string>
+    <string name="dashboard_write_first_entry">첫 항목 작성하기</string>
+    <string name="dashboard_write_today">오늘의 항목 작성</string>
+    <string name="dashboard_continue_today">오늘의 항목 계속 작성</string>
+    <string name="dashboard_glance_todos_format">할 일 %1$d개</string>
+    <string name="dashboard_glance_events_format">일정 %1$d개</string>
+    <string name="dashboard_week_summary_format">7일 중 %1$d일</string>
+    <string name="dashboard_streak_summary_format">%1$d일 연속</string>
+    <string name="dashboard_recent_entries_title">최근</string>
+    <string name="dashboard_all_entries">모든 항목</string>
+    <string name="dashboard_words_count_format">%1$d단어</string>
+    <string name="dashboard_goto_today">오늘로 이동</string>
+
     <string name="settings_journal_render_checkboxes_title">체크박스를 텍스트로 렌더링</string>
     <string name="settings_journal_render_checkboxes_subtitle">앱 전체에서 세련된 체크박스 대신 할 일을 [ ] 및 [x]로 표시합니다.</string>
     <string name="settings_journal_day_header_counts_title">일일 헤더에 개수 표시</string>

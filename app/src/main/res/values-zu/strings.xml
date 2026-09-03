@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Ijenali</string>
+    <string name="nav_home">Ikhaya</string>
     <string name="nav_calendar">Ikhalenda</string>
     <string name="nav_lookback">I-boot camp</string>
     <string name="nav_settings">Izilungiselelo</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Khetha phakathi kwamakhadi aphakeme kanye nokubukeka kwejenali eyisicaba.</string>
     <string name="settings_journal_entry_style_cards">Amakhadi</string>
     <string name="settings_journal_entry_style_flat">Isicaba</string>
+    <string name="settings_default_screen_title">Isikrini Esizenzakalelayo</string>
+    <string name="settings_default_screen_subtitle">Khetha ukuthi yisiphi isikrini esivulekayo lapho uqalisa uhlelo lokusebenza.</string>
+    <string name="settings_default_screen_home">Ikhaya</string>
+    <string name="settings_default_screen_today">Namuhla</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Sawubona ekuseni</string>
+    <string name="dashboard_greeting_afternoon">Sawubona ntambama</string>
+    <string name="dashboard_greeting_evening">Sawubona kusihlwa</string>
+    <string name="dashboard_greeting_night">Usaphapheme?</string>
+    <string name="dashboard_section_this_week">Kuleli sonto</string>
+    <string name="dashboard_stat_streak">Ukulandelana kwezinsuku</string>
+    <string name="dashboard_stat_days">Izinsuku ezibhaliwe</string>
+    <string name="dashboard_stat_entries">Okubhaliwe</string>
+    <string name="dashboard_status_empty">Akukho okubhaliwe namuhla okwamanje.</string>
+    <string name="dashboard_write_first_entry">Bhala okokuqala kwakho</string>
+    <string name="dashboard_write_today">Bhala okwanamuhla</string>
+    <string name="dashboard_continue_today">Qhubeka nokwanamuhla</string>
+    <string name="dashboard_glance_todos_format">%1$d okumele kwenziwe</string>
+    <string name="dashboard_glance_events_format">%1$d imicimbi</string>
+    <string name="dashboard_week_summary_format">%1$d kwezi-7 zezinsuku</string>
+    <string name="dashboard_streak_summary_format">Ukulandelana kwezinsuku ezingu-%1$d</string>
+    <string name="dashboard_recent_entries_title">Okwakamuva</string>
+    <string name="dashboard_all_entries">Konke okubhaliwe</string>
+    <string name="dashboard_words_count_format">%1$d amagama</string>
+    <string name="dashboard_goto_today">Iya kunamuhla</string>
+
     <string name="settings_journal_render_checkboxes_title">Nikeza Amabhokisi Okuhlola Njengombhalo</string>
     <string name="settings_journal_render_checkboxes_subtitle">Bonisa okokwenziwa njengo-[ ] kanye no-[x] kulo lonke uhlelo lokusebenza esikhundleni samabhokisi okuhlola acacile.</string>
     <string name="settings_journal_day_header_counts_title">Bonisa Izibalo Zesihloko Zosuku</string>

@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Jurnal</string>
+    <string name="nav_home">Beranda</string>
     <string name="nav_calendar">Kalender</string>
     <string name="nav_lookback">Kilas Balik</string>
     <string name="nav_settings">Pengaturan</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Pilih antara kartu mengambang dan tampilan jurnal yang lebih datar.</string>
     <string name="settings_journal_entry_style_cards">Kartu</string>
     <string name="settings_journal_entry_style_flat">Datar</string>
+    <string name="settings_default_screen_title">Layar Default</string>
+    <string name="settings_default_screen_subtitle">Pilih layar mana yang terbuka saat kamu membuka aplikasi.</string>
+    <string name="settings_default_screen_home">Beranda</string>
+    <string name="settings_default_screen_today">Hari ini</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Selamat pagi</string>
+    <string name="dashboard_greeting_afternoon">Selamat siang</string>
+    <string name="dashboard_greeting_evening">Selamat malam</string>
+    <string name="dashboard_greeting_night">Masih belum tidur?</string>
+    <string name="dashboard_section_this_week">Minggu ini</string>
+    <string name="dashboard_stat_streak">Rentetan hari</string>
+    <string name="dashboard_stat_days">Hari tertulis</string>
+    <string name="dashboard_stat_entries">Entri</string>
+    <string name="dashboard_status_empty">Belum ada yang ditulis hari ini.</string>
+    <string name="dashboard_write_first_entry">Tulis entri pertamamu</string>
+    <string name="dashboard_write_today">Tulis entri hari ini</string>
+    <string name="dashboard_continue_today">Lanjutkan entri hari ini</string>
+    <string name="dashboard_glance_todos_format">%1$d tugas</string>
+    <string name="dashboard_glance_events_format">%1$d acara</string>
+    <string name="dashboard_week_summary_format">%1$d dari 7 hari</string>
+    <string name="dashboard_streak_summary_format">Rentetan %1$d hari</string>
+    <string name="dashboard_recent_entries_title">Terbaru</string>
+    <string name="dashboard_all_entries">Semua entri</string>
+    <string name="dashboard_words_count_format">%1$d kata</string>
+    <string name="dashboard_goto_today">Ke hari ini</string>
+
     <string name="settings_journal_render_checkboxes_title">Tampilkan Kotak Centang sebagai Teks</string>
     <string name="settings_journal_render_checkboxes_subtitle">Tampilkan tugas sebagai [ ] dan [x] di seluruh aplikasi alih-alih kotak centang biasa.</string>
     <string name="settings_journal_day_header_counts_title">Tampilkan Jumlah di Header Hari</string>

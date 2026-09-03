@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Nhật Ký</string>
+    <string name="nav_home">Trang chủ</string>
     <string name="nav_calendar">Lịch</string>
     <string name="nav_lookback">Xem Lại</string>
     <string name="nav_settings">Cài Đặt</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Chọn giữa thẻ nổi và chế độ xem nhật ký phẳng hơn.</string>
     <string name="settings_journal_entry_style_cards">Thẻ</string>
     <string name="settings_journal_entry_style_flat">Phẳng</string>
+    <string name="settings_default_screen_title">Màn hình mặc định</string>
+    <string name="settings_default_screen_subtitle">Chọn màn hình sẽ mở khi bạn khởi động ứng dụng.</string>
+    <string name="settings_default_screen_home">Trang chủ</string>
+    <string name="settings_default_screen_today">Hôm nay</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Chào buổi sáng</string>
+    <string name="dashboard_greeting_afternoon">Chào buổi chiều</string>
+    <string name="dashboard_greeting_evening">Chào buổi tối</string>
+    <string name="dashboard_greeting_night">Vẫn còn thức à?</string>
+    <string name="dashboard_section_this_week">Tuần này</string>
+    <string name="dashboard_stat_streak">Chuỗi ngày</string>
+    <string name="dashboard_stat_days">Ngày đã viết</string>
+    <string name="dashboard_stat_entries">Mục nhật ký</string>
+    <string name="dashboard_status_empty">Hôm nay chưa viết gì.</string>
+    <string name="dashboard_write_first_entry">Viết mục đầu tiên</string>
+    <string name="dashboard_write_today">Viết mục hôm nay</string>
+    <string name="dashboard_continue_today">Tiếp tục mục hôm nay</string>
+    <string name="dashboard_glance_todos_format">%1$d việc cần làm</string>
+    <string name="dashboard_glance_events_format">%1$d sự kiện</string>
+    <string name="dashboard_week_summary_format">%1$d trên 7 ngày</string>
+    <string name="dashboard_streak_summary_format">Chuỗi %1$d ngày</string>
+    <string name="dashboard_recent_entries_title">Gần đây</string>
+    <string name="dashboard_all_entries">Tất cả mục nhật ký</string>
+    <string name="dashboard_words_count_format">%1$d từ</string>
+    <string name="dashboard_goto_today">Đi đến hôm nay</string>
+
     <string name="settings_journal_render_checkboxes_title">Hiển thị hộp kiểm dưới dạng văn bản</string>
     <string name="settings_journal_render_checkboxes_subtitle">Hiển thị việc cần làm dưới dạng [ ] và [x] trên toàn bộ ứng dụng thay vì hộp kiểm thông thường.</string>
     <string name="settings_journal_day_header_counts_title">Hiển thị số lượng ở tiêu đề ngày</string>

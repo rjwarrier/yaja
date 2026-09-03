@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">Folyóirat</string>
+    <string name="nav_home">Kezdőlap</string>
     <string name="nav_calendar">Naptár</string>
     <string name="nav_lookback">Visszatekintés</string>
     <string name="nav_settings">Beállítások elemre</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">Válassz az emelt kártyák és a laposabb napló megjelenés között.</string>
     <string name="settings_journal_entry_style_cards">Kártyák</string>
     <string name="settings_journal_entry_style_flat">Lakás</string>
+    <string name="settings_default_screen_title">Alapértelmezett képernyő</string>
+    <string name="settings_default_screen_subtitle">Válaszd ki, melyik képernyő nyíljon meg az alkalmazás indításakor.</string>
+    <string name="settings_default_screen_home">Kezdőlap</string>
+    <string name="settings_default_screen_today">Ma</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">Jó reggelt</string>
+    <string name="dashboard_greeting_afternoon">Jó napot</string>
+    <string name="dashboard_greeting_evening">Jó estét</string>
+    <string name="dashboard_greeting_night">Még fenn vagy?</string>
+    <string name="dashboard_section_this_week">Ezen a héten</string>
+    <string name="dashboard_stat_streak">Sorozat</string>
+    <string name="dashboard_stat_days">Írt napok</string>
+    <string name="dashboard_stat_entries">Bejegyzések</string>
+    <string name="dashboard_status_empty">Ma még nincs semmi írva.</string>
+    <string name="dashboard_write_first_entry">Írd meg első bejegyzésed</string>
+    <string name="dashboard_write_today">Mai bejegyzés írása</string>
+    <string name="dashboard_continue_today">Mai bejegyzés folytatása</string>
+    <string name="dashboard_glance_todos_format">%1$d teendő</string>
+    <string name="dashboard_glance_events_format">%1$d esemény</string>
+    <string name="dashboard_week_summary_format">%1$d/7 nap</string>
+    <string name="dashboard_streak_summary_format">%1$d napos sorozat</string>
+    <string name="dashboard_recent_entries_title">Legutóbbi</string>
+    <string name="dashboard_all_entries">Összes bejegyzés</string>
+    <string name="dashboard_words_count_format">%1$d szó</string>
+    <string name="dashboard_goto_today">Ugrás a mai napra</string>
+
     <string name="settings_journal_render_checkboxes_title">A jelölőnégyzetek megjelenítése szövegként</string>
     <string name="settings_journal_render_checkboxes_subtitle">A teendőket [ ] és [x] alakban jelenítse meg az alkalmazásban kifejező jelölőnégyzetek helyett.</string>
     <string name="settings_journal_day_header_counts_title">Napi fejlécek számának megjelenítése</string>

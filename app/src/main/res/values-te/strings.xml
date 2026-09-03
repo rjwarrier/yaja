@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="nav_journal">దినచర్య</string>
+    <string name="nav_home">హోమ్</string>
     <string name="nav_calendar">క్యాలెండర్</string>
     <string name="nav_lookback">గతస్మరణ</string>
     <string name="nav_settings">సెట్టింగులు</string>
@@ -123,6 +124,34 @@
     <string name="settings_journal_entry_style_subtitle">ఎలివేటెడ్ కార్డ్‌లు లేదా ఫ్లాట్ దినచర్య రూపం మధ్య ఎంచుకోండి.</string>
     <string name="settings_journal_entry_style_cards">కార్డులు</string>
     <string name="settings_journal_entry_style_flat">ఫ్లాట్</string>
+    <string name="settings_default_screen_title">డిఫాల్ట్ స్క్రీన్</string>
+    <string name="settings_default_screen_subtitle">యాప్‌ను తెరిచినప్పుడు ఏ స్క్రీన్ తెరుచుకోవాలో ఎంచుకోండి.</string>
+    <string name="settings_default_screen_home">హోమ్</string>
+    <string name="settings_default_screen_today">ఈరోజు</string>
+
+    <!-- Dashboard (Home) -->
+    <string name="dashboard_title">yaja</string>
+    <string name="dashboard_greeting_morning">శుభోదయం</string>
+    <string name="dashboard_greeting_afternoon">శుభ మధ్యాహ్నం</string>
+    <string name="dashboard_greeting_evening">శుభ సాయంత్రం</string>
+    <string name="dashboard_greeting_night">ఇంకా మేల్కొని ఉన్నారా?</string>
+    <string name="dashboard_section_this_week">ఈ వారం</string>
+    <string name="dashboard_stat_streak">వరుస రోజులు</string>
+    <string name="dashboard_stat_days">రాసిన రోజులు</string>
+    <string name="dashboard_stat_entries">ఎంట్రీలు</string>
+    <string name="dashboard_status_empty">ఈరోజు ఇంకా ఏమీ రాయలేదు.</string>
+    <string name="dashboard_write_first_entry">మీ మొదటి ఎంట్రీని రాయండి</string>
+    <string name="dashboard_write_today">ఈరోజు ఎంట్రీని రాయండి</string>
+    <string name="dashboard_continue_today">ఈరోజు ఎంట్రీని కొనసాగించండి</string>
+    <string name="dashboard_glance_todos_format">%1$d పనులు</string>
+    <string name="dashboard_glance_events_format">%1$d ఈవెంట్‌లు</string>
+    <string name="dashboard_week_summary_format">7లో %1$d రోజులు</string>
+    <string name="dashboard_streak_summary_format">%1$d రోజుల వరుస</string>
+    <string name="dashboard_recent_entries_title">ఇటీవలివి</string>
+    <string name="dashboard_all_entries">అన్ని ఎంట్రీలు</string>
+    <string name="dashboard_words_count_format">%1$d పదాలు</string>
+    <string name="dashboard_goto_today">ఈరోజుకు వెళ్లండి</string>
+
     <string name="settings_journal_render_checkboxes_title">చెక్ బాక్స్‌లను టెక్స్ట్‌గా మార్చండి</string>
     <string name="settings_journal_render_checkboxes_subtitle">చెక్ బాక్స్‌లకు బదులుగా యాప్ అంతటా పనులను [ ] మరియు [x] గా చూపించు.</string>
     <string name="settings_journal_day_header_counts_title">రోజువారీ గణనలను చూపించు</string>
