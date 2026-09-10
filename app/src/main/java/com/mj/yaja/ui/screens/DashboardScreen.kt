@@ -91,6 +91,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.Locale
+import kotlin.math.sqrt
 import kotlin.random.Random
 import kotlinx.coroutines.delay
 
@@ -922,14 +923,15 @@ private fun DashboardWeekSection(
                                 val isWritten = date in datesWithEntries
                                 val isToday = date == today
                                 // A written day never drops below the floor, so "wrote something" stays
-                                // legible even next to a day twenty times its length.
+                                // legible even next to a day twenty times its length. The ratio is
+                                // square-rooted first: linear, one long entry pins the top of the scale
+                                // and flattens every ordinary day together down at the floor.
                                 val volume = if (!isWritten || busiestDay <= 0) {
                                         0f
                                 } else {
                                         val words = wordCounts[date] ?: 0
-                                        WEEK_INTENSITY_FLOOR +
-                                                (1f - WEEK_INTENSITY_FLOOR) *
-                                                (words.toFloat() / busiestDay.toFloat()).coerceIn(0f, 1f)
+                                        val share = (words.toFloat() / busiestDay.toFloat()).coerceIn(0f, 1f)
+                                        WEEK_INTENSITY_FLOOR + (1f - WEEK_INTENSITY_FLOOR) * sqrt(share)
                                 }
                                 val dayInteraction = remember(date) { MutableInteractionSource() }
                                 val dayDescription = remember(date) { date.format(accessibleDateFormatter) }
