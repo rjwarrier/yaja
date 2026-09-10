@@ -36,8 +36,10 @@ import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Event
 import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.RunningWithErrors
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Today
+import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -101,7 +103,8 @@ fun DashboardScreen(
         onNavigateToCalendar: () -> Unit,
         onNavigateToTimeline: () -> Unit,
         onNavigateToStatistics: () -> Unit,
-        onNavigateToBackup: () -> Unit
+        onNavigateToBackup: () -> Unit,
+        onNavigateToTasks: () -> Unit
 ) {
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val todos by viewModel.todos.collectAsStateWithLifecycle()
@@ -158,6 +161,16 @@ fun DashboardScreen(
 
         val openTodosToday = remember(todos) { todos.count { it.date == today && !it.isChecked } }
         val eventsToday = remember(events) { events.count { it.date == today } }
+        // Both lists are already in memory for the counts above; the glance row only ever looked
+        // at today, so a task left unfinished on Monday and a birthday tomorrow were invisible on
+        // what is now the default screen. Filtering them costs no extra IO.
+        val overdueTodos = remember(todos, today) {
+                todos.count { !it.isChecked && it.date.isBefore(today) }
+        }
+        val upcomingEvents = remember(events, today) {
+                val horizon = today.plusDays(UPCOMING_EVENT_HORIZON_DAYS)
+                events.count { it.date.isAfter(today) && !it.date.isAfter(horizon) }
+        }
 
         val showBottomBar by viewModel.showBottomBar.collectAsStateWithLifecycle()
         val navigationChromeMode by viewModel.navigationChromeMode.collectAsStateWithLifecycle()
@@ -223,6 +236,21 @@ fun DashboardScreen(
                 }
         }
 
+        // Word counts for the week strip. Deliberately not viewModel.heatmapData: that flow is
+        // only filled by ensureHeatmapDataLoaded(), which scans every date the journal has ever
+        // held. This is the same per-date metrics call the Recent rows already make, bounded to
+        // the seven days actually on screen.
+        val weekDates = remember(today) { (6 downTo 0).map { today.minusDays(it.toLong()) } }
+        var weekWordCounts by remember { mutableStateOf<Map<LocalDate, Int>>(emptyMap()) }
+        LaunchedEffect(weekDates, uiState.datesWithEntries) {
+                val written = weekDates.filter { it in uiState.datesWithEntries }
+                weekWordCounts = if (written.isEmpty()) {
+                        emptyMap()
+                } else {
+                        viewModel.getTimelineMetrics(written).mapValues { (_, metrics) -> metrics.wordCount }
+                }
+        }
+
         val entranceTriggered = rememberAppEntrance()
         val fabInteractionSource = remember { MutableInteractionSource() }
 
@@ -279,10 +307,13 @@ fun DashboardScreen(
                                                 todayPreview = todayPreview,
                                                 openTodosToday = openTodosToday,
                                                 eventsToday = eventsToday,
+                                                overdueTodos = overdueTodos,
+                                                upcomingEvents = upcomingEvents,
                                                 backupOverdue = backupTooOld,
                                                 onWriteOrContinue = onNavigateToAddEntry,
                                                 onOpenGlance = onOpenToday,
-                                                onBackupClick = onNavigateToBackup
+                                                onBackupClick = onNavigateToBackup,
+                                                onOpenTasks = onNavigateToTasks
                                         )
                                 }
 
@@ -317,6 +348,7 @@ fun DashboardScreen(
                                         DashboardWeekSection(
                                                 today = today,
                                                 datesWithEntries = uiState.datesWithEntries,
+                                                wordCounts = weekWordCounts,
                                                 currentStreak = allTimeStats?.currentStreak ?: 0,
                                                 onOpenDate = { date ->
                                                         viewModel.selectDate(date, source = "dashboard_week_strip")
@@ -368,6 +400,12 @@ fun DashboardScreen(
                 }
         }
 }
+
+/** Lightest fill a day with any writing at all gets, before volume scales it up to full. */
+private const val WEEK_INTENSITY_FLOOR = 0.35f
+
+/** How far ahead the upcoming-events count looks: catches tomorrow, stays a glance. */
+private const val UPCOMING_EVENT_HORIZON_DAYS = 7L
 
 /** Longest hero quote shown before the trailing cursor glyph replaces the closing quote. */
 private const val HERO_PREVIEW_MAX_CHARS = 60
@@ -446,10 +484,13 @@ private fun DashboardTodayHeroCard(
         todayPreview: String?,
         openTodosToday: Int,
         eventsToday: Int,
+        overdueTodos: Int,
+        upcomingEvents: Int,
         backupOverdue: Boolean,
         onWriteOrContinue: () -> Unit,
         onOpenGlance: () -> Unit,
-        onBackupClick: () -> Unit
+        onBackupClick: () -> Unit,
+        onOpenTasks: () -> Unit
 ) {
         val dateFormatter = remember { DateTimeFormatter.ofPattern("EEEE '·' d MMMM", Locale.getDefault()) }
         val timeFormatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
@@ -617,6 +658,55 @@ private fun DashboardTodayHeroCard(
                                 )
                         }
 
+                        if (overdueTodos > 0 || upcomingEvents > 0) {
+                                Spacer(modifier = Modifier.height(10.dp))
+                                val aheadInteraction = remember { MutableInteractionSource() }
+                                Row(
+                                        modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                                                .expressivePressMotion(aheadInteraction, pressedScale = 0.97f)
+                                                .clickable(
+                                                        interactionSource = aheadInteraction,
+                                                        indication = LocalIndication.current,
+                                                        onClick = onOpenTasks
+                                                ),
+                                        verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                        if (overdueTodos > 0) {
+                                                DashboardGlanceGroup(
+                                                        icon = Icons.Rounded.RunningWithErrors,
+                                                        text = stringResource(
+                                                                R.string.dashboard_glance_overdue_format,
+                                                                overdueTodos
+                                                        ),
+                                                        active = true,
+                                                        activeTint = MaterialTheme.colorScheme.error
+                                                )
+                                        }
+                                        if (overdueTodos > 0 && upcomingEvents > 0) {
+                                                Spacer(modifier = Modifier.width(16.dp))
+                                        }
+                                        if (upcomingEvents > 0) {
+                                                DashboardGlanceGroup(
+                                                        icon = Icons.Rounded.Upcoming,
+                                                        text = stringResource(
+                                                                R.string.dashboard_glance_upcoming_format,
+                                                                upcomingEvents
+                                                        ),
+                                                        active = true
+                                                )
+                                        }
+                                        Spacer(modifier = Modifier.weight(1f))
+                                        Icon(
+                                                imageVector = Icons.Rounded.ChevronRight,
+                                                contentDescription = null,
+                                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                modifier = Modifier.size(18.dp)
+                                        )
+                                }
+                        }
+
                         if (backupOverdue) {
                                 Spacer(modifier = Modifier.height(10.dp))
                                 val backupInteraction = remember { MutableInteractionSource() }
@@ -664,7 +754,8 @@ private fun DashboardTodayHeroCard(
 private fun DashboardGlanceGroup(
         icon: androidx.compose.ui.graphics.vector.ImageVector,
         text: String,
-        active: Boolean
+        active: Boolean,
+        activeTint: Color = MaterialTheme.colorScheme.primary
 ) {
         Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -673,7 +764,7 @@ private fun DashboardGlanceGroup(
                 Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                        tint = if (active) activeTint else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(16.dp)
                 )
                 Spacer(modifier = Modifier.width(6.dp))
@@ -689,122 +780,141 @@ private fun DashboardGlanceGroup(
 private fun DashboardWeekSection(
         today: LocalDate,
         datesWithEntries: Set<LocalDate>,
+        wordCounts: Map<LocalDate, Int>,
         currentStreak: Int,
         onOpenDate: (LocalDate) -> Unit
 ) {
-        val days = remember(today) { (6 downTo 0).map { today.minusDays(it.toLong()) } }
-        val writtenCount = remember(days, datesWithEntries) { days.count { it in datesWithEntries } }
+        // Emits several siblings, and every caller places sections inside AppStaggeredEntrance,
+        // which hosts its content in a Box -- unwrapped, the header drew on top of the row below it.
+        Column(modifier = Modifier.fillMaxWidth()) {
+                val days = remember(today) { (6 downTo 0).map { today.minusDays(it.toLong()) } }
+                // Scaled against the busiest day of this week rather than a fixed word target, so the
+                // strip stays readable for a one-line-a-day writer and a thousand-word-a-day one alike.
+                val busiestDay = remember(wordCounts) { wordCounts.values.maxOrNull() ?: 0 }
+                val writtenCount = remember(days, datesWithEntries) { days.count { it in datesWithEntries } }
 
-        Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
-        ) {
-                Text(
-                        text = stringResource(R.string.dashboard_section_this_week),
-                        style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.7.sp),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text(
-                        text = buildAnnotatedString {
-                                append(
-                                        stringResource(
-                                                R.string.dashboard_week_summary_format,
-                                                writtenCount
-                                        )
-                                )
-                                append(" · ")
-                                withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
+                Row(
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.Bottom
+                ) {
+                        Text(
+                                text = stringResource(R.string.dashboard_section_this_week),
+                                style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.7.sp),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Text(
+                                text = buildAnnotatedString {
                                         append(
                                                 stringResource(
-                                                        R.string.dashboard_streak_summary_format,
-                                                        currentStreak
+                                                        R.string.dashboard_week_summary_format,
+                                                        writtenCount
                                                 )
                                         )
-                                }
-                        },
-                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-        }
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-                val accessibleDateFormatter = remember {
-                        DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-                }
-                days.forEach { date ->
-                        val isWritten = date in datesWithEntries
-                        val isToday = date == today
-                        val dayInteraction = remember(date) { MutableInteractionSource() }
-                        val dayDescription = remember(date) { date.format(accessibleDateFormatter) }
-                        Column(
-                                modifier = Modifier.weight(1f),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                                Text(
-                                        text = date.dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.getDefault()),
-                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, letterSpacing = 0.6.sp),
-                                        color = if (isToday) {
-                                                MaterialTheme.colorScheme.primary
-                                        } else {
-                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                        append(" · ")
+                                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
+                                                append(
+                                                        stringResource(
+                                                                R.string.dashboard_streak_summary_format,
+                                                                currentStreak
+                                                        )
+                                                )
                                         }
-                                )
-                                Spacer(modifier = Modifier.height(7.dp))
-                                Box(
-                                        modifier = Modifier
-                                                .size(38.dp)
-                                                .clip(CircleShape)
-                                                .background(
-                                                        if (isWritten) {
-                                                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.9f)
-                                                        } else {
-                                                                androidx.compose.ui.graphics.Color.Transparent
-                                                        }
-                                                )
-                                                .then(
-                                                        when {
-                                                                isToday -> Modifier.border(
-                                                                        width = 2.dp,
-                                                                        color = MaterialTheme.colorScheme.primary,
-                                                                        shape = CircleShape
-                                                                )
-                                                                !isWritten -> Modifier.border(
-                                                                        width = 1.dp,
-                                                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f),
-                                                                        shape = CircleShape
-                                                                )
-                                                                else -> Modifier
-                                                        }
-                                                )
-                                                .expressivePressMotion(dayInteraction, pressedScale = 0.88f)
-                                                .clickable(
-                                                        interactionSource = dayInteraction,
-                                                        indication = LocalIndication.current,
-                                                        onClick = { onOpenDate(date) }
-                                                )
-                                                // Without this the target announces as "30" with
-                                                // no month, year, or hint that it opens a date.
-                                                .semantics(mergeDescendants = true) {
-                                                        contentDescription = dayDescription
-                                                },
-                                        contentAlignment = Alignment.Center
+                                },
+                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                        val accessibleDateFormatter = remember {
+                                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                        }
+                        days.forEach { date ->
+                                val isWritten = date in datesWithEntries
+                                val isToday = date == today
+                                // A written day never drops below the floor, so "wrote something" stays
+                                // legible even next to a day twenty times its length.
+                                val volume = if (!isWritten || busiestDay <= 0) {
+                                        0f
+                                } else {
+                                        val words = wordCounts[date] ?: 0
+                                        WEEK_INTENSITY_FLOOR +
+                                                (1f - WEEK_INTENSITY_FLOOR) *
+                                                (words.toFloat() / busiestDay.toFloat()).coerceIn(0f, 1f)
+                                }
+                                val dayInteraction = remember(date) { MutableInteractionSource() }
+                                val dayDescription = remember(date) { date.format(accessibleDateFormatter) }
+                                Column(
+                                        modifier = Modifier.weight(1f),
+                                        horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                         Text(
-                                                text = date.dayOfMonth.toString(),
-                                                style = MaterialTheme.typography.labelMedium.copy(fontSize = 13.sp),
-                                                fontWeight = if (isWritten) FontWeight.Bold else FontWeight.Normal,
-                                                color = when {
-                                                        isToday -> MaterialTheme.colorScheme.primary
-                                                        isWritten -> MaterialTheme.colorScheme.onPrimaryContainer
-                                                        else -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                                                text = date.dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.getDefault()),
+                                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, letterSpacing = 0.6.sp),
+                                                color = if (isToday) {
+                                                        MaterialTheme.colorScheme.primary
+                                                } else {
+                                                        MaterialTheme.colorScheme.onSurfaceVariant
                                                 }
                                         )
+                                        Spacer(modifier = Modifier.height(7.dp))
+                                        Box(
+                                                modifier = Modifier
+                                                        .size(38.dp)
+                                                        .clip(CircleShape)
+                                                        .background(
+                                                                if (isWritten) {
+                                                                        MaterialTheme.colorScheme.primaryContainer
+                                                                                .copy(alpha = 0.9f * volume)
+                                                                } else {
+                                                                        androidx.compose.ui.graphics.Color.Transparent
+                                                                }
+                                                        )
+                                                        .then(
+                                                                when {
+                                                                        isToday -> Modifier.border(
+                                                                                width = 2.dp,
+                                                                                color = MaterialTheme.colorScheme.primary,
+                                                                                shape = CircleShape
+                                                                        )
+                                                                        !isWritten -> Modifier.border(
+                                                                                width = 1.dp,
+                                                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f),
+                                                                                shape = CircleShape
+                                                                        )
+                                                                        else -> Modifier
+                                                                }
+                                                        )
+                                                        .expressivePressMotion(dayInteraction, pressedScale = 0.88f)
+                                                        .clickable(
+                                                                interactionSource = dayInteraction,
+                                                                indication = LocalIndication.current,
+                                                                onClick = { onOpenDate(date) }
+                                                        )
+                                                        // Without this the target announces as "30" with
+                                                        // no month, year, or hint that it opens a date.
+                                                        .semantics(mergeDescendants = true) {
+                                                                contentDescription = dayDescription
+                                                        },
+                                                contentAlignment = Alignment.Center
+                                        ) {
+                                                Text(
+                                                        text = date.dayOfMonth.toString(),
+                                                        style = MaterialTheme.typography.labelMedium.copy(fontSize = 13.sp),
+                                                        fontWeight = if (isWritten) FontWeight.Bold else FontWeight.Normal,
+                                                        color = when {
+                                                                isToday -> MaterialTheme.colorScheme.primary
+                                                                isWritten -> MaterialTheme.colorScheme.onPrimaryContainer
+                                                                else -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                                                        }
+                                                )
+                                        }
                                 }
                         }
                 }
@@ -972,57 +1082,61 @@ private fun DashboardRecentSection(
         onAllEntries: () -> Unit,
         onOpenDate: (LocalDate) -> Unit
 ) {
-        Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-        ) {
-                Text(
-                        text = stringResource(R.string.dashboard_recent_entries_title),
-                        style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.7.sp),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                val allEntriesInteraction = remember { MutableInteractionSource() }
+        // Emits several siblings, and every caller places sections inside AppStaggeredEntrance,
+        // which hosts its content in a Box -- unwrapped, the header drew on top of the row below it.
+        Column(modifier = Modifier.fillMaxWidth()) {
                 Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                                .expressivePressMotion(allEntriesInteraction, pressedScale = 0.94f)
-                                .clickable(
-                                        interactionSource = allEntriesInteraction,
-                                        indication = LocalIndication.current,
-                                        onClick = onAllEntries
-                                )
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                 ) {
                         Text(
-                                text = stringResource(R.string.dashboard_all_entries),
-                                style = MaterialTheme.typography.labelMedium.copy(fontSize = 11.sp),
-                                color = MaterialTheme.colorScheme.primary
+                                text = stringResource(R.string.dashboard_recent_entries_title),
+                                style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.7.sp),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(14.dp)
-                        )
-                }
-        }
-
-        Spacer(modifier = Modifier.height(6.dp))
-
-        Column(modifier = Modifier.fillMaxWidth()) {
-                dates.forEachIndexed { index, date ->
-                        val detail = details[date]
-                        DashboardRecentRow(
-                                date = date,
-                                detail = detail,
-                                todoCount = todoCounts[date] ?: 0,
-                                onClick = { onOpenDate(date) }
-                        )
-                        if (index != dates.lastIndex) {
-                                androidx.compose.material3.HorizontalDivider(
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f)
+                        val allEntriesInteraction = remember { MutableInteractionSource() }
+                        Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                        .expressivePressMotion(allEntriesInteraction, pressedScale = 0.94f)
+                                        .clickable(
+                                                interactionSource = allEntriesInteraction,
+                                                indication = LocalIndication.current,
+                                                onClick = onAllEntries
+                                        )
+                        ) {
+                                Text(
+                                        text = stringResource(R.string.dashboard_all_entries),
+                                        style = MaterialTheme.typography.labelMedium.copy(fontSize = 11.sp),
+                                        color = MaterialTheme.colorScheme.primary
                                 )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Icon(
+                                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.size(14.dp)
+                                )
+                        }
+                }
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Column(modifier = Modifier.fillMaxWidth()) {
+                        dates.forEachIndexed { index, date ->
+                                val detail = details[date]
+                                DashboardRecentRow(
+                                        date = date,
+                                        detail = detail,
+                                        todoCount = todoCounts[date] ?: 0,
+                                        onClick = { onOpenDate(date) }
+                                )
+                                if (index != dates.lastIndex) {
+                                        androidx.compose.material3.HorizontalDivider(
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f)
+                                        )
+                                }
                         }
                 }
         }

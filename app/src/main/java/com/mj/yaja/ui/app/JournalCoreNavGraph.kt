@@ -100,6 +100,9 @@ internal fun NavGraphBuilder.addCoreJournalRoutes(
                         },
                         onNavigateToBackup = {
                                 navController.navigate(Route.DataRecovery.path) { popUpTo(Route.Home.path) }
+                        },
+                        onNavigateToTasks = {
+                                navController.navigate(Route.Todos.path) { popUpTo(Route.Home.path) }
                         }
                 )
         }

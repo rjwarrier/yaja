@@ -168,6 +168,8 @@
     <string name="dashboard_continue_today">Continue today\'s entry</string>
     <string name="dashboard_glance_todos_format">%1$d to-dos</string>
     <string name="dashboard_glance_events_format">%1$d events</string>
+    <string name="dashboard_glance_overdue_format">%1$d overdue</string>
+    <string name="dashboard_glance_upcoming_format">%1$d upcoming</string>
     <string name="dashboard_week_summary_format">%1$d of 7 days</string>
     <string name="dashboard_streak_summary_format">%1$d-day streak</string>
     <string name="dashboard_recent_entries_title">Recent</string>
