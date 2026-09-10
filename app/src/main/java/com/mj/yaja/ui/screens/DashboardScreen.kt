@@ -414,7 +414,15 @@ private val MORNING_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_morning_alt4,
         R.string.dashboard_greeting_morning_alt5,
         R.string.dashboard_greeting_morning_alt6,
-        R.string.dashboard_greeting_morning_alt7
+        R.string.dashboard_greeting_morning_alt7,
+        R.string.dashboard_greeting_morning_alt8,
+        R.string.dashboard_greeting_morning_alt9,
+        R.string.dashboard_greeting_morning_alt10,
+        R.string.dashboard_greeting_morning_alt11,
+        R.string.dashboard_greeting_morning_alt12,
+        R.string.dashboard_greeting_morning_alt13,
+        R.string.dashboard_greeting_morning_alt14,
+        R.string.dashboard_greeting_morning_alt15
 )
 private val AFTERNOON_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_afternoon,
@@ -424,7 +432,15 @@ private val AFTERNOON_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_afternoon_alt4,
         R.string.dashboard_greeting_afternoon_alt5,
         R.string.dashboard_greeting_afternoon_alt6,
-        R.string.dashboard_greeting_afternoon_alt7
+        R.string.dashboard_greeting_afternoon_alt7,
+        R.string.dashboard_greeting_afternoon_alt8,
+        R.string.dashboard_greeting_afternoon_alt9,
+        R.string.dashboard_greeting_afternoon_alt10,
+        R.string.dashboard_greeting_afternoon_alt11,
+        R.string.dashboard_greeting_afternoon_alt12,
+        R.string.dashboard_greeting_afternoon_alt13,
+        R.string.dashboard_greeting_afternoon_alt14,
+        R.string.dashboard_greeting_afternoon_alt15
 )
 private val EVENING_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_evening,
@@ -434,7 +450,15 @@ private val EVENING_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_evening_alt4,
         R.string.dashboard_greeting_evening_alt5,
         R.string.dashboard_greeting_evening_alt6,
-        R.string.dashboard_greeting_evening_alt7
+        R.string.dashboard_greeting_evening_alt7,
+        R.string.dashboard_greeting_evening_alt8,
+        R.string.dashboard_greeting_evening_alt9,
+        R.string.dashboard_greeting_evening_alt10,
+        R.string.dashboard_greeting_evening_alt11,
+        R.string.dashboard_greeting_evening_alt12,
+        R.string.dashboard_greeting_evening_alt13,
+        R.string.dashboard_greeting_evening_alt14,
+        R.string.dashboard_greeting_evening_alt15
 )
 private val NIGHT_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_night,
@@ -444,7 +468,15 @@ private val NIGHT_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_night_alt4,
         R.string.dashboard_greeting_night_alt5,
         R.string.dashboard_greeting_night_alt6,
-        R.string.dashboard_greeting_night_alt7
+        R.string.dashboard_greeting_night_alt7,
+        R.string.dashboard_greeting_night_alt8,
+        R.string.dashboard_greeting_night_alt9,
+        R.string.dashboard_greeting_night_alt10,
+        R.string.dashboard_greeting_night_alt11,
+        R.string.dashboard_greeting_night_alt12,
+        R.string.dashboard_greeting_night_alt13,
+        R.string.dashboard_greeting_night_alt14,
+        R.string.dashboard_greeting_night_alt15
 )
 
 /** Lightest fill a day with any writing at all gets, before volume scales it up to full. */
