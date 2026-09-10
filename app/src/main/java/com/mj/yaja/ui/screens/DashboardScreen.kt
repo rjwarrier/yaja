@@ -892,14 +892,16 @@ private fun DashboardOnThisDayCard(
                                         color = MaterialTheme.colorScheme.onSurface
                                 )
                                 if (!preview.isNullOrBlank()) {
-                                        Spacer(modifier = Modifier.height(2.dp))
-                                        Text(
-                                                text = preview,
-                                                style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.5.sp, lineHeight = 16.5.sp),
-                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                                maxLines = 2,
-                                                overflow = TextOverflow.Ellipsis
-                                        )
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        DataFontScaleWrapper {
+                                                Text(
+                                                        text = preview,
+                                                        style = MaterialTheme.typography.contentTextStyle(),
+                                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                        maxLines = 2,
+                                                        overflow = TextOverflow.Ellipsis
+                                                )
+                                        }
                                 }
                         }
                         Icon(
