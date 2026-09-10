@@ -401,6 +401,29 @@ fun DashboardScreen(
         }
 }
 
+// One row per time of day, rotated daily by DashboardTodayHeroCard. The first of each is the
+// plain greeting; the rest are there so the screen does not read identically every single day.
+private val MORNING_GREETINGS = intArrayOf(
+        R.string.dashboard_greeting_morning,
+        R.string.dashboard_greeting_morning_alt,
+        R.string.dashboard_greeting_morning_alt2
+)
+private val AFTERNOON_GREETINGS = intArrayOf(
+        R.string.dashboard_greeting_afternoon,
+        R.string.dashboard_greeting_afternoon_alt,
+        R.string.dashboard_greeting_afternoon_alt2
+)
+private val EVENING_GREETINGS = intArrayOf(
+        R.string.dashboard_greeting_evening,
+        R.string.dashboard_greeting_evening_alt,
+        R.string.dashboard_greeting_evening_alt2
+)
+private val NIGHT_GREETINGS = intArrayOf(
+        R.string.dashboard_greeting_night,
+        R.string.dashboard_greeting_night_alt,
+        R.string.dashboard_greeting_night_alt2
+)
+
 /** Lightest fill a day with any writing at all gets, before volume scales it up to full. */
 private const val WEEK_INTENSITY_FLOOR = 0.35f
 
@@ -497,12 +520,16 @@ private fun DashboardTodayHeroCard(
         // Derived from `now` (the same instant already shown in the meta row) rather than a
         // separately cached clock read, so it can't drift out of sync with the displayed time
         // or freeze on the hour it first composed at.
-        val greeting = when (now.hour) {
-                in 5..11 -> R.string.dashboard_greeting_morning
-                in 12..16 -> R.string.dashboard_greeting_afternoon
-                in 17..21 -> R.string.dashboard_greeting_evening
-                else -> R.string.dashboard_greeting_night
+        // Rotated by the date rather than picked at random: this card recomposes on every
+        // minute tick, and a random pick would reshuffle the greeting under the reader once a
+        // minute. Keyed on the day, it is stable while the screen is open and different tomorrow.
+        val greetings = when (now.hour) {
+                in 5..11 -> MORNING_GREETINGS
+                in 12..16 -> AFTERNOON_GREETINGS
+                in 17..21 -> EVENING_GREETINGS
+                else -> NIGHT_GREETINGS
         }
+        val greeting = greetings[today.toEpochDay().mod(greetings.size)]
         // Truncated on a grapheme boundary: a plain take() cuts UTF-16 units, so an emoji (or
         // any combining sequence) straddling the limit rendered as half a character.
         val heroPreview = remember(todayPreview) {

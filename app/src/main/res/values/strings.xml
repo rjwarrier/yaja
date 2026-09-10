@@ -153,6 +153,14 @@
     <string name="dashboard_greeting_afternoon">Good afternoon</string>
     <string name="dashboard_greeting_evening">Good evening</string>
     <string name="dashboard_greeting_night">Still up?</string>
+    <string name="dashboard_greeting_morning_alt">A fresh page</string>
+    <string name="dashboard_greeting_morning_alt2">Morning pages?</string>
+    <string name="dashboard_greeting_afternoon_alt">Midday pause</string>
+    <string name="dashboard_greeting_afternoon_alt2">How’s it going?</string>
+    <string name="dashboard_greeting_evening_alt">Winding down</string>
+    <string name="dashboard_greeting_evening_alt2">How was today?</string>
+    <string name="dashboard_greeting_night_alt">Late thoughts</string>
+    <string name="dashboard_greeting_night_alt2">One more page?</string>
     <string name="dashboard_section_this_week">This week</string>
     <string name="dashboard_stat_streak">Day streak</string>
     <string name="dashboard_stat_days">Days written</string>
