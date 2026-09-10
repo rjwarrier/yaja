@@ -91,6 +91,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.Locale
+import kotlin.random.Random
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -401,27 +402,49 @@ fun DashboardScreen(
         }
 }
 
-// One row per time of day, rotated daily by DashboardTodayHeroCard. The first of each is the
-// plain greeting; the rest are there so the screen does not read identically every single day.
+// One row per time of day, shuffled per visit by DashboardTodayHeroCard. The first of each is
+// the plain greeting; the rest are there so the screen does not read the same way twice running.
+// Keep new entries short -- the hero renders them at 25sp with no maxLines, so a long line wraps
+// and pushes the card taller, and translations run longer than the English still.
 private val MORNING_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_morning,
         R.string.dashboard_greeting_morning_alt,
-        R.string.dashboard_greeting_morning_alt2
+        R.string.dashboard_greeting_morning_alt2,
+        R.string.dashboard_greeting_morning_alt3,
+        R.string.dashboard_greeting_morning_alt4,
+        R.string.dashboard_greeting_morning_alt5,
+        R.string.dashboard_greeting_morning_alt6,
+        R.string.dashboard_greeting_morning_alt7
 )
 private val AFTERNOON_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_afternoon,
         R.string.dashboard_greeting_afternoon_alt,
-        R.string.dashboard_greeting_afternoon_alt2
+        R.string.dashboard_greeting_afternoon_alt2,
+        R.string.dashboard_greeting_afternoon_alt3,
+        R.string.dashboard_greeting_afternoon_alt4,
+        R.string.dashboard_greeting_afternoon_alt5,
+        R.string.dashboard_greeting_afternoon_alt6,
+        R.string.dashboard_greeting_afternoon_alt7
 )
 private val EVENING_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_evening,
         R.string.dashboard_greeting_evening_alt,
-        R.string.dashboard_greeting_evening_alt2
+        R.string.dashboard_greeting_evening_alt2,
+        R.string.dashboard_greeting_evening_alt3,
+        R.string.dashboard_greeting_evening_alt4,
+        R.string.dashboard_greeting_evening_alt5,
+        R.string.dashboard_greeting_evening_alt6,
+        R.string.dashboard_greeting_evening_alt7
 )
 private val NIGHT_GREETINGS = intArrayOf(
         R.string.dashboard_greeting_night,
         R.string.dashboard_greeting_night_alt,
-        R.string.dashboard_greeting_night_alt2
+        R.string.dashboard_greeting_night_alt2,
+        R.string.dashboard_greeting_night_alt3,
+        R.string.dashboard_greeting_night_alt4,
+        R.string.dashboard_greeting_night_alt5,
+        R.string.dashboard_greeting_night_alt6,
+        R.string.dashboard_greeting_night_alt7
 )
 
 /** Lightest fill a day with any writing at all gets, before volume scales it up to full. */
@@ -520,16 +543,17 @@ private fun DashboardTodayHeroCard(
         // Derived from `now` (the same instant already shown in the meta row) rather than a
         // separately cached clock read, so it can't drift out of sync with the displayed time
         // or freeze on the hour it first composed at.
-        // Rotated by the date rather than picked at random: this card recomposes on every
-        // minute tick, and a random pick would reshuffle the greeting under the reader once a
-        // minute. Keyed on the day, it is stable while the screen is open and different tomorrow.
+        // Rolled once per visit to the screen and then held: this card recomposes on every
+        // minute tick, so re-rolling inline would swap the greeting out from under someone
+        // mid-read. remember() gives a fresh one each time the dashboard is opened instead.
+        val greetingRoll = remember { Random.nextInt() }
         val greetings = when (now.hour) {
                 in 5..11 -> MORNING_GREETINGS
                 in 12..16 -> AFTERNOON_GREETINGS
                 in 17..21 -> EVENING_GREETINGS
                 else -> NIGHT_GREETINGS
         }
-        val greeting = greetings[today.toEpochDay().mod(greetings.size)]
+        val greeting = greetings[greetingRoll.mod(greetings.size)]
         // Truncated on a grapheme boundary: a plain take() cuts UTF-16 units, so an emoji (or
         // any combining sequence) straddling the limit rendered as half a character.
         val heroPreview = remember(todayPreview) {
