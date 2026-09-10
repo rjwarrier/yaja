@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.union
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -48,6 +49,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -57,6 +59,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -77,12 +81,15 @@ import com.mj.yaja.ui.theme.DataFontScaleWrapper
 import com.mj.yaja.ui.theme.contentTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
+import java.text.BreakIterator
 import java.text.NumberFormat
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.time.format.TextStyle
 import java.util.Locale
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,9 +109,19 @@ fun DashboardScreen(
         val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
         val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
         val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
+        // Re-read on a minute boundary so the hero's clock actually ticks, and so `today` and
+        // the backup-age check below get recomputed across a midnight rollover without needing
+        // an unrelated state change to force the recomposition.
+        val now by produceState(initialValue = LocalTime.now()) {
+                while (true) {
+                        delay(60_000L - System.currentTimeMillis() % 60_000L)
+                        value = LocalTime.now()
+                }
+        }
+
         // Same formula JournalScaffold.kt uses for the drawer's backup-reminder dot — kept in
         // sync here so the dashboard chip and the drawer agree on when a backup is "due".
-        val backupTooOld = remember(lastBackupTimestamp, backupReminderDays) {
+        val backupTooOld = remember(lastBackupTimestamp, backupReminderDays, now) {
                 if (backupReminderDays <= 0) {
                         false
                 } else if (lastBackupTimestamp <= 0L) {
@@ -124,9 +141,9 @@ fun DashboardScreen(
         // Deliberately not `remember`ed: this screen can stay composed across a midnight
         // rollover (backgrounded overnight, timezone travel), and a frozen "today" would leave
         // the hero card, week strip, and streak filtering silently wrong until the next full
-        // recomposition from an unrelated state change.
+        // recomposition from an unrelated state change. The minute tick above is what drives
+        // that re-read while the screen sits open.
         val today = LocalDate.now()
-        val now = LocalTime.now()
         val hasTodayEntry = today in uiState.datesWithEntries
         val hasAnyEntries = uiState.datesWithEntries.isNotEmpty()
 
@@ -352,6 +369,20 @@ fun DashboardScreen(
         }
 }
 
+/** Longest hero quote shown before the trailing cursor glyph replaces the closing quote. */
+private const val HERO_PREVIEW_MAX_CHARS = 60
+
+/**
+ * Truncates to at most [max] UTF-16 units without splitting a grapheme cluster, so an emoji or
+ * a combining sequence that straddles the limit is dropped whole rather than left half-rendered.
+ */
+private fun takeGraphemes(text: String, max: Int): String {
+        if (text.length <= max) return text
+        val iterator = BreakIterator.getCharacterInstance().apply { setText(text) }
+        val end = iterator.preceding(max + 1)
+        return if (end == BreakIterator.DONE || end == 0) text.take(max) else text.substring(0, end)
+}
+
 private data class DashboardRecentDetail(
         val preview: String,
         val wordCount: Int
@@ -431,10 +462,16 @@ private fun DashboardTodayHeroCard(
                 in 17..21 -> R.string.dashboard_greeting_evening
                 else -> R.string.dashboard_greeting_night
         }
+        // Truncated on a grapheme boundary: a plain take() cuts UTF-16 units, so an emoji (or
+        // any combining sequence) straddling the limit rendered as half a character.
+        val heroPreview = remember(todayPreview) {
+                todayPreview?.let { takeGraphemes(it, HERO_PREVIEW_MAX_CHARS) }
+        }
+        val heroPreviewTruncated = heroPreview != null && heroPreview.length < todayPreview!!.length
         val statusText = when {
                 !hasTodayEntry -> stringResource(R.string.dashboard_status_empty)
-                todayPreview.isNullOrBlank() -> stringResource(R.string.dashboard_status_empty)
-                else -> todayPreview.take(60)
+                heroPreview.isNullOrBlank() -> stringResource(R.string.dashboard_status_empty)
+                else -> heroPreview
         }
 
         Surface(
@@ -477,9 +514,9 @@ private fun DashboardTodayHeroCard(
 
                         Text(
                                 text = buildAnnotatedString {
-                                        if (hasTodayEntry && !todayPreview.isNullOrBlank()) {
+                                        if (hasTodayEntry && !heroPreview.isNullOrBlank()) {
                                                 append("“$statusText")
-                                                if (todayPreview.length > 60) {
+                                                if (heroPreviewTruncated) {
                                                         withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
                                                                 append("▌")
                                                         }
@@ -697,10 +734,14 @@ private fun DashboardWeekSection(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
+                val accessibleDateFormatter = remember {
+                        DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
+                }
                 days.forEach { date ->
                         val isWritten = date in datesWithEntries
                         val isToday = date == today
                         val dayInteraction = remember(date) { MutableInteractionSource() }
+                        val dayDescription = remember(date) { date.format(accessibleDateFormatter) }
                         Column(
                                 modifier = Modifier.weight(1f),
                                 horizontalAlignment = Alignment.CenterHorizontally
@@ -746,7 +787,12 @@ private fun DashboardWeekSection(
                                                         interactionSource = dayInteraction,
                                                         indication = LocalIndication.current,
                                                         onClick = { onOpenDate(date) }
-                                                ),
+                                                )
+                                                // Without this the target announces as "30" with
+                                                // no month, year, or hint that it opens a date.
+                                                .semantics(mergeDescendants = true) {
+                                                        contentDescription = dayDescription
+                                                },
                                         contentAlignment = Alignment.Center
                                 ) {
                                         Text(
@@ -833,7 +879,11 @@ private fun DashboardStatTile(
                                 text = value,
                                 style = MaterialTheme.typography.titleLarge.copy(fontSize = 18.5.sp, letterSpacing = (-0.37).sp),
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onSurface
+                                color = MaterialTheme.colorScheme.onSurface,
+                                // Matches the label and caption below: a large count at a big font
+                                // scale would otherwise wrap and leave the three tiles uneven.
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
@@ -996,11 +1046,16 @@ private fun DashboardRecentRow(
                                 indication = LocalIndication.current,
                                 onClick = onClick
                         )
-                        .padding(horizontal = 4.dp, vertical = 13.dp),
+                        .padding(horizontal = 4.dp, vertical = 13.dp)
+                        // Announce the row as one item; unmerged, TalkBack reads the weekday,
+                        // the bare day number, the preview and the word count as four stops.
+                        .semantics(mergeDescendants = true) {},
                 verticalAlignment = Alignment.CenterVertically
         ) {
                 Column(
-                        modifier = Modifier.width(30.dp),
+                        // A hard width() clipped two-digit dates once the font slider and the
+                        // system font scale multiplied out; the column may now grow past 30dp.
+                        modifier = Modifier.widthIn(min = 30.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                         Text(

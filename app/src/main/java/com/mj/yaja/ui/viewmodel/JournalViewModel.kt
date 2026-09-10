@@ -657,7 +657,7 @@ class JournalViewModel(
         viewModelScope.launch {
             _versionHistoryRestoreInProgress.value = true
             try {
-                clearLookbackSnapshotCache(lookbackSnapshotCache)
+                clearEntrySnapshotCaches()
                 withContext(Dispatchers.IO) {
                     restoreVersionHistorySnapshotAndRefresh(
                         fileManager = fileManager,
@@ -1482,13 +1482,15 @@ class JournalViewModel(
 
     /**
      * Cached preview + word count for the dashboard's Recent rows. Only misses hit disk; a hit
-     * on every date returns immediately with no IO. Invalidated wherever an entry for that date
-     * changes (see the invalidateDashboardRecentCache call sites).
+     * on every date returns immediately with no IO. Invalidated per date wherever an entry for
+     * that date changes, and wholesale by [clearEntrySnapshotCaches].
      */
     suspend fun getDashboardRecentSnapshot(
         dates: List<LocalDate>
     ): Map<LocalDate, DashboardEntrySnapshot> {
-        val missing = dates.filterNot { dashboardRecentSnapshotCache.containsKey(it) }
+        val missing = synchronized(dashboardRecentSnapshotCache) {
+            dates.filterNot { dashboardRecentSnapshotCache.containsKey(it) }
+        }
         if (missing.isNotEmpty()) {
             val metrics = getTimelineMetrics(missing)
             coroutineScope {
@@ -1496,20 +1498,36 @@ class JournalViewModel(
                     async { getTimelinePreview(date) }
                 }
                 previewDeferredByDate.forEach { (date, deferred) ->
-                    dashboardRecentSnapshotCache[date] = DashboardEntrySnapshot(
+                    val snapshot = DashboardEntrySnapshot(
                         preview = deferred.await(),
                         wordCount = metrics[date]?.wordCount ?: 0
                     )
+                    synchronized(dashboardRecentSnapshotCache) {
+                        dashboardRecentSnapshotCache[date] = snapshot
+                    }
                 }
             }
         }
-        return dates.associateWith {
-            dashboardRecentSnapshotCache[it] ?: DashboardEntrySnapshot(preview = null, wordCount = 0)
+        return synchronized(dashboardRecentSnapshotCache) {
+            dates.associateWith {
+                dashboardRecentSnapshotCache[it] ?: DashboardEntrySnapshot(preview = null, wordCount = 0)
+            }
         }
     }
 
     private fun invalidateDashboardRecentCache(date: LocalDate) {
-        dashboardRecentSnapshotCache.remove(date)
+        synchronized(dashboardRecentSnapshotCache) { dashboardRecentSnapshotCache.remove(date) }
+    }
+
+    /**
+     * Drops both entry-snapshot caches. A restore, an import, a storage-folder switch or a cache
+     * rebuild can change every date at once, so per-date invalidation can't cover them. The two
+     * caches are cleared together here because clearing only the lookback one left the dashboard
+     * serving Recent previews and word counts from the previous journal.
+     */
+    private fun clearEntrySnapshotCaches() {
+        clearLookbackSnapshotCache(lookbackSnapshotCache)
+        synchronized(dashboardRecentSnapshotCache) { dashboardRecentSnapshotCache.clear() }
     }
 
     fun backupData(context: Context) {
@@ -1674,7 +1692,7 @@ class JournalViewModel(
                     publishRunningState = { current, total ->
                         _importState.value = ImportState.Running(current, total)
                     },
-                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                    clearLookbackCache = { clearEntrySnapshotCaches() },
                     reloadSelectedDate = { loadEntries(_uiState.value.selectedDate) },
                     refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
                     refreshStarredLabels = {
@@ -1863,7 +1881,7 @@ class JournalViewModel(
             onImporterChanged = { currentDayOneImporter = it },
             onImportSuccess = {
                 runEntryImportSuccessRefresh(
-                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                    clearLookbackCache = { clearEntrySnapshotCaches() },
                     forceFileRefresh = { fileManager.forceRefresh { _, _ -> } },
                     markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt
                 )
@@ -1883,7 +1901,7 @@ class JournalViewModel(
             onImporterChanged = { currentJournalisticImporter = it },
             onImportSuccess = {
                 runEntryImportSuccessRefresh(
-                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                    clearLookbackCache = { clearEntrySnapshotCaches() },
                     forceFileRefresh = { fileManager.forceRefresh { _, _ -> } },
                     markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt
                 )
@@ -1903,7 +1921,7 @@ class JournalViewModel(
             onImporterChanged = { currentMarkdownFolderImporter = it },
             onImportSuccess = {
                 runEntryImportSuccessRefresh(
-                    clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                    clearLookbackCache = { clearEntrySnapshotCaches() },
                     forceFileRefresh = { fileManager.forceRefresh { _, _ -> } },
                     markBackgroundRefreshComplete = settingsRepository::setLastBackgroundFullRefreshAt
                 )
@@ -2943,7 +2961,7 @@ class JournalViewModel(
                                 settingsRepository.setStorageUri(nextUri)
                             }
                         },
-                        clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                        clearLookbackCache = { clearEntrySnapshotCaches() },
                         reloadSelectedDate = { loadEntries(_uiState.value.selectedDate) },
                         refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
                         refreshStarredLabels = {
@@ -3048,7 +3066,7 @@ class JournalViewModel(
                                 _syncProgress.value = progress
                             }
                         },
-                        clearLookbackCache = { clearLookbackSnapshotCache(lookbackSnapshotCache) },
+                        clearLookbackCache = { clearEntrySnapshotCaches() },
                         reloadEntries = { date -> loadEntries(date) },
                         refreshCalendarDates = { refreshCalendarDates(forceRefresh = true) },
                         refreshStarredLabels = {
