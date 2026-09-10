@@ -99,6 +99,8 @@ sealed interface ExternalOpenRequest {
     data class Entry(val date: LocalDate, val entryIndex: Int) : ExternalOpenRequest
 }
 
+data class DashboardEntrySnapshot(val preview: String?, val wordCount: Int)
+
 class JournalViewModel(
         internal val fileManager: MarkdownFileManager,
         private val settingsRepository: SettingsRepository,
@@ -417,6 +419,15 @@ class JournalViewModel(
             override fun removeEldestEntry(
                 eldest: MutableMap.MutableEntry<LocalDate, Map<Int, List<String>>>?
             ): Boolean = size > 24
+        }
+    // Backs the Home dashboard's Recent section — same idea as lookbackSnapshotCache, sized
+    // for a handful of screens' worth of "last 3 dates" so repeat dashboard visits (e.g. the
+    // long-press Home/Today toggle bouncing back and forth) don't re-read disk each time.
+    private val dashboardRecentSnapshotCache =
+        object : LinkedHashMap<LocalDate, DashboardEntrySnapshot>(16, 0.75f, true) {
+            override fun removeEldestEntry(
+                eldest: MutableMap.MutableEntry<LocalDate, DashboardEntrySnapshot>?
+            ): Boolean = size > 16
         }
     private var lastPersistedHomeSnapshot: HomeScreenSnapshot? = null
     private var lastStatisticsRequestKey: String? = null
@@ -1048,6 +1059,7 @@ class JournalViewModel(
             val dayLabelSnapshot = _currentDayLabel.value
             viewModelScope.launch {
               invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+              invalidateDashboardRecentCache(date)
               highlightsJob = refreshFavoritedHighlightsWorkflow(
                   scope = viewModelScope,
                   currentJob = highlightsJob,
@@ -1083,6 +1095,7 @@ class JournalViewModel(
             val dayLabelSnapshot = _currentDayLabel.value
             viewModelScope.launch {
               invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+              invalidateDashboardRecentCache(date)
               highlightsJob = refreshFavoritedHighlightsWorkflow(
                   scope = viewModelScope,
                   currentJob = highlightsJob,
@@ -1129,6 +1142,7 @@ class JournalViewModel(
                    val dayLabelSnapshot = _currentDayLabel.value
                    viewModelScope.launch {
                      invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+              invalidateDashboardRecentCache(date)
                    highlightsJob = refreshFavoritedHighlightsWorkflow(
                       scope = viewModelScope,
                       currentJob = highlightsJob,
@@ -1199,6 +1213,7 @@ class JournalViewModel(
                val dayLabelSnapshot = _currentDayLabel.value
                viewModelScope.launch {
                  invalidateLookbackSnapshotCache(lookbackSnapshotCache, date)
+              invalidateDashboardRecentCache(date)
                highlightsJob = refreshFavoritedHighlightsWorkflow(
                   scope = viewModelScope,
                   currentJob = highlightsJob,
@@ -1232,6 +1247,7 @@ class JournalViewModel(
               }
               updateLoadedStatisticsForChangedDate(_uiState.value.selectedDate)
               invalidateLookbackSnapshotCache(lookbackSnapshotCache, _uiState.value.selectedDate)
+              invalidateDashboardRecentCache(_uiState.value.selectedDate)
             highlightsJob = refreshFavoritedHighlightsWorkflow(
                 scope = viewModelScope,
                 currentJob = highlightsJob,
@@ -1276,6 +1292,7 @@ class JournalViewModel(
             )
             updateLoadedStatisticsForChangedDate(commitResult.date)
             invalidateLookbackSnapshotCache(lookbackSnapshotCache, commitResult.date)
+            invalidateDashboardRecentCache(commitResult.date)
             highlightsJob = refreshFavoritedHighlightsWorkflow(
                 scope = viewModelScope,
                 currentJob = highlightsJob,
@@ -1461,6 +1478,38 @@ class JournalViewModel(
 
     suspend fun getTimelinePreview(date: LocalDate): String? = withContext(Dispatchers.IO) {
         fileManager.getEntriesForDate(date).firstOrNull()
+    }
+
+    /**
+     * Cached preview + word count for the dashboard's Recent rows. Only misses hit disk; a hit
+     * on every date returns immediately with no IO. Invalidated wherever an entry for that date
+     * changes (see the invalidateDashboardRecentCache call sites).
+     */
+    suspend fun getDashboardRecentSnapshot(
+        dates: List<LocalDate>
+    ): Map<LocalDate, DashboardEntrySnapshot> {
+        val missing = dates.filterNot { dashboardRecentSnapshotCache.containsKey(it) }
+        if (missing.isNotEmpty()) {
+            val metrics = getTimelineMetrics(missing)
+            coroutineScope {
+                val previewDeferredByDate = missing.associateWith { date ->
+                    async { getTimelinePreview(date) }
+                }
+                previewDeferredByDate.forEach { (date, deferred) ->
+                    dashboardRecentSnapshotCache[date] = DashboardEntrySnapshot(
+                        preview = deferred.await(),
+                        wordCount = metrics[date]?.wordCount ?: 0
+                    )
+                }
+            }
+        }
+        return dates.associateWith {
+            dashboardRecentSnapshotCache[it] ?: DashboardEntrySnapshot(preview = null, wordCount = 0)
+        }
+    }
+
+    private fun invalidateDashboardRecentCache(date: LocalDate) {
+        dashboardRecentSnapshotCache.remove(date)
     }
 
     fun backupData(context: Context) {

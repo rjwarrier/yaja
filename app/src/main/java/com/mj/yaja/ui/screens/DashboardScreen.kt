@@ -1,8 +1,10 @@
 package com.mj.yaja.ui.screens
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,11 +27,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
+import androidx.compose.material.icons.rounded.Backup
 import androidx.compose.material.icons.rounded.Checklist
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Event
+import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Today
@@ -52,6 +56,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -62,10 +67,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mj.yaja.R
+import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppScreenReveal
+import com.mj.yaja.ui.design.AppStaggeredEntrance
+import com.mj.yaja.ui.design.expressiveFabMotion
+import com.mj.yaja.ui.design.expressivePressMotion
+import com.mj.yaja.ui.design.rememberAppEntrance
+import com.mj.yaja.ui.theme.DataFontScaleWrapper
+import com.mj.yaja.ui.theme.contentTextStyle
 import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
-import kotlinx.coroutines.async
 import java.text.NumberFormat
 import java.time.LocalDate
 import java.time.LocalTime
@@ -80,13 +91,29 @@ fun DashboardScreen(
         onOpenDrawer: () -> Unit,
         onNavigateToAddEntry: () -> Unit,
         onOpenToday: () -> Unit,
+        onNavigateToCalendar: () -> Unit,
         onNavigateToTimeline: () -> Unit,
-        onNavigateToStatistics: () -> Unit
+        onNavigateToStatistics: () -> Unit,
+        onNavigateToBackup: () -> Unit
 ) {
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val todos by viewModel.todos.collectAsStateWithLifecycle()
         val events by viewModel.events.collectAsStateWithLifecycle()
         val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
+        val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
+        val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
+        // Same formula JournalScaffold.kt uses for the drawer's backup-reminder dot — kept in
+        // sync here so the dashboard chip and the drawer agree on when a backup is "due".
+        val backupTooOld = remember(lastBackupTimestamp, backupReminderDays) {
+                if (backupReminderDays <= 0) {
+                        false
+                } else if (lastBackupTimestamp <= 0L) {
+                        true
+                } else {
+                        val ageMillis = (System.currentTimeMillis() - lastBackupTimestamp).coerceAtLeast(0L)
+                        ageMillis > backupReminderDays * 24L * 60L * 60L * 1000L
+                }
+        }
 
         LaunchedEffect(Unit) {
                 // Reuses the same freshness cache Statistics relies on, so repeatedly reopening
@@ -150,23 +177,37 @@ fun DashboardScreen(
                         recentDetails = emptyMap()
                         return@LaunchedEffect
                 }
-                // The metrics batch and each date's preview are independent disk reads — fire
-                // them together instead of awaiting one at a time, which serialized what should
-                // be a single round-trip's worth of latency into up to four.
-                val metricsDeferred = async { viewModel.getTimelineMetrics(recentDates) }
-                val previewDeferredByDate = recentDates.associateWith { date ->
-                        async { viewModel.getTimelinePreview(date) }
-                }
-                val metrics = metricsDeferred.await()
-                recentDetails = previewDeferredByDate.mapValues { (date, deferred) ->
+                // ViewModel-level cache: only dates not already cached hit disk, and repeat
+                // dashboard visits (e.g. the long-press Home/Today toggle) come back instantly.
+                recentDetails = viewModel.getDashboardRecentSnapshot(recentDates).mapValues { (_, snapshot) ->
                         DashboardRecentDetail(
-                                preview = deferred.await()
+                                preview = snapshot.preview
                                         ?.let { MarkdownUtils.stripMetadata(it).trim() }
                                         .orEmpty(),
-                                wordCount = metrics[date]?.wordCount ?: 0
+                                wordCount = snapshot.wordCount
                         )
                 }
         }
+
+        // Most recent past year with an entry on this exact month/day — the same "on this day"
+        // matching Lookback uses, but scoped to today specifically rather than whatever date
+        // happens to be selected elsewhere in the app (viewModel.ensureLookbackLoaded() is tied
+        // to uiState.selectedDate, which this screen doesn't own).
+        val onThisDayDate = remember(uiState.datesWithEntries, today) {
+                uiState.datesWithEntries
+                        .asSequence()
+                        .filter { it.isBefore(today) && it.month == today.month && it.dayOfMonth == today.dayOfMonth }
+                        .maxOrNull()
+        }
+        var onThisDayPreview by remember { mutableStateOf<String?>(null) }
+        LaunchedEffect(onThisDayDate) {
+                onThisDayPreview = onThisDayDate?.let { date ->
+                        viewModel.getTimelinePreview(date)?.let { MarkdownUtils.stripMetadata(it).trim() }
+                }
+        }
+
+        val entranceTriggered = rememberAppEntrance()
+        val fabInteractionSource = remember { MutableInteractionSource() }
 
         Scaffold(
                 topBar = {
@@ -178,9 +219,16 @@ fun DashboardScreen(
                 floatingActionButton = {
                         androidx.compose.material3.FloatingActionButton(
                                 onClick = onOpenToday,
+                                interactionSource = fabInteractionSource,
                                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                                modifier = Modifier.padding(bottom = fabBottomPadding)
+                                // Matches the 64dp FABs on the Today screen (HomeFabCluster) —
+                                // the M3 default (56dp) reads visibly smaller next to them —
+                                // and the same press scale/lift/rotate they use.
+                                modifier = Modifier
+                                        .padding(bottom = fabBottomPadding)
+                                        .size(64.dp)
+                                        .expressiveFabMotion(fabInteractionSource)
                         ) {
                                 Icon(
                                         imageVector = Icons.Rounded.Today,
@@ -201,51 +249,101 @@ fun DashboardScreen(
                         ) {
                                 Spacer(modifier = Modifier.height(4.dp))
 
-                                DashboardTodayHeroCard(
-                                        today = today,
-                                        now = now,
-                                        hasTodayEntry = hasTodayEntry,
-                                        hasAnyEntries = hasAnyEntries,
-                                        todayPreview = todayPreview,
-                                        openTodosToday = openTodosToday,
-                                        eventsToday = eventsToday,
-                                        onWriteOrContinue = onNavigateToAddEntry,
-                                        onOpenGlance = onOpenToday
-                                )
+                                AppStaggeredEntrance(
+                                        visible = entranceTriggered,
+                                        index = 0,
+                                        strength = AppEntranceStrength.HERO
+                                ) {
+                                        DashboardTodayHeroCard(
+                                                today = today,
+                                                now = now,
+                                                hasTodayEntry = hasTodayEntry,
+                                                hasAnyEntries = hasAnyEntries,
+                                                todayPreview = todayPreview,
+                                                openTodosToday = openTodosToday,
+                                                eventsToday = eventsToday,
+                                                backupOverdue = backupTooOld,
+                                                onWriteOrContinue = onNavigateToAddEntry,
+                                                onOpenGlance = onOpenToday,
+                                                onBackupClick = onNavigateToBackup
+                                        )
+                                }
 
-                                Spacer(modifier = Modifier.height(22.dp))
-
-                                DashboardWeekSection(
-                                        today = today,
-                                        datesWithEntries = uiState.datesWithEntries,
-                                        currentStreak = allTimeStats?.currentStreak ?: 0,
-                                        onOpenDate = { date ->
-                                                viewModel.selectDate(date, source = "dashboard_week_strip")
-                                                onOpenToday()
+                                if (onThisDayDate != null) {
+                                        Spacer(modifier = Modifier.height(14.dp))
+                                        AppStaggeredEntrance(
+                                                visible = entranceTriggered,
+                                                index = 1,
+                                                strength = AppEntranceStrength.SECTION
+                                        ) {
+                                                DashboardOnThisDayCard(
+                                                        yearsAgo = today.year - onThisDayDate.year,
+                                                        preview = onThisDayPreview,
+                                                        onClick = {
+                                                                viewModel.selectDate(
+                                                                        onThisDayDate,
+                                                                        source = "dashboard_on_this_day"
+                                                                )
+                                                                onOpenToday()
+                                                        }
+                                                )
                                         }
-                                )
+                                }
 
                                 Spacer(modifier = Modifier.height(22.dp))
 
-                                DashboardOverviewRow(
-                                        totalDaysWithEntries = allTimeStats?.totalDaysWithEntries ?: 0,
-                                        totalEntries = allTimeStats?.totalEntries ?: 0,
-                                        currentStreak = allTimeStats?.currentStreak ?: 0,
-                                        onClick = onNavigateToStatistics
-                                )
-
-                                if (recentDates.isNotEmpty()) {
-                                        Spacer(modifier = Modifier.height(22.dp))
-                                        DashboardRecentSection(
-                                                dates = recentDates,
-                                                details = recentDetails,
-                                                todoCounts = recentTodoCounts,
-                                                onAllEntries = onNavigateToTimeline,
+                                AppStaggeredEntrance(
+                                        visible = entranceTriggered,
+                                        index = 2,
+                                        strength = AppEntranceStrength.SECTION
+                                ) {
+                                        DashboardWeekSection(
+                                                today = today,
+                                                datesWithEntries = uiState.datesWithEntries,
+                                                currentStreak = allTimeStats?.currentStreak ?: 0,
                                                 onOpenDate = { date ->
-                                                        viewModel.selectDate(date, source = "dashboard_recent_entry")
+                                                        viewModel.selectDate(date, source = "dashboard_week_strip")
                                                         onOpenToday()
                                                 }
                                         )
+                                }
+
+                                Spacer(modifier = Modifier.height(22.dp))
+
+                                AppStaggeredEntrance(
+                                        visible = entranceTriggered,
+                                        index = 3,
+                                        strength = AppEntranceStrength.SECTION
+                                ) {
+                                        DashboardOverviewRow(
+                                                totalDaysWithEntries = allTimeStats?.totalDaysWithEntries ?: 0,
+                                                totalEntries = allTimeStats?.totalEntries ?: 0,
+                                                currentStreak = allTimeStats?.currentStreak ?: 0,
+                                                longestStreak = allTimeStats?.longestStreakAllTime ?: 0,
+                                                onDaysClick = onNavigateToCalendar,
+                                                onEntriesClick = onNavigateToTimeline,
+                                                onStreakClick = onNavigateToStatistics
+                                        )
+                                }
+
+                                if (recentDates.isNotEmpty()) {
+                                        Spacer(modifier = Modifier.height(22.dp))
+                                        AppStaggeredEntrance(
+                                                visible = entranceTriggered,
+                                                index = 4,
+                                                strength = AppEntranceStrength.SECTION
+                                        ) {
+                                                DashboardRecentSection(
+                                                        dates = recentDates,
+                                                        details = recentDetails,
+                                                        todoCounts = recentTodoCounts,
+                                                        onAllEntries = onNavigateToTimeline,
+                                                        onOpenDate = { date ->
+                                                                viewModel.selectDate(date, source = "dashboard_recent_entry")
+                                                                onOpenToday()
+                                                        }
+                                                )
+                                        }
                                 }
 
                                 Spacer(modifier = Modifier.height(fabBottomPadding + 88.dp))
@@ -317,8 +415,10 @@ private fun DashboardTodayHeroCard(
         todayPreview: String?,
         openTodosToday: Int,
         eventsToday: Int,
+        backupOverdue: Boolean,
         onWriteOrContinue: () -> Unit,
-        onOpenGlance: () -> Unit
+        onOpenGlance: () -> Unit,
+        onBackupClick: () -> Unit
 ) {
         val dateFormatter = remember { DateTimeFormatter.ofPattern("EEEE '·' d MMMM", Locale.getDefault()) }
         val timeFormatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
@@ -398,11 +498,16 @@ private fun DashboardTodayHeroCard(
 
                         Spacer(modifier = Modifier.height(16.dp))
 
+                        val writeButtonInteraction = remember { MutableInteractionSource() }
                         Surface(
                                 onClick = onWriteOrContinue,
+                                interactionSource = writeButtonInteraction,
                                 color = MaterialTheme.colorScheme.primary,
                                 shape = androidx.compose.foundation.shape.RoundedCornerShape(18.dp),
-                                modifier = Modifier.fillMaxWidth().height(52.dp)
+                                modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(52.dp)
+                                        .expressivePressMotion(writeButtonInteraction, pressedScale = 0.97f)
                         ) {
                                 Row(
                                         modifier = Modifier.fillMaxSize(),
@@ -437,6 +542,7 @@ private fun DashboardTodayHeroCard(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
 
+                        val glanceInteraction = remember { MutableInteractionSource() }
                         Row(
                                 modifier = Modifier
                                         .fillMaxWidth()
@@ -446,7 +552,12 @@ private fun DashboardTodayHeroCard(
                                 Row(
                                         modifier = Modifier
                                                 .weight(1f)
-                                                .clickable(onClick = onOpenGlance),
+                                                .expressivePressMotion(glanceInteraction, pressedScale = 0.97f)
+                                                .clickable(
+                                                        interactionSource = glanceInteraction,
+                                                        indication = LocalIndication.current,
+                                                        onClick = onOpenGlance
+                                                ),
                                         verticalAlignment = Alignment.CenterVertically
                                 ) {
                                         DashboardGlanceGroup(
@@ -467,6 +578,46 @@ private fun DashboardTodayHeroCard(
                                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                                         modifier = Modifier.size(18.dp)
                                 )
+                        }
+
+                        if (backupOverdue) {
+                                Spacer(modifier = Modifier.height(10.dp))
+                                val backupInteraction = remember { MutableInteractionSource() }
+                                Row(
+                                        modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clip(androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                                                .background(MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.55f))
+                                                .expressivePressMotion(backupInteraction, pressedScale = 0.97f)
+                                                .clickable(
+                                                        interactionSource = backupInteraction,
+                                                        indication = LocalIndication.current,
+                                                        onClick = onBackupClick
+                                                )
+                                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                        Icon(
+                                                imageVector = Icons.Rounded.Backup,
+                                                contentDescription = null,
+                                                tint = MaterialTheme.colorScheme.onErrorContainer,
+                                                modifier = Modifier.size(15.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text(
+                                                text = stringResource(R.string.dashboard_backup_overdue),
+                                                style = MaterialTheme.typography.labelMedium.copy(fontSize = 11.5.sp),
+                                                fontWeight = FontWeight.SemiBold,
+                                                color = MaterialTheme.colorScheme.onErrorContainer,
+                                                modifier = Modifier.weight(1f)
+                                        )
+                                        Icon(
+                                                imageVector = Icons.Rounded.ChevronRight,
+                                                contentDescription = null,
+                                                tint = MaterialTheme.colorScheme.onErrorContainer,
+                                                modifier = Modifier.size(16.dp)
+                                        )
+                                }
                         }
                 }
         }
@@ -549,6 +700,7 @@ private fun DashboardWeekSection(
                 days.forEach { date ->
                         val isWritten = date in datesWithEntries
                         val isToday = date == today
+                        val dayInteraction = remember(date) { MutableInteractionSource() }
                         Column(
                                 modifier = Modifier.weight(1f),
                                 horizontalAlignment = Alignment.CenterHorizontally
@@ -589,7 +741,12 @@ private fun DashboardWeekSection(
                                                                 else -> Modifier
                                                         }
                                                 )
-                                                .clickable(onClick = { onOpenDate(date) }),
+                                                .expressivePressMotion(dayInteraction, pressedScale = 0.88f)
+                                                .clickable(
+                                                        interactionSource = dayInteraction,
+                                                        indication = LocalIndication.current,
+                                                        onClick = { onOpenDate(date) }
+                                                ),
                                         contentAlignment = Alignment.Center
                                 ) {
                                         Text(
@@ -613,7 +770,10 @@ private fun DashboardOverviewRow(
         totalDaysWithEntries: Int,
         totalEntries: Int,
         currentStreak: Int,
-        onClick: () -> Unit
+        longestStreak: Int,
+        onDaysClick: () -> Unit,
+        onEntriesClick: () -> Unit,
+        onStreakClick: () -> Unit
 ) {
         val numberFormat = remember { NumberFormat.getIntegerInstance(Locale.getDefault()) }
         Row(
@@ -624,19 +784,27 @@ private fun DashboardOverviewRow(
                         modifier = Modifier.weight(1f),
                         value = numberFormat.format(totalDaysWithEntries),
                         label = stringResource(R.string.dashboard_stat_days),
-                        onClick = onClick
+                        onClick = onDaysClick
                 )
                 DashboardStatTile(
                         modifier = Modifier.weight(1f),
                         value = numberFormat.format(totalEntries),
                         label = stringResource(R.string.dashboard_stat_entries),
-                        onClick = onClick
+                        onClick = onEntriesClick
                 )
                 DashboardStatTile(
                         modifier = Modifier.weight(1f),
                         value = numberFormat.format(currentStreak),
                         label = stringResource(R.string.dashboard_stat_streak),
-                        onClick = onClick
+                        // Longest-ever streak is already computed as part of the same stats
+                        // snapshot and otherwise sits unused — showing it here costs nothing
+                        // extra and gives the streak tile some context beyond the raw number.
+                        caption = if (longestStreak > currentStreak) {
+                                stringResource(R.string.dashboard_stat_best_streak_format, numberFormat.format(longestStreak))
+                        } else {
+                                null
+                        },
+                        onClick = onStreakClick
                 )
         }
 }
@@ -646,11 +814,14 @@ private fun DashboardStatTile(
         modifier: Modifier = Modifier,
         value: String,
         label: String,
+        caption: String? = null,
         onClick: () -> Unit
 ) {
+        val interactionSource = remember { MutableInteractionSource() }
         Surface(
                 onClick = onClick,
-                modifier = modifier,
+                interactionSource = interactionSource,
+                modifier = modifier.expressivePressMotion(interactionSource, pressedScale = 0.96f),
                 color = MaterialTheme.colorScheme.surfaceContainerLow,
                 shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)
         ) {
@@ -671,6 +842,71 @@ private fun DashboardStatTile(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
+                        )
+                        if (caption != null) {
+                                Spacer(modifier = Modifier.height(2.dp))
+                                Text(
+                                        text = caption,
+                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.sp),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                )
+                        }
+                }
+        }
+}
+
+@Composable
+private fun DashboardOnThisDayCard(
+        yearsAgo: Int,
+        preview: String?,
+        onClick: () -> Unit
+) {
+        val interactionSource = remember { MutableInteractionSource() }
+        Surface(
+                onClick = onClick,
+                interactionSource = interactionSource,
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .expressivePressMotion(interactionSource, pressedScale = 0.97f),
+                color = MaterialTheme.colorScheme.surfaceContainerLow,
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)
+        ) {
+                Row(
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                ) {
+                        Icon(
+                                imageVector = Icons.Rounded.History,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                        text = pluralStringResource(R.plurals.dashboard_on_this_day, yearsAgo, yearsAgo),
+                                        style = MaterialTheme.typography.labelLarge.copy(fontSize = 13.5.sp),
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                )
+                                if (!preview.isNullOrBlank()) {
+                                        Spacer(modifier = Modifier.height(2.dp))
+                                        Text(
+                                                text = preview,
+                                                style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.5.sp, lineHeight = 16.5.sp),
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                maxLines = 2,
+                                                overflow = TextOverflow.Ellipsis
+                                        )
+                                }
+                        }
+                        Icon(
+                                imageVector = Icons.Rounded.ChevronRight,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.size(18.dp)
                         )
                 }
         }
@@ -694,9 +930,16 @@ private fun DashboardRecentSection(
                         style = MaterialTheme.typography.labelSmall.copy(letterSpacing = 1.7.sp),
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                val allEntriesInteraction = remember { MutableInteractionSource() }
                 Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.clickable(onClick = onAllEntries)
+                        modifier = Modifier
+                                .expressivePressMotion(allEntriesInteraction, pressedScale = 0.94f)
+                                .clickable(
+                                        interactionSource = allEntriesInteraction,
+                                        indication = LocalIndication.current,
+                                        onClick = onAllEntries
+                                )
                 ) {
                         Text(
                                 text = stringResource(R.string.dashboard_all_entries),
@@ -741,10 +984,16 @@ private fun DashboardRecentRow(
         onClick: () -> Unit
 ) {
         val weekdayFormatter = remember { DateTimeFormatter.ofPattern("EEE", Locale.getDefault()) }
+        val interactionSource = remember { MutableInteractionSource() }
         Row(
                 modifier = Modifier
                         .fillMaxWidth()
-                        .clickable(onClick = onClick)
+                        .expressivePressMotion(interactionSource, pressedScale = 0.98f)
+                        .clickable(
+                                interactionSource = interactionSource,
+                                indication = LocalIndication.current,
+                                onClick = onClick
+                        )
                         .padding(horizontal = 4.dp, vertical = 13.dp),
                 verticalAlignment = Alignment.CenterVertically
         ) {
@@ -754,25 +1003,27 @@ private fun DashboardRecentRow(
                 ) {
                         Text(
                                 text = date.format(weekdayFormatter).uppercase(Locale.getDefault()),
-                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 9.5.sp, letterSpacing = 0.95.sp),
+                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp, letterSpacing = 0.95.sp),
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
                                 text = date.dayOfMonth.toString(),
-                                style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp, lineHeight = 20.sp),
+                                style = MaterialTheme.typography.titleMedium.copy(fontSize = 17.sp, lineHeight = 21.sp),
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurface
                         )
                 }
                 Spacer(modifier = Modifier.width(13.dp))
                 Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                                text = detail?.preview.orEmpty(),
-                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.5.sp, lineHeight = 18.75.sp),
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = 2,
-                                overflow = TextOverflow.Ellipsis
-                        )
+                        DataFontScaleWrapper {
+                                Text(
+                                        text = detail?.preview.orEmpty(),
+                                        style = MaterialTheme.typography.contentTextStyle(),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 2,
+                                        overflow = TextOverflow.Ellipsis
+                                )
+                        }
                         Spacer(modifier = Modifier.height(6.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
@@ -780,7 +1031,7 @@ private fun DashboardRecentRow(
                                                 R.string.dashboard_words_count_format,
                                                 detail?.wordCount ?: 0
                                         ),
-                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
+                                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.5.sp),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 if (todoCount > 0) {
@@ -789,12 +1040,12 @@ private fun DashboardRecentRow(
                                                 imageVector = Icons.Rounded.Checklist,
                                                 contentDescription = null,
                                                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                                modifier = Modifier.size(12.dp)
+                                                modifier = Modifier.size(13.dp)
                                         )
                                         Spacer(modifier = Modifier.width(3.dp))
                                         Text(
                                                 text = todoCount.toString(),
-                                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.5.sp),
+                                                style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.5.sp),
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                 }

@@ -157,6 +157,11 @@
     <string name="dashboard_stat_streak">Day streak</string>
     <string name="dashboard_stat_days">Days written</string>
     <string name="dashboard_stat_entries">Entries</string>
+    <string name="dashboard_stat_best_streak_format">Best: %1$s</string>
+    <plurals name="dashboard_on_this_day">
+        <item quantity="one">%1$d year ago today</item>
+        <item quantity="other">%1$d years ago today</item>
+    </plurals>
     <string name="dashboard_status_empty">Nothing written today yet.</string>
     <string name="dashboard_write_first_entry">Write your first entry</string>
     <string name="dashboard_write_today">Write today\'s entry</string>
@@ -169,6 +174,7 @@
     <string name="dashboard_all_entries">All entries</string>
     <string name="dashboard_words_count_format">%1$d words</string>
     <string name="dashboard_goto_today">Go to Today</string>
+    <string name="dashboard_backup_overdue">Backup overdue</string>
 
     <string name="settings_calendar_density_title">Calendar Density</string>
     <string name="settings_calendar_density_subtitle">Tune the calendar grid for comfort, compact scanning, or maximum date density.</string>

@@ -88,11 +88,18 @@ internal fun NavGraphBuilder.addCoreJournalRoutes(
                                         popUpTo(Route.Home.path) { inclusive = true }
                                 }
                         },
+                        onNavigateToCalendar = {
+                                viewModel.refreshCalendarDates()
+                                navController.navigate(Route.Calendar.path) { popUpTo(Route.Home.path) }
+                        },
                         onNavigateToTimeline = {
                                 navController.navigate(Route.Timeline.path)
                         },
                         onNavigateToStatistics = {
                                 navController.navigate(Route.Statistics.path) { popUpTo(Route.Home.path) }
+                        },
+                        onNavigateToBackup = {
+                                navController.navigate(Route.DataRecovery.path) { popUpTo(Route.Home.path) }
                         }
                 )
         }
