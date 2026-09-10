@@ -85,7 +85,9 @@ import com.mj.yaja.ui.utils.MarkdownUtils
 import com.mj.yaja.ui.viewmodel.JournalViewModel
 import java.text.BreakIterator
 import java.text.NumberFormat
+import java.time.Duration
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -114,19 +116,23 @@ fun DashboardScreen(
         val allTimeStats by viewModel.allTimeStats.collectAsStateWithLifecycle()
         val lastBackupTimestamp by viewModel.lastBackupTimestamp.collectAsStateWithLifecycle()
         val backupReminderDays by viewModel.backupReminderDays.collectAsStateWithLifecycle()
-        // Re-read on a minute boundary so the hero's clock actually ticks, and so `today` and
-        // the backup-age check below get recomputed across a midnight rollover without needing
-        // an unrelated state change to force the recomposition.
-        val now by produceState(initialValue = LocalTime.now()) {
+        // Rolls over at local midnight. This screen can stay composed across one (backgrounded
+        // overnight, timezone travel), and a frozen "today" would leave the hero card, week
+        // strip and streak filtering silently wrong. It waits for the boundary rather than
+        // polling, so the whole screen recomposes once a day; the clock inside the hero card
+        // ticks on its own, where only that card pays for it.
+        val today by produceState(initialValue = LocalDate.now()) {
                 while (true) {
-                        delay(60_000L - System.currentTimeMillis() % 60_000L)
-                        value = LocalTime.now()
+                        val at = LocalDateTime.now()
+                        val nextMidnight = at.toLocalDate().plusDays(1).atStartOfDay()
+                        delay(Duration.between(at, nextMidnight).toMillis().coerceAtLeast(1_000L))
+                        value = LocalDate.now()
                 }
         }
 
         // Same formula JournalScaffold.kt uses for the drawer's backup-reminder dot — kept in
         // sync here so the dashboard chip and the drawer agree on when a backup is "due".
-        val backupTooOld = remember(lastBackupTimestamp, backupReminderDays, now) {
+        val backupTooOld = remember(lastBackupTimestamp, backupReminderDays, today) {
                 if (backupReminderDays <= 0) {
                         false
                 } else if (lastBackupTimestamp <= 0L) {
@@ -143,12 +149,6 @@ fun DashboardScreen(
                 viewModel.ensureStatisticsLoaded(StatisticsPeriod.ALL_TIME)
         }
 
-        // Deliberately not `remember`ed: this screen can stay composed across a midnight
-        // rollover (backgrounded overnight, timezone travel), and a frozen "today" would leave
-        // the hero card, week strip, and streak filtering silently wrong until the next full
-        // recomposition from an unrelated state change. The minute tick above is what drives
-        // that re-read while the screen sits open.
-        val today = LocalDate.now()
         val hasTodayEntry = today in uiState.datesWithEntries
         val hasAnyEntries = uiState.datesWithEntries.isNotEmpty()
 
@@ -303,7 +303,6 @@ fun DashboardScreen(
                                 ) {
                                         DashboardTodayHeroCard(
                                                 today = today,
-                                                now = now,
                                                 hasTodayEntry = hasTodayEntry,
                                                 hasAnyEntries = hasAnyEntries,
                                                 todayPreview = todayPreview,
@@ -557,7 +556,6 @@ private fun DashboardTopBar(onOpenDrawer: () -> Unit, onSearch: () -> Unit) {
 @Composable
 private fun DashboardTodayHeroCard(
         today: LocalDate,
-        now: LocalTime,
         hasTodayEntry: Boolean,
         hasAnyEntries: Boolean,
         todayPreview: String?,
@@ -571,6 +569,14 @@ private fun DashboardTodayHeroCard(
         onBackupClick: () -> Unit,
         onOpenTasks: () -> Unit
 ) {
+        // Scoped here rather than to the screen: this is the only thing on the dashboard that
+        // shows a clock, and reading the tick further up recomposed the whole screen every minute.
+        val now by produceState(initialValue = LocalTime.now()) {
+                while (true) {
+                        delay(60_000L - System.currentTimeMillis() % 60_000L)
+                        value = LocalTime.now()
+                }
+        }
         val dateFormatter = remember { DateTimeFormatter.ofPattern("EEEE '·' d MMMM", Locale.getDefault()) }
         val timeFormatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
         // Derived from `now` (the same instant already shown in the meta row) rather than a

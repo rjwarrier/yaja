@@ -1312,6 +1312,16 @@ class JournalViewModel(
     private fun queuePostLaunchRefreshWork(date: LocalDate, dateCount: Int) {
         val safeMode =
             dateCount >= LARGE_JOURNAL_DATE_THRESHOLD && settingsRepository.largeJournalSafeMode.value
+        // This queue was ordered when Today was the only landing screen. The dashboard renders
+        // from calendarDates alone -- the date set drives its week strip, Recent list and "on
+        // this day" card. Labels, lookback, highlights and monthly stats are all Today's, and
+        // Today is a tap away, so when Home is the default screen they are demoted rather than
+        // dropped: the screen in front of the user fills in first and the rest follows.
+        val homeIsDefault =
+            settingsRepository.defaultScreenPreference.value ==
+                com.mj.yaja.data.DefaultScreenPreference.HOME
+        fun todayOnly(priority: StartupRefreshPriority) =
+            if (homeIsDefault) StartupRefreshPriority.BACKGROUND_STATE else priority
         deferredStartupJob = launchStartupRefreshQueueWorkflow(
             currentJob = deferredStartupJob,
             scope = viewModelScope,
@@ -1319,7 +1329,7 @@ class JournalViewModel(
                 StartupRefreshTask(
                     name = "journalMeta",
                     label = "Loading labels and follow-ups",
-                    priority = StartupRefreshPriority.VISIBLE_STATE,
+                    priority = todayOnly(StartupRefreshPriority.VISIBLE_STATE),
                     timeoutMs = if (safeMode) 12_000L else 8_000L,
                     block = ::refreshJournalMetaNow
                 ),
@@ -1333,14 +1343,14 @@ class JournalViewModel(
                 StartupRefreshTask(
                     name = "lookback",
                     label = "Preparing lookback",
-                    priority = StartupRefreshPriority.SECONDARY_STATE,
+                    priority = todayOnly(StartupRefreshPriority.SECONDARY_STATE),
                     timeoutMs = if (safeMode) 16_000L else 12_000L,
                     block = { refreshLookbackNow(date) }
                 ),
                 StartupRefreshTask(
                     name = "highlights",
                     label = "Preparing highlights",
-                    priority = StartupRefreshPriority.SECONDARY_STATE,
+                    priority = todayOnly(StartupRefreshPriority.SECONDARY_STATE),
                     timeoutMs = 5_000L,
                     block = { refreshHighlightsNow() }
                 ),
