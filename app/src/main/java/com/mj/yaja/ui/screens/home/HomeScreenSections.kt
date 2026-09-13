@@ -77,6 +77,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -304,6 +306,8 @@ fun HomeTopBar(
     searchQuery: String,
     onSearchQueryChanged: (String) -> Unit,
     onClearSearch: () -> Unit,
+    searchFocusRequested: Boolean = false,
+    onSearchFocusConsumed: () -> Unit = {},
     onOpenDrawer: () -> Unit,
     isFavorited: Boolean,
     onToggleStar: () -> Unit,
@@ -342,6 +346,15 @@ fun HomeTopBar(
             // every search keystroke, and a SubcomposeLayout here would pay for that each time.
             // 16.dp of padding either side, so the row is 32.dp narrower than the window.
             val compactSearch = LocalConfiguration.current.screenWidthDp.dp - 32.dp < 360.dp
+            // The dashboard's search button lands here; focusing the field (which raises the
+            // keyboard) is what makes that tap read as "search" rather than a plain jump to Today.
+            val searchFocusRequester = remember { FocusRequester() }
+            LaunchedEffect(searchFocusRequested) {
+                if (searchFocusRequested) {
+                    searchFocusRequester.requestFocus()
+                    onSearchFocusConsumed()
+                }
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -368,7 +381,9 @@ fun HomeTopBar(
                             overflow = TextOverflow.Ellipsis
                         )
                     },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .focusRequester(searchFocusRequester),
                     leadingIcon = {
                         Icon(
                             Icons.Rounded.Search,

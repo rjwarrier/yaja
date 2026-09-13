@@ -60,6 +60,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import android.text.format.DateFormat
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -71,7 +73,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.repeatOnLifecycle
 import com.mj.yaja.R
 import com.mj.yaja.ui.design.AppEntranceStrength
 import com.mj.yaja.ui.design.AppScreenReveal
@@ -121,12 +126,18 @@ fun DashboardScreen(
         // strip and streak filtering silently wrong. It waits for the boundary rather than
         // polling, so the whole screen recomposes once a day; the clock inside the hero card
         // ticks on its own, where only that card pays for it.
-        val today by produceState(initialValue = LocalDate.now()) {
-                while (true) {
-                        val at = LocalDateTime.now()
-                        val nextMidnight = at.toLocalDate().plusDays(1).atStartOfDay()
-                        delay(Duration.between(at, nextMidnight).toMillis().coerceAtLeast(1_000L))
-                        value = LocalDate.now()
+        // The wait alone isn't enough: delay() runs on the uptime clock, which stops while the
+        // phone is in deep sleep, so a dashboard left open overnight woke up still on yesterday.
+        // Restarting on every resume re-reads the wall clock before anything can be tapped.
+        val lifecycleOwner = LocalLifecycleOwner.current
+        val today by produceState(initialValue = LocalDate.now(), lifecycleOwner) {
+                lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                        while (true) {
+                                val at = LocalDateTime.now()
+                                value = at.toLocalDate()
+                                val nextMidnight = at.toLocalDate().plusDays(1).atStartOfDay()
+                                delay(Duration.between(at, nextMidnight).toMillis().coerceAtLeast(1_000L))
+                        }
                 }
         }
 
@@ -161,8 +172,9 @@ fun DashboardScreen(
                 }
         }
 
-        val openTodosToday = remember(todos) { todos.count { it.date == today && !it.isChecked } }
-        val eventsToday = remember(events) { events.count { it.date == today } }
+        // Keyed on today too: without it the counts kept yesterday's date after a midnight rollover.
+        val openTodosToday = remember(todos, today) { todos.count { it.date == today && !it.isChecked } }
+        val eventsToday = remember(events, today) { events.count { it.date == today } }
         // Both lists are already in memory for the counts above; the glance row only ever looked
         // at today, so a task left unfinished on Monday and a birthday tomorrow were invisible on
         // what is now the default screen. Filtering them costs no extra IO.
@@ -253,6 +265,20 @@ fun DashboardScreen(
                 }
         }
 
+        // The hero card and FAB are about today, but Home/AddEntry act on uiState.selectedDate,
+        // which can still point at a past day (a Recent/week-strip tap earlier, or the app
+        // resumed after midnight). Pin it to today first so writes never land on a stale day.
+        // Reads the wall clock at tap time rather than `today`, which can lag a rollover briefly.
+        val selectTodayThen: (() -> Unit) -> () -> Unit = { action ->
+                {
+                        val now = LocalDate.now()
+                        if (uiState.selectedDate != now) {
+                                viewModel.selectDate(now, source = "dashboard_today")
+                        }
+                        action()
+                }
+        }
+
         val entranceTriggered = rememberAppEntrance()
         val fabInteractionSource = remember { MutableInteractionSource() }
 
@@ -260,12 +286,17 @@ fun DashboardScreen(
                 topBar = {
                         DashboardTopBar(
                                 onOpenDrawer = onOpenDrawer,
-                                onSearch = onOpenToday
+                                onSearch = {
+                                        // Home's search field is always there but unfocused, so
+                                        // landing on it alone left the tap looking like it did nothing.
+                                        viewModel.requestSearchFocus()
+                                        onOpenToday()
+                                }
                         )
                 },
                 floatingActionButton = {
                         androidx.compose.material3.FloatingActionButton(
-                                onClick = onOpenToday,
+                                onClick = selectTodayThen(onOpenToday),
                                 interactionSource = fabInteractionSource,
                                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -311,8 +342,8 @@ fun DashboardScreen(
                                                 overdueTodos = overdueTodos,
                                                 upcomingEvents = upcomingEvents,
                                                 backupOverdue = backupTooOld,
-                                                onWriteOrContinue = onNavigateToAddEntry,
-                                                onOpenGlance = onOpenToday,
+                                                onWriteOrContinue = selectTodayThen(onNavigateToAddEntry),
+                                                onOpenGlance = selectTodayThen(onOpenToday),
                                                 onBackupClick = onNavigateToBackup,
                                                 onOpenTasks = onNavigateToTasks
                                         )
@@ -578,7 +609,14 @@ private fun DashboardTodayHeroCard(
                 }
         }
         val dateFormatter = remember { DateTimeFormatter.ofPattern("EEEE '·' d MMMM", Locale.getDefault()) }
-        val timeFormatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
+        // Follows the phone's 12/24-hour setting; a fixed "HH:mm" showed 24-hour time to
+        // everyone. Read each composition so flipping the setting takes effect on the next tick.
+        val is24Hour = DateFormat.is24HourFormat(LocalContext.current)
+        val timeFormatter = remember(is24Hour) {
+                DateTimeFormatter.ofPattern(
+                        DateFormat.getBestDateTimePattern(Locale.getDefault(), if (is24Hour) "Hm" else "hm")
+                )
+        }
         // Derived from `now` (the same instant already shown in the meta row) rather than a
         // separately cached clock read, so it can't drift out of sync with the displayed time
         // or freeze on the hour it first composed at.
@@ -599,9 +637,11 @@ private fun DashboardTodayHeroCard(
                 todayPreview?.let { takeGraphemes(it, HERO_PREVIEW_MAX_CHARS) }
         }
         val heroPreviewTruncated = heroPreview != null && heroPreview.length < todayPreview!!.length
+        // A day whose entry is only metadata (a mood, tags) has no preview text. It isn't empty,
+        // so saying "nothing written" next to a Continue button was wrong; show no line instead.
         val statusText = when {
                 !hasTodayEntry -> stringResource(R.string.dashboard_status_empty)
-                heroPreview.isNullOrBlank() -> stringResource(R.string.dashboard_status_empty)
+                heroPreview.isNullOrBlank() -> null
                 else -> heroPreview
         }
 
@@ -641,28 +681,30 @@ private fun DashboardTodayHeroCard(
                                 color = MaterialTheme.colorScheme.onSurface
                         )
 
-                        Spacer(modifier = Modifier.height(7.dp))
+                        if (statusText != null) {
+                                Spacer(modifier = Modifier.height(7.dp))
 
-                        Text(
-                                text = buildAnnotatedString {
-                                        if (hasTodayEntry && !heroPreview.isNullOrBlank()) {
-                                                append("“$statusText")
-                                                if (heroPreviewTruncated) {
-                                                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
-                                                                append("▌")
+                                Text(
+                                        text = buildAnnotatedString {
+                                                if (hasTodayEntry && !heroPreview.isNullOrBlank()) {
+                                                        append("“$statusText")
+                                                        if (heroPreviewTruncated) {
+                                                                withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
+                                                                        append("▌")
+                                                                }
+                                                        } else {
+                                                                append("”")
                                                         }
                                                 } else {
-                                                        append("”")
+                                                        append(statusText)
                                                 }
-                                        } else {
-                                                append(statusText)
-                                        }
-                                },
-                                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp, lineHeight = 18.85.sp),
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                                maxLines = 2,
-                                overflow = TextOverflow.Ellipsis
-                        )
+                                        },
+                                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp, lineHeight = 18.85.sp),
+                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                                        maxLines = 2,
+                                        overflow = TextOverflow.Ellipsis
+                                )
+                        }
 
                         Spacer(modifier = Modifier.height(16.dp))
 

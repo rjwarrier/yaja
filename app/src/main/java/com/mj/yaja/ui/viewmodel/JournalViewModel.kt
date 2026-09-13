@@ -429,6 +429,9 @@ class JournalViewModel(
                 eldest: MutableMap.MutableEntry<LocalDate, DashboardEntrySnapshot>?
             ): Boolean = size > 16
         }
+    // Bumped under the cache lock on every invalidation, so a load that started before one
+    // can tell its results are stale and skip caching them. Guarded by dashboardRecentSnapshotCache.
+    private var dashboardRecentCacheEpoch = 0L
     private var lastPersistedHomeSnapshot: HomeScreenSnapshot? = null
     private var lastStatisticsRequestKey: String? = null
     private var lastStatisticsCompletedAt: Long = 0L
@@ -1498,9 +1501,10 @@ class JournalViewModel(
     suspend fun getDashboardRecentSnapshot(
         dates: List<LocalDate>
     ): Map<LocalDate, DashboardEntrySnapshot> {
-        val missing = synchronized(dashboardRecentSnapshotCache) {
-            dates.filterNot { dashboardRecentSnapshotCache.containsKey(it) }
+        val (missing, startEpoch) = synchronized(dashboardRecentSnapshotCache) {
+            dates.filterNot { dashboardRecentSnapshotCache.containsKey(it) } to dashboardRecentCacheEpoch
         }
+        val loaded = HashMap<LocalDate, DashboardEntrySnapshot>()
         if (missing.isNotEmpty()) {
             val metrics = getTimelineMetrics(missing)
             coroutineScope {
@@ -1508,25 +1512,34 @@ class JournalViewModel(
                     async { getTimelinePreview(date) }
                 }
                 previewDeferredByDate.forEach { (date, deferred) ->
-                    val snapshot = DashboardEntrySnapshot(
+                    loaded[date] = DashboardEntrySnapshot(
                         preview = deferred.await(),
                         wordCount = metrics[date]?.wordCount ?: 0
                     )
-                    synchronized(dashboardRecentSnapshotCache) {
-                        dashboardRecentSnapshotCache[date] = snapshot
-                    }
+                }
+            }
+            synchronized(dashboardRecentSnapshotCache) {
+                // A save or restore that landed while this read was on disk may have made it
+                // stale. Caching it anyway would pin the old preview until the next edit.
+                if (dashboardRecentCacheEpoch == startEpoch) {
+                    dashboardRecentSnapshotCache.putAll(loaded)
                 }
             }
         }
         return synchronized(dashboardRecentSnapshotCache) {
             dates.associateWith {
-                dashboardRecentSnapshotCache[it] ?: DashboardEntrySnapshot(preview = null, wordCount = 0)
+                loaded[it]
+                    ?: dashboardRecentSnapshotCache[it]
+                    ?: DashboardEntrySnapshot(preview = null, wordCount = 0)
             }
         }
     }
 
     private fun invalidateDashboardRecentCache(date: LocalDate) {
-        synchronized(dashboardRecentSnapshotCache) { dashboardRecentSnapshotCache.remove(date) }
+        synchronized(dashboardRecentSnapshotCache) {
+            dashboardRecentSnapshotCache.remove(date)
+            dashboardRecentCacheEpoch++
+        }
     }
 
     /**
@@ -1537,7 +1550,25 @@ class JournalViewModel(
      */
     private fun clearEntrySnapshotCaches() {
         clearLookbackSnapshotCache(lookbackSnapshotCache)
-        synchronized(dashboardRecentSnapshotCache) { dashboardRecentSnapshotCache.clear() }
+        synchronized(dashboardRecentSnapshotCache) {
+            dashboardRecentSnapshotCache.clear()
+            dashboardRecentCacheEpoch++
+        }
+    }
+
+    /**
+     * One-shot request, set by the dashboard's search button, for Home to focus its search field
+     * once it's on screen. Home consumes it so returning to Home later doesn't pop the keyboard.
+     */
+    private val _searchFocusRequested = MutableStateFlow(false)
+    val searchFocusRequested: StateFlow<Boolean> = _searchFocusRequested.asStateFlow()
+
+    fun requestSearchFocus() {
+        _searchFocusRequested.value = true
+    }
+
+    fun consumeSearchFocusRequest() {
+        _searchFocusRequested.value = false
     }
 
     fun backupData(context: Context) {

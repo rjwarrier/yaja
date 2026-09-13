@@ -123,6 +123,8 @@ fun HomeScreen(
         val keywordHighlightingEnabled by
                 viewModel.keywordHighlightingEnabled.collectAsStateWithLifecycle()
 
+        val searchFocusRequested by viewModel.searchFocusRequested.collectAsStateWithLifecycle()
+
         LaunchedEffect(uiState.selectedDate) {
                 viewModel.loadVersionHistorySnapshots(uiState.selectedDate)
         }
@@ -188,6 +190,8 @@ fun HomeScreen(
                         searchResults = uiState.searchResults,
                         onSearchQueryChanged = { viewModel.updateSearchQuery(it) },
                         onClearSearch = { viewModel.clearSearch() },
+                        searchFocusRequested = searchFocusRequested,
+                        onSearchFocusConsumed = { viewModel.consumeSearchFocusRequest() },
                         showTimestamps = showTimestamps,
                         showDayHeaderStats = showDayHeaderStats,
                         hideTextModeEnabled = hideTextModeEnabled,
@@ -326,6 +330,8 @@ fun HomeScreenContent(
         searchResults: List<com.mj.yaja.data.SearchResult> = emptyList(),
         onSearchQueryChanged: (String) -> Unit = {},
         onClearSearch: () -> Unit = {},
+        searchFocusRequested: Boolean = false,
+        onSearchFocusConsumed: () -> Unit = {},
         showTimestamps: Boolean = true,
         showDayHeaderStats: Boolean = true,
         hideTextModeEnabled: Boolean = false,
@@ -406,6 +412,8 @@ fun HomeScreenContent(
                                 searchQuery = searchQuery,
                                 onSearchQueryChanged = onSearchQueryChanged,
                                 onClearSearch = onClearSearch,
+                                searchFocusRequested = searchFocusRequested,
+                                onSearchFocusConsumed = onSearchFocusConsumed,
                                 onOpenDrawer = onOpenDrawer,
                                 isFavorited = isFavorited,
                                 onToggleStar = onToggleStar,
