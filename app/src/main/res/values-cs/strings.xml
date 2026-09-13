@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Zapsaných dní</string>
     <string name="dashboard_stat_entries">Záznamy</string>
     <string name="dashboard_status_empty">Dnes zatím nic napsáno.</string>
+    <string name="dashboard_prompt_1">Co tě dnes rozesmálo?</string>
+    <string name="dashboard_prompt_2">Na co právě myslíš?</string>
+    <string name="dashboard_prompt_3">Jedna věc, kterou si z dneška chceš zapamatovat?</string>
+    <string name="dashboard_prompt_4">Kdo byl dnes součástí tvého dne?</string>
+    <string name="dashboard_prompt_5">Za co dnes cítíš vděčnost?</string>
+    <string name="dashboard_prompt_6">Co tě dnes překvapilo?</string>
+    <string name="dashboard_prompt_7">Jak se doopravdy cítíš?</string>
+    <string name="dashboard_prompt_8">Co by udělalo zítřek dobrým?</string>
     <string name="dashboard_write_first_entry">Napsat první záznam</string>
     <string name="dashboard_write_today">Napsat dnešní záznam</string>
     <string name="dashboard_continue_today">Pokračovat v dnešním záznamu</string>

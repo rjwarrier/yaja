@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Írt napok</string>
     <string name="dashboard_stat_entries">Bejegyzések</string>
     <string name="dashboard_status_empty">Ma még nincs semmi írva.</string>
+    <string name="dashboard_prompt_1">Mi csalt ma mosolyt az arcodra?</string>
+    <string name="dashboard_prompt_2">Mi jár most a fejedben?</string>
+    <string name="dashboard_prompt_3">Egy dolog, amire emlékezni szeretnél a mai napból?</string>
+    <string name="dashboard_prompt_4">Kivel beszéltél ma?</string>
+    <string name="dashboard_prompt_5">Miért vagy ma hálás?</string>
+    <string name="dashboard_prompt_6">Mi lepett meg ma?</string>
+    <string name="dashboard_prompt_7">Őszintén, hogy érzed magad?</string>
+    <string name="dashboard_prompt_8">Mitől lenne jó a holnap?</string>
     <string name="dashboard_write_first_entry">Írd meg első bejegyzésed</string>
     <string name="dashboard_write_today">Mai bejegyzés írása</string>
     <string name="dashboard_continue_today">Mai bejegyzés folytatása</string>

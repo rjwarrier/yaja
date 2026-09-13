@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">작성한 날</string>
     <string name="dashboard_stat_entries">항목</string>
     <string name="dashboard_status_empty">오늘은 아직 작성한 내용이 없어요.</string>
+    <string name="dashboard_prompt_1">오늘 당신을 웃게 한 건 뭐였나요?</string>
+    <string name="dashboard_prompt_2">지금 어떤 생각을 하고 있나요?</string>
+    <string name="dashboard_prompt_3">오늘에 대해 기억하고 싶은 한 가지는?</string>
+    <string name="dashboard_prompt_4">오늘 누구와 이야기했나요?</string>
+    <string name="dashboard_prompt_5">오늘 감사한 일은 무엇인가요?</string>
+    <string name="dashboard_prompt_6">오늘 놀라웠던 일은?</string>
+    <string name="dashboard_prompt_7">솔직히, 기분이 어때요?</string>
+    <string name="dashboard_prompt_8">내일을 좋은 날로 만들려면?</string>
     <string name="dashboard_write_first_entry">첫 항목 작성하기</string>
     <string name="dashboard_write_today">오늘의 항목 작성</string>
     <string name="dashboard_continue_today">오늘의 항목 계속 작성</string>

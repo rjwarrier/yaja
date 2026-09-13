@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">記録した日数</string>
     <string name="dashboard_stat_entries">エントリー数</string>
     <string name="dashboard_status_empty">今日はまだ何も書いていません。</string>
+    <string name="dashboard_prompt_1">今日、笑顔になれたことは？</string>
+    <string name="dashboard_prompt_2">今、頭に浮かんでいることは？</string>
+    <string name="dashboard_prompt_3">今日のことで覚えておきたいことは？</string>
+    <string name="dashboard_prompt_4">今日は誰と話しましたか？</string>
+    <string name="dashboard_prompt_5">今日、感謝していることは？</string>
+    <string name="dashboard_prompt_6">今日、驚いたことは？</string>
+    <string name="dashboard_prompt_7">正直なところ、今の気分は？</string>
+    <string name="dashboard_prompt_8">明日を良い日にするには？</string>
     <string name="dashboard_write_first_entry">最初のエントリーを書く</string>
     <string name="dashboard_write_today">今日のエントリーを書く</string>
     <string name="dashboard_continue_today">今日のエントリーを続ける</string>

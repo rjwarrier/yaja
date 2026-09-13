@@ -223,6 +223,14 @@
         <item quantity="other">%1$d years ago today</item>
     </plurals>
     <string name="dashboard_status_empty">Nothing written today yet.</string>
+    <string name="dashboard_prompt_1">What made you smile today?</string>
+    <string name="dashboard_prompt_2">What\'s on your mind right now?</string>
+    <string name="dashboard_prompt_3">One thing you want to remember about today?</string>
+    <string name="dashboard_prompt_4">Who did you talk to today?</string>
+    <string name="dashboard_prompt_5">What are you grateful for today?</string>
+    <string name="dashboard_prompt_6">What surprised you today?</string>
+    <string name="dashboard_prompt_7">How are you feeling, honestly?</string>
+    <string name="dashboard_prompt_8">What would make tomorrow good?</string>
     <string name="dashboard_write_first_entry">Write your first entry</string>
     <string name="dashboard_write_today">Write today\'s entry</string>
     <string name="dashboard_continue_today">Continue today\'s entry</string>

@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Yazılan gün</string>
     <string name="dashboard_stat_entries">Girdi</string>
     <string name="dashboard_status_empty">Bugün henüz bir şey yazılmadı.</string>
+    <string name="dashboard_prompt_1">Bugün seni ne gülümsetti?</string>
+    <string name="dashboard_prompt_2">Şu an aklından ne geçiyor?</string>
+    <string name="dashboard_prompt_3">Bugünden hatırlamak istediğin bir şey?</string>
+    <string name="dashboard_prompt_4">Bugün kiminle konuştun?</string>
+    <string name="dashboard_prompt_5">Bugün neye minnettarsın?</string>
+    <string name="dashboard_prompt_6">Bugün seni ne şaşırttı?</string>
+    <string name="dashboard_prompt_7">Dürüst ol, nasıl hissediyorsun?</string>
+    <string name="dashboard_prompt_8">Yarını güzel bir gün ne yapar?</string>
     <string name="dashboard_write_first_entry">İlk girdini yaz</string>
     <string name="dashboard_write_today">Bugünün girdisini yaz</string>
     <string name="dashboard_continue_today">Bugünün girdisine devam et</string>

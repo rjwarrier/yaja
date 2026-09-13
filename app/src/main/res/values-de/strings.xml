@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Geschriebene Tage</string>
     <string name="dashboard_stat_entries">Einträge</string>
     <string name="dashboard_status_empty">Heute noch nichts geschrieben.</string>
+    <string name="dashboard_prompt_1">Was hat dich heute zum Lächeln gebracht?</string>
+    <string name="dashboard_prompt_2">Was geht dir gerade durch den Kopf?</string>
+    <string name="dashboard_prompt_3">Eine Sache, die du dir von heute merken willst?</string>
+    <string name="dashboard_prompt_4">Mit wem hast du heute gesprochen?</string>
+    <string name="dashboard_prompt_5">Wofür bist du heute dankbar?</string>
+    <string name="dashboard_prompt_6">Was hat dich heute überrascht?</string>
+    <string name="dashboard_prompt_7">Wie fühlst du dich, ganz ehrlich?</string>
+    <string name="dashboard_prompt_8">Was würde morgen zu einem guten Tag machen?</string>
     <string name="dashboard_write_first_entry">Ersten Eintrag schreiben</string>
     <string name="dashboard_write_today">Heutigen Eintrag schreiben</string>
     <string name="dashboard_continue_today">Heutigen Eintrag fortsetzen</string>

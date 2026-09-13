@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">लिखे गए दिन</string>
     <string name="dashboard_stat_entries">प्रविष्टियाँ</string>
     <string name="dashboard_status_empty">आज अभी तक कुछ नहीं लिखा गया।</string>
+    <string name="dashboard_prompt_1">आज किस बात पर मुस्कान आई?</string>
+    <string name="dashboard_prompt_2">अभी मन में क्या चल रहा है?</string>
+    <string name="dashboard_prompt_3">आज की कोई एक बात जो याद रखनी है?</string>
+    <string name="dashboard_prompt_4">आज किससे बात हुई?</string>
+    <string name="dashboard_prompt_5">आज किस बात के लिए आभार है?</string>
+    <string name="dashboard_prompt_6">आज किस बात ने चौंकाया?</string>
+    <string name="dashboard_prompt_7">सच बताइए, कैसा महसूस हो रहा है?</string>
+    <string name="dashboard_prompt_8">कल को अच्छा क्या बनाएगा?</string>
     <string name="dashboard_write_first_entry">अपनी पहली प्रविष्टि लिखें</string>
     <string name="dashboard_write_today">आज की प्रविष्टि लिखें</string>
     <string name="dashboard_continue_today">आज की प्रविष्टि जारी रखें</string>

@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">ימי כתיבה</string>
     <string name="dashboard_stat_entries">רשומות</string>
     <string name="dashboard_status_empty">עדיין לא נכתב כלום היום.</string>
+    <string name="dashboard_prompt_1">מה העלה חיוך היום?</string>
+    <string name="dashboard_prompt_2">מה עובר בראש עכשיו?</string>
+    <string name="dashboard_prompt_3">דבר אחד מהיום ששווה לזכור?</string>
+    <string name="dashboard_prompt_4">עם מי דיברת היום?</string>
+    <string name="dashboard_prompt_5">על מה יש הכרת תודה היום?</string>
+    <string name="dashboard_prompt_6">מה הפתיע היום?</string>
+    <string name="dashboard_prompt_7">מה ההרגשה, בכנות?</string>
+    <string name="dashboard_prompt_8">מה יהפוך את מחר לטוב?</string>
     <string name="dashboard_write_first_entry">כתוב את הרשומה הראשונה שלך</string>
     <string name="dashboard_write_today">כתוב את רשומת היום</string>
     <string name="dashboard_continue_today">המשך את רשומת היום</string>

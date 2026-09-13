@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">لکھے گئے دن</string>
     <string name="dashboard_stat_entries">اندراجات</string>
     <string name="dashboard_status_empty">آج ابھی تک کچھ نہیں لکھا گیا۔</string>
+    <string name="dashboard_prompt_1">آج کس بات نے آپ کو مسکرایا؟</string>
+    <string name="dashboard_prompt_2">اس وقت ذہن میں کیا چل رہا ہے؟</string>
+    <string name="dashboard_prompt_3">آج کی ایک بات جو یاد رکھنی ہے؟</string>
+    <string name="dashboard_prompt_4">آج کس سے بات ہوئی؟</string>
+    <string name="dashboard_prompt_5">آج کس بات کے لیے شکر گزار ہیں؟</string>
+    <string name="dashboard_prompt_6">آج کس بات نے حیران کیا؟</string>
+    <string name="dashboard_prompt_7">سچ بتائیں، کیسا محسوس ہو رہا ہے؟</string>
+    <string name="dashboard_prompt_8">کل کو اچھا کیا بنائے گا؟</string>
     <string name="dashboard_write_first_entry">اپنا پہلا اندراج لکھیں</string>
     <string name="dashboard_write_today">آج کا اندراج لکھیں</string>
     <string name="dashboard_continue_today">آج کا اندراج جاری رکھیں</string>

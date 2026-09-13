@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">วันที่เขียน</string>
     <string name="dashboard_stat_entries">รายการ</string>
     <string name="dashboard_status_empty">ยังไม่มีการเขียนอะไรวันนี้</string>
+    <string name="dashboard_prompt_1">วันนี้อะไรทำให้คุณยิ้มได้?</string>
+    <string name="dashboard_prompt_2">ตอนนี้กำลังคิดอะไรอยู่?</string>
+    <string name="dashboard_prompt_3">เรื่องหนึ่งของวันนี้ที่อยากจำไว้?</string>
+    <string name="dashboard_prompt_4">วันนี้ได้คุยกับใครบ้าง?</string>
+    <string name="dashboard_prompt_5">วันนี้รู้สึกขอบคุณเรื่องอะไร?</string>
+    <string name="dashboard_prompt_6">วันนี้มีอะไรทำให้แปลกใจ?</string>
+    <string name="dashboard_prompt_7">บอกตามตรง ตอนนี้รู้สึกอย่างไร?</string>
+    <string name="dashboard_prompt_8">อะไรจะทำให้พรุ่งนี้เป็นวันที่ดี?</string>
     <string name="dashboard_write_first_entry">เขียนรายการแรกของคุณ</string>
     <string name="dashboard_write_today">เขียนรายการของวันนี้</string>
     <string name="dashboard_continue_today">เขียนรายการของวันนี้ต่อ</string>

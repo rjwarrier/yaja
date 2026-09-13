@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Izinsuku ezibhaliwe</string>
     <string name="dashboard_stat_entries">Okubhaliwe</string>
     <string name="dashboard_status_empty">Akukho okubhaliwe namuhla okwamanje.</string>
+    <string name="dashboard_prompt_1">Yini ekwenze wamamatheka namuhla?</string>
+    <string name="dashboard_prompt_2">Ucabangani njengamanje?</string>
+    <string name="dashboard_prompt_3">Into eyodwa yanamuhla ofuna ukuyikhumbula?</string>
+    <string name="dashboard_prompt_4">Ukhulume nobani namuhla?</string>
+    <string name="dashboard_prompt_5">Ubonga ngani namuhla?</string>
+    <string name="dashboard_prompt_6">Yini ekumangaze namuhla?</string>
+    <string name="dashboard_prompt_7">Ngeqiniso, uzizwa kanjani?</string>
+    <string name="dashboard_prompt_8">Yini engenza kusasa kube kuhle?</string>
     <string name="dashboard_write_first_entry">Bhala okokuqala kwakho</string>
     <string name="dashboard_write_today">Bhala okwanamuhla</string>
     <string name="dashboard_continue_today">Qhubeka nokwanamuhla</string>

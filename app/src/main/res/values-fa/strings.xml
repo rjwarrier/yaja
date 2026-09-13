@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">روزهای نوشته‌شده</string>
     <string name="dashboard_stat_entries">نوشته‌ها</string>
     <string name="dashboard_status_empty">هنوز چیزی امروز نوشته نشده.</string>
+    <string name="dashboard_prompt_1">امروز چه چیزی تو را خنداند؟</string>
+    <string name="dashboard_prompt_2">همین حالا به چه فکر می‌کنی؟</string>
+    <string name="dashboard_prompt_3">یک چیز از امروز که می‌خواهی به یاد بسپاری؟</string>
+    <string name="dashboard_prompt_4">امروز با چه کسی حرف زدی؟</string>
+    <string name="dashboard_prompt_5">امروز بابت چه چیزی سپاسگزاری؟</string>
+    <string name="dashboard_prompt_6">امروز چه چیزی غافلگیرت کرد؟</string>
+    <string name="dashboard_prompt_7">راستش را بگو، چه حسی داری؟</string>
+    <string name="dashboard_prompt_8">چه چیزی فردا را روز خوبی می‌کند؟</string>
     <string name="dashboard_write_first_entry">اولین نوشته خود را بنویسید</string>
     <string name="dashboard_write_today">نوشتهٔ امروز را بنویسید</string>
     <string name="dashboard_continue_today">ادامه نوشتهٔ امروز</string>

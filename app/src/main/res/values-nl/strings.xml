@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Geschreven dagen</string>
     <string name="dashboard_stat_entries">Items</string>
     <string name="dashboard_status_empty">Nog niets geschreven vandaag.</string>
+    <string name="dashboard_prompt_1">Waar moest je vandaag om glimlachen?</string>
+    <string name="dashboard_prompt_2">Waar denk je nu aan?</string>
+    <string name="dashboard_prompt_3">Eén ding van vandaag dat je wilt onthouden?</string>
+    <string name="dashboard_prompt_4">Met wie heb je vandaag gepraat?</string>
+    <string name="dashboard_prompt_5">Waar ben je vandaag dankbaar voor?</string>
+    <string name="dashboard_prompt_6">Wat verraste je vandaag?</string>
+    <string name="dashboard_prompt_7">Hoe voel je je, eerlijk gezegd?</string>
+    <string name="dashboard_prompt_8">Wat zou morgen een goede dag maken?</string>
     <string name="dashboard_write_first_entry">Schrijf je eerste item</string>
     <string name="dashboard_write_today">Schrijf het item van vandaag</string>
     <string name="dashboard_continue_today">Ga verder met het item van vandaag</string>

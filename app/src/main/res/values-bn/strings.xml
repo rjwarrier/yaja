@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">লেখা দিন</string>
     <string name="dashboard_stat_entries">এন্ট্রি</string>
     <string name="dashboard_status_empty">আজ এখনও কিছু লেখা হয়নি।</string>
+    <string name="dashboard_prompt_1">আজ কী তোমাকে হাসিয়েছে?</string>
+    <string name="dashboard_prompt_2">এই মুহূর্তে মনে কী চলছে?</string>
+    <string name="dashboard_prompt_3">আজকের কোন একটি কথা মনে রাখতে চাও?</string>
+    <string name="dashboard_prompt_4">আজ কার সাথে কথা বললে?</string>
+    <string name="dashboard_prompt_5">আজ কীসের জন্য কৃতজ্ঞ?</string>
+    <string name="dashboard_prompt_6">আজ কী তোমাকে অবাক করেছে?</string>
+    <string name="dashboard_prompt_7">সত্যি বলো, কেমন লাগছে?</string>
+    <string name="dashboard_prompt_8">কী হলে আগামীকাল ভালো কাটবে?</string>
     <string name="dashboard_write_first_entry">আপনার প্রথম এন্ট্রি লিখুন</string>
     <string name="dashboard_write_today">আজকের এন্ট্রি লিখুন</string>
     <string name="dashboard_continue_today">আজকের এন্ট্রি চালিয়ে যান</string>

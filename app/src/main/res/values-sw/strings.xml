@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Siku zilizoandikwa</string>
     <string name="dashboard_stat_entries">Maandishi</string>
     <string name="dashboard_status_empty">Bado hujaandika chochote leo.</string>
+    <string name="dashboard_prompt_1">Nini kilikufanya utabasamu leo?</string>
+    <string name="dashboard_prompt_2">Unafikiria nini sasa hivi?</string>
+    <string name="dashboard_prompt_3">Jambo moja la leo unalotaka kukumbuka?</string>
+    <string name="dashboard_prompt_4">Uliongea na nani leo?</string>
+    <string name="dashboard_prompt_5">Unashukuru kwa nini leo?</string>
+    <string name="dashboard_prompt_6">Nini kilikushangaza leo?</string>
+    <string name="dashboard_prompt_7">Kwa kweli, unajisikiaje?</string>
+    <string name="dashboard_prompt_8">Nini kitafanya kesho iwe nzuri?</string>
     <string name="dashboard_write_first_entry">Andika andiko lako la kwanza</string>
     <string name="dashboard_write_today">Andika andiko la leo</string>
     <string name="dashboard_continue_today">Endelea na andiko la leo</string>

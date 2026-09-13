@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Araw na nasulatan</string>
     <string name="dashboard_stat_entries">Entry</string>
     <string name="dashboard_status_empty">Wala pang nasusulat ngayon.</string>
+    <string name="dashboard_prompt_1">Ano ang nagpangiti sa iyo ngayon?</string>
+    <string name="dashboard_prompt_2">Ano ang nasa isip mo ngayon?</string>
+    <string name="dashboard_prompt_3">Isang bagay na nais mong tandaan mula ngayong araw?</string>
+    <string name="dashboard_prompt_4">Sino ang iyong nakausap ngayon?</string>
+    <string name="dashboard_prompt_5">Para sa ano ka nagpapasalamat ngayon?</string>
+    <string name="dashboard_prompt_6">Ano ang ikinagulat mo ngayon?</string>
+    <string name="dashboard_prompt_7">Tapat, ano ang iyong nararamdaman?</string>
+    <string name="dashboard_prompt_8">Ano ang magpapabuti sa bukas?</string>
     <string name="dashboard_write_first_entry">Isulat ang iyong unang entry</string>
     <string name="dashboard_write_today">Isulat ang entry ngayon</string>
     <string name="dashboard_continue_today">Ituloy ang entry ngayon</string>

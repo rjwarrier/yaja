@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">ଲେଖା ଦିନ</string>
     <string name="dashboard_stat_entries">ପ୍ରବେଶିକା</string>
     <string name="dashboard_status_empty">ଆଜି ପର୍ଯ୍ୟନ୍ତ କିଛି ଲେଖା ହୋଇନାହିଁ।</string>
+    <string name="dashboard_prompt_1">ଆଜି କେଉଁ କଥା ଆପଣଙ୍କୁ ହସାଇଲା?</string>
+    <string name="dashboard_prompt_2">ଏବେ ମନରେ କଣ ଚାଲିଛି?</string>
+    <string name="dashboard_prompt_3">ଆଜିର ମନେ ରଖିବାକୁ ଚାହୁଁଥିବା ଗୋଟିଏ କଥା?</string>
+    <string name="dashboard_prompt_4">ଆଜି କାହା ସହ କଥା ହେଲେ?</string>
+    <string name="dashboard_prompt_5">ଆଜି କେଉଁ କଥା ପାଇଁ କୃତଜ୍ଞ?</string>
+    <string name="dashboard_prompt_6">ଆଜି କେଉଁ କଥା ଆଶ୍ଚର୍ଯ୍ୟ କଲା?</string>
+    <string name="dashboard_prompt_7">ସତ କୁହନ୍ତୁ, କେମିତି ଲାଗୁଛି?</string>
+    <string name="dashboard_prompt_8">କାଲିକୁ ଭଲ କରିବ କଣ?</string>
     <string name="dashboard_write_first_entry">ଆପଣଙ୍କର ପ୍ରଥମ ପ୍ରବେଶିକା ଲେଖନ୍ତୁ</string>
     <string name="dashboard_write_today">ଆଜିର ପ୍ରବେଶିକା ଲେଖନ୍ତୁ</string>
     <string name="dashboard_continue_today">ଆଜିର ପ୍ରବେଶିକା ଜାରି ରଖନ୍ତୁ</string>

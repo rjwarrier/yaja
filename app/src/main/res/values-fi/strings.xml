@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Kirjoitettuja päiviä</string>
     <string name="dashboard_stat_entries">Merkinnät</string>
     <string name="dashboard_status_empty">Ei vielä mitään kirjoitettu tänään.</string>
+    <string name="dashboard_prompt_1">Mikä sai sinut hymyilemään tänään?</string>
+    <string name="dashboard_prompt_2">Mitä mielessäsi liikkuu juuri nyt?</string>
+    <string name="dashboard_prompt_3">Yksi asia, jonka haluat muistaa tästä päivästä?</string>
+    <string name="dashboard_prompt_4">Kenen kanssa puhuit tänään?</string>
+    <string name="dashboard_prompt_5">Mistä olet kiitollinen tänään?</string>
+    <string name="dashboard_prompt_6">Mikä yllätti sinut tänään?</string>
+    <string name="dashboard_prompt_7">Miltä sinusta oikeasti tuntuu?</string>
+    <string name="dashboard_prompt_8">Mikä tekisi huomisesta hyvän?</string>
     <string name="dashboard_write_first_entry">Kirjoita ensimmäinen merkintäsi</string>
     <string name="dashboard_write_today">Kirjoita tämän päivän merkintä</string>
     <string name="dashboard_continue_today">Jatka tämän päivän merkintää</string>

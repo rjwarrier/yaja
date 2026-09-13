@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">రాసిన రోజులు</string>
     <string name="dashboard_stat_entries">ఎంట్రీలు</string>
     <string name="dashboard_status_empty">ఈరోజు ఇంకా ఏమీ రాయలేదు.</string>
+    <string name="dashboard_prompt_1">ఈరోజు మిమ్మల్ని నవ్వించింది ఏమిటి?</string>
+    <string name="dashboard_prompt_2">ఇప్పుడు మనసులో ఏముంది?</string>
+    <string name="dashboard_prompt_3">ఈరోజు గుర్తుంచుకోవాలనుకునే ఒక విషయం?</string>
+    <string name="dashboard_prompt_4">ఈరోజు ఎవరితో మాట్లాడారు?</string>
+    <string name="dashboard_prompt_5">ఈరోజు దేనికి కృతజ్ఞతగా ఉన్నారు?</string>
+    <string name="dashboard_prompt_6">ఈరోజు మిమ్మల్ని ఆశ్చర్యపరిచింది ఏమిటి?</string>
+    <string name="dashboard_prompt_7">నిజం చెప్పండి, ఎలా అనిపిస్తోంది?</string>
+    <string name="dashboard_prompt_8">రేపటిని మంచి రోజుగా చేసేది ఏమిటి?</string>
     <string name="dashboard_write_first_entry">మీ మొదటి ఎంట్రీని రాయండి</string>
     <string name="dashboard_write_today">ఈరోజు ఎంట్రీని రాయండి</string>
     <string name="dashboard_continue_today">ఈరోజు ఎంట్రీని కొనసాగించండి</string>

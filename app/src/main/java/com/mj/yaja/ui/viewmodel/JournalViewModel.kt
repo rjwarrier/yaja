@@ -246,6 +246,8 @@ class JournalViewModel(
     val animationPreference = settingsFeature.animationPreference
     val lastBackupTimestamp = settingsFeature.lastBackupTimestamp
     val backupReminderDays = settingsFeature.backupReminderDays
+    /** Persisted journal-wide entry total, kept current on every save; -1 until first counted. */
+    val lastKnownEntryCount: StateFlow<Int> = settingsRepository.lastKnownEntryCount
     val appLogRetentionDays = settingsFeature.appLogRetentionDays
     val firstDayOfWeek = settingsFeature.firstDayOfWeek
     val dateOrderPreference = settingsFeature.dateOrderPreference

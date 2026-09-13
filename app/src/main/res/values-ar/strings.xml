@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">أيام الكتابة</string>
     <string name="dashboard_stat_entries">المدخلات</string>
     <string name="dashboard_status_empty">لم تكتب شيئًا اليوم بعد.</string>
+    <string name="dashboard_prompt_1">ما الذي جعلك تبتسم اليوم؟</string>
+    <string name="dashboard_prompt_2">ما الذي يشغل بالك الآن؟</string>
+    <string name="dashboard_prompt_3">شيء واحد تريد تذكره عن اليوم؟</string>
+    <string name="dashboard_prompt_4">مع من تحدثت اليوم؟</string>
+    <string name="dashboard_prompt_5">ما الذي تشعر بالامتنان له اليوم؟</string>
+    <string name="dashboard_prompt_6">ما الذي فاجأك اليوم؟</string>
+    <string name="dashboard_prompt_7">كيف تشعر، بصراحة؟</string>
+    <string name="dashboard_prompt_8">ما الذي سيجعل الغد يومًا جيدًا؟</string>
     <string name="dashboard_write_first_entry">اكتب مدخلتك الأولى</string>
     <string name="dashboard_write_today">اكتب مدخلة اليوم</string>
     <string name="dashboard_continue_today">واصل مدخلة اليوم</string>

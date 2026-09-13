@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">写作天数</string>
     <string name="dashboard_stat_entries">条目数</string>
     <string name="dashboard_status_empty">今天还没有写任何内容。</string>
+    <string name="dashboard_prompt_1">今天有什么让你微笑？</string>
+    <string name="dashboard_prompt_2">你现在在想什么？</string>
+    <string name="dashboard_prompt_3">今天有什么想记住的事？</string>
+    <string name="dashboard_prompt_4">今天和谁聊过天？</string>
+    <string name="dashboard_prompt_5">今天你感激什么？</string>
+    <string name="dashboard_prompt_6">今天有什么让你惊讶？</string>
+    <string name="dashboard_prompt_7">说实话，你现在感觉如何？</string>
+    <string name="dashboard_prompt_8">怎样让明天成为美好的一天？</string>
     <string name="dashboard_write_first_entry">写下第一篇日记</string>
     <string name="dashboard_write_today">写今天的日记</string>
     <string name="dashboard_continue_today">继续写今天的日记</string>

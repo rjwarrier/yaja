@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Дней с записями</string>
     <string name="dashboard_stat_entries">Записи</string>
     <string name="dashboard_status_empty">Сегодня пока ничего не написано.</string>
+    <string name="dashboard_prompt_1">Что сегодня вызвало у тебя улыбку?</string>
+    <string name="dashboard_prompt_2">О чём ты думаешь прямо сейчас?</string>
+    <string name="dashboard_prompt_3">Что из сегодняшнего дня хочется запомнить?</string>
+    <string name="dashboard_prompt_4">С кем сегодня удалось поговорить?</string>
+    <string name="dashboard_prompt_5">За что сегодня хочется сказать спасибо?</string>
+    <string name="dashboard_prompt_6">Что сегодня удивило?</string>
+    <string name="dashboard_prompt_7">Как ты себя чувствуешь, честно?</string>
+    <string name="dashboard_prompt_8">Что сделает завтрашний день хорошим?</string>
     <string name="dashboard_write_first_entry">Напишите первую запись</string>
     <string name="dashboard_write_today">Написать запись за сегодня</string>
     <string name="dashboard_continue_today">Продолжить запись за сегодня</string>

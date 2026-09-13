@@ -8,6 +8,8 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -38,7 +40,6 @@ import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.RunningWithErrors
 import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material.icons.rounded.Today
 import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -154,19 +155,39 @@ fun DashboardScreen(
                 }
         }
 
-        LaunchedEffect(Unit) {
-                // Reuses the same freshness cache Statistics relies on, so repeatedly reopening
-                // Home (e.g. via the long-press toggle) doesn't rescan the whole journal each time.
-                viewModel.ensureStatisticsLoaded(StatisticsPeriod.ALL_TIME)
+        // Whole days since the last backup, for the overdue chip; null when there has never been one.
+        val backupAgeDays = remember(lastBackupTimestamp, today) {
+                if (lastBackupTimestamp <= 0L) {
+                        null
+                } else {
+                        val ageMillis = (System.currentTimeMillis() - lastBackupTimestamp).coerceAtLeast(0L)
+                        (ageMillis / (24L * 60L * 60L * 1000L)).toInt()
+                }
         }
+
+        // The overview row used to load all-time statistics -- a read of every day in the journal
+        // -- for three numbers. Days and streaks now come from the in-memory date set and the
+        // entry total from the persisted count. The full load only runs while that count is
+        // unknown (a fresh install the cache hasn't counted yet).
+        val lastKnownEntryCount by viewModel.lastKnownEntryCount.collectAsStateWithLifecycle()
+        val entryCountKnown = lastKnownEntryCount >= 0
+        LaunchedEffect(entryCountKnown) {
+                if (!entryCountKnown) viewModel.ensureStatisticsLoaded(StatisticsPeriod.ALL_TIME)
+        }
+        val journalSummary = remember(uiState.datesWithEntries, today) {
+                summarizeJournalDates(uiState.datesWithEntries, today)
+        }
+        val totalEntries = if (entryCountKnown) lastKnownEntryCount else allTimeStats?.totalEntries ?: 0
 
         val hasTodayEntry = today in uiState.datesWithEntries
         val hasAnyEntries = uiState.datesWithEntries.isNotEmpty()
 
         var todayPreview by remember { mutableStateOf<String?>(null) }
         LaunchedEffect(hasTodayEntry, today) {
+                // Same per-date cache as Recent: a save invalidates its date, so this stays current
+                // while repeat visits skip the disk read.
                 todayPreview = if (hasTodayEntry) {
-                        viewModel.getTimelinePreview(today)?.let { MarkdownUtils.stripMetadata(it).trim() }
+                        viewModel.getDashboardRecentSnapshot(listOf(today))[today]?.preview?.let(::flattenPreview)
                 } else {
                         null
                 }
@@ -225,28 +246,30 @@ fun DashboardScreen(
                 // dashboard visits (e.g. the long-press Home/Today toggle) come back instantly.
                 recentDetails = viewModel.getDashboardRecentSnapshot(recentDates).mapValues { (_, snapshot) ->
                         DashboardRecentDetail(
-                                preview = snapshot.preview
-                                        ?.let { MarkdownUtils.stripMetadata(it).trim() }
-                                        .orEmpty(),
+                                preview = snapshot.preview?.let(::flattenPreview).orEmpty(),
                                 wordCount = snapshot.wordCount
                         )
                 }
         }
 
-        // Most recent past year with an entry on this exact month/day — the same "on this day"
+        // Past years with an entry on this exact month/day, newest first — the same "on this day"
         // matching Lookback uses, but scoped to today specifically rather than whatever date
         // happens to be selected elsewhere in the app (viewModel.ensureLookbackLoaded() is tied
-        // to uiState.selectedDate, which this screen doesn't own).
-        val onThisDayDate = remember(uiState.datesWithEntries, today) {
+        // to uiState.selectedDate, which this screen doesn't own). Capped so a long-kept journal
+        // doesn't push the week strip off screen.
+        val onThisDayDates = remember(uiState.datesWithEntries, today) {
                 uiState.datesWithEntries
-                        .asSequence()
                         .filter { it.isBefore(today) && it.month == today.month && it.dayOfMonth == today.dayOfMonth }
-                        .maxOrNull()
+                        .sortedDescending()
+                        .take(ON_THIS_DAY_MAX_YEARS)
         }
-        var onThisDayPreview by remember { mutableStateOf<String?>(null) }
-        LaunchedEffect(onThisDayDate) {
-                onThisDayPreview = onThisDayDate?.let { date ->
-                        viewModel.getTimelinePreview(date)?.let { MarkdownUtils.stripMetadata(it).trim() }
+        var onThisDayPreviews by remember { mutableStateOf<Map<LocalDate, String?>>(emptyMap()) }
+        LaunchedEffect(onThisDayDates) {
+                onThisDayPreviews = if (onThisDayDates.isEmpty()) {
+                        emptyMap()
+                } else {
+                        viewModel.getDashboardRecentSnapshot(onThisDayDates)
+                                .mapValues { (_, snapshot) -> snapshot.preview?.let(::flattenPreview) }
                 }
         }
 
@@ -296,7 +319,9 @@ fun DashboardScreen(
                 },
                 floatingActionButton = {
                         androidx.compose.material3.FloatingActionButton(
-                                onClick = selectTodayThen(onOpenToday),
+                                // Starts a new entry for today. Opening Today only repeated the hero
+                                // button, and this stays reachable once the hero scrolls away.
+                                onClick = selectTodayThen(onNavigateToAddEntry),
                                 interactionSource = fabInteractionSource,
                                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -309,8 +334,8 @@ fun DashboardScreen(
                                         .expressiveFabMotion(fabInteractionSource)
                         ) {
                                 Icon(
-                                        imageVector = Icons.Rounded.Today,
-                                        contentDescription = stringResource(R.string.dashboard_goto_today)
+                                        imageVector = Icons.Rounded.Edit,
+                                        contentDescription = stringResource(R.string.dashboard_write_today)
                                 )
                         }
                 },
@@ -342,6 +367,7 @@ fun DashboardScreen(
                                                 overdueTodos = overdueTodos,
                                                 upcomingEvents = upcomingEvents,
                                                 backupOverdue = backupTooOld,
+                                                backupAgeDays = backupAgeDays,
                                                 onWriteOrContinue = selectTodayThen(onNavigateToAddEntry),
                                                 onOpenGlance = selectTodayThen(onOpenToday),
                                                 onBackupClick = onNavigateToBackup,
@@ -349,24 +375,31 @@ fun DashboardScreen(
                                         )
                                 }
 
-                                if (onThisDayDate != null) {
+                                if (onThisDayDates.isNotEmpty()) {
                                         Spacer(modifier = Modifier.height(14.dp))
                                         AppStaggeredEntrance(
                                                 visible = entranceTriggered,
                                                 index = 1,
                                                 strength = AppEntranceStrength.SECTION
                                         ) {
-                                                DashboardOnThisDayCard(
-                                                        yearsAgo = today.year - onThisDayDate.year,
-                                                        preview = onThisDayPreview,
-                                                        onClick = {
-                                                                viewModel.selectDate(
-                                                                        onThisDayDate,
-                                                                        source = "dashboard_on_this_day"
+                                                Column(
+                                                        modifier = Modifier.fillMaxWidth(),
+                                                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                                                ) {
+                                                        onThisDayDates.forEach { date ->
+                                                                DashboardOnThisDayCard(
+                                                                        yearsAgo = today.year - date.year,
+                                                                        preview = onThisDayPreviews[date],
+                                                                        onClick = {
+                                                                                viewModel.selectDate(
+                                                                                        date,
+                                                                                        source = "dashboard_on_this_day"
+                                                                                )
+                                                                                onOpenToday()
+                                                                        }
                                                                 )
-                                                                onOpenToday()
                                                         }
-                                                )
+                                                }
                                         }
                                 }
 
@@ -381,7 +414,6 @@ fun DashboardScreen(
                                                 today = today,
                                                 datesWithEntries = uiState.datesWithEntries,
                                                 wordCounts = weekWordCounts,
-                                                currentStreak = allTimeStats?.currentStreak ?: 0,
                                                 onOpenDate = { date ->
                                                         viewModel.selectDate(date, source = "dashboard_week_strip")
                                                         onOpenToday()
@@ -397,10 +429,10 @@ fun DashboardScreen(
                                         strength = AppEntranceStrength.SECTION
                                 ) {
                                         DashboardOverviewRow(
-                                                totalDaysWithEntries = allTimeStats?.totalDaysWithEntries ?: 0,
-                                                totalEntries = allTimeStats?.totalEntries ?: 0,
-                                                currentStreak = allTimeStats?.currentStreak ?: 0,
-                                                longestStreak = allTimeStats?.longestStreakAllTime ?: 0,
+                                                totalDaysWithEntries = journalSummary.daysWritten,
+                                                totalEntries = totalEntries,
+                                                currentStreak = journalSummary.currentStreak,
+                                                longestStreak = journalSummary.longestStreak,
                                                 onDaysClick = onNavigateToCalendar,
                                                 onEntriesClick = onNavigateToTimeline,
                                                 onStreakClick = onNavigateToStatistics
@@ -516,8 +548,64 @@ private const val WEEK_INTENSITY_FLOOR = 0.35f
 /** How far ahead the upcoming-events count looks: catches tomorrow, stays a glance. */
 private const val UPCOMING_EVENT_HORIZON_DAYS = 7L
 
-/** Longest hero quote shown before the trailing cursor glyph replaces the closing quote. */
-private const val HERO_PREVIEW_MAX_CHARS = 60
+/**
+ * Longest hero quote shown before the trailing cursor glyph replaces the closing quote. Sized to
+ * fill the preview's two lines; at 60 it stopped partway through the first.
+ */
+private const val HERO_PREVIEW_MAX_CHARS = 120
+
+/** Most "on this day" cards shown at once, newest years first. */
+private const val ON_THIS_DAY_MAX_YEARS = 3
+
+/** Shown under the greeting on a day with nothing written yet, rolled once per visit. */
+private val WRITING_PROMPTS = intArrayOf(
+        R.string.dashboard_prompt_1,
+        R.string.dashboard_prompt_2,
+        R.string.dashboard_prompt_3,
+        R.string.dashboard_prompt_4,
+        R.string.dashboard_prompt_5,
+        R.string.dashboard_prompt_6,
+        R.string.dashboard_prompt_7,
+        R.string.dashboard_prompt_8
+)
+
+private val PREVIEW_LINE_BREAKS = Regex("\\s*\\n\\s*")
+
+/**
+ * Metadata stripped and line breaks folded into spaces. Unfolded, an entry that opens with a
+ * short line (a time, a heading) spent its two preview lines on that and an ellipsis.
+ */
+private fun flattenPreview(raw: String): String =
+        MarkdownUtils.stripMetadata(raw).trim().replace(PREVIEW_LINE_BREAKS, " ")
+
+private data class DashboardJournalSummary(
+        val daysWritten: Int,
+        val currentStreak: Int,
+        val longestStreak: Int
+)
+
+/**
+ * Days, current streak and longest streak from the date set alone, matching
+ * buildAllTimeStatsSnapshot: a streak stays alive through a today that has no entry yet.
+ */
+private fun summarizeJournalDates(dates: Set<LocalDate>, today: LocalDate): DashboardJournalSummary {
+        if (dates.isEmpty()) return DashboardJournalSummary(0, 0, 0)
+        var currentStreak = 0
+        var cursor = if (today in dates) today else today.minusDays(1)
+        while (cursor in dates) {
+                currentStreak++
+                cursor = cursor.minusDays(1)
+        }
+        var longestStreak = 0
+        var run = 0
+        var previous: LocalDate? = null
+        for (date in dates.sorted()) {
+                run = if (previous?.plusDays(1) == date) run + 1 else 1
+                longestStreak = maxOf(longestStreak, run)
+                previous = date
+        }
+        return DashboardJournalSummary(dates.size, currentStreak, longestStreak)
+}
 
 /**
  * Truncates to at most [max] UTF-16 units without splitting a grapheme cluster, so an emoji or
@@ -595,6 +683,7 @@ private fun DashboardTodayHeroCard(
         overdueTodos: Int,
         upcomingEvents: Int,
         backupOverdue: Boolean,
+        backupAgeDays: Int?,
         onWriteOrContinue: () -> Unit,
         onOpenGlance: () -> Unit,
         onBackupClick: () -> Unit,
@@ -639,7 +728,12 @@ private fun DashboardTodayHeroCard(
         val heroPreviewTruncated = heroPreview != null && heroPreview.length < todayPreview!!.length
         // A day whose entry is only metadata (a mood, tags) has no preview text. It isn't empty,
         // so saying "nothing written" next to a Continue button was wrong; show no line instead.
+        // An unwritten day gets a writing prompt instead of a flat "nothing yet", rolled from the
+        // same per-visit seed as the greeting so it holds still across minute ticks. A brand-new
+        // journal keeps the plain line.
         val statusText = when {
+                !hasTodayEntry && hasAnyEntries ->
+                        stringResource(WRITING_PROMPTS[(greetingRoll ushr 8).mod(WRITING_PROMPTS.size)])
                 !hasTodayEntry -> stringResource(R.string.dashboard_status_empty)
                 heroPreview.isNullOrBlank() -> null
                 else -> heroPreview
@@ -746,52 +840,60 @@ private fun DashboardTodayHeroCard(
                                 }
                         }
 
-                        Spacer(modifier = Modifier.height(12.dp))
-                        androidx.compose.material3.HorizontalDivider(
-                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f)
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        val glanceInteraction = remember { MutableInteractionSource() }
-                        Row(
-                                modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
-                                verticalAlignment = Alignment.CenterVertically
-                        ) {
-                                Row(
-                                        modifier = Modifier
-                                                .weight(1f)
-                                                .expressivePressMotion(glanceInteraction, pressedScale = 0.97f)
-                                                .clickable(
-                                                        interactionSource = glanceInteraction,
-                                                        indication = LocalIndication.current,
-                                                        onClick = onOpenGlance
-                                                ),
-                                        verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                        DashboardGlanceGroup(
-                                                icon = Icons.Rounded.Checklist,
-                                                text = stringResource(R.string.dashboard_glance_todos_format, openTodosToday),
-                                                active = openTodosToday > 0
-                                        )
-                                        Spacer(modifier = Modifier.width(16.dp))
-                                        DashboardGlanceGroup(
-                                                icon = Icons.Rounded.Event,
-                                                text = stringResource(R.string.dashboard_glance_events_format, eventsToday),
-                                                active = eventsToday > 0
-                                        )
-                                }
-                                Icon(
-                                        imageVector = Icons.Rounded.ChevronRight,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        modifier = Modifier.size(18.dp)
+                        // Each row below shows only when it has something to say; "0 to-dos ·
+                        // 0 events" was noise on most days. The divider goes when they all do.
+                        val showGlance = openTodosToday > 0 || eventsToday > 0
+                        val showAhead = overdueTodos > 0 || upcomingEvents > 0
+                        if (showGlance || showAhead || backupOverdue) {
+                                Spacer(modifier = Modifier.height(12.dp))
+                                androidx.compose.material3.HorizontalDivider(
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.16f)
                                 )
+                                Spacer(modifier = Modifier.height(12.dp))
                         }
 
-                        if (overdueTodos > 0 || upcomingEvents > 0) {
-                                Spacer(modifier = Modifier.height(10.dp))
+                        if (showGlance) {
+                                val glanceInteraction = remember { MutableInteractionSource() }
+                                Row(
+                                        modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                                        verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                        Row(
+                                                modifier = Modifier
+                                                        .weight(1f)
+                                                        .expressivePressMotion(glanceInteraction, pressedScale = 0.97f)
+                                                        .clickable(
+                                                                interactionSource = glanceInteraction,
+                                                                indication = LocalIndication.current,
+                                                                onClick = onOpenGlance
+                                                        ),
+                                                verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                                DashboardGlanceGroup(
+                                                        icon = Icons.Rounded.Checklist,
+                                                        text = stringResource(R.string.dashboard_glance_todos_format, openTodosToday),
+                                                        active = openTodosToday > 0
+                                                )
+                                                Spacer(modifier = Modifier.width(16.dp))
+                                                DashboardGlanceGroup(
+                                                        icon = Icons.Rounded.Event,
+                                                        text = stringResource(R.string.dashboard_glance_events_format, eventsToday),
+                                                        active = eventsToday > 0
+                                                )
+                                        }
+                                        Icon(
+                                                imageVector = Icons.Rounded.ChevronRight,
+                                                contentDescription = null,
+                                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                modifier = Modifier.size(18.dp)
+                                        )
+                                }
+                        }
+
+                        if (showAhead) {
+                                if (showGlance) Spacer(modifier = Modifier.height(10.dp))
                                 val aheadInteraction = remember { MutableInteractionSource() }
                                 Row(
                                         modifier = Modifier
@@ -840,7 +942,7 @@ private fun DashboardTodayHeroCard(
                         }
 
                         if (backupOverdue) {
-                                Spacer(modifier = Modifier.height(10.dp))
+                                if (showGlance || showAhead) Spacer(modifier = Modifier.height(10.dp))
                                 val backupInteraction = remember { MutableInteractionSource() }
                                 Row(
                                         modifier = Modifier
@@ -863,8 +965,19 @@ private fun DashboardTodayHeroCard(
                                                 modifier = Modifier.size(15.dp)
                                         )
                                         Spacer(modifier = Modifier.width(8.dp))
+                                        val overdueLabel = stringResource(R.string.dashboard_backup_overdue)
                                         Text(
-                                                text = stringResource(R.string.dashboard_backup_overdue),
+                                                // The age is what makes the chip worth acting on. With no
+                                                // backup ever taken there is no age to give.
+                                                text = if (backupAgeDays != null) {
+                                                        "$overdueLabel · " + pluralStringResource(
+                                                                R.plurals.todos_relative_days_ago,
+                                                                backupAgeDays,
+                                                                backupAgeDays
+                                                        )
+                                                } else {
+                                                        overdueLabel
+                                                },
                                                 style = MaterialTheme.typography.labelMedium.copy(fontSize = 11.5.sp),
                                                 fontWeight = FontWeight.SemiBold,
                                                 color = MaterialTheme.colorScheme.onErrorContainer,
@@ -913,7 +1026,6 @@ private fun DashboardWeekSection(
         today: LocalDate,
         datesWithEntries: Set<LocalDate>,
         wordCounts: Map<LocalDate, Int>,
-        currentStreak: Int,
         onOpenDate: (LocalDate) -> Unit
 ) {
         // Emits several siblings, and every caller places sections inside AppStaggeredEntrance,
@@ -924,6 +1036,7 @@ private fun DashboardWeekSection(
                 // strip stays readable for a one-line-a-day writer and a thousand-word-a-day one alike.
                 val busiestDay = remember(wordCounts) { wordCounts.values.maxOrNull() ?: 0 }
                 val writtenCount = remember(days, datesWithEntries) { days.count { it in datesWithEntries } }
+                val weekWords = remember(wordCounts) { wordCounts.values.sum() }
 
                 Row(
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
@@ -944,13 +1057,10 @@ private fun DashboardWeekSection(
                                                 )
                                         )
                                         append(" · ")
+                                        // Words written, not the streak: the streak tile below already
+                                        // shows that, so the header repeated it.
                                         withStyle(SpanStyle(color = MaterialTheme.colorScheme.primary)) {
-                                                append(
-                                                        stringResource(
-                                                                R.string.dashboard_streak_summary_format,
-                                                                currentStreak
-                                                        )
-                                                )
+                                                append(stringResource(R.string.dashboard_words_count_format, weekWords))
                                         }
                                 },
                                 style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
@@ -1041,9 +1151,12 @@ private fun DashboardWeekSection(
                                                         text = date.dayOfMonth.toString(),
                                                         style = MaterialTheme.typography.labelMedium.copy(fontSize = 13.sp),
                                                         fontWeight = if (isWritten) FontWeight.Bold else FontWeight.Normal,
+                                                        // Written first: a written today sits on the
+                                                        // primaryContainer fill, where primary text
+                                                        // vanished. The ring still marks it as today.
                                                         color = when {
-                                                                isToday -> MaterialTheme.colorScheme.primary
                                                                 isWritten -> MaterialTheme.colorScheme.onPrimaryContainer
+                                                                isToday -> MaterialTheme.colorScheme.primary
                                                                 else -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                                                         }
                                                 )
@@ -1065,8 +1178,10 @@ private fun DashboardOverviewRow(
         onStreakClick: () -> Unit
 ) {
         val numberFormat = remember { NumberFormat.getIntegerInstance(Locale.getDefault()) }
+        // Sized to the tallest tile so all three match: the streak tile's "Best" caption otherwise
+        // made it taller than its neighbours.
         Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
                 DashboardStatTile(
@@ -1110,13 +1225,16 @@ private fun DashboardStatTile(
         Surface(
                 onClick = onClick,
                 interactionSource = interactionSource,
-                modifier = modifier.expressivePressMotion(interactionSource, pressedScale = 0.96f),
+                modifier = modifier
+                        .fillMaxHeight()
+                        .expressivePressMotion(interactionSource, pressedScale = 0.96f),
                 color = MaterialTheme.colorScheme.surfaceContainerLow,
                 shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)
         ) {
                 Column(
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 13.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        modifier = Modifier.fillMaxSize().padding(horizontal = 10.dp, vertical = 13.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                 ) {
                         Text(
                                 text = value,

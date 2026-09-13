@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Skrevne dage</string>
     <string name="dashboard_stat_entries">Indlæg</string>
     <string name="dashboard_status_empty">Intet skrevet i dag endnu.</string>
+    <string name="dashboard_prompt_1">Hvad fik dig til at smile i dag?</string>
+    <string name="dashboard_prompt_2">Hvad tænker du på lige nu?</string>
+    <string name="dashboard_prompt_3">Én ting, du vil huske fra i dag?</string>
+    <string name="dashboard_prompt_4">Hvem talte du med i dag?</string>
+    <string name="dashboard_prompt_5">Hvad er du taknemmelig for i dag?</string>
+    <string name="dashboard_prompt_6">Hvad overraskede dig i dag?</string>
+    <string name="dashboard_prompt_7">Hvordan har du det, helt ærligt?</string>
+    <string name="dashboard_prompt_8">Hvad ville gøre i morgen god?</string>
     <string name="dashboard_write_first_entry">Skriv dit første indlæg</string>
     <string name="dashboard_write_today">Skriv dagens indlæg</string>
     <string name="dashboard_continue_today">Fortsæt dagens indlæg</string>

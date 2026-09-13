@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Hari tertulis</string>
     <string name="dashboard_stat_entries">Entri</string>
     <string name="dashboard_status_empty">Belum ada yang ditulis hari ini.</string>
+    <string name="dashboard_prompt_1">Apa yang membuatmu tersenyum hari ini?</string>
+    <string name="dashboard_prompt_2">Apa yang sedang kamu pikirkan?</string>
+    <string name="dashboard_prompt_3">Satu hal yang ingin kamu ingat dari hari ini?</string>
+    <string name="dashboard_prompt_4">Dengan siapa kamu bicara hari ini?</string>
+    <string name="dashboard_prompt_5">Apa yang kamu syukuri hari ini?</string>
+    <string name="dashboard_prompt_6">Apa yang mengejutkanmu hari ini?</string>
+    <string name="dashboard_prompt_7">Jujur, bagaimana perasaanmu?</string>
+    <string name="dashboard_prompt_8">Apa yang akan membuat besok menyenangkan?</string>
     <string name="dashboard_write_first_entry">Tulis entri pertamamu</string>
     <string name="dashboard_write_today">Tulis entri hari ini</string>
     <string name="dashboard_continue_today">Lanjutkan entri hari ini</string>

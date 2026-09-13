@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Zile scrise</string>
     <string name="dashboard_stat_entries">Intrări</string>
     <string name="dashboard_status_empty">Nimic scris astăzi încă.</string>
+    <string name="dashboard_prompt_1">Ce te-a făcut să zâmbești azi?</string>
+    <string name="dashboard_prompt_2">La ce te gândești acum?</string>
+    <string name="dashboard_prompt_3">Un lucru de azi pe care vrei să-l ții minte?</string>
+    <string name="dashboard_prompt_4">Cu cine ai vorbit azi?</string>
+    <string name="dashboard_prompt_5">Pentru ce simți recunoștință azi?</string>
+    <string name="dashboard_prompt_6">Ce te-a surprins azi?</string>
+    <string name="dashboard_prompt_7">Sincer, cum te simți?</string>
+    <string name="dashboard_prompt_8">Ce ar face ziua de mâine una bună?</string>
     <string name="dashboard_write_first_entry">Scrie prima ta intrare</string>
     <string name="dashboard_write_today">Scrie intrarea de azi</string>
     <string name="dashboard_continue_today">Continuă intrarea de azi</string>

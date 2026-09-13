@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Ημέρες γραφής</string>
     <string name="dashboard_stat_entries">Καταχωρίσεις</string>
     <string name="dashboard_status_empty">Δεν έχει γραφτεί τίποτα σήμερα ακόμα.</string>
+    <string name="dashboard_prompt_1">Τι σε έκανε να χαμογελάσεις σήμερα;</string>
+    <string name="dashboard_prompt_2">Τι σκέφτεσαι αυτή τη στιγμή;</string>
+    <string name="dashboard_prompt_3">Ένα πράγμα που θέλεις να θυμάσαι από σήμερα;</string>
+    <string name="dashboard_prompt_4">Με ποιον μίλησες σήμερα;</string>
+    <string name="dashboard_prompt_5">Για τι νιώθεις ευγνωμοσύνη σήμερα;</string>
+    <string name="dashboard_prompt_6">Τι σε εξέπληξε σήμερα;</string>
+    <string name="dashboard_prompt_7">Πώς νιώθεις, ειλικρινά;</string>
+    <string name="dashboard_prompt_8">Τι θα έκανε το αύριο καλό;</string>
     <string name="dashboard_write_first_entry">Γράψτε την πρώτη σας καταχώριση</string>
     <string name="dashboard_write_today">Γράψτε τη σημερινή καταχώριση</string>
     <string name="dashboard_continue_today">Συνεχίστε τη σημερινή καταχώριση</string>

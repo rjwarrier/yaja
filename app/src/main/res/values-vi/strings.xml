@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">Ngày đã viết</string>
     <string name="dashboard_stat_entries">Mục nhật ký</string>
     <string name="dashboard_status_empty">Hôm nay chưa viết gì.</string>
+    <string name="dashboard_prompt_1">Hôm nay điều gì khiến bạn mỉm cười?</string>
+    <string name="dashboard_prompt_2">Lúc này bạn đang nghĩ gì?</string>
+    <string name="dashboard_prompt_3">Một điều hôm nay bạn muốn ghi nhớ?</string>
+    <string name="dashboard_prompt_4">Hôm nay bạn đã trò chuyện với ai?</string>
+    <string name="dashboard_prompt_5">Hôm nay bạn biết ơn điều gì?</string>
+    <string name="dashboard_prompt_6">Hôm nay điều gì làm bạn bất ngờ?</string>
+    <string name="dashboard_prompt_7">Thật lòng, bạn đang cảm thấy thế nào?</string>
+    <string name="dashboard_prompt_8">Điều gì sẽ làm ngày mai tốt đẹp?</string>
     <string name="dashboard_write_first_entry">Viết mục đầu tiên</string>
     <string name="dashboard_write_today">Viết mục hôm nay</string>
     <string name="dashboard_continue_today">Tiếp tục mục hôm nay</string>

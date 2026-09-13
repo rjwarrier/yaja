@@ -200,6 +200,14 @@
     <string name="dashboard_stat_days">የተጻፉ ቀናት</string>
     <string name="dashboard_stat_entries">ማስታወሻዎች</string>
     <string name="dashboard_status_empty">ዛሬ ገና ምንም አልተጻፈም።</string>
+    <string name="dashboard_prompt_1">ዛሬ ፈገግ ያሰኘዎት ምንድን ነው?</string>
+    <string name="dashboard_prompt_2">አሁን በአእምሮዎ ያለው ምንድን ነው?</string>
+    <string name="dashboard_prompt_3">ስለ ዛሬ ማስታወስ የሚፈልጉት አንድ ነገር?</string>
+    <string name="dashboard_prompt_4">ዛሬ ከማን ጋር ተነጋገሩ?</string>
+    <string name="dashboard_prompt_5">ዛሬ ስለ ምን አመስጋኝ ነዎት?</string>
+    <string name="dashboard_prompt_6">ዛሬ ምን አስገረመዎት?</string>
+    <string name="dashboard_prompt_7">በእውነት እንዴት ይሰማዎታል?</string>
+    <string name="dashboard_prompt_8">ነገን ጥሩ የሚያደርገው ምንድን ነው?</string>
     <string name="dashboard_write_first_entry">የመጀመሪያ ማስታወሻዎን ይጻፉ</string>
     <string name="dashboard_write_today">የዛሬውን ማስታወሻ ይጻፉ</string>
     <string name="dashboard_continue_today">የዛሬውን ማስታወሻ ይቀጥሉ</string>
