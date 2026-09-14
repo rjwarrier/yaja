@@ -1,6 +1,20 @@
 # Changelog
 
-## 3.1.2 - Unreleased
+## 3.1.6 - September 14, 2026
+
+### Summary
+- Polished the Home dashboard introduced in 3.1.5 so the main actions consistently work on today, even after viewing older entries or leaving the app open overnight.
+- Made the dashboard faster to open by deriving the headline stats from cached journal dates and the persisted entry count instead of forcing an all-time statistics load.
+- Improved the Today card with longer flattened previews, rotating writing prompts for unwritten days, cleaner hidden-empty glance rows, and a backup reminder that shows how many days ago the last backup ran.
+- Expanded "On this day" from one memory to up to three past years, newest first.
+- Tuned dashboard layout details: the week strip now shows words written, stat tiles share one height, written-today numbers stay readable, and the floating action button starts a new entry for today.
+- Fixed follow-up dashboard issues: midnight rollovers refresh today counts, the hero clock follows the phone's 12/24-hour setting, Home search now focuses the search field, metadata-only days no longer say "Nothing written today", and raced Recent-preview loads no longer cache stale text.
+- Completed translations for the new dashboard writing prompts across the shipped locales.
+
+### Release
+- Bumped to `versionCode` 96, `versionName` 3.1.6.
+
+## 3.1.5 - September 13, 2026
 
 ### Highlights
 - Added a Home dashboard screen — a hero "today" card, week strip, overview stats, and recent entries — as an alternative landing screen to the per-day Today view, selectable via a new Default Screen setting.
