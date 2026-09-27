@@ -1,102 +1,148 @@
 <p align="center">
-  <img src="docs/yaja_banner.png" alt="Yaja Banner" width="100%" />
+  <img src="docs/yaja_banner.png" alt="Yaja banner" width="100%" />
 </p>
 
-# Yaja (Yet Another Journaling App)
+<h1 align="center">Yaja</h1>
 
-<a href="https://play.google.com/store/apps/details?id=com.mj.yaja">
-  <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="45" />
-</a>
+<p align="center">
+  <strong>Yet Another Journaling App</strong><br />
+  A privacy-first, markdown-based personal journal for Android.
+</p>
 
-🌐 **[Official Website](https://www.ranjithj.in/yaja/)** | 💖 **[Support & Donate](https://pages.razorpay.com/ranjithj)**
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white" alt="Platform: Android" />
+  <img src="https://img.shields.io/badge/min%20SDK-26-3DDC84" alt="Min SDK 26" />
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Jetpack%20Compose-4285F4?logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
+  <img src="https://img.shields.io/badge/storage-100%25%20offline-555555" alt="100% offline" />
+</p>
 
-Yaja is a privacy-first, markdown-based personal journaling application for Android. Built with Kotlin and Jetpack Compose, Yaja treats your journal entries as actionable records—merging text capture, inline tasks, location/people tracking, and rich automated insights into a single unified flow.
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=com.mj.yaja">
+    <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="60" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.ranjithj.in/yaja/">Website</a> ·
+  <a href="#-features">Features</a> ·
+  <a href="#-building-from-source">Build</a> ·
+  <a href="#-importing-external-journals">Import</a> ·
+  <a href="#-support-the-developer">Support</a>
+</p>
+
+---
+
+## About
+
+Yaja treats journal entries as actionable records. Text capture, inline tasks, people and place tracking, and automated insights live in one flow, stored as plain markdown files on your own device. Built with Kotlin and Jetpack Compose.
 
 > [!IMPORTANT]
-> **What Yaja is NOT:** Yaja is **not** a productivity app, a standard todo app, or a general-purpose calendar app. 
-> 
-> **What Yaja IS:** It is a private, personal space where you can manage your personal life, capture thoughts, and track tasks without any fear of your data being uploaded, processed, or shared in the cloud. Everything is kept strictly offline on your own device.
+> **Yaja is not** a productivity app, a standard todo app, or a general-purpose calendar.
+>
+> **Yaja is** a private, personal space to manage your life, capture thoughts, and track tasks with no fear of your data being uploaded, processed, or shared in the cloud. Everything stays offline on your device.
 
----
+## ✨ Highlights
 
-## 🌟 Specialties of Yaja
+| | |
+| --- | --- |
+| 🔒 **Privacy-first, 100% local** | Entries, stats, and language analytics stay on your device. No cloud database, tracking SDKs, or remote backup servers. |
+| 📝 **Standard markdown storage** | Entries are human-readable `.md` files organized by year and month. Open them in any text editor. |
+| ✅ **Actionable journaling** | Write inline checklist items `[ ]` or mark whole entries as `Events` right inside your daily log. |
+| 📱 **Deep Android integration** | Launcher widgets, home screen shortcuts, and Tasker support for automated logging. |
 
-* **Privacy-First & 100% Local:** All journal entries, stats, and language analytics reside strictly on your physical device. Yaja has no cloud databases, tracking SDKs, or remote backup servers. Your thoughts remain yours.
-* **Standard Markdown Storage:** Entries are stored as standard, human-readable `.md` files organized by year and month. You own your data and can view it in any text editor.
-* **Actionable Journaling:** Instead of segregating notes, tasks, and calendar events, Yaja integrates them. Write inline checklist items `[ ]` or designate whole entries as native `Events` right inside your daily logging.
-* **Extensive Android Integrations:** Log thoughts on-the-go with launcher widgets, Home screen shortcuts, and a robust Tasker integration to automate logging from external system events.
+## 🛠 Features
 
----
+<details open>
+<summary><strong>Writing flow & templates</strong></summary>
 
-## 🛠 Key Features
+- **Dynamic templates** — Meeting Note, Travel Day, Health Log, Reflection, Work Log, and more. Append, insert at the cursor, or replace the draft.
+- **Markdown headings** — Organize entries with `### Section` headings, rendered in both View and Edit modes.
+- **Shortcodes** — Custom abbreviations that expand into snippets, with placeholders like `{{today:dd-MMM}}` and `{{now:HH:mm}}`.
 
-### 1. Writing Flow & Templates
-* **Dynamic Templates:** Create structured logs using preset templates like *Meeting Note, Travel Day, Health Log, Reflection, or Work Log*. Templates can be appended, inserted at the cursor, or replace the entire draft.
-* **Markdown Heading Support:** Organise entries with standard markdown headings (e.g., `### Section`) which render beautifully in both View and Edit modes.
-* **Shortcodes:** Create custom abbreviations that expand into long snippets, complete with dynamic placeholders like `{{today:dd-MMM}}` and `{{now:HH:mm}}`.
+</details>
 
-### 2. Actionable Tasks & Events
-* **Inline Todos:** Write tasks directly in entries using standard markdown `[ ]` and `[x]`.
-* **Native Events:** Mark any entry as an `Event` to designate family plans, reminders, travel, and appointments.
-* **Dedicated Todos Screen:** Track, filter, and manage open/completed tasks and events without turning your journal into a distracting productivity board.
-* **Chronological Widgets:** Pin your checklist and event list to your Home screen with custom layouts, auto-hide options, and toggle confirmations.
+<details open>
+<summary><strong>Tasks & events</strong></summary>
 
-### 3. Smart Post-Write Review & Revisits
-* **Post-Write Review Sheet:** After saving, a review sheet prompts you to extract todos, detect keywords (people/places), star the day, set a day label, or schedule revisit dates.
-* **Linked Revisit Dates:** Set follow-up reminders (e.g., *Tomorrow*, *Next Week*, *Next Month*, or a custom date). Due revisits surface on your Home timeline and calendar.
+- **Inline todos** — Standard markdown `[ ]` and `[x]` directly in entries.
+- **Native events** — Mark any entry as an `Event` for plans, reminders, travel, and appointments.
+- **Todos screen** — Filter and manage open and completed tasks without turning your journal into a productivity board.
+- **Widgets** — Pin checklists and events to your home screen with custom layouts, auto-hide, and toggle confirmations.
 
-### 4. Deep Insights & Lookbacks
-* **People & Places Tracking:** Detects people and places with aliases and relationship labels. The keywords view shows mention frequencies, co-mentions, and ranked connections.
-* **On This Day Lookback:** Rediscover entries from the same day in past years, view starred highlights, or use *Surprise Me* to open a random entry.
-* **Compare Mode Statistics:** Visualize writing habits, word count trends, template usage, and keyword deltas. 
-* **Local Script/Language Analytics:** Detects dominant scripts/languages in your writing to present in your reviews—completely offline.
+</details>
 
-### 5. Advanced Configuration & Security
-* **Material 3 Theming:** Customize your look with dynamic Material 3 colors, custom themes, color intensity, and background tint controls.
-* **Version History Backups:** Automated file versioning keeps safe snapshots of your journal before edits, deletions, or label changes to prevent accidental data loss.
-* **App Lock:** Secure your journal from prying eyes using PIN and fingerprint authentication.
+<details open>
+<summary><strong>Post-write review & revisits</strong></summary>
 
----
+- **Review sheet** — After saving, extract todos, detect people and places, star the day, set a day label, or schedule revisits.
+- **Linked revisit dates** — Tomorrow, next week, next month, or a custom date. Due revisits surface on your timeline and calendar.
 
-## 🚀 Development & Build Instructions
+</details>
 
-### Prerequisites
-* **Android SDK** (API Level 33+)
-* **JDK 17**
-* **Gradle 8.0+**
+<details open>
+<summary><strong>Insights & lookbacks</strong></summary>
 
-### Building the App
-To compile and build the debug APK locally, run:
+- **People & places** — Aliases and relationship labels, with mention frequencies, co-mentions, and ranked connections.
+- **On This Day** — Entries from the same day in past years, starred highlights, and *Surprise Me* for a random entry.
+- **Compare mode** — Writing habits, word count trends, template usage, and keyword deltas.
+- **Script & language analytics** — Detects dominant scripts and languages in your writing, fully offline.
+
+</details>
+
+<details open>
+<summary><strong>Customization & security</strong></summary>
+
+- **Material 3 theming** — Dynamic color, custom themes, color intensity, and background tint.
+- **Version history** — Automatic snapshots before edits, deletions, or label changes.
+- **App lock** — PIN and fingerprint authentication.
+
+</details>
+
+## 🚀 Building from source
+
+**Requirements**
+
+- JDK 17
+- Android SDK with API 36 (compile target; runs on Android 8.0 / API 26+)
+- Gradle 9 (the wrapper is included)
+
+**Build a debug APK**
+
 ```bash
 ./gradlew assembleDebug
 ```
-The resulting APK will be located in `app/build/outputs/apk/debug/`.
 
----
+The APK is written to `app/build/outputs/apk/debug/`.
 
-## 📥 Importing External Journals
+## 📥 Importing external journals
 
-Yaja includes an import utility supporting standard exports from **Day One** and **Journalistic**.
+Yaja can import exports from **Day One** and **Journalistic**.
 
-### Steps to Test Import:
-1. Push your JSON export file to the device storage via ADB:
+1. Push your JSON export to the device:
    ```bash
    adb push /path/to/Journal.json /sdcard/Download/Journal.json
    ```
-2. Open Yaja and navigate to **Settings > Data & Storage > Import**.
-3. Tap the **Day One** or **Journalistic** row.
-4. Locate and select the file from `/sdcard/Download/` using the system file picker.
-5. A progress bar will track the import process. 
-6. Ensure that the active storage location in **Settings > Data & Storage > Storage Location** has write permissions (via the Storage Access Framework picker) so Yaja can write the imported markdown files.
+2. In Yaja, open **Settings › Data & Storage › Import**.
+3. Tap **Day One** or **Journalistic**.
+4. Pick the file from `/sdcard/Download/` in the system file picker.
+5. A progress bar tracks the import; you can cancel at any time.
 
----
+> [!NOTE]
+> Imported entries are written to the active storage location (**Settings › Data & Storage › Storage Location**). If that is a custom folder such as Google Drive or an SD card, make sure it was granted write access through the folder picker.
 
-## 💖 Support & Donations
-If Yaja helps you keep your personal logs secure and offline, please consider supporting its development:
-* **[Donate / Support via Razorpay](https://pages.razorpay.com/ranjithj)**
+## 💖 Support the developer
 
----
+If Yaja helps you keep your personal logs private and offline, consider supporting its development.
+
+<p>
+  <a href="https://www.buymeacoffee.com/ranjithj">
+    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ranjithj&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee" height="45" />
+  </a>
+</p>
+
+You can also donate via **[Razorpay](https://pages.razorpay.com/ranjithj)**.
 
 ## 📄 License
-This project is proprietary and maintained by [rjwarrier](https://github.com/rjwarrier).
 
+This project is proprietary and maintained by [@rjwarrier](https://github.com/rjwarrier).
